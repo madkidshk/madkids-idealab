@@ -1,4 +1,4 @@
-<style>#cdbar{position:sticky;top:0;z-index:30;background:#0b1220;color:#fff;text-align:center;padding:9px 8px;box-shadow:0 1px 6px rgba(0,0,0,.25)}#cdbar .cdlbl{font-size:12px;color:#9aa4b2;letter-spacing:.15em}#cdbar .cdv{font-size:clamp(24px,7vw,34px);font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:2px;line-height:1.15}#cdbar .cddl{font-size:12px;color:#9aa4b2}#cdbar.urgent .cdv{color:#ff5d5d;animation:cdp 1s ease-in-out infinite}@keyframes cdp{50%{opacity:.55}}.nav{top:62px !important}</style><div id="cdbar"><div class="cdlbl">差</div><div class="cdv" id="cdv">--:--:--:--</div><div class="cddl" id="cddl"></div></div><style>
+<style>
 :root{--bd:#e2e2e6;--mut:#6b7280;--bg:#fafafa;--ac:#2563eb;--brief:#059669;--research:#9333ea}
 *{box-sizing:border-box}
 body{font-family:-apple-system,"PingFang HK","Noto Sans CJK HK",sans-serif;margin:0;background:var(--bg);color:#1a1a1a;line-height:1.6;font-size:17px}
@@ -141,4 +141,4 @@ function sendFB(){
     m.textContent='(意見功能要喺手機 GAS URL 開先 work; 本機/Cowork 預覽冇後台。)';
   }
 }
-</script><script>(function(){var dl=new Date("2026-06-17T15:00:00+08:00");var el=document.getElementById('cdv'),dd=document.getElementById('cddl'),bar=document.getElementById('cdbar');function p(n){n=''+n;return n.length<2?'0'+n:n;}function tick(){if(isNaN(dl.getTime())){el.textContent='截標日期待設定';return;}var diff=dl-new Date();if(diff<=0){el.textContent='已截標';bar.classList.add('urgent');return;}var s=Math.floor(diff/1000),d=Math.floor(s/86400);s-=d*86400;var h=Math.floor(s/3600);s-=h*3600;var m=Math.floor(s/60);s-=m*60;el.textContent=p(d)+':'+p(h)+':'+p(m)+':'+p(s);if(diff<2592e5)bar.classList.add('urgent');}dd.textContent='截標 2026-06-17 15:00 HKT';tick();setInterval(tick,1000);})();</script>
+</script>
