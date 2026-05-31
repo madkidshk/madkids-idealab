@@ -1,144 +1,130 @@
 <style>
-:root{--bd:#e2e2e6;--mut:#6b7280;--bg:#fafafa;--ac:#2563eb;--brief:#059669;--research:#9333ea}
-*{box-sizing:border-box}
-body{font-family:-apple-system,"PingFang HK","Noto Sans CJK HK",sans-serif;margin:0;background:var(--bg);color:#1a1a1a;line-height:1.6;font-size:17px}
-.nav{position:sticky;top:0;z-index:9;background:#fff;border-bottom:1px solid var(--bd);display:flex;gap:6px;overflow-x:auto;padding:10px 14px;-webkit-overflow-scrolling:touch}
-.nav a{flex:0 0 auto;text-decoration:none;color:var(--ac);font-size:15px;font-weight:600;background:#eef2ff;padding:7px 13px;border-radius:999px;white-space:nowrap}
-.nav a.brief{color:#fff;background:var(--brief)}
-.nav a.research{color:#fff;background:var(--research)}
-.wrap{max-width:1200px;margin:0 auto;padding:18px}
-h1{font-size:24px;margin:0 0 4px}
-.sub{color:var(--mut);font-size:15px;margin-bottom:8px}
-.flow{font-size:14px;color:var(--mut);margin-bottom:16px}
-.flow b{color:#1a1a1a}
-.part-label{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;padding:3px 8px;border-radius:4px;margin-right:8px;color:#fff;vertical-align:middle}
-.part-label.p1{background:var(--brief)}
-.part-label.p2{background:var(--research)}
-.sec{background:#fff;border:1px solid var(--bd);border-radius:10px;margin-bottom:14px;overflow:hidden}
-.sec.brief-sec{border:2px solid var(--brief);background:#f0fdf4}
-.sec.research-sec{border:2px solid var(--research);background:#faf5ff}
-.sec.brief-sec .sechead{border-left:6px solid var(--brief);background:#ecfdf5}
-.sec.research-sec .sechead{border-left:6px solid var(--research);background:#f5f3ff}
-.sechead{cursor:pointer;font-size:19px;font-weight:700;padding:14px 16px;border-left:4px solid var(--ac);list-style:none;display:flex;justify-content:space-between;align-items:center}
-.sechead::-webkit-details-marker{display:none}
-.sechead::before{content:"▸ ";color:var(--ac)}
-details[open]>.sechead::before{content:"▾ "}
-.totop{font-size:13px;font-weight:600;color:var(--mut);text-decoration:none;background:#f1f5f9;padding:4px 10px;border-radius:999px}
-.secbody{padding:4px 16px 16px}
-.springboard{white-space:pre-wrap;font-size:16px}
-.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.col{background:#fff;border:1px solid var(--bd);border-radius:8px;padding:12px}
-.mhead{font-weight:700;font-size:17px;border-bottom:1px solid var(--bd);padding-bottom:6px;margin-bottom:8px}
-.slug{display:block;font-weight:400;font-size:12px;color:var(--mut)}
-.meta{font-size:12px;color:var(--mut);margin-bottom:8px}
-.route{border:1px solid #eee;border-radius:6px;padding:10px;margin-bottom:10px;background:#fcfcfd}
-.route.err{background:#fff5f5;border-color:#fbb}
-.rname{font-weight:700;font-size:17px;color:var(--ac)}
-.big{font-size:16px;margin:4px 0 7px}
-.f{font-size:15px;margin:4px 0}
-.f .k{display:inline-block;font-weight:600;color:var(--mut);margin-right:4px}
-details.raw{margin-top:8px;font-size:14px}
-details.raw summary{cursor:pointer;color:var(--ac);font-size:15px;padding:4px 0}
-.lbl{font-size:13px;font-weight:700;color:var(--mut);margin:6px 0 2px}
-pre{white-space:pre-wrap;background:#f4f4f5;border-radius:6px;padding:10px;font-size:13px;max-height:340px;overflow:auto;margin:0}
-.fb textarea{width:100%;min-height:120px;font-size:16px;padding:10px;border:1px solid var(--bd);border-radius:8px;font-family:inherit}
-.fb button{margin-top:8px;font-size:16px;padding:11px 20px;background:var(--ac);color:#fff;border:0;border-radius:8px}
-.fbmsg{margin-top:8px;font-size:15px;color:#16a34a}
-#backtop{position:fixed;right:16px;bottom:16px;z-index:20;background:var(--ac);color:#fff;border:0;border-radius:999px;padding:12px 16px;font-size:15px;box-shadow:0 2px 8px rgba(0,0,0,.2);cursor:pointer}
-@media(max-width:820px){.cols{grid-template-columns:1fr}body{font-size:18px}.rname{font-size:18px}.f{font-size:16px}.big{font-size:17px}}
-</style>
-<span id="top"></span>
-<nav class="nav"><a class="brief" href="#brief" onclick="goSec('brief')">Part 1: Brief</a><a class="research" href="#research" onclick="goSec('research')">Part 2: Research</a><a href="#strategy" onclick="goSec('strategy')">策略</a><a href="#sa" onclick="goSec('sa')">Stream A</a><a href="#sb" onclick="goSec('sb')">Stream B</a><a href="#fb" onclick="goSec('fb')">意見</a></nav>
-<div class="wrap">
-<h1>Idea Lab — FEHD / Water Seepage APIs</h1>
-<div class="sub">2026-05-31T20:36:50 · 總成本 ~$0.0111 USD</div>
-<div class="flow">委員會流程: <b>研究資料</b> → <b>策略跳板</b> (Grok) → <b>Stream A</b> 跟 SOP + <b>Stream B</b> fresh-eyes (DeepSeek/Qwen/Kimi 並排) → <b>CD 收斂</b> (Claude/你)。每段可摺,每欄可揭 prompt + 原始回應。</div>
-<details class="sec brief-sec" id="brief" open><summary class="sechead"><span class="part-label p1">PART 1</span>📌 Brief 撮要 (Tender 想做咩 · who / what / when / budget / deliverable)<a class="totop" href="#top" onclick="event.stopPropagation()">↑頂</a></summary><div class="secbody"><div class="springboard">### 1. Background（背景）
-為配合 2025 
-年《施政報告》公佈的措施，由食物環境衞生署（FEHD）與屋宇署（BD）成立的聯合辦事處
-（聯辦處/JO）將推出處理私人樓宇滲水的新調查及測試程序 
-[1]。政府希望透過新一輯電視及電台政府宣傳短片（API），向公眾宣傳這些旨在更有效解
-決滲水問題的加強措施 [1]。
-
-### 2. Objective（目標）
-提升公眾對聯辦處即將推出的新滲水調查程序及加強措施的認知；強調業主妥善保養物業及
-防止滲水的責任 
-[2]。具體需向受眾解釋精簡後的調查程序（包括使用紅外線熱成像分析及同步進行第二和
-第三階段調查），並促使收到「通知信」的業主主動及時進行檢驗和維修 [2]。
-
-### 3. Key Message（核心訊息）
-妥善保養物業、防止滲水，永遠是業主的責任 
-[3]。聯辦處在第一階段已引入紅外線探測以加快尋找滲水源頭；若發出「通知信」後業主
-仍未能在限期內完成維修，聯辦處將同步展開第二及第三階段調查，並會向不合作的業主追
-討相關測試費用 [3, 4]。
-
-### 4. Deliverables（交付物）
-*   **TV API：** 一條 30 
-秒電視宣傳短片，包含粵語（配繁體中文書面語字幕及手語）及英語（配英文字幕及手語）
-兩個版本 [5, 6]。需以 HDCam、RED ONE 或同等格式拍攝，輸出 16:9 (HD) XDCAM HD422 
-MXF 檔案 [5, 6]。手語視窗需佔畫面六分之一，位於右下角 [7, 8]。
-*   **Radio API：** 一條 30 
-秒電台宣傳聲帶，包含粵語、英語（獨白形式）及普通話（要求一級乙等水平）版本 
-[9-11]。
-*   **其他：** 
-中英文口號（Slogan）、腳本、分鏡圖（Storyboard）、配音、原創或已獲版權許可的背景
-音樂 [10, 12-15]。
-*   （海報/平面廣告：資料不足，投標文件未列為必做項目）。
-
-### 5. Timeline（時間表）
-*   **B (Briefing 簡介會):** 2026-05-29 (必須於 2026-05-27 15:00 前提交回條) 
-[16, 17]。
-*   **D (Deadline 遞交死線):** 2026-06-17T15:00 (香港時間) [17, 18]。
-*   **P (Presentation 提案日):** 2026-06-23 (以粵語進行) [19, 20]。
-*   **Milestone:** 2026-06-29 批出合約；2026-07-31 完成 Final Cut；2026-08-03 
-遞交廣播機構 [20]。</div></div></details><details class="sec research-sec" id="research" open><summary class="sechead"><span class="part-label p2">PART 2</span>🔬 AI 做嘅 Research (背景研究全文)<a class="totop" href="#top" onclick="event.stopPropagation()">↑頂</a></summary><div class="secbody"><div class="lbl">研究全文 (Gemini / Perplexity)</div><div class="springboard">FEHD 未做外部 Gemini / Perplexity research。
-
-完整創意方案見 Part 1 Brief 撮要 + NBLM notebook:
-https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6</div></div></details><details class="sec" id="strategy" open><summary class="sechead">🎯 策略跳板 (Strategy Springboard)<a class="totop" href="#top" onclick="event.stopPropagation()">↑頂</a></summary><div class="secbody"><div class="springboard">**創意跳板**
-
-**策略張力**  
-業主心裏始終覺得「滲水係隔離屋或大廈問題」，但法例同現實卻不斷提醒「保養物業係你嘅責任」。新程序加快調查，同時加強追討費用，放大咗呢個未解決嘅矛盾。
-
-**創意機會**  
-聯辦處以紅外線技術大幅簡化程序，並同步展開後續調查，政府首次同時提供「更快解決方法」同「不合作即有實質代價」。呢個係業主首次面對「拖得就即刻有實際後果」嘅社會時刻。
-
-**受眾觸發點**  
-收到「通知信」後嘅即時焦慮——「而家唔做，之後會畀政府追錢同繼續受滲水滋擾」。
-
-**品牌角色**  
-清晰、果斷、專業嘅執行者：既幫業主更快鎖定滲水源頭，亦會對不合作業主追討費用，體現「責任到人、執法到位」。
-
-**推薦切入角度**  
-1. 收到信之後嘅即時行動（最直接）  
-2. 拖延嘅真實代價（費用＋持續滋擾）  
-3. 新技術點樣加快解決（減少反感）  
-4. 業主作為物業負責人嘅角色確認
-
-**要避開嘅伏**  
-- 避免過分強調「罰錢」，以免被視為恐嚇；  
-- 必須準確使用「聯辦處／聯合辦事處」官方名稱；  
-- 手語視窗、字幕、語言版本必須完全合規；  
-- 切勿暗示政府會主動維修或承擔責任。</div></div></details><details class="sec" id="sa" open><summary class="sechead">Stream A — 跟 DE BONO SOP (結構化)<a class="totop" href="#top" onclick="event.stopPropagation()">↑頂</a></summary><div class="secbody"><div class="cols"><div class="col"><div class="mhead">grok<span class="slug">x-ai/grok-4.3-20260430</span></div><div class="meta">tokens: 3019 · $0.00547</div><div class="route"><div class="rname">收到信即行動</div><div class="big">通知信一到，業主即刻行動，先搶解決權。</div><div class="f"><span class="k">Slogan</span>信到即檢，滲水快解決</div><div class="f"><span class="k">點解 work</span>直接對應受眾收到通知信嘅即時焦慮，扣緊策略張力「拖得就有代價」，同時突出聯辦處專業執行角色，引導業主主動負責。</div></div><div class="route"><div class="rname">紅外線快揪源頭</div><div class="big">紅外線一眼睇穿，聯辦處幫業主用最快方法解決滲水。</div><div class="f"><span class="k">Slogan</span>紅外線探測，快準鎖源頭</div><div class="f"><span class="k">點解 work</span>利用創新技術減低業主反感，同時扣緊策略機會「更快解決方法」，強化聯辦處專業果斷嘅品牌角色。</div></div><div class="route"><div class="rname">業主角色確認</div><div class="big">物業保養，永遠係業主嘅責任，聯辦處只係幫你執行到底。</div><div class="f"><span class="k">Slogan</span>業主有責，聯辦處執到實</div><div class="f"><span class="k">點解 work</span>直接回應策略張力「業主心裏覺得係隔離屋問題」，透過鏡像隱喻確認業主角色，同時平衡說明追討費用嘅後果。</div></div><div class="route"><div class="rname">拖延真實代價</div><div class="big">今日拖一日，明日可能要面對雙重滋擾同實質費用。</div><div class="f"><span class="k">Slogan</span>拖得愈耐，代價愈大</div><div class="f"><span class="k">點解 work</span>扣緊受眾觸發點「而家唔做，之後會畀政府追錢同繼續受滋擾」，並平衡展示科技優勢與責任，符合品牌果斷執行嘅角色。</div></div></div></div></div></details><details class="sec" id="sb" open><summary class="sechead">Stream B — Fresh Eyes (唔跟 SOP)<a class="totop" href="#top" onclick="event.stopPropagation()">↑頂</a></summary><div class="secbody"><div class="cols"><div class="col"><div class="mhead">grok<span class="slug">x-ai/grok-4.3-20260430</span></div><div class="meta">tokens: 2385 · $0.00341</div><div class="route"><div class="rname">滲水有聲</div><div class="big">畀滲水自己出聲，迫業主聽到自己嘅責任</div><div class="f"><span class="k">Slogan</span>滲水會出聲，你唔出聲就罰聲</div><div class="f"><span class="k">點解 work</span>用視覺同聲音雙重壓迫感，直接擊中業主「怕被人鬧」嘅神經</div><div class="f"><span class="k">夠膽位</span>破天荒將滲水擬人化做會告狀嘅角色，政府宣傳少有咁「惡搞」業主自己</div></div><div class="route"><div class="rname">通知信係限時炸彈</div><div class="big">收到信之後，每一日都係倒數</div><div class="f"><span class="k">Slogan</span>信放埋，錢飛走</div><div class="f"><span class="k">點解 work</span>用時間壓力取代道德說教，更貼近香港人「怕蝕錢」嘅即時反應</div><div class="f"><span class="k">夠膽位</span>政府文件變炸彈意象，夠膽直接話拖延會「即時損失金錢」</div></div><div class="route"><div class="rname">全樓監視你</div><div class="big">而家唔止JO睇緊你，隔離屋都睇緊你</div><div class="f"><span class="k">Slogan</span>一屋漏水，全樓知晒</div><div class="f"><span class="k">點解 work</span>香港人最怕「畀人知」同「被人鬧」，社會壓力比罰款更有效</div><div class="f"><span class="k">夠膽位</span>打破政府一向「中立」形象，直接用鄰里監視同社會壓力做武器</div></div><div class="route"><div class="rname">你係業主，定係樓宇殺手</div><div class="big">唔肯維修，等於親手整蠱自己同全棟</div><div class="f"><span class="k">Slogan</span>唔想做殺手，就做業主</div><div class="f"><span class="k">點解 work</span>用極端對比製造道德焦慮，迫業主即時行動</div><div class="f"><span class="k">夠膽位</span>直斥業主係「殺手」，係政府宣傳入面極少見嘅強硬用字</div></div></div></div></div></details><details class="sec fb" id="fb" open><summary class="sechead">💬 畀意見畀 Claude<a class="totop" href="#top" onclick="event.stopPropagation()">↑頂</a></summary><div class="secbody"><div style="font-size:14px;color:#6b7280;margin-bottom:8px">你揀邊條方向 / 想點改 / 想再 brainstorm — 打喺度撳提交, Claude 下次會睇到。</div>
-<textarea id="fb" placeholder="例如: 揀 Stream B 'Living Ledger' 去 develop, 但 slogan 想再貼地啲…"></textarea>
-<button onclick="sendFB()">提交畀 Claude</button>
-<div class="fbmsg" id="fbmsg"></div></div></details></div>
-<button id="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 返頂</button>
-<script>
-var DEPT="FEHD";
-function goSec(id){var el=document.getElementById(id);if(el){el.open=true;el.scrollIntoView({behavior:'smooth'});}}
-function sendFB(){
-  var v=document.getElementById('fb').value;
-  var m=document.getElementById('fbmsg');
-  if(!v.trim()){m.textContent='請先打啲嘢';return;}
-  if(typeof google!=='undefined' && google.script && google.script.run){
-    m.style.color='#16a34a';m.textContent='提交緊…';
-    google.script.run
-      .withSuccessHandler(function(){m.textContent='✅ 已提交,多謝! Claude 下次會睇到。';document.getElementById('fb').value='';})
-      .withFailureHandler(function(e){m.style.color='#dc2626';m.textContent='⚠️ '+e;})
-      .saveIdeaLabFeedback(DEPT, v);
-  }else{
-    m.style.color='#6b7280';
-    m.textContent='(意見功能要喺手機 GAS URL 開先 work; 本機/Cowork 預覽冇後台。)';
-  }
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --ink:#1c1f24; --ink-soft:#5b626d;
+  --line:#e4e7ec; --accent:#2563eb; --accent-soft:#eef2ff;
+  --brief:#0f9d6e; --brief-soft:#ecfdf5; --brief-bg:#f4fdf9;
+  --research:#8b3df0; --research-soft:#f5f0ff; --research-bg:#faf7ff;
+  --radius:14px; --radius-sm:10px; --gap:16px;
+  --measure:38em;            /* 舒服 line-length ~60-70 CJK 字 */
+  --fs-body:17px; --lh-body:1.85;
 }
-</script>
+*{box-sizing:border-box}
+.ilab,.ilab *{font-family:-apple-system,BlinkMacSystemFont,"PingFang HK","Noto Sans CJK HK","Segoe UI",sans-serif}
+.ilab{margin:0;background:var(--bg);color:var(--ink);font-size:var(--fs-body);line-height:var(--lh-body);-webkit-text-size-adjust:100%}
+
+/* ---- sticky pill nav (保留鍾意嘅設計) ---- */
+.ilab__nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);
+  backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--line);
+  display:flex;gap:8px;overflow-x:auto;padding:11px 16px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.ilab__nav::-webkit-scrollbar{display:none}
+.ilab__nav a{flex:0 0 auto;text-decoration:none;color:var(--accent);font-size:15px;font-weight:600;
+  background:var(--accent-soft);padding:0 16px;height:38px;display:inline-flex;align-items:center;
+  border-radius:999px;white-space:nowrap;transition:transform .12s ease}
+.ilab__nav a:active{transform:scale(.96)}
+.ilab__nav a.is-brief{color:#fff;background:var(--brief)}
+.ilab__nav a.is-research{color:#fff;background:var(--research)}
+
+/* ---- wrap / header ---- */
+.ilab__wrap{max-width:1180px;margin:0 auto;padding:24px 16px 96px}
+.ilab__title{font-size:26px;font-weight:800;line-height:1.3;margin:0 0 6px;letter-spacing:-.01em}
+.ilab__sub{color:var(--ink-soft);font-size:14px;margin:0 0 12px}
+.ilab__flow{font-size:14px;line-height:1.7;color:var(--ink-soft);background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--radius-sm);padding:12px 14px;margin:0 0 22px}
+.ilab__flow b{color:var(--ink);font-weight:700}
+
+/* ---- part labels ---- */
+.plabel{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.12em;
+  padding:3px 9px;border-radius:6px;margin-right:9px;color:#fff;vertical-align:middle}
+.plabel--p1{background:var(--brief)}
+.plabel--p2{background:var(--research)}
+
+/* ---- collapsible section ---- */
+.sec{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  margin:0 0 18px;overflow:hidden;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.sec--brief{border-color:var(--brief);background:var(--brief-bg)}
+.sec--research{border-color:var(--research);background:var(--research-bg)}
+.sec__head{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:16px 18px;min-height:56px;border-left:5px solid var(--accent);
+  font-size:19px;font-weight:700;line-height:1.4;user-select:none}
+.sec__head::-webkit-details-marker{display:none}
+.sec--brief>.sec__head{border-left-color:var(--brief);background:var(--brief-soft)}
+.sec--research>.sec__head{border-left-color:var(--research);background:var(--research-soft)}
+.sec__title{display:flex;align-items:center;flex-wrap:wrap;gap:2px}
+.sec__title::before{content:"▸";color:var(--accent);font-size:14px;margin-right:8px;transition:transform .15s ease;display:inline-block}
+.sec--brief>.sec__head .sec__title::before{color:var(--brief)}
+.sec--research>.sec__head .sec__title::before{color:var(--research)}
+details[open]>.sec__head .sec__title::before{transform:rotate(90deg)}
+.sec__top{flex:0 0 auto;font-size:13px;font-weight:600;color:var(--ink-soft);text-decoration:none;
+  background:#eef1f5;padding:0 12px;height:32px;display:inline-flex;align-items:center;border-radius:999px}
+.sec__body{padding:6px 18px 22px}
+
+/* ---- prose (md_to_html output) — NORMAL word-wrap, 唔用 pre-wrap ---- */
+.prose{max-width:var(--measure);font-size:17px;line-height:1.9}
+.prose p{margin:0 0 1.05em;word-break:normal;overflow-wrap:break-word}
+.prose p:last-child{margin-bottom:0}
+.prose h4{font-size:18px;font-weight:800;margin:1.4em 0 .55em;line-height:1.4;letter-spacing:-.005em}
+.prose h4:first-child{margin-top:.2em}
+.prose h5{font-size:16px;font-weight:700;margin:1.2em 0 .45em;color:var(--ink)}
+.prose ul,.prose ol{margin:0 0 1.05em;padding-left:1.45em}
+.prose li{margin:0 0 .5em;line-height:1.85}
+.prose strong{font-weight:800;color:var(--ink)}
+.subhead{font-size:13px;font-weight:800;letter-spacing:.04em;color:var(--ink-soft);
+  text-transform:uppercase;margin:18px 0 8px}
+.subhead:first-child{margin-top:4px}
+
+/* ---- model comparison columns (闊 screen 並排) ---- */
+.cols{display:grid;grid-template-columns:1fr;gap:16px;max-width:100%}
+.model{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-sm);padding:16px}
+.model__badge{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;
+  border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:6px}
+.model__key{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--accent-soft);color:var(--accent);padding:2px 9px;border-radius:6px}
+.model__slug{font-size:12px;color:var(--ink-soft);font-weight:500}
+.model__meta{font-size:12px;color:var(--ink-soft);margin:8px 0 4px}
+
+/* ---- route card ---- */
+.route{border:1px solid var(--line);border-radius:var(--radius-sm);padding:15px;margin-top:14px;background:#fcfdfe}
+.route--err{background:#fff6f6;border-color:#f3c2c2}
+.route__note{font-weight:700;color:#c0392b;margin-bottom:6px}
+.route__raw{white-space:pre-wrap;word-break:break-word;font-size:13px;background:#fff;border:1px solid var(--line);
+  border-radius:8px;padding:10px;margin:0;max-height:260px;overflow:auto}
+.route__name{font-weight:800;font-size:18px;color:var(--accent);line-height:1.35}
+.route__big{font-size:16px;font-weight:600;margin:6px 0 12px;line-height:1.65}
+.route__field{margin:9px 0;line-height:1.7}
+.route__label{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.04em;color:var(--ink-soft);
+  background:#f1f3f7;padding:2px 8px;border-radius:5px;margin-right:8px;vertical-align:middle}
+.route__val{font-size:15px}
+
+/* ---- feedback ---- */
+.fb__hint{font-size:14px;color:var(--ink-soft);margin:0 0 12px;line-height:1.7}
+.fb__ta{width:100%;min-height:128px;font-size:16px;line-height:1.7;padding:14px;border:1px solid var(--line);
+  border-radius:var(--radius-sm);font-family:inherit;background:#fff;resize:vertical}
+.fb__ta:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+.fb__btn{margin-top:12px;font-size:16px;font-weight:700;padding:0 24px;height:48px;background:var(--accent);
+  color:#fff;border:0;border-radius:var(--radius-sm);cursor:pointer}
+.fb__btn:active{transform:scale(.98)}
+.fb__msg{margin-top:10px;font-size:15px;min-height:20px}
+
+/* ---- back-to-top floating ---- */
+.ilab__backtop{position:fixed;right:18px;bottom:18px;z-index:40;background:var(--accent);color:#fff;
+  border:0;border-radius:999px;height:48px;padding:0 20px;font-size:15px;font-weight:700;
+  box-shadow:0 4px 14px rgba(16,24,40,.22);cursor:pointer}
+.ilab__backtop:active{transform:scale(.96)}
+
+/* ---- responsive: tablet/desktop = 並排對比 ---- */
+@media (min-width:760px){
+  .ilab__wrap{padding:30px 28px 96px}
+  .ilab__title{font-size:30px}
+  .cols--multi{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (min-width:1080px){
+  .cols--multi{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+/* ---- very small phones: 字唔好太逼 ---- */
+@media (max-width:420px){
+  :root{--fs-body:17px}
+  .ilab__wrap{padding:20px 14px 88px}
+  .ilab__title{font-size:23px}
+  .sec__body{padding:6px 14px 20px}
+}
+</style><span id="top"></span><div class="ilab"><nav class="ilab__nav"><a class="is-brief" href="#brief" onclick="goSec('brief')">Part 1: Brief</a><a class="is-research" href="#research" onclick="goSec('research')">Part 2: Research</a><a href="#strategy" onclick="goSec('strategy')">策略</a><a href="#sa" onclick="goSec('sa')">Stream A</a><a href="#sb" onclick="goSec('sb')">Stream B</a><a href="#fb" onclick="goSec('fb')">意見</a></nav><div class="ilab__wrap"><h1 class="ilab__title">Idea Lab — FEHD / Water Seepage APIs</h1><div class="ilab__sub">2026-05-31T20:36:50 · 總成本 ~$0.0111 USD</div><div class="ilab__flow">委員會流程: <b>研究資料</b> → <b>策略跳板</b> → <b>Stream A</b> (跟 SOP) + <b>Stream B</b> (fresh-eyes) 並排 → <b>CD 收斂</b>。每段可摺，逐欄對比。</div><details class="sec sec--brief" id="brief" open><summary class="sec__head"><span class="sec__title"><span class="plabel plabel--p1">PART 1</span>📌 Brief 撮要 · who / what / when / budget / deliverable</span><a class="sec__top" href="#top" onclick="event.stopPropagation()">↑頂</a></summary><div class="sec__body"><div class="prose"><h4>1. Background（背景）</h4><p>為配合 2025 年《施政報告》公佈的措施，由食物環境衞生署（FEHD）與屋宇署（BD）成立的聯合辦事處（聯辦處/JO）將推出處理私人樓宇滲水的新調查及測試程序 [1]。政府希望透過新一輯電視及電台政府宣傳短片（API），向公眾宣傳這些旨在更有效解決滲水問題的加強措施 [1]。</p><h4>2. Objective（目標）</h4><p>提升公眾對聯辦處即將推出的新滲水調查程序及加強措施的認知；強調業主妥善保養物業及防止滲水的責任 [2]。具體需向受眾解釋精簡後的調查程序（包括使用紅外線熱成像分析及同步進行第二和第三階段調查），並促使收到「通知信」的業主主動及時進行檢驗和維修 [2]。</p><h4>3. Key Message（核心訊息）</h4><p>妥善保養物業、防止滲水，永遠是業主的責任 [3]。聯辦處在第一階段已引入紅外線探測以加快尋找滲水源頭；若發出「通知信」後業主仍未能在限期內完成維修，聯辦處將同步展開第二及第三階段調查，並會向不合作的業主追討相關測試費用 [3, 4]。</p><h4>4. Deliverables（交付物）</h4><ul><li><strong>TV API：</strong> 一條 30 秒電視宣傳短片，包含粵語（配繁體中文書面語字幕及手語）及英語（配英文字幕及手語）兩個版本 [5, 6]。需以 HDCam、RED ONE 或同等格式拍攝，輸出 16:9 (HD) XDCAM HD422 MXF 檔案 [5, 6]。手語視窗需佔畫面六分之一，位於右下角 [7, 8]。</li><li><strong>Radio API：</strong> 一條 30 秒電台宣傳聲帶，包含粵語、英語（獨白形式）及普通話（要求一級乙等水平）版本 [9-11]。</li><li><strong>其他：</strong> 中英文口號（Slogan）、腳本、分鏡圖（Storyboard）、配音、原創或已獲版權許可的背景音樂 [10, 12-15]。</li><li>（海報/平面廣告：資料不足，投標文件未列為必做項目）。</li></ul><h4>5. Timeline（時間表）</h4><ul><li><strong>B (Briefing 簡介會):</strong> 2026-05-29 (必須於 2026-05-27 15:00 前提交回條) [16, 17]。</li><li><strong>D (Deadline 遞交死線):</strong> 2026-06-17T15:00 (香港時間) [17, 18]。</li><li><strong>P (Presentation 提案日):</strong> 2026-06-23 (以粵語進行) [19, 20]。</li><li><strong>Milestone:</strong> 2026-06-29 批出合約；2026-07-31 完成 Final Cut；2026-08-03 遞交廣播機構 [20]。</li></ul></div></div></details><details class="sec sec--research" id="research" open><summary class="sec__head"><span class="sec__title"><span class="plabel plabel--p2">PART 2</span>🔬 AI 做嘅 Research (背景研究全文)</span><a class="sec__top" href="#top" onclick="event.stopPropagation()">↑頂</a></summary><div class="sec__body"><div class="subhead">研究全文 (Gemini / Perplexity)</div><div class="prose"><p>FEHD 未做外部 Gemini / Perplexity research。</p><p>完整創意方案見 Part 1 Brief 撮要 + NBLM notebook: https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6</p></div></div></details><details class="sec" id="strategy" open><summary class="sec__head"><span class="sec__title">🎯 策略跳板 (Strategy Springboard)</span><a class="sec__top" href="#top" onclick="event.stopPropagation()">↑頂</a></summary><div class="sec__body"><div class="prose"><p><strong>創意跳板</strong></p><p><strong>策略張力</strong> 業主心裏始終覺得「滲水係隔離屋或大廈問題」，但法例同現實卻不斷提醒「保養物業係你嘅責任」。新程序加快調查，同時加強追討費用，放大咗呢個未解決嘅矛盾。</p><p><strong>創意機會</strong> 聯辦處以紅外線技術大幅簡化程序，並同步展開後續調查，政府首次同時提供「更快解決方法」同「不合作即有實質代價」。呢個係業主首次面對「拖得就即刻有實際後果」嘅社會時刻。</p><p><strong>受眾觸發點</strong> 收到「通知信」後嘅即時焦慮——「而家唔做，之後會畀政府追錢同繼續受滲水滋擾」。</p><p><strong>品牌角色</strong> 清晰、果斷、專業嘅執行者：既幫業主更快鎖定滲水源頭，亦會對不合作業主追討費用，體現「責任到人、執法到位」。</p><p><strong>推薦切入角度</strong></p><ol><li>收到信之後嘅即時行動（最直接）</li><li>拖延嘅真實代價（費用＋持續滋擾）</li><li>新技術點樣加快解決（減少反感）</li><li>業主作為物業負責人嘅角色確認</li></ol><p><strong>要避開嘅伏</strong></p><ul><li>避免過分強調「罰錢」，以免被視為恐嚇；</li><li>必須準確使用「聯辦處／聯合辦事處」官方名稱；</li><li>手語視窗、字幕、語言版本必須完全合規；</li><li>切勿暗示政府會主動維修或承擔責任。</li></ul></div></div></details><details class="sec" id="sa" open><summary class="sec__head"><span class="sec__title">Stream A — 跟 DE BONO SOP (結構化)</span><a class="sec__top" href="#top" onclick="event.stopPropagation()">↑頂</a></summary><div class="sec__body"><div class="cols"><section class="model"><div class="model__badge"><span class="model__key">grok</span><span class="model__slug">x-ai/grok-4.3-20260430</span></div><div class="model__meta">tokens 3019 · $0.00547</div><div class="route"><div class="route__name">收到信即行動</div><div class="route__big">通知信一到，業主即刻行動，先搶解決權。</div><div class="route__field"><span class="route__label">Slogan</span><span class="route__val">信到即檢，滲水快解決</span></div><div class="route__field"><span class="route__label">文案主軸</span><span class="route__val">收到聯辦處通知信後，業主第一時間安排檢驗同維修，先鎖定源頭，避免同步進入第二、三階段調查。</span></div><div class="route__field"><span class="route__label">KV 概念</span><span class="route__val">畫面由郵箱／信箱特寫開始，一封印有「聯合辦事處」字樣的通知信從畫面飛出，轉接紅外線熱成像畫面快速鎖定滲水點，配以業主即時致電維修公司嘅動作剪接。</span></div><div class="route__field"><span class="route__label">點解 work</span><span class="route__val">直接對應受眾收到通知信嘅即時焦慮，扣緊策略張力「拖得就有代價」，同時突出聯辦處專業執行角色，引導業主主動負責。</span></div><div class="route__field"><span class="route__label">風險 / 合規</span><span class="route__val">避免畫面出現任何罰款數字或恐嚇性語言；通知信必須準確使用「聯合辦事處」官方名稱。</span></div></div><div class="route"><div class="route__name">紅外線快揪源頭</div><div class="route__big">紅外線一眼睇穿，聯辦處幫業主用最快方法解決滲水。</div><div class="route__field"><span class="route__label">Slogan</span><span class="route__val">紅外線探測，快準鎖源頭</span></div><div class="route__field"><span class="route__label">文案主軸</span><span class="route__val">聯辦處引入紅外線熱成像分析，大幅加快第一階段調查，同步展開後續程序，強調科技令解決流程更清晰有效。</span></div><div class="route__field"><span class="route__label">KV 概念</span><span class="route__val">黑屏轉紅外線熱像，滲水源頭以亮色熱點浮現，隨即切到業主同專業人員查看報告嘅畫面，熱點逐漸轉為綠色「已解決」狀態，視覺符號為紅外線十字瞄準器。</span></div><div class="route__field"><span class="route__label">點解 work</span><span class="route__val">利用創新技術減低業主反感，同時扣緊策略機會「更快解決方法」，強化聯辦處專業果斷嘅品牌角色。</span></div><div class="route__field"><span class="route__label">風險 / 合規</span><span class="route__val">不可暗示政府會主動維修或承擔費用；紅外線應用必須準確描述為「分析工具」而非保證。</span></div></div><div class="route"><div class="route__name">業主角色確認</div><div class="route__big">物業保養，永遠係業主嘅責任，聯辦處只係幫你執行到底。</div><div class="route__field"><span class="route__label">Slogan</span><span class="route__val">業主有責，聯辦處執到實</span></div><div class="route__field"><span class="route__label">文案主軸</span><span class="route__val">透過業主鏡頭確認自己係物業負責人，連結到聯辦處新程序：若未在限期內維修，會同步展開調查並追討費用，強調責任到人。</span></div><div class="route__field"><span class="route__label">KV 概念</span><span class="route__val">業主面對單位滲水牆壁，鏡面反射出自己嘅身影，旁邊浮現「聯合辦事處」通知信；鏡面逐步轉為清晰紅外線圖像，最後定格在業主簽署維修確認書嘅手部特寫。</span></div><div class="route__field"><span class="route__label">點解 work</span><span class="route__val">直接回應策略張力「業主心裏覺得係隔離屋問題」，透過鏡像隱喻確認業主角色，同時平衡說明追討費用嘅後果。</span></div><div class="route__field"><span class="route__label">風險 / 合規</span><span class="route__val">追討費用描述必須中性，避免過分強調罰則；所有畫面必須符合手語視窗及字幕合規要求。</span></div></div><div class="route"><div class="route__name">拖延真實代價</div><div class="route__big">今日拖一日，明日可能要面對雙重滋擾同實質費用。</div><div class="route__field"><span class="route__label">Slogan</span><span class="route__val">拖得愈耐，代價愈大</span></div><div class="route__field"><span class="route__label">文案主軸</span><span class="route__val">展示滲水持續滋擾嘅生活片段，同時帶出若未及時維修，聯辦處將同步展開第二、三階段調查並追討相關測試費用，強調拖延只會令問題更嚴重。</span></div><div class="route__field"><span class="route__label">KV 概念</span><span class="route__val">分屏畫面：左邊滲水滴落持續惡化，右邊顯示時間加速＋費用數字輕微上升，最後兩邊畫面合併成業主推開門面對更大水漬嘅畫面，紅外線符號貫穿始終。</span></div><div class="route__field"><span class="route__label">點解 work</span><span class="route__val">扣緊受眾觸發點「而家唔做，之後會畀政府追錢同繼續受滋擾」，並平衡展示科技優勢與責任，符合品牌果斷執行嘅角色。</span></div><div class="route__field"><span class="route__label">風險 / 合規</span><span class="route__val">避免使用誇張恐嚇畫面或具體罰款金額；必須清楚說明費用只限於「相關測試費用」，並使用官方名稱「聯辦處」。</span></div></div></section></div></div></details><details class="sec" id="sb" open><summary class="sec__head"><span class="sec__title">Stream B — Fresh Eyes (唔跟 SOP)</span><a class="sec__top" href="#top" onclick="event.stopPropagation()">↑頂</a></summary><div class="sec__body"><div class="cols"><section class="model"><div class="model__badge"><span class="model__key">grok</span><span class="model__slug">x-ai/grok-4.3-20260430</span></div><div class="model__meta">tokens 2385 · $0.00341</div><div class="route"><div class="route__name">滲水有聲</div><div class="route__big">畀滲水自己出聲，迫業主聽到自己嘅責任</div><div class="route__field"><span class="route__label">Slogan</span><span class="route__val">滲水會出聲，你唔出聲就罰聲</span></div><div class="route__field"><span class="route__label">文案主軸</span><span class="route__val">每滴水都係喺度叫你個名，唔理就變投訴、罰款同眾矢之的</span></div><div class="route__field"><span class="route__label">KV 概念</span><span class="route__val">黑畫面只見紅外線熱成像，滲水痕跡慢慢組成業主嘅側面輪廓，似被水「畫咗張罪狀相」，最後畫面突然有水滴聲變成手機震動通知</span></div><div class="route__field"><span class="route__label">點解 work</span><span class="route__val">用視覺同聲音雙重壓迫感，直接擊中業主「怕被人鬧」嘅神經</span></div><div class="route__field"><span class="route__label">夠膽位</span><span class="route__val">破天荒將滲水擬人化做會告狀嘅角色，政府宣傳少有咁「惡搞」業主自己</span></div></div><div class="route"><div class="route__name">通知信係限時炸彈</div><div class="route__big">收到信之後，每一日都係倒數</div><div class="route__field"><span class="route__label">Slogan</span><span class="route__val">信放埋，錢飛走</span></div><div class="route__field"><span class="route__label">文案主軸</span><span class="route__val">JO而家同步查，拖一日多收一日錢</span></div><div class="route__field"><span class="route__label">KV 概念</span><span class="route__val">業主將通知信隨手一擱，畫面即時變成時鐘，滴水聲變秒針，信紙逐漸被水浸濕到變罰款單</span></div><div class="route__field"><span class="route__label">點解 work</span><span class="route__val">用時間壓力取代道德說教，更貼近香港人「怕蝕錢」嘅即時反應</span></div><div class="route__field"><span class="route__label">夠膽位</span><span class="route__val">政府文件變炸彈意象，夠膽直接話拖延會「即時損失金錢」</span></div></div><div class="route"><div class="route__name">全樓監視你</div><div class="route__big">而家唔止JO睇緊你，隔離屋都睇緊你</div><div class="route__field"><span class="route__label">Slogan</span><span class="route__val">一屋漏水，全樓知晒</span></div><div class="route__field"><span class="route__label">文案主軸</span><span class="route__val">你唔整，鄰居會主動打電話，JO會主動搵你</span></div><div class="route__field"><span class="route__label">KV 概念</span><span class="route__val">用紅外線熱成像變成全樓透視圖，每戶窗戶亮起業主嘅表情，由冷淡變驚訝，最後成棟樓窗戶轉身望向同一戶</span></div><div class="route__field"><span class="route__label">點解 work</span><span class="route__val">香港人最怕「畀人知」同「被人鬧」，社會壓力比罰款更有效</span></div><div class="route__field"><span class="route__label">夠膽位</span><span class="route__val">打破政府一向「中立」形象，直接用鄰里監視同社會壓力做武器</span></div></div><div class="route"><div class="route__name">你係業主，定係樓宇殺手</div><div class="route__big">唔肯維修，等於親手整蠱自己同全棟</div><div class="route__field"><span class="route__label">Slogan</span><span class="route__val">唔想做殺手，就做業主</span></div><div class="route__field"><span class="route__label">文案主軸</span><span class="route__val">你而家選擇：即刻整，定繼續滴到人投訴你</span></div><div class="route__field"><span class="route__label">KV 概念</span><span class="route__val">業主面對兩條路，一條係自己屋企乾爽，一條係屋企慢慢變廢墟，兩條路用紅外線分成紅藍對比，最後紅路越嚟越窄</span></div><div class="route__field"><span class="route__label">點解 work</span><span class="route__val">用極端對比製造道德焦慮，迫業主即時行動</span></div><div class="route__field"><span class="route__label">夠膽位</span><span class="route__val">直斥業主係「殺手」，係政府宣傳入面極少見嘅強硬用字</span></div></div></section></div></div></details><details class="sec" id="fb" open><summary class="sec__head"><span class="sec__title">💬 畀意見畀 Claude</span><a class="sec__top" href="#top" onclick="event.stopPropagation()">↑頂</a></summary><div class="sec__body"><p class="fb__hint">你揀邊條方向 / 想點改 / 想再 brainstorm — 打喺度撳提交，Claude 下次會睇到。</p><textarea id="fb" class="fb__ta" placeholder="例如: 揀 Stream B 拖延真實代價去 develop，但 slogan 想再貼地啲…"></textarea><button class="fb__btn" onclick="sendFB()">提交畀 Claude</button><div class="fb__msg" id="fbmsg"></div></div></details></div><button class="ilab__backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 返頂</button><script>var DEPT="FEHD";function goSec(id){var el=document.getElementById(id);if(el){el.open=true;el.scrollIntoView({behavior:'smooth',block:'start'});}}function sendFB(){var ta=document.getElementById('fb');var v=ta?ta.value:'';var m=document.getElementById('fbmsg');if(!v.trim()){m.style.color='#c0392b';m.textContent='請先打啲嘢';return;}if(typeof google!=='undefined'&&google.script&&google.script.run){m.style.color='#0f9d6e';m.textContent='提交緊…';google.script.run.withSuccessHandler(function(){m.style.color='#0f9d6e';m.textContent='\u2705 已提交，多謝！Claude 下次會睇到。';ta.value='';}).withFailureHandler(function(e){m.style.color='#c0392b';m.textContent='\u26a0 '+e;}).saveIdeaLabFeedback(DEPT,v);}else{m.style.color='#5b626d';m.textContent='(意見功能要喺手機 GAS URL 開先 work；本機 / Cowork 預覽冇後台。)';}}</script></div>
