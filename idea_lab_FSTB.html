@@ -1,0 +1,562 @@
+<style>
+:root{--bd:#e2e2e6;--mut:#6b7280;--bg:#fafafa;--ac:#2563eb;--brief:#059669;--research:#9333ea}
+*{box-sizing:border-box}
+body{font-family:-apple-system,"PingFang HK","Noto Sans CJK HK",sans-serif;margin:0;background:var(--bg);color:#1a1a1a;line-height:1.6;font-size:17px}
+.nav{position:sticky;top:0;z-index:9;background:#fff;border-bottom:1px solid var(--bd);display:flex;gap:6px;overflow-x:auto;padding:10px 14px;-webkit-overflow-scrolling:touch}
+.nav a{flex:0 0 auto;text-decoration:none;color:var(--ac);font-size:15px;font-weight:600;background:#eef2ff;padding:7px 13px;border-radius:999px;white-space:nowrap}
+.nav a.brief{color:#fff;background:var(--brief)}
+.nav a.research{color:#fff;background:var(--research)}
+.wrap{max-width:1200px;margin:0 auto;padding:18px}
+h1{font-size:24px;margin:0 0 4px}
+.sub{color:var(--mut);font-size:15px;margin-bottom:8px}
+.flow{font-size:14px;color:var(--mut);margin-bottom:16px}
+.flow b{color:#1a1a1a}
+.part-label{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;padding:3px 8px;border-radius:4px;margin-right:8px;color:#fff;vertical-align:middle}
+.part-label.p1{background:var(--brief)}
+.part-label.p2{background:var(--research)}
+.sec{background:#fff;border:1px solid var(--bd);border-radius:10px;margin-bottom:14px;overflow:hidden}
+.sec.brief-sec{border:2px solid var(--brief);background:#f0fdf4}
+.sec.research-sec{border:2px solid var(--research);background:#faf5ff}
+.sec.brief-sec .sechead{border-left:6px solid var(--brief);background:#ecfdf5}
+.sec.research-sec .sechead{border-left:6px solid var(--research);background:#f5f3ff}
+.sechead{cursor:pointer;font-size:19px;font-weight:700;padding:14px 16px;border-left:4px solid var(--ac);list-style:none;display:flex;justify-content:space-between;align-items:center}
+.sechead::-webkit-details-marker{display:none}
+.sechead::before{content:"▸ ";color:var(--ac)}
+details[open]>.sechead::before{content:"▾ "}
+.totop{font-size:13px;font-weight:600;color:var(--mut);text-decoration:none;background:#f1f5f9;padding:4px 10px;border-radius:999px}
+.secbody{padding:4px 16px 16px}
+.springboard{white-space:pre-wrap;font-size:16px}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.col{background:#fff;border:1px solid var(--bd);border-radius:8px;padding:12px}
+.mhead{font-weight:700;font-size:17px;border-bottom:1px solid var(--bd);padding-bottom:6px;margin-bottom:8px}
+.slug{display:block;font-weight:400;font-size:12px;color:var(--mut)}
+.meta{font-size:12px;color:var(--mut);margin-bottom:8px}
+.route{border:1px solid #eee;border-radius:6px;padding:10px;margin-bottom:10px;background:#fcfcfd}
+.route.err{background:#fff5f5;border-color:#fbb}
+.rname{font-weight:700;font-size:17px;color:var(--ac)}
+.big{font-size:16px;margin:4px 0 7px}
+.f{font-size:15px;margin:4px 0}
+.f .k{display:inline-block;font-weight:600;color:var(--mut);margin-right:4px}
+details.raw{margin-top:8px;font-size:14px}
+details.raw summary{cursor:pointer;color:var(--ac);font-size:15px;padding:4px 0}
+.lbl{font-size:13px;font-weight:700;color:var(--mut);margin:6px 0 2px}
+pre{white-space:pre-wrap;background:#f4f4f5;border-radius:6px;padding:10px;font-size:13px;max-height:340px;overflow:auto;margin:0}
+.fb textarea{width:100%;min-height:120px;font-size:16px;padding:10px;border:1px solid var(--bd);border-radius:8px;font-family:inherit}
+.fb button{margin-top:8px;font-size:16px;padding:11px 20px;background:var(--ac);color:#fff;border:0;border-radius:8px}
+.fbmsg{margin-top:8px;font-size:15px;color:#16a34a}
+#backtop{position:fixed;right:16px;bottom:16px;z-index:20;background:var(--ac);color:#fff;border:0;border-radius:999px;padding:12px 16px;font-size:15px;box-shadow:0 2px 8px rgba(0,0,0,.2);cursor:pointer}
+@media(max-width:820px){.cols{grid-template-columns:1fr}body{font-size:18px}.rname{font-size:18px}.f{font-size:16px}.big{font-size:17px}}
+</style>
+<span id="top"></span>
+<nav class="nav"><a class="brief" href="#brief" onclick="goSec('brief')">Part 1: Brief</a><a class="research" href="#research" onclick="goSec('research')">Part 2: Research</a><a href="#strategy" onclick="goSec('strategy')">策略</a><a href="#sa" onclick="goSec('sa')">Stream A</a><a href="#sb" onclick="goSec('sb')">Stream B</a><a href="#fb" onclick="goSec('fb')">意見</a></nav>
+<div class="wrap">
+<h1>Idea Lab — FSTB / APEC FMM 2026 宣傳 API</h1>
+<div class="sub">2026-05-31T18:00:51 · 總成本 ~$0.0839 USD</div>
+<div class="flow">委員會流程: <b>研究資料</b> → <b>策略跳板</b> (Grok) → <b>Stream A</b> 跟 SOP + <b>Stream B</b> fresh-eyes (DeepSeek/Qwen/Kimi 並排) → <b>CD 收斂</b> (Claude/你)。每段可摺,每欄可揭 prompt + 原始回應。</div>
+<details class="sec brief-sec" id="brief" open><summary class="sechead"><span class="part-label p1">PART 1</span>📌 Brief 撮要 (Tender 想做咩 · who / what / when / budget / deliverable)<a class="totop" href="#top" onclick="event.stopPropagation()">↑頂</a></summary><div class="secbody"><div class="springboard">### 1. Background（背景）
+2026年中國將擔任亞太經濟合作組織（APEC）東道主，而香港將破天荒首次承辦「2026年亞
+太區經濟合作組織財政部長會議」(APEC FMM 2026) [1, 
+2]。特區政府期望藉此國家主場外交的盛事，向國際社會展示香港作為國際金融中心及亞洲
+會展旅遊首選地的優勢，並彰顯「超級聯繫人」和「超級增值人」的角色 [1, 3, 
+4]。社會脈絡方面，疫後香港正積極重塑國際形象，商界期望盛事能帶來實質經濟效益，而
+一般市民及青年則可能對宏觀財金會議感到「離地」，因此需要將議題轉化為全城參與的自
+豪感 [5-7]。
+
+### 2. Objective（目標）
+傳意目標：宣佈會議的實施日期及詳情，提升香港的地區及國際形象；展示香港的金融實力
+與MICE（會展及獎勵旅遊）優勢；展現「中國聲音」並推廣中華文化及香港特色 [3, 4]。
+KPI：引發本地及國際受眾（包括21個經濟體代表團、商會及公眾）的廣泛關注 
+[4]，透過Phygital體驗提升市民對香港作為東道主的認知度與榮譽感。
+
+### 3. Key Message（核心訊息）
+2026年亞太區經濟合作組織財政部長會議首次在香港隆重舉行；香港作為國際金融中心與超
+級聯繫人，已經準備就緒，將向世界展示實力、傳遞中國聲音與推廣中華文化；讓我們齊心
+建構亞太命運共同體，推動繁榮發展 [4, 8-10]。
+
+### 4. Deliverables（交付物）
+*   **Mandatory (必須):** 
+    *   1 套 30 秒 TV API（廣東話及英語，需附繁體中文書面語/英文字幕，輸出為 
+16:9 HD XDCAM HD422 MXF 及 HDCAM 格式）[11-13]。
+    *   1 套 30 秒 Radio API（廣東話、英語及普通話，英語必須為 monologue 
+獨白形式，輸出為 MP3 及 WAV）[14, 15]。
+    *   1 款雙語宣傳海報設計（A1, A2 尺寸及多種數碼 banner 格式）[16, 17]。
+    *   1 款柱身貼紙 (Pillar Sticker) 設計（尺寸: 4870mm x 2160mm）[18, 19]。
+*   **Optional (可選):** 海報尺寸適配、TV API 港鐵車廂電視適配 
+(1920x1080)、港鐵車廂電視 Ibanner 設計 [19-21]。
+
+### 5. Timeline（時間表）
+*   **B (Briefing):** 2026-05-29 (15:00) [22]
+*   **D (Deadline):** 2026-06-09 (12:00) [22]
+*   **P (Presentation):** 2026-06-17 [23]</div></div></details><details class="sec research-sec" id="research" open><summary class="sechead"><span class="part-label p2">PART 2</span>🔬 AI 做嘅 Research (背景研究全文)<a class="totop" href="#top" onclick="event.stopPropagation()">↑頂</a></summary><div class="secbody"><div class="lbl">研究全文 (Gemini / Perplexity)</div><div class="springboard"># 背景研究 Brief — 2026 APEC 財長會議宣傳
+
+部門: FSTB 財經事務及庫務局
+關鍵詞: APEC, Finance Ministers Meeting, Hong Kong, 30秒宣傳片, phygital, 標書
+生成: 2026-05-31 02:05 (Gemini gemini-2.5-pro grounding)
+
+## 客戶角度
+
+好的，這份是為您準備的研究報告，旨在為 2026 年亞太經合組織 (APEC) 財長會議的宣傳項目標書提供背景資料。
+
+### **研究報告：財經事務及庫務局 (FSTB) 與 2026 年亞太經合組織 (APEC) 財長會議宣傳項目背景**
+
+---
+
+#### **1. 部門 (FSTB 財經事務及庫務局) 背景**
+
+**1.1. 核心職能與使命**
+財經事務及庫務局 (FSTB) 是香港特別行政區政府的決策局之一，主要負責制定和執行有關財經及庫務的政策。 其核心使命可歸納為以下幾點：
+*   **維持並提升香港的國際金融中心地位**：確保香港的金融市場開放、公平、有效率和穩健，與國際標準接軌。
+*   **維持金融體系穩健**：監督和協調各金融監管機構，確保銀行、證券、保險及強積金等行業的穩定和完整。
+*   **制定審慎的庫務政策**：負責管理公共財政，確保政府開支增長與經濟增長相適應，並維持一個有利營商的低稅率簡明稅制。
+*   **打擊洗錢及恐怖分子資金籌集**：制定相關政策，並與執法機構合作，維護香港金融體系的廉潔。
+
+**1.2. 最新政策方向與重點**
+根據近年的施政報告及官方公布，FSTB 的政策重點展現出與時並進的創新精神：
+*   **推動虛擬資產 (VA) 和數字資產發展**：制定清晰的監管框架，在加強風險管理和投資者保障的同時，促進香港成為全球領先的數字資產中心。
+*   **發展綠色和可持續金融**：積極把握內地和亞太區的綠色轉型機遇，推動可持續金融的發展，並計劃適當採用國際可持續披露準則。
+*   **吸引家族辦公室**：推出稅務寬減、新的資本投資者入境計劃等八項措施，致力吸引全球家族辦公室落戶香港，強化財富管理樞紐的地位。
+*   **深化與內地金融合作**：推進與內地市場的互聯互通，並與前海等大灣區城市建立合作機制，促進深港兩地創投聯動發展。
+*   **鞏固傳統優勢**：持續舉辦亞洲金融論壇、香港金融科技周等國際大型活動，匯聚全球政商領袖，鞏固香港作為「超級聯繫人」和「超級增值人」的角色。
+
+---
+
+#### **2. 項目 (2026 APEC 財長會議宣傳) 背景**
+
+**2.1. 來龍去脈**
+*   **主辦背景**：2026年是APEC「中國年」，國家將主辦該年度的APEC系列會議。
+*   **香港角色**：經中央政府安排，2026年10月舉行的APEC財政部長會議（FMM）將首次在香港舉辦。 會議模式為國家財政部主辦，香港特區政府承辦。
+*   **會議規模**：預計將有約500名來自21個APEC成員經濟體的財政部長、高級財金官員，以及國際組織（如世界銀行、國際貨幣基金組織）的代表出席。 會議為期約三天。
+*   **統籌單位**：由財經事務及庫務局局長許正宇領導一個跨部門督導委員會，負責統籌策劃和籌備工作，成員來自20個政策局、部門和機構。
+
+**2.2. 宣傳目的**
+綜合官方公布，本次宣傳項目的核心目的非常明確：
+*   **展示香港國際金融中心地位**：向與會的全球財金領袖和國際社會，全方位展示香港在經濟、金融等方面的最新發展和優勢。
+*   **彰顯「超級聯繫人」角色**：利用此國際平台，深化香港與其他APEC成員的交流合作，體現香港在「一國兩制」下連接內地與世界的獨特功能。
+*   **說好「香港故事」與「中國故事」**：配合「中國年」「建設亞太共同體，促進共同繁榮」的主題，以及「開放、創新、合作」三大重點，向世界展示香港在國家支持下，從穩定邁向繁榮的新篇章。
+*   **促進文化交融**：在會議期間融入中華文化和香港特色元素，讓與會者深入感受中華文化的魅力和香港的都會活力。
+
+**2.3. 關鍵績效指標 (KPI)**
+標書雖未列明，但根據項目目的可推斷，KPI將圍繞以下幾方面：
+*   **國際形象提升**：成功在全球主流財經媒體上獲得正面報導，有效傳達香港作為頂尖金融中心的關鍵訊息。
+*   **目標受眾觸及率**：確保宣傳內容能精準觸及與會的500名核心政要、財金精英及隨行國際媒體。
+*   **數碼平台參與度**：在社交媒體及專業網絡平台上（如LinkedIn）創造高質量的互動和討論，尤其針對海外金融界人士。
+*   **訊息傳播清晰度**：在30秒宣傳片等核心物料中，清晰、有力地傳達香港的優勢和會議主題。
+*   **「Phygital」體驗**：成功融合實體會議的莊重性和數碼宣傳的互動性，為與會者和公眾提供無縫、創新的體驗。
+
+---
+
+#### **3. 部門過往宣傳風格**
+
+*   **綜合性與多元化**：香港政府的宣傳工作通常由政府新聞處 (ISD) 提供策略建議和支援。 宣傳方式多元，涵蓋傳統的電視電台廣告 (API)、戶外廣告、印刷品，以及近年愈趨重要的社交媒體和網絡宣傳。
+*   **趨向「貼地」與創新**：近年，政府的宣傳風格力求突破，嘗試以更「貼地」、創新的方式與市民溝通，減少刻板的「說教」意味。 例如，在宣傳區議會選舉時，舉辦了夜間活動和萬聖節活動，主動走入社區。
+*   **善用名人與KOL效應**：政府會邀請社會賢達、明星或內地KOL（關鍵意見領袖）參與宣傳活動或拍攝宣傳片，以增加吸引力和傳播力。
+*   **統一品牌形象**：2024年初，政府推出了全新的「門常開」宣傳標誌，旨在統一政府資助項目的視覺形象，傳達政府秉持開明、開放和積極的態度，讓公眾更容易識別由政府支持的項目。
+*   **專業與莊重並存**：對於FSTB主辦的亞洲金融論壇等專業活動，其宣傳風格偏向專業、高端和國際化，強調思想領導力和商業合作。而本次APEC會議宣傳，預計需要在莊重的國際會議形象與生動展示香港活力的風格之間取得平衡。
+
+---
+
+#### **4. 對承辦商的敏感位 / Watch-out**
+
+**4.1. 政治與合規**
+*   **國家安全**：所有提交的內容和執行方案，必須嚴格遵守香港特區的法律，包括《香港國安法》和《維護國家安全條例》。 承辦商對此有絕對責任。
+*   **「一國兩制」原則**：宣傳內容必須準確體現「一國兩制」方針，以及香港在此獨特優勢下享有的地位和功能。措辭需與政府的官方口徑完全一致。
+*   **採購法規**：政府採購受《物料供應及採購規例》約束，核心原則是「物有所值」及「公開公平競爭」。 投標過程必須透明，禁止圍標等行為。
+*   **資訊安全**：在執行「phygital」相關項目時，必須遵守政府的資訊科技安全指引，尤其在處理數據和使用即時通訊工具方面。
+
+**4.2. 措辭與內容**
+*   **準確性與權威性**：所有宣傳材料中的數據、事實和政策描述，必須準確無誤，並以官方發布為準。
+*   **正面定位**：宣傳基調必須正面、積極，聚焦於香港的成就、機遇和未來發展，符合政府「由治及興」的總體施政方向。
+*   **避免爭議**：內容應避免觸及任何可能引起本地或國際社會爭議的敏感話題。重點是經濟和金融合作，而非政治議題。
+*   **文化敏感性**：APEC有21個成員經濟體，文化背景各異。宣傳內容需具國際視野，尊重文化多樣性。
+*   **版權與私隱**：使用任何圖像、音樂或第三方內容前，必須確保已獲得合法授權。 處理個人資料時需遵守相關私隱條例。
+
+### 來源
+- [wikipedia.org](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHgpY2Fo-AFXqbQZhZzzlEyzE-JUP6D7XCtCsgOlr0HtDFjXHyfry62IbvLAm9QGKem7HdIsnHsEiKeHIKt6OUgaJjjLXkPeBctHorT8AUL-hI2HeeYtvuyJ7DasfycPvhyTmm7j4HBzz8qYRA-m4MV4mSh6BUxAUVJIAlV2k-5c-UXSw==)
+- [paulhypepage.com.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEzI2RCwIb1Uz0ByRgs1jrgKEIsqJ9_Thy5N6XNytHHlB_Ka3n_Sbyx1Rq3NjRRS1ScZNjuutOW1CJYdxxI8tFEIGGzhtvqp7FBGkSQaMrC2wJB1DPf0mmYG_CD_OnLNxgvBZ3oMYJEKVeqCcdxRuOrOWzl4rd6XJf53hfcKi6e610wpzADr0mtGE_k2tJtL0GQdaEY4jW1)
+- [fstb.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGDE52oEdi64w3jAbHiV4I_Qcxy-7gac36IaARjA4iR6ZbvH0uf-rqITAHRSFgWMG7bKrdzGVszNbGB8wf22vyM25tkqBNgmWXjoFcTJQ0QxFUOmgRpDspfDZH9tIwIqcY635HQ0IucII--splZHEJGies2TasPQA==)
+- [fstb.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHBKVxwzrezPxiUD-sEqR2KLq5FTWtxdZZahZfOZI4ILZ7DyHxBgR2DKacVGM7rdACr-0D7PXWzVFgAsQ1Z2gNGl9lcpiLohrLS93dA1nUfUNcWjc1X-79IFiAoIfd6PsKt-xho)
+- [fstb.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFxMXtlhPDM6ITE5_MMAazpdRupLNnPhy85iKw5N1dSErdgv4UzCIkx5HrZebzydh-Wn2zvOoNzQGu-X-tb3W3K5QTdttdNcCtEBweuQXhw8RA_TRtNscqQESZ3aT87SLMCa81dipCveCDhs53eLjI9OL54QwYd)
+- [fstb.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEVi1S_nHZKuGIXE-XTiixRuFcqionu8sO5iYRlA23vZ_ojqBlyLtb19ha6SwZSbDpq_JErPR46WAtmbeDsOKaN7u4SdJSCZA5FVPihR9kRZ4-TIHqK1KZ-z4vTy3qBX1NhmoPLCBzjFKE=)
+- [sfc.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGYANq9U5_md5uu1biFSySjodLopKzUgktHFDBetl9O48KgAVfiTeaC0OmIuFneSvU5egNsivr9NA9JtHE9qyFaKGF8IX1oJZFTNDFN9mcDu8co3SzFE8aWRTN9QTDF9Lbl90RuS0IVtdouzvw05361nJcbXDylpy6Rw0dbVQ-MlwYV-OWvaBOCf41uav8QrTn6g00sQvLk)
+- [info.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEb50FSzGj0KJIPMVC7m9kuXblA-EuMttVLBoqZ32yCg879cymyH6npIH0v6jsISAqr3buuGwLr80wAYykNIA9WqARSUYho96PCjlzotoAPsAhPhy-TUF0K1mzoUoeIx0j_jfRckIE46pCYm9KvW2AxtBGNrWV0UmI9suw=)
+- [policyaddress.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHtX1OSDkJKUIIjNDz4qvO-_n0CI8rOZZD5JS-I_gdlpIoYHhVU2kwqP2J9JbQuM0B6VlRVAJbq_26fUC8IdcyRbV6NUbNa9nPqP_Q-au6sdG0QJ1UlMA3u25L6duQrhMo0R3rwjNRDKfUYXzUiLVLXXtTAkA29A5YGRkq735Glev9hKbU6Nzpi83fb)
+- [info.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFyd6B88dLCjAmfBjjoo4sHJAqmVf7eZ90cR3JKG9ArP8-45wsWfTD9TrLG0csggHYTsxlfKfkkX2RFxTfeiI_kd8jGXXb326j9PI3BDnBlY66pkfAHtZF5PZDsUwmO2HEiZDYqnopJQ2u-_Gs11kTjRe_lYDeG3dT_d88=)
+- [fstb.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGbIXnC5__9PRPbcI3nWdXtcLy3GfGJqN2TGLMLmgg_TDKv79J47oASogIx6DKJoZ5Jf6003_O5fYsMxhCGyabSZls7SeVfd6HPXD8PBLQT3V3i7T9j5GdwS52AWq3bV9y0K8SgYBSUsURxe4OfEJIcaVmlQju6YJTWIqGKnUHO_Mzd-QR3TUBIb7WlMYqFx95cuzmlAoqHek-QJQ4BMQ==)
+- [fstb.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG2zZkRwb6sB_k3WzOha3Bpsg5H-5wBQIbgbBpn1ctBxpxg8cbHxKLtXcNLJiorcIBlrd-RrUpdkZehg_Fo-l4A6uwuSF1sGucDW8ar8jkt2uWuMbTqif8f82KTQB5Cd4mVbbtWlCYuT_4=)
+- [info.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG7DU5s8W-gq-PnuANRSR7_db-Nml2QZ9ootyc8L5hyI3eOolDsnWxFpDICSCQ74B8-rSJrut6QD0wrxmU7SP7_qNvp5lswXNL45t0y52vrC3C8G-wc2ZW3ofPaKCZ_4-O_dX3ic7S_e8DeyB7nV6xduFigQjk-1oUQ43A=)
+- [scmp.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFrtOvf6Os8oiXL0JblxjSDYEnYodNgiwQOzHK5aqjERZ4oCFb2cunjWGfz4KewbOParpD4LYE2EM-VQo6-ntn4SIkDsC9IjSZ0m1ka1A6moDpdThqrX28goxzW69L0ATMr_Eaz-i9EMx4MGu_gE5yn6pCWKb8OVfWgypCuKcSw1gnLiPFkhiCwYDlbyBe_J8DYfRqSLUS2u18Kxe4RBLU-vqA_hkT8uSGcuKGbVx2ljwKv7A==)
+- [info.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF8IReu-IBNVXq1l9fq6Jr_CQwuete53lrU61RdhR2GOUJSOHBE_3CcUoEgoiItszWWF9SdgzODfgqZ7rWuIvViqLnjzmUn7awL_gVx6TObiRxwuzml7yX66C8mXkdOmR_CPvsKFF492bSiryGgp8JKTEvfNCR-a2N902k=)
+- [mingpao.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHQKK8CsHijbarx8X2gj8s_7ZQVH5GNPyEbCOVCUqyGK9e06zocR0pQwuzOLvxvpI0GEFgkwIEldZmQ9tRkW0d8YG6tJz0kyg7nVwqxGRNEgWh_mxEJaTA3eKhNZJCexRjoW6xzOJb-660QujHzpdDHPRwtF9_JdmOhMPAvnci7UcMCo8xzOkl7k_NuCQrPb8c2X4XAWONTukZuE3W9bFm5B6W7z5i2ZDMl7on-HH4RwZcjyxdxeyTCeW6NckMZ7J1AgcQyY7C-VM_qYtAJw1ocYOjLCl_GOFOlflsBQshKTOUyirbVLYZ2SE4hX3D5H8N0E-JVgQ4pXs6SicqO_eYkR5sA7Yd_cIWyx25ZoiMSy04VDnLCN6xR7ISrqxxg4M234qm6cEbRc25rpEDzTQSRUeUeQLCVyl0=)
+- [hkcd.com.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHevnUmdP_4D1I6ibfnBvK-JSeO4zaENkdrF1DlPRV5YWeMKO2QLUjnIQ4NG-dIgX23FpBMXdNp6AFOL-6DXj2W1nvvxxSSyYc9H24MyfPtOvj0RrWX5CXhUGc0TvPlyQXG8IG0_k9iVugIsLY7ICLQazgscmBQGWn7YhzfBkJ8Ky9M)
+- [tkww.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFGAQEWqkHrqoCkX6HI9PRIQ2ww0EZPVXEQ4esQ4ogVIdDlsARaP0dZwToWNscCZ4LB56NQjnFatfNTfZH9PTefUzKcVa3nex1NXvNnnHJAVMCdGfweqEoyeQaiqMASQ5HnRkBpS6YMZl5nXpDqbHtHiTiFmDolit7GRyV8Tg==)
+- [chinadailyhk.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEFXL-ZxMcjbHzxB2YJC5b3juXHiQR6TEptjdMuEqzWhHpoj1w69Dd-jWXsMugbU5QrIVkGzy-d3RvaJIcxih-kQXdMnOphyufmrsC8OiyRxIjxlxORV47ZciZIbL5F7zcCjNf78FNg5Vg=)
+- [hk01.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHnLEezVOQoXVXLXmHZrS-EqsTp_Y32WfyGeIYCHOaNzrktuBPjI-dZ4hVW9Ss7axa0eARs63hyYWdqimpMkvPv1HZGX7ElZN-ggXPDcdTC0FaxJxDYV7tB3V8g2gOrK6T8nMfNfh2FppZ1Og7d8kq0J_oZcltktFw5ud3FI1JO69KL64AGJ3qloTTgLvYrDnrBnlbpAWTeQcKevug6jkJ1U8A8X_kgIQ3fnax1618TP_pO7EK1xgDZkWRUgg4aRKpzM8ulRfiSG5KN-i6gi8g1iv9p7hMyHobf55axzZmahvJhoGE1_VyrdbXNF87_CO4bhU0Q0QxC2SwUpJ6Ep3FphHwKM0xVpFGaI0xTaHdA-NW2fpk6EKNS1AIIwqPwUEI0ueazercaEJb-ACK2qDnXqHWxusq6VZLtA7vcHPfyP3TuGfjBo7CGd2jcLep-vI6FNE4dTvfJ)
+- [isd.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHvAOKDjBTnkta-pqjqluHU5YFTVCo3ZWRiSx6bfvWz1_yNi6Ak4czdfsWVhbc_3i2BOM4xKxq9U_GVpmDx68gJo80TzUi2Pt0EGTyjZhHl1Fp_7FafzrGVBkFK9eq8SQE=)
+- [isd.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHLz9PMBncNdRk3pMkghElmg1srMatbNbWEcSY8YXzznWLXsqcR-eo7fMjN3vjdOlJ5ZX_GsH85ugkQHfjfdHxvW4Oi1yGNQ6pB9O_kaZiga2ut1TnhTDfTtuAeMyXQbIY=)
+- [info.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH8RSIUA50xKK_ULKbb1IhU3EbMrbDd2fcFqNDrzZQvjYMSJ3wRUWAk-73bPB12pgXTARhQE4eRAhSHQy1t5yw7BSW_F8Wu24QJoii8rqxQxJui0X2nOdHu4sbxNNa1mjha88CmeDevP7J8fucqH0vY6Ac1j6sU76Vwl-A=)
+- [chinadailyhk.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQErGOwXqZMJV2zjQt1Yn88ujYxEpIa16cLLMh-1nCLTuphp3LlGv0M_prdkQqeM0yP5mDJJAF3r7Y0tvQORPV6xDoZWOMKstVqz87ECgvnsjYu6-d5hogFRQXA7qcju7v5UREyRqDxEC1k=)
+- [wenweipo.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEsGucEICf5behiAZE-ApzSV8O8Q6VoDuy-uZmWDP7qemvo-bTBWom77SEB8nLPTMgugP1nqp5ivnBkTtrk2VMuO9I5cQd49d7zEU4YB6SdzeWWKJP0qX6RYCiclco87Ekg6fZR-SIDsExPNaan1tfaQsfKA_IVn46C2n2Y8rg5)
+- [marketing-interactive.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGlHqL8UGBnJNf_VwqDILCJ82rHXXbUm5h3UbuKyqkjsLfGOkltzEVaGHXq4SyL2msRMRoHqEpsRdKwMUBxYNiCpHfht3x3rygjicZcel69atAMNGtB1EivbJZds-P84Oj-0WCv3WaGQPJ6EOpSg39MDvwdkbmKpZct0rzSftWp8sZuWPy4WENubjUrV7CYUQjUzWBD)
+- [hkcd.com.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHtclgMQecHc3v0EyoRMVd3RpVdEsMc_h_u8aE4tve6wqY3Qqd3irqNCjDsU-PHzTs6qt-r_9C-y4pS5HG6-wYZlSai6_ah54Zg1SKZA_N1bSOQtBc6oO2XeGQcdPd_Ytt4avruOMPJoLdZjh1Rucu7zddF9Bblqpxu3m_MDs0=)
+- [info.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHOYNsiwOh6MTOPHwsvsjTDuIHMLUupVpomGTwnvsyExQvil3ZEeErbOcDbeLMVktoP55NEsKdjm-Bwz5jNIT9Uh-midHqt7m1gr-3rJFVU3TR5cSiwhzQ-oLBbzPLEOJ4tTpGNXZuAqR6d8LXp0xVdECCoLQIy26X2JGs=)
+- [buildingmgt.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFNdit1-EcWNjUu50jAKZ-R0CrpbPDaay56N_mPjfSQ2odWn2uEelweKZRjqqYDdJ6MYBLFcfmp9bfFHzWzWQTMXdgYi8myyIbDWbvRLruLAO4i9b3P61AJPIuHz97BBOsCIyufSg5N_X99SUN32IRHocNlGKhc0davxg8D_c8QIaB36rgq3NVQzvJcbo8yv8Z2BmH0KzhC8vjNT71XHeKuhtCNgv7VYBOHVV7ViJtxCOmepMHHkmp0v-vQ6FMy)
+- [fstb.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG8sW8rtd1e4wtsGDrFf2kCjE60zzSbQO1KrJ1q5b4Tum7o_uLQ0chv-BIm9GEyhQpter3IFw-SIU3FZMRXIo7qwBbRx6aY9WYVE5QC8r774SAMl81pLVbALsRt0NeS2iks7D1t02QKd5Ync1SCDiPn6-ee9QqODbDa_RPlKbauLza0VP39JMY=)
+- [legalink.net](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF4DN8z95-u0cc6Ttu6CllbBGp-bkyORQ7kYRRfb51pPua4BMXcF2p59gqyLVmFVGvb1W0G6OjnkZGuvG2cpjOEAhvaOgL34rlDc5DA1Txeli7is-H3JvQl2bgeyULyRF0LRyvwqhS3IRNgQ3MxCJNx2ZvZMVqDxloS9g9mm0b1kC4B31O5Me-6bdtlw4CVfS9I6fvvaj3lLoKDbS2paahyt9ibPt4LudypBA==)
+- [info.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF3Fk6WD5ww9UD-mFT44PTueivS31zUkOq4mSxhx4J3hm0rDdykuZUQqOi2AzJKRt-W_MI3vve3Y4EUbo1tbSmzWyAJ3dScB3kX1rs4Ih3svbO7XNm68CEEyhf52ciwZ_BiOKMWfURocFCP7CIr2alnSDxChGyvLUU4JeB4)
+- [hongkongbusiness.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFXtw4GyCgAV9HsCCykUpwAEDCI2CycNgcuTmxlBuk6dr1hVfTacmUfS7XPBkKOlpPtWATyKl1Ugbn-ncgq5cvIl38W5T0kzORqjZT6mU7KmfIY_SHI80-x2GC5risJk8ie8ekzO2ZRlKG7Y8nhK3FXIRPWQIoKiVe0i1fqRAXANgB_A_ycgpHa_ncH39-pDZdKumisMZQ1OU0biXb86EORICqCos6ZpVT4kuHer-ydig2xuCq6)
+- [legco.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHE4y6DN-KtLA9MA0zXNL4R0nhu3kvet4tWINvHnUb9Ybwr4n9HEdr3eXhS1Y9dte7b9PQ16IueBH5SHKpC933T2XuNl1MRpv95PO_nk32X_ehBePFjdDWUKK6fs_9z80Y1kIpw5UxnQR38SsDo74F8d_CtpmZqnqFwC3sW03ci-MJcHzbh6u0gLRaVAxZM)
+- [www.gov.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH2XgATtKKIvs0MK3PR2oyuOvlSqbFWMInv8S6Rsz7NglO9Og0HjjaGm_T1J1HgllFdbXskX8gmrmr6C35srEaGZsa7Ttm3QrkMKGpv1PWKllUbM41RouznrSd6W63iYEkq7omyrGnA5bKdVG9QU_5BzeUMox50mQAuwDwFNigsWITXloggWyazCwIeqOLacpY=)
+
+## 社會角度
+
+[研究失敗: Remote end closed connection without response]
+
+## 顧客角度
+
+### **2026 APEC 財長會議宣傳策略研究報告**
+
+**致：財經事務及庫務局 (FSTB)**
+**由：廣告公司研究員**
+**日期：2026年5月28日**
+**項目：2026 APEC 財長會議 30秒宣傳片及 Phygital 傳播策略**
+
+本報告旨在深入研究2026年亞太經合組織（APEC）財政部長會議的目標受眾，並就如何有效傳達會議訊息提出策略建議。是次宣傳的核心挑戰在於，如何在當前社會氛圍下，與香港本地，特別是年輕公眾建立真誠聯繫，避免產生官方宣傳常見的「離地」或「Cringe」（尷尬）感。
+
+---
+
+### **1. 目標公眾 / Persona**
+
+是次宣傳的核心目標受眾並非前來與會的500名財金官員及商界領袖，而是需要對此盛事有所認知、甚至產生好感的香港大眾。我們將目標受眾細分為兩大主要群體：
+
+**Persona A: 「務實的探索者」(Pragmatic Explorer) - 年齡 22-35 歲，初入職場或事業冒升期的年輕專業人士**
+
+*   **他們是誰：** 這群人是數碼原居民，成長於資訊爆炸的時代。他們對未來抱有期望，但同時感受到經濟壓力和向上流動的困難。他們重視事業發展、理財知識及生活體驗，傾向透過消費和自我增值來建立個人身份認同。雖然對政府抱有一定程度的不信任感，但他們並非完全政治冷感，更關心政策如何實際影響其個人前途和生活。
+
+*   **他們如何看待此議題：** 對於 APEC 財長會議這類大型國際活動，他們的第一反應可能是「與我何干？」。他們會質疑會議的龐大開支（預計約7200萬港元）能否為市民帶來實質好處。同時，他們對於「說好香港故事」等官方論述抱持懷疑態度，擔心這類活動只是「樣板工程」。然而，若能讓他們看到會議與香港的國際地位、經濟機遇，甚至個人事業發展的實在關聯，他們亦會抱持開放態度。
+
+**Persona B: 「知性的守望者」(Informed Observer) - 年齡 36-55 歲，關心社會發展的中產及家庭群體**
+
+*   **他們是誰：** 這個群體是社會的中堅力量，經歷過香港的經濟起飛與風浪。他們更關心宏觀經濟、社會穩定和下一代的未來。他們是傳統媒體（如新聞網站）和社交媒體（如 Facebook, YouTube）的活躍用戶，習慣從多角度了解時事。
+
+*   **他們如何看待此議題：** 他們普遍認同香港作為國際金融中心的地位，並理解舉辦大型國際會議的重要性。他們期望透過 APEC 會議，香港能鞏固其「超級聯繫人」的角色，深化國際合作。然而，他們同樣關注活動的成本效益，並對政府的執行能力持觀望態度。他們也可能擔憂大型會議帶來的交通和保安問題。
+
+---
+
+### **2. 關注點 / 痛點 / 抗拒點**
+
+綜合分析兩個 Persona，他們的共同關注、痛點及抗拒點如下：
+
+*   **核心痛點：與我無關 (Irrelevance)**
+    *   **普遍觀感：** 大多數市民認為，國際財金官員的閉門會議，討論的議題（如宏觀經濟、金融監管）距離日常生活太遠。
+    *   **抗拒點：** 宣傳若只強調「鞏固國際金融中心地位」、「深化區域合作」等宏大論述，會因缺乏個人關聯而直接被忽略 (skip)。
+
+*   **核心痛點：政府的「公關Show」 (Government&#x27;s PR Stunt)**
+    *   **普遍觀感：** 年輕一代尤其對政府主導的宣傳抱有根深柢固的不信任感，認為這類宣傳往往是「報喜不報憂」的政治任務。過去一些政府宣傳片被批評為「老土」及「離地」，加深了這種負面印象。
+    *   **抗拒點：** 任何帶有說教意味、過於「正能量」或試圖強行灌輸「自豪感」的內容，都會引發反感和被標籤為「Cringe」。
+
+*   **核心痛點：資源錯配的憂慮 (Misallocation of Resources)**
+    *   **普遍觀感：** 在經濟前景不明朗，年輕人為儲蓄及置業困難而苦惱的大環境下，市民會質疑為何要花費巨額公帑舉辦一場他們認為沒有直接得益的會議。
+    *   **抗拒點：** 如果宣傳予人奢華、鋪張的感覺，將會觸發公眾對資源運用的不滿，甚至引發負面輿論。
+
+*   **核心痛點：對「融合」的敏感 (Sensitivity to &quot;Integration&quot;)**
+    *   **普遍觀感：** 部份市民對香港與內地經濟及社會的進一步融合抱持複雜心態，擔心香港會失去其獨特性。
+    *   **抗拒點：** 宣傳若過度強調「融入國家發展大局」，可能會觸動部份受眾的神經，應以更巧妙的方式呈現香港在「一國兩制」下的獨特優勢。
+
+---
+
+### **3. 慣用語言、平台、內容習慣**
+
+*   **慣用語言：**
+    *   **地道廣東話及網絡用語：** 在社交媒體上，年輕人偏好使用夾雜英文、網絡潮語及 Meme（迷因）的地道廣東話。這能有效拉近距離，建立親切感。
+    *   **圖像化及視覺化語言：** 「Z世代」是視覺動物，短片、Infographic、Meme 圖等比長篇大論的文字更受歡迎。
+
+*   **慣用平台：**
+    *   **YouTube &amp; Instagram 為王道：** 這是年輕人接收資訊和娛樂的主要渠道。YouTube 是「全民電視」，適合較有深度的內容；Instagram 的 Reels 和 Stories 則主打短、快、有趣味的內容。
+    *   **Facebook 觸及成熟群體：** 對於 Persona B，Facebook 依然是重要的資訊來源和討論區。
+    *   **Threads &amp; 小紅書：** 這兩個平台在年輕群體中崛起，Threads 偏向文字即時分享，小紅書則以生活、消費體驗為主。
+
+*   **內容習慣：**
+    *   **什麼會 Share (分享):**
+        *   **具備共鳴及情感連結的內容：** 能觸動個人情感、價值觀或集體回憶的故事。
+        *   **「有用」的資訊：** 例如由財經KOL講解的理財貼士、解釋金融概念的「懶人包」等。
+        *   **具娛樂性及幽默感的內容：** 有趣的 Meme、二次創作、與 KOL 的合作影片等。
+        *   **能展現個人品味及身份認同的內容：** 例如分享有設計感的活動視覺、獨特的 Phygital 體驗等。
+    *   **什麼會 Skip (忽略):**
+        *   **明顯的廣告及官方宣傳：** 任何帶有濃厚推銷或政府口吻的內容都會被迅速滑走。
+        *   **過於冗長及複雜的資訊：** 在快節奏的數碼環境下，用戶缺乏耐性閱讀長文或觀看沉悶的長片。
+        *   **與自身無關的宏大敘事：** 如前述，純粹的政策宣講難以吸引眼球。
+        *   **「扮後生」的內容：** 刻意使用過時的網絡用語或模仿年輕人語氣，會被視為「Cringe Marketing」的反面教材。
+
+---
+
+### **4. 如何令訊息對他們 relatable 而唔 cringe？**
+
+要讓宣傳變得「Relatable」（有共鳴）而非「Cringe」（尷尬），核心在於 **「真誠對話，而非單向說教」**。
+
+*   **策略一：去官方化，用「人話」溝通 (De-officialization and Human-centric Language)**
+    *   **放棄官腔：** 宣傳片文案及社交媒體內容應避免使用「深化合作」、「發揮優勢」等官方術語。改為更貼地的問題，例如：「點解一班世界級財爺嚟香港開會，會關你事？」
+    *   **與財經 KOL 及創作者合作：** 邀請在年輕人中有信譽的財經KOL（如 龔成、小炒王梁心欣等）或知識型 YouTuber，用他們的風格和角度去解讀 APEC 會議對香港經濟、投資環境甚至就業市場的潛在影響。這比官方自己說更具說服力。
+    *   **利用 Meme Marketing：** 圍繞財經議題創作幽默、易於傳播的 Meme，在社交媒體上引發討論，增加活動的能見度。
+
+*   **策略二：轉化宏大敘事為個人機遇 (Translate Grand Narratives into Personal Opportunities)**
+    *   **聯繫個人財務及事業：** 將會議議題（如數碼金融、可持續發展）與年輕人關心的話題聯繫起來。例如，製作內容探討「綠色金融會為香港帶來咩新工種？」、「金融科技發展如何影響你的支付和理財習慣？」。
+    *   **強調知識增值：** 宣傳可以強調這是一個了解全球經濟脈搏的好機會，將 APEC 財長會議包裝成一個大型的「知識節」，提供懶人包、線上直播等，滿足年輕人自我增值的需求。
+
+*   **策略三：創造具備參與感的「Phygital」體驗 (Create Engaging &quot;Phygital&quot; Experiences)**
+    *   **概念解釋：** 「Phygital」是 Physical (實體) 和 Digital (數碼) 的結合，旨在透過科技將線下和線上體驗無縫融合，創造更具互動性和人情味的體驗。
+    *   **30秒宣傳片中的 Phygital 元素：**
+        *   **視覺呈現：** 影片可以透過 AR (擴增實境) 效果，將香港實景（如中環街景）與代表金融數據、未來科技的數碼圖像結合，創造出充滿活力的視覺衝擊。
+        *   **互動結尾：** 影片結尾可以出現一個 QR Code，引導觀眾掃描進入一個互動網頁或 Instagram Filter。例如，一個「測測你是哪種投資者」的心理測驗，或一個可以讓用戶與 APEC 主題特效合照的 IG Filter，增加分享誘因。
+    *   **線下 Phygital 體驗：**
+        *   **城市裝置藝術：** 在中環、金鐘等核心商業區設立結合了數碼元素的藝術裝置。例如，一個實時顯示全球主要股市指數的互動光影藝術牆，市民可以透過手機掃描與裝置互動，了解更多財經知識。
+        *   **快閃體驗店 (Pop-up Store)：** 設立一個名為「未來金融實驗室」的快閃店，透過 VR/AR 體驗讓市民感受金融科技如何改變未來生活，例如模擬虛擬資產交易、體驗數碼港元支付等。
+
+*   **策略四：保持真誠和透明 (Maintain Authenticity and Transparency)**
+    *   **承認挑戰：** 宣傳不必迴避香港當下面對的經濟挑戰。相反，可以坦誠地將 APEC 會議定位為「在挑戰中尋找機遇」的一個重要節點，這種坦誠的態度更能贏得年輕人的尊重。
+    *   **避免過度承諾：** 不要誇大會議能即時解決所有經濟民生問題。強調其作為一個交流平台、一個帶來啟發和長遠機遇的角色的重要性。
+
+**總結而言，** 成功宣傳的關鍵在於將 APEC 財長會議從一個遙遠的政治活動，轉化為一個與香港市民，特別是年輕一代息息相關、能夠啟發思考、甚至提供娛樂和實用價值的「城市事件」。透過真誠、創新和具備互動性的溝通策略，才能真正「說好香港故事」，並贏得目標受眾的認同。
+
+### 來源
+- [scmp.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEn9Z6t5RXBNT88G_scUqyGb5nMZJOkPQv11mociXteZQW7ty3vyTEGrs8Y6GrBlAF7vMxC-orqDIpRoUYq_sw3b6D5ymXu6dYfIrEbjOJqOTiv_0aC7lmyEmWhvE4_JY5d9tSlITiVya1EHI0uPPkWiQEVpwSK05GRgs6YcDMtO3k2yyOFYO9SrVMoAR0WjVMrawPYEYCaLV483KLK5se2boLSrKgzs9DccUEYZjboDL02c9wU7U79wRA=)
+- [breakthrough.org.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHuxkvgq4qegga8LTTMITyB5WdxlRiy0uBvnxobUuiST6nOap1FuBwW2NoCZUKzwxTM7wFgj_DbAZuoTr_6Qx1LC7lqdkRvzTjtXk_vi7ULELigbyuO2wGKrbrAAqwQXQsocGE8-ZKP05pxesnWWbT5TYwFh8jnOq2CIxP3oa8s15Oz)
+- [dbs.com.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGK0uQokstjbpzERYRQi3Y30iTdFsavOjRXT1Cnb1K6bUJe0ydR7RFh8Zo2EC5un6SySVQXg9WCcui6UJ-eSJNLsETinyWF3QllpSQ-NM51cXFurjuWtuunIA7kmkWB7qhn0Mgxr-uRjfjBBc9DBouI7xnzK8UzqkWlfhzfOxYzll4gz7kVagvvHD9rYg==)
+- [scmp.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHmg-wqm4DQSImOxQeqdjX3ha3M8DosoopBTh3RP1gCZE4vg5l1Qcjm5TPX50Kh8ib3J4gf2GNn7Akr8zeGYVvecLgbI_jc6MjyffTQiWIZkT9u3K3-PR50q89C_iABAz81F7Fj6YBvcSw-jv26fLjfzVnXnPvTQ-gTulXJW1LvhAI-uDLbxJ-kJmEX5KF1iDX4Uv-iLV4XP89-kvPE0S2-IuCUen7h2OsOQeB0)
+- [wikipedia.org](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGzA1L8eWp61ae8SL555ewDSFitH-J4R8SdwbVptn23yBZ7huiH2Ycseas1rxSH3Y3OkgbIGht5tb-iL99jDH0Kd3R14MgwmoQ9pPkoPjEUGrlPVWpWki8vtRdc2zVGSeZkeIqyNfbmIuuhZg==)
+- [hk01.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGy5w-Iy57KrpoE4_FI5ve8Z7iUjw9o5zREJdSNz06wwAqLesyLZjv8bjYTgt837nzv_lIJ1dSVgFjIoE18cLLraPmktjFaqkyJcdyO-HzkdO6i7NUzr5hxueXqN_HPA6qcTEU3ymcqBNZuCdpIh3hF9GmijUnLolvXikr21PTNhUVy4kEyqwDWAp1e5g_UzEiofTF_4Shd_r3ggbfMRJucai9sAuu6qH1DM_-F6Xz6u0-KYM-mgFpcHp7uCZDPqA68nG_Z-YEQDOfRo8_kRMg-DWIhAR2FxZGuMKvMAMk8EfkHh7oVuuaBWUmVIy9l745NhtshX3UBt_tHaRVKHtfog56xO2uGvLg-T_ClVwZZBcjwvVAlgc9-mje46b8vC3hR2_Fiu6styhkLIPvMLbEf_S5CgLjjFznmQw==)
+- [wenweipo.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFa_bFXFYUjy-fVCPL_DG8cAVSskBn49O7UbVJdjFRwE4mzaANhGDJgprNz2eSrEU2qKQh3wK8UYh3iOG51ux6wia9J9U6q_g0msu1p-0ZFTCdYHOaE64BL1gCLooSyKSMLWBcPBJg3ueU2nmbgLnV_3WEvDua3hWDdTeSaO3NX)
+- [thestandard.com.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFkIIZtMpOfT96DIYb29qv2euw2mpAUo0vR07gB4z-oIrR_TNAOrcCAZLKabrTau3Fh9T0Q20CZw8Tz2up1B-btyCKGFuh7ExCftG9xuEDToQS8AVFmKTLz9LJKYtHZP7KRfNMGuRVc7VB-4h-I1pwDX2faH-XQPcNcLDVhzdtWQQXSE8K0XGlUQt1LwJ93_IfvJB_MTCawJ1Scunp5nzPAxvkgj0UGIXH8ZA==)
+- [wisers.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFGNKxp1fpKmFsZSMbjxoktjAVMEQoqznmCgEnRDih0m2Oa75ymkFrULTXaeyWkoM52ldRR3zPvnYj0sjf36rBCm_eoBDl4fA5mSLBNTQ9_I7a-6D3K7bT4OBJa1_-Qn018mcOayvDKcw0fLjVPq_Dn75nEkP-6G2Cg2gYb8NCOK4WcihCpA8OldHxQmHQ33YgzrNHMsRtdNXLItOHU8jB2rCwt7jsxtY-RC0r9nkjKpg1Bch1zlS9sbcyekgzqFo4opQVsbH3hy2H-puR_8ecWfINh4CIbir-sFxRmNQXOK0H65VWFS5wcEnDdC3yXbggCNzXps-uYG6XsxuoxFOSJWW4K8ThJ1RupoU4l8furH-vQ9Wp28S8CYS_O)
+- [nyu.edu](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGAAQb7fIAg5WI2tV7a6H4IM1H49uxiZnHJ6MpyhZi6zBLS7kpRpWj-0Rpo5ADWJYN-Jx2Df-l4OCGT55Ael-sxGla7MjF9Pm9b5cNTfGLjUnRL48KOfpWyLbd4bLK_YFQB8AKhEIv43ihO8hd0PCnYZ3zl_qRxu9ei2HVMgUF2wOsN34OCfHZdVFV1M4eAzx44OP0HQA_-Ph1zyWk=)
+- [hk01.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEyXU4YmAZUOEG5H0RuWYDssHPNNzolxxl7BTM548ftYLY2yDu3DPAhxftceraDMrckNDVheRcZ1TNIp5zmi2eUZlzcd213acRk7kpDMqHr2SgxxGCmQjzl1StJCBq7ZIAVHcr-G413c7yXsbKdbWlfep99ozDFq11uspzlpeQ5woJraXSJShHjLnSz9LU-roxeR7MpSnnQ8dZdhy1a_dmzl56YpbcKNIGTpDKhW0SEICQ_ay32h1WOHRhFy-J6scjjb82G8YIV6yT3HK9D00uQqXpYgr1qYoIFBMXKhAv-0XqM204h68_xEQpc90LtT6ooOiJlqnhUhlFaxDb1UM1fU84Mb3mi)
+- [brandinginasia.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHoxisHZuh876pX-OIOebwaxXBM3cnrbbNCT4ivhtcWU5uoz8w4-uaDjVLjLYOo_-e3xX7K8DbZifU8ulV61AmDMricmeQ-EzgoeJuc_QEZsK4iOWchVLuIsNFci7AHSZ6NDfYoqbX4JbdxI_hQ5EmylC9ulnuip0LlvN8VXJEQP_DNm6pCmpnT05LqayE9-DqWVmut05B38AZ5dlZ37N7lBvbvbgVJoxMj0nXaBby4Bys=)
+- [medium.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFb1jozEL1tKPj4qLD2OvsXYfe7QfR34Iyn-aqGT5GHC46PqFBj759c0lgK8xjt7F0dBjssQyz6Zb6p7IHP-wUk6tbFlN59t1CBtyh1DB459EttqlWhwQGZ1HjcD4_u25eI50H1z7Te46uyVpgASf-hF-iRCSzUzzOBX55aC0jU6tWkS0zvH8DwrY4KNIf8P5d2R_LbweWhUI_5G5b_21A05-OqFDFB4f-i03pfV7LmwAaQHg==)
+- [hk01.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHwlQ2uNRh-eNEA1b8vvIbhI-zAUhx5_PTvTUSE4uJPRhA_cAMEjMhGugWjA6B_bCzgqfpdU2hUwm2gsalKeF6cYTBv2YhuWf4Q-yYxrtBY_NoBqrdj-Kk2j6-nuKztZrf1BFCJvF73HUUD0YXJA9QFzuh-5d2U49ypxcTDBl_KcpeDZZhv_8B78_1aFgVJ6B2hGY-6JTh5Q6wI13QQPIrUaCmoe-NYjlCu4R62G46FCtFeHk9ajyyImS2L--XPkjZG5CPsv4r5BtvKf8J9k6R7Vv2nPjaT9JKDIcBffVhbIDU4DS4cTHkGaT5w98YC6VgL5kGBNTXomA==)
+- [1marketing.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFrPhhQcla2UcYNJUflP5HrwOajkieVqEdMLaBDV4vd1CGu3ZdkFdrxo5kFmAXGHu3WN9pzVVGwVDQv7YTzZZoFkuPHwRqNMePmdBwQK0B2--izmNFh8vXZQbfds6hN)
+- [sounddiplomacy.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHgd0WO0mmAHQ_ejxg6wkrOwa0JQIhqdoWMhovTEyX3iasYazibqoGLPHTaX9cCDcNnrcIE94FpZ4rCV42_iUEHw9OuxMg-6biQ5KzO6XJqOU_JMJJieouQ6nb4VP31vTXZxqxPSIzV458llGSa1BNqw-4rMlD0pdXpswab6nft9C1WdP5v2XRupBi67g8EvWpLg0AosgdouSHXKDkIPkkabNWFvapdRxR6W1c=)
+- [dhl.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEd24fSMTfDCQkw3eCo12a06GRbCxb_iKAdWeeWnf851EGOcDNMLyMEi1QTFw1qf8rXPRxK6WRrbWFBxyaPQJZCbyAenkpnd2ZE3UxHE1Ln9GNu8U6BRXX3hYwnKxKz1hE8LvcpPQ1YBg_DC6JmDWjd64fVl3LrymSWrhexIldI5rHgqvkp315bjTXqIjIOneXaPlfTawgmtM2Xp1gtscs2TLE=)
+- [moneysmart.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEtlNpwJt7dnTAJGgFsDG7WhKLi8q0OKk6dmmbBMw_JKWtBhpOh1i2z_zoqbCD0eQhlwcq0TJ4NM9w_ODOhfBQodclBsnivDLatdHLkJtFb0ZUOZDJ6wDpeQhzexWYlHqXeXj6W1eiXvcivutZELhB71trcpYQanBs5lvOMIhHY4LhTiIctjxFnx4UtfHXQeaJcmhEzrJmy6g==)
+- [forbes.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGon0AsmWE8msBllGGvBYl5k2-0BG_3qstNEpMUvxebqDtgkU5p6lNb_UV0Iq-B-0F27eoHBPsVlTaznL_sUBYG8X8NlvPNQB33KayrCPdEy5JdfPEEkM_MghYo3Iz7YWU8jlA6L4it4WWUfZbCNv3djyPXm1vnqfFCFBRg_VwNDOoRmx7AU9lmMK0ENkYMLTCR2ffom4isBZEhq1gSb_VK2gqDUbdqQJDE6UzPEP22aC9RSrHjyw7c9Uo-SN3ms6E=)
+- [tastymoney.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFGblDCO4XWd79vadovd5sHGLYuw45dsVsvhQwR8WDY5l85oYnyt52IgW_aNVRgvMY85HwdW2WaHtYFGgfmw5NosE2anQnu9UICtB_waEhkVGlyd_5C0BDz7g==)
+- [youtube.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH8h0QT3yIICJf0ZlCJRS9pA0--GHhwKaCZTn9MlzqLUptuVbYDpj1pomECXawxr8dRReVmdeKB4_NSlsEqAGJWYS36GharUv8eXh5OmFP_kZKT7RahA336vQV3L7g0iSaNODNRods=)
+- [hk01.com](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG1p4ffzDZQAEMPSpdfrtHQoueCKIV0npFyJZv61-PmNRH2nC_a2ttUXqEK2YPXKADs7ZqSOyuyeYN47sH3qaYwJySTTiyCDVlnZR0MAwvq-9OH9I0Kk9yQLw==)
+- [memestrategy.com.hk](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGGh3Z58KYtIpSXbsQot-ZHvAyJAq4O4pHoaFCuWI8u9A7fObKhNe73WFXdncIpIuAus0jRPNSGoj0Erh1yhJFHDW8zXsH-MmXBaL1ctIpT-FNToIJ15knzlXb79j3ZC5mqPQ8LQzEbZeSHdLtGZ2M9ggByCcTxAfBOqePiM7T875DE6MNjdrJYjZOuySXBaQz2xMJI-JbToyORuudyqnQIDjCmgtFerv_NuvdhSPP83rV-qI2giTcpfngdiKsT900jLATqYklOABSmnlS2UdEdrUUOFtZ8T4nELA==)
+
+
+## 深度研究 (Perplexity sonar-reasoning-pro)
+
+2026 APEC 財長會議宣傳投標，核心是：把一次高度專業的國際財經會議，包裝成與市民、商界和國際社群都有關的「香港故事」，並配合政府強調的「國際金融中心 + 國家策略 + 創新數碼（phygital）」三大方向來說服評審。以下按你要的三個維度整理：
+
+---
+
+## (1) 客戶／部門背景（FSTB 財經事務及庫務局）
+
+- **決策局定位與職能**
+  - 財經事務及庫務局（FSTB）是香港特區政府的決策局之一，專責處理與「財經事務」及「政府庫房」有關的政策與運作。[2][3]  
+  - 局方負責制定和推行與金融服務業（如銀行、證券、期貨、保險等）相關的政策，並管理政府財政及庫務事宜。[2][3]  
+  - 在政府整體架構中，FSTB屬於十五個政策局的一員，是財金政策的主要決策單位之一。[3]  
+
+- **歷史沿革與角色演變**
+  - FSTB於 2002 年 7 月 1 日成立，由原有的財經事務局與庫務局重組而成，以配合主要官員問責制的實施。[1][2]  
+  - 其職能可追溯到港英時期布政司署時代，隨香港金融業發展和制度演變，逐步成為專責金融政策與公共財政的決策核心。[1]  
+  - 有分析形容，FSTB是香港金融體系的「總設計師」，從宏觀層面規劃政策藍圖，以確保香港金融體系穩健、高效並具國際競爭力。[1]  
+
+- **組織結構與管轄範圍**
+  - FSTB一般分為「財經事務科」與「庫務科」兩大部分，分別處理金融服務業政策及政府財政／庫房相關議題。[2][3][8]  
+  - 其組織圖顯示，多名副秘書長和首長級官員分管不同範疇（如財經事務(1)、財經事務(2)等），反映工作範圍涵蓋多個專業領域。[8]  
+  - 財經事務科會與金管局、證監會、保監局、強積金局等監管機構密切協調，以維持本地與國際金融市場的穩定和競爭力（此類角色分工為香港政府一貫安排，屬合理推論，未直接載於本次搜尋結果）。  
+
+- **現任領導與對外形象**
+  - 現任財經事務及庫務局局長為**許正宇**，自 2020 年起出任該職。[2][4]  
+  - 許正宇同時擔任多個重要公共機構的董事會成員，包括港鐵公司及機場管理局，並出任九廣鐵路公司主席，顯示其在公共企業及基建領域亦具影響力。[4]  
+  - 官員於國際場合經常以「維護國際金融中心地位、推動金融發展」為主軸作對外傳訊，此與FSTB被定位為金融政策「總設計師」的角色一致。[1]  
+
+- **近期政策焦點（與宣傳議題相關）**
+  - FSTB在官方資訊中強調，要增加資產及財富管理業的人才，吸引更多新血並提升專業能力，反映其重視資產管理及金融專才培育。[7]  
+  - 局方亦致力向公眾推廣保險業的就業機會及行業發展前景，以提升市民對金融服務業多元性的認識。[7]  
+  - 這種「提升行業認知 + 吸引人才」的策略，非常適合在 APEC 財長會議宣傳中，包裝成「國際會議帶動行業機遇」的敘事。  
+
+---
+
+## (2) 政策與社會脈絡（2026 APEC 財長會議的宏觀背景）
+
+&gt; 註：以下關於 APEC 及 2026 年財長會議的部分，多屬根據一般公開國際資料與專業判斷整理，未完全呈現在本次搜尋結果中，故不加特定索引號，但會清楚標明為「一般資料」。
+
+### 2.1 APEC 與財長會議的功能（一般資料）
+
+- **APEC（亞太經合組織）定位**
+  - APEC 是亞太區重要的多邊經濟合作平台，成員包括美國、中國、日本、東盟多國、澳洲、紐西蘭、香港等 21 個經濟體（一般資料）。  
+  - 香港以「Hong Kong, China」名義參與 APEC，是眾多多邊經貿組織中，少數以獨立關稅區身分參與的國際場合之一（一般資料）。  
+
+- **APEC Finance Ministers&#x27; Meeting（財長會議）性質**
+  - APEC 財長會議是 APEC 架構下的核心會議之一，聚焦宏觀經濟、財政、金融穩定與金融合作，包括金融市場穩定、基建融資、可持續及綠色金融等議題（一般資料）。  
+  - 每年由東道主經濟體的財長主持，並作為該年 APEC 整體議題的財金支柱，會後通常發表聯合聲明，就共同關注的經濟與財金議題提出方向（一般資料）。  
+
+- **香港作為主辦地的象徵意義**
+  - 若 2026 年財長會議在香港舉行，象徵國際社會仍視香港為重要的區域及國際金融中心，具備舉辦高規格財金會議的能力（一般資料）。  
+  - 對香港政府及 FSTB 而言，這是對外展示「香港金融體系穩健、法規健全、與國際高度接軌」的關鍵舞台，與其作為金融政策「總設計師」的角色高度契合。[1][2][3]（角色連結屬合理整合）  
+
+### 2.2 香港整體政策方向（與宣傳訊息的對位）
+
+- **維持及強化國際金融中心地位**
+  - 香港政府持續把「鞏固及提升國際金融中心地位」列為核心施政目標之一，FSTB則負責金融市場及產品發展的政策設計與推動。[1][2][3]（根據局方角色及外部分析綜合）  
+  - 近年施政重點包括：推動資產及財富管理、壯大保險及再保險業、發展綠色及可持續金融、以及鞏固離岸人民幣樞紐角色（一般資料，與[7]中提到的人才及行業推廣方向一致）。[7]  
+
+- **配合國家策略：大灣區、共建「一帶一路」**
+  - 香港被中央定位為國際金融、航運、貿易中心及離岸人民幣業務樞紐，並在粵港澳大灣區建設中擔當重要「金融門戶」角色（一般資料）。  
+  - APEC 財長會議提供平台，讓香港向亞太夥伴呈現其在區域基建融資、綠色投資、人民幣跨境使用等方面的角色，這與香港在「一帶一路」及大灣區中的功能互相呼應（一般資料）。  
+
+- **經濟及社會氣氛對政府宣傳的影響**
+  - 香港近年經歷疫情衝擊、全球利率高企以及地緣政治風險，金融及旅遊相關行業恢復中，同時面對人才外流與國際輿論壓力（一般資料）。  
+  - 政府愈來愈重視透過大型國際會議，向本地和國際社會傳達「香港仍然開放、連通、具機遇」的信息，廣告傳訊多以「信心」「機遇」「國際連結」作核心語彙（一般資料，結合政府過往國際金融會議宣傳風格推論）。  
+
+### 2.3 phygital（線上線下融合）與政府宣傳環境
+
+- **政府宣傳數碼化趨勢**
+  - FSTB 在推廣金融行業職業及人才項目時，已運用多渠道傳媒，包括網上宣傳平台，以接觸年輕族群和潛在從業者。[7]  
+  - 這反映局方對「數碼接觸點 + 公共教育」組合有一定經驗，亦有需要在宣傳國際會議時，兼顧線上線下的接觸旅程。[7]  
+
+- **phygital 在大型國際會議應用（一般資料）**
+  - 全球大型峰會與國際會議近年普遍採用 phygital 模式：實體會場 + 直播、AR/VR、社交媒體互動、線上登記及資訊平台等，以擴大觸達及提升參與感。  
+  - 對 30 秒宣傳片而言，「phygital」不只是一種技術，而是一種主張：畫面要同時帶出「在香港親歷其境的震撼」和「透過數碼平台隨時隨地參與」的想像空間（屬執行策略層面的專業判斷）。  
+
+---
+
+## (3) 目標受眾分析（為 30 秒宣傳片設計的受眾地圖）
+
+&gt; 下列目標受眾以「誰會看到／需要看到政府這條 30 秒片」為出發點分層；屬策略性分析與一般媒體規劃經驗，非全部可在搜尋結果直接驗證。
+
+### 3.1 本地大眾（市民與社會輿論）
+
+- **一般市民（18–65 歲）**
+  - 政府投放電視／網上 30 秒宣傳片，慣常目標之一是向廣泛市民交代重大國際活動，塑造「香港仍然獲國際肯定」的印象（一般資料）。  
+  - 對這群觀眾，APEC 財長會議本身內容較抽象，需要用「香港作為國際金融中心」「吸引投資和旅客」「創造就業及機會」等生活化語言轉譯（策略性判斷）。  
+
+- **關心經濟民生的中產及專業人士**
+  - 中產及專業人士關注經濟前景、就業與投資環境，會較在意會議對香港長遠競爭力的象徵意義（策略性判斷）。  
+  - 宣傳片中如能提及「國際財金領袖齊集香港」「討論全球經濟新秩序」「鞏固金融及專業服務機遇」等元素，有助提升此群體對政府訊息的接受度（策略性判斷）。  
+
+### 3.2 本地及區域金融專業社群
+
+- **金融及專業服務從業員**
+  - FSTB 的政策焦點之一是擴大資產財富管理業及保險業的人才庫，顯示其高度重視金融專業社群。[7]  
+  - 對銀行、資管、保險、會計、法律等專業人士而言，APEC 財長會議代表「人脈」「資訊」「業務合作」機會，因此宣傳片可點出「全球財長、央行與監管機構來港」的訊號（策略推論，與 FSTB 政策焦點呼應[7]）。  
+
+- **年輕金融人才及在學生**
+  - FSTB 正積極向年輕人推廣金融行業的多元發展及職涯機會。[7]  
+  - APEC 財長會議可被包裝為「走進世界級財金舞台的門票」，對大學生及年輕從業員具 aspirational appeal（策略判斷，與[7]的人才推廣方向一脈相承）。  
+
+### 3.3 國際與區域受眾
+
+- **國際投資者與跨國企業（尤其亞太區）**
+  - 香港作為國際金融中心及區域樞紐，吸引國際資金、家族辦公室及企業設立區域總部，一直是政府及 FSTB 的重要目標（一般資料，與 FSTB 作為金融政策決策局角色一致[1][2][3]）。  
+  - 雖然 30 秒電視廣告主要面向本地，但在數碼及社交平台上可觸及國際受眾，因此畫面與語言需要具備國際感（英語／中英雙語字幕、國際城市意象），以便一片多用（策略性媒體考慮）。  
+
+- **APEC 成員經濟體的政策圈與媒體**
+  - APEC 財長會議期間，會吸引成員經濟體官員、智庫及國際媒體關注，政府宣傳片可被視為「東道主形象影片」，在會前會中於不同場合播放（一般國際會議慣例）。  
+  - 對這群受眾，香港需展示的關鍵訊號包括：法制完備、金融市場開放連通、與國際規則接軌、以及科技與創新金融（FinTech）的一面（策略性判斷，與 FSTB 促進金融業發展的角色相符[1][2][3][7]）。  
+
+### 3.4 phygital 經驗導向的特定群組
+
+- **數碼原生族群（Z 世代、Y 世代）**
+  - FSTB 在推廣金融行業及人才計劃時已透過網上平台與公眾溝通，顯示其有意加強與年輕族群的接觸。[7]  
+  - 對這群受眾，「phygital」體驗尤其重要：他們較自然透過短片、社交媒體、互動網頁、AR 濾鏡等方式接收資訊，因此 30 秒片可作為整體 phygital campaign 的入口（策略性判斷，承接[7]中提及的網上推廣方向）。  
+
+- **活動參與者及志願者（本地與區域）**
+  - 大型會議通常需要大量志工及臨時人手，政府亦會鼓勵青年參與做「國際會議大使」（一般大型活動運作慣例）。  
+  - 宣傳片可同時為「招募與動員」鋪路，營造「全城一起做東道主」「Welcome APEC to Hong Kong」氛圍，並在後續 phygital 觸點（網站、app、social）延伸具體參與方式（策略性設計）。  
+
+---
+
+### 對標書撰寫的啟示（可直接寫入 rationale / strategy 章節）
+
+- 把 FSTB 定位為「香港金融政策的總設計師兼國際金融門面」，強調本項目是協助其在 APEC 這個亞太最高級別財金舞台上，向內（市民及金融業）與向外（APEC 成員、國際投資者）同時發聲。[1][2][3][7]  
+- 在政策與社會脈絡上，將 APEC 財長會議與三條主線勾連：  
+  - 鞏固國際金融中心 + 吸引資金與人才；[1][2][3][7]  
+  - 配合國家策略（大灣區、一帶一路）下的區域金融樞紐角色（一般資料）；  
+  - 後疫情年代重建信心與國際連結（一般資料）。  
+- 在受眾策略上，明確寫出「一條 30 秒片，多重受眾、多渠道、多階段（會前造勢、會期報導、會後內容再利用）」的架構，並把 phygital 描述為「由電視／網上廣告起動，延伸到線上互動與線下城市體驗」的整體方案，而不是孤立的技術 gimmick。
+
+### Sonar 來源
+- https://chmfia.org/fstb-function-policy-guide-2025/
+- https://zh.wikipedia.org/zh-tw/%E8%B2%A1%E7%B6%93%E4%BA%8B%E5%8B%99%E5%8F%8A%E5%BA%AB%E5%8B%99%E5%B1%80
+- https://en.wikipedia.org/wiki/Financial_Services_and_the_Treasury_Bureau
+- https://www.fstb.gov.hk/tc/aboutus/biography-of-sfst.htm
+- https://www.lwb.gov.hk/files/download/accessibility/AO_list/FSTB(TSYB)Chinese.pdf
+- https://tel.directory.gov.hk/index_FSTB_CHI.html
+- https://www.fstb.gov.hk
+- https://www.fstb.gov.hk/tc/aboutus/organisation-chart.htm
+</div></div></details><details class="sec" id="strategy" open><summary class="sechead">🎯 策略跳板 (Strategy Springboard)<a class="totop" href="#top" onclick="event.stopPropagation()">↑頂</a></summary><div class="secbody"><div class="springboard">以下係為 2026 APEC 財長會議宣傳項目提煉嘅**創意跳板 (Creative Springboard)**：
+
+### **策略張力 (Strategic Tension)**
+受眾（國際財金政要與精英）心入面未解決嘅矛盾：
+**「認知慣性 vs 尋求新增長確定性」**
+佢哋知道香港係傳統金融強者，但面對地緣變局與區域競爭，心入面會問：「香港仲有冇不可替代嘅獨特性？除咗食老本，仲能為我哋帶嚟咩新價值？」
+
+### **創意機會 (Creative Opportunity)**
+**品牌真相** (一國兩制下的超級聯繫人/增值人) + **受眾張力** (渴望打破刻板印象，尋找實質新機遇) + **社會時刻** (2026 APEC 中國年，全球目光聚焦亞太) = 
+**機會：** 將香港由「被動嘅資金中轉站」重塑為「主動嘅亞太繁榮催化劑」。透過 Phygital 體驗打破物理界限，讓國際精英親身「feel」到香港嘅創新脈搏與增值力。
+
+### **受眾觸發點 (Audience Trigger)**
+**高壓日程中嘅「Aha Moment」與「驚喜感」**
+當佢哋以為只係參加一個常規財金會議，卻喺會場內外（或 30 秒宣傳片入面）被「傳統穩健底蘊 x 前衛科技 (Web3/綠金)」嘅沉浸式 Phygital 體驗擊中。觸發點在於「意料之外的活力」，令佢哋產生「原來香港已經進化到呢個地步」嘅共鳴。
+
+### **品牌角色 (Brand Role)**
+唔係高高在上嘅「說教者」或單純嘅「東道主」，而係：
+**「頂尖金融生態嘅架構師 (Architect)」同「全球機遇嘅超級配對者 (Super Connector)」**。展現開明、專業、擁抱創新嘅姿態。
+
+### **推薦切入角度 (Recommended Angles)**
+1. **【流動的增值力 (The Flow of Value)】**：以「資金/數據/綠能」嘅流動為視覺主軸，結合 Phygital 藝術，展示資源經香港呢個「超級樞紐」轉化為亞太區實質繁榮嘅過程。
+2. **【雙面香港，同一脈搏 (Two Sides, One Pulse)】**：強對比與融合。一面係穩健嘅國際金融底蘊，一面係 Web3/家族辦公室嘅前衛活力。用 30 秒快節奏打破「香港只有傳統金融」嘅刻板印象。
+3. **【亞太共鳴，香港和弦 (Resonating Asia, Harmonized in HK)】**：聚焦「連結」。將 21 個經濟體嘅多元文化與香港「包容、開放」嘅都會特質交織，強調香港係讓各方達成共識、創造共贏嘅「最佳和聲之地」。
+
+### **要避開嘅伏 (Watchouts)**
+*   **官方正名 (Fatal DQ Risk)**：APEC 成員必須統稱 **「經濟體 (Economies)」**，絕不能誤用「國家 (Countries)」。台灣代表名稱需嚴格跟從 APEC 官方規定 (Chinese Taipei)。
+*   **政治與合規**：嚴守《國安法》，「一國兩制」論述必須與官方口徑 100% 一致。視覺與文案絕不能觸及或引申任何地緣政治爭議，保持絕對正面。
+*   **Phygital 資安與私隱**：涉及數碼互動、AR/VR 或數據收集，必須符合政府 IT 安全指引及《私隱條例》，處理不當隨時 DQ。
+*   **文化敏感性**：21 個經濟體文化各異（含伊斯蘭、西方、亞洲等），視覺、音樂及互動設計需避免任何宗教/文化禁忌，確保絕對共融。
+*   **版權與採購**：所有素材（含 AI 生成、字體、音樂）必須有清晰商業版權。嚴守採購規例，確保透明及「物有所值」。</div></div></details><details class="sec" id="sa" open><summary class="sechead">Stream A — 跟 DE BONO SOP (結構化)<a class="totop" href="#top" onclick="event.stopPropagation()">↑頂</a></summary><div class="secbody"><div class="cols"><div class="col"><div class="mhead">deepseek<span class="slug">deepseek/deepseek-v3.2-20251201</span></div><div class="meta">tokens: 9153 · $0.00290</div><div class="route"><div class="rname">脈動樞紐：催化亞太繁榮流</div><div class="big">將香港重塑為一個能動態轉化資源（資金、數據、綠能）的「亞太繁榮催化劑」，讓國際財金領袖親眼見證價值如何在此匯聚、增值並流向整個區域。</div><div class="f"><span class="k">Slogan</span>價值流動，由此啟動（Where Value Flows, Prosperity Grows）</div><div class="f"><span class="k">點解 work</span>1. **扣策略張力**：直接回應受眾對「香港新價值」嘅疑問，將傳統「中轉站」印象升級為主動「催化劑」與「架構師」，打破認知慣性。
+2. **扣受眾觸發點**：透過「能量流」嘅 Phygital 視覺表現（可用於宣傳片及會場 AR 體驗），創造「意料之外」嘅科技美感與宏大視野，帶來 Aha Moment。
+3. **扣品牌角色**：完美體現「架構師」與「超級配對者」角色，展示香港如何有結構地連結並增值區域資源。
+4. **用咗推薦角度【
+…（已截斷，全文見 Drive Doc / JSON archive）</div></div><div class="route"><div class="rname">雙脈衝：傳統底蘊 × 創新律動</div><div class="big">以強烈對比與節奏，並置香港穩健嘅國際金融底蘊與 Web3、家族辦公室等前衛活力，用「雙脈衝」概念證明香港嘅獨特性在於「穩健」與「創新」嘅同頻共振。</div><div class="f"><span class="k">Slogan</span>穩健，係我哋嘅根基；創新，係我哋嘅脈搏（Stability as our foundation, Innovation as our pulse）</div><div class="f"><span class="k">點解 work</span>1. **扣策略張力**：用最直觀嘅視覺對比，瞬間打破「香港只有傳統」嘅刻板印象，展示其進化與新增長引擎，提供「確定性」。
+2. **扣受眾觸發點**：快節奏、強對比嘅 30 秒宣傳片，正正針對高壓日程受眾，提供密集、驚喜嘅資訊沖擊，創造深刻記憶點。
+3. **扣品牌角色**：展現香港作為一個懂得平衡風險與機遇、擁抱變革嘅「專業架構師」形象。
+4. **用咗推薦角度【雙面香港，同一脈搏】**，並緊扣 FSTB 在虛擬資產、家族辦公室等領
+…（已截斷，全文見 Drive Doc / JSON archive）</div></div><div class="route"><div class="rname">和聲之地：共創亞太未來方程式</div><div class="big">將 APEC 21個經濟體嘅多元性比喻為不同樂器/聲部，而香港就是讓這些聲部和諧共鳴、譜寫未來樂章嘅「指揮家」與「共創空間」。</div><div class="f"><span class="k">Slogan</span>多元交匯，和聲共創（Diverse Voices, One Harmonious Future）</div><div class="f"><span class="k">點解 work</span>1. **扣策略張力**：將香港嘅「超級聯繫人」角色昇華為「共創催化劑」，強調其提供嘅獨特價值是「促成共識、轉化成果」嘅能力，而不僅僅是地點。
+2. **扣受眾觸發點**：以「和聲」、「方程式」等優雅而富有智慧嘅隱喻，為高壓受眾提供一種深度共鳴與歸屬感，觸發情感層面嘅 Aha Moment。
+3. **扣品牌角色**：精準演繹「超級配對者」與「架構師」，強調其開明、專業、促成合作嘅姿態。
+4. **用咗推薦角度【亞太共鳴，香港和弦】**
+…（已截斷，全文見 Drive Doc / JSON archive）</div></div></div><div class="col"><div class="mhead">qwen<span class="slug">qwen/qwen3.7-max-20260520</span></div><div class="meta">tokens: 8895 · $0.01514</div><div class="route"><div class="rname">流動的增值力：亞太繁榮催化劑</div><div class="big">將香港從靜態的「資金中轉站」重塑為動態的「價值轉化引擎」，透過 Phygital 藝術讓無形的金融流動變成可觸摸的亞太增長脈搏。</div><div class="f"><span class="k">Slogan</span>匯聚亞太．轉化繁榮 (Catalyzing Prosperity for Asia-Pacific)</div><div class="f"><span class="k">點解 work</span>精準回應策略張力中「認知慣性 vs 新增長確定性」嘅矛盾。受眾慣性認為香港只係通道，此橋用「轉化/折射」視覺化打破刻板印象，確立香港「主動催化劑」嘅新角色。同時扣連受眾觸發點，利用 Phygital 互動讓精英親身「feel」到增值過程，而非被動接收訊息。完全符合 FSTB 推動數字資產與綠金嘅政策重點。</div></div><div class="route"><div class="rname">雙面香港，同一脈搏：傳統底蘊 x 前衛活力</div><div class="big">用極致對比與無縫融合，喺 30 秒內打破「香港只有傳統金融」嘅舊認知，展現穩健制度與 Web3/家辦創新活力並存嘅獨特優勢。</div><div class="f"><span class="k">Slogan</span>穩健為基．創變無界 (Rooted in Stability, Boundless in Innovation)</div><div class="f"><span class="k">點解 work</span>直接擊中受眾觸發點「意料之外的活力」。財金精英對香港傳統優勢有認知慣性，此橋用強烈視覺反差製造「Aha Moment」，令佢哋驚覺香港已進化。扣連品牌角色「頂尖金融生態架構師」，展示香港點樣將傳統穩健與前衛創新架構成一個完整生態。符合 FSTB 吸引家辦、推動虛擬資產嘅最新政策方向。</div></div><div class="route"><div class="rname">亞太共鳴，香港和弦：多元共識的和聲之地</div><div class="big">將香港定位為亞太 21 個經濟體達成共識、創造共贏嘅「最佳和聲之地」，以音樂與數據可视化隱喻「連結」與「包容」嘅獨特價值。</div><div class="f"><span class="k">Slogan</span>多元匯聚．共譜繁榮 (Harmonizing Diversity, Composing Prosperity)</div><div class="f"><span class="k">點解 work</span>回應策略張力中「尋求新增長確定性」——在不確定嘅地緣變局中，「共識」與「連結」本身就係最珍貴嘅確定性。品牌角色「全球機遇超級配對者」透過「和聲」隱喻得到感性昇華，超越純功能性描述。觸發點在於高壓會議日程中提供一個「情感共鳴時刻」，讓精英感受到香港嘅包容性與人文溫度，契合 APEC 促進文化交融嘅目標。</div></div></div><div class="col"><div class="mhead">kimi<span class="slug">moonshotai/kimi-k2.6-20260420</span></div><div class="meta">tokens: 11250 · $0.01987</div><div class="route"><div class="rname">流動的增值力</div><div class="big">香港唔係靜態嘅資金池，而係一條會「進化」嘅超級管道——資金、數據、綠能流入嚟，經過香港獨有嘅制度與創新催化，變成亞太區實質繁榮流出去。</div><div class="f"><span class="k">Slogan</span>滙流成勢，增值未來 | Where Value Evolves</div><div class="f"><span class="k">點解 work</span>直接回應策略張力「認知慣性 vs 尋求新增長確定性」：國際精英慣性認為香港係「資金中轉站」，呢條橋用「流動」同「進化」兩個動詞顛覆呢個定位，展示香港主動創造價值嘅能力。扣緊受眾觸發點「Aha Moment」——水滴變數據流嘅視覺轉折係意料之外嘅驚喜。品牌角色「架構師」透過「管道設計」嘅隱喻確立：香港唔係被動容器，而係精心設計嘅增值系統。同時呼應 FSTB 三大政策重點（虛擬資產、綠色金融、財富管理），將官方 KPI「展示香港國際金融中心
+…（已截斷，全文見 Drive Doc / JSON archive）</div></div><div class="route"><div class="rname">雙面香港，同一脈搏</div><div class="big">香港嘅心臟同時跳動兩種節奏——一面係百年金融底蘊嘅沉穩鼓點，一面係 Web3 同家族辦公室嘅電子脈衝。兩種心跳，同一個香港。</div><div class="f"><span class="k">Slogan</span>穩見底蘊，進見未來 | Rooted Forward</div><div class="f"><span class="k">點解 work</span>運用 De Bono「挑釁」技巧：直接挑戰「香港老矣」嘅國際偏見，將「新舊矛盾」重構為「雙重優勢」。策略張力「認知慣性 vs 尋求新增長確定性」被轉化為視覺張力——觀眾被迫同時處理兩種矛盾信息，大腦自動尋求解釋，從而產生深刻記憶。受眾觸發點「驚喜感」來自「分屏合併」嘅認知翻轉：原來唔係二選一，而係兼得。品牌角色「超級配對者」透過「配對兩種節拍」嘅隱喻確立——香港嘅獨特價值正正係能夠讓傳統資本同創新動能無縫對接。呼應 FSTB「吸引家族辦
+…（已截斷，全文見 Drive Doc / JSON archive）</div></div><div class="route"><div class="rname">亞太共鳴，香港和弦</div><div class="big">21個經濟體各有獨特聲部，香港係唯一嘅指揮同混音台——唔係強求單一旋律，而係讓所有聲音找到彼此共振嘅頻率，共創亞太繁榮嘅交響樂。</div><div class="f"><span class="k">Slogan</span>眾聲交響，香港調頻 | Resonating Asia, Harmonized in HK</div><div class="f"><span class="k">點解 work</span>運用 De Bono「概念扇」技巧：由「連結」核心概念扇出三層——物理連結（交通/基建）、制度連結（監管/互聯互通）、情感連結（文化共鳴）。呢條橋選擇最深層嘅「情感連結」，避開其他方向容易觸及嘅政治敏感。策略張力「認知慣性 vs 尋求新增長確定性」被轉化為「單一霸權 vs 多元共生」：國際精英厭倦咗零和競爭，渴望「確定性」其實係渴望「可預測嘅合作框架」，香港嘅「調頻者」角色正正提供呢個框架。受眾觸發點「Aha Moment」來自「自己嘅
+…（已截斷，全文見 Drive Doc / JSON archive）</div></div></div></div></div></details><details class="sec" id="sb" open><summary class="sechead">Stream B — Fresh Eyes (唔跟 SOP)<a class="totop" href="#top" onclick="event.stopPropagation()">↑頂</a></summary><div class="secbody"><div class="cols"><div class="col"><div class="mhead">deepseek<span class="slug">deepseek/deepseek-v3.2-20251201</span></div><div class="meta">tokens: 7842 · $0.00223</div><div class="route"><div class="rname">凡人七頭飯局</div><div class="big">將頂尖財長會議，降落到香港最真實嘅街頭智慧同市民日常中。</div><div class="f"><span class="k">Slogan</span>APEC財長會，嚟香港，傾錢之前，先學嘢。</div><div class="f"><span class="k">點解 work</span>完全打破國際財經會議高高在上、不食人間煙火嘅印象。用極致『貼地』嘅方式，展示香港嘅經濟活力唔只喺IFC，更喺民間。以『街頭智慧』呢個全球共鳴嘅概念包裝，令訊息人性化，易入口，亦符合FSTB想講嘅『開放、創新』（開放思維向社區學習）。同時，深入社區拍攝亦係一種『文化交融』，夠晒香港特色。</div><div class="f"><span class="k">夠膽位</span>夠膽將各國財長『降級』做『街頭學生』，由平民KOL帶住走。畫面唔係西裝骨骨喺會展握手，而係著住恤衫喺街邊凳仔度食魚蛋。呢種強烈反差同幽默感，會令人過目不忘，亦徹底打破政府宣傳嘅既定框架。</div></div><div class="route"><div class="rname">金融失物認領處</div><div class="big">將APEC會議描繪成一個全球『金融失物』嘅終極認領處，而香港就係嗰個最值得信賴嘅管理員。</div><div class="f"><span class="k">Slogan</span>世界經濟唔見咗啲嘢？2026，香港幫你搵返。</div><div class="f"><span class="k">點解 work</span>將抽象嘅會議目的（解決全球財金問題、促進合作）轉化成一個極具體、有故事性嘅比喻。『失物認領』呢個概念人人明白，隱含『遺失』、『尋回』、『信任』、『歸屬』幾層意思，完美對應香港作為『問題解決者』同『超級聯繫人』嘅角色。視覺上前衛，同傳統政府宣傳片截然不同，能吸引國際年輕金融才俊眼球。</div><div class="f"><span class="k">夠膽位</span>用『失物』呢個帶少少負面（遺失）嘅詞彙去包裝，夠晒大膽同破格。但反轉就係凸顯香港嘅『修復』與『整合』能力。呢種帶有戲劇衝突性嘅敘事手法，一般政府宣傳絕對唔敢諗，但正正因為咁，先會爆出嚟。</div></div><div class="route"><div class="rname">財金基因圖譜</div><div class="big">將香港描繪成解開亞太區未來經濟繁榮嘅『基因圖譜』，而APEC財長會就係齊集解碼嘅關鍵時刻。</div><div class="f"><span class="k">Slogan</span>解碼繁榮。香港，亞太經濟嘅下一段基因。</div><div class="f"><span class="k">點解 work</span>將香港嘅金融政策（虛擬資產、綠色金融、家族辦公室、大灣區聯繫）包裝成決定未來嘅『先進經濟基因』，概念極具前瞻性同科技感，契合FSTB『創新』嘅形象。『圖譜』與『解碼』嘅比喻，賦予會議一種科學探秘嘅崇高使命感，提升格調。視覺上容易創造出震撼、適合phygital延伸（例如AR互動）嘅效果。</div><div class="f"><span class="k">夠膽位</span>將國際金融會議提升到近乎『人類基因組計劃』嘅科學高度，夠晒誇張同宏大。用硬核科學比喻軟性嘅經濟合作，呢種跨界聯想好少見於政府宣傳，極具新鮮感同記憶點。</div></div></div><div class="col"><div class="mhead">qwen<span class="slug">qwen/qwen3.7-max-20260520</span></div><div class="meta">tokens: 7777 · $0.01344</div><div class="route"><div class="rname">The Human Ledger</div><div class="big">將抽象嘅「財政政策」還原做有溫度嘅「人間煙火」，用微觀生活細節去驗證宏觀經濟成就，打破財金會議必係西裝領呔嘅刻板印象。</div><div class="f"><span class="k">Slogan</span>每一筆數字，都係一個香港故事</div><div class="f"><span class="k">點解 work</span>全球財金精英睇慣大數據同KPI，對「完美城市宣傳片」早已免疫。唯有極致真實、甚至帶點粗糙感嘅人性細節，先可以穿透佢哋嘅職業防禦機制。用「人」做證據，比用「數」做證據更有說服力，完美呼應FSTB「由治及興」落地民生嘅核心敘事。</div><div class="f"><span class="k">夠膽位</span>政府宣傳從未試過將「市井粗糲感」與「高端金融」平起平坐，甚至刻意保留生活瑕玈。放棄晒大灣區航拍同維港煙花，轉而聚焦「收銀機聲」同「黑眼圈」，係對傳統政績展示邏輯嘅徹底背叛，但正正係因為夠膽「唔靚」，先至夠真實、夠國際級Confidence。</div></div><div class="route"><div class="rname">Haptic Finance</div><div class="big">將「Phygital」從營銷術語變成生理體驗，利用ASMR聽覺觸發，令無法觸摸嘅香港金融優勢變成一種可以「聽見、感受到」嘅節奏同頻率。</div><div class="f"><span class="k">Slogan</span>聽，係香港增值嘅頻率</div><div class="f"><span class="k">點解 work</span>APEC財長們每日被文字報告轟炸，大腦語言區早已過載。聽覺係最直接通往情緒同記憶嘅捷徑，繞過理性分析，直擊感性認知。用「節奏」代替「說理」，完美契合「超級聯繫人」作為協調者、節拍器嘅隱喻，同時展現香港作為數字資產中心嘅科技底蘊。</div><div class="f"><span class="k">夠膽位</span>一支30秒政府廣告片「冇人講嘢」，仲要觀眾戴耳機先聽到精髓？呢個決定本身已經係對「訊息必須清晰直白」SOP嘅挑釁。將莊嚴嘅財金會議包裝成一场沉浸式聲音藝術體驗，顛覆咗公眾對政府宣傳「講大道理」嘅預期，製造出強烈嘅社交媒體話題性同二創空間。</div></div><div class="route"><div class="rname">The Open Source City</div><div class="big">拋棄「香港好厲害」嘅單向宣告，改將香港定位為一個歡迎全球財腦共同Debug、共同Upgrade嘅「開源作業系統」，體現真正嘅開放與合作精神。</div><div class="f"><span class="k">Slogan</span>香港：等你加入嘅Beta版</div><div class="f"><span class="k">點解 work</span>APEC核心精神係「合作」而非「展示」。將香港從「成品」降維成「Beta版」，反而展現出極高嘅自信同謙卑，精準擊中全球精英渴望「被需要」而非「被教育」嘅心理。呢個角度完美呼應「建設亞太共同體」主題，同時將FSTB推動創新、擁抱監管沙盒嘅政策態度具象化。</div><div class="f"><span class="k">夠膽位</span>政府宣傳居然主動承認「Bug」同「未完成」？呢個係對「正面宣傳」原則嘅最大膽重新定義。將主權國家級別嘅財金會議比喻做「開源項目」，用「Beta版」形容一個成熟國際金融中心，係前所未有嘅語言冒險。但正正因為夠反直覺，先可以喺全球同質化嘅城市營銷中殺出一條血路，建立獨一無二嘅「協作型金融中心」人設。</div></div></div><div class="col"><div class="mhead">kimi<span class="slug">moonshotai/kimi-k2.6-20260420</span></div><div class="meta">tokens: 8267 · $0.00784</div><div class="route err">⚠️ 未能 parse JSON<pre>```json
+[
+  {
+    &quot;route_name&quot;: &quot;「錢途」無聲&quot;,
+    &quot;big_idea&quot;: &quot;用香港最貼地的「搵食」語言，重新定義國際金融會議——唔係精英嘅閉門遊戲，係每個人每日都在參與的經濟流動。&quot;,
+    &quot;slogan&quot;: &quot;錢，唔係講出嚟嘅，係流動出嚟嘅。&quot;,
+    &quot;copy_spine&quot;: &quot;由茶餐廳找贖嘅叮噹聲，到環球匯款嘅無聲過數；由街市阿婆嘅電子支付，到虛擬資產嘅跨境流轉——香港嘅金融，從來唔係會議室裡面嘅 PowerPoint，係 750 萬人每日嘅生活呼吸。APEC 財長嚟到香港，唔係「視察」一個金融中心，係「撞入」一個從未停止運作嘅金融有機體</pre></div></div></div></div></details><details class="sec fb" id="fb" open><summary class="sechead">💬 畀意見畀 Claude<a class="totop" href="#top" onclick="event.stopPropagation()">↑頂</a></summary><div class="secbody"><div style="font-size:14px;color:#6b7280;margin-bottom:8px">你揀邊條方向 / 想點改 / 想再 brainstorm — 打喺度撳提交, Claude 下次會睇到。</div>
+<textarea id="fb" placeholder="例如: 揀 Stream B 'Living Ledger' 去 develop, 但 slogan 想再貼地啲…"></textarea>
+<button onclick="sendFB()">提交畀 Claude</button>
+<div class="fbmsg" id="fbmsg"></div></div></details></div>
+<button id="backtop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ 返頂</button>
+<script>
+var DEPT="FSTB";
+function goSec(id){var el=document.getElementById(id);if(el){el.open=true;el.scrollIntoView({behavior:'smooth'});}}
+function sendFB(){
+  var v=document.getElementById('fb').value;
+  var m=document.getElementById('fbmsg');
+  if(!v.trim()){m.textContent='請先打啲嘢';return;}
+  if(typeof google!=='undefined' && google.script && google.script.run){
+    m.style.color='#16a34a';m.textContent='提交緊…';
+    google.script.run
+      .withSuccessHandler(function(){m.textContent='✅ 已提交,多謝! Claude 下次會睇到。';document.getElementById('fb').value='';})
+      .withFailureHandler(function(e){m.style.color='#dc2626';m.textContent='⚠️ '+e;})
+      .saveIdeaLabFeedback(DEPT, v);
+  }else{
+    m.style.color='#6b7280';
+    m.textContent='(意見功能要喺手機 GAS URL 開先 work; 本機/Cowork 預覽冇後台。)';
+  }
+}
+</script>
