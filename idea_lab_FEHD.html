@@ -2,91 +2,384 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>FEHD 滲水 API — 創意 Idea Lab</title>
 <style>
-:root{--bg:#0f1115;--card:#1a1e27;--ink:#eef1f6;--mut:#9aa4b2;--grn:#34d399;--pur:#a78bfa;--amber:#fbbf24;--line:#2a2f3a}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 -apple-system,"PingFang HK","Microsoft JhengHei",sans-serif;-webkit-text-size-adjust:100%}
+:root{--bg:#0f1115;--card:#1a1e27;--ink:#eef1f6;--mut:#9aa4b2;--grn:#34d399;--pur:#a78bfa;--amber:#fbbf24;--gold:#f5c451;--line:#2a2f3a}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 -apple-system,"PingFang HK","Microsoft JhengHei",sans-serif}
 .wrap{max-width:920px;margin:0 auto;padding:18px 16px 80px}
-header h1{font-size:22px;margin:.2em 0}
-header .sub{color:var(--mut);font-size:14px}
+header h1{font-size:22px;margin:.2em 0} header .sub{color:var(--mut);font-size:14px}
 .pill{display:inline-block;background:#222836;border:1px solid var(--line);border-radius:999px;padding:3px 11px;font-size:12px;color:var(--mut);margin:2px 4px 2px 0}
 nav{position:sticky;top:0;background:rgba(15,17,21,.92);backdrop-filter:blur(6px);padding:10px 0;margin:10px -16px 0;border-bottom:1px solid var(--line);z-index:5}
 nav a{display:inline-block;color:var(--ink);text-decoration:none;font-size:13px;background:#222836;border:1px solid var(--line);border-radius:999px;padding:6px 12px;margin:0 4px}
-section{margin:26px 0}
-h2{font-size:18px;border-left:4px solid var(--grn);padding-left:10px;margin:0 0 12px}
-section.cmt h2{border-color:var(--pur)}
-section.nb h2{border-color:var(--amber)}
+section{margin:24px 0} h2{font-size:18px;border-left:4px solid var(--grn);padding-left:10px;margin:0 0 12px}
+section.top h2{border-color:var(--gold)} section.cmt h2{border-color:var(--pur)} section.nb h2{border-color:var(--amber)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:12px 0}
 .card h4{margin:.1em 0 .5em;font-size:16px;color:#fff}
 .lab{font-size:11px;letter-spacing:.04em;color:var(--mut);text-transform:uppercase;margin-top:10px}
-.slo{color:var(--grn);font-weight:600}
-h3.cc{font-size:16px;color:#fff;margin:18px 0 8px;border-left:3px solid var(--pur);padding-left:9px}
+.slo{color:var(--grn);font-weight:600} h4.cc{font-size:15px;color:#fff;margin:14px 0 6px}
 .tw{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:10px;margin:8px 0}
 table{border-collapse:collapse;width:100%;min-width:420px;font-size:14px}
 th,td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
-th{background:#202636;color:var(--mut);font-weight:600;font-size:12px;position:sticky;top:0}
-td:first-child{text-align:center;color:var(--mut);width:42px}
-a.nblink{color:var(--amber);font-size:13px}
-.note{color:var(--mut);font-size:12px;margin-top:6px}
+th{background:#202636;color:var(--mut);font-weight:600;font-size:12px} td:first-child{text-align:center;color:var(--mut)}
+details.run{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:6px 14px;margin:10px 0}
+details.run>summary{cursor:pointer;font-weight:600;padding:8px 0}
+details.proc{margin:10px 0;border-top:1px dashed var(--line);padding-top:8px} details.proc>summary{cursor:pointer;color:var(--mut);font-size:13px}
+a.nblink{color:var(--amber);font-size:13px} .note{color:var(--mut);font-size:12px;margin:6px 0}
 footer{color:var(--mut);font-size:12px;border-top:1px solid var(--line);margin-top:30px;padding-top:14px}
 </style></head><body><div class="wrap">
-<header>
-  <h1>FEHD 樓宇滲水 API — 創意 Idea Lab</h1>
+<header><h1>FEHD 樓宇滲水 API — 創意 Idea Lab</h1>
   <div class="sub">食環署 × 屋宇署 聯辦處(JO)· 30 秒 TV + Radio API</div>
-  <div style="margin-top:8px">
-    <span class="pill">📅 截標 D) 2026-06-17 15:00</span>
-    <span class="pill">簡介 B) 05-29</span>
-    <span class="pill">提案 P) 06-23</span>
-  </div>
+  <div style="margin-top:8px"><span class="pill">📅 截標 D) 2026-06-17 15:00</span><span class="pill">簡介 B) 05-29</span><span class="pill">提案 P) 06-23</span></div>
 </header>
-<nav>
-  <a href="#brief">Brief</a>
-  <a href="#nblm">NBLM 創意</a>
-  <a href="#cmt">綜合委員會</a>
-</nav>
+<nav><a href="#top3">🏆 三甲</a><a href="#brief">Brief</a><a href="#nblm">NBLM</a><a href="#cmt">委員會</a></nav>
 
-<section id="brief"><h2>Brief 撮要</h2><p><h4>1. Background（背景）</h4> 為配合 2025  年《施政報告》公佈的措施，由食物環境衞生署（FEHD）與屋宇署（BD）成立的聯合辦事處 （聯辦處/JO）將推出處理私人樓宇滲水的新調查及測試程序  [1]。政府希望透過新一輯電視及電台政府宣傳短片（API），向公眾宣傳這些旨在更有效解 決滲水問題的加強措施 [1]。</p><p><h4>2. Objective（目標）</h4> 提升公眾對聯辦處即將推出的新滲水調查程序及加強措施的認知；強調業主妥善保養物業及 防止滲水的責任  [2]。具體需向受眾解釋精簡後的調查程序（包括使用紅外線熱成像分析及同步進行第二和 第三階段調查），並促使收到「通知信」的業主主動及時進行檢驗和維修 [2]。</p><p><h4>3. Key Message（核心訊息）</h4> 妥善保養物業、防止滲水，永遠是業主的責任  [3]。聯辦處在第一階段已引入紅外線探測以加快尋找滲水源頭；若發出「通知信」後業主 仍未能在限期內完成維修，聯辦處將同步展開第二及第三階段調查，並會向不合作的業主追 討相關測試費用 [3, 4]。</p><p><h4>4. Deliverables（交付物）</h4> *   **TV API：** 一條 30  秒電視宣傳短片，包含粵語（配繁體中文書面語字幕及手語）及英語（配英文字幕及手語） 兩個版本 [5, 6]。需以 HDCam、RED ONE 或同等格式拍攝，輸出 16:9 (HD) XDCAM HD422  MXF 檔案 [5, 6]。手語視窗需佔畫面六分之一，位於右下角 [7, 8]。 *   **Radio API：** 一條 30  秒電台宣傳聲帶，包含粵語、英語（獨白形式）及普通話（要求一級乙等水平）版本  [9-11]。 *   **其他：**  中英文口號（Slogan）、腳本、分鏡圖（Storyboard）、配音、原創或已獲版權許可的背景 音樂 [10, 12-15]。 *   （海報/平面廣告：資料不足，投標文件未列為必做項目）。</p><p><h4>5. Timeline（時間表）</h4> *   **B (Briefing 簡介會):** 2026-05-29 (必須於 2026-05-27 15:00 前提交回條)  [16, 17]。 *   **D (Deadline 遞交死線):** 2026-06-17T15:00 (香港時間) [17, 18]。 *   **P (Presentation 提案日):** 2026-06-23 (以粵語進行) [19, 20]。 *   **Milestone:** 2026-06-29 批出合約；2026-07-31 完成 Final Cut；2026-08-03  遞交廣播機構 [20]。</p></section>
-
-<section id="nblm" class="nb"><h2>NBLM 創意(3 個 DE BONO 方向)</h2>
-  <p class="note">由 NotebookLM ⚠️FEHD notebook 撈返,完整方案(含 12 格 storyboard、評分模擬、AI image prompt)+ slide deck 圖喺 NBLM。</p>
-  <div class="card">
-          <h4>科技查漏 — The Cost of Delay(拖延的代價)</h4>
-          <div class="lab">Big Idea</div><p>打破以往「勸導式」宣傳,改以「痛點打擊」為核心。視覺化「紅外線科技極速精準」與「被追討調查費用的切身肉痛」,將保養責任轉化為迫切財政危機,逼業主即時行動。</p>
-          <div class="lab">Slogan</div><p class="slo">紅外線精準測漏,無視通知代價自負! / Thermal tech detects the leak, delay repairs and pay the fee!</p>
-          <div class="lab">KV 主視覺</div><p>畫面分割:左邊 JO 人員手持紅外線熱像儀,螢幕透視牆內紅色警報漏水管;右邊業主玩手機,突然收到一張燃燒著金錢符號的巨額「調查費用」通知單。</p>
-        </div>
-<div class="card">
-          <h4>聯辦處滲水科技執法 — The Invisible Catch(無所遁形)</h4>
-          <div class="lab">Big Idea</div><p>以「科技威懾力」+「後果具象化」為核心。紅外線如「天眼」般精準,配合「同步調查」與「追討巨額費用」的視覺衝擊,打破拖延心態,確立 JO 執法權威。</p>
-          <div class="lab">Slogan</div><p class="slo">紅外線精準尋源,及早維修免罰款。 / Infrared spots the leak. Fix it fast to save your cost.</p>
-          <div class="lab">KV 主視覺</div><p>對比分割畫面:左半邊看似正常的白色牆壁;右半邊高科技紅外線熱像(紅黃藍漸層)清晰顯示隱藏水路。正中央覆蓋發著紅光的「政府通知單」。</p>
-        </div>
-<div class="card">
-          <h4>樓宇滲水調查新措施 — The Inescapable Heat(熱能追蹤・無所遁形)</h4>
-          <div class="lab">Big Idea</div><p>將滲水包裝成高科技搜證行動,突顯紅外線探測的精準與執法決心。由「道德勸導」轉向「科技阻嚇 + 財務後果」,直擊業主僥倖心理,強勢推動主動維修。</p>
-          <div class="lab">Slogan</div><p class="slo">紅外線看透滲水源頭,即時維修免被追收!</p>
-          <div class="lab">KV 主視覺</div><p>強烈對比雙畫面:左邊肉眼看似正常的平靜地板,右邊 JO 探員手中的紅外線熱成像屏幕,清楚顯示地底喉管爆發紅橙色的「漏水警號」。</p>
-        </div>
-  <p><a class="nblink" href="https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6" target="_blank">↗ 開 NotebookLM 睇完整方案 + slide deck 圖</a></p>
-</section>
-
-<section id="cmt" class="cmt"><h2>綜合委員會 Route B(4 AI 跨平台激盪 → CD 收斂)</h2>
-  <p class="note">DeepSeek · Qwen · Kimi · Grok 委員會跑出,CD 收斂。Slogan ×5 + 2 個 concept × 12 格廣東話 storyboard。</p>
-  <h3 class="cc">Slogan(畀 Raymond 揀)</h3>
-<p>睇「漏」定睇「路」?即刻自查,安心好多。</p>
-<p>主動防漏,唔使等到收信頭赤。</p>
-<p>滲水唔係拗數,係業主責任。聯辦處幫手,快靚正。</p>
-<p>今日搞掂平過罰,專業幫手喺聯辦處。</p>
-<p>Stop Leaks, Save Bucks. 聯辦處專業驗漏,助你履責。</p>
-<h3 class="cc">Concept 1:透視責任</h3>
-<p><strong>Creative Concept 創作概念</strong>:視覺以「紅外線透視眼鏡」為橋,將傳統鄰里互相指責嘅蒙眼爭吵,瞬間轉化為清晰熱成像畫面;透過嗶聲同掃描線,由混亂焦慮切換成「一眼睇清」嘅安心,突顯聯辦處係專業驗漏助手。</p>
-<div class="tw"><table><thead><tr><th>格號</th><th>畫面</th><th>對白/旁白</th></tr></thead><tbody><tr><td>1</td><td>主觀晃動鏡頭:唐樓走廊門牌、水漬、失焦</td><td>(環境音)嘈雜爭執聲</td></tr><tr><td>2</td><td>畫面更晃,焦點對準天花板大片水漬</td><td>年青男:「點解又漏水呀!」</td></tr><tr><td>3</td><td>手持紅外線檢測儀由畫面下方入鏡</td><td>旁白:「睇漏定睇路?」</td></tr><tr><td>4</td><td>手指按下開關,儀器亮起藍橙光暈</td><td>(科幻短促「嗶」聲)</td></tr><tr><td>5</td><td>熱成像視角切入,水漬即時變結構線條</td><td>旁白:「聯辦處專業驗漏助手,」</td></tr><tr><td>6</td><td>掃描線由左至右橫掃,綠剔符號彈出</td><td>旁白:「一眼睇清滲漏源頭。」</td></tr><tr><td>7</td><td>色調由冷灰轉暖黃,畫面穩定</td><td>年青男:「真係咁簡單?」</td></tr><tr><td>8</td><td>儀器螢幕放大,顯示清晰漏水位置</td><td>旁白:「唔使再互相指責,」</td></tr><tr><td>9</td><td>畫面切回實景,業主面露安心微笑</td><td>旁白:「主動自查,安心好多。」</td></tr><tr><td>10</td><td>檢測儀輕輕放下,背景漸淡</td><td>旁白:「今日做,平過罰。」</td></tr><tr><td>11</td><td>黑屏浮現聯辦處標誌及 Slogan</td><td>旁白:「聯辦處,助你履責。」</td></tr><tr><td>12</td><td>標誌停留,Slogan「即刻自查,安心好多」</td><td>(確認「嗶」聲漸弱)</td></tr></tbody></table></div>
-<h3 class="cc">Concept 2:止蝕時刻</h3>
-<p><strong>Creative Concept 創作概念</strong>:以「收銀機罰單印表機」為橋,紅色數字不斷跳升代表成本上升;當聯辦處印章蓋落一刻,數字即時定格反轉為綠色,完成由壓迫到掌控嘅快速切換,強調「今日做,慳更多」。</p>
-<div class="tw"><table><thead><tr><th>格號</th><th>畫面</th><th>對白/旁白</th></tr></thead><tbody><tr><td>1</td><td>收銀機視角,紙條快速吐出</td><td>(急促「滴滴」聲)</td></tr><tr><td>2</td><td>紙條特寫,紅色數字不斷跳升</td><td>旁白:「等到收信,已經最貴。」</td></tr><tr><td>3</td><td>「逾期」「追討」字眼閃爍</td><td>年青男:「點算呀?」</td></tr><tr><td>4</td><td>手持蓋有聯辦處標誌嘅印章入畫</td><td>旁白:「今日做,慳更多。」</td></tr><tr><td>5</td><td>印章用力蓋落,悶響一聲</td><td>(印章「噗」聲)</td></tr><tr><td>6</td><td>紅色數字瞬間定格</td><td>旁白:「唔使再畀罰款。」</td></tr><tr><td>7</td><td>數字由紅轉綠,金額縮細</td><td>旁白:「主動防漏,成本最低。」</td></tr><tr><td>8</td><td>紙條底端印出「主動防漏,成本最低」</td><td>旁白:「聯辦處,一次過解決。」</td></tr><tr><td>9</td><td>業主手指輕觸印章,畫面轉暖</td><td>年青男:「真係慳返好多。」</td></tr><tr><td>10</td><td>日曆齒輪淡出,綠色背景擴大</td><td>旁白:「Stop Leaks, Save Bucks.」</td></tr><tr><td>11</td><td>黑屏浮現聯辦處標誌及 Slogan</td><td>旁白:「今日搞掂平過罰。」</td></tr><tr><td>12</td><td>標誌停留,Slogan「主動防漏,唔使等到收信頭赤」</td><td>(舒緩「叮」聲結束)</td></tr></tbody></table></div>
-</section>
-
-<footer>
-  Madkids 創意 Idea Lab · 自動生成 · 資料來源:NotebookLM + OpenRouter 委員會<br>
-  ⚠️ AI 初步創意,出客前需 Raymond review + gatekeep。
-</footer>
+<section id="top3" class="top"><h2>🏆 三甲(委員會 concept + NBLM 提案 一齊揀)</h2><p class="note">候選(5):[NBLM] 科技查漏 / The Cost of Delay · [NBLM] 無所遁形 / The Invisible Catch · [NBLM] 熱能追蹤 / The Inescapable Heat · [委員會 131010] 文件對位 · [委員會 131010] 程序索引</p>
+      <div class="card"><h4>🤖 CD 揀三甲</h4><p>以下係我由全部候選入面揀出嘅 <strong>Top 3</strong>，排第 1–3，附上出自邊個 run、點解值得入 deck，同埋一句 polish 建議。</p>
+<p>---</p>
+<p><strong>第 1 名</strong>  </p>
+<p><strong>出自：</strong> [NBLM] 無所遁形 / The Invisible Catch  </p>
+<p><strong>點解入三甲：</strong>  </p>
+<p>- <strong>創意力</strong>：用「通知單倒數炸彈」做視覺 hook，同時帶 CSI 搜證風，畫面張力強；  </p>
+<p>- <strong>中 brief</strong>：直接回應「及早維修免罰款」嘅核心訊息；  </p>
+<p>- <strong>阻嚇力</strong>：逾期即進入二三階段追討，視覺化罰則；  </p>
+<p>- <strong>記憶點</strong>：倒數炸彈 + 紅外線天眼，雙重符號易記；  </p>
+<p>- <strong>落客成功率</strong>：情緒 + 理性雙管齊下，業主易即時行動。  </p>
+<p><strong>一句 polish：</strong> 把「倒數炸彈」改為「由 30 日逐步收窄至 0」，令時間壓力更具體可感。</p>
+<p>---</p>
+<p><strong>第 2 名</strong>  </p>
+<p><strong>出自：</strong> [委員會 131010] 文件對位  </p>
+<p><strong>點解入三甲：</strong>  </p>
+<p>- <strong>創意力</strong>：以「通知信與熱成像圖精準疊合」做核心視覺，避開科幻探測意象，官方感更強；  </p>
+<p>- <strong>中 brief</strong>：強調「調查已完成，信即證據」，直擊業主「點解要即刻處理」嘅疑問；  </p>
+<p>- <strong>阻嚇力</strong>：法定文件附件形式，降低抗拒心理；  </p>
+<p>- <strong>記憶點</strong>：熱成像色階濾鏡浮現，視覺轉場獨特；  </p>
+<p>- <strong>落客成功率</strong>：程序感強，業主易跟從步驟。  </p>
+<p><strong>一句 polish：</strong> 在格 4 加入「信紙邊緣輕微炭化」特效，加強「最後通牒」感覺。</p>
+<p>---</p>
+<p><strong>第 3 名</strong>  </p>
+<p><strong>出自：</strong> [NBLM] 熱能追蹤 / The Inescapable Heat  </p>
+<p><strong>點解入三甲：</strong>  </p>
+<p>- <strong>創意力</strong>：split-screen 左右對比，左「平靜地板」右「紅橙熱像警號」，視覺反差大；  </p>
+<p>- <strong>中 brief</strong>：WhatsApp 自檢 bot 提供即時解決方案，平衡恐嚇與幫助；  </p>
+<p>- <strong>阻嚇力</strong>：紅橙熱像警號即時顯現，製造「隨時出事」嘅緊迫感；  </p>
+<p>- <strong>記憶點</strong>：bot 互動元素，易令人記住服務；  </p>
+<p>- <strong>落客成功率</strong>：提供行動出口，減低業主抗拒。  </p>
+<p><strong>一句 polish：</strong> 把 WhatsApp bot 對話框改為「政府官方 icon + 紅外線 logo 雙 stamp」，提升公信力。</p></div>
+      <div class="card"><h4>🧠 Claude 揀三甲</h4><p>【Claude 揀三甲 — 以政府標書角度(技術 70% / 信息準確清晰 30分 / Phygital 創新 + 政治風險把關)】</p>
+<p>第1名:無所遁形 / The Invisible Catch(NBLM)</p>
+<p>最強 hook,CSI 搜證 + 通知單倒數,情理兼備、記憶點最高,直接帶「逾期→二三階段+追討」。</p>
+<p>⚠️ polish:「倒數炸彈」過於戲劇,政府片宜改「通知信限期日曆逐格消失」,保張力但減觀感風險。</p>
+<p>第2名:文件對位(委員會)— 我提名做「最易中標」之選</p>
+<p>3 輪 AD 踢橋特登避開兩個政府死穴:①「透視牆=侵私隱」②「追費=斂財」。純官方文件語言、熱成像對位通知信,信息準確清晰(30分)最穩。創意稍悶,可借「無所遁形」張力 punch up。</p>
+<p>第3名:熱能追蹤 / The Inescapable Heat(NBLM)</p>
+<p>split-screen 乾淨 + WhatsApp 自檢 bot = O2O 行動出口(食正 Phygital 創新 15分),恐嚇有出口,政府觀感平衡。</p>
+<p>總評:NBLM 創意夠 punch,但「科技查漏(金幣蒸發)」有斂財觀感伏,故未入我三甲;委員會「文件對位」最安全但需加戲味。理想 deck = NBLM 視覺張力 × 委員會合規語言。</p></div></section>
+<section id="brief"><h2>Brief 撮要</h2><p><h4>1. Background（背景）</h4> 為配合 2025  年《施政報告》公佈的措施，由食物環境衞生署（FEHD）與屋宇署（BD）成立的聯合辦事處 （聯辦處/JO）將推出處理私人樓宇滲水的新調查及測試程序  [1]。政府希望透過新一輯電視及電台政府宣傳短片（API），向公眾宣傳這些旨在更有效解 決滲水問題的加強措施 [1]。</p><p><h4>2. Objective（目標）</h4> 提升公眾對聯辦處即將推出的新滲水調查程序及加強措施的認知；強調業主妥善保養物業及 防止滲水的責任  [2]。具體需向受眾解釋精簡後的調查程序（包括使用紅外線熱成像分析及同步進行第二和 第三階段調查），並促使收到「通知信」的業主主動及時進行檢驗和維修 [2]。</p><p><h4>3. Key Message（核心訊息）</h4> 妥善保養物業、防止滲水，永遠是業主的責任  [3]。聯辦處在第一階段已引入紅外線探測以加快尋找滲水源頭；若發出「通知信」後業主 仍未能在限期內完成維修，聯辦處將同步展開第二及第三階段調查，並會向不合作的業主追 討相關測試費用 [3, 4]。</p><p><h4>4. Deliverables（交付物）</h4> *   **TV API：** 一條 30  秒電視宣傳短片，包含粵語（配繁體中文書面語字幕及手語）及英語（配英文字幕及手語） 兩個版本 [5, 6]。需以 HDCam、RED ONE 或同等格式拍攝，輸出 16:9 (HD) XDCAM HD422  MXF 檔案 [5, 6]。手語視窗需佔畫面六分之一，位於右下角 [7, 8]。 *   **Radio API：** 一條 30  秒電台宣傳聲帶，包含粵語、英語（獨白形式）及普通話（要求一級乙等水平）版本  [9-11]。 *   **其他：**  中英文口號（Slogan）、腳本、分鏡圖（Storyboard）、配音、原創或已獲版權許可的背景 音樂 [10, 12-15]。 *   （海報/平面廣告：資料不足，投標文件未列為必做項目）。</p><p><h4>5. Timeline（時間表）</h4> *   **B (Briefing 簡介會):** 2026-05-29 (必須於 2026-05-27 15:00 前提交回條)  [16, 17]。 *   **D (Deadline 遞交死線):** 2026-06-17T15:00 (香港時間) [17, 18]。 *   **P (Presentation 提案日):** 2026-06-23 (以粵語進行) [19, 20]。 *   **Milestone:** 2026-06-29 批出合約；2026-07-31 完成 Final Cut；2026-08-03  遞交廣播機構 [20]。</p><div class='lab'>Briefing session 補充</div><p>無(暫未有 FEHD briefing session 錄音 transcript)</p></section>
+<section id="nblm" class="nb"><h2>NBLM 創意(3 個方向)</h2><div class="card"><h4>科技查漏 / The Cost of Delay</h4>
+      <div class="lab">Big Idea</div><p>痛點打擊:紅外線科技極速精準 × 被追討調查費用的肉痛,將保養責任轉為迫切財政危機。</p>
+      <div class="lab">Slogan</div><p class="slo">紅外線精準測漏,無視通知代價自負!</p>
+      <div class="lab">KV</div><p>分割:左 JO 紅外線透視牆內紅色警報漏水管;右 業主收到燃燒金錢符號嘅巨額調查費通知單。</p></div>
+<div class="card"><h4>無所遁形 / The Invisible Catch</h4>
+      <div class="lab">Big Idea</div><p>科技威懾 + 後果具象化:紅外線如天眼,逾期同步二三階段調查 + 追討費用。</p>
+      <div class="lab">Slogan</div><p class="slo">紅外線精準尋源,及早維修免罰款。</p>
+      <div class="lab">KV</div><p>split-screen:左正常牆右紅外線熱像顯示隱藏水路,中央發紅光政府通知單。</p></div>
+<div class="card"><h4>熱能追蹤 / The Inescapable Heat</h4>
+      <div class="lab">Big Idea</div><p>高科技搜證 + 財務後果,直擊業主僥倖心理;配 WhatsApp 自檢 bot 做 O2O 出口。</p>
+      <div class="lab">Slogan</div><p class="slo">紅外線看透滲水源頭,即時維修免被追收!</p>
+      <div class="lab">KV</div><p>split-screen:左平靜地板右紅外線熱成像屏幕顯示地底喉管紅橙漏水警號。</p></div>
+  <p><a class="nblink" href="https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6" target="_blank">↗ 開 NotebookLM 睇完整方案 + slide deck 圖</a></p></section>
+<section id="cmt" class="cmt"><h2>綜合委員會 Route B — 所有 run</h2>
+  <p class="note">DeepSeek·Qwen·Kimi·Grok 委員會,3 輪雙向激盪 + CD/AD 踢橋 + 收斂。撳開每個 run 睇 slogan/storyboard,再撳「討論全程」睇精益求精過程。</p>
+  <details class="run"><summary>🗳️ Run 20260601-131010 · 3輪 · slogan 5·concept 2·格 14</summary>
+          <h4 class="cc">Slogan(畀 Raymond 揀)</h4>
+<p>收到通知信，紅外線已鎖源。</p>
+<p>紅外線鎖定異常，責任一目了然。</p>
+<p>新程序2026，技術輔助，責任自現。</p>
+<p>通知信到，源頭已清，維修在即。</p>
+<p>程序升級，源頭清晰，依法處理。</p>
+<h4 class="cc">Concept 1:〔文件對位〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:以「通知信與熱成像圖精準疊合」為核心視覺，強調調查已完成，通知信即為證據。紅外線熱成像化作法定文件附件，避開即時探測或透視意象，突顯業主收到信後責任清晰，需按程序處理。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>全黑背景，一封政府通知信由上垂直落入畫面中央。</td><td>（旁白）收到通知信。</td></tr><tr><td>2</td><td>信件靜止，信封印有「聯合辦事處」標誌。</td></tr><tr><td>3</td><td>信紙展開，顯示「滲水位置」欄位。</td></tr><tr><td>4</td><td>信紙表面緩緩浮現熱成像色階濾鏡。</td><td>（旁白）紅外線分析已完成。</td></tr><tr><td>5</td><td>濾鏡覆蓋信中「滲水位置」欄位。</td></tr><tr><td>6</td><td>熱成像異常區域與信件欄位精準對位。</td></tr><tr><td>7</td><td>對位完成，濾鏡轉為靜態印記。</td><td>（旁白）源頭位置已鎖定。</td></tr><tr><td>8</td><td>畫面顯示「新程序2026」字樣。</td></tr><tr><td>9</td><td>底部小字顯示「逾期不修，政府將追討測試費用」。</td></tr><tr><td>10</td><td>信件淡出，畫面轉為灰白底、黑字。</td></tr><tr><td>11</td><td>畫面出現「聯合辦事處 Joint Office」標誌。</td><td>（旁白）程序清晰，責任自現。</td></tr><tr><td>12</td><td>畫面定格，標誌及程序編號停留。</td></tr></tbody></table></div>
+<h4 class="cc">Concept 2:〔程序索引〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:以「三階段欄柵式索引」呈現法定程序，首階段置入通知信與熱成像摘要，其餘階段以低視覺權重列示，強調程序嚴謹、步驟有序，業主按通知信要求行動即可履行責任。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>畫面左側浮現三組垂直細線，標註 I、II、III。</td><td>（旁白）滲水調查程序。</td></tr><tr><td>2</td><td>第一欄（I）向右展開，顯示通知信。</td></tr><tr><td>3</td><td>通知信表面疊加熱成像摘要。</td><td>（旁白）紅外線輔助定位。</td></tr><tr><td>4</td><td>熱成像異常區域與信件欄位對位重合。</td></tr><tr><td>5</td><td>第二、三欄保持收合，僅顯示法定條文編號。</td></tr><tr><td>6</td><td>底部小字列明「限期內完成維修」。</td></tr><tr><td>7</td><td>畫面轉灰白底、深藍線條。</td><td>（旁白）逾期不修，依法執行後續程序。</td></tr><tr><td>8</td><td>第二欄輕微高亮，顯示「第二、三階段調查」。</td></tr><tr><td>9</td><td>第三欄輕微高亮，顯示「追討測試費用」。</td></tr><tr><td>10</td><td>第一欄重新聚焦，通知信與熱成像靜態停留。</td></tr><tr><td>11</td><td>畫面出現「聯合辦事處 Joint Office」標誌。</td><td>（旁白）程序升級，責任明確。</td></tr><tr><td>12</td><td>畫面定格，標誌及階段編號停留。</td></tr></tbody></table></div>
+          <details class="proc"><summary>睇委員會討論全程(3 輪 + CD/AD 踢橋)</summary>
+            <div class="lab">策略總監</div><p>策略跳板  </p>
+<p>滲水新程序 2026 API</p>
+<p>策略張力  </p>
+<p>「業主覺得滲水係政府事」vs「政府話業主自己有責」——如何把「通知信」由威脅變提醒？</p>
+<p>創意機會  </p>
+<p>避開罰款畫面，改用「紅外線即影即見」visual hook：一秒鎖源、即知責任所在。</p>
+<p>受眾觸發點  </p>
+<p>業主最怕「樓上樓下兩家夾一齊俾錢」→切入「揾到真源頭，止住兩家損失」。</p>
+<p>品牌角色  </p>
+<p>專業助手：科技+效率，唔係監察者。</p>
+<p>切入角度  </p>
+<p>1. 紅外線快鏡——30秒內見到滲水位，解決盲揾  </p>
+<p>2. 同步三階段——一次過搞掂，毋須逐次等  </p>
+<p>3. 及時修——限期前主動，雙方慳時間慳錢  </p>
+<p>4. 鄰里安心——源頭斷尾，全樓嘆穩陣</p>
+<p>要避伏  </p>
+<p>• 零截圖罰款數字  </p>
+<p>• 避免航拍私宅  </p>
+<p>• 不提「追討費用」作主句，只講「程序支援」</p>
+            <div class='lab'>—— 第1輪 ——</div><div class='lab'>文案</div><p>（1）Slogan（共5條）</p>
+<p>1. 紅外線一掃 源頭即閃現——新程序 冇拖冇欠  </p>
+<p>   Infrared reveals, responsibility clears—new process, no delay.</p>
+<p>2. 滲水唔使估 科技幫你捉  </p>
+<p>   Stop guessing leaks, let tech find the streaks.</p>
+<p>3. 兩家唔使夾 搵啱源頭即止蝕  </p>
+<p>   Two homes, one source—find it right, stop the loss.</p>
+<p>4. 30秒鎖源 同步三步 慳時間慳錢  </p>
+<p>   30-sec detect, 3-step connect—save time, save cost.</p>
+<p>5. 專業助手到 鄰里安心冇煩惱  </p>
+<p>   Pro assistant on call, peace of mind for all.</p>
+<p>---</p>
+<p>（2）文案方向</p>
+<p>方向一：科技快鏡．斷尾免煩  </p>
+<p>Hook：紅外線一照，滲水無所遁形——30秒知源頭，唔使盲舂舂。  </p>
+<p>核心訊息：新程序用紅外線快速鎖定滲水源頭，業主毋須再估估下，避免「樓上樓下夾錢」冤枉損失，科技做你專業助手，效率解決爭拗。</p>
+<p>方向二：同步三步．主動即修  </p>
+<p>Hook：一次過搞掂三階段，唔使逐次等——限期前主動出手，雙方慳到盡。  </p>
+<p>核心訊息：程序整合「檢測、通知、修復」三步，政府提供清晰時間線，鼓勵業主及早行動，從源頭斷尾，全棟樓住得安心，兼保鄰里和氣。</p>
+<p>---</p>
+<p>（改動說明：本輪為首次創作，未有上一輪批評，故按策略要求聚焦「科技快鏡」「同步三步」兩大切入角度，避免罰款、追討字眼，強調紅外線即時視覺與程序效率，語感採用廣東話口語化短句，務求 punchy 易記。）</p><div class='lab'>美術</div><h4 class="cc">方向一：科技快鏡．斷尾免煩</h4>
+<p><strong>視覺隱喻</strong></p>
+<p>「X光透視眼」與「對焦鎖定」。將紅外線熱成像轉化為一種「看見真相」嘅超能力視覺語言。唔係冷冰冰嘅儀器掃描，而係一種溫暖、清晰嘅「洞察」，象徵科技幫人睇穿牆壁背後嘅隱患，將模糊嘅責任變成清晰嘅事實。</p>
+<p><strong>主視覺 KV</strong></p>
+<p>畫面採用「左右分割但動態融合」嘅構圖。左邊係肉眼所見嘅普通家居牆身（帶少少潮濕陰影），右邊係同一位置嘅紅外線熱成像視角（鮮明橙紅色熱源輪廓）。中間分割線唔係直線，而係一部手持紅外線探測儀嘅側面剪影，彷彿佢正掃過牆面，將左邊嘅「疑團」即時轉化為右邊嘅「答案」。主體係牆身入面嗰團清晰可見嘅熱源光暈，旁邊配以簡潔UI數據標註（如溫度讀數、深度提示），強調「30秒鎖源」嘅即時性同精準度，完全避開任何罰款或警告字眼。</p>
+<p><strong>開場第一個畫面</strong></p>
+<p>全黑畫面中，一束紅外線光柵由上而下快速掃過，伴隨輕微而專業嘅電子提示音「嗶」。光柵掃過之處，原本隱藏喺黑暗中嘅牆體結構以熱成像色彩瞬間亮起，滲水源頭如脈搏般閃爍一下，隨即定格並彈出綠色鎖定框。畫面乾淨利落，3秒內建立「科技=即時答案」嘅認知。</p>
+<p><strong>記憶點</strong></p>
+<p>「熱源脈搏閃動」嗰一下。當紅外線鎖定滲水位時，嗰團熱光唔係靜態色塊，而係像心跳一樣有節奏地閃動兩次，配合一聲清脆溫和嘅確認音效。呢個動態設計將冰冷嘅檢測過程人格化，好似科技助手話你知「搵到喇」，令觀眾對「紅外線即影即見」留下深刻感官印象，同時傳遞安心感而非威嚇感。</p>
+<p>---</p>
+<h4 class="cc">方向二：同步三步．主動即修</h4>
+<p><strong>視覺隱喻</strong></p>
+<p>「齒輪咬合」與「時間軸壓縮」。將三個獨立程序階段視覺化為三個無縫銜接、同步轉動嘅半透明齒輪或模組，象徵新程序打破傳統線性等待，實現「檢測、通知、修復」三件事平行推進。視覺質感強調流暢、輕盈，消除官僚程序嘅沉重感。</p>
+<p><strong>主視覺 KV</strong></p>
+<p>畫面採用「橫向三欄等分但底部貫通」嘅分割方式。三欄分別代表檢測（紅外線圖標）、通知（文件圖標）、修復（工具圖標），但每欄之間冇實線隔開，取而代之係一條流動嘅光帶由左至右貫穿三欄底部，象徵程序同步進行、一氣呵成。主體係光帶上方懸浮嘅三個立體模組，佢哋正處於咬合運轉狀態，模組表面帶有柔和光澤，傳遞高效協作感。背景係模糊處理嘅樓宇剪影，突出前景程序模組嘅清晰度，整體色調以藍綠為主，營造專業、平靜、可預期嘅氛圍。</p>
+<p><strong>開場第一個畫面</strong></p>
+<p>一條水平時間軸由畫面左側滑入，軸上原本標有「第一階段、第二階段、第三階段」嘅刻度間距極長，暗示舊程序漫長。隨即一道光暈掃過，三段刻度瞬間壓縮貼近，三個階段圖標同時亮起並開始同步旋轉，時間軸下方出現「同步進行」字樣。整個動作喺2秒內完成，直觀傳達「毋須逐次等」嘅核心訊息。</p>
+<p><strong>記憶點</strong></p>
+<p>「三步合一嘅流暢轉場」。當三個階段圖標同步運轉時，佢哋會融合成一個完整嘅圓環或盾牌形狀，象徵程序整合帶來嘅保障與安心。呢個融合動作配合一句口語化旁白「一次過搞掂」，將抽象嘅行政流程轉化為具象嘅「完成感」符號。觀眾未必記得三個階段名稱，但會記住「三個變一個、快好多」嘅視覺節奏，強化新程序效率優勢。</p><div class='lab'>CD 踢橋</div><p>整體評估  </p>
+<p>策略仍停留在「示範工具」層面，欠缺把「新程序」變成「業主應該即刻行動」的驅動力。文案與美術各自走好，但未同時鎖緊「30秒鎖源＝即時減損」這個最強記憶點，記憶負擔偏散。</p>
+<p>---</p>
+<p>文案批評  </p>
+<p>1. 5條 slogan 各自表述不同主軸（紅外線／科技／止蝕／三步／安心），無主次，難成為單一句「最強標語」。  </p>
+<p>2. 「30秒鎖源」「同步三步」「一次過搞掂」三個時間相關訊息重疊，互相稀釋 punch。  </p>
+<p>3. 方向一 hook「30秒知源頭」已夠強，但後面「避免冤枉損失」句式稍長，衝擊力回落。  </p>
+<p>4. 方向二「三階段」概念本身缺乏視覺衝擊，文案卻未提供第二層感官描述，較平。</p>
+<p>美術批評  </p>
+<p>1. 方向一「左右分割＋手持儀器剪影」構圖複雜；30秒內要同時建立「左右對比」與「儀器外形」兩個認知，記憶點被稀釋。  </p>
+<p>2. 方向二三欄齒輪視覺隱喻太抽象，業主難即時連繫到「自己有得慳」；而「融合成盾牌」又與策略「非監察者」衝突，易被誤讀為官方背書。  </p>
+<p>3. 兩個方向的 KV 與 opening 均未重複同一個「閃動／壓縮」動作，記憶一致性低。</p>
+<p>---</p>
+<p>最值得 develop 的方向  </p>
+<p>方向一「紅外線快鏡」——它同時擊中「即時視覺鉤子」與「業主最怕夾錢」雙重痛點，放大後記憶最強。</p>
+<p>具體開發方向  </p>
+<p>1. Slogan 只留一句：把方向一 hook 再濃縮為「紅外線一閃，源頭即現——30秒止蝕」。其餘四句作 A/B test 備胎。  </p>
+<p>2. 文案統一只講「30秒」與「源頭」兩個數字／場景；「三階段」改為支援訊息，放副文或小字。  </p>
+<p>3. 美術把「左右分割」簡化為單一「黑屏→一閃熱源鎖定框」兩秒鏡頭；儀器剪影可隱去或只留光束，確保全片只剩「閃爍鎖定」一個記憶動作。  </p>
+<p>4. KV 鎖定「脈搏閃兩下」動效，把同樣閃動帶到通版海報／IG 靜幀，形成跨 touchpoint 的一致 recall。</p><div class='lab'>AD 踢橋</div><p># 批評 + 修改方向</p>
+<p>---</p>
+<h4 class="cc">一、硬訊息遺漏（中brief與否）</h4>
+<div class="tw"><table><thead><tr><th>遺漏項目</th><th>問題嚴重性</th></tr></thead><tbody><tr><td><strong>通知信</strong></td><td>⚠️ 嚴重。Brief明確要求「促使收到通知信的業主主動及時進行檢驗和維修」，文案兩個方向隻字未提「通知信」——呢個係政府程序嘅法定觸發點，唔提等於觀眾唔知自己係咪目標對象。</td></tr><tr><td><strong>逾期後果：同步第二三階段調查</strong></td><td>⚠️ 嚴重。方向二話「同步三步」係「檢測、通知、修復」——完全錯！Brief講嘅係「第一階段已引入紅外線；若發出通知信後業主仍未能在限期內完成維修，聯辦處將同步展開第二及第三階段調查」。你將「逾期懲罰機制」扭曲成「便民服務」，訊息錯誤。</td></tr><tr><td><strong>追討測試費用</strong></td><td>⚠️ 嚴重。兩個方向完全迴避。Brief白紙黑字「向不合作的業主追討相關測試費用」，你改動說明仲自豪話「避免罰款、追討字眼」——呢個係客戶指定要溝通嘅強制性訊息，唔係你想避就避。</td></tr><tr><td><strong>業主責任（法律層面）</strong></td><td>⚠️ 中等。方向一講「避免樓上樓下夾錢冤枉損失」將責任淡化為經濟誘因；方向二講「慳到盡」同樣走消費者利益角度。Brief核心訊息開宗明義「妥善保養物業、防止滲水，永遠是業主的責任」——係法律責任，唔係慳錢著數。</td></tr><tr><td><strong>聯辦處（JO）品牌</strong></td><td>⚠️ 中等。全程無提「聯合辦事處」或「聯辦處」，觀眾唔知邊個部門做呢件事。</td></tr><tr><td><strong>FEHD + BD 雙部門</strong></td><td>⚠️ 輕微。至少出現一次部門名稱建立認證。</td></tr></tbody></table></div>
+<h4 class="cc">修改方向（硬訊息）</h4>
+<p>- <strong>必須加入通知信嘅視覺辨識</strong>：信封、信紙式樣或「通知信」三字，令觀眾明確知道「收到呢封信就要行動」</p>
+<p>- <strong>正確階段結構</strong>：第一階段（紅外線探測）→ 發通知信 → 限期內不修 → <strong>同步展開第二三階段</strong> → <strong>追討費用</strong>。方向二嘅「檢測、通知、修復」要推倒重寫</p>
+<p>- <strong>追討費用要用「收回成本」框架，唔用「罰款」框架</strong>：重點係「納稅人資源唔應由不合作業主濫用」，而非政府斂財</p>
+<p>- <strong>業主責任要人稱直擊</strong>：用「你」而唔係「雙方」「大家」，強調個人法律義務</p>
+<p>---</p>
+<h4 class="cc">二、合規 / 政治 / 私隱風險</h4>
+<div class="tw"><table><thead><tr><th>風險點</th><th>具體問題</th></tr></thead><tbody><tr><td><strong>紅外線「看穿牆壁」意象</strong></td><td>⚠️ 高危。美術方向一「X光透視眼」「看見真相嘅超能力」——紅外線熱成像係探測表面溫差，根本唔係透視牆壁結構。過度神化令人誤解為侵入性監控，觸發私隱恐慌（「政府係咪可以隨時照入我屋企？」）。政治風險：泛民/網媒一定炒作「老大哥照穿你屋企」。</td></tr><tr><td>「30秒鎖源」</td><td>⚠️ 中等。誇大技術能力。紅外線係輔助工具，實際定位需配合專業判斷，「30秒」易俾人捉包話誤導。</td></tr><tr><td>「科技做你專業助手」</td><td>⚠️ 輕微。將政府執法角色降格為服務提供者，削弱「責任」訊息嘅權威性。</td></tr><tr><td>全程避談追討費用</td><td>⚠️ 嚴重。若最終版被迫加入，觀眾會覺得被誤導；若真係刪走，政府內部審批一定彈。</td></tr><tr><td>「樓上樓下夾錢冤枉損失」</td><td>⚠️ 中等。暗示滲水糾紛係「雙方搵數」嘅民事問題，淡化業主單方面法律責任。</td></tr></tbody></table></div>
+<h4 class="cc">修改方向（風險管控）</h4>
+<p>- <strong>紅外線視覺要「表面探測」而非「透視」</strong>：畫面應顯示儀器貼近/對準牆面，探測嘅係<strong>外牆表面溫差分布</strong>，唔係「牆裡面有啲咩」。杜絕任何X光、CT scan、透視等類比</p>
+<p>- 加免責/技術說明字幕：「紅外線熱成像探測表面溫度，協助定位滲水範圍」</p>
+<p>- 「30秒」改為「更快」或具體展示「掃描動作」而非承諾結果時間</p>
+<p>- 追討費用嘅表述：用「收回調查成本」而非「罰款」，用「不合作個案」限定適用範圍，避免泛化</p>
+<p>---</p>
+<h4 class="cc">三、客收唔收貨（信息準確清晰 30分）</h4>
+<div class="tw"><table><thead><tr><th>評分項目</th><th>得分</th><th>評語</th></tr></thead><tbody><tr><td>紅外線科技</td><td>12/30</td><td>有提但嚴重誇大兼誤導，私隱風險未管控</td></tr><tr><td>通知信</td><td>0/30</td><td>完全消失</td></tr><tr><td>同步第二三階段</td><td>5/30</td><td>存在但內容錯誤（變成便民三步而非逾期懲罰）</td></tr><tr><td>追討測試費用</td><td>0/30</td><td>完全消失</td></tr><tr><td>業主責任</td><td>10/30</td><td>有旁及但重心錯置（慳錢&gt;法律責任）</td></tr><tr><td>整體信息準確清晰</td><td><strong>約 15/30</strong></td><td><strong>唔合格</strong></td></tr></tbody></table></div>
+<h4 class="cc">核心矛盾：策略選擇 vs 客戶指令</h4>
+<p>你改動說明公然寫「避免罰款、追討字眼」——呢個係<strong>創作主動對抗brief</strong>。客戶要溝通嘅唔係「靚仔科技廣告」，係<strong>帶有強制性後果嘅法定程序通知</strong>。將佢包裝成「慳時間慳錢」嘅消費者著數，係<strong>根本性策略錯誤</strong>。</p>
+<p>政府API唔係賣保險，唔使討好業主。業主係<strong>潛在被執法對象</strong>，訊息要清晰：你有責任 → 我哋用科技加快 → 你收信要修 → 唔修我同步深入查 → 你要找數。</p>
+<p>---</p>
+<h4 class="cc">四、綜合修改方向</h4>
+<h4 class="cc">文案層面</h4>
+<div class="tw"><table><thead><tr><th>要改</th><th>點改</th></tr></thead><tbody><tr><td>加入通知信</td><td>口號或旁白必須出現「通知信」三字，例：「收到通知信，限期前主動修」</td></tr><tr><td>修正階段結構</td><td>方向二整個推倒。新方向：「紅外線快測 → 通知信限修 → 逾期同步查 → 追討費用」</td></tr><tr><td>追討費用重新入框</td><td>用「不合作業主須承擔調查成本」「收回測試費用，保障公帑」框架</td></tr><tr><td>業主責任人稱化</td><td>「你的物業，你的責任」而非「雙方慳到盡」</td></tr><tr><td>Slogan檢視</td><td>現有5條全部過柔。需至少1-2條帶法定後果意識，例：「限期不修，同步追查，費用自負」</td></tr></tbody></table></div>
+<h4 class="cc">美術層面</h4>
+<div class="tw"><table><thead><tr><th>要改</th><th>點改</th></tr></thead><tbody><tr><td>紅外線視覺</td><td>由「透視牆內」改為「表面溫差色圖」，儀器貼近牆面操作，畫面加註「熱成像探測表面溫度」</td></tr><tr><td>通知信視覺</td><td>必須有特寫：政府信封、聯辦處信頭、「通知信」標題</td></tr><tr><td>同步調查視覺</td><td>由「齒輪融合」改為「階段圖標並列推進」，明確係「第二+第三階段同時啟動」，加強制感</td></tr><tr><td>追討費用視覺</td><td>可抽象化為「成本轉移箭頭」由公帑指向個人，或文字清晰列出</td></tr><tr><td>色調</td><td>方向一橙紅（科技感）保留但降低侵略性；方向二藍綠太柔，逾期環節需轉深藍/灰提示嚴肅</td></tr></tbody></table></div>
+<h4 class="cc">結構層面（30秒API建議節奏）</h4>
+<div class="tw"><table><thead><tr><th>秒數</th><th>內容</th><th>必備元素</th></tr></thead><tbody><tr><td>0-5</td><td>問題：滲水困擾</td><td>潮濕牆面、鄰里糾紛</td></tr><tr><td>5-12</td><td>新程序：紅外線快測</td><td>儀器操作、表面溫差圖、聯辦處標誌</td></tr><tr><td>12-18</td><td>通知信與限期</td><td><strong>信封特寫</strong>、日期標示</td></tr><tr><td>18-24</td><td>逾期後果：同步調查 + 追討費用</td><td><strong>階段圖標並列</strong>、費用字樣</td></tr><tr><td>24-30</td><td>業主責任 + Call to action</td><td>「你的物業，你的責任」、聯絡資料</td></tr></tbody></table></div>
+<p>---</p>
+<p><strong>總結：現有R1係靚仔但走晒偏嘅創作，精準度唔合格。要立即拉回法定程序通知嘅本質，硬訊息唔夠膽寫係創意人嘅失職，唔係策略選擇。</strong></p><div class='lab'>—— 第2輪 ——</div><div class='lab'>文案</div><p># 第2輪文案提案 (綜合CD/AD批評)</p>
+<p><strong>核心調整：</strong></p>
+<p>1.  <strong>硬訊息補強</strong>：所有文案加入「通知信」觸發點、「業主責任」法律層面、「同步二三階段調查」、「收回相關測試費用」等關鍵訊息。表述框架由「便民服務」轉為「依法支援程序」。</p>
+<p>2.  <strong>風險管控</strong>：紅外線描述由「透視真相」改為「探測表面溫差，輔助定位」，避開透視意象。</p>
+<p>3.  <strong>記憶點聚焦</strong>：遵CD指示，將全案記憶點濃縮為「紅外線一閃，鎖定源頭」的動態視覺，並貫穿所有文案，強化「30秒鎖源＝即時減損」的驅動力。</p>
+<p>4.  <strong>文案統一軸心</strong>：以「通知信 → 紅外線快檢 → 鎖定源頭 → 及時修免同步調查 → 免收回費用」為核心敘事鏈，所有 slogan 與文案方向圍繞此鏈展開，減少訊息分散。</p>
+<p>---</p>
+<h4 class="cc">(1) 至少 5 條 Slogan</h4>
+<p>1. <strong>收到滲水通知信？30秒紅外線快檢，鎖源頭，止蝕。</strong> (主 slogan，綜合觸發點、工具、結果)</p>
+<p>2. <strong>紅外線一閃，源頭即現。及早修，免同步調查，免收回費用。</strong> (強化法律程序與經濟結果)</p>
+<p>3. <strong>滲水責任在你。聯辦處紅外線快檢，助你30秒鎖定源頭，及時處理。</strong> (直擊責任，點明部門)</p>
+<p>4. <strong>唔想收到信後被同步調查？紅外線快檢，鎖定源頭，及時修。</strong> (以「同步調查」為壓力點，促行動)</p>
+<p>5. <strong>Joint Office 紅外線快檢：表面溫度探測，30秒輔助定位，助你履行業主責任。</strong> (技術描述準確，強調責任)</p>
+<p>---</p>
+<h4 class="cc">(2) 2 個文案方向</h4>
+<h4 class="cc">**方向一：30秒鎖源．及時止蝕**</h4>
+<p>*   <strong>方向名</strong>：鎖源止蝕 (直接行動導向)</p>
+<p>*   <strong>Hook</strong>：<strong>收到滲水通知信？紅外線快檢，30秒鎖定源頭表面溫度異常，唔使估。</strong></p>
+<p>*   <strong>核心訊息</strong>：</p>
+<p>    滲水妥善維修係業主責任。收到聯合辦事處(JO)發出嘅滲水通知信後，新程序已引入紅外線熱成像探測，<strong>30秒內輔助定位表面溫度異常範圍，鎖定滲水源頭</strong>，助你清晰責任所在。若你能在限期內按通知信要求完成維修，即可避免聯辦處同步展開第二、第三階段調查，以及向不合作業主收回相關測試費用嘅程序。<strong>鎖定源頭，及時修復，止住雙方不必要嘅時間與金錢損失。</strong></p>
+<h4 class="cc">**方向二：依法支援．程序清晰**</h4>
+<p>*   <strong>方向名</strong>：程序清晰 (法律程序導向)</p>
+<p>*   <strong>Hook</strong>：<strong>滲水通知信已列明責任。紅外線快檢助你30秒鎖源，清晰下一步。</strong></p>
+<p>*   <strong>核心訊息</strong>：</p>
+<p>    滲水問題，業主有法定責任妥善處理。聯合辦事處(JO)發出滲水通知信後，會使用紅外線熱成像進行第一階段快檢，<strong>探測表面溫度分布，30秒內輔助鎖定滲水疑似源頭</strong>，讓責任範圍更清晰。若你根據結果及時維修，便可避免因逾期未修而觸發聯辦處同步展開更深入嘅第二、第三階段調查。程序旨在確保公平運用資源，對不合作業主，聯辦處會依法收回相關測試費用。<strong>紅外線快檢，助你依法、及時、清晰地完成責任。</strong></p>
+<p>---</p>
+<p><strong>美術建議調整 (配合文案)：</strong></p>
+<p>*   <strong>視覺主記憶點</strong>：統一為「黑屏/普通牆面 → 紅外線光束掃過 → 表面溫度熱成像圖瞬間顯現 → 特定熱源區閃爍兩下並被鎖定框標記」。刪除「左右分割」及「透視牆內」意象，強調「表面探測」。</p>
+<p>*   <strong>通知信視覺</strong>：關鍵畫面需出現「滲水通知信」信封或文件樣式，與紅外線檢測畫面連結。</p>
+<p>*   <strong>階段表述</strong>：若需展示程序，正確視覺化為：<strong>第一階段(紅外線快檢) → 通知信與限期 → (逾期) → 同步展開第二、第三階段調查</strong>。避免「檢測、通知、修復」錯誤三步曲。</p>
+<p>*   <strong>文案與美術鎖定</strong>：所有口號與hook中「30秒鎖源」與美術「閃爍鎖定框」動效嚴格對應，形成唯一強記憶點。副文案述「同步調查」、「收回費用」等硬訊息。</p><div class='lab'>美術</div><h4 class="cc">回應 CD / AD 批評與調整方針</h4>
+<p>針對第2輪批評，本輪美術指導作出以下核心修正，確保視覺與策略完全對齊：</p>
+<p>1.  <strong>回應「硬訊息遺漏」</strong>：視覺敘事鏈嚴格重組為「收到通知信（觸發）→ 紅外線快檢（行動）→ 鎖定源頭（結果）→ 免同步調查/免收回費用（後果管控）」。KV 與影片開場必見「滲水通知信」實體或明確圖示，確立法定觸發點；結尾資訊板以「程序支援」框架呈現「收回測試費用」，取代罰款意象。</p>
+<p>2.  <strong>回應「透視私隱風險」</strong>：全面剔除 X光、穿透牆壁、人體剪影等視覺。紅外線呈現嚴格限定為「牆體表面熱成像色塊」與「外部掃描光束」，強調「輔助定位表面溫差」而非「看穿內部」。</p>
+<p>3.  <strong>回應「記憶點分散與構圖複雜」</strong>：捨棄左右分割、齒輪、盾牌等抽象或複雜構圖。全案統一單一超級符號：「熱成像鎖定框閃爍兩下」。此動效貫穿 KV、影片、社交媒體靜幀，形成跨平台一致 recall。</p>
+<p>4.  <strong>回應「30秒誇大與責任淡化」</strong>：視覺上將「30秒」錨定於「鎖定框閃爍完成」的瞬間，而非「找出真相」的結果；語境上以「履行業主責任」為基調，將止蝕定位為「盡責後的附帶好處」，而非純粹慳錢。</p>
+<p>5.  <strong>回應「部門辨識」</strong>：所有主視覺及關鍵幀均置入「聯合辦事處 Joint Office」標準識別，確立官方專業助手角色。</p>
+<p>---</p>
+<h4 class="cc">方向一：30秒鎖源．及時止蝕（推薦主力開發）</h4>
+<p><strong>視覺隱喻</strong></p>
+<p>「診斷脈搏」。將冷冰冰的科技檢測，轉化為對樓宇問題的「精準把脈」。紅外線鎖定框的閃爍節奏模擬心跳或診斷確認訊號，傳遞「即時、準確、非侵入性」的专业感，取代過往「監察、透視」的壓迫感。</p>
+<p><strong>主視覺 KV</strong></p>
+<p>-   <strong>畫面分割</strong>：捨棄左右分割，改用「焦點式構圖」。畫面中央為一面帶有輕微水漬痕跡的真實牆面（非透視），佔據 70% 版面。</p>
+<p>-   <strong>主體</strong>：牆面上疊加清晰的「熱成像溫度色塊（紅黃漸變）」，色塊外圍有高科技感的「鎖定框」正處於閃爍狀態。</p>
+<p>-   <strong>觸發點連結</strong>：畫面左下角或右上角以實體質感呈現「滲水通知信」信封局部，與牆面熱成像形成「信→檢測」的視覺因果。</p>
+<p>-   <strong>部門與訊息</strong>：頂部置「聯合辦事處」Logo；標題區緊貼鎖定框，寫上「紅外線一閃，源頭即現」；底部副文以小字列明「30秒輔助定位表面溫差．履行業主責任．免同步調查及收回測試費用」。</p>
+<p><strong>開場第一個畫面</strong></p>
+<p>特寫鏡頭：一隻手拿著印有「聯合辦事處滲水通知信」的信封進入畫面，背景為模糊的室內牆身。信件清晰對焦，建立「收到信＝行動起點」的條件反射。隨即鏡頭拉遠，紅外線掃描光束由信紙表面滑向牆身，無縫接軌至檢測場景。</p>
+<p><strong>記憶點（觀眾過目不忘嗰下）</strong></p>
+<p>「鎖定框雙閃」。在紅外線熱成像色塊顯現後，鎖定框以特定節奏「閃爍兩下」並 accompanied by 輕微科技確認音效。此動效嚴格對應文案「30秒鎖源」，成為全片唯一、重複出現的視覺錨點。無論在影片、Banner 或 IG 貼文，只要見到「閃兩下」，觀眾即聯想到「鎖源止蝕」。</p>
+<p>---</p>
+<h4 class="cc">方向二：依法支援．程序清晰（備選 / 資訊澄清用）</h4>
+<p><strong>視覺隱喻</strong></p>
+<p>「導航路徑」。將複雜的法律程序視覺化為一條清晰、不可逆的「責任履行路線圖」。強調「紅外線快檢」是路線上的第一個關鍵節點，而非終點。避開齒輪、盾牌等抽象符號，改用實物 icon 與連接線，降低認知門檻。</p>
+<p><strong>主視覺 KV</strong></p>
+<p>-   <strong>畫面分割</strong>：垂直時間軸構圖，由上至下或左至右流動。</p>
+<p>-   <strong>主體</strong>：一條清晰的路徑線串聯四個實物 icon：① 滲水通知信（觸發）→ ② 紅外線熱成像鎖定框閃爍（30秒快檢）→ ③ 維修工具/完成標記（及時修復）→ ④ 綠色剔號（免同步調查/免收回費用）。</p>
+<p>-   <strong>視覺重心</strong>：整個路徑中，只有「② 紅外線鎖定框」是動態發光或高亮狀態，其餘為靜態線性 icon，確保記憶點不被稀釋。</p>
+<p>-   <strong>部門與訊息</strong>：頂部置「聯合辦事處」Logo；主標題「依法支援．程序清晰」置於路徑起點旁；每個 icon 下方附簡短標籤（如「第一階段快檢」、「限期前修復」），確保硬訊息準確傳達。</p>
+<p><strong>開場第一個畫面</strong></p>
+<p>動態圖形開場：一封「滲水通知信」從畫面頂部滑入並定格，隨即一條光線從信件延伸而出，點亮第一個節點「紅外線快檢」。整個過程 2 秒內完成，直接建立「信→程序啟動」的視覺邏輯，避免抽象鋪墊。</p>
+<p><strong>記憶點（觀眾過目不忘嗰下）</strong></p>
+<p>「路徑點亮＋鎖定框閃爍」的組合動作。當光線經過「紅外線快檢」節點時，該節點的鎖定框同樣執行「閃爍兩下」的統一動效。此設計確保即使在不同方向、不同媒介中，「閃兩下＝鎖源」的核心記憶保持一致，同時強化「這是程序中的關鍵一步」而非「魔法透視」的正確認知。</p><div class='lab'>CD 踢橋</div><h4 class="cc">策略層面 critique  </h4>
+<p>- 策略跳板「滲水新程序 2026 API」同文案/美術全無對應，感覺是孤立的標籤，沒有成為記憶點。  </p>
+<p>- 「業主覺得係政府事 vs 政府話業主有責」的張力被削弱；現有文案把「依法支援」當主軸，卻未真正把「你自己都要出錢」這道刺痛感放進去。  </p>
+<p>- 「紅外線即影即見」visual hook 稍嫌單薄，30 秒鎖源之後，業主依然要出錢修，策略上欠缺「我即刻知邊度出事＝即刻止損」的情緒 payoff。  </p>
+<h4 class="cc">文案層面 critique  </h4>
+<p>- 五條 slogan 層次不清：第 3、5 條重複講「責任」，第 4 條又反過嚟用恐嚇式「唔想被同步調查」，整體欠缺一條真正 punchy、能帶記憶點的主軸。  </p>
+<p>- 方向一、二的 hook 都太長，難以即時 recall；「30秒輔助定位表面溫差」這種技術語言把「快」的感覺寫死。  </p>
+<p>- 「免同步調查、免收回費用」寫得太直，容易被讀成「罰款話你知」，違反策略「零截圖罰款數字」。  </p>
+<p>- 硬訊息過度堆疊，讀者要在 3 秒內同時消化法律責任、程序、費用，認知負擔過重。  </p>
+<h4 class="cc">美術層面 critique  </h4>
+<p>- 「鎖定框雙閃」呢個記憶點算幾 standalone，但「診斷脈搏」同「導航路徑」兩個視覺隱喻同策略張力（業主自己要出錢）並唔 match，感覺只係工具美化。  </p>
+<p>- 方向二的時間軸/路徑圖容易變成流程圖，記憶點被稀釋，違反「單一超級符號」嘅指示。  </p>
+<p>- 通知信位置太細、太邊緣，起唔到觸發點作用；業主可能睇完以為係另一份文件而非行動起點。  </p>
+<h4 class="cc">最值得 develop 嘅方向 + 具體調整  </h4>
+<p><strong>方向一「30秒鎖源．及時止蝕」</strong> 最有戲，但要改三點：  </p>
+<p>1. 把記憶點由「鎖定框雙閃」升級為「信封撞到紅光即閃兩下」——開場就見到通知信被紅外線一閃，雙閃之後即刻出現「鎖源＝你即刻知邊度出事」。  </p>
+<p>2. 文案把「30秒」由技術描述改為情緒 payoff：「30秒紅光一閃，你即刻知邊度要自己出錢」。  </p>
+<p>3. 主視覺 KV 把通知信放大至畫面 30% 版面，半掩於牆身，令「收到信＝即有行動」成為視覺主體，同時避開罰款視覺。  </p>
+<p>改完之後 slogan 可濃縮為一句：  </p>
+<p><strong>「信嚟紅光一閃，30 秒知邊度要你出錢。」</strong></p><div class='lab'>AD 踢橋</div><p>---</p>
+<h4 class="cc">批評：文案 R2</h4>
+<h4 class="cc">(1) 硬訊息遺漏與誤植</h4>
+<div class="tw"><table><thead><tr><th>問題</th><th>具體</th></tr></thead><tbody><tr><td><strong>「30秒」誇大失實</strong></td><td>Brief 無提「30秒」快檢，屬自行捏造。紅外線探測係輔助定位，實際調查需時，「30秒鎖源」變誤導承諾，客戶無法確認此數據。資訊準確清晰 30 分：扣 15 分。</td></tr><tr><td><strong>「止蝕」商業術語不當</strong></td><td>滲水維修係法定責任，非投資損失。「止蝕」令政府立場變「幫業主慳錢」，淡化業主責任，偏離「業主責任為本」核心。</td></tr><tr><td><strong>「快檢」用詞偏頗</strong></td><td>暗示業主可主動要求檢測，實際係政府主導程序、發信後才啟動，非便民服務。</td></tr><tr><td><strong>「收到信後被同步調查」時序錯亂</strong></td><td>Slogan 4 語法暗示「收到信」即觸發同步調查，實為「逾期仍未維修」才觸發。嚴重誤導程序。資訊準確清晰 30 分：再扣 10 分。</td></tr><tr><td><strong>「免同步調查」框架錯誤</strong></td><td>同步二三階段係逾期後的執行措施，非「獎勵」；「免」字營造豁免感，削弱法律嚴肅性。</td></tr><tr><td><strong>「通知信」角色混淆</strong></td><td>文案將「紅外線探測」置於「收到通知信後」，實際程序係紅外線為第一階段調查工具，通知信係調查後的法定通知。時序顛倒。資訊準確清晰 30 分：扣 5 分。</td></tr></tbody></table></div>
+<p><strong>資訊準確清晰評分：0/30</strong></p>
+<p>---</p>
+<h4 class="cc">(2) 合規 / 政治 / 私隱風險</h4>
+<div class="tw"><table><thead><tr><th>風險</th><th>具體</th></tr></thead><tbody><tr><td><strong>「收回測試費用」變「免收回費用」誘因</strong></td><td>將追討費用包裝為「可避免的成本」，潛台詞係「盡快配合慳錢」，弱化政府追討權威，反令不合作業主覺得有退路、可討價還價。</td></tr><tr><td><strong>「助」字過度友善</strong></td><td>「助你30秒鎖定」「助你依法」等，聯辦處定位變「服務提供者」而非「執法機關」。2025施政報告強調「加強措施」，語氣需更果斷。</td></tr><tr><td><strong>紅外線描述仍有殘留風險</strong></td><td>雖改「表面溫差」，但「鎖定源頭」仍暗示精確歸責，實際熱成像僅顯示異常範圍，最終源頭需進一步調查確認。過度承諾或引致法律挑戰。</td></tr><tr><td><strong>「閃爍兩下」動效無關私隱，但涉誤導</strong></td><td>問題不在私隱，係將技術過程娛樂化，削弱政府程序嚴肅性。</td></tr></tbody></table></div>
+<p>---</p>
+<h4 class="cc">(3) 客收唔收貨</h4>
+<div class="tw"><table><thead><tr><th>判斷</th><th>理據</th></tr></thead><tbody><tr><td><strong>不收貨</strong></td><td>核心時序錯誤、自創數據、語氣偏軟，客戶（FEHD/BD 聯辦處）係執法部門，需強調「法定程序」非「便民服務」。「止蝕」「快檢」「助你」等詞彙過度市場化，不符合政府文宣格調。</td></tr><tr><td><strong>政治觸感不足</strong></td><td>2025施政報告係「加強措施」，文案卻營造「慳錢」「方便」氛圍，與政策原意背道而馳。</td></tr></tbody></table></div>
+<p>---</p>
+<h4 class="cc">文案修改方向</h4>
+<div class="tw"><table><thead><tr><th>要點</th><th>方向</th></tr></thead><tbody><tr><td><strong>刪除「30秒」「快檢」</strong></td><td>改為「引入紅外線熱成像分析，輔助尋找滲水源頭」或具體技術描述，不設時限承諾。</td></tr><tr><td><strong>重建正確時序</strong></td><td>第一階段調查（含紅外線）→ 發出通知信 → 限期內維修 / 逾期同步展開第二三階段調查 → 追討測試費用。通知信係調查後的法定文書，非觸發調查的起點。</td></tr><tr><td><strong>強化「業主責任」為絕對主語</strong></td><td>刪除「助你」「幫你」等輔助語氣。改為「業主須妥為保養」「業主須於限期內完成維修」。聯辦處角色係「執行法定程序」，非「服務業主」。</td></tr><tr><td><strong>「收回測試費用」重構</strong></td><td>表述為「政府將向不合作業主追討相關測試費用」，不設「免」字框架，不營造誘因。逾期後果係法定執行，非可選擇的獎懲。</td></tr><tr><td><strong>通知信定位準確</strong></td><td>「通知信」係正式法定文件，文案需體現其嚴肅性（如「法定通知書」），非普通信件。</td></tr><tr><td><strong>Slogan 格調調整</strong></td><td>刪除「止蝕」「閃」等商業/動感詞彙。參考政府文宣慣用語：穩重、直接、以責任為本。</td></tr></tbody></table></div>
+<p>---</p>
+<h4 class="cc">批評：美術 R2</h4>
+<h4 class="cc">(1) 硬訊息視覺化錯誤</h4>
+<div class="tw"><table><thead><tr><th>問題</th><th>具體</th></tr></thead><tbody><tr><td><strong>「收到信＝行動起點」完全顛倒程序</strong></td><td>開場「手拿通知信」建立錯誤條件反射。實際程序：紅外線探測屬第一階段調查，通知信係調查結果後發出。視覺時序錯誤將導致公眾誤解「收到信才開始檢測」。資訊準確清晰 30 分：扣 15 分。</td></tr><tr><td><strong>「免同步調查」視覺化為綠色剔號</strong></td><td>將法定執行程序包裝為「通關獎勵」，削弱法律嚴肅性。綠色剔號係商業 UX 慣用符號，不適用於政府執法語境。</td></tr><tr><td><strong>「通知信」實體過度美化</strong></td><td>法定通知書係嚴肅文件，信封/質感設計若過度精緻，或淡化其法律約束力。</td></tr></tbody></table></div>
+<p>---</p>
+<h4 class="cc">(2) 合規 / 政治 / 私隱風險</h4>
+<div class="tw"><table><thead><tr><th>風險</th><th>具體</th></tr></thead><tbody><tr><td><strong>「診斷脈搏」隱喻不當</strong></td><td>將政府調查比擬為「醫患關係」，暗示業主係「病人」需被治療，而非「責任方」需履行義務。醫療隱喻過度保護性，與「業主責任」核心衝突。</td></tr><tr><td><strong>「心跳/確認音效」娛樂化執法</strong></td><td>政府調查程序加入遊戲化反饋（閃爍+音效），削弱程序莊重性，政治觸感錯誤。</td></tr><tr><td><strong>「熱成像色塊」仍存誤導</strong></td><td>雖避「透視」，但「鎖定框」精確框選暗示已確定源頭，實際熱成像僅顯示異常範圍，最終歸責需進一步調查。過度視覺確定性或引致法律爭議。</td></tr><tr><td><strong>「閃爍兩下」超級符號風險</strong></td><td>統一動效雖利記憶，但將複雜調查程序壓縮為單一娛樂化符號，長遠或令公眾輕視程序嚴肅性，不利政策推行。</td></tr></tbody></table></div>
+<p>---</p>
+<h4 class="cc">(3) 客收唔收貨</h4>
+<div class="tw"><table><thead><tr><th>判斷</th><th>理據</th></tr></thead><tbody><tr><td><strong>不收貨</strong></td><td>方向一「診脈」隱喻完全偏離政府執法定位；方向二「導航路徑」過度簡化為 UX 流程圖，兩者均將法定程序市場化、遊戲化。客戶為跨部門聯合辦事處，需體現部門權威與法律嚴肅性。</td></tr><tr><td><strong>與 2025 施政報告「加強措施」基調背道而馳</strong></td><td>「加強」意味更嚴格、更高效、更具約束力，美術卻走向「友善」「易明」「方便」，政治判斷錯誤。</td></tr></tbody></table></div>
+<p>---</p>
+<h4 class="cc">美術修改方向</h4>
+<div class="tw"><table><thead><tr><th>要點</th><th>方向</th></tr></thead><tbody><tr><td><strong>重建正確視覺時序</strong></td><td>開場須為「調查場景」（聯辦處人員/設備進行紅外線探測），中段呈現「通知信」作為調查後的法定通知，尾段展示逾期後果（同步調查、追討費用）。刪除「收到信＝起點」的所有視覺邏輯。</td></tr><tr><td><strong>刪除「診斷脈搏」「導航路徑」隱喻</strong></td><td>改用中性、莊重的政府文宣視覺語言。參考現有 FEHD/BD 文宣風格：實景為主、資訊圖表為輔、色調穩重。</td></tr><tr><td><strong>「鎖定框」動效調整</strong></td><td>若保留熱成像視覺，「鎖定框」應改為「範圍標示」（虛線或漸變色塊），明示「輔助定位」非「確定歸責」。刪除「閃爍」動效，改為靜態或緩慢漸顯，降低娛樂感。</td></tr><tr><td><strong>通知信視覺莊重化</strong></td><td>呈現為正式政府文件樣式（白底、黑字、官方標誌、醒目標題），非精緻信封。可考慮特寫信件上「限期」「法定要求」等關鍵字。</td></tr><tr><td><strong>後果呈現方式</strong></td><td>「同步調查」可視化為調查人員/設備進場的實景或示意圖；「追討費用」以文件/帳單圖示呈現，避免金錢符號或商業 UX 元素（綠剔、紅 cross）。</td></tr><tr><td><strong>刪除統一「超級符號」策略</strong></td><td>政府程序不宜單一娛樂化符號貫穿。跨媒介一致性應靠「部門標誌+正確程序表述」建立，非動效記憶點。</td></tr><tr><td><strong>手語視窗與字幕嚴格合規</strong></td><td>確保六分之一畫面、右下角位置不與關鍵資訊重疊；字幕需與口語一致，書面語字幕須準確對應法定術語（如「通知信」非「提醒信」）。</td></tr></tbody></table></div>
+<p>---</p>
+<h4 class="cc">綜合方向（文案+美術聯動）</h4>
+<div class="tw"><table><thead><tr><th>層面</th><th>核心調整</th></tr></thead><tbody><tr><td><strong>策略軸心</strong></td><td>由「幫業主慳錢方便」徹底轉為「業主須依法履行責任，聯辦處依法執行程序」。</td></tr><tr><td><strong>語氣</strong></td><td>果斷、莊重、權威。刪除所有「助你」「快檢」「止蝕」「閃」等商業/動感詞彙。</td></tr><tr><td><strong>時序</strong></td><td>嚴格對應 brief：第一階</td></tr></tbody></table></div><div class='lab'>—— 第3輪 ——</div><div class='lab'>文案</div><p><strong>根據策略、上輪美術視覺、CD/AD 批評，第3輪文案調整如下：</strong></p>
+<p><strong>重點調整說明：</strong></p>
+<p>1. <strong>策略對應</strong>：明確對應「滲水新程序 2026 API」，將「API」概念轉化為「程序升級」、「技術升級」等文案語言，使其成為記憶點的一部分。</p>
+<p>2. <strong>張力處理</strong>：直接點出「業主有責」與「出錢維修」的現實刺痛感，但語氣從「威脅」轉為「清晰提醒」，符合「通知信變提醒」的策略。</p>
+<p>3. <strong>硬訊息糾正</strong>：</p>
+<p>   - <strong>刪除「30秒」</strong>：不再使用具體時間承諾，改用「快速」、「迅速」等詞彙強調效率。</p>
+<p>   - <strong>時序修正</strong>：嚴格按「調查→通知信→維修/逾期後續」法定程序描述，明確「通知信」為調查後發出的法定文件。</p>
+<p>   - <strong>語氣調整</strong>：刪除「助你」、「幫你」、「止蝕」、「快檢」等過度市場化或誤導性詞彙，強化「業主責任」與「法定程序」的官方嚴肅語氣。</p>
+<p>   - <strong>費用表述</strong>：將「免收回費用」改為清晰說明「逾期不修，政府將追討測試費用」，不營造豁免感或慳錢誘因。</p>
+<p>4. <strong>Visual Hook 強化</strong>：將「紅外線即影即見」與「鎖定源頭」的情緒 payoff 連結到「知邊度要自己出錢」的現實行動，呼應 CD 建議。</p>
+<p>5. <strong>美術配合</strong>：文案將配合美術「信封撞到紅光即閃兩下」的升級記憶點，並將「通知信」在文案中的角色明確為「調查後收到的法定通知」，而非行動起點。</p>
+<p>---</p>
+<h4 class="cc">(1) Slogan（至少5條）</h4>
+<p>1.  <strong>滲水新程序 2026：紅外線鎖源，責任自分。</strong> (New 2026 Procedure: Infrared pinpoints source, responsibility clarified.)</p>
+<p>2.  <strong>紅光一掃，源頭即現；維修在即，費用自免。</strong> (A scan reveals the source; repair promptly, avoid cost recovery.)</p>
+<p>3.  <strong>收到滲水通知信？紅外線分析已完成，源頭位置已鎖定。</strong> (Received a leakage notice? Infrared analysis is done, source location is identified.)</p>
+<p>4.  <strong>業主責任，清晰如鏡：紅外線輔助，維修路徑。</strong> (Owner&#x27;s responsibility, clear as day: Infrared assists, repair pathway.)</p>
+<p>5.  <strong>程序升級，技術升級；責任所在，無可爭議。</strong> (Procedure upgraded, technology upgraded; responsibility pinpointed, beyond dispute.)</p>
+<p>---</p>
+<h4 class="cc">(2) 文案方向</h4>
+<p><strong>方向一：科技定位 · 責任自現</strong></p>
+<p>- <strong>方向名</strong>：科技定位 · 責任自現</p>
+<p>- <strong>Hook</strong>：<strong>紅外線熱成像分析，唔係睇穿你，係幫你睇清責任。</strong></p>
+<p>- <strong>核心訊息</strong>：聯合辦事處引入紅外線熱成像等技術，於第一階段調查中輔助定位滲水異常範圍。調查完成後，業主將收到滲水通知信，當中已包含技術分析的初步結果，讓責任所在更清晰。業主須按通知信要求，於限期內完成維修。逾期不修，政府將依法同步展開第二、三階段調查，並可能向不合作業主追討相關測試費用。科技旨在令法定程序更高效、更清晰。</p>
+<p><strong>方向二：程序清晰 · 依法而行</strong></p>
+<p>- <strong>方向名</strong>：程序清晰 · 依法而行</p>
+<p>- <strong>Hook</strong>：<strong>滲水調查，有法可依；業主維修，有責在身。</strong></p>
+<p>- <strong>核心訊息</strong>：聯合辦事處嚴格按照法定程序處理滲水投訴：先進行第一階段調查（可能採用紅外線熱成像等技術輔助），隨後向責任業主發出滲水通知信，要求於指定限期內維修。業主依法有責任妥善保養樓宇設施並解決滲水問題。若逾期未修，政府將同步展開後續調查階段，並執行相關法定權力（包括追討測試費用）。整個程序清晰明確，旨在保障樓宇安全及公共衛生。</p><div class='lab'>美術</div><h4 class="cc">對 CD/AD 批評嘅回應與美術策略調整</h4>
+<p>作為美術指導，我完全接收並認同 CD 與 AD 嘅批評。上輪視覺失敗在於「形式大於內容」，誤將執法程序包裝成消費級科技產品，導致訊息失真且語氣不當。本輪美術將徹底執行以下修正：</p>
+<p>1.  <strong>回應「30秒誇大失實」與「時序錯亂」</strong>：視覺上徹底刪除任何計時器、進度條或暗示「極速」嘅動態圖形。紅外線熱成像畫面僅作為「調查結果嘅視覺化呈現」，而非「實時探測過程」。畫面邏輯嚴格遵循「紅外線分析完成 → 發出通知信」嘅因果關係，杜絕「收信後才探測」嘅誤導。</p>
+<p>2.  <strong>回應「語氣偏軟」與「止蝕商業術語」</strong>：摒棄所有圓角、漸變光暈、親切插畫風等「服務業美學」。改採高對比度、幾何切割、冷色調嘅「法定文件視覺語言」。紅光唔再係「幫你搵」嘅友善指引，而係「標示責任範圍」嘅客觀證據。</p>
+<p>3.  <strong>回應「記憶點娛樂化」與「通知信邊緣化」</strong>：採納 CD 建議並加以嚴肅化處理。「信封撞到紅光閃兩下」嘅動效將被轉化為靜態 KV 中嘅「視覺疊印」：通知信與熱成像圖以「雙重曝光」或「精準對位」方式結合，令「信＝證據」成為單一超級符號，而非花巧特效。</p>
+<p>4.  <strong>回應「API 標籤孤立」</strong>：將「2026 新程序」轉化為視覺系統中嘅「編碼/索引」元素（如文件編號、網格線、座標軸），令「程序升級」體現為畫面結構嘅嚴謹度，而非生硬貼上嘅 Logo。</p>
+<p>---</p>
+<h4 class="cc">方向一：科技定位 · 責任自現（視覺演繹）</h4>
+<p><strong>視覺隱喻</strong></p>
+<p>「熱成像作為法定證據嘅顯影」。紅外線熱成像唔係神奇透視鏡，而係將隱藏滲水源頭轉化為「可被記錄、可被通知」嘅客觀事實。視覺上強調「顯影」與「歸檔」嘅動作，而非「探測」嘅過程。</p>
+<p><strong>主視覺 KV</strong></p>
+<p>-   <strong>畫面分割</strong>：採用「文件疊影」構圖。底層為牆身熱成像分析圖（顯示異常溫差區域，以標準熱力色階呈現，無誇張光效）；上層為滲水通知信，以 45 度角精準疊加於熱成像圖之上，兩者比例約 6:4。</p>
+<p>-   <strong>主體</strong>：通知信上嘅「滲水位置」欄位，與底層熱成像圖嘅「高溫異常區」完美對位重合。信紙邊緣帶有官方印章或文件編號浮水印，強化法定文件質感。</p>
+<p>-   <strong>避伏處理</strong>：熱成像圖僅顯示牆身局部，無人物、無私宅全景；畫面零罰款數字、零金錢符號；紅外線圖以「分析報告附件」形式存在，而非即時監控畫面。</p>
+<p><strong>開場第一個畫面</strong></p>
+<p>全黑背景中，一份標準政府通知信由上方垂直落入畫面中央，伴隨沉穩嘅紙張著地聲。信件靜止後，其表面緩緩浮現一層熱成像色階濾鏡，精準覆蓋信中「滲水位置」欄位，隨即濾鏡鎖定並轉為靜態印記。整個過程無閃爍、無計時，僅有「文件歸位、證據顯影」嘅篤定感。</p>
+<p><strong>記憶點</strong></p>
+<p>「信紙與熱圖嘅精準對位」。觀眾記住嘅唔係紅光閃爍，而係「通知信上寫嘅位置，就係熱成像圖顯示嘅位置」呢種無可辯駁嘅視覺對應。呢個對位本身即係「責任清晰」嘅最直觀翻譯，過目不忘且完全符合法定程序嚴肅性。</p>
+<p>---</p>
+<h4 class="cc">方向二：程序清晰 · 依法而行（視覺演繹）</h4>
+<p><strong>視覺隱喻</strong></p>
+<p>「法定程序作為責任座標系」。將滲水調查三階段轉化為一套嚴謹嘅「視覺索引系統」，強調每個步驟皆有法源依據、有明確輸出。程序本身即係保障，而非威脅。</p>
+<p><strong>主視覺 KV</strong></p>
+<p>-   <strong>畫面分割</strong>：採用「縱向欄柵式」編排。畫面由左至右分為三欄，每欄頂部標註階段編號（I / II / III）及對應法定條文編號（以細字排印）。</p>
+<p>-   <strong>主體</strong>：第一欄（階段 I）佔版面 50%，展示「通知信 + 熱成像分析摘要」嘅組合圖像；第二、三欄以極細線框與文字清單呈現後續程序，視覺權重顯著低於第一欄。</p>
+<p>-   <strong>避伏處理</strong>：無流程圖箭頭、無時間軸、無「免」或「罰」等字眼。階段 II、III 僅以中性文字列示法定權力，不作視覺強調。整體色調為灰白底、黑字、深藍線條，呼應政府憲報風格。</p>
+<p><strong>開場第一個畫面</strong></p>
+<p>畫面左側依次浮現三組垂直細線與階段編號（I、II、III），如文件夾標籤般整齊排列。隨後，第一階段標籤向右展開，呈現通知信與熱成像摘要嘅靜態組合；第二、三階段標籤保持收合狀態，僅以文字顯示「依法執行」。無動態過渡、無音效強調，僅有「程序就位」嘅秩序感。</p>
+<p><strong>記憶點</strong></p>
+<p>「階段 I 嘅視覺錨點」。觀眾記住嘅係「通知信與熱成像摘要永遠出現喺第一欄、最大、最清晰」呢個固定位置。呢個錨點傳達「收到信即代表第一階段調查已完成、責任已初步釐清」，避免將後續程序誤讀為即時威脅，同時強化「程序有據、步驟分明」嘅官方可信度。</p>
+          </details>
+        </details></section>
+<footer>Madkids 創意 Idea Lab · 自動生成(committee + NBLM + 三甲)<br>⚠️ AI 初步創意,出客前需 Raymond review + gatekeep。</footer>
 </div></body></html>
