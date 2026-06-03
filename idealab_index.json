@@ -1,0 +1,14 @@
+{
+  "depts": {
+    "FEHD": {
+      "deadline": "2026-03-23T06:00:00.000Z",
+      "topic": "Water Seepage APIs",
+      "updated": "2026-06-03T06:14:44.969311+00:00"
+    },
+    "FSTB": {
+      "deadline": "2026-06-09T03:00:00.000Z",
+      "topic": "APEC FMM 2026 宣傳 API",
+      "updated": "2026-06-03T06:14:47.233520+00:00"
+    }
+  }
+}
