@@ -1,0 +1,753 @@
+<!DOCTYPE html><html lang="zh-HK"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CMAB · Idea Lab</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#717784;--line:#e7e9ee;--accent:#4f46e5;--gold:#c79a2b;--grn:#15a34a;--red:#dc2626;--sh:0 1px 2px rgba(20,24,40,.04),0 4px 14px rgba(20,24,40,.05)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:18px 15px 90px}
+header{padding:6px 2px 2px} h1{font-size:25px;font-weight:800;margin:0;letter-spacing:-.01em}
+.sub{color:var(--mut);font-size:14px;margin-top:3px}
+.stagebar{display:flex;gap:5px;margin:14px 0 8px}
+.stp{flex:1;text-align:center;padding:9px 3px;border-radius:11px;border:1px solid var(--line);background:#fff;text-decoration:none;display:block}
+.stp-i{font-size:15px;font-weight:800;line-height:1.2;color:var(--ink)} .stp-l{font-size:10.5px;font-weight:700;margin-top:2px;color:var(--mut)}
+.stp.cur{background:var(--accent);border-color:var(--accent)} .stp.cur .stp-i,.stp.cur .stp-l{color:#fff}
+.stp.done{background:#e7f7ee;border-color:#cdeedd} .stp.done .stp-i{color:var(--grn)} .stp.done .stp-l{color:#3f8c63}
+.stp.todo{opacity:.55}
+.nextact{display:block;text-decoration:none;background:#fff8e6;border:1px solid #f3e2ad;border-radius:11px;padding:12px 15px;font-size:14px;font-weight:700;color:#7a5b09;margin-bottom:4px}
+.nextact:active{background:#fdf0cf}
+.totop{position:fixed;right:16px;bottom:20px;z-index:20;width:46px;height:46px;border-radius:50%;background:var(--accent);color:#fff;font-size:22px;font-weight:800;display:none;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 14px rgba(79,70,229,.4)}
+.totop.show{display:flex}
+nav{position:sticky;top:0;z-index:9;display:flex;gap:7px;overflow-x:auto;padding:11px 0;margin:8px -15px 4px;padding-left:15px;background:rgba(244,245,247,.9);backdrop-filter:blur(8px);-webkit-overflow-scrolling:touch}
+nav a{flex:0 0 auto;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px}
+nav a:active{background:#eef}
+section{margin:26px 0}
+.sec-h{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:0 0 11px;padding-left:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px 18px;box-shadow:var(--sh);margin:12px 0}
+.btn{display:inline-flex;align-items:center;gap:5px;text-decoration:none;font-weight:700;font-size:14px;border-radius:11px;padding:10px 15px;border:1px solid transparent;line-height:1}
+.btn.drive{background:#eef0ff;color:#3b35c7;border-color:#dfe1ff}
+.btn.cta{background:var(--accent);color:#fff} .btn.go{background:#0e7490;color:#fff} .btn.ghost{background:#fff;color:var(--ink);border-color:var(--line);font-weight:600}
+.btn.mini{font-size:12.5px;padding:7px 11px;background:var(--accent);color:#fff;border-radius:9px} .btn.mini.done{background:#fff;color:var(--gold);border-color:#ecd9a6}
+.btn.mini.nb{background:#f3eeff;color:#6b46c1;border:1px solid #e0d4ff}
+.ref .reftag{color:var(--mut);font-size:12.5px;margin-top:10px}
+.conflict{background:#fdeaea;color:#a01919;border:1px solid #f3c0c0;border-radius:11px;padding:11px 13px;font-size:13px;font-weight:600;margin-bottom:13px;line-height:1.5}
+.srctag{color:var(--mut);font-size:11.5px;margin-top:10px}
+.stats{display:grid;grid-template-columns:1fr;gap:9px;margin-top:13px}
+@media(min-width:520px){.stats{grid-template-columns:1fr 1fr 1fr}}
+.stat{background:#fafbfc;border:1px solid var(--line);border-radius:11px;padding:10px 12px}
+.stat-l{font-size:11.5px;color:var(--mut);font-weight:700;letter-spacing:.03em} .stat-v{font-size:14.5px;font-weight:600;margin-top:3px}
+.cd{font-size:11.5px;font-weight:800;border-radius:999px;padding:2px 8px;margin-left:4px} .cd.ok{background:#e7f7ee;color:var(--grn)} .cd.over{background:#fdeaea;color:var(--red)}
+.muted{color:var(--mut)} .empty{color:var(--mut);font-size:14px;padding:6px 2px} .hint{color:var(--mut);font-size:12.5px;margin:2px 2px 12px}
+.t3{padding:15px 16px} .t3head{display:flex;justify-content:space-between;align-items:center} .medal{font-size:22px} .t3score{font-weight:800;color:var(--accent);font-size:15px}
+.t3name{font-weight:700;font-size:16px;margin:7px 0 11px;line-height:1.4}
+.t3thumb{width:100%;border-radius:11px;border:1px solid var(--line);display:block;margin-bottom:11px}
+.t3act{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+.lnk{color:var(--accent);text-decoration:none;font-size:13.5px;font-weight:600}
+.gen{padding:15px 16px} .genlbl{font-size:13.5px;margin-bottom:9px} .genimg{width:100%;border-radius:12px;border:1px solid var(--line);display:block}
+.gthumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:6px;margin-top:9px} .gthumb{width:100%;border-radius:7px;border:1px solid var(--line);display:block}
+.oldv{margin-top:9px}
+details.crow{border-bottom:1px solid var(--line)} details.crow:last-child{border-bottom:0}
+details.crow>summary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 4px;cursor:pointer;list-style:none}
+details.crow>summary::-webkit-details-marker{display:none}
+details.crow[open]{background:#fafbfc;border-radius:10px}
+.cname{font-size:14px;font-weight:600;flex:1;min-width:0}
+.cbody{padding:2px 6px 14px;font-size:14px} .cbody p{margin:.4em 0}
+details.soft{background:#fff;border:1px solid var(--line);border-radius:13px;padding:4px 15px;margin:11px 0;box-shadow:var(--sh)}
+details.soft>summary{cursor:pointer;font-weight:700;font-size:14px;padding:11px 0;list-style:none}
+details.soft>summary::-webkit-details-marker{display:none} details.soft>summary::before{content:"▸ ";color:var(--mut)} details.soft[open]>summary::before{content:"▾ "}
+details.soft.sec>summary{font-size:15.5px;font-weight:800;padding:13px 0} details.soft.sec[open]{padding-bottom:10px}
+.lab{font-size:11px;letter-spacing:.05em;color:var(--mut);text-transform:uppercase;font-weight:700;margin:13px 0 5px}
+.slo{color:var(--grn);font-weight:700} .nbcard{border-top:1px solid var(--line);padding-top:10px;margin-top:8px}
+.slogrp{margin:6px 0 12px} .slolist{margin:4px 0;padding-left:20px} .slolist li{margin:5px 0;font-size:14px;line-height:1.5}
+h4.cc{font-size:15px;margin:14px 0 6px}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:11px}
+table{border-collapse:collapse;width:100%;min-width:380px;font-size:13.5px}
+th,td{border-bottom:1px solid var(--line);padding:9px 11px;text-align:center;vertical-align:top}
+th{background:#fafbfc;color:var(--mut);font-size:12px;font-weight:700} td.lt,th:first-child{text-align:left}
+p{margin:.55em 0}
+footer{color:var(--mut);font-size:12px;border-top:1px solid var(--line);margin-top:34px;padding-top:14px}
+</style></head><body><div class="wrap">
+<header><h1>CMAB</h1><div class="sub">CMAB_WeChat Public Account Services · 更新 06-03 20:20</div></header>
+<div class='stagebar'><a class='stp done' href='#cand'><div class='stp-i'>✓</div><div class='stp-l'>Brief</div></a><a class='stp cur' href='#cand'><div class='stp-i'>💡</div><div class='stp-l'>概念·揀</div></a><a class='stp todo' href='#cand'><div class='stp-i'>✏️</div><div class='stp-l'>Board·揀</div></a><a class='stp todo' href='#gen'><div class='stp-i'>🎨</div><div class='stp-l'>生圖</div></a><a class='stp todo' href='#gen'><div class='stp-i'>📋</div><div class='stp-l'>出稿</div></a></div><a class='nextact' href='#cand'>👉 Round 1:睇概念,揀中嘅撳「✏️ 寫 full board」(~6 個) →</a>
+<nav><a href="#ref">📌 資料</a><a href="#slogan">💬 Slogan</a><a href="#top3">🏆 三甲</a><a href="#gen">🎞️ 作品</a><a href="#cand">🗂️ 候選池</a><a href="#brief">📋 Brief</a><a href="#research">🔬 研究</a><a href="#isd">📺 ISD</a><a href="#score">📊 評分</a></nav>
+<section id="ref"><div class="sec-h">📌 重要資料</div><div class='card ref'><a class='btn drive' target='_blank' href='https://drive.google.com/drive/folders/1F153Z6CLLksmVzchdipk8NKwXpXeP7B6'>📁 Project GDrive folder</a><div class='stats'><div class='stat'><div class='stat-l'>🗣️ Briefing</div><div class='stat-v muted'>未定</div></div><div class='stat'><div class='stat-l'>⏰ Deadline</div><div class='stat-v'>2026-06-12 12:00 <span class='cd ok'>仲有 8 日</span></div></div><div class='stat'><div class='stat-l'>🎤 Presentation</div><div class='stat-v muted'>未定</div></div></div><div class='srctag'>日子源:📅 日曆</div></div></section>
+<section id="slogan"><details class="soft sec" open><summary>💬 Slogan 揀(第一 hard gate)</summary><p class='hint'>各來源 slogan(已去重)。揀好嘅 slogan 由你填入 Master GSheet(AI 唔掂 master 檔)。</p><div class='slogrp'><div class='lab'>Agency qwen3.7-max</div><ul class='slolist'><li>1.  大灣區速遞：你嘅北上發展官方導航</li><li>2.  一號掌握灣區機遇，政策生活全通曉</li><li>3.  粵港澳大灣區速遞：官方資訊，貼地實用</li><li>4.  北上發展點樣做？速遞一睇就清楚</li><li>5.  大灣區機遇無限，速遞為你連線</li></ul></div><div class='slogrp'><div class='lab'>Agency kimi-k2.6</div><ul class='slolist'><li>1. **灣區機遇，一指速遞** / GBA Opportunities, One Tap Away</li><li>2. **關注官方，資訊最啱** / Follow Official, Stay Ahead</li><li>3. **香港人嘅灣區指南，日日更新** / Your Daily GBA Guide, Made for Hongkongers</li><li>4. **政策唔等人，速遞幫你跟** / Policies Move Fast, We Keep You Updated</li><li>5. **大灣區發展辦公室認證，機遇冇走寶** / GBA Development Office Verified, No Missed Chances</li></ul></div><div class='slogrp'><div class='lab'>Agency grok-4.3</div><ul class='slolist'><li>大灣區速遞，機遇每日更新</li><li>粵港澳大灣區速遞，政策一鍵到手</li><li>北上發展，從呢度起步</li><li>香港視角 · 灣區機遇 · 官方速遞</li><li>粵港澳大灣區發展辦公室 · 權威資訊第一站</li></ul></div><div class='slogrp'><div class='lab'>Agency gpt-5.2</div><ul class='slolist'><li>1. **機遇喺度，跟住就得。**（Follow @香港特區政府粵港澳大灣區速遞）</li><li>2. **政策咁多？睇重點就夠。**</li><li>3. **北上發展，一個 Follow 搞掂。**</li><li>4. **想搵機會？先搵權威資訊。**</li><li>5. **粵港澳大灣區機遇無限，資訊要快要準。**</li><li>6. **由今日起，唔止「知道」，要「用到」。**</li><li>7. **Follow 住官方速遞，行快一步。**（Stay ahead with the official updates）</li></ul></div><div class='slogrp'><div class='lab'>Agency gemini-2.5-pro</div><ul class='slolist'><li>- 機遇速遞,一撳到位。</li><li>- 大灣區有咩著數?撳個掣,我話你知。</li><li>- 唔使估估下,官方猛料,直送到家。</li><li>- 香港人嘅大灣區攻略,官方認證。</li><li>- 發掘大灣區,由關注我哋開始。</li></ul></div><div class='slogrp'><div class='lab'>Agency deepseek-v3.2</div><ul class='slolist'><li>1.  瞄準大灣區，機遇速遞到你手。</li><li>2.  灣區動態，一號掌握。 (GBA updates, all in one account.)</li><li>3.  事業新跑道，生活大舞台。關注「大灣區速遞」。</li><li>4.  連繫大灣區，規劃你未來。</li><li>5.  官方情報站，機遇不停站。</li></ul></div><div class='slogrp'><div class='lab'>Agency claude-opus-4-8</div><ul class='slolist'><li>1.  大灣區機遇，一撳就知。 (GBA Opportunities, just a tap away.)</li><li>2.  你嘅下一步，就係大灣區。</li><li>3.  唔止北上，更係創富路上。</li><li>4.  灣區著數，官方速遞。</li><li>5.  香港人，你嘅主場大好多。</li></ul></div><div class='slogrp'><div class='lab'>委員會 20260603</div><ul class='slolist'><li>1. 每日一開，北上即明。</li><li>2. 朝早三分鐘，機會鎖定晒。</li><li>3. 大灣區動態，呢度最快最準。</li><li>4. 香港優勢，大灣區機遇，一頁睇清。</li><li>5. 粵港澳大灣區發展，你我同頻。</li></ul></div></details></section>
+<section id="top3"><details class="soft sec" ><summary>🏆 三甲 · 揀邊個生圖</summary><p class='hint'>三甲 = 評審團按官方 marking scheme 總分頭三。你可揀三甲以外(見「🗂️ 候選池」每個都有「轉 brd」掣)。</p><div class='card t3'><div class='t3head'><span class='medal'>🥇</span><span class='t3score'>80.0/100</span></div><div class='t3name'>[Agency claude-opus-4-8] Concept 2:〔機遇之門〕</div><div class='t3act'><a class='btn cta' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cm124c7eb8&stage=board'>🎨 轉 brd 生圖</a> <a class='lnk' href='#cand-cm124c7eb8'>睇完整概念 ↓</a></div></div><div class='card t3'><div class='t3head'><span class='medal'>🥈</span><span class='t3score'>78.7/100</span></div><div class='t3name'>[Agency kimi-k2.6] Concept 3:〔未來回郵〕</div><div class='t3act'><a class='btn cta' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cm1cc7fcce&stage=board'>🎨 轉 brd 生圖</a> <a class='lnk' href='#cand-cm1cc7fcce'>睇完整概念 ↓</a></div></div><div class='card t3'><div class='t3head'><span class='medal'>🥉</span><span class='t3score'>76.0/100</span></div><div class='t3name'>[Agency kimi-k2.6] Concept 5:〔阿爸嘅微信〕</div><div class='t3act'><a class='btn cta' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cmddfa614c&stage=board'>🎨 轉 brd 生圖</a> <a class='lnk' href='#cand-cmddfa614c'>睇完整概念 ↓</a></div></div><details class='soft'><summary>🎯 CD 推薦理由 + polish</summary><p>確認頭三（客觀三甲）：</p>
+<p>1. [Agency claude-opus-4-8] Concept 2:〔機遇之門〕 — 80.0/100  </p>
+<p>   強在：緊扣「機遇」核心，概念既宏觀又具象，視覺上可做強烈阻嚇（門後是無限可能／門外是錯失），記憶點高，落客容易轉化成實體裝置或AR體驗。  </p>
+<p>   Polish 方向：把「門」再具體化成灣區地標元素（如港珠澳大橋或深圳地鐵口），強化地域認同。</p>
+<p>2. [Agency kimi-k2.6] Concept 3:〔未來回郵〕 — 78.7/100  </p>
+<p>   強在：以「寫信給未來的自己」做情感切入，創意力與記憶點兼備，阻嚇力來自時間壓力（錯過今日就收唔到），落客成功率高，可延伸成實體明信片或小程序。  </p>
+<p>   Polish 方向：加入灣區城市元素（例如深圳總部／廣州塔），讓「未來」更具體。</p>
+<p>3. [Agency kimi-k2.6] Concept 5:〔阿爸嘅微信〕 — 76.0/100  </p>
+<p>   強在：以家庭故事做切入，情感共鳴強，阻嚇力來自「錯過就再冇機會同爸傾偈」，記憶點突出，落客轉化成短片或H5互動容易。  </p>
+<p>   Polish 方向：把「阿爸」擴闊至「家庭成員」，涵蓋更多年輕受眾。</p>
+<p>額外 flag（被低估）：</p>
+<p>- [Agency gpt-5.2] Concept 1:〔一個 Follow，一條路線圖〕（67.7）  </p>
+<p>  雖然分數偏低，但「Follow 即路線圖」嘅轉化率高，操作成本低，值得留意。</p>
+<p>- [Agency deepseek-v3.2] Concept 1:機遇軌跡（65.7）  </p>
+<p>  概念有數據視覺化潛力，若能加強敘事及阻嚇力，實際效果可能高過分數。</p></details></details></section>
+<section id="gen"><details class="soft sec" ><summary>🎞️ 生成作品(storyboard)</summary><p class='empty'>仲未生圖。喺三甲或候選池撳「🎨 轉 brd」即生(完成 WhatsApp 通知你)。</p></details></section>
+<section id="cand"><details class="soft sec" open><summary>🗂️ 候選池 · Round 1/2 喺度揀(✏️寫board / 🎨生圖)</summary><div class='card'><details class='crow' id='cand-cm66b6ddbd'><summary><span class='cname'>[委員會 200044] Concept 1:〔每日情報站〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cm66b6ddbd&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0:創意提問(5W1H)</h4>
+<p><strong>Objective/Message?</strong>  </p>
+<p>每日4帖，目標係將「粵港澳大灣區高質量發展」嘅官方硬訊息，轉化為港人同內地訪客每天主動check嘅「生活/營商參謀」，建立「每日一開，北上即明」嘅儀式感。</p>
+<p><strong>標誌性 visual element?</strong>  </p>
+<p>「叮」一聲 + 「粵港澳大灣區速遞」官方印章彈入鎖定，再展開全稱，結尾統一「✓ 已掌握」動態圖標，為每日重複動作建立肌肉記憶。</p>
+<p><strong>咩人物出場(政府要唔要派人?市民做咩?)?</strong>  </p>
+<p>政府不出鏡；市民只做「接收」動作（手指點擊通知、掃碼），唔做真人自述，確保高頻產量。</p>
+<p><strong>造型/職業/身分?</strong>  </p>
+<p>不適用——純資訊圖形動畫，無需真人。</p>
+<p><strong>場景/tone(貼政府唔浮誇)?</strong>  </p>
+<p>極簡白/薄荷綠資訊卡片，左右雙語對稱，CMAB官方色帶貫穿，乾淨專業，零官腔。</p>
+<p><strong>本片 deliverable(有冇 KV poster?有就先諗主 slogan + KV main idea)?</strong>  </p>
+<p>有KV poster：主Slogan「每日一開，北上即明」，KV main idea係「官方印章彈入鎖定」做今日儀式。</p></details><h4 class="cc">## Concept 1:〔每日情報站〕</h4>
+<p><strong>創作概念</strong>:以「通知即服務」將每日4帖政策包裝成固定儀式：叮聲+官方印章彈入鎖定，左右雙語卡片同步展開，結尾「✓已掌握」完成儀式，同時符合AD要求涵蓋內地訪客及港人。</p>
+<p><strong>人/景</strong>:無真人，純2D動畫資訊卡片。</p>
+<p><strong>Visual Device</strong>:聲音觸發官方印章彈入鎖定+結尾統一「✓已掌握」動態圖標。</p>
+<p><strong>主打口號</strong>:每日一開，北上即明。</p>
+<p><strong>Proposed 明星/名人</strong>:不適用</p></div></details><details class='crow' id='cand-cm2c1010c4'><summary><span class='cname'>[委員會 200044] Concept 2:〔雙語情報卡〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cm2c1010c4&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0:創意提問(5W1H)</h4>
+<p><strong>Objective/Message?</strong>  </p>
+<p>每日4帖，目標係將「粵港澳大灣區高質量發展」嘅官方硬訊息，轉化為港人同內地訪客每天主動check嘅「生活/營商參謀」，建立「每日一開，北上即明」嘅儀式感。</p>
+<p><strong>標誌性 visual element?</strong>  </p>
+<p>「叮」一聲 + 「粵港澳大灣區速遞」官方印章彈入鎖定，再展開全稱，結尾統一「✓ 已掌握」動態圖標，為每日重複動作建立肌肉記憶。</p>
+<p><strong>咩人物出場(政府要唔要派人?市民做咩?)?</strong>  </p>
+<p>政府不出鏡；市民只做「接收」動作（手指點擊通知、掃碼），唔做真人自述，確保高頻產量。</p>
+<p><strong>造型/職業/身分?</strong>  </p>
+<p>不適用——純資訊圖形動畫，無需真人。</p>
+<p><strong>場景/tone(貼政府唔浮誇)?</strong>  </p>
+<p>極簡白/薄荷綠資訊卡片，左右雙語對稱，CMAB官方色帶貫穿，乾淨專業，零官腔。</p>
+<p><strong>本片 deliverable(有冇 KV poster?有就先諗主 slogan + KV main idea)?</strong>  </p>
+<p>有KV poster：主Slogan「每日一開，北上即明」，KV main idea係「官方印章彈入鎖定」做今日儀式。</p></details><h4 class="cc">## Concept 2:〔雙語情報卡〕</h4>
+<p><strong>創作概念</strong>:左右對稱卡片把「粵港澳大灣區高質量發展」硬訊息轉化為實用行動指引（一句重點+一個行動），確保首次出現必用官方全名，同時兼顧內地訪客視角。</p>
+<p><strong>人/景</strong>:無真人，純2D動畫雙語卡片。</p>
+<p><strong>Visual Device</strong>:CMAB官方色帶貫穿左右雙語卡片，中間用「✓已掌握」收結儀式。</p>
+<p><strong>主打口號</strong>:粵港澳大灣區發展，你我同頻。</p>
+<p><strong>Proposed 明星/名人</strong>:不適用</p></div></details><details class='crow' id='cand-cm1ad9bf58'><summary><span class='cname'>[Agency claude-opus-4-8] Concept 1:〔連線未來〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cm1ad9bf58&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0:創意提問(5W1H — 諗概念前必做)</h4>
+<p>- <strong>議題真實背景</strong>: 呢個係<strong>政制及內地事務局</strong>轄下嘅<strong>粵港澳大灣區發展辦公室</strong>嘅宣傳。實際運作上，香港由<strong>行政長官</strong>領導、<strong>政務司司長</strong>統籌跨部門參與大灣區建設。喺具體政策層面，<strong>粵港澳大灣區發展專員</strong>就係呢個 Office 嘅阿頭，負責執行同推廣。香港喺大灣區嘅角色係國際金融、航運、貿易中心同創科樞紐，做「超級聯繫人」。</p>
+<p>- <strong>Objective / Message</strong>: 目標係要令香港市民同企業，由唔知/唔關心，變為「主動關注」大灣區嘅機遇。核心訊息係：大灣區發展機遇真實存在，而最權威、最 update 嘅資訊，就喺「香港特區政府粵港澳大灣區速遞」呢個官方微信公眾號。</p>
+<p>- <strong>Visual element</strong>: <strong>「光流」或「數據流」</strong>。用光線/數據線由香港流向大灣區各城市(e.g. 深圳前海、廣州南沙)，具體化「機遇」、「資訊」同「連繫」嘅流動，比單純影高鐵同大橋更有科技感同想像空間。</p>
+<p>- <strong>人物出場</strong>: 政府代表唔會直接出鏡，會用旁白。主角係香港市民，涵蓋唔同 target audience：一個喺前海創業嘅 <strong>Tech Startup 創辦人</strong>、一個喺廣州讀緊大學準備實習嘅<strong>香港學生</strong>、一個將傳統生意擴展到東莞嘅<strong>中小企老闆</strong>。</p>
+<p>- <strong>造型 / 職業 / 身分</strong>: 造型要貼地真實。Tech 創辦人係 smart casual，喺 co-working space；大學生係 T-shirt 牛仔褲，喺現代化校園；中小企老闆係恤衫西褲，喺新型廠房。總之要似香港人，唔好太「內地劇」。</p>
+<p>- <strong>場景 / Tone</strong>: 場景要現代、專業、有活力。例如：香港科學園、深圳前海嘅摩天大廈、港科大(廣州)校園、跨境口岸。Tone &amp; Manner 要<strong>務實、自信、有前瞻性</strong>，避免過度吹捧嘅浮誇感，要畀人「堅料、有料到」嘅感覺。</p>
+<p>- <strong>deliverable</strong>: 雖然 brief 係 social media management，但宣傳品一定唔止。我哋當佢係一個 campaign 咁諗，會有 <strong>TVC (30秒) + KV Poster</strong>。KV 主 slogan 要夠響，畫面要一眼睇得明。</p>
+<p>    - <strong>KV 主 Slogan + Main Idea</strong>: <strong>「機遇，就在眼前一步。」</strong>畫面係一個香港專業人士，企喺香港這邊望向對岸大灣區城市，佢面前有一道由手機屏幕延伸出去嘅「光之橋」，直接連到對岸，橋上流動住各種機會嘅 icon (e.g. 人民幣符號、職位、合作協議)。</p></details><h4 class="cc">## Concept 1:〔連線未來〕</h4>
+<p><strong>創作概念</strong>: 以「一條線」貫穿全片，象徵香港人透過手機上嘅官方微信號，將自己嘅事業同生活「連線」到大灣區嘅龐大機遇。呢條線唔係實體，而係一道流動嘅「數據光流」，由香港人嘅手機屏幕延伸出去，穿梭港深兩地，將政策資訊轉化為觸手可及嘅真實場景，扣緊「資訊促進機遇」嘅核心訊息。</p>
+<p><strong>人/景</strong>:</p>
+<p>- 一個香港女建築師，喺西九辦公室用平板電腦畫圖。</p>
+<p>- 畫面一轉，佢畫嘅線變成「數據光流」，飛出窗外，穿過高鐵路軌。</p>
+<p>- 光流到達廣州南沙一個建築地盤，女建築師已身在當地，同團隊實地視察，將圖紙變成現實。</p>
+<p>- 最後畫面返到佢手機，顯示住「香港特區政府粵港澳大灣區速遞」嘅一篇政策文章。</p>
+<p><strong>Visual Device</strong>: <strong>「數據光流」(Data Stream)</strong>。由主角嘅電子設備(手機/平板)屏幕延伸出嚟嘅一道發光線條，好似 AR 特效咁喺現實場景中流動，連接香港同大灣區，最終光流會化成一個具體嘅機遇(e.g. 一份合約、一個職位 offer、一張通行證)。</p>
+<p><strong>主打口號</strong>: 大灣區機遇，一撳就知。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用 (用素人演員更有真實感同代入感)。</p></div></details><details class='crow' id='cand-cm124c7eb8'><summary><span class='cname'>[Agency claude-opus-4-8] Concept 2:〔機遇之門〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cm124c7eb8&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0:創意提問(5W1H — 諗概念前必做)</h4>
+<p>- <strong>議題真實背景</strong>: 呢個係<strong>政制及內地事務局</strong>轄下嘅<strong>粵港澳大灣區發展辦公室</strong>嘅宣傳。實際運作上，香港由<strong>行政長官</strong>領導、<strong>政務司司長</strong>統籌跨部門參與大灣區建設。喺具體政策層面，<strong>粵港澳大灣區發展專員</strong>就係呢個 Office 嘅阿頭，負責執行同推廣。香港喺大灣區嘅角色係國際金融、航運、貿易中心同創科樞紐，做「超級聯繫人」。</p>
+<p>- <strong>Objective / Message</strong>: 目標係要令香港市民同企業，由唔知/唔關心，變為「主動關注」大灣區嘅機遇。核心訊息係：大灣區發展機遇真實存在，而最權威、最 update 嘅資訊，就喺「香港特區政府粵港澳大灣區速遞」呢個官方微信公眾號。</p>
+<p>- <strong>Visual element</strong>: <strong>「光流」或「數據流」</strong>。用光線/數據線由香港流向大灣區各城市(e.g. 深圳前海、廣州南沙)，具體化「機遇」、「資訊」同「連繫」嘅流動，比單純影高鐵同大橋更有科技感同想像空間。</p>
+<p>- <strong>人物出場</strong>: 政府代表唔會直接出鏡，會用旁白。主角係香港市民，涵蓋唔同 target audience：一個喺前海創業嘅 <strong>Tech Startup 創辦人</strong>、一個喺廣州讀緊大學準備實習嘅<strong>香港學生</strong>、一個將傳統生意擴展到東莞嘅<strong>中小企老闆</strong>。</p>
+<p>- <strong>造型 / 職業 / 身分</strong>: 造型要貼地真實。Tech 創辦人係 smart casual，喺 co-working space；大學生係 T-shirt 牛仔褲，喺現代化校園；中小企老闆係恤衫西褲，喺新型廠房。總之要似香港人，唔好太「內地劇」。</p>
+<p>- <strong>場景 / Tone</strong>: 場景要現代、專業、有活力。例如：香港科學園、深圳前海嘅摩天大廈、港科大(廣州)校園、跨境口岸。Tone &amp; Manner 要<strong>務實、自信、有前瞻性</strong>，避免過度吹捧嘅浮誇感，要畀人「堅料、有料到」嘅感覺。</p>
+<p>- <strong>deliverable</strong>: 雖然 brief 係 social media management，但宣傳品一定唔止。我哋當佢係一個 campaign 咁諗，會有 <strong>TVC (30秒) + KV Poster</strong>。KV 主 slogan 要夠響，畫面要一眼睇得明。</p>
+<p>    - <strong>KV 主 Slogan + Main Idea</strong>: <strong>「機遇，就在眼前一步。」</strong>畫面係一個香港專業人士，企喺香港這邊望向對岸大灣區城市，佢面前有一道由手機屏幕延伸出去嘅「光之橋」，直接連到對岸，橋上流動住各種機會嘅 icon (e.g. 人民幣符號、職位、合作協議)。</p></details><h4 class="cc">## Concept 2:〔機遇之門〕</h4>
+<p><strong>創作概念</strong>: 用「門」作為核心視覺比喻。香港人只要喺手機上打開「香港特區政府粵港澳大灣區速遞」呢個微信號，就好似打開咗一扇通往大灣區唔同機遇嘅「任意門」。每打開一篇推文，就係打開一扇新門，門後就係一個真實嘅成功案例或生活場景。強調官方資訊係開啟機遇嘅「鎖匙」。</p>
+<p><strong>人/景</strong>:</p>
+<p>- 一個香港青年，喺 cafe碌緊手機，撳開我哋個 WeChat account。</p>
+<p>- 佢一撳，身邊嘅牆壁幻化成一扇門打開，門後係深圳一個熱鬧嘅創科市集，佢見到同齡人展示緊自己嘅產品。</p>
+<p>- 佢再 swipe 睇下一篇文，又一扇門打開，見到一個香港家庭喺珠海享受緊週末，環境優美。</p>
+<p>- 結尾係青年收起手機，面露自信微笑，背景係通往深圳嘅口岸。</p>
+<p><strong>Visual Device</strong>: <strong>「次元門」(Portal Door)</strong>。每當主角喺手機上同 WeChat 號互動(e.g. 點擊文章)，現實場景中就會出現一度充滿科技感嘅光影門框。門框內唔係另一間房，而係大灣區城市嘅真實景象，主角可以「跨過」呢道門，沉浸式體驗各種可能性。</p>
+<p><strong>主打口號</strong>: 你嘅下一步，就係大灣區。</p>
+<p><strong>Proposed 明星/名人</strong>: 柯煒林 (Terrance Lau)。形象正面、年輕、有探索精神，符合 target audience 中年輕專業人士/創業家嘅形象，有說服力。</p></div></details><details class='crow' id='cand-cm8e163ac1'><summary><span class='cname'>[Agency deepseek-v3.2] Concept 1:機遇軌跡</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cm8e163ac1&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0: 創意提問 (5W1H — 諗概念前必做)</h4>
+<p>- <strong>議題真實背景</strong>：政制及內地事務局（CMAB）轄下「粵港澳大灣區發展辦公室」日常運作，目標係向港人同內地持份者推廣大灣區發展機遇。呢個微信公眾號係辦公室最重要嘅直接渠道，每日由駐場或遙距嘅社交媒體主任（Social Media Executive）負責營運，內容圍繞最新政策、措施同活動。<strong>真·官員/代表</strong> 唔會日常出鏡，但內容代表辦公室立場，有需要時可由 <strong>政制及內地事務局局長</strong> 或 <strong>粵港澳大灣區發展辦公室主任</strong> 作權威背書或簡短出鏡。</p>
+<p>- <strong>Objective / Message</strong>：<strong>首要</strong>係谷高「香港特區政府粵港澳大灣區速遞」微信公眾號嘅關注數同互動率（KPI）。<strong>核心訊息</strong>要傳遞大灣區係一個「機遇處處、生活事業雙贏」嘅綜合發展區，關注官方號就係掌握最準確、最實用資訊嘅第一步。</p>
+<p>- <strong>Visual element</strong>：具標誌性嘅視覺必須扣緊「聯繫」同「機遇」：<strong>港珠澳大橋、高鐵西九龍站、福田/深圳灣口岸、大灣區城市地標剪影（廣州塔、深圳平安金融中心等）</strong>、象徵數據/資訊流動的 <strong>發光線條或軌跡</strong> 連接兩地、手機螢幕展示微信公眾號介面及二維碼。</p>
+<p>- <strong>人物出場</strong>：主要係 <strong>目標受眾</strong>—— 打算或已經北上發展嘅香港專業人士（金融、創科、法律）、創業青年、喺大灣區內地城市升學嘅學生、需要拓展業務嘅中小企東主。<strong>政府方</strong>可以係社交媒體主任（以幕後策劃者身份），或局/辦高層作 brief 亮相。</p>
+<p>- <strong>造型 / 職業 / 身分</strong>：專業人士著商務便服（smart casual）喺共享辦公室或香港寫字樓；創業青年著休閒但有風格嘅服飾喺 co-working space 或深圳前海；學生背住背包穿梭廣州大學城。全部人形象貼地、有朝氣，似真實嘅香港奮鬥者。</p>
+<p>- <strong>場景 / Tone</strong>：場景要真實：香港辦公室、內地科技園區、跨境交通樞紐、粵港澳合作園區（如南沙、前海）。Tone 係 <strong>專業、積極、明快、充滿信心</strong>，唔好太 hard sell，要展現務實機遇。</p>
+<p>- <strong>deliverable</strong>：主要係 <strong>TVC (30秒)</strong> + <strong>KV poster (社交媒體投放及印刷品)</strong>。</p>
+<p>    - <strong>KV main idea</strong>：一個香港專業人士企喺維港岸邊，望向對岸，一條由手機螢幕發出、象徵資訊與機遇嘅光軌，穿越雲層，連接維港同大灣區內地城市嘅璀璨夜景。</p>
+<p>    - <strong>主 slogan (for KV)</strong>：<strong>瞄準大灣區，機遇速遞到你手。</strong></p></details><h4 class="cc">## Concept 1: 機遇軌跡</h4>
+<p><strong>創作概念</strong>：以「軌跡」作為核心視覺比喻，將大灣區嘅高速鐵路、跨境大橋、數據光纖，以至個人事業發展路徑，抽象成一條條發光嘅「機遇軌跡」。故事跟隨唔同香港人，佢哋嘅「軌跡」因為關注官方微信號而變得更清晰、更暢通，直達大灣區不同機遇點。扣緊「資訊促進發展」嘅硬訊息。</p>
+<p><strong>人/景</strong>：年輕創業家喺香港共享辦公室查閱手機（顯示微信號政策文章）、專業人士乘坐高鐵往深圳、設計師喺廣州工作室與內地團隊協作。穿插維港、西九站、內地科技園區景觀。</p>
+<p><strong>Visual Device</strong>：一條 <strong>流動嘅金色/藍色光軌</strong> 貫穿全片，隨場景變化——有時係高鐵線路圖上嘅路線，有時係手機螢幕彈出嘅資訊流動線，有時係人物前行時腳下延伸嘅道路，象徵由官方資訊引領嘅清晰路徑。</p>
+<p><strong>主打口號</strong>：連繫大灣區，規劃你未來。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用。建議用真實素人演員更顯貼地同可信。</p></div></details><details class='crow' id='cand-cm2add9210'><summary><span class='cname'>[Agency deepseek-v3.2] Concept 2:我的大灣區日程</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cm2add9210&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0: 創意提問 (5W1H — 諗概念前必做)</h4>
+<p>- <strong>議題真實背景</strong>：政制及內地事務局（CMAB）轄下「粵港澳大灣區發展辦公室」日常運作，目標係向港人同內地持份者推廣大灣區發展機遇。呢個微信公眾號係辦公室最重要嘅直接渠道，每日由駐場或遙距嘅社交媒體主任（Social Media Executive）負責營運，內容圍繞最新政策、措施同活動。<strong>真·官員/代表</strong> 唔會日常出鏡，但內容代表辦公室立場，有需要時可由 <strong>政制及內地事務局局長</strong> 或 <strong>粵港澳大灣區發展辦公室主任</strong> 作權威背書或簡短出鏡。</p>
+<p>- <strong>Objective / Message</strong>：<strong>首要</strong>係谷高「香港特區政府粵港澳大灣區速遞」微信公眾號嘅關注數同互動率（KPI）。<strong>核心訊息</strong>要傳遞大灣區係一個「機遇處處、生活事業雙贏」嘅綜合發展區，關注官方號就係掌握最準確、最實用資訊嘅第一步。</p>
+<p>- <strong>Visual element</strong>：具標誌性嘅視覺必須扣緊「聯繫」同「機遇」：<strong>港珠澳大橋、高鐵西九龍站、福田/深圳灣口岸、大灣區城市地標剪影（廣州塔、深圳平安金融中心等）</strong>、象徵數據/資訊流動的 <strong>發光線條或軌跡</strong> 連接兩地、手機螢幕展示微信公眾號介面及二維碼。</p>
+<p>- <strong>人物出場</strong>：主要係 <strong>目標受眾</strong>—— 打算或已經北上發展嘅香港專業人士（金融、創科、法律）、創業青年、喺大灣區內地城市升學嘅學生、需要拓展業務嘅中小企東主。<strong>政府方</strong>可以係社交媒體主任（以幕後策劃者身份），或局/辦高層作 brief 亮相。</p>
+<p>- <strong>造型 / 職業 / 身分</strong>：專業人士著商務便服（smart casual）喺共享辦公室或香港寫字樓；創業青年著休閒但有風格嘅服飾喺 co-working space 或深圳前海；學生背住背包穿梭廣州大學城。全部人形象貼地、有朝氣，似真實嘅香港奮鬥者。</p>
+<p>- <strong>場景 / Tone</strong>：場景要真實：香港辦公室、內地科技園區、跨境交通樞紐、粵港澳合作園區（如南沙、前海）。Tone 係 <strong>專業、積極、明快、充滿信心</strong>，唔好太 hard sell，要展現務實機遇。</p>
+<p>- <strong>deliverable</strong>：主要係 <strong>TVC (30秒)</strong> + <strong>KV poster (社交媒體投放及印刷品)</strong>。</p>
+<p>    - <strong>KV main idea</strong>：一個香港專業人士企喺維港岸邊，望向對岸，一條由手機螢幕發出、象徵資訊與機遇嘅光軌，穿越雲層，連接維港同大灣區內地城市嘅璀璨夜景。</p>
+<p>    - <strong>主 slogan (for KV)</strong>：<strong>瞄準大灣區，機遇速遞到你手。</strong></p></details><h4 class="cc">## Concept 2: 我的大灣區日程</h4>
+<p><strong>創作概念</strong>：將「粵港澳大灣區發展辦公室」微信公眾號，塑造成一個「智慧日程助理」。影片展示幾個典型港人嘅「一日日程」，佢哋嘅日程中關鍵嘅機遇時刻（如：睇準政策開會、預約考察、報名內地講座），都係由微信公眾號推送嘅資訊所促成。強調號稱嘅資訊係「實用、及時、幫到手」。</p>
+<p><strong>人/景</strong>：中環金融女強人晨早睇手機接收政策摘要；初創老闆下晝透過號稱連結到內地合作夥伴；傍晚，大學生喺宿舍睇號稱介紹嘅內地實習計劃。場景快速切換，節奏明快。</p>
+<p><strong>Visual Device</strong>：人物手機嘅微信介面 <strong>動態彈出關鍵資訊氣泡</strong>（如「稅務優惠更新」、「前海招聘速遞」、「跨境法律講座」），這些氣泡與真實場景融合，並化為推動劇情嘅實際元素（例如「招聘速遞」氣泡放大變成面試邀請）。</p>
+<p><strong>主打口號</strong>：灣區動態，一號掌握。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用。可考慮邀請一兩位成功北上發展嘅KOL（如創業家、專業人士）作真實分享，但以素人為主更符合政府宣傳調性。</p></div></details><details class='crow' id='cand-cma067ada2'><summary><span class='cname'>[Agency gemini-2.5-pro] Concept 1:〔官方直送〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cma067ada2&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0:創意提問(5W1H — 諗概念前必做)</h4>
+<p>- <strong>議題真實背景</strong>:呢個係政制及內地事務局轄下嘅「粵港澳大灣區發展辦公室」嘅日常宣傳,旨在推廣大灣區機遇。實際運作上,呢類跨部門大型政策由高層官員督導,例如 <strong>政務司司長</strong> 會主持高層次督導委員會,而「粵港澳大灣區發展專員」就係執行單位嘅阿頭。香港角色係「超級聯繫人」同核心引擎,引導人流、資金流、資訊流。</p>
+<p>- <strong>Objective / Message</strong>:主要目的係 drive traffic 同 followers 去官方微信公眾號「香港特區政府粵港澳大灣區速遞」。核心訊息係:「大灣區機會好多,想知最準最 update 嘅官方料,就要 follow 我哋個 WeChat Account。」要將被動接收資訊嘅人,變成主動發掘機會嘅關注者。</p>
+<p>- <strong>Visual element</strong>:最有代表性嘅視覺元素,一定係連接香港同內地城市嘅基建,例如<strong>港珠澳大橋嘅流線型橋身</strong>、<strong>高鐵列車穿梭嘅光影</strong>。另外,微信公眾號嘅<strong>綠色對話框/介面</strong>本身都係一個強烈嘅視覺符號,可以直接扣題。</p>
+<p>- <strong>人物出場</strong>:政府代表可以係<strong>粵港澳大灣區發展專員</strong>以專家/官方身份出現(或者淨係出銜頭唔出樣)。市民受眾要多元化:一個喺前海創業嘅香港青年 IT 人、一個喺南沙做研發嘅大學教授、一個經常來往三地嘅專業人士(例如會計師)、一個考慮送仔女去大灣區讀書嘅中產媽媽。</p>
+<p>- <strong>造型 / 職業 / 身分</strong>:IT 人(smart casual,戴黑框眼鏡)、大學教授(斯文專業,着恤衫)、專業人士(business suit,手提公事包)、中產媽媽(簡約優雅,睇緊平板電腦資料)。全部要似喺中環、金鐘、科學園會見到嘅真實香港人。</p>
+<p>- <strong>場景 / Tone</strong>:場景要真實,例如<strong>香港科學園嘅實驗室</strong>、<strong>西九龍高鐵站月台</strong>、<strong>中環嘅甲級寫字樓</strong>、<strong>前海嘅 co-working space</strong>。Tone 要專業、正面、有活力,但唔可以太 hard sell 或浮誇,要保持政府嘅穩重感。</p>
+<p>- <strong>deliverable</strong>:主要係 TVC,但一定會有 <strong>KV poster</strong> 用喺巴士站、MTR 廣告。所以要先諗 slogan + KV。<strong>KV 主畫面</strong>:一部手機顯示住「香港特區政府粵港澳大灣區速遞」嘅微信介面,介面「彈」出一條由光組成嘅高鐵路軌,直接駁去大灣區城市嘅地標剪影。<strong>主 slogan</strong>: 機遇速遞,一撳到位。</p></details><h4 class="cc">## Concept 1:〔官方直送〕</h4>
+<p><strong>創作概念</strong>:將抽象嘅「資訊」同「機遇」,具體化為一個實體嘅「綠色包裹」。呢個包裹由「香港特區政府粵港澳大灣區速遞」微信號寄出,穿越港珠澳大橋、高鐵路軌,精準「派送」到唔同香港人手上,打開就係佢哋最需要嘅大灣區政策/機會,直接 show 到個 WeChat Account 點樣「速遞」價值。</p>
+<p><strong>人/景</strong>:一個香港青年創業者喺前海辦公室收到包裹,打開係最新嘅創業補貼文件;一個香港大學生喺宿舍收到包裹,打開係大灣區實習計劃嘅 Offer Letter;一個專業人士喺香港 office 收到包裹,打開係簡化咗嘅執業資格認證流程圖。</p>
+<p><strong>Visual Device</strong>:一個發光嘅、半透明嘅<strong>微信綠色包裹</strong>。佢唔係普通紙箱,而係由數碼光線構成,上面印有「@香港特區政府粵港澳大灣區速遞」嘅 logo。佢嘅移動軌跡就係大灣區嘅交通網絡,充滿速度感。</p>
+<p><strong>主打口號</strong>:唔使估估下,官方猛料,直送到家。</p>
+<p><strong>Proposed 明星/名人</strong>:不適用。用素人故事更有真實感同代入感。</p></div></details><details class='crow' id='cand-cme9d77ec1'><summary><span class='cname'>[Agency gemini-2.5-pro] Concept 2:〔一問即答〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cme9d77ec1&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0:創意提問(5W1H — 諗概念前必做)</h4>
+<p>- <strong>議題真實背景</strong>:呢個係政制及內地事務局轄下嘅「粵港澳大灣區發展辦公室」嘅日常宣傳,旨在推廣大灣區機遇。實際運作上,呢類跨部門大型政策由高層官員督導,例如 <strong>政務司司長</strong> 會主持高層次督導委員會,而「粵港澳大灣區發展專員」就係執行單位嘅阿頭。香港角色係「超級聯繫人」同核心引擎,引導人流、資金流、資訊流。</p>
+<p>- <strong>Objective / Message</strong>:主要目的係 drive traffic 同 followers 去官方微信公眾號「香港特區政府粵港澳大灣區速遞」。核心訊息係:「大灣區機會好多,想知最準最 update 嘅官方料,就要 follow 我哋個 WeChat Account。」要將被動接收資訊嘅人,變成主動發掘機會嘅關注者。</p>
+<p>- <strong>Visual element</strong>:最有代表性嘅視覺元素,一定係連接香港同內地城市嘅基建,例如<strong>港珠澳大橋嘅流線型橋身</strong>、<strong>高鐵列車穿梭嘅光影</strong>。另外,微信公眾號嘅<strong>綠色對話框/介面</strong>本身都係一個強烈嘅視覺符號,可以直接扣題。</p>
+<p>- <strong>人物出場</strong>:政府代表可以係<strong>粵港澳大灣區發展專員</strong>以專家/官方身份出現(或者淨係出銜頭唔出樣)。市民受眾要多元化:一個喺前海創業嘅香港青年 IT 人、一個喺南沙做研發嘅大學教授、一個經常來往三地嘅專業人士(例如會計師)、一個考慮送仔女去大灣區讀書嘅中產媽媽。</p>
+<p>- <strong>造型 / 職業 / 身分</strong>:IT 人(smart casual,戴黑框眼鏡)、大學教授(斯文專業,着恤衫)、專業人士(business suit,手提公事包)、中產媽媽(簡約優雅,睇緊平板電腦資料)。全部要似喺中環、金鐘、科學園會見到嘅真實香港人。</p>
+<p>- <strong>場景 / Tone</strong>:場景要真實,例如<strong>香港科學園嘅實驗室</strong>、<strong>西九龍高鐵站月台</strong>、<strong>中環嘅甲級寫字樓</strong>、<strong>前海嘅 co-working space</strong>。Tone 要專業、正面、有活力,但唔可以太 hard sell 或浮誇,要保持政府嘅穩重感。</p>
+<p>- <strong>deliverable</strong>:主要係 TVC,但一定會有 <strong>KV poster</strong> 用喺巴士站、MTR 廣告。所以要先諗 slogan + KV。<strong>KV 主畫面</strong>:一部手機顯示住「香港特區政府粵港澳大灣區速遞」嘅微信介面,介面「彈」出一條由光組成嘅高鐵路軌,直接駁去大灣區城市嘅地標剪影。<strong>主 slogan</strong>: 機遇速遞,一撳到位。</p></details><h4 class="cc">## Concept 2:〔一問即答〕</h4>
+<p><strong>創作概念</strong>:模擬香港人最直接嘅疑問,用「微信對話框」形式呈現。畫面左邊係唔同市民(創業者/家長/學生)用口語問出佢哋對大灣區嘅真實疑慮,右邊「香港特區政府粵港澳大灣區速遞」嘅官方帳號即時彈出最權威、最清晰嘅答案(用 infographic 或短片形式解答),強調呢個平台係最快、最準嘅官方 Q&amp;A 渠道。</p>
+<p><strong>人/景</strong>:場景快速切換,展示唔同人喺唔同地方(MTR車廂/Cafe/大學圖書館)用手機。創業者問:「上去開公司有冇 funding?」;家長問:「啲學校點計分?」;學生問:「實習有咩 offer?」。</p>
+<p><strong>Visual Device</strong>:一個巨大嘅<strong>微信對話介面</strong>佔據畫面。市民嘅問題係白色對話框,官方嘅回答係綠色對話框,而且答案唔係純文字,而係會「爆」開變成生動嘅 motion graphics 或真實場景,將複雜政策視覺化,簡單易明。</p>
+<p><strong>主打口號</strong>:大灣區有咩著數?撳個掣,我話你知。</p>
+<p><strong>Proposed 明星/名人</strong>:不適用。集中喺問題同答案嘅互動,人物係功能性。</p></div></details><details class='crow' id='cand-cm8fc9970e'><summary><span class='cname'>[Agency gpt-5.2] Concept 1:〔一個 Follow，一條路線圖〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cm8fc9970e&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0:創意提問(5W1H — 諗概念前必做)</h4>
+<p>- <strong>議題真實背景</strong>:  </p>
+<p>  呢個 project 其實唔係拍一條「大灣區宣傳片」咁簡單，而係政制及內地事務局（CMAB）轄下嘅<strong>粵港澳大灣區發展辦公室</strong>，用官方微信公眾號 <strong>@香港特區政府粵港澳大灣區速遞</strong>，每日（平日）持續出內容，面向內地訪客同喺內地讀書/工作/生活嘅港人，講清楚粵港澳大灣區嘅<strong>主要政策和措施</strong>同最新<strong>推廣和宣傳活動</strong>。香港喺呢度嘅角色係「粵港澳大灣區核心城市之一」+「用香港優勢幫市民同企業搵到落地機會」。</p>
+<p>- <strong>Objective / Message</strong>:  </p>
+<p>  由「被動睇到就算」變成「主動 follow 官方平台、持續睇、識得搵政策重點、搵到機會」。硬訊息要落地：<strong>粵港澳大灣區機遇無限</strong>；而要掌握<strong>最權威、最實用</strong>資訊 → 就係 follow <strong>@香港特區政府粵港澳大灣區速遞</strong>。</p>
+<p>- <strong>Visual element</strong>:  </p>
+<p>  最扣題嘅視覺唔係維港靚景，而係「微信公眾號」真實使用場景：<strong>手機畫面/指尖操作/Follow 成功提示/收藏、轉發、置頂、搜尋關鍵字</strong>等功能視覺；再配合「政策重點」嘅<strong>資訊圖表（infographics）</strong>語言：清晰 icon、箭嘴、對照表、時間線。</p>
+<p>- <strong>人物出場</strong>:  </p>
+<p>  主角應該係真實受眾：喺深圳/廣州返工嘅港人、喺內地讀書嘅港生、北上開舖/做跨境電商嘅中小企老闆、內地訪港準旅客/商務客。政府方唔一定要官員出鏡（避免變成硬講）；若要「權威感」，可用<strong>粵港澳大灣區發展辦公室</strong>身份作旁白/字幕主體。</p>
+<p>- <strong>造型 / 職業 / 身分</strong>:  </p>
+<p>  乾淨寫實：通勤 OL（背囊+八達通/手機）、工程/IT 打工仔（laptop+地鐵）、大學生（campus+書包）、小店老闆（收銀+iPad）、創業者（pitch deck）。語言以廣東話口語為主，貼「港人」身份。</p>
+<p>- <strong>場景 / Tone</strong>:  </p>
+<p>  真場景：港深通勤（西九/落馬洲口岸/高鐵車廂）、深圳寫字樓、廣州咖啡店改 proposal、內地大學宿舍/自修室、香港工廈 office。Tone：<strong>專業、清晰、實用、唔浮誇</strong>；節奏可以爽快，但資訊要「一睇就明」。</p>
+<p>- <strong>deliverable</strong>:  </p>
+<p>  呢份標書係 WeChat content &amp; management，但 Round 1 我哋嘅概念要諗到「可變成：WeChat KV + 片頭片尾模板 + 系列化欄目 look」。  </p>
+<p>  <strong>KV 主 slogan + KV main idea</strong>先定：一句「Follow 就有路線圖」，畫面用「一條清晰路線/導航」由手機伸延去工作/生活場景，強調權威同實用。</p>
+<p>---</p></details><h4 class="cc">## Concept 1:〔一個 Follow，一條路線圖〕</h4>
+<p><strong>創作概念</strong>:  </p>
+<p>以「北上/跨境生活」嘅真實碎片做主線：每個人都面對同一個問題——資訊太多、真假難分、政策難啃。主角只做一個動作：Follow <strong>@香港特區政府粵港澳大灣區速遞</strong>，畫面就由混亂訊息變成清晰「路線圖」：政策重點、措施整理、活動時間表，一路指到實際決定（報讀、求職、開業、參加活動）。核心硬訊息：粵港澳大灣區機遇無限；要掌握最權威、最實用資訊→關注官方微信公眾號。</p>
+<p><strong>人/景</strong>:  </p>
+<p>港深通勤打工仔（高鐵/口岸）、深圳 office 開會、港生喺內地 campus、創業者喺咖啡店改計劃書、中小企老闆喺倉/店內諗拓展。</p>
+<p><strong>Visual Device</strong>:  </p>
+<p>「<strong>導航路線</strong>」視覺鈎：由手機畫面伸出一條半透明藍線（似地圖導航），穿梭唔同場景；每到一個關鍵位就彈出一張「資訊圖表卡」（政策重點/措施懶人包/活動日期）——清晰、權威、可收藏。</p>
+<p><strong>主打口號</strong>:  </p>
+<p><strong>機遇喺度，跟住就得。</strong></p>
+<p><strong>Proposed 明星/名人</strong>:  </p>
+<p>不適用（用真實港人更可信、亦貼「實用資訊」定位；可考慮 casting 具親和力素人/半素人 KOL 型，但唔掛名）。</p>
+<p>---</p></div></details><details class='crow' id='cand-cm9bc8b097'><summary><span class='cname'>[Agency gpt-5.2] Concept 2:〔資訊降噪：一眼睇晒重點〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cm9bc8b097&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0:創意提問(5W1H — 諗概念前必做)</h4>
+<p>- <strong>議題真實背景</strong>:  </p>
+<p>  呢個 project 其實唔係拍一條「大灣區宣傳片」咁簡單，而係政制及內地事務局（CMAB）轄下嘅<strong>粵港澳大灣區發展辦公室</strong>，用官方微信公眾號 <strong>@香港特區政府粵港澳大灣區速遞</strong>，每日（平日）持續出內容，面向內地訪客同喺內地讀書/工作/生活嘅港人，講清楚粵港澳大灣區嘅<strong>主要政策和措施</strong>同最新<strong>推廣和宣傳活動</strong>。香港喺呢度嘅角色係「粵港澳大灣區核心城市之一」+「用香港優勢幫市民同企業搵到落地機會」。</p>
+<p>- <strong>Objective / Message</strong>:  </p>
+<p>  由「被動睇到就算」變成「主動 follow 官方平台、持續睇、識得搵政策重點、搵到機會」。硬訊息要落地：<strong>粵港澳大灣區機遇無限</strong>；而要掌握<strong>最權威、最實用</strong>資訊 → 就係 follow <strong>@香港特區政府粵港澳大灣區速遞</strong>。</p>
+<p>- <strong>Visual element</strong>:  </p>
+<p>  最扣題嘅視覺唔係維港靚景，而係「微信公眾號」真實使用場景：<strong>手機畫面/指尖操作/Follow 成功提示/收藏、轉發、置頂、搜尋關鍵字</strong>等功能視覺；再配合「政策重點」嘅<strong>資訊圖表（infographics）</strong>語言：清晰 icon、箭嘴、對照表、時間線。</p>
+<p>- <strong>人物出場</strong>:  </p>
+<p>  主角應該係真實受眾：喺深圳/廣州返工嘅港人、喺內地讀書嘅港生、北上開舖/做跨境電商嘅中小企老闆、內地訪港準旅客/商務客。政府方唔一定要官員出鏡（避免變成硬講）；若要「權威感」，可用<strong>粵港澳大灣區發展辦公室</strong>身份作旁白/字幕主體。</p>
+<p>- <strong>造型 / 職業 / 身分</strong>:  </p>
+<p>  乾淨寫實：通勤 OL（背囊+八達通/手機）、工程/IT 打工仔（laptop+地鐵）、大學生（campus+書包）、小店老闆（收銀+iPad）、創業者（pitch deck）。語言以廣東話口語為主，貼「港人」身份。</p>
+<p>- <strong>場景 / Tone</strong>:  </p>
+<p>  真場景：港深通勤（西九/落馬洲口岸/高鐵車廂）、深圳寫字樓、廣州咖啡店改 proposal、內地大學宿舍/自修室、香港工廈 office。Tone：<strong>專業、清晰、實用、唔浮誇</strong>；節奏可以爽快，但資訊要「一睇就明」。</p>
+<p>- <strong>deliverable</strong>:  </p>
+<p>  呢份標書係 WeChat content &amp; management，但 Round 1 我哋嘅概念要諗到「可變成：WeChat KV + 片頭片尾模板 + 系列化欄目 look」。  </p>
+<p>  <strong>KV 主 slogan + KV main idea</strong>先定：一句「Follow 就有路線圖」，畫面用「一條清晰路線/導航」由手機伸延去工作/生活場景，強調權威同實用。</p>
+<p>---</p></details><h4 class="cc">## Concept 2:〔資訊降噪：一眼睇晒重點〕</h4>
+<p><strong>創作概念</strong>:  </p>
+<p>用「資訊泛濫」做開場：畫面充斥短片、群組傳言、碎片化標題，主角越睇越亂。轉折係「官方整理」——<strong>@香港特區政府粵港澳大灣區速遞</strong>好似幫你開咗個「降噪模式」：同一議題，用一張 infographic + 一段短片講清楚「你要知嘅三件事」，再引去相關政策、措施、活動連結。核心硬訊息：想喺粵港澳大灣區搵機遇，關鍵係跟到最權威、最實用嘅官方資訊。</p>
+<p><strong>人/景</strong>:  </p>
+<p>夜晚返到租屋嘅港人（深圳/廣州）、地鐵上刷手機嘅港生、公司 pantry 討論北上機會嘅同事、準備去香港/大灣區活動嘅內地訪客（收行程）。</p>
+<p><strong>Visual Device</strong>:  </p>
+<p>「<strong>噪音→清晰</strong>」：畫面前半用 glitch/遮擋字卡/亂飛通知做壓迫感；後半一按「關注/置頂/收藏」，畫面即刻變乾淨，資訊以整齊卡片式排版彈出（標題/說明/重點 bullet），形成強烈 before-after 對比，易記又貼 WeChat 使用。</p>
+<p><strong>主打口號</strong>:  </p>
+<p><strong>政策咁多？睇重點就夠。</strong></p>
+<p><strong>Proposed 明星/名人</strong>:  </p>
+<p>不適用（概念靠視覺機制同生活真實感；明星會搶走「權威資訊」主角位）。</p></div></details><details class='crow' id='cand-cm68db10fc'><summary><span class='cname'>[Agency grok-4.3] Concept 1:〔一機在手 速遞全灣〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cm68db10fc&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0:創意提問(5W1H)</h4>
+<p><strong>議題真實背景</strong>：呢個 brief 係政制及內地事務局（CMAB）轄下「粵港澳大灣區發展辦公室」嘅微信公眾號管理工作，官方賬號叫「香港特區政府粵港澳大灣區速遞」（@香港特區政府粵港澳大灣區速遞），目標讀者係內地訪客同喺內地工作、升學或居住嘅香港人。</p>
+<p><strong>Objective / Message</strong>：喺 6 個月合約期內，每天工作天最少發 4 篇帖文，穩健經營微信公眾號，推廣粵港澳大灣區發展帶嚟嘅機遇同香港嘅獨特優勢，同時將 GBA 政策、措施、舉措同活動準確傳達畀公眾。</p>
+<p><strong>Visual element</strong>：應該用香港同大灣區地標元素（例如維港、深圳河、港珠澳大橋、香港國際機場），同時融入微信 App 介面、真實政策文件截圖或粵港澳三地旗幟，增加官方認受感同即時代入。</p>
+<p><strong>人物出場</strong>：政府一方由「粵港澳大灣區發展辦公室」代表 CMAB 督導；受眾角色多數係 25-45 歲香港人（北上工作、創業、讀書）同內地企業界人士。</p>
+<p><strong>造型 / 職業 / 身分</strong>：香港人可穿商務 casual（襯衫+牛仔褲）或白領上班造型；內地用戶可穿企領襯衫或輕便西裝，凸顯跨境工作生活兩棲身份。</p>
+<p><strong>場景 / Tone</strong>：以辦公室開會、咖啡店討論、跨境高鐵車廂、維港天台等真實場景為主，色調專業中帶暖，營造「官方可靠但唔距離」感覺。</p>
+<p><strong>deliverable</strong>：唔止 TV，主要係微信公眾號每日帖文（圖文/短片/動畫），另外需要 KV poster 做廣告推廣同戶外展示。</p>
+<p>- <strong>KV main idea</strong>：一人一手機，掃描 QR code 即時加入「香港特區政府粵港澳大灣區速遞」，畫面中央放官方二維碼，旁邊疊印「每日 4 帖 · 機遇在手」。</p>
+<p>---</p></details><h4 class="cc">## Concept 1:〔一機在手 速遞全灣〕</h4>
+<p><strong>創作概念</strong>：以「手機」做連接香港同大灣區嘅橋樑，每日推播 4 篇官方帖文像「速遞員」咁將最新政策同商機送到用戶掌心，直接扣緊「每日最少 4 帖」同「GBA 政策、措施」嘅標書硬指標。</p>
+<p><strong>人/景</strong>：香港白領喺高鐵車廂滑手機；深圳科技園年輕創業團隊同步收到同一則推播；維港背景切手機特寫，畫面顯示官方二維碼。</p>
+<p><strong>Visual Device</strong>：手機畫面變做「速遞櫃」打開，逐個政策文件/商機卡片彈出，化做實體速遞箱，象徵資訊即時送達。</p>
+<p><strong>主打口號</strong>：速遞全灣，一機在手  </p>
+<p>（One tap delivers the Bay · In your hand.）</p>
+<p><strong>Proposed 明星/名人</strong>：不適用</p>
+<p>---</p></div></details><details class='crow' id='cand-cmc2f52572'><summary><span class='cname'>[Agency grok-4.3] Concept 2:〔灣區地圖 · 政策落點〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cmc2f52572&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0:創意提問(5W1H)</h4>
+<p><strong>議題真實背景</strong>：呢個 brief 係政制及內地事務局（CMAB）轄下「粵港澳大灣區發展辦公室」嘅微信公眾號管理工作，官方賬號叫「香港特區政府粵港澳大灣區速遞」（@香港特區政府粵港澳大灣區速遞），目標讀者係內地訪客同喺內地工作、升學或居住嘅香港人。</p>
+<p><strong>Objective / Message</strong>：喺 6 個月合約期內，每天工作天最少發 4 篇帖文，穩健經營微信公眾號，推廣粵港澳大灣區發展帶嚟嘅機遇同香港嘅獨特優勢，同時將 GBA 政策、措施、舉措同活動準確傳達畀公眾。</p>
+<p><strong>Visual element</strong>：應該用香港同大灣區地標元素（例如維港、深圳河、港珠澳大橋、香港國際機場），同時融入微信 App 介面、真實政策文件截圖或粵港澳三地旗幟，增加官方認受感同即時代入。</p>
+<p><strong>人物出場</strong>：政府一方由「粵港澳大灣區發展辦公室」代表 CMAB 督導；受眾角色多數係 25-45 歲香港人（北上工作、創業、讀書）同內地企業界人士。</p>
+<p><strong>造型 / 職業 / 身分</strong>：香港人可穿商務 casual（襯衫+牛仔褲）或白領上班造型；內地用戶可穿企領襯衫或輕便西裝，凸顯跨境工作生活兩棲身份。</p>
+<p><strong>場景 / Tone</strong>：以辦公室開會、咖啡店討論、跨境高鐵車廂、維港天台等真實場景為主，色調專業中帶暖，營造「官方可靠但唔距離」感覺。</p>
+<p><strong>deliverable</strong>：唔止 TV，主要係微信公眾號每日帖文（圖文/短片/動畫），另外需要 KV poster 做廣告推廣同戶外展示。</p>
+<p>- <strong>KV main idea</strong>：一人一手機，掃描 QR code 即時加入「香港特區政府粵港澳大灣區速遞」，畫面中央放官方二維碼，旁邊疊印「每日 4 帖 · 機遇在手」。</p>
+<p>---</p></details><h4 class="cc">## Concept 2:〔灣區地圖 · 政策落點〕</h4>
+<p><strong>創作概念</strong>：將粵港澳三地簡化成實時更新嘅互動地圖，用色點標註最新政策、活動、舉措嘅「落點」，每日 4 個落點即係每日 4 篇帖文，視覺化官方資訊覆蓋範圍，直接呼應標書「GBA policies, measures, initiatives, issues, events/activities」。</p>
+<p><strong>人/景</strong>：地圖畫面由廣角航拍逐步拉近，香港中環 → 深圳前海 → 澳門橫琴；旁白或主標題帶出「今日 4 點」。</p>
+<p><strong>Visual Device</strong>：地圖上每新增一個色點，就即時彈出對應帖文標題同 QR code，顏色同粵港澳三地旗幟對應，形成強烈視覺記憶點。</p>
+<p><strong>主打口號</strong>：灣區地圖，政策實時上線  </p>
+<p>（Map the Bay · Policy drops daily.）</p>
+<p><strong>Proposed 明星/名人</strong>：不適用</p></div></details><details class='crow' id='cand-cm06117f2d'><summary><span class='cname'>[Agency kimi-k2.6] Concept 1:〔一機灣區〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cm06117f2d&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0:創意提問(5W1H)</h4>
+<p>- <strong>議題真實背景</strong>:呢個係政制及內地事務局（CMAB）轄下<strong>粵港澳大灣區發展辦公室</strong>嘅官方微信公眾號推廣，官方帳號名係<strong>「@香港特區政府粵港澳大灣區速遞」</strong>。代表香港嘅單位係<strong>粵港澳大灣區發展辦公室</strong>，並非單一官員個人，而係政府辦公室作為機構品牌出場。香港喺度扮「大灣區核心城市」嘅資訊樞紐角色，要連結內地同埋海外持份者。</p>
+<p>- <strong>Objective / Message</strong>:核心要推廣大灣區發展機遇，將受眾由被動接收資訊轉化為主動關注官方平台、主動發掘北上發展/營商機遇。硬訊息係「權威政策精華＋實用官方資訊」，要令人覺得呢個號係必follow嘅官方渠道。</p>
+<p>- <strong>Visual element</strong>:微信公眾號嘅界面元素（訂閱通知、選單欄、文章卡片）、大灣區嘅地理輪廓（11城市連結）、QR code（實際轉化動作）、手機屏幕作為資訊窗口。要避開抽象嘅「橋樑」「握手」，要具體到「人點樣用手機獲得資訊」。</p>
+<p>- <strong>人物出場</strong>:具體人物——喺內地讀書嘅香港學生、喺深圳創業嘅香港青年、喺廣州開舖嘅香港師奶/小老闆、喺香港想北上搵機會嘅白領。政府一方唔出真人官員，只出品牌機構身份（辦公室logo、官方認證標誌）。</p>
+<p>- <strong>造型 / 職業 / 身分</strong>:真實香港人造型——學生著背包波鞋、創業青年著smart casual拎laptop、師奶著實用街坊裝但用微信支付、白領著恤衫但唔係過份formal。要似平時街邊見到嘅人，唔好靚到離地。</p>
+<p>- <strong>場景 / Tone</strong>:真實場景——深圳前海辦公室、廣州街市/商場、香港家中客廳、高鐵車廂、微信界面特寫。Tone係「專業但親切、權威但易入口」，好似有個朋友幫你節選咗政府資訊咁，唔好 bureaucratic 嚇走人。</p>
+<p>- <strong>deliverable</strong>:有KV poster（放微信公眾號推廣用，可能係朋友圈廣告/線下活動backdrop）。<strong>KV main idea</strong>:一手掌握大灣區——手機屏幕透出大灣區城市光景，QR code係行動召喚。<strong>主slogan待下面5條揀</strong>。</p>
+<p>---</p></details><h4 class="cc">## Concept 1:〔一機灣區〕</h4>
+<p><strong>創作概念</strong>:以「手機係通往大灣區嘅門」為核心橋——主角喺香港日常場景（屋企/茶餐廳/港鐵）打開微信公眾號，屏幕內容直接「滲出」變成真實場景轉場，帶佢穿梭大灣區實際機遇（深圳創業空間、廣州醫療、珠海居住）。強調「唔使離開香港都已經可以plan定」同「一個follow就已經接通」，扣返政府要建立官方資訊樞紐嘅硬目標。</p>
+<p><strong>人/景</strong>:25歲香港女生（OL造型，返工途中）→ 港鐵車廂內打開手機 → 屏幕資訊化作實景轉場至深圳前海office、廣州南沙青年公寓、珠海長隆親子遊。最後回到香港，但已經變成「有備而來」嘅姿態。</p>
+<p><strong>Visual Device</strong>:<strong>「屏幕溢出」</strong>——手機屏幕嘅光同內容突破邊框，化作真實環境嘅光同場景，象徵資訊不止於文字而係實際行動。QR code最後從屏幕「彈出」成實體可掃狀態。</p>
+<p><strong>主打口號</strong>:灣區機遇，一指速遞</p>
+<p><strong>Proposed 明星/名人</strong>:唔用。真實素人感更貼微信公眾號嘅日常資訊定位，明星會令成本上升同埋分散「官方權威」注意力。</p>
+<p>---</p></div></details><details class='crow' id='cand-cm6cd2b33e'><summary><span class='cname'>[Agency kimi-k2.6] Concept 2:〔灣區晨操〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cm6cd2b33e&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0:創意提問(5W1H)</h4>
+<p>- <strong>議題真實背景</strong>:呢個係政制及內地事務局（CMAB）轄下<strong>粵港澳大灣區發展辦公室</strong>嘅官方微信公眾號推廣，官方帳號名係<strong>「@香港特區政府粵港澳大灣區速遞」</strong>。代表香港嘅單位係<strong>粵港澳大灣區發展辦公室</strong>，並非單一官員個人，而係政府辦公室作為機構品牌出場。香港喺度扮「大灣區核心城市」嘅資訊樞紐角色，要連結內地同埋海外持份者。</p>
+<p>- <strong>Objective / Message</strong>:核心要推廣大灣區發展機遇，將受眾由被動接收資訊轉化為主動關注官方平台、主動發掘北上發展/營商機遇。硬訊息係「權威政策精華＋實用官方資訊」，要令人覺得呢個號係必follow嘅官方渠道。</p>
+<p>- <strong>Visual element</strong>:微信公眾號嘅界面元素（訂閱通知、選單欄、文章卡片）、大灣區嘅地理輪廓（11城市連結）、QR code（實際轉化動作）、手機屏幕作為資訊窗口。要避開抽象嘅「橋樑」「握手」，要具體到「人點樣用手機獲得資訊」。</p>
+<p>- <strong>人物出場</strong>:具體人物——喺內地讀書嘅香港學生、喺深圳創業嘅香港青年、喺廣州開舖嘅香港師奶/小老闆、喺香港想北上搵機會嘅白領。政府一方唔出真人官員，只出品牌機構身份（辦公室logo、官方認證標誌）。</p>
+<p>- <strong>造型 / 職業 / 身分</strong>:真實香港人造型——學生著背包波鞋、創業青年著smart casual拎laptop、師奶著實用街坊裝但用微信支付、白領著恤衫但唔係過份formal。要似平時街邊見到嘅人，唔好靚到離地。</p>
+<p>- <strong>場景 / Tone</strong>:真實場景——深圳前海辦公室、廣州街市/商場、香港家中客廳、高鐵車廂、微信界面特寫。Tone係「專業但親切、權威但易入口」，好似有個朋友幫你節選咗政府資訊咁，唔好 bureaucratic 嚇走人。</p>
+<p>- <strong>deliverable</strong>:有KV poster（放微信公眾號推廣用，可能係朋友圈廣告/線下活動backdrop）。<strong>KV main idea</strong>:一手掌握大灣區——手機屏幕透出大灣區城市光景，QR code係行動召喚。<strong>主slogan待下面5條揀</strong>。</p>
+<p>---</p></details><h4 class="cc">## Concept 2:〔灣區晨操〕</h4>
+<p><strong>創作概念</strong>:借用香港人熟識嘅「晨運/晨早routine」概念，將「每日follow公眾號」比喻成健康習慣——幾個不同背景嘅香港人（學生、在職、退休）各自嘅早晨，都包含一個共同動作：打開「香港特區政府粵港澳大灣區速遞」睇今日update。透過平行剪接建立「關注灣區發展係新一代香港人嘅daily routine」嘅文化認同，將政府資訊渠道品牌化為生活一部份。</p>
+<p><strong>人/景</strong>:沙田公屋阿媽（朝早6點煲粥同時睇手機，見到珠海養老政策）、大圍劏房青年（7點半出門前快速掃過深圳創業補貼）、北角退休教師（8點公園晨運後坐低詳讀廣州醫療資訊）。三條線最後交疊於同一個公眾號界面，各自點擊不同文章分類。</p>
+<p><strong>Visual Device</strong>:<strong>「分屏同構」</strong>——畫面持續以三格或動態分屏並列三個人物，動作節奏同步（揭蓋、著鞋、開手機），最後三格合一為公眾號主頁截屏，強化「唔同人，同一個資訊來源」。</p>
+<p><strong>主打口號</strong>:香港人嘅灣區指南，日日更新</p>
+<p><strong>Proposed 明星/名人</strong>:唔用。三個素人角色更強調「廣泛覆蓋不同年齡層」，符合政府「面向香港及內地公眾」嘅大眾傳播目標，明星會令某一族群過度主導。</p>
+<p>---</p></div></details><details class='crow' id='cand-cm1cc7fcce'><summary><span class='cname'>[Agency kimi-k2.6] Concept 3:〔未來回郵〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cm1cc7fcce&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0:創意提問(5W1H)</h4>
+<p>- <strong>議題真實背景</strong>:呢個係政制及內地事務局（CMAB）轄下<strong>粵港澳大灣區發展辦公室</strong>嘅官方微信公眾號推廣，官方帳號名係<strong>「@香港特區政府粵港澳大灣區速遞」</strong>。代表香港嘅單位係<strong>粵港澳大灣區發展辦公室</strong>，並非單一官員個人，而係政府辦公室作為機構品牌出場。香港喺度扮「大灣區核心城市」嘅資訊樞紐角色，要連結內地同埋海外持份者。</p>
+<p>- <strong>Objective / Message</strong>:核心要推廣大灣區發展機遇，將受眾由被動接收資訊轉化為主動關注官方平台、主動發掘北上發展/營商機遇。硬訊息係「權威政策精華＋實用官方資訊」，要令人覺得呢個號係必follow嘅官方渠道。</p>
+<p>- <strong>Visual element</strong>:微信公眾號嘅界面元素（訂閱通知、選單欄、文章卡片）、大灣區嘅地理輪廓（11城市連結）、QR code（實際轉化動作）、手機屏幕作為資訊窗口。要避開抽象嘅「橋樑」「握手」，要具體到「人點樣用手機獲得資訊」。</p>
+<p>- <strong>人物出場</strong>:具體人物——喺內地讀書嘅香港學生、喺深圳創業嘅香港青年、喺廣州開舖嘅香港師奶/小老闆、喺香港想北上搵機會嘅白領。政府一方唔出真人官員，只出品牌機構身份（辦公室logo、官方認證標誌）。</p>
+<p>- <strong>造型 / 職業 / 身分</strong>:真實香港人造型——學生著背包波鞋、創業青年著smart casual拎laptop、師奶著實用街坊裝但用微信支付、白領著恤衫但唔係過份formal。要似平時街邊見到嘅人，唔好靚到離地。</p>
+<p>- <strong>場景 / Tone</strong>:真實場景——深圳前海辦公室、廣州街市/商場、香港家中客廳、高鐵車廂、微信界面特寫。Tone係「專業但親切、權威但易入口」，好似有個朋友幫你節選咗政府資訊咁，唔好 bureaucratic 嚇走人。</p>
+<p>- <strong>deliverable</strong>:有KV poster（放微信公眾號推廣用，可能係朋友圈廣告/線下活動backdrop）。<strong>KV main idea</strong>:一手掌握大灣區——手機屏幕透出大灣區城市光景，QR code係行動召喚。<strong>主slogan待下面5條揀</strong>。</p>
+<p>---</p></details><h4 class="cc">## Concept 3:〔未來回郵〕</h4>
+<p><strong>創作概念</strong>:以「寫畀未來自己嘅信」為情感鉤——主角係而家喺大灣區發展緊嘅香港人，透過微信公眾號當初follow嘅資訊，串連佢由「猶豫去唔去」到「已經喺度扎根」嘅時間線。用真實轉變（由查資訊→申請→出發→開業→請人）證明官方渠道嘅實用價值，將冷冰冰政策包裝成「人生抉擇嘅助攻」。</p>
+<p><strong>人/景</strong>:30歲前會計師（眼鏡、背囊）→ 2024年喺香港咖啡廳猶豫睇手機公眾號「前海稅務優惠」文章 → 2025年喺深圳前海實際辦公室開會 → 2026年同樣咖啡廳但係返深圳前嘅早餐，已經係僱主身份請緊香港後輩。時間線用熒幕蓋字標示。</p>
+<p><strong>Visual Device</strong>:<strong>「同一位置，不同時間」</strong>——同一個構圖位置（咖啡廳窗口位、手機擺法、咖啡杯擺位）拍攝三個年份，只有人物狀態同背景窗外景色改變（香港街景→高鐵車窗→深圳天際線），最後拉遠揭露係微信公眾號嘅「歷史文章」時間軸界面。</p>
+<p><strong>主打口號</strong>:政策唔等人，速遞幫你跟</p>
+<p><strong>Proposed 明星/名人</strong>:唔用。真實創業者story更有說服力，可用素人訪問式旁白增強可信。若堅持要明星，建議<strong>陳豪</strong>（有咖啡店老板真實身份，形象專業又親民），但會增加預算同削弱「普通人都能做到」嘅代入感。</p>
+<p>---</p></div></details><details class='crow' id='cand-cm0d745be6'><summary><span class='cname'>[Agency kimi-k2.6] Concept 4:〔十一城脈搏〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cm0d745be6&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0:創意提問(5W1H)</h4>
+<p>- <strong>議題真實背景</strong>:呢個係政制及內地事務局（CMAB）轄下<strong>粵港澳大灣區發展辦公室</strong>嘅官方微信公眾號推廣，官方帳號名係<strong>「@香港特區政府粵港澳大灣區速遞」</strong>。代表香港嘅單位係<strong>粵港澳大灣區發展辦公室</strong>，並非單一官員個人，而係政府辦公室作為機構品牌出場。香港喺度扮「大灣區核心城市」嘅資訊樞紐角色，要連結內地同埋海外持份者。</p>
+<p>- <strong>Objective / Message</strong>:核心要推廣大灣區發展機遇，將受眾由被動接收資訊轉化為主動關注官方平台、主動發掘北上發展/營商機遇。硬訊息係「權威政策精華＋實用官方資訊」，要令人覺得呢個號係必follow嘅官方渠道。</p>
+<p>- <strong>Visual element</strong>:微信公眾號嘅界面元素（訂閱通知、選單欄、文章卡片）、大灣區嘅地理輪廓（11城市連結）、QR code（實際轉化動作）、手機屏幕作為資訊窗口。要避開抽象嘅「橋樑」「握手」，要具體到「人點樣用手機獲得資訊」。</p>
+<p>- <strong>人物出場</strong>:具體人物——喺內地讀書嘅香港學生、喺深圳創業嘅香港青年、喺廣州開舖嘅香港師奶/小老闆、喺香港想北上搵機會嘅白領。政府一方唔出真人官員，只出品牌機構身份（辦公室logo、官方認證標誌）。</p>
+<p>- <strong>造型 / 職業 / 身分</strong>:真實香港人造型——學生著背包波鞋、創業青年著smart casual拎laptop、師奶著實用街坊裝但用微信支付、白領著恤衫但唔係過份formal。要似平時街邊見到嘅人，唔好靚到離地。</p>
+<p>- <strong>場景 / Tone</strong>:真實場景——深圳前海辦公室、廣州街市/商場、香港家中客廳、高鐵車廂、微信界面特寫。Tone係「專業但親切、權威但易入口」，好似有個朋友幫你節選咗政府資訊咁，唔好 bureaucratic 嚇走人。</p>
+<p>- <strong>deliverable</strong>:有KV poster（放微信公眾號推廣用，可能係朋友圈廣告/線下活動backdrop）。<strong>KV main idea</strong>:一手掌握大灣區——手機屏幕透出大灣區城市光景，QR code係行動召喚。<strong>主slogan待下面5條揀</strong>。</p>
+<p>---</p></details><h4 class="cc">## Concept 4:〔十一城脈搏〕</h4>
+<p><strong>創作概念</strong>:將大灣區十一個城市嘅「即時動態」視覺化為一個共同嘅心跳/脈搏——透過微信公眾號嘅推送通知，串連不同城市同一時刻嘅機遇畫面（香港金融、深圳科技、廣州貿易、珠海宜居、佛山製造等）。強調「一個平台睇晒全域」，突出官方資訊嘅整合優勢，對比零散網絡資訊嘅碎片化。</p>
+<p><strong>人/景</strong>:無單一主角，以「資訊本身」為主角。快速剪接十一城市嘅代表性時刻——香港中環晨早返工、深圳南山night skyline編程、廣州白雲機場貨運、東莞工廠機械臂、佛山武館改創意空間等。每個畫面伴隨手機推送聲同熒幕蓋字顯示對應政策關鍵詞。</p>
+<p><strong>Visual Device</strong>:<strong>「脈衝地圖」</strong>——抽象大灣區地圖輪廓以光點流動連結各城市，每次推送通知觸發一條光脈衝由香港（資訊樞紐）傳向該城市，逐漸形成完整網絡。最後地圖凝結為公眾號QR code圖案。</p>
+<p><strong>主打口號</strong>:大灣區發展辦公室認證，機遇冇走寶</p>
+<p><strong>Proposed 明星/名人</strong>:唔用。城市景觀同資訊流本身已夠豐富，加入人物會分散對「全域覆蓋」嘅注意力。</p>
+<p>---</p></div></details><details class='crow' id='cand-cmddfa614c'><summary><span class='cname'>[Agency kimi-k2.6] Concept 5:〔阿爸嘅微信〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cmddfa614c&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0:創意提問(5W1H)</h4>
+<p>- <strong>議題真實背景</strong>:呢個係政制及內地事務局（CMAB）轄下<strong>粵港澳大灣區發展辦公室</strong>嘅官方微信公眾號推廣，官方帳號名係<strong>「@香港特區政府粵港澳大灣區速遞」</strong>。代表香港嘅單位係<strong>粵港澳大灣區發展辦公室</strong>，並非單一官員個人，而係政府辦公室作為機構品牌出場。香港喺度扮「大灣區核心城市」嘅資訊樞紐角色，要連結內地同埋海外持份者。</p>
+<p>- <strong>Objective / Message</strong>:核心要推廣大灣區發展機遇，將受眾由被動接收資訊轉化為主動關注官方平台、主動發掘北上發展/營商機遇。硬訊息係「權威政策精華＋實用官方資訊」，要令人覺得呢個號係必follow嘅官方渠道。</p>
+<p>- <strong>Visual element</strong>:微信公眾號嘅界面元素（訂閱通知、選單欄、文章卡片）、大灣區嘅地理輪廓（11城市連結）、QR code（實際轉化動作）、手機屏幕作為資訊窗口。要避開抽象嘅「橋樑」「握手」，要具體到「人點樣用手機獲得資訊」。</p>
+<p>- <strong>人物出場</strong>:具體人物——喺內地讀書嘅香港學生、喺深圳創業嘅香港青年、喺廣州開舖嘅香港師奶/小老闆、喺香港想北上搵機會嘅白領。政府一方唔出真人官員，只出品牌機構身份（辦公室logo、官方認證標誌）。</p>
+<p>- <strong>造型 / 職業 / 身分</strong>:真實香港人造型——學生著背包波鞋、創業青年著smart casual拎laptop、師奶著實用街坊裝但用微信支付、白領著恤衫但唔係過份formal。要似平時街邊見到嘅人，唔好靚到離地。</p>
+<p>- <strong>場景 / Tone</strong>:真實場景——深圳前海辦公室、廣州街市/商場、香港家中客廳、高鐵車廂、微信界面特寫。Tone係「專業但親切、權威但易入口」，好似有個朋友幫你節選咗政府資訊咁，唔好 bureaucratic 嚇走人。</p>
+<p>- <strong>deliverable</strong>:有KV poster（放微信公眾號推廣用，可能係朋友圈廣告/線下活動backdrop）。<strong>KV main idea</strong>:一手掌握大灣區——手機屏幕透出大灣區城市光景，QR code係行動召喚。<strong>主slogan待下面5條揀</strong>。</p>
+<p>---</p></details><h4 class="cc">## Concept 5:〔阿爸嘅微信〕</h4>
+<p><strong>創作概念</strong>:反向操作——唔拍年輕人，拍一個50+香港阿爸如何被子女教識用微信公眾號，發現原來大灣區機遇唔止係年輕人嘅事，退休/準退休人士嘅醫療、養老、置業同樣有政策支援。透過「跨代數碼包容」嘅温情角度，擴闊受眾面，回應政府「香港及內地公眾」嘅廣泛定位。</p>
+<p><strong>人/景</strong>:觀塘公屋，55歲裝修師傅（粗手、老花眼鏡）同25歲女兒（社工，週末返屋企食飯）。女教爸爸follow公眾號 → 爸爸夜晚自己戴住老花鏡慢慢碌 → 發現「廣州長者醫療券」「珠海養老社區」等資訊 → 隔週實際同朋友北上「睇環境」。結局係爸爸同班工友飲茶時主動share條link。</p>
+<p><strong>Visual Device</strong>:<strong>「字體放大」</strong>——模擬長者手機嘅大字体模式、語音輸入轉文字、緩慢但穩定嘅手指滑動。畫面比例穿插1:1手機屏幕錄屏，觀眾同角色一齊經歷「由唔識到識」嘅介面探索過程。</p>
+<p><strong>主打口號</strong>:關注官方，資訊最啱</p>
+<p><strong>Proposed 明星/名人</strong>:唔用。素人長者真實感最強，可考慮邀請真實有北上經驗嘅工會人士客串，增加可信度。</p></div></details><details class='crow' id='cand-cme88a4377'><summary><span class='cname'>[Agency qwen3.7-max] Concept 1:〔官方導航儀 · 一號通灣區〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cme88a4377&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0:創意提問(5W1H — 諗概念前必做)</h4>
+<p>-   <strong>議題真實背景</strong>:呢份標書並非舉辦單一活動，而係<strong>政制及內地事務局(CMAB)</strong>轄下<strong>粵港澳大灣區發展辦公室</strong>外判嘅「微信公眾號內容開發與管理服務」。核心係要養大個官方號 <strong>@香港特區政府粵港澳大灣區速遞</strong>，每日出4篇帖文，對象係<strong>身處內地嘅港人(讀書/工作/居住)</strong>及內地訪客。香港角色係「超級聯繫人」兼「核心城市」，唔係單純派福利，而係講「高質量發展機遇」。</p>
+<p>-   <strong>Objective / Message</strong>:KPI 係帳號「穩定增長」同「持續營運」。核心訊息要將「政府公文」轉化為「北上發展/生活實用手冊」，令受眾覺得呢個號係佢哋喺內地生存發展嘅<strong>官方導航儀</strong>，而非另一個發新聞稿嘅機械人。</p>
+<p>-   <strong>Visual element</strong>:避免用爛咗嘅「高鐵/地圖/握手」。建議用 <strong>「手機屏幕內嘅粵港澳生活圈」</strong> 或 <strong>「資訊圖表(Infographic)美學化」</strong>。因為標書明確要求製作 infographics/videos/animations，視覺鈎子必須體現「將複雜政策拆解為易明視覺」嘅能力，例如用統一色調嘅動態圖标貫穿所有帖文。</p>
+<p>-   <strong>人物出場</strong>:不應只用官員(官員只負責政策權威背書)。主角應係 <strong>「正在大灣區生活嘅真實港人」</strong>(如深圳創業者、廣州讀書嘅DSE學生、橫琴執業律師)，加上<strong>CMAB/大灣區辦嘅Social Media Executive</strong>(體現服務團隊專業性)。</p>
+<p>-   <strong>造型 / 職業 / 身分</strong>:拒絕西裝領呔擺拍。要<strong>Smart Casual/商務休閒</strong>，手持手機掃碼/睇帖文嘅自然狀態。身分要具體：前海深港青年夢工場創業CEO、南沙稅務局港人顧問、暨南大學港生。似真「灣區人」多過「香港遊客」。</p>
+<p>-   <strong>場景 / Tone</strong>:場景係 <strong>「跨境雙城生活現場」</strong>(口岸、聯合實驗室、港式茶餐廳喺內地分店、內地政務服務大廳)。Tone 要<strong>「權威但親切、實用唔說教」</strong>，貼近微信生態嘅閱讀習慣，唔好TV式官腔。</p>
+<p>-   <strong>deliverable</strong>:標書主體係 WeChat Post 內容服務，<strong>無要求 TVC 或 KV Poster</strong>。但作為 Round 1 篩選，我哋需要提供一個<strong>「頻道品牌化概念」</strong>作為總綱，假设未來要做推廣片/封面圖時嘅主軸。主 Slogan + 視覺主軸 = 頻道嘅靈魂。</p>
+<p>-   <strong>額外關鍵點</strong>:標書強調 <strong>「敏感議題監測」</strong> 同 <strong>「緊急帖文」</strong>，創意概念必須包含「穩陣、準確、反應快」嘅隱含訊息，畀 CMAB 覺得我哋識做政府嘢，唔會為了博眼球而踩界。</p></details><h4 class="cc">## Concept 1:〔官方導航儀 · 一號通灣區〕</h4>
+<p><strong>創作概念</strong>:將「@香港特區政府粵港澳大灣區速遞」定位為每個港人手機入面必備嘅 <strong>「灣區生活/發展官方導航App」</strong>。概念核心係「化繁為簡」，強調我哋嘅內容服務能將厚厚嘅政策文件，即時轉化為一眼睇明嘅行動指南。扣返標書「開發內容、資訊圖表、促進資訊傳播」嘅要求，突顯我哋團隊嘅內容轉譯能力。</p>
+<p><strong>人/景</strong>:主角係一位 30歲左右、喺深圳前海創業嘅港人 CEO，正忙於見客/開會，遇到政策疑問時，習慣性打開微信搜「大灣區速遞」，即刻睇到最新圖解，露出安心表情。穿插 CMAB 辦公室入面，Social Media Executive 緊貼熱點、製作 infographic 嘅專業畫面。</p>
+<p><strong>Visual Device</strong>:一個貫穿全片/全頻道嘅 <strong>「動態導航UI框」</strong>。每當講到一個政策/機遇，畫面會出現類似地圖導航嘅介面，將「政策原文」變成「路線圖/Checklist」，視覺化呈現「從資訊到行動」嘅過程。</p>
+<p><strong>主打口號</strong>:大灣區速遞：你嘅北上發展官方導航</p>
+<p><strong>Proposed 明星/名人</strong>:不適用(此概念強調「真實用戶」與「官方權威」，用明星反而削弱「工具屬性」同「貼地感」。建議搵真實灣區港人KOL或素人出演)。</p></div></details><details class='crow' id='cand-cmba1e6bbd'><summary><span class='cname'>[Agency qwen3.7-max] Concept 2:〔灣區機會，日日新鮮送到〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=CMAB&cid=cmba1e6bbd&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><details class='soft'><summary>💭 5W1H 思考(呢個 agency 點諗)</summary><h4 class="cc">## Phase 0:創意提問(5W1H — 諗概念前必做)</h4>
+<p>-   <strong>議題真實背景</strong>:呢份標書並非舉辦單一活動，而係<strong>政制及內地事務局(CMAB)</strong>轄下<strong>粵港澳大灣區發展辦公室</strong>外判嘅「微信公眾號內容開發與管理服務」。核心係要養大個官方號 <strong>@香港特區政府粵港澳大灣區速遞</strong>，每日出4篇帖文，對象係<strong>身處內地嘅港人(讀書/工作/居住)</strong>及內地訪客。香港角色係「超級聯繫人」兼「核心城市」，唔係單純派福利，而係講「高質量發展機遇」。</p>
+<p>-   <strong>Objective / Message</strong>:KPI 係帳號「穩定增長」同「持續營運」。核心訊息要將「政府公文」轉化為「北上發展/生活實用手冊」，令受眾覺得呢個號係佢哋喺內地生存發展嘅<strong>官方導航儀</strong>，而非另一個發新聞稿嘅機械人。</p>
+<p>-   <strong>Visual element</strong>:避免用爛咗嘅「高鐵/地圖/握手」。建議用 <strong>「手機屏幕內嘅粵港澳生活圈」</strong> 或 <strong>「資訊圖表(Infographic)美學化」</strong>。因為標書明確要求製作 infographics/videos/animations，視覺鈎子必須體現「將複雜政策拆解為易明視覺」嘅能力，例如用統一色調嘅動態圖标貫穿所有帖文。</p>
+<p>-   <strong>人物出場</strong>:不應只用官員(官員只負責政策權威背書)。主角應係 <strong>「正在大灣區生活嘅真實港人」</strong>(如深圳創業者、廣州讀書嘅DSE學生、橫琴執業律師)，加上<strong>CMAB/大灣區辦嘅Social Media Executive</strong>(體現服務團隊專業性)。</p>
+<p>-   <strong>造型 / 職業 / 身分</strong>:拒絕西裝領呔擺拍。要<strong>Smart Casual/商務休閒</strong>，手持手機掃碼/睇帖文嘅自然狀態。身分要具體：前海深港青年夢工場創業CEO、南沙稅務局港人顧問、暨南大學港生。似真「灣區人」多過「香港遊客」。</p>
+<p>-   <strong>場景 / Tone</strong>:場景係 <strong>「跨境雙城生活現場」</strong>(口岸、聯合實驗室、港式茶餐廳喺內地分店、內地政務服務大廳)。Tone 要<strong>「權威但親切、實用唔說教」</strong>，貼近微信生態嘅閱讀習慣，唔好TV式官腔。</p>
+<p>-   <strong>deliverable</strong>:標書主體係 WeChat Post 內容服務，<strong>無要求 TVC 或 KV Poster</strong>。但作為 Round 1 篩選，我哋需要提供一個<strong>「頻道品牌化概念」</strong>作為總綱，假设未來要做推廣片/封面圖時嘅主軸。主 Slogan + 視覺主軸 = 頻道嘅靈魂。</p>
+<p>-   <strong>額外關鍵點</strong>:標書強調 <strong>「敏感議題監測」</strong> 同 <strong>「緊急帖文」</strong>，創意概念必須包含「穩陣、準確、反應快」嘅隱含訊息，畀 CMAB 覺得我哋識做政府嘢，唔會為了博眼球而踩界。</p></details><h4 class="cc">## Concept 2:〔灣區機會，日日新鮮送到〕</h4>
+<p><strong>創作概念</strong>:玩轉「速遞」呢個名。將抽象嘅「資訊發佈」比喻為實體嘅 <strong>「快遞包裹」</strong>。每日4篇帖文 = 4個新鮮送到嘅機會包裹。概念核心係「時效性」同「獲得感」，回應標書「每個工作天至少4篇」、「穩定增長」嘅KPI，令受眾養成「每日拆包」嘅閱讀習慣，將政府資訊變得有期待感。</p>
+<p><strong>人/景</strong>:多組人物快剪：廣州讀書嘅 DSE 學生收到「升學攻略包裹」、橫琴執業律師收到「稅務優惠包裹」、退休港人收到「醫療安老包裹」。場景由內地各城市地標快速切換，最後匯聚到 CMAB 大灣區辦團隊正在「打包」(即製作/審核帖文)嘅畫面，象徵用心服務。</p>
+<p><strong>Visual Device</strong>:一個標誌性嘅 <strong>「橙色速遞封/盒子」動畫過渡</strong>。每次轉場或帶出新帖文主題，都有一個拆盒/彈出嘅動態效果，形成強烈嘅視覺記憶點(Visual Hammer)，令觀眾一見到橙色盒就知有「正嘢」。</p>
+<p><strong>主打口號</strong>:一號掌握灣區機遇，政策生活全通曉</p>
+<p><strong>Proposed 明星/名人</strong>:建議邀請 <strong>陳展鵬(或類似形象穩重、有內地知名度嘅藝人)</strong> 擔任「速遞專員/旁白」，只用聲演或簡單現身遞出「盒子」。原因：佢形象正面、熟悉內地市場，能增加微信用戶停留時間，但又唔會搶走「資訊主角」地位，符合政府宣傳穩中求進嘅調性。</p></div></details></div><details class='soft'><summary>📖 睇全部委員會 / agency 完整提案 + storyboard</summary><details class='soft'><summary>🗳️ Agency qwen3.7-max</summary><h4 class="cc">## Phase 0:創意提問(5W1H — 諗概念前必做)</h4>
+<p>-   <strong>議題真實背景</strong>:呢份標書並非舉辦單一活動，而係<strong>政制及內地事務局(CMAB)</strong>轄下<strong>粵港澳大灣區發展辦公室</strong>外判嘅「微信公眾號內容開發與管理服務」。核心係要養大個官方號 <strong>@香港特區政府粵港澳大灣區速遞</strong>，每日出4篇帖文，對象係<strong>身處內地嘅港人(讀書/工作/居住)</strong>及內地訪客。香港角色係「超級聯繫人」兼「核心城市」，唔係單純派福利，而係講「高質量發展機遇」。</p>
+<p>-   <strong>Objective / Message</strong>:KPI 係帳號「穩定增長」同「持續營運」。核心訊息要將「政府公文」轉化為「北上發展/生活實用手冊」，令受眾覺得呢個號係佢哋喺內地生存發展嘅<strong>官方導航儀</strong>，而非另一個發新聞稿嘅機械人。</p>
+<p>-   <strong>Visual element</strong>:避免用爛咗嘅「高鐵/地圖/握手」。建議用 <strong>「手機屏幕內嘅粵港澳生活圈」</strong> 或 <strong>「資訊圖表(Infographic)美學化」</strong>。因為標書明確要求製作 infographics/videos/animations，視覺鈎子必須體現「將複雜政策拆解為易明視覺」嘅能力，例如用統一色調嘅動態圖标貫穿所有帖文。</p>
+<p>-   <strong>人物出場</strong>:不應只用官員(官員只負責政策權威背書)。主角應係 <strong>「正在大灣區生活嘅真實港人」</strong>(如深圳創業者、廣州讀書嘅DSE學生、橫琴執業律師)，加上<strong>CMAB/大灣區辦嘅Social Media Executive</strong>(體現服務團隊專業性)。</p>
+<p>-   <strong>造型 / 職業 / 身分</strong>:拒絕西裝領呔擺拍。要<strong>Smart Casual/商務休閒</strong>，手持手機掃碼/睇帖文嘅自然狀態。身分要具體：前海深港青年夢工場創業CEO、南沙稅務局港人顧問、暨南大學港生。似真「灣區人」多過「香港遊客」。</p>
+<p>-   <strong>場景 / Tone</strong>:場景係 <strong>「跨境雙城生活現場」</strong>(口岸、聯合實驗室、港式茶餐廳喺內地分店、內地政務服務大廳)。Tone 要<strong>「權威但親切、實用唔說教」</strong>，貼近微信生態嘅閱讀習慣，唔好TV式官腔。</p>
+<p>-   <strong>deliverable</strong>:標書主體係 WeChat Post 內容服務，<strong>無要求 TVC 或 KV Poster</strong>。但作為 Round 1 篩選，我哋需要提供一個<strong>「頻道品牌化概念」</strong>作為總綱，假设未來要做推廣片/封面圖時嘅主軸。主 Slogan + 視覺主軸 = 頻道嘅靈魂。</p>
+<p>-   <strong>額外關鍵點</strong>:標書強調 <strong>「敏感議題監測」</strong> 同 <strong>「緊急帖文」</strong>，創意概念必須包含「穩陣、準確、反應快」嘅隱含訊息，畀 CMAB 覺得我哋識做政府嘢，唔會為了博眼球而踩界。</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>針對微信生態優化嘅動態視覺系統。以<strong>Mobile-First 直式構圖</strong>為基礎(兼顧 16:9 演示需求)，採用明亮、高飽和度嘅「灣區藍+活力橙」政府色系。結合 <strong>Motion Graphics 資訊圖表</strong> 與 <strong>真人實景短片</strong>，節奏明快(3秒內出重點)，字幕大且清晰(適應手機閱讀)。燈光自然通透，避免過度電影感陰影，強調「資訊透明、服務貼心」嘅情緒。鏡頭多用主觀視角(POV)模擬用戶睇手機體驗。</p>
+<p>style_anchor: &quot;mobile-first motion graphics, bright government palette, infographic animation mixed with authentic lifestyle footage, clean typography, POV shots, 16:9 cinematic presentation format&quot;</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1.  大灣區速遞：你嘅北上發展官方導航</p>
+<p>2.  一號掌握灣區機遇，政策生活全通曉</p>
+<p>3.  粵港澳大灣區速遞：官方資訊，貼地實用</p>
+<p>4.  北上發展點樣做？速遞一睇就清楚</p>
+<p>5.  大灣區機遇無限，速遞為你連線</p>
+<h4 class="cc">## Concept 1:〔官方導航儀 · 一號通灣區〕</h4>
+<p><strong>創作概念</strong>:將「@香港特區政府粵港澳大灣區速遞」定位為每個港人手機入面必備嘅 <strong>「灣區生活/發展官方導航App」</strong>。概念核心係「化繁為簡」，強調我哋嘅內容服務能將厚厚嘅政策文件，即時轉化為一眼睇明嘅行動指南。扣返標書「開發內容、資訊圖表、促進資訊傳播」嘅要求，突顯我哋團隊嘅內容轉譯能力。</p>
+<p><strong>人/景</strong>:主角係一位 30歲左右、喺深圳前海創業嘅港人 CEO，正忙於見客/開會，遇到政策疑問時，習慣性打開微信搜「大灣區速遞」，即刻睇到最新圖解，露出安心表情。穿插 CMAB 辦公室入面，Social Media Executive 緊貼熱點、製作 infographic 嘅專業畫面。</p>
+<p><strong>Visual Device</strong>:一個貫穿全片/全頻道嘅 <strong>「動態導航UI框」</strong>。每當講到一個政策/機遇，畫面會出現類似地圖導航嘅介面，將「政策原文」變成「路線圖/Checklist」，視覺化呈現「從資訊到行動」嘅過程。</p>
+<p><strong>主打口號</strong>:大灣區速遞：你嘅北上發展官方導航</p>
+<p><strong>Proposed 明星/名人</strong>:不適用(此概念強調「真實用戶」與「官方權威」，用明星反而削弱「工具屬性」同「貼地感」。建議搵真實灣區港人KOL或素人出演)。</p>
+<h4 class="cc">## Concept 2:〔灣區機會，日日新鮮送到〕</h4>
+<p><strong>創作概念</strong>:玩轉「速遞」呢個名。將抽象嘅「資訊發佈」比喻為實體嘅 <strong>「快遞包裹」</strong>。每日4篇帖文 = 4個新鮮送到嘅機會包裹。概念核心係「時效性」同「獲得感」，回應標書「每個工作天至少4篇」、「穩定增長」嘅KPI，令受眾養成「每日拆包」嘅閱讀習慣，將政府資訊變得有期待感。</p>
+<p><strong>人/景</strong>:多組人物快剪：廣州讀書嘅 DSE 學生收到「升學攻略包裹」、橫琴執業律師收到「稅務優惠包裹」、退休港人收到「醫療安老包裹」。場景由內地各城市地標快速切換，最後匯聚到 CMAB 大灣區辦團隊正在「打包」(即製作/審核帖文)嘅畫面，象徵用心服務。</p>
+<p><strong>Visual Device</strong>:一個標誌性嘅 <strong>「橙色速遞封/盒子」動畫過渡</strong>。每次轉場或帶出新帖文主題，都有一個拆盒/彈出嘅動態效果，形成強烈嘅視覺記憶點(Visual Hammer)，令觀眾一見到橙色盒就知有「正嘢」。</p>
+<p><strong>主打口號</strong>:一號掌握灣區機遇，政策生活全通曉</p>
+<p><strong>Proposed 明星/名人</strong>:建議邀請 <strong>陳展鵬(或類似形象穩重、有內地知名度嘅藝人)</strong> 擔任「速遞專員/旁白」，只用聲演或簡單現身遞出「盒子」。原因：佢形象正面、熟悉內地市場，能增加微信用戶停留時間，但又唔會搶走「資訊主角」地位，符合政府宣傳穩中求進嘅調性。</p></details><details class='soft'><summary>🗳️ Agency kimi-k2.6</summary><h4 class="cc">## Phase 0:創意提問(5W1H)</h4>
+<p>- <strong>議題真實背景</strong>:呢個係政制及內地事務局（CMAB）轄下<strong>粵港澳大灣區發展辦公室</strong>嘅官方微信公眾號推廣，官方帳號名係<strong>「@香港特區政府粵港澳大灣區速遞」</strong>。代表香港嘅單位係<strong>粵港澳大灣區發展辦公室</strong>，並非單一官員個人，而係政府辦公室作為機構品牌出場。香港喺度扮「大灣區核心城市」嘅資訊樞紐角色，要連結內地同埋海外持份者。</p>
+<p>- <strong>Objective / Message</strong>:核心要推廣大灣區發展機遇，將受眾由被動接收資訊轉化為主動關注官方平台、主動發掘北上發展/營商機遇。硬訊息係「權威政策精華＋實用官方資訊」，要令人覺得呢個號係必follow嘅官方渠道。</p>
+<p>- <strong>Visual element</strong>:微信公眾號嘅界面元素（訂閱通知、選單欄、文章卡片）、大灣區嘅地理輪廓（11城市連結）、QR code（實際轉化動作）、手機屏幕作為資訊窗口。要避開抽象嘅「橋樑」「握手」，要具體到「人點樣用手機獲得資訊」。</p>
+<p>- <strong>人物出場</strong>:具體人物——喺內地讀書嘅香港學生、喺深圳創業嘅香港青年、喺廣州開舖嘅香港師奶/小老闆、喺香港想北上搵機會嘅白領。政府一方唔出真人官員，只出品牌機構身份（辦公室logo、官方認證標誌）。</p>
+<p>- <strong>造型 / 職業 / 身分</strong>:真實香港人造型——學生著背包波鞋、創業青年著smart casual拎laptop、師奶著實用街坊裝但用微信支付、白領著恤衫但唔係過份formal。要似平時街邊見到嘅人，唔好靚到離地。</p>
+<p>- <strong>場景 / Tone</strong>:真實場景——深圳前海辦公室、廣州街市/商場、香港家中客廳、高鐵車廂、微信界面特寫。Tone係「專業但親切、權威但易入口」，好似有個朋友幫你節選咗政府資訊咁，唔好 bureaucratic 嚇走人。</p>
+<p>- <strong>deliverable</strong>:有KV poster（放微信公眾號推廣用，可能係朋友圈廣告/線下活動backdrop）。<strong>KV main idea</strong>:一手掌握大灣區——手機屏幕透出大灣區城市光景，QR code係行動召喚。<strong>主slogan待下面5條揀</strong>。</p>
+<p>---</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>紀實感手機拍攝風格摻雜精緻動態圖像，介乎RedNote生活vlog同政府資訊片之間；自然光為主、室內偏暖黃光、室外大灣區城市天際線用通透藍天；微距手機屏幕反光＋航拍城市脈絡；情緒係「發現新嘢嘅興奮＋原來咁方便嘅安心」。比例 16:9，適配微信朋友圈視頻号同埋橫幅網頁。</p>
+<p>`style_anchor: &quot;RedNote lifestyle meets documentary civic film, natural light with warm interiors, phone-screen macro reflections merging into aerial city grids, 16:9 cinematic&quot;`</p>
+<p>---</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1. <strong>灣區機遇，一指速遞</strong> / GBA Opportunities, One Tap Away</p>
+<p>2. <strong>關注官方，資訊最啱</strong> / Follow Official, Stay Ahead</p>
+<p>3. <strong>香港人嘅灣區指南，日日更新</strong> / Your Daily GBA Guide, Made for Hongkongers</p>
+<p>4. <strong>政策唔等人，速遞幫你跟</strong> / Policies Move Fast, We Keep You Updated</p>
+<p>5. <strong>大灣區發展辦公室認證，機遇冇走寶</strong> / GBA Development Office Verified, No Missed Chances</p>
+<p>---</p>
+<h4 class="cc">## Concept 1:〔一機灣區〕</h4>
+<p><strong>創作概念</strong>:以「手機係通往大灣區嘅門」為核心橋——主角喺香港日常場景（屋企/茶餐廳/港鐵）打開微信公眾號，屏幕內容直接「滲出」變成真實場景轉場，帶佢穿梭大灣區實際機遇（深圳創業空間、廣州醫療、珠海居住）。強調「唔使離開香港都已經可以plan定」同「一個follow就已經接通」，扣返政府要建立官方資訊樞紐嘅硬目標。</p>
+<p><strong>人/景</strong>:25歲香港女生（OL造型，返工途中）→ 港鐵車廂內打開手機 → 屏幕資訊化作實景轉場至深圳前海office、廣州南沙青年公寓、珠海長隆親子遊。最後回到香港，但已經變成「有備而來」嘅姿態。</p>
+<p><strong>Visual Device</strong>:<strong>「屏幕溢出」</strong>——手機屏幕嘅光同內容突破邊框，化作真實環境嘅光同場景，象徵資訊不止於文字而係實際行動。QR code最後從屏幕「彈出」成實體可掃狀態。</p>
+<p><strong>主打口號</strong>:灣區機遇，一指速遞</p>
+<p><strong>Proposed 明星/名人</strong>:唔用。真實素人感更貼微信公眾號嘅日常資訊定位，明星會令成本上升同埋分散「官方權威」注意力。</p>
+<p>---</p>
+<h4 class="cc">## Concept 2:〔灣區晨操〕</h4>
+<p><strong>創作概念</strong>:借用香港人熟識嘅「晨運/晨早routine」概念，將「每日follow公眾號」比喻成健康習慣——幾個不同背景嘅香港人（學生、在職、退休）各自嘅早晨，都包含一個共同動作：打開「香港特區政府粵港澳大灣區速遞」睇今日update。透過平行剪接建立「關注灣區發展係新一代香港人嘅daily routine」嘅文化認同，將政府資訊渠道品牌化為生活一部份。</p>
+<p><strong>人/景</strong>:沙田公屋阿媽（朝早6點煲粥同時睇手機，見到珠海養老政策）、大圍劏房青年（7點半出門前快速掃過深圳創業補貼）、北角退休教師（8點公園晨運後坐低詳讀廣州醫療資訊）。三條線最後交疊於同一個公眾號界面，各自點擊不同文章分類。</p>
+<p><strong>Visual Device</strong>:<strong>「分屏同構」</strong>——畫面持續以三格或動態分屏並列三個人物，動作節奏同步（揭蓋、著鞋、開手機），最後三格合一為公眾號主頁截屏，強化「唔同人，同一個資訊來源」。</p>
+<p><strong>主打口號</strong>:香港人嘅灣區指南，日日更新</p>
+<p><strong>Proposed 明星/名人</strong>:唔用。三個素人角色更強調「廣泛覆蓋不同年齡層」，符合政府「面向香港及內地公眾」嘅大眾傳播目標，明星會令某一族群過度主導。</p>
+<p>---</p>
+<h4 class="cc">## Concept 3:〔未來回郵〕</h4>
+<p><strong>創作概念</strong>:以「寫畀未來自己嘅信」為情感鉤——主角係而家喺大灣區發展緊嘅香港人，透過微信公眾號當初follow嘅資訊，串連佢由「猶豫去唔去」到「已經喺度扎根」嘅時間線。用真實轉變（由查資訊→申請→出發→開業→請人）證明官方渠道嘅實用價值，將冷冰冰政策包裝成「人生抉擇嘅助攻」。</p>
+<p><strong>人/景</strong>:30歲前會計師（眼鏡、背囊）→ 2024年喺香港咖啡廳猶豫睇手機公眾號「前海稅務優惠」文章 → 2025年喺深圳前海實際辦公室開會 → 2026年同樣咖啡廳但係返深圳前嘅早餐，已經係僱主身份請緊香港後輩。時間線用熒幕蓋字標示。</p>
+<p><strong>Visual Device</strong>:<strong>「同一位置，不同時間」</strong>——同一個構圖位置（咖啡廳窗口位、手機擺法、咖啡杯擺位）拍攝三個年份，只有人物狀態同背景窗外景色改變（香港街景→高鐵車窗→深圳天際線），最後拉遠揭露係微信公眾號嘅「歷史文章」時間軸界面。</p>
+<p><strong>主打口號</strong>:政策唔等人，速遞幫你跟</p>
+<p><strong>Proposed 明星/名人</strong>:唔用。真實創業者story更有說服力，可用素人訪問式旁白增強可信。若堅持要明星，建議<strong>陳豪</strong>（有咖啡店老板真實身份，形象專業又親民），但會增加預算同削弱「普通人都能做到」嘅代入感。</p>
+<p>---</p>
+<h4 class="cc">## Concept 4:〔十一城脈搏〕</h4>
+<p><strong>創作概念</strong>:將大灣區十一個城市嘅「即時動態」視覺化為一個共同嘅心跳/脈搏——透過微信公眾號嘅推送通知，串連不同城市同一時刻嘅機遇畫面（香港金融、深圳科技、廣州貿易、珠海宜居、佛山製造等）。強調「一個平台睇晒全域」，突出官方資訊嘅整合優勢，對比零散網絡資訊嘅碎片化。</p>
+<p><strong>人/景</strong>:無單一主角，以「資訊本身」為主角。快速剪接十一城市嘅代表性時刻——香港中環晨早返工、深圳南山night skyline編程、廣州白雲機場貨運、東莞工廠機械臂、佛山武館改創意空間等。每個畫面伴隨手機推送聲同熒幕蓋字顯示對應政策關鍵詞。</p>
+<p><strong>Visual Device</strong>:<strong>「脈衝地圖」</strong>——抽象大灣區地圖輪廓以光點流動連結各城市，每次推送通知觸發一條光脈衝由香港（資訊樞紐）傳向該城市，逐漸形成完整網絡。最後地圖凝結為公眾號QR code圖案。</p>
+<p><strong>主打口號</strong>:大灣區發展辦公室認證，機遇冇走寶</p>
+<p><strong>Proposed 明星/名人</strong>:唔用。城市景觀同資訊流本身已夠豐富，加入人物會分散對「全域覆蓋」嘅注意力。</p>
+<p>---</p>
+<h4 class="cc">## Concept 5:〔阿爸嘅微信〕</h4>
+<p><strong>創作概念</strong>:反向操作——唔拍年輕人，拍一個50+香港阿爸如何被子女教識用微信公眾號，發現原來大灣區機遇唔止係年輕人嘅事，退休/準退休人士嘅醫療、養老、置業同樣有政策支援。透過「跨代數碼包容」嘅温情角度，擴闊受眾面，回應政府「香港及內地公眾」嘅廣泛定位。</p>
+<p><strong>人/景</strong>:觀塘公屋，55歲裝修師傅（粗手、老花眼鏡）同25歲女兒（社工，週末返屋企食飯）。女教爸爸follow公眾號 → 爸爸夜晚自己戴住老花鏡慢慢碌 → 發現「廣州長者醫療券」「珠海養老社區」等資訊 → 隔週實際同朋友北上「睇環境」。結局係爸爸同班工友飲茶時主動share條link。</p>
+<p><strong>Visual Device</strong>:<strong>「字體放大」</strong>——模擬長者手機嘅大字体模式、語音輸入轉文字、緩慢但穩定嘅手指滑動。畫面比例穿插1:1手機屏幕錄屏，觀眾同角色一齊經歷「由唔識到識」嘅介面探索過程。</p>
+<p><strong>主打口號</strong>:關注官方，資訊最啱</p>
+<p><strong>Proposed 明星/名人</strong>:唔用。素人長者真實感最強，可考慮邀請真實有北上經驗嘅工會人士客串，增加可信度。</p></details><details class='soft'><summary>🗳️ Agency grok-4.3</summary><h4 class="cc">## Phase 0:創意提問(5W1H)</h4>
+<p><strong>議題真實背景</strong>：呢個 brief 係政制及內地事務局（CMAB）轄下「粵港澳大灣區發展辦公室」嘅微信公眾號管理工作，官方賬號叫「香港特區政府粵港澳大灣區速遞」（@香港特區政府粵港澳大灣區速遞），目標讀者係內地訪客同喺內地工作、升學或居住嘅香港人。</p>
+<p><strong>Objective / Message</strong>：喺 6 個月合約期內，每天工作天最少發 4 篇帖文，穩健經營微信公眾號，推廣粵港澳大灣區發展帶嚟嘅機遇同香港嘅獨特優勢，同時將 GBA 政策、措施、舉措同活動準確傳達畀公眾。</p>
+<p><strong>Visual element</strong>：應該用香港同大灣區地標元素（例如維港、深圳河、港珠澳大橋、香港國際機場），同時融入微信 App 介面、真實政策文件截圖或粵港澳三地旗幟，增加官方認受感同即時代入。</p>
+<p><strong>人物出場</strong>：政府一方由「粵港澳大灣區發展辦公室」代表 CMAB 督導；受眾角色多數係 25-45 歲香港人（北上工作、創業、讀書）同內地企業界人士。</p>
+<p><strong>造型 / 職業 / 身分</strong>：香港人可穿商務 casual（襯衫+牛仔褲）或白領上班造型；內地用戶可穿企領襯衫或輕便西裝，凸顯跨境工作生活兩棲身份。</p>
+<p><strong>場景 / Tone</strong>：以辦公室開會、咖啡店討論、跨境高鐵車廂、維港天台等真實場景為主，色調專業中帶暖，營造「官方可靠但唔距離」感覺。</p>
+<p><strong>deliverable</strong>：唔止 TV，主要係微信公眾號每日帖文（圖文/短片/動畫），另外需要 KV poster 做廣告推廣同戶外展示。</p>
+<p>- <strong>KV main idea</strong>：一人一手機，掃描 QR code 即時加入「香港特區政府粵港澳大灣區速遞」，畫面中央放官方二維碼，旁邊疊印「每日 4 帖 · 機遇在手」。</p>
+<p>---</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>專業新聞紀實 + 輕淺商務紀錄片風，柔和自然光，色調走冷灰藍主調配暖橙點綴，微顆粒菲林質感，鏡頭多用手持跟拍同輕微搖攝，情緒沉穩、乾淨、現代，16:9。</p>
+<p>style_anchor: &quot;documentary realism, handheld follow-shot, cool grey-blue palette with warm amber accent, fine grain, 16:9 cinematic&quot;</p>
+<p>---</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>大灣區速遞，機遇每日更新  </p>
+<p>粵港澳大灣區速遞，政策一鍵到手  </p>
+<p>北上發展，從呢度起步  </p>
+<p>香港視角 · 灣區機遇 · 官方速遞  </p>
+<p>粵港澳大灣區發展辦公室 · 權威資訊第一站</p>
+<p>---</p>
+<h4 class="cc">## Concept 1:〔一機在手 速遞全灣〕</h4>
+<p><strong>創作概念</strong>：以「手機」做連接香港同大灣區嘅橋樑，每日推播 4 篇官方帖文像「速遞員」咁將最新政策同商機送到用戶掌心，直接扣緊「每日最少 4 帖」同「GBA 政策、措施」嘅標書硬指標。</p>
+<p><strong>人/景</strong>：香港白領喺高鐵車廂滑手機；深圳科技園年輕創業團隊同步收到同一則推播；維港背景切手機特寫，畫面顯示官方二維碼。</p>
+<p><strong>Visual Device</strong>：手機畫面變做「速遞櫃」打開，逐個政策文件/商機卡片彈出，化做實體速遞箱，象徵資訊即時送達。</p>
+<p><strong>主打口號</strong>：速遞全灣，一機在手  </p>
+<p>（One tap delivers the Bay · In your hand.）</p>
+<p><strong>Proposed 明星/名人</strong>：不適用</p>
+<p>---</p>
+<h4 class="cc">## Concept 2:〔灣區地圖 · 政策落點〕</h4>
+<p><strong>創作概念</strong>：將粵港澳三地簡化成實時更新嘅互動地圖，用色點標註最新政策、活動、舉措嘅「落點」，每日 4 個落點即係每日 4 篇帖文，視覺化官方資訊覆蓋範圍，直接呼應標書「GBA policies, measures, initiatives, issues, events/activities」。</p>
+<p><strong>人/景</strong>：地圖畫面由廣角航拍逐步拉近，香港中環 → 深圳前海 → 澳門橫琴；旁白或主標題帶出「今日 4 點」。</p>
+<p><strong>Visual Device</strong>：地圖上每新增一個色點，就即時彈出對應帖文標題同 QR code，顏色同粵港澳三地旗幟對應，形成強烈視覺記憶點。</p>
+<p><strong>主打口號</strong>：灣區地圖，政策實時上線  </p>
+<p>（Map the Bay · Policy drops daily.）</p>
+<p><strong>Proposed 明星/名人</strong>：不適用</p></details><details class='soft'><summary>🗳️ Agency gpt-5.2</summary><h4 class="cc">## Phase 0:創意提問(5W1H — 諗概念前必做)</h4>
+<p>- <strong>議題真實背景</strong>:  </p>
+<p>  呢個 project 其實唔係拍一條「大灣區宣傳片」咁簡單，而係政制及內地事務局（CMAB）轄下嘅<strong>粵港澳大灣區發展辦公室</strong>，用官方微信公眾號 <strong>@香港特區政府粵港澳大灣區速遞</strong>，每日（平日）持續出內容，面向內地訪客同喺內地讀書/工作/生活嘅港人，講清楚粵港澳大灣區嘅<strong>主要政策和措施</strong>同最新<strong>推廣和宣傳活動</strong>。香港喺呢度嘅角色係「粵港澳大灣區核心城市之一」+「用香港優勢幫市民同企業搵到落地機會」。</p>
+<p>- <strong>Objective / Message</strong>:  </p>
+<p>  由「被動睇到就算」變成「主動 follow 官方平台、持續睇、識得搵政策重點、搵到機會」。硬訊息要落地：<strong>粵港澳大灣區機遇無限</strong>；而要掌握<strong>最權威、最實用</strong>資訊 → 就係 follow <strong>@香港特區政府粵港澳大灣區速遞</strong>。</p>
+<p>- <strong>Visual element</strong>:  </p>
+<p>  最扣題嘅視覺唔係維港靚景，而係「微信公眾號」真實使用場景：<strong>手機畫面/指尖操作/Follow 成功提示/收藏、轉發、置頂、搜尋關鍵字</strong>等功能視覺；再配合「政策重點」嘅<strong>資訊圖表（infographics）</strong>語言：清晰 icon、箭嘴、對照表、時間線。</p>
+<p>- <strong>人物出場</strong>:  </p>
+<p>  主角應該係真實受眾：喺深圳/廣州返工嘅港人、喺內地讀書嘅港生、北上開舖/做跨境電商嘅中小企老闆、內地訪港準旅客/商務客。政府方唔一定要官員出鏡（避免變成硬講）；若要「權威感」，可用<strong>粵港澳大灣區發展辦公室</strong>身份作旁白/字幕主體。</p>
+<p>- <strong>造型 / 職業 / 身分</strong>:  </p>
+<p>  乾淨寫實：通勤 OL（背囊+八達通/手機）、工程/IT 打工仔（laptop+地鐵）、大學生（campus+書包）、小店老闆（收銀+iPad）、創業者（pitch deck）。語言以廣東話口語為主，貼「港人」身份。</p>
+<p>- <strong>場景 / Tone</strong>:  </p>
+<p>  真場景：港深通勤（西九/落馬洲口岸/高鐵車廂）、深圳寫字樓、廣州咖啡店改 proposal、內地大學宿舍/自修室、香港工廈 office。Tone：<strong>專業、清晰、實用、唔浮誇</strong>；節奏可以爽快，但資訊要「一睇就明」。</p>
+<p>- <strong>deliverable</strong>:  </p>
+<p>  呢份標書係 WeChat content &amp; management，但 Round 1 我哋嘅概念要諗到「可變成：WeChat KV + 片頭片尾模板 + 系列化欄目 look」。  </p>
+<p>  <strong>KV 主 slogan + KV main idea</strong>先定：一句「Follow 就有路線圖」，畫面用「一條清晰路線/導航」由手機伸延去工作/生活場景，強調權威同實用。</p>
+<p>---</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>寫實城市節奏 + UI/infographic 疊加。鏡頭以手持/穩定器跟拍通勤、工作、生活細節；燈光自然偏日光，配少量霓虹夜景作對比；色調乾淨、偏冷暖平衡，資訊層（UI/圖表）用官方感藍綠系，字體清晰易讀。畫面大量 close-up（手機操作）+ wide（城市/口岸/辦公室）切換，做「由一個 Follow 連到好多可能」。  </p>
+<p>style_anchor: &quot;documentary realism, Hong Kong-Shenzhen commute, clean UI overlay, infographic motion design, natural daylight, subtle neon night accents, crisp typography, 16:9 cinematic&quot;</p>
+<p>---</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1. <strong>機遇喺度，跟住就得。</strong>（Follow @香港特區政府粵港澳大灣區速遞）  </p>
+<p>2. <strong>政策咁多？睇重點就夠。</strong>  </p>
+<p>3. <strong>北上發展，一個 Follow 搞掂。</strong>  </p>
+<p>4. <strong>想搵機會？先搵權威資訊。</strong>  </p>
+<p>5. <strong>粵港澳大灣區機遇無限，資訊要快要準。</strong>  </p>
+<p>6. <strong>由今日起，唔止「知道」，要「用到」。</strong>  </p>
+<p>7. <strong>Follow 住官方速遞，行快一步。</strong>（Stay ahead with the official updates）</p>
+<p>---</p>
+<h4 class="cc">## Concept 1:〔一個 Follow，一條路線圖〕</h4>
+<p><strong>創作概念</strong>:  </p>
+<p>以「北上/跨境生活」嘅真實碎片做主線：每個人都面對同一個問題——資訊太多、真假難分、政策難啃。主角只做一個動作：Follow <strong>@香港特區政府粵港澳大灣區速遞</strong>，畫面就由混亂訊息變成清晰「路線圖」：政策重點、措施整理、活動時間表，一路指到實際決定（報讀、求職、開業、參加活動）。核心硬訊息：粵港澳大灣區機遇無限；要掌握最權威、最實用資訊→關注官方微信公眾號。</p>
+<p><strong>人/景</strong>:  </p>
+<p>港深通勤打工仔（高鐵/口岸）、深圳 office 開會、港生喺內地 campus、創業者喺咖啡店改計劃書、中小企老闆喺倉/店內諗拓展。</p>
+<p><strong>Visual Device</strong>:  </p>
+<p>「<strong>導航路線</strong>」視覺鈎：由手機畫面伸出一條半透明藍線（似地圖導航），穿梭唔同場景；每到一個關鍵位就彈出一張「資訊圖表卡」（政策重點/措施懶人包/活動日期）——清晰、權威、可收藏。</p>
+<p><strong>主打口號</strong>:  </p>
+<p><strong>機遇喺度，跟住就得。</strong></p>
+<p><strong>Proposed 明星/名人</strong>:  </p>
+<p>不適用（用真實港人更可信、亦貼「實用資訊」定位；可考慮 casting 具親和力素人/半素人 KOL 型，但唔掛名）。</p>
+<p>---</p>
+<h4 class="cc">## Concept 2:〔資訊降噪：一眼睇晒重點〕</h4>
+<p><strong>創作概念</strong>:  </p>
+<p>用「資訊泛濫」做開場：畫面充斥短片、群組傳言、碎片化標題，主角越睇越亂。轉折係「官方整理」——<strong>@香港特區政府粵港澳大灣區速遞</strong>好似幫你開咗個「降噪模式」：同一議題，用一張 infographic + 一段短片講清楚「你要知嘅三件事」，再引去相關政策、措施、活動連結。核心硬訊息：想喺粵港澳大灣區搵機遇，關鍵係跟到最權威、最實用嘅官方資訊。</p>
+<p><strong>人/景</strong>:  </p>
+<p>夜晚返到租屋嘅港人（深圳/廣州）、地鐵上刷手機嘅港生、公司 pantry 討論北上機會嘅同事、準備去香港/大灣區活動嘅內地訪客（收行程）。</p>
+<p><strong>Visual Device</strong>:  </p>
+<p>「<strong>噪音→清晰</strong>」：畫面前半用 glitch/遮擋字卡/亂飛通知做壓迫感；後半一按「關注/置頂/收藏」，畫面即刻變乾淨，資訊以整齊卡片式排版彈出（標題/說明/重點 bullet），形成強烈 before-after 對比，易記又貼 WeChat 使用。</p>
+<p><strong>主打口號</strong>:  </p>
+<p><strong>政策咁多？睇重點就夠。</strong></p>
+<p><strong>Proposed 明星/名人</strong>:  </p>
+<p>不適用（概念靠視覺機制同生活真實感；明星會搶走「權威資訊」主角位）。</p></details><details class='soft'><summary>🗳️ Agency gemini-2.5-pro</summary><p>好的,收到 brief。Creative team 已消化,內部 brainstorm 完,出 Round 1 concepts 畀 Raymond review。</p>
+<p>---</p>
+<h4 class="cc">## Phase 0:創意提問(5W1H — 諗概念前必做)</h4>
+<p>- <strong>議題真實背景</strong>:呢個係政制及內地事務局轄下嘅「粵港澳大灣區發展辦公室」嘅日常宣傳,旨在推廣大灣區機遇。實際運作上,呢類跨部門大型政策由高層官員督導,例如 <strong>政務司司長</strong> 會主持高層次督導委員會,而「粵港澳大灣區發展專員」就係執行單位嘅阿頭。香港角色係「超級聯繫人」同核心引擎,引導人流、資金流、資訊流。</p>
+<p>- <strong>Objective / Message</strong>:主要目的係 drive traffic 同 followers 去官方微信公眾號「香港特區政府粵港澳大灣區速遞」。核心訊息係:「大灣區機會好多,想知最準最 update 嘅官方料,就要 follow 我哋個 WeChat Account。」要將被動接收資訊嘅人,變成主動發掘機會嘅關注者。</p>
+<p>- <strong>Visual element</strong>:最有代表性嘅視覺元素,一定係連接香港同內地城市嘅基建,例如<strong>港珠澳大橋嘅流線型橋身</strong>、<strong>高鐵列車穿梭嘅光影</strong>。另外,微信公眾號嘅<strong>綠色對話框/介面</strong>本身都係一個強烈嘅視覺符號,可以直接扣題。</p>
+<p>- <strong>人物出場</strong>:政府代表可以係<strong>粵港澳大灣區發展專員</strong>以專家/官方身份出現(或者淨係出銜頭唔出樣)。市民受眾要多元化:一個喺前海創業嘅香港青年 IT 人、一個喺南沙做研發嘅大學教授、一個經常來往三地嘅專業人士(例如會計師)、一個考慮送仔女去大灣區讀書嘅中產媽媽。</p>
+<p>- <strong>造型 / 職業 / 身分</strong>:IT 人(smart casual,戴黑框眼鏡)、大學教授(斯文專業,着恤衫)、專業人士(business suit,手提公事包)、中產媽媽(簡約優雅,睇緊平板電腦資料)。全部要似喺中環、金鐘、科學園會見到嘅真實香港人。</p>
+<p>- <strong>場景 / Tone</strong>:場景要真實,例如<strong>香港科學園嘅實驗室</strong>、<strong>西九龍高鐵站月台</strong>、<strong>中環嘅甲級寫字樓</strong>、<strong>前海嘅 co-working space</strong>。Tone 要專業、正面、有活力,但唔可以太 hard sell 或浮誇,要保持政府嘅穩重感。</p>
+<p>- <strong>deliverable</strong>:主要係 TVC,但一定會有 <strong>KV poster</strong> 用喺巴士站、MTR 廣告。所以要先諗 slogan + KV。<strong>KV 主畫面</strong>:一部手機顯示住「香港特區政府粵港澳大灣區速遞」嘅微信介面,介面「彈」出一條由光組成嘅高鐵路軌,直接駁去大灣區城市嘅地標剪影。<strong>主 slogan</strong>: 機遇速遞,一撳到位。</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>現代、簡潔、明亮。以真實人物故事為主軸,穿插乾淨利落嘅動態圖像(motion graphics)去解釋數據同政策。鏡頭運用穩定流暢,多用 tracking shot 同 dolly shot,營造前進感。燈光偏向柔和自然光,色調以藍、綠(微信主題色)、白為主,營造專業科技感。</p>
+<p>`style_anchor: &quot;corporate cinematic, clean motion graphics, bright natural lighting, tech-forward, blue and green color palette, authentic testimonials, 16:9 cinematic&quot;`</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>- 機遇速遞,一撳到位。</p>
+<p>- 大灣區有咩著數?撳個掣,我話你知。</p>
+<p>- 唔使估估下,官方猛料,直送到家。</p>
+<p>- 香港人嘅大灣區攻略,官方認證。</p>
+<p>- 發掘大灣區,由關注我哋開始。</p>
+<h4 class="cc">## Concept 1:〔官方直送〕</h4>
+<p><strong>創作概念</strong>:將抽象嘅「資訊」同「機遇」,具體化為一個實體嘅「綠色包裹」。呢個包裹由「香港特區政府粵港澳大灣區速遞」微信號寄出,穿越港珠澳大橋、高鐵路軌,精準「派送」到唔同香港人手上,打開就係佢哋最需要嘅大灣區政策/機會,直接 show 到個 WeChat Account 點樣「速遞」價值。</p>
+<p><strong>人/景</strong>:一個香港青年創業者喺前海辦公室收到包裹,打開係最新嘅創業補貼文件;一個香港大學生喺宿舍收到包裹,打開係大灣區實習計劃嘅 Offer Letter;一個專業人士喺香港 office 收到包裹,打開係簡化咗嘅執業資格認證流程圖。</p>
+<p><strong>Visual Device</strong>:一個發光嘅、半透明嘅<strong>微信綠色包裹</strong>。佢唔係普通紙箱,而係由數碼光線構成,上面印有「@香港特區政府粵港澳大灣區速遞」嘅 logo。佢嘅移動軌跡就係大灣區嘅交通網絡,充滿速度感。</p>
+<p><strong>主打口號</strong>:唔使估估下,官方猛料,直送到家。</p>
+<p><strong>Proposed 明星/名人</strong>:不適用。用素人故事更有真實感同代入感。</p>
+<h4 class="cc">## Concept 2:〔一問即答〕</h4>
+<p><strong>創作概念</strong>:模擬香港人最直接嘅疑問,用「微信對話框」形式呈現。畫面左邊係唔同市民(創業者/家長/學生)用口語問出佢哋對大灣區嘅真實疑慮,右邊「香港特區政府粵港澳大灣區速遞」嘅官方帳號即時彈出最權威、最清晰嘅答案(用 infographic 或短片形式解答),強調呢個平台係最快、最準嘅官方 Q&amp;A 渠道。</p>
+<p><strong>人/景</strong>:場景快速切換,展示唔同人喺唔同地方(MTR車廂/Cafe/大學圖書館)用手機。創業者問:「上去開公司有冇 funding?」;家長問:「啲學校點計分?」;學生問:「實習有咩 offer?」。</p>
+<p><strong>Visual Device</strong>:一個巨大嘅<strong>微信對話介面</strong>佔據畫面。市民嘅問題係白色對話框,官方嘅回答係綠色對話框,而且答案唔係純文字,而係會「爆」開變成生動嘅 motion graphics 或真實場景,將複雜政策視覺化,簡單易明。</p>
+<p><strong>主打口號</strong>:大灣區有咩著數?撳個掣,我話你知。</p>
+<p><strong>Proposed 明星/名人</strong>:不適用。集中喺問題同答案嘅互動,人物係功能性。</p></details><details class='soft'><summary>🗳️ Agency deepseek-v3.2</summary><h4 class="cc">## Phase 0: 創意提問 (5W1H — 諗概念前必做)</h4>
+<p>- <strong>議題真實背景</strong>：政制及內地事務局（CMAB）轄下「粵港澳大灣區發展辦公室」日常運作，目標係向港人同內地持份者推廣大灣區發展機遇。呢個微信公眾號係辦公室最重要嘅直接渠道，每日由駐場或遙距嘅社交媒體主任（Social Media Executive）負責營運，內容圍繞最新政策、措施同活動。<strong>真·官員/代表</strong> 唔會日常出鏡，但內容代表辦公室立場，有需要時可由 <strong>政制及內地事務局局長</strong> 或 <strong>粵港澳大灣區發展辦公室主任</strong> 作權威背書或簡短出鏡。</p>
+<p>- <strong>Objective / Message</strong>：<strong>首要</strong>係谷高「香港特區政府粵港澳大灣區速遞」微信公眾號嘅關注數同互動率（KPI）。<strong>核心訊息</strong>要傳遞大灣區係一個「機遇處處、生活事業雙贏」嘅綜合發展區，關注官方號就係掌握最準確、最實用資訊嘅第一步。</p>
+<p>- <strong>Visual element</strong>：具標誌性嘅視覺必須扣緊「聯繫」同「機遇」：<strong>港珠澳大橋、高鐵西九龍站、福田/深圳灣口岸、大灣區城市地標剪影（廣州塔、深圳平安金融中心等）</strong>、象徵數據/資訊流動的 <strong>發光線條或軌跡</strong> 連接兩地、手機螢幕展示微信公眾號介面及二維碼。</p>
+<p>- <strong>人物出場</strong>：主要係 <strong>目標受眾</strong>—— 打算或已經北上發展嘅香港專業人士（金融、創科、法律）、創業青年、喺大灣區內地城市升學嘅學生、需要拓展業務嘅中小企東主。<strong>政府方</strong>可以係社交媒體主任（以幕後策劃者身份），或局/辦高層作 brief 亮相。</p>
+<p>- <strong>造型 / 職業 / 身分</strong>：專業人士著商務便服（smart casual）喺共享辦公室或香港寫字樓；創業青年著休閒但有風格嘅服飾喺 co-working space 或深圳前海；學生背住背包穿梭廣州大學城。全部人形象貼地、有朝氣，似真實嘅香港奮鬥者。</p>
+<p>- <strong>場景 / Tone</strong>：場景要真實：香港辦公室、內地科技園區、跨境交通樞紐、粵港澳合作園區（如南沙、前海）。Tone 係 <strong>專業、積極、明快、充滿信心</strong>，唔好太 hard sell，要展現務實機遇。</p>
+<p>- <strong>deliverable</strong>：主要係 <strong>TVC (30秒)</strong> + <strong>KV poster (社交媒體投放及印刷品)</strong>。</p>
+<p>    - <strong>KV main idea</strong>：一個香港專業人士企喺維港岸邊，望向對岸，一條由手機螢幕發出、象徵資訊與機遇嘅光軌，穿越雲層，連接維港同大灣區內地城市嘅璀璨夜景。</p>
+<p>    - <strong>主 slogan (for KV)</strong>：<strong>瞄準大灣區，機遇速遞到你手。</strong></p>
+<h4 class="cc">## 影像風格 (Style Direction)</h4>
+<p>現代企業宣傳片風格，混合真實生活片段與動態圖形設計（motion graphics）。採用自然光與適度人工補光，色調清晰明亮，偏向冷色調（藍、科技灰）突顯專業，點綴暖金色象徵機遇。鏡頭運動流暢，多使用推進（push in）與橫移（tracking）展現空間與聯繫。節奏明快，配合有動力感的背景音樂。</p>
+<p>`style_anchor: &quot;corporate documentary mixed with sleek motion graphics, clean and bright color grading, dynamic camera movement, optimistic and forward-looking tone, 16:9 cinematic&quot;`</p>
+<h4 class="cc">## Slogan (畀 Raymond 揀)</h4>
+<p>1.  瞄準大灣區，機遇速遞到你手。</p>
+<p>2.  灣區動態，一號掌握。 (GBA updates, all in one account.)</p>
+<p>3.  事業新跑道，生活大舞台。關注「大灣區速遞」。</p>
+<p>4.  連繫大灣區，規劃你未來。</p>
+<p>5.  官方情報站，機遇不停站。</p>
+<h4 class="cc">## Concept 1: 機遇軌跡</h4>
+<p><strong>創作概念</strong>：以「軌跡」作為核心視覺比喻，將大灣區嘅高速鐵路、跨境大橋、數據光纖，以至個人事業發展路徑，抽象成一條條發光嘅「機遇軌跡」。故事跟隨唔同香港人，佢哋嘅「軌跡」因為關注官方微信號而變得更清晰、更暢通，直達大灣區不同機遇點。扣緊「資訊促進發展」嘅硬訊息。</p>
+<p><strong>人/景</strong>：年輕創業家喺香港共享辦公室查閱手機（顯示微信號政策文章）、專業人士乘坐高鐵往深圳、設計師喺廣州工作室與內地團隊協作。穿插維港、西九站、內地科技園區景觀。</p>
+<p><strong>Visual Device</strong>：一條 <strong>流動嘅金色/藍色光軌</strong> 貫穿全片，隨場景變化——有時係高鐵線路圖上嘅路線，有時係手機螢幕彈出嘅資訊流動線，有時係人物前行時腳下延伸嘅道路，象徵由官方資訊引領嘅清晰路徑。</p>
+<p><strong>主打口號</strong>：連繫大灣區，規劃你未來。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用。建議用真實素人演員更顯貼地同可信。</p>
+<h4 class="cc">## Concept 2: 我的大灣區日程</h4>
+<p><strong>創作概念</strong>：將「粵港澳大灣區發展辦公室」微信公眾號，塑造成一個「智慧日程助理」。影片展示幾個典型港人嘅「一日日程」，佢哋嘅日程中關鍵嘅機遇時刻（如：睇準政策開會、預約考察、報名內地講座），都係由微信公眾號推送嘅資訊所促成。強調號稱嘅資訊係「實用、及時、幫到手」。</p>
+<p><strong>人/景</strong>：中環金融女強人晨早睇手機接收政策摘要；初創老闆下晝透過號稱連結到內地合作夥伴；傍晚，大學生喺宿舍睇號稱介紹嘅內地實習計劃。場景快速切換，節奏明快。</p>
+<p><strong>Visual Device</strong>：人物手機嘅微信介面 <strong>動態彈出關鍵資訊氣泡</strong>（如「稅務優惠更新」、「前海招聘速遞」、「跨境法律講座」），這些氣泡與真實場景融合，並化為推動劇情嘅實際元素（例如「招聘速遞」氣泡放大變成面試邀請）。</p>
+<p><strong>主打口號</strong>：灣區動態，一號掌握。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用。可考慮邀請一兩位成功北上發展嘅KOL（如創業家、專業人士）作真實分享，但以素人為主更符合政府宣傳調性。</p></details><details class='soft'><summary>🗳️ Agency claude-opus-4-8</summary><p>好的，收到 brief。內部 creative team meeting 開始，我哋即刻 brainstorm Round 1 概念畀 Raymond 過目。</p>
+<p>***</p>
+<h4 class="cc">## Phase 0:創意提問(5W1H — 諗概念前必做)</h4>
+<p>- <strong>議題真實背景</strong>: 呢個係<strong>政制及內地事務局</strong>轄下嘅<strong>粵港澳大灣區發展辦公室</strong>嘅宣傳。實際運作上，香港由<strong>行政長官</strong>領導、<strong>政務司司長</strong>統籌跨部門參與大灣區建設。喺具體政策層面，<strong>粵港澳大灣區發展專員</strong>就係呢個 Office 嘅阿頭，負責執行同推廣。香港喺大灣區嘅角色係國際金融、航運、貿易中心同創科樞紐，做「超級聯繫人」。</p>
+<p>- <strong>Objective / Message</strong>: 目標係要令香港市民同企業，由唔知/唔關心，變為「主動關注」大灣區嘅機遇。核心訊息係：大灣區發展機遇真實存在，而最權威、最 update 嘅資訊，就喺「香港特區政府粵港澳大灣區速遞」呢個官方微信公眾號。</p>
+<p>- <strong>Visual element</strong>: <strong>「光流」或「數據流」</strong>。用光線/數據線由香港流向大灣區各城市(e.g. 深圳前海、廣州南沙)，具體化「機遇」、「資訊」同「連繫」嘅流動，比單純影高鐵同大橋更有科技感同想像空間。</p>
+<p>- <strong>人物出場</strong>: 政府代表唔會直接出鏡，會用旁白。主角係香港市民，涵蓋唔同 target audience：一個喺前海創業嘅 <strong>Tech Startup 創辦人</strong>、一個喺廣州讀緊大學準備實習嘅<strong>香港學生</strong>、一個將傳統生意擴展到東莞嘅<strong>中小企老闆</strong>。</p>
+<p>- <strong>造型 / 職業 / 身分</strong>: 造型要貼地真實。Tech 創辦人係 smart casual，喺 co-working space；大學生係 T-shirt 牛仔褲，喺現代化校園；中小企老闆係恤衫西褲，喺新型廠房。總之要似香港人，唔好太「內地劇」。</p>
+<p>- <strong>場景 / Tone</strong>: 場景要現代、專業、有活力。例如：香港科學園、深圳前海嘅摩天大廈、港科大(廣州)校園、跨境口岸。Tone &amp; Manner 要<strong>務實、自信、有前瞻性</strong>，避免過度吹捧嘅浮誇感，要畀人「堅料、有料到」嘅感覺。</p>
+<p>- <strong>deliverable</strong>: 雖然 brief 係 social media management，但宣傳品一定唔止。我哋當佢係一個 campaign 咁諗，會有 <strong>TVC (30秒) + KV Poster</strong>。KV 主 slogan 要夠響，畫面要一眼睇得明。</p>
+<p>    - <strong>KV 主 Slogan + Main Idea</strong>: <strong>「機遇，就在眼前一步。」</strong>畫面係一個香港專業人士，企喺香港這邊望向對岸大灣區城市，佢面前有一道由手機屏幕延伸出去嘅「光之橋」，直接連到對岸，橋上流動住各種機會嘅 icon (e.g. 人民幣符號、職位、合作協議)。</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>風格要現代、簡潔、有科技感。唔玩懷舊、唔玩溫情。用柔和自然光，配合少量科技藍或金色嘅光線特效點綴。色調偏向明亮、乾淨，帶點輕微藍調，突顯專業同未來感。鏡頭運動流暢，多用穩定器、dolly shot，營造一種平穩前進嘅感覺。</p>
+<p>`style_anchor: &quot;clean corporate aesthetic, soft natural lighting, optimistic tone, smooth dolly shots, subtle lens flare, tech-blue &amp; gold accent, modern architecture, human-centric, 16:9 cinematic&quot;`</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1.  大灣區機遇，一撳就知。 (GBA Opportunities, just a tap away.)</p>
+<p>2.  你嘅下一步，就係大灣區。</p>
+<p>3.  唔止北上，更係創富路上。</p>
+<p>4.  灣區著數，官方速遞。</p>
+<p>5.  香港人，你嘅主場大好多。</p>
+<h4 class="cc">## Concept 1:〔連線未來〕</h4>
+<p><strong>創作概念</strong>: 以「一條線」貫穿全片，象徵香港人透過手機上嘅官方微信號，將自己嘅事業同生活「連線」到大灣區嘅龐大機遇。呢條線唔係實體，而係一道流動嘅「數據光流」，由香港人嘅手機屏幕延伸出去，穿梭港深兩地，將政策資訊轉化為觸手可及嘅真實場景，扣緊「資訊促進機遇」嘅核心訊息。</p>
+<p><strong>人/景</strong>:</p>
+<p>- 一個香港女建築師，喺西九辦公室用平板電腦畫圖。</p>
+<p>- 畫面一轉，佢畫嘅線變成「數據光流」，飛出窗外，穿過高鐵路軌。</p>
+<p>- 光流到達廣州南沙一個建築地盤，女建築師已身在當地，同團隊實地視察，將圖紙變成現實。</p>
+<p>- 最後畫面返到佢手機，顯示住「香港特區政府粵港澳大灣區速遞」嘅一篇政策文章。</p>
+<p><strong>Visual Device</strong>: <strong>「數據光流」(Data Stream)</strong>。由主角嘅電子設備(手機/平板)屏幕延伸出嚟嘅一道發光線條，好似 AR 特效咁喺現實場景中流動，連接香港同大灣區，最終光流會化成一個具體嘅機遇(e.g. 一份合約、一個職位 offer、一張通行證)。</p>
+<p><strong>主打口號</strong>: 大灣區機遇，一撳就知。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用 (用素人演員更有真實感同代入感)。</p>
+<h4 class="cc">## Concept 2:〔機遇之門〕</h4>
+<p><strong>創作概念</strong>: 用「門」作為核心視覺比喻。香港人只要喺手機上打開「香港特區政府粵港澳大灣區速遞」呢個微信號，就好似打開咗一扇通往大灣區唔同機遇嘅「任意門」。每打開一篇推文，就係打開一扇新門，門後就係一個真實嘅成功案例或生活場景。強調官方資訊係開啟機遇嘅「鎖匙」。</p>
+<p><strong>人/景</strong>:</p>
+<p>- 一個香港青年，喺 cafe碌緊手機，撳開我哋個 WeChat account。</p>
+<p>- 佢一撳，身邊嘅牆壁幻化成一扇門打開，門後係深圳一個熱鬧嘅創科市集，佢見到同齡人展示緊自己嘅產品。</p>
+<p>- 佢再 swipe 睇下一篇文，又一扇門打開，見到一個香港家庭喺珠海享受緊週末，環境優美。</p>
+<p>- 結尾係青年收起手機，面露自信微笑，背景係通往深圳嘅口岸。</p>
+<p><strong>Visual Device</strong>: <strong>「次元門」(Portal Door)</strong>。每當主角喺手機上同 WeChat 號互動(e.g. 點擊文章)，現實場景中就會出現一度充滿科技感嘅光影門框。門框內唔係另一間房，而係大灣區城市嘅真實景象，主角可以「跨過」呢道門，沉浸式體驗各種可能性。</p>
+<p><strong>主打口號</strong>: 你嘅下一步，就係大灣區。</p>
+<p><strong>Proposed 明星/名人</strong>: 柯煒林 (Terrance Lau)。形象正面、年輕、有探索精神，符合 target audience 中年輕專業人士/創業家嘅形象，有說服力。</p></details><details class='soft'><summary>🗳️ 委員會 20260603-200044</summary><h4 class="cc">## Phase 0:創意提問(5W1H)</h4>
+<p><strong>Objective/Message?</strong>  </p>
+<p>每日4帖，目標係將「粵港澳大灣區高質量發展」嘅官方硬訊息，轉化為港人同內地訪客每天主動check嘅「生活/營商參謀」，建立「每日一開，北上即明」嘅儀式感。</p>
+<p><strong>標誌性 visual element?</strong>  </p>
+<p>「叮」一聲 + 「粵港澳大灣區速遞」官方印章彈入鎖定，再展開全稱，結尾統一「✓ 已掌握」動態圖標，為每日重複動作建立肌肉記憶。</p>
+<p><strong>咩人物出場(政府要唔要派人?市民做咩?)?</strong>  </p>
+<p>政府不出鏡；市民只做「接收」動作（手指點擊通知、掃碼），唔做真人自述，確保高頻產量。</p>
+<p><strong>造型/職業/身分?</strong>  </p>
+<p>不適用——純資訊圖形動畫，無需真人。</p>
+<p><strong>場景/tone(貼政府唔浮誇)?</strong>  </p>
+<p>極簡白/薄荷綠資訊卡片，左右雙語對稱，CMAB官方色帶貫穿，乾淨專業，零官腔。</p>
+<p><strong>本片 deliverable(有冇 KV poster?有就先諗主 slogan + KV main idea)?</strong>  </p>
+<p>有KV poster：主Slogan「每日一開，北上即明」，KV main idea係「官方印章彈入鎖定」做今日儀式。</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>medium: 2D_anime  </p>
+<p>movement: 中性  </p>
+<p>lighting: high_key  </p>
+<p>grade: 粉彩  </p>
+<p>filmstock: 4K商業  </p>
+<p>lens: 自然紀實  </p>
+<p>mood: 乾淨高級商業  </p>
+<p>aspect: 9:16  </p>
+<p><strong>style_anchor: &quot;clean 2D motion graphics, flat vector art, infographic animation, high-key, bright airy even light, pastel palette, symmetrical, pristine 4K commercial polish, natural documentary framing, 35mm, clean premium commercial mood, 9:16 vertical&quot;</strong></p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1. 每日一開，北上即明。  </p>
+<p>2. 朝早三分鐘，機會鎖定晒。  </p>
+<p>3. 大灣區動態，呢度最快最準。  </p>
+<p>4. 香港優勢，大灣區機遇，一頁睇清。  </p>
+<p>5. 粵港澳大灣區發展，你我同頻。</p>
+<h4 class="cc">## Concept 1:〔每日情報站〕</h4>
+<p><strong>創作概念</strong>:以「通知即服務」將每日4帖政策包裝成固定儀式：叮聲+官方印章彈入鎖定，左右雙語卡片同步展開，結尾「✓已掌握」完成儀式，同時符合AD要求涵蓋內地訪客及港人。</p>
+<p><strong>人/景</strong>:無真人，純2D動畫資訊卡片。</p>
+<p><strong>Visual Device</strong>:聲音觸發官方印章彈入鎖定+結尾統一「✓已掌握」動態圖標。</p>
+<p><strong>主打口號</strong>:每日一開，北上即明。</p>
+<p><strong>Proposed 明星/名人</strong>:不適用</p>
+<h4 class="cc">## Concept 2:〔雙語情報卡〕</h4>
+<p><strong>創作概念</strong>:左右對稱卡片把「粵港澳大灣區高質量發展」硬訊息轉化為實用行動指引（一句重點+一個行動），確保首次出現必用官方全名，同時兼顧內地訪客視角。</p>
+<p><strong>人/景</strong>:無真人，純2D動畫雙語卡片。</p>
+<p><strong>Visual Device</strong>:CMAB官方色帶貫穿左右雙語卡片，中間用「✓已掌握」收結儀式。</p>
+<p><strong>主打口號</strong>:粵港澳大灣區發展，你我同頻。</p>
+<p><strong>Proposed 明星/名人</strong>:不適用</p></details></details></details></section>
+<section id="brief"><details class="soft sec" ><summary>📋 Brief 撮要 + NBLM 創意</summary><div class='card'><p><h4>1. Background（背景）</h4> 政制及內地事務局（CMAB）轄下的粵港澳大灣區發展辦公室，一直致力向本地、內地及海外 持份者推廣大灣區建設帶來的重大機遇  [1]。為有效接觸內地訪客及在內地工作、升學或居住的港人，辦公室利用其官方微信公眾 號（@香港特區政府粵港澳大灣區速遞）作為最重要及直接的資訊發佈渠道之一  [2]。在當前的社會脈絡下，雖然微信是接觸內地市場的必備工具，但公眾對資訊泛濫及內 容質素有一定要求 [3, 4]。</p><p><h4>2. Objective（目標）</h4> 向香港及內地公眾傳遞和推廣大灣區發展帶來的龐大機遇，並促進有關大灣區政策、措施、 倡議、議題及活動的資訊傳播 [5]。KPI  包括確保微信公眾號在合約期內穩定增長及持續營運  [6]。受眾改變目標為：從被動接收資訊，轉化為持續關注官方平台並主動發掘北上發展/營 商機遇 [3]。</p><p><h4>3. Key Message（核心訊息）</h4> 大灣區機遇無限，為您的事業與生活開啟全新可能。立即關注「香港特區政府粵港澳大灣區 速遞」微信公眾號，輕鬆掌握最權威、最實用的政策精華與官方資訊！</p><p><h4>4. Deliverables（交付物）</h4> *   **管理期：** 負責微信公眾號管理，為期 6 個月 [7, 8]。 *   **發文量：** 每個工作天（公眾假期除外）開發至少 4 篇中文帖文內容並安排發佈  [9]。 *   **內容格式：** 包含資料搜集、排版，以及設計圖象、資訊圖表  (infographics)、影片及動畫等 [10]。 *   **其他要求：**  提交每週發文清單供網站上載、製作定期表現報告、監察留言並及時通報敏感議題 [6]。 *   **駐場要求：** 合約期內需於 CMAB 辦公室駐場共 90 小時（每週不超過 15  小時）[11]。 *   **Optional 項 list：** (1) 額外提供 1 個月公眾號管理服務；(2) 額外駐場 3  小時（共 10 個 Jobs）[12]。</p><p><h4>5. Timeline（時間表）</h4> *   **B (Briefing):** 標書未有列明 (資料不足)。 *   **D (Deadline):** 2026年6月12日 (星期五) 中午 12:00 [13, 14]。 *   **P (Presentation):** 日期待定 (TBC) [15] (資料不足)。 *   **Milestone:** 合約預計於 2026 年 7 月上旬展開 [7]。書面測試將於截標後舉行  [16]。</p></div></details></section>
+<section id="research"><details class="soft sec"><summary>🔬 研究背靠(Perplexity + Gemini gatekeep + ISD)</summary><p class='empty'>🔬 深入研究:未有</p><details class='soft'><summary>🛡️ Gemini gatekeep — 官方正名/用字(防出錯)</summary><p>以下是為廣告創作團隊準備的『官方用語對照表』，確保用詞準確：</p>
+<p>---</p>
+<h4 class="cc">### 官方用語對照表</h4>
+<h4 class="cc">#### 1. 部門 / 辦事處 中文正名 + 官方英文全名 (+ 官方網址)</h4>
+<p>*   <strong>政制及內地事務局</strong> (Constitutional and Mainland Affairs Bureau, CMAB)</p>
+<p>    *   官方網址：[https://www.cmab.gov.hk/](https://www.cmab.gov.hk/)</p>
+<p>*   <strong>粵港澳大灣區發展辦公室</strong> (Guangdong-Hong Kong-Macao Greater Bay Area Development Office)</p>
+<p>    *   官方網址：[https://www.bayarea.gov.hk/](https://www.bayarea.gov.hk/)</p>
+<h4 class="cc">#### 2. 入面提到嘅計劃 / 政策 / 程序 嘅官方中英名稱</h4>
+<p>*   <strong>粵港澳大灣區</strong> (Guangdong-Hong Kong-Macao Greater Bay Area, GBA)</p>
+<p>*   <strong>粵港澳大灣區發展</strong> (Guangdong-Hong Kong-Macao Greater Bay Area development)</p>
+<p>*   <strong>主要政策和措施</strong> (major policies and measures)</p>
+<p>*   <strong>推廣和宣傳活動</strong> (promotion and publicity events/activities)</p>
+<p>*   <strong>大灣區政策、措施、舉措、議題、活動</strong> (GBA policies, measures, initiatives, issues, events/activities)</p>
+<h4 class="cc">#### 3. 專有名詞 / 技術詞 嘅官方或慣用中英對照</h4>
+<p>*   <strong>微信公眾號</strong> (WeChat Public Account)</p>
+<p>    *   官方名稱 (本標書提及)：<strong>香港特區政府粵港澳大灣區速遞</strong> (@香港特區政府粵港澳大灣區速遞) (WeChat Public Account)</p>
+<p>*   <strong>社交媒體主任</strong> (Social Media Executive)</p>
+<p>*   <strong>圖像/圖片</strong> (graphics/images)</p>
+<p>*   <strong>資訊圖表</strong> (infographics)</p>
+<p>*   <strong>影片和動畫</strong> (videos and animations)</p>
+<p>*   <strong>文字</strong> (texts)</p>
+<p>*   <strong>標題/說明</strong> (titles/captions)</p>
+<p>*   <strong>排版</strong> (typesetting)</p>
+<p>*   <strong>編輯和校對</strong> (editing and proofreading)</p>
+<p>*   <strong>意見回饋</strong> (feedbacks)</p>
+<p>*   <strong>敏感議題</strong> (sensitive issue(s))</p>
+<p>*   <strong>重大公眾影響</strong> (significant public impact(s))</p>
+<p>*   <strong>定期報告</strong> (regular reports)</p>
+<p>*   <strong>微信新功能</strong> (new features of WeChat)</p>
+<p>*   <strong>臨時/緊急帖文</strong> (ad-hoc/urgent posts)</p>
+<p>*   <strong>遙距工作</strong> (work off-site)</p>
+<p>*   <strong>駐守政制及內地事務局辦公室</strong> (stationed at CMAB office)</p>
+<p>*   <strong>合約期</strong> (Contract Period)</p>
+<h4 class="cc">#### 4. 常見會錯譯 / 易混淆嘅地方, 標明正確寫法</h4>
+<p>*   <strong>「大灣區」</strong>：應使用「粵港澳大灣區」(Guangdong-Hong Kong-Macao Greater Bay Area)，避免單獨使用「大灣區」以免產生歧義或不夠正式。</p>
+<p>*   <strong>「舉措」</strong>：英文對應 &quot;initiatives&quot;，在政府語境中常用於指新的行動或策略，與 &quot;measures&quot; (措施) 略有不同，但有時可互換使用。</p>
+<p>*   <strong>「公眾號」</strong>：官方英文為 &quot;Public Account&quot;，中文應為「微信公眾號」。</p>
+<p>*   <strong>「宣傳片標書」</strong>：在政府文件中，通常會使用「服務招標書」或「服務建議書」等更正式的說法，例如 &quot;Invitation to Tender for Services&quot; 或 &quot;Request for Proposal for Services&quot;。</p>
+<p>*   <strong>「公眾影響」</strong>：應使用「公眾影響」(public impact)，而非「公眾效應」等。</p>
+<p>*   <strong>「推廣和宣傳」</strong>：英文通常為 &quot;promotion and publicity&quot;，強調兩者並行。</p></details><p class='hint'>📺 ISD 資料庫導入(相類政府舊片 + 字幕稿)見下面「ISD 對口參考」section。</p></details></section>
+<section id="isd"><details class="soft sec"><summary>📺 ISD 資料庫導入(相類政府舊片 + 字幕稿)</summary><p class='hint'>按呢條 brief 嘅目的×題材,自動抽返 6 條相類政府(ISD)舊片 + 字幕稿,已 feed 落委員會做參考(借橋唔抄)。</p><p><strong>【呢條 brief 判定】目的:形象/成就(propaganda)  題材:未定</strong></p><p><strong>【同目的(形象/成就(propaganda))ISD 慣性】主開頭 真人/講者(47%);格式率 旁白84% 熒幕蓋字98% 標誌結尾92% CTA58% 感嘆23% 三段式·9%;慣用結尾 盛事傳城, 香港電台「盛事傳城」網頁二維碼, policyaddress.gov.hk, 網頁二維碼</strong></p><p><strong>【對口 ISD 舊作借鏡(同 目的×題材,參考佢點寫,唔好照抄,要創新)】</strong></p><div class='lab' style='margin-top:14px'>Hong Kong—Asia’s premier talent hub (2)  [形象/成就(propaganda) | 人才就業]</div><a class='btn mini' target='_blank' href='https://www.youtube.com/watch?v=nwC85MuHnBk&amp;list=PL1188A9802575C33F'>▶ 睇原片 YouTube</a><p style='font-size:13px;color:var(--mut)'>Tony Zhou：「高端人才通行證計劃」吸引我來香港發展 / 現在我的客戶遍布全球 / 熒幕蓋字：中國內地 / 周錫晨 / DayOne數據中心服務交付總監 / Tony Zhou：太太和兒子都一起來到香港生活 / 香港不僅讓我的事業快速躍升 / 還為我和家人提供一個安樂窩 / 旁白：香港作為亞洲第一的人才樞紐 / 致力吸納國際高端人才落戶 / 拓展事業、享受生活、成就卓越 / 促進本地經濟繁榮 / 熒幕蓋字：香港 / 拓展事業 · 樂享生活 · 成就卓越 / 熒幕蓋字：勞工及福利局標誌 / 香港人才服務辦公室標誌</p><div class='lab' style='margin-top:14px'>香港—亞洲頂尖人才樞紐 (1)  [形象/成就(propaganda) | 人才就業]</div><a class='btn mini' target='_blank' href='https://www.youtube.com/watch?v=DqyOH7Y5F9c&amp;list=PL1188A9802575C33F'>▶ 睇原片 YouTube</a><p style='font-size:13px;color:var(--mut)'>Grégoire Michaud：香港為我提供成功所需的材料 / 熒幕蓋字：瑞士 / Grégoire Michaud / 企業家 / Bakehouse創辦人 / Grégoire Michaud：在香港創業，讓我接觸到來自全球的客人 / 機會就在這裏！ / 旁白：香港作為亞洲第一的人才樞紐 / 致力吸納國際高端人才落戶 / 拓展事業、享受生活、成就卓越 / 促進本地經濟繁榮 / 熒幕蓋字：香港 / 拓展事業 · 樂享生活 · 成就卓越 / 熒幕蓋字：勞工及福利局標誌 / 香港人才服務辦公室標誌</p><div class='lab' style='margin-top:14px'>Hong Kong, Asia&#x27;s Event Capital (April 2026)  [形象/成就(propaganda) | 盛事旅遊/人才就業]</div><a class='btn mini' target='_blank' href='https://www.youtube.com/watch?v=6sh33bTFI24&amp;list=PL1188A9802575C33F'>▶ 睇原片 YouTube</a><p style='font-size:13px;color:var(--mut)'>旁白：政府繼續舉辦大型盛事 / 熒幕蓋字：2026年香港國際七人欖球賽 / 4月17至19日 / 熒幕蓋字：天馬凌雲──故宮博物院藏繪畫珍品 / 2026年3月20日至2027年3月17日 / 旁白：精彩的文化 / 熒幕蓋字：漢風泱泱：雄渾與交融的盛世 / 3月20日至9月20日 / 旁白：體育 / 熒幕蓋字：2026 UCI 世界盃場地單車賽(中國香港) / 4月17至19日 / 旁白：金融 / 熒幕蓋字：香港國際創科展 / 4月13至16日 / 旁白：貿易 / 旁白：和旅遊盛事陸續呈獻 / 熒幕蓋字：冠軍賽馬日 / 4月26日 / 旁白：歡迎大家和旅客一起參與 / 熒幕蓋字：CON-CON HONG KONG 2026 / 4月4至5日 / 旁白：樂在其中 / 熒幕蓋字：2026香港閱讀+ / 4月18日至26日 / 旁白：感受香港的多姿多彩 / 熒幕蓋字：香港時裝節 / 4月27至30日 / 旁白：獨特魅力和動感 / 熒幕蓋字：2026 五人冰球賽 / 4月23日至5月9日 / 熒幕蓋字：當下──香港藝術展 / 2026年3月20日至2027年</p><div class='lab' style='margin-top:14px'>「貿易單一窗口」五月一日起取代「道路貨物資料系統」  [形象/成就(propaganda) | 貿易]</div><a class='btn mini' target='_blank' href='https://www.youtube.com/watch?v=owtICezAB8Y&amp;list=PL1188A9802575C33F'>▶ 睇原片 YouTube</a><p style='font-size:13px;color:var(--mut)'>佘詩曼： / 一扇窗， / 突破界限， / 連繫無間。 / 貿易單一窗口提供全新嘅一站式電子平台， / 便利業界向政府提交進出口貿易文件及貨物資料， / 全面提升營運效率。 / 貿易單一窗口於 / 2026年5月1日取代「道路貨物資料系統」。 / 用戶無需重新登記，無縫過渡。 / 貿易單一窗口， / 商貿優勢，一線連繫。</p><div class='lab' style='margin-top:14px'>參加「慢性疾病共同治理計劃」及「乙型肝炎共同治理計劃」    共建健康人生  [形象/成就(propaganda) | 健康]</div><a class='btn mini' target='_blank' href='https://www.youtube.com/watch?v=BACxq5-87dA&amp;list=PL1188A9802575C33F'>▶ 睇原片 YouTube</a><p style='font-size:13px;color:var(--mut)'>旁白： / 健康—— / 不可以走一步算一步！ / 需防範潛伏的危機 / 熒幕蓋字： / 高血糖？ 高血脂？ 高血壓？ / 旁白： / 參加政府資助的慢病共治計劃 / 熒幕蓋字： / 慢病共治計劃及醫健通標誌 / 旁白： / 為自己的健康負責！ / 地區康健中心會與你同行 / 熒幕蓋字： / 18區地區康健中心 / 旁白： / 協助你選配家庭醫生 / 熒幕蓋字： / 一人一家庭醫生 / 旁白： / 篩查三高 / 熒幕蓋字： / 血糖 / 血壓 / 血脂 / 篩查及治理 / 旁白： / 乙型肝炎也在篩查範圍之內 / 未來還會包括其他慢性疾病 / 醫生會為你跟進、守護你的健康 / 男角(老)： / 謝謝你！ / 熒幕蓋字： / 宇軒 未來的宇軒 / 男角(老)： / 選擇了健康！ / 熒幕蓋字： / 宇軒 未來的宇軒 / 旁白： / 超過二十萬人已經參加，立即登記吧！ / 熒幕蓋字： / 基層醫療署標誌 / 超過20萬人 / 已經參加「慢病共治計劃」！</p><div class='lab' style='margin-top:14px'>Hong Kong, Asia&#x27;s Event Capital (March 2026)  [形象/成就(propaganda) | 盛事旅遊]</div><a class='btn mini' target='_blank' href='https://www.youtube.com/watch?v=dajcpEUOaGI&amp;list=PL1188A9802575C33F'>▶ 睇原片 YouTube</a><p style='font-size:13px;color:var(--mut)'>熒幕蓋字：巴塞爾藝術展香港展會2026 / 3月27至29日 / 旁白：踏入三月 / 旁白：一連串文化藝術活動繽紛呈獻 / 熒幕蓋字：藝術中環展會2026 / 3月25至29日 / 旁白：令人目不暇給 / 熒幕蓋字：第54屆香港藝術節 / 2月至3月 / 熒幕蓋字：ComplexCon香港2026 / 3月21至22日 / 旁白：還有精彩的體育 / 熒幕蓋字：啟德飛步跑 / 3月29日 / 旁白：金融 / 熒幕蓋字：JUMPSTARTER 2026 創科盛典 / 3月12至13日 / 旁白：貿易 / 旁白：和旅遊盛事陸續登場 / 熒幕蓋字：2026 LCK Cup Finals in Hong Kong / 2月28日至3月1日 / 熒幕蓋字：HELLO PANDAS 熊貓駕到之逐夢星河—— / 熊貓的太空之旅 / 2月27日至3月10日 / 旁白：歡迎大家和旅客一起參與 / 熒幕蓋字：西九家FUN藝術節2026 / 3月19日至4月12日 / 旁白：樂在其中 / 旁白：感受香港的多姿多彩 / 熒幕蓋字：2026年香港花卉展覽 / 3月20至29</p></details></section>
+<section id="score"><details class="soft sec"><summary>📊 評分明細(官方 marking scheme)</summary><div class='lab'>📝 文字評分 · 預設只列頭三</div><div class='tw'><table><thead><tr><th>創意</th><th>總分</th><th>Proposal</th><th>Equipmen</th><th>Pro-inno</th><th>ESG prop</th><th>Service </th></tr></thead><tbody><tr><td class='lt'>🥇 [Agency claude-opus-4-8] Concept 2:〔機遇之門〕</td><td><b>80.0</b></td><td>25.7</td><td>13.0</td><td>12.7</td><td>3.3</td><td>25.3</td></tr><tr><td class='lt'>🥈 [Agency kimi-k2.6] Concept 3:〔未來回郵〕</td><td><b>78.7</b></td><td>25.7</td><td>14.0</td><td>12.3</td><td>3.7</td><td>23.0</td></tr><tr><td class='lt'>🥉 [Agency kimi-k2.6] Concept 5:〔阿爸嘅微信〕</td><td><b>76.0</b></td><td>25.2</td><td>14.3</td><td>12.0</td><td>3.5</td><td>21.0</td></tr></tbody></table></div><details class='soft'><summary>睇埋其餘 16 個</summary><div class='tw'><table><tbody><tr><td class='lt'>4. [Agency qwen3.7-max] Concept 2:〔灣區機會，日日新鮮送到〕</td><td><b>74.1</b></td><td>25.2</td><td>13.0</td><td>11.2</td><td>2.7</td><td>22.0</td></tr><tr><td class='lt'>5. [Agency qwen3.7-max] Concept 1:〔官方導航儀 · 一號通灣區〕</td><td><b>73.7</b></td><td>24.8</td><td>11.7</td><td>11.5</td><td>2.7</td><td>23.0</td></tr><tr><td class='lt'>6. [Agency kimi-k2.6] Concept 2:〔灣區晨操〕</td><td><b>73.6</b></td><td>24.3</td><td>13.3</td><td>11.7</td><td>3.3</td><td>21.0</td></tr><tr><td class='lt'>7. [Agency claude-opus-4-8] Concept 1:〔連線未來〕</td><td><b>73.0</b></td><td>26.0</td><td>12.3</td><td>11.7</td><td>2.7</td><td>20.3</td></tr><tr><td class='lt'>8. [Agency gpt-5.2] Concept 1:〔一個 Follow，一條路線圖〕</td><td><b>67.7</b></td><td>25.5</td><td>12.7</td><td>11.5</td><td>3.0</td><td>15.0</td></tr><tr><td class='lt'>9. [Agency grok-4.3] Concept 2:〔灣區地圖 · 政策落點〕</td><td><b>66.3</b></td><td>25.8</td><td>11.0</td><td>11.7</td><td>2.8</td><td>15.0</td></tr><tr><td class='lt'>10. [Agency deepseek-v3.2] Concept 1:機遇軌跡</td><td><b>65.7</b></td><td>24.2</td><td>13.7</td><td>11.3</td><td>3.2</td><td>13.3</td></tr><tr><td class='lt'>11. [Agency gpt-5.2] Concept 2:〔資訊降噪：一眼睇晒重點〕</td><td><b>65.1</b></td><td>23.8</td><td>12.3</td><td>11.3</td><td>3.0</td><td>14.7</td></tr><tr><td class='lt'>12. [委員會 200044] Concept 1:〔每日情報站〕</td><td><b>64.0</b></td><td>24.2</td><td>11.3</td><td>11.0</td><td>2.5</td><td>15.0</td></tr><tr><td class='lt'>13. [Agency gemini-2.5-pro] Concept 2:〔一問即答〕</td><td><b>64.0</b></td><td>24.0</td><td>12.0</td><td>11.0</td><td>2.7</td><td>14.3</td></tr><tr><td class='lt'>14. [Agency kimi-k2.6] Concept 1:〔一機灣區〕</td><td><b>63.4</b></td><td>24.2</td><td>11.0</td><td>11.0</td><td>2.5</td><td>14.7</td></tr><tr><td class='lt'>15. [Agency kimi-k2.6] Concept 4:〔十一城脈搏〕</td><td><b>63.0</b></td><td>23.5</td><td>10.3</td><td>11.5</td><td>2.7</td><td>15.0</td></tr><tr><td class='lt'>16. [Agency deepseek-v3.2] Concept 2:我的大灣區日程</td><td><b>62.0</b></td><td>24.2</td><td>10.0</td><td>11.0</td><td>2.5</td><td>14.3</td></tr><tr><td class='lt'>17. [Agency gemini-2.5-pro] Concept 1:〔官方直送〕</td><td><b>61.3</b></td><td>23.5</td><td>10.0</td><td>11.2</td><td>3.3</td><td>13.3</td></tr><tr><td class='lt'>18. [委員會 200044] Concept 2:〔雙語情報卡〕</td><td><b>59.4</b></td><td>22.8</td><td>10.7</td><td>10.2</td><td>3.0</td><td>12.7</td></tr><tr><td class='lt'>19. [Agency grok-4.3] Concept 1:〔一機在手 速遞全灣〕</td><td><b>58.2</b></td><td>24.2</td><td>7.0</td><td>11.0</td><td>2.0</td><td>14.0</td></tr></tbody></table></div></details></details></section>
+<footer>Madkids Idea Lab · CMAB · ⚠️ AI 初步創意,出客前需 Raymond review + gatekeep</footer>
+</div>
+<a href="#" class="totop" id="totop" aria-label="返頂">↑</a>
+<script>
+function openTarget(){var h=decodeURIComponent(location.hash.slice(1));if(!h||h==='')return;var el=document.getElementById(h);if(!el)return;var n=el;while(n){if(n.tagName==='DETAILS')n.open=true;n=n.parentElement;}setTimeout(function(){el.scrollIntoView({block:'start'});},30);}
+window.addEventListener('load',openTarget);window.addEventListener('hashchange',openTarget);
+var tt=document.getElementById('totop');
+window.addEventListener('scroll',function(){tt.classList.toggle('show',window.scrollY>500);});
+tt.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
+</script>
+</body></html>
