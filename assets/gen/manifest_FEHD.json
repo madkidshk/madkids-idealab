@@ -47,15 +47,6 @@
             "drive_sub": "https://drive.google.com/drive/folders/1ieg2jo7oxFS4YuCXGDl97UeHZNZrVYFm"
           }
         ]
-      },
-      "video": {
-        "versions": [
-          {
-            "v": "20260603-140518",
-            "engine": "seedance",
-            "ts": "2026-06-03T14:05:18"
-          }
-        ]
       }
     }
   },
