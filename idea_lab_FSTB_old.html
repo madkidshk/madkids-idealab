@@ -1,0 +1,607 @@
+<!DOCTYPE html><html lang="zh-HK"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FSTB · Idea Lab</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#717784;--line:#e7e9ee;--accent:#4f46e5;--gold:#c79a2b;--grn:#15a34a;--red:#dc2626;--sh:0 1px 2px rgba(20,24,40,.04),0 4px 14px rgba(20,24,40,.05)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:18px 15px 90px}
+header{padding:6px 2px 2px} h1{font-size:25px;font-weight:800;margin:0;letter-spacing:-.01em}
+.sub{color:var(--mut);font-size:14px;margin-top:3px}
+.stagebar{display:flex;gap:5px;margin:14px 0 8px}
+.stp{flex:1;text-align:center;padding:9px 3px;border-radius:11px;border:1px solid var(--line);background:#fff;text-decoration:none;display:block}
+.stp-i{font-size:15px;font-weight:800;line-height:1.2;color:var(--ink)} .stp-l{font-size:10.5px;font-weight:700;margin-top:2px;color:var(--mut)}
+.stp.cur{background:var(--accent);border-color:var(--accent)} .stp.cur .stp-i,.stp.cur .stp-l{color:#fff}
+.stp.done{background:#e7f7ee;border-color:#cdeedd} .stp.done .stp-i{color:var(--grn)} .stp.done .stp-l{color:#3f8c63}
+.stp.todo{opacity:.55}
+.nextact{display:block;text-decoration:none;background:#fff8e6;border:1px solid #f3e2ad;border-radius:11px;padding:12px 15px;font-size:14px;font-weight:700;color:#7a5b09;margin-bottom:4px}
+.nextact:active{background:#fdf0cf}
+.totop{position:fixed;right:16px;bottom:20px;z-index:20;width:46px;height:46px;border-radius:50%;background:var(--accent);color:#fff;font-size:22px;font-weight:800;display:none;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 14px rgba(79,70,229,.4)}
+.totop.show{display:flex}
+nav{position:sticky;top:0;z-index:9;display:flex;gap:7px;overflow-x:auto;padding:11px 0;margin:8px -15px 4px;padding-left:15px;background:rgba(244,245,247,.9);backdrop-filter:blur(8px);-webkit-overflow-scrolling:touch}
+nav a{flex:0 0 auto;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px}
+nav a:active{background:#eef}
+section{margin:26px 0}
+.sec-h{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:0 0 11px;padding-left:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px 18px;box-shadow:var(--sh);margin:12px 0}
+.btn{display:inline-flex;align-items:center;gap:5px;text-decoration:none;font-weight:700;font-size:14px;border-radius:11px;padding:10px 15px;border:1px solid transparent;line-height:1}
+.btn.drive{background:#eef0ff;color:#3b35c7;border-color:#dfe1ff}
+.btn.cta{background:var(--accent);color:#fff} .btn.go{background:#0e7490;color:#fff} .btn.ghost{background:#fff;color:var(--ink);border-color:var(--line);font-weight:600}
+.btn.mini{font-size:12.5px;padding:7px 11px;background:var(--accent);color:#fff;border-radius:9px} .btn.mini.done{background:#fff;color:var(--gold);border-color:#ecd9a6}
+.ref .reftag{color:var(--mut);font-size:12.5px;margin-top:10px}
+.conflict{background:#fdeaea;color:#a01919;border:1px solid #f3c0c0;border-radius:11px;padding:11px 13px;font-size:13px;font-weight:600;margin-bottom:13px;line-height:1.5}
+.srctag{color:var(--mut);font-size:11.5px;margin-top:10px}
+.stats{display:grid;grid-template-columns:1fr;gap:9px;margin-top:13px}
+@media(min-width:520px){.stats{grid-template-columns:1fr 1fr 1fr}}
+.stat{background:#fafbfc;border:1px solid var(--line);border-radius:11px;padding:10px 12px}
+.stat-l{font-size:11.5px;color:var(--mut);font-weight:700;letter-spacing:.03em} .stat-v{font-size:14.5px;font-weight:600;margin-top:3px}
+.cd{font-size:11.5px;font-weight:800;border-radius:999px;padding:2px 8px;margin-left:4px} .cd.ok{background:#e7f7ee;color:var(--grn)} .cd.over{background:#fdeaea;color:var(--red)}
+.muted{color:var(--mut)} .empty{color:var(--mut);font-size:14px;padding:6px 2px} .hint{color:var(--mut);font-size:12.5px;margin:2px 2px 12px}
+.t3{padding:15px 16px} .t3head{display:flex;justify-content:space-between;align-items:center} .medal{font-size:22px} .t3score{font-weight:800;color:var(--accent);font-size:15px}
+.t3name{font-weight:700;font-size:16px;margin:7px 0 11px;line-height:1.4}
+.t3thumb{width:100%;border-radius:11px;border:1px solid var(--line);display:block;margin-bottom:11px}
+.t3act{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+.lnk{color:var(--accent);text-decoration:none;font-size:13.5px;font-weight:600}
+.gen{padding:15px 16px} .genlbl{font-size:13.5px;margin-bottom:9px} .genimg{width:100%;border-radius:12px;border:1px solid var(--line);display:block}
+.gthumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:6px;margin-top:9px} .gthumb{width:100%;border-radius:7px;border:1px solid var(--line);display:block}
+.oldv{margin-top:9px}
+details.crow{border-bottom:1px solid var(--line)} details.crow:last-child{border-bottom:0}
+details.crow>summary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 4px;cursor:pointer;list-style:none}
+details.crow>summary::-webkit-details-marker{display:none}
+details.crow[open]{background:#fafbfc;border-radius:10px}
+.cname{font-size:14px;font-weight:600;flex:1;min-width:0}
+.cbody{padding:2px 6px 14px;font-size:14px} .cbody p{margin:.4em 0}
+details.soft{background:#fff;border:1px solid var(--line);border-radius:13px;padding:4px 15px;margin:11px 0;box-shadow:var(--sh)}
+details.soft>summary{cursor:pointer;font-weight:700;font-size:14px;padding:11px 0;list-style:none}
+details.soft>summary::-webkit-details-marker{display:none} details.soft>summary::before{content:"▸ ";color:var(--mut)} details.soft[open]>summary::before{content:"▾ "}
+details.soft.sec>summary{font-size:15.5px;font-weight:800;padding:13px 0} details.soft.sec[open]{padding-bottom:10px}
+.lab{font-size:11px;letter-spacing:.05em;color:var(--mut);text-transform:uppercase;font-weight:700;margin:13px 0 5px}
+.slo{color:var(--grn);font-weight:700} .nbcard{border-top:1px solid var(--line);padding-top:10px;margin-top:8px}
+.slogrp{margin:6px 0 12px} .slolist{margin:4px 0;padding-left:20px} .slolist li{margin:5px 0;font-size:14px;line-height:1.5}
+h4.cc{font-size:15px;margin:14px 0 6px}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:11px}
+table{border-collapse:collapse;width:100%;min-width:380px;font-size:13.5px}
+th,td{border-bottom:1px solid var(--line);padding:9px 11px;text-align:center;vertical-align:top}
+th{background:#fafbfc;color:var(--mut);font-size:12px;font-weight:700} td.lt,th:first-child{text-align:left}
+p{margin:.55em 0}
+footer{color:var(--mut);font-size:12px;border-top:1px solid var(--line);margin-top:34px;padding-top:14px}
+</style></head><body><div class="wrap">
+<header><h1>FSTB</h1><div class="sub">APEC FMM 2026 宣傳 API · 更新 06-03 16:52</div></header>
+<div class='stagebar'><a class='stp done' href='#brief'><div class='stp-i'>✓</div><div class='stp-l'>Brief·研究</div></a><a class='stp done' href='#slogan'><div class='stp-i'>✓</div><div class='stp-l'>揀 slogan</div></a><a class='stp cur' href='#top3'><div class='stp-i'>🏆</div><div class='stp-l'>三甲</div></a><a class='stp todo' href='#cand'><div class='stp-i'>🎨</div><div class='stp-l'>生圖</div></a><a class='stp todo' href='#gen'><div class='stp-i'>📋</div><div class='stp-l'>出稿</div></a></div><a class='nextact' href='#top3'>👉 撳去揀 2–3 個 concept(三甲) →</a>
+<nav><a href="#ref">📌 資料</a><a href="#slogan">💬 Slogan</a><a href="#top3">🏆 三甲</a><a href="#gen">🎞️ 作品</a><a href="#cand">🗂️ 候選池</a><a href="#brief">📋 Brief</a><a href="#score">📊 評分</a></nav>
+<section id="ref"><div class="sec-h">📌 重要資料</div><div class='card ref'><a class='btn drive' target='_blank' href='https://drive.google.com/drive/folders/1ntsU_5aWcpTakrKVaLj6WeUga8etS20U'>📁 Project GDrive folder</a><div class='stats'><div class='stat'><div class='stat-l'>🗣️ Briefing</div><div class='stat-v'>2026-05-29 15:00 </div></div><div class='stat'><div class='stat-l'>⏰ Deadline</div><div class='stat-v'>2026-06-09 11:00 <span class='cd ok'>仲有 5 日</span></div></div><div class='stat'><div class='stat-l'>🎤 Presentation</div><div class='stat-v'>2026-06-17 </div></div></div><div class='srctag'>日子源:📅 日曆</div></div></section>
+<section id="slogan"><details class="soft sec" ><summary>💬 Slogan 揀(第一 hard gate)</summary><p class='hint'>各來源 slogan(已去重)。揀好嘅 slogan 由你填入 Master GSheet(AI 唔掂 master 檔)。</p><div class='slogrp'><div class='lab'>Agency qwen3.7-max</div><ul class='slolist'><li>1. 財長會議首辦，香港實力展現。</li><li>2. 聚亞太財智，創香港機遇。</li><li>3. 超級聯繫人，連結亞太繁榮。</li><li>4. 盛會首次登港，共譜亞太新章。</li><li>5. 國際金融中心，迎亞太財長會議。</li></ul></div><div class='slogrp'><div class='lab'>Agency kimi-k2.6</div><ul class='slolist'><li>亞太聚首香港　共創繁榮未來。Asia-Pacific Converges in Hong Kong, Building Prosperity Together.</li><li>香港準備就緒　財長會議啟幕。Hong Kong Ready, FMM Begins.</li><li>超級聯繫　增值世界。Super-connector, Super Value-adder.</li><li>二十一經濟體　一個亞太共同體。21 Economies, One Asia-Pacific Community.</li><li>中國年　香港見　共繁榮。China Year, Hong Kong Hosts, Prosperity for All.</li></ul></div><div class='slogrp'><div class='lab'>Agency grok-4.3</div><ul class='slolist'><li>香港準備就緒　財長會議首次登場</li><li>首次盛事香港辦　世界財經共聚談</li><li>超級聯繫人角色　香港為你展金融</li><li>亞太命運共同體　繁榮從香港起步</li><li>香港金融新紀元　2026 APEC FMM</li></ul></div><div class='slogrp'><div class='lab'>Agency gpt-5.2</div><ul class='slolist'><li>APEC FMM 2026，香港首次主場登場。</li><li>香港準備就緒，迎接 APEC FMM 2026。</li><li>連接亞太，增值世界——APEC FMM 2026 喺香港。</li><li>國際金融中心實力，今個十月一齊見證：APEC FMM 2026。</li><li>香港做超級聯繫人、超級增值人——APEC FMM 2026 首次落戶香港。</li><li>Building an Asia-Pacific Community to Prosper Together——APEC FMM 2026 in Hong Kong。</li><li>同世界講好故事：APEC FMM 2026，香港見。</li></ul></div><div class='slogrp'><div class='lab'>Agency gemini-2.5-pro</div><ul class='slolist'><li>*   香港主場，聯通亞太新機遇。 (Hong Kong: Connecting Asia-Pacific&#x27;s Future.)</li><li>*   匯聚亞太，成就香港新里程。</li><li>*   香港實力，亞太動力。</li><li>*   聯通世界，增值亞太。香港做到。</li><li>*   2026，亞太焦點，香港主場。</li></ul></div><div class='slogrp'><div class='lab'>Agency deepseek-v3.2</div><ul class='slolist'><li>1.  首度匯聚 財策未來 | First in Hong Kong, Finance for Future</li><li>2.  財策香港 聯動亞太 | Hong Kong Connects, Asia-Pacific Prospers</li><li>3.  國際舞台 香港主場 | Our Stage, Hong Kong&#x27;s Moment</li><li>4.  超級聯繫 增值亞太 | Super-Connector, Super Value-Added</li><li>5.  匯財香江 共建繁榮 | Meet in Hong Kong, Build Prosperity Together</li></ul></div><div class='slogrp'><div class='lab'>Agency claude-opus-4-8</div><ul class='slolist'><li>1. 財長會議首聚香港,世界看見東方力量。</li><li>2. 香港準備好,世界齊聚首。</li><li>3. 超級聯繫人,連通亞太繁榮。(Super-connector, connecting Asia-Pacific prosperity.)</li><li>4. 一城聯通世界,共建亞太未來。</li><li>5. 國際金融中心,主場迎四方。</li><li>6. 財長聚香江,共建亞太命運共同體。</li><li>7. 香港主場,說好中國同香港故事。</li></ul></div><div class='slogrp'><div class='lab'>委員會 20260603</div><ul class='slolist'><li>1. 十月，世界財金聚香港。</li><li>2. 國家主場，香港承辦，APEC財長會議。</li><li>3. 燈已校準，門已打開，等緊十月嘅客。</li><li>4. 齊建亞太共同體，香港舞台已就緒。</li><li>5. 21個經濟體，一個匯聚點：香港2026。</li></ul></div><div class='slogrp'><div class='lab'>NBLM</div><ul class='slolist'><li>亞太盛會 匯聚香港</li><li>香港心跳 牽動亞太</li><li>絲路香江 財金新章</li><li>我哋準備就緒</li><li>齊心建構 亞太共同體</li></ul></div></details></section>
+<section id="top3"><details class="soft sec" open><summary>🏆 三甲 · 揀邊個生圖</summary><p class='hint'>三甲 = 評審團按官方 marking scheme 總分頭三。你可揀三甲以外(見「🗂️ 候選池」每個都有「轉 brd」掣)。</p><div class='card t3'><div class='t3head'><span class='medal'>🥇</span><span class='t3score'>84.5/100</span></div><div class='t3name'>[Agency kimi-k2.6] Concept 2:〔開門·見山〕</div><div class='t3act'><a class='btn cta' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cm5ab49560&stage=board'>🎨 轉 brd 生圖</a> <a class='lnk' href='#cand-cm5ab49560'>睇完整概念 ↓</a></div></div><div class='card t3'><div class='t3head'><span class='medal'>🥈</span><span class='t3score'>83.3/100</span></div><div class='t3name'>[Agency deepseek-v3.2] Concept 2:〔橋樑故事 Bridge The Narrative〕</div><div class='t3act'><a class='btn cta' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cma753a596&stage=board'>🎨 轉 brd 生圖</a> <a class='lnk' href='#cand-cma753a596'>睇完整概念 ↓</a></div></div><div class='card t3'><div class='t3head'><span class='medal'>🥉</span><span class='t3score'>82.5/100</span></div><div class='t3name'>[Agency kimi-k2.6] Concept 1:〔脈動·共鳴〕</div><div class='t3act'><a class='btn cta' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cm49d0f399&stage=board'>🎨 轉 brd 生圖</a> <a class='lnk' href='#cand-cm49d0f399'>睇完整概念 ↓</a></div></div><details class='soft'><summary>🎯 CD 推薦理由 + polish</summary><p>確認評分頭三（客觀三甲）：</p>
+<p>1. [Agency kimi-k2.6] Concept 2:〔開門·見山〕 — 84.5/100  </p>
+<p>   強在：直接以「開門」作為視覺及敘事切入，完美對應「會議即城市」的主題，阻嚇力與記憶點兼備，落客成功率高。  </p>
+<p>   Polish 方向：可再強化「開門」後的視覺延續，讓觀眾記住「門後的世界」。</p>
+<p>2. [Agency deepseek-v3.2] Concept 2:〔橋樑故事 Bridge The Narrative〕 — 83.3/100  </p>
+<p>   強在：以「橋」作為多重隱喻（連結、敘事、未來），創意力與 brief 貼合度高，具國際識別度。  </p>
+<p>   Polish 方向：把「橋」轉化為更具體的視覺符號，避免流於常見的連結意象。</p>
+<p>3. [Agency kimi-k2.6] Concept 1:〔脈動·共鳴〕 — 82.5/100  </p>
+<p>   強在：以「脈動」貫穿金融與城市節奏，記憶點清晰，阻嚇力中等偏上，落客轉化率預期穩定。  </p>
+<p>   Polish 方向：把「共鳴」轉化為更強的視覺或聲音符號，提升一擊即中感。</p>
+<p>額外 flag（低分但值得留意）：</p>
+<p>- [NBLM] 命運共同體 / Shared Destiny（79.8）  </p>
+<p>  概念具國際視野與時代感，若能強化視覺衝擊，有機會反彈。</p>
+<p>- [NBLM] 城市心跳 / City Heartbeat（78.7）  </p>
+<p>  與第3名脈動概念同源，但敘事更生活化，值得再打磨視覺層次。</p></details></details></section>
+<section id="gen"><details class="soft sec" ><summary>🎞️ 生成作品(storyboard)</summary><p class='empty'>仲未生圖。喺三甲或候選池撳「🎨 轉 brd」即生(完成 WhatsApp 通知你)。</p></details></section>
+<section id="cand"><details class="soft sec" ><summary>🗂️ 候選池 · 任何一個都揀得</summary><div class='card'><details class='crow' id='cand-cmdeede6c0'><summary><span class='cname'>[委員會 020535] Concept 1:匯聚點 · 已亮燈</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cmdeede6c0&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><h4 class="cc">## Concept 1:匯聚點 · 已亮燈</h4>
+<p><strong>Creative Concept 創作概念</strong>：以「低調主辦人」角色，透過空無一人但極度精準嘅會議場景，呈現國家主辦、香港承辦嘅層次。畫面只見一束射燈由暗到亮，象徵一切就位，只等十月盛事發生。香港身影隱藏於場地服務之中，焦點留畀「盛事即將發生」呢個事實。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>全黑畫面，中央浮現極幼金色激光數字「2026.10」。</td><td>旁白：成個亞太嘅財金地圖，</td></tr><tr><td>2</td><td>一束冷白射燈如刀鋒劈開黑暗，照亮空置講台。</td><td>旁白：十月，</td></tr><tr><td>3</td><td>頂層金屬邊框（啞金）緩緩入鏡，畫面最上方。</td><td>旁白：個箭咀會指住香港。</td></tr><tr><td>4</td><td>長焦壓縮鏡頭，21張會議椅從模糊到清晰逐格顯現。</td><td>旁白：國家主場，</td></tr><tr><td>5</td><td>香港會展中心玻璃幕牆反射，映入21個微光點。</td><td>旁白：香港承辦。</td></tr><tr><td>6</td><td>空曠講台，一隻戴白手套嘅手將文件夾穩穩放低，隨即離開。</td><td>旁白：APEC財長會議。</td></tr><tr><td>7</td><td>射燈由0%漸亮至100%，精準打落講台中央。</td><td>旁白：燈已校準，</td></tr><tr><td>8</td><td>會場大門由內向外緩緩推開，門外只見冷藍夜色。</td><td>旁白：門已打開，</td></tr><tr><td>9</td><td>畫面最下方，21個光點同時亮起，匯聚向講台。</td><td>旁白：等緊十月嘅客。</td></tr><tr><td>10</td><td>激光蝕刻「2026.10」字樣喺玻璃上微微反光。</td><td>旁白：齊建亞太共同體，</td></tr><tr><td>11</td><td>會場全景，燈光全開，空無一人但秩序井然。</td><td>旁白：香港舞台已就緒。</td></tr><tr><td>12</td><td>黑場淡出，僅留中央極幼金框同「2026.10」字樣。</td><td>旁白：21個經濟體，一個匯聚點：香港2026。</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cm8604f4ce'><summary><span class='cname'>[委員會 020535] Concept 2:舞台 · 靜候</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cm8604f4ce&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><h4 class="cc">## Concept 2:舞台 · 靜候</h4>
+<p><strong>Creative Concept 創作概念</strong>：以「未完成但極接近完成」嘅負空間美學，呈現香港作為超級聯繫人嘅靜默效率。畫面大面積陰影，只有一小塊「國家規格」金框位於頂層，其餘係香港國際級場地設備，製造「只差最後一步」嘅時間壓迫感。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>黑場，頂部一條極幼啞金邊框入畫，靜止。</td><td>旁白：國家主場，</td></tr><tr><td>2</td><td>長焦鏡頭掃過香港會展中心空曠走廊，燈光只照亮一側。</td><td>旁白：香港承辦。</td></tr><tr><td>3</td><td>一條未拉直嘅紅毯，邊緣微微捲起，置於陰影之中。</td><td>旁白：十月，</td></tr><tr><td>4</td><td>講台上一盞聚光燈，燈罩微微傾斜，未調校至最佳角度。</td><td>旁白：世界財金聚香港。</td></tr><tr><td>5</td><td>玻璃幕牆上，激光蝕刻「2026.10」字樣反射夜景。</td><td>旁白：燈已校準，</td></tr><tr><td>6</td><td>21個不同色溫嘅光點，從四方八面緩緩匯聚。</td><td>旁白：門已打開，</td></tr><tr><td>7</td><td>空無一人嘅貴賓房，一隻手套放喺椅背，顯示剛剛離開。</td><td>旁白：等緊十月嘅客。</td></tr><tr><td>8</td><td>會場天花板，一排射燈逐盞由暗至亮，精準打向講台。</td><td>旁白：齊建亞太共同體，</td></tr><tr><td>9</td><td>維港夜景，21道光線從天際線不同位置匯聚向中環。</td><td>旁白：香港舞台已就緒。</td></tr><tr><td>10</td><td>講台上一塊未掛上嘅金屬銘牌，微微搖晃。</td><td>旁白：21個經濟體，</td></tr><tr><td>11</td><td>全景會場，燈光全開，留白極多，只見精準秩序。</td><td>旁白：一個匯聚點：</td></tr><tr><td>12</td><td>黑場，中央僅餘極幼金框同「香港2026」字樣。</td><td>旁白：香港2026。</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cm30c6bab6'><summary><span class='cname'>[Agency claude-opus-4-8] Concept 1:〔超級聯繫人〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cm30c6bab6&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〔超級聯繫人〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:以「一條金色光流」貫穿全片,象徵香港作為「超級聯繫人」嘅連通力量。光流由維港出發,串連21個經濟體代表、金融數據、會展場館同中華文化符號,最後匯聚成「2026年亞太區經濟合作組織財政部長會議」嘅主視覺。突顯香港將天南地北嘅人同資本「連埋一齊」,主場迎接世界。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong></p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>航拍維港日出,金光灑落玻璃幕牆,一條金色光流自海面升起。</td><td>旁白:二零二六年,世界把目光投向香港。</td></tr><tr><td>2</td><td>光流穿過中環摩天大樓群,反射出繁忙金融脈搏。</td><td>旁白:作為國際金融中心,我哋連通全球資本。</td></tr><tr><td>3</td><td>特寫交易大堂屏幕,數據如流水跳動。</td><td>旁白:金融市場最新發展,持續向前。</td></tr><tr><td>4</td><td>光流飛越會展場館,巨型穹頂內人潮匯聚。</td><td>旁白:亞洲國際都會,會展旅遊首選之地。</td></tr><tr><td>5</td><td>不同膚色嘅代表笑容握手,光流連起佢哋嘅手。</td><td>旁白:超級聯繫人,將世界連埋一齊。</td></tr><tr><td>6</td><td>茶湯倒入白瓷杯,蒸氣化作金色光絲。</td><td>旁白:以中華文化嘅底蘊,款待四方來客。</td></tr><tr><td>7</td><td>光流劃過故宮文化博物館外牆,硃紅映金。</td><td>旁白:傳承東方韻味,展現香港特色。</td></tr><tr><td>8</td><td>21面代表旗幟沿光流排開,匯向維港中心。</td><td>旁白:二十一個經濟體代表,聚首香江。</td></tr><tr><td>9</td><td>光流凝聚成會議主視覺標誌,華燈初上。</td><td>旁白:亞太經合組織財政部長會議,首次喺香港隆重舉行。</td></tr><tr><td>10</td><td>城市天際線全亮,煙火般光點散開。</td><td>旁白:香港已經準備就緒。</td></tr><tr><td>11</td><td>大字浮現:建構亞太命運共同體,推動繁榮發展。</td><td>旁白:齊心建構亞太命運共同體,推動繁榮發展。</td></tr><tr><td>12</td><td>主視覺定格,會議名稱 + 二零二六年十月 + 區徽。</td><td>旁白:二零二六年十月,香港主場,世界共見。</td></tr></tbody></table></div>
+<p>---</p></div></details><details class='crow' id='cand-cmb6d9770b'><summary><span class='cname'>[Agency claude-opus-4-8] Concept 2:〔香港準備好〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cmb6d9770b&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〔香港準備好〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:用「準備就緒」嘅幕後群像做敘事核心,由清晨城市甦醒,到各行各業香港人各就各位——金融人、會展團隊、酒店業、青年義工——一齊為盛事張羅。傳遞「全城同心、主場待客」嘅自豪感,將宏觀財金議題拉近到每個香港人身上,化離地為參與。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong></p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>黎明維港,城市燈火漸熄,晨光初露。</td><td>旁白:每一個香港人,都喺度準備緊。</td></tr><tr><td>2</td><td>金融從業員快步走入中環大樓,西裝筆挺。</td><td>旁白:國際金融中心,迎接世界檢閱。</td></tr><tr><td>3</td><td>會展場館工作人員鋪設地毯、調試燈光。</td><td>旁白:會展團隊,佈置最好嘅舞台。</td></tr><tr><td>4</td><td>酒店禮賓員整理大堂,鮮花一字排開。</td><td>旁白:以最好嘅款待,歡迎四方來客。</td></tr><tr><td>5</td><td>青年義工排練接待,笑容練足十分。</td><td>旁白:後生一代,一樣落力。</td></tr><tr><td>6</td><td>廚師擺盤,中西佳餚精緻呈現。</td><td>旁白:用心呈獻,香港味道。</td></tr><tr><td>7</td><td>特寫雙手沖泡功夫茶,蒸氣裊裊。</td><td>旁白:以中華文化,待客以誠。</td></tr><tr><td>8</td><td>鏡頭拉開,各行各業人物同框微笑望鏡頭。</td><td>旁白:超級聯繫人嘅角色,由我哋一齊擔當。</td></tr><tr><td>9</td><td>航拍會展中心夜景,巨型會議標誌亮起。</td><td>旁白:亞太經合組織財政部長會議,首次喺香港舉行。</td></tr><tr><td>10</td><td>21個經濟體旗幟於場館前飄揚。</td><td>旁白:二十一個經濟體代表,即將聚首香江。</td></tr><tr><td>11</td><td>全城天際線通明,人群仰望夜空。</td><td>旁白:香港準備好,世界齊聚首。</td></tr><tr><td>12</td><td>主視覺定格,會議名稱 + 二零二六年十月 + 區徽。</td><td>旁白:二零二六年十月,共建亞太命運共同體,推動繁榮發展。</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cm771db848'><summary><span class='cname'>[Agency deepseek-v3.2] Concept 1:〔金融脈搏 Financial Pulse〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cm771db848&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〔金融脈搏 Financial Pulse〕</h4>
+<p><strong>Creative Concept 創作概念</strong>：將香港的金融生態系統比擬為城市的心臟與血管。透過數據流、人流、資金流的視覺化呈現，展現香港作為「超級聯繫人」與「超級增值人」的活力與效率。概念強調香港不僅是會議地點，更是驅動亞太地區繁榮的關鍵動力源，準備就緒迎接歷史性首次盛會。</p>
+<p><strong>TV API Storyboard (30 秒, 12 格)</strong>：</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面 (visual)</th><th>廣東話對白 / 旁白 (標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>微距鏡頭：一滴水珠落入平靜水面，泛起精準圓形漣漪。慢動作。</td><td>旁白（沉穩男聲）：一個匯聚嘅時刻。</td></tr><tr><td>2</td><td>畫面切至維港高空日景，鏡頭快速推進，穿越IFC玻璃幕牆。</td><td>旁白：一次前所未有嘅匯聚。</td></tr><tr><td>3</td><td>金融區街景，全球不同面孔的商務人士快步交錯，形成流動的人潮。</td><td>旁白：<strong>亞太經合組織財政部長會議</strong>，首次喺香港舉行。</td></tr><tr><td>4</td><td>抽象特效：城市地圖上，無數光點從亞太地區各地向香港匯聚，線條交織成網絡。</td><td>旁白：匯聚21個經濟體嘅財金智慧。</td></tr><tr><td>5</td><td>快切畫面：股票交易所交易大堂、綠色金融項目、金融科技應用界面（手機支付/虛擬銀行）。</td><td>旁白：展現香港國際金融中心嘅最新動力。</td></tr><tr><td>6</td><td>鏡頭掠過香港會議展覽中心，內部場地正進行高端會議佈置，光影流轉。</td><td>旁白：喺亞洲盛事之都，提供世界級<strong>會議、展覽及獎勵旅遊</strong>體驗。</td></tr><tr><td>7</td><td>畫面分屏：左邊是中國傳統算盤珠撥動（文化金調），右邊是現代數據中心伺服器燈光閃爍（科技藍調），兩者節奏同步。</td><td>旁白：傳承中華智慧，融合創新思維，說好香港故事。</td></tr><tr><td>8</td><td>一位年輕本地金融從業員（男/女）在辦公室望向維港，眼神自信，轉身與國際同事討論。</td><td>旁白：我哋已經準備好。</td></tr><tr><td>9</td><td>特效：剛才所有畫面的元素（人流、數據流、建築、文化符號）匯聚成一個發光的「超級聯繫人」網絡圖騰，覆蓋香港地圖。</td><td>旁白：擔當<strong>超級聯繫人</strong>同<strong>超級增值人</strong>。</td></tr><tr><td>10</td><td>動態標題伴隨沉穩音效躍現畫面中央。</td><td>熒幕蓋字（書面語）：<strong>2026年亞太區經濟合作組織財政部長會議</strong></td></tr><tr><td>11</td><td>會議主題與日期以簡潔字形呈現。</td><td>熒幕蓋字（書面語）：<strong>建構亞太命運共同體，推動繁榮發展</strong> &lt;br&gt;<strong>2026年10月 • 香港</strong></td></tr><tr><td>12</td><td>定版畫面：香港特別行政區區徽、「亞太經合組織財政部長會議2026」中英文標誌、財經事務及庫務局標誌。</td><td>旁白：齊心建構亞太命運共同體，推動繁榮發展。</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cma753a596'><summary><span class='cname'>[Agency deepseek-v3.2] Concept 2:〔橋樑故事 Bridge The Narrative〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cma753a596&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〔橋樑故事 Bridge The Narrative〕</h4>
+<p><strong>Creative Concept 創作概念</strong>：以「橋」作為核心視覺隱喻。從實體的青馬大橋、港珠澳大橋，延伸到象徵性的金融橋樑、文化橋樑、科技橋樑。影片通過展示這些「橋樑」如何連接香港與亞太乃至世界，帶出會議「聯繫」、「共建」的核心價值。強調香港不僅是地理與設施上的連接點，更是理念、資金與機遇的樞紐。</p>
+<p><strong>TV API Storyboard (30 秒, 12 格)</strong>：</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面 (visual)</th><th>廣東話對白 / 旁白 (標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>晨曦中，青馬大橋的鋼纜特寫，結構精密如豎琴。鏡頭拉遠展現大橋全貌。</td><td>旁白（富感染力女聲）：香港，一直係連接各方嘅橋樑。</td></tr><tr><td>2</td><td>快剪接：港珠澳大橋車流、機場跑道飛機起降、海底光纜示意圖。</td><td>旁白：連接人流、物流、同資訊流。</td></tr><tr><td>3</td><td>中環街景，外籍銀行家與本地企業家於咖啡店握手交流，背後是金融大廈。</td><td>旁白：而家，我哋要搭建更重要嘅橋樑。</td></tr><tr><td>4</td><td>特效畫面：國際新聞畫面（經濟會議、市場波動）與香港的金融數據圖表重疊，中間由一道光橋連接。</td><td>旁白：<strong>亞太經合組織財政部長會議</strong>，史上首次移師香港。</td></tr><tr><td>5</td><td>畫面展示香港多元面貌：故宮文化博物館展品、MICE場地內的高端會議、西九文化區演出。</td><td>旁白：呢度，係國際金融中心，亦係文化交融、<strong>會展旅遊</strong>嘅首選地。</td></tr><tr><td>6</td><td>實驗室場景，科研人員展示綠色金融科技；隨後切至離岸風電場畫面。</td><td>旁白：我哋用創新，搭建可持續發展嘅橋樑。</td></tr><tr><td>7</td><td>一組來自不同亞太經濟體的青年代表（虛構），在香港地標前用手機協作完成一個虛擬項目，笑容洋溢。</td><td>旁白：匯聚新一代嘅聲音同想像。</td></tr><tr><td>8</td><td>鏡頭穿梭於正在最後準備階段的會議主場館，工作人員有條不紊地工作，國旗整齊排列。</td><td>旁白：一切，已經準備就緒。</td></tr><tr><td>9</td><td>所有之前出現過的「橋樑」畫面（實體橋、握手、數據流、文化場景）匯聚，拼貼出「2026」字樣。</td><td>旁白：2026年10月，香港，成為亞太財金對話最重要嘅橋樑。</td></tr><tr><td>10</td><td>動態標題伴隨凝聚音效呈現。</td><td>熒幕蓋字（書面語）：<strong>亞太經合組織財政部長會議2026</strong></td></tr><tr><td>11</td><td>主題與邀請語清晰顯示。</td><td>熒幕蓋字（書面語）：<strong>建構亞太命運共同體，推動繁榮發展</strong> &lt;br&gt;<strong>歡迎全球財金領聚香江</strong></td></tr><tr><td>12</td><td>定版畫面：香港特別行政區區徽、「亞太經合組織財政部長會議2026」中英文標誌、財經事務及庫務局標誌。背景為維港夜景，燈光璀璨如橋。</td><td>旁白：携手建構亞太命運共同體，我哋香港見。</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cm9483a6df'><summary><span class='cname'>[Agency gemini-2.5-pro] Concept 1:〔流光匯脉〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cm9483a6df&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〔流光匯脉〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:</p>
+<p>以「光」作為核心視覺元素，象徵資金流、資訊流與人才流。透過抽象嘅數碼光束喺全球版圖上流動，最終匯聚於香港，並轉化為城市中真實嘅璀璨燈火與繁榮景象。呢個概念將「超級聯繫人」角色視覺化，突顯香港作為國際樞紐，將無形嘅金融力量轉化為有形嘅城市發展動力。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(VO)</th></tr></thead><tbody><tr><td>1</td><td>全黑畫面，一粒金色光點浮現，迅速拉成一條光線，向遠方延伸。</td><td>（背景音樂起，雄渾而帶有科技感。）</td></tr><tr><td>2</td><td>鏡頭拉遠，顯示更多金色、藍色嘅光線交織，喺一個風格化嘅地球模型上高速流動。</td><td><strong>旁白：</strong> 資金、資訊、機遇，每日喺世界流動。</td></tr><tr><td>3</td><td>所有光線開始匯聚，鏡頭跟隨光流，飛向亞洲地圖上一個發光嘅點——香港。</td><td><strong>旁白：</strong> 而家，佢哋都有一個共同焦點。</td></tr><tr><td>4</td><td>光線穿透雲層，無縫銜接到夜晚維多利亞港嘅真實航拍鏡頭。城市燈火通明，猶如光線匯聚嘅實體。</td><td><strong>旁白：</strong> 香港。</td></tr><tr><td>5</td><td>快速剪接：港交所交易大堂數據滾動嘅螢幕特寫；中環商業區玻璃幕牆反射嘅人流倒影。</td><td><strong>旁白：</strong> 我哋憑藉國際金融中心嘅實力，</td></tr><tr><td>6</td><td>香港會議展覽中心嘅宏偉外觀，鏡頭向上pan。內部一個大型國際會議嘅延時攝影畫面。</td><td><strong>旁白：</strong> 同頂級會展旅遊嘅優勢，</td></tr><tr><td>7</td><td>金紫荊廣場嘅特寫，鏡頭由下而上，背景係晨曦中嘅摩天大樓。</td><td><strong>旁白：</strong> 準備好，喺國家嘅支持下，</td></tr><tr><td>8</td><td>畫面中心出現以水墨筆觸勾勒出嘅「2026」字樣，墨跡化開，轉變成亞太經合組織嘅標誌。</td><td><strong>旁白：</strong> 迎接一場歷史性盛事。</td></tr><tr><td>9</td><td>一群唔同種族、穿著商務服飾嘅專業人士，自信地望向鏡頭，背景係香港嘅城市景觀。</td><td><strong>旁白：</strong> 2026年亞太區經濟合作組織財政部長會議，</td></tr><tr><td>10</td><td>畫面疊加 Super（熒幕蓋字）：「首次舉行」。</td><td><strong>旁白：</strong> 第一次喺香港舉行。</td></tr><tr><td>11</td><td>畫面中央出現會議標題同日期。Super：「2026年亞太區經濟合作組織財政部長會議」「2026年10月」</td><td><strong>旁白：</strong> 共同建構亞太繁榮。</td></tr><tr><td>12</td><td>香港特別行政區區徽置中。下方顯示「財經事務及庫務局」及網址。</td><td>（背景音樂推至高潮後收結。）</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cmd9665620'><summary><span class='cname'>[Agency gemini-2.5-pro] Concept 2:〔節點相連〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cmd9665620&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〔節點相連〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:</p>
+<p>將香港描繪成一個巨大嘅網絡「節點」（Node），透過一個個具象嘅「連接」動作，展現香港如何作為「超級聯繫人」及「超級增值人」。畫面由微觀嘅人際互動（握手），延伸至中觀嘅基建連接（高鐵、機場），再到宏觀嘅國際合作（會議），層層遞進，展示香港如何將人、基建、文化及機遇緊密相連，共同創造價值。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(VO)</th></tr></thead><tbody><tr><td>1</td><td>慢動作特寫：兩隻唔同膚色嘅手，喺中環嘅現代建築背景下有力地握埋一齊。</td><td>（輕快、有節奏感嘅背景音樂響起。）</td></tr><tr><td>2</td><td>鏡頭拉開，握手嘅人係一位本地年輕創科專才同一位外國投資者。兩人相視而笑。</td><td><strong>旁白：</strong> 每一次相遇，都係一次新嘅連接。</td></tr><tr><td>3</td><td>畫面快速轉場：高鐵列車駛入西九龍站；香港國際機場客機升降；貨櫃碼頭吊臂運作。以快速剪接呈現海陸空嘅連接。</td><td><strong>旁白：</strong> 連接粵港澳大灣區，連接全世界。</td></tr><tr><td>4</td><td>一位外國商務旅客拖住行李箱，滿意咁望住香港嘅天際線。佢身後嘅玻璃反射出城市景觀。</td><td><strong>旁白：</strong> 香港，就係一個為機遇而生嘅節點。</td></tr><tr><td>5</td><td>鏡頭轉到一個充滿活力嘅 MICE 活動現場，唔同國籍嘅與會者正熱烈交流。</td><td><strong>旁白：</strong> 我哋匯聚人才同創意，</td></tr><tr><td>6</td><td>鏡頭聚焦喺西九文化區戲曲中心嘅獨特建築，穿插一小段粵劇表演嘅精彩畫面。</td><td><strong>旁白：</strong> 亦展示中西合璧嘅文化魅力。</td></tr><tr><td>7</td><td>畫面用動態圖像（motion graphics），展示一個個代表「金融」、「貿易」、「創新」嘅圖標，由香港呢個中心點向亞太地區幅射出去。</td><td><strong>旁白：</strong> 為區域發展「增值」，注入新動力。</td></tr><tr><td>8</td><td>畫面轉為實景，財政司司長（或象徵性人物）喺一個發佈會上發言，充滿自信。</td><td><strong>旁白：</strong> 2026年，香港將會迎來歷史上第一次，</td></tr><tr><td>9</td><td>亞太經合組織（APEC）標誌緩緩出現。</td><td><strong>旁白：</strong> 主辦「亞太區經濟合作組織財政部長會議」。</td></tr><tr><td>10</td><td>畫面疊加 Super（熒幕蓋字）：「建構亞太命運共同體 推動繁榮發展」。</td><td><strong>旁白：</strong> 我哋已經準備就緒。</td></tr><tr><td>11</td><td>畫面中央出現會議標題同日期。Super：「2026年亞太區經濟合作組織財政部長會議」「2026年10月」</td><td><strong>旁白：</strong> 誠邀世界，見證香港新里程。</td></tr><tr><td>12</td><td>香港特別行政區區徽置中。下方顯示「財經事務及庫務局」及網址。</td><td>（音樂激昂收尾。）</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cm57864db8'><summary><span class='cname'>[Agency gpt-5.2] Concept 1:〔《一秒連起亞太》〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cm57864db8&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〔《一秒連起亞太》〕</h4>
+<p><strong>Creative Concept 創作概念</strong>：  </p>
+<p>用「一秒」做主意象：香港每一個日常瞬間（拍卡、過數、開會、迎賓）都可以「一秒連起亞太」，呼應香港作為「超級聯繫人」同「超級增值人」。以光軌／數據線把城市地標、金融活動、MICE 場景同中華文化元素連成一張網，最後落到硬訊息：<strong>APEC FMM 2026 首次在香港舉行、10 月、香港準備就緒</strong>。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>黑底一下「叮」聲，城市夜空航拍維港，藍金光軌由海面拉起。畫面角落浮現細緻 MG：APEC network 線條。</td><td>旁白（男／女皆可）：喺香港，一秒，可以連起全世界。</td></tr><tr><td>2</td><td>微距：手指一撳電話「轉賬」畫面（不顯示真銀行品牌），數字化光點由手機彈出。</td><td>旁白：金融流動，快而準。</td></tr><tr><td>3</td><td>交易大堂／金融區寫字樓快切：螢幕上圖表、分析會議、握手。</td><td>旁白：實力，穩而強。</td></tr><tr><td>4</td><td>轉場：光點變成會議中心外牆線條，鏡頭推入會展場館入口（抽象、不點名場地亦可）。</td><td>旁白：而家，香港準備好迎接一場國際盛會。</td></tr><tr><td>5</td><td>MICE 場景：代表團落車、禮賓引導、掛證、同聲傳譯耳機、會議室門牌（抽象）。</td><td>旁白：會議、展覽及獎勵旅遊，香港一向係首選之地。</td></tr><tr><td>6</td><td>MG 疊字：地圖輪廓＋「Delegations from the 21 APEC member economies」化成點點連到香港。</td><td>旁白：嚟自二十一個經濟體嘅代表團，將會聚首香港。</td></tr><tr><td>7</td><td>中華文化＋香港特色：獅頭細節、書法筆觸、茶具蒸氣，再切到電車叮叮、霓虹街景。色調仍維持藍金，點少少中國紅。</td><td>旁白：我哋一齊展現「中國聲音」，亦帶住香港獨有魅力。</td></tr><tr><td>8</td><td>會議桌上文件（只見「Finance Ministers’ Meeting」字樣作道具）、筆尖落紙、鏡頭掃過不同膚色手在筆記。</td><td>旁白：聚焦亞太新機遇同新挑戰，推動更緊密合作。</td></tr><tr><td>9</td><td>城市運作蒙太奇：港口、機場、地鐵、人流有序；保安檢查、場館控制室屏幕（不涉及敏感細節）。</td><td>旁白：由接待到安排，香港特別行政區政府全力以赴。</td></tr><tr><td>10</td><td>大場面：會議中心外旗陣（抽象旗形色塊）、紅地氈步入，閃光燈。畫面疊出主標題。</td><td>旁白：2026年亞太區經濟合作組織財政部長會議，APEC FMM 2026。</td></tr><tr><td>11</td><td>熒幕蓋字（大）：<strong>「2026年10月｜香港首次舉行」</strong>；背景是維港日出，光軌由夜轉日。</td><td>旁白：今年十月，首次喺香港舉行。</td></tr><tr><td>12</td><td>結尾政府式版面：APEC FMM 2026 主視覺（抽象光網＋維港線稿）＋<strong>財經事務及庫務局（FSTB）</strong>署名＋網址 <strong>https://www.fstb.gov.hk/</strong>；預留 QR 位。</td><td>旁白：想知更多，請瀏覽財經事務及庫務局網站。https://www.fstb.gov.hk/。</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cm7bed85e4'><summary><span class='cname'>[Agency gpt-5.2] Concept 2:〔《香港：把會議變成城市節奏》〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cm7bed85e4&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〔《香港：把會議變成城市節奏》〕</h4>
+<p><strong>Creative Concept 創作概念</strong>：  </p>
+<p>避免「宏觀財金好離地」，用「城市節奏」講：當 APEC FMM 2026 落戶香港，金融、MICE、文化、旅遊同市民生活其實同一個節拍。以一位本地年輕禮賓／會議助理做「串連視角」，帶觀眾由街頭出發，走入國際會議舞台，突出香港「亞洲國際都會」同「國際金融中心」的雙重底氣，最後落硬訊息：<strong>10 月、首次在港、準備就緒、去 FSTB 網站了解</strong>。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>清晨港島街頭：電車叮叮、咖啡店開門。主角（年輕禮賓／會議助理）扣上胸牌。</td><td>主角對白：今日，香港有件大事。</td></tr><tr><td>2</td><td>主角出門，鏡頭跟拍，城市節奏快切：扶手電梯、人流、海旁跑步。</td><td>旁白：呢個節奏，叫做「連接」。</td></tr><tr><td>3</td><td>主角在金融區大堂同外賓打招呼（不顯示特定國家旗）。握手、微笑、交換名片。</td><td>主角對白：Welcome to Hong Kong。</td></tr><tr><td>4</td><td>轉入會議中心：報到櫃台、指示牌、同聲傳譯間燈號亮起。</td><td>旁白：香港，係國際金融中心。</td></tr><tr><td>5</td><td>插入 MG：金融數據線由香港射向亞太，文字點出「Super-connector」「Super Value-adder」。</td><td>旁白：亦係「超級聯繫人」同「超級增值人」。</td></tr><tr><td>6</td><td>MICE 展示：會議室開門、圓桌討論剪影、展覽攤位裝嵌、酒店大堂迎賓。</td><td>旁白：會議、展覽及獎勵旅遊，專業到位。</td></tr><tr><td>7</td><td>主角帶外賓穿過香港文化場景：茶樓點心上枱、書法展品一筆帶過、獅舞鼓點（只取質感）。</td><td>主角對白：呢度有中華文化，也有香港味道。</td></tr><tr><td>8</td><td>大景：維港夜景＋燈光倒影。畫面疊出 APEC 2026 中國年主題英文。</td><td>旁白：Building an Asia-Pacific Community to Prosper Together。</td></tr><tr><td>9</td><td>回到會議：鏡頭掃過文件夾上「APEC Finance Ministers’ Meeting」字樣；主角按下對講機，流程順暢。</td><td>旁白：財政部長會議，聚焦亞太發展嘅新機遇同挑戰。</td></tr><tr><td>10</td><td>主角望向會場大門，深呼吸一下，門打開，光湧入。</td><td>旁白：香港準備就緒，確保會議順利進行。</td></tr><tr><td>11</td><td>熒幕蓋字（大）：<strong>「APEC FMM 2026｜2026年10月｜首次在香港舉行」</strong>；背景係會場外旗陣抽象化＋城市光網。</td><td>旁白：APEC FMM 2026，今年十月，首次喺香港舉行。</td></tr><tr><td>12</td><td>結尾政府式版面：主視覺＋<strong>財經事務及庫務局（FSTB）</strong>署名＋網址 <strong>https://www.fstb.gov.hk/</strong>；預留 QR 位。</td><td>旁白：一齊迎接 APEC FMM 2026。詳情請瀏覽 https://www.fstb.gov.hk/。</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cm75de370a'><summary><span class='cname'>[Agency grok-4.3] Concept 1:〔脈動香港・財聚亞太〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cm75de370a&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〔脈動香港・財聚亞太〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:以「脈動」為視覺主軸，將維港天際線與金融圖表光點化作同頻心跳，帶領觀眾由日出維 harbour 到國際財長落戶會展，見證香港從城市脈動轉化為亞太繁榮節拍，結尾定格會議標誌與官方口號，同時展現「超級聯繫人」與「超級增值人」角色。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>維港日出，玻璃幕牆反射暖金光，畫面微晃帶 35mm 顆粒。</td><td>旁白：「香港脈動，迎接世界。」</td></tr><tr><td>2</td><td>航拍快速掠過中環摩天樓群，玻璃反光化作閃爍光點。</td><td>旁白：「亞太財經目光，首次聚焦香江。」</td></tr><tr><td>3</td><td>特寫手指敲擊鍵盤，螢幕 K 線圖轉為心跳波形。</td><td>旁白：「每一個脈動，都係新機遇。」</td></tr><tr><td>4</td><td>會展玻璃幕門緩緩開啟，四位財長（不同膚色）步出。</td><td>旁白：「二十一個經濟體，一個共同未來。」</td></tr><tr><td>5</td><td>側拍維港遊艇與會展倒影，標題文字淡入：「2026 APEC FMM」。</td><td>旁白：「香港準備就緒。」</td></tr><tr><td>6</td><td>快速剪接：交易所大廳、港口貨櫃、藝術展館燈光。</td><td>旁白：「金融、貿易、會展、文化，一應俱全。」</td></tr><tr><td>7</td><td>拍檔將香港特色茶餐廳與高級宴會廳並列，展現中西合璧。</td><td>旁白：「超級聯繫人，超級增值人。」</td></tr><tr><td>8</td><td>財長會議主廳燈光全亮，國旗與香港區旗並列。</td><td>旁白：「共同說好國家同香港故事。」</td></tr><tr><td>9</td><td>市民手機同步彈出會議倒數，街頭歡呼。</td><td>旁白：「全城共享榮光。」</td></tr><tr><td>10</td><td>特寫財長握手，背景瞬間切回維港全景。</td><td>旁白：「建構亞太命運共同體，推動繁榮發展。」</td></tr><tr><td>11</td><td>官方標誌與口號大字疊印，字幕同步出現。</td><td>旁白：「2026亞太區經濟合作組織財政部長會議。」</td></tr><tr><td>12</td><td>黑屏淡出，政府及會議標誌定格，官方網站二維碼。</td><td>旁白：「香港，亞洲盛事之都。」</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cme04179c2'><summary><span class='cname'>[Agency grok-4.3] Concept 2:〔橋・聚・盛〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cme04179c2&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〔橋・聚・盛〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:用「橋」作為核心意象——維 harbour 實橋、數碼光橋、跨文化對話橋——以延時攝影將二十一架次航班化作光軌，組成虛實交錯的橋，象徵香港連結財長、連結亞太、連結未來；收尾以實景會議桌與虛擬光橋重疊，呼應「首次在香港」與「超級聯繫人」雙重定位。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>藍黑色夜空，維 harbour 實體橋燈光亮起。</td><td>旁白：「一座橋，連繫世界。」</td></tr><tr><td>2</td><td>延時航拍，二十一條彩色光軌劃過天際，匯聚香港上空。</td><td>旁白：「二十一個經濟體，同時抵達。」</td></tr><tr><td>3</td><td>光軌轉化為數碼虛橋，落在會展中心頂。</td><td>旁白：「香港，成為橋樑。」</td></tr><tr><td>4</td><td>特寫一雙手遞上護照與入境章，背景聲疊會議倒數。</td><td>旁白：「首次，財長會議喺香港舉行。」</td></tr><tr><td>5</td><td>玻璃幕牆內投射實時翻譯文字，對應 21 種語言。</td><td>旁白：「語言相通，思想交融。」</td></tr><tr><td>6</td><td>切至街頭：中環行人隧道燈光化作光橋，市民穿梭討論。</td><td>旁白：「從金融精英到普羅大眾，齊參與。」</td></tr><tr><td>7</td><td>航拍青馬大橋轉場會展玻璃橋，兩者重影。</td><td>旁白：「實體連通，無形增值。」</td></tr><tr><td>8</td><td>會議桌被虛擬光橋貫穿，標誌 2026 APEC FMM。</td><td>旁白：「超級聯繫人角色，全面彰顯。」</td></tr><tr><td>9</td><td>財長與青年代表擊掌，桌面上光點擴散成香港地圖。</td><td>旁白：「傳承故事，共創未來。」</td></tr><tr><td>10</td><td>維 harbour 日出與夜景對摺成一幀，城市持續發光。</td><td>旁白：「香港準備就緒。」</td></tr><tr><td>11</td><td>官方口號與日期以光橋形式掃過全屏。</td><td>旁白：「2026年10月，亞太財長香港聚。」</td></tr><tr><td>12</td><td>黑屏淡出，政府標誌、會議標誌及二維碼同時出現。</td><td>旁白：「香港，連結亞太，繁榮世界。」</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cm49d0f399'><summary><span class='cname'>[Agency kimi-k2.6] Concept 1:〔脈動·共鳴〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cm49d0f399&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〔脈動·共鳴〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:</p>
+<p>以香港維港心跳為視覺母題，將金融數據流、會展場館脈動、市民日常節奏，編織成「亞太共同體」嘅有機生命體。不拍硬梆梆嘅會議廳，拍凌晨四點中環交易大堂嘅螢光、清晨會展搬運工人嘅汗水、黃昏天星小輪上各國面孔嘅微笑——用「準備」嘅過程，證明香港值得被託付。結尾所有脈動匯聚成維港夜景一次溫柔嘅燈光脈衝，象徵二十一經濟體嘅共鳴。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>黑畫面，維港水底低頻聲波視覺化，逐漸亮起</td><td>旁白：「凌晨四點，中環未瞓。」</td></tr><tr><td>2</td><td>交易大堂螢光幕數據流，年輕分析師眼中有光</td><td>旁白：「全球資金，喺呢度搵到方向。」</td></tr><tr><td>3</td><td>會展中心後台，工人推開巨型門板，晨光湧入</td><td>旁白：「清晨六點，會展醒緊。」</td></tr><tr><td>4</td><td>航拍會展新翼幾何線條，切換各國國旗預備懸掛</td><td>旁白：「二十一經濟體嘅旗，就快一齊飄。」</td></tr><tr><td>5</td><td>茶餐廳內，外國記者學緊「早晨」、街坊教路</td><td>旁白：「『早晨』——呢句問候，準備好傳遍亞太。」</td></tr><tr><td>6</td><td>天星小輪，金髮商人同本地媽媽互相幫手影相</td><td>旁白：「香港人嘅日常，就係國際交流。」</td></tr><tr><td>7</td><td>快速剪接：機場入境閘、酒店大堂、的士司機揮手</td><td>旁白：「超級聯繫人，唔係口號，係每個相遇。」</td></tr><tr><td>8</td><td>財經事務及庫務局團隊最後檢查會議流程，堅定眼神</td><td>旁白：「財經事務及庫務局，同你準備就緒。」</td></tr><tr><td>9</td><td>維港黃昏，二十一粒光點從海平面升起（象徵各經濟體）</td><td>旁白：「二〇二六年十月，亞太經合組織財政部長會議，首次喺香港舉行。」</td></tr><tr><td>10</td><td>光點匯聚成環，環繞會展中心上空</td><td>旁白：「建構亞太命運共同體，推動繁榮發展。」</td></tr><tr><td>11</td><td>環散開成煙花狀光譜，凝固為維港夜景一幀</td><td>旁白：「中國年，香港見。」</td></tr><tr><td>12</td><td>官方標誌組合：APEC FMM 2026、香港特別行政區區徽、財經事務及庫務局標誌、網址二維碼</td><td>旁白：「詳情瀏覽網頁。」</td></tr></tbody></table></div>
+<p>---</p></div></details><details class='crow' id='cand-cm5ab49560'><summary><span class='cname'>[Agency kimi-k2.6] Concept 2:〔開門·見山〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cm5ab49560&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〔開門·見山〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:</p>
+<p>以「門」為核心意象——香港係國家嘅門、亞太嘅門、世界嘅門。唔同於第一條嘅有機脈動，呢條行建築空間詩學：由狹窄唐樓門廊推軌至闊落國金大堂，由密麻麻街市閘口橫搖至開揚會展前廳，用空間對比證明香港「細地方、大格局」。每扇門打開都係一次身份轉換：街坊變東道主、茶餐廳變國宴廳、後巷變紅地氈。硬訊息用門框內嘅螢幕蓋字處理，觀眾自己行入門內接收。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>魚眼鏡頭：老舊唐樓木門緩緩推開，逆光中見維港</td><td>旁白：「呢度，每一扇門後面，都係世界。」</td></tr><tr><td>2</td><td>門縫漸闊，推軌穿過門檻，切換中環國際金融中心旋轉門</td><td>旁白：「國際金融中心，打开门就係機遇。」</td></tr><tr><td>3</td><td>旋轉門玻璃反射各國行人面孔，螢幕蓋字：「21個經濟體代表團」</td><td>（無對白，只環境聲）</td></tr><tr><td>4</td><td>街市鐵閘拉起，魚販對鏡頭笑，鏡頭急速後退穿過閘口</td><td>旁白：「茶餐廳老闆，會展策劃，同一個人。」</td></tr><tr><td>5</td><td>後退鏡頭撞入會展中心後台，工人拉開黑色幕布，露出紅地氈</td><td>旁白：「香港人，準備好做東道主。」</td></tr><tr><td>6</td><td>航拍會展新翼屋頂，鏡頭急速上升，見維港兩岸會展設施群</td><td>螢幕蓋字：「會展旅遊首選地」</td></tr><tr><td>7</td><td>降落鏡頭穿過會議廳大門，空椅逐排亮起（後製），象徵各經濟體入座</td><td>旁白：「亞太經合組織財政部長會議，二〇二六年，香港首次主辦。」</td></tr><tr><td>8</td><td>椅背逐一浮現經濟體名稱（後製蓋字），鏡頭橫搖</td><td>旁白：「超級聯繫人，超級增值人。」</td></tr><tr><td>9</td><td>鏡頭穿過會議廳另一道門，到達維港海濱長廊，黃金時段</td><td>旁白：「中國聲音，香港演繹。」</td></tr><tr><td>10</td><td>長廊上各國代表虛擬剪影（後製）行過、交談、握手，化為實景市民</td><td>旁白：「齊心說好國家故事、香港故事。」</td></tr><tr><td>11</td><td>剪影匯聚成光，衝上夜空形成APEC星圖</td><td>旁白：「建構亞太命運共同體，推動繁榮發展。」</td></tr><tr><td>12</td><td>門框構圖：維港夜景為底，官方標誌組合同Concept 1，二維碼置於門檻位置</td><td>旁白：「二〇二六年十月，香港見。詳情瀏覽網頁。」</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cmdef391f7'><summary><span class='cname'>[Agency qwen3.7-max] Concept 1:〔脈動連繫 · 增值亞太〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cmdef391f7&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〔脈動連繫 · 增值亞太〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:</p>
+<p>將抽象的「超級聯繫人」與「超級增值人」角色具象化為視覺上的「光線流動」與「節點連接」。透過實拍香港金融基建、會展場地與文化地標，配合精緻的動態線條（Flow Lines）串連畫面，象徵資金、人才、文化與機遇在香港交匯並產生化學反應。旁白節奏明快自信，強調「首次」與「準備就緒」，將宏觀財金議題轉化為市民可感知的城市動能與自豪感。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>晨曦中的維多利亞港全景，金色陽光灑落海面，動態光線圖形從海平線延伸至陸地，浮現標題字卡。</td><td>（旁白）二〇二六年亞太區經濟合作組織財政部長會議，首次喺香港隆重舉行。</td></tr><tr><td>2</td><td>中環金融區實拍，鏡頭平穩推進穿過寫字樓群，疊加流動數據線條，象徵國際金融中心脈搏。</td><td>（旁白）作為國際金融中心，香港已經準備就緒。</td></tr><tr><td>3</td><td>會展中心內部寬敞空間及專業團隊佈置場景，展現 MICE 頂級配套，畫面右下角彈出官方標誌。</td><td>（旁白）發揮亞洲國際都會同會展旅遊首選地嘅優勢。</td></tr><tr><td>4</td><td>分鏡畫面：左邊係西九文化區戲曲中心傳統表演，右邊係金融科技實驗室，中間光線交匯融合。</td><td>（旁白）展現中國聲音，推廣中華文化同香港特色。</td></tr><tr><td>5</td><td>機場抵港大堂實拍，歡迎牌與微笑的服務人員，疊加 21 個經濟體旗幟圖標動態排列。</td><td>（旁白）迎接二十一箇經濟體代表團，深化國際交流。</td></tr><tr><td>6</td><td>特寫鏡頭：本地青年專業人士與外籍賓客在會議場地握手交談，背景光線形成網絡節點特效。</td><td>（旁白）做好超級聯繫人同超級增值人嘅角色。</td></tr><tr><td>7</td><td>快速剪接：綠色金融項目、數碼人民幣應用場景、跨境理財通標誌，展現金融業最新發展。</td><td>（旁白）鞏固地位，為區域合作注入新動力。</td></tr><tr><td>8</td><td>街頭巷尾實拍：茶餐廳、維園、海濱長廊，市民與旅客互動，色調溫暖，傳遞好客之道。</td><td>（旁白）全城投入，建構亞太命運共同體。</td></tr><tr><td>9</td><td>航拍視角：港珠澳大橋與機場第三跑道，光線沿基建流向大灣區腹地，象徵互聯互通。</td><td>（旁白）推動繁榮發展，講好國家同香港故事。</td></tr><tr><td>10</td><td>會議主場地外觀黃昏靚景，燈光漸次亮起，畫面中央浮現會議官方 Logo 及日期。</td><td>（旁白）十月，相約香港，見證歷史時刻。</td></tr><tr><td>11</td><td>純色背景配合動態圖形，清晰列出會議名稱、日期及查詢網址，旁邊附有二維碼。</td><td>（旁白）了解更多詳情，歡迎瀏覽網頁。</td></tr><tr><td>12</td><td>中華人民共和國香港特別行政區區徽居中，下方顯示「財經事務及庫務局」標誌，畫面定格。</td><td>（旁白）二〇二六年亞太區經濟合作組織財政部長會議。</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cm75a8dd97'><summary><span class='cname'>[Agency qwen3.7-max] Concept 2:〔主場风采 · 財智匯港〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=cm75a8dd97&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〔主場风采 · 財智匯港〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:</p>
+<p>以「東道主的一天」為敘事軸線，採用更具人文溫度的紀實風格，將宏大的國際會議落地為具體的「待客之道」與「城市細節」。透過不同崗位人物（金融專才、會展籌辦員、文化傳承者、市民）的專注神情與動作，側面烘托香港的專業底蘊與軟實力。視覺上強調「實感」與「質感」，減少過度包裝的特效，以真摯情緒打動觀眾，讓「首次舉辦」不僅是新聞標題，更是全城共同的榮譽與承諾。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>清晨薄霧中的山頂纜車緩緩上行，鏡頭切換至寫字樓窗戶透出的燈光，字幕淡入會議名稱。</td><td>（旁白）今年十月，香港將迎來一場重磅國際盛會。</td></tr><tr><td>2</td><td>金融從業員在辦公室專注分析報表，窗外維港景色清晰，疊加會議官方 Logo 水印。</td><td>（旁白）亞太區經濟合作組織財政部長會議首次登陸香港。</td></tr><tr><td>3</td><td>會展場地內，工作人員細心檢查座椅間距與同聲傳譯設備，展現 MICE 專業標準。</td><td>（旁白）我哋以頂級會展配套，確保會議順利進行。</td></tr><tr><td>4</td><td>博物館內，策展人調整文物燈光；茶樓裡，師傅俐落地製作點心，兩組畫面平行剪接。</td><td>（旁白）從中華文化傳承到地道生活氣息。</td></tr><tr><td>5</td><td>機場貴賓室，接待人員用流利英語引導賓客；街頭，的士司機微笑指路，傳遞友善。</td><td>（旁白）每一位香港人，都係最佳東道主。</td></tr><tr><td>6</td><td>金融科技展廳內，參展商演示區塊鏈應用；綠色債券簽約儀式現場，閃光燈此起彼落。</td><td>（旁白）展示國際金融中心嘅創新實力。</td></tr><tr><td>7</td><td>西九海濱長廊，不同膚色的人士輕鬆交談，背景係璀璨天際線，氛圍開放包容。</td><td>（旁白）深化交流，發揮超級聯繫人同增值人作用。</td></tr><tr><td>8</td><td>傳統工藝品特寫（如紮作或刺繡），疊加現代建築幾何線條，新舊交融視覺衝擊。</td><td>（旁白）展現中國聲音，彰顯香港獨特魅力。</td></tr><tr><td>9</td><td>快速蒙太奇：碼頭貨櫃起落、實驗室研發、藝術展演，節奏漸快，象徵城市多元動能。</td><td>（旁白）齊心建構亞太命運共同體，推動繁榮發展。</td></tr><tr><td>10</td><td>黃昏時分，維港兩岸燈光亮起，遊船駛過，畫面溫暖而充滿希望，浮現會議日期。</td><td>（旁白）十月，香港準備就緒，誠邀世界見證。</td></tr><tr><td>11</td><td>簡潔資訊頁：會議名稱、日期、網址及二維碼並列，背景為淡化處理的維港剪影。</td><td>（旁白）詳情請瀏覽專頁，一齊參與盛事。</td></tr><tr><td>12</td><td>中華人民共和國香港特別行政區區徽置中，下方顯示「財經事務及庫務局」標誌，畫面漸暗。</td><td>（旁白）二〇二六年亞太區經濟合作組織財政部長會議。</td></tr></tbody></table></div></div></details><details class='crow' id='cand-nb0eb7c7b3'><summary><span class='cname'>[NBLM] 繁榮脈搏 / The Golden Pulse</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=nb0eb7c7b3&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;繁榮脈搏 / The Golden Pulse&quot;, &quot;big&quot;: &quot;以金色絲綢脈搏貫穿全城，將香港定位為驅動亞太經濟的超級聯繫人，轉化國際財金會議為全城共同驕傲。&quot;, &quot;slo&quot;: &quot;亞太盛會 匯聚香港&quot;, &quot;kv&quot;: &quot;金色絲綢光軌如脈搏般流過維港、中環、金融大廈與香港故宮，融合現代數據與傳統絲綢質感。&quot;}</p></div></details><details class='crow' id='cand-nbc4a78015'><summary><span class='cname'>[NBLM] 城市心跳 / City Heartbeat</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=nbc4a78015&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;城市心跳 / City Heartbeat&quot;, &quot;big&quot;: &quot;把香港視為亞太經濟的心臟，以跳動的金色光軌象徵金融脈動，將抽象會議轉化為城市活力與市民自豪。&quot;, &quot;slo&quot;: &quot;香港心跳 牽動亞太&quot;, &quot;kv&quot;: &quot;從維港日出開始，一條閃爍金光軌道穿梭中環玻璃幕牆、機場與會展中心，映照出城市每一次經濟心跳。&quot;}</p></div></details><details class='crow' id='cand-nbc53d0ea0'><summary><span class='cname'>[NBLM] 絲路新章 / Silk Road Chapter</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=nbc53d0ea0&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;絲路新章 / Silk Road Chapter&quot;, &quot;big&quot;: &quot;把傳統絲路精神注入現代金融，以金色絲帶串聯中西文化與財金實力，展現香港承傳與創新雙重角色。&quot;, &quot;slo&quot;: &quot;絲路香江 財金新章&quot;, &quot;kv&quot;: &quot;金色絲帶自維港升起，輕柔繞過故宮文物，再化作數據光軌飛向會展中心，象徵文化與金融的交織。&quot;}</p></div></details><details class='crow' id='cand-nb252ec829'><summary><span class='cname'>[NBLM] 全城準備 / City Ready</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=nb252ec829&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;全城準備 / City Ready&quot;, &quot;big&quot;: &quot;聚焦會議背後的每一張香港人笑臉，從年輕金融才俊到酒店前線，展現全城已準備好迎接世界。&quot;, &quot;slo&quot;: &quot;我哋準備就緒&quot;, &quot;kv&quot;: &quot;近距離特寫年輕專業人士自信笑容，背景隱約浮現金色光軌與維港天際線，洋溢迎接盛事的自豪。&quot;}</p></div></details><details class='crow' id='cand-nbcf505516'><summary><span class='cname'>[NBLM] 命運共同體 / Shared Destiny</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&cid=nbcf505516&stage=board'>🎨 轉 brd</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;命運共同體 / Shared Destiny&quot;, &quot;big&quot;: &quot;以光軌匯聚21個經濟體代表與香港市民，視覺化「亞太命運共同體」，強調共創繁榮的集體力量。&quot;, &quot;slo&quot;: &quot;齊心建構 亞太共同體&quot;, &quot;kv&quot;: &quot;多國代表與香港市民並肩前行，金色光軌在夜空匯聚成發光網絡，象徵連結與共同未來。&quot;}</p></div></details></div><details class='soft'><summary>📖 睇全部委員會 / agency 完整提案 + storyboard</summary><details class='soft'><summary>🗳️ Agency qwen3.7-max</summary><h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>整套 API 採用「現代東方金融美學」，融合實拍與動態圖形（Motion Graphics）。媒介以 RED ONE 或同等級 Cinema Camera 拍攝，確保 4K 質素落畫至 HD 輸出時保留細節。流派介乎於「企業形象片」與「城市紀錄片」之間，避免過於嚴肅的純政令宣示，亦避免過於娛樂化的旅遊廣告感。燈光採用自然光與人造暖光混合，日間場景強調通透感與維港藍天，夜間場景突出中環/西九龍燈光但避免過度飽和的霓虹感，營造穩重而開放的氛圍。色調以「深邃藍」（代表金融/專業）配「活力金」（代表繁榮/中華文化）為主軸，膚色還原自然，避免 ISD 舊作常見的過度銳化或高反差。菲林感方面，保留輕微顆粒感與電影級景深，區別於一般新聞 footage。鏡頭運用穩定器（Gimbal）與軌道（Slider）結合，多用橫向推進與緩慢升降，象徵「穩步前行」與「連繫」，避免過度晃動或炫技式 FPV。情緒基調為「自信、從容、好客、前瞻」，傳遞香港準備就緒的安定感與迎接國際機遇的熱情。比例嚴格遵循 16:9，構圖預留安全邊界以適應 MTR 車廂電視及橫幅 Banner 裁切。</p>
+<p>style_anchor: &quot;Cinematic Corporate, Natural Warm Lighting, Deep Blue &amp; Gold Palette, Smooth Gimbal Movement, Motion Graphic Integration, Confident &amp; Welcoming Tone, Red One Texture, 16:9 cinematic&quot;</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1. 財長會議首辦，香港實力展現。</p>
+<p>2. 聚亞太財智，創香港機遇。</p>
+<p>3. 超級聯繫人，連結亞太繁榮。</p>
+<p>4. 盛會首次登港，共譜亞太新章。</p>
+<p>5. 國際金融中心，迎亞太財長會議。</p>
+<h4 class="cc">## Concept 1:〔脈動連繫 · 增值亞太〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:</p>
+<p>將抽象的「超級聯繫人」與「超級增值人」角色具象化為視覺上的「光線流動」與「節點連接」。透過實拍香港金融基建、會展場地與文化地標，配合精緻的動態線條（Flow Lines）串連畫面，象徵資金、人才、文化與機遇在香港交匯並產生化學反應。旁白節奏明快自信，強調「首次」與「準備就緒」，將宏觀財金議題轉化為市民可感知的城市動能與自豪感。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>晨曦中的維多利亞港全景，金色陽光灑落海面，動態光線圖形從海平線延伸至陸地，浮現標題字卡。</td><td>（旁白）二〇二六年亞太區經濟合作組織財政部長會議，首次喺香港隆重舉行。</td></tr><tr><td>2</td><td>中環金融區實拍，鏡頭平穩推進穿過寫字樓群，疊加流動數據線條，象徵國際金融中心脈搏。</td><td>（旁白）作為國際金融中心，香港已經準備就緒。</td></tr><tr><td>3</td><td>會展中心內部寬敞空間及專業團隊佈置場景，展現 MICE 頂級配套，畫面右下角彈出官方標誌。</td><td>（旁白）發揮亞洲國際都會同會展旅遊首選地嘅優勢。</td></tr><tr><td>4</td><td>分鏡畫面：左邊係西九文化區戲曲中心傳統表演，右邊係金融科技實驗室，中間光線交匯融合。</td><td>（旁白）展現中國聲音，推廣中華文化同香港特色。</td></tr><tr><td>5</td><td>機場抵港大堂實拍，歡迎牌與微笑的服務人員，疊加 21 個經濟體旗幟圖標動態排列。</td><td>（旁白）迎接二十一箇經濟體代表團，深化國際交流。</td></tr><tr><td>6</td><td>特寫鏡頭：本地青年專業人士與外籍賓客在會議場地握手交談，背景光線形成網絡節點特效。</td><td>（旁白）做好超級聯繫人同超級增值人嘅角色。</td></tr><tr><td>7</td><td>快速剪接：綠色金融項目、數碼人民幣應用場景、跨境理財通標誌，展現金融業最新發展。</td><td>（旁白）鞏固地位，為區域合作注入新動力。</td></tr><tr><td>8</td><td>街頭巷尾實拍：茶餐廳、維園、海濱長廊，市民與旅客互動，色調溫暖，傳遞好客之道。</td><td>（旁白）全城投入，建構亞太命運共同體。</td></tr><tr><td>9</td><td>航拍視角：港珠澳大橋與機場第三跑道，光線沿基建流向大灣區腹地，象徵互聯互通。</td><td>（旁白）推動繁榮發展，講好國家同香港故事。</td></tr><tr><td>10</td><td>會議主場地外觀黃昏靚景，燈光漸次亮起，畫面中央浮現會議官方 Logo 及日期。</td><td>（旁白）十月，相約香港，見證歷史時刻。</td></tr><tr><td>11</td><td>純色背景配合動態圖形，清晰列出會議名稱、日期及查詢網址，旁邊附有二維碼。</td><td>（旁白）了解更多詳情，歡迎瀏覽網頁。</td></tr><tr><td>12</td><td>中華人民共和國香港特別行政區區徽居中，下方顯示「財經事務及庫務局」標誌，畫面定格。</td><td>（旁白）二〇二六年亞太區經濟合作組織財政部長會議。</td></tr></tbody></table></div>
+<h4 class="cc">## Concept 2:〔主場风采 · 財智匯港〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:</p>
+<p>以「東道主的一天」為敘事軸線，採用更具人文溫度的紀實風格，將宏大的國際會議落地為具體的「待客之道」與「城市細節」。透過不同崗位人物（金融專才、會展籌辦員、文化傳承者、市民）的專注神情與動作，側面烘托香港的專業底蘊與軟實力。視覺上強調「實感」與「質感」，減少過度包裝的特效，以真摯情緒打動觀眾，讓「首次舉辦」不僅是新聞標題，更是全城共同的榮譽與承諾。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>清晨薄霧中的山頂纜車緩緩上行，鏡頭切換至寫字樓窗戶透出的燈光，字幕淡入會議名稱。</td><td>（旁白）今年十月，香港將迎來一場重磅國際盛會。</td></tr><tr><td>2</td><td>金融從業員在辦公室專注分析報表，窗外維港景色清晰，疊加會議官方 Logo 水印。</td><td>（旁白）亞太區經濟合作組織財政部長會議首次登陸香港。</td></tr><tr><td>3</td><td>會展場地內，工作人員細心檢查座椅間距與同聲傳譯設備，展現 MICE 專業標準。</td><td>（旁白）我哋以頂級會展配套，確保會議順利進行。</td></tr><tr><td>4</td><td>博物館內，策展人調整文物燈光；茶樓裡，師傅俐落地製作點心，兩組畫面平行剪接。</td><td>（旁白）從中華文化傳承到地道生活氣息。</td></tr><tr><td>5</td><td>機場貴賓室，接待人員用流利英語引導賓客；街頭，的士司機微笑指路，傳遞友善。</td><td>（旁白）每一位香港人，都係最佳東道主。</td></tr><tr><td>6</td><td>金融科技展廳內，參展商演示區塊鏈應用；綠色債券簽約儀式現場，閃光燈此起彼落。</td><td>（旁白）展示國際金融中心嘅創新實力。</td></tr><tr><td>7</td><td>西九海濱長廊，不同膚色的人士輕鬆交談，背景係璀璨天際線，氛圍開放包容。</td><td>（旁白）深化交流，發揮超級聯繫人同增值人作用。</td></tr><tr><td>8</td><td>傳統工藝品特寫（如紮作或刺繡），疊加現代建築幾何線條，新舊交融視覺衝擊。</td><td>（旁白）展現中國聲音，彰顯香港獨特魅力。</td></tr><tr><td>9</td><td>快速蒙太奇：碼頭貨櫃起落、實驗室研發、藝術展演，節奏漸快，象徵城市多元動能。</td><td>（旁白）齊心建構亞太命運共同體，推動繁榮發展。</td></tr><tr><td>10</td><td>黃昏時分，維港兩岸燈光亮起，遊船駛過，畫面溫暖而充滿希望，浮現會議日期。</td><td>（旁白）十月，香港準備就緒，誠邀世界見證。</td></tr><tr><td>11</td><td>簡潔資訊頁：會議名稱、日期、網址及二維碼並列，背景為淡化處理的維港剪影。</td><td>（旁白）詳情請瀏覽專頁，一齊參與盛事。</td></tr><tr><td>12</td><td>中華人民共和國香港特別行政區區徽置中，下方顯示「財經事務及庫務局」標誌，畫面漸暗。</td><td>（旁白）二〇二六年亞太區經濟合作組織財政部長會議。</td></tr></tbody></table></div></details><details class='soft'><summary>🗳️ Agency kimi-k2.6</summary><p>我哋開完會喇，以下係creative team一條龍初步提案，直接出內容：</p>
+<p>---</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>香港新城市電影感 × 國際財金紀錄片語法。媒介：16mm菲林數碼化質感混合ARRI Alexa Mini LF乾淨數碼底。燈光：自然光為主，黃金時段維港天際線作背光輪廓，室內場景用柔光箱模擬日光滲透。色調：青藍鋼鐵灰（金融都會）漸變暖金琥珀（亞太共同體、黃昏希望），參考《Succession》冷冽權威感但注入亞洲溫度。菲林：Kodak Vision3 500T 5219顆粒結構模擬，highlight輕微暈散。鏡頭：Cooke S7/i全幅定焦，35mm廣角建立空間權威感，85mm近景壓縮人脈連結，微速推軌（slow dolly in）營造凝望未來。情緒：沉穩自信、開放包容、暗湧壯志——唔係叫囂式愛國，係國際金融人嘅篤定同亞太鄰里嘅溫暖握手。比例 16:9。</p>
+<p>style_anchor: &quot;Hong Kong neo-urban cinematic, 16mm film emulation, ARRI Alexa Mini LF, Cooke S7/i, golden hour harbour silhouette, steel-blue to amber gradient, Kodak Vision3 5219 grain, slow dolly intimacy, authoritative yet welcoming, 16:9 cinematic&quot;</p>
+<p>---</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>亞太聚首香港　共創繁榮未來。Asia-Pacific Converges in Hong Kong, Building Prosperity Together.</p>
+<p>香港準備就緒　財長會議啟幕。Hong Kong Ready, FMM Begins.</p>
+<p>超級聯繫　增值世界。Super-connector, Super Value-adder.</p>
+<p>二十一經濟體　一個亞太共同體。21 Economies, One Asia-Pacific Community.</p>
+<p>中國年　香港見　共繁榮。China Year, Hong Kong Hosts, Prosperity for All.</p>
+<p>---</p>
+<h4 class="cc">## Concept 1:〔脈動·共鳴〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:</p>
+<p>以香港維港心跳為視覺母題，將金融數據流、會展場館脈動、市民日常節奏，編織成「亞太共同體」嘅有機生命體。不拍硬梆梆嘅會議廳，拍凌晨四點中環交易大堂嘅螢光、清晨會展搬運工人嘅汗水、黃昏天星小輪上各國面孔嘅微笑——用「準備」嘅過程，證明香港值得被託付。結尾所有脈動匯聚成維港夜景一次溫柔嘅燈光脈衝，象徵二十一經濟體嘅共鳴。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>黑畫面，維港水底低頻聲波視覺化，逐漸亮起</td><td>旁白：「凌晨四點，中環未瞓。」</td></tr><tr><td>2</td><td>交易大堂螢光幕數據流，年輕分析師眼中有光</td><td>旁白：「全球資金，喺呢度搵到方向。」</td></tr><tr><td>3</td><td>會展中心後台，工人推開巨型門板，晨光湧入</td><td>旁白：「清晨六點，會展醒緊。」</td></tr><tr><td>4</td><td>航拍會展新翼幾何線條，切換各國國旗預備懸掛</td><td>旁白：「二十一經濟體嘅旗，就快一齊飄。」</td></tr><tr><td>5</td><td>茶餐廳內，外國記者學緊「早晨」、街坊教路</td><td>旁白：「『早晨』——呢句問候，準備好傳遍亞太。」</td></tr><tr><td>6</td><td>天星小輪，金髮商人同本地媽媽互相幫手影相</td><td>旁白：「香港人嘅日常，就係國際交流。」</td></tr><tr><td>7</td><td>快速剪接：機場入境閘、酒店大堂、的士司機揮手</td><td>旁白：「超級聯繫人，唔係口號，係每個相遇。」</td></tr><tr><td>8</td><td>財經事務及庫務局團隊最後檢查會議流程，堅定眼神</td><td>旁白：「財經事務及庫務局，同你準備就緒。」</td></tr><tr><td>9</td><td>維港黃昏，二十一粒光點從海平面升起（象徵各經濟體）</td><td>旁白：「二〇二六年十月，亞太經合組織財政部長會議，首次喺香港舉行。」</td></tr><tr><td>10</td><td>光點匯聚成環，環繞會展中心上空</td><td>旁白：「建構亞太命運共同體，推動繁榮發展。」</td></tr><tr><td>11</td><td>環散開成煙花狀光譜，凝固為維港夜景一幀</td><td>旁白：「中國年，香港見。」</td></tr><tr><td>12</td><td>官方標誌組合：APEC FMM 2026、香港特別行政區區徽、財經事務及庫務局標誌、網址二維碼</td><td>旁白：「詳情瀏覽網頁。」</td></tr></tbody></table></div>
+<p>---</p>
+<h4 class="cc">## Concept 2:〔開門·見山〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:</p>
+<p>以「門」為核心意象——香港係國家嘅門、亞太嘅門、世界嘅門。唔同於第一條嘅有機脈動，呢條行建築空間詩學：由狹窄唐樓門廊推軌至闊落國金大堂，由密麻麻街市閘口橫搖至開揚會展前廳，用空間對比證明香港「細地方、大格局」。每扇門打開都係一次身份轉換：街坊變東道主、茶餐廳變國宴廳、後巷變紅地氈。硬訊息用門框內嘅螢幕蓋字處理，觀眾自己行入門內接收。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>魚眼鏡頭：老舊唐樓木門緩緩推開，逆光中見維港</td><td>旁白：「呢度，每一扇門後面，都係世界。」</td></tr><tr><td>2</td><td>門縫漸闊，推軌穿過門檻，切換中環國際金融中心旋轉門</td><td>旁白：「國際金融中心，打开门就係機遇。」</td></tr><tr><td>3</td><td>旋轉門玻璃反射各國行人面孔，螢幕蓋字：「21個經濟體代表團」</td><td>（無對白，只環境聲）</td></tr><tr><td>4</td><td>街市鐵閘拉起，魚販對鏡頭笑，鏡頭急速後退穿過閘口</td><td>旁白：「茶餐廳老闆，會展策劃，同一個人。」</td></tr><tr><td>5</td><td>後退鏡頭撞入會展中心後台，工人拉開黑色幕布，露出紅地氈</td><td>旁白：「香港人，準備好做東道主。」</td></tr><tr><td>6</td><td>航拍會展新翼屋頂，鏡頭急速上升，見維港兩岸會展設施群</td><td>螢幕蓋字：「會展旅遊首選地」</td></tr><tr><td>7</td><td>降落鏡頭穿過會議廳大門，空椅逐排亮起（後製），象徵各經濟體入座</td><td>旁白：「亞太經合組織財政部長會議，二〇二六年，香港首次主辦。」</td></tr><tr><td>8</td><td>椅背逐一浮現經濟體名稱（後製蓋字），鏡頭橫搖</td><td>旁白：「超級聯繫人，超級增值人。」</td></tr><tr><td>9</td><td>鏡頭穿過會議廳另一道門，到達維港海濱長廊，黃金時段</td><td>旁白：「中國聲音，香港演繹。」</td></tr><tr><td>10</td><td>長廊上各國代表虛擬剪影（後製）行過、交談、握手，化為實景市民</td><td>旁白：「齊心說好國家故事、香港故事。」</td></tr><tr><td>11</td><td>剪影匯聚成光，衝上夜空形成APEC星圖</td><td>旁白：「建構亞太命運共同體，推動繁榮發展。」</td></tr><tr><td>12</td><td>門框構圖：維港夜景為底，官方標誌組合同Concept 1，二維碼置於門檻位置</td><td>旁白：「二〇二六年十月，香港見。詳情瀏覽網頁。」</td></tr></tbody></table></div></details><details class='soft'><summary>🗳️ Agency grok-4.3</summary><h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>真實香港街景與會議場地交織，晨光灑落維港玻璃幕牆，暖金與深藍主調，微顆粒 35mm 菲林質感，鏡頭多以 50mm 定焦 + 輕微手持移動，情緒由寧靜到雀躍，比例 16:9。  </p>
+<p>style_anchor: &quot;warm golden hour Hong Kong skyline, deep navy conference halls, 35mm film grain, handheld 50mm lens, uplifting to hopeful, 16:9 cinematic&quot;</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>香港準備就緒　財長會議首次登場  </p>
+<p>首次盛事香港辦　世界財經共聚談  </p>
+<p>超級聯繫人角色　香港為你展金融  </p>
+<p>亞太命運共同體　繁榮從香港起步  </p>
+<p>香港金融新紀元　2026 APEC FMM  </p>
+<h4 class="cc">## Concept 1:〔脈動香港・財聚亞太〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:以「脈動」為視覺主軸，將維港天際線與金融圖表光點化作同頻心跳，帶領觀眾由日出維 harbour 到國際財長落戶會展，見證香港從城市脈動轉化為亞太繁榮節拍，結尾定格會議標誌與官方口號，同時展現「超級聯繫人」與「超級增值人」角色。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>維港日出，玻璃幕牆反射暖金光，畫面微晃帶 35mm 顆粒。</td><td>旁白：「香港脈動，迎接世界。」</td></tr><tr><td>2</td><td>航拍快速掠過中環摩天樓群，玻璃反光化作閃爍光點。</td><td>旁白：「亞太財經目光，首次聚焦香江。」</td></tr><tr><td>3</td><td>特寫手指敲擊鍵盤，螢幕 K 線圖轉為心跳波形。</td><td>旁白：「每一個脈動，都係新機遇。」</td></tr><tr><td>4</td><td>會展玻璃幕門緩緩開啟，四位財長（不同膚色）步出。</td><td>旁白：「二十一個經濟體，一個共同未來。」</td></tr><tr><td>5</td><td>側拍維港遊艇與會展倒影，標題文字淡入：「2026 APEC FMM」。</td><td>旁白：「香港準備就緒。」</td></tr><tr><td>6</td><td>快速剪接：交易所大廳、港口貨櫃、藝術展館燈光。</td><td>旁白：「金融、貿易、會展、文化，一應俱全。」</td></tr><tr><td>7</td><td>拍檔將香港特色茶餐廳與高級宴會廳並列，展現中西合璧。</td><td>旁白：「超級聯繫人，超級增值人。」</td></tr><tr><td>8</td><td>財長會議主廳燈光全亮，國旗與香港區旗並列。</td><td>旁白：「共同說好國家同香港故事。」</td></tr><tr><td>9</td><td>市民手機同步彈出會議倒數，街頭歡呼。</td><td>旁白：「全城共享榮光。」</td></tr><tr><td>10</td><td>特寫財長握手，背景瞬間切回維港全景。</td><td>旁白：「建構亞太命運共同體，推動繁榮發展。」</td></tr><tr><td>11</td><td>官方標誌與口號大字疊印，字幕同步出現。</td><td>旁白：「2026亞太區經濟合作組織財政部長會議。」</td></tr><tr><td>12</td><td>黑屏淡出，政府及會議標誌定格，官方網站二維碼。</td><td>旁白：「香港，亞洲盛事之都。」</td></tr></tbody></table></div>
+<h4 class="cc">## Concept 2:〔橋・聚・盛〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:用「橋」作為核心意象——維 harbour 實橋、數碼光橋、跨文化對話橋——以延時攝影將二十一架次航班化作光軌，組成虛實交錯的橋，象徵香港連結財長、連結亞太、連結未來；收尾以實景會議桌與虛擬光橋重疊，呼應「首次在香港」與「超級聯繫人」雙重定位。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>藍黑色夜空，維 harbour 實體橋燈光亮起。</td><td>旁白：「一座橋，連繫世界。」</td></tr><tr><td>2</td><td>延時航拍，二十一條彩色光軌劃過天際，匯聚香港上空。</td><td>旁白：「二十一個經濟體，同時抵達。」</td></tr><tr><td>3</td><td>光軌轉化為數碼虛橋，落在會展中心頂。</td><td>旁白：「香港，成為橋樑。」</td></tr><tr><td>4</td><td>特寫一雙手遞上護照與入境章，背景聲疊會議倒數。</td><td>旁白：「首次，財長會議喺香港舉行。」</td></tr><tr><td>5</td><td>玻璃幕牆內投射實時翻譯文字，對應 21 種語言。</td><td>旁白：「語言相通，思想交融。」</td></tr><tr><td>6</td><td>切至街頭：中環行人隧道燈光化作光橋，市民穿梭討論。</td><td>旁白：「從金融精英到普羅大眾，齊參與。」</td></tr><tr><td>7</td><td>航拍青馬大橋轉場會展玻璃橋，兩者重影。</td><td>旁白：「實體連通，無形增值。」</td></tr><tr><td>8</td><td>會議桌被虛擬光橋貫穿，標誌 2026 APEC FMM。</td><td>旁白：「超級聯繫人角色，全面彰顯。」</td></tr><tr><td>9</td><td>財長與青年代表擊掌，桌面上光點擴散成香港地圖。</td><td>旁白：「傳承故事，共創未來。」</td></tr><tr><td>10</td><td>維 harbour 日出與夜景對摺成一幀，城市持續發光。</td><td>旁白：「香港準備就緒。」</td></tr><tr><td>11</td><td>官方口號與日期以光橋形式掃過全屏。</td><td>旁白：「2026年10月，亞太財長香港聚。」</td></tr><tr><td>12</td><td>黑屏淡出，政府標誌、會議標誌及二維碼同時出現。</td><td>旁白：「香港，連結亞太，繁榮世界。」</td></tr></tbody></table></div></details><details class='soft'><summary>🗳️ Agency gpt-5.2</summary><h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>- <strong>LOOK 一套：〈國際盛會．香港主場〉</strong></p>
+<p>- <strong>媒介／流派</strong>：實拍為主＋高質感 Motion Graphics（金融數據線、會議同傳訊元素），少量「超現實」轉場（由城市光軌變成網絡連線）。</p>
+<p>- <strong>燈光</strong>：日景用自然光＋反光板提亮；夜景用城市霓虹＋輪廓光，營造「國際金融中心」光感。</p>
+<p>- <strong>色調</strong>：主色「深海藍＋金色點光」（穩、信任、專業），輔以「中國紅」作細節點綴（旗袍鈕、燈籠、印章紅、舞獅鼓邊）。</p>
+<p>- <strong>菲林／質感</strong>：乾淨高清但帶少少 Film Grain；高反差但不死黑，保留細節。</p>
+<p>- <strong>鏡頭語言</strong>：快節奏蒙太奇＋少量穩定推軌；航拍建立香港地標；微距拍「握手、筆尖、同聲傳譯耳機、名牌」帶出會議質感。</p>
+<p>- <strong>情緒</strong>：自豪、可信、世界級、準備就緒；由「香港日常」升格到「國際舞台」。</p>
+<p>- <strong>比例</strong>：16:9，全畫面字幕位預留安全框（兼容 MTR in-train TV 裁切）。</p>
+<p>- style_anchor: &quot;Hong Kong skyline night aerial, premium corporate film, blue-gold palette, subtle china red accents, macro details, dynamic light trails, clean motion graphics, film grain, confident uplifting tone, 16:9 cinematic&quot;</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>APEC FMM 2026，香港首次主場登場。  </p>
+<p>香港準備就緒，迎接 APEC FMM 2026。  </p>
+<p>連接亞太，增值世界——APEC FMM 2026 喺香港。  </p>
+<p>國際金融中心實力，今個十月一齊見證：APEC FMM 2026。  </p>
+<p>香港做超級聯繫人、超級增值人——APEC FMM 2026 首次落戶香港。  </p>
+<p>Building an Asia-Pacific Community to Prosper Together——APEC FMM 2026 in Hong Kong。  </p>
+<p>同世界講好故事：APEC FMM 2026，香港見。  </p>
+<h4 class="cc">## Concept 1:〔《一秒連起亞太》〕</h4>
+<p><strong>Creative Concept 創作概念</strong>：  </p>
+<p>用「一秒」做主意象：香港每一個日常瞬間（拍卡、過數、開會、迎賓）都可以「一秒連起亞太」，呼應香港作為「超級聯繫人」同「超級增值人」。以光軌／數據線把城市地標、金融活動、MICE 場景同中華文化元素連成一張網，最後落到硬訊息：<strong>APEC FMM 2026 首次在香港舉行、10 月、香港準備就緒</strong>。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>黑底一下「叮」聲，城市夜空航拍維港，藍金光軌由海面拉起。畫面角落浮現細緻 MG：APEC network 線條。</td><td>旁白（男／女皆可）：喺香港，一秒，可以連起全世界。</td></tr><tr><td>2</td><td>微距：手指一撳電話「轉賬」畫面（不顯示真銀行品牌），數字化光點由手機彈出。</td><td>旁白：金融流動，快而準。</td></tr><tr><td>3</td><td>交易大堂／金融區寫字樓快切：螢幕上圖表、分析會議、握手。</td><td>旁白：實力，穩而強。</td></tr><tr><td>4</td><td>轉場：光點變成會議中心外牆線條，鏡頭推入會展場館入口（抽象、不點名場地亦可）。</td><td>旁白：而家，香港準備好迎接一場國際盛會。</td></tr><tr><td>5</td><td>MICE 場景：代表團落車、禮賓引導、掛證、同聲傳譯耳機、會議室門牌（抽象）。</td><td>旁白：會議、展覽及獎勵旅遊，香港一向係首選之地。</td></tr><tr><td>6</td><td>MG 疊字：地圖輪廓＋「Delegations from the 21 APEC member economies」化成點點連到香港。</td><td>旁白：嚟自二十一個經濟體嘅代表團，將會聚首香港。</td></tr><tr><td>7</td><td>中華文化＋香港特色：獅頭細節、書法筆觸、茶具蒸氣，再切到電車叮叮、霓虹街景。色調仍維持藍金，點少少中國紅。</td><td>旁白：我哋一齊展現「中國聲音」，亦帶住香港獨有魅力。</td></tr><tr><td>8</td><td>會議桌上文件（只見「Finance Ministers’ Meeting」字樣作道具）、筆尖落紙、鏡頭掃過不同膚色手在筆記。</td><td>旁白：聚焦亞太新機遇同新挑戰，推動更緊密合作。</td></tr><tr><td>9</td><td>城市運作蒙太奇：港口、機場、地鐵、人流有序；保安檢查、場館控制室屏幕（不涉及敏感細節）。</td><td>旁白：由接待到安排，香港特別行政區政府全力以赴。</td></tr><tr><td>10</td><td>大場面：會議中心外旗陣（抽象旗形色塊）、紅地氈步入，閃光燈。畫面疊出主標題。</td><td>旁白：2026年亞太區經濟合作組織財政部長會議，APEC FMM 2026。</td></tr><tr><td>11</td><td>熒幕蓋字（大）：<strong>「2026年10月｜香港首次舉行」</strong>；背景是維港日出，光軌由夜轉日。</td><td>旁白：今年十月，首次喺香港舉行。</td></tr><tr><td>12</td><td>結尾政府式版面：APEC FMM 2026 主視覺（抽象光網＋維港線稿）＋<strong>財經事務及庫務局（FSTB）</strong>署名＋網址 <strong>https://www.fstb.gov.hk/</strong>；預留 QR 位。</td><td>旁白：想知更多，請瀏覽財經事務及庫務局網站。https://www.fstb.gov.hk/。</td></tr></tbody></table></div>
+<h4 class="cc">## Concept 2:〔《香港：把會議變成城市節奏》〕</h4>
+<p><strong>Creative Concept 創作概念</strong>：  </p>
+<p>避免「宏觀財金好離地」，用「城市節奏」講：當 APEC FMM 2026 落戶香港，金融、MICE、文化、旅遊同市民生活其實同一個節拍。以一位本地年輕禮賓／會議助理做「串連視角」，帶觀眾由街頭出發，走入國際會議舞台，突出香港「亞洲國際都會」同「國際金融中心」的雙重底氣，最後落硬訊息：<strong>10 月、首次在港、準備就緒、去 FSTB 網站了解</strong>。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>清晨港島街頭：電車叮叮、咖啡店開門。主角（年輕禮賓／會議助理）扣上胸牌。</td><td>主角對白：今日，香港有件大事。</td></tr><tr><td>2</td><td>主角出門，鏡頭跟拍，城市節奏快切：扶手電梯、人流、海旁跑步。</td><td>旁白：呢個節奏，叫做「連接」。</td></tr><tr><td>3</td><td>主角在金融區大堂同外賓打招呼（不顯示特定國家旗）。握手、微笑、交換名片。</td><td>主角對白：Welcome to Hong Kong。</td></tr><tr><td>4</td><td>轉入會議中心：報到櫃台、指示牌、同聲傳譯間燈號亮起。</td><td>旁白：香港，係國際金融中心。</td></tr><tr><td>5</td><td>插入 MG：金融數據線由香港射向亞太，文字點出「Super-connector」「Super Value-adder」。</td><td>旁白：亦係「超級聯繫人」同「超級增值人」。</td></tr><tr><td>6</td><td>MICE 展示：會議室開門、圓桌討論剪影、展覽攤位裝嵌、酒店大堂迎賓。</td><td>旁白：會議、展覽及獎勵旅遊，專業到位。</td></tr><tr><td>7</td><td>主角帶外賓穿過香港文化場景：茶樓點心上枱、書法展品一筆帶過、獅舞鼓點（只取質感）。</td><td>主角對白：呢度有中華文化，也有香港味道。</td></tr><tr><td>8</td><td>大景：維港夜景＋燈光倒影。畫面疊出 APEC 2026 中國年主題英文。</td><td>旁白：Building an Asia-Pacific Community to Prosper Together。</td></tr><tr><td>9</td><td>回到會議：鏡頭掃過文件夾上「APEC Finance Ministers’ Meeting」字樣；主角按下對講機，流程順暢。</td><td>旁白：財政部長會議，聚焦亞太發展嘅新機遇同挑戰。</td></tr><tr><td>10</td><td>主角望向會場大門，深呼吸一下，門打開，光湧入。</td><td>旁白：香港準備就緒，確保會議順利進行。</td></tr><tr><td>11</td><td>熒幕蓋字（大）：<strong>「APEC FMM 2026｜2026年10月｜首次在香港舉行」</strong>；背景係會場外旗陣抽象化＋城市光網。</td><td>旁白：APEC FMM 2026，今年十月，首次喺香港舉行。</td></tr><tr><td>12</td><td>結尾政府式版面：主視覺＋<strong>財經事務及庫務局（FSTB）</strong>署名＋網址 <strong>https://www.fstb.gov.hk/</strong>；預留 QR 位。</td><td>旁白：一齊迎接 APEC FMM 2026。詳情請瀏覽 https://www.fstb.gov.hk/。</td></tr></tbody></table></div></details><details class='soft'><summary>🗳️ Agency gemini-2.5-pro</summary><p>好的，收到 brief。內部 creative team（我）已經消化完文件，以下係初步提案。</p>
+<p>---</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>以高對比度、乾淨俐落嘅視覺為主，融合科技感光線流動與香港城市實景。主色調為冷藍、暖金與中性灰，營造專業、穩重而具前瞻性嘅國際都會氛圍。燈光設計強調輪廓光（rim light）同鏡頭光暈（lens flare），突出建築線條同人物質感。鏡頭運動以穩定嘅推軌（dolly）、滑鏡（slider）同慢速搖鏡（pan/tilt）為主，避免手持晃動，展現莊重自信嘅氣勢。部分場景會使用慢動作捕捉細節，例如水墨滴落、人流穿梭，營造詩意同規模感。菲林風格會參考現代商業電影，畫面純淨、顆粒細膩。</p>
+<p>`style_anchor: &quot;sleek corporate cinematic, high contrast, flowing light streaks, cool blue and warm gold palette, slow motion details, steady dolly shots, modern metropolis, confident, 16:9 cinematic&quot;`</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>*   香港主場，聯通亞太新機遇。 (Hong Kong: Connecting Asia-Pacific&#x27;s Future.)</p>
+<p>*   匯聚亞太，成就香港新里程。</p>
+<p>*   香港實力，亞太動力。</p>
+<p>*   聯通世界，增值亞太。香港做到。</p>
+<p>*   2026，亞太焦點，香港主場。</p>
+<h4 class="cc">## Concept 1:〔流光匯脉〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:</p>
+<p>以「光」作為核心視覺元素，象徵資金流、資訊流與人才流。透過抽象嘅數碼光束喺全球版圖上流動，最終匯聚於香港，並轉化為城市中真實嘅璀璨燈火與繁榮景象。呢個概念將「超級聯繫人」角色視覺化，突顯香港作為國際樞紐，將無形嘅金融力量轉化為有形嘅城市發展動力。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(VO)</th></tr></thead><tbody><tr><td>1</td><td>全黑畫面，一粒金色光點浮現，迅速拉成一條光線，向遠方延伸。</td><td>（背景音樂起，雄渾而帶有科技感。）</td></tr><tr><td>2</td><td>鏡頭拉遠，顯示更多金色、藍色嘅光線交織，喺一個風格化嘅地球模型上高速流動。</td><td><strong>旁白：</strong> 資金、資訊、機遇，每日喺世界流動。</td></tr><tr><td>3</td><td>所有光線開始匯聚，鏡頭跟隨光流，飛向亞洲地圖上一個發光嘅點——香港。</td><td><strong>旁白：</strong> 而家，佢哋都有一個共同焦點。</td></tr><tr><td>4</td><td>光線穿透雲層，無縫銜接到夜晚維多利亞港嘅真實航拍鏡頭。城市燈火通明，猶如光線匯聚嘅實體。</td><td><strong>旁白：</strong> 香港。</td></tr><tr><td>5</td><td>快速剪接：港交所交易大堂數據滾動嘅螢幕特寫；中環商業區玻璃幕牆反射嘅人流倒影。</td><td><strong>旁白：</strong> 我哋憑藉國際金融中心嘅實力，</td></tr><tr><td>6</td><td>香港會議展覽中心嘅宏偉外觀，鏡頭向上pan。內部一個大型國際會議嘅延時攝影畫面。</td><td><strong>旁白：</strong> 同頂級會展旅遊嘅優勢，</td></tr><tr><td>7</td><td>金紫荊廣場嘅特寫，鏡頭由下而上，背景係晨曦中嘅摩天大樓。</td><td><strong>旁白：</strong> 準備好，喺國家嘅支持下，</td></tr><tr><td>8</td><td>畫面中心出現以水墨筆觸勾勒出嘅「2026」字樣，墨跡化開，轉變成亞太經合組織嘅標誌。</td><td><strong>旁白：</strong> 迎接一場歷史性盛事。</td></tr><tr><td>9</td><td>一群唔同種族、穿著商務服飾嘅專業人士，自信地望向鏡頭，背景係香港嘅城市景觀。</td><td><strong>旁白：</strong> 2026年亞太區經濟合作組織財政部長會議，</td></tr><tr><td>10</td><td>畫面疊加 Super（熒幕蓋字）：「首次舉行」。</td><td><strong>旁白：</strong> 第一次喺香港舉行。</td></tr><tr><td>11</td><td>畫面中央出現會議標題同日期。Super：「2026年亞太區經濟合作組織財政部長會議」「2026年10月」</td><td><strong>旁白：</strong> 共同建構亞太繁榮。</td></tr><tr><td>12</td><td>香港特別行政區區徽置中。下方顯示「財經事務及庫務局」及網址。</td><td>（背景音樂推至高潮後收結。）</td></tr></tbody></table></div>
+<h4 class="cc">## Concept 2:〔節點相連〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:</p>
+<p>將香港描繪成一個巨大嘅網絡「節點」（Node），透過一個個具象嘅「連接」動作，展現香港如何作為「超級聯繫人」及「超級增值人」。畫面由微觀嘅人際互動（握手），延伸至中觀嘅基建連接（高鐵、機場），再到宏觀嘅國際合作（會議），層層遞進，展示香港如何將人、基建、文化及機遇緊密相連，共同創造價值。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(VO)</th></tr></thead><tbody><tr><td>1</td><td>慢動作特寫：兩隻唔同膚色嘅手，喺中環嘅現代建築背景下有力地握埋一齊。</td><td>（輕快、有節奏感嘅背景音樂響起。）</td></tr><tr><td>2</td><td>鏡頭拉開，握手嘅人係一位本地年輕創科專才同一位外國投資者。兩人相視而笑。</td><td><strong>旁白：</strong> 每一次相遇，都係一次新嘅連接。</td></tr><tr><td>3</td><td>畫面快速轉場：高鐵列車駛入西九龍站；香港國際機場客機升降；貨櫃碼頭吊臂運作。以快速剪接呈現海陸空嘅連接。</td><td><strong>旁白：</strong> 連接粵港澳大灣區，連接全世界。</td></tr><tr><td>4</td><td>一位外國商務旅客拖住行李箱，滿意咁望住香港嘅天際線。佢身後嘅玻璃反射出城市景觀。</td><td><strong>旁白：</strong> 香港，就係一個為機遇而生嘅節點。</td></tr><tr><td>5</td><td>鏡頭轉到一個充滿活力嘅 MICE 活動現場，唔同國籍嘅與會者正熱烈交流。</td><td><strong>旁白：</strong> 我哋匯聚人才同創意，</td></tr><tr><td>6</td><td>鏡頭聚焦喺西九文化區戲曲中心嘅獨特建築，穿插一小段粵劇表演嘅精彩畫面。</td><td><strong>旁白：</strong> 亦展示中西合璧嘅文化魅力。</td></tr><tr><td>7</td><td>畫面用動態圖像（motion graphics），展示一個個代表「金融」、「貿易」、「創新」嘅圖標，由香港呢個中心點向亞太地區幅射出去。</td><td><strong>旁白：</strong> 為區域發展「增值」，注入新動力。</td></tr><tr><td>8</td><td>畫面轉為實景，財政司司長（或象徵性人物）喺一個發佈會上發言，充滿自信。</td><td><strong>旁白：</strong> 2026年，香港將會迎來歷史上第一次，</td></tr><tr><td>9</td><td>亞太經合組織（APEC）標誌緩緩出現。</td><td><strong>旁白：</strong> 主辦「亞太區經濟合作組織財政部長會議」。</td></tr><tr><td>10</td><td>畫面疊加 Super（熒幕蓋字）：「建構亞太命運共同體 推動繁榮發展」。</td><td><strong>旁白：</strong> 我哋已經準備就緒。</td></tr><tr><td>11</td><td>畫面中央出現會議標題同日期。Super：「2026年亞太區經濟合作組織財政部長會議」「2026年10月」</td><td><strong>旁白：</strong> 誠邀世界，見證香港新里程。</td></tr><tr><td>12</td><td>香港特別行政區區徽置中。下方顯示「財經事務及庫務局」及網址。</td><td>（音樂激昂收尾。）</td></tr></tbody></table></div></details><details class='soft'><summary>🗳️ Agency deepseek-v3.2</summary><p># 創意提案：亞太經合組織財政部長會議2026 (APEC FMM 2026)</p>
+<h4 class="cc">## 影像風格 (Style Direction)</h4>
+<p>現代金融紀錄片混合未來感視覺特效。以香港都市景觀（維港、金融區、會展中心）與人流/數據流動的抽象意象交織。冷色調（科技藍、金融銀）為主，點綴暖色（文化金、活力橙）突顯人文溫度。採用穩定流暢的運鏡與微距高速攝影，呈現精密與動態。情緒：自信、前瞻、匯聚、榮耀。</p>
+<p><strong>style_anchor: &quot;Corporate documentary meets data visualization, cool metallic tones with warm accents, smooth kinetic shots, 16:9 cinematic&quot;</strong></p>
+<h4 class="cc">## Slogan (畀 Raymond 揀)</h4>
+<p>1.  首度匯聚 財策未來 | First in Hong Kong, Finance for Future</p>
+<p>2.  財策香港 聯動亞太 | Hong Kong Connects, Asia-Pacific Prospers</p>
+<p>3.  國際舞台 香港主場 | Our Stage, Hong Kong&#x27;s Moment</p>
+<p>4.  超級聯繫 增值亞太 | Super-Connector, Super Value-Added</p>
+<p>5.  匯財香江 共建繁榮 | Meet in Hong Kong, Build Prosperity Together</p>
+<h4 class="cc">## Concept 1:〔金融脈搏 Financial Pulse〕</h4>
+<p><strong>Creative Concept 創作概念</strong>：將香港的金融生態系統比擬為城市的心臟與血管。透過數據流、人流、資金流的視覺化呈現，展現香港作為「超級聯繫人」與「超級增值人」的活力與效率。概念強調香港不僅是會議地點，更是驅動亞太地區繁榮的關鍵動力源，準備就緒迎接歷史性首次盛會。</p>
+<p><strong>TV API Storyboard (30 秒, 12 格)</strong>：</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面 (visual)</th><th>廣東話對白 / 旁白 (標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>微距鏡頭：一滴水珠落入平靜水面，泛起精準圓形漣漪。慢動作。</td><td>旁白（沉穩男聲）：一個匯聚嘅時刻。</td></tr><tr><td>2</td><td>畫面切至維港高空日景，鏡頭快速推進，穿越IFC玻璃幕牆。</td><td>旁白：一次前所未有嘅匯聚。</td></tr><tr><td>3</td><td>金融區街景，全球不同面孔的商務人士快步交錯，形成流動的人潮。</td><td>旁白：<strong>亞太經合組織財政部長會議</strong>，首次喺香港舉行。</td></tr><tr><td>4</td><td>抽象特效：城市地圖上，無數光點從亞太地區各地向香港匯聚，線條交織成網絡。</td><td>旁白：匯聚21個經濟體嘅財金智慧。</td></tr><tr><td>5</td><td>快切畫面：股票交易所交易大堂、綠色金融項目、金融科技應用界面（手機支付/虛擬銀行）。</td><td>旁白：展現香港國際金融中心嘅最新動力。</td></tr><tr><td>6</td><td>鏡頭掠過香港會議展覽中心，內部場地正進行高端會議佈置，光影流轉。</td><td>旁白：喺亞洲盛事之都，提供世界級<strong>會議、展覽及獎勵旅遊</strong>體驗。</td></tr><tr><td>7</td><td>畫面分屏：左邊是中國傳統算盤珠撥動（文化金調），右邊是現代數據中心伺服器燈光閃爍（科技藍調），兩者節奏同步。</td><td>旁白：傳承中華智慧，融合創新思維，說好香港故事。</td></tr><tr><td>8</td><td>一位年輕本地金融從業員（男/女）在辦公室望向維港，眼神自信，轉身與國際同事討論。</td><td>旁白：我哋已經準備好。</td></tr><tr><td>9</td><td>特效：剛才所有畫面的元素（人流、數據流、建築、文化符號）匯聚成一個發光的「超級聯繫人」網絡圖騰，覆蓋香港地圖。</td><td>旁白：擔當<strong>超級聯繫人</strong>同<strong>超級增值人</strong>。</td></tr><tr><td>10</td><td>動態標題伴隨沉穩音效躍現畫面中央。</td><td>熒幕蓋字（書面語）：<strong>2026年亞太區經濟合作組織財政部長會議</strong></td></tr><tr><td>11</td><td>會議主題與日期以簡潔字形呈現。</td><td>熒幕蓋字（書面語）：<strong>建構亞太命運共同體，推動繁榮發展</strong> &lt;br&gt;<strong>2026年10月 • 香港</strong></td></tr><tr><td>12</td><td>定版畫面：香港特別行政區區徽、「亞太經合組織財政部長會議2026」中英文標誌、財經事務及庫務局標誌。</td><td>旁白：齊心建構亞太命運共同體，推動繁榮發展。</td></tr></tbody></table></div>
+<h4 class="cc">## Concept 2:〔橋樑故事 Bridge The Narrative〕</h4>
+<p><strong>Creative Concept 創作概念</strong>：以「橋」作為核心視覺隱喻。從實體的青馬大橋、港珠澳大橋，延伸到象徵性的金融橋樑、文化橋樑、科技橋樑。影片通過展示這些「橋樑」如何連接香港與亞太乃至世界，帶出會議「聯繫」、「共建」的核心價值。強調香港不僅是地理與設施上的連接點，更是理念、資金與機遇的樞紐。</p>
+<p><strong>TV API Storyboard (30 秒, 12 格)</strong>：</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面 (visual)</th><th>廣東話對白 / 旁白 (標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>晨曦中，青馬大橋的鋼纜特寫，結構精密如豎琴。鏡頭拉遠展現大橋全貌。</td><td>旁白（富感染力女聲）：香港，一直係連接各方嘅橋樑。</td></tr><tr><td>2</td><td>快剪接：港珠澳大橋車流、機場跑道飛機起降、海底光纜示意圖。</td><td>旁白：連接人流、物流、同資訊流。</td></tr><tr><td>3</td><td>中環街景，外籍銀行家與本地企業家於咖啡店握手交流，背後是金融大廈。</td><td>旁白：而家，我哋要搭建更重要嘅橋樑。</td></tr><tr><td>4</td><td>特效畫面：國際新聞畫面（經濟會議、市場波動）與香港的金融數據圖表重疊，中間由一道光橋連接。</td><td>旁白：<strong>亞太經合組織財政部長會議</strong>，史上首次移師香港。</td></tr><tr><td>5</td><td>畫面展示香港多元面貌：故宮文化博物館展品、MICE場地內的高端會議、西九文化區演出。</td><td>旁白：呢度，係國際金融中心，亦係文化交融、<strong>會展旅遊</strong>嘅首選地。</td></tr><tr><td>6</td><td>實驗室場景，科研人員展示綠色金融科技；隨後切至離岸風電場畫面。</td><td>旁白：我哋用創新，搭建可持續發展嘅橋樑。</td></tr><tr><td>7</td><td>一組來自不同亞太經濟體的青年代表（虛構），在香港地標前用手機協作完成一個虛擬項目，笑容洋溢。</td><td>旁白：匯聚新一代嘅聲音同想像。</td></tr><tr><td>8</td><td>鏡頭穿梭於正在最後準備階段的會議主場館，工作人員有條不紊地工作，國旗整齊排列。</td><td>旁白：一切，已經準備就緒。</td></tr><tr><td>9</td><td>所有之前出現過的「橋樑」畫面（實體橋、握手、數據流、文化場景）匯聚，拼貼出「2026」字樣。</td><td>旁白：2026年10月，香港，成為亞太財金對話最重要嘅橋樑。</td></tr><tr><td>10</td><td>動態標題伴隨凝聚音效呈現。</td><td>熒幕蓋字（書面語）：<strong>亞太經合組織財政部長會議2026</strong></td></tr><tr><td>11</td><td>主題與邀請語清晰顯示。</td><td>熒幕蓋字（書面語）：<strong>建構亞太命運共同體，推動繁榮發展</strong> &lt;br&gt;<strong>歡迎全球財金領聚香江</strong></td></tr><tr><td>12</td><td>定版畫面：香港特別行政區區徽、「亞太經合組織財政部長會議2026」中英文標誌、財經事務及庫務局標誌。背景為維港夜景，燈光璀璨如橋。</td><td>旁白：携手建構亞太命運共同體，我哋香港見。</td></tr></tbody></table></div></details><details class='soft'><summary>🗳️ Agency claude-opus-4-8</summary><p># 2026年亞太區經濟合作組織財政部長會議 — TV API 創意提案</p>
+<p>---</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>走「國際金融盛事 × 東方韻味」嘅高級電影感路線。以維港日出至華燈初上嘅黃金時段為主軸,玻璃幕牆反射、水面波光、金箔流光做質感串連。鏡頭以航拍大遠景開場,接特寫人手細節(握手、茶湯、算盤化作數據流),再回到城市天際線。燈光偏暖金 + 高對比,點綴中式硃紅與水墨灰。菲林質感似 ARRI Alexa 加輕微膠片顆粒,色調濃郁但乾淨,情緒由「莊重自豪」過渡到「開放歡迎」。全片 16:9 cinematic,節奏穩中帶氣勢。</p>
+<p>style_anchor: &quot;golden-hour Victoria Harbour aerial, glass curtain wall reflections, warm gold and cinnabar red palette, ink-wash accents, ARRI Alexa filmic grain, macro handshake and tea-pour details, data-stream light trails, prestige financial summit mood, 16:9 cinematic&quot;</p>
+<p>---</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1. 財長會議首聚香港,世界看見東方力量。</p>
+<p>2. 香港準備好,世界齊聚首。</p>
+<p>3. 超級聯繫人,連通亞太繁榮。(Super-connector, connecting Asia-Pacific prosperity.)</p>
+<p>4. 一城聯通世界,共建亞太未來。</p>
+<p>5. 國際金融中心,主場迎四方。</p>
+<p>6. 財長聚香江,共建亞太命運共同體。</p>
+<p>7. 香港主場,說好中國同香港故事。</p>
+<p>---</p>
+<h4 class="cc">## Concept 1:〔超級聯繫人〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:以「一條金色光流」貫穿全片,象徵香港作為「超級聯繫人」嘅連通力量。光流由維港出發,串連21個經濟體代表、金融數據、會展場館同中華文化符號,最後匯聚成「2026年亞太區經濟合作組織財政部長會議」嘅主視覺。突顯香港將天南地北嘅人同資本「連埋一齊」,主場迎接世界。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong></p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>航拍維港日出,金光灑落玻璃幕牆,一條金色光流自海面升起。</td><td>旁白:二零二六年,世界把目光投向香港。</td></tr><tr><td>2</td><td>光流穿過中環摩天大樓群,反射出繁忙金融脈搏。</td><td>旁白:作為國際金融中心,我哋連通全球資本。</td></tr><tr><td>3</td><td>特寫交易大堂屏幕,數據如流水跳動。</td><td>旁白:金融市場最新發展,持續向前。</td></tr><tr><td>4</td><td>光流飛越會展場館,巨型穹頂內人潮匯聚。</td><td>旁白:亞洲國際都會,會展旅遊首選之地。</td></tr><tr><td>5</td><td>不同膚色嘅代表笑容握手,光流連起佢哋嘅手。</td><td>旁白:超級聯繫人,將世界連埋一齊。</td></tr><tr><td>6</td><td>茶湯倒入白瓷杯,蒸氣化作金色光絲。</td><td>旁白:以中華文化嘅底蘊,款待四方來客。</td></tr><tr><td>7</td><td>光流劃過故宮文化博物館外牆,硃紅映金。</td><td>旁白:傳承東方韻味,展現香港特色。</td></tr><tr><td>8</td><td>21面代表旗幟沿光流排開,匯向維港中心。</td><td>旁白:二十一個經濟體代表,聚首香江。</td></tr><tr><td>9</td><td>光流凝聚成會議主視覺標誌,華燈初上。</td><td>旁白:亞太經合組織財政部長會議,首次喺香港隆重舉行。</td></tr><tr><td>10</td><td>城市天際線全亮,煙火般光點散開。</td><td>旁白:香港已經準備就緒。</td></tr><tr><td>11</td><td>大字浮現:建構亞太命運共同體,推動繁榮發展。</td><td>旁白:齊心建構亞太命運共同體,推動繁榮發展。</td></tr><tr><td>12</td><td>主視覺定格,會議名稱 + 二零二六年十月 + 區徽。</td><td>旁白:二零二六年十月,香港主場,世界共見。</td></tr></tbody></table></div>
+<p>---</p>
+<h4 class="cc">## Concept 2:〔香港準備好〕</h4>
+<p><strong>Creative Concept 創作概念</strong>:用「準備就緒」嘅幕後群像做敘事核心,由清晨城市甦醒,到各行各業香港人各就各位——金融人、會展團隊、酒店業、青年義工——一齊為盛事張羅。傳遞「全城同心、主場待客」嘅自豪感,將宏觀財金議題拉近到每個香港人身上,化離地為參與。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong></p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>黎明維港,城市燈火漸熄,晨光初露。</td><td>旁白:每一個香港人,都喺度準備緊。</td></tr><tr><td>2</td><td>金融從業員快步走入中環大樓,西裝筆挺。</td><td>旁白:國際金融中心,迎接世界檢閱。</td></tr><tr><td>3</td><td>會展場館工作人員鋪設地毯、調試燈光。</td><td>旁白:會展團隊,佈置最好嘅舞台。</td></tr><tr><td>4</td><td>酒店禮賓員整理大堂,鮮花一字排開。</td><td>旁白:以最好嘅款待,歡迎四方來客。</td></tr><tr><td>5</td><td>青年義工排練接待,笑容練足十分。</td><td>旁白:後生一代,一樣落力。</td></tr><tr><td>6</td><td>廚師擺盤,中西佳餚精緻呈現。</td><td>旁白:用心呈獻,香港味道。</td></tr><tr><td>7</td><td>特寫雙手沖泡功夫茶,蒸氣裊裊。</td><td>旁白:以中華文化,待客以誠。</td></tr><tr><td>8</td><td>鏡頭拉開,各行各業人物同框微笑望鏡頭。</td><td>旁白:超級聯繫人嘅角色,由我哋一齊擔當。</td></tr><tr><td>9</td><td>航拍會展中心夜景,巨型會議標誌亮起。</td><td>旁白:亞太經合組織財政部長會議,首次喺香港舉行。</td></tr><tr><td>10</td><td>21個經濟體旗幟於場館前飄揚。</td><td>旁白:二十一個經濟體代表,即將聚首香江。</td></tr><tr><td>11</td><td>全城天際線通明,人群仰望夜空。</td><td>旁白:香港準備好,世界齊聚首。</td></tr><tr><td>12</td><td>主視覺定格,會議名稱 + 二零二六年十月 + 區徽。</td><td>旁白:二零二六年十月,共建亞太命運共同體,推動繁榮發展。</td></tr></tbody></table></div></details><details class='soft'><summary>🗳️ 委員會 20260603-020535</summary><h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>電影film_still / 中性 / low_key_chiaroscuro / 冷藍驚悚 (Deep Navy &amp; Matte Gold) / 4K商業 / 長焦壓縮 / 乾淨高級商業 / 2.35:1  </p>
+<p>style_anchor: &quot;cinematic film still, anamorphic, shallow depth of field, low-key chiaroscuro, single hard source, deep shadows, cold desaturated blue thriller grade, pristine 4K commercial polish, telephoto compression, 135mm, clean premium commercial mood, 2.35:1 anamorphic widescreen, matte gold rim accent, gold etched timestamp, dark negative space, 16:9 cinematic&quot;</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1. 十月，世界財金聚香港。  </p>
+<p>2. 國家主場，香港承辦，APEC財長會議。  </p>
+<p>3. 燈已校準，門已打開，等緊十月嘅客。  </p>
+<p>4. 齊建亞太共同體，香港舞台已就緒。  </p>
+<p>5. 21個經濟體，一個匯聚點：香港2026。</p>
+<h4 class="cc">## Concept 1:匯聚點 · 已亮燈</h4>
+<p><strong>Creative Concept 創作概念</strong>：以「低調主辦人」角色，透過空無一人但極度精準嘅會議場景，呈現國家主辦、香港承辦嘅層次。畫面只見一束射燈由暗到亮，象徵一切就位，只等十月盛事發生。香港身影隱藏於場地服務之中，焦點留畀「盛事即將發生」呢個事實。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>全黑畫面，中央浮現極幼金色激光數字「2026.10」。</td><td>旁白：成個亞太嘅財金地圖，</td></tr><tr><td>2</td><td>一束冷白射燈如刀鋒劈開黑暗，照亮空置講台。</td><td>旁白：十月，</td></tr><tr><td>3</td><td>頂層金屬邊框（啞金）緩緩入鏡，畫面最上方。</td><td>旁白：個箭咀會指住香港。</td></tr><tr><td>4</td><td>長焦壓縮鏡頭，21張會議椅從模糊到清晰逐格顯現。</td><td>旁白：國家主場，</td></tr><tr><td>5</td><td>香港會展中心玻璃幕牆反射，映入21個微光點。</td><td>旁白：香港承辦。</td></tr><tr><td>6</td><td>空曠講台，一隻戴白手套嘅手將文件夾穩穩放低，隨即離開。</td><td>旁白：APEC財長會議。</td></tr><tr><td>7</td><td>射燈由0%漸亮至100%，精準打落講台中央。</td><td>旁白：燈已校準，</td></tr><tr><td>8</td><td>會場大門由內向外緩緩推開，門外只見冷藍夜色。</td><td>旁白：門已打開，</td></tr><tr><td>9</td><td>畫面最下方，21個光點同時亮起，匯聚向講台。</td><td>旁白：等緊十月嘅客。</td></tr><tr><td>10</td><td>激光蝕刻「2026.10」字樣喺玻璃上微微反光。</td><td>旁白：齊建亞太共同體，</td></tr><tr><td>11</td><td>會場全景，燈光全開，空無一人但秩序井然。</td><td>旁白：香港舞台已就緒。</td></tr><tr><td>12</td><td>黑場淡出，僅留中央極幼金框同「2026.10」字樣。</td><td>旁白：21個經濟體，一個匯聚點：香港2026。</td></tr></tbody></table></div>
+<h4 class="cc">## Concept 2:舞台 · 靜候</h4>
+<p><strong>Creative Concept 創作概念</strong>：以「未完成但極接近完成」嘅負空間美學，呈現香港作為超級聯繫人嘅靜默效率。畫面大面積陰影，只有一小塊「國家規格」金框位於頂層，其餘係香港國際級場地設備，製造「只差最後一步」嘅時間壓迫感。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>黑場，頂部一條極幼啞金邊框入畫，靜止。</td><td>旁白：國家主場，</td></tr><tr><td>2</td><td>長焦鏡頭掃過香港會展中心空曠走廊，燈光只照亮一側。</td><td>旁白：香港承辦。</td></tr><tr><td>3</td><td>一條未拉直嘅紅毯，邊緣微微捲起，置於陰影之中。</td><td>旁白：十月，</td></tr><tr><td>4</td><td>講台上一盞聚光燈，燈罩微微傾斜，未調校至最佳角度。</td><td>旁白：世界財金聚香港。</td></tr><tr><td>5</td><td>玻璃幕牆上，激光蝕刻「2026.10」字樣反射夜景。</td><td>旁白：燈已校準，</td></tr><tr><td>6</td><td>21個不同色溫嘅光點，從四方八面緩緩匯聚。</td><td>旁白：門已打開，</td></tr><tr><td>7</td><td>空無一人嘅貴賓房，一隻手套放喺椅背，顯示剛剛離開。</td><td>旁白：等緊十月嘅客。</td></tr><tr><td>8</td><td>會場天花板，一排射燈逐盞由暗至亮，精準打向講台。</td><td>旁白：齊建亞太共同體，</td></tr><tr><td>9</td><td>維港夜景，21道光線從天際線不同位置匯聚向中環。</td><td>旁白：香港舞台已就緒。</td></tr><tr><td>10</td><td>講台上一塊未掛上嘅金屬銘牌，微微搖晃。</td><td>旁白：21個經濟體，</td></tr><tr><td>11</td><td>全景會場，燈光全開，留白極多，只見精準秩序。</td><td>旁白：一個匯聚點：</td></tr><tr><td>12</td><td>黑場，中央僅餘極幼金框同「香港2026」字樣。</td><td>旁白：香港2026。</td></tr></tbody></table></div></details></details></details></section>
+<section id="brief"><details class="soft sec" ><summary>📋 Brief 撮要 + NBLM 創意</summary><div class='card'><p><h4>1. Background（背景）</h4> 2026年中國將擔任亞太經濟合作組織（APEC）東道主，而香港將破天荒首次承辦「2026年亞 太區經濟合作組織財政部長會議」(APEC FMM 2026) [1,  2]。特區政府期望藉此國家主場外交的盛事，向國際社會展示香港作為國際金融中心及亞洲 會展旅遊首選地的優勢，並彰顯「超級聯繫人」和「超級增值人」的角色 [1, 3,  4]。社會脈絡方面，疫後香港正積極重塑國際形象，商界期望盛事能帶來實質經濟效益，而 一般市民及青年則可能對宏觀財金會議感到「離地」，因此需要將議題轉化為全城參與的自 豪感 [5-7]。</p><p><h4>2. Objective（目標）</h4> 傳意目標：宣佈會議的實施日期及詳情，提升香港的地區及國際形象；展示香港的金融實力 與MICE（會展及獎勵旅遊）優勢；展現「中國聲音」並推廣中華文化及香港特色 [3, 4]。 KPI：引發本地及國際受眾（包括21個經濟體代表團、商會及公眾）的廣泛關注  [4]，透過Phygital體驗提升市民對香港作為東道主的認知度與榮譽感。</p><p><h4>3. Key Message（核心訊息）</h4> 2026年亞太區經濟合作組織財政部長會議首次在香港隆重舉行；香港作為國際金融中心與超 級聯繫人，已經準備就緒，將向世界展示實力、傳遞中國聲音與推廣中華文化；讓我們齊心 建構亞太命運共同體，推動繁榮發展 [4, 8-10]。</p><p><h4>4. Deliverables（交付物）</h4> *   **Mandatory (必須):**      *   1 套 30 秒 TV API（廣東話及英語，需附繁體中文書面語/英文字幕，輸出為  16:9 HD XDCAM HD422 MXF 及 HDCAM 格式）[11-13]。     *   1 套 30 秒 Radio API（廣東話、英語及普通話，英語必須為 monologue  獨白形式，輸出為 MP3 及 WAV）[14, 15]。     *   1 款雙語宣傳海報設計（A1, A2 尺寸及多種數碼 banner 格式）[16, 17]。     *   1 款柱身貼紙 (Pillar Sticker) 設計（尺寸: 4870mm x 2160mm）[18, 19]。 *   **Optional (可選):** 海報尺寸適配、TV API 港鐵車廂電視適配  (1920x1080)、港鐵車廂電視 Ibanner 設計 [19-21]。</p><p><h4>5. Timeline（時間表）</h4> *   **B (Briefing):** 2026-05-29 (15:00) [22] *   **D (Deadline):** 2026-06-09 (12:00) [22] *   **P (Presentation):** 2026-06-17 [23]</p><div class='lab'>Briefing 補充</div><p># 2026年05月29日 15點01分.m4a
+我係GMO事務公務局嘅會議同同事
+ 叫做高級新聞企業
+ 旁邊呢位就係民調公園嘅林文
+ 另外就係ICD嘅兩位同事
+ 新郎叫Annie 新郎叫Wayne
+ 今次呢我哋主要想講返宣傳製作嘅背景啦
+ 目的啦 同埋API想要嘅主要訊息啦
+ 製作要求提交標書文件嘅箱子同埋啲重要人權嘅
+ 咁最尾就係探索時間
+ 講少少呢個項目嘅背景先啦
+ 咁就2026年呢個API就係由中國擔任公道主啦
+ 中央政府呢之前就宣布咗係由國家財政部主啦
+ 香港政府就承辦嘅方式呢
+ 就會喺今年十月
+ 喺香港政府就承辦嘅方式呢
+ 就會喺今年十月
+ 喺香港政府就承辦嘅方式呢
+ 就會喺今年十月
+ 喺香港政府就承辦嘅方式呢
+ 喺香港政府就承辦嘅方式呢
+ 就會喺香港舉行API嘅財政部長會議嘅
+ 咁今次對香港嚟講呢
+ 其實除咗係一個大型國際會議啦
+ 更加係向國際社會展示香港優勢嘅重要基準
+ 咁所以呢今次宣傳呢
+ 我哋希望呢唔係淨係停留喺公佈個會議日期呀
+ 時間呀嘅安排啦
+ 而係希望可以透過一個有感應力呀
+ 吸引力嘅內容呢
+ 就向本地同國際嘅受眾
+ 展示香港嘅優勢
+ 同國際嘅盈利
+ 咁喺宣傳方面呢
+ 我哋希望呢就展示香港作為國際金融中心
+ 亞洲國際都會啦
+ 同埋大型國際會議
+ 和展覽活動首選地嘅實力啦
+ 同埋呢都彰顯香港作為一個超級原系人
+ 超級真正人嘅重要角色
+ 說好國家同香港嘅故事
+ 同埋加深公眾呢對API會議嘅
+ 形成嘅
+ 咁今次嘅宣傳製作呢
+ 我哋嘅受眾係除咗
+ 本地嘅市民之外呢
+ 係亦都係包括
+ 二十一個APEC成員
+ 經濟體嘅代表團
+ 觀眾 國際組織代表啦
+ 一啲主要商會呀
+ 金融機構同埋工商界人士嘅
+ 條款嘅主要訊息呢
+ 我哋希望可以行幾點嘅
+ 咁首先就係要帶出APEC嘅財務獎會議
+ 係第一次喺香港舉行啦
+ 另外亦都想展示返香港作為國際都會
+ 同埋呢個會議展覽同女友活動
+ 首選地嘅吸引力啦
+ 同埋展現中國聲音
+ 推廣中華民黨同香港特色
+ 介紹返財長會嘅背景和目的
+ 議題同埋會議本身嘅重要性
+ 另外亦都係想大眾知道呢
+ 香港已經準備就緒去確保呢個會議呢會順利
+ 去進行嘅
+ 咁簡單嚟講
+ 其實我哋唔係淨係想製作一個
+ 單純介紹會議嘅宣傳片
+ 係希望藉住呢個宣傳片
+ 去展示畀世界之香港嘅
+ 實力同埋力量
+ 咁製作要求方面呢
+ 我哋想做一條30秒嘅TV API
+ 中英文版本
+ 另外有相對應嘅電台嘅宣傳聲帶
+ 咁就要中英文同普通語言嘅
+ 同埋嘅日程都可以睇返招標文件
+ 第五partservice by segmentation
+ 咁整好之後都係同以往一樣
+ 幫我哋派埋台
+ 畀返個copy我哋
+ 咁嗰啲發送地點呢
+ 都喺個招標文件呢度有㗎喇
+ 咁除咗整片之外呢
+ 亦都想
+ 抗生打幫手設計一款相與嘅宣傳海報
+ 同埋設計一個巨型處等嘅宣傳貼紙
+ 咁即係呢啲貼紙
+ 即係呢兩張相可以參考
+ 咁其他一啲options嘅項目
+ 就到時再睇下有冇需要再搵professor幫手
+ 咁就包括係調整嗰個宣傳海報嘅size
+ 同埋將嗰個TV API
+ 製造港鐵車廂電視嘅格式
+ 同埋設計嗰個eye banner
+ 同埋個圖像
+ 咁Alison就會講一講嗰個標書物件嘅水晶
+ 講返點樣交標
+ 咁交標嗰度其實嗰份protection物件嗰度
+ 其實Tamsa嗰啲其實都有聯名嘅
+ 咁我再約兩個開始
+ 咁呢個係一個2 envelope嘅
+ 即係兩個信封有technical proposal
+ 同埋有price proposal嘅
+ 咁technical proposal price proposal兩個呢
+ 要入喺分開個信封
+ 兩份都要duplicate嘅
+ 即係technical兩份price兩份
+ 咁technical兩份呢入埋一個信封
+ 咁信封言呢就係寫住protection reference
+ closing date啊
+ 跟住寫住you can use technical proposal and so on
+ technical proposal
+ 另外一個price嘅duplicate呢
+ 又係寫明話protection reference
+ closing date subject
+ 跟住同埋特定的price proposal
+ 咁就入落個信封
+ 咁兩個信封入落個大信封
+ 跟住就入喺我哋門口嗰個標箱就可以㗎喇
+ 大家開啲門嗰度見到玻璃門出面
+ 就有個標箱喺度
+ 咁呢注意個backup submission
+ 就係6月9號啦
+ 星期二正11時12時正嘅係
+ 咁另外記住啦
+ 信封面嗰度呢
+ 千祈唔好有你哋任何公司嘅indication
+ 即係可能公司名啊
+ 公司信封啊
+ 嗰啲就唔需要啦
+ 嗰啲就
+ 咁另外記住technical proposal一件呢
+ 就千祈唔好包含任何價錢嘅information
+ 喺入面呀
+ 因為我哋都會做完個technical
+ 先會再去開price嘅
+ 咁兩個就會獨立進行啦
+ 就會
+ 咁而technical proposal嗰度呢
+ 要包含嘅嘢呢
+ 留意啦
+ 即係頭先講嘅
+ 宣傳片啦
+ 有storyboard呀
+ Jot script呀
+ 同埋radio個API
+ 嗰啲script呀
+ 說聽format
+ 海報設計
+ 同埋某個
+ 飛來海報設計
+ 咁全部都要埋喺入面
+ creative proposal入面嘅
+ 另外啦
+ 除咗頭先講creative proposal啦
+ 入面都要包埋
+ day part 7嘅一連串嘅schedule嘅
+ schedule p information schedule入面
+ 咁大家都留意番啦
+ information schedule入面嘅第二點嗰度呢
+ 其實就係creative proposal入面嘅
+ 即係要交嗰啲點嚟嘅
+ 咁大家可以睇一睇
+ 做個做個take back
+ 確保係正面咁交啦
+ 因為呢個mandatory嘅
+ 必須要交嘅呢個係
+ 咁另外仲有啲concept disclosure呀
+ 其他
+ compiling schedule嗰啲都要簽返名啦
+ offer to be found啦
+ part 8嗰度
+ 一定要簽名
+ 一定要交
+ 唔交係
+ 唔會consider嘅呢個
+ 所以大家必須要留意
+ 必須要交下呢一份
+ 一定要簽名
+ 即係唔好同時等個印咁樣就
+ 或者填咗唔記得簽咁樣
+ 就簽嘅就唔好啦
+ 因為呢個係confirm
+ 你哋要讀晒成份文件之後
+ 係要全清楚明白了解
+ 我哋嘅require
+ 咁呢個就technical proposal啦
+ 咁另外呢
+ 另外一個
+ 頭先講另外一個想封
+ 就high schedule啦
+ 咁所有價錢延後面要睇啦
+ 承諾discount嗰啲
+ 咁就入落
+ 呢個期間入落嘅
+ 個信封度
+ 咁另外
+ 大家見到副主席
+ 將當最後有個checklist嘅
+ 咁大家都可以對番啦
+ 即係subject啊closing day啊
+ 同埋兩個proposal
+ 個envelope係咪都有齊
+ 所有嘅文件啦
+ 咁提一提返啲重要日子啦
+ 咁就6月9號呢
+ 就係交proposal嘅時間啦
+ deadline就喺12點正嘅
+ 咁就presentation
+ 我哋就預咗係6月17號進行啦
+ 咁依家就QA睇下大家冇嘢問
+ 冇嘢問咁就
+ 咁歡迎大家
+ 畀多少少時間
+ 大家諗下冇嘢問嘅時候呢
+ 我又做啲好長期嘅提醒呢
+ 咁就
+ 咁依家就喺作方面啦
+ 咁就再睇一睇大家啦
+ 咁大家要俾tip ideas
+ 必須要係原創嘅
+ 即係以前resell過畀其他人啦
+ 而如果有機會合作嘅話呢
+ 亦都唔會再resell畀其他人嘅
+ 咁呢一樣嘢呢
+ 咁喺個報價文件度呢
+ 亦都係列明咗嘅
+ 咁如果有機會合作啦
+ 而將來想將條API用作其他用途
+ 例如係參展或者參加比賽等等呢
+ 咁必須要事先係得到
+ 長期事務及父母保護
+ 同埋政府生產權嘅
+ 嘅批准嘅
+ 咁至於TV API嘅語言方面啦
+ 中文版VO會係廣東話啦
+ 以及幕開字同埋字幕
+ 都係用繁體中文嘅書面語嘅
+ 咁至於英文版嘅TV API啦
+ VO嘅幕開字同埋字幕
+ 都係用英文嘅
+ 而radio API方面呢
+ 就係好似頭先咁講
+ 有三個語言
+ 佢哋係廣東話
+ 普通話同埋英文
+ 而英文必定要用
+ Mono 同埋木白嘅形式嘅
+ 咁大家喺設計
+ 對白、螢幕開字
+ 同埋字幕嘅時候呢
+ 都應該盡量畀五中英鑒賊
+ 咁就如果係實拍嘅話呢
+ 如果有各角色係對鏡頭講嘢啦
+ TV API嘅話
+ 就一定要double shoot
+ 中文版排一次
+ 英文版排一次
+ 咁就頭先講到交標啦
+ 咁就都長期提多一次啦
+ 咁所有要交嘅文本
+ 一定要
+ 簽名、簽名、簽名、簽名
+ 同埋要交齊嘅
+ 咁就如果用速遞形式
+ 同埋交都要
+ 確保速遞人
+ 係啲節標嘅時間
+ 將個名點數
+ 我想問下
+ 如果我哋假設呢個API啦
+ 佢有啲footage係
+ 關於可能上一屆嗰啲會議呀
+ 譬如生意署或者係
+ 你哋會唔會provide到
+ 呢啲咁嘅footage
+ 畀我哋剪
+ 即係少少咁剪落去
+ 條片呢
+ 定係要我哋
+ 全部去自己去source
+ 最好就contact下自己
+ contact下
+ 係咪要冇嘢問吓
+ 嗯</p><div class='lab'>NBLM 創意</div><div class='nbcard'><b>繁榮脈搏 / The Golden Pulse</b><div class='lab'>Big Idea</div><p>以金色絲綢脈搏貫穿全城，將香港定位為驅動亞太經濟的超級聯繫人，轉化國際財金會議為全城共同驕傲。</p><div class='lab'>Slogan</div><p class='slo'>亞太盛會 匯聚香港</p></div><div class='nbcard'><b>城市心跳 / City Heartbeat</b><div class='lab'>Big Idea</div><p>把香港視為亞太經濟的心臟，以跳動的金色光軌象徵金融脈動，將抽象會議轉化為城市活力與市民自豪。</p><div class='lab'>Slogan</div><p class='slo'>香港心跳 牽動亞太</p></div><div class='nbcard'><b>絲路新章 / Silk Road Chapter</b><div class='lab'>Big Idea</div><p>把傳統絲路精神注入現代金融，以金色絲帶串聯中西文化與財金實力，展現香港承傳與創新雙重角色。</p><div class='lab'>Slogan</div><p class='slo'>絲路香江 財金新章</p></div><div class='nbcard'><b>全城準備 / City Ready</b><div class='lab'>Big Idea</div><p>聚焦會議背後的每一張香港人笑臉，從年輕金融才俊到酒店前線，展現全城已準備好迎接世界。</p><div class='lab'>Slogan</div><p class='slo'>我哋準備就緒</p></div><div class='nbcard'><b>命運共同體 / Shared Destiny</b><div class='lab'>Big Idea</div><p>以光軌匯聚21個經濟體代表與香港市民，視覺化「亞太命運共同體」，強調共創繁榮的集體力量。</p><div class='lab'>Slogan</div><p class='slo'>齊心建構 亞太共同體</p></div><a class='lnk' target='_blank' href='https://notebooklm.google.com/notebook/219ebf30-15d5-45e4-8507-566532d88578'>↗ 開 NotebookLM 睇完整 + slide deck</a></div></details></section>
+<section id="score"><details class="soft sec"><summary>📊 評分明細(官方 marking scheme)</summary><div class='lab'>📝 文字評分 · 預設只列頭三</div><div class='tw'><table><thead><tr><th>創意</th><th>總分</th><th>Accuracy</th><th>Creativi</th><th>Impact o</th><th>Recall</th><th>Resonanc</th><th>Innovati</th><th>Innovati</th></tr></thead><tbody><tr><td class='lt'>🥇 [Agency kimi-k2.6] Concept 2:〔開門·見山〕</td><td><b>84.5</b></td><td>27.2</td><td>12.9</td><td>12.5</td><td>8.6</td><td>8.3</td><td>11.5</td><td>3.5</td></tr><tr><td class='lt'>🥈 [Agency deepseek-v3.2] Concept 2:〔橋樑故事 Bridge The Narrative〕</td><td><b>83.3</b></td><td>27.3</td><td>12.2</td><td>12.4</td><td>8.1</td><td>8.6</td><td>10.5</td><td>4.2</td></tr><tr><td class='lt'>🥉 [Agency kimi-k2.6] Concept 1:〔脈動·共鳴〕</td><td><b>82.5</b></td><td>26.9</td><td>12.5</td><td>12.4</td><td>8.4</td><td>8.3</td><td>11.0</td><td>3.0</td></tr></tbody></table></div><details class='soft'><summary>睇埋其餘 18 個</summary><div class='tw'><table><tbody><tr><td class='lt'>4. [Agency gpt-5.2] Concept 2:〔《香港：把會議變成城市節奏》〕</td><td><b>82.0</b></td><td>27.4</td><td>12.6</td><td>12.4</td><td>8.3</td><td>8.4</td><td>10.7</td><td>2.2</td></tr><tr><td class='lt'>5. [Agency deepseek-v3.2] Concept 1:〔金融脈搏 Financial Pulse〕</td><td><b>81.7</b></td><td>27.2</td><td>12.1</td><td>12.2</td><td>7.8</td><td>8.4</td><td>11.0</td><td>3.0</td></tr><tr><td class='lt'>6. [委員會 020535] Concept 1:匯聚點 · 已亮燈</td><td><b>81.0</b></td><td>26.8</td><td>12.5</td><td>12.0</td><td>8.2</td><td>8.0</td><td>11.0</td><td>2.5</td></tr><tr><td class='lt'>7. [Agency qwen3.7-max] Concept 1:〔脈動連繫 · 增值亞太〕</td><td><b>80.4</b></td><td>27.3</td><td>12.2</td><td>12.4</td><td>8.1</td><td>8.4</td><td>9.5</td><td>2.5</td></tr><tr><td class='lt'>8. [Agency claude-opus-4-8] Concept 1:〔超級聯繫人〕</td><td><b>80.0</b></td><td>26.5</td><td>11.8</td><td>11.9</td><td>7.8</td><td>8.0</td><td>11.0</td><td>3.0</td></tr><tr><td class='lt'>9. [Agency grok-4.3] Concept 2:〔橋・聚・盛〕</td><td><b>79.9</b></td><td>26.4</td><td>12.2</td><td>12.3</td><td>8.2</td><td>8.3</td><td>10.2</td><td>2.3</td></tr><tr><td class='lt'>10. [NBLM] 命運共同體 / Shared Destiny</td><td><b>79.8</b></td><td>25.7</td><td>12.2</td><td>12.3</td><td>7.6</td><td>8.0</td><td>11.0</td><td>3.0</td></tr><tr><td class='lt'>11. [Agency gemini-2.5-pro] Concept 1:〔流光匯脉〕</td><td><b>78.7</b></td><td>27.0</td><td>12.0</td><td>12.2</td><td>8.0</td><td>8.0</td><td>10.0</td><td>1.5</td></tr><tr><td class='lt'>12. [NBLM] 城市心跳 / City Heartbeat</td><td><b>78.7</b></td><td>26.0</td><td>12.3</td><td>12.4</td><td>8.3</td><td>8.1</td><td>9.3</td><td>2.3</td></tr><tr><td class='lt'>13. [NBLM] 絲路新章 / Silk Road Chapter</td><td><b>78.2</b></td><td>25.6</td><td>12.1</td><td>11.4</td><td>7.8</td><td>7.7</td><td>10.8</td><td>2.8</td></tr><tr><td class='lt'>14. [Agency gemini-2.5-pro] Concept 2:〔節點相連〕</td><td><b>77.9</b></td><td>27.0</td><td>11.8</td><td>12.4</td><td>7.8</td><td>8.3</td><td>9.3</td><td>1.3</td></tr><tr><td class='lt'>15. [Agency gpt-5.2] Concept 1:〔《一秒連起亞太》〕</td><td><b>77.9</b></td><td>27.4</td><td>12.1</td><td>12.4</td><td>8.1</td><td>8.3</td><td>8.3</td><td>1.3</td></tr><tr><td class='lt'>16. [委員會 020535] Concept 2:舞台 · 靜候</td><td><b>77.3</b></td><td>24.9</td><td>12.4</td><td>11.5</td><td>7.8</td><td>7.7</td><td>10.0</td><td>3.0</td></tr><tr><td class='lt'>17. [Agency claude-opus-4-8] Concept 2:〔香港準備好〕</td><td><b>77.2</b></td><td>27.2</td><td>11.7</td><td>12.4</td><td>7.8</td><td>8.2</td><td>7.7</td><td>2.2</td></tr><tr><td class='lt'>18. [NBLM] 繁榮脈搏 / The Golden Pulse</td><td><b>77.1</b></td><td>25.2</td><td>12.7</td><td>11.7</td><td>8.0</td><td>7.5</td><td>9.0</td><td>3.0</td></tr><tr><td class='lt'>19. [Agency grok-4.3] Concept 1:〔脈動香港・財聚亞太〕</td><td><b>75.8</b></td><td>26.4</td><td>12.3</td><td>12.0</td><td>7.7</td><td>7.9</td><td>8.0</td><td>1.5</td></tr><tr><td class='lt'>20. [NBLM] 全城準備 / City Ready</td><td><b>75.7</b></td><td>25.5</td><td>11.1</td><td>11.4</td><td>7.4</td><td>8.2</td><td>9.8</td><td>2.3</td></tr><tr><td class='lt'>21. [Agency qwen3.7-max] Concept 2:〔主場风采 · 財智匯港〕</td><td><b>59.5</b></td><td>21.3</td><td>9.2</td><td>9.3</td><td>5.8</td><td>6.5</td><td>6.0</td><td>1.4</td></tr></tbody></table></div></details></details></section>
+<footer>Madkids Idea Lab · FSTB · ⚠️ AI 初步創意,出客前需 Raymond review + gatekeep</footer>
+</div>
+<a href="#" class="totop" id="totop" aria-label="返頂">↑</a>
+<script>
+function openTarget(){var h=decodeURIComponent(location.hash.slice(1));if(!h||h==='')return;var el=document.getElementById(h);if(!el)return;var n=el;while(n){if(n.tagName==='DETAILS')n.open=true;n=n.parentElement;}setTimeout(function(){el.scrollIntoView({block:'start'});},30);}
+window.addEventListener('load',openTarget);window.addEventListener('hashchange',openTarget);
+var tt=document.getElementById('totop');
+window.addEventListener('scroll',function(){tt.classList.toggle('show',window.scrollY>500);});
+tt.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
+</script>
+</body></html>
