@@ -52,6 +52,7 @@ h1 .dept{color:var(--ac)}
 @media(max-width:456px){.submit{right:14px}}
 .submit .btn{box-shadow:0 6px 20px rgba(79,70,229,.4);padding:11px 18px;font-size:13.5px}
 .mini{font-size:12px;color:#374151}.hint{font-size:11.5px;color:var(--mut);margin:0 0 8px}
+.bbadge{font-size:10px;font-weight:800;color:#92660c;background:#fef3c7;border-radius:99px;padding:1px 7px;margin-left:5px}
 .foot{font-size:11px;color:#9aa0aa;text-align:center;margin-top:24px}
 .phase{display:none}.phase.on{display:block}
 .assemble{background:#f5f3ff;border:1px solid #ddd6fe;border-radius:12px;padding:11px 12px;margin-bottom:9px}
@@ -75,7 +76,7 @@ h1 .dept{color:var(--ac)}
 
 <!-- ============ PHASE 1 ============ -->
 <div class="phase on" id="p1">
-  <div class="submenu"><a class="sm on" onclick="go(this,'p1-pick')">選六強</a><a class="sm" onclick="go(this,'p1-rest')">其餘概念</a><a class="sm" onclick="go(this,'p1-brief')">Brief</a><a class="sm" onclick="go(this,'p1-isd')">ISD參考</a></div>
+  <div class="submenu"><a class="sm on" onclick="go(this,'p1-pick')">選六強</a><a class="sm" onclick="go(this,'p1-rest')">其餘概念</a><a class="sm" onclick="go(this,'p1-brief')">Brief</a><a class="sm" onclick="go(this,'p1-research')">Research</a><a class="sm" onclick="go(this,'p1-api')">API ref</a></div>
   <div class="banner">👉 委員會由全模型×4 idea,按分數剔咗頭六。你同意就 submit,或自己另選。</div>
 
   <div class="h2" id="p1-pick"><span class="star">★</span> 選六強(分數高→低,委員會已剔頭六)</div>
@@ -100,17 +101,20 @@ h1 .dept{color:var(--ac)}
   <div class="card" style="opacity:.6"><div class="row"><span class="ck" onclick="tk(this,'c1')"></span><span class="src">kimi</span><div class="nm" style="flex:1">東西匯</div><span class="score">74</span></div></div>
   <div class="hint" style="text-align:center">… 仲有 ~36 個</div>
 
-  <div class="h2" id="p1-brief">Brief</div>
-  <div class="card mini">2026 中國首辦 APEC,FMM 破天荒交香港 = 國際金融中心信心投票。對外展示實力,對內建立自豪。調:莊重大氣自信。紅線:零政治敏感/零殘舊景。</div>
-  <div class="h2" id="p1-isd">ISD 參考</div>
-  <div class="card mini">《Hong Kong, Asia's Event Capital》系列 — montage + 權威旁白 + 大字報。安全區框內做高質。▶ YouTube link</div>
+  <div class="h2" id="p1-brief">參考(摺埋)</div>
+  <details class="fold"><summary>📋 Brief<span class="bbadge">+briefing 補充</span> ▾</summary>
+    <div class="mini">2026 中國首辦 APEC,FMM 破天荒交香港 = 國際金融中心信心投票。對外展示實力,對內建立自豪。調:莊重大氣自信。紅線:零政治敏感/零殘舊景。<br><span style="color:#b45309;font-weight:700">+briefing 補充(AI 分析有新嘢先標):</span>客戶口頭強調青年參與 + casting 待定(標書未提)。</div></details>
+  <details class="fold" id="p1-research"><summary>🔬 Research(Perplexity + Gemini)▾</summary>
+    <div class="mini"><b>Perplexity(上網):</b>APEC 2025 秘魯主辦,FMM 慣例規格 / 真 citation…<br><b>Gemini gatekeep:</b>正名「APEC 財政部長會議」,避免簡稱「財長會議」…</div></details>
+  <details class="fold" id="p1-api"><summary>📺 API ref(相類政府舊片)▾</summary>
+    <div class="mini">《Hong Kong, Asia's Event Capital》系列 — montage + 權威旁白 + 大字報。安全區框內做高質。▶ YouTube link</div></details>
 
   <div class="submit"><button class="btn" onclick="alert('Demo: submit 六強 → develop 12格,其餘跌睇返區,WhatsApp 你')">✅ Submit 六強 (<span id="cnt1">6</span>)</button></div>
 </div>
 
 <!-- ============ PHASE 2 ============ -->
 <div class="phase" id="p2">
-  <div class="submenu"><a class="sm on">選三甲</a><a class="sm">其餘概念</a><a class="sm">Brief</a><a class="sm">ISD參考</a></div>
+  <div class="submenu"><a class="sm on">選三甲</a><a class="sm">其餘概念</a><a class="sm">Brief</a><a class="sm">Research</a><a class="sm">API ref</a></div>
   <div class="banner">👉 六強已 develop 12 格文字。呢階段唔急住選三甲(BD 未出),你先睇文字、就特別格/對白留意見,再 submit。</div>
 
   <div class="h2"><span class="star">★</span> 六強 · 12 格廣東話文字(留意見)</div>
@@ -134,7 +138,7 @@ h1 .dept{color:var(--ac)}
 
 <!-- ============ PHASE 3 ============ -->
 <div class="phase" id="p3">
-  <div class="submenu"><a class="sm on">選三甲</a><a class="sm">其餘概念</a><a class="sm">Brief</a><a class="sm">ISD參考</a></div>
+  <div class="submenu"><a class="sm on">選三甲</a><a class="sm">其餘概念</a><a class="sm">Brief</a><a class="sm">Research</a><a class="sm">API ref</a></div>
   <div class="banner">👉 六強 BD(NBLM 連夜生)出咗 + 委員會排名。已剔三甲,你可另選。改 BD 風格再 submit。</div>
 
   <div class="h2"><span class="star">★</span> 選三甲(委員會排名,已剔頭三 · 有 BD)</div>
@@ -158,7 +162,7 @@ h1 .dept{color:var(--ac)}
 
 <!-- ============ PHASE 4 ============ -->
 <div class="phase" id="p4">
-  <div class="submenu"><a class="sm on">選 FINAL 2</a><a class="sm">自助砌 BD</a><a class="sm">Brief</a></div>
+  <div class="submenu"><a class="sm on">選 FINAL 2</a><a class="sm">自助砌 BD</a><a class="sm">Brief</a><a class="sm">Research</a><a class="sm">API ref</a></div>
   <div class="banner">👉 三甲 BD 用最強圖像模型再生。每 BD 留意見可再生,新 BD 一路叠加(英文編碼)。揀 FINAL 2。</div>
 
   <div class="h2"><span class="star">★</span> 三甲 BD(最強模型再生 · 揀 FINAL 2)</div>
