@@ -5,6 +5,37 @@
       "board": {
         "versions": [
           {
+            "v": "20260604-211211-nblm-i1",
+            "sheet": "assets/gen/FSTB_A/v20260604-211211-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_01.png",
+              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_02.png",
+              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_03.png",
+              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_04.png",
+              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_05.png",
+              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_06.png",
+              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_07.png",
+              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_08.png",
+              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_09.png",
+              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_10.png",
+              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_11.png",
+              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_12.png"
+            ],
+            "n": 12,
+            "ts": "2026-06-04T21:12:59",
+            "source": "committee",
+            "brd": "A",
+            "cid": "cm05d4a6a7",
+            "label": "[Agency gemini-2.5-pro] Concept 1:〔光之脈絡 (The Nexus of Light)〕",
+            "gslide_pages": [
+              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/gslide_FSTB_A_p1.png",
+              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/gslide_FSTB_A_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1nKBxlEzTh6jsmLRqvWE71rhPbMkvarLS",
+            "deck_pdf": "https://drive.google.com/file/d/1Nkk4GN7uy22MoP3CCpHaQnyXNMUlEm2M/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FSTB_A/v20260604-211211-nblm-i1/deck.pdf"
+          },
+          {
             "v": "20260604-183750-nblm-i1",
             "sheet": "assets/gen/FSTB_A/v20260604-183750-nblm-i1/board_sheet.png",
             "frames": [
@@ -41,5 +72,5 @@
   },
   "drive_canonical": "https://drive.google.com/drive/folders/1ntsU_5aWcpTakrKVaLj6WeUga8etS20U",
   "drive_canonical_name": "FSTB_APEC FMM 2026 API",
-  "updated": "2026-06-04T19:18:14"
+  "updated": "2026-06-04T21:13:06"
 }
