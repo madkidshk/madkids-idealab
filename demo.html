@@ -8,13 +8,18 @@ body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system
 .wrap{max-width:430px;margin:0 auto;padding:13px 13px 86px}
 h1{font-size:19px;font-weight:800;margin:0;letter-spacing:-.01em;line-height:1.25}
 h1 .dept{color:var(--ac)}
-.synced{font-size:11px;color:var(--mut);margin-top:2px;display:flex;gap:8px;flex-wrap:wrap}
-/* phase slider — 最高,橫向 slide */
-.phaseslider{display:flex;gap:7px;overflow-x:auto;padding:11px 0 4px;margin:6px -13px 0;padding-left:13px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.phaseslider::-webkit-scrollbar{display:none}
-.pbtn{flex:0 0 auto;padding:9px 14px;border-radius:11px;border:1.5px solid var(--line);background:#fff;font-size:12.5px;font-weight:800;color:var(--mut);cursor:pointer;white-space:nowrap}
-.pbtn.on{background:#111827;color:#fff;border-color:#111827}
-.pbtn .s{font-size:10px;font-weight:700;opacity:.7;display:block}
+/* 標題下方 B/D/P 日子（單數就單，唔補零）*/
+.bdp{font-size:12px;font-weight:700;margin-top:3px;display:flex;gap:11px;flex-wrap:wrap}
+.bdp .bb{color:#2563eb}.bdp .dd{color:#dc2626}.bdp .pp{color:#7c3aed}
+/* phase indicator — 流程指示，唔係 button */
+.phaseind{display:flex;gap:3px;overflow-x:auto;padding:11px 0 2px;margin:6px 0 0;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.phaseind::-webkit-scrollbar{display:none}
+.pi{flex:1 1 0;min-width:58px;text-align:center;cursor:pointer;position:relative}
+.pi i{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:99px;background:#e5e7eb;color:#9aa0aa;font-size:11px;font-weight:800;font-style:normal;margin:0 auto 3px}
+.pi b{display:block;font-size:10px;font-weight:700;color:#9aa0aa;line-height:1.2}
+.pi.on i{background:var(--ac);color:#fff}.pi.on b{color:var(--ink)}
+.pi.kv i{background:#fff;border:1.5px dashed #cbd5e1;color:#94a3b8}
+.indhint{font-size:10.5px;color:#aab0ba;margin:3px 2px 0}
 /* 副menu — 喺 phase 下面 */
 .submenu{display:flex;gap:6px;overflow-x:auto;padding:9px 0;margin:0 -13px 8px;padding-left:13px;position:sticky;top:0;background:var(--bg);z-index:5;scrollbar-width:none}
 .submenu::-webkit-scrollbar{display:none}
@@ -55,17 +60,18 @@ h1 .dept{color:var(--ac)}
 
 <header>
   <h1><span class="dept">FSTB</span> · APEC FMM 2026 宣傳 API</h1>
-  <div class="synced"><span>🔗 NBLM synced</span><span>📅 G Cal</span><span>Deadline 06-09(仲 5 日)</span></div>
+  <div class="bdp"><span class="bb">B) 29/5</span><span class="dd">D) 9/6 11:00</span><span class="pp">P) 17/6</span></div>
 </header>
 
-<!-- PHASE SLIDER（最高，橫向 slide，仲有後續 phase）-->
-<div class="phaseslider" id="pslider">
-  <div class="pbtn on" onclick="ph(1,this)">Phase 1<span class="s">概念·選六強</span></div>
-  <div class="pbtn" onclick="ph(2,this)">Phase 2<span class="s">六強·12格留言</span></div>
-  <div class="pbtn" onclick="ph(3,this)">Phase 3<span class="s">BD·選三甲</span></div>
-  <div class="pbtn" onclick="ph(4,this)">Phase 4<span class="s">FINAL 2·砌BD</span></div>
-  <div class="pbtn" style="opacity:.5">KV MOD<span class="s">另開·同思路</span></div>
+<!-- PHASE INDICATOR（流程指示，唔係 button；系統喺邊就 highlight 邊）-->
+<div class="phaseind">
+  <div class="pi on" onclick="ph(1,this)"><i>1</i><b>概念·選六強</b></div>
+  <div class="pi" onclick="ph(2,this)"><i>2</i><b>六強·12格</b></div>
+  <div class="pi" onclick="ph(3,this)"><i>3</i><b>BD·選三甲</b></div>
+  <div class="pi" onclick="ph(4,this)"><i>4</i><b>FINAL 2</b></div>
+  <div class="pi kv"><i>K</i><b>KV MOD</b></div>
 </div>
+<div class="indhint">↑ 流程指示（系統自動行；demo 可揀睇）</div>
 
 <!-- ============ PHASE 1 ============ -->
 <div class="phase on" id="p1">
@@ -183,7 +189,7 @@ h1 .dept{color:var(--ac)}
 <div class="foot">DEMO v2 · 假數據示意 · KV 另開一個 MOD（同思路）· 更新放底</div>
 
 <script>
-function ph(n,el){document.querySelectorAll('.phase').forEach(p=>p.classList.remove('on'));document.getElementById('p'+n).classList.add('on');document.querySelectorAll('.pbtn').forEach(t=>t.classList.remove('on'));el.classList.add('on');window.scrollTo(0,0);}
+function ph(n,el){document.querySelectorAll('.phase').forEach(p=>p.classList.remove('on'));document.getElementById('p'+n).classList.add('on');document.querySelectorAll('.pi').forEach(t=>t.classList.remove('on'));el.classList.add('on');window.scrollTo(0,0);}
 function go(el,id){el.parentElement.querySelectorAll('.sm').forEach(s=>s.classList.remove('on'));el.classList.add('on');var t=document.getElementById(id);if(t)t.scrollIntoView({behavior:'smooth',block:'start'});}
 function tk(el,grp){el.classList.toggle('on');el.textContent=el.classList.contains('on')?'✓':'';var map={c1:'cnt1',c3:'cnt3',c4:'cnt4'};var ph=el.closest('.phase');var n=ph.querySelectorAll('.ck.on').length;var c=document.getElementById(map[grp]);if(c)c.textContent=n;}
 </script>
