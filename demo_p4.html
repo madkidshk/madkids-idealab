@@ -96,7 +96,7 @@ h1 .dept{color:var(--ac)}
   <a href="demo.html">Phase 1</a><a href="demo_p2.html">Phase 2</a><a href="demo_p3.html">Phase 3</a><a href="demo_p4.html" class="here">Phase 4</a></div>
 
 <div class="submit"><button class="btn" onclick="showDone()">✅ 定 FINAL 2 (<span id="cnt">2</span>)</button></div>
-<div class="done" id="done"><div class="donecard"><div style="font-size:42px">🎉</div><div style="font-weight:800;font-size:18px;margin:6px 0">FINAL 2 定咗!</div><div class="mini">A 全城 Ready 倒數 · B 全城就位<br>下游出稿（TV → KV → Radio）開始,完成 WhatsApp 你。</div><button class="btn" style="margin-top:16px" onclick="document.getElementById('done').classList.remove('on')">好 👍</button></div></div>
+<div class="done" id="done"><div class="donecard"><div style="font-size:42px">🎉</div><div style="font-weight:800;font-size:18px;margin:6px 0">FINAL 2 定咗!</div><div class="mini">A 全城 Ready 倒數 · B 全城就位<br><b>跟住等你人手完成份稿</b>(12 格文字 + KV 文字)。<br>系統喺度停,唔自動 proceed。</div><button class="btn" style="margin-top:16px" onclick="document.getElementById('done').classList.remove('on')">好 👍</button></div></div>
 </div>
 <script>
 function tk(el){el.classList.toggle('on');el.textContent=el.classList.contains('on')?'✓':'';var n=document.querySelectorAll('.ck.on').length;var c=document.getElementById('cnt');if(c)c.textContent=n;}
