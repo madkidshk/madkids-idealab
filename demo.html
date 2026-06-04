@@ -5,7 +5,10 @@
 :root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#6b7280;--line:#e6e8ec;--ac:#4f46e5;--gold:#c79a2b;--grn:#15a34a;--amber:#f59e0b;--sh:0 1px 2px rgba(20,24,40,.05),0 5px 16px rgba(20,24,40,.06)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,"PingFang HK",sans-serif;-webkit-font-smoothing:antialiased}
-.wrap{max-width:430px;margin:0 auto;padding:13px 13px 86px}
+.wrap{max-width:430px;margin:0 auto;padding:13px 13px 130px}
+.divider{display:flex;align-items:center;gap:8px;margin:12px 2px;color:#aab0ba;font-size:11px;font-weight:700}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.cnt-warn{color:var(--red)!important}
 h1{font-size:19px;font-weight:800;margin:0;letter-spacing:-.01em;line-height:1.25}
 h1 .dept{color:var(--ac)}
 .bdp{font-size:12px;font-weight:700;margin-top:3px;display:flex;gap:11px;flex-wrap:wrap}
@@ -85,6 +88,7 @@ details.fold[open]{padding-bottom:11px}
   <div class="kv"><b>SLOGAN</b>一線連通世界　<b>VISUAL</b>金線一鏡到底</div></div>
 <div class="card"><div class="row"><span class="ck on" onclick="tk(this)">✓</span><span class="rank">6</span><span class="src">gemini</span><div class="nm" style="flex:1">城市心跳</div><span class="score">80</span></div>
   <div class="kv"><b>SLOGAN</b>香港,世界的脈搏　<b>VISUAL</b>心跳脈搏光效</div></div>
+<div class="divider">↑ 委員會推薦六強 ·  以下要剔先換入 ↓</div>
 <div class="card" style="opacity:.62"><div class="row"><span class="ck" onclick="tk(this)"></span><span class="rank">7</span><span class="src">grok</span><div class="nm" style="flex:1">盛會之門</div><span class="score">78</span></div>
   <div class="kv"><b>SLOGAN</b>世界之門,香港開啟（剔一下換上六強）</div></div>
 
@@ -110,7 +114,9 @@ details.fold[open]{padding-bottom:11px}
 <script>
 function go(el,id){el.parentElement.querySelectorAll('.sm').forEach(s=>s.classList.remove('on'));el.classList.add('on');var t=document.getElementById(id);if(t)t.scrollIntoView({behavior:'smooth',block:'start'});}
 function advance(idx,url,label){var pis=document.querySelectorAll('.pi');if(pis[idx])pis[idx].classList.add('wait');var t=document.getElementById('toast');t.textContent='⏳ '+label+'…（搞掂自動跳新版 · demo 4 秒）';t.style.display='block';document.querySelectorAll('.pi')[idx].scrollIntoView({inline:'center',block:'nearest'});setTimeout(function(){location.href=url;},4000);}
-function tk(el){el.classList.toggle('on');el.textContent=el.classList.contains('on')?'✓':'';var n=document.querySelectorAll('.ck.on').length;var c=document.getElementById('cnt');if(c)c.textContent=n;}
+function tk(el){el.classList.toggle('on');el.textContent=el.classList.contains('on')?'✓':'';var n=document.querySelectorAll('.ck.on').length;var c=document.getElementById('cnt');if(c){c.textContent=n;c.parentElement.classList.toggle('cnt-warn',n>6);}}
+// 成張卡可撳 toggle（touch target,唔淨係 20px checkbox）
+document.querySelectorAll('.card').forEach(function(card){var ck=card.querySelector('.ck');if(ck)card.addEventListener('click',function(e){if(e.target.closest('.ck'))return;tk(ck);});});
 var DL=new Date('2026-06-09T11:00:00+08:00').getTime();
 function cd(){var e=document.getElementById('cd');if(!e)return;var x=DL-Date.now();if(x<0){e.textContent='已截標';return;}var s=Math.floor(x/1000),d=Math.floor(s/86400);s-=d*86400;var h=Math.floor(s/3600);s-=h*3600;var m=Math.floor(s/60);s-=m*60;e.textContent=(d>0?d+'日 ':'')+String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
 cd();setInterval(cd,1000);
