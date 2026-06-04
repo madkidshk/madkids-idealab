@@ -60,7 +60,7 @@ h1 .dept{color:var(--ac)}
 
 <header>
   <h1><span class="dept">FSTB</span> · APEC FMM 2026 宣傳 API</h1>
-  <div class="bdp"><span class="bb">B) 29/5 15:00</span><span class="dd">D) 9/6 11:00</span><span class="pp">P) 17/6</span></div>
+  <div class="bdp"><span class="bb">B) 29/5 15:00</span><span class="dd">D) 9/6 11:00 · 離截標 <b id="cd">—</b></span><span class="pp">P) 17/6</span></div>
 </header>
 
 <!-- PHASE INDICATOR（流程指示，唔係 button；系統喺邊就 highlight 邊）-->
@@ -192,5 +192,9 @@ h1 .dept{color:var(--ac)}
 function ph(n,el){document.querySelectorAll('.phase').forEach(p=>p.classList.remove('on'));document.getElementById('p'+n).classList.add('on');document.querySelectorAll('.pi').forEach(t=>t.classList.remove('on'));el.classList.add('on');window.scrollTo(0,0);}
 function go(el,id){el.parentElement.querySelectorAll('.sm').forEach(s=>s.classList.remove('on'));el.classList.add('on');var t=document.getElementById(id);if(t)t.scrollIntoView({behavior:'smooth',block:'start'});}
 function tk(el,grp){el.classList.toggle('on');el.textContent=el.classList.contains('on')?'✓':'';var map={c1:'cnt1',c3:'cnt3',c4:'cnt4'};var ph=el.closest('.phase');var n=ph.querySelectorAll('.ck.on').length;var c=document.getElementById(map[grp]);if(c)c.textContent=n;}
+// D) 離截標 live 倒數 HH:MM:SS（過咗 deadline → 已截標 + 時間消失）
+var DL=new Date('2026-06-09T11:00:00+08:00').getTime();
+function cd(){var e=document.getElementById('cd');if(!e)return;var x=DL-Date.now();if(x<0){e.textContent='已截標';return;}var s=Math.floor(x/1000),d=Math.floor(s/86400);s-=d*86400;var h=Math.floor(s/3600);s-=h*3600;var m=Math.floor(s/60);s-=m*60;e.textContent=(d>0?d+'日 ':'')+String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+cd();setInterval(cd,1000);
 </script>
 </body></html>
