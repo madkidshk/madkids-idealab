@@ -1,0 +1,179 @@
+<!DOCTYPE html><html lang="zh-HK"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FSTB · Idea Lab DEMO</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#6b7280;--line:#e6e8ec;--ac:#4f46e5;--gold:#c79a2b;--grn:#15a34a;--amber:#f59e0b;--sh:0 1px 2px rgba(20,24,40,.05),0 5px 16px rgba(20,24,40,.06)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 -apple-system,"PingFang HK",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:430px;margin:0 auto;padding:14px 13px 50px}
+/* header — 一行大字:部門 · 題目 */
+h1{font-size:20px;font-weight:800;margin:0;letter-spacing:-.01em;line-height:1.25}
+h1 .dept{color:var(--ac)} h1 .topic{color:var(--ink)}
+.synced{font-size:11px;color:var(--mut);margin-top:3px;display:flex;gap:8px;flex-wrap:wrap}
+.synced span{display:inline-flex;align-items:center;gap:3px}
+.stagebar{display:flex;gap:4px;margin:12px 0 4px}
+.stp{flex:1;text-align:center;padding:7px 2px;border-radius:10px;border:1px solid var(--line);background:#fff;font-size:10px;font-weight:700;color:var(--mut)}
+.stp.cur{background:var(--ac);color:#fff;border-color:var(--ac)} .stp.done{color:var(--grn)}
+.tabs{display:flex;gap:6px;margin:12px 0 10px;position:sticky;top:0;background:var(--bg);padding:6px 0;z-index:5}
+.tab{flex:1;text-align:center;padding:9px 4px;border-radius:10px;border:1px solid var(--line);background:#fff;font-size:12.5px;font-weight:700;cursor:pointer;color:var(--mut)}
+.tab.on{background:#111827;color:#fff;border-color:#111827}
+.banner{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:10px 12px;font-size:13px;font-weight:700;color:#92660c;margin-bottom:12px}
+.h2{font-size:12px;font-weight:800;letter-spacing:.03em;color:var(--mut);text-transform:uppercase;margin:16px 2px 7px;display:flex;align-items:center;gap:6px}
+.h2 .star{color:var(--gold)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:11px 12px;box-shadow:var(--sh);margin-bottom:8px}
+.top3card{border:1.5px solid #f0d896;background:linear-gradient(180deg,#fffdf5,#fff)}
+.t3row{display:flex;align-items:center;gap:9px}
+.medal{font-size:19px}.t3name{font-weight:800;font-size:14px;flex:1}.t3score{font-size:12px;font-weight:800;color:var(--gold)}
+.src{font-size:11px;color:var(--mut);font-weight:700;background:#f1f5f9;border-radius:6px;padding:1px 6px;margin-right:5px}
+.idea .nm{font-weight:800;font-size:13.5px;margin-bottom:5px}
+.kv{font-size:12.5px;margin:3px 0;color:#374151}.kv b{color:var(--mut);font-weight:700;font-size:11px;margin-right:5px}
+.pick{display:flex;align-items:center;gap:8px;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+.ck{width:19px;height:19px;border:2px solid var(--ac);border-radius:6px;display:inline-grid;place-items:center;font-size:13px;color:#fff;cursor:pointer}
+.ck.on{background:var(--ac)} .pick label{font-size:12px;color:var(--mut)}
+.confirmbar{position:sticky;bottom:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;box-shadow:var(--sh);display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.confirmbar b{font-size:13px}.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;padding:9px 15px;font-size:13px;font-weight:800}
+.lookback{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:11px;padding:10px 12px;font-size:12px;color:#475569}
+details.fold{background:#fff;border:1px solid var(--line);border-radius:11px;padding:0 12px;margin-bottom:8px}
+details.fold summary{padding:11px 0;font-weight:700;font-size:13px;cursor:pointer;list-style:none}
+details.fold[open]{padding-bottom:11px}
+.mini{font-size:12px;color:#374151}
+.foot{font-size:11px;color:#9aa0aa;text-align:center;margin-top:22px}
+.hint{font-size:11.5px;color:var(--mut);margin:0 0 8px}
+.phase{display:none}.phase.on{display:block}
+</style></head><body><div class="wrap">
+
+<header>
+  <h1><span class="dept">FSTB</span> · <span class="topic">APEC FMM 2026 宣傳 API</span></h1>
+  <div class="synced"><span>🔗 NBLM synced</span><span>📅 G Cal synced</span><span>Deadline 06-09(仲 5 日)</span></div>
+</header>
+
+<div class="stagebar">
+  <div class="stp done">✓ 概念</div><div class="stp cur">六強</div><div class="stp">生圖/KV</div><div class="stp">三甲</div><div class="stp">FINAL</div>
+</div>
+
+<div class="tabs">
+  <div class="tab on" onclick="ph(1,this)">Phase 1 · 概念</div>
+  <div class="tab" onclick="ph(2,this)">Phase 2 · 六強→三甲</div>
+  <div class="tab" onclick="ph(3,this)">Phase 3 · FINAL</div>
+</div>
+
+<!-- ============ PHASE 1 ============ -->
+<div class="phase on" id="p1">
+  <div class="banner">👉 委員會由全模型 × 4 idea 揀咗六強。你同意就 confirm,或自己改揀(餐廳落單式)。</div>
+
+  <div class="h2"><span class="star">★</span> 委員會推薦 · 六強(你揀/改)</div>
+  <div class="hint">每個概念 = slogan + TV 故事線/visual device + KV idea(用返片中 element)。剔你要嘅,落面 confirm。</div>
+
+  <div class="card idea">
+    <div class="nm"><span class="src">gpt</span>全城 Ready 倒數</div>
+    <div class="kv"><b>SLOGAN</b>香港 Ready,世界就位</div>
+    <div class="kv"><b>TV</b>由 10 月倒數,每格 show 一項已完成籌備(同傳系統/紅毯/維港燈)</div>
+    <div class="kv"><b>VISUAL</b>倒數時鐘 device 貫穿全片</div>
+    <div class="kv"><b>KV</b>定格倒數鐘 + 維港天際線,大字 slogan</div>
+    <div class="pick"><span class="ck on" onclick="tk(this)">✓</span><label>已選(委員會推薦)</label></div>
+  </div>
+
+  <div class="card idea">
+    <div class="nm"><span class="src">claude</span>全城就位 The Stage is Set</div>
+    <div class="kv"><b>SLOGAN</b>世界舞台,香港就位</div>
+    <div class="kv"><b>TV</b>香港=全球金融舞台,燈光逐區亮起 + 人潮匯聚</div>
+    <div class="kv"><b>VISUAL</b>舞台燈亮一刻 = 香港 ready</div>
+    <div class="kv"><b>KV</b>舞台聚光燈打落維港,21 經濟體光點匯聚</div>
+    <div class="pick"><span class="ck on" onclick="tk(this)">✓</span><label>已選</label></div>
+  </div>
+
+  <div class="card idea">
+    <div class="nm"><span class="src">deepseek</span>脈絡 · 交匯</div>
+    <div class="kv"><b>SLOGAN</b>超級聯繫,財聚香江</div>
+    <div class="kv"><b>TV</b>金線網絡由 21 經濟體連成,匯聚香港發光</div>
+    <div class="kv"><b>VISUAL</b>animated map 金線匯聚 device</div>
+    <div class="kv"><b>KV</b>香港為中心嘅金線網絡圖</div>
+    <div class="pick"><span class="ck on" onclick="tk(this)">✓</span><label>已選</label></div>
+  </div>
+
+  <div class="card idea">
+    <div class="nm"><span class="src">qwen</span>職人時計</div>
+    <div class="kv"><b>SLOGAN</b>每一秒,為世界準備</div>
+    <div class="kv"><b>TV</b>會展/酒店/保安各崗位香港人籌備特寫,精準如鐘錶</div>
+    <div class="kv"><b>VISUAL</b>齒輪 × 人手交疊</div>
+    <div class="kv"><b>KV</b>鐘錶齒輪砌成維港輪廓</div>
+    <div class="pick"><span class="ck on" onclick="tk(this)">✓</span><label>已選</label></div>
+  </div>
+
+  <div class="card idea">
+    <div class="nm"><span class="src">kimi</span>一條金線</div>
+    <div class="kv"><b>SLOGAN</b>一線連通世界</div>
+    <div class="kv"><b>TV</b>一條金線串起海底電纜→港交所→會場</div>
+    <div class="kv"><b>VISUAL</b>單一金線一鏡到底</div>
+    <div class="kv"><b>KV</b>金線貫穿城市天際</div>
+    <div class="pick"><span class="ck on" onclick="tk(this)">✓</span><label>已選</label></div>
+  </div>
+
+  <div class="card idea">
+    <div class="nm"><span class="src">gemini</span>城市心跳</div>
+    <div class="kv"><b>SLOGAN</b>香港,世界的脈搏</div>
+    <div class="kv"><b>TV</b>城市畫面節奏 = 心跳,愈近會議愈強</div>
+    <div class="kv"><b>VISUAL</b>心跳聲效 + 脈搏光效</div>
+    <div class="kv"><b>KV</b>心電圖化成維港輪廓</div>
+    <div class="pick"><span class="ck on" onclick="tk(this)">✓</span><label>已選</label></div>
+  </div>
+
+  <div class="h2">其餘概念(40+,可改揀換上六強)</div>
+  <div class="card idea" style="opacity:.72">
+    <div class="nm"><span class="src">grok</span>盛會之門</div>
+    <div class="kv"><b>SLOGAN</b>世界之門,香港開啟</div>
+    <div class="kv"><b>KV</b>巨型門扉開向維港</div>
+    <div class="pick"><span class="ck" onclick="tk(this)"></span><label>剔一下換上六強</label></div>
+  </div>
+  <div class="card idea" style="opacity:.72">
+    <div class="nm"><span class="src">qwen</span>萬事俱備</div>
+    <div class="kv"><b>SLOGAN</b>萬事俱備,只待世界</div>
+    <div class="pick"><span class="ck" onclick="tk(this)"></span><label>剔一下換上六強</label></div>
+  </div>
+  <div class="hint" style="text-align:center;margin-top:6px">… 仲有 38 個,碌落去 / 搜尋</div>
+
+  <div class="confirmbar"><b>已選 <span id="cnt">6</span> / 6</b><button class="btn" onclick="alert('Demo:confirm 後 develop 六強 12 格,其餘跌睇返區,完成 WhatsApp 你')">✅ Confirm 落單</button></div>
+</div>
+
+<!-- ============ PHASE 2 ============ -->
+<div class="phase" id="p2">
+  <div class="banner">👉 六強已連夜餵 NBLM 出 storyboard + KV。委員會視覺模型揀咗三甲,你睇 ok 就入 Phase 3。</div>
+
+  <div class="h2"><span class="star">★</span> 三甲 · 委員會視覺模型揀(最高,過晒作品)</div>
+  <div class="card top3card"><div class="t3row"><span class="medal">🥇</span><span class="src">gpt</span><span class="t3name">全城 Ready 倒數</span><span class="t3score">86</span></div></div>
+  <div class="card top3card"><div class="t3row"><span class="medal">🥈</span><span class="src">claude</span><span class="t3name">全城就位</span><span class="t3score">85</span></div></div>
+  <div class="card top3card"><div class="t3row"><span class="medal">🥉</span><span class="src">deepseek</span><span class="t3name">脈絡·交匯</span><span class="t3score">85</span></div></div>
+
+  <div class="h2">六強 · 12 格 board + KV(NBLM 連夜出)</div>
+  <details class="fold"><summary>🥇 全城 Ready 倒數 — 12 格 + KV ▾</summary>
+    <div class="mini">📺 board:30→00 倒數,12 格逐項籌備…<br>🖼️ KV:倒數鐘 + 維港 + 大字「香港 Ready」,區徽右下,CTA QR</div></details>
+  <details class="fold"><summary>🥈 全城就位 — 12 格 + KV ▾</summary><div class="mini">📺 燈光逐區亮…<br>🖼️ KV:聚光燈 + 21 光點匯聚維港</div></details>
+  <details class="fold"><summary>🥉 脈絡·交匯 — 12 格 + KV ▾</summary><div class="mini">📺 金線匯聚…<br>🖼️ KV:金線網絡圖</div></details>
+  <details class="fold"><summary>其餘三強(qwen/kimi/gemini)▾</summary><div class="mini">職人時計 / 一條金線 / 城市心跳 — 各有 12 格 + KV</div></details>
+
+  <div class="h2">👀 睇返區</div>
+  <div class="lookback">Phase 1 冇入六強嗰 40+ 個喺度,永遠睇得返,撳「⤴️升級」即補生返上嚟。</div>
+</div>
+
+<!-- ============ PHASE 3 ============ -->
+<div class="phase" id="p3">
+  <div class="banner">👉 你人手定咗 2 個 FINAL,用 premium + NBLM 再生圖,有需要再生片。</div>
+  <div class="h2"><span class="star">★</span> 2 個 FINAL(人手完成)</div>
+  <div class="card idea"><div class="nm">🥇 全城 Ready 倒數 — FINAL</div>
+    <div class="kv"><b>12 格</b>人手定稿(廣東話畫面+對白)</div>
+    <div class="kv"><b>KV</b>文字 + 做法人手定稿</div>
+    <div class="kv"><b>生圖</b>premium + NBLM 再生(高質)</div>
+    <div class="kv"><b>片</b>有需要先生</div></div>
+  <div class="card idea"><div class="nm">🥈 全城就位 — FINAL</div>
+    <div class="kv"><b>12 格 + KV</b>人手定稿 → premium+NBLM 生圖</div></div>
+  <div class="h2">出稿 module(按 deliverable)</div>
+  <div class="mini" style="padding:0 2px">① Slogan ✓ → ② TV/Video → ③ KV(如有)→ ④ Radio 三語。harvester 判到先出。</div>
+</div>
+
+<div class="foot">DEMO · 假數據示意 · 更新 06-04 01:30(細字放底,你話唔重視)</div>
+
+<script>
+function ph(n,el){document.querySelectorAll('.phase').forEach(p=>p.classList.remove('on'));document.getElementById('p'+n).classList.add('on');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));el.classList.add('on');window.scrollTo(0,0);}
+function tk(el){el.classList.toggle('on');el.textContent=el.classList.contains('on')?'✓':'';var n=document.querySelectorAll('#p1 .ck.on').length;document.getElementById('cnt').textContent=n;}
+</script>
+</body></html>
