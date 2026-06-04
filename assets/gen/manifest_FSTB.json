@@ -68,9 +68,46 @@
           }
         ]
       }
+    },
+    "B": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260605-015347-nblm-i1",
+            "sheet": "assets/gen/FSTB_B/v20260605-015347-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_01.png",
+              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_02.png",
+              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_03.png",
+              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_04.png",
+              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_05.png",
+              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_06.png",
+              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_07.png",
+              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_08.png",
+              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_09.png",
+              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_10.png",
+              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_11.png",
+              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_12.png"
+            ],
+            "n": 12,
+            "ts": "2026-06-05T01:54:33",
+            "source": "committee",
+            "brd": "B",
+            "cid": "cmab1570cf",
+            "label": "[Agency gpt-5.2] Concept 2:〔30秒・全城Ready〕",
+            "gslide_pages": [
+              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/gslide_FSTB_B_p1.png",
+              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/gslide_FSTB_B_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1djtjPNc2k_UABF4Z2px3c_VXsJcMBCIS",
+            "deck_pdf": "https://drive.google.com/file/d/1hZhedHSKzSl1uYpIg5QPJkxkxRsE8Qle/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FSTB_B/v20260605-015347-nblm-i1/deck.pdf"
+          }
+        ]
+      }
     }
   },
   "drive_canonical": "https://drive.google.com/drive/folders/1ntsU_5aWcpTakrKVaLj6WeUga8etS20U",
   "drive_canonical_name": "FSTB_APEC FMM 2026 API",
-  "updated": "2026-06-04T21:13:06"
+  "updated": "2026-06-05T01:54:40"
 }
