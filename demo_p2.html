@@ -81,7 +81,7 @@ h1 .dept{color:var(--ac)}
   <a href="demo.html">Phase 1</a><a href="demo_p2.html" class="here">Phase 2</a><a href="demo_p3.html">Phase 3</a><a href="demo_p4.html">Phase 4</a></div>
 
 <div class="toast" id="toast"></div>
-<div class="submit"><button class="btn" onclick="advance(2,'demo_p3.html','六強連夜餵 NBLM 生緊 BD')">✅ Submit 意見</button></div>
+<div class="submit"><button class="btn" onclick="advance(2,'demo_p3.html','六強連夜餵 NBLM 生緊 BD（約 2-3 鐘頭・連夜，第二朝有）')">✅ Submit 意見</button></div>
 </div>
 <script>
 function advance(idx,url,label){var pis=document.querySelectorAll('.pi');if(pis[idx])pis[idx].classList.add('wait');var t=document.getElementById('toast');t.textContent='⏳ '+label+'…（搞掂自動跳新版 · demo 4 秒）';t.style.display='block';pis[idx].scrollIntoView({inline:'center',block:'nearest'});setTimeout(function(){location.href=url;},4000);}

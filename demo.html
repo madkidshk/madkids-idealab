@@ -41,7 +41,8 @@ h1 .dept{color:var(--ac)}
 .score{font-size:12px;font-weight:800;color:var(--gold);margin-left:auto}
 .nm{font-weight:800;font-size:13.5px}
 .kv{font-size:12.5px;margin:3px 0;color:#374151}.kv b{color:var(--mut);font-weight:700;font-size:11px;margin-right:5px}
-.ck{width:20px;height:20px;border:2px solid var(--ac);border-radius:6px;display:inline-grid;place-items:center;font-size:13px;color:#fff;cursor:pointer;flex:0 0 auto}
+.ck{width:22px;height:22px;border:2px solid var(--ac);border-radius:6px;display:inline-grid;place-items:center;font-size:13px;color:#fff;cursor:pointer;flex:0 0 auto;position:relative}
+.ck::before{content:"";position:absolute;inset:-11px}
 .ck.on{background:var(--ac)}
 .mini{font-size:12px;color:#374151}.hint{font-size:11.5px;color:var(--mut);margin:0 0 8px}
 .bbadge{font-size:10px;font-weight:800;color:#92660c;background:#fef3c7;border-radius:99px;padding:1px 7px;margin-left:5px}
