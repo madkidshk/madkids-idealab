@@ -1,0 +1,629 @@
+<!DOCTYPE html><html lang="zh-HK"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HKTDC · Idea Lab</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#717784;--line:#e7e9ee;--accent:#4f46e5;--gold:#c79a2b;--grn:#15a34a;--red:#dc2626;--sh:0 1px 2px rgba(20,24,40,.04),0 4px 14px rgba(20,24,40,.05)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:18px 15px 90px}
+header{padding:6px 2px 2px} h1{font-size:25px;font-weight:800;margin:0;letter-spacing:-.01em}
+.sub{color:var(--mut);font-size:14px;margin-top:3px}
+.stagebar{display:flex;gap:5px;margin:14px 0 8px}
+.stp{flex:1;text-align:center;padding:9px 3px;border-radius:11px;border:1px solid var(--line);background:#fff;text-decoration:none;display:block}
+.stp-i{font-size:15px;font-weight:800;line-height:1.2;color:var(--ink)} .stp-l{font-size:10.5px;font-weight:700;margin-top:2px;color:var(--mut)}
+.stp.cur{background:var(--accent);border-color:var(--accent)} .stp.cur .stp-i,.stp.cur .stp-l{color:#fff}
+.stp.done{background:#e7f7ee;border-color:#cdeedd} .stp.done .stp-i{color:var(--grn)} .stp.done .stp-l{color:#3f8c63}
+.stp.todo{opacity:.55}
+.nextact{display:block;text-decoration:none;background:#fff8e6;border:1px solid #f3e2ad;border-radius:11px;padding:12px 15px;font-size:14px;font-weight:700;color:#7a5b09;margin-bottom:4px}
+.nextact:active{background:#fdf0cf}
+.totop{position:fixed;right:16px;bottom:20px;z-index:20;width:46px;height:46px;border-radius:50%;background:var(--accent);color:#fff;font-size:22px;font-weight:800;display:none;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 14px rgba(79,70,229,.4)}
+.totop.show{display:flex}
+nav{position:sticky;top:0;z-index:9;display:flex;gap:7px;overflow-x:auto;padding:11px 0;margin:8px -15px 4px;padding-left:15px;background:rgba(244,245,247,.9);backdrop-filter:blur(8px);-webkit-overflow-scrolling:touch}
+nav a{flex:0 0 auto;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px}
+nav a:active{background:#eef}
+section{margin:26px 0}
+.sec-h{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:0 0 11px;padding-left:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px 18px;box-shadow:var(--sh);margin:12px 0}
+.btn{display:inline-flex;align-items:center;gap:5px;text-decoration:none;font-weight:700;font-size:14px;border-radius:11px;padding:10px 15px;border:1px solid transparent;line-height:1}
+.btn.drive{background:#eef0ff;color:#3b35c7;border-color:#dfe1ff}
+.btn.cta{background:var(--accent);color:#fff} .btn.go{background:#0e7490;color:#fff} .btn.ghost{background:#fff;color:var(--ink);border-color:var(--line);font-weight:600}
+.btn.mini{font-size:12.5px;padding:7px 11px;background:var(--accent);color:#fff;border-radius:9px} .btn.mini.done{background:#fff;color:var(--gold);border-color:#ecd9a6}
+.btn.mini.nb{background:#f3eeff;color:#6b46c1;border:1px solid #e0d4ff}
+.ref .reftag{color:var(--mut);font-size:12.5px;margin-top:10px}
+.conflict{background:#fdeaea;color:#a01919;border:1px solid #f3c0c0;border-radius:11px;padding:11px 13px;font-size:13px;font-weight:600;margin-bottom:13px;line-height:1.5}
+.srctag{color:var(--mut);font-size:11.5px;margin-top:10px}
+.stats{display:grid;grid-template-columns:1fr;gap:9px;margin-top:13px}
+@media(min-width:520px){.stats{grid-template-columns:1fr 1fr 1fr}}
+.stat{background:#fafbfc;border:1px solid var(--line);border-radius:11px;padding:10px 12px}
+.stat-l{font-size:11.5px;color:var(--mut);font-weight:700;letter-spacing:.03em} .stat-v{font-size:14.5px;font-weight:600;margin-top:3px}
+.cd{font-size:11.5px;font-weight:800;border-radius:999px;padding:2px 8px;margin-left:4px} .cd.ok{background:#e7f7ee;color:var(--grn)} .cd.over{background:#fdeaea;color:var(--red)}
+.muted{color:var(--mut)} .empty{color:var(--mut);font-size:14px;padding:6px 2px} .hint{color:var(--mut);font-size:12.5px;margin:2px 2px 12px}
+.t3{padding:15px 16px} .t3head{display:flex;justify-content:space-between;align-items:center} .medal{font-size:22px} .t3score{font-weight:800;color:var(--accent);font-size:15px}
+.t3name{font-weight:700;font-size:16px;margin:7px 0 11px;line-height:1.4}
+.t3thumb{width:100%;border-radius:11px;border:1px solid var(--line);display:block;margin-bottom:11px}
+.t3act{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+.lnk{color:var(--accent);text-decoration:none;font-size:13.5px;font-weight:600}
+.gen{padding:15px 16px} .genlbl{font-size:13.5px;margin-bottom:9px} .genimg{width:100%;border-radius:12px;border:1px solid var(--line);display:block}
+.gthumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:6px;margin-top:9px} .gthumb{width:100%;border-radius:7px;border:1px solid var(--line);display:block}
+.oldv{margin-top:9px}
+details.crow{border-bottom:1px solid var(--line)} details.crow:last-child{border-bottom:0}
+details.crow>summary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 4px;cursor:pointer;list-style:none}
+details.crow>summary::-webkit-details-marker{display:none}
+details.crow[open]{background:#fafbfc;border-radius:10px}
+.cname{font-size:14px;font-weight:600;flex:1;min-width:0}
+.cbody{padding:2px 6px 14px;font-size:14px} .cbody p{margin:.4em 0}
+details.soft{background:#fff;border:1px solid var(--line);border-radius:13px;padding:4px 15px;margin:11px 0;box-shadow:var(--sh)}
+details.soft>summary{cursor:pointer;font-weight:700;font-size:14px;padding:11px 0;list-style:none}
+details.soft>summary::-webkit-details-marker{display:none} details.soft>summary::before{content:"▸ ";color:var(--mut)} details.soft[open]>summary::before{content:"▾ "}
+details.soft.sec>summary{font-size:15.5px;font-weight:800;padding:13px 0} details.soft.sec[open]{padding-bottom:10px}
+.lab{font-size:11px;letter-spacing:.05em;color:var(--mut);text-transform:uppercase;font-weight:700;margin:13px 0 5px}
+.slo{color:var(--grn);font-weight:700} .nbcard{border-top:1px solid var(--line);padding-top:10px;margin-top:8px}
+.slogrp{margin:6px 0 12px} .slolist{margin:4px 0;padding-left:20px} .slolist li{margin:5px 0;font-size:14px;line-height:1.5}
+h4.cc{font-size:15px;margin:14px 0 6px}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:11px}
+table{border-collapse:collapse;width:100%;min-width:380px;font-size:13.5px}
+th,td{border-bottom:1px solid var(--line);padding:9px 11px;text-align:center;vertical-align:top}
+th{background:#fafbfc;color:var(--mut);font-size:12px;font-weight:700} td.lt,th:first-child{text-align:left}
+p{margin:.55em 0}
+footer{color:var(--mut);font-size:12px;border-top:1px solid var(--line);margin-top:34px;padding-top:14px}
+</style></head><body><div class="wrap">
+<header><h1>HKTDC</h1><div class="sub"> · 更新 06-04 21:52</div></header>
+<div class='stagebar'><a class='stp done' href='#cand'><div class='stp-i'>✓</div><div class='stp-l'>Brief</div></a><a class='stp cur' href='#cand'><div class='stp-i'>💡</div><div class='stp-l'>概念·揀</div></a><a class='stp todo' href='#cand'><div class='stp-i'>✏️</div><div class='stp-l'>Board·揀</div></a><a class='stp todo' href='#gen'><div class='stp-i'>🎨</div><div class='stp-l'>生圖</div></a><a class='stp todo' href='#gen'><div class='stp-i'>📋</div><div class='stp-l'>出稿</div></a></div><a class='nextact' href='#cand'>👉 Round 1:睇概念,揀中嘅撳「✏️ 寫 full board」(~6 個) →</a>
+<nav><a href='#cand'>🗂️候選</a><a href='#top3'>🏆三甲</a><a href='#lookback'>👀睇返</a><a href='#slogan'>💬Slogan</a><a href='#5w1h'>💭5W1H</a><a href='#ref'>📌資料</a><a href='#debrief'>📝Debrief</a><a href='#brief'>📋Brief</a><a href='#research'>🔬研究</a><a href='#isd'>📺ISD</a><a href='#score'>📊評分</a></nav>
+<section id='cand'><details class='soft sec' open><summary>🔻 第一輪篩選 — 揀概念進級(撳「✏️ 寫 full board」~6 個)</summary><div class='card'><details class='crow' id='cand-cm7967003e'><summary><span class='cname'>[委員會 213919] Concept 1:《搞得掂之前》(Before the Handshake)</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cm7967003e&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1:《搞得掂之前》(Before the Handshake)</h4>
+<p><strong>創作概念</strong>:全片聚焦一次成功商貿配對「握手」之前嘅真實掙扎 —— 中小企老闆 R&amp;D 撞板、通宵改 plan、視像會議斷線嘅尷尬。HKTDC 唔做主角,而係喺暗處遞市場數據、搭橋介紹專家、安排會議,扶佢行到最後一步。用「先苦後甜」嘅人性真實感,直接答到觀眾個「關我咩事?」—— 因為佢哋搞得掂,香港經濟先搞得掂、機會先落到普通人身上。完美對應策略「做好香港」+「沉默賦能者」品牌角色,亦避開「一切完美」紅線。</p>
+<p><strong>人/景</strong>:真實香港中小企老闆 / 初創年輕人(非演員質感),喺自己嘅工場、實驗室、細辦公室;穿插 HKTDC 大型展覽現場、視像會議連線海外買家。</p>
+<p><strong>Visual Device</strong>:<strong>【光的接力棒】</strong> —— 一束暖光由深夜廠房檯燈出發,流過電腦屏幕像素,變成展覽館射燈,最後落喺買家瞳孔。光到之處 = HKTDC 賦能;光未到嘅暗位 = 企業家獨自捱嘅 real 質感。全片用一道「光路」引導視線,光係暖嘅、環境係粗糲真實嘅。</p>
+<p><strong>主打口號</strong>:搞得掂,因為有人撐到掂。</p>
+<p><strong>Proposed 明星/名人</strong>:<strong>不適用</strong>(刻意用真實中小企素人,以符合「真人真事 &gt; 官員發言」洞察 + 紅線「唔好歸功個人」。HKTDC 高層只可作政策旁述角色,唔做臉。)</p>
+<p>---</p></div></details><details class='crow' id='cand-cm4cdc0529'><summary><span class='cname'>[委員會 213919] Concept 2:《香港設計緊 ____》(Hong Kong is Designing ____)</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cm4cdc0529&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2:《香港設計緊 ____》(Hong Kong is Designing ____)</h4>
+<p><strong>創作概念</strong>:用一條「填空題」做全片視覺主軸。快速跳接香港產品微距鏡頭 —— 晶片、布料纖維、app 介面、環保物料、醫療儀器零件 —— 但唔即刻開估係咩。畫外音係唔同創業者嘅真實聲音講理念,最後先揭曉:呢啲就係香港正設計緊嘅智能醫療、環保時裝、金融科技。將抽象嘅「高質量發展」「國際商貿中心」變成睇得見、估得到嘅懸念,把政策「視覺化」,同 ISD 舊式大合照交響樂路線徹底拉開。</p>
+<p><strong>人/景</strong>:多元產業香港創業者(設計師、工程師、傳統行業轉型者)嘅手與面;設計工作室、無塵車間、碼頭、展覽攤位;海外市場用視像 / 貨櫃暗示。</p>
+<p><strong>Visual Device</strong>:<strong>【透明的工藝層】</strong> —— 多重曝光 / 玻璃疊加,同一畫框內成品光鮮表面之下,重疊住工程師沾油污嘅手、改過 30 版嘅草圖、測試失敗碎片。配合 kinetic typography 將「填空題」答案逐格揭開,「看見不可見」,把「做」字視覺化。</p>
+<p><strong>主打口號</strong>:香港,正設計緊下一個答案。</p>
+<p><strong>Proposed 明星/名人</strong>:<strong>不適用</strong>(同樣行素人創業者真聲路線,保住真實可信底。如客戶後期堅持要 anchor,可考慮一位低調務實嘅本地工業 / 設計界 KOL 做最後一句畫龍點睛,但非必要。)</p>
+<p>---</p>
+<p><strong>CD 揀邊個建議</strong>:Concept 1 情感厚、最穩陣食政府「真人真事 + 穩重」慣性;Concept 2 視覺新、最易做到「框內最高質、唔似翻炒」。兩條共用同一 style anchor,Raymond 揀中邊條,先 develop full 12 格 board + KV + 中英 / 普通話稿 + Radio。</p></div></details><details class='crow' id='cand-cm80fdd1ec'><summary><span class='cname'>[委員會 214216] Concept 1:〈框・窗〉</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cm80fdd1ec&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〈框・窗〉</h4>
+<p><strong>創作概念</strong>:用「框中框」視覺貫穿全片——前半段中小企老闆被觀塘工廈嘅鐵窗框住,構圖侷促陰暗,個「框」代表壓力同死症;一個 match-cut,同一構圖比例變成貨櫃碼頭吊臂嘅鐵框,光打穿個框、通向海平線。同一個「框」由困住佢變成送世界畀佢嘅窗。HKTDC 就係幫佢將框翻轉嗰隻手——平視陪跑,唔搶 credit。硬訊息:抽象嘅「高質量發展、國際商貿樞紐」收細成一個睇得明嘅空間翻轉,證明政策正喺度落實。</p>
+<p><strong>人/景</strong>:一個傳統行業或設計轉型嘅中小企老闆(夫妻檔/三五人 startup);景由觀塘工廈窗邊、雜亂工場,match-cut 去 HKTDC 展覽會攤位,再到葵青貨櫃碼頭出貨。</p>
+<p><strong>Visual Device</strong>:<strong>Frame-within-a-frame 框中框翻轉</strong>——同一構圖、同一比例,由「困住人嘅鐵窗」match-cut 成「通往海平線嘅貨櫃框」,一個 cut 講完成個轉捩點。</p>
+<p><strong>主打口號</strong>:困住你嘅框,變成通向世界嗰道窗。</p>
+<p><strong>Proposed 明星/名人</strong>:不適用。本片說服力來源係真人真事中小企老闆,用素人/真實案例平視自白,反而比明星更守「真實感、唔離地」紅線。</p>
+<p>---</p></div></details><details class='crow' id='cand-cm890dad3d'><summary><span class='cname'>[委員會 214216] Concept 2:〈手感〉</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cm890dad3d&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〈手感〉</h4>
+<p><strong>創作概念</strong>:全片拒絕「成功人士企喺維港前」嘅中景 pose,改用極致微距——老師傅佈滿機油老繭嘅指尖摸過 prototype 邊緣、設計師指甲邊嘅墨漬、HKTDC 職員遞卡片時手指嘅力度。將「中小企」由「規模」還原做「手藝」同「溫度」,直接破「貿發局淨係幫大公司」嘅 misconception。每一道磨損都係生意嘅證據,而呢隻手嘅嘢,最後印上「Designed by Hong Kong」標籤,行到去全世界。硬訊息:「高質量發展」唔靠數據堆砌,靠睇得到嘅手感同質量。</p>
+<p><strong>人/景</strong>:微型生意主角——師傅、年輕設計師、樓上舖夫妻檔;景係佈滿 post-it 嘅舊木枱、散亂樣辦、枱燈光下嘅雙手,再接 HKTDC 展覽現場一次握手 / 遞卡。</p>
+<p><strong>Visual Device</strong>:<strong>Tactile Macro 觸感微距</strong>——成片以指尖、紋理、磨損、產品零件嘅 extreme close-up 串成,「大公司講數據,我哋講手感」,用「細」做美學優勢。</p>
+<p><strong>主打口號</strong>:原來唔係淨係幫大公司。</p>
+<p><strong>Proposed 明星/名人</strong>:不適用。微距職人路線靠真實手藝同溫度,用明星會即刻假、即刻離地,反而破壞「手感」核心。</p>
+<p>---</p>
+<p><strong>CD 註</strong>:兩條都係 30&quot;/60&quot; 可拍、KV 可出(C1 出框中框翻轉一格定影;C2 出指尖微距 + Made by HK 標籤)。Raymond 揀中邊條,我先 develop full 12 格 board、英文稿、Radio、KV main idea。Mandatories(HKTDC 正名 / 超級聯繫人定位 / ISD 片頭尾 / 飛龍標 / hktdc.com CTA / 三語版本)full board 階段一次過鋪。</p></div></details><details class='crow' id='cand-cm824eddea'><summary><span class='cname'>[Agency claude-opus-4-8] Concept 1:〈搞唔掂 → 搞得掂〉</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cm824eddea&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〈搞唔掂 → 搞得掂〉</h4>
+<p><strong>創作概念</strong>:跟住一個香港中小企老闆嘅真實心路——由「呢單做唔做得成?」嘅疑慮、測試失敗、視像會議斷線嘅狼狽,到喺 HKTDC 展覽接到第一張海外/大灣區訂單嘅一刻。唔遮掩過程嘅辛苦,先苦後甜,用真實人性反差頂走「一路向好」嘅離地感。HKTDC 唔係救世主,係實務上幫佢「接住」嗰個平台——直接扣 key message「實質行動協助中小企把握機遇」。</p>
+<p><strong>人/景</strong>:一個四十幾歲香港中小企老闆(例如做環保物料/智能醫療儀器),真實工場/細辦公室,趕工嘅疲憊面、測試枱、半夜對住 laptop;之後轉去會展 HKTDC 展覽攤位,同外國/內地買家傾、握手、簽單。</p>
+<p><strong>Visual Device</strong>:<strong>一件真產品由「半成品/測試失敗」到「貼上 Designed by Hong Kong 標籤、入箱、上貨櫃」</strong>——同一件嘢貫穿全片,具體化「高質量發展」由零到成。</p>
+<p><strong>主打口號</strong>:「唔係齋講優勢,係幫你做成單嘢。」</p>
+<p><strong>Proposed 明星/名人</strong>:不適用。Debrief 明言唔好功勞歸個人、公眾信真人多過明星;用真老闆素人現身說法,可信度最高,亦避紅線。</p>
+<p>---</p></div></details><details class='crow' id='cand-cmfcb7d145'><summary><span class='cname'>[Agency claude-opus-4-8] Concept 2:〈一張訂單,連住成個香港〉</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cmfcb7d145&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〈一張訂單,連住成個香港〉</h4>
+<p><strong>創作概念</strong>:由會展一個「握手」特寫出發,鏡頭順住嗰張訂單一路追落去——拆解一單交易背後牽動幾多香港人:設計師、工場師傅、物流、後生 fresh grad……證明 HKTDC 接通嘅唔止係一間公司,而係<strong>一條本地經濟鏈、一班普通市民嘅飯碗同機會</strong>,正面回應觀眾「關我咩事?」嘅核心痛點。</p>
+<p><strong>人/景</strong>:開場會展中心 HKTDC 展覽現場,raw 環境聲(廣播、人聲、機器聲)先聲奪人;一個香港老闆同外國買家握手簽單。然後 match cut 順條鏈走:設計工作室、廠房師傅、貨運倉、寫字樓後生仔——全部真香港人、真場景。</p>
+<p><strong>Visual Device</strong>:<strong>重複快切嘅「握手」特寫</strong>(跨種族、跨行業、跨場景:攤位、會議室、晚宴)做節奏錨;一條訂單/一條線串連由會展到街坊飯碗,visualize「超級聯繫人」點樣 trickle down 到普通人。</p>
+<p><strong>主打口號</strong>:「一張訂單,連住成個香港。」</p>
+<p><strong>Proposed 明星/名人</strong>:不適用。主角係一整條經濟鏈上嘅真香港人(老闆 + 工人 + 後生),用群像真實感取代明星,先扣到「惠及市民」。</p>
+<p>---</p>
+<p><strong>內部備註畀 Raymond</strong>:兩個 concept 都守得住紅線(無政治、無吹捧、無個人英雄、無負面收尾)。Concept 1 強在「一個人嘅故事」夠深、夠戲、易做 60 秒長版;Concept 2 強在「關我咩事」答得最直接、群像感闊、30 秒 TVC 同 KV 都易出。揀中邊個我哋即刻 develop 12 格。</p></div></details><details class='crow' id='cand-cm13721807'><summary><span class='cname'>[Agency deepseek-v3.2] Concept 1:佢嘅一單生意</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cm13721807&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1: 佢嘅一單生意</h4>
+<p><strong>創作概念</strong>：不拍企業家「成功後」的風光，而是聚焦於他<strong>透過 HKTDC 解決單一難題的關鍵一刻</strong>。例如，一個本地醬料廠老闆首次透過 HKTDC 線上配對，與海外買家達成訂單。影片呈現這「一單生意」從無到有的過程，具體體現 HKTDC 作為「超級聯繫人」的價值，也讓觀眾看到經濟成果的起點。</p>
+<p><strong>人/景</strong>：一位中年本地醬料廠老闆（非演員，具真實感）在其荃灣舊式工場辦公室。場景包括：他對住電腦皺眉（難題）、HKTDC 顧問上門協助（過程）、與海外買家成功簽約的視訊畫面（成果）。</p>
+<p><strong>Visual Device</strong>：<strong>「一個不斷增長的數字」</strong>。畫面角落始終有一個簡潔的動態數字（如訂單金額、合作國家數），隨著主角每一步進展而跳動增加，視覺化「成果累積」。</p>
+<p><strong>主打口號</strong>：香港貿易發展局：由一單生意開始，接穩全球機遇。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用。堅持用真實中小企東主。</p>
+<p>---</p></div></details><details class='crow' id='cand-cma9b6a4f5'><summary><span class='cname'>[Agency deepseek-v3.2] Concept 2:撐你出去</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cma9b6a4f5&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2: 撐你出去</h4>
+<p><strong>創作概念</strong>：將 HKTDC 塑造成企業背後的「實戰教練」與「隊友」。影片跟拍一位香港初創科技公司（如環保科技）團隊，準備參加 HKTDC 主辦的國際創科展的全過程。呈現 HKTDC 提供的實務支援（如演練 Pitch、攤位設計建議、買家預約），強調<strong>不是提供場地，而是裝備企業贏得機會</strong>。</p>
+<p><strong>人/景</strong>：一隊 3-4 人的香港年輕初創團隊，在其共享工作室。場景包括：熬夜準備展品的混亂、HKTDC 工作坊的互動、展覽現場與國際投資者緊張交流的實況。</p>
+<p><strong>Visual Device</strong>：<strong>「工具箱 (Toolkit)」</strong>。將 HKTDC 的各項服務（市場報告、商貿配對、展覽平台）以簡潔動畫 icon 形式，在主角需要時如「工具」般彈出並應用於現實畫面，比喻其解決問題的功能性。</p>
+<p><strong>主打口號</strong>：搵到路，HKTDC。我哋撐你出去。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用。建議與真實本地初創合作。</p>
+<p>---</p></div></details><details class='crow' id='cand-cm9101dfd0'><summary><span class='cname'>[Agency deepseek-v3.2] Concept 3:呢度做起，世界接軌</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cm9101dfd0&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 3: 呢度做起，世界接軌</h4>
+<p><strong>創作概念</strong>：採用強烈對比蒙太奇，將<strong>香港本地製作/研發的「微觀」場景</strong>，與<strong>透過 HKTDC 接觸的「宏觀」國際市場</strong>快速交織剪接。例如，老師傅在工場打磨一件產品特寫，切換至中東買家在展覽中拿起該產品的特寫；年輕設計師在深水埗布料市場，切換至巴黎時裝周後台模特穿著其設計。</p>
+<p><strong>人/景</strong>：多元化的香港製造者與設計師（時裝、食品、電子、專業服務）。場景穿梭於本地特色場地（工廈、街市、設計工作室）與國際化展會/商務場景。</p>
+<p><strong>Visual Device</strong>：<strong>「地理標籤 (Geo-Tag)」</strong>。每當產品或服務成功對接，畫面會出現一個簡潔的動態地理位置標籤（如「香港 → 杜拜」），並有一條光線連接兩地，視覺化「聯繫」與「出口」的路徑。</p>
+<p><strong>主打口號</strong>：香港製造，世界接軌。香港貿易發展局。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用。聚焦於無名英雄般的本地產業工作者。</p></div></details><details class='crow' id='cand-cmcef712fc'><summary><span class='cname'>[Agency gemini-2.5-pro] Concept 1:〔一線萬通〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cmcef712fc&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〔一線萬通〕</h4>
+<p><strong>創作概念</strong>: 以一條具象化嘅「聯繫之線」(可以係光線、數據流、甚至係一條真實嘅紅線) 作為核心視覺鈎，串連起香港中小企由本地研發到走向世界舞台嘅整個旅程。呢條線直觀地演繹 HKTDC 點樣做「超級聯繫人」，將一個個孤立嘅努力，編織成一張通達全球嘅商業網絡，具體化「國際商貿中心」嘅政策目標。</p>
+<p><strong>人/景</strong>:</p>
+<p>*   <strong>人</strong>: 一個香港初創科技公司嘅年輕創辦人、一個將傳統涼茶產品現代化嘅家族生意第二代、一個喺 HKTDC 大型展會上忙碌嘅海外買家。</p>
+<p>*   <strong>景</strong>: 觀塘工業區嘅 co-working space、元朗嘅食品工場、香港會議展覽中心人頭湧湧嘅珠寶展/電子展、象徵海外市場嘅視像會議畫面、貨櫃碼頭吊臂運作。</p>
+<p><strong>Visual Device</strong>: <strong>「聯繫光流」(The Connection Stream)</strong>。一道發光嘅數碼線條，由一部香港設計師嘅電腦螢幕畫面上嘅設計圖開始，流出螢幕，穿梭喺辦公室，跟隨產品原型進入工場，再沿住運輸帶去到會展攤位，最後「流入」海外買家嘅手機屏幕，完成一單交易。光流所到之處，都係 HKTDC 發揮作用嘅節點。</p>
+<p><strong>主打口號</strong>: 香港接通世界，生意通達全球。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。主角係真實嘅香港企業家，更具說服力。</p></div></details><details class='crow' id='cand-cm0e5b4bff'><summary><span class='cname'>[Agency gemini-2.5-pro] Concept 2:〔一件貨嘅誕生〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cm0e5b4bff&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〔一件貨嘅誕生〕</h4>
+<p><strong>創作概念</strong>: 用微觀敘事手法，聚焦一件「香港設計/研發」嘅高增值產品(例如智能醫療儀器)，由一個概念、一張草圖開始，追蹤佢誕生嘅全過程。影片透過產品嘅視角，展現 HKTDC 喺研發、市場配對、參展、品牌推廣等每個關鍵階段所提供嘅支援，將「高質量發展」呢個宏大政策，濃縮到一件觸手可及、有溫度嘅「製成品」上，令觀眾感受到 HKTDC 嘅工作同自己嘅生活息息相關。</p>
+<p><strong>人/景</strong>:</p>
+<p>*   <strong>人</strong>: 一個專注嘅產品設計師/工程師、經驗老到嘅廠長、HKTDC 嘅業務顧問、最終使用產品嘅外國用家(e.g. 醫生/運動員)。財政司司長或 HKTDC 主席或會以專家身份，喺展覽開幕等場合出現一兩個鏡頭，提供宏觀背景。</p>
+<p>*   <strong>景</strong>: 科學園嘅實驗室、生產線嘅微距鏡頭(機械臂、零件組裝)、HKTDC 辦公室嘅諮詢會議室、法蘭克福/杜拜等國際展覽嘅香港館、海外醫院/家居嘅真實應用場景。</p>
+<p><strong>Visual Device</strong>: <strong>「產品第一身視點」(Product&#x27;s POV)</strong>。大量運用微距鏡頭同主觀鏡頭，模擬由「產品」自己嘅角度出發。例如，鏡頭可以係晶片被焊上電路板嘅一刻、被印上「Designed in Hong Kong」標誌嘅瞬間、喺展會上被無數對眼睛注視嘅畫面、最後喺海外用家手上發揮功能嘅特寫。呢個手法令人對一件「死物」產生情感投射，加強故事性。</p>
+<p><strong>主打口號</strong>: 每一個香港製造，連繫每一個未來。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。焦點放喺產品同背後嘅香港團隊，保持真實感同專業性。</p></div></details><details class='crow' id='cand-cm556fd160'><summary><span class='cname'>[Agency gpt-5.2] Concept 1:〔一握手・連世界〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cm556fd160&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〔一握手・連世界〕</h4>
+<p><strong>創作概念</strong>:  </p>
+<p>用「握手」做全片主線：由香港中小企喺工場/工作室出發，到會展中心展覽會現場，再到視像會議、簽約、出貨——每一次握手都代表一次由 <strong>香港貿易發展局（HKTDC）</strong> 促成嘅連結。唔用空泛口號，直接「show」HKTDC 點樣做 <strong>超級聯繫人</strong>：商貿配對、展覽平台、引路開新市場，最後落到「有訂單、有合作、有工作機會」嘅務實成果。</p>
+<p><strong>人/景</strong>:  </p>
+<p>- 1–2 位香港中小企/初創負責人（真實工作環境：工場、設計工作室、細辦公室）  </p>
+<p>- 香港會議展覽中心大型國際展覽會現場（攤位洽談、掃 QR、產品 demo）  </p>
+<p>- 視像會議畫面（海外買家/合作夥伴）、簽約桌面、貨櫃/物流出貨（象徵海外市場）  </p>
+<p>- HKTDC 同事做商貿配對/帶團交流（以「服務」呈現，唔搶主角）</p>
+<p><strong>Visual Device</strong>:  </p>
+<p>「<strong>握手特寫 match cut</strong>」：唔同種族/行業/場景嘅握手快速連接（攤位→會議室→晚宴→出貨），每一下握手都 pop-up 一個關鍵字（例：<strong>「商貿配對」/「國際展覽會」/「大灣區機遇」/「一帶一路」</strong>），無聲都一秒明。</p>
+<p><strong>主打口號</strong>:  </p>
+<p><strong>「一握手，連到全世界——香港貿易發展局做你嘅超級聯繫人。」</strong></p>
+<p><strong>Proposed 明星/名人</strong>:  </p>
+<p>不適用（用真實企業代表更可信、符合「唔好將功勞歸於個人」紅線）</p>
+<p>---</p></div></details><details class='crow' id='cand-cma7387e0e'><summary><span class='cname'>[Agency gpt-5.2] Concept 2:〔搞唔掂？搵 HKTDC 搞得掂〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cma7387e0e&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〔搞唔掂？搵 HKTDC 搞得掂〕</h4>
+<p><strong>創作概念</strong>:  </p>
+<p>以「先苦後甜」但<strong>唔負面唱衰</strong>嘅方式開場：企業代表用一句半句口語講「以前想出海/搵新市場，成日差一步」，畫面係忙亂但唔沉重嘅「卡關瞬間」（例如電郵來回、改產品包裝、搵買家資料、深夜趕 demo）。轉折位：佢哋接上 <strong>香港貿易發展局（HKTDC）</strong> 嘅平台（展覽、商貿配對、市場資訊），即刻見到具體「埋單」成果：對到人、傾到價、簽到合作、順利出貨——用行動證明政府政策「落實執行」，鞏固香港 <strong>國際商貿中心</strong> 角色，亦同市民息息相關（生意多咗=就業多咗）。</p>
+<p><strong>人/景</strong>:  </p>
+<p>- 香港中小企老闆/年輕初創（真實場景：細公司會議枱、工場試做、包裝貼標）  </p>
+<p>- 會展中心展覽會：第一次見買家、產品 demo 成功、掃描名片/QR  </p>
+<p>- HKTDC 服務場景：商貿配對會面、分享市場研究簡報（以畫面呈現，唔用長篇旁白）  </p>
+<p>- 最後落點：公司請人/擴充（例如新同事入職、加開一條小產線——正面但務實）</p>
+<p><strong>Visual Device</strong>:  </p>
+<p>「<strong>卡關字卡 → 解鎖字卡</strong>」：開頭快切時，每個卡關位疊上大字（例：<strong>「搵唔到買家」</strong> / <strong>「唔識入市場」</strong> / <strong>「冇渠道」</strong>），轉入 HKTDC 後同一位置被「解鎖」成：<strong>「對到買家」/「開到市場」/「有渠道」</strong>；節奏似商業資訊 YouTube，清晰爽快。</p>
+<p><strong>主打口號</strong>:  </p>
+<p><strong>「唔止講機遇，香港貿易發展局帶你搞得掂。」</strong></p>
+<p><strong>Proposed 明星/名人</strong>:  </p>
+<p>不適用（真人真事 + 真企業代表更有說服力；亦避免「明星蓋過機構」）</p></div></details><details class='crow' id='cand-cmd5b577f5'><summary><span class='cname'>[Agency grok-4.3] Concept 1:失敗鏡頭</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cmd5b577f5&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1: 失敗鏡頭</h4>
+<p><strong>創作概念</strong>: 先播中小企老闆在展位前被斷線視像會議、貨箱被退回的「失敗」片段，隨即 cut 到 HKTDC 配對服務下一次成功簽約，強調「先苦後甜」而非一路順風。  </p>
+<p><strong>人/景</strong>: 觀塘工廈年輕老闆 + 義烏展覽攤位 + 葵涌貨倉。  </p>
+<p><strong>Visual Device</strong>: 「失敗」→「成功」match cut，同一件產品（智能醫療探測器）由斷線畫面跳到標籤「Designed by Hong Kong」。  </p>
+<p><strong>主打口號</strong>: 香港企，世界識  </p>
+<p><strong>Proposed 明星/名人</strong>: 不適用</p></div></details><details class='crow' id='cand-cm216670b3'><summary><span class='cname'>[Agency grok-4.3] Concept 2:握手特寫</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cm216670b3&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2: 握手特寫</h4>
+<p><strong>創作概念</strong>: 以 3 秒內連續 8 次不同種族/行業的「握手」特寫為主軸，每一次握手都切到一張即時簽成的訂單掃描圖，具象化 HKTDC「超級聯繫人」角色。  </p>
+<p><strong>人/景</strong>: 會展 3 號館展位、Startup 在中環共享空間、波蘭採購商 Zoom 畫面。  </p>
+<p><strong>Visual Device</strong>: 超近距離握手特寫重複 + 極快 pop-up 訂單數字。  </p>
+<p><strong>主打口號</strong>: 一握手，訂單就到  </p>
+<p><strong>Proposed 明星/名人</strong>: 不適用</p></div></details><details class='crow' id='cand-cmf31e591b'><summary><span class='cname'>[Agency kimi-k2.6] Concept 1:做爛咗先開張</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cmf31e591b&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1: 做爛咗先開張</h4>
+<p><strong>創作概念</strong>：開場唔係成功案例，係三個香港企業家喺鏡頭前講自己最仆街嗰次——貨櫃滯留、展覽撲空、視像會議對住黑屏。畫面係真實嘅頹樣、亂嘅工場、黑夜嘅辦公室。然後聲音漸靜，一句「跟住我搵咗 HKTDC」。接落嚟嘅 20 秒係同一班人但另一個時間軸：接到單嘅表情、貨櫃出碼頭、展櫃前人頭湧湧、Zoom 畫面裡面外國買家豎拇指。核心扣連係「政府講嘅支援唔係口號，係你仆街之後有人扶你搵番條路」。</p>
+<p><strong>人/景</strong>：三位真實中小企老闆（玩具設計師、食品廠二代、環保物料初創），全部喺佢哋真實嘅工場/辦公室/倉庶拍攝。展覽場館用香港會議展覽中心實景，貨櫃碼頭清晨藍調。</p>
+<p><strong>Visual Device</strong>：「同一個人，兩個時間」嘅分屏/疊化——左邊係「做爛」嘅黑白或 desaturated 畫面，右邊係「開張」嘅飽和暖色，最後合埋一齊變成 RGB full colour。呢個 device 貫穿全片，KV 用同一手法：老闆個樣半邊陰半邊光。</p>
+<p><strong>主打口號</strong>：做爛咗？有人幫你開返張枱。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用。要真實老闆嘅 rawness，明星會削弱「我都係咁行過嚟」嘅共鳴。</p>
+<p>---</p></div></details><details class='crow' id='cand-cm30fd4636'><summary><span class='cname'>[Agency kimi-k2.6] Concept 2:一條金線</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cm30fd4636&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2: 一條金線</h4>
+<p><strong>創作概念</strong>：由香港地理出發，將 HKTDC 比喻為一條實質存在嘅「連接線」。航拍由維港出發，一條光軌（實拍+CGI）穿過港珠澳大橋、越過深圳河、伸入大灣區工廠群、再分叉到東南亞、中東、歐洲嘅展覽場館。但唔係純地理詩，條線每隔一段就「落地」變成一個真實場景：香港設計師將草圖交畀東莞廠、食品商喺杜拜展覽擺試食、律師喺視像會議講解 RCEP 條款。條線最終收束返去一個香港師奶手機入面「HKTDC 商貿平台」app 界面——證明宏大基建最終係普通人生活。扣政府訊息：「超級聯繫人」唔係抽象定位，係每日運作緊嘅物流、資訊流、人脈流。</p>
+<p><strong>人/景</strong>：師奶（用戶視角）、中年貨運司機（港珠澳大橋段）、年輕女設計師（灣區工廠段）、白髮食品商（中東展覽段），全部素人。大景靠航拍+實景展覽場館。</p>
+<p><strong>Visual Device</strong>：一條从金漸變銀嘅光軌線，質感似光纖但更有機，會「分叉」、「打結」（象徵挑戰）、再「理順」。線嘅粗幼隨場景變化：單人工作室係幼線，會展中心匯集成光河。KV 係條線由維港盤旋上升變成飛龍形態，暗扣 Brand Hong Kong。</p>
+<p><strong>主打口號</strong>：一條線，由香港，繞過世界，返番你屋企。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用。要跨國素人 cast 先做到「世界」嘅真實感，明星會令畫面變「香港娛樂」。</p>
+<p>---</p></div></details><details class='crow' id='cand-cm12945564'><summary><span class='cname'>[Agency kimi-k2.6] Concept 3:三點鐘會議，八點鐘飛</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cm12945564&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 3: 三點鐘會議，八點鐘飛</h4>
+<p><strong>創作概念</strong>：極速 montage，跟住一個 HKTDC 商貿配對經理嘅 48 小時。節奏用商業紀錄片《The Last Dance》式快切，但主角唔係球星係一個著襯衫背公事包、喺機場刷牙嘅中女。電話響、WhatsApp 語音、微信視像、Zoom call 交替，三種語言無縫切換。畫面跳：凌晨機場貴賓室改 proposal → 會展中心攤位執頭執尾 → 內地工廠驗貨 → 視像會議撮合香港初創同東南亞買家 → 深夜的士返屋企。旁白零，靠字幕 pop-up 同聲音設計講故事。最後字幕卡：「HKTDC 每年搞超過 350 場商貿活動」。扣政府訊息：「高質量發展」唔靠講，靠人捱更抵夜做出嚟；「超級聯繫人」係一個個具體的人喺時間縫隙裡面接軌。</p>
+<p><strong>人/景</strong>：素人中女演員（35-45 歲，似真嘅公關經理多過明星），香港國際機場、會展中心布展凌晨時段、深圳前海辦公樓、的士車廂、狹窄家居 hallway。全部係「非參觀時段」嘅 raw 空間，冇陽光冇大合照。</p>
+<p><strong>Visual Device</strong>：畫面角落常設一個「時間戳」同「地點標籤」，似紀錄片調查報道咁，但設計過靚啲。關鍵 transition 用「手機 screen recording」放大佔滿全 screen，再拉遠 reveal 原來係真人正喺用呢部機。KV 係佢喺機場玻璃幕牆前，倒影疊滿航班資訊 screen，人係實的倒影係虛的。</p>
+<p><strong>主打口號</strong>：有人喺你瞓覺嗰陣，幫你接緊條路。</p>
+<p><strong>Proposed 明星/名人</strong>：可考慮 <strong>Stephy 鄧麗欣</strong> 或 <strong>陳茵媺</strong>（中年專業女性形象入屋，但唔係超級巨星，有「我個朋友都可能係咁」嘅親切感）。或更激進：用真實 HKTDC 職員出演，片尾 reveal「張經理，HKTDC 商貿配對部，任職 12 年」，製造紀錄片式信任。</p>
+<p>---</p></div></details><details class='crow' id='cand-cmdb046250'><summary><span class='cname'>[Agency qwen3.7-max] Concept 1:〔現場・聲證〕(Raw Sound of Connection)</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cmdb046250&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〔現場・聲證〕(Raw Sound of Connection)</h4>
+<p><strong>創作概念</strong>:</p>
+<p>回應 Provocation Q1 &amp; Q8，放棄旁白主導，改以「展覽現場環境聲」作為敘事引擎。利用 HKTDC 大型展覽(如電子展/醫療展)現場未經修飾嘅嘈雜聲(多國語言詢價、機器運轉、廣播)，配合快切 B-roll 與 Kinetic Typography，喺頭 3 秒製造「非官方」嘅在場感。將「超級聯繫人」由抽象名詞變成一種可以「聽」到嘅商業脈搏，證明政策落實係發生喺嘈吵、真實嘅交易現場，而非安靜嘅辦公室。</p>
+<p><strong>人/景</strong>:</p>
+<p>主角為 2-3 位真實中小企負責人(非演員)，場景鎖定喺 HKTDC 展覽攤位內、展場走廊、以及佢哋位於觀塘/荃灣嘅狹小辦公室/工場。強調「展場光鮮」與「工場務實」嘅空間對比。</p>
+<p><strong>Visual Device</strong>:</p>
+<p><strong>「聲波匹配剪接」(Audio Match-Cut)</strong>。畫面轉場完全由聲音觸發：例如攤位上「咔嚓」一聲產品卡扣聲 → Match cut 到工場組裝聲；展覽廣播叫號聲 → Match cut 到辦公室電話鈴聲。字幕隨聲音節奏彈出，無聲狀態下字幕本身帶有「震動/脈衝」動態效果，模擬聲音質感。</p>
+<p><strong>主打口號</strong>:</p>
+<p>落場至知真章，HKTDC 撐你接通世界</p>
+<p><strong>Proposed 明星/名人</strong>:</p>
+<p>不適用。此概念核心係「Raw &amp; Real」，明星會破壞現場紀實質感並觸發「離地」觀感。建議邀請 HKTDC 真實服務過嘅中小企老闆(如醫療科技初創、環保物料廠商)本色出鏡。</p></div></details><details class='crow' id='cand-cm922ef43f'><summary><span class='cname'>[Agency qwen3.7-max] Concept 2:〔一件貨・一條路〕(The Tangible Route)</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cm922ef43f&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〔一件貨・一條路〕(The Tangible Route)</h4>
+<p><strong>創作概念</strong>:</p>
+<p>回應 Provocation Q3 &amp; Q4，將「高質量發展」收窄至「一件具體產品」嘅物理旅程。唔講宏觀數據，只追蹤一件由香港中小企研發嘅實體產品(如智能醫療儀器核心部件)，如何透過 HKTDC 平台由設計圖變成手上的實物，再送到海外買家手中。用「物件特寫」取代「人臉大頭」，用「物流/商貿配對嘅真實節點」取代「握手禮儀鏡頭」。這係對「超級聯繫人」最物理性、最無可辯駁嘅證據，直接回答觀眾「關我咩事」——你手上嘅機會，就係咁樣一件一件運出去。</p>
+<p><strong>人/景</strong>:</p>
+<p>主角係「產品」本身(微距鏡頭)。人物僅作為手嘅延伸(工程師嘅手、HKTDC 職員遞文件嘅手、外國買家驗貨嘅手)。場景包括：產品測試實驗室(帶失敗痕跡)、HKTDC 商貿配對會議桌(真實文件/樣板)、貨運倉庫/機場貨運站。</p>
+<p><strong>Visual Device</strong>:</p>
+<p><strong>「物件 POV + 進度條 UI」(Object-Centric HUD)</strong>。全片以產品為視覺錨點，畫面上疊加極簡動態資訊圖形(非花巧 MG，而係似物流追蹤/工程藍圖嘅 UI)，標示產品所處階段(原型 → 認證 → 配對 → 出口)。當產品經歷「測試失敗/退回修改」時，UI 顯示「Recalibrating」而非「Error」，呈現真實商業過程中嘅韌性，避開「一帆風順」嘅虛假感。</p>
+<p><strong>主打口號</strong>:</p>
+<p>由一個位到一張單，HKTDC 全程實幹</p>
+<p><strong>Proposed 明星/名人</strong>:</p>
+<p>不適用。焦點必須維持喺「產品」與「流程」，名人會轉移對「高質量發展」實體證據嘅注意力。若需人物背書，建議用 HKTDC 前線商貿配對主任(非高管)以「技術支援者」身份短暫出鏡解釋流程，強化「實務支援」定位。</p></div></details></div><details class='soft'><summary>📖 睇全部委員會 / agency 完整提案 + storyboard</summary><details class='soft'><summary>🗳️ Agency qwen3.7-max</summary><h4 class="cc">## 落橋前(必做)</h4>
+<p>已消化 Client Debrief。核心任務係將《施政報告》「八大中心」及「高質量發展」由政策語言翻譯做「中小企生存實況」。紅線係「唔可以離地唱好」同「唔可以政治化」，所以創意必須<strong>去儀式感、重實務感</strong>。</p>
+<p>針對 Provocation 提出嘅「Cynical 觀眾」、「無聲 Scroll」、「失敗鏡頭」三個挑戰，以下兩個概念均放棄傳統「成功展示」套路，改以 <strong>「過程驗證」</strong> 為主軸。Concept 1 側重於「聲音與節奏」嘅感官衝擊，用展覽現場嘅 raw sound 打破官腔；Concept 2 側重於「物件與痕跡」嘅微觀敘事，用一件產品嘅物理移動軌跡去具體化「超級聯繫人」。兩者皆以 Kinetic Typography 解決無聲場景，並嚴格遵守 HKTDC 正名及 CTA 規範。</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>電影級商業紀錄片質感。手持鏡頭帶輕微呼吸感(Handheld breathing cam)，自然光混合展覽現場頂光(Natural light + Expo top light)。色調偏暖灰實色(Warm desaturated tone)，避免高飽和度「政府藍」。剪接節奏跟隨環境聲與電子節拍(Match-cut on ambient sound &amp; minimal electronic beat)。動態排版主導敘事(Kinetic typography led narrative)。真實工作場景而非擺拍(Candid workspace over staged setup)。</p>
+<p>style_anchor: &quot;handheld documentary realism, warm desaturated tone, match-cut transitions, kinetic typography, minimal electronic beat, natural expo lighting, 16:9 cinematic&quot;</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1. 落場至知真章，HKTDC 撐你接通世界</p>
+<p>2. 唔講理論講實戰，HKTDC 幫你搵出路</p>
+<p>3. 由一個位到一張單，HKTDC 全程實幹</p>
+<p>4. 機會唔靠等，HKTDC 主動幫你爭</p>
+<p>5. 連接世界靠行動，HKTDC 實實在在</p>
+<h4 class="cc">## Concept 1:〔現場・聲證〕(Raw Sound of Connection)</h4>
+<p><strong>創作概念</strong>:</p>
+<p>回應 Provocation Q1 &amp; Q8，放棄旁白主導，改以「展覽現場環境聲」作為敘事引擎。利用 HKTDC 大型展覽(如電子展/醫療展)現場未經修飾嘅嘈雜聲(多國語言詢價、機器運轉、廣播)，配合快切 B-roll 與 Kinetic Typography，喺頭 3 秒製造「非官方」嘅在場感。將「超級聯繫人」由抽象名詞變成一種可以「聽」到嘅商業脈搏，證明政策落實係發生喺嘈吵、真實嘅交易現場，而非安靜嘅辦公室。</p>
+<p><strong>人/景</strong>:</p>
+<p>主角為 2-3 位真實中小企負責人(非演員)，場景鎖定喺 HKTDC 展覽攤位內、展場走廊、以及佢哋位於觀塘/荃灣嘅狹小辦公室/工場。強調「展場光鮮」與「工場務實」嘅空間對比。</p>
+<p><strong>Visual Device</strong>:</p>
+<p><strong>「聲波匹配剪接」(Audio Match-Cut)</strong>。畫面轉場完全由聲音觸發：例如攤位上「咔嚓」一聲產品卡扣聲 → Match cut 到工場組裝聲；展覽廣播叫號聲 → Match cut 到辦公室電話鈴聲。字幕隨聲音節奏彈出，無聲狀態下字幕本身帶有「震動/脈衝」動態效果，模擬聲音質感。</p>
+<p><strong>主打口號</strong>:</p>
+<p>落場至知真章，HKTDC 撐你接通世界</p>
+<p><strong>Proposed 明星/名人</strong>:</p>
+<p>不適用。此概念核心係「Raw &amp; Real」，明星會破壞現場紀實質感並觸發「離地」觀感。建議邀請 HKTDC 真實服務過嘅中小企老闆(如醫療科技初創、環保物料廠商)本色出鏡。</p>
+<h4 class="cc">## Concept 2:〔一件貨・一條路〕(The Tangible Route)</h4>
+<p><strong>創作概念</strong>:</p>
+<p>回應 Provocation Q3 &amp; Q4，將「高質量發展」收窄至「一件具體產品」嘅物理旅程。唔講宏觀數據，只追蹤一件由香港中小企研發嘅實體產品(如智能醫療儀器核心部件)，如何透過 HKTDC 平台由設計圖變成手上的實物，再送到海外買家手中。用「物件特寫」取代「人臉大頭」，用「物流/商貿配對嘅真實節點」取代「握手禮儀鏡頭」。這係對「超級聯繫人」最物理性、最無可辯駁嘅證據，直接回答觀眾「關我咩事」——你手上嘅機會，就係咁樣一件一件運出去。</p>
+<p><strong>人/景</strong>:</p>
+<p>主角係「產品」本身(微距鏡頭)。人物僅作為手嘅延伸(工程師嘅手、HKTDC 職員遞文件嘅手、外國買家驗貨嘅手)。場景包括：產品測試實驗室(帶失敗痕跡)、HKTDC 商貿配對會議桌(真實文件/樣板)、貨運倉庫/機場貨運站。</p>
+<p><strong>Visual Device</strong>:</p>
+<p><strong>「物件 POV + 進度條 UI」(Object-Centric HUD)</strong>。全片以產品為視覺錨點，畫面上疊加極簡動態資訊圖形(非花巧 MG，而係似物流追蹤/工程藍圖嘅 UI)，標示產品所處階段(原型 → 認證 → 配對 → 出口)。當產品經歷「測試失敗/退回修改」時，UI 顯示「Recalibrating」而非「Error」，呈現真實商業過程中嘅韌性，避開「一帆風順」嘅虛假感。</p>
+<p><strong>主打口號</strong>:</p>
+<p>由一個位到一張單，HKTDC 全程實幹</p>
+<p><strong>Proposed 明星/名人</strong>:</p>
+<p>不適用。焦點必須維持喺「產品」與「流程」，名人會轉移對「高質量發展」實體證據嘅注意力。若需人物背書，建議用 HKTDC 前線商貿配對主任(非高管)以「技術支援者」身份短暫出鏡解釋流程，強化「實務支援」定位。</p></details><details class='soft'><summary>🗳️ Agency kimi-k2.6</summary><p>我哋開工。消化晒 debrief，呢條片核心矛盾係：政府要「政策落地具體化」證明施政有效，觀眾就「關我咩事」極 cynic。紅線係唔可以負面、唔可以政治化、唔可以離地吹噓。ISD 慣性收貨寫實真人真事，但今次要避開「陽光大合照交響樂」悶症。</p>
+<p>落橋方向：用「人一個體嘅實際得益」做 emotional entry，但 visual 要有國際展覽嘅規模感同能量，唔係街坊傾偈咁小家。三個 concept 分別試三種 hook——一个係「反差真實」、一個係「空間詩意」、一個係「速度規模」。</p>
+<p>---</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>電影級紀錄片質感，自然光為主輔以展覽場館戲劇性人工光源，手持鏡頭輕微呼吸感 vs 穩定器流暢移動交替，色調偏 cold-to-warm 過渡（開場偏冷灰藍，中段展覽現場漸轉暖金琥珀），Kodak Vision3 菲林徽妙顆粒感，鏡頭以 35mm 同 85mm 為主營造親密視角，match cut 串連跨行業場景，配樂簡約節奏電子音樂注入心跳感，整體情緒係「壓抑後釋放」嘅 arc。KV poster 以單一人像疊展覽場館縱深空間，大光比剪影式處理。</p>
+<p>style_anchor: &quot;documentary-cinematic, natural light with tungsten accents, handheld intimacy, cold-to-amber grade, Kodak Vision3 grain, match-cut transitions, minimal electronic pulse, 16:9 cinematic&quot;</p>
+<p>---</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1. 你搞唔掂嘅，佢幫你搞掂</p>
+<p>2. 香港仔嘅單，做到全世界</p>
+<p>3. 小舖頭，大世界</p>
+<p>4. 一個展櫃，半路生意</p>
+<p>5. HKTDC 幫你接軌</p>
+<p>6. 香港製造，世界認證</p>
+<p>7. 唔係大孖嘢先做得出</p>
+<p>8. 有人幫你開門</p>
+<p>9. 你的單，我哋接得住</p>
+<p>10. 由香港，去更遠</p>
+<p>---</p>
+<h4 class="cc">## Concept 1: 做爛咗先開張</h4>
+<p><strong>創作概念</strong>：開場唔係成功案例，係三個香港企業家喺鏡頭前講自己最仆街嗰次——貨櫃滯留、展覽撲空、視像會議對住黑屏。畫面係真實嘅頹樣、亂嘅工場、黑夜嘅辦公室。然後聲音漸靜，一句「跟住我搵咗 HKTDC」。接落嚟嘅 20 秒係同一班人但另一個時間軸：接到單嘅表情、貨櫃出碼頭、展櫃前人頭湧湧、Zoom 畫面裡面外國買家豎拇指。核心扣連係「政府講嘅支援唔係口號，係你仆街之後有人扶你搵番條路」。</p>
+<p><strong>人/景</strong>：三位真實中小企老闆（玩具設計師、食品廠二代、環保物料初創），全部喺佢哋真實嘅工場/辦公室/倉庶拍攝。展覽場館用香港會議展覽中心實景，貨櫃碼頭清晨藍調。</p>
+<p><strong>Visual Device</strong>：「同一個人，兩個時間」嘅分屏/疊化——左邊係「做爛」嘅黑白或 desaturated 畫面，右邊係「開張」嘅飽和暖色，最後合埋一齊變成 RGB full colour。呢個 device 貫穿全片，KV 用同一手法：老闆個樣半邊陰半邊光。</p>
+<p><strong>主打口號</strong>：做爛咗？有人幫你開返張枱。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用。要真實老闆嘅 rawness，明星會削弱「我都係咁行過嚟」嘅共鳴。</p>
+<p>---</p>
+<h4 class="cc">## Concept 2: 一條金線</h4>
+<p><strong>創作概念</strong>：由香港地理出發，將 HKTDC 比喻為一條實質存在嘅「連接線」。航拍由維港出發，一條光軌（實拍+CGI）穿過港珠澳大橋、越過深圳河、伸入大灣區工廠群、再分叉到東南亞、中東、歐洲嘅展覽場館。但唔係純地理詩，條線每隔一段就「落地」變成一個真實場景：香港設計師將草圖交畀東莞廠、食品商喺杜拜展覽擺試食、律師喺視像會議講解 RCEP 條款。條線最終收束返去一個香港師奶手機入面「HKTDC 商貿平台」app 界面——證明宏大基建最終係普通人生活。扣政府訊息：「超級聯繫人」唔係抽象定位，係每日運作緊嘅物流、資訊流、人脈流。</p>
+<p><strong>人/景</strong>：師奶（用戶視角）、中年貨運司機（港珠澳大橋段）、年輕女設計師（灣區工廠段）、白髮食品商（中東展覽段），全部素人。大景靠航拍+實景展覽場館。</p>
+<p><strong>Visual Device</strong>：一條从金漸變銀嘅光軌線，質感似光纖但更有機，會「分叉」、「打結」（象徵挑戰）、再「理順」。線嘅粗幼隨場景變化：單人工作室係幼線，會展中心匯集成光河。KV 係條線由維港盤旋上升變成飛龍形態，暗扣 Brand Hong Kong。</p>
+<p><strong>主打口號</strong>：一條線，由香港，繞過世界，返番你屋企。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用。要跨國素人 cast 先做到「世界」嘅真實感，明星會令畫面變「香港娛樂」。</p>
+<p>---</p>
+<h4 class="cc">## Concept 3: 三點鐘會議，八點鐘飛</h4>
+<p><strong>創作概念</strong>：極速 montage，跟住一個 HKTDC 商貿配對經理嘅 48 小時。節奏用商業紀錄片《The Last Dance》式快切，但主角唔係球星係一個著襯衫背公事包、喺機場刷牙嘅中女。電話響、WhatsApp 語音、微信視像、Zoom call 交替，三種語言無縫切換。畫面跳：凌晨機場貴賓室改 proposal → 會展中心攤位執頭執尾 → 內地工廠驗貨 → 視像會議撮合香港初創同東南亞買家 → 深夜的士返屋企。旁白零，靠字幕 pop-up 同聲音設計講故事。最後字幕卡：「HKTDC 每年搞超過 350 場商貿活動」。扣政府訊息：「高質量發展」唔靠講，靠人捱更抵夜做出嚟；「超級聯繫人」係一個個具體的人喺時間縫隙裡面接軌。</p>
+<p><strong>人/景</strong>：素人中女演員（35-45 歲，似真嘅公關經理多過明星），香港國際機場、會展中心布展凌晨時段、深圳前海辦公樓、的士車廂、狹窄家居 hallway。全部係「非參觀時段」嘅 raw 空間，冇陽光冇大合照。</p>
+<p><strong>Visual Device</strong>：畫面角落常設一個「時間戳」同「地點標籤」，似紀錄片調查報道咁，但設計過靚啲。關鍵 transition 用「手機 screen recording」放大佔滿全 screen，再拉遠 reveal 原來係真人正喺用呢部機。KV 係佢喺機場玻璃幕牆前，倒影疊滿航班資訊 screen，人係實的倒影係虛的。</p>
+<p><strong>主打口號</strong>：有人喺你瞓覺嗰陣，幫你接緊條路。</p>
+<p><strong>Proposed 明星/名人</strong>：可考慮 <strong>Stephy 鄧麗欣</strong> 或 <strong>陳茵媺</strong>（中年專業女性形象入屋，但唔係超級巨星，有「我個朋友都可能係咁」嘅親切感）。或更激進：用真實 HKTDC 職員出演，片尾 reveal「張經理，HKTDC 商貿配對部，任職 12 年」，製造紀錄片式信任。</p>
+<p>---</p></details><details class='soft'><summary>🗳️ Agency grok-4.3</summary><h4 class="cc">## 落橋前(必做)</h4>
+<p>已消化 Client Debrief：重點在「真人真事」+「惠及市民」，要避開空洞口號及政治化。主角一定是受惠中小企，場景以香港實景為主，片長 30&#x27;&#x27;/60&#x27;&#x27; 都要有強烈 hook（raw 環境聲 + 手持鏡頭輕微晃動）。KV Poster 必須同一套影像語言。</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>手持輕微呼吸感、自然光偏冷調、match-cut 剪接、minimal electronic 配樂、低飽和都市色，素質如 Netflix 紀錄片。  </p>
+<p>`style_anchor: &quot;handheld natural light, cool neutral palette, match cut, minimal electronic, 16:9 cinematic&quot;`</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>- 香港企，世界識  </p>
+<p>- 一握手，訂單就到  </p>
+<p>- HKTDC 由你企到全世界  </p>
+<p>- 唔使行勻，HKTDC 已經幫你接通  </p>
+<p>- 香港優勢，HKTDC 即刻落實</p>
+<h4 class="cc">## Concept 1: 失敗鏡頭</h4>
+<p><strong>創作概念</strong>: 先播中小企老闆在展位前被斷線視像會議、貨箱被退回的「失敗」片段，隨即 cut 到 HKTDC 配對服務下一次成功簽約，強調「先苦後甜」而非一路順風。  </p>
+<p><strong>人/景</strong>: 觀塘工廈年輕老闆 + 義烏展覽攤位 + 葵涌貨倉。  </p>
+<p><strong>Visual Device</strong>: 「失敗」→「成功」match cut，同一件產品（智能醫療探測器）由斷線畫面跳到標籤「Designed by Hong Kong」。  </p>
+<p><strong>主打口號</strong>: 香港企，世界識  </p>
+<p><strong>Proposed 明星/名人</strong>: 不適用</p>
+<h4 class="cc">## Concept 2: 握手特寫</h4>
+<p><strong>創作概念</strong>: 以 3 秒內連續 8 次不同種族/行業的「握手」特寫為主軸，每一次握手都切到一張即時簽成的訂單掃描圖，具象化 HKTDC「超級聯繫人」角色。  </p>
+<p><strong>人/景</strong>: 會展 3 號館展位、Startup 在中環共享空間、波蘭採購商 Zoom 畫面。  </p>
+<p><strong>Visual Device</strong>: 超近距離握手特寫重複 + 極快 pop-up 訂單數字。  </p>
+<p><strong>主打口號</strong>: 一握手，訂單就到  </p>
+<p><strong>Proposed 明星/名人</strong>: 不適用</p></details><details class='soft'><summary>🗳️ Agency gpt-5.2</summary><h4 class="cc">## 影像風格 (Style Direction)</h4>
+<p>寫實紀錄片質感 + 商業資訊片節奏；開場用「展覽會現場原聲」先聲奪人（人聲、廣播、機器聲），配合快切 B-roll + 乾淨俐落嘅 kinetic typography（無聲都睇得明）。自然光、少少手持呼吸感、微電影級景深；色調偏中性偏暖（專業但有人味），穿插會展中心/辦公室/工場/貨運等「落地」場景；16:9。  </p>
+<p>style_anchor: &quot;cinematic documentary, natural light, handheld realism, fast-cut b-roll, kinetic typography, minimal electronic beat, match cuts, 16:9 cinematic&quot;</p>
+<p>---</p>
+<h4 class="cc">## Slogan (畀 Raymond 揀)</h4>
+<p>1. <strong>「生意要出海？香港貿易發展局幫你接通。」</strong>  </p>
+<p>2. <strong>「唔止講機遇，香港貿易發展局帶你做到。」</strong>  </p>
+<p>3. <strong>「由香港出發，連到全世界。」</strong> (From Hong Kong, to the world)  </p>
+<p>4. <strong>「搵市場、搵拍檔、搵出路——交畀 HKTDC。」</strong>  </p>
+<p>5. <strong>「香港貿易發展局：做你嘅超級聯繫人。」</strong>  </p>
+<p>6. <strong>「一握手，生意就到位。」</strong>  </p>
+<p>7. <strong>「幫中小企打開新市場。」</strong></p>
+<p>---</p>
+<h4 class="cc">## Concept 1:〔一握手・連世界〕</h4>
+<p><strong>創作概念</strong>:  </p>
+<p>用「握手」做全片主線：由香港中小企喺工場/工作室出發，到會展中心展覽會現場，再到視像會議、簽約、出貨——每一次握手都代表一次由 <strong>香港貿易發展局（HKTDC）</strong> 促成嘅連結。唔用空泛口號，直接「show」HKTDC 點樣做 <strong>超級聯繫人</strong>：商貿配對、展覽平台、引路開新市場，最後落到「有訂單、有合作、有工作機會」嘅務實成果。</p>
+<p><strong>人/景</strong>:  </p>
+<p>- 1–2 位香港中小企/初創負責人（真實工作環境：工場、設計工作室、細辦公室）  </p>
+<p>- 香港會議展覽中心大型國際展覽會現場（攤位洽談、掃 QR、產品 demo）  </p>
+<p>- 視像會議畫面（海外買家/合作夥伴）、簽約桌面、貨櫃/物流出貨（象徵海外市場）  </p>
+<p>- HKTDC 同事做商貿配對/帶團交流（以「服務」呈現，唔搶主角）</p>
+<p><strong>Visual Device</strong>:  </p>
+<p>「<strong>握手特寫 match cut</strong>」：唔同種族/行業/場景嘅握手快速連接（攤位→會議室→晚宴→出貨），每一下握手都 pop-up 一個關鍵字（例：<strong>「商貿配對」/「國際展覽會」/「大灣區機遇」/「一帶一路」</strong>），無聲都一秒明。</p>
+<p><strong>主打口號</strong>:  </p>
+<p><strong>「一握手，連到全世界——香港貿易發展局做你嘅超級聯繫人。」</strong></p>
+<p><strong>Proposed 明星/名人</strong>:  </p>
+<p>不適用（用真實企業代表更可信、符合「唔好將功勞歸於個人」紅線）</p>
+<p>---</p>
+<h4 class="cc">## Concept 2:〔搞唔掂？搵 HKTDC 搞得掂〕</h4>
+<p><strong>創作概念</strong>:  </p>
+<p>以「先苦後甜」但<strong>唔負面唱衰</strong>嘅方式開場：企業代表用一句半句口語講「以前想出海/搵新市場，成日差一步」，畫面係忙亂但唔沉重嘅「卡關瞬間」（例如電郵來回、改產品包裝、搵買家資料、深夜趕 demo）。轉折位：佢哋接上 <strong>香港貿易發展局（HKTDC）</strong> 嘅平台（展覽、商貿配對、市場資訊），即刻見到具體「埋單」成果：對到人、傾到價、簽到合作、順利出貨——用行動證明政府政策「落實執行」，鞏固香港 <strong>國際商貿中心</strong> 角色，亦同市民息息相關（生意多咗=就業多咗）。</p>
+<p><strong>人/景</strong>:  </p>
+<p>- 香港中小企老闆/年輕初創（真實場景：細公司會議枱、工場試做、包裝貼標）  </p>
+<p>- 會展中心展覽會：第一次見買家、產品 demo 成功、掃描名片/QR  </p>
+<p>- HKTDC 服務場景：商貿配對會面、分享市場研究簡報（以畫面呈現，唔用長篇旁白）  </p>
+<p>- 最後落點：公司請人/擴充（例如新同事入職、加開一條小產線——正面但務實）</p>
+<p><strong>Visual Device</strong>:  </p>
+<p>「<strong>卡關字卡 → 解鎖字卡</strong>」：開頭快切時，每個卡關位疊上大字（例：<strong>「搵唔到買家」</strong> / <strong>「唔識入市場」</strong> / <strong>「冇渠道」</strong>），轉入 HKTDC 後同一位置被「解鎖」成：<strong>「對到買家」/「開到市場」/「有渠道」</strong>；節奏似商業資訊 YouTube，清晰爽快。</p>
+<p><strong>主打口號</strong>:  </p>
+<p><strong>「唔止講機遇，香港貿易發展局帶你搞得掂。」</strong></p>
+<p><strong>Proposed 明星/名人</strong>:  </p>
+<p>不適用（真人真事 + 真企業代表更有說服力；亦避免「明星蓋過機構」）</p></details><details class='soft'><summary>🗳️ Agency gemini-2.5-pro</summary><p>收到。已消化晒 Raymond 你畀嘅 debrief 同 provocation,我哋 team 內部 brainstorm 完，出咗兩個初步 concept，畀你先睇睇，揀啱再 develop。</p>
+<p>***</p>
+<h4 class="cc">## 落橋前(必做)</h4>
+<p>已詳細閱讀及消化策略總監的 Client Debrief，完全理解背景、目標、受眾洞察、Key Message 及客戶紅線。所有創意概念將嚴格遵從 Debrief 指示，將抽象政策轉化為具體、人性化、有說服力的故事，並避免觸及任何紅線。</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>以電影級紀錄片質感為基調，融合商業資訊類網片嘅明快節奏。多用自然光、手持鏡頭捕捉真實感，營造「在現場」嘅氛圍。剪接上採用大量 match-cut 轉場，無縫連接本地廠房與國際展會，視覺化「聯繫」嘅概念。配樂棄用傳統政府片嘅交響樂，改用簡約、具驅動感嘅電子音樂(minimal electronic)，營造專業、現代、務實嘅調子。</p>
+<p>`style_anchor: &quot;documentary realism, kinetic typography, natural lighting, fast-paced editing, minimal electronic score, authentic human moments, 16:9 cinematic&quot;`</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1.  香港貿發局：撐你生意，通達商機。</p>
+<p>2.  機遇，我哋幫你捉到。 (Opportunity, Made Possible.)</p>
+<p>3.  香港接通世界，生意通達全球。</p>
+<p>4.  每一個香港製造，連繫每一個未來。</p>
+<p>5.  行前一步，世界就係你主場。</p>
+<h4 class="cc">## Concept 1:〔一線萬通〕</h4>
+<p><strong>創作概念</strong>: 以一條具象化嘅「聯繫之線」(可以係光線、數據流、甚至係一條真實嘅紅線) 作為核心視覺鈎，串連起香港中小企由本地研發到走向世界舞台嘅整個旅程。呢條線直觀地演繹 HKTDC 點樣做「超級聯繫人」，將一個個孤立嘅努力，編織成一張通達全球嘅商業網絡，具體化「國際商貿中心」嘅政策目標。</p>
+<p><strong>人/景</strong>:</p>
+<p>*   <strong>人</strong>: 一個香港初創科技公司嘅年輕創辦人、一個將傳統涼茶產品現代化嘅家族生意第二代、一個喺 HKTDC 大型展會上忙碌嘅海外買家。</p>
+<p>*   <strong>景</strong>: 觀塘工業區嘅 co-working space、元朗嘅食品工場、香港會議展覽中心人頭湧湧嘅珠寶展/電子展、象徵海外市場嘅視像會議畫面、貨櫃碼頭吊臂運作。</p>
+<p><strong>Visual Device</strong>: <strong>「聯繫光流」(The Connection Stream)</strong>。一道發光嘅數碼線條，由一部香港設計師嘅電腦螢幕畫面上嘅設計圖開始，流出螢幕，穿梭喺辦公室，跟隨產品原型進入工場，再沿住運輸帶去到會展攤位，最後「流入」海外買家嘅手機屏幕，完成一單交易。光流所到之處，都係 HKTDC 發揮作用嘅節點。</p>
+<p><strong>主打口號</strong>: 香港接通世界，生意通達全球。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。主角係真實嘅香港企業家，更具說服力。</p>
+<h4 class="cc">## Concept 2:〔一件貨嘅誕生〕</h4>
+<p><strong>創作概念</strong>: 用微觀敘事手法，聚焦一件「香港設計/研發」嘅高增值產品(例如智能醫療儀器)，由一個概念、一張草圖開始，追蹤佢誕生嘅全過程。影片透過產品嘅視角，展現 HKTDC 喺研發、市場配對、參展、品牌推廣等每個關鍵階段所提供嘅支援，將「高質量發展」呢個宏大政策，濃縮到一件觸手可及、有溫度嘅「製成品」上，令觀眾感受到 HKTDC 嘅工作同自己嘅生活息息相關。</p>
+<p><strong>人/景</strong>:</p>
+<p>*   <strong>人</strong>: 一個專注嘅產品設計師/工程師、經驗老到嘅廠長、HKTDC 嘅業務顧問、最終使用產品嘅外國用家(e.g. 醫生/運動員)。財政司司長或 HKTDC 主席或會以專家身份，喺展覽開幕等場合出現一兩個鏡頭，提供宏觀背景。</p>
+<p>*   <strong>景</strong>: 科學園嘅實驗室、生產線嘅微距鏡頭(機械臂、零件組裝)、HKTDC 辦公室嘅諮詢會議室、法蘭克福/杜拜等國際展覽嘅香港館、海外醫院/家居嘅真實應用場景。</p>
+<p><strong>Visual Device</strong>: <strong>「產品第一身視點」(Product&#x27;s POV)</strong>。大量運用微距鏡頭同主觀鏡頭，模擬由「產品」自己嘅角度出發。例如，鏡頭可以係晶片被焊上電路板嘅一刻、被印上「Designed in Hong Kong」標誌嘅瞬間、喺展會上被無數對眼睛注視嘅畫面、最後喺海外用家手上發揮功能嘅特寫。呢個手法令人對一件「死物」產生情感投射，加強故事性。</p>
+<p><strong>主打口號</strong>: 每一個香港製造，連繫每一個未來。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。焦點放喺產品同背後嘅香港團隊，保持真實感同專業性。</p></details><details class='soft'><summary>🗳️ Agency deepseek-v3.2</summary><h4 class="cc">## 落橋前</h4>
+<p>已消化 CLIENT DEBRIEF。團隊將嚴格跟從其方向：聚焦於<strong>真實香港中小企</strong>如何透過 HKTDC 服務，將政府「八大中心」、「高質量發展」政策轉化為個人事業成果，從而讓市民感受經濟活力與自身相關。避免離地、口號化，以務實、具信心的基調呈現。</p>
+<p>KV Poster 方向將融入以下創意概念，並預設主 slogan。</p>
+<p>---</p>
+<h4 class="cc">## 影像風格 (Style Direction)</h4>
+<p>採用 <strong>商業紀錄片 (Business Documentary)</strong> 風格。以手持自然光拍攝為主，營造真實在場感；穿插穩定器/軌道運動鏡頭捕捉展覽動態與城市脈搏。色調乾淨、銳利，略帶暖調以傳遞積極氛圍。節奏明快，利用 match cut 連接不同行業與場景。配樂選用帶有節奏感、富現代感的 Minimal Electronic 或 Indie Folk，避免交響樂的宏大敘事。</p>
+<p>`style_anchor: &quot;handheld verite, natural light, clean grade, match cut transitions, minimal electronic score, 16:9 cinematic&quot;`</p>
+<p>---</p>
+<h4 class="cc">## Slogan (畀 Raymond 揀)</h4>
+<p>1.  香港貿易發展局：幫你嘅生意，連通世界。</p>
+<p>2.  搵到路，HKTDC。</p>
+<p>3.  機遇，由我地帶你接上。</p>
+<p>4.  Trade with Hong Kong. Grow with Us. (英文備選)</p>
+<p>5.  香港企硬，我哋撐你。</p>
+<p>---</p>
+<h4 class="cc">## Concept 1: 佢嘅一單生意</h4>
+<p><strong>創作概念</strong>：不拍企業家「成功後」的風光，而是聚焦於他<strong>透過 HKTDC 解決單一難題的關鍵一刻</strong>。例如，一個本地醬料廠老闆首次透過 HKTDC 線上配對，與海外買家達成訂單。影片呈現這「一單生意」從無到有的過程，具體體現 HKTDC 作為「超級聯繫人」的價值，也讓觀眾看到經濟成果的起點。</p>
+<p><strong>人/景</strong>：一位中年本地醬料廠老闆（非演員，具真實感）在其荃灣舊式工場辦公室。場景包括：他對住電腦皺眉（難題）、HKTDC 顧問上門協助（過程）、與海外買家成功簽約的視訊畫面（成果）。</p>
+<p><strong>Visual Device</strong>：<strong>「一個不斷增長的數字」</strong>。畫面角落始終有一個簡潔的動態數字（如訂單金額、合作國家數），隨著主角每一步進展而跳動增加，視覺化「成果累積」。</p>
+<p><strong>主打口號</strong>：香港貿易發展局：由一單生意開始，接穩全球機遇。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用。堅持用真實中小企東主。</p>
+<p>---</p>
+<h4 class="cc">## Concept 2: 撐你出去</h4>
+<p><strong>創作概念</strong>：將 HKTDC 塑造成企業背後的「實戰教練」與「隊友」。影片跟拍一位香港初創科技公司（如環保科技）團隊，準備參加 HKTDC 主辦的國際創科展的全過程。呈現 HKTDC 提供的實務支援（如演練 Pitch、攤位設計建議、買家預約），強調<strong>不是提供場地，而是裝備企業贏得機會</strong>。</p>
+<p><strong>人/景</strong>：一隊 3-4 人的香港年輕初創團隊，在其共享工作室。場景包括：熬夜準備展品的混亂、HKTDC 工作坊的互動、展覽現場與國際投資者緊張交流的實況。</p>
+<p><strong>Visual Device</strong>：<strong>「工具箱 (Toolkit)」</strong>。將 HKTDC 的各項服務（市場報告、商貿配對、展覽平台）以簡潔動畫 icon 形式，在主角需要時如「工具」般彈出並應用於現實畫面，比喻其解決問題的功能性。</p>
+<p><strong>主打口號</strong>：搵到路，HKTDC。我哋撐你出去。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用。建議與真實本地初創合作。</p>
+<p>---</p>
+<h4 class="cc">## Concept 3: 呢度做起，世界接軌</h4>
+<p><strong>創作概念</strong>：採用強烈對比蒙太奇，將<strong>香港本地製作/研發的「微觀」場景</strong>，與<strong>透過 HKTDC 接觸的「宏觀」國際市場</strong>快速交織剪接。例如，老師傅在工場打磨一件產品特寫，切換至中東買家在展覽中拿起該產品的特寫；年輕設計師在深水埗布料市場，切換至巴黎時裝周後台模特穿著其設計。</p>
+<p><strong>人/景</strong>：多元化的香港製造者與設計師（時裝、食品、電子、專業服務）。場景穿梭於本地特色場地（工廈、街市、設計工作室）與國際化展會/商務場景。</p>
+<p><strong>Visual Device</strong>：<strong>「地理標籤 (Geo-Tag)」</strong>。每當產品或服務成功對接，畫面會出現一個簡潔的動態地理位置標籤（如「香港 → 杜拜」），並有一條光線連接兩地，視覺化「聯繫」與「出口」的路徑。</p>
+<p><strong>主打口號</strong>：香港製造，世界接軌。香港貿易發展局。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用。聚焦於無名英雄般的本地產業工作者。</p></details><details class='soft'><summary>🗳️ Agency claude-opus-4-8</summary><p># HKTDC 宣傳片 — Round 1 創意概念</p>
+<p>---</p>
+<h4 class="cc">## 落橋前(內部討論消化)</h4>
+<p>睇完 debrief,核心張力好清楚:政府要「政策落地證明」,但市民個 mindset 係「關我咩事?」、對官方「唱好」已經麻木。所以條片<strong>唔可以由政策落地,要由人(中小企老闆)落地、再倒返轉扣政策</strong>。Debrief 紅線講到明:唔好「一切完美」、唔好功勞歸個人、要有血有肉真人真事。</p>
+<p>我哋三個共識:<strong>贏在「真」,輸在「假大空」</strong>。要做到「框內最高質」——保留 ISD 要嘅穩重可信寫實,但用紀錄片質感 + 真老闆自己把口,拉開同舊片(陽光慢鏡大合照交響樂)嘅距離。HKTDC 嘅角色 device 要具體——唔係抽象「超級聯繫人」,係<strong>展覽攤位上嗰個訂單、嗰個握手、嗰個出口去到大灣區/一帶一路嘅貨櫃</strong>。</p>
+<p>明星:debrief 講明唔好功勞歸個人 + 公眾信真人真事多過官員/明星。所以我哋傾向<strong>素人真老闆做主角</strong>,唔用明星(下面 Concept 會講)。</p>
+<p>KV poster 方向:跟主 slogan + 真人 + 「香港製造/設計」嘅產品實物做主視覺。</p>
+<p>---</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>電影級紀錄片質感,唔做 corporate「sell 嘢片」。自然光為主(廠房窗光、會展現場頂光、辦公室晨光),手持鏡頭帶輕微呼吸感,真實在場感。色調偏暖、低飽和、保留香港街景同工場嘅原色,唔過度調色到「廣告假靚」。微距鏡頭影產品零件/標籤質感。Match cut 連接唔同行業同場景。配樂用 minimal electronic,有節奏但唔搶,留位畀環境聲(會展嘈雜人聲、機器聲)做 raw 在場感。手機 scroll 版本 kinetic typography 字幕主導,無聲都睇得明。</p>
+<p>`style_anchor: &quot;cinematic documentary, natural window light, handheld breathing camera, warm low-saturation grade, macro product texture, match-cut transitions, minimal electronic score, raw ambient trade-show sound, 16:9 cinematic&quot;`</p>
+<p>---</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1. <strong>「香港做得到,因為有人接通世界。」</strong></p>
+<p>2. <strong>「由香港出發,接通全世界 — HKTDC。」</strong></p>
+<p>3. <strong>「你嘅生意,我哋嘅戰場。」</strong></p>
+<p>4. <strong>「一張訂單,連住成個香港。」</strong></p>
+<p>5. <strong>「機遇喺度,我哋幫你接得住。」</strong></p>
+<p>6. <strong>「細公司,大世界 — HKTDC 同你一齊去。」</strong></p>
+<p>7. <strong>「唔係齋講優勢,係幫你做成單嘢。」</strong></p>
+<p>---</p>
+<h4 class="cc">## Concept 1:〈搞唔掂 → 搞得掂〉</h4>
+<p><strong>創作概念</strong>:跟住一個香港中小企老闆嘅真實心路——由「呢單做唔做得成?」嘅疑慮、測試失敗、視像會議斷線嘅狼狽,到喺 HKTDC 展覽接到第一張海外/大灣區訂單嘅一刻。唔遮掩過程嘅辛苦,先苦後甜,用真實人性反差頂走「一路向好」嘅離地感。HKTDC 唔係救世主,係實務上幫佢「接住」嗰個平台——直接扣 key message「實質行動協助中小企把握機遇」。</p>
+<p><strong>人/景</strong>:一個四十幾歲香港中小企老闆(例如做環保物料/智能醫療儀器),真實工場/細辦公室,趕工嘅疲憊面、測試枱、半夜對住 laptop;之後轉去會展 HKTDC 展覽攤位,同外國/內地買家傾、握手、簽單。</p>
+<p><strong>Visual Device</strong>:<strong>一件真產品由「半成品/測試失敗」到「貼上 Designed by Hong Kong 標籤、入箱、上貨櫃」</strong>——同一件嘢貫穿全片,具體化「高質量發展」由零到成。</p>
+<p><strong>主打口號</strong>:「唔係齋講優勢,係幫你做成單嘢。」</p>
+<p><strong>Proposed 明星/名人</strong>:不適用。Debrief 明言唔好功勞歸個人、公眾信真人多過明星;用真老闆素人現身說法,可信度最高,亦避紅線。</p>
+<p>---</p>
+<h4 class="cc">## Concept 2:〈一張訂單,連住成個香港〉</h4>
+<p><strong>創作概念</strong>:由會展一個「握手」特寫出發,鏡頭順住嗰張訂單一路追落去——拆解一單交易背後牽動幾多香港人:設計師、工場師傅、物流、後生 fresh grad……證明 HKTDC 接通嘅唔止係一間公司,而係<strong>一條本地經濟鏈、一班普通市民嘅飯碗同機會</strong>,正面回應觀眾「關我咩事?」嘅核心痛點。</p>
+<p><strong>人/景</strong>:開場會展中心 HKTDC 展覽現場,raw 環境聲(廣播、人聲、機器聲)先聲奪人;一個香港老闆同外國買家握手簽單。然後 match cut 順條鏈走:設計工作室、廠房師傅、貨運倉、寫字樓後生仔——全部真香港人、真場景。</p>
+<p><strong>Visual Device</strong>:<strong>重複快切嘅「握手」特寫</strong>(跨種族、跨行業、跨場景:攤位、會議室、晚宴)做節奏錨;一條訂單/一條線串連由會展到街坊飯碗,visualize「超級聯繫人」點樣 trickle down 到普通人。</p>
+<p><strong>主打口號</strong>:「一張訂單,連住成個香港。」</p>
+<p><strong>Proposed 明星/名人</strong>:不適用。主角係一整條經濟鏈上嘅真香港人(老闆 + 工人 + 後生),用群像真實感取代明星,先扣到「惠及市民」。</p>
+<p>---</p>
+<p><strong>內部備註畀 Raymond</strong>:兩個 concept 都守得住紅線(無政治、無吹捧、無個人英雄、無負面收尾)。Concept 1 強在「一個人嘅故事」夠深、夠戲、易做 60 秒長版;Concept 2 強在「關我咩事」答得最直接、群像感闊、30 秒 TVC 同 KV 都易出。揀中邊個我哋即刻 develop 12 格。</p></details><details class='soft'><summary>🗳️ 委員會 20260604-214216</summary><p># HKTDC API — Round 1 初步創意概念(CD 收斂)</p>
+<p>睇晒共創。文案 5 粒種子 + 美術 4 個 Visual Device + 兩邊私心推薦,撞點高度一致:<strong>種子 1（差啲執→上船）× 框中框</strong> 同 <strong>種子 4（原來唔係幫大公司）× 微距指尖</strong>。策略張力都係指住「觸得到嘅希望感」+「show 結果」。我收兩個方向,一個走戲劇張力(翻轉),一個走職人溫度(微觀),畀 Raymond 揀。</p>
+<p>兩個都守紅線:聚焦經濟商貿、唔歸功個人、唔離地、唔負面描寫(困境只做轉捩點對照,唔渲染)、唔踩中環 high-floor 維港伏。</p>
+<p>---</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>- 媒介:電影 film_still(實拍質感,anamorphic 淺景深)</p>
+<p>- 流派:中性(唔玩年代風格,靠真實感行先)</p>
+<p>- 燈光:硬光 + 現場實用光(枱燈/螢幕光/工場燈,唔用影樓柔光呃靚)</p>
+<p>- 色調:大地灰調(務實、唔過份光鮮,守「避免吹捧」紅線)</p>
+<p>- 菲林:35mm 顆粒(有機質感、汗水感、唔似官方 4K 拋光)</p>
+<p>- 鏡頭:自然紀實 35mm 為主 + 微距 extreme close-up 做鈎</p>
+<p>- 情緒:gritty 寫實 → 收結轉暖窩心(先汗後光)</p>
+<p>- 比例:16:9</p>
+<p>`style_anchor: &quot;cinematic film still, anamorphic, shallow depth of field, hard directional light with practical sources, muted earthy desaturated tones, 35mm film grain organic texture, natural documentary framing 35mm with macro extreme close-up, gritty raw realistic mood turning warm heartfelt, 16:9 cinematic&quot;`</p>
+<p>---</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1. 由差啲執笠,到落唔切單。</p>
+<p>2. 你出力,我哋出橋。</p>
+<p>3. 香港仔嘅嘢,行到去全世界。</p>
+<p>4. 原來唔係淨係幫大公司。</p>
+<p>5. 困住你嘅框,變成通向世界嗰道窗。</p>
+<p>6. 細生意,大舞台。</p>
+<p>7. 一張卡片,搭起一條橋。</p>
+<p>8. 香港做得到,因為有人陪你做。</p>
+<p>---</p>
+<h4 class="cc">## Concept 1:〈框・窗〉</h4>
+<p><strong>創作概念</strong>:用「框中框」視覺貫穿全片——前半段中小企老闆被觀塘工廈嘅鐵窗框住,構圖侷促陰暗,個「框」代表壓力同死症;一個 match-cut,同一構圖比例變成貨櫃碼頭吊臂嘅鐵框,光打穿個框、通向海平線。同一個「框」由困住佢變成送世界畀佢嘅窗。HKTDC 就係幫佢將框翻轉嗰隻手——平視陪跑,唔搶 credit。硬訊息:抽象嘅「高質量發展、國際商貿樞紐」收細成一個睇得明嘅空間翻轉,證明政策正喺度落實。</p>
+<p><strong>人/景</strong>:一個傳統行業或設計轉型嘅中小企老闆(夫妻檔/三五人 startup);景由觀塘工廈窗邊、雜亂工場,match-cut 去 HKTDC 展覽會攤位,再到葵青貨櫃碼頭出貨。</p>
+<p><strong>Visual Device</strong>:<strong>Frame-within-a-frame 框中框翻轉</strong>——同一構圖、同一比例,由「困住人嘅鐵窗」match-cut 成「通往海平線嘅貨櫃框」,一個 cut 講完成個轉捩點。</p>
+<p><strong>主打口號</strong>:困住你嘅框,變成通向世界嗰道窗。</p>
+<p><strong>Proposed 明星/名人</strong>:不適用。本片說服力來源係真人真事中小企老闆,用素人/真實案例平視自白,反而比明星更守「真實感、唔離地」紅線。</p>
+<p>---</p>
+<h4 class="cc">## Concept 2:〈手感〉</h4>
+<p><strong>創作概念</strong>:全片拒絕「成功人士企喺維港前」嘅中景 pose,改用極致微距——老師傅佈滿機油老繭嘅指尖摸過 prototype 邊緣、設計師指甲邊嘅墨漬、HKTDC 職員遞卡片時手指嘅力度。將「中小企」由「規模」還原做「手藝」同「溫度」,直接破「貿發局淨係幫大公司」嘅 misconception。每一道磨損都係生意嘅證據,而呢隻手嘅嘢,最後印上「Designed by Hong Kong」標籤,行到去全世界。硬訊息:「高質量發展」唔靠數據堆砌,靠睇得到嘅手感同質量。</p>
+<p><strong>人/景</strong>:微型生意主角——師傅、年輕設計師、樓上舖夫妻檔;景係佈滿 post-it 嘅舊木枱、散亂樣辦、枱燈光下嘅雙手,再接 HKTDC 展覽現場一次握手 / 遞卡。</p>
+<p><strong>Visual Device</strong>:<strong>Tactile Macro 觸感微距</strong>——成片以指尖、紋理、磨損、產品零件嘅 extreme close-up 串成,「大公司講數據,我哋講手感」,用「細」做美學優勢。</p>
+<p><strong>主打口號</strong>:原來唔係淨係幫大公司。</p>
+<p><strong>Proposed 明星/名人</strong>:不適用。微距職人路線靠真實手藝同溫度,用明星會即刻假、即刻離地,反而破壞「手感」核心。</p>
+<p>---</p>
+<p><strong>CD 註</strong>:兩條都係 30&quot;/60&quot; 可拍、KV 可出(C1 出框中框翻轉一格定影;C2 出指尖微距 + Made by HK 標籤)。Raymond 揀中邊條,我先 develop full 12 格 board、英文稿、Radio、KV main idea。Mandatories(HKTDC 正名 / 超級聯繫人定位 / ISD 片頭尾 / 飛龍標 / hktdc.com CTA / 三語版本)full board 階段一次過鋪。</p></details><details class='soft'><summary>🗳️ 委員會 20260604-213919</summary><p># HKTDC「做好香港」— 初步創意概念(Round 1 篩選)</p>
+<p>CD 收斂備註:睇晒共創 5 粒語言種子 + 4 粒視覺種子,加全部批評。最強嗰幾粒收斂落兩個概念 —— 一個主打「人 × 過程」嘅情感真實路線(避開離地紅線、滿足真人真事 mandatory),一個主打「視覺鈎 × 政策睇得見」嘅高概念路線(框內最高質、同 ISD 舊片拉開距離)。兩條都扣硬訊息「HKTDC 用實質行動,助港企接通新機遇,鞏固經濟惠及市民」,且片尾全部 mandatory 後期補。</p>
+<p>---</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>收斂自美術 Look,兩個 concept 共用同一套寫實電影紀錄片底,確保穩重可信、又有人情味,避免「fake commercial glow」。</p>
+<p>- <strong>媒介</strong>:電影感寫實實拍(cinematic film still,淺景深)</p>
+<p>- <strong>流派/年代</strong>:中性(唔玩 retro / cyberpunk,守政府穩重底)</p>
+<p>- <strong>燈光</strong>:暖金光 golden-hour 為主,夜場補體積光(光做敘事工具)</p>
+<p>- <strong>色調</strong>:暖琥珀懷舊輕調 + 局部去飽和保 real 質感</p>
+<p>- <strong>菲林</strong>:35mm 顆粒(有機質感,反 plastic 商業感)</p>
+<p>- <strong>鏡頭</strong>:自然紀實 35mm 為主 baseline,微距打產品細節</p>
+<p>- <strong>情緒</strong>:暖窩心 × gritty 寫實之間(先苦後甜)</p>
+<p>- <strong>比例</strong>:16:9</p>
+<p>`style_anchor: &quot;cinematic film still, shallow depth of field, warm golden-hour sunlight long soft shadows, warm amber nostalgic grade with desaturated gritty realistic tones, 35mm film grain organic texture, natural documentary framing 35mm with macro extreme close-up, warm heartfelt uplifting mixed with gritty raw realistic mood, 16:9 cinematic&quot;`</p>
+<p>---</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1. <strong>搞得掂,因為有人撐到掂。</strong></p>
+<p>2. <strong>做好香港,由一張單做起。</strong></p>
+<p>3. <strong>世界好大,而家睇緊呢張枱。</strong></p>
+<p>4. <strong>香港,正設計緊下一個答案。</strong></p>
+<p>5. <strong>生意冇話次次順,最緊要有人喺度。</strong></p>
+<p>6. <strong>由你敢試嗰下,香港就接住你。</strong>(英:Hong Kong&#x27;s got your next move.)</p>
+<p>7. <strong>接通世界,撐起香港。</strong></p>
+<p>---</p>
+<h4 class="cc">## Concept 1:《搞得掂之前》(Before the Handshake)</h4>
+<p><strong>創作概念</strong>:全片聚焦一次成功商貿配對「握手」之前嘅真實掙扎 —— 中小企老闆 R&amp;D 撞板、通宵改 plan、視像會議斷線嘅尷尬。HKTDC 唔做主角,而係喺暗處遞市場數據、搭橋介紹專家、安排會議,扶佢行到最後一步。用「先苦後甜」嘅人性真實感,直接答到觀眾個「關我咩事?」—— 因為佢哋搞得掂,香港經濟先搞得掂、機會先落到普通人身上。完美對應策略「做好香港」+「沉默賦能者」品牌角色,亦避開「一切完美」紅線。</p>
+<p><strong>人/景</strong>:真實香港中小企老闆 / 初創年輕人(非演員質感),喺自己嘅工場、實驗室、細辦公室;穿插 HKTDC 大型展覽現場、視像會議連線海外買家。</p>
+<p><strong>Visual Device</strong>:<strong>【光的接力棒】</strong> —— 一束暖光由深夜廠房檯燈出發,流過電腦屏幕像素,變成展覽館射燈,最後落喺買家瞳孔。光到之處 = HKTDC 賦能;光未到嘅暗位 = 企業家獨自捱嘅 real 質感。全片用一道「光路」引導視線,光係暖嘅、環境係粗糲真實嘅。</p>
+<p><strong>主打口號</strong>:搞得掂,因為有人撐到掂。</p>
+<p><strong>Proposed 明星/名人</strong>:<strong>不適用</strong>(刻意用真實中小企素人,以符合「真人真事 &gt; 官員發言」洞察 + 紅線「唔好歸功個人」。HKTDC 高層只可作政策旁述角色,唔做臉。)</p>
+<p>---</p>
+<h4 class="cc">## Concept 2:《香港設計緊 ____》(Hong Kong is Designing ____)</h4>
+<p><strong>創作概念</strong>:用一條「填空題」做全片視覺主軸。快速跳接香港產品微距鏡頭 —— 晶片、布料纖維、app 介面、環保物料、醫療儀器零件 —— 但唔即刻開估係咩。畫外音係唔同創業者嘅真實聲音講理念,最後先揭曉:呢啲就係香港正設計緊嘅智能醫療、環保時裝、金融科技。將抽象嘅「高質量發展」「國際商貿中心」變成睇得見、估得到嘅懸念,把政策「視覺化」,同 ISD 舊式大合照交響樂路線徹底拉開。</p>
+<p><strong>人/景</strong>:多元產業香港創業者(設計師、工程師、傳統行業轉型者)嘅手與面;設計工作室、無塵車間、碼頭、展覽攤位;海外市場用視像 / 貨櫃暗示。</p>
+<p><strong>Visual Device</strong>:<strong>【透明的工藝層】</strong> —— 多重曝光 / 玻璃疊加,同一畫框內成品光鮮表面之下,重疊住工程師沾油污嘅手、改過 30 版嘅草圖、測試失敗碎片。配合 kinetic typography 將「填空題」答案逐格揭開,「看見不可見」,把「做」字視覺化。</p>
+<p><strong>主打口號</strong>:香港,正設計緊下一個答案。</p>
+<p><strong>Proposed 明星/名人</strong>:<strong>不適用</strong>(同樣行素人創業者真聲路線,保住真實可信底。如客戶後期堅持要 anchor,可考慮一位低調務實嘅本地工業 / 設計界 KOL 做最後一句畫龍點睛,但非必要。)</p>
+<p>---</p>
+<p><strong>CD 揀邊個建議</strong>:Concept 1 情感厚、最穩陣食政府「真人真事 + 穩重」慣性;Concept 2 視覺新、最易做到「框內最高質、唔似翻炒」。兩條共用同一 style anchor,Raymond 揀中邊條,先 develop full 12 格 board + KV + 中英 / 普通話稿 + Radio。</p></details></details></details></section><section id='top3'><details class='soft sec' open><summary>🏆 三甲 · 評分頭三(可揀三甲以外)</summary><p class='hint'>三甲 = 評審團按官方 marking scheme 總分頭三。你可揀三甲以外(見「🗂️ 候選池」每個都有「轉 brd」掣)。</p><div class='card t3'><div class='t3head'><span class='medal'>🥇</span><span class='t3score'>86.3/100</span></div><div class='t3name'>[委員會 213919] Concept 1:《搞得掂之前》(Before the Handshake)</div><div class='t3act'><a class='btn cta' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cm7967003e&stage=board'>🎨 轉 brd 生圖</a> <a class='lnk' href='#cand-cm7967003e'>睇完整概念 ↓</a></div></div><div class='card t3'><div class='t3head'><span class='medal'>🥈</span><span class='t3score'>86.2/100</span></div><div class='t3name'>[委員會 213919] Concept 2:《香港設計緊 ____》(Hong Kong is Designing ____)</div><div class='t3act'><a class='btn cta' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cm4cdc0529&stage=board'>🎨 轉 brd 生圖</a> <a class='lnk' href='#cand-cm4cdc0529'>睇完整概念 ↓</a></div></div><div class='card t3'><div class='t3head'><span class='medal'>🥉</span><span class='t3score'>86.0/100</span></div><div class='t3name'>[委員會 214216] Concept 1:〈框・窗〉</div><div class='t3act'><a class='btn cta' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=HKTDC&cid=cm80fdd1ec&stage=board'>🎨 轉 brd 生圖</a> <a class='lnk' href='#cand-cm80fdd1ec'>睇完整概念 ↓</a></div></div><details class='soft'><summary>🎯 CD 推薦理由 + polish</summary><p>確認評分頭三（官方 marking scheme）：</p>
+<p>1. [委員會 213919] Concept 1：《搞得掂之前》— 86.3  </p>
+<p>   強在：緊貼「Before the Handshake」brief，創意力以「未握手」為切入點，阻嚇力高（直接點出失敗風險），記憶點強（視覺上易做反差），落客成功率高（可延伸至多種行業）。  </p>
+<p>   Polish 方向：把「掂唔掂」嘅視覺反差再放大，加入更多真實失敗案例增加說服力。</p>
+<p>2. [委員會 213919] Concept 2：《香港設計緊 ____》— 86.2  </p>
+<p>   強在：以開放式填空句式，創意力高（可隨不同行業即時轉換），阻嚇力中上（隱含「唔設計就落後」），記憶點極強（一句 slogan 即記住），落客成功率高（幾乎零轉化難度）。  </p>
+<p>   Polish 方向：加入「設計緊」嘅動態視覺或聲音元素，令填空更有參與感。</p>
+<p>3. [委員會 214216] Concept 1：〈框・窗〉— 86.0  </p>
+<p>   強在：以「框」與「窗」嘅雙關，創意力高（視覺語言強），阻嚇力中（暗示唔出海就只係一格），記憶點清晰（單一符號），落客成功率中上（可做跨媒體延伸）。  </p>
+<p>   Polish 方向：加強「窗」嘅光影或通透感，令視覺更具國際感。</p>
+<p>額外 flag（低分但值得留意）：</p>
+<p>- [Agency grok-4.3] Concept 1：失敗鏡頭（76.9）  </p>
+<p>  雖然分數偏低，但「失敗鏡頭」嘅概念反差強，阻嚇力高，若能優化執行或許有爆發力，建議 Raymond 留意。</p></details></details></section><section id='lookback'><details class='soft sec' ><summary>👀 睇返區 · 冇進級嘅 idea(永遠睇得返)</summary><p class='hint'>每輪冇進級嘅 idea 會自動歸檔喺度,<b>永遠睇得返、隨時撳「⤴️ 升級」補生返上嚟</b>。(funnel 狀態機上線後填充)</p></details></section><section id='slogan'><details class='soft sec' ><summary>💬 Slogan 揀(第一 hard gate)</summary><p class='hint'>各來源 slogan(已去重)。揀好嘅 slogan 由你填入 Master GSheet(AI 唔掂 master 檔)。</p><div class='slogrp'><div class='lab'>Agency qwen3.7-max</div><ul class='slolist'><li>1. 落場至知真章，HKTDC 撐你接通世界</li><li>2. 唔講理論講實戰，HKTDC 幫你搵出路</li><li>3. 由一個位到一張單，HKTDC 全程實幹</li><li>4. 機會唔靠等，HKTDC 主動幫你爭</li><li>5. 連接世界靠行動，HKTDC 實實在在</li></ul></div><div class='slogrp'><div class='lab'>Agency kimi-k2.6</div><ul class='slolist'><li>1. 你搞唔掂嘅，佢幫你搞掂</li><li>2. 香港仔嘅單，做到全世界</li><li>3. 小舖頭，大世界</li><li>4. 一個展櫃，半路生意</li><li>5. HKTDC 幫你接軌</li><li>6. 香港製造，世界認證</li><li>7. 唔係大孖嘢先做得出</li><li>8. 有人幫你開門</li></ul></div><div class='slogrp'><div class='lab'>Agency grok-4.3</div><ul class='slolist'><li>- 香港企，世界識</li><li>- 一握手，訂單就到</li><li>- HKTDC 由你企到全世界</li><li>- 唔使行勻，HKTDC 已經幫你接通</li><li>- 香港優勢，HKTDC 即刻落實</li></ul></div><div class='slogrp'><div class='lab'>Agency gpt-5.2</div><ul class='slolist'><li>1. **「生意要出海？香港貿易發展局幫你接通。」**</li><li>2. **「唔止講機遇，香港貿易發展局帶你做到。」**</li><li>3. **「由香港出發，連到全世界。」** (From Hong Kong, to the world)</li><li>4. **「搵市場、搵拍檔、搵出路——交畀 HKTDC。」**</li><li>5. **「香港貿易發展局：做你嘅超級聯繫人。」**</li><li>6. **「一握手，生意就到位。」**</li><li>7. **「幫中小企打開新市場。」**</li></ul></div><div class='slogrp'><div class='lab'>Agency gemini-2.5-pro</div><ul class='slolist'><li>1.  香港貿發局：撐你生意，通達商機。</li><li>2.  機遇，我哋幫你捉到。 (Opportunity, Made Possible.)</li><li>3.  香港接通世界，生意通達全球。</li><li>4.  每一個香港製造，連繫每一個未來。</li><li>5.  行前一步，世界就係你主場。</li></ul></div><div class='slogrp'><div class='lab'>Agency deepseek-v3.2</div><ul class='slolist'><li>1.  香港貿易發展局：幫你嘅生意，連通世界。</li><li>2.  搵到路，HKTDC。</li><li>3.  機遇，由我地帶你接上。</li><li>4.  Trade with Hong Kong. Grow with Us. (英文備選)</li><li>5.  香港企硬，我哋撐你。</li></ul></div><div class='slogrp'><div class='lab'>Agency claude-opus-4-8</div><ul class='slolist'><li>1. **「香港做得到,因為有人接通世界。」**</li><li>2. **「由香港出發,接通全世界 — HKTDC。」**</li><li>3. **「你嘅生意,我哋嘅戰場。」**</li><li>4. **「一張訂單,連住成個香港。」**</li><li>5. **「機遇喺度,我哋幫你接得住。」**</li><li>6. **「細公司,大世界 — HKTDC 同你一齊去。」**</li><li>7. **「唔係齋講優勢,係幫你做成單嘢。」**</li></ul></div><div class='slogrp'><div class='lab'>委員會 20260604</div><ul class='slolist'><li>1. 由差啲執笠,到落唔切單。</li><li>2. 你出力,我哋出橋。</li><li>3. 香港仔嘅嘢,行到去全世界。</li><li>4. 原來唔係淨係幫大公司。</li><li>5. 困住你嘅框,變成通向世界嗰道窗。</li><li>6. 細生意,大舞台。</li><li>7. 一張卡片,搭起一條橋。</li><li>8. 香港做得到,因為有人陪你做。</li></ul></div><div class='slogrp'><div class='lab'>委員會 20260604</div><ul class='slolist'><li>1. **搞得掂,因為有人撐到掂。**</li><li>2. **做好香港,由一張單做起。**</li><li>3. **世界好大,而家睇緊呢張枱。**</li><li>4. **香港,正設計緊下一個答案。**</li><li>5. **生意冇話次次順,最緊要有人喺度。**</li><li>6. **由你敢試嗰下,香港就接住你。**(英:Hong Kong&#x27;s got your next move.)</li><li>7. **接通世界,撐起香港。**</li></ul></div></details></section><section id='5w1h'><details class='soft sec' ><summary>💭 5W1H 創意 provocation(加咩 element / 風格)</summary><p class='hint'>9 條尖問題,逼 agency 諗「加咩 element / adapt 咩風格」,落橋前消化(取代報告體 debrief 做創意 spark)。</p><p># 5W1H 創意 Provocation — HKTDC</p>
+<h4 class="cc">### WHO — 對邊個講 + 佢而家點</h4>
+<p>- Q1 如果呢個 message 只可以打動「最唔關心、最 cynical」嗰個觀眾 —— 要加咩一個 element(畫面/聲/人物/情境)先 3 秒內 hook 住佢、令佢唔 skip?</p>
+<p>→ 加入大型國際展覽會現場極度嘈雜、未經修飾嘅環境聲 (人聲、廣播、機器聲) 做 opening sound design,先聲奪人,呈現一種 raw、非官方嘅在場感。</p>
+<p>- Q2 呢班受眾平時食開咩視聽語言(平台/節奏/語氣)?要 adapt 邊種佢熟悉嘅風格,先入到腦而唔似「政府嘢」?</p>
+<p>→ Adapt 商業資訊類 YouTube channel 嘅風格: 快切換嘅 B-roll、motion graphic 數據圖表、配合講話節奏嘅 pop-up 關鍵字字幕,令資訊傳遞更爽快、更易入口。</p>
+<h4 class="cc">### WHAT — 收窄到一個 + 證據</h4>
+<p>- Q3 成個 campaign 只准觀眾記住一個 element(一個畫面 / 一個 visual device / 一句)—— 你揀咩?點解係佢?</p>
+<p>→ 一個不斷重複、快速剪接嘅「握手」特寫 visual device,橫跨唔同種族、行業同場景(展覽攤位、會議室、晚宴),因為佢最直觀體現 HKTDC「超級聯繫人」嘅核心功能。</p>
+<p>- Q4 客戶 key message 好抽象,要用咩具體 element(真場面/真數字/真人/真物)去「show 唔 tell」,令佢落地、唔流口號?</p>
+<p>→ 用一件真實、由香港中小企研發並透過 HKTDC 平台成功出口嘅「產品」(e.g. 智能醫療儀器、環保物料) 嘅微距鏡頭,由零件組裝到印上「Made in/Designed by Hong Kong」標籤,具體化「高質量發展」。</p>
+<h4 class="cc">### WHY — 點解信 + 情感</h4>
+<p>- Q5 觀眾點解要信 / 關佢事?要加咩證據 element 或情感共鳴 element,先由「事不關己」變「同我有關」?</p>
+<p>→ 加入一個真實中小企老闆 / 初創年輕人,喺佢哋真實嘅辦公室 / 工場環境中,用佢哋自己嘅語言(唔係官方稿)講述一次「搞唔掂」到「搞得掂」嘅經歷,強調 HKTDC 係實務上嘅支援者。</p>
+<h4 class="cc">### WHEN / WHERE — 出街情境</h4>
+<p>- Q6 呢條嘢實際喺邊度、咩狀態被睇到(電視 prime / 車廂無聲 / 手機 scroll / 戶外經過)?要 adapt 咩風格(有聲冇聲 / 首 3 秒 / 大字 / 節奏)先食到當下情境?</p>
+<p>→ 針對手機 scroll 無聲情境,adapt 字幕主導嘅敘事風格,將關鍵信息(e.g. 「幫中小企」、「接通大灣區」)用全螢幕、設計過嘅動態大標題 (kinetic typography) 呈現,確保無聲都睇得明。</p>
+<p>- Q7 出街時間(事件前/中/後)decide 調子係「預告期待」定「總結成就」?要加咩 element 配合呢個時間感?</p>
+<p>→ 配合 2025 年施政報告發表後,調子應為「落實執行」。加入 HKTDC 主席或行政總裁喺施政報告發表後嘅真實工作場景 (e.g. 內部會議、巡視展覽籌備),呈現「即時行動」嘅時間感。</p>
+<h4 class="cc">### HOW — 風格 + 差異化</h4>
+<p>- Q8 同類(同部門/同題材)政府片嘅「安全做法」係咩?要 adapt / 升級邊種風格 element(質感/節奏/transition/配樂/美術流派),先做到「框內最高質」而唔悶?</p>
+<p>→ 安全做法係陽光感、慢鏡、大合照配交響樂。要升級,可 adapt 電影級紀錄片質感: 自然光、手持鏡頭嘅輕微呼吸感、用 match cut transition 連接唔同行業,配樂改用簡約、有節奏感嘅電子音樂 (minimal electronic)。</p>
+<p>- Q9 要加咩一個 unexpected element(反差/新 visual device/新手法),先同部門過往 campaign 拉開距離、唔似翻炒,但又唔踩紅線?</p>
+<p>→ 加入一個「失敗鏡頭」嘅 montage,例如產品測試失敗、視像會議斷線、趕工嘅疲憊表情,然後先轉到成功嘅畫面,用「先苦後甜」嘅反差感,取代傳統「一路向好」嘅平鋪直敘,增加真實人性。</p></details></section><section id='ref'><details class='soft sec' ><summary>📌 重要資料(GDrive · B/D/P)</summary><div class='card ref'><a class='btn drive' target='_blank' href='https://drive.google.com/drive/folders/1IFOmaB7ciBtTUpihpjo9xAwUzN9LF5P5'>📁 Project GDrive folder</a><div class='stats'><div class='stat'><div class='stat-l'>🗣️ Briefing</div><div class='stat-v'>2026-06-18 00:00 </div></div><div class='stat'><div class='stat-l'>⏰ Deadline</div><div class='stat-v'>2026-06-04 17:00 <span class='cd over'>已過 0 日</span></div></div><div class='stat'><div class='stat-l'>🎤 Presentation</div><div class='stat-v muted'>未定</div></div></div></div></details></section><section id='debrief'><details class='soft sec' ><summary>📝 Internal Creative Debrief(事實參考)</summary><p class='hint'>策略總監消化晒標書 + Perplexity 研究 + 官方用字 + ISD,出呢份 brief。各 agency / 委員會跟住佢落橋(逼唔離地)。</p><p>好的，收到。作為策略總監，我會消化所有資料，並戴上客戶（香港政府部門）的帽子，為創意團隊準備一份清晰、具指導性但絕不越界的內部簡報。</p>
+<p>---</p>
+<p># Internal Debrief — HKTDC · HKTDC</p>
+<h4 class="cc">## 1. 背景 Background(點解客戶要做呢條片)</h4>
+<p>客戶（政府）的動機源於最新的政策脈絡。行政長官在 <strong>2025 年《施政報告》</strong>中，重點提出要鞏固香港的「八大中心」定位，並推動「高質量發展」。香港貿易發展局（HKTDC）作為政府資助的法定機構，其角色在此刻變得非常關鍵——它不僅是一個貿易推廣組織，更是<strong>政府落實宏觀經濟政策的「執行者」和「實證」</strong>。</p>
+<p>在後疫情時期及複雜的地緣政治環境下，外界對香港營商環境存在疑慮。因此，政府需要藉 HKTDC 的實際工作，向本地市民和國際社會展示：香港的商貿樞紐地位依然穩固，並正積極融入國家發展大局（如大灣區、一帶一路），為本地企業（特別是中小企）創造實質機遇。這條片的目的，就是要將抽象的政策，轉化為市民看得見、感受得到的經濟活動和成果。</p>
+<h4 class="cc">## 2. 客戶要達到乜 Objective</h4>
+<p>1.  <strong>政策落地具體化</strong>：將《施政報告》中關於「國際商貿中心」及「高質量發展」的宏觀政策，透過 HKTDC 的工作實例，向公眾證明政府的政策正在有效執行，並非空談。</p>
+<p>2.  <strong>重塑信心</strong>：對內，讓香港市民（特別是中小企、年輕人）看到香港經濟的機遇所在；對外，鞏固國際商界對香港作為「超級聯繫人」及可靠營商平台的信心。</p>
+<h4 class="cc">## 3. 客戶想 reach 邊個 Audience</h4>
+<p><strong>主要受眾：香港普羅大眾</strong></p>
+<p>他們對政府的宏大政策口號（如「八大中心」）普遍感到遙遠甚至麻木。他們更關心實際的經濟前景、就業機會和個人發展。他們可能認為 HKTDC 只服務大企業，與自己無關。目前他們對「官方宣傳」抱持一定程度的懷疑，需要看到真實、貼身的故事才能被說服。</p>
+<p><strong>次要受眾：本地中小企、初創企業</strong></p>
+<p>他們是 HKTDC 的核心服務對象，需要知道 HKTDC 能提供哪些與時並進的實質幫助，以應對當前的經濟挑戰。</p>
+<h4 class="cc">## 4. 客戶想傳嘅 Key Message</h4>
+<p><strong>一句客戶要受眾收到嗰個訊息，唔係 slogan：</strong></p>
+<p>「香港貿易發展局正透過實質行動，協助本地企業(尤其係中小企)把握國家同國際新機遇，從而鞏固香港經濟，惠及市民。」</p>
+<h4 class="cc">## 5. 客戶 / 受眾洞察(事實,唔係創意)</h4>
+<p>*   <strong>客戶洞察</strong>：政府視 HKTDC 為一個重要的「政策工具」和「成功案例」。他們需要 HKTDC 的故事去證明其施政方向的正確性及有效性。因此，客戶會期望影片能清晰地將 HKTDC 的工作與政府的頂層設計扣連起來。</p>
+<p>*   <strong>受眾洞察</strong>：公眾對「香港優勢」的宏大敘事已感到疲勞。他們的核心痛點是「關我咩事？」。一條成功的宣傳片，必須回答這個問題——即 HKTDC 的工作如何最終轉化為市民的就業機會、更廣闊的市場、或更好的生活品質。他們對「真人真事」的信任度遠高於官員發言或純粹的願景式畫面。</p>
+<h4 class="cc">## 6. 客戶嘅期望 + 紅線(政府客慣性)</h4>
+<p>*   <strong>期望調性 (Tone &amp; Manner)</strong>：</p>
+<p>    *   <strong>正面、務實、有信心 (Positive, Pragmatic, Confident)</strong>：要展現香港的活力和機遇，但必須建基於事實，避免過份樂觀或流於口號式的「唱好」。</p>
+<p>    *   <strong>國際感與本地連結並重</strong>：畫面需要有國際視野，但故事核心必須與香港本地企業和市民緊扣。</p>
+<p>    *   <strong>專業、可靠</strong>：作為政府資助的法定機構，整體感覺必須穩重、可信，不能過於花巧或輕浮。</p>
+<p>*   <strong>紅線 (Rejection Zone)</strong>：</p>
+<p>    *   <strong>避免政治化或爭議性解讀</strong>：嚴禁觸及任何可能引起政治爭議的議題。所有內容必須聚焦於經濟和商貿層面。</p>
+<p>    *   <strong>避免過度吹捧或「離地」</strong>：切忌塑造「一切完美」的假象。研究資料已指出，公眾對此類宣傳極為反感。故事必須有血有肉，具真實感。</p>
+<p>    *   <strong>避免將功勞歸於個人</strong>：宣傳重點是「機構」和「政策」的成功，而非任何單一官員或個人。即使有官員出鏡，亦應以闡述政策的角色出現。</p>
+<p>    *   <strong>避免負面描寫</strong>：不應直接呈現香港經濟面臨的困難或挑戰，而是聚焦於「如何透過 HKTDC 應對挑戰、把握機遇」。</p>
+<h4 class="cc">## 7. 必跟 Mandatories</h4>
+<p>*   <strong>官方正名</strong>：必須使用「<strong>香港貿易發展局</strong>」或其英文全稱「<strong>Hong Kong Trade Development Council</strong>」及簡稱「<strong>HKTDC</strong>」。</p>
+<p>*   <strong>角色定位</strong>：在適當時候需體現其作為「<strong>國際商貿樞紐</strong>」及「<strong>超級聯繫人</strong>」的角色。</p>
+<p>*   <strong>標誌與結尾畫面</strong>：片尾必須清晰展示 HKTDC 官方標誌、政府新聞處 (ISD) 片頭/片尾、以及香港品牌「亞洲國際都會」的飛龍標誌。</p>
+<p>*   <strong>CTA (Call to Action)</strong>：片尾需引導觀眾瀏覽 HKTDC 官方網站 `hktdc.com`。</p>
+<h4 class="cc">## 8. Deliverables(客戶要交咩)</h4>
+<p>*   1 x 30秒 電視宣傳片 (TV API)</p>
+<p>*   1 x 60秒 完整版（供網上及社交媒體使用）</p>
+<p>*   1 x 主視覺海報 (Key Visual Poster)</p>
+<p>*   語言版本：廣東話、普通話、英文（配音及字幕）</p>
+<h4 class="cc">## 9. 釐清(5W1H + 度身,純事實/方向,唔好出 idea)</h4>
+<p>*   <strong>Who (主角是誰?)</strong></p>
+<p>    A: 主角應是<strong>受惠於 HKTDC 服務的香港企業代表</strong>，特別是中小企、初創或傳統行業成功轉型的案例。他們的故事是證明政策有效的最佳載體。政府或 HKTDC 代表可作為旁述或專家角色出現，用以提供宏觀背景。</p>
+<p>*   <strong>What (要展示什麼內容?)</strong></p>
+<p>    A: 展示 HKTDC 的<strong>核心職能如何轉化為商業成果</strong>。例如：透過參加大型展覽接到國際訂單、利用商貿配對服務找到合作夥伴、運用市場研究報告開拓新市場（如大灣區、一帶一路國家）。重點是展示「過程」與「結果」。</p>
+<p>*   <strong>When (時間設定?)</strong></p>
+<p>    A: 必須反映<strong>當下和未來</strong>。故事背景應是 2025 年《施政報告》發表後，香港積極尋求新發展的現況。要有前瞻性，展示的是正在發生的機遇。</p>
+<p>*   <strong>Where (場景在哪裡?)</strong></p>
+<p>    A: 場景需多元化，以突顯「聯繫世界」的角色。應包括：<strong>香港</strong>的辦公室/廠房/設計工作室、HKTDC 舉辦的<strong>大型國際展覽會現場</strong>（如會展中心）、以及象徵<strong>海外市場</strong>的場景（可透過視像會議、貨運等畫面暗示）。</p>
+<p>*   <strong>Why (為何觀眾要相信?)</strong></p>
+<p>    A: 因為我們將會用<strong>真實的香港企業案例</strong>來說話。影片的說服力來源於真人真事，而非旁白解說。</p>
+<p>*   <strong>How (如何呈現?)</strong></p>
+<p>    A: 呈現方式應<strong>以人為本</strong>，透過企業家的視角去講述他們如何利用 HKTDC 的平台解決困難、實現增長。避免使用純粹的數據堆砌或政策宣讀。重點是將 HKTDC 的服務「人性化」。</p>
+<h4 class="cc">## 10. 參考 context(客戶以往收貨嘅做法)</h4>
+<p>*   <strong>ISD 慣性風格</strong>：參考政府新聞處過往的宣傳片，客戶習慣的風格是：結構清晰、訊息直接、節奏平穩、畫面質素要求高。他們偏好寫實拍攝手法，甚少接受純動畫或過於抽象的藝術表達。例如 [投資推廣署《發掘香港無限商機》](https://www.youtube.com/watch?v=f4B8kt6qIgE) 這類影片，以真實外國企業家現身說法，配以香港繁榮的城市景觀，是客戶過往會「收貨」的典型做法。</p>
+<p>*   <strong>本次的挑戰</strong>：基於研究指出公眾對舊有模式的疲態，本次創作的挑戰在於，如何在滿足客戶「穩重、正面」的慣性要求下，注入更多<strong>真實感和人情味</strong>，避免淪為另一條被視為「離地」的宣傳片。</p>
+<p>*   <strong>Research 出處</strong>：本簡報的背景、數據及洞察，均基於客戶提供的簡報撮要及 Web research (Perplexity) 的資料整理。</p></details></section><section id='brief'><details class='soft sec' ><summary>📋 Brief 撮要 + NBLM 創意</summary><div class='card'><p></p></div></details></section><section id='research'><details class='soft sec' ><summary>🔬 研究背靠(Perplexity + Gemini + ISD)</summary><p class='empty'>🔬 深入研究:未有</p><p class='empty'>🛡️ Gemini gatekeep:未有</p><p class='hint'>📺 ISD 資料庫導入(相類政府舊片 + 字幕稿)見下面「ISD 對口參考」section。</p></details></section><section id='isd'><details class='soft sec' ><summary>📺 ISD 導入(相類政府舊片 + 字幕)</summary><p class='empty'>未有 ISD 對口參考。</p></details></section><section id='score'><details class='soft sec' ><summary>📊 評分明細(官方 marking scheme)</summary><div class='lab'>📝 文字評分 · 預設只列頭三</div><div class='tw'><table><thead><tr><th>創意</th><th>總分</th><th>Accuracy</th><th>Creativi</th><th>Impact o</th><th>Recall</th><th>Resonanc</th><th>Innovati</th><th>Innovati</th></tr></thead><tbody><tr><td class='lt'>🥇 [委員會 213919] Concept 1:《搞得掂之前》(Before the Handshake)</td><td><b>86.3</b></td><td>27.5</td><td>13.2</td><td>12.3</td><td>8.5</td><td>9.0</td><td>12.3</td><td>3.5</td></tr><tr><td class='lt'>🥈 [委員會 213919] Concept 2:《香港設計緊 ____》(Hong Kong is Designing ____)</td><td><b>86.2</b></td><td>26.8</td><td>13.5</td><td>12.7</td><td>8.5</td><td>8.7</td><td>12.3</td><td>3.7</td></tr><tr><td class='lt'>🥉 [委員會 214216] Concept 1:〈框・窗〉</td><td><b>86.0</b></td><td>27.3</td><td>13.3</td><td>12.7</td><td>8.3</td><td>8.7</td><td>12.0</td><td>3.7</td></tr></tbody></table></div><details class='soft'><summary>睇埋其餘 17 個</summary><div class='tw'><table><tbody><tr><td class='lt'>4. [Agency claude-opus-4-8] Concept 1:〈搞唔掂 → 搞得掂〉</td><td><b>85.5</b></td><td>27.2</td><td>12.8</td><td>12.3</td><td>8.7</td><td>8.5</td><td>12.3</td><td>3.7</td></tr><tr><td class='lt'>5. [Agency kimi-k2.6] Concept 3:三點鐘會議，八點鐘飛</td><td><b>85.2</b></td><td>27.2</td><td>13.3</td><td>12.3</td><td>8.8</td><td>8.3</td><td>12.0</td><td>3.3</td></tr><tr><td class='lt'>6. [Agency qwen3.7-max] Concept 2:〔一件貨・一條路〕(The Tangible Route)</td><td><b>85.2</b></td><td>27.5</td><td>13.2</td><td>12.0</td><td>8.2</td><td>8.7</td><td>12.3</td><td>3.3</td></tr><tr><td class='lt'>7. [Agency kimi-k2.6] Concept 1:做爛咗先開張</td><td><b>85.1</b></td><td>26.8</td><td>13.2</td><td>12.7</td><td>8.8</td><td>8.7</td><td>11.7</td><td>3.2</td></tr><tr><td class='lt'>8. [Agency gemini-2.5-pro] Concept 2:〔一件貨嘅誕生〕</td><td><b>84.8</b></td><td>27.2</td><td>13.2</td><td>12.0</td><td>8.0</td><td>8.8</td><td>12.3</td><td>3.3</td></tr><tr><td class='lt'>9. [Agency claude-opus-4-8] Concept 2:〈一張訂單,連住成個香港〉</td><td><b>84.7</b></td><td>27.2</td><td>12.5</td><td>12.7</td><td>8.3</td><td>8.5</td><td>12.0</td><td>3.5</td></tr><tr><td class='lt'>10. [Agency deepseek-v3.2] Concept 2:撐你出去</td><td><b>84.7</b></td><td>26.3</td><td>12.8</td><td>12.8</td><td>8.5</td><td>8.5</td><td>12.3</td><td>3.5</td></tr><tr><td class='lt'>11. [Agency kimi-k2.6] Concept 2:一條金線</td><td><b>84.6</b></td><td>27.0</td><td>13.0</td><td>12.3</td><td>8.3</td><td>8.3</td><td>12.0</td><td>3.7</td></tr><tr><td class='lt'>12. [Agency gemini-2.5-pro] Concept 1:〔一線萬通〕</td><td><b>84.5</b></td><td>27.5</td><td>12.8</td><td>12.3</td><td>8.2</td><td>8.7</td><td>12.0</td><td>3.0</td></tr><tr><td class='lt'>13. [Agency qwen3.7-max] Concept 1:〔現場・聲證〕(Raw Sound of Connection)</td><td><b>84.5</b></td><td>26.5</td><td>13.5</td><td>12.0</td><td>8.5</td><td>8.7</td><td>12.0</td><td>3.3</td></tr><tr><td class='lt'>14. [Agency gpt-5.2] Concept 1:〔一握手・連世界〕</td><td><b>84.3</b></td><td>27.0</td><td>12.3</td><td>12.3</td><td>8.7</td><td>8.7</td><td>12.0</td><td>3.3</td></tr><tr><td class='lt'>15. [Agency deepseek-v3.2] Concept 3:呢度做起，世界接軌</td><td><b>84.2</b></td><td>26.2</td><td>13.2</td><td>12.7</td><td>8.5</td><td>8.3</td><td>12.0</td><td>3.3</td></tr><tr><td class='lt'>16. [Agency gpt-5.2] Concept 2:〔搞唔掂？搵 HKTDC 搞得掂〕</td><td><b>84.0</b></td><td>26.7</td><td>13.0</td><td>12.7</td><td>8.3</td><td>8.3</td><td>11.7</td><td>3.3</td></tr><tr><td class='lt'>17. [Agency deepseek-v3.2] Concept 1:佢嘅一單生意</td><td><b>83.7</b></td><td>27.0</td><td>12.7</td><td>12.7</td><td>8.3</td><td>8.3</td><td>11.7</td><td>3.0</td></tr><tr><td class='lt'>18. [Agency grok-4.3] Concept 2:握手特寫</td><td><b>81.0</b></td><td>26.3</td><td>12.7</td><td>12.0</td><td>8.3</td><td>8.3</td><td>10.7</td><td>2.7</td></tr><tr><td class='lt'>19. [Agency grok-4.3] Concept 1:失敗鏡頭</td><td><b>76.9</b></td><td>25.2</td><td>11.8</td><td>11.3</td><td>7.5</td><td>8.3</td><td>10.5</td><td>2.3</td></tr><tr><td class='lt'>20. [委員會 214216] Concept 2:〈手感〉</td><td><b>76.6</b></td><td>26.0</td><td>13.3</td><td>11.3</td><td>8.0</td><td>8.3</td><td>8.0</td><td>1.7</td></tr></tbody></table></div></details></details></section>
+<footer>Madkids Idea Lab · HKTDC · ⚠️ AI 初步創意,出客前需 Raymond review + gatekeep</footer>
+</div>
+<a href="#" class="totop" id="totop" aria-label="返頂">↑</a>
+<script>
+function openTarget(){var h=decodeURIComponent(location.hash.slice(1));if(!h||h==='')return;var el=document.getElementById(h);if(!el)return;var n=el;while(n){if(n.tagName==='DETAILS')n.open=true;n=n.parentElement;}setTimeout(function(){el.scrollIntoView({block:'start'});},30);}
+window.addEventListener('load',openTarget);window.addEventListener('hashchange',openTarget);
+var tt=document.getElementById('totop');
+window.addEventListener('scroll',function(){tt.classList.toggle('show',window.scrollY>500);});
+tt.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
+</script>
+</body></html>
