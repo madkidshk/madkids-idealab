@@ -1,181 +1,585 @@
-<!DOCTYPE html><html lang=zh-HK><head><meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
+<!DOCTYPE html><html lang="zh-HK"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ERB · Idea Lab</title>
 <style>
-:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#6b7280;--line:#e6e8ec;
-      --ac:#4f46e5;--gold:#c79a2b;--red:#dc2626;--grn:#15a34a}
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#717784;--line:#e7e9ee;--accent:#4f46e5;--gold:#c79a2b;--grn:#15a34a;--red:#dc2626;--sh:0 1px 2px rgba(20,24,40,.04),0 4px 14px rgba(20,24,40,.05)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);
-     font:15px/1.55 -apple-system,"PingFang HK",sans-serif}
-.wrap{max-width:430px;margin:0 auto;padding:0 13px 130px}
-h1{font-size:19px;font-weight:800;margin:0;line-height:1.25}
-h1 .dept{color:var(--ac)}
-.bdp{font-size:12px;font-weight:700;margin:3px 0 0;display:flex;gap:11px;flex-wrap:wrap}
-.bdp .bb{color:#2563eb}.bdp .dd{color:#dc2626}.bdp .pp{color:#7c3aed}
-.tabbar{position:sticky;top:0;z-index:30;background:var(--bg);
-         border-bottom:2px solid var(--line);display:flex;gap:5px;
-         overflow-x:auto;padding:8px 0 7px;scrollbar-width:none}
-.tabbar::-webkit-scrollbar{display:none}
-.tab{flex:0 0 auto;background:var(--card);border:1.5px solid var(--line);
-      border-radius:9px;padding:5px 12px;font-size:12px;font-weight:800;
-      color:var(--mut);cursor:pointer;transition:all .12s;white-space:nowrap}
-.tab:hover{border-color:var(--ac);color:var(--ac)}
-.tab.active{background:var(--ac);border-color:var(--ac);color:#fff}
-header{padding:12px 0 4px}
-.tabpanel{display:none;padding-top:10px}
-.tabpanel.active{display:block}
-.setlab{font-size:11px;font-weight:800;color:var(--ac);background:#eef0fe;
-         border:1px solid #dcdffb;border-radius:8px;padding:4px 10px;
-         display:inline-block;margin:0 0 8px}
-.banner{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;
-         padding:10px 12px;font-size:12.5px;font-weight:700;color:#92660c;margin:10px 0}
-.h2{font-size:12px;font-weight:800;letter-spacing:.03em;color:var(--mut);
-     text-transform:uppercase;margin:15px 2px 7px}
-.h3{font-size:12px;font-weight:700;color:var(--mut);margin:10px 0 5px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:13px;
-       padding:11px 12px;box-shadow:0 1px 2px rgba(20,24,40,.05),
-       0 5px 16px rgba(20,24,40,.06);margin-bottom:8px}
-.card.big{padding:13px}
-.card.empty{color:var(--mut);font-size:13px;font-style:italic}
-.row{display:flex;align-items:center;gap:9px}
-.rank{font-size:11px;font-weight:800;color:var(--mut);width:18px}
-.src{font-size:11px;color:var(--mut);font-weight:700;background:#f1f5f9;
-      border-radius:6px;padding:1px 6px}
-.score{font-size:12px;font-weight:800;color:var(--gold);margin-left:auto}
-.nm{font-weight:800;font-size:13.5px;line-height:1.35}
-.csub{font-size:11px;color:var(--mut);font-weight:600;margin-top:2px}
-.crow{margin:5px 0 0}
-.cflag{font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
-.cflag.hi{background:#dcfce7;color:#15803d}
-.cflag.lo{background:#fef3c7;color:#a16207}
-.cflag.rl{background:#fee2e2;color:#b91c1c}
-.ck{width:22px;height:22px;border:2px solid var(--ac);border-radius:6px;
-     display:inline-grid;place-items:center;font-size:13px;color:#fff;
-     cursor:pointer;flex:0 0 auto;position:relative}
-.ck::before{content:"";position:absolute;inset:-11px}
-.ck.on{background:var(--ac)}
-.ck.done{background:var(--grn);border-color:var(--grn);cursor:default}
-.divider{display:flex;align-items:center;gap:8px;margin:12px 2px;
-          color:#aab0ba;font-size:11px;font-weight:700}
-.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
-.cnt-warn{color:var(--red)!important}
-.lookback{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:11px;
-           padding:10px 12px;font-size:12px;color:#475569}
-.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;
-      padding:8px 13px;font-size:12.5px;font-weight:800;cursor:pointer;
-      text-decoration:none;display:inline-block}
-.btn.grn{background:var(--grn)}
-.btn.mini{padding:4px 9px;font-size:11px;margin-left:8px}
-.submit{position:fixed;bottom:14px;right:calc(50% - 215px + 13px);z-index:20}
-@media(max-width:456px){.submit{right:14px}}
-.submit .btn{box-shadow:0 6px 20px rgba(79,70,229,.4);padding:11px 18px;font-size:13.5px}
-.foot{font-size:11px;color:#9aa0aa;text-align:center;margin-top:22px}
-.notes-win{width:100%;min-height:90px;border:1.5px solid var(--ac);
-            border-radius:11px;padding:10px 12px;font:14px/1.6 inherit;
-            resize:vertical;background:#fafbff;margin-bottom:8px}
-.bd{margin:8px 0}
-.scene{border-bottom:1px solid #f1f3f6;padding:7px 0;font-size:12.5px;line-height:1.5}
-.scene .sl{display:flex;gap:8px}
-.scene .sn{font-weight:800;color:var(--ac);flex:0 0 auto;min-width:17px}
-.scene .vo,.vo{color:var(--mut);font-size:11.5px;margin:4px 0 0 25px;
-               background:#f8fafc;border-radius:7px;padding:4px 8px}
-.sheet{width:100%;border-radius:10px;border:1px solid var(--line);margin:8px 0;display:block}
-.empty{font-size:12px;color:#9aa0aa;background:#f8fafc;border:1px dashed #cbd5e1;
-        border-radius:9px;padding:9px 11px;margin:8px 0}
-.note{width:100%;min-height:48px;border:1px solid var(--line);border-radius:9px;
-       padding:7px 9px;font:13px/1.5 inherit;resize:vertical;margin-top:6px}
-.frames{margin:8px 0}
-.frame-card{border-bottom:1px solid #f1f3f6;padding:8px 0}
-.frame-head{display:flex;gap:8px;font-size:12.5px}
-.fv{flex:1;color:var(--ink)}
-.acts{margin-top:8px}
-.soft{margin-bottom:8px}
-.soft summary{font-size:12.5px;font-weight:800;color:var(--ink);cursor:pointer;
-               background:#f8fafc;border:1px solid var(--line);border-radius:10px;
-               padding:9px 12px;list-style:none}
-.soft summary::-webkit-details-marker{display:none}
-.soft[open] summary{border-radius:10px 10px 0 0;margin-bottom:0}
-.soft .card{border-radius:0 0 10px 10px;border-top:none;margin-bottom:0}
-.hint{font-size:12px;color:var(--mut);margin:0 0 8px}
-.det{margin-top:8px}
-.det summary{font-size:12.5px;font-weight:800;color:var(--ac);cursor:pointer;
-              list-style:none;background:#eef0fe;border:1px solid #dcdffb;
-              border-radius:9px;padding:8px 11px;text-align:center}
-.det[open] summary{margin-bottom:7px}
-.det summary::-webkit-details-marker{display:none}
-.detbody{font-size:12.5px;color:#374151;white-space:pre-wrap;margin-top:7px;
-          line-height:1.6;max-height:360px;overflow:auto;background:#f8fafc;
-          border-radius:9px;padding:10px 12px}
-.tw{overflow-x:auto;margin:6px 0}
-table{border-collapse:collapse;width:100%;font-size:13px}
-th,td{border:1px solid var(--line);padding:5px 8px;text-align:left}
-th{background:#f8fafc;font-weight:700}
-.prev{font-size:12.5px;color:#4b5563;margin:6px 0 2px;line-height:1.5}
-.toast{position:fixed;bottom:78px;left:50%;transform:translateX(-50%);
-        background:#1b1f27;color:#fff;padding:12px 18px;border-radius:12px;
-        font-size:13px;font-weight:700;z-index:90;max-width:90%;
-        box-shadow:0 8px 30px rgba(0,0,0,.3);transition:opacity .5s}
-.topproc{position:fixed;top:0;left:0;right:0;z-index:95;background:var(--ac);
-          color:#fff;font-size:13px;font-weight:800;padding:9px 14px;
-          display:flex;align-items:center;justify-content:center;gap:8px;
-          box-shadow:0 3px 14px rgba(79,70,229,.35)}
-.spin.sm{width:15px;height:15px;border:2.5px solid rgba(255,255,255,.4);
-          border-top-color:#fff;border-radius:50%;display:inline-block;
-          vertical-align:middle;margin-right:6px;animation:sp .9s linear infinite}
-@keyframes sp{to{transform:rotate(360deg)}}
-</style></head><body>
-<div class=wrap>
-<header>
-  <h1><span class=dept>ERB</span> · ERB</h1>
-  <div class=bdp><span class='dd'>D) 17/6 12:00 · <b id='cd'>—</b></span></div>
-</header>
-<div class='tabbar'><button class='tab' data-tab='ph0'>Ph 0</button><button class='tab' data-tab='vid1_1'>VID 1</button><button class='tab' data-tab='vid1_2'>VID 2</button><button class='tab' data-tab='vid1_3'>VID 3</button><button class='tab' data-tab='vid1_4'>VID 4</button><button class='tab' data-tab='vid1_5'>VID 5</button></div>
-<div id='ph0' class='tabpanel'><div class='h2'>📝 凌碎想法 / Notes</div><textarea id='notes' class='notes-win' placeholder='隨時入想法，自動本機保存…'></textarea><div class='card empty'>Brief 撮要：未有（委員會跑完即有）</div><details class='soft'><summary>💭 5W1H 創意 Provocation</summary><div class='card'><p class='hint'>9 條尖問題，逼 agency 諗加咩 element / 風格，落橋前消化。</p><h3>5W1H 創意 Provocation — ERB</h3>
-<h5>WHO — 對邊個講 + 佢而家點</h5>
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:18px 15px 90px}
+header{padding:6px 2px 2px} h1{font-size:25px;font-weight:800;margin:0;letter-spacing:-.01em}
+.sub{color:var(--mut);font-size:14px;margin-top:3px}
+.stagebar{display:flex;gap:5px;margin:14px 0 8px}
+.stp{flex:1;text-align:center;padding:9px 3px;border-radius:11px;border:1px solid var(--line);background:#fff;text-decoration:none;display:block}
+.stp-i{font-size:15px;font-weight:800;line-height:1.2;color:var(--ink)} .stp-l{font-size:10.5px;font-weight:700;margin-top:2px;color:var(--mut)}
+.stp.cur{background:var(--accent);border-color:var(--accent)} .stp.cur .stp-i,.stp.cur .stp-l{color:#fff}
+.stp.done{background:#e7f7ee;border-color:#cdeedd} .stp.done .stp-i{color:var(--grn)} .stp.done .stp-l{color:#3f8c63}
+.stp.todo{opacity:.55}
+.nextact{display:block;text-decoration:none;background:#fff8e6;border:1px solid #f3e2ad;border-radius:11px;padding:12px 15px;font-size:14px;font-weight:700;color:#7a5b09;margin-bottom:4px}
+.nextact:active{background:#fdf0cf}
+.totop{position:fixed;right:16px;bottom:20px;z-index:20;width:46px;height:46px;border-radius:50%;background:var(--accent);color:#fff;font-size:22px;font-weight:800;display:none;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 14px rgba(79,70,229,.4)}
+.totop.show{display:flex}
+nav{position:sticky;top:0;z-index:9;display:flex;gap:7px;overflow-x:auto;padding:11px 0;margin:8px -15px 4px;padding-left:15px;background:rgba(244,245,247,.9);backdrop-filter:blur(8px);-webkit-overflow-scrolling:touch}
+nav a{flex:0 0 auto;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px}
+nav a:active{background:#eef}
+section{margin:26px 0}
+.sec-h{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:0 0 11px;padding-left:2px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px 18px;box-shadow:var(--sh);margin:12px 0}
+.btn{display:inline-flex;align-items:center;gap:5px;text-decoration:none;font-weight:700;font-size:14px;border-radius:11px;padding:10px 15px;border:1px solid transparent;line-height:1}
+.btn.drive{background:#eef0ff;color:#3b35c7;border-color:#dfe1ff}
+.btn.cta{background:var(--accent);color:#fff} .btn.go{background:#0e7490;color:#fff} .btn.ghost{background:#fff;color:var(--ink);border-color:var(--line);font-weight:600}
+.btn.mini{font-size:12.5px;padding:7px 11px;background:var(--accent);color:#fff;border-radius:9px} .btn.mini.done{background:#fff;color:var(--gold);border-color:#ecd9a6}
+.btn.mini.nb{background:#f3eeff;color:#6b46c1;border:1px solid #e0d4ff}
+.ref .reftag{color:var(--mut);font-size:12.5px;margin-top:10px}
+.conflict{background:#fdeaea;color:#a01919;border:1px solid #f3c0c0;border-radius:11px;padding:11px 13px;font-size:13px;font-weight:600;margin-bottom:13px;line-height:1.5}
+.srctag{color:var(--mut);font-size:11.5px;margin-top:10px}
+.stats{display:grid;grid-template-columns:1fr;gap:9px;margin-top:13px}
+@media(min-width:520px){.stats{grid-template-columns:1fr 1fr 1fr}}
+.stat{background:#fafbfc;border:1px solid var(--line);border-radius:11px;padding:10px 12px}
+.stat-l{font-size:11.5px;color:var(--mut);font-weight:700;letter-spacing:.03em} .stat-v{font-size:14.5px;font-weight:600;margin-top:3px}
+.cd{font-size:11.5px;font-weight:800;border-radius:999px;padding:2px 8px;margin-left:4px} .cd.ok{background:#e7f7ee;color:var(--grn)} .cd.over{background:#fdeaea;color:var(--red)}
+.muted{color:var(--mut)} .empty{color:var(--mut);font-size:14px;padding:6px 2px} .hint{color:var(--mut);font-size:12.5px;margin:2px 2px 12px}
+.t3{padding:15px 16px} .t3head{display:flex;justify-content:space-between;align-items:center} .medal{font-size:22px} .t3score{font-weight:800;color:var(--accent);font-size:15px}
+.t3name{font-weight:700;font-size:16px;margin:7px 0 11px;line-height:1.4}
+.t3thumb{width:100%;border-radius:11px;border:1px solid var(--line);display:block;margin-bottom:11px}
+.t3act{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
+.lnk{color:var(--accent);text-decoration:none;font-size:13.5px;font-weight:600}
+.gen{padding:15px 16px} .genlbl{font-size:13.5px;margin-bottom:9px} .genimg{width:100%;border-radius:12px;border:1px solid var(--line);display:block}
+.gthumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:6px;margin-top:9px} .gthumb{width:100%;border-radius:7px;border:1px solid var(--line);display:block}
+.oldv{margin-top:9px}
+details.crow{border-bottom:1px solid var(--line)} details.crow:last-child{border-bottom:0}
+details.crow>summary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 4px;cursor:pointer;list-style:none}
+details.crow>summary::-webkit-details-marker{display:none}
+details.crow[open]{background:#fafbfc;border-radius:10px}
+.cname{font-size:14px;font-weight:600;flex:1;min-width:0}
+.cbody{padding:2px 6px 14px;font-size:14px} .cbody p{margin:.4em 0}
+details.soft{background:#fff;border:1px solid var(--line);border-radius:13px;padding:4px 15px;margin:11px 0;box-shadow:var(--sh)}
+details.soft>summary{cursor:pointer;font-weight:700;font-size:14px;padding:11px 0;list-style:none}
+details.soft>summary::-webkit-details-marker{display:none} details.soft>summary::before{content:"▸ ";color:var(--mut)} details.soft[open]>summary::before{content:"▾ "}
+details.soft.sec>summary{font-size:15.5px;font-weight:800;padding:13px 0} details.soft.sec[open]{padding-bottom:10px}
+.lab{font-size:11px;letter-spacing:.05em;color:var(--mut);text-transform:uppercase;font-weight:700;margin:13px 0 5px}
+.slo{color:var(--grn);font-weight:700} .nbcard{border-top:1px solid var(--line);padding-top:10px;margin-top:8px}
+.slogrp{margin:6px 0 12px} .slolist{margin:4px 0;padding-left:20px} .slolist li{margin:5px 0;font-size:14px;line-height:1.5}
+h4.cc{font-size:15px;margin:14px 0 6px}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:11px}
+table{border-collapse:collapse;width:100%;min-width:380px;font-size:13.5px}
+th,td{border-bottom:1px solid var(--line);padding:9px 11px;text-align:center;vertical-align:top}
+th{background:#fafbfc;color:var(--mut);font-size:12px;font-weight:700} td.lt,th:first-child{text-align:left}
+p{margin:.55em 0}
+footer{color:var(--mut);font-size:12px;border-top:1px solid var(--line);margin-top:34px;padding-top:14px}
+</style></head><body><div class="wrap">
+<header><h1>ERB</h1><div class="sub"> · 更新 06-06 00:06</div></header>
+<div class='stagebar'><a class='stp done' href='#cand'><div class='stp-i'>✓</div><div class='stp-l'>Brief</div></a><a class='stp done' href='#cand'><div class='stp-i'>✓</div><div class='stp-l'>概念·揀</div></a><a class='stp cur' href='#cand'><div class='stp-i'>✏️</div><div class='stp-l'>Board·揀</div></a><a class='stp todo' href='#gen'><div class='stp-i'>🎨</div><div class='stp-l'>生圖</div></a><a class='stp todo' href='#gen'><div class='stp-i'>📋</div><div class='stp-l'>出稿</div></a></div><a class='nextact' href='#cand'>👉 Round 2:睇 full board,滿意嘅撳「🎨 生圖」 →</a>
+<nav><a href='#cand'>🗂️候選</a><a href='#top3'>🏆三甲</a><a href='#gen'>🎞️作品</a><a href='#lookback'>👀睇返</a><a href='#5w1h'>💭5W1H</a><a href='#ref'>📌資料</a><a href='#debrief'>📝Debrief</a><a href='#slogan'>💬Slogan</a><a href='#research'>🔬研究</a><a href='#isd'>📺ISD</a><a href='#score'>📊評分</a></nav>
+<section id='cand'><details class='soft sec' open><summary>🔻 第二輪篩選 — 揀 board 生圖(撳「🎨 生圖」)</summary><div class='card'><details class='crow' id='cand-cma89efea2'><summary><span class='cname'>[委員會 193231] Concept 1:【實裝・升級】</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cma89efea2&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1:【實裝・升級】</h4>
+<p><strong>創作概念</strong>: 將「學新技能」呢個抽象概念，轉化為一次具爽感嘅「硬件升級」。ERB 課程唔係書本知識，而係一個個實體化、可觸摸、可「安裝」嘅技能模組 (Skill Module)。當學員將呢啲模組「實裝」到自己嘅專業工具或流程上，即時見到效率同產能嘅幾何級提升，直接扣連 ERB「實用、貼市」嘅核心訊息。</p>
+<p><strong>人/景</strong>: 主角係各行各業嘅年輕專業人士（如建築師、市場策劃、數據分析師）。場景設定喺現代化、有設計感嘅工作空間（如科技公司、設計工作室、co-working space），擺脫傳統課室印象。</p>
+<p><strong>Visual Device</strong>: <strong>「技能模組 (Skill Module)」</strong>。一個個發光、半透明、刻有技能符號（如 AI Prompting, Data Visualization）嘅實體方塊。主角會做出一個將模組「啪」一聲嵌入工具（如電腦、繪圖板）嘅動作，觸發整個工作流程嘅視覺升級（例如數據圖表由 2D 變 3D 互動、設計稿自動生成多個版本）。</p>
+<p><strong>主打口號</strong>: ERB・技能增值。裝備下一個你。</p>
+<p><strong>Proposed 明星/名人</strong>: <strong>麥浚龍 (Juno Mak)</strong>。佢本身形象具前瞻性、對細節同質感有極高要求，由佢嚟演繹「為專業裝配最精良組件」嘅概念，能提升 ERB 嘅格調同專業感，打破舊有標籤。</p></div></details><details class='crow' id='cand-cm5c500ddc'><summary><span class='cname'>[委員會 193231] Concept 2:【履歷表＋1】</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cm5c500ddc&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2:【履歷表＋1】</h4>
+<p><strong>創作概念</strong>: 直接回應高學歷人士最關心嘅「職場競爭力」。概念以「履歷表 (CV)」呢個最現實嘅符號切入，展示唔同專業人士嘅 CV，雖然已有亮麗學歷，但喺 AI 時代底下顯得有啲「未完成」。透過 ERB，佢哋為自己嘅履歷表加上最關鍵嘅「+1」—— 一項超貼市嘅數碼技能，令整份 CV 實力即時倍增。</p>
+<p><strong>人/景</strong>: 同樣係年輕專業人士，但著重描寫佢哋喺職場上面對新挑戰（例如老闆要求用 AI 做分析）時嘅思考狀態。場景包括辦公室、見工面試房、自由工作者嘅屋企 studio。</p>
+<p><strong>Visual Device</strong>: <strong>「動態履歷表 (Live CV)」</strong>。用精緻嘅 Motion Graphic 將主角嘅 LinkedIn profile 或履歷表視覺化。當主角完成 ERB 課程後，畫面會出現一個「+」號，然後一項新技能（e.g., &quot;AI-Assisted Animation&quot;）以發光字體形式，鏗鏘有力地加入到履歷表嘅技能欄上，同時見到佢嘅個人檔案「完成度」由 90% 跳到 100%。</p>
+<p><strong>主打口號</strong>: 你份 CV，仲爭呢一項。</p>
+<p><strong>Proposed 明星/名人</strong>: <strong>黃傑龍 (Simon Wong)</strong> - ERB 主席本人。唔係要佢演戲，而係以半紀錄片形式，由佢以權威而貼地嘅身份，親自解說「點解連大學生都需要 ERB」，並引用「2025 年起已落實取消學歷上限」嘅政策事實，增加 campaign 嘅公信力同新聞價值，做法穩陣而有力。</p></div></details><details class='crow' id='cand-cm60236edb'><summary><span class='cname'>[委員會 193851] Concept 1:〔估你唔到〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cm60236edb&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〔估你唔到〕</h4>
+<p><strong>創作概念</strong>:鏡頭跟一班睇落完全唔似「傳統 ERB 學員」嘅年輕專才——西裝律師、startup 創辦人、設計師、Marketing 經理,逐個自信咁示範佢哋點用新數碼技能解難。觀眾一路以為睇緊高端職場片,中段每人講一句「我喺僱員再培訓局學嘅」,逐格揭盅身份,直接撕走「ERB = 基層 / 失業」標籤。硬訊息「2025 年起不設學歷上限、全民可讀」由 reveal 嘅反差自然帶出,唔使口號式硬塞。</p>
+<p><strong>人/景</strong>:4-5 位 18-35 歲、高學歷在職素人/演員(跨行業:法律、創科、設計、市場營銷);場景係現代化 co-working space、tech startup office、design studio,擺脫舊式社區課室印象。可加 ERB 主席黃傑龍真實 soundbite 增權威。</p>
+<p><strong>Visual Device</strong>:<strong>「身份字卡 reveal」</strong>——每位主角畫面角落本來打住職銜(e.g.「執業律師」),講完關鍵句,字卡動態加多一行「· ERB 學員」,簡潔有力,反差全靠呢一下。</p>
+<p><strong>主打口號</strong>:大學生都返 ERB —— 估你唔到。</p>
+<p><strong>Proposed 明星/名人</strong>:建議用形象專業、年輕又有「斜槓 / 進修」人設嘅 KOL(如知識型 YouTuber 類)做其中一位 reveal 主角 —— 因為佢本身已經係「高學歷 + 貼市」嘅活招牌,佢一講「我都係 ERB 學員」,對核心受眾衝擊最大。(具體人選後期按形象正面、無負面新聞篩選)</p>
+<p>---</p></div></details><details class='crow' id='cand-cm27e96632' open><summary><span class='cname'>[委員會 193851] Concept 2:〔CV·Last Update〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cm27e96632&stage=board'>🎨 生圖(brd A)</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〔CV·Last Update〕</h4>
+<p><strong>創作概念</strong>:用一份典型大學生 CV 做主軸。開場 CV 睇落光鮮,但旁白帶出 AI 時代,CV 上嘅技能欄逐項「變灰、標住 outdated」——學歷仲喺度,但彈藥過晒期。主角報讀 ERB 課程後,每掌握一項實戰技能(AI 應用、數據分析、數碼營銷),CV 上即時「解鎖」一個新項目,由灰變亮,成份 CV 重新生猛。將抽象「技能提升」變成睇得明嘅「CV 升級」,硬訊息「即學即用、貼市實用」自然落地。</p>
+<p><strong>人/景</strong>:1 位代表核心群體嘅年輕高學歷在職主角(由焦慮到自信嘅轉變弧);實景穿插 ERB 現代化課室真實上堂 b-roll(操作 AI 軟件、寫 code 嘅 close-up),再對比佢喺新型工作環境應用同一技能。CV 升級用乾淨 motion graphic 呈現,<strong>克制、唔做 glitch / HUD</strong>,保持商業高級感。</p>
+<p><strong>Visual Device</strong>:<strong>「CV 技能欄即時解鎖」</strong>——一份真實 CV 上,技能 icon 由灰→亮、由舊→新,配輕量動效。一個睇一眼就明嘅「增值」視覺鈎,夠 fresh 但唔出位。</p>
+<p><strong>主打口號</strong>:你張 CV,幾時 last update?</p>
+<p><strong>Proposed 明星/名人</strong>:不適用(主軸係素人學員真實轉變;名人/KOL 可後期以「體驗者/旁觀者」brief appearance 加入,唔搶主角戲)。</p>
+<p>---</p>
+<p>（CD note 畀 Raymond:Concept 1 賣「反差撕標籤」,情緒衝擊強、最快重塑認知;Concept 2 賣「實用增值」,訊息最清、最易扣 CTA。兩條都企得穩政府框內。揀中邊條,我即刻 develop full 12 格 board。）</p><div class='lab'>✏️ Full board(12 格廣東話 · brd A)</div><div class='tw'><table><thead><tr><th>格</th><th>畫面</th></tr></thead><tbody><tr><td>1</td><td class='lt'>黑屏淡入，一張 A4 CV 靜置喺木枱上，香港高樓窗景反射喺紙面，柔和晨光。</td></tr><tr><td>2</td><td class='lt'>鏡頭拉近 CV，焦點落喺「技能」欄，字體清晰專業。</td></tr><tr><td>3</td><td class='lt'>技能欄由上至下掃描，AI 工具、Python、數碼營銷等項目逐個變灰，旁白同步。</td></tr><tr><td>4</td><td class='lt'>主角（25 歲女大學生）喺家企企，盯住電腦，面容帶點焦慮。</td></tr><tr><td>5</td><td class='lt'>ERB 現代課室，暖黃燈光，導師喺白板寫「Prompt Engineering」，主角認真抄筆記。</td></tr><tr><td>6</td><td class='lt'>Close-up：主角手敲鍵盤，ChatGPT 介面即時生成市場分析。</td></tr><tr><td>7</td><td class='lt'>Motion graphic：CV 技能欄，AI 應用 icon 由灰轉藍，輕微放大彈出。</td></tr><tr><td>8</td><td class='lt'>主角喺新型 co-working space 投影屏前，展示數據 dashboard 俾團隊。</td></tr><tr><td>9</td><td class='lt'>Motion graphic 繼續：Python、Tableau、SEO 三個技能逐個亮起。</td></tr><tr><td>10</td><td class='lt'>主角自信微笑，CV 完整版喺畫面浮現，背景係維港天際線。</td></tr><tr><td>11</td><td class='lt'>特寫 ERB 標誌同「即報即讀」字樣，旁白帶出行動呼籲。</td></tr><tr><td>12</td><td class='lt'>黑屏淡出，主打口號白字置中，配 ERB 標誌同網址。</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cm7cf75375'><summary><span class='cname'>[claude-opus-4-8] Concept 1:〔玻璃天花〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cm7cf75375&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〔玻璃天花〕</h4>
+<p><strong>創作概念</strong>:有一塊睇唔到嘅玻璃,一路擋住唔同學歷、唔同行業嘅人 —— 而家呢塊玻璃碎咗。我哋用一塊真實嘅玻璃屏障做 visual metaphor,逐個學員行近、伸手,玻璃應聲粉碎,佢哋直接行入一個現代化工作場景。最後揭示玻璃上原本印住「學歷限制 Restriction on Educational Attainment」,碎裂後重組成「2025 起 不設學歷上限」,直接扣住改革最硬嘅事實。</p>
+<p><strong>人/景</strong>:三至四位學員 —— 一個揸住大學文憑、面對 AI 焦慮嘅 marketing 後生女;一個傳統零售店主想數碼轉型嘅中年男;一個轉行做數據分析嘅在職人士。景:co-working space、design studio、現代化 ERB 委任培訓機構課室。</p>
+<p><strong>Visual Device</strong>:一塊印住「學歷限制」嘅玻璃屏障被打穿粉碎,碎片化成 kinetic typography 重組成新訊息 —— 一個記得住、有反差、又唔踩紅線(唔貶低任何人,只係「打開」)嘅鈎。</p>
+<p><strong>主打口號</strong>:學歷冇上限,技能冇盡頭</p>
+<p><strong>Proposed 明星/名人</strong>:建議 <strong>林敏驄 或 麥明詩 (Louisa Mak)</strong> —— 傾向麥明詩:劍橋法律畢業、形象 pro、正面、零負面新聞,本身就係「高學歷都要持續增值」嘅活招牌,佢做引導者行過玻璃,反差最有說服力。</p>
+<p>---</p></div></details><details class='crow' id='cand-cme3a1354b'><summary><span class='cname'>[claude-opus-4-8] Concept 2:〔多咗一行〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cme3a1354b&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〔多咗一行〕</h4>
+<p><strong>創作概念</strong>:呢個世代最緊張嘅唔係張沙紙,係張履歷追唔追到市。我哋 follow 一份份真實履歷表 —— 本身已經有大學學位、有工作經驗,但下面新加咗一行 ERB 數碼技能(AI 應用、數據分析、數碼營銷)。鏡頭由履歷表上嘅一行字,溶接去學員喺真實工作場景中操作緊嗰項技能、解決緊真問題。Show 唔 tell:技能價值 = 履歷表上實實在在多咗、用得着嘅一行。</p>
+<p><strong>人/景</strong>:四個唔同背景學員嘅履歷表特寫(打字機/打印中嘅動態),配真實 b-roll:學員 close-up 操作 AI 軟件、執代碼、整數據 dashboard;再 cut 到佢哋喺 startup office / 數碼化工場真實應用同一技能。強調「大學生都讀 ERB」嘅反差。</p>
+<p><strong>Visual Device</strong>:履歷表上「新增一行」嘅 motion graphic —— 游標打出一行 ERB 技能,即刻發光、溶接成真實工作畫面。一個簡潔、易明、扣住「即用貼市」痛點嘅視覺鈎。</p>
+<p><strong>主打口號</strong>:大學畢咗業,技能未畢業</p>
+<p><strong>Proposed 明星/名人</strong>:建議 <strong>岑珈其 或 周國賢</strong> —— 傾向周國賢:理工出身、形象正面斯文、有「斜槓 / 持續學習」personal brand,做履歷表 owner 之一 + 旁白引導者,貼到「高學歷都喺度增值」嘅核心訊息,穩陣冇爭議。</p></div></details><details class='crow' id='cand-cm7bf15058'><summary><span class='cname'>[deepseek-v3.2] Concept 1:技能履歷表</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cm7bf15058&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1: 技能履歷表</h4>
+<p><strong>創作概念</strong>：將每個人的職業生涯想像成一張「技能履歷表」。傳統思維只著重學歷 (CV)，但未來需要不斷更新「技能履歷表」(Skills CV)。影片展示不同背景嘅學員，如何在 ERB 課程中「下載」並應用新技能（如 AI 分析、數碼營銷），直接將呢啲技能「新增」到佢哋嘅工作履歷中，創造實質價值。核心訊息是：ERB 就是你「技能履歷表」嘅最新更新來源。</p>
+<p><strong>人/景</strong>：四位不同行業、持有學位的年輕在職人士（如：一位時裝品牌經理、一位工程師、一位文職人員、一位餐飲業主管），分別在現代化辦公室、工作室、ERB 課室及實際工作場景中。</p>
+<p><strong>Visual Device</strong>：一個不斷更新、充滿動態圖像嘅「技能履歷表」介面。學員每學到一項新技能（畫面顯示課堂實操），佢嘅「技能履歷表」就會即時彈出並新增該技能圖標，隨即切入佢應用此技能解決工作問題嘅畫面。</p>
+<p><strong>主打口號</strong>：學位唔夠？ERB 幫你技能搭夠。</p>
+<p><strong>Proposed 明星/名人</strong>：<strong>岑寧兒 Yoyo Sham</strong>。形象知性、文藝，同時貼地，能吸引年輕高學歷群體。可飾演一位需要學習新技能（如音樂製作的 AI 工具）嘅創作人，一句旁白：「學音樂都要學新嘢，何況我哋嘅 career？」</p>
+<p>---</p></div></details><details class='crow' id='cand-cmc6bd3cef'><summary><span class='cname'>[deepseek-v3.2] Concept 2:打破無形牆</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cmc6bd3cef&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2: 打破無形牆</h4>
+<p><strong>創作概念</strong>：用視覺隱喻「打破一堵代表學歷限制嘅無形牆」，直擊 2025 年改革核心。影片開首，不同人（大學生、在職專業人士）被一面透明玻璃牆阻隔，睇唔到牆後 ERB 課堂嘅先進內容（AI、數據可視化、數碼工具）。隨著旁白說明「2025 年起，學歷上限撤銷」，玻璃牆應聲破碎。大量不同背景嘅人湧入現代化課室，畫面展示技能如何應用於真實職場。強調 ERB 已成為一個開放畀所有人嘅技能市集。</p>
+<p><strong>人/景</strong>：開場為一系列快剪鏡頭，不同穿著（商務、休閒、創意）嘅年輕人面帶疑惑地「觸碰」或「被阻隔」於一堵透明牆前。牆後是明亮、充滿科技設備的 ERB 課室。牆破碎後，場景切換至學員在不同職場應用所學。</p>
+<p><strong>Visual Device</strong>：一面不斷出現、阻隔視線嘅「透明玻璃牆」視覺隱喻。牆上起初有「學歷上限」字樣，隨著政策說明，牆身出現裂痕並最終粉碎，化為數據流或技能圖標，散落於新學員身上。</p>
+<p><strong>主打口號</strong>：ERB 2025：學歷冇上限，技能冇止境。</p>
+<p><strong>Proposed 明星/名人</strong>：<strong>劉俊謙</strong>。形象健康、有時代感，能代表年輕專業人士。設定為一位發現自己技能需要更新嘅在職青年，目睹牆碎後第一個走入課室，一句：「原來牆後面，先係未來。」</p>
+<p>---</p></div></details><details class='crow' id='cand-cmcb2293ce'><summary><span class='cname'>[deepseek-v3.2] Concept 3:實戰教室</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cmcb2293ce&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 3: 實戰教室</h4>
+<p><strong>創作概念</strong>：徹底模糊「課室」與「職場」嘅界線。ERB 嘅課程不再是傳統課堂，而是一個個「實戰任務」。每位學員都帶著一個真實的工作問題進來（例如：「點樣用 AI 提升社交媒體觸及率？」），課程就是教他們用工具實時解決問題。影片以「解決方案導向」推進，展示學員從「帶著問題來」到「帶著方案走」嘅全過程，強力證明課程的「實用性」(Practical Relevance)。</p>
+<p><strong>人/景</strong>：緊湊的節奏，跟拍幾位學員。場景在 ERB 委託培訓機構的現代化課室（更像 co-working space），學員對著電腦實操，導師在旁指導。大量屏幕特寫 (screen-centric)，展示軟件操作。後半部分直接跳接到學員返回自己公司，應用方案並獲得同事/上司認可。</p>
+<p><strong>Visual Device</strong>：貫穿全片的「問題標籤」與「解決方案標籤」動態圖像。學員登場時，畫面彈出其「工作難題」（如「數據分析太慢」）；學習後，畫面彈出「解決方案」（如「掌握 Python 自動化處理」）。最後所有「難題標籤」都被「解決方案標籤」覆蓋。</p>
+<p><strong>主打口號</strong>：唔係再培訓，係再升級。ERB。</p>
+<p><strong>Proposed 明星/名人</strong>：<strong>試當真團隊成員（例如：阿 J）</strong>。擅長以幽默、貼地方式解構複雜概念，能有效拉近與年輕觀眾距離。可扮演一位內容創作者，苦於影片後製效率，在 ERB 學識 AI 剪片工具後大呼「得咗！」。</p>
+<p>---</p>
+<p>以上三個概念均嚴格跟從 debrief 方向：針對高學歷新受眾、展示技能實戰應用、擺脫舊標籤、調性專業貼地。Visual device 鮮明，易於發展成 storyboard。請 Raymond 過目。</p></div></details><details class='crow' id='cand-cm9c1a9e06'><summary><span class='cname'>[gemini-2.5-pro] Concept 1:〔破壁者 The Wall Breaker〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cm9c1a9e06&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〔破壁者 The Wall Breaker〕</h4>
+<p><strong>創作概念</strong>: 以「打破無形之牆」作為核心視覺比喻。許多大學畢業生喺職場會遇到樽頸位——明明有學歷，卻欠缺一門 spezifisch 嘅實用技能，呢個就係佢哋嘅「牆」。影片透過展示唔同行業嘅高學歷人士，如何透過 ERB 嘅數碼課程，學識一門新技能，從而「打破」事業上嘅樽頸之牆，開創更多可能性。</p>
+<p><strong>人/景</strong>:</p>
+<p>*   一個喺廣告公司做稿嘅大學畢業生，對住電腦苦惱點樣將概念視覺化，之後喺 ERB 學緊 AI 繪圖。</p>
+<p>*   一個喺初創公司做 marketing 嘅專才，望住一堆數據唔知點分析，之後喺 ERB 課室學緊數據分析工具。</p>
+<p>*   場景橫跨現代化辦公室、co-working space、ERB 設備先進嘅電腦課室。</p>
+<p><strong>Visual Device</strong>: <strong>一道半透明嘅玻璃牆</strong>。每當主角遇到事業樽頸時，呢道牆就會出現，阻擋佢前進。當佢喺 ERB 上堂，掌握新技能嘅一刻，佢會充滿自信咁一拳/一指擊碎玻璃牆。玻璃碎裂嘅慢鏡特效，會轉化成代表新技能嘅 data/code/UI icon，視覺上極具衝擊力。</p>
+<p><strong>主打口號</strong>: ERB 革新。學歷，再唔係界限。</p>
+<p><strong>Proposed 明星/名人</strong>: <strong>麥浚龍 (Juno Mak)</strong>。佢本身形象具備藝術感、思考深度同前瞻性，並非傳統偶像。由佢以一個觀察者或引導者嘅角色出現，能提升整個 campaign 嘅格調同專業感，符合「有新意但唔出位」嘅要求，能有效吸引對質素有要求嘅年輕觀眾。</p></div></details><details class='crow' id='cand-cma436c295'><summary><span class='cname'>[gemini-2.5-pro] Concept 2:〔履歷升級 CV+〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cma436c295&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〔履歷升級 CV+〕</h4>
+<p><strong>創作概念</strong>: 直接回應高學歷人士最關心嘅「職場價值」。影片以一份「履歷表 (CV)」作為敘事載體，展示一個典型大學生嘅 CV 雖然亮麗，但喺 AI 時代下顯得「周身刀，冇張利」。透過 ERB 課程，佢為自己嘅 CV 加上一行關鍵嘅「實戰技能」，令整份履歷即時「升級」，成功解決工作難題或爭取到更好機會。</p>
+<p><strong>人/景</strong>:</p>
+<p>*   主角係一個代表「新目標受眾」嘅年輕演員，可能係商科/文科畢業生。</p>
+<p>*   場景包括佢 initial 嘅 office (可能比較傳統)，到佢增值後轉到嘅新式科技公司 / design studio。</p>
+<p>*   大量 ERB 課堂嘅 b-roll，展示導師嘅專業性同課程嘅實用性 (e.g. 真實軟件操作 close-up)。</p>
+<p><strong>Visual Device</strong>: <strong>一份動態履歷表 (Motion Graphic CV)</strong>。影片開頭，主角嘅 CV 會以 motion graphic 形式展示，學歷一欄閃閃發光。但當遇到工作挑戰時，CV 會變暗，「技能」一欄呈現空白或過時。當佢報讀 ERB 後，一個新嘅 skill (e.g. &quot;Python for Data Analytics&quot; / &quot;Digital Marketing &amp; SEO&quot;) 會以發光嘅姿態「植入」CV，成份 CV 即時 upgrade，連帶 Job Title 都出現升級動畫。</p>
+<p><strong>主打口號</strong>: 增值，唔係由零開始。ERB，為你學歷再加分。</p>
+<p><strong>Proposed 明星/名人</strong>: <strong>游學修</strong>。佢嘅形象知性、貼地，經常探討年輕人嘅事業同人生議題，喺年輕高學歷群體中有相當嘅號召力同公信力。佢可以扮演一個「師兄」或旁述角色，用佢獨有嘅語氣，道出大學生同樣面對技能焦慮嘅現實，令訊息更易入腦。</p></div></details><details class='crow' id='cand-cm28f8b7db'><summary><span class='cname'>[gpt-5.2] Concept 1:〔打破上限〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cm28f8b7db&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〔打破上限〕</h4>
+<p><strong>創作概念</strong>:  </p>
+<p>用一個「看得見」嘅屏障去代表舊印象：ERB 只係某類人先啱。影片一開就用大字打出「自 2025 年起：撤銷 Restriction on Educational Attainment」，畫面上玻璃牆/透明「上限線」被推開/碎裂（唔暴力，偏設計感），之後連續見到唔同行業、唔同學歷背景嘅<strong>學員</strong>喺 ERB 課室學 Digital Skills／AI+，再 cut 去佢哋返到工作場景即刻用得着，直接「show 唔 tell」ERB 已革新、課程更高階更貼市。  </p>
+<p>（名人/KOL 只做「入場體驗者」，同學員一齊上堂，帶觀眾睇：原來我都報得。）</p>
+<p><strong>人/景</strong>:  </p>
+<p>- 18–35 在職學員：例如市場營銷 executive（有學位）、設計師、餐飲店副經理、零售店長、初級數據分析師（多元行業）。  </p>
+<p>- 場景：現代化 ERB 委任培訓機構課室（大屏幕/電腦/實作）、co-working space、tech startup office、設計 studio、咖啡店/零售後台（用數碼工具提升效率）。</p>
+<p><strong>Visual Device</strong>:  </p>
+<p>- 「學歷上限」具象化：透明玻璃牆/亞加力牌寫住「學歷上限？」＋一條發光水平線；鏡頭一推近，大字 overlay「已撤銷」；線條化成動態 UI 分散到唔同行業畫面（象徵打開 consideration set）。  </p>
+<p>- 全片用「大字 timestamp」：<strong>「自 2025 年起」</strong>固定格式出現，建立政策真確感。</p>
+<p><strong>主打口號</strong>:  </p>
+<p><strong>自 2025 年起，ERB 不設學歷上限。技能提升，人人都得。</strong></p>
+<p><strong>Proposed 明星/名人</strong>:  </p>
+<p><strong>方力申</strong>（形象正面、運動員/藝人身份夠「大眾認知」、語氣自然唔官腔；做「體驗者」：用半懷疑半好奇入課室，最後用一句「原來我都報得」收束，貼新受眾心態但唔玩膠。）</p>
+<p>---</p></div></details><details class='crow' id='cand-cm1fa3b580'><summary><span class='cname'>[gpt-5.2] Concept 2:〔CV 多一行〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cm1fa3b580&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〔CV 多一行〕</h4>
+<p><strong>創作概念</strong>:  </p>
+<p>每集用一份「學員履歷表 CV」做主線：開場係一張好完整、好「學歷亮眼」嘅 CV（刻意反差：大學畢業、幾年經驗），但畫面彈出一個紅色提示：「AI+ 時代：你最缺嘅，可能係『即用技能』。」跟住 CV 上面自動新增一行：<strong>「ERB Courses｜Digital Skills」</strong>（例如 AI 工具應用、數據分析、數碼營銷等），再即刻切去課室實作＋工作場景應用，展示「學完—即刻解到問題—效率上升」。最後回到 CV：新增技能行變成「打開更多可能性」嘅視覺收結，順勢落 CTA 去 <strong>www.erb.org</strong>。  </p>
+<p>同時用一張 CV 連起「新舊受眾」：唔同學歷、唔同行業都係同一個動作——為自己加一行技能。</p>
+<p><strong>人/景</strong>:  </p>
+<p>- 學員（Trainees）主角 3–4 位：有學位在職人士為主，配一位傳統行業在職人士（平衡舊受眾）。  </p>
+<p>- 場景：課室（真係操作軟件、做練習）、會議室（用數據/AI 工具出 report）、零售/餐飲後台（用數碼工具排更/分析銷售）、創意 studio（AI 輔助出 moodboard）。</p>
+<p><strong>Visual Device</strong>:  </p>
+<p>- 「CV 介面」動態圖像：每次學到一個技能，就喺 CV 上 <strong>pop-up 新增一行</strong>；同時旁邊出現「實戰應用」小標籤（例如「自動生成簡報／分析客流／優化廣告投放」），做到無聲都明。  </p>
+<p>- 每集最後一秒：CV 底部固定出現「僱員再培訓局 (Employees Retraining Board)｜www.erb.org」作一致 branding。</p>
+<p><strong>主打口號</strong>:  </p>
+<p><strong>你份 CV，差一行新技能。去 ERB。</strong></p>
+<p><strong>Proposed 明星/名人</strong>:  </p>
+<p><strong>梁祖堯</strong>（口條清晰、形象專業可信、節奏感好；可做「CV 檢視官／體驗者」：用輕專業語氣帶觀眾睇每位學員點樣「加一行」而唔流於搞笑，符合「fresh 但穩陣」。）</p>
+<p>---</p></div></details><details class='crow' id='cand-cmfaf73ea2'><summary><span class='cname'>[grok-4.3] Concept 1:〔履歷即時升級〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cmfaf73ea2&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〔履歷即時升級〕</h4>
+<p><strong>創作概念</strong>: 用 motion graphic 將一份大學生履歷表「即時加多一行 ERB 創科課程」，視覺化「撤銷學歷上限」後嘅實際增值，直接回應 debrief「大學生都讀 ERB」嘅反差。</p>
+<p><strong>人/景</strong>: 25 歲 IT 助理喺 co-working space 打開 MacBook，畫面切至 ERB 課室 close-up 操作 AI 工具。</p>
+<p><strong>Visual Device</strong>: 履歷表彈出視窗，新增一項 ERB 課程記錄，旁邊即彈出「不設學歷上限」彈窗。</p>
+<p><strong>主打口號</strong>: 學歷無上限，技能即戰力。</p>
+<p><strong>Proposed 明星/名人</strong>: 建議找一位 30 歲出頭、形象正面嘅科技界 KOL (e.g. 陳少潤)，佢本身有大學背景，代表「新受眾」身份；一句解釋：「用自己轉工經歷，話畀同級高學歷打工仔知 ERB 點樣幫到忙」。</p></div></details><details class='crow' id='cand-cm89408f43'><summary><span class='cname'>[grok-4.3] Concept 2:〔主席真聲〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cm89408f43&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〔主席真聲〕</h4>
+<p><strong>創作概念</strong>: 開頭 3 秒即播 ERB 主席黃傑龍先生訪問片段：「2025 年初已經取消學歷上限」，即以最高權威打破觀眾懷疑，再接學員真實 workplace application。</p>
+<p><strong>人/景</strong>: 主席聲畫 + 一位 28 歲會計師喺 startup 公司用數據分析工具解決報表問題。</p>
+<p><strong>Visual Device</strong>: 主席 soundbite 片段用圓形視窗浮現，其後畫面擴闊成學員工作實景。</p>
+<p><strong>主打口號</strong>: ERB 今日已革新，升級只為你。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用 — 本 concept 已用官方主席增加可信度，毋須額外名人。</p></div></details><details class='crow' id='cand-cm830c2be3'><summary><span class='cname'>[kimi-k2.6] Concept 1:履歷表上多咗一行</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cm830c2be3&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1: 履歷表上多咗一行</h4>
+<p><strong>創作概念</strong>：Opening 係一個手持大學學位嘅後生仔/女，望住自己份 CV，諗「仲差啲咩？」鏡頭 zoom in 入份履歷表，突然間一行字用 motion graphic 彈出嚟 — 「ERB 人工智能應用技能認證」。個畫面跟住 split screen：左邊係佢喺 ERB 現代化課室學緊操作 AI 工具（真實 close-up 手指撳 keyboard、screen 上嘅 code），右邊係同樣嘅人返工時用同一樣技能解決實際問題（e.g. 用 AI 分析銷售數據、自動化報告）。核心係「履歷表」呢個 visual device — 大學生最熟悉、最有壓力嘅物件，變成 ERB 價值嘅載體。唔係話你讀得書少，係話你一張沙紙唔夠打。</p>
+<p><strong>人/景</strong>：25-32 歲白領演員（素人感強過明星感），Co-working space / 數碼營銷公司 office / ERB 委任培訓機構現代化課室（要擺脫社區中心刻板印象）。真實學員作為背景 talent。</p>
+<p><strong>Visual Device</strong>：「履歷表」實體化 + motion graphic 動態增項。CV 紙質質感，字粒逐粒彈出，ERB 課程名稱用 brand green highlight。中段 transition 用履歷表摺疊變形成課室門/電腦 screen，再摺返開變成工作場景。</p>
+<p><strong>主打口號</strong>：同一張沙紙，多幾招傍身</p>
+<p><strong>Proposed 明星/名人</strong>：林家謙。原因：大學畢業（CUHK）、音樂創作人形象貼近「高學歷 + 實戰技能」嘅反差，公眾認知係「讀書叻、做事叻」但唔老土，形象正面無負面， Instagram 活躍度令佢喺 18-35 歲 group 有 credibility。角色定位係「旁白聲音 + 片尾 brief 現身講一句」，唔搶學員主角戲。</p>
+<p>---</p></div></details><details class='crow' id='cand-cm2b477e4d'><summary><span class='cname'>[kimi-k2.6] Concept 2:道牆冇咗</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cm2b477e4d&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2: 道牆冇咗</h4>
+<p><strong>創作概念</strong>：2025 年改革最核心嘅顛覆 — 撤銷學歷上限。視覺上用「一道半透明玻璃牆」象徵舊有學歷限制，牆後面係 ERB 課室，牆前面係各種高學歷人士（大學生、碩士、專業人士）望住牆後面，表情由疑惑到好奇。然後一個學員（可以是傳統 ERB 學員，可以是新學員）行埋去，手一推，塊玻璃碎成無數碎片（CG，唔暴力，優雅地碎），碎片飄散後 reveal 後面係全新嘅 ERB — 大學生同基層學員一齊上堂、一齊操作 AI 工具、一齊笑。呢個畫面打破「ERB = 某類人專利」嘅標籤，直接回應 debrief 講嘅「認知落差」。條片唔賣慘，賣「界限消失咗，你本來就可以入嚟」。</p>
+<p><strong>人/景</strong>：多樣性選角 — 大學生（著 grad gown 或 smart casual）、中年轉職者、傳統服務業從業員，全部喺同一個現代化課室。場景： glass wall 係抽象 set 或借鏡某建築物實拍，碎後 reveal 真實 ERB 課室（要大、光猛、有齊電腦設備）。</p>
+<p><strong>Visual Device</strong>：「玻璃牆」—— 半透明、有 reflection，可以映出牆前人嘅樣同牆後課室嘅活動，形成「幾乎觸及」嘅張力。碎裂瞬間用 slow motion + particles，碎片折射光線形成彩虹效果（唔血腥，唯美）。碎片最後 reassemble 成 ERB logo 形狀，再 dissolve 成真實 logo。</p>
+<p><strong>主打口號</strong>：學歷無上限，技能無止境</p>
+<p><strong>Proposed 明星/名人</strong>：黃傑龍（ERB 主席）。原因：debrief 提及佢公開講過「2025 年初起已落實取消學歷上限」，用佢本人聲音/影像做 authority anchor，增加政策真實感。角色係片頭 brief soundbite：「以前，有啲人覺得自己唔屬於呢度。2025 年起，再冇呢個『以前』。」之後交畀學員故事。慳錢、有 credibility、完全符合政府「穩陣」要求。</p>
+<p>---</p></div></details><details class='crow' id='cand-cmc365d5ce'><summary><span class='cname'>[kimi-k2.6] Concept 3:Captain K 帶你偷睇一堂課</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cmc365d5ce&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 3: Captain K 帶你偷睇一堂課</h4>
+<p><strong>創作概念</strong>：標書 optional item — 將吉祥物 Captain K 製作為 3D 動畫角色。我哋將佢由「吉祥物」升級為「技能導賞員」。Opening 係手機 screen 角度，user 喺 Instagram scroll，突然個 ERB post「活咗」— Captain K 跳出嚟 2D frame，變成 3D 立體角色，拉住觀眾隻手（POV 鏡頭）衝入 ERB 課室。佢帶住觀眾「偷睇」三種唔同課程：AI 繪圖、數據分析、數碼營銷，每堂都係 15-20 秒快閃，學員唔理佢，專心做嘢，Captain K 喺旁邊用 pop-up text 講重點（e.g. 「每日津貼 $241」、「唔使驚，大學生都報咗」）。Tone 係輕快、有少少惡搞但唔膠，好似 YouTube educational channel 嘅 host 咁。最後 Captain K 推觀眾出嚟，畫面變返手機，顯示 ERB 網站已經 open 咗 — CTA 自然完成。</p>
+<p><strong>人/景</strong>：以 Captain K 3D animation 為主導，真人學員作為 background（要真實、唔似演戲）。場景：ERB 課室、數碼工作室、co-working space。需要大量 green screen / LED volume 拍攝配合 CG integration。</p>
+<p><strong>Visual Device</strong>：「手機 screen 作為 frame」—— 整部片由 9:16 手機比例開始，Captain K 跳出嚟嗰下打破 frame，畫面擴展成 16:9 cinematic，象徵「跳出你以為嘅 ERB」。中段用 split-screen 手機 interface 同時 show 幾個課堂，最後縮返入手機顯示網站。Pop-up text / graphic 風格完全 adapt 社交媒體 native language。</p>
+<p><strong>主打口號</strong>：ERB 唔再係嗰個 ERB</p>
+<p><strong>Proposed 明星/名人</strong>：192 / 郭嘉駿。原因：YouTube 出身、熟悉網絡語言、pop-up text / fast cut 風格係佢DNA，觀眾印象中佢係「讀過書但選擇做 creators」嘅高學歷代表，對 18-30 極有 reach。風險：形象偏「膠」，需要政府審批；但客戶標書要求「fresh, creative, vivid and eye-catching」，佢係最極端嘅 option。若 Raymond 驚太出位，可退而求其次用較穩陣嘅 YouTuber 如 Ming仔 / 小薯茄成員（但要檢查政治立場）。</p>
+<p>---</p>
+<p>Raymond，三個概念分別對應：</p>
+<p>- <strong>Concept 1</strong>：最穩陣、最易 execute、最易過政府審批</p>
+<p>- <strong>Concept 2</strong>：最貼政策核心（學歷上限取消）、最有新聞性</p>
+<p>- <strong>Concept 3</strong>：最 fresh、最貼標書「vivid and eye-catching」要求、但 execute 成本同政治風險最高</p>
+<p>等你方向和明星 preference，揀中我哋即刻 develop 12 格 storyboard。</p></div></details><details class='crow' id='cand-cmffcf1db2'><summary><span class='cname'>[qwen3.7-max] Concept 1:〔履歷表上的 NEW SKILL〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cmffcf1db2&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〔履歷表上的 NEW SKILL〕</h4>
+<p><strong>創作概念</strong>: 直接回應「大學生都讀 ERB」嘅反差感。以一份「高學歷人士履歷表」為視覺主體，透過 Motion Graphic 動態展示佢喺職場遇到瓶頸(學歷夠但技能舊)，隨後 ERB 課程如「外掛插件」般加入履歷，即時解鎖新工作場景。將抽象「取消學歷上限」轉化為具體「職業競爭力+1」嘅視覺證據，扣緊「技能為本」核心訊息。</p>
+<p><strong>人/景</strong>: 25-30 歲學位持有人(男女皆可)，身穿 Smart Casual；場景由傳統 Office Grid 轉場至現代 Co-working Space / Tech Hub 開放式工位。</p>
+<p><strong>Visual Device</strong>: 「動態履歷表 UI」貫穿全片。畫面左側/底部常駐半透明履歷面板，當學員學習 AI/數碼技能時，履歷上「Skills」欄位會像遊戲升級般彈出 ERB Logo 及技能標籤(如 Generative AI, Data Analytics)，並連線到右側真實操作畫面。</p>
+<p><strong>主打口號</strong>: 打破學歷框框，ERB 未來技能即學即用</p>
+<p><strong>Proposed 明星/名人</strong>: 陳漢娜 (Hannah Chan)。形象知性、有學位背景但同時活躍於創意/科技跨界別，符合「高學歷+新技能」人設，且氣質穩重不浮誇，貼近政府專業調性。</p></div></details><details class='crow' id='cand-cmf0e14451'><summary><span class='cname'>[qwen3.7-max] Concept 2:〔$8,000 實戰加速器〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cmf0e14451&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〔$8,000 實戰加速器〕</h4>
+<p><strong>創作概念</strong>: 針對 Cynical 受眾「講金又講心」嘅心態。開首 3 秒直接以「HKD 8,000 / 月」巨大動態數字作為視覺錘(Hook)，隨即切入 ERB 主席黃傑龍 Soundbite 確認「2025 起不設學歷上限」建立權威。接著以「投入vs回報」邏輯，快速剪接學員上課(投入)與職場應用 AI 解決問題(回報)嘅對比畫面，將津貼重新定義為「政府資助嘅職場加速器」而非「福利」。</p>
+<p><strong>人/景</strong>: 真實 ERB 學員(素人演員) + ERB 主席黃傑龍(片段/聲音授權)；場景為 ERB 認可培訓機構嘅高科技課室(有電腦/AI 設備) vs 真實企業辦公室。</p>
+<p><strong>Visual Device</strong>: 「分屏對比 + 數字計時器」。畫面分割為左右或上下，一邊係課堂學習 AI 軟件界面，另一邊係職場實戰應用同一軟件；角落有「津貼累計」或「技能掌握度」動態 Progress Bar，強化「即時見效」感。</p>
+<p><strong>主打口號</strong>: 每月津貼最高 $8,000，大學畢業都讀得</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。此概念依賴「政策權威(主席)+ 真實學員」建立信任感，明星反而削弱「實證」說服力。KOL 可改為邀請科技/職場類 Youtuber(如 米紙/ 職人系列風格)作旁白或體驗者，但非主角。</p></div></details><details class='crow' id='cand-cm6e8dd8a2'><summary><span class='cname'>[qwen3.7-max] Concept 3:〔AI+ 職場實況劇：Degree ≠ Ready〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cm6e8dd8a2&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 3:〔AI+ 職場實況劇：Degree ≠ Ready〕</h4>
+<p><strong>創作概念</strong>: 採用標書建議「Work Scenario Drama」形式，但避開老套說教。以「高學歷新人入职第一週」為情境，展現佢擁有理論知識但面對 AI 工具束手無策嘅真實焦慮(痛點)，再透過同事/上司點出「ERB 高階課程」作為解決方案。強調 ERB 課程係「補足學位與實戰之間嘅最後一里路」，將「終身學習」包裝為職場生存必備策略，而非進修選項。</p>
+<p><strong>人/景</strong>: 22-28 歲應屆/初職畢業生；場景為設計工作室 / 數碼營銷公司 / 初創企業(避免傳統寫字樓)，充滿螢幕、白板、協作空間。</p>
+<p><strong>Visual Device</strong>: 「思維氣泡 vs 實操界面」。當主角焦慮時，頭頂出現學位帽圖標打叉(❌)；當運用 ERB 所學時，切換為第一人稱視角(POV)操作 AI 工具界面，並疊加 Pop-up Tips 顯示課程重點，視覺化「所學即所用」。</p>
+<p><strong>主打口號</strong>: AI+ 時代要增值，ERB 高階課程幫你 Up Skill</p>
+<p><strong>Proposed 明星/名人</strong>: 林家熙 (Locker Lam)。年輕演員中具「專業感」與「親和力」平衡，曾演出職場/科技相關題材，形象正面且貼近 18-35 歲目標受眾審美，能演繹「高學歷但需增值」而不顯突兀。</p></div></details></div><details class='soft'><summary>📖 睇全部委員會 / agency 完整提案 + storyboard</summary><details class='soft'><summary>🗳️ qwen3.7-max</summary><h4 class="cc">## 落橋前(必做)</h4>
+<p>已徹底消化 Client Debrief 及標書要求。核心挑戰係將 ERB 由「失業救濟/基層培訓」嘅舊印象，重塑為「全民(尤其高學歷)AI+ 技能增值平台」。創意必須回應 Provocation 中嘅「數字 Hook」、「學歷屏障打破」及「真實職場應用」，同時嚴格遵守政府穩陣框架，避免過度娛樂化或貶低學歷。以下概念聚焦「政策紅利視覺化」與「高學歷族群共鳴」，確保 3 秒內以利益點留住观众，並以實證建立信任。所有用語已對照官方正名表，確保「學員」、「技能提升」、「僱員再培訓局」等準確無誤。KV 方向已預設為「數字+人物」組合，方便後續延展。</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>採「Urban Tech Documentary」風格。結合知識型 YouTuber 嘅快節奏資訊圖形(Motion Graphics)與現代職場實拍質感。燈光以自然光混合冷調科技感(Cool White/Neon Accent)，色調飽和但唔刺眼(Earthy Tech Tone)。鏡頭多用 Handheld 跟拍 + Stable Cam 特寫交替，營造「真實記錄」而非「摆拍」感。剪接節奏明快(平均 2-3 秒/鏡)，配合無歌詞電子節拍(Electronic Beat)驅動情緒。字幕主導(Caption-led)，關鍵訊息(津貼/學歷上限)以動態排版置中彈出。</p>
+<p>style_anchor: &quot;Urban Tech Documentary, Knowledge-YouTuber Pacing, Motion Data Viz, Handheld Realism, Cool-Tone Lighting, Caption-Led Editing, Electronic Beat, 16:9 cinematic&quot;</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1. 不設學歷上限，ERB 實戰技能人人有份</p>
+<p>2. AI+ 時代要增值，ERB 高階課程幫你 Up Skill</p>
+<p>3. 每月津貼最高 $8,000，大學畢業都讀得</p>
+<p>4. 打破學歷框框，ERB 未來技能即學即用</p>
+<p>5. 技能為本不問學歷，ERB 助你職場升級</p>
+<h4 class="cc">## Concept 1:〔履歷表上的 NEW SKILL〕</h4>
+<p><strong>創作概念</strong>: 直接回應「大學生都讀 ERB」嘅反差感。以一份「高學歷人士履歷表」為視覺主體，透過 Motion Graphic 動態展示佢喺職場遇到瓶頸(學歷夠但技能舊)，隨後 ERB 課程如「外掛插件」般加入履歷，即時解鎖新工作場景。將抽象「取消學歷上限」轉化為具體「職業競爭力+1」嘅視覺證據，扣緊「技能為本」核心訊息。</p>
+<p><strong>人/景</strong>: 25-30 歲學位持有人(男女皆可)，身穿 Smart Casual；場景由傳統 Office Grid 轉場至現代 Co-working Space / Tech Hub 開放式工位。</p>
+<p><strong>Visual Device</strong>: 「動態履歷表 UI」貫穿全片。畫面左側/底部常駐半透明履歷面板，當學員學習 AI/數碼技能時，履歷上「Skills」欄位會像遊戲升級般彈出 ERB Logo 及技能標籤(如 Generative AI, Data Analytics)，並連線到右側真實操作畫面。</p>
+<p><strong>主打口號</strong>: 打破學歷框框，ERB 未來技能即學即用</p>
+<p><strong>Proposed 明星/名人</strong>: 陳漢娜 (Hannah Chan)。形象知性、有學位背景但同時活躍於創意/科技跨界別，符合「高學歷+新技能」人設，且氣質穩重不浮誇，貼近政府專業調性。</p>
+<h4 class="cc">## Concept 2:〔$8,000 實戰加速器〕</h4>
+<p><strong>創作概念</strong>: 針對 Cynical 受眾「講金又講心」嘅心態。開首 3 秒直接以「HKD 8,000 / 月」巨大動態數字作為視覺錘(Hook)，隨即切入 ERB 主席黃傑龍 Soundbite 確認「2025 起不設學歷上限」建立權威。接著以「投入vs回報」邏輯，快速剪接學員上課(投入)與職場應用 AI 解決問題(回報)嘅對比畫面，將津貼重新定義為「政府資助嘅職場加速器」而非「福利」。</p>
+<p><strong>人/景</strong>: 真實 ERB 學員(素人演員) + ERB 主席黃傑龍(片段/聲音授權)；場景為 ERB 認可培訓機構嘅高科技課室(有電腦/AI 設備) vs 真實企業辦公室。</p>
+<p><strong>Visual Device</strong>: 「分屏對比 + 數字計時器」。畫面分割為左右或上下，一邊係課堂學習 AI 軟件界面，另一邊係職場實戰應用同一軟件；角落有「津貼累計」或「技能掌握度」動態 Progress Bar，強化「即時見效」感。</p>
+<p><strong>主打口號</strong>: 每月津貼最高 $8,000，大學畢業都讀得</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。此概念依賴「政策權威(主席)+ 真實學員」建立信任感，明星反而削弱「實證」說服力。KOL 可改為邀請科技/職場類 Youtuber(如 米紙/ 職人系列風格)作旁白或體驗者，但非主角。</p>
+<h4 class="cc">## Concept 3:〔AI+ 職場實況劇：Degree ≠ Ready〕</h4>
+<p><strong>創作概念</strong>: 採用標書建議「Work Scenario Drama」形式，但避開老套說教。以「高學歷新人入职第一週」為情境，展現佢擁有理論知識但面對 AI 工具束手無策嘅真實焦慮(痛點)，再透過同事/上司點出「ERB 高階課程」作為解決方案。強調 ERB 課程係「補足學位與實戰之間嘅最後一里路」，將「終身學習」包裝為職場生存必備策略，而非進修選項。</p>
+<p><strong>人/景</strong>: 22-28 歲應屆/初職畢業生；場景為設計工作室 / 數碼營銷公司 / 初創企業(避免傳統寫字樓)，充滿螢幕、白板、協作空間。</p>
+<p><strong>Visual Device</strong>: 「思維氣泡 vs 實操界面」。當主角焦慮時，頭頂出現學位帽圖標打叉(❌)；當運用 ERB 所學時，切換為第一人稱視角(POV)操作 AI 工具界面，並疊加 Pop-up Tips 顯示課程重點，視覺化「所學即所用」。</p>
+<p><strong>主打口號</strong>: AI+ 時代要增值，ERB 高階課程幫你 Up Skill</p>
+<p><strong>Proposed 明星/名人</strong>: 林家熙 (Locker Lam)。年輕演員中具「專業感」與「親和力」平衡，曾演出職場/科技相關題材，形象正面且貼近 18-35 歲目標受眾審美，能演繹「高學歷但需增值」而不顯突兀。</p></details><details class='soft'><summary>🗳️ kimi-k2.6</summary><p>我哋開完 internal creative review，以下係 Round 1 初步概念，畀 Raymond 揀：</p>
+<p>---</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>紀錄片式寫實質感，handheld 鏡頭跟拍學員日常，混合乾淨利落的 motion graphic 數據視覺化。燈光自然光為主，課室場景用柔和 daylight + 少量 practical light（螢幕 glow），工作場景用香港典型 office 的 fluorescent + window light 混合。色調偏冷藍灰底，ERB 品牌綠作為點綴 accent。節奏快剪，0.5-1.5 秒一個鏡頭，配合無歌詞電子節拍，字幕主導（caption-led）適應手機無聲 scroll。情緒係「清醒嘅賦能」——唔係熱血，係「原來我可以」嘅平靜確定感。</p>
+<p>style_anchor: &quot;documentary handheld realism, motion graphic data overlays, natural daylight with screen glow accents, cool blue-grey grade with ERB green punctuations, electronic beat-driven rhythm, caption-led for silent scroll, 16:9 cinematic&quot;</p>
+<p>---</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1. 學歷無上限，技能無止境</p>
+<p>2. ERB 唔再係嗰個 ERB</p>
+<p>3. 大學畢業？仲有得升。</p>
+<p>4. 同一張沙紙，多幾招傍身</p>
+<p>5. 2025 年起，全港打工仔都係學員</p>
+<p>6. 唔係進修，係升級 — ERB</p>
+<p>7. AI 時代，邊個話夠喉？</p>
+<p>---</p>
+<h4 class="cc">## Concept 1: 履歷表上多咗一行</h4>
+<p><strong>創作概念</strong>：Opening 係一個手持大學學位嘅後生仔/女，望住自己份 CV，諗「仲差啲咩？」鏡頭 zoom in 入份履歷表，突然間一行字用 motion graphic 彈出嚟 — 「ERB 人工智能應用技能認證」。個畫面跟住 split screen：左邊係佢喺 ERB 現代化課室學緊操作 AI 工具（真實 close-up 手指撳 keyboard、screen 上嘅 code），右邊係同樣嘅人返工時用同一樣技能解決實際問題（e.g. 用 AI 分析銷售數據、自動化報告）。核心係「履歷表」呢個 visual device — 大學生最熟悉、最有壓力嘅物件，變成 ERB 價值嘅載體。唔係話你讀得書少，係話你一張沙紙唔夠打。</p>
+<p><strong>人/景</strong>：25-32 歲白領演員（素人感強過明星感），Co-working space / 數碼營銷公司 office / ERB 委任培訓機構現代化課室（要擺脫社區中心刻板印象）。真實學員作為背景 talent。</p>
+<p><strong>Visual Device</strong>：「履歷表」實體化 + motion graphic 動態增項。CV 紙質質感，字粒逐粒彈出，ERB 課程名稱用 brand green highlight。中段 transition 用履歷表摺疊變形成課室門/電腦 screen，再摺返開變成工作場景。</p>
+<p><strong>主打口號</strong>：同一張沙紙，多幾招傍身</p>
+<p><strong>Proposed 明星/名人</strong>：林家謙。原因：大學畢業（CUHK）、音樂創作人形象貼近「高學歷 + 實戰技能」嘅反差，公眾認知係「讀書叻、做事叻」但唔老土，形象正面無負面， Instagram 活躍度令佢喺 18-35 歲 group 有 credibility。角色定位係「旁白聲音 + 片尾 brief 現身講一句」，唔搶學員主角戲。</p>
+<p>---</p>
+<h4 class="cc">## Concept 2: 道牆冇咗</h4>
+<p><strong>創作概念</strong>：2025 年改革最核心嘅顛覆 — 撤銷學歷上限。視覺上用「一道半透明玻璃牆」象徵舊有學歷限制，牆後面係 ERB 課室，牆前面係各種高學歷人士（大學生、碩士、專業人士）望住牆後面，表情由疑惑到好奇。然後一個學員（可以是傳統 ERB 學員，可以是新學員）行埋去，手一推，塊玻璃碎成無數碎片（CG，唔暴力，優雅地碎），碎片飄散後 reveal 後面係全新嘅 ERB — 大學生同基層學員一齊上堂、一齊操作 AI 工具、一齊笑。呢個畫面打破「ERB = 某類人專利」嘅標籤，直接回應 debrief 講嘅「認知落差」。條片唔賣慘，賣「界限消失咗，你本來就可以入嚟」。</p>
+<p><strong>人/景</strong>：多樣性選角 — 大學生（著 grad gown 或 smart casual）、中年轉職者、傳統服務業從業員，全部喺同一個現代化課室。場景： glass wall 係抽象 set 或借鏡某建築物實拍，碎後 reveal 真實 ERB 課室（要大、光猛、有齊電腦設備）。</p>
+<p><strong>Visual Device</strong>：「玻璃牆」—— 半透明、有 reflection，可以映出牆前人嘅樣同牆後課室嘅活動，形成「幾乎觸及」嘅張力。碎裂瞬間用 slow motion + particles，碎片折射光線形成彩虹效果（唔血腥，唯美）。碎片最後 reassemble 成 ERB logo 形狀，再 dissolve 成真實 logo。</p>
+<p><strong>主打口號</strong>：學歷無上限，技能無止境</p>
+<p><strong>Proposed 明星/名人</strong>：黃傑龍（ERB 主席）。原因：debrief 提及佢公開講過「2025 年初起已落實取消學歷上限」，用佢本人聲音/影像做 authority anchor，增加政策真實感。角色係片頭 brief soundbite：「以前，有啲人覺得自己唔屬於呢度。2025 年起，再冇呢個『以前』。」之後交畀學員故事。慳錢、有 credibility、完全符合政府「穩陣」要求。</p>
+<p>---</p>
+<h4 class="cc">## Concept 3: Captain K 帶你偷睇一堂課</h4>
+<p><strong>創作概念</strong>：標書 optional item — 將吉祥物 Captain K 製作為 3D 動畫角色。我哋將佢由「吉祥物」升級為「技能導賞員」。Opening 係手機 screen 角度，user 喺 Instagram scroll，突然個 ERB post「活咗」— Captain K 跳出嚟 2D frame，變成 3D 立體角色，拉住觀眾隻手（POV 鏡頭）衝入 ERB 課室。佢帶住觀眾「偷睇」三種唔同課程：AI 繪圖、數據分析、數碼營銷，每堂都係 15-20 秒快閃，學員唔理佢，專心做嘢，Captain K 喺旁邊用 pop-up text 講重點（e.g. 「每日津貼 $241」、「唔使驚，大學生都報咗」）。Tone 係輕快、有少少惡搞但唔膠，好似 YouTube educational channel 嘅 host 咁。最後 Captain K 推觀眾出嚟，畫面變返手機，顯示 ERB 網站已經 open 咗 — CTA 自然完成。</p>
+<p><strong>人/景</strong>：以 Captain K 3D animation 為主導，真人學員作為 background（要真實、唔似演戲）。場景：ERB 課室、數碼工作室、co-working space。需要大量 green screen / LED volume 拍攝配合 CG integration。</p>
+<p><strong>Visual Device</strong>：「手機 screen 作為 frame」—— 整部片由 9:16 手機比例開始，Captain K 跳出嚟嗰下打破 frame，畫面擴展成 16:9 cinematic，象徵「跳出你以為嘅 ERB」。中段用 split-screen 手機 interface 同時 show 幾個課堂，最後縮返入手機顯示網站。Pop-up text / graphic 風格完全 adapt 社交媒體 native language。</p>
+<p><strong>主打口號</strong>：ERB 唔再係嗰個 ERB</p>
+<p><strong>Proposed 明星/名人</strong>：192 / 郭嘉駿。原因：YouTube 出身、熟悉網絡語言、pop-up text / fast cut 風格係佢DNA，觀眾印象中佢係「讀過書但選擇做 creators」嘅高學歷代表，對 18-30 極有 reach。風險：形象偏「膠」，需要政府審批；但客戶標書要求「fresh, creative, vivid and eye-catching」，佢係最極端嘅 option。若 Raymond 驚太出位，可退而求其次用較穩陣嘅 YouTuber 如 Ming仔 / 小薯茄成員（但要檢查政治立場）。</p>
+<p>---</p>
+<p>Raymond，三個概念分別對應：</p>
+<p>- <strong>Concept 1</strong>：最穩陣、最易 execute、最易過政府審批</p>
+<p>- <strong>Concept 2</strong>：最貼政策核心（學歷上限取消）、最有新聞性</p>
+<p>- <strong>Concept 3</strong>：最 fresh、最貼標書「vivid and eye-catching」要求、但 execute 成本同政治風險最高</p>
+<p>等你方向和明星 preference，揀中我哋即刻 develop 12 格 storyboard。</p></details><details class='soft'><summary>🗳️ grok-4.3</summary><h4 class="cc">## 落橋前(已消化)</h4>
+<p>已跟足 CLIENT DEBRIEF：重心係「<strong>撤銷學歷上限</strong>」嘅品牌革新官宣，針對 18-35 歲高學歷在職人士；要「show 唔 tell」實用技能，避賣慘、避舊標籤，調性專業、正面、賦能；必用官方正名及「學員」。</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>紀錄片手搖鏡頭 + 現代 co-working space 自然光，青藍冷調偏暖橙點綴，數碼 pop-up 文字，電子節拍無詞配樂，第一身旁白，16:9 寫實 cinematic。</p>
+<p>style_anchor: &quot;handheld docu, modern co-working natural light, cool teal+warm orange accents, digital pop-ups, electronic beat no lyrics, first-person VO, 16:9 cinematic&quot;</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>- 學歷無上限，技能即戰力。</p>
+<p>- ERB 今日已革新，升級只為你。</p>
+<p>- 唔止大學生，ERB 都係你。</p>
+<p>- AI+ 轉型，ERB 陪你轉。</p>
+<p>- 撤走學歷牆，開啟職場新技能。</p>
+<h4 class="cc">## Concept 1:〔履歷即時升級〕</h4>
+<p><strong>創作概念</strong>: 用 motion graphic 將一份大學生履歷表「即時加多一行 ERB 創科課程」，視覺化「撤銷學歷上限」後嘅實際增值，直接回應 debrief「大學生都讀 ERB」嘅反差。</p>
+<p><strong>人/景</strong>: 25 歲 IT 助理喺 co-working space 打開 MacBook，畫面切至 ERB 課室 close-up 操作 AI 工具。</p>
+<p><strong>Visual Device</strong>: 履歷表彈出視窗，新增一項 ERB 課程記錄，旁邊即彈出「不設學歷上限」彈窗。</p>
+<p><strong>主打口號</strong>: 學歷無上限，技能即戰力。</p>
+<p><strong>Proposed 明星/名人</strong>: 建議找一位 30 歲出頭、形象正面嘅科技界 KOL (e.g. 陳少潤)，佢本身有大學背景，代表「新受眾」身份；一句解釋：「用自己轉工經歷，話畀同級高學歷打工仔知 ERB 點樣幫到忙」。</p>
+<h4 class="cc">## Concept 2:〔主席真聲〕</h4>
+<p><strong>創作概念</strong>: 開頭 3 秒即播 ERB 主席黃傑龍先生訪問片段：「2025 年初已經取消學歷上限」，即以最高權威打破觀眾懷疑，再接學員真實 workplace application。</p>
+<p><strong>人/景</strong>: 主席聲畫 + 一位 28 歲會計師喺 startup 公司用數據分析工具解決報表問題。</p>
+<p><strong>Visual Device</strong>: 主席 soundbite 片段用圓形視窗浮現，其後畫面擴闊成學員工作實景。</p>
+<p><strong>主打口號</strong>: ERB 今日已革新，升級只為你。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用 — 本 concept 已用官方主席增加可信度，毋須額外名人。</p></details><details class='soft'><summary>🗳️ gpt-5.2</summary><h4 class="cc">## 落橋前(必做)</h4>
+<p>我哋 Round 1 出兩個「框內最高質」概念，核心都係<strong>打爆舊標籤</strong>：由「再培訓＝某類人」→「技能提升＝全民都要」；同時<strong>硬訊息清晰可見</strong>：<strong>自 2025 年起撤銷 Restriction on Educational Attainment（不設學歷上限）</strong>、跨行業 Digital Skills / AI+、真實課室＋真實工作應用、片尾 Logo＋CTA＋<strong>www.erb.org</strong>。名人/KOL 只做「體驗／引導」，主角一定係<strong>學員 (Trainees)</strong>。</p>
+<p>---</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>紀錄片式寫實（handheld + gimbal 混用）、快節奏 cut、caption-led 大字動態標題（無聲都睇得明）、乾淨現代辦公/課室美術（偏冷中性調：灰白＋少量品牌藍作點綴）、局部 close-up 手部操作（AI 軟件/數據圖表/拍攝器材/咖啡店 POS 等），配無歌詞電子節拍；過場用 UI pop-up / kinetic typography，整體「專業但唔老套」。  </p>
+<p>style_anchor: &quot;modern docu-realism, handheld realism, kinetic typography, UI pop-ups, clean office lighting, cool neutral grade, punchy edit, no-lyrics electronic beat, 16:9 cinematic&quot;</p>
+<p>---</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>- <strong>學位唔係上限，技能先係。</strong> (Degree isn’t the limit. Skills are.)  </p>
+<p>- <strong>自 2025 年起，ERB 不設學歷上限。你都報得。</strong>  </p>
+<p>- <strong>升級唔使等被淘汰：而家就加技能。</strong>  </p>
+<p>- <strong>AI+ 時代，返工要識更新。</strong>  </p>
+<p>- <strong>跨行業都用得着嘅 Digital Skills，喺 ERB 學。</strong>  </p>
+<p>- <strong>你份 CV，差一行「新技能」。</strong>  </p>
+<p>- <strong>唔係再培訓你—係增值你。ERB。</strong></p>
+<p>---</p>
+<h4 class="cc">## Concept 1:〔打破上限〕</h4>
+<p><strong>創作概念</strong>:  </p>
+<p>用一個「看得見」嘅屏障去代表舊印象：ERB 只係某類人先啱。影片一開就用大字打出「自 2025 年起：撤銷 Restriction on Educational Attainment」，畫面上玻璃牆/透明「上限線」被推開/碎裂（唔暴力，偏設計感），之後連續見到唔同行業、唔同學歷背景嘅<strong>學員</strong>喺 ERB 課室學 Digital Skills／AI+，再 cut 去佢哋返到工作場景即刻用得着，直接「show 唔 tell」ERB 已革新、課程更高階更貼市。  </p>
+<p>（名人/KOL 只做「入場體驗者」，同學員一齊上堂，帶觀眾睇：原來我都報得。）</p>
+<p><strong>人/景</strong>:  </p>
+<p>- 18–35 在職學員：例如市場營銷 executive（有學位）、設計師、餐飲店副經理、零售店長、初級數據分析師（多元行業）。  </p>
+<p>- 場景：現代化 ERB 委任培訓機構課室（大屏幕/電腦/實作）、co-working space、tech startup office、設計 studio、咖啡店/零售後台（用數碼工具提升效率）。</p>
+<p><strong>Visual Device</strong>:  </p>
+<p>- 「學歷上限」具象化：透明玻璃牆/亞加力牌寫住「學歷上限？」＋一條發光水平線；鏡頭一推近，大字 overlay「已撤銷」；線條化成動態 UI 分散到唔同行業畫面（象徵打開 consideration set）。  </p>
+<p>- 全片用「大字 timestamp」：<strong>「自 2025 年起」</strong>固定格式出現，建立政策真確感。</p>
+<p><strong>主打口號</strong>:  </p>
+<p><strong>自 2025 年起，ERB 不設學歷上限。技能提升，人人都得。</strong></p>
+<p><strong>Proposed 明星/名人</strong>:  </p>
+<p><strong>方力申</strong>（形象正面、運動員/藝人身份夠「大眾認知」、語氣自然唔官腔；做「體驗者」：用半懷疑半好奇入課室，最後用一句「原來我都報得」收束，貼新受眾心態但唔玩膠。）</p>
+<p>---</p>
+<h4 class="cc">## Concept 2:〔CV 多一行〕</h4>
+<p><strong>創作概念</strong>:  </p>
+<p>每集用一份「學員履歷表 CV」做主線：開場係一張好完整、好「學歷亮眼」嘅 CV（刻意反差：大學畢業、幾年經驗），但畫面彈出一個紅色提示：「AI+ 時代：你最缺嘅，可能係『即用技能』。」跟住 CV 上面自動新增一行：<strong>「ERB Courses｜Digital Skills」</strong>（例如 AI 工具應用、數據分析、數碼營銷等），再即刻切去課室實作＋工作場景應用，展示「學完—即刻解到問題—效率上升」。最後回到 CV：新增技能行變成「打開更多可能性」嘅視覺收結，順勢落 CTA 去 <strong>www.erb.org</strong>。  </p>
+<p>同時用一張 CV 連起「新舊受眾」：唔同學歷、唔同行業都係同一個動作——為自己加一行技能。</p>
+<p><strong>人/景</strong>:  </p>
+<p>- 學員（Trainees）主角 3–4 位：有學位在職人士為主，配一位傳統行業在職人士（平衡舊受眾）。  </p>
+<p>- 場景：課室（真係操作軟件、做練習）、會議室（用數據/AI 工具出 report）、零售/餐飲後台（用數碼工具排更/分析銷售）、創意 studio（AI 輔助出 moodboard）。</p>
+<p><strong>Visual Device</strong>:  </p>
+<p>- 「CV 介面」動態圖像：每次學到一個技能，就喺 CV 上 <strong>pop-up 新增一行</strong>；同時旁邊出現「實戰應用」小標籤（例如「自動生成簡報／分析客流／優化廣告投放」），做到無聲都明。  </p>
+<p>- 每集最後一秒：CV 底部固定出現「僱員再培訓局 (Employees Retraining Board)｜www.erb.org」作一致 branding。</p>
+<p><strong>主打口號</strong>:  </p>
+<p><strong>你份 CV，差一行新技能。去 ERB。</strong></p>
+<p><strong>Proposed 明星/名人</strong>:  </p>
+<p><strong>梁祖堯</strong>（口條清晰、形象專業可信、節奏感好；可做「CV 檢視官／體驗者」：用輕專業語氣帶觀眾睇每位學員點樣「加一行」而唔流於搞笑，符合「fresh 但穩陣」。）</p>
+<p>---</p></details><details class='soft'><summary>🗳️ gemini-2.5-pro</summary><p>OK team, debrief 食晒, Raymond 要 R1 concepts. 慳力, 唔 full board, focus 喺個 big idea 度。跟足 debrief, 唔好離地, 記住我哋係要扭轉個「ERB 係失業人士專利」嘅舊印象。</p>
+<p>Let&#x27;s go.</p>
+<p>---</p>
+<h4 class="cc">## 落橋前(必做)</h4>
+<p>已消化客戶 debrief，完全理解 campaign 核心目標係為 ERB <strong>重塑品牌</strong>，由「安全網」轉型為面向<strong>全港在職人士(尤其高學歷群體)</strong>嘅「技能增值平台」。創意方向會緊扣<strong>「撤銷學歷上限」</strong>呢個重大改革，強調課程嘅<strong>專業性、實用性</strong>同<strong>前瞻性</strong>，擺脫過時標籤，直接 drive 新目標受眾查詢報讀。所有概念會嚴格遵守客戶紅線，確保資訊準確、形象正面穩陣。</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>紀錄片式寫實主義，糅合現代化嘅動態圖像。鏡頭以手搖 (handheld) 及穩定器 (gimbal) 穿插，捕捉學員專注學習同應用技能嘅真實質感。燈光以自然光為主，營造明亮、通透嘅空間感。色調偏向乾淨、略帶科技感嘅冷色系，但人物膚色保持溫暖，帶出人性溫度。節奏明快，剪接點跟隨電子節拍感強而無歌詞嘅背景音樂，營造專業、專注而有活力嘅氛圍。</p>
+<p>`style_anchor: &quot;documentary realism, clean tech aesthetic, handheld authenticity, kinetic typography, empowering, cinematic, 16:9 cinematic&quot;`</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1.  ERB 革新。學歷，再唔係界限。</p>
+<p>2.  你有大學沙紙，我有市場實戰鎖匙。ERB。</p>
+<p>3.  增值，唔係由零開始。ERB，為你學歷再加分。</p>
+<p>4.  AI 時代，人人都要 Re-skill。ERB，全民技能升級。</p>
+<p>5.  僱員再培訓局，而家，大學生都啱讀。</p>
+<h4 class="cc">## Concept 1:〔破壁者 The Wall Breaker〕</h4>
+<p><strong>創作概念</strong>: 以「打破無形之牆」作為核心視覺比喻。許多大學畢業生喺職場會遇到樽頸位——明明有學歷，卻欠缺一門 spezifisch 嘅實用技能，呢個就係佢哋嘅「牆」。影片透過展示唔同行業嘅高學歷人士，如何透過 ERB 嘅數碼課程，學識一門新技能，從而「打破」事業上嘅樽頸之牆，開創更多可能性。</p>
+<p><strong>人/景</strong>:</p>
+<p>*   一個喺廣告公司做稿嘅大學畢業生，對住電腦苦惱點樣將概念視覺化，之後喺 ERB 學緊 AI 繪圖。</p>
+<p>*   一個喺初創公司做 marketing 嘅專才，望住一堆數據唔知點分析，之後喺 ERB 課室學緊數據分析工具。</p>
+<p>*   場景橫跨現代化辦公室、co-working space、ERB 設備先進嘅電腦課室。</p>
+<p><strong>Visual Device</strong>: <strong>一道半透明嘅玻璃牆</strong>。每當主角遇到事業樽頸時，呢道牆就會出現，阻擋佢前進。當佢喺 ERB 上堂，掌握新技能嘅一刻，佢會充滿自信咁一拳/一指擊碎玻璃牆。玻璃碎裂嘅慢鏡特效，會轉化成代表新技能嘅 data/code/UI icon，視覺上極具衝擊力。</p>
+<p><strong>主打口號</strong>: ERB 革新。學歷，再唔係界限。</p>
+<p><strong>Proposed 明星/名人</strong>: <strong>麥浚龍 (Juno Mak)</strong>。佢本身形象具備藝術感、思考深度同前瞻性，並非傳統偶像。由佢以一個觀察者或引導者嘅角色出現，能提升整個 campaign 嘅格調同專業感，符合「有新意但唔出位」嘅要求，能有效吸引對質素有要求嘅年輕觀眾。</p>
+<h4 class="cc">## Concept 2:〔履歷升級 CV+〕</h4>
+<p><strong>創作概念</strong>: 直接回應高學歷人士最關心嘅「職場價值」。影片以一份「履歷表 (CV)」作為敘事載體，展示一個典型大學生嘅 CV 雖然亮麗，但喺 AI 時代下顯得「周身刀，冇張利」。透過 ERB 課程，佢為自己嘅 CV 加上一行關鍵嘅「實戰技能」，令整份履歷即時「升級」，成功解決工作難題或爭取到更好機會。</p>
+<p><strong>人/景</strong>:</p>
+<p>*   主角係一個代表「新目標受眾」嘅年輕演員，可能係商科/文科畢業生。</p>
+<p>*   場景包括佢 initial 嘅 office (可能比較傳統)，到佢增值後轉到嘅新式科技公司 / design studio。</p>
+<p>*   大量 ERB 課堂嘅 b-roll，展示導師嘅專業性同課程嘅實用性 (e.g. 真實軟件操作 close-up)。</p>
+<p><strong>Visual Device</strong>: <strong>一份動態履歷表 (Motion Graphic CV)</strong>。影片開頭，主角嘅 CV 會以 motion graphic 形式展示，學歷一欄閃閃發光。但當遇到工作挑戰時，CV 會變暗，「技能」一欄呈現空白或過時。當佢報讀 ERB 後，一個新嘅 skill (e.g. &quot;Python for Data Analytics&quot; / &quot;Digital Marketing &amp; SEO&quot;) 會以發光嘅姿態「植入」CV，成份 CV 即時 upgrade，連帶 Job Title 都出現升級動畫。</p>
+<p><strong>主打口號</strong>: 增值，唔係由零開始。ERB，為你學歷再加分。</p>
+<p><strong>Proposed 明星/名人</strong>: <strong>游學修</strong>。佢嘅形象知性、貼地，經常探討年輕人嘅事業同人生議題，喺年輕高學歷群體中有相當嘅號召力同公信力。佢可以扮演一個「師兄」或旁述角色，用佢獨有嘅語氣，道出大學生同樣面對技能焦慮嘅現實，令訊息更易入腦。</p></details><details class='soft'><summary>🗳️ deepseek-v3.2</summary><p>好的，收到。等我哋 team 消化晒啲資料，跟住 debrief 方向，出幾個具體、落地嘅初步創意概念畀 Raymond 揀。</p>
+<p>---</p>
+<h4 class="cc">## 影像風格 (Style Direction)</h4>
+<p>現代職人紀錄片質感，聚焦真實工作情境與科技應用。採用手持攝影 (handheld) 營造臨場感，配合快速剪接與動態圖像 (motion graphics) 展示數據與技能。色調以明亮、中性為主，強調科技感嘅藍色與活力嘅橙色點綴。情緒強調積極、專業、有 energy。比例 16:9。</p>
+<p><strong>style_anchor:</strong> &quot;contemporary workplace documentary, handheld realism, kinetic typography, cool blue and warm orange palette, upbeat electronic score, 16:9 cinematic&quot;</p>
+<h4 class="cc">## Slogan (畀 Raymond 揀)</h4>
+<p>1.  <strong>ERB 2025：學歷冇上限，技能冇止境。</strong></p>
+<p>2.  <strong>唔係再培訓，係再升級。ERB。</strong></p>
+<p>3.  <strong>新技能，新跑道。ERB 助你跑贏 AI 時代。</strong></p>
+<p>4.  <strong>ERB: Your Skills, Upgraded. (你嘅技能，已升級。)</strong> *（英文作輔助）*</p>
+<p>5.  <strong>學位唔夠？ERB 幫你技能搭夠。</strong></p>
+<p>---</p>
+<h4 class="cc">## Concept 1: 技能履歷表</h4>
+<p><strong>創作概念</strong>：將每個人的職業生涯想像成一張「技能履歷表」。傳統思維只著重學歷 (CV)，但未來需要不斷更新「技能履歷表」(Skills CV)。影片展示不同背景嘅學員，如何在 ERB 課程中「下載」並應用新技能（如 AI 分析、數碼營銷），直接將呢啲技能「新增」到佢哋嘅工作履歷中，創造實質價值。核心訊息是：ERB 就是你「技能履歷表」嘅最新更新來源。</p>
+<p><strong>人/景</strong>：四位不同行業、持有學位的年輕在職人士（如：一位時裝品牌經理、一位工程師、一位文職人員、一位餐飲業主管），分別在現代化辦公室、工作室、ERB 課室及實際工作場景中。</p>
+<p><strong>Visual Device</strong>：一個不斷更新、充滿動態圖像嘅「技能履歷表」介面。學員每學到一項新技能（畫面顯示課堂實操），佢嘅「技能履歷表」就會即時彈出並新增該技能圖標，隨即切入佢應用此技能解決工作問題嘅畫面。</p>
+<p><strong>主打口號</strong>：學位唔夠？ERB 幫你技能搭夠。</p>
+<p><strong>Proposed 明星/名人</strong>：<strong>岑寧兒 Yoyo Sham</strong>。形象知性、文藝，同時貼地，能吸引年輕高學歷群體。可飾演一位需要學習新技能（如音樂製作的 AI 工具）嘅創作人，一句旁白：「學音樂都要學新嘢，何況我哋嘅 career？」</p>
+<p>---</p>
+<h4 class="cc">## Concept 2: 打破無形牆</h4>
+<p><strong>創作概念</strong>：用視覺隱喻「打破一堵代表學歷限制嘅無形牆」，直擊 2025 年改革核心。影片開首，不同人（大學生、在職專業人士）被一面透明玻璃牆阻隔，睇唔到牆後 ERB 課堂嘅先進內容（AI、數據可視化、數碼工具）。隨著旁白說明「2025 年起，學歷上限撤銷」，玻璃牆應聲破碎。大量不同背景嘅人湧入現代化課室，畫面展示技能如何應用於真實職場。強調 ERB 已成為一個開放畀所有人嘅技能市集。</p>
+<p><strong>人/景</strong>：開場為一系列快剪鏡頭，不同穿著（商務、休閒、創意）嘅年輕人面帶疑惑地「觸碰」或「被阻隔」於一堵透明牆前。牆後是明亮、充滿科技設備的 ERB 課室。牆破碎後，場景切換至學員在不同職場應用所學。</p>
+<p><strong>Visual Device</strong>：一面不斷出現、阻隔視線嘅「透明玻璃牆」視覺隱喻。牆上起初有「學歷上限」字樣，隨著政策說明，牆身出現裂痕並最終粉碎，化為數據流或技能圖標，散落於新學員身上。</p>
+<p><strong>主打口號</strong>：ERB 2025：學歷冇上限，技能冇止境。</p>
+<p><strong>Proposed 明星/名人</strong>：<strong>劉俊謙</strong>。形象健康、有時代感，能代表年輕專業人士。設定為一位發現自己技能需要更新嘅在職青年，目睹牆碎後第一個走入課室，一句：「原來牆後面，先係未來。」</p>
+<p>---</p>
+<h4 class="cc">## Concept 3: 實戰教室</h4>
+<p><strong>創作概念</strong>：徹底模糊「課室」與「職場」嘅界線。ERB 嘅課程不再是傳統課堂，而是一個個「實戰任務」。每位學員都帶著一個真實的工作問題進來（例如：「點樣用 AI 提升社交媒體觸及率？」），課程就是教他們用工具實時解決問題。影片以「解決方案導向」推進，展示學員從「帶著問題來」到「帶著方案走」嘅全過程，強力證明課程的「實用性」(Practical Relevance)。</p>
+<p><strong>人/景</strong>：緊湊的節奏，跟拍幾位學員。場景在 ERB 委託培訓機構的現代化課室（更像 co-working space），學員對著電腦實操，導師在旁指導。大量屏幕特寫 (screen-centric)，展示軟件操作。後半部分直接跳接到學員返回自己公司，應用方案並獲得同事/上司認可。</p>
+<p><strong>Visual Device</strong>：貫穿全片的「問題標籤」與「解決方案標籤」動態圖像。學員登場時，畫面彈出其「工作難題」（如「數據分析太慢」）；學習後，畫面彈出「解決方案」（如「掌握 Python 自動化處理」）。最後所有「難題標籤」都被「解決方案標籤」覆蓋。</p>
+<p><strong>主打口號</strong>：唔係再培訓，係再升級。ERB。</p>
+<p><strong>Proposed 明星/名人</strong>：<strong>試當真團隊成員（例如：阿 J）</strong>。擅長以幽默、貼地方式解構複雜概念，能有效拉近與年輕觀眾距離。可扮演一位內容創作者，苦於影片後製效率，在 ERB 學識 AI 剪片工具後大呼「得咗！」。</p>
+<p>---</p>
+<p>以上三個概念均嚴格跟從 debrief 方向：針對高學歷新受眾、展示技能實戰應用、擺脫舊標籤、調性專業貼地。Visual device 鮮明，易於發展成 storyboard。請 Raymond 過目。</p></details><details class='soft'><summary>🗳️ claude-opus-4-8</summary><h4 class="cc">## 落橋前(必做)</h4>
+<p>消化咗 debrief：核心係「ERB 已經唔同咗」呢個品牌革新宣言,主攻 18-35 歲、有學位嘅在職人士。最大障礙係「標籤」唔係「課程」—— 佢哋從來冇將 ERB 放入 consideration set。所以創意 hook 一定要打穿「ERB = 失業/基層先讀」呢個固有印象。</p>
+<p>兩個硬事實要食實:</p>
+<p>- <strong>2025 年起撤銷學歷上限</strong>(主席黃傑龍先生公開講過)—— 呢個係最顛覆、最值得做 visual 嘅一點。</p>
+<p>- 主角係<strong>學員</strong>(唔係學生),名人/KOL 做引導者/體驗者,唔做主角。</p>
+<p>- 紅線:唔貶低任何學歷/行業、唔賣慘、唔玩膠、要穩陣。Show 真實應用,唔講空話。</p>
+<p>- Mandatories:片尾 ERB 標誌、CTA、www.erb.org。</p>
+<p>無 KV poster deliverable,專注影片概念。</p>
+<p>---</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>走「半紀錄片質感 × 現代知識型內容」嘅 LOOK。唔用罐頭勵志慢鏡同合唱勵志歌(嗰啲先係「政府嘢」氣味),改用真實工作空間嘅自然光、淺景深、適度手搖,捕捉學員真做嘢嘅 moment。色調乾淨、現代、偏暖中性(唔冷冰冰科技藍),貼近 tech startup / design studio 嘅真實質感。配樂:有節拍感、無歌詞嘅電子 underscore。Motion graphic 主導關鍵數字同訊息(handle 手機無聲 scroll 場景),pop-up text 簡潔有力,但收喺政府框架內 —— 有新意唔出位。</p>
+<p>style_anchor: &quot;semi-documentary realism, natural soft window light, shallow depth of field, subtle handheld, warm neutral palette, clean kinetic typography overlays, wordless electronic underscore, contemporary workspace authenticity, 16:9 cinematic&quot;</p>
+<p>---</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1. <strong>唔係再培訓,係再升級</strong>(Not retraining. Upskilling.)</p>
+<p>2. <strong>學歷冇上限,技能冇盡頭</strong></p>
+<p>3. <strong>AI 唔等你,ERB 撐你追</strong></p>
+<p>4. <strong>大學畢咗業,技能未畢業</strong></p>
+<p>5. <strong>由今日開始,你嘅履歷仲未寫完</strong></p>
+<p>6. <strong>唔怕被取代,只怕你唔學</strong></p>
+<p>7. <strong>技能,先係你嘅真學位</strong></p>
+<p>---</p>
+<h4 class="cc">## Concept 1:〔玻璃天花〕</h4>
+<p><strong>創作概念</strong>:有一塊睇唔到嘅玻璃,一路擋住唔同學歷、唔同行業嘅人 —— 而家呢塊玻璃碎咗。我哋用一塊真實嘅玻璃屏障做 visual metaphor,逐個學員行近、伸手,玻璃應聲粉碎,佢哋直接行入一個現代化工作場景。最後揭示玻璃上原本印住「學歷限制 Restriction on Educational Attainment」,碎裂後重組成「2025 起 不設學歷上限」,直接扣住改革最硬嘅事實。</p>
+<p><strong>人/景</strong>:三至四位學員 —— 一個揸住大學文憑、面對 AI 焦慮嘅 marketing 後生女;一個傳統零售店主想數碼轉型嘅中年男;一個轉行做數據分析嘅在職人士。景:co-working space、design studio、現代化 ERB 委任培訓機構課室。</p>
+<p><strong>Visual Device</strong>:一塊印住「學歷限制」嘅玻璃屏障被打穿粉碎,碎片化成 kinetic typography 重組成新訊息 —— 一個記得住、有反差、又唔踩紅線(唔貶低任何人,只係「打開」)嘅鈎。</p>
+<p><strong>主打口號</strong>:學歷冇上限,技能冇盡頭</p>
+<p><strong>Proposed 明星/名人</strong>:建議 <strong>林敏驄 或 麥明詩 (Louisa Mak)</strong> —— 傾向麥明詩:劍橋法律畢業、形象 pro、正面、零負面新聞,本身就係「高學歷都要持續增值」嘅活招牌,佢做引導者行過玻璃,反差最有說服力。</p>
+<p>---</p>
+<h4 class="cc">## Concept 2:〔多咗一行〕</h4>
+<p><strong>創作概念</strong>:呢個世代最緊張嘅唔係張沙紙,係張履歷追唔追到市。我哋 follow 一份份真實履歷表 —— 本身已經有大學學位、有工作經驗,但下面新加咗一行 ERB 數碼技能(AI 應用、數據分析、數碼營銷)。鏡頭由履歷表上嘅一行字,溶接去學員喺真實工作場景中操作緊嗰項技能、解決緊真問題。Show 唔 tell:技能價值 = 履歷表上實實在在多咗、用得着嘅一行。</p>
+<p><strong>人/景</strong>:四個唔同背景學員嘅履歷表特寫(打字機/打印中嘅動態),配真實 b-roll:學員 close-up 操作 AI 軟件、執代碼、整數據 dashboard;再 cut 到佢哋喺 startup office / 數碼化工場真實應用同一技能。強調「大學生都讀 ERB」嘅反差。</p>
+<p><strong>Visual Device</strong>:履歷表上「新增一行」嘅 motion graphic —— 游標打出一行 ERB 技能,即刻發光、溶接成真實工作畫面。一個簡潔、易明、扣住「即用貼市」痛點嘅視覺鈎。</p>
+<p><strong>主打口號</strong>:大學畢咗業,技能未畢業</p>
+<p><strong>Proposed 明星/名人</strong>:建議 <strong>岑珈其 或 周國賢</strong> —— 傾向周國賢:理工出身、形象正面斯文、有「斜槓 / 持續學習」personal brand,做履歷表 owner 之一 + 旁白引導者,貼到「高學歷都喺度增值」嘅核心訊息,穩陣冇爭議。</p></details><details class='soft'><summary>🗳️ 委員會 20260605-193851</summary><p>（CD 收斂中…睇晒成個共創鏈：策略張力「我有沙紙，但冇彈藥」、文案五粒種子、美術四個視覺鈎 + SYSTEM RELOAD big idea。我嘅判斷係——美術嗰套「HUD / Glitch」太重 gaming，撞客戶紅線「唔可以過份前衛或實驗性」「形象要穩陣」。要收斂返落地。揀兩條最強、夠 fresh 又企得穩嘅 concept 畀 Raymond。）</p>
+<p>---</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>收斂美術嗰套,但<strong>降溫前衛感</strong>,保留「Pro / 質感」,避開 cyberpunk glitch 嗰種出位 look:</p>
+<p>- 媒介:photoreal live-action cinematography(實拍寫實)</p>
+<p>- 流派/年代:中性(唔玩 cyberpunk,靠美術指導同場景做潮)</p>
+<p>- 燈光:studio softbox lighting, smooth gradients(影樓柔光,乾淨專業)</p>
+<p>- 色調:teal-and-orange cinematic grade(輕度,唔過火)</p>
+<p>- 菲林:pristine 4K commercial polish(乾淨高質商業感)</p>
+<p>- 鏡頭:natural documentary framing, 35mm(自然紀實,真實感)</p>
+<p>- 情緒:clean premium commercial mood(乾淨高級商業)</p>
+<p>- 比例:16:9</p>
+<p>`style_anchor: &quot;photoreal live-action cinematography, studio softbox lighting smooth gradients, teal-and-orange cinematic grade, pristine 4K commercial polish, natural documentary framing 35mm, clean premium commercial mood, 16:9 cinematic&quot;`</p>
+<p>---</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>1. 有沙紙,都要有彈藥。(ERB 課程)</p>
+<p>2. 學歷係過去式,技能先係現在進行式。</p>
+<p>3. 你張 CV,幾時 last update?</p>
+<p>4. 唔係再培訓,係再裝備。</p>
+<p>5. 大學生都返 ERB —— 估你唔到。</p>
+<p>6. 由識讀,變識做。</p>
+<p>7. AI 時代,搶先 update 自己。</p>
+<p>---</p>
+<h4 class="cc">## Concept 1:〔估你唔到〕</h4>
+<p><strong>創作概念</strong>:鏡頭跟一班睇落完全唔似「傳統 ERB 學員」嘅年輕專才——西裝律師、startup 創辦人、設計師、Marketing 經理,逐個自信咁示範佢哋點用新數碼技能解難。觀眾一路以為睇緊高端職場片,中段每人講一句「我喺僱員再培訓局學嘅」,逐格揭盅身份,直接撕走「ERB = 基層 / 失業」標籤。硬訊息「2025 年起不設學歷上限、全民可讀」由 reveal 嘅反差自然帶出,唔使口號式硬塞。</p>
+<p><strong>人/景</strong>:4-5 位 18-35 歲、高學歷在職素人/演員(跨行業:法律、創科、設計、市場營銷);場景係現代化 co-working space、tech startup office、design studio,擺脫舊式社區課室印象。可加 ERB 主席黃傑龍真實 soundbite 增權威。</p>
+<p><strong>Visual Device</strong>:<strong>「身份字卡 reveal」</strong>——每位主角畫面角落本來打住職銜(e.g.「執業律師」),講完關鍵句,字卡動態加多一行「· ERB 學員」,簡潔有力,反差全靠呢一下。</p>
+<p><strong>主打口號</strong>:大學生都返 ERB —— 估你唔到。</p>
+<p><strong>Proposed 明星/名人</strong>:建議用形象專業、年輕又有「斜槓 / 進修」人設嘅 KOL(如知識型 YouTuber 類)做其中一位 reveal 主角 —— 因為佢本身已經係「高學歷 + 貼市」嘅活招牌,佢一講「我都係 ERB 學員」,對核心受眾衝擊最大。(具體人選後期按形象正面、無負面新聞篩選)</p>
+<p>---</p>
+<h4 class="cc">## Concept 2:〔CV·Last Update〕</h4>
+<p><strong>創作概念</strong>:用一份典型大學生 CV 做主軸。開場 CV 睇落光鮮,但旁白帶出 AI 時代,CV 上嘅技能欄逐項「變灰、標住 outdated」——學歷仲喺度,但彈藥過晒期。主角報讀 ERB 課程後,每掌握一項實戰技能(AI 應用、數據分析、數碼營銷),CV 上即時「解鎖」一個新項目,由灰變亮,成份 CV 重新生猛。將抽象「技能提升」變成睇得明嘅「CV 升級」,硬訊息「即學即用、貼市實用」自然落地。</p>
+<p><strong>人/景</strong>:1 位代表核心群體嘅年輕高學歷在職主角(由焦慮到自信嘅轉變弧);實景穿插 ERB 現代化課室真實上堂 b-roll(操作 AI 軟件、寫 code 嘅 close-up),再對比佢喺新型工作環境應用同一技能。CV 升級用乾淨 motion graphic 呈現,<strong>克制、唔做 glitch / HUD</strong>,保持商業高級感。</p>
+<p><strong>Visual Device</strong>:<strong>「CV 技能欄即時解鎖」</strong>——一份真實 CV 上,技能 icon 由灰→亮、由舊→新,配輕量動效。一個睇一眼就明嘅「增值」視覺鈎,夠 fresh 但唔出位。</p>
+<p><strong>主打口號</strong>:你張 CV,幾時 last update?</p>
+<p><strong>Proposed 明星/名人</strong>:不適用(主軸係素人學員真實轉變;名人/KOL 可後期以「體驗者/旁觀者」brief appearance 加入,唔搶主角戲)。</p>
+<p>---</p>
+<p>（CD note 畀 Raymond:Concept 1 賣「反差撕標籤」,情緒衝擊強、最快重塑認知;Concept 2 賣「實用增值」,訊息最清、最易扣 CTA。兩條都企得穩政府框內。揀中邊條,我即刻 develop full 12 格 board。）</p></details><details class='soft'><summary>🗳️ 委員會 20260605-193231</summary><p>好的團隊，辛苦晒。睇晒所有共創材料，由 big idea 到精做，加埋我同 AD 嘅 comment，方向已經好清晰。我哋唔係要 reinvent the wheel，而係要將 ERB 呢個「舊品牌」用最聰明、最貼市嘅語言同視覺「重新封裝」，話畀新一代聽，呢個係你哋而家最需要嘅「技能外掛」。</p>
+<p>以下係我收斂後嘅初步創意概念，畀 Raymond first-round 拍板用。</p>
+<p>---</p>
+<h4 class="cc">## 落橋前(必做)</h4>
+<p>已消化客戶 debrief，完全理解 ERB 嘅品牌升級任務：由「安全網」進化為面向全民（尤其係高學歷人士）嘅「技能增值平台」。創意會緊扣「2025 年撤銷學歷上限」呢個核心改革，直接回應目標受眾嘅「技能焦慮」，建立一個專業、務實、具前瞻性嘅新形象，同時嚴守政府客戶嘅紅線同 mandatories。</p>
+<h4 class="cc">## 影像風格(Style Direction)</h4>
+<p>- <strong>媒介/流派</strong>: 實拍寫實 + 高質 3D 動畫</p>
+<p>- <strong>燈光</strong>: 影樓柔光 (Studio softbox lighting)，突出產品質感</p>
+<p>- <strong>色調</strong>: Teal &amp; Orange 電影感調色 (Cinematic Grade)</p>
+<p>- <strong>菲林</strong>: 4K 商業級乾淨數碼質感 (Pristine 4K Commercial Polish)</p>
+<p>- <strong>鏡頭</strong>: 85mm 人像鏡，淺景深突出人物與技能嘅連結</p>
+<p>- <strong>情緒</strong>: 乾淨、高級、商業感 (Clean, Premium, Commercial Mood)</p>
+<p>- <strong>比例</strong>: 16:9</p>
+<p>- <strong>style_anchor</strong>: &quot;photoreal live-action cinematography with high-end 3D render, studio softbox lighting, teal-and-orange cinematic grade, pristine 4K commercial polish, intimate portrait 85mm shallow depth of field, clean premium commercial mood, 16:9 cinematic&quot;</p>
+<h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
+<p>- ERB・技能增值。裝備下一個你。</p>
+<p>- 你份 CV，仲爭呢一項。 (Your CV is missing this one line.)</p>
+<p>- 升級，唔係由頭嚟過。</p>
+<p>- 大學教你基本功，ERB 教你決勝分。</p>
+<p>- 最貼市嘅技能，已經開咗學。</p>
+<h4 class="cc">## Concept 1:【實裝・升級】</h4>
+<p><strong>創作概念</strong>: 將「學新技能」呢個抽象概念，轉化為一次具爽感嘅「硬件升級」。ERB 課程唔係書本知識，而係一個個實體化、可觸摸、可「安裝」嘅技能模組 (Skill Module)。當學員將呢啲模組「實裝」到自己嘅專業工具或流程上，即時見到效率同產能嘅幾何級提升，直接扣連 ERB「實用、貼市」嘅核心訊息。</p>
+<p><strong>人/景</strong>: 主角係各行各業嘅年輕專業人士（如建築師、市場策劃、數據分析師）。場景設定喺現代化、有設計感嘅工作空間（如科技公司、設計工作室、co-working space），擺脫傳統課室印象。</p>
+<p><strong>Visual Device</strong>: <strong>「技能模組 (Skill Module)」</strong>。一個個發光、半透明、刻有技能符號（如 AI Prompting, Data Visualization）嘅實體方塊。主角會做出一個將模組「啪」一聲嵌入工具（如電腦、繪圖板）嘅動作，觸發整個工作流程嘅視覺升級（例如數據圖表由 2D 變 3D 互動、設計稿自動生成多個版本）。</p>
+<p><strong>主打口號</strong>: ERB・技能增值。裝備下一個你。</p>
+<p><strong>Proposed 明星/名人</strong>: <strong>麥浚龍 (Juno Mak)</strong>。佢本身形象具前瞻性、對細節同質感有極高要求，由佢嚟演繹「為專業裝配最精良組件」嘅概念，能提升 ERB 嘅格調同專業感，打破舊有標籤。</p>
+<h4 class="cc">## Concept 2:【履歷表＋1】</h4>
+<p><strong>創作概念</strong>: 直接回應高學歷人士最關心嘅「職場競爭力」。概念以「履歷表 (CV)」呢個最現實嘅符號切入，展示唔同專業人士嘅 CV，雖然已有亮麗學歷，但喺 AI 時代底下顯得有啲「未完成」。透過 ERB，佢哋為自己嘅履歷表加上最關鍵嘅「+1」—— 一項超貼市嘅數碼技能，令整份 CV 實力即時倍增。</p>
+<p><strong>人/景</strong>: 同樣係年輕專業人士，但著重描寫佢哋喺職場上面對新挑戰（例如老闆要求用 AI 做分析）時嘅思考狀態。場景包括辦公室、見工面試房、自由工作者嘅屋企 studio。</p>
+<p><strong>Visual Device</strong>: <strong>「動態履歷表 (Live CV)」</strong>。用精緻嘅 Motion Graphic 將主角嘅 LinkedIn profile 或履歷表視覺化。當主角完成 ERB 課程後，畫面會出現一個「+」號，然後一項新技能（e.g., &quot;AI-Assisted Animation&quot;）以發光字體形式，鏗鏘有力地加入到履歷表嘅技能欄上，同時見到佢嘅個人檔案「完成度」由 90% 跳到 100%。</p>
+<p><strong>主打口號</strong>: 你份 CV，仲爭呢一項。</p>
+<p><strong>Proposed 明星/名人</strong>: <strong>黃傑龍 (Simon Wong)</strong> - ERB 主席本人。唔係要佢演戲，而係以半紀錄片形式，由佢以權威而貼地嘅身份，親自解說「點解連大學生都需要 ERB」，並引用「2025 年起已落實取消學歷上限」嘅政策事實，增加 campaign 嘅公信力同新聞價值，做法穩陣而有力。</p></details></details></details></section><section id='top3'><details class='soft sec' open><summary>🏆 三甲 · 評分頭三(可揀三甲以外)</summary><p class='hint'>三甲 = 評審團按官方 marking scheme 總分頭三。你可揀三甲以外(見「🗂️ 候選池」每個都有「轉 brd」掣)。</p><div class='card t3'><div class='t3head'><span class='medal'>🥇</span><span class='t3score'>88.0/100</span></div><div class='t3name'>[委員會 193851] Concept 2:〔CV·Last Update〕</div><div class='t3act'><a class='btn cta' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cm27e96632&stage=board'>🎨 轉 brd 生圖</a> <a class='lnk' href='#cand-cm27e96632'>睇完整概念 ↓</a></div></div><div class='card t3'><div class='t3head'><span class='medal'>🥈</span><span class='t3score'>87.0/100</span></div><div class='t3name'>[deepseek-v3.2] Concept 3:實戰教室</div><div class='t3act'><a class='btn cta' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cmcb2293ce&stage=board'>🎨 轉 brd 生圖</a> <a class='lnk' href='#cand-cmcb2293ce'>睇完整概念 ↓</a></div></div><div class='card t3'><div class='t3head'><span class='medal'>🥉</span><span class='t3score'>86.6/100</span></div><div class='t3name'>[claude-opus-4-8] Concept 1:〔玻璃天花〕</div><div class='t3act'><a class='btn cta' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&cid=cm7cf75375&stage=board'>🎨 轉 brd 生圖</a> <a class='lnk' href='#cand-cm7cf75375'>睇完整概念 ↓</a></div></div><details class='soft'><summary>🎯 CD 推薦理由 + polish</summary><p>確認評分三甲如下：</p>
+<p>---</p>
+<p><strong>1. [委員會 193851] Concept 2:〔CV·Last Update〕 — 88.0</strong>  </p>
+<p>強在最貼近 brief 核心（履歷即時更新），同時以「最後更新時間」作為創意切入點，阻嚇力與記憶點兼備，落客成功率最高。  </p>
+<p><strong>Polished 方向：</strong> 把「最後更新」由被動顯示變成主動邀請，強化求職者即時行動感。</p>
+<p>---</p>
+<p><strong>2. [deepseek-v3.2] Concept 3:實戰教室 — 87.0</strong>  </p>
+<p>以「實戰」直擊 NBLM 痛點，創意力強且具教學場景，阻嚇力來自真實職場難度，記憶點清晰，落客轉化潛力高。  </p>
+<p><strong>Polished 方向：</strong> 把「教室」升級為「實戰考場」，加入即時評分機制，加強緊張感與參與度。</p>
+<p>---</p>
+<p><strong>3. [claude-opus-4-8] Concept 1:〔玻璃天花〕 — 86.6</strong>  </p>
+<p>概念最有社會議題深度，視覺化「隱形天花板」具強烈阻嚇與記憶點，創意力突出，適合品牌價值傳達。  </p>
+<p><strong>Polished 方向：</strong> 加入「打破」或「推高」互動元素，讓玻璃天花不只是象徵，而是可被改變的體驗。</p>
+<p>---</p>
+<p><strong>額外 Flag（低估潛力）：</strong></p>
+<p>- <strong>[委員會 193231] Concept 2:【履歷表＋1】（85.6）</strong>  </p>
+<p>  雖排第五，但「＋1」概念簡單直接，阻嚇力與記憶點兼具，執行門檻低，值得 Raymond 留意其轉化效率。</p>
+<p>- <strong>[gpt-5.2] Concept 2:〔CV 多一行〕（85.1）</strong>  </p>
+<p>  與第一名概念相近，但更強調「多一行」的視覺衝擊，阻嚇力較強，若能強化差異化，仍有上升空間。</p></details></details></section><section id='gen'><details class='soft sec' ><summary>🎞️ 生成作品(storyboard)</summary><p class='empty'>仲未生圖。喺三甲或候選池撳「🎨 轉 brd」即生(完成 WhatsApp 通知你)。</p></details></section><section id='lookback'><details class='soft sec' ><summary>👀 睇返區 · 冇進級嘅 idea(永遠睇得返)</summary><div class='lab' style='margin-top:12px'>第 pool 輪跌出</div><div class='card' style='padding:10px'>[委員會 193231] Concept 1:【實裝・升級】<a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=ERB&cid=cma89efea2&to=r2'>⤴️ 升級補生</a></div><div class='card' style='padding:10px'>[claude-opus-4-8] Concept 1:〔玻璃天花〕<a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=ERB&cid=cm7cf75375&to=r2'>⤴️ 升級補生</a></div><div class='card' style='padding:10px'>[deepseek-v3.2] Concept 1:技能履歷表<a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=ERB&cid=cm7bf15058&to=r2'>⤴️ 升級補生</a></div><div class='card' style='padding:10px'>[deepseek-v3.2] Concept 2:打破無形牆<a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=ERB&cid=cmc6bd3cef&to=r2'>⤴️ 升級補生</a></div><div class='card' style='padding:10px'>[gemini-2.5-pro] Concept 1:〔破壁者 The Wall Breaker〕<a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=ERB&cid=cm9c1a9e06&to=r2'>⤴️ 升級補生</a></div><div class='card' style='padding:10px'>[gemini-2.5-pro] Concept 2:〔履歷升級 CV+〕<a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=ERB&cid=cma436c295&to=r2'>⤴️ 升級補生</a></div><div class='card' style='padding:10px'>[gpt-5.2] Concept 1:〔打破上限〕<a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=ERB&cid=cm28f8b7db&to=r2'>⤴️ 升級補生</a></div><div class='card' style='padding:10px'>[grok-4.3] Concept 1:〔履歷即時升級〕<a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=ERB&cid=cmfaf73ea2&to=r2'>⤴️ 升級補生</a></div><div class='card' style='padding:10px'>[grok-4.3] Concept 2:〔主席真聲〕<a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=ERB&cid=cm89408f43&to=r2'>⤴️ 升級補生</a></div><div class='card' style='padding:10px'>[kimi-k2.6] Concept 1:履歷表上多咗一行<a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=ERB&cid=cm830c2be3&to=r2'>⤴️ 升級補生</a></div><div class='card' style='padding:10px'>[kimi-k2.6] Concept 2:道牆冇咗<a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=ERB&cid=cm2b477e4d&to=r2'>⤴️ 升級補生</a></div><div class='card' style='padding:10px'>[kimi-k2.6] Concept 3:Captain K 帶你偷睇一堂課<a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=ERB&cid=cmc365d5ce&to=r2'>⤴️ 升級補生</a></div><div class='card' style='padding:10px'>[qwen3.7-max] Concept 1:〔履歷表上的 NEW SKILL〕<a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=ERB&cid=cmffcf1db2&to=r2'>⤴️ 升級補生</a></div><div class='card' style='padding:10px'>[qwen3.7-max] Concept 2:〔$8,000 實戰加速器〕<a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=ERB&cid=cmf0e14451&to=r2'>⤴️ 升級補生</a></div><div class='card' style='padding:10px'>[qwen3.7-max] Concept 3:〔AI+ 職場實況劇：Degree ≠ Ready〕<a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=ERB&cid=cm6e8dd8a2&to=r2'>⤴️ 升級補生</a></div></details></section><section id='5w1h'><details class='soft sec' ><summary>💭 5W1H 創意 provocation(加咩 element / 風格)</summary><p class='hint'>9 條尖問題,逼 agency 諗「加咩 element / adapt 咩風格」,落橋前消化(取代報告體 debrief 做創意 spark)。</p><p># 5W1H 創意 Provocation — ERB</p>
+<h4 class="cc">### WHO — 對邊個講 + 佢而家點</h4>
 <p>- Q1 如果呢個 message 只可以打動「最唔關心、最 cynical」嗰個觀眾 —— 要加咩一個 element(畫面/聲/人物/情境)先 3 秒內 hook 住佢、令佢唔 skip?</p>
 <p>→ 加入一個每日津貼 HKD 241 / 每月最高 HKD 8,000 嘅數字動態圖像 (motion graphic) 作為 opening shot。</p>
 <p>- Q2 呢班受眾平時食開咩視聽語言(平台/節奏/語氣)?要 adapt 邊種佢熟悉嘅風格,先入到腦而唔似「政府嘢」?</p>
 <p>→ Adapt 網上知識型 YouTuber / Reels 嘅快節奏剪接、pop-up text/graphic 風格，用第一身旁白取代官方 announcer 語氣。</p>
-<h5>WHAT — 收窄到一個 + 證據</h5>
+<h4 class="cc">### WHAT — 收窄到一個 + 證據</h4>
 <p>- Q3 成個 campaign 只准觀眾記住一個 element(一個畫面 / 一個 visual device / 一句)—— 你揀咩?點解係佢?</p>
 <p>→ 揀「學歷上限」嘅實體屏障 (e.g. 玻璃、牆) 被打破嘅 visual device。因為呢個係 2025 年改革最核心、最顛覆性嘅一點，直接將 ERB 由「指定人群」擴闊到「全民」。</p>
 <p>- Q4 客戶 key message 好抽象,要用咩具體 element(真場面/真數字/真人/真物)去「show 唔 tell」,令佢落地、唔流口號?</p>
 <p>→ 加入 ERB 課堂上學員操作 AI 軟件 / 編寫代碼嘅真實 close-up 鏡頭，直接對比佢哋喺新創科公司工作環境中應用同一技能嘅畫面。</p>
-<h5>WHY — 點解信 + 情感</h5>
+<h4 class="cc">### WHY — 點解信 + 情感</h4>
 <p>- Q5 觀眾點解要信 / 關佢事?要加咩證據 element 或情感共鳴 element,先由「事不關己」變「同我有關」?</p>
 <p>→ 加入一個 ERB 主席黃傑龍先生本人嘅 soundbite，直接引用佢講「2025 年初起已落實取消學歷上限」嘅真實訪問片段，增加政策真實感同權威性。</p>
-<h5>WHEN / WHERE — 出街情境</h5>
+<h4 class="cc">### WHEN / WHERE — 出街情境</h4>
 <p>- Q6 呢條嘢實際喺邊度、咩狀態被睇到(電視 prime / 車廂無聲 / 手機 scroll / 戶外經過)?要 adapt 咩風格(有聲冇聲 / 首 3 秒 / 大字 / 節奏)先食到當下情境?</p>
 <p>→ 假設主要係手機無聲 scroll，必須 adapt 字幕主導 (caption-led) 風格，將所有關鍵訊息 (e.g. HKD 8,000 津貼、不設學歷上限) 用特大、置中嘅動態標題字呈現。</p>
 <p>- Q7 出街時間(事件前/中/後)decide 調子係「預告期待」定「總結成就」?要加咩 element 配合呢個時間感?</p>
 <p>→ 出街時間係改革「發生後」，調子應為「總結成就 + 邀請行動」。加入「自 2025 年起」嘅時間標示 (timestamp) 字卡，配合大量學員已經喺課室上堂嘅真實 b-roll。</p>
-<h5>HOW — 風格 + 差異化</h5>
+<h4 class="cc">### HOW — 風格 + 差異化</h4>
 <p>- Q8 同類(同部門/同題材)政府片嘅「安全做法」係咩?要 adapt / 升級邊種風格 element(質感/節奏/transition/配樂/美術流派),先做到「框內最高質」而唔悶?</p>
 <p>→ 安全做法係陽光正面、慢鏡頭配勵志歌。要升級，可 adapt 紀錄片質感 + 手搖鏡頭 (handheld) 嘅寫實風格，配上電子節拍感強而無歌詞嘅背景音樂，取代罐頭勵志歌。</p>
 <p>- Q9 要加咩一個 unexpected element(反差/新 visual device/新手法),先同部門過往 campaign 拉開距離、唔似翻炒,但又唔踩紅線?</p>
-<p>→ 加入一個「學員履歷表」嘅 visual device，用 motion graphic 展示一個持有大學學位嘅人，佢嘅履歷表上新增咗一項 ERB 創科技能，製造「大學生都讀 ERB」嘅反差感。</p></div></details><details class='soft'><summary>📝 Internal Creative Debrief（事實參考）</summary><div class='card'><p class='hint'>策略總監消化晒標書 + Perplexity 研究 + 官方用字 + ISD，各 agency 跟住落橋。</p><p>好的，各位同事，啱啱同 ERB 客戶開完 briefing。</p>
+<p>→ 加入一個「學員履歷表」嘅 visual device，用 motion graphic 展示一個持有大學學位嘅人，佢嘅履歷表上新增咗一項 ERB 創科技能，製造「大學生都讀 ERB」嘅反差感。</p></details></section><section id='ref'><details class='soft sec' ><summary>📌 重要資料(GDrive · B/D/P)</summary><div class='card ref'><a class='btn drive' target='_blank' href='https://drive.google.com/drive/folders/1xwWCyee7WH0J2pNvVuWwdgjaOSL6noPS'>📁 Project GDrive folder</a><div class='stats'><div class='stat'><div class='stat-l'>🗣️ Briefing</div><div class='stat-v muted'>未定</div></div><div class='stat'><div class='stat-l'>⏰ Deadline</div><div class='stat-v'>2026-06-17 12:00 <span class='cd ok'>仲有 11 日</span></div></div><div class='stat'><div class='stat-l'>🎤 Presentation</div><div class='stat-v muted'>未定</div></div></div></div></details></section><section id='debrief'><details class='soft sec' ><summary>📝 Internal Creative Debrief(事實參考)</summary><p class='hint'>策略總監消化晒標書 + Perplexity 研究 + 官方用字 + ISD,出呢份 brief。各 agency / 委員會跟住佢落橋(逼唔離地)。</p><p>好的，各位同事，啱啱同 ERB 客戶開完 briefing。</p>
 <p>以下係 internal debrief，請 creative team 及各單位同事細閱，確保我哋嘅出品 meet 到客戶期望。記住，我哋嘅角色係消化客戶要求，畀個清晰嘅框架你哋發揮。</p>
 <p>---</p>
-<h3>Internal Debrief — ERB · ERB</h3>
-<h4>1. 背景 Background(點解客戶要做呢條片)</h4>
+<p># Internal Debrief — ERB · ERB</p>
+<h4 class="cc">## 1. 背景 Background(點解客戶要做呢條片)</h4>
 <p>今次 campaign 唔係恆常宣傳，而係源於<strong>政策層面嘅重大改革</strong>。根據《2024 年施政報告》，政府明確要求改革僱員再培訓局(ERB)，核心目標係強化本地勞動力以應對經濟結構轉型同人手短缺。</p>
 <p>ERB 嘅定位正由過去服務中低學歷、失業人士嘅「安全網」，<strong>升級為面向全港勞動人口嘅「技能增值平台」</strong>。最關鍵嘅改變係 <strong>2025 年起，ERB 課程正式撤銷學歷上限</strong>，意味住大學畢業生甚至更高學歷人士都成為佢哋嘅服務對象。</p>
 <p>客戶處境：ERB 必須向市場，尤其係新嘅高學歷群體，清晰傳達呢個品牌定位嘅轉變，擺脫「再培訓 = 失業人士專利」嘅舊有標籤。呢條片係佢哋改革後嘅「官宣」，要為 ERB 建立一個全新、更專業、更全民化嘅形象。</p>
-<h4>2. 客戶要達到乜 Objective</h4>
+<h4 class="cc">## 2. 客戶要達到乜 Objective</h4>
 <p>1.  <strong>重塑品牌認知 (Reframe Perception):</strong> 徹底扭轉公眾（尤其係後生、高學歷群體）對 ERB 嘅過時印象，確立其作為「全民終身學習、技能升級」權威平台嘅新形象。</p>
 <p>2.  <strong>驅動查詢及報讀 (Drive Action):</strong> 引起目標受眾對 ERB 新課程（特別係數碼技能、科技應用類）嘅興趣，令佢哋覺得「呢啲課程同我有關」，從而主動瀏覽網站、了解詳情。</p>
-<h4>3. 客戶想 reach 邊個 Audience</h4>
+<h4 class="cc">## 3. 客戶想 reach 邊個 Audience</h4>
 <p>*   <strong>核心新目標 (Primary Target):</strong> 18-35 歲，持有<strong>學位或以上學歷</strong>嘅在職人士。</p>
 <p>    *   <strong>佢哋而家點睇：</strong> 大部分人認為 ERB 同自己無關，係上一代、基層或失業人士先會報讀嘅課程。佢哋覺得 ERB 課程「唔夠 pro」、過時、追唔上市場需求。</p>
 <p>*   <strong>次要目標 (Secondary Target):</strong> 全港 15 歲或以上合資格僱員。</p>
 <p>    *   需要維持對傳統受眾嘅溝通，但今次 campaign 嘅重心同資源必須放喺開拓上述新市場。</p>
-<h4>4. 客戶想傳嘅 Key Message</h4>
+<h4 class="cc">## 4. 客戶想傳嘅 Key Message</h4>
 <p><strong>面對科技同 AI+ 新時代，ERB 已經革新，成為全民（包括大學生）提升職場實用技能、保持競爭力嘅首選平台。</strong></p>
-<h4>5. 客戶 / 受眾洞察(事實,唔係創意)</h4>
+<h4 class="cc">## 5. 客戶 / 受眾洞察(事實,唔係創意)</h4>
 <p>*   <strong>「標籤」大於「實況」嘅認知落差：</strong> 對於新目標受眾嚟講，ERB 最大嘅障礙唔係課程內容，而係品牌幾十年嚟累積嘅「社會標籤」。佢哋唔係唔需要進修，而係從來冇將 ERB 放入考慮範圍(consideration set)。</p>
 <p>*   <strong>高學歷人士嘅「技能焦慮」：</strong> 大學生唔再係天之驕子，佢哋同樣面對 AI 取代工作的威脅。佢哋嘅痛點唔係冇學歷，而係<strong>缺乏「即用、貼市」嘅數碼實戰技能</strong>。佢哋追求嘅唔係另一張沙紙，而係能夠快速應用喺工作上、解決具體問題嘅 skills。</p>
 <p>*   <strong>金錢唔係唯一誘因：</strong> 對於在職嘅高學歷人士，「免費」或「津貼」嘅吸引力相對較低，佢哋更關心<strong>時間成本同課程質素</strong> —— 課程係咪真係由業界專家教？內容係咪真係 update？能唔能夠幫到我升職加薪或者轉工？</p>
-<h4>6. 客戶嘅期望 + 紅線(政府客慣性)</h4>
+<h4 class="cc">## 6. 客戶嘅期望 + 紅線(政府客慣性)</h4>
 <p>*   <strong>期望調性 (Tone &amp; Manner):</strong></p>
 <p>    *   <strong>專業、貼地、具前瞻性 (Professional, Relevant, Forward-looking):</strong> 要展現課程嘅專業度同市場價值，唔可以太嬉鬧或「玩膠」。要畀人感覺 ERB 係緊貼市場脈搏，甚至係預視緊未來技能需求。</p>
 <p>    *   <strong>正面、積極、賦能 (Positive, Empowering):</strong> 避免賣慘情（例如失業、被淘汰），重點要放喺「增值自己」、「掌握未來」、「開創更多可能性」嘅正面訊息上。</p>
@@ -185,7 +589,7 @@ th{background:#f8fafc;font-weight:700}
 <p>    *   <strong>資訊必須 100% 準確：</strong> 所有關於課程內容、津貼、報讀資格嘅資訊唔可以有任何誇大或誤導成分。</p>
 <p>    *   <strong>政治中立，避免社會爭議：</strong> 畫面、選角、場景、對白唔可以觸及任何具爭議性嘅社會或政治議題。</p>
 <p>    *   <strong>形象要「穩陣」：</strong> 選用嘅名人/KOL 必須形象正面、冇負面新聞。整體製作要平實穩重，唔可以過份前衛或實驗性。</p>
-<h4>7. 必跟 Mandatories</h4>
+<h4 class="cc">## 7. 必跟 Mandatories</h4>
 <p>*   <strong>官方正名：</strong> 首次出現必須使用全名「<strong>僱員再培訓局 (Employees Retraining Board)</strong>」，其後可簡稱「<strong>ERB</strong>」。</p>
 <p>*   <strong>服務對象正名：</strong> 參與課程嘅人應稱為「<strong>學員 (Trainees)</strong>」，避免用「學生」。</p>
 <p>*   <strong>必出元素：</strong></p>
@@ -193,13 +597,13 @@ th{background:#f8fafc;font-weight:700}
 <p>    *   必須包含清晰嘅 <strong>Call-to-Action (CTA)</strong>，引導觀眾瀏覽官方網站。</p>
 <p>    *   <strong>官方網址：www.erb.org</strong> 必須清晰顯示。</p>
 <p>*   <strong>可選項目：</strong> 標書提及可將吉祥物「Captain K」製作成 3D 動畫角色，此為 optional item，視乎創意方向再決定。</p>
-<h4>8. Deliverables(客戶要交咩)</h4>
+<h4 class="cc">## 8. Deliverables(客戶要交咩)</h4>
 <p>*   <strong>影片系列 (Video Series):</strong></p>
 <p>    *   <strong>3 至 4 條</strong> 主題短片 (每條約 1.5 分鐘)。</p>
 <p>    *   <strong>1 條</strong> 精華版短片 (約 30 秒)，整合所有主題。</p>
 <p>*   <strong>語言：</strong> 廣東話配音，繁體中文字幕。</p>
 <p>*   <strong>名人/KOL：</strong> 需邀請 <strong>1 位</strong> 名人或 KOL 參與拍攝。</p>
-<h4>9. 釐清(5W1H + 度身,純事實/方向,唔好出 idea)</h4>
+<h4 class="cc">## 9. 釐清(5W1H + 度身,純事實/方向,唔好出 idea)</h4>
 <p>*   <strong>Q: Who (主角係邊個?)</strong></p>
 <p>    *   A: 應該係<strong>學員本身</strong>，特別係能代表新目標群體（年輕、高學歷）嘅素人或演員。名人/KOL 嘅角色似係一個<strong>體驗者、引導者或旁觀者</strong>，而唔係主角。重點係 showcase 學員嘅轉變同得著。</p>
 <p>*   <strong>Q: What (影片要 show 啲乜?)</strong></p>
@@ -212,7 +616,7 @@ th{background:#f8fafc;font-weight:700}
 <p>    *   A: 標書建議咗幾種形式：工作情境劇、體驗課程、技能比賽等。方向係要<strong>「視覺化」技能嘅價值</strong>，將抽象嘅「技能提升」變成觀眾睇得明、有共鳴嘅畫面。風格要現代、節奏要明快。</p>
 <p>*   <strong>Q: (度身問題) 點樣平衡新舊受眾，唔會趕走舊客？</strong></p>
 <p>    *   A: 透過<strong>行業嘅多樣性</strong>去平衡。可以揀一啲傳統行業（如零售、餐飲）但 focus 喺佢哋點樣用<strong>新科技</strong>升級轉型，同時亦可以 showcase 新興行業（如數碼營銷、健康科技）。咁樣既可以令新受眾覺得貼身，亦唔會令舊有受眾覺得被離棄。</p>
-<h4>10. 參考 context(客戶以往收貨嘅做法)</h4>
+<h4 class="cc">## 10. 參考 context(客戶以往收貨嘅做法)</h4>
 <p>*   <strong>政府新聞處 (ISD) 慣性：</strong></p>
 <p>    *   過往同類政府宣傳片，極度依賴<strong>旁白 (narration) + 螢幕蓋字 (on-screen text)</strong> 去清晰傳遞訊息，幾乎係方程式。佢哋重視「資訊清晰度」遠高於「藝術性」或「故事性」。</p>
 <p>    *   結構通常係「點出問題 → 提供方案 → CTA」，非常直接。</p>
@@ -222,85 +626,7 @@ th{background:#f8fafc;font-weight:700}
 <p>---</p>
 <p><strong>總結：</strong></p>
 <p>客戶要嘅唔係一條搞笑片，而係一條<strong>有格調、有說服力嘅「品牌革新宣言」</strong>。我哋嘅創意必須建基於「ERB 已經唔同咗」呢個核心事實，用最有力嘅方法話畀新一代嘅香港打工仔知：<strong>想喺 AI 時代增值自己，ERB 係一個你唔可以再忽視嘅選擇。</strong></p>
-<p>Let&#x27;s get to work. Thanks all.</p></div></details><details class='soft'><summary>🔬 Research / 背景調查</summary><div class='card'><div class='h3'>Web Research</div><p>直接幫你整理成做 API strategy 用到嘅 hard facts＋政策脈絡：</p>
-<p>---</p>
-<h5>① 議題背景 / 政策脈絡：點解政府而家要推 ERB</h5>
-<p>- <strong>經濟結構轉型＋人手短缺</strong></p>
-<p>  - ERB 1992 年根據《僱員再培訓條例》成立，原意係幫受結構轉型影響嘅中年/低技術工人轉型，就業導向培訓。[1][2]</p>
-<p>  - 近年香港面對人口老化、勞動人口收縮、服務業及創科行業人手短缺，本地勞工 upskill / reskill 成為政策重點（與整體人力資源政策掛鈎）。</p>
-<p>- <strong>2024 年施政報告提出「改革 ERB」</strong></p>
-<p>  - 《2024 年施政報告》明確提出要<strong>改革僱員再培訓局，加強本地勞工培訓</strong>。[1]</p>
-<p>  - 重點方向包括：  </p>
-<p>    - <strong>ERB 不設學歷上限</strong>，由以往偏向中三至副學位等中低學歷人士，改為「全民培訓」，有學位都可以報讀。[1][6][7]  </p>
-<p>    - <strong>增加至少 15,000 個年度總學額</strong>，擴大服務量。[6]  </p>
-<p>    - 強化創科等新經濟行業課程（如 AI 應用、資訊科技等）。[5][6]</p>
-<p>- <strong>政策定位升級：由「失業支援」→「全社會技能升級」</strong></p>
-<p>  - 早期 ERB 主要協助被裁員、轉型工人；近年官方文件同傳媒訪問都將其定位為<strong>推動終身學習、配合產業升級</strong>嘅關鍵平台。[3]</p>
-<p>  - 主軸由「失業救急」轉成「提高勞動人口競爭力」、「支援轉職、斜槓、二次就業」。</p>
-<p>- <strong>未來改革：擴闊服務對象（包括來港專才）</strong></p>
-<p>  - ERB 主席黃傑龍指，<strong>政府在 2024 年提出改革 ERB 後，ERB 已在 2025 年初起落實一系列短期改革措施</strong>，包括取消學歷上限等。[7]</p>
-<p>  - 同一報道指，當局計劃在<strong>修例後研究擴闊服務對象至來港專才</strong>，即未來不只本地傳統勞工，而係更大範圍人力資源配對平台。[7]</p>
-<p>---</p>
-<h5>② 關鍵事實 / 數據 / 日期（方便落片用）</h5>
-<p>- <strong>成立 &amp; 法定地位</strong></p>
-<p>  - 成立日期：<strong>1992 年 10 月 16 日</strong>，根據《僱員再培訓條例》成為法定機構。[1][2]</p>
-<p>  - 法定職能：為合資格僱員提供市場導向、技能為本嘅培訓，協助應對結構轉型及重投就業市場。[1][2]</p>
-<p>- <strong>最新改革時間點</strong></p>
-<p>  - <strong>2024 年施政報告</strong>提出：  </p>
-<p>    - 改革 ERB，強化本地勞工培訓。  </p>
-<p>    - <strong>2025 年起課程不設學歷上限</strong>。[1][6][7]</p>
-<p>  - <strong>2025 年初</strong>：ERB 主席表示已落實短期改革措施，包括取消學歷上限等。[7]</p>
-<p>- <strong>課程規模 &amp; 行業覆蓋</strong></p>
-<p>  - <strong>涵蓋行業</strong>：現時 ERB 提供課程涵蓋<strong>28 個行業</strong>。[6]</p>
-<p>  - <strong>課程數量</strong>：約 <strong>700 項培訓課程</strong>，針對青年、婦女、「後 50」（50 歲或以上）、少數族裔等不同群組。[6]</p>
-<p>- <strong>學費 &amp; 津貼（很適合直接視覺化）</strong></p>
-<p>  - 課程類型：  </p>
-<p>    - <strong>就業掛鈎課程</strong>：學費<strong>全免</strong>，為期 <strong>7 天或以上</strong>可領取每日津貼。[5]  </p>
-<p>    - <strong>非就業掛鈎課程</strong>（技能提升、通用技能）：按課程訂價收費，可申請資助。[5]</p>
-<p>  - 津貼水平：  </p>
-<p>    - 日津貼：所有為期 7 天或以上的就業掛鈎課程，現行<strong>每日津貼額為 HKD 241</strong>；青年培育計劃每日 HKD 121。[5]  </p>
-<p>    - 有傳媒整理指，每月上限津貼<strong>可達 HKD 8,000</strong>（以長期課程計算）。[6]</p>
-<p>  - 收入劃一資助機制（非就業掛鈎課程）：  </p>
-<p>    - <strong>月入 0 – HKD 14,000：可申請學費全數豁免</strong>。[5]  </p>
-<p>    - <strong>HKD 14,001 – 22,000：高度資助學費</strong>。[5]  </p>
-<p>    - <strong>超過 HKD 22,000：繳付一般資助學費</strong>。[5]</p>
-<p>- <strong>服務對象年齡與資格</strong></p>
-<p>  - 一般規定：<strong>15 歲或以上本港合資格僱員</strong>均可報讀 ERB 委任培訓機構所開辦的課程。[4]</p>
-<p>---</p>
-<h5>③ 相關官員 / 部門 / 機構角色（真名＋銜頭）</h5>
-<p>- <strong>政策上游：政府決策層</strong></p>
-<p>  - 主管政策局：<strong>勞工及福利局</strong>（Labour and Welfare Bureau）——負責勞工培訓、再培訓政策方向，ERB 由該局政策監督（官方及多個介紹資料均指出 ERB 隸屬勞福局政策範疇）。[3]</p>
-<p>  - 相關主要官員（需按最新政府名冊更新，但策略上要寫位階）：  </p>
-<p>    - 勞工及福利局局長（負責整體勞工政策，包括再培訓、技能提升）。  </p>
-<p>    - 行政長官：在《2024 年施政報告》中提出改革 ERB 的政策方向，由其統領整體人力資源及人才政策。[1]</p>
-<p>- <strong>執行機構：僱員再培訓局（ERB）</strong></p>
-<p>  - 法定機構名：<strong>僱員再培訓局（Employees Retraining Board）</strong>。[1][2]</p>
-<p>  - <strong>現任主席：黃傑龍 先生</strong>。[1][7]  </p>
-<p>    - 黃傑龍曾於訪問中闡述：  </p>
-<p>      - 2025 年初起已落實取消學歷上限等短期改革。[7]  </p>
-<p>      - 計劃於修例後考慮擴闊服務對象至來港專才。[7]</p>
-<p>  - ERB 角色：  </p>
-<p>    - 制定課程策略，委任約 <strong>80 個培訓機構</strong>提供課程；負責撥款及監察培訓質素。[2]  </p>
-<p>    - 提供「培訓＋就業服務一條龍」，包括就業跟進、技能評估等。[5]</p>
-<p>- <strong>前線執行：培訓機構／ NGO / 教育機構</strong></p>
-<p>  - 例子：香港聖公會麥理浩夫人中心等被委任為 ERB 培訓單位，於多區設就業綜合服務中心，為地區居民提供 ERB 課程。[4]</p>
-<p>  - 這些機構負責實際教學、招募學員及提供就業支援服務。[4][5]</p>
-<p>---</p>
-<h5>④ 受眾關注點 / 社會 sentiment（可轉化做 insight）</h5>
-<p>根據近期介紹 ERB 課程的媒體 / 升學求職平台文章及課程體驗分享，可以抽到幾個主要關注點：</p>
-<p>- <strong>1. 「值唔值得報？」——學費 &amp; 津貼吸引力</strong></p>
-<p>  - 討論重點包括：  </p>
-<p>    - 就業掛鈎課程學費全免，仲有每日 HKD 241 津貼，長課程每月可達約 HKD 8,000，對失業／待業／轉職人士來講係真金白銀支持。[5][6]  </p>
-<p>    - 非就業掛鈎課程嘅學費會唔會貴？收入劃分資助制度是否公平、申</p>
-<p>【來源 Sources】</p>
-<p>- https://zh.wikipedia.org/zh-cn/%E5%83%B1%E5%93%A1%E5%86%8D%E5%9F%B9%E8%A8%93%E5%B1%80</p>
-<p>- https://www.erb.org/tc/about-erb/about-us/overview</p>
-<p>- https://eduplus.hk/qf/article.php?artid=174&amp;llmid=46&amp;cindex=1</p>
-<p>- https://icds.skhlmc.org.hk/erb_course/information/</p>
-<p>- https://hk.amazingtalker.com/blog/zh-hk/other/99425/</p>
-<p>- https://www.hk01.com/%E9%96%8B%E7%BD%90/1067126/%E5%83%B1%E5%93%A1%E5%86%8D%E5%9F%B9%E8%A8%93%E5%B1%80erb%E8%AA%B2%E7%A8%8B-%E4%B8%8D%E8%A8%AD%E5%AD%B8%E6%AD%B7%E4%B8%8A%E9%99%90%E6%AF%8F%E6%9C%88-8000%E6%B4%A5%E8%B2%BC-%E9%99%84%E7%86%B1%E9%96%80%E8%AA%B2%E7%A8%8B</p>
-<p>- https://www.hkctsvt.edu.hk/about-us/media-coverage/20260212HKET</p>
-<p>- http://www.erb.org.hk/aboutERB.htm</p><div class='h3'>🛡️ 官方正名 / 用字（防出錯）</div><p>以下是為廣告創作團隊準備的『官方用語對照表』，以確保宣傳片內容符合香港政府僱員再培訓局的官方用語。</p>
+<p>Let&#x27;s get to work. Thanks all.</p></details></section><section id='slogan'><details class='soft sec' ><summary>💬 Slogan 揀(第一 hard gate)</summary><p class='hint'>各來源 slogan(已去重)。揀好嘅 slogan 由你填入 Master GSheet(AI 唔掂 master 檔)。</p><div class='slogrp'><div class='lab'>qwen3.7-max</div><ul class='slolist'><li>1. 不設學歷上限，ERB 實戰技能人人有份</li><li>2. AI+ 時代要增值，ERB 高階課程幫你 Up Skill</li><li>3. 每月津貼最高 $8,000，大學畢業都讀得</li><li>4. 打破學歷框框，ERB 未來技能即學即用</li><li>5. 技能為本不問學歷，ERB 助你職場升級</li></ul></div><div class='slogrp'><div class='lab'>kimi-k2.6</div><ul class='slolist'><li>1. 學歷無上限，技能無止境</li><li>2. ERB 唔再係嗰個 ERB</li><li>3. 大學畢業？仲有得升。</li><li>4. 同一張沙紙，多幾招傍身</li><li>5. 2025 年起，全港打工仔都係學員</li><li>6. 唔係進修，係升級 — ERB</li><li>7. AI 時代，邊個話夠喉？</li></ul></div><div class='slogrp'><div class='lab'>grok-4.3</div><ul class='slolist'><li>- 學歷無上限，技能即戰力。</li><li>- ERB 今日已革新，升級只為你。</li><li>- 唔止大學生，ERB 都係你。</li><li>- AI+ 轉型，ERB 陪你轉。</li><li>- 撤走學歷牆，開啟職場新技能。</li></ul></div><div class='slogrp'><div class='lab'>gpt-5.2</div><ul class='slolist'><li>- **學位唔係上限，技能先係。** (Degree isn’t the limit. Skills are.)</li><li>- **自 2025 年起，ERB 不設學歷上限。你都報得。**</li><li>- **升級唔使等被淘汰：而家就加技能。**</li><li>- **AI+ 時代，返工要識更新。**</li><li>- **跨行業都用得着嘅 Digital Skills，喺 ERB 學。**</li><li>- **你份 CV，差一行「新技能」。**</li><li>- **唔係再培訓你—係增值你。ERB。**</li></ul></div><div class='slogrp'><div class='lab'>gemini-2.5-pro</div><ul class='slolist'><li>1.  ERB 革新。學歷，再唔係界限。</li><li>2.  你有大學沙紙，我有市場實戰鎖匙。ERB。</li><li>3.  增值，唔係由零開始。ERB，為你學歷再加分。</li><li>4.  AI 時代，人人都要 Re-skill。ERB，全民技能升級。</li><li>5.  僱員再培訓局，而家，大學生都啱讀。</li></ul></div><div class='slogrp'><div class='lab'>deepseek-v3.2</div><ul class='slolist'><li>1.  **ERB 2025：學歷冇上限，技能冇止境。**</li><li>2.  **唔係再培訓，係再升級。ERB。**</li><li>3.  **新技能，新跑道。ERB 助你跑贏 AI 時代。**</li><li>4.  **ERB: Your Skills, Upgraded. (你嘅技能，已升級。)** *（英文作輔助）*</li><li>5.  **學位唔夠？ERB 幫你技能搭夠。**</li></ul></div><div class='slogrp'><div class='lab'>claude-opus-4-8</div><ul class='slolist'><li>1. **唔係再培訓,係再升級**(Not retraining. Upskilling.)</li><li>2. **學歷冇上限,技能冇盡頭**</li><li>3. **AI 唔等你,ERB 撐你追**</li><li>4. **大學畢咗業,技能未畢業**</li><li>5. **由今日開始,你嘅履歷仲未寫完**</li><li>6. **唔怕被取代,只怕你唔學**</li><li>7. **技能,先係你嘅真學位**</li></ul></div><div class='slogrp'><div class='lab'>委員會 20260605</div><ul class='slolist'><li>1. 有沙紙,都要有彈藥。(ERB 課程)</li><li>2. 學歷係過去式,技能先係現在進行式。</li><li>3. 你張 CV,幾時 last update?</li><li>4. 唔係再培訓,係再裝備。</li><li>5. 大學生都返 ERB —— 估你唔到。</li><li>6. 由識讀,變識做。</li><li>7. AI 時代,搶先 update 自己。</li></ul></div><div class='slogrp'><div class='lab'>委員會 20260605</div><ul class='slolist'><li>- ERB・技能增值。裝備下一個你。</li><li>- 你份 CV，仲爭呢一項。 (Your CV is missing this one line.)</li><li>- 升級，唔係由頭嚟過。</li><li>- 大學教你基本功，ERB 教你決勝分。</li><li>- 最貼市嘅技能，已經開咗學。</li></ul></div></details></section><section id='research'><details class='soft sec' ><summary>🔬 研究背靠(Perplexity + Gemini + ISD)</summary><p class='empty'>🔬 深入研究:未有</p><details class='soft'><summary>🛡️ Gemini gatekeep — 官方正名/用字(防出錯)</summary><p>以下是為廣告創作團隊準備的『官方用語對照表』，以確保宣傳片內容符合香港政府僱員再培訓局的官方用語。</p>
 <p>---</p>
 <p><strong>『官方用語對照表』</strong></p>
 <p><strong>1. 部門 / 辦事處 中文正名 + 官方英文全名 (+ 官方網址)</strong></p>
@@ -379,431 +705,30 @@ th{background:#f8fafc;font-weight:700}
 <p>    *   宣傳片側重於「終身學習」和「技能提升」，以應對科技發展，這反映了ERB服務對象和重點的轉變，不再僅限於失業人士的「再培訓」。</p>
 <p>*   <strong>AI+：</strong></p>
 <p>    *   可直接使用「AI+」。如需更詳細說明，可考慮「人工智能及相關應用」。</p>
-<p>*   **Educational a</p></div></details><details class='soft'><summary>📺 ISD API Ref（相類政府舊片）</summary><div class='card'><p>【呢條 brief 判定】目的:其他  題材:未定</p>
-<p>【同目的(其他)ISD 慣性】主開頭 真人/講者(68%);格式率 旁白76% 熒幕蓋字96% 標誌結尾96% CTA52% 感嘆64% 三段式·0%;慣用結尾 衞生防護中心標誌, 衞生署標誌, 社會福利署標誌, 熒幕蓋字： iAM Smart+ 標誌</p>
-<p>【對口 ISD 舊作借鏡(同 目的×題材,參考佢點寫,唔好照抄,要創新)】</p>
-<p>— 幸福上流　置業圓夢  [其他 | 房屋置業/長者家庭]</p>
-<p>  ▶ https://www.youtube.com/watch?v=phWv4V2eOh0&amp;list=PL1188A9802575C33F</p>
-<p>  男旁白：請等等！ / 男旁白：啊，我想上車啊！ / 熒幕蓋字：未來5年 / 大約60,000個資助出售單位供應 / 女旁白：放心，未來有許多機會 / 熒幕蓋字：新一期居者有其屋計劃及 / 綠表置居計劃 / 4月30日起接受申請 / 女旁白：新一期居屋及綠置居4月30日起接受申請 / 女旁白：前兩次未能成功置業的申請者 / 可獲得額外一個抽籤號碼 / 熒幕蓋字：居屋綠表配額比例由40%升至50% / 女旁白：今期居屋會增加綠表比例 / 熒幕蓋字：40歲以下白表申請者 / 抽籤號碼＋1個 / 女旁白：白表青年申請者可獲得額外一個抽籤號碼 / 女旁白：「白居二」亦會增加配額 / 女旁白：置業的機會多了 / 熒幕蓋字：分布多區 / 可負擔的售價 / 居者有其屋計劃屋苑 / 綠表置居計劃屋苑 / 女旁白：價格亦在可負擔範圍內 / 熒幕蓋字：家有初生 / 家有長者 / 女旁白：家有初生或長者的家庭更可優先選樓 / 熒幕蓋字：出售居者有其屋計劃單位 / 出售綠表置居計劃單位 / 白表居屋第二市場計劃 / 4月30日起接受申請 / 男女旁白：幸福上流　置業圓夢 / </p>
-<p>— 選擇註冊中成藥  認住HKC  [其他 | 環保/節能]</p>
-<p>  ▶ https://www.youtube.com/watch?v=X9zWre8b7ts&amp;list=PL1188A9802575C33F</p>
-<p>  消費者： / 這麼多款式，怎樣選？ / 藥樽們： / 購買我吧 / 紫色藥樽： / 選擇我吧 / 綠色藥樽： / 我比較好呢 / 粉紅色藥樽： / 我便宜一點呢！ / 藍色藥樽： / 選中成藥 / 當然要選擇我這些已註冊的中成藥HKC / 熒幕蓋字： / HKC 註冊中成藥 / 藍色藥樽： / 我的包裝上印有「中成藥註冊編號」 / 即HKC開頭加五位數字 / 熒幕蓋字： / 中成藥註冊編號 HKC-XXXXX / 熒幕蓋字： / 安全　品質　成效 / 藍色藥樽： / 所有香港合法銷售的註冊中成藥 / 都已經符合安全、品質及成效的註冊要求 / 熒幕蓋字： / cmchk.org.hk / 衞生署標誌 / 藍色藥樽： / 可以上cmchk.org.hk查看註冊中成藥名單</p>
-<p>— Hong Kong&#x27;s iconic cultural and arts venues  [其他 | 盛事旅遊]</p>
-<p>  ▶ https://www.youtube.com/watch?v=5I3eUgnX5eM&amp;list=PL1188A9802575C33F</p>
-<p>  旁白：文化藝術 / 　　　展現香港多元魅力 / 熒幕蓋字：當下──香港藝術展 / 旁白：特區政府以文化藝術的「軟實力」 / 　　　結合設施建設的「硬實力」 / 　　　推動文化藝術產業發展並吸引旅客 / 熒幕蓋字：天馬凌雲——故宮博物院藏繪畫珍品 / 旁白：香港的文化藝術場地各具特色 / 　　　融入傳統與現代優點 / 　　　配合先進科技 / 　　　致力將香港打造成為更具活力 / 熒幕蓋字：油街焦點—左旋們浴場 / 旁白：更富創意的國際文化都會 / 熒幕蓋字：2026年巴塞爾藝術展香港展會 / 旁白：香港—國際文化都會 / 熒幕蓋字：中華人民共和國香港特別行政區區徽</p>
-<p>— 水果蔬菜 2+3　輕鬆融入每一餐  [其他 | 公共衞生]</p>
-<p>  ▶ https://www.youtube.com/watch?v=_iNDAroBSLc&amp;list=PL1188A9802575C33F</p>
-<p>  熒幕蓋字： 日日2+3 / 女旁白（唱）： 水果兩份 / 熒幕蓋字： 水果2份 /    「1份水果」約等於： /    2個小型水果 /    1個中型水果 /    半碗水果塊 / 女旁白（唱）： 蔬菜三份 / 熒幕蓋字： 蔬菜3份 /    「1份蔬菜」約等於： /    1碗未經烹調葉菜 /    半碗煮熟的蔬菜 /    ¾杯純蔬菜汁 /    *部分含澱粉質根莖類及醃製類蔬菜除外 / 女旁白（唱）： 天天來為健康加分 / 熒幕蓋字： 提供不同營養 /    維生素C /    鉀 /    葉酸 /    膳食纖維 / 女旁白（唱）： 多款多色 /     好吃有益 / 熒幕蓋字： 有助預防疾病 / 男旁白： 進食足夠蔬果 /    可以預防肥胖和減低患上慢性疾病的風險 / 熒幕蓋字： 心臟病 /    中風 /    肥胖 /    糖尿病 /    某些癌症（如大腸癌） / 女旁白（唱）： 早餐 / 熒幕蓋字： 早餐 / 女旁白（唱）： 午餐 / 熒幕蓋字： 午餐 / 女旁白（唱）： 還有晚餐 / 熒幕蓋字： 晚餐 / 星級有營食肆標誌 / 女旁白（唱）： </p>
-<p>— 2026年4月3日起二元優惠計劃由每程劃一$2調整為「兩蚊兩折」  [其他 | 長者家庭/公共衞生]</p>
-<p>  ▶ https://www.youtube.com/watch?v=-UAWGShCdCw&amp;list=PL1188A9802575C33F</p>
-<p>  熒幕蓋字 ： 兩蚊兩折 /     政府長者及合資格殘疾人士公共交通票價優惠計劃 /     運輸署網頁二維碼 / 馮素波（唱）： 兩元兩折　跟我學唱歌 / 馮素雲（唱）： 兩元兩折　我約了人逛街 / 馮素波（唱）： 低於或等於十元　只算兩元 / 熒幕蓋字 ： $2 / 馮素雲（唱）： 高於十元　兩折一樣興奮 / 熒幕蓋字 ： 兩折 / 馮素波旁白 ： 由2026 年4 月3日起 / 熒幕蓋字 ： 2026 年 4 月3日起 / 馮素波旁白 ： 二元優惠計劃由每程劃一兩元調整為「兩蚊兩折」 /     轉乘車程一樣適用 / 熒幕蓋字 ： 轉乘車程同樣適用 / 馮素波旁白 ： 受惠對象維持不變 / 熒幕蓋字 ： 60歲或以上香港居民 /     合資格殘疾人士 / 馮素波旁白 ： 詳情請瀏覽網頁或致電1823查詢 / 熒幕蓋字 ： 兩蚊兩折 /     運輸署網頁 /     www.td.gov.hk /     查詢電話：1823 / 馮素波、馮素雲（合唱） ： 兩元兩折　優惠相伴最開心 / 熒幕蓋字 ： 2026 </p>
-<p>— Application for Phase 3 of Simple Public Housing  [其他 | 房屋置業]</p>
-<p>  ▶ https://www.youtube.com/watch?v=BtU7TWHUSYI&amp;list=PL1188A9802575C33F</p>
-<p>  女旁白：「簡約公屋」首四個項目已經全面供住戶入住 / 女旁白：每個月租金只是約八百至三千多元不等 / 住戶的居住環境和生活質素大有改善！ / 女旁白：第三期申請包括位於啟德 / 熒幕蓋字：啟德世運道簡約公屋中英標誌 / 啟德世運道 / 女旁白：柴灣及屯門的四個項目 / 於今年第二季開始供住戶入住 / 熒幕蓋字：柴灣常安街簡約公屋中英標誌 / 柴灣常安街 / 熒幕蓋字：屯門欣寶路簡約公屋中英標誌 / 屯門欣寶路 / 女旁白：現已接受申請 / 熒幕蓋字：屯門青發街簡約公屋中英標誌 / 屯門青發街 / 女旁白：有迫切住屋需要便立即申請吧！ / 熒幕蓋字：「簡約公屋」第三期申請 / 啟德世運道 / 柴灣常安街 / 屯門欣寶路 / 屯門青發街 / 熒幕蓋字：「簡約公屋」第三期申請 / 啟德世運道 / 柴灣常安街 / 屯門欣寶路 / 屯門青發街 / 現已接受申請 / 「簡約公屋」標誌 / 「簡約公屋」網頁二維碼 / 房屋局標誌</p></div></details></div>
-<div id='vid1_1' class='tabpanel' data-set='1'><div class='banner'>👉 委員會揀咗六強。你同意就 Submit，或自己另選。</div><div class='h2'>🔻 第一輪篩選 — 揀概念進級</div><div class='card' data-cid='cm27e96632' ><div class='row'><span class='ck on' onclick='tk(this)'>✓</span><span class='rank'>1</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 你張 CV,幾時 last update?</div><div class='csub'>Concept 2:〔CV·Last Update〕</div></div><span class='score'>88</span></div><div class='crow'><span class='cflag hi'>創意 25/30</span></div><div class='prev'>用一份典型大學生 CV 做主軸。開場 CV 睇落光鮮,但旁白帶出 AI 時代,CV 上嘅技能欄逐項「變灰、標住 outdated」——學歷仲喺度,但彈藥過晒…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 2:〔CV·Last Update〕
-
-**創作概念**:用一份典型大學生 CV 做主軸。開場 CV 睇落光鮮,但旁白帶出 AI 時代,CV 上嘅技能欄逐項「變灰、標住 outdated」——學歷仲喺度,但彈藥過晒期。主角報讀 ERB 課程後,每掌握一項實戰技能(AI 應用、數據分析、數碼營銷),CV 上即時「解鎖」一個新項目,由灰變亮,成份 CV 重新生猛。將抽象「技能提升」變成睇得明嘅「CV 升級」,硬訊息「即學即用、貼市實用」自然落地。
-
-**人/景**:1 位代表核心群體嘅年輕高學歷在職主角(由焦慮到自信嘅轉變弧);實景穿插 ERB 現代化課室真實上堂 b-roll(操作 AI 軟件、寫 code 嘅 close-up),再對比佢喺新型工作環境應用同一技能。CV 升級用乾淨 motion graphic 呈現,**克制、唔做 glitch / HUD**,保持商業高級感。
-
-**Visual Device**:**「CV 技能欄即時解鎖」**——一份真實 CV 上,技能 icon 由灰→亮、由舊→新,配輕量動效。一個睇一眼就明嘅「增值」視覺鈎,夠 fresh 但唔出位。
-
-**主打口號**:你張 CV,幾時 last update?
-
-**Proposed 明星/名人**:不適用(主軸係素人學員真實轉變;名人/KOL 可後期以「體驗者/旁觀者」brief appearance 加入,唔搶主角戲)。
-
----
-
-（CD note 畀 Raymond:Concept 1 賣「反差撕標籤」,情緒衝擊強、最快重塑認知;Concept 2 賣「實用增值」,訊息最清、最易扣 CTA。兩條都企得穩政府框內。揀中邊條,我即刻 develop full 12 格 board。）</div></details></div><div class='card' data-cid='cm60236edb' ><div class='row'><span class='ck on' onclick='tk(this)'>✓</span><span class='rank'>2</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 大學生都返 ERB —— 估你唔到。</div><div class='csub'>Concept 1:〔估你唔到〕</div></div><span class='score'>83</span></div><div class='crow'><span class='cflag hi'>創意 26/30</span></div><div class='prev'>鏡頭跟一班睇落完全唔似「傳統 ERB 學員」嘅年輕專才——西裝律師、startup 創辦人、設計師、Marketing 經理,逐個自信咁示範佢哋點用新數碼技…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 1:〔估你唔到〕
-
-**創作概念**:鏡頭跟一班睇落完全唔似「傳統 ERB 學員」嘅年輕專才——西裝律師、startup 創辦人、設計師、Marketing 經理,逐個自信咁示範佢哋點用新數碼技能解難。觀眾一路以為睇緊高端職場片,中段每人講一句「我喺僱員再培訓局學嘅」,逐格揭盅身份,直接撕走「ERB = 基層 / 失業」標籤。硬訊息「2025 年起不設學歷上限、全民可讀」由 reveal 嘅反差自然帶出,唔使口號式硬塞。
-
-**人/景**:4-5 位 18-35 歲、高學歷在職素人/演員(跨行業:法律、創科、設計、市場營銷);場景係現代化 co-working space、tech startup office、design studio,擺脫舊式社區課室印象。可加 ERB 主席黃傑龍真實 soundbite 增權威。
-
-**Visual Device**:**「身份字卡 reveal」**——每位主角畫面角落本來打住職銜(e.g.「執業律師」),講完關鍵句,字卡動態加多一行「· ERB 學員」,簡潔有力,反差全靠呢一下。
-
-**主打口號**:大學生都返 ERB —— 估你唔到。
-
-**Proposed 明星/名人**:建議用形象專業、年輕又有「斜槓 / 進修」人設嘅 KOL(如知識型 YouTuber 類)做其中一位 reveal 主角 —— 因為佢本身已經係「高學歷 + 貼市」嘅活招牌,佢一講「我都係 ERB 學員」,對核心受眾衝擊最大。(具體人選後期按形象正面、無負面新聞篩選)
-
----</div></details></div><div class='card' data-cid='cm5c500ddc' ><div class='row'><span class='ck on' onclick='tk(this)'>✓</span><span class='rank'>3</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 你份 CV，仲爭呢一項。</div><div class='csub'>Concept 2:【履歷表＋1】</div></div><span class='score'>85</span></div><div class='crow'><span class='cflag hi'>創意 24/30</span></div><div class='prev'>直接回應高學歷人士最關心嘅「職場競爭力」。概念以「履歷表 (CV)」呢個最現實嘅符號切入，展示唔同專業人士嘅 CV，雖然已有亮麗學歷，但喺 AI 時代底下顯…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 2:【履歷表＋1】
-**創作概念**: 直接回應高學歷人士最關心嘅「職場競爭力」。概念以「履歷表 (CV)」呢個最現實嘅符號切入，展示唔同專業人士嘅 CV，雖然已有亮麗學歷，但喺 AI 時代底下顯得有啲「未完成」。透過 ERB，佢哋為自己嘅履歷表加上最關鍵嘅「+1」—— 一項超貼市嘅數碼技能，令整份 CV 實力即時倍增。
-**人/景**: 同樣係年輕專業人士，但著重描寫佢哋喺職場上面對新挑戰（例如老闆要求用 AI 做分析）時嘅思考狀態。場景包括辦公室、見工面試房、自由工作者嘅屋企 studio。
-**Visual Device**: **「動態履歷表 (Live CV)」**。用精緻嘅 Motion Graphic 將主角嘅 LinkedIn profile 或履歷表視覺化。當主角完成 ERB 課程後，畫面會出現一個「+」號，然後一項新技能（e.g., &quot;AI-Assisted Animation&quot;）以發光字體形式，鏗鏘有力地加入到履歷表嘅技能欄上，同時見到佢嘅個人檔案「完成度」由 90% 跳到 100%。
-**主打口號**: 你份 CV，仲爭呢一項。
-**Proposed 明星/名人**: **黃傑龍 (Simon Wong)** - ERB 主席本人。唔係要佢演戲，而係以半紀錄片形式，由佢以權威而貼地嘅身份，親自解說「點解連大學生都需要 ERB」，並引用「2025 年起已落實取消學歷上限」嘅政策事實，增加 campaign 嘅公信力同新聞價值，做法穩陣而有力。</div></details></div><div class='card' data-cid='cm1fa3b580' ><div class='row'><span class='ck on' onclick='tk(this)'>✓</span><span class='rank'>4</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 你份 CV，差一行新技能。去 ERB。</div><div class='csub'>Concept 2:〔CV 多一行〕</div></div><span class='score'>85</span></div><div class='crow'><span class='cflag hi'>創意 24/30</span></div><div class='prev'>每集用一份「學員履歷表 CV」做主線：開場係一張好完整、好「學歷亮眼」嘅 CV（刻意反差：大學畢業、幾年經驗），但畫面彈出一個紅色提示：「AI+ 時代：你最…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 2:〔CV 多一行〕
-**創作概念**:  
-每集用一份「學員履歷表 CV」做主線：開場係一張好完整、好「學歷亮眼」嘅 CV（刻意反差：大學畢業、幾年經驗），但畫面彈出一個紅色提示：「AI+ 時代：你最缺嘅，可能係『即用技能』。」跟住 CV 上面自動新增一行：**「ERB Courses｜Digital Skills」**（例如 AI 工具應用、數據分析、數碼營銷等），再即刻切去課室實作＋工作場景應用，展示「學完—即刻解到問題—效率上升」。最後回到 CV：新增技能行變成「打開更多可能性」嘅視覺收結，順勢落 CTA 去 **www.erb.org**。  
-同時用一張 CV 連起「新舊受眾」：唔同學歷、唔同行業都係同一個動作——為自己加一行技能。
-
-**人/景**:  
-- 學員（Trainees）主角 3–4 位：有學位在職人士為主，配一位傳統行業在職人士（平衡舊受眾）。  
-- 場景：課室（真係操作軟件、做練習）、會議室（用數據/AI 工具出 report）、零售/餐飲後台（用數碼工具排更/分析銷售）、創意 studio（AI 輔助出 moodboard）。
-
-**Visual Device**:  
-- 「CV 介面」動態圖像：每次學到一個技能，就喺 CV 上 **pop-up 新增一行**；同時旁邊出現「實戰應用」小標籤（例如「自動生成簡報／分析客流／優化廣告投放」），做到無聲都明。  
-- 每集最後一秒：CV 底部固定出現「僱員再培訓局 (Employees Retraining Board)｜www.erb.org」作一致 branding。
-
-**主打口號**:  
-**你份 CV，差一行新技能。去 ERB。**
-
-**Proposed 明星/名人**:  
-**梁祖堯**（口條清晰、形象專業可信、節奏感好；可做「CV 檢視官／體驗者」：用輕專業語氣帶觀眾睇每位學員點樣「加一行」而唔流於搞笑，符合「fresh 但穩陣」。）
-
----</div></details></div><div class='card' data-cid='cmcb2293ce' ><div class='row'><span class='ck on' onclick='tk(this)'>✓</span><span class='rank'>5</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 唔係再培訓，係再升級。ERB。</div><div class='csub'>Concept 3:實戰教室</div></div><span class='score'>87</span></div><div class='crow'><span class='cflag hi'>創意 23/30</span></div><div class='prev'>徹底模糊「課室」與「職場」嘅界線。ERB 嘅課程不再是傳統課堂，而是一個個「實戰任務」。每位學員都帶著一個真實的工作問題進來（例如：「點樣用 AI 提升社交…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 3: 實戰教室
-
-**創作概念**：徹底模糊「課室」與「職場」嘅界線。ERB 嘅課程不再是傳統課堂，而是一個個「實戰任務」。每位學員都帶著一個真實的工作問題進來（例如：「點樣用 AI 提升社交媒體觸及率？」），課程就是教他們用工具實時解決問題。影片以「解決方案導向」推進，展示學員從「帶著問題來」到「帶著方案走」嘅全過程，強力證明課程的「實用性」(Practical Relevance)。
-
-**人/景**：緊湊的節奏，跟拍幾位學員。場景在 ERB 委託培訓機構的現代化課室（更像 co-working space），學員對著電腦實操，導師在旁指導。大量屏幕特寫 (screen-centric)，展示軟件操作。後半部分直接跳接到學員返回自己公司，應用方案並獲得同事/上司認可。
-
-**Visual Device**：貫穿全片的「問題標籤」與「解決方案標籤」動態圖像。學員登場時，畫面彈出其「工作難題」（如「數據分析太慢」）；學習後，畫面彈出「解決方案」（如「掌握 Python 自動化處理」）。最後所有「難題標籤」都被「解決方案標籤」覆蓋。
-
-**主打口號**：唔係再培訓，係再升級。ERB。
-
-**Proposed 明星/名人**：**試當真團隊成員（例如：阿 J）**。擅長以幽默、貼地方式解構複雜概念，能有效拉近與年輕觀眾距離。可扮演一位內容創作者，苦於影片後製效率，在 ERB 學識 AI 剪片工具後大呼「得咗！」。
-
----
-以上三個概念均嚴格跟從 debrief 方向：針對高學歷新受眾、展示技能實戰應用、擺脫舊標籤、調性專業貼地。Visual device 鮮明，易於發展成 storyboard。請 Raymond 過目。</div></details></div><div class='card' data-cid='cme3a1354b' ><div class='row'><span class='ck on' onclick='tk(this)'>✓</span><span class='rank'>6</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 大學畢咗業,技能未畢業</div><div class='csub'>Concept 2:〔多咗一行〕</div></div><span class='score'>84</span></div><div class='crow'><span class='cflag hi'>創意 24/30</span></div><div class='prev'>呢個世代最緊張嘅唔係張沙紙,係張履歷追唔追到市。我哋 follow 一份份真實履歷表 —— 本身已經有大學學位、有工作經驗,但下面新加咗一行 ERB 數碼技…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 2:〔多咗一行〕
-
-**創作概念**:呢個世代最緊張嘅唔係張沙紙,係張履歷追唔追到市。我哋 follow 一份份真實履歷表 —— 本身已經有大學學位、有工作經驗,但下面新加咗一行 ERB 數碼技能(AI 應用、數據分析、數碼營銷)。鏡頭由履歷表上嘅一行字,溶接去學員喺真實工作場景中操作緊嗰項技能、解決緊真問題。Show 唔 tell:技能價值 = 履歷表上實實在在多咗、用得着嘅一行。
-
-**人/景**:四個唔同背景學員嘅履歷表特寫(打字機/打印中嘅動態),配真實 b-roll:學員 close-up 操作 AI 軟件、執代碼、整數據 dashboard;再 cut 到佢哋喺 startup office / 數碼化工場真實應用同一技能。強調「大學生都讀 ERB」嘅反差。
-
-**Visual Device**:履歷表上「新增一行」嘅 motion graphic —— 游標打出一行 ERB 技能,即刻發光、溶接成真實工作畫面。一個簡潔、易明、扣住「即用貼市」痛點嘅視覺鈎。
-
-**主打口號**:大學畢咗業,技能未畢業
-
-**Proposed 明星/名人**:建議 **岑珈其 或 周國賢** —— 傾向周國賢:理工出身、形象正面斯文、有「斜槓 / 持續學習」personal brand,做履歷表 owner 之一 + 旁白引導者,貼到「高學歷都喺度增值」嘅核心訊息,穩陣冇爭議。</div></details></div><div class='divider'>↑ 委員會推薦六強 · 以下要剔先換入 ↓</div><div class='card' data-cid='cm830c2be3' style='opacity:.55'><div class='row'><span class='ck ' onclick='tk(this)'></span><span class='rank'>7</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 同一張沙紙，多幾招傍身</div><div class='csub'>Concept 1:履歷表上多咗一行</div></div><span class='score'>84</span></div><div class='crow'><span class='cflag hi'>創意 23/30</span></div><div class='prev'>Opening 係一個手持大學學位嘅後生仔/女，望住自己份 CV，諗「仲差啲咩？」鏡頭 zoom in 入份履歷表，突然間一行字用 motion graph…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 1: 履歷表上多咗一行
-
-**創作概念**：Opening 係一個手持大學學位嘅後生仔/女，望住自己份 CV，諗「仲差啲咩？」鏡頭 zoom in 入份履歷表，突然間一行字用 motion graphic 彈出嚟 — 「ERB 人工智能應用技能認證」。個畫面跟住 split screen：左邊係佢喺 ERB 現代化課室學緊操作 AI 工具（真實 close-up 手指撳 keyboard、screen 上嘅 code），右邊係同樣嘅人返工時用同一樣技能解決實際問題（e.g. 用 AI 分析銷售數據、自動化報告）。核心係「履歷表」呢個 visual device — 大學生最熟悉、最有壓力嘅物件，變成 ERB 價值嘅載體。唔係話你讀得書少，係話你一張沙紙唔夠打。
-
-**人/景**：25-32 歲白領演員（素人感強過明星感），Co-working space / 數碼營銷公司 office / ERB 委任培訓機構現代化課室（要擺脫社區中心刻板印象）。真實學員作為背景 talent。
-
-**Visual Device**：「履歷表」實體化 + motion graphic 動態增項。CV 紙質質感，字粒逐粒彈出，ERB 課程名稱用 brand green highlight。中段 transition 用履歷表摺疊變形成課室門/電腦 screen，再摺返開變成工作場景。
-
-**主打口號**：同一張沙紙，多幾招傍身
-
-**Proposed 明星/名人**：林家謙。原因：大學畢業（CUHK）、音樂創作人形象貼近「高學歷 + 實戰技能」嘅反差，公眾認知係「讀書叻、做事叻」但唔老土，形象正面無負面， Instagram 活躍度令佢喺 18-35 歲 group 有 credibility。角色定位係「旁白聲音 + 片尾 brief 現身講一句」，唔搶學員主角戲。
-
----</div></details></div><div class='card' data-cid='cm6e8dd8a2' style='opacity:.55'><div class='row'><span class='ck ' onclick='tk(this)'></span><span class='rank'>8</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 AI+ 時代要增值，ERB 高階課程幫你 Up Skill</div><div class='csub'>Concept 3:〔AI+ 職場實況劇：Degree ≠ Ready〕</div></div><span class='score'>86</span></div><div class='crow'><span class='cflag hi'>創意 22/30</span></div><div class='prev'>採用標書建議「Work Scenario Drama」形式，但避開老套說教。以「高學歷新人入职第一週」為情境，展現佢擁有理論知識但面對 AI 工具束手無策嘅…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 3:〔AI+ 職場實況劇：Degree ≠ Ready〕
-**創作概念**: 採用標書建議「Work Scenario Drama」形式，但避開老套說教。以「高學歷新人入职第一週」為情境，展現佢擁有理論知識但面對 AI 工具束手無策嘅真實焦慮(痛點)，再透過同事/上司點出「ERB 高階課程」作為解決方案。強調 ERB 課程係「補足學位與實戰之間嘅最後一里路」，將「終身學習」包裝為職場生存必備策略，而非進修選項。
-**人/景**: 22-28 歲應屆/初職畢業生；場景為設計工作室 / 數碼營銷公司 / 初創企業(避免傳統寫字樓)，充滿螢幕、白板、協作空間。
-**Visual Device**: 「思維氣泡 vs 實操界面」。當主角焦慮時，頭頂出現學位帽圖標打叉(❌)；當運用 ERB 所學時，切換為第一人稱視角(POV)操作 AI 工具界面，並疊加 Pop-up Tips 顯示課程重點，視覺化「所學即所用」。
-**主打口號**: AI+ 時代要增值，ERB 高階課程幫你 Up Skill
-**Proposed 明星/名人**: 林家熙 (Locker Lam)。年輕演員中具「專業感」與「親和力」平衡，曾演出職場/科技相關題材，形象正面且貼近 18-35 歲目標受眾審美，能演繹「高學歷但需增值」而不顯突兀。</div></details></div><div class='card' data-cid='cm28f8b7db' style='opacity:.55'><div class='row'><span class='ck ' onclick='tk(this)'></span><span class='rank'>9</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 自 2025 年起，ERB 不設學歷上限。技能提升，人人都得。</div><div class='csub'>Concept 1:〔打破上限〕</div></div><span class='score'>84</span></div><div class='crow'><span class='cflag hi'>創意 22/30</span></div><div class='prev'>用一個「看得見」嘅屏障去代表舊印象：ERB 只係某類人先啱。影片一開就用大字打出「自 2025 年起：撤銷 Restriction on Education…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 1:〔打破上限〕
-**創作概念**:  
-用一個「看得見」嘅屏障去代表舊印象：ERB 只係某類人先啱。影片一開就用大字打出「自 2025 年起：撤銷 Restriction on Educational Attainment」，畫面上玻璃牆/透明「上限線」被推開/碎裂（唔暴力，偏設計感），之後連續見到唔同行業、唔同學歷背景嘅**學員**喺 ERB 課室學 Digital Skills／AI+，再 cut 去佢哋返到工作場景即刻用得着，直接「show 唔 tell」ERB 已革新、課程更高階更貼市。  
-（名人/KOL 只做「入場體驗者」，同學員一齊上堂，帶觀眾睇：原來我都報得。）
-
-**人/景**:  
-- 18–35 在職學員：例如市場營銷 executive（有學位）、設計師、餐飲店副經理、零售店長、初級數據分析師（多元行業）。  
-- 場景：現代化 ERB 委任培訓機構課室（大屏幕/電腦/實作）、co-working space、tech startup office、設計 studio、咖啡店/零售後台（用數碼工具提升效率）。
-
-**Visual Device**:  
-- 「學歷上限」具象化：透明玻璃牆/亞加力牌寫住「學歷上限？」＋一條發光水平線；鏡頭一推近，大字 overlay「已撤銷」；線條化成動態 UI 分散到唔同行業畫面（象徵打開 consideration set）。  
-- 全片用「大字 timestamp」：**「自 2025 年起」**固定格式出現，建立政策真確感。
-
-**主打口號**:  
-**自 2025 年起，ERB 不設學歷上限。技能提升，人人都得。**
-
-**Proposed 明星/名人**:  
-**方力申**（形象正面、運動員/藝人身份夠「大眾認知」、語氣自然唔官腔；做「體驗者」：用半懷疑半好奇入課室，最後用一句「原來我都報得」收束，貼新受眾心態但唔玩膠。）
-
----</div></details></div><div class='card' data-cid='cmffcf1db2' style='opacity:.55'><div class='row'><span class='ck ' onclick='tk(this)'></span><span class='rank'>10</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 打破學歷框框，ERB 未來技能即學即用</div><div class='csub'>Concept 1:〔履歷表上的 NEW SKILL〕</div></div><span class='score'>82</span></div><div class='crow'><span class='cflag hi'>創意 23/30</span></div><div class='prev'>直接回應「大學生都讀 ERB」嘅反差感。以一份「高學歷人士履歷表」為視覺主體，透過 Motion Graphic 動態展示佢喺職場遇到瓶頸(學歷夠但技能舊)…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 1:〔履歷表上的 NEW SKILL〕
-**創作概念**: 直接回應「大學生都讀 ERB」嘅反差感。以一份「高學歷人士履歷表」為視覺主體，透過 Motion Graphic 動態展示佢喺職場遇到瓶頸(學歷夠但技能舊)，隨後 ERB 課程如「外掛插件」般加入履歷，即時解鎖新工作場景。將抽象「取消學歷上限」轉化為具體「職業競爭力+1」嘅視覺證據，扣緊「技能為本」核心訊息。
-**人/景**: 25-30 歲學位持有人(男女皆可)，身穿 Smart Casual；場景由傳統 Office Grid 轉場至現代 Co-working Space / Tech Hub 開放式工位。
-**Visual Device**: 「動態履歷表 UI」貫穿全片。畫面左側/底部常駐半透明履歷面板，當學員學習 AI/數碼技能時，履歷上「Skills」欄位會像遊戲升級般彈出 ERB Logo 及技能標籤(如 Generative AI, Data Analytics)，並連線到右側真實操作畫面。
-**主打口號**: 打破學歷框框，ERB 未來技能即學即用
-**Proposed 明星/名人**: 陳漢娜 (Hannah Chan)。形象知性、有學位背景但同時活躍於創意/科技跨界別，符合「高學歷+新技能」人設，且氣質穩重不浮誇，貼近政府專業調性。</div></details></div><div class='card' data-cid='cmf0e14451' style='opacity:.55'><div class='row'><span class='ck ' onclick='tk(this)'></span><span class='rank'>11</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 每月津貼最高 $8,000，大學畢業都讀得</div><div class='csub'>Concept 2:〔$8,000 實戰加速器〕</div></div><span class='score'>85</span></div><div class='crow'><span class='cflag hi'>創意 21/30</span></div><div class='prev'>針對 Cynical 受眾「講金又講心」嘅心態。開首 3 秒直接以「HKD 8,000 / 月」巨大動態數字作為視覺錘(Hook)，隨即切入 ERB 主席黃…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 2:〔$8,000 實戰加速器〕
-**創作概念**: 針對 Cynical 受眾「講金又講心」嘅心態。開首 3 秒直接以「HKD 8,000 / 月」巨大動態數字作為視覺錘(Hook)，隨即切入 ERB 主席黃傑龍 Soundbite 確認「2025 起不設學歷上限」建立權威。接著以「投入vs回報」邏輯，快速剪接學員上課(投入)與職場應用 AI 解決問題(回報)嘅對比畫面，將津貼重新定義為「政府資助嘅職場加速器」而非「福利」。
-**人/景**: 真實 ERB 學員(素人演員) + ERB 主席黃傑龍(片段/聲音授權)；場景為 ERB 認可培訓機構嘅高科技課室(有電腦/AI 設備) vs 真實企業辦公室。
-**Visual Device**: 「分屏對比 + 數字計時器」。畫面分割為左右或上下，一邊係課堂學習 AI 軟件界面，另一邊係職場實戰應用同一軟件；角落有「津貼累計」或「技能掌握度」動態 Progress Bar，強化「即時見效」感。
-**主打口號**: 每月津貼最高 $8,000，大學畢業都讀得
-**Proposed 明星/名人**: 不適用。此概念依賴「政策權威(主席)+ 真實學員」建立信任感，明星反而削弱「實證」說服力。KOL 可改為邀請科技/職場類 Youtuber(如 米紙/ 職人系列風格)作旁白或體驗者，但非主角。</div></details></div><div class='card' data-cid='cm7cf75375' style='opacity:.55'><div class='row'><span class='ck ' onclick='tk(this)'></span><span class='rank'>12</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 學歷冇上限,技能冇盡頭</div><div class='csub'>Concept 1:〔玻璃天花〕</div></div><span class='score'>86</span></div><div class='crow'><span class='cflag hi'>創意 20/30</span></div><div class='prev'>有一塊睇唔到嘅玻璃,一路擋住唔同學歷、唔同行業嘅人 —— 而家呢塊玻璃碎咗。我哋用一塊真實嘅玻璃屏障做 visual metaphor,逐個學員行近、伸手,…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 1:〔玻璃天花〕
-
-**創作概念**:有一塊睇唔到嘅玻璃,一路擋住唔同學歷、唔同行業嘅人 —— 而家呢塊玻璃碎咗。我哋用一塊真實嘅玻璃屏障做 visual metaphor,逐個學員行近、伸手,玻璃應聲粉碎,佢哋直接行入一個現代化工作場景。最後揭示玻璃上原本印住「學歷限制 Restriction on Educational Attainment」,碎裂後重組成「2025 起 不設學歷上限」,直接扣住改革最硬嘅事實。
-
-**人/景**:三至四位學員 —— 一個揸住大學文憑、面對 AI 焦慮嘅 marketing 後生女;一個傳統零售店主想數碼轉型嘅中年男;一個轉行做數據分析嘅在職人士。景:co-working space、design studio、現代化 ERB 委任培訓機構課室。
-
-**Visual Device**:一塊印住「學歷限制」嘅玻璃屏障被打穿粉碎,碎片化成 kinetic typography 重組成新訊息 —— 一個記得住、有反差、又唔踩紅線(唔貶低任何人,只係「打開」)嘅鈎。
-
-**主打口號**:學歷冇上限,技能冇盡頭
-
-**Proposed 明星/名人**:建議 **林敏驄 或 麥明詩 (Louisa Mak)** —— 傾向麥明詩:劍橋法律畢業、形象 pro、正面、零負面新聞,本身就係「高學歷都要持續增值」嘅活招牌,佢做引導者行過玻璃,反差最有說服力。
-
----</div></details></div><div class='card' data-cid='cm9c1a9e06' style='opacity:.55'><div class='row'><span class='ck ' onclick='tk(this)'></span><span class='rank'>13</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 ERB 革新。學歷，再唔係界限。</div><div class='csub'>Concept 1:〔破壁者 The Wall Breaker〕</div></div><span class='score'>82</span></div><div class='crow'><span class='cflag hi'>創意 21/30</span></div><div class='prev'>以「打破無形之牆」作為核心視覺比喻。許多大學畢業生喺職場會遇到樽頸位——明明有學歷，卻欠缺一門 spezifisch 嘅實用技能，呢個就係佢哋嘅「牆」。影片…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 1:〔破壁者 The Wall Breaker〕
-**創作概念**: 以「打破無形之牆」作為核心視覺比喻。許多大學畢業生喺職場會遇到樽頸位——明明有學歷，卻欠缺一門 spezifisch 嘅實用技能，呢個就係佢哋嘅「牆」。影片透過展示唔同行業嘅高學歷人士，如何透過 ERB 嘅數碼課程，學識一門新技能，從而「打破」事業上嘅樽頸之牆，開創更多可能性。
-**人/景**:
-*   一個喺廣告公司做稿嘅大學畢業生，對住電腦苦惱點樣將概念視覺化，之後喺 ERB 學緊 AI 繪圖。
-*   一個喺初創公司做 marketing 嘅專才，望住一堆數據唔知點分析，之後喺 ERB 課室學緊數據分析工具。
-*   場景橫跨現代化辦公室、co-working space、ERB 設備先進嘅電腦課室。
-**Visual Device**: **一道半透明嘅玻璃牆**。每當主角遇到事業樽頸時，呢道牆就會出現，阻擋佢前進。當佢喺 ERB 上堂，掌握新技能嘅一刻，佢會充滿自信咁一拳/一指擊碎玻璃牆。玻璃碎裂嘅慢鏡特效，會轉化成代表新技能嘅 data/code/UI icon，視覺上極具衝擊力。
-**主打口號**: ERB 革新。學歷，再唔係界限。
-**Proposed 明星/名人**: **麥浚龍 (Juno Mak)**。佢本身形象具備藝術感、思考深度同前瞻性，並非傳統偶像。由佢以一個觀察者或引導者嘅角色出現，能提升整個 campaign 嘅格調同專業感，符合「有新意但唔出位」嘅要求，能有效吸引對質素有要求嘅年輕觀眾。</div></details></div><div class='card' data-cid='cma436c295' style='opacity:.55'><div class='row'><span class='ck ' onclick='tk(this)'></span><span class='rank'>14</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 增值，唔係由零開始。ERB，為你學歷再加分。</div><div class='csub'>Concept 2:〔履歷升級 CV+〕</div></div><span class='score'>81</span></div><div class='crow'><span class='cflag hi'>創意 22/30</span></div><div class='prev'>直接回應高學歷人士最關心嘅「職場價值」。影片以一份「履歷表 (CV)」作為敘事載體，展示一個典型大學生嘅 CV 雖然亮麗，但喺 AI 時代下顯得「周身刀，冇…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 2:〔履歷升級 CV+〕
-**創作概念**: 直接回應高學歷人士最關心嘅「職場價值」。影片以一份「履歷表 (CV)」作為敘事載體，展示一個典型大學生嘅 CV 雖然亮麗，但喺 AI 時代下顯得「周身刀，冇張利」。透過 ERB 課程，佢為自己嘅 CV 加上一行關鍵嘅「實戰技能」，令整份履歷即時「升級」，成功解決工作難題或爭取到更好機會。
-**人/景**:
-*   主角係一個代表「新目標受眾」嘅年輕演員，可能係商科/文科畢業生。
-*   場景包括佢 initial 嘅 office (可能比較傳統)，到佢增值後轉到嘅新式科技公司 / design studio。
-*   大量 ERB 課堂嘅 b-roll，展示導師嘅專業性同課程嘅實用性 (e.g. 真實軟件操作 close-up)。
-**Visual Device**: **一份動態履歷表 (Motion Graphic CV)**。影片開頭，主角嘅 CV 會以 motion graphic 形式展示，學歷一欄閃閃發光。但當遇到工作挑戰時，CV 會變暗，「技能」一欄呈現空白或過時。當佢報讀 ERB 後，一個新嘅 skill (e.g. &quot;Python for Data Analytics&quot; / &quot;Digital Marketing &amp; SEO&quot;) 會以發光嘅姿態「植入」CV，成份 CV 即時 upgrade，連帶 Job Title 都出現升級動畫。
-**主打口號**: 增值，唔係由零開始。ERB，為你學歷再加分。
-**Proposed 明星/名人**: **游學修**。佢嘅形象知性、貼地，經常探討年輕人嘅事業同人生議題，喺年輕高學歷群體中有相當嘅號召力同公信力。佢可以扮演一個「師兄」或旁述角色，用佢獨有嘅語氣，道出大學生同樣面對技能焦慮嘅現實，令訊息更易入腦。</div></details></div><div class='card' data-cid='cma89efea2' style='opacity:.55'><div class='row'><span class='ck ' onclick='tk(this)'></span><span class='rank'>15</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 ERB・技能增值。裝備下一個你。</div><div class='csub'>Concept 1:【實裝・升級】</div></div><span class='score'>82</span></div><div class='crow'><span class='cflag hi'>創意 20/30</span></div><div class='prev'>將「學新技能」呢個抽象概念，轉化為一次具爽感嘅「硬件升級」。ERB 課程唔係書本知識，而係一個個實體化、可觸摸、可「安裝」嘅技能模組 (Skill Modu…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 1:【實裝・升級】
-**創作概念**: 將「學新技能」呢個抽象概念，轉化為一次具爽感嘅「硬件升級」。ERB 課程唔係書本知識，而係一個個實體化、可觸摸、可「安裝」嘅技能模組 (Skill Module)。當學員將呢啲模組「實裝」到自己嘅專業工具或流程上，即時見到效率同產能嘅幾何級提升，直接扣連 ERB「實用、貼市」嘅核心訊息。
-**人/景**: 主角係各行各業嘅年輕專業人士（如建築師、市場策劃、數據分析師）。場景設定喺現代化、有設計感嘅工作空間（如科技公司、設計工作室、co-working space），擺脫傳統課室印象。
-**Visual Device**: **「技能模組 (Skill Module)」**。一個個發光、半透明、刻有技能符號（如 AI Prompting, Data Visualization）嘅實體方塊。主角會做出一個將模組「啪」一聲嵌入工具（如電腦、繪圖板）嘅動作，觸發整個工作流程嘅視覺升級（例如數據圖表由 2D 變 3D 互動、設計稿自動生成多個版本）。
-**主打口號**: ERB・技能增值。裝備下一個你。
-**Proposed 明星/名人**: **麥浚龍 (Juno Mak)**。佢本身形象具前瞻性、對細節同質感有極高要求，由佢嚟演繹「為專業裝配最精良組件」嘅概念，能提升 ERB 嘅格調同專業感，打破舊有標籤。</div></details></div><div class='card' data-cid='cm7bf15058' style='opacity:.55'><div class='row'><span class='ck ' onclick='tk(this)'></span><span class='rank'>16</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 學位唔夠？ERB 幫你技能搭夠。</div><div class='csub'>Concept 1:技能履歷表</div></div><span class='score'>80</span></div><div class='crow'><span class='cflag hi'>創意 20/30</span></div><div class='prev'>將每個人的職業生涯想像成一張「技能履歷表」。傳統思維只著重學歷 (CV)，但未來需要不斷更新「技能履歷表」(Skills CV)。影片展示不同背景嘅學員，如…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 1: 技能履歷表
-
-**創作概念**：將每個人的職業生涯想像成一張「技能履歷表」。傳統思維只著重學歷 (CV)，但未來需要不斷更新「技能履歷表」(Skills CV)。影片展示不同背景嘅學員，如何在 ERB 課程中「下載」並應用新技能（如 AI 分析、數碼營銷），直接將呢啲技能「新增」到佢哋嘅工作履歷中，創造實質價值。核心訊息是：ERB 就是你「技能履歷表」嘅最新更新來源。
-
-**人/景**：四位不同行業、持有學位的年輕在職人士（如：一位時裝品牌經理、一位工程師、一位文職人員、一位餐飲業主管），分別在現代化辦公室、工作室、ERB 課室及實際工作場景中。
-
-**Visual Device**：一個不斷更新、充滿動態圖像嘅「技能履歷表」介面。學員每學到一項新技能（畫面顯示課堂實操），佢嘅「技能履歷表」就會即時彈出並新增該技能圖標，隨即切入佢應用此技能解決工作問題嘅畫面。
-
-**主打口號**：學位唔夠？ERB 幫你技能搭夠。
-
-**Proposed 明星/名人**：**岑寧兒 Yoyo Sham**。形象知性、文藝，同時貼地，能吸引年輕高學歷群體。可飾演一位需要學習新技能（如音樂製作的 AI 工具）嘅創作人，一句旁白：「學音樂都要學新嘢，何況我哋嘅 career？」
-
----</div></details></div><div class='card' data-cid='cm2b477e4d' style='opacity:.55'><div class='row'><span class='ck ' onclick='tk(this)'></span><span class='rank'>17</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 學歷無上限，技能無止境</div><div class='csub'>Concept 2:道牆冇咗</div></div><span class='score'>84</span></div><div class='crow'><span class='cflag hi'>創意 17/30</span></div><div class='prev'>2025 年改革最核心嘅顛覆 — 撤銷學歷上限。視覺上用「一道半透明玻璃牆」象徵舊有學歷限制，牆後面係 ERB 課室，牆前面係各種高學歷人士（大學生、碩士、…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 2: 道牆冇咗
-
-**創作概念**：2025 年改革最核心嘅顛覆 — 撤銷學歷上限。視覺上用「一道半透明玻璃牆」象徵舊有學歷限制，牆後面係 ERB 課室，牆前面係各種高學歷人士（大學生、碩士、專業人士）望住牆後面，表情由疑惑到好奇。然後一個學員（可以是傳統 ERB 學員，可以是新學員）行埋去，手一推，塊玻璃碎成無數碎片（CG，唔暴力，優雅地碎），碎片飄散後 reveal 後面係全新嘅 ERB — 大學生同基層學員一齊上堂、一齊操作 AI 工具、一齊笑。呢個畫面打破「ERB = 某類人專利」嘅標籤，直接回應 debrief 講嘅「認知落差」。條片唔賣慘，賣「界限消失咗，你本來就可以入嚟」。
-
-**人/景**：多樣性選角 — 大學生（著 grad gown 或 smart casual）、中年轉職者、傳統服務業從業員，全部喺同一個現代化課室。場景： glass wall 係抽象 set 或借鏡某建築物實拍，碎後 reveal 真實 ERB 課室（要大、光猛、有齊電腦設備）。
-
-**Visual Device**：「玻璃牆」—— 半透明、有 reflection，可以映出牆前人嘅樣同牆後課室嘅活動，形成「幾乎觸及」嘅張力。碎裂瞬間用 slow motion + particles，碎片折射光線形成彩虹效果（唔血腥，唯美）。碎片最後 reassemble 成 ERB logo 形狀，再 dissolve 成真實 logo。
-
-**主打口號**：學歷無上限，技能無止境
-
-**Proposed 明星/名人**：黃傑龍（ERB 主席）。原因：debrief 提及佢公開講過「2025 年初起已落實取消學歷上限」，用佢本人聲音/影像做 authority anchor，增加政策真實感。角色係片頭 brief soundbite：「以前，有啲人覺得自己唔屬於呢度。2025 年起，再冇呢個『以前』。」之後交畀學員故事。慳錢、有 credibility、完全符合政府「穩陣」要求。
-
----</div></details></div><div class='card' data-cid='cmc6bd3cef' style='opacity:.55'><div class='row'><span class='ck ' onclick='tk(this)'></span><span class='rank'>18</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 ERB 2025：學歷冇上限，技能冇止境。</div><div class='csub'>Concept 2:打破無形牆</div></div><span class='score'>85</span></div><div class='crow'><span class='cflag lo'>創意 14/30</span></div><div class='prev'>用視覺隱喻「打破一堵代表學歷限制嘅無形牆」，直擊 2025 年改革核心。影片開首，不同人（大學生、在職專業人士）被一面透明玻璃牆阻隔，睇唔到牆後 ERB 課…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 2: 打破無形牆
-
-**創作概念**：用視覺隱喻「打破一堵代表學歷限制嘅無形牆」，直擊 2025 年改革核心。影片開首，不同人（大學生、在職專業人士）被一面透明玻璃牆阻隔，睇唔到牆後 ERB 課堂嘅先進內容（AI、數據可視化、數碼工具）。隨著旁白說明「2025 年起，學歷上限撤銷」，玻璃牆應聲破碎。大量不同背景嘅人湧入現代化課室，畫面展示技能如何應用於真實職場。強調 ERB 已成為一個開放畀所有人嘅技能市集。
-
-**人/景**：開場為一系列快剪鏡頭，不同穿著（商務、休閒、創意）嘅年輕人面帶疑惑地「觸碰」或「被阻隔」於一堵透明牆前。牆後是明亮、充滿科技設備的 ERB 課室。牆破碎後，場景切換至學員在不同職場應用所學。
-
-**Visual Device**：一面不斷出現、阻隔視線嘅「透明玻璃牆」視覺隱喻。牆上起初有「學歷上限」字樣，隨著政策說明，牆身出現裂痕並最終粉碎，化為數據流或技能圖標，散落於新學員身上。
-
-**主打口號**：ERB 2025：學歷冇上限，技能冇止境。
-
-**Proposed 明星/名人**：**劉俊謙**。形象健康、有時代感，能代表年輕專業人士。設定為一位發現自己技能需要更新嘅在職青年，目睹牆碎後第一個走入課室，一句：「原來牆後面，先係未來。」
-
----</div></details></div><div class='card' data-cid='cmfaf73ea2' style='opacity:.55'><div class='row'><span class='ck ' onclick='tk(this)'></span><span class='rank'>19</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 學歷無上限，技能即戰力。</div><div class='csub'>Concept 1:〔履歷即時升級〕</div></div><span class='score'>75</span></div><div class='crow'><span class='cflag hi'>創意 18/30</span></div><div class='prev'>用 motion graphic 將一份大學生履歷表「即時加多一行 ERB 創科課程」，視覺化「撤銷學歷上限」後嘅實際增值，直接回應 debrief「大學生…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 1:〔履歷即時升級〕
-**創作概念**: 用 motion graphic 將一份大學生履歷表「即時加多一行 ERB 創科課程」，視覺化「撤銷學歷上限」後嘅實際增值，直接回應 debrief「大學生都讀 ERB」嘅反差。
-**人/景**: 25 歲 IT 助理喺 co-working space 打開 MacBook，畫面切至 ERB 課室 close-up 操作 AI 工具。
-**Visual Device**: 履歷表彈出視窗，新增一項 ERB 課程記錄，旁邊即彈出「不設學歷上限」彈窗。
-**主打口號**: 學歷無上限，技能即戰力。
-**Proposed 明星/名人**: 建議找一位 30 歲出頭、形象正面嘅科技界 KOL (e.g. 陳少潤)，佢本身有大學背景，代表「新受眾」身份；一句解釋：「用自己轉工經歷，話畀同級高學歷打工仔知 ERB 點樣幫到忙」。</div></details></div><div class='card' data-cid='cm89408f43' style='opacity:.55'><div class='row'><span class='ck ' onclick='tk(this)'></span><span class='rank'>20</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 ERB 今日已革新，升級只為你。</div><div class='csub'>Concept 2:〔主席真聲〕</div></div><span class='score'>83</span></div><div class='crow'><span class='cflag rl'>⛔違紅線</span></div><div class='prev'>開頭 3 秒即播 ERB 主席黃傑龍先生訪問片段：「2025 年初已經取消學歷上限」，即以最高權威打破觀眾懷疑，再接學員真實 workplace appli…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 2:〔主席真聲〕
-**創作概念**: 開頭 3 秒即播 ERB 主席黃傑龍先生訪問片段：「2025 年初已經取消學歷上限」，即以最高權威打破觀眾懷疑，再接學員真實 workplace application。
-**人/景**: 主席聲畫 + 一位 28 歲會計師喺 startup 公司用數據分析工具解決報表問題。
-**Visual Device**: 主席 soundbite 片段用圓形視窗浮現，其後畫面擴闊成學員工作實景。
-**主打口號**: ERB 今日已革新，升級只為你。
-**Proposed 明星/名人**: 不適用 — 本 concept 已用官方主席增加可信度，毋須額外名人。</div></details></div><div class='card' data-cid='cmc365d5ce' style='opacity:.55'><div class='row'><span class='ck ' onclick='tk(this)'></span><span class='rank'>21</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 ERB 唔再係嗰個 ERB</div><div class='csub'>Concept 3:Captain K 帶你偷睇一堂課</div></div><span class='score'>82</span></div><div class='crow'><span class='cflag rl'>⛔違紅線</span></div><div class='prev'>標書 optional item — 將吉祥物 Captain K 製作為 3D 動畫角色。我哋將佢由「吉祥物」升級為「技能導賞員」。Opening 係手機…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 3: Captain K 帶你偷睇一堂課
-
-**創作概念**：標書 optional item — 將吉祥物 Captain K 製作為 3D 動畫角色。我哋將佢由「吉祥物」升級為「技能導賞員」。Opening 係手機 screen 角度，user 喺 Instagram scroll，突然個 ERB post「活咗」— Captain K 跳出嚟 2D frame，變成 3D 立體角色，拉住觀眾隻手（POV 鏡頭）衝入 ERB 課室。佢帶住觀眾「偷睇」三種唔同課程：AI 繪圖、數據分析、數碼營銷，每堂都係 15-20 秒快閃，學員唔理佢，專心做嘢，Captain K 喺旁邊用 pop-up text 講重點（e.g. 「每日津貼 $241」、「唔使驚，大學生都報咗」）。Tone 係輕快、有少少惡搞但唔膠，好似 YouTube educational channel 嘅 host 咁。最後 Captain K 推觀眾出嚟，畫面變返手機，顯示 ERB 網站已經 open 咗 — CTA 自然完成。
-
-**人/景**：以 Captain K 3D animation 為主導，真人學員作為 background（要真實、唔似演戲）。場景：ERB 課室、數碼工作室、co-working space。需要大量 green screen / LED volume 拍攝配合 CG integration。
-
-**Visual Device**：「手機 screen 作為 frame」—— 整部片由 9:16 手機比例開始，Captain K 跳出嚟嗰下打破 frame，畫面擴展成 16:9 cinematic，象徵「跳出你以為嘅 ERB」。中段用 split-screen 手機 interface 同時 show 幾個課堂，最後縮返入手機顯示網站。Pop-up text / graphic 風格完全 adapt 社交媒體 native language。
-
-**主打口號**：ERB 唔再係嗰個 ERB
-
-**Proposed 明星/名人**：192 / 郭嘉駿。原因：YouTube 出身、熟悉網絡語言、pop-up text / fast cut 風格係佢DNA，觀眾印象中佢係「讀過書但選擇做 creators」嘅高學歷代表，對 18-30 極有 reach。風險：形象偏「膠」，需要政府審批；但客戶標書要求「fresh, creative, vivid and eye-catching」，佢係最極端嘅 option。若 Raymond 驚太出位，可退而求其次用較穩陣嘅 YouTuber 如 Ming仔 / 小薯茄成員（但要檢查政治立場）。
-
----
-
-Raymond，三個概念分別對應：
-- **Concept 1**：最穩陣、最易 execute、最易過政府審批
-- **Concept 2**：最貼政策核心（學歷上限取消）、最有新聞性
-- **Concept 3**：最 fresh、最貼標書「vivid and eye-catching」要求、但 execute 成本同政治風險最高
-
-等你方向和明星 preference，揀中我哋即刻 develop 12 格 storyboard。</div></details></div><div class='submit'><button class='btn' onclick='submitRound()'>✅ Submit 六強 (<span class=cnt>6</span>)</button></div><div class='h2'>👀 睇返區</div><div class='lookback'>每輪冇進級嘅 idea 會自動歸檔喺度，永遠睇得返，撳「⤴️升級」補生返上嚟。</div></div>
-<div id='vid1_2' class='tabpanel' data-set='1'><div class='banner'>未有概念進入第二輪。返 VID 1 Submit 六強先。</div></div>
-<div id='vid1_3' class='tabpanel' data-set='1'><div class='banner'>BD 生成中…完成後喺度揀三甲。</div></div>
-<div id='vid1_4' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 3 揀三甲先。</div></div>
-<div id='vid1_5' class='tabpanel' data-set='1'><div class='banner'>未有三甲。</div></div>
-<div class=foot>Idea Lab · 06-05 23:58 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+<p>*   <strong>Educational attainment：</strong></p>
+<p>    *   「學歷程度」(Educational Attainment)是官方用語。</p>
+<p>    *   「degree-level attainment」可翻譯為「學位程度」。</p>
+<p>*   <strong>General public and service targets：</strong></p>
+<p>    *   「公眾及服務對象」(General public and service targets)為官方表述。服務對象具體指「15歲或以上合資格的香港僱員」。</p>
+<p>=== Grounding 來源(Google Search)===</p>
+<p>- erb.org: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGCDtO5vJmjZiBTLoPJcIGcGSSzqDBFIhkli3LxOLfRCUoC0le1efzcFhBlNoF3qFluydLD7fdwx1eN2wO5cybUP3rwMdtCZy-CwIBhp00I</p>
+<p>- wikipedia.org: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGwVx6wgCABcEzP5IxsM-FgwoXcdyaaZUYiA7PuM9z-uqR3xuwnmPNcx-fUbM-Ca-rgXc8n7s9bP9wabV-LhXlxnkfJQIFbtoGL_uLxjCAvuEkDLFC-2X2cEI_gV4cPKymsHh99Nmu2OY-xduOd1E1p-OzzDg_7AX7rYb1WgVoxS0ea4KHqeUwcaWHnAflcmEk=</p>
+<p>- erb.org: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFISLew4gdK6byWSO6qEgsvpB2hHugYhl3ihWb63QDU9oY2cq82Jibhs6RrMxWrM8qHpsr3qF0XZSa-oAW8IRYLqVGbl7w8XS3rUdjtM8rpYZtdjHs-Fw==</p>
+<p>- erb.org: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH5VJVbU47J6IUa5vbQ68fC1chAML8BgmJEj_DR-qJ4WGyPyAG_85DSLf9l45CbUAIqcqW_pT3N2yL69XGWSOByTwkagLwQJ1jfb-4lxi0jpmbQgtmCVQpDU6JiSgdQ2TfbsOjhahmWsBOs0oj2</p>
+<p>- erb.org: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFH3CmW4zGrjgh3VykUtBDzqwJLE2fZ55OYIBgdkS1VTlQaakbZosggmg4uiUfjbSHA0XyZ8W5gBMHNvoKw7vP7-U2qAg7hezsWe5hfChaToEE1iC1BCK0dHo8V0PqkaEVjozxLd0ts_7P6</p>
+<p>- prospeo.io: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHaiTHyq7ZXsxb1QPvY_6GxUir0gpVwI9fiPx9UU6YcwI0uRZRsaaR4OTq-6qgXYZ1Jz6OO7iYgOJAp_dCrvwx5qUmFGKfkiDNwR8Yd38pO6AUmmc1MNTSHifKxea64YoOq9a4rbewbco8UlMJXSps39_aYWjcZ</p>
+<p>- familyandwomen.gov.hk: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGiMkEkllao5m7gWxK9zbSPxpd37EhXpR1yEY6IYmrcs0NafYOkoSntapSczUipI_VAAMU3Z7FCswz9MgAkSSaI_ypKwhtPwmTPVCAe4g03_ZLJ3ysxx05g_cpihGehufMaSAh-FV-eroy9cgtfwhVikE0Oq27aNDAECFktRpE=</p>
+<p>- erb.org: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHhm1E0RJ9bAyV7xMnebbLdmCz_qTlBVzncCJt5W7LGczw3H4-0PKCsHziWdGPZQNcOIlB67T6Ty4ETH0gokbwCEL6JYuTSlRd3FbP2G76r3faQ_06tJbhK2eaPr-QXSulHDA==</p>
+<p>- uowchk.edu.hk: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHN93THF95WVGt_6Bb2SgR565Ey1CPkmyoeCc10RY4fxxWZ6hRc05rR5WO5mGmjesgNL013W1KDjRGowFHM5mf0HYmqfOU04fArv81K151_OmAwegMZxKLpLLdnC6AIyhAaGLXv3VBcSUTzgacs4IL9ymV22LL1vEoDjWct1-mfsLzDe9itNWkueJhmr-PvfxH1352G3F7RfRbiPueeTg3mmCdCOG5ChxZZfQ==</p>
+<p>- www.gov.hk: https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGBmhY9vZDmPyCFlIck5M2yoAHn9JzBO7aEFYqMvl7jzdEFdGP5CF0v342Jbek8Z8PHreIIRCXdpyf1IHTcW8vc6h7WAq5Eun0ypkcXVkkW3yS6jD3C2hUP6WLLcuKFtVjrat4LnsZ7czoSDpOgFinPOQ==</p></details><p class='hint'>📺 ISD 資料庫導入(相類政府舊片 + 字幕稿)見下面「ISD 對口參考」section。</p></details></section><section id='isd'><details class='soft sec' ><summary>📺 ISD 導入(相類政府舊片 + 字幕)</summary><p class='hint'>按呢條 brief 嘅目的×題材,自動抽返 6 條相類政府(ISD)舊片 + 字幕稿,已 feed 落委員會做參考(借橋唔抄)。</p><p><strong>【呢條 brief 判定】目的:其他  題材:未定</strong></p><p><strong>【同目的(其他)ISD 慣性】主開頭 真人/講者(68%);格式率 旁白76% 熒幕蓋字96% 標誌結尾96% CTA52% 感嘆64% 三段式·0%;慣用結尾 衞生防護中心標誌, 衞生署標誌, 社會福利署標誌, 熒幕蓋字： iAM Smart+ 標誌</strong></p><p><strong>【對口 ISD 舊作借鏡(同 目的×題材,參考佢點寫,唔好照抄,要創新)】</strong></p><div class='lab' style='margin-top:14px'>幸福上流　置業圓夢  [其他 | 房屋置業/長者家庭]</div><a class='btn mini' target='_blank' href='https://www.youtube.com/watch?v=phWv4V2eOh0&amp;list=PL1188A9802575C33F'>▶ 睇原片 YouTube</a><p style='font-size:13px;color:var(--mut)'>男旁白：請等等！ / 男旁白：啊，我想上車啊！ / 熒幕蓋字：未來5年 / 大約60,000個資助出售單位供應 / 女旁白：放心，未來有許多機會 / 熒幕蓋字：新一期居者有其屋計劃及 / 綠表置居計劃 / 4月30日起接受申請 / 女旁白：新一期居屋及綠置居4月30日起接受申請 / 女旁白：前兩次未能成功置業的申請者 / 可獲得額外一個抽籤號碼 / 熒幕蓋字：居屋綠表配額比例由40%升至50% / 女旁白：今期居屋會增加綠表比例 / 熒幕蓋字：40歲以下白表申請者 / 抽籤號碼＋1個 / 女旁白：白表青年申請者可獲得額外一個抽籤號碼 / 女旁白：「白居二」亦會增加配額 / 女旁白：置業的機會多了 / 熒幕蓋字：分布多區 / 可負擔的售價 / 居者有其屋計劃屋苑 / 綠表置居計劃屋苑 / 女旁白：價格亦在可負擔範圍內 / 熒幕蓋字：家有初生 / 家有長者 / 女旁白：家有初生或長者的家庭更可優先選樓 / 熒幕蓋字：出售居者有其屋計劃單位 / 出售綠表置居計劃單位 / 白表居屋第二市場計劃 / 4月30日起接受申請 / 男女旁白：幸福上流　置業圓夢 /</p><div class='lab' style='margin-top:14px'>選擇註冊中成藥  認住HKC  [其他 | 環保/節能]</div><a class='btn mini' target='_blank' href='https://www.youtube.com/watch?v=X9zWre8b7ts&amp;list=PL1188A9802575C33F'>▶ 睇原片 YouTube</a><p style='font-size:13px;color:var(--mut)'>消費者： / 這麼多款式，怎樣選？ / 藥樽們： / 購買我吧 / 紫色藥樽： / 選擇我吧 / 綠色藥樽： / 我比較好呢 / 粉紅色藥樽： / 我便宜一點呢！ / 藍色藥樽： / 選中成藥 / 當然要選擇我這些已註冊的中成藥HKC / 熒幕蓋字： / HKC 註冊中成藥 / 藍色藥樽： / 我的包裝上印有「中成藥註冊編號」 / 即HKC開頭加五位數字 / 熒幕蓋字： / 中成藥註冊編號 HKC-XXXXX / 熒幕蓋字： / 安全　品質　成效 / 藍色藥樽： / 所有香港合法銷售的註冊中成藥 / 都已經符合安全、品質及成效的註冊要求 / 熒幕蓋字： / cmchk.org.hk / 衞生署標誌 / 藍色藥樽： / 可以上cmchk.org.hk查看註冊中成藥名單</p><div class='lab' style='margin-top:14px'>Hong Kong&#x27;s iconic cultural and arts venues  [其他 | 盛事旅遊]</div><a class='btn mini' target='_blank' href='https://www.youtube.com/watch?v=5I3eUgnX5eM&amp;list=PL1188A9802575C33F'>▶ 睇原片 YouTube</a><p style='font-size:13px;color:var(--mut)'>旁白：文化藝術 / 　　　展現香港多元魅力 / 熒幕蓋字：當下──香港藝術展 / 旁白：特區政府以文化藝術的「軟實力」 / 　　　結合設施建設的「硬實力」 / 　　　推動文化藝術產業發展並吸引旅客 / 熒幕蓋字：天馬凌雲——故宮博物院藏繪畫珍品 / 旁白：香港的文化藝術場地各具特色 / 　　　融入傳統與現代優點 / 　　　配合先進科技 / 　　　致力將香港打造成為更具活力 / 熒幕蓋字：油街焦點—左旋們浴場 / 旁白：更富創意的國際文化都會 / 熒幕蓋字：2026年巴塞爾藝術展香港展會 / 旁白：香港—國際文化都會 / 熒幕蓋字：中華人民共和國香港特別行政區區徽</p><div class='lab' style='margin-top:14px'>水果蔬菜 2+3　輕鬆融入每一餐  [其他 | 公共衞生]</div><a class='btn mini' target='_blank' href='https://www.youtube.com/watch?v=_iNDAroBSLc&amp;list=PL1188A9802575C33F'>▶ 睇原片 YouTube</a><p style='font-size:13px;color:var(--mut)'>熒幕蓋字： 日日2+3 / 女旁白（唱）： 水果兩份 / 熒幕蓋字： 水果2份 /    「1份水果」約等於： /    2個小型水果 /    1個中型水果 /    半碗水果塊 / 女旁白（唱）： 蔬菜三份 / 熒幕蓋字： 蔬菜3份 /    「1份蔬菜」約等於： /    1碗未經烹調葉菜 /    半碗煮熟的蔬菜 /    ¾杯純蔬菜汁 /    *部分含澱粉質根莖類及醃製類蔬菜除外 / 女旁白（唱）： 天天來為健康加分 / 熒幕蓋字： 提供不同營養 /    維生素C /    鉀 /    葉酸 /    膳食纖維 / 女旁白（唱）： 多款多色 /     好吃有益 / 熒幕蓋字： 有助預防疾病 / 男旁白： 進食足夠蔬果 /    可以預防肥胖和減低患上慢性疾病的風險 / 熒幕蓋字： 心臟病 /    中風 /    肥胖 /    糖尿病 /    某些癌症（如大腸癌） / 女旁白（唱）： 早餐 / 熒幕蓋字： 早餐 / 女旁白（唱）： 午餐 / 熒幕蓋字： 午餐 / 女旁白（唱）： 還有晚餐 / 熒幕蓋字： 晚餐 / 星級有營食肆標誌 / 女旁白（唱）：</p><div class='lab' style='margin-top:14px'>2026年4月3日起二元優惠計劃由每程劃一$2調整為「兩蚊兩折」  [其他 | 長者家庭/公共衞生]</div><a class='btn mini' target='_blank' href='https://www.youtube.com/watch?v=-UAWGShCdCw&amp;list=PL1188A9802575C33F'>▶ 睇原片 YouTube</a><p style='font-size:13px;color:var(--mut)'>熒幕蓋字 ： 兩蚊兩折 /     政府長者及合資格殘疾人士公共交通票價優惠計劃 /     運輸署網頁二維碼 / 馮素波（唱）： 兩元兩折　跟我學唱歌 / 馮素雲（唱）： 兩元兩折　我約了人逛街 / 馮素波（唱）： 低於或等於十元　只算兩元 / 熒幕蓋字 ： $2 / 馮素雲（唱）： 高於十元　兩折一樣興奮 / 熒幕蓋字 ： 兩折 / 馮素波旁白 ： 由2026 年4 月3日起 / 熒幕蓋字 ： 2026 年 4 月3日起 / 馮素波旁白 ： 二元優惠計劃由每程劃一兩元調整為「兩蚊兩折」 /     轉乘車程一樣適用 / 熒幕蓋字 ： 轉乘車程同樣適用 / 馮素波旁白 ： 受惠對象維持不變 / 熒幕蓋字 ： 60歲或以上香港居民 /     合資格殘疾人士 / 馮素波旁白 ： 詳情請瀏覽網頁或致電1823查詢 / 熒幕蓋字 ： 兩蚊兩折 /     運輸署網頁 /     www.td.gov.hk /     查詢電話：1823 / 馮素波、馮素雲（合唱） ： 兩元兩折　優惠相伴最開心 / 熒幕蓋字 ： 2026</p><div class='lab' style='margin-top:14px'>Application for Phase 3 of Simple Public Housing  [其他 | 房屋置業]</div><a class='btn mini' target='_blank' href='https://www.youtube.com/watch?v=BtU7TWHUSYI&amp;list=PL1188A9802575C33F'>▶ 睇原片 YouTube</a><p style='font-size:13px;color:var(--mut)'>女旁白：「簡約公屋」首四個項目已經全面供住戶入住 / 女旁白：每個月租金只是約八百至三千多元不等 / 住戶的居住環境和生活質素大有改善！ / 女旁白：第三期申請包括位於啟德 / 熒幕蓋字：啟德世運道簡約公屋中英標誌 / 啟德世運道 / 女旁白：柴灣及屯門的四個項目 / 於今年第二季開始供住戶入住 / 熒幕蓋字：柴灣常安街簡約公屋中英標誌 / 柴灣常安街 / 熒幕蓋字：屯門欣寶路簡約公屋中英標誌 / 屯門欣寶路 / 女旁白：現已接受申請 / 熒幕蓋字：屯門青發街簡約公屋中英標誌 / 屯門青發街 / 女旁白：有迫切住屋需要便立即申請吧！ / 熒幕蓋字：「簡約公屋」第三期申請 / 啟德世運道 / 柴灣常安街 / 屯門欣寶路 / 屯門青發街 / 熒幕蓋字：「簡約公屋」第三期申請 / 啟德世運道 / 柴灣常安街 / 屯門欣寶路 / 屯門青發街 / 現已接受申請 / 「簡約公屋」標誌 / 「簡約公屋」網頁二維碼 / 房屋局標誌</p></details></section><section id='score'><details class='soft sec' ><summary>📊 評分明細(官方 marking scheme)</summary><div class='lab'>📝 文字評分 · 預設只列頭三</div><div class='tw'><table><thead><tr><th>創意</th><th>總分</th><th>Accuracy</th><th>Creativi</th><th>Impact o</th><th>Recall</th><th>Resonanc</th><th>Innovati</th><th>Innovati</th></tr></thead><tbody><tr><td class='lt'>🥇 [委員會 193851] Concept 2:〔CV·Last Update〕</td><td><b>88.0</b></td><td>28.3</td><td>13.0</td><td>12.7</td><td>9.0</td><td>9.0</td><td>12.7</td><td>3.3</td></tr><tr><td class='lt'>🥈 [deepseek-v3.2] Concept 3:實戰教室</td><td><b>87.0</b></td><td>27.3</td><td>13.0</td><td>13.0</td><td>8.7</td><td>9.0</td><td>12.7</td><td>3.3</td></tr><tr><td class='lt'>🥉 [claude-opus-4-8] Concept 1:〔玻璃天花〕</td><td><b>86.6</b></td><td>27.8</td><td>13.5</td><td>12.7</td><td>8.8</td><td>8.3</td><td>12.0</td><td>3.5</td></tr></tbody></table></div><details class='soft'><summary>睇埋其餘 18 個</summary><div class='tw'><table><tbody><tr><td class='lt'>4. [qwen3.7-max] Concept 3:〔AI+ 職場實況劇：Degree ≠ Ready〕</td><td><b>86.2</b></td><td>27.2</td><td>13.2</td><td>12.3</td><td>8.3</td><td>8.8</td><td>12.7</td><td>3.7</td></tr><tr><td class='lt'>5. [委員會 193231] Concept 2:【履歷表＋1】</td><td><b>85.6</b></td><td>27.3</td><td>12.7</td><td>12.7</td><td>9.0</td><td>8.3</td><td>12.3</td><td>3.3</td></tr><tr><td class='lt'>6. [deepseek-v3.2] Concept 2:打破無形牆</td><td><b>85.6</b></td><td>27.2</td><td>13.2</td><td>12.7</td><td>8.5</td><td>8.7</td><td>12.0</td><td>3.3</td></tr><tr><td class='lt'>7. [qwen3.7-max] Concept 2:〔$8,000 實戰加速器〕</td><td><b>85.6</b></td><td>27.3</td><td>13.0</td><td>12.7</td><td>8.3</td><td>8.7</td><td>12.3</td><td>3.3</td></tr><tr><td class='lt'>8. [gpt-5.2] Concept 2:〔CV 多一行〕</td><td><b>85.1</b></td><td>27.2</td><td>12.8</td><td>12.7</td><td>8.5</td><td>8.3</td><td>12.3</td><td>3.3</td></tr><tr><td class='lt'>9. [kimi-k2.6] Concept 2:道牆冇咗</td><td><b>84.9</b></td><td>27.0</td><td>13.0</td><td>12.3</td><td>8.3</td><td>8.7</td><td>12.3</td><td>3.3</td></tr><tr><td class='lt'>10. [claude-opus-4-8] Concept 2:〔多咗一行〕</td><td><b>84.6</b></td><td>26.7</td><td>13.0</td><td>12.3</td><td>8.7</td><td>8.3</td><td>12.3</td><td>3.3</td></tr><tr><td class='lt'>11. [kimi-k2.6] Concept 1:履歷表上多咗一行</td><td><b>84.3</b></td><td>27.0</td><td>13.0</td><td>12.7</td><td>8.3</td><td>8.3</td><td>12.0</td><td>3.0</td></tr><tr><td class='lt'>12. [gpt-5.2] Concept 1:〔打破上限〕</td><td><b>84.2</b></td><td>27.3</td><td>12.3</td><td>12.7</td><td>8.3</td><td>8.3</td><td>12.0</td><td>3.3</td></tr><tr><td class='lt'>13. [委員會 193851] Concept 1:〔估你唔到〕</td><td><b>83.8</b></td><td>27.2</td><td>13.0</td><td>12.5</td><td>8.8</td><td>8.3</td><td>12.3</td><td>1.7</td></tr><tr><td class='lt'>14. [grok-4.3] Concept 2:〔主席真聲〕</td><td><b>83.3</b></td><td>27.3</td><td>12.0</td><td>12.3</td><td>8.7</td><td>8.7</td><td>11.3</td><td>3.0</td></tr><tr><td class='lt'>15. [gemini-2.5-pro] Concept 1:〔破壁者 The Wall Breaker〕</td><td><b>82.8</b></td><td>26.8</td><td>12.8</td><td>12.0</td><td>8.3</td><td>8.5</td><td>11.7</td><td>2.7</td></tr><tr><td class='lt'>16. [委員會 193231] Concept 1:【實裝・升級】</td><td><b>82.4</b></td><td>26.5</td><td>13.0</td><td>12.0</td><td>8.2</td><td>8.3</td><td>11.7</td><td>2.7</td></tr><tr><td class='lt'>17. [qwen3.7-max] Concept 1:〔履歷表上的 NEW SKILL〕</td><td><b>82.3</b></td><td>26.3</td><td>13.0</td><td>12.0</td><td>8.0</td><td>8.3</td><td>11.7</td><td>3.0</td></tr><tr><td class='lt'>18. [kimi-k2.6] Concept 3:Captain K 帶你偷睇一堂課</td><td><b>82.2</b></td><td>25.5</td><td>13.5</td><td>12.3</td><td>8.8</td><td>7.7</td><td>11.7</td><td>2.7</td></tr><tr><td class='lt'>19. [gemini-2.5-pro] Concept 2:〔履歷升級 CV+〕</td><td><b>81.3</b></td><td>26.0</td><td>12.3</td><td>11.7</td><td>8.3</td><td>8.3</td><td>11.7</td><td>3.0</td></tr><tr><td class='lt'>20. [deepseek-v3.2] Concept 1:技能履歷表</td><td><b>80.3</b></td><td>26.0</td><td>12.3</td><td>11.7</td><td>8.0</td><td>8.3</td><td>11.3</td><td>2.7</td></tr><tr><td class='lt'>21. [grok-4.3] Concept 1:〔履歷即時升級〕</td><td><b>75.7</b></td><td>25.0</td><td>11.7</td><td>10.7</td><td>7.3</td><td>8.3</td><td>10.7</td><td>2.0</td></tr></tbody></table></div></details></details></section>
+<footer>Madkids Idea Lab · ERB · ⚠️ AI 初步創意,出客前需 Raymond review + gatekeep</footer>
 </div>
-
+<a href="#" class="totop" id="totop" aria-label="返頂">↑</a>
 <script>
-var DL = new Date("2026-06-17T12:00:00+08:00").getTime();
-function cd() {
-  var e = document.getElementById('cd'); if (!e) return;
-  var x = DL - Date.now();
-  if (x < 0) { e.textContent = '已截標'; return; }
-  var s = Math.floor(x/1000), d = Math.floor(s/86400);
-  s -= d*86400; var h = Math.floor(s/3600); s -= h*3600;
-  var m = Math.floor(s/60); s -= m*60;
-  e.textContent = (d > 0 ? d + '日 ' : '')
-    + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0')
-    + ':' + String(s).padStart(2,'0');
-}
-cd(); setInterval(cd, 1000);
-
-var TABS   = document.querySelectorAll('.tab');
-var PANELS = document.querySelectorAll('.tabpanel');
-function showTab(id) {
-  if (!document.getElementById(id)) id = 'ph0';
-  TABS.forEach(function(t) { t.classList.toggle('active', t.dataset.tab === id); });
-  PANELS.forEach(function(p) { p.classList.toggle('active', p.id === id); });
-  history.replaceState(null, '', '#' + id);
-  upd();
-}
-TABS.forEach(function(t) { t.addEventListener('click', function() { showTab(t.dataset.tab); }); });
-showTab((location.hash.slice(1)) || 'vid1_1');
-
-var NK = 'notes_ERB';
-var notesEl = document.getElementById('notes');
-if (notesEl) {
-  notesEl.value = localStorage.getItem(NK) || '';
-  notesEl.addEventListener('input', function() { localStorage.setItem(NK, notesEl.value); });
-}
-
-function tk(el) {
-  el.classList.toggle('on');
-  el.textContent = el.classList.contains('on') ? '✓' : '';
-  upd();
-}
-function upd() {
-  var n = document.querySelectorAll('.tabpanel.active .ck.on').length;
-  document.querySelectorAll('.tabpanel.active .cnt').forEach(function(c) {
-    c.textContent = n;
-    c.parentElement.classList.toggle('cnt-warn', n > 6);
-  });
-}
-document.querySelectorAll('.card[data-cid]').forEach(function(card) {
-  var ck = card.querySelector('.ck');
-  if (!ck) return;
-  card.addEventListener('click', function(e) {
-    if (e.target.closest('.ck,.det,textarea,a,button')) return;
-    tk(ck);
-  });
-});
-
-function toast(msg) {
-  var t = document.createElement('div');
-  t.className = 'toast'; t.textContent = msg;
-  document.body.appendChild(t);
-  setTimeout(function() { t.style.opacity = '0'; }, 6000);
-}
-function showTopProc(msg) {
-  var o = document.getElementById('topproc');
-  if (!o) {
-    o = document.createElement('div'); o.id = 'topproc'; o.className = 'topproc';
-    document.body.insertBefore(o, document.body.firstChild);
-  }
-  o.innerHTML = '<span class="spin sm"></span><span id="tpmsg">' + msg + '</span>';
-}
-
-// active panel 嘅 set → GAS param（set 1 唔帶，backend 不變）
-function curSet() { var p = document.querySelector('.tabpanel.active'); return p ? (p.dataset.set || '1') : '1'; }
-function setQ()   { var s = curSet(); return (s && s !== '1') ? ('&set=' + s) : ''; }
-
-var VID_PHASE = 1;
-function pickedCids() {
-  return [].map.call(
-    document.querySelectorAll('.tabpanel.active .card[data-cid] .ck.on'),
-    function(k) { return k.closest('[data-cid]').dataset.cid; });
-}
-function submitAdvance(url) {
-  sessionStorage.setItem('fwait', VID_PHASE);
-  showTopProc('✅ 已提交，系統 develop 緊…');
-  fetch(url, {mode:'no-cors'}).catch(function(){});
-  setTimeout(function() { location.reload(); }, 20000);
-}
-function submitRound() {
-  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
-  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=ERB&round=r2&cids=" + c.join(',') + setQ());
-}
-function subStage(to) {
-  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
-  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=ERB&round=" + to + "&cids=" + c.join(',') + setQ());
-}
-function postFunnel(url, msg) {
-  fetch(url, {mode:'no-cors'})
-    .then(function() { toast(msg); })
-    .catch(function() { toast('⚠️ 再試一次'); });
-}
-
-function genBDBatch() {
-  var all  = [].slice.call(document.querySelectorAll('.tabpanel.active .card[data-cid]'));
-  var sel  = all.filter(function(c) { return !!c.querySelector('.ck.on'); });
-  var drop = all.filter(function(c) { return !!c.querySelector('.ck:not(.on):not(.done)'); });
-  if (!sel.length) { alert('未剔任何概念'); return; }
-  if (drop.length && !confirm('未剔嘅 ' + drop.length + ' 個會入睇返區，確定?')) return;
-  var cids = sel.map(function(c) { return c.dataset.cid; });
-  var sq = setQ();
-  sessionStorage.setItem('bdsel', JSON.stringify(cids));
-  sessionStorage.setItem('bdset', curSet());
-  showTopProc('🎨 生緊 0/' + cids.length + ' 塊 BD…（你照 scroll 睇 board）');
-  drop.forEach(function(c) {
-    if (c.dataset.cid)
-      fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=ERB&cid=" + c.dataset.cid + "&to=archived" + sq,
-            {mode:'no-cors'}).catch(function(){});
-  });
-  sel.forEach(function(c) {
-    var brd = c.dataset.brd;
-    if (brd)
-      fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&concept=" + brd + "&stage=deck&target=main" + sq,
-            {mode:'no-cors'}).catch(function(){});
-  });
-  bdBatchPoll();
-}
-var _bdbp;
-function bdBatchPoll() {
-  if (_bdbp) return;
-  var setN = sessionStorage.getItem('bdset') || '1';
-  var mf = 'assets/gen/manifest_ERB' + (setN !== '1' ? ('_s' + setN) : '') + '.json';
-  _bdbp = setInterval(function() {
-    fetch(mf + '?ck=' + Date.now())
-      .then(function(r) { return r.json(); })
-      .then(function(m) {
-        var sel = JSON.parse(sessionStorage.getItem('bdsel') || '[]');
-        if (!sel.length) return;
-        var have = {};
-        Object.keys(m.concepts || {}).forEach(function(k) {
-          ((((m.concepts[k].board || {}).versions) || [])).forEach(function(v) {
-            if (v.cid) have[v.cid] = 1;
-          });
-        });
-        var done = sel.filter(function(c) { return have[c]; }).length;
-        var mm = document.getElementById('tpmsg');
-        if (mm) mm.textContent = '🎨 生緊 ' + done + '/' + sel.length + ' 塊 BD…';
-        if (done >= sel.length) {
-          sessionStorage.removeItem('bdsel'); sessionStorage.removeItem('bdset');
-          location.reload();
-        }
-      }).catch(function(){});
-  }, 30000);
-}
-
-function submitGSlide(btn) {
-  var card = btn.closest('.card[data-cid]');
-  var cid  = card ? card.dataset.cid : '';
-  var brd  = card ? card.dataset.brd : '';
-  var frames = {};
-  card.querySelectorAll('.frame-note').forEach(function(ta) {
-    if (ta.value.trim()) frames[ta.dataset.frame] = ta.value.trim();
-  });
-  var url = "https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submitComments&dept=ERB&cid=" + cid + "&brd=" + brd
-            + setQ() + "&comments=" + encodeURIComponent(JSON.stringify(frames));
-  fetch(url, {mode:'no-cors'}).catch(function(){});
-  toast('📊 已傳送，系統 paste 入 GSlide 中…');
-}
-
-(function() {
-  var w = sessionStorage.getItem('fwait');
-  if (w !== null) {
-    if (VID_PHASE > (+w)) {
-      sessionStorage.removeItem('fwait'); toast('✅ 已進入下一階段');
-    } else {
-      showTopProc('系統 develop 緊… 🔄 請等（約 1–2 分鐘）');
-      setTimeout(function() { location.reload(); }, 20000);
-    }
-  }
-})();
-(function() {
-  var sel = JSON.parse(sessionStorage.getItem('bdsel') || '[]');
-  if (sel.length) { showTopProc('🎨 生緊 BD…'); bdBatchPoll(); }
-})();
-</script></body></html>
+function openTarget(){var h=decodeURIComponent(location.hash.slice(1));if(!h||h==='')return;var el=document.getElementById(h);if(!el)return;var n=el;while(n){if(n.tagName==='DETAILS')n.open=true;n=n.parentElement;}setTimeout(function(){el.scrollIntoView({block:'start'});},30);}
+window.addEventListener('load',openTarget);window.addEventListener('hashchange',openTarget);
+var tt=document.getElementById('totop');
+window.addEventListener('scroll',function(){tt.classList.toggle('show',window.scrollY>500);});
+tt.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
+</script>
+</body></html>
