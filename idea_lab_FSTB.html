@@ -72,7 +72,27 @@ header{padding:12px 0 4px}
 .foot{font-size:11px;color:#9aa0aa;text-align:center;margin-top:22px}
 .notes-win{width:100%;min-height:90px;border:1.5px solid var(--ac);
             border-radius:11px;padding:10px 12px;font:14px/1.6 inherit;
-            resize:vertical;background:#fafbff;margin-bottom:8px}
+            resize:vertical;background:#fafbff;margin-bottom:6px}
+.notes-act{text-align:right;margin-bottom:6px}
+.notes-act .btn{padding:6px 14px}
+/* Brief 撮要緊湊卡（固定高度內部 scroll，似 VID 1 卡）*/
+.briefcard{max-height:44vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.briefcard h3,.briefcard h4{font-size:13px;margin:9px 0 3px}
+/* Timeline */
+.timeline{background:var(--card);border:1px solid var(--line);border-radius:13px;
+           padding:6px 4px;box-shadow:0 1px 2px rgba(20,24,40,.05),0 5px 16px rgba(20,24,40,.06)}
+.tlrow{display:flex;align-items:flex-start;gap:8px;padding:7px 9px;
+        border-bottom:1px solid #f3f4f6;font-size:12.5px}
+.tlrow:last-child{border-bottom:none}
+.tlrow.past{opacity:.45}
+.tlrow.past .tldate{text-decoration:line-through}
+.tldot{flex:0 0 auto}
+.tldate{flex:0 0 auto;font-weight:800;color:var(--ink);min-width:96px}
+.tllabel{flex:1;color:#374151}
+/* Briefing 補充 treatment */
+summary.supp{display:flex;align-items:center;gap:8px}
+.suppbadge{font-size:10.5px;font-weight:800;color:#fff;background:var(--grn);
+            border-radius:6px;padding:1px 8px;margin-left:auto}
 .bd{margin:8px 0}
 .scene{border-bottom:1px solid #f1f3f6;padding:7px 0;font-size:12.5px;line-height:1.5}
 .scene .sl{display:flex;gap:8px}
@@ -160,8 +180,8 @@ th{background:#f8fafc;font-weight:700}
   <h1><span class=dept>FSTB</span> · APEC FMM 2026 宣傳 API</h1>
   <div class=bdp><span class='bb'>B) 29/5</span><span class='dd'>D) 9/6 03:00 · <b id='cd'>—</b></span><span class='pp'>P) 16/6</span></div>
 </header>
-<div class='tabbar'><button class='tab' data-tab='ph0'>PH 0</button><button class='tab' data-tab='vid1_1'>VID 1</button><button class='tab' data-tab='vid1_2'>VID 2</button><button class='tab' data-tab='vid1_3'>VID 3</button><button class='tab' data-tab='vid1_4'>VID 4</button><button class='tab' data-tab='vid1_5'>VID 5</button><button class='tab' data-tab='rad1_1'>RAD 1</button><button class='tab' data-tab='rad1_2'>RAD 2</button><button class='tab' data-tab='rad1_3'>RAD 3</button><button class='tab' data-tab='kv1_1'>KV 1</button><button class='tab' data-tab='kv1_2'>KV 2</button><button class='tab' data-tab='kv1_3'>KV 3</button></div>
-<div id='ph0' class='tabpanel'><div class='h2'>📝 零碎想法 / Notes</div><textarea id='notes' class='notes-win' placeholder='隨時入想法，自動本機保存…'></textarea><div class='h2'>📋 Brief 撮要</div><div class='card'><h5>1. Background（背景）</h5>
+<div class='tabbar'><button class='tab' data-tab='ph0'>Ph 0</button><button class='tab' data-tab='vid1_1'>VID 1</button><button class='tab' data-tab='vid1_2'>VID 2</button><button class='tab' data-tab='vid1_3'>VID 3</button><button class='tab' data-tab='vid1_4'>VID 4</button><button class='tab' data-tab='vid1_5'>VID 5</button><button class='tab' data-tab='rad1_1'>RAD 1</button><button class='tab' data-tab='rad1_2'>RAD 2</button><button class='tab' data-tab='rad1_3'>RAD 3</button><button class='tab' data-tab='kv1_1'>KV 1</button><button class='tab' data-tab='kv1_2'>KV 2</button><button class='tab' data-tab='kv1_3'>KV 3</button></div>
+<div id='ph0' class='tabpanel'><div class='h2'>📝 零碎想法 / Notes</div><textarea id='notes' class='notes-win' placeholder='隨時入想法，本機自動暫存；撳 Submit 交去系統…'></textarea><div class='notes-act'><button class='btn' onclick='submitNotes()'>📤 Submit 想法</button></div><div class='h2'>📋 Brief 撮要</div><div class='card briefcard'><h5>1. Background（背景）</h5>
 <p>2026年中國將擔任亞太經濟合作組織（APEC）東道主，而香港將破天荒首次承辦「2026年亞</p>
 <p>太區經濟合作組織財政部長會議」(APEC FMM 2026) [1, </p>
 <p>2]。特區政府期望藉此國家主場外交的盛事，向國際社會展示香港作為國際金融中心及亞洲</p>
@@ -191,140 +211,7 @@ th{background:#f8fafc;font-weight:700}
 <h5>5. Timeline（時間表）</h5>
 <p>*   <strong>B (Briefing):</strong> 2026-05-29 (15:00) [22]</p>
 <p>*   <strong>D (Deadline):</strong> 2026-06-09 (12:00) [22]</p>
-<p>*   <strong>P (Presentation):</strong> 2026-06-17 [23]</p></div><details class='soft'><summary>🎙️ Briefing 錄音逐字稿（未 AI 分析補充）</summary><div class='card detbody'># 2026年05月29日 15點01分.m4a
-我係GMO事務公務局嘅會議同同事
- 叫做高級新聞企業
- 旁邊呢位就係民調公園嘅林文
- 另外就係ICD嘅兩位同事
- 新郎叫Annie 新郎叫Wayne
- 今次呢我哋主要想講返宣傳製作嘅背景啦
- 目的啦 同埋API想要嘅主要訊息啦
- 製作要求提交標書文件嘅箱子同埋啲重要人權嘅
- 咁最尾就係探索時間
- 講少少呢個項目嘅背景先啦
- 咁就2026年呢個API就係由中國擔任公道主啦
- 中央政府呢之前就宣布咗係由國家財政部主啦
- 香港政府就承辦嘅方式呢
- 就會喺今年十月
- 喺香港政府就承辦嘅方式呢
- 就會喺今年十月
- 喺香港政府就承辦嘅方式呢
- 就會喺今年十月
- 喺香港政府就承辦嘅方式呢
- 喺香港政府就承辦嘅方式呢
- 就會喺香港舉行API嘅財政部長會議嘅
- 咁今次對香港嚟講呢
- 其實除咗係一個大型國際會議啦
- 更加係向國際社會展示香港優勢嘅重要基準
- 咁所以呢今次宣傳呢
- 我哋希望呢唔係淨係停留喺公佈個會議日期呀
- 時間呀嘅安排啦
- 而係希望可以透過一個有感應力呀
- 吸引力嘅內容呢
- 就向本地同國際嘅受眾
- 展示香港嘅優勢
- 同國際嘅盈利
- 咁喺宣傳方面呢
- 我哋希望呢就展示香港作為國際金融中心
- 亞洲國際都會啦
- 同埋大型國際會議
- 和展覽活動首選地嘅實力啦
- 同埋呢都彰顯香港作為一個超級原系人
- 超級真正人嘅重要角色
- 說好國家同香港嘅故事
- 同埋加深公眾呢對API會議嘅
- 形成嘅
- 咁今次嘅宣傳製作呢
- 我哋嘅受眾係除咗
- 本地嘅市民之外呢
- 係亦都係包括
- 二十一個APEC成員
- 經濟體嘅代表團
- 觀眾 國際組織代表啦
- 一啲主要商會呀
- 金融機構同埋工商界人士嘅
- 條款嘅主要訊息呢
- 我哋希望可以行幾點嘅
- 咁首先就係要帶出APEC嘅財務獎會議
- 係第一次喺香港舉行啦
- 另外亦都想展示返香港作為國際都會
- 同埋呢個會議展覽同女友活動
- 首選地嘅吸引力啦
- 同埋展現中國聲音
- 推廣中華民黨同香港特色
- 介紹返財長會嘅背景和目的
- 議題同埋會議本身嘅重要性
- 另外亦都係想大眾知道呢
- 香港已經準備就緒去確保呢個會議呢會順利
- 去進行嘅
- 咁簡單嚟講
- 其實我哋唔係淨係想製作一個
- 單純介紹會議嘅宣傳片
- 係希望藉住呢個宣傳片
- 去展示畀世界之香港嘅
- 實力同埋力量
- 咁製作要求方面呢
- 我哋想做一條30秒嘅TV API
- 中英文版本
- 另外有相對應嘅電台嘅宣傳聲帶
- 咁就要中英文同普通語言嘅
- 同埋嘅日程都可以睇返招標文件
- 第五partservice by segmentation
- 咁整好之後都係同以往一樣
- 幫我哋派埋台
- 畀返個copy我哋
- 咁嗰啲發送地點呢
- 都喺個招標文件呢度有㗎喇
- 咁除咗整片之外呢
- 亦都想
- 抗生打幫手設計一款相與嘅宣傳海報
- 同埋設計一個巨型處等嘅宣傳貼紙
- 咁即係呢啲貼紙
- 即係呢兩張相可以參考
- 咁其他一啲options嘅項目
- 就到時再睇下有冇需要再搵professor幫手
- 咁就包括係調整嗰個宣傳海報嘅size
- 同埋將嗰個TV API
- 製造港鐵車廂電視嘅格式
- 同埋設計嗰個eye banner
- 同埋個圖像
- 咁Alison就會講一講嗰個標書物件嘅水晶
- 講返點樣交標
- 咁交標嗰度其實嗰份protection物件嗰度
- 其實Tamsa嗰啲其實都有聯名嘅
- 咁我再約兩個開始
- 咁呢個係一個2 envelope嘅
- 即係兩個信封有technical proposal
- 同埋有price proposal嘅
- 咁technical proposal price proposal兩個呢
- 要入喺分開個信封
- 兩份都要duplicate嘅
- 即係technical兩份price兩份
- 咁technical兩份呢入埋一個信封
- 咁信封言呢就係寫住protection reference
- closing date啊
- 跟住寫住you can use technical proposal and so on
- technical proposal
- 另外一個price嘅duplicate呢
- 又係寫明話protection reference
- closing date subject
- 跟住同埋特定的price proposal
- 咁就入落個信封
- 咁兩個信封入落個大信封
- 跟住就入喺我哋門口嗰個標箱就可以㗎喇
- 大家開啲門嗰度見到玻璃門出面
- 就有個標箱喺度
- 咁呢注意個backup submission
- 就係6月9號啦
- 星期二正11時12時正嘅係
- 咁另外記住啦
- 信封面嗰度呢
- 千祈唔好有你哋任何公司嘅indication
- 即係可能公司名啊
- 公司信封啊
- 嗰啲就唔需要啦
- 嗰啲就
- 咁另外記住technical proposal一件呢…</div></details><details class='soft'><summary>📝 Internal Creative Debrief 事實參考</summary><div class='card'><p class='hint'>策略總監消化晒標書 + Perplexity 研究 + 官方用字 + ISD，各 agency 跟住落橋。</p><p>好的，收到。作為 4A 廣告公司嘅策略總監，我會消化晒客戶 briefing 同所有 research，戴實客戶頂帽，寫一份清晰、有方向、但絕對唔會踩過界嘅 internal debrief。</p>
+<p>*   <strong>P (Presentation):</strong> 2026-06-17 [23]</p></div><div class='h2'>🗓️ Timeline 工作時間表</div><div class='timeline'><div class='tlrow past'><span class='tldot'>▫️</span><span class='tldate'>2026-05-20</span><span class='tllabel'>發出邀請</span></div><div class='tlrow past'><span class='tldot'>🟥</span><span class='tldate'>2026-05-27 12:00</span><span class='tllabel'>代理商交回簡介會回條</span></div><div class='tlrow past'><span class='tldot'>🟦</span><span class='tldate'>2026-05-29 15:00</span><span class='tllabel'>Briefing 簡介會 (FSTB + ISD)</span></div><div class='tlrow'><span class='tldot'>🟥</span><span class='tldate'>2026-06-09 12:00</span><span class='tllabel'>截標(技術建議書+價格建議書)</span></div><div class='tlrow'><span class='tldot'>🟪</span><span class='tldate'>2026-06-17</span><span class='tllabel'>投標者向評審團介紹創意概念</span></div><div class='tlrow'><span class='tldot'>🤝</span><span class='tldate'>2026-06-26</span><span class='tllabel'>與中標者進行 Debriefing 會議</span></div><div class='tlrow'><span class='tldot'>🎬</span><span class='tldate'>2026-07-10</span><span class='tllabel'>前期製作會議 (Pre-production meeting)</span></div><div class='tlrow'><span class='tldot'>🎬</span><span class='tldate'>2026-07-24</span><span class='tllabel'>TV API rough cut 及海報設計完成</span></div><div class='tlrow'><span class='tldot'>🎬</span><span class='tldate'>2026-08-10</span><span class='tllabel'>電視及電台 API final cut 完成</span></div><div class='tlrow'><span class='tldot'>🎬</span><span class='tldate'>2026-08-10</span><span class='tllabel'>海報及柱身貼紙設計完成</span></div><div class='tlrow'><span class='tldot'>📦</span><span class='tldate'>2026-08-24</span><span class='tllabel'>交付電視台及電台 station copies</span></div></div><details class='soft'><summary>🎙️ Briefing 補充</summary><div class='card'><p class='empty'>未有錄音補充（briefing 錄音跌入 folder → 自動聲轉字 + AI 對比標書補充）</p></div></details><details class='soft'><summary>📝 Internal Creative Debrief 事實參考</summary><div class='card'><p class='hint'>策略總監消化晒標書 + Perplexity 研究 + 官方用字 + ISD，各 agency 跟住落橋。</p><p>好的，收到。作為 4A 廣告公司嘅策略總監，我會消化晒客戶 briefing 同所有 research，戴實客戶頂帽，寫一份清晰、有方向、但絕對唔會踩過界嘅 internal debrief。</p>
 <p>---</p>
 <h3>Internal Debrief — FSTB · APEC FMM 2026 宣傳 API</h3>
 <h4>1. 背景 Background(點解客戶要做呢條片)</h4>
@@ -666,7 +553,293 @@ th{background:#f8fafc;font-weight:700}
 <p>  旁白：政府繼續舉辦大型盛事 / 熒幕蓋字：第十五屆全國運動會 / 11月9至21日 / 旁白：精彩的文化 / 熒幕蓋字：港樂．星夜．交響曲 / 11月26日 / 熒幕蓋字：香港壁球公開賽2025 / 12月1至7日 / 旁白：體育 / 旁白：金融 / 熒幕蓋字：設計營商周2025 / 12月1至6日 / 旁白：貿易 / 熒幕蓋字：維港泳2025 / 11月22日 / 旁白：和旅遊盛事陸續呈獻 / 熒幕蓋字：國際電競盛事 / 11月14至16日 / 旁白：歡迎大家和旅客一起參與 / 熒幕蓋字：2025香港六人板球賽 / 11月7至9日 / 旁白：樂在其中 / 熒幕蓋字：香港博物館節2025 / 11月1至30日 / 旁白：感受香港的多姿多彩 / 熒幕蓋字：香港時裝薈 / 11月22日至12月7日 / 旁白：獨特魅力和動感 / 熒幕蓋字：2025香港單車節 / 11月30日 / 旁白：香港　亞洲盛事之都 / 熒幕蓋字：2025 IBF世界保齡球錦標賽 / 11月24日至12月5日 / 熒幕蓋字：中華人民共和國香港特別行政區區徽 / 更多精彩盛事 / 香港品牌「盛事之都」</p>
 <p>— 北部都會區  [形象/成就(propaganda) | 盛事旅遊]</p>
 <p>  ▶ https://www.youtube.com/watch?v=_DTycWWyLe4&amp;list=PL1188A9802575C33F</p>
-<p>  旁白：北部都會區是香港經濟和城市發展的新引擎 / 熒幕蓋字：北部都會區 / 旁白：灣區合作新平台 / 四個主要區域 / 包括高端專業服務和物流樞紐 / 創新科技地帶 / 口岸商貿及產業區 / 以及藍綠康樂旅遊生態圈 / 熒幕蓋字：高端專業服務和物流樞紐 / 創新科技地帶 / 口岸商貿及產業區 / 藍綠康樂旅遊生態圈 / 旁白：北部都會區會採用多元發展模式 / 熒幕蓋字：多元發展模式 / 旁白：政府亦會以破局思維 / 果敢革新 / 熒幕蓋字：破局思維 / 果敢革新 / 旁白：加快北部都會區發展和企業進駐 / 打造經濟新增長點 / 提升核心競爭力 / 熒幕蓋字：北部都會區 / 北部都會區統籌辦事處標誌</p></div></details></div>
+<p>  旁白：北部都會區是香港經濟和城市發展的新引擎 / 熒幕蓋字：北部都會區 / 旁白：灣區合作新平台 / 四個主要區域 / 包括高端專業服務和物流樞紐 / 創新科技地帶 / 口岸商貿及產業區 / 以及藍綠康樂旅遊生態圈 / 熒幕蓋字：高端專業服務和物流樞紐 / 創新科技地帶 / 口岸商貿及產業區 / 藍綠康樂旅遊生態圈 / 旁白：北部都會區會採用多元發展模式 / 熒幕蓋字：多元發展模式 / 旁白：政府亦會以破局思維 / 果敢革新 / 熒幕蓋字：破局思維 / 果敢革新 / 旁白：加快北部都會區發展和企業進駐 / 打造經濟新增長點 / 提升核心競爭力 / 熒幕蓋字：北部都會區 / 北部都會區統籌辦事處標誌</p></div></details><details class='soft'><summary>🎧 Briefing 錄音逐字稿（原始）</summary><div class='card detbody'># 2026年05月29日 15點01分.m4a
+我係GMO事務公務局嘅會議同同事
+ 叫做高級新聞企業
+ 旁邊呢位就係民調公園嘅林文
+ 另外就係ICD嘅兩位同事
+ 新郎叫Annie 新郎叫Wayne
+ 今次呢我哋主要想講返宣傳製作嘅背景啦
+ 目的啦 同埋API想要嘅主要訊息啦
+ 製作要求提交標書文件嘅箱子同埋啲重要人權嘅
+ 咁最尾就係探索時間
+ 講少少呢個項目嘅背景先啦
+ 咁就2026年呢個API就係由中國擔任公道主啦
+ 中央政府呢之前就宣布咗係由國家財政部主啦
+ 香港政府就承辦嘅方式呢
+ 就會喺今年十月
+ 喺香港政府就承辦嘅方式呢
+ 就會喺今年十月
+ 喺香港政府就承辦嘅方式呢
+ 就會喺今年十月
+ 喺香港政府就承辦嘅方式呢
+ 喺香港政府就承辦嘅方式呢
+ 就會喺香港舉行API嘅財政部長會議嘅
+ 咁今次對香港嚟講呢
+ 其實除咗係一個大型國際會議啦
+ 更加係向國際社會展示香港優勢嘅重要基準
+ 咁所以呢今次宣傳呢
+ 我哋希望呢唔係淨係停留喺公佈個會議日期呀
+ 時間呀嘅安排啦
+ 而係希望可以透過一個有感應力呀
+ 吸引力嘅內容呢
+ 就向本地同國際嘅受眾
+ 展示香港嘅優勢
+ 同國際嘅盈利
+ 咁喺宣傳方面呢
+ 我哋希望呢就展示香港作為國際金融中心
+ 亞洲國際都會啦
+ 同埋大型國際會議
+ 和展覽活動首選地嘅實力啦
+ 同埋呢都彰顯香港作為一個超級原系人
+ 超級真正人嘅重要角色
+ 說好國家同香港嘅故事
+ 同埋加深公眾呢對API會議嘅
+ 形成嘅
+ 咁今次嘅宣傳製作呢
+ 我哋嘅受眾係除咗
+ 本地嘅市民之外呢
+ 係亦都係包括
+ 二十一個APEC成員
+ 經濟體嘅代表團
+ 觀眾 國際組織代表啦
+ 一啲主要商會呀
+ 金融機構同埋工商界人士嘅
+ 條款嘅主要訊息呢
+ 我哋希望可以行幾點嘅
+ 咁首先就係要帶出APEC嘅財務獎會議
+ 係第一次喺香港舉行啦
+ 另外亦都想展示返香港作為國際都會
+ 同埋呢個會議展覽同女友活動
+ 首選地嘅吸引力啦
+ 同埋展現中國聲音
+ 推廣中華民黨同香港特色
+ 介紹返財長會嘅背景和目的
+ 議題同埋會議本身嘅重要性
+ 另外亦都係想大眾知道呢
+ 香港已經準備就緒去確保呢個會議呢會順利
+ 去進行嘅
+ 咁簡單嚟講
+ 其實我哋唔係淨係想製作一個
+ 單純介紹會議嘅宣傳片
+ 係希望藉住呢個宣傳片
+ 去展示畀世界之香港嘅
+ 實力同埋力量
+ 咁製作要求方面呢
+ 我哋想做一條30秒嘅TV API
+ 中英文版本
+ 另外有相對應嘅電台嘅宣傳聲帶
+ 咁就要中英文同普通語言嘅
+ 同埋嘅日程都可以睇返招標文件
+ 第五partservice by segmentation
+ 咁整好之後都係同以往一樣
+ 幫我哋派埋台
+ 畀返個copy我哋
+ 咁嗰啲發送地點呢
+ 都喺個招標文件呢度有㗎喇
+ 咁除咗整片之外呢
+ 亦都想
+ 抗生打幫手設計一款相與嘅宣傳海報
+ 同埋設計一個巨型處等嘅宣傳貼紙
+ 咁即係呢啲貼紙
+ 即係呢兩張相可以參考
+ 咁其他一啲options嘅項目
+ 就到時再睇下有冇需要再搵professor幫手
+ 咁就包括係調整嗰個宣傳海報嘅size
+ 同埋將嗰個TV API
+ 製造港鐵車廂電視嘅格式
+ 同埋設計嗰個eye banner
+ 同埋個圖像
+ 咁Alison就會講一講嗰個標書物件嘅水晶
+ 講返點樣交標
+ 咁交標嗰度其實嗰份protection物件嗰度
+ 其實Tamsa嗰啲其實都有聯名嘅
+ 咁我再約兩個開始
+ 咁呢個係一個2 envelope嘅
+ 即係兩個信封有technical proposal
+ 同埋有price proposal嘅
+ 咁technical proposal price proposal兩個呢
+ 要入喺分開個信封
+ 兩份都要duplicate嘅
+ 即係technical兩份price兩份
+ 咁technical兩份呢入埋一個信封
+ 咁信封言呢就係寫住protection reference
+ closing date啊
+ 跟住寫住you can use technical proposal and so on
+ technical proposal
+ 另外一個price嘅duplicate呢
+ 又係寫明話protection reference
+ closing date subject
+ 跟住同埋特定的price proposal
+ 咁就入落個信封
+ 咁兩個信封入落個大信封
+ 跟住就入喺我哋門口嗰個標箱就可以㗎喇
+ 大家開啲門嗰度見到玻璃門出面
+ 就有個標箱喺度
+ 咁呢注意個backup submission
+ 就係6月9號啦
+ 星期二正11時12時正嘅係
+ 咁另外記住啦
+ 信封面嗰度呢
+ 千祈唔好有你哋任何公司嘅indication
+ 即係可能公司名啊
+ 公司信封啊
+ 嗰啲就唔需要啦
+ 嗰啲就
+ 咁另外記住technical proposal一件呢
+ 就千祈唔好包含任何價錢嘅information
+ 喺入面呀
+ 因為我哋都會做完個technical
+ 先會再去開price嘅
+ 咁兩個就會獨立進行啦
+ 就會
+ 咁而technical proposal嗰度呢
+ 要包含嘅嘢呢
+ 留意啦
+ 即係頭先講嘅
+ 宣傳片啦
+ 有storyboard呀
+ Jot script呀
+ 同埋radio個API
+ 嗰啲script呀
+ 說聽format
+ 海報設計
+ 同埋某個
+ 飛來海報設計
+ 咁全部都要埋喺入面
+ creative proposal入面嘅
+ 另外啦
+ 除咗頭先講creative proposal啦
+ 入面都要包埋
+ day part 7嘅一連串嘅schedule嘅
+ schedule p information schedule入面
+ 咁大家都留意番啦
+ information schedule入面嘅第二點嗰度呢
+ 其實就係creative proposal入面嘅
+ 即係要交嗰啲點嚟嘅
+ 咁大家可以睇一睇
+ 做個做個take back
+ 確保係正面咁交啦
+ 因為呢個mandatory嘅
+ 必須要交嘅呢個係
+ 咁另外仲有啲concept disclosure呀
+ 其他
+ compiling schedule嗰啲都要簽返名啦
+ offer to be found啦
+ part 8嗰度
+ 一定要簽名
+ 一定要交
+ 唔交係
+ 唔會consider嘅呢個
+ 所以大家必須要留意
+ 必須要交下呢一份
+ 一定要簽名
+ 即係唔好同時等個印咁樣就
+ 或者填咗唔記得簽咁樣
+ 就簽嘅就唔好啦
+ 因為呢個係confirm
+ 你哋要讀晒成份文件之後
+ 係要全清楚明白了解
+ 我哋嘅require
+ 咁呢個就technical proposal啦
+ 咁另外呢
+ 另外一個
+ 頭先講另外一個想封
+ 就high schedule啦
+ 咁所有價錢延後面要睇啦
+ 承諾discount嗰啲
+ 咁就入落
+ 呢個期間入落嘅
+ 個信封度
+ 咁另外
+ 大家見到副主席
+ 將當最後有個checklist嘅
+ 咁大家都可以對番啦
+ 即係subject啊closing day啊
+ 同埋兩個proposal
+ 個envelope係咪都有齊
+ 所有嘅文件啦
+ 咁提一提返啲重要日子啦
+ 咁就6月9號呢
+ 就係交proposal嘅時間啦
+ deadline就喺12點正嘅
+ 咁就presentation
+ 我哋就預咗係6月17號進行啦
+ 咁依家就QA睇下大家冇嘢問
+ 冇嘢問咁就
+ 咁歡迎大家
+ 畀多少少時間
+ 大家諗下冇嘢問嘅時候呢
+ 我又做啲好長期嘅提醒呢
+ 咁就
+ 咁依家就喺作方面啦
+ 咁就再睇一睇大家啦
+ 咁大家要俾tip ideas
+ 必須要係原創嘅
+ 即係以前resell過畀其他人啦
+ 而如果有機會合作嘅話呢
+ 亦都唔會再resell畀其他人嘅
+ 咁呢一樣嘢呢
+ 咁喺個報價文件度呢
+ 亦都係列明咗嘅
+ 咁如果有機會合作啦
+ 而將來想將條API用作其他用途
+ 例如係參展或者參加比賽等等呢
+ 咁必須要事先係得到
+ 長期事務及父母保護
+ 同埋政府生產權嘅
+ 嘅批准嘅
+ 咁至於TV API嘅語言方面啦
+ 中文版VO會係廣東話啦
+ 以及幕開字同埋字幕
+ 都係用繁體中文嘅書面語嘅
+ 咁至於英文版嘅TV API啦
+ VO嘅幕開字同埋字幕
+ 都係用英文嘅
+ 而radio API方面呢
+ 就係好似頭先咁講
+ 有三個語言
+ 佢哋係廣東話
+ 普通話同埋英文
+ 而英文必定要用
+ Mono 同埋木白嘅形式嘅
+ 咁大家喺設計
+ 對白、螢幕開字
+ 同埋字幕嘅時候呢
+ 都應該盡量畀五中英鑒賊
+ 咁就如果係實拍嘅話呢
+ 如果有各角色係對鏡頭講嘢啦
+ TV API嘅話
+ 就一定要double shoot
+ 中文版排一次
+ 英文版排一次
+ 咁就頭先講到交標啦
+ 咁就都長期提多一次啦
+ 咁所有要交嘅文本
+ 一定要
+ 簽名、簽名、簽名、簽名
+ 同埋要交齊嘅
+ 咁就如果用速遞形式
+ 同埋交都要
+ 確保速遞人
+ 係啲節標嘅時間
+ 將個名點數
+ 我想問下
+ 如果我哋假設呢個API啦
+ 佢有啲footage係
+ 關於可能上一屆嗰啲會議呀
+ 譬如生意署或者係
+ 你哋會唔會provide到
+ 呢啲咁嘅footage
+ 畀我哋剪
+ 即係少少咁剪落去
+ 條片呢
+ 定係要我哋
+ 全部去自己去source
+ 最好就contact下自己
+ contact下
+ 係咪要冇嘢問吓
+ 嗯</div></details></div>
 <div id='vid1_1' class='tabpanel' data-set='1'><div class='banner'>👉 委員會由全模型揀咗六強（已預剔）。橫掃睇每個概念，卡內可上下 scroll 睇全文 + 評分。同意就 Submit，或喺下面「其餘概念」另選。</div><div class='h2'>🔻 委員會推薦六強（橫掃揀）</div><div class='carousel'><div class='ccard  sel' data-cid='cmc969e79a'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>委員會</span><span class='oscore'>評審 84</span></div><div class='ctitle'>💬 香港標準，接軌世界議程。</div><div class='csub'>Concept 1:【驗證就緒 Verified Ready】</div><div class='cbody'><p><strong>創作概念</strong>: 將 APEC 財長會議定位為一次對香港承辦能力嘅「全球壓力測試」。我哋唔係空泛地講「準備好」，而係用一個貫穿全片嘅視覺裝置，展示香港以國際級嘅精密標準，逐一「驗證」所有籌備環節，證明香港已「準備就緒」，有力承辦國家級盛事，說好香港故事。</p>
 <p><strong>人/景</strong>: 唔拍官員微笑握手，而係拍「執行者」嘅專注神情同動作。例如：機場控制塔人員、會展中心技術總監、網絡安全專家、反恐特勤隊隊員等。場景集中喺大型基建嘅「神經中樞」，如數據中心、交通監控中心、同聲傳譯控制室。</p>
 <p><strong>Visual Device</strong>: <strong>「水平基準線 (The Horizon Level)」</strong>。一條簡潔、具科技感嘅水平線會喺畫面中出現，對準關鍵物件或人物進行「掃描」同「鎖定」。當基準線由黃色虛線變為綠色實線，並顯示「Verified」字樣時，代表該環節已通過驗證，達到國際標準。呢個裝置將「準備」呢個抽象概念，轉化為一個具體、可記憶嘅視覺動作。</p>
@@ -1007,7 +1180,7 @@ th{background:#f8fafc;font-weight:700}
 <p><strong>Visual Device</strong>:眼珠高光閃一次（Glint Sync），配以輕微心跳音效。</p>
 <p><strong>主打口號</strong>:橋，我哋搭好咗。</p>
 <p><strong>Proposed 明星/名人</strong>:不適用。</p>
-<p>---</p><div class='scores'><div class='sline'><b>📊 官方評審 78/100</b><span class='scrit'>訊息準確 25.7 · 創意手法 13.0 · 宣傳衝擊 11.7 · 記憶點 8.3 · 說服共鳴 8.0 · 創新建議 9.0 · ESG 2.0</span></div><div class='snote'>視覺裝置新穎但整體創意及影響力仍屬中規中矩。<br>視覺記憶點清晰，訊息簡潔但硬資訊依賴片尾小字，影響準確性與說服力。<br>以「眼珠反光」視覺符號貫穿三組人物，訊息清晰且具記憶點，惟說服力與ESG著墨稍弱，整體創意執行穩健但未達突破性創新。</div><div class='sline'><b>🎨 創意質素 8/30</b><span class='scrit'>（落地 2.0 / 扣brief 2.0 / 鋒利 4.3）</span></div><div class='snote'>最弱在 grounded + on_brief：三個市井/年輕人微觀場景嚴重離地，與財長級會議的宏觀專業形象及「事實展示」要求完全不符。 | 最弱點係嚴重離地且違反紅線，用市井場景演繹財長級國際會議完全錯誤。 | 嚴重違反紅線：Debrief 第6點明確嚴禁茶餐廳場景以避免降格，此概念卻以茶餐廳阿叔沖茶作首鏡，將財長級會議錯配為市井生活片，完全偏離『專業、大氣、穩重』基調及國際受眾對金融中心實力展示之期望。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div></div><div class='submit'><button class='btn' onclick='submitRound()'>✅ Submit 六強 (<span class=cnt>6</span>)</button></div><div class='h2'>👀 睇返區</div><div class='card' style='padding:9px'>[委員會 185908] Concept 1:眼珠反光<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm1b476f76&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[委員會 185908] Concept 2:聲音接力<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cma0cb92ac&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[委員會 210353] Concept 1:職人時計<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm7ac73dba&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[委員會 210353] Concept 2:一脈相承<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cmec80751c&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[委員會 202004] Concept 1:【驗證就緒 Verified Ready】<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cmc969e79a&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[委員會 202004] Concept 2:【動能網絡 The Network of Momentum】<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm513a3148&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[委員會 210539] Concept 1:【就位 The Lock-In】<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cmbd50eb7f&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[委員會 210539] Concept 2:【光脈匯流 Converge on Hong Kong】<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cmcaeb0a94&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[委員會 101222] Concept 2:〔我哋主場 · Hong Kong, the Host〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cmccd9106d&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[委員會 101433] Concept 1:〔全城脈動 · The Pulse〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cma40f43ae&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency claude-opus-4-8] Concept 2:〔光匯香江〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cme35d384b&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency claude-opus-4-8] Concept 1:〔金線交匯 The Golden Nexus〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cme2e0ad1b&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency claude-opus-4-8] Concept 2:〔全城就位 The Stage is Set〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cma949b3f7&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency claude-opus-4-8] Concept 1:〈匯流之城〉<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm2d17871f&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency claude-opus-4-8] Concept 2:〈香港．主場〉<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cma3b4fc51&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency deepseek-v3.2] Concept 1:〔橋樑‧時機〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cmd67cbd1d&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency deepseek-v3.2] Concept 2:〔脈絡‧交匯〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cmb2f3770a&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency deepseek-v3.2] Concept 1:〔脈動之都，匯聚一刻〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cmbe647485&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency deepseek-v3.2] Concept 2:〔橋樑之上，共創繁榮〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm9b8d455f&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency deepseek-v3.2] Concept 1:脈動之都<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm670dad7b&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency deepseek-v3.2] Concept 2:世界之窗<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm4757c4a6&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency deepseek-v3.2] Concept 3:未來交匯點<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm884dc58e&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency gemini-2.5-pro] Concept 1:〔光之脈絡 (The Nexus of Light)〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm05d4a6a7&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency gemini-2.5-pro] Concept 2:〔準備就緒 (Ready to Connect)〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm3e13cd30&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency gemini-2.5-pro] Concept 1:〔金線交匯〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cmb301f653&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency gemini-2.5-pro] Concept 2:〔序幕拉開〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm229ab9f0&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency gemini-2.5-pro] Concept 1:〔匯流 (Confluence)〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm8840f2e5&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency gemini-2.5-pro] Concept 2:〔節點 (The Node)〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cmd0a990e5&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency gpt-5.2] Concept 1:〔一條線・連起世界〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm2982deeb&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency gpt-5.2] Concept 2:〔30秒・全城Ready〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cmab1570cf&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency gpt-5.2] Concept 1:〔一城一線・連結世界〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cmc1c20e51&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency gpt-5.2] Concept 2:〔倒數啟航・全城就緒〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm5e38fe10&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency gpt-5.2] Concept 1:〔光匯香港｜APEC 21 經濟體匯流〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm4147018d&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency gpt-5.2] Concept 2:〔香港上場｜世界級盛事 Ready Check〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm5e9904fa&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency grok-4.3] Concept 1:〔財長首次 港城就緒〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm7512e1e5&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency grok-4.3] Concept 2:〔超級聯繫 財聚香江〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm21a46f41&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency grok-4.3] Concept 1:〔盛會之門〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm8c5a619e&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency grok-4.3] Concept 2:〔金線聯世界〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm43db39e9&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency grok-4.3] Concept 1:光纖匯聚<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm5217e7ce&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency grok-4.3] Concept 2:匯流之城<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm34c2bcc8&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency kimi-k2.6] Concept 1:〔門常開·橋常通〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm68ffce2f&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency kimi-k2.6] Concept 2:〔數字會說話·香港做得到〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm10cdbe5d&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency kimi-k2.6] Concept 3:〔一條線·連二十一〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm298c018c&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency kimi-k2.6] Concept 4:〔聲音·先至係香港〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm83307852&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency kimi-k2.6] Concept 5:〔十月·香港時區〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm4e1fb532&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency kimi-k2.6] Concept 1:〔開門見香港〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cmdf148c39&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency kimi-k2.6] Concept 2:〔時區交匯〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm7c7ffd08&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency kimi-k2.6] Concept 3:〔一條金線〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm6d4080fa&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency kimi-k2.6] Concept 1:脈動 (The Pulse)<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm2d72e036&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency qwen3.7-max] Concept 1:【脈動連線 · 增值全城】(The Pulse of Connection)<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm14fa1ea3&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency qwen3.7-max] Concept 2:【雙頻共振 · 香港頻率】(Dual Frequency, One Hong Kong)<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cmd70b7064&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency qwen3.7-max] Concept 1:〔光芒匯聚·機遇之城〕(The Convergence)<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cmfc19524e&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency qwen3.7-max] Concept 2:〔脈搏同步·香港節奏〕(The Rhythm of Readiness)<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cm4ec53e24&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[Agency qwen3.7-max] Concept 1:〔光纖匯流・增值脈搏〕<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=cmf9457e89&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[NBLM] 繁榮脈搏 / The Golden Pulse<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=nb0eb7c7b3&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[NBLM] 城市準備就緒 / City Ready<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=nb7e8d9905&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[NBLM] 絲路新章 / Silk Road Chapter<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=nbc53d0ea0&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[NBLM] 全城脈動 / City in Sync<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=nbe72c3ed9&to=r2','⤴️ 已升級')">⤴️升級</button></div><div class='card' style='padding:9px'>[NBLM] WebAR 互動體驗 / WebAR Pulse<button class='btn mini' onclick="postFunnel('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=FSTB&cid=nbacb79061&to=r2','⤴️ 已升級')">⤴️升級</button></div></div>
+<p>---</p><div class='scores'><div class='sline'><b>📊 官方評審 78/100</b><span class='scrit'>訊息準確 25.7 · 創意手法 13.0 · 宣傳衝擊 11.7 · 記憶點 8.3 · 說服共鳴 8.0 · 創新建議 9.0 · ESG 2.0</span></div><div class='snote'>視覺裝置新穎但整體創意及影響力仍屬中規中矩。<br>視覺記憶點清晰，訊息簡潔但硬資訊依賴片尾小字，影響準確性與說服力。<br>以「眼珠反光」視覺符號貫穿三組人物，訊息清晰且具記憶點，惟說服力與ESG著墨稍弱，整體創意執行穩健但未達突破性創新。</div><div class='sline'><b>🎨 創意質素 8/30</b><span class='scrit'>（落地 2.0 / 扣brief 2.0 / 鋒利 4.3）</span></div><div class='snote'>最弱在 grounded + on_brief：三個市井/年輕人微觀場景嚴重離地，與財長級會議的宏觀專業形象及「事實展示」要求完全不符。 | 最弱點係嚴重離地且違反紅線，用市井場景演繹財長級國際會議完全錯誤。 | 嚴重違反紅線：Debrief 第6點明確嚴禁茶餐廳場景以避免降格，此概念卻以茶餐廳阿叔沖茶作首鏡，將財長級會議錯配為市井生活片，完全偏離『專業、大氣、穩重』基調及國際受眾對金融中心實力展示之期望。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div></div><div class='submit'><button class='btn' onclick='submitRound()'>✅ Submit 六強 (<span class=cnt>6</span>)</button></div></div>
 <div id='vid1_2' class='tabpanel' data-set='1'><div class='banner'>🔻 第二輪：睇每個概念嘅 12 格 board，剔你想出 storyboard 嗰啲，撳「🎨 生 BD」一齊交 NBLM。</div><div class='h2'>🔻 第二輪 — 六強 · 12 格 board</div><div class='card big' data-cid='cm25fdcebc' data-brd='D'><div class='row'><span class='ck done'>✓</span><div style='flex:1'><div class='nm'>💬 世界匯聚之處,機遇增值之地</div><div class='csub'>Concept 2:〔香港這一格 · The Value Point〕</div></div><span class='src'>brd D</span><span class='score'>85</span></div><div class='bd'><div class='scene'><div class='sl'><span class='sn'>1</span><span>漆黑畫面閃現亞太地圖網格，21 條細光線由各經濟體射向中央空白方格。</span></div></div><div class='scene'><div class='sl'><span class='sn'>2</span><span>維港日出實景，貨櫃船緩緩駛過，網格淡入疊印在水面。</span></div></div><div class='scene'><div class='sl'><span class='sn'>3</span><span>資金、人才、意念三條光流匯入中央「香港這一格」，格內開始發光。</span></div></div><div class='scene'><div class='sl'><span class='sn'>4</span><span>港交所大堂實景，屏幕數據跳動，光流進入後被折射成七彩。</span></div></div><div class='scene'><div class='sl'><span class='sn'>5</span><span>科學園實驗室，科研人員操作儀器，光流在空氣中被「提純」成更亮粒子。</span></div></div><div class='scene'><div class='sl'><span class='sn'>6</span><span>數碼港天台，初創團隊討論，光流放大成巨大數據柱。</span></div></div><div class='scene'><div class='sl'><span class='sn'>7</span><span>貨櫃碼頭航拍，貨櫃整齊排列，光流變成金色光帶貫穿其間。</span></div></div><div class='scene'><div class='sl'><span class='sn'>8</span><span>離岸人民幣結算中心特寫，屏幕顯示全球最大樞紐數據，光流再次放大。</span></div></div><div class='scene'><div class='sl'><span class='sn'>9</span><span>維港全景，21 條光流在「香港這一格」內融合成單一更粗更亮主光束。</span></div></div><div class='scene'><div class='sl'><span class='sn'>10</span><span>主光束從維港中央向上射出，瞬間分裂成多條更闊光帶射向世界地圖邊緣。</span></div></div><div class='scene'><div class='sl'><span class='sn'>11</span><span>全畫面收窄成單一「香港這一格」，格內光芒最強，旁白字幕淡入：「世界匯聚之處，機遇增值之地」。</span></div></div><div class='scene'><div class='sl'><span class='sn'>12</span><span>黑屏只留「香港這一格」發光，格內出現金色政府 logo 及 www.gov.hk，3 秒靜止收尾。</span></div></div></div><img class='sheet' src='assets/gen/FSTB_D/v20260605-183122-nblm-i1/board_sheet.png' loading=lazy><textarea class='note' placeholder='對呢個概念嘅意見（生 BD 後可逐版改）…'></textarea></div><div class='card big' data-cid='cm9958ace8' data-brd='E'><div class='row'><span class='ck on' onclick='tk(this)'>✓</span><div style='flex:1'><div class='nm'>💬 21個經濟體，同一個香港節拍 / 21 Economies, One Hong Kong Beat</div><div class='csub'>Concept 2:同頻 (Resonance)</div></div><span class='src'>brd E</span><span class='score'>85</span></div><div class='bd'><div class='scene'><div class='sl'><span class='sn'>1</span><span>黑屏閃過極簡 radio dial 刻度，21 個 APEC 經濟體代碼快速掃過，角落指針輕輕轉動，配低頻嗡鳴。</span></div></div><div class='scene'><div class='sl'><span class='sn'>2</span><span>快速 cut：東京證交所交易大堂人聲鼎沸，畫面一閃而過，dial 指針跳至「JPN」。</span></div></div><div class='scene'><div class='sl'><span class='sn'>3</span><span>新加坡港口貨櫃吊機碰撞聲，黃昏橙光，dial 跳至「SGP」。</span></div></div><div class='scene'><div class='sl'><span class='sn'>4</span><span>悉尼歌劇院前兩位商務人士握手特寫，背景帆船，dial 跳至「AUS」。</span></div></div><div class='scene'><div class='sl'><span class='sn'>5</span><span>上海陸家嘴夜景高樓燈海，玻璃反光閃過，dial 跳至「CHN」。</span></div></div><div class='scene'><div class='sl'><span class='sn'>6</span><span>雅加達街頭創科辦公室，鍵盤聲與摩托車喇叭混雜，dial 跳至「IDN」。</span></div></div><div class='scene'><div class='sl'><span class='sn'>7</span><span>其餘 16 國 quick flash 完成，環境聲疊加成混亂噪音，指針狂轉。</span></div></div><div class='scene'><div class='sl'><span class='sn'>8</span><span>所有聲音突然被「調諧」成單一和音，畫面切至香港國際機場天際走廊落地玻璃，維港夜景映入。</span></div></div><div class='scene'><div class='sl'><span class='sn'>9</span><span>多國代表（真實 APEC footage 風格化）步出機場閘口，dial 指針逐一歸零對準「HKG 2026」。</span></div></div><div class='scene'><div class='sl'><span class='sn'>10</span><span>機場快線車廂內，窗外維港與高樓飛逝，代表們低頭討論，dial 靜止於「HKG」。</span></div></div><div class='scene'><div class='sl'><span class='sn'>11</span><span>會展中心演講廳空鏡，燈光如音樂廳般層層亮起，dial 化作香港區徽浮現中央。</span></div></div><div class='scene'><div class='sl'><span class='sn'>12</span><span>太平山頂凌霄閣夜景，全城燈海如心跳閃爍，字幕淡入：「21個經濟體，同一個香港節拍」。</span></div></div></div><div class='empty'>未生 BD —— 剔住，撳下面「生 BD」交 NBLM。</div><textarea class='note' placeholder='對呢個概念嘅意見（生 BD 後可逐版改）…'></textarea></div><div class='card big' data-cid='cm491c1bf7' data-brd='F'><div class='row'><span class='ck on' onclick='tk(this)'>✓</span><div style='flex:1'><div class='nm'>💬 香港準備好,世界請進嚟 / Hong Kong is Ready, the World is Welcome</div><div class='csub'>Concept 1:〔香港準備好〕</div></div><span class='src'>brd F</span><span class='score'>85</span></div><div class='bd'><div class='scene'><div class='sl'><span class='sn'>1</span><span>晨曦微光照射會展中心玻璃幕牆，技術員單手扯直一面鮮紅旗幟，布料瞬間繃直。</span></div></div><div class='scene'><div class='sl'><span class='sn'>2</span><span>Match-cut：旗幟邊緣接上酒店套房，禮賓員雙手將雪白毛巾摺成天鵝形，動作一氣呵成。</span></div></div><div class='scene'><div class='sl'><span class='sn'>3</span><span>毛巾邊緣切到中環街頭，的士司機用抹布快速抹過車頭，反光鏡閃出金光。</span></div></div><div class='scene'><div class='sl'><span class='sn'>4</span><span>金光轉為茶餐廳蒸籠白霧，點心師傅一手揭蓋，熱騰騰燒賣出籠。</span></div></div><div class='scene'><div class='sl'><span class='sn'>5</span><span>蒸氣散開切到中環寫字樓，金融分析員敲擊 Enter 鍵，螢幕數據即時更新。</span></div></div><div class='scene'><div class='sl'><span class='sn'>6</span><span>數據走勢線條延展成機場跑道燈，地勤後生仔推開玻璃閘門迎接首班早機。</span></div></div><div class='scene'><div class='sl'><span class='sn'>7</span><span>玻璃門反光映出維港全景，鏡頭加速上拉，愈嚟愈多動作同時發生。</span></div></div><div class='scene'><div class='sl'><span class='sn'>8</span><span>街市檔主抹枱、酒店清潔員拉直床單、迎賓微笑鞠躬，三個動作 match-cut 連成一線。</span></div></div><div class='scene'><div class='sl'><span class='sn'>9</span><span>所有動作同時完成，畫面瞬間靜止一秒，象徵全城準備就緒。</span></div></div><div class='scene'><div class='sl'><span class='sn'>10</span><span>維港航拍晨曦金光灑落，整個天際線由暗轉明。</span></div></div><div class='scene'><div class='sl'><span class='sn'>11</span><span>會展中心頂層巨型 LED 螢幕亮起：「2026 APEC FMM 首次喺香港舉行」。</span></div></div><div class='scene'><div class='sl'><span class='sn'>12</span><span>字幕淡入：「香港準備好，世界請進嚟 / Hong Kong is Ready, the World is Welcome」，背景係維港日出全景。</span></div></div></div><div class='empty'>未生 BD —— 剔住，撳下面「生 BD」交 NBLM。</div><textarea class='note' placeholder='對呢個概念嘅意見（生 BD 後可逐版改）…'></textarea></div><div class='card big' data-cid='cm9d714195' data-brd='G'><div class='row'><span class='ck on' onclick='tk(this)'>✓</span><div style='flex:1'><div class='nm'>💬 首次主場 實力登場</div><div class='csub'>Concept 2:〔城市節拍・精準待命〕</div></div><span class='src'>brd G</span><span class='score'>85</span></div><div class='bd'><div class='scene'><div class='sl'><span class='sn'>1</span><span>黑屏淡入，會展中心燈光控制室特寫，一名工作人員手指輕觸調光面板，燈光由暖轉冷，帶出「精準」第一拍。</span></div></div><div class='scene'><div class='sl'><span class='sn'>2</span><span>Split-Screen 2格：左邊貨櫃碼頭吊機緩緩升起，右邊金融中心伺服器指示燈同步閃爍，兩邊動作完全對位，聲音層疊。</span></div></div><div class='scene'><div class='sl'><span class='sn'>3</span><span>西九高鐵站閘機特寫，數十道閘門同時開啟，乘客魚貫而入，Split-Screen 加入第三格——交易大堂鍵盤聲密集敲擊。</span></div></div><div class='scene'><div class='sl'><span class='sn'>4</span><span>三格 Split-Screen 繼續：左邊吊機放下貨櫃、中間閘機關上、右邊鍵盤聲停頓，畫面瞬間靜止，張力拉滿。</span></div></div><div class='scene'><div class='sl'><span class='sn'>5</span><span>全屏切回會展主廳，工作人員最後一次校準聚光燈角度，燈光打在空曠舞台中央，舞台地板反射出細微光點。</span></div></div><div class='scene'><div class='sl'><span class='sn'>6</span><span>Split-Screen 2格：左邊高鐵列車徐徐進站，右邊數據中心冷光走廊，列車與燈號同時停穩，強調「停即是備」。</span></div></div><div class='scene'><div class='sl'><span class='sn'>7</span><span>交易員專注眼神特寫，無聲按下滑鼠，螢幕數據瞬間更新，Split-Screen 加入第三格——碼頭吊機再次微調位置，完全同步。</span></div></div><div class='scene'><div class='sl'><span class='sn'>8</span><span>三格 Split-Screen 快速剪接：吊機、閘機、鍵盤三組動作連續對位三次，節奏越來越密，聲音層層疊加。</span></div></div><div class='scene'><div class='sl'><span class='sn'>9</span><span>全屏切至香港天際線黃昏，維港兩岸燈光逐格亮起，與此同時 Split-Screen 閃現多個專業瞬間，全部動作停在「準備完成」姿態。</span></div></div><div class='scene'><div class='sl'><span class='sn'>10</span><span>黑屏淡入金色字幕：「2026年10月　首次香港舉行」，字體穩重，背景隱約透出城市燈光輪廓。</span></div></div><div class='scene'><div class='sl'><span class='sn'>11</span><span>字幕轉為主打口號「首次主場　實力登場」，所有 Split-Screen 瞬間合而為一，畫面回歸全屏香港夜景。</span></div></div><div class='scene'><div class='sl'><span class='sn'>12</span><span>最後一秒，所有城市聲音匯成極低沉卻清晰的「We are ready」潛台詞，畫面定格在維港全景，緩緩 fade out。</span></div></div></div><div class='empty'>未生 BD —— 剔住，撳下面「生 BD」交 NBLM。</div><textarea class='note' placeholder='對呢個概念嘅意見（生 BD 後可逐版改）…'></textarea></div><div class='card big' data-cid='cmd534739a' data-brd='H'><div class='row'><span class='ck on' onclick='tk(this)'>✓</span><div style='flex:1'><div class='nm'>💬 香港鑄造，亞太通行 / Minted in Hong Kong, Recognised Across Asia-Pacific</div><div class='csub'>Concept 3:鑄造 (The Mint)</div></div><span class='src'>brd H</span><span class='score'>84</span></div><div class='bd'><div class='scene'><div class='sl'><span class='sn'>1</span><span>黑屏淡入，macro 鏡頭捕捉一塊粗糙金屬原料，表面反射中環玻璃幕牆天光，旁白低沉：「香港，鑄造亞太通行幣。」</span></div></div><div class='scene'><div class='sl'><span class='sn'>2</span><span>金屬原料被放進熔爐，火焰升騰；double exposure 疊上香港金融管理局金管局資訊中心內陳列嘅真金條，火光映照金條輪廓。</span></div></div><div class='scene'><div class='sl'><span class='sn'>3</span><span>熔爐內金水開始沸騰，macro 拍攝金液翻滾；同時 double exposure 維港貨櫃船緩緩駛過，液態金水 mimic 維港水紋。</span></div></div><div class='scene'><div class='sl'><span class='sn'>4</span><span>金水自高處傾瀉而下，流經精密鑄造工場嘅模具；畫面切至中環街景，玻璃幕牆反射金光，象徵 21 個經濟體代表陸續抵港。</span></div></div><div class='scene'><div class='sl'><span class='sn'>5</span><span>金水注入會議展覽中心巨型主會場模型，鏡頭拉遠顯示會場骨架如機器內部，強調「熔煉共識」嘅過程。</span></div></div><div class='scene'><div class='sl'><span class='sn'>6</span><span>金水在模具內流動，macro 捕捉金屬表面漣漪，漣漪逐漸拼出 APEC FMM 2026 標誌輪廓。</span></div></div><div class='scene'><div class='sl'><span class='sn'>7</span><span>金幣半成品被壓印機壓下，慢動作呈現壓印瞬間；double exposure 叠上 21 個經濟體國旗碎片融入金幣紋理。</span></div></div><div class='scene'><div class='sl'><span class='sn'>8</span><span>金幣邊緣被打磨抛光，macro 鏡頭呈現細緻倒角；背景淡入香港會議展覽中心外海港夜景，燈光璀璨。</span></div></div><div class='scene'><div class='sl'><span class='sn'>9</span><span>金幣正面浮雕 APEC FMM 2026 標誌完成，macro 拍攝標誌細節；反面同時浮現維港天際線輪廓。</span></div></div><div class='scene'><div class='sl'><span class='sn'>10</span><span>金幣被手指輕輕拾起，置於掌心；背景切至維港全景，日出金光映照金幣表面，象徵「香港製造」嘅驕傲。</span></div></div><div class='scene'><div class='sl'><span class='sn'>11</span><span>金幣靜置於黑絨布上，macro 拍攝反光；畫面淡出至全黑，只剩金幣反面維港輪廓微微發亮。</span></div></div><div class='scene'><div class='sl'><span class='sn'>12</span><span>黑底淡入金幣特寫，正反面同步顯示；字幕淡入「香港鑄造，亞太通行」及英文標語，最後淡出 APEC FMM 2026 標誌及香港政府標誌。</span></div></div></div><div class='empty'>未生 BD —— 剔住，撳下面「生 BD」交 NBLM。</div><textarea class='note' placeholder='對呢個概念嘅意見（生 BD 後可逐版改）…'></textarea></div><div class='card big' data-cid='cmdcdcb064' data-brd='I'><div class='row'><span class='ck on' onclick='tk(this)'>✓</span><div style='flex:1'><div class='nm'>💬 匯聚亞太,成就未來。</div><div class='csub'>Concept 1:〔匯聚之城 · The Convergence Lens〕</div></div><span class='src'>brd I</span><span class='score'>84</span></div><div class='bd'><div class='scene'><div class='sl'><span class='sn'>1</span><span>黑屏淡出，維港全景夜景，遠處天際線燈火通明；一條冷藍光束由畫面左上角斜入，像雷射般穿過海面，直逼中環。</span></div></div><div class='scene'><div class='sl'><span class='sn'>2</span><span>冷藍光束繼續前進，穿過中環摩天大樓群，沿途有數條來自不同方向的藍光陸續加入，變得更雜亂、更多條，象徵全球能量湧入。</span></div></div><div class='scene'><div class='sl'><span class='sn'>3</span><span>光束抵達港交所交易大堂玻璃幕牆，鏡面反射出無數藍色光點；大堂內交易屏幕矩陣閃爍，藍光在屏幕間快速跳動。</span></div></div><div class='scene'><div class='sl'><span class='sn'>4</span><span>轉接科學園實驗室玻璃幕，一條藍光射入實驗室，屏幕上數據曲線瞬間變成金色，象徵第一次增值；實驗室內隱約可見專業人士剪影。</span></div></div><div class='scene'><div class='sl'><span class='sn'>5</span><span>金色光束離開科學園，沿維港向會展中心方向前進；沿途每條藍光逐漸轉為暖金，亮度提升，背景音樂開始轉為和諧低頻。</span></div></div><div class='scene'><div class='sl'><span class='sn'>6</span><span>光束穿過會展中心玻璃天幕，折射成數十條平行金線；金線在空中匯聚成更粗的一道暖金光束，繼續向前推進。</span></div></div><div class='scene'><div class='sl'><span class='sn'>7</span><span>光束抵達機場塔台，塔台玻璃反光將金光校準成一道極細、極穩的直線；塔台 LED 屏幕閃過「APEC FMM 2026」字樣。</span></div></div><div class='scene'><div class='sl'><span class='sn'>8</span><span>金光束離開機場，橫越青馬大橋；橋身燈光同步轉為暖金，象徵第二次增值；光束尾端開始出現細微粒子，像能量被壓縮。</span></div></div><div class='scene'><div class='sl'><span class='sn'>9</span><span>光束進入中環 IFC 頂層，穿過兩塊巨大玻璃「透鏡」；透鏡表面浮現細微光學紋路，將所有金光收束成單一道極亮光柱。</span></div></div><div class='scene'><div class='sl'><span class='sn'>10</span><span>極亮金柱射向維港中央，畫面忽然轉為高速移動視角；金柱沿途每一幢地標燈光同步變得更暖、更亮，城市能量被放大。</span></div></div><div class='scene'><div class='sl'><span class='sn'>11</span><span>金柱抵達畫面中央，收束成 APEC FMM 2026 標誌；標誌周邊光暈緩緩擴散，背景維港天際線保持暖金色調。</span></div></div><div class='scene'><div class='sl'><span class='sn'>12</span><span>標誌定格，旁白以低沉男聲說：「匯聚亞太，成就未來。」畫面淡出至黑，僅留標誌與官方網站。</span></div></div></div><div class='empty'>未生 BD —— 剔住，撳下面「生 BD」交 NBLM。</div><textarea class='note' placeholder='對呢個概念嘅意見（生 BD 後可逐版改）…'></textarea></div><div class='submit'><button class='btn' onclick='genBDBatch()'>🎨 生 BD (<span class=cnt>5</span>)</button></div></div>
 <div id='vid1_3' class='tabpanel' data-set='1'><div class='banner'>🔻 第三輪：睇晒已生 BD，剔三甲進 FINAL。</div><div class='h2'>🔻 第三輪 — BD · 揀三甲</div><div class='card big' data-cid='cm25fdcebc'><div class='row'><span class='ck ' onclick='tk(this)'></span><div class='nm' style='flex:1'>[委員會 101433] Concept 2:〔香港這一格 · The Value Point〕</div><span class='src'>brd D</span><span class='score'>85</span></div><img class='sheet' src='assets/gen/FSTB_D/v20260605-183122-nblm-i1/board_sheet.png' loading=lazy></div><div class='submit'><button class='btn' onclick="subStage('r3')">✅ 揀三甲 (<span class=cnt>0</span>)</button></div></div>
 <div id='vid1_4' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 3 揀三甲先。</div></div>
@@ -1018,7 +1191,7 @@ th{background:#f8fafc;font-weight:700}
 <div id='kv1_1' class='tabpanel' data-set='1'><div class='banner'>🔧 KV Ph 1：流程設計中，完成 VID 後再開。</div></div>
 <div id='kv1_2' class='tabpanel' data-set='1'><div class='banner'>🔧 KV Ph 2：流程設計中，完成 VID 後再開。</div></div>
 <div id='kv1_3' class='tabpanel' data-set='1'><div class='banner'>🔧 KV Ph 3：流程設計中，完成 VID 後再開。</div></div>
-<div class=foot>Idea Lab · 06-06 00:31 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+<div class=foot>Idea Lab · 06-06 01:07 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
 </div>
 
 <script>
@@ -1053,6 +1226,13 @@ var notesEl = document.getElementById('notes');
 if (notesEl) {
   notesEl.value = localStorage.getItem(NK) || '';
   notesEl.addEventListener('input', function() { localStorage.setItem(NK, notesEl.value); });
+}
+function submitNotes() {
+  if (!notesEl || !notesEl.value.trim()) { alert('未有想法'); return; }
+  localStorage.setItem(NK, notesEl.value);
+  var url = "https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=FSTB&text=" + encodeURIComponent(notesEl.value.trim());
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('📤 想法已交去系統（亦本機保存）');
 }
 
 function tk(el) {
