@@ -262,9 +262,46 @@
           }
         ]
       }
+    },
+    "I": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260606-032541-nblm-i1",
+            "sheet": "assets/gen/FSTB_I/v20260606-032541-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FSTB_I/v20260606-032541-nblm-i1/frame_01.png",
+              "assets/gen/FSTB_I/v20260606-032541-nblm-i1/frame_02.png",
+              "assets/gen/FSTB_I/v20260606-032541-nblm-i1/frame_03.png",
+              "assets/gen/FSTB_I/v20260606-032541-nblm-i1/frame_04.png",
+              "assets/gen/FSTB_I/v20260606-032541-nblm-i1/frame_05.png",
+              "assets/gen/FSTB_I/v20260606-032541-nblm-i1/frame_06.png",
+              "assets/gen/FSTB_I/v20260606-032541-nblm-i1/frame_07.png",
+              "assets/gen/FSTB_I/v20260606-032541-nblm-i1/frame_08.png",
+              "assets/gen/FSTB_I/v20260606-032541-nblm-i1/frame_09.png",
+              "assets/gen/FSTB_I/v20260606-032541-nblm-i1/frame_10.png",
+              "assets/gen/FSTB_I/v20260606-032541-nblm-i1/frame_11.png",
+              "assets/gen/FSTB_I/v20260606-032541-nblm-i1/frame_12.png"
+            ],
+            "n": 12,
+            "ts": "2026-06-06T03:26:23",
+            "source": "committee",
+            "brd": "I",
+            "cid": "cmdcdcb064",
+            "label": "[委員會 101222] Concept 1:〔匯聚之城 · The Convergence Lens〕",
+            "gslide_pages": [
+              "assets/gen/FSTB_I/v20260606-032541-nblm-i1/gslide_FSTB_I_p1.png",
+              "assets/gen/FSTB_I/v20260606-032541-nblm-i1/gslide_FSTB_I_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1eIgeageLwYcA2JCwv1W0TjSYtvwdNdSd",
+            "deck_pdf": "https://drive.google.com/file/d/1PF7StgTWDwZvtRBu4cuLtG39hoUQQPf0/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FSTB_I/v20260606-032541-nblm-i1/deck.pdf"
+          }
+        ]
+      }
     }
   },
   "drive_canonical": "https://drive.google.com/drive/folders/1ntsU_5aWcpTakrKVaLj6WeUga8etS20U",
   "drive_canonical_name": "FSTB_APEC FMM 2026 API",
-  "updated": "2026-06-06T03:17:14"
+  "updated": "2026-06-06T03:26:29"
 }
