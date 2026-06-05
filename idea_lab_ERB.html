@@ -65,6 +65,8 @@ header{padding:12px 0 4px}
       padding:8px 13px;font-size:12.5px;font-weight:800;cursor:pointer;
       text-decoration:none;display:inline-block}
 .btn.grn{background:var(--grn)}
+.btn.ghost{background:#fff;color:var(--ac);border:1.5px solid #dcdffb;
+            width:100%;text-align:center;padding:11px 13px;margin:2px 0 4px}
 .btn.mini{padding:4px 9px;font-size:11px;margin-left:8px}
 .submit{position:fixed;bottom:14px;right:calc(50% - 215px + 13px);z-index:20}
 @media(max-width:456px){.submit{right:14px}}
@@ -78,35 +80,10 @@ header{padding:12px 0 4px}
 /* Brief 撮要緊湊卡（固定高度內部 scroll，似 VID 1 卡）*/
 .briefcard{max-height:44vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .briefcard h3,.briefcard h4{font-size:13px;margin:9px 0 3px}
-/* Timeline */
-.timeline{background:var(--card);border:1px solid var(--line);border-radius:13px;
-           padding:6px 4px;box-shadow:0 1px 2px rgba(20,24,40,.05),0 5px 16px rgba(20,24,40,.06)}
-.tlrow{display:flex;align-items:flex-start;gap:8px;padding:7px 9px;
-        border-bottom:1px solid #f3f4f6;font-size:12.5px}
-.tlrow:last-child{border-bottom:none}
-.tlrow.past{opacity:.45}
-.tlrow.past .tldate{text-decoration:line-through}
-.tldot{flex:0 0 auto}
-.tldate{flex:0 0 auto;font-weight:800;color:var(--ink);min-width:96px}
-.tllabel{flex:1;color:#374151}
 /* Briefing 補充 treatment */
 summary.supp{display:flex;align-items:center;gap:8px}
 .suppbadge{font-size:10.5px;font-weight:800;color:#fff;background:var(--grn);
             border-radius:6px;padding:1px 8px;margin-left:auto}
-/* 🎬 報明星須知 box */
-.qbox{background:#fff7ed;border:1.5px solid #fed7aa;border-radius:12px;
-       padding:10px 12px;margin-bottom:9px}
-.qhead{font-size:13px;font-weight:800;color:#9a3412;margin-bottom:6px}
-.qrow{display:flex;align-items:center;gap:7px;font-size:12.5px;margin-top:5px}
-.qicon{flex:0 0 auto}
-.qlab{flex:0 0 auto;font-weight:800;color:#7c2d12;min-width:48px}
-.qval{flex:1;font-weight:700;color:var(--ink)}
-.qtag{font-size:10px;font-weight:800;border-radius:5px;padding:1px 6px;margin-left:4px}
-.qtag.exp{background:#dcfce7;color:#15803d}
-.qtag.inf{background:#fef3c7;color:#a16207}
-.qbasis{font-size:11px;color:#9a6a3a;margin:1px 0 0 55px}
-.qconfirm{font-size:11.5px;color:#9a3412;background:#ffedd5;border-radius:8px;
-           padding:6px 9px;margin-top:8px;font-weight:700;line-height:1.5}
 .bd{margin:8px 0}
 .scene{border-bottom:1px solid #f1f3f6;padding:7px 0;font-size:12.5px;line-height:1.5}
 .scene .sl{display:flex;gap:8px}
@@ -195,7 +172,7 @@ th{background:#f8fafc;font-weight:700}
   <div class=bdp><span class='dd'>D) 17/6 12:00 · <b id='cd'>—</b></span></div>
 </header>
 <div class='tabbar'><button class='tab' data-tab='ph0'>Ph 0</button><button class='tab' data-tab='vid1_1'>VID 1</button><button class='tab' data-tab='vid1_2'>VID 2</button><button class='tab' data-tab='vid1_3'>VID 3</button><button class='tab' data-tab='vid1_4'>VID 4</button><button class='tab' data-tab='vid1_5'>VID 5</button></div>
-<div id='ph0' class='tabpanel'><div class='h2'>📝 零碎想法 / Notes</div><textarea id='notes' class='notes-win' placeholder='隨時入想法，本機自動暫存；撳 Submit 交去系統…'></textarea><div class='notes-act'><button class='btn' onclick='submitNotes()'>📤 Submit 想法</button></div><div class='card empty'>Brief 撮要：未有（委員會跑完即有）</div><div class='h2'>🗓️ Timeline 工作時間表</div><p class='empty'>未有時間表（委員會跑完即有）</p><details class='soft'><summary>🎙️ Briefing 補充</summary><div class='card'><p class='empty'>未有錄音補充（briefing 錄音跌入 folder → 自動聲轉字 + AI 對比標書補充）</p></div></details><details class='soft'><summary>📝 Internal Creative Debrief 事實參考</summary><div class='card'><p class='hint'>策略總監消化晒標書 + Perplexity 研究 + 官方用字 + ISD，各 agency 跟住落橋。</p><p>好的，各位同事，啱啱同 ERB 客戶開完 briefing。</p>
+<div id='ph0' class='tabpanel'><div class='h2'>📝 零碎想法 / Notes</div><textarea id='notes' class='notes-win' placeholder='隨時入想法，本機自動暫存；撳 Submit 交去系統…'></textarea><div class='notes-act'><button class='btn' onclick='submitNotes()'>📤 Submit 想法</button></div><div class='card empty'>Brief 撮要：未有（委員會跑完即有）</div><a class='btn ghost' target='_blank' href='https://drive.google.com/drive/folders/1xwWCyee7WH0J2pNvVuWwdgjaOSL6noPS'>📄 標書文件 — 睇完整 schedule（拍攝 / 出街 / 交付，報明星用）</a><details class='soft'><summary>🎙️ Briefing 補充</summary><div class='card'><p class='empty'>未有錄音補充（briefing 錄音跌入 folder → 自動聲轉字 + AI 對比標書補充）</p></div></details><details class='soft'><summary>📝 Internal Creative Debrief 事實參考</summary><div class='card'><p class='hint'>策略總監消化晒標書 + Perplexity 研究 + 官方用字 + ISD，各 agency 跟住落橋。</p><p>好的，各位同事，啱啱同 ERB 客戶開完 briefing。</p>
 <p>以下係 internal debrief，請 creative team 及各單位同事細閱，確保我哋嘅出品 meet 到客戶期望。記住，我哋嘅角色係消化客戶要求，畀個清晰嘅框架你哋發揮。</p>
 <p>---</p>
 <h3>Internal Debrief — ERB · ERB</h3>
@@ -594,7 +571,7 @@ th{background:#f8fafc;font-weight:700}
 <div id='vid1_3' class='tabpanel' data-set='1'><div class='banner'>BD 生成中…完成後喺度揀三甲。</div></div>
 <div id='vid1_4' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 3 揀三甲先。</div></div>
 <div id='vid1_5' class='tabpanel' data-set='1'><div class='banner'>未有三甲。</div></div>
-<div class=foot>Idea Lab · 06-06 01:12 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+<div class=foot>Idea Lab · 06-06 01:27 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
 </div>
 
 <script>
