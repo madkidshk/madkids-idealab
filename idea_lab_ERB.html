@@ -80,6 +80,12 @@ header{padding:12px 0 4px}
 /* Brief 撮要緊湊卡（固定高度內部 scroll，似 VID 1 卡）*/
 .briefcard{max-height:44vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .briefcard h3,.briefcard h4{font-size:13px;margin:9px 0 3px}
+/* 補充日程簡單 list */
+.timeline{margin:2px 0}
+.tlrow{display:flex;gap:8px;padding:5px 2px;border-bottom:1px solid #f3f4f6;font-size:12.5px}
+.tlrow:last-child{border-bottom:none}
+.tldate{flex:0 0 auto;font-weight:800;color:var(--ink);min-width:96px}
+.tllabel{flex:1;color:#374151}
 /* Briefing 補充 treatment */
 summary.supp{display:flex;align-items:center;gap:8px}
 .suppbadge{font-size:10.5px;font-weight:800;color:#fff;background:var(--grn);
@@ -172,7 +178,7 @@ th{background:#f8fafc;font-weight:700}
   <div class=bdp><span class='dd'>D) 17/6 12:00 · <b id='cd'>—</b></span></div>
 </header>
 <div class='tabbar'><button class='tab' data-tab='ph0'>Ph 0</button><button class='tab' data-tab='vid1_1'>VID 1</button><button class='tab' data-tab='vid1_2'>VID 2</button><button class='tab' data-tab='vid1_3'>VID 3</button><button class='tab' data-tab='vid1_4'>VID 4</button><button class='tab' data-tab='vid1_5'>VID 5</button></div>
-<div id='ph0' class='tabpanel'><div class='h2'>📝 零碎想法 / Notes</div><textarea id='notes' class='notes-win' placeholder='隨時入想法，本機自動暫存；撳 Submit 交去系統…'></textarea><div class='notes-act'><button class='btn' onclick='submitNotes()'>📤 Submit 想法</button></div><div class='card empty'>Brief 撮要：未有（委員會跑完即有）</div><a class='btn ghost' target='_blank' href='https://drive.google.com/drive/folders/1xwWCyee7WH0J2pNvVuWwdgjaOSL6noPS'>📄 標書文件 — 睇完整 schedule（拍攝 / 出街 / 交付，報明星用）</a><details class='soft'><summary>🎙️ Briefing 補充</summary><div class='card'><p class='empty'>未有錄音補充（briefing 錄音跌入 folder → 自動聲轉字 + AI 對比標書補充）</p></div></details><details class='soft'><summary>📝 Internal Creative Debrief 事實參考</summary><div class='card'><p class='hint'>策略總監消化晒標書 + Perplexity 研究 + 官方用字 + ISD，各 agency 跟住落橋。</p><p>好的，各位同事，啱啱同 ERB 客戶開完 briefing。</p>
+<div id='ph0' class='tabpanel'><div class='h2'>📝 零碎想法 / Notes</div><textarea id='notes' class='notes-win' placeholder='隨時入想法，本機自動暫存；撳 Submit 交去系統…'></textarea><div class='notes-act'><button class='btn' onclick='submitNotes()'>📤 Submit 想法</button></div><div class='card empty'>Brief 撮要：未有（委員會跑完即有）</div><details class='soft'><summary>📅 補充日程</summary><div class='card'><p class='hint'>未抽到日程，撳入標書原文睇 schedule。</p><a class='btn ghost' target='_blank' href='https://drive.google.com/drive/folders/1xwWCyee7WH0J2pNvVuWwdgjaOSL6noPS'>📄 開標書原文</a></div></details><details class='soft'><summary>🎙️ Briefing 補充</summary><div class='card'><p class='empty'>未有錄音補充（briefing 錄音跌入 folder → 自動聲轉字 + AI 對比標書補充）</p></div></details><details class='soft'><summary>📝 Internal Creative Debrief 事實參考</summary><div class='card'><p class='hint'>策略總監消化晒標書 + Perplexity 研究 + 官方用字 + ISD，各 agency 跟住落橋。</p><p>好的，各位同事，啱啱同 ERB 客戶開完 briefing。</p>
 <p>以下係 internal debrief，請 creative team 及各單位同事細閱，確保我哋嘅出品 meet 到客戶期望。記住，我哋嘅角色係消化客戶要求，畀個清晰嘅框架你哋發揮。</p>
 <p>---</p>
 <h3>Internal Debrief — ERB · ERB</h3>
@@ -571,7 +577,7 @@ th{background:#f8fafc;font-weight:700}
 <div id='vid1_3' class='tabpanel' data-set='1'><div class='banner'>BD 生成中…完成後喺度揀三甲。</div></div>
 <div id='vid1_4' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 3 揀三甲先。</div></div>
 <div id='vid1_5' class='tabpanel' data-set='1'><div class='banner'>未有三甲。</div></div>
-<div class=foot>Idea Lab · 06-06 01:27 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+<div class=foot>Idea Lab · 06-06 01:47 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
 </div>
 
 <script>

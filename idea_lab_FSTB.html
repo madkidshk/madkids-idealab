@@ -80,6 +80,12 @@ header{padding:12px 0 4px}
 /* Brief 撮要緊湊卡（固定高度內部 scroll，似 VID 1 卡）*/
 .briefcard{max-height:44vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .briefcard h3,.briefcard h4{font-size:13px;margin:9px 0 3px}
+/* 補充日程簡單 list */
+.timeline{margin:2px 0}
+.tlrow{display:flex;gap:8px;padding:5px 2px;border-bottom:1px solid #f3f4f6;font-size:12.5px}
+.tlrow:last-child{border-bottom:none}
+.tldate{flex:0 0 auto;font-weight:800;color:var(--ink);min-width:96px}
+.tllabel{flex:1;color:#374151}
 /* Briefing 補充 treatment */
 summary.supp{display:flex;align-items:center;gap:8px}
 .suppbadge{font-size:10.5px;font-weight:800;color:#fff;background:var(--grn);
@@ -202,7 +208,7 @@ th{background:#f8fafc;font-weight:700}
 <h5>5. Timeline（時間表）</h5>
 <p>*   <strong>B (Briefing):</strong> 2026-05-29 (15:00) [22]</p>
 <p>*   <strong>D (Deadline):</strong> 2026-06-09 (12:00) [22]</p>
-<p>*   <strong>P (Presentation):</strong> 2026-06-17 [23]</p></div><a class='btn ghost' target='_blank' href='https://drive.google.com/drive/folders/1ntsU_5aWcpTakrKVaLj6WeUga8etS20U'>📄 標書文件 — 睇完整 schedule（拍攝 / 出街 / 交付，報明星用）</a><details class='soft'><summary>🎙️ Briefing 補充</summary><div class='card'><p class='empty'>未有錄音補充（briefing 錄音跌入 folder → 自動聲轉字 + AI 對比標書補充）</p></div></details><details class='soft'><summary>📝 Internal Creative Debrief 事實參考</summary><div class='card'><p class='hint'>策略總監消化晒標書 + Perplexity 研究 + 官方用字 + ISD，各 agency 跟住落橋。</p><p>好的，收到。作為 4A 廣告公司嘅策略總監，我會消化晒客戶 briefing 同所有 research，戴實客戶頂帽，寫一份清晰、有方向、但絕對唔會踩過界嘅 internal debrief。</p>
+<p>*   <strong>P (Presentation):</strong> 2026-06-17 [23]</p></div><details class='soft'><summary>📅 補充日程（拍攝 / 出街 / 交付 — 報明星用）</summary><div class='card'><div class='timeline'><div class='tlrow'><span class='tldate'>2026-05-20</span><span class='tllabel'>發出邀請</span></div><div class='tlrow'><span class='tldate'>2026-05-27 12:00</span><span class='tllabel'>遞交簡介會回條</span></div><div class='tlrow'><span class='tldate'>2026-05-29 15:00</span><span class='tllabel'>Briefing 簡介會</span></div><div class='tlrow'><span class='tldate'>2026-06-09 12:00</span><span class='tllabel'>截標 (遞交技術及價格建議書)</span></div><div class='tlrow'><span class='tldate'>2026-06-17</span><span class='tllabel'>創意提案 Presentation</span></div><div class='tlrow'><span class='tldate'>2026-06-26</span><span class='tllabel'>Debriefing 會議 (與中標者)</span></div><div class='tlrow'><span class='tldate'>2026-07-10</span><span class='tllabel'>製作前期會議 (PPM)</span></div><div class='tlrow'><span class='tldate'>2026-07-24</span><span class='tllabel'>完成電視廣告初剪及海報設計</span></div><div class='tlrow'><span class='tldate'>2026-08-10</span><span class='tllabel'>完成電視及電台廣告終剪</span></div><div class='tlrow'><span class='tldate'>2026-08-10</span><span class='tllabel'>完成海報及柱身貼紙設計</span></div><div class='tlrow'><span class='tldate'>2026-08-24</span><span class='tllabel'>交付電視台及電台廣告素材</span></div></div><a class='btn ghost' target='_blank' href='https://drive.google.com/drive/folders/1ntsU_5aWcpTakrKVaLj6WeUga8etS20U'>📄 開標書原文</a></div></details><details class='soft'><summary>🎙️ Briefing 補充</summary><div class='card'><p class='empty'>未有錄音補充（briefing 錄音跌入 folder → 自動聲轉字 + AI 對比標書補充）</p></div></details><details class='soft'><summary>📝 Internal Creative Debrief 事實參考</summary><div class='card'><p class='hint'>策略總監消化晒標書 + Perplexity 研究 + 官方用字 + ISD，各 agency 跟住落橋。</p><p>好的，收到。作為 4A 廣告公司嘅策略總監，我會消化晒客戶 briefing 同所有 research，戴實客戶頂帽，寫一份清晰、有方向、但絕對唔會踩過界嘅 internal debrief。</p>
 <p>---</p>
 <h3>Internal Debrief — FSTB · APEC FMM 2026 宣傳 API</h3>
 <h4>1. 背景 Background(點解客戶要做呢條片)</h4>
@@ -1182,7 +1188,7 @@ th{background:#f8fafc;font-weight:700}
 <div id='kv1_1' class='tabpanel' data-set='1'><div class='banner'>🔧 KV Ph 1：流程設計中，完成 VID 後再開。</div></div>
 <div id='kv1_2' class='tabpanel' data-set='1'><div class='banner'>🔧 KV Ph 2：流程設計中，完成 VID 後再開。</div></div>
 <div id='kv1_3' class='tabpanel' data-set='1'><div class='banner'>🔧 KV Ph 3：流程設計中，完成 VID 後再開。</div></div>
-<div class=foot>Idea Lab · 06-06 01:27 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+<div class=foot>Idea Lab · 06-06 01:47 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
 </div>
 
 <script>
