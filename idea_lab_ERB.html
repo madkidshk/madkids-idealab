@@ -77,6 +77,14 @@ header{padding:12px 0 4px}
             resize:vertical;background:#fafbff;margin-bottom:6px}
 .notes-act{text-align:right;margin-bottom:6px}
 .notes-act .btn{padding:6px 14px}
+.noteslist{margin-bottom:6px}
+.notecard{background:#fafbff;border:1px solid #e0e3f5;border-radius:10px;
+           padding:7px 10px;margin-bottom:6px}
+.noterow{display:flex;align-items:center;gap:8px}
+.notets{font-size:10.5px;font-weight:800;color:var(--ac)}
+.notedel{margin-left:auto;background:none;border:none;color:#b0b6c2;font-size:13px;
+          cursor:pointer;padding:0 2px}
+.notetxt{font-size:13px;color:var(--ink);line-height:1.5;margin-top:2px;white-space:pre-wrap}
 /* Brief 撮要緊湊卡（固定高度內部 scroll，似 VID 1 卡）*/
 .briefcard{max-height:44vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .briefcard h3,.briefcard h4{font-size:13px;margin:9px 0 3px}
@@ -178,7 +186,7 @@ th{background:#f8fafc;font-weight:700}
   <div class=bdp><span class='dd'>D) 17/6 12:00 · <b id='cd'>—</b></span></div>
 </header>
 <div class='tabbar'><button class='tab' data-tab='ph0'>Ph 0</button><button class='tab' data-tab='vid1_1'>VID 1</button><button class='tab' data-tab='vid1_2'>VID 2</button><button class='tab' data-tab='vid1_3'>VID 3</button><button class='tab' data-tab='vid1_4'>VID 4</button><button class='tab' data-tab='vid1_5'>VID 5</button></div>
-<div id='ph0' class='tabpanel'><div class='h2'>📝 零碎想法 / Notes</div><textarea id='notes' class='notes-win' placeholder='隨時入想法，本機自動暫存；撳 Submit 交去系統…'></textarea><div class='notes-act'><button class='btn' onclick='submitNotes()'>📤 Submit 想法</button></div><div class='card empty'>Brief 撮要：未有（委員會跑完即有）</div><details class='soft'><summary>📅 補充日程</summary><div class='card'><p class='hint'>未抽到日程，撳入標書原文睇 schedule。</p><a class='btn ghost' target='_blank' href='https://drive.google.com/drive/folders/1xwWCyee7WH0J2pNvVuWwdgjaOSL6noPS'>📄 開標書原文</a></div></details><details class='soft'><summary>🎙️ Briefing 補充</summary><div class='card'><p class='empty'>未有錄音補充（briefing 錄音跌入 folder → 自動聲轉字 + AI 對比標書補充）</p></div></details><details class='soft'><summary>📝 Internal Creative Debrief 事實參考</summary><div class='card'><p class='hint'>策略總監消化晒標書 + Perplexity 研究 + 官方用字 + ISD，各 agency 跟住落橋。</p><p>好的，各位同事，啱啱同 ERB 客戶開完 briefing。</p>
+<div id='ph0' class='tabpanel'><div class='h2'>📝 零碎想法 / Notes</div><p class='hint'>Phase 0 → VID 1 之間嗰幾日，諗到乜就入低，撳「＋ 加入」累積（VID 1 啟動委員會時一齊餵 AI）。</p><textarea id='notes' class='notes-win' placeholder='一個想法…'></textarea><div class='notes-act'><button class='btn' onclick='submitNotes()'>＋ 加入想法</button></div><div id='noteslist' class='noteslist'></div><div class='card empty'>Brief 撮要：未有（委員會跑完即有）</div><details class='soft'><summary>📅 補充日程</summary><div class='card'><p class='hint'>未抽到日程，撳入標書原文睇 schedule。</p><a class='btn ghost' target='_blank' href='https://drive.google.com/drive/folders/1xwWCyee7WH0J2pNvVuWwdgjaOSL6noPS'>📄 開標書原文</a></div></details><details class='soft'><summary>🎙️ Briefing 補充</summary><div class='card'><p class='empty'>未有錄音補充（briefing 錄音跌入 folder → 自動聲轉字 + AI 對比標書補充）</p></div></details><details class='soft'><summary>📝 Internal Creative Debrief 事實參考</summary><div class='card'><p class='hint'>策略總監消化晒標書 + Perplexity 研究 + 官方用字 + ISD，各 agency 跟住落橋。</p><p>好的，各位同事，啱啱同 ERB 客戶開完 briefing。</p>
 <p>以下係 internal debrief，請 creative team 及各單位同事細閱，確保我哋嘅出品 meet 到客戶期望。記住，我哋嘅角色係消化客戶要求，畀個清晰嘅框架你哋發揮。</p>
 <p>---</p>
 <h3>Internal Debrief — ERB · ERB</h3>
@@ -577,7 +585,7 @@ th{background:#f8fafc;font-weight:700}
 <div id='vid1_3' class='tabpanel' data-set='1'><div class='banner'>BD 生成中…完成後喺度揀三甲。</div></div>
 <div id='vid1_4' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 3 揀三甲先。</div></div>
 <div id='vid1_5' class='tabpanel' data-set='1'><div class='banner'>未有三甲。</div></div>
-<div class=foot>Idea Lab · 06-06 01:47 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+<div class=foot>Idea Lab · 06-06 01:57 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
 </div>
 
 <script>
@@ -607,19 +615,46 @@ function showTab(id) {
 TABS.forEach(function(t) { t.addEventListener('click', function() { showTab(t.dataset.tab); }); });
 showTab((location.hash.slice(1)) || 'vid1_2');
 
+// 零碎想法：localStorage array(可入多次),即時累積顯示,每條 POST 去 GAS 畀委員會消化
 var NK = 'notes_ERB';
 var notesEl = document.getElementById('notes');
-if (notesEl) {
-  notesEl.value = localStorage.getItem(NK) || '';
-  notesEl.addEventListener('input', function() { localStorage.setItem(NK, notesEl.value); });
+function loadNotes() {
+  try { var a = JSON.parse(localStorage.getItem(NK) || '[]'); return Array.isArray(a) ? a : []; }
+  catch (e) { return []; }
+}
+function saveNotes(a) { localStorage.setItem(NK, JSON.stringify(a)); }
+function fmtTs(ts) {
+  var d = new Date(ts);
+  function p(n) { return String(n).padStart(2, '0'); }
+  return (d.getMonth()+1) + '/' + d.getDate() + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+}
+function renderNotes() {
+  var box = document.getElementById('noteslist'); if (!box) return;
+  var a = loadNotes();
+  if (!a.length) { box.innerHTML = "<p class='hint' style='margin:4px 2px'>未有想法。</p>"; return; }
+  box.innerHTML = a.map(function(n, i) {
+    var txt = (n.text || '').replace(/</g, '&lt;');
+    return "<div class='notecard'><div class='noterow'>"
+      + "<span class='notets'>" + fmtTs(n.ts) + "</span>"
+      + "<button class='notedel' onclick='delNote(" + i + ")'>✕</button></div>"
+      + "<div class='notetxt'>" + txt + "</div></div>";
+  }).join('');
 }
 function submitNotes() {
   if (!notesEl || !notesEl.value.trim()) { alert('未有想法'); return; }
-  localStorage.setItem(NK, notesEl.value);
-  var url = "https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=ERB&text=" + encodeURIComponent(notesEl.value.trim());
+  var txt = notesEl.value.trim();
+  var a = loadNotes(); a.push({ ts: Date.now(), text: txt }); saveNotes(a);
+  notesEl.value = ''; renderNotes();
+  var url = "https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=ERB&text=" + encodeURIComponent(txt);
   fetch(url, {mode:'no-cors'}).catch(function(){});
-  toast('📤 想法已交去系統（亦本機保存）');
+  toast('＋ 已加入（' + a.length + ' 條，VID 1 啟動時餵委員會）');
 }
+function delNote(i) {
+  var a = loadNotes(); if (i < 0 || i >= a.length) return;
+  if (!confirm('刪呢條想法?')) return;
+  a.splice(i, 1); saveNotes(a); renderNotes();
+}
+renderNotes();
 
 function tk(el) {
   el.classList.toggle('on');
