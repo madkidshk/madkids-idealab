@@ -1,150 +1,159 @@
 {
-  "dept": "FSTB",
-  "concepts": {
-    "A": {
-      "board": {
-        "versions": [
-          {
-            "v": "20260604-211211-nblm-i1",
-            "sheet": "assets/gen/FSTB_A/v20260604-211211-nblm-i1/board_sheet.png",
-            "frames": [
-              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_01.png",
-              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_02.png",
-              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_03.png",
-              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_04.png",
-              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_05.png",
-              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_06.png",
-              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_07.png",
-              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_08.png",
-              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_09.png",
-              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_10.png",
-              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_11.png",
-              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_12.png"
-            ],
-            "n": 12,
-            "ts": "2026-06-04T21:12:59",
-            "source": "committee",
-            "brd": "A",
-            "cid": "cm05d4a6a7",
-            "label": "[Agency gemini-2.5-pro] Concept 1:〔光之脈絡 (The Nexus of Light)〕",
-            "gslide_pages": [
-              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/gslide_FSTB_A_p1.png",
-              "assets/gen/FSTB_A/v20260604-211211-nblm-i1/gslide_FSTB_A_p2.png"
-            ],
-            "drive_sub": "https://drive.google.com/drive/folders/1nKBxlEzTh6jsmLRqvWE71rhPbMkvarLS",
-            "deck_pdf": "https://drive.google.com/file/d/1Nkk4GN7uy22MoP3CCpHaQnyXNMUlEm2M/view?usp=drivesdk",
-            "deck_repo": "assets/gen/FSTB_A/v20260604-211211-nblm-i1/deck.pdf"
-          },
-          {
-            "v": "20260604-183750-nblm-i1",
-            "sheet": "assets/gen/FSTB_A/v20260604-183750-nblm-i1/board_sheet.png",
-            "frames": [
-              "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_01.png",
-              "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_02.png",
-              "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_03.png",
-              "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_04.png",
-              "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_05.png",
-              "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_06.png",
-              "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_07.png",
-              "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_08.png",
-              "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_09.png",
-              "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_10.png",
-              "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_11.png",
-              "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_12.png"
-            ],
-            "n": 12,
-            "ts": "2026-06-04T19:18:02",
-            "source": "committee",
-            "brd": "A",
-            "cid": "cm05d4a6a7",
-            "label": "[Agency gemini-2.5-pro] Concept 1:〔光之脈絡 (The Nexus of Light)〕",
-            "gslide_pages": [
-              "assets/gen/FSTB_A/v20260604-183750-nblm-i1/gslide_FSTB_A_p1.png",
-              "assets/gen/FSTB_A/v20260604-183750-nblm-i1/gslide_FSTB_A_p2.png"
-            ],
-            "drive_sub": "https://drive.google.com/drive/folders/1RmuXwp14eXnY9h3Ge-vBUS0ucpItqf8i",
-            "deck_pdf": "https://drive.google.com/file/d/1xeS-1DUZUpnhEMay6Yqkyuf5gHseax7o/view?usp=drivesdk",
-            "deck_repo": "assets/gen/FSTB_A/v20260604-183750-nblm-i1/deck.pdf"
-          }
-        ]
-      }
-    },
-    "B": {
-      "board": {
-        "versions": [
-          {
-            "v": "20260605-015347-nblm-i1",
-            "sheet": "assets/gen/FSTB_B/v20260605-015347-nblm-i1/board_sheet.png",
-            "frames": [
-              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_01.png",
-              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_02.png",
-              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_03.png",
-              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_04.png",
-              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_05.png",
-              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_06.png",
-              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_07.png",
-              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_08.png",
-              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_09.png",
-              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_10.png",
-              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_11.png",
-              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_12.png"
-            ],
-            "n": 12,
-            "ts": "2026-06-05T01:54:33",
-            "source": "committee",
-            "brd": "B",
-            "cid": "cmab1570cf",
-            "label": "[Agency gpt-5.2] Concept 2:〔30秒・全城Ready〕",
-            "gslide_pages": [
-              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/gslide_FSTB_B_p1.png",
-              "assets/gen/FSTB_B/v20260605-015347-nblm-i1/gslide_FSTB_B_p2.png"
-            ],
-            "drive_sub": "https://drive.google.com/drive/folders/1djtjPNc2k_UABF4Z2px3c_VXsJcMBCIS",
-            "deck_pdf": "https://drive.google.com/file/d/1hZhedHSKzSl1uYpIg5QPJkxkxRsE8Qle/view?usp=drivesdk",
-            "deck_repo": "assets/gen/FSTB_B/v20260605-015347-nblm-i1/deck.pdf"
-          }
-        ]
-      }
-    },
-    "C": {
-      "board": {
-        "versions": [
-          {
-            "v": "20260605-020409-nblm-i1",
-            "sheet": "assets/gen/FSTB_C/v20260605-020409-nblm-i1/board_sheet.png",
-            "frames": [
-              "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_01.png",
-              "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_02.png",
-              "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_03.png",
-              "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_04.png",
-              "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_05.png",
-              "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_06.png",
-              "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_07.png",
-              "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_08.png",
-              "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_09.png",
-              "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_10.png",
-              "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_11.png",
-              "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_12.png"
-            ],
-            "n": 12,
-            "ts": "2026-06-05T02:04:53",
-            "source": "committee",
-            "brd": "C",
-            "cid": "cma949b3f7",
-            "label": "[Agency claude-opus-4-8] Concept 2:〔全城就位 The Stage is Set〕",
-            "gslide_pages": [
-              "assets/gen/FSTB_C/v20260605-020409-nblm-i1/gslide_FSTB_C_p1.png",
-              "assets/gen/FSTB_C/v20260605-020409-nblm-i1/gslide_FSTB_C_p2.png"
-            ],
-            "drive_sub": "https://drive.google.com/drive/folders/17Q39fpNJ3wcpnObYX9uhHZNy7VD5B0zI",
-            "deck_pdf": "https://drive.google.com/file/d/1dpfr5ADd_E6Dx1rtwXThCbqhhe74B_PO/view?usp=drivesdk",
-            "deck_repo": "assets/gen/FSTB_C/v20260605-020409-nblm-i1/deck.pdf"
-          }
-        ]
-      }
-    }
+ "dept": "FSTB",
+ "concepts": {
+  "A": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260604-211211-nblm-i1",
+      "sheet": "assets/gen/FSTB_A/v20260604-211211-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_01.png",
+       "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_02.png",
+       "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_03.png",
+       "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_04.png",
+       "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_05.png",
+       "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_06.png",
+       "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_07.png",
+       "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_08.png",
+       "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_09.png",
+       "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_10.png",
+       "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_11.png",
+       "assets/gen/FSTB_A/v20260604-211211-nblm-i1/frame_12.png"
+      ],
+      "n": 12,
+      "ts": "2026-06-04T21:12:59",
+      "source": "committee",
+      "brd": "A",
+      "cid": "cm05d4a6a7",
+      "label": "[Agency gemini-2.5-pro] Concept 1:〔光之脈絡 (The Nexus of Light)〕",
+      "gslide_pages": [
+       "assets/gen/FSTB_A/v20260604-211211-nblm-i1/gslide_FSTB_A_p1.png",
+       "assets/gen/FSTB_A/v20260604-211211-nblm-i1/gslide_FSTB_A_p2.png"
+      ],
+      "drive_sub": "https://drive.google.com/drive/folders/1nKBxlEzTh6jsmLRqvWE71rhPbMkvarLS",
+      "deck_pdf": "https://drive.google.com/file/d/1Nkk4GN7uy22MoP3CCpHaQnyXNMUlEm2M/view?usp=drivesdk",
+      "deck_repo": "assets/gen/FSTB_A/v20260604-211211-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260604-183750-nblm-i1",
+      "sheet": "assets/gen/FSTB_A/v20260604-183750-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_01.png",
+       "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_02.png",
+       "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_03.png",
+       "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_04.png",
+       "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_05.png",
+       "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_06.png",
+       "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_07.png",
+       "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_08.png",
+       "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_09.png",
+       "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_10.png",
+       "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_11.png",
+       "assets/gen/FSTB_A/v20260604-183750-nblm-i1/frame_12.png"
+      ],
+      "n": 12,
+      "ts": "2026-06-04T19:18:02",
+      "source": "committee",
+      "brd": "A",
+      "cid": "cm05d4a6a7",
+      "label": "[Agency gemini-2.5-pro] Concept 1:〔光之脈絡 (The Nexus of Light)〕",
+      "gslide_pages": [
+       "assets/gen/FSTB_A/v20260604-183750-nblm-i1/gslide_FSTB_A_p1.png",
+       "assets/gen/FSTB_A/v20260604-183750-nblm-i1/gslide_FSTB_A_p2.png"
+      ],
+      "drive_sub": "https://drive.google.com/drive/folders/1RmuXwp14eXnY9h3Ge-vBUS0ucpItqf8i",
+      "deck_pdf": "https://drive.google.com/file/d/1xeS-1DUZUpnhEMay6Yqkyuf5gHseax7o/view?usp=drivesdk",
+      "deck_repo": "assets/gen/FSTB_A/v20260604-183750-nblm-i1/deck.pdf"
+     }
+    ]
+   },
+   "kv": {
+    "slogan": "光之脈絡",
+    "images": [
+     "assets/kv/FSTB_A/kv_3x4.png",
+     "assets/kv/FSTB_A/kv_16x9.png"
+    ],
+    "cid": "cm05d4a6a7",
+    "at": "2026-06-05T03:06:27"
+   }
   },
-  "drive_canonical": "https://drive.google.com/drive/folders/1ntsU_5aWcpTakrKVaLj6WeUga8etS20U",
-  "drive_canonical_name": "FSTB_APEC FMM 2026 API",
-  "updated": "2026-06-05T02:05:00"
+  "B": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260605-015347-nblm-i1",
+      "sheet": "assets/gen/FSTB_B/v20260605-015347-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_01.png",
+       "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_02.png",
+       "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_03.png",
+       "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_04.png",
+       "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_05.png",
+       "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_06.png",
+       "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_07.png",
+       "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_08.png",
+       "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_09.png",
+       "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_10.png",
+       "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_11.png",
+       "assets/gen/FSTB_B/v20260605-015347-nblm-i1/frame_12.png"
+      ],
+      "n": 12,
+      "ts": "2026-06-05T01:54:33",
+      "source": "committee",
+      "brd": "B",
+      "cid": "cmab1570cf",
+      "label": "[Agency gpt-5.2] Concept 2:〔30秒・全城Ready〕",
+      "gslide_pages": [
+       "assets/gen/FSTB_B/v20260605-015347-nblm-i1/gslide_FSTB_B_p1.png",
+       "assets/gen/FSTB_B/v20260605-015347-nblm-i1/gslide_FSTB_B_p2.png"
+      ],
+      "drive_sub": "https://drive.google.com/drive/folders/1djtjPNc2k_UABF4Z2px3c_VXsJcMBCIS",
+      "deck_pdf": "https://drive.google.com/file/d/1hZhedHSKzSl1uYpIg5QPJkxkxRsE8Qle/view?usp=drivesdk",
+      "deck_repo": "assets/gen/FSTB_B/v20260605-015347-nblm-i1/deck.pdf"
+     }
+    ]
+   }
+  },
+  "C": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260605-020409-nblm-i1",
+      "sheet": "assets/gen/FSTB_C/v20260605-020409-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_01.png",
+       "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_02.png",
+       "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_03.png",
+       "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_04.png",
+       "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_05.png",
+       "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_06.png",
+       "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_07.png",
+       "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_08.png",
+       "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_09.png",
+       "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_10.png",
+       "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_11.png",
+       "assets/gen/FSTB_C/v20260605-020409-nblm-i1/frame_12.png"
+      ],
+      "n": 12,
+      "ts": "2026-06-05T02:04:53",
+      "source": "committee",
+      "brd": "C",
+      "cid": "cma949b3f7",
+      "label": "[Agency claude-opus-4-8] Concept 2:〔全城就位 The Stage is Set〕",
+      "gslide_pages": [
+       "assets/gen/FSTB_C/v20260605-020409-nblm-i1/gslide_FSTB_C_p1.png",
+       "assets/gen/FSTB_C/v20260605-020409-nblm-i1/gslide_FSTB_C_p2.png"
+      ],
+      "drive_sub": "https://drive.google.com/drive/folders/17Q39fpNJ3wcpnObYX9uhHZNy7VD5B0zI",
+      "deck_pdf": "https://drive.google.com/file/d/1dpfr5ADd_E6Dx1rtwXThCbqhhe74B_PO/view?usp=drivesdk",
+      "deck_repo": "assets/gen/FSTB_C/v20260605-020409-nblm-i1/deck.pdf"
+     }
+    ]
+   }
+  }
+ },
+ "drive_canonical": "https://drive.google.com/drive/folders/1ntsU_5aWcpTakrKVaLj6WeUga8etS20U",
+ "drive_canonical_name": "FSTB_APEC FMM 2026 API",
+ "updated": "2026-06-05T02:05:00"
 }
