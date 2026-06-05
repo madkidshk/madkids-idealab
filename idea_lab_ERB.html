@@ -12,7 +12,6 @@ h1{font-size:19px;font-weight:800;margin:0;line-height:1.25}
 h1 .dept{color:var(--ac)}
 .bdp{font-size:12px;font-weight:700;margin:3px 0 0;display:flex;gap:11px;flex-wrap:wrap}
 .bdp .bb{color:#2563eb}.bdp .dd{color:#dc2626}.bdp .pp{color:#7c3aed}
-/* ── Tab bar ── */
 .tabbar{position:sticky;top:0;z-index:30;background:var(--bg);
          border-bottom:2px solid var(--line);display:flex;gap:5px;
          overflow-x:auto;padding:8px 0 7px;scrollbar-width:none}
@@ -22,11 +21,12 @@ h1 .dept{color:var(--ac)}
       color:var(--mut);cursor:pointer;transition:all .12s;white-space:nowrap}
 .tab:hover{border-color:var(--ac);color:var(--ac)}
 .tab.active{background:var(--ac);border-color:var(--ac);color:#fff}
-/* ── Panels ── */
 header{padding:12px 0 4px}
 .tabpanel{display:none;padding-top:10px}
 .tabpanel.active{display:block}
-/* ── Common ── */
+.setlab{font-size:11px;font-weight:800;color:var(--ac);background:#eef0fe;
+         border:1px solid #dcdffb;border-radius:8px;padding:4px 10px;
+         display:inline-block;margin:0 0 8px}
 .banner{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;
          padding:10px 12px;font-size:12.5px;font-weight:700;color:#92660c;margin:10px 0}
 .h2{font-size:12px;font-weight:800;letter-spacing:.03em;color:var(--mut);
@@ -68,24 +68,20 @@ header{padding:12px 0 4px}
 .btn.mini{padding:4px 9px;font-size:11px;margin-left:8px}
 .submit{position:fixed;bottom:14px;right:calc(50% - 215px + 13px);z-index:20}
 @media(max-width:456px){.submit{right:14px}}
-.submit .btn{box-shadow:0 6px 20px rgba(79,70,229,.4);
-              padding:11px 18px;font-size:13.5px}
+.submit .btn{box-shadow:0 6px 20px rgba(79,70,229,.4);padding:11px 18px;font-size:13.5px}
 .foot{font-size:11px;color:#9aa0aa;text-align:center;margin-top:22px}
-/* ── Notes ── */
 .notes-win{width:100%;min-height:90px;border:1.5px solid var(--ac);
             border-radius:11px;padding:10px 12px;font:14px/1.6 inherit;
             resize:vertical;background:#fafbff;margin-bottom:8px}
-/* ── Board / frames ── */
 .bd{margin:8px 0}
 .scene{border-bottom:1px solid #f1f3f6;padding:7px 0;font-size:12.5px;line-height:1.5}
 .scene .sl{display:flex;gap:8px}
 .scene .sn{font-weight:800;color:var(--ac);flex:0 0 auto;min-width:17px}
 .scene .vo,.vo{color:var(--mut);font-size:11.5px;margin:4px 0 0 25px;
                background:#f8fafc;border-radius:7px;padding:4px 8px}
-.sheet{width:100%;border-radius:10px;border:1px solid var(--line);
-        margin:8px 0;display:block}
-.empty{font-size:12px;color:#9aa0aa;background:#f8fafc;
-        border:1px dashed #cbd5e1;border-radius:9px;padding:9px 11px;margin:8px 0}
+.sheet{width:100%;border-radius:10px;border:1px solid var(--line);margin:8px 0;display:block}
+.empty{font-size:12px;color:#9aa0aa;background:#f8fafc;border:1px dashed #cbd5e1;
+        border-radius:9px;padding:9px 11px;margin:8px 0}
 .note{width:100%;min-height:48px;border:1px solid var(--line);border-radius:9px;
        padding:7px 9px;font:13px/1.5 inherit;resize:vertical;margin-top:6px}
 .frames{margin:8px 0}
@@ -93,7 +89,6 @@ header{padding:12px 0 4px}
 .frame-head{display:flex;gap:8px;font-size:12.5px}
 .fv{flex:1;color:var(--ink)}
 .acts{margin-top:8px}
-/* ── Collapsible ── */
 .soft{margin-bottom:8px}
 .soft summary{font-size:12.5px;font-weight:800;color:var(--ink);cursor:pointer;
                background:#f8fafc;border:1px solid var(--line);border-radius:10px;
@@ -102,7 +97,6 @@ header{padding:12px 0 4px}
 .soft[open] summary{border-radius:10px 10px 0 0;margin-bottom:0}
 .soft .card{border-radius:0 0 10px 10px;border-top:none;margin-bottom:0}
 .hint{font-size:12px;color:var(--mut);margin:0 0 8px}
-/* ── detail expand ── */
 .det{margin-top:8px}
 .det summary{font-size:12.5px;font-weight:800;color:var(--ac);cursor:pointer;
               list-style:none;background:#eef0fe;border:1px solid #dcdffb;
@@ -112,14 +106,11 @@ header{padding:12px 0 4px}
 .detbody{font-size:12.5px;color:#374151;white-space:pre-wrap;margin-top:7px;
           line-height:1.6;max-height:360px;overflow:auto;background:#f8fafc;
           border-radius:9px;padding:10px 12px}
-/* ── Table ── */
 .tw{overflow-x:auto;margin:6px 0}
 table{border-collapse:collapse;width:100%;font-size:13px}
 th,td{border:1px solid var(--line);padding:5px 8px;text-align:left}
 th{background:#f8fafc;font-weight:700}
-/* ── prev ── */
 .prev{font-size:12.5px;color:#4b5563;margin:6px 0 2px;line-height:1.5}
-/* ── Toast / progress ── */
 .toast{position:fixed;bottom:78px;left:50%;transform:translateX(-50%);
         background:#1b1f27;color:#fff;padding:12px 18px;border-radius:12px;
         font-size:13px;font-weight:700;z-index:90;max-width:90%;
@@ -130,8 +121,7 @@ th{background:#f8fafc;font-weight:700}
           box-shadow:0 3px 14px rgba(79,70,229,.35)}
 .spin.sm{width:15px;height:15px;border:2.5px solid rgba(255,255,255,.4);
           border-top-color:#fff;border-radius:50%;display:inline-block;
-          vertical-align:middle;margin-right:6px;
-          animation:sp .9s linear infinite}
+          vertical-align:middle;margin-right:6px;animation:sp .9s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
 </style></head><body>
 <div class=wrap>
@@ -139,7 +129,7 @@ th{background:#f8fafc;font-weight:700}
   <h1><span class=dept>ERB</span> · ERB</h1>
   <div class=bdp><span class='dd'>D) 17/6 12:00 · <b id='cd'>—</b></span></div>
 </header>
-<div class='tabbar'><button class='tab' data-tab='ph0'>Ph 0</button><button class='tab' data-tab='vid1'>VID 1</button><button class='tab' data-tab='vid2'>VID 2</button><button class='tab' data-tab='vid3'>VID 3</button><button class='tab' data-tab='vid4'>VID 4</button><button class='tab' data-tab='vid5'>VID 5</button></div>
+<div class='tabbar'><button class='tab' data-tab='ph0'>Ph 0</button><button class='tab' data-tab='vid1_1'>VID 1</button><button class='tab' data-tab='vid1_2'>VID 2</button><button class='tab' data-tab='vid1_3'>VID 3</button><button class='tab' data-tab='vid1_4'>VID 4</button><button class='tab' data-tab='vid1_5'>VID 5</button></div>
 <div id='ph0' class='tabpanel'><div class='h2'>📝 凌碎想法 / Notes</div><textarea id='notes' class='notes-win' placeholder='隨時入想法，自動本機保存…'></textarea><div class='card empty'>Brief 撮要：未有（委員會跑完即有）</div><details class='soft'><summary>💭 5W1H 創意 Provocation</summary><div class='card'><p class='hint'>9 條尖問題，逼 agency 諗加咩 element / 風格，落橋前消化。</p><h3>5W1H 創意 Provocation — ERB</h3>
 <h5>WHO — 對邊個講 + 佢而家點</h5>
 <p>- Q1 如果呢個 message 只可以打動「最唔關心、最 cynical」嗰個觀眾 —— 要加咩一個 element(畫面/聲/人物/情境)先 3 秒內 hook 住佢、令佢唔 skip?</p>
@@ -410,7 +400,7 @@ th{background:#f8fafc;font-weight:700}
 <p>— Application for Phase 3 of Simple Public Housing  [其他 | 房屋置業]</p>
 <p>  ▶ https://www.youtube.com/watch?v=BtU7TWHUSYI&amp;list=PL1188A9802575C33F</p>
 <p>  女旁白：「簡約公屋」首四個項目已經全面供住戶入住 / 女旁白：每個月租金只是約八百至三千多元不等 / 住戶的居住環境和生活質素大有改善！ / 女旁白：第三期申請包括位於啟德 / 熒幕蓋字：啟德世運道簡約公屋中英標誌 / 啟德世運道 / 女旁白：柴灣及屯門的四個項目 / 於今年第二季開始供住戶入住 / 熒幕蓋字：柴灣常安街簡約公屋中英標誌 / 柴灣常安街 / 熒幕蓋字：屯門欣寶路簡約公屋中英標誌 / 屯門欣寶路 / 女旁白：現已接受申請 / 熒幕蓋字：屯門青發街簡約公屋中英標誌 / 屯門青發街 / 女旁白：有迫切住屋需要便立即申請吧！ / 熒幕蓋字：「簡約公屋」第三期申請 / 啟德世運道 / 柴灣常安街 / 屯門欣寶路 / 屯門青發街 / 熒幕蓋字：「簡約公屋」第三期申請 / 啟德世運道 / 柴灣常安街 / 屯門欣寶路 / 屯門青發街 / 現已接受申請 / 「簡約公屋」標誌 / 「簡約公屋」網頁二維碼 / 房屋局標誌</p></div></details></div>
-<div id='vid1' class='tabpanel'><div class='banner'>👉 委員會揀咗六強。你同意就 Submit，或自己另選。</div><div class='h2'>🔻 第一輪篩選 — 揀概念進級</div><div class='card' data-cid='cm27e96632' ><div class='row'><span class='ck on' onclick='tk(this)'>✓</span><span class='rank'>1</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 你張 CV,幾時 last update?</div><div class='csub'>Concept 2:〔CV·Last Update〕</div></div><span class='score'>88</span></div><div class='crow'><span class='cflag hi'>創意 25/30</span></div><div class='prev'>用一份典型大學生 CV 做主軸。開場 CV 睇落光鮮,但旁白帶出 AI 時代,CV 上嘅技能欄逐項「變灰、標住 outdated」——學歷仲喺度,但彈藥過晒…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 2:〔CV·Last Update〕
+<div id='vid1_1' class='tabpanel' data-set='1'><div class='banner'>👉 委員會揀咗六強。你同意就 Submit，或自己另選。</div><div class='h2'>🔻 第一輪篩選 — 揀概念進級</div><div class='card' data-cid='cm27e96632' ><div class='row'><span class='ck on' onclick='tk(this)'>✓</span><span class='rank'>1</span><span class='src'></span><div style='flex:1'><div class='nm'>💬 你張 CV,幾時 last update?</div><div class='csub'>Concept 2:〔CV·Last Update〕</div></div><span class='score'>88</span></div><div class='crow'><span class='cflag hi'>創意 25/30</span></div><div class='prev'>用一份典型大學生 CV 做主軸。開場 CV 睇落光鮮,但旁白帶出 AI 時代,CV 上嘅技能欄逐項「變灰、標住 outdated」——學歷仲喺度,但彈藥過晒…</div><details class='det'><summary>📖 撳開睇成個概念全文</summary><div class='detbody'>## Concept 2:〔CV·Last Update〕
 
 **創作概念**:用一份典型大學生 CV 做主軸。開場 CV 睇落光鮮,但旁白帶出 AI 時代,CV 上嘅技能欄逐項「變灰、標住 outdated」——學歷仲喺度,但彈藥過晒期。主角報讀 ERB 課程後,每掌握一項實戰技能(AI 應用、數據分析、數碼營銷),CV 上即時「解鎖」一個新項目,由灰變亮,成份 CV 重新生猛。將抽象「技能提升」變成睇得明嘅「CV 升級」,硬訊息「即學即用、貼市實用」自然落地。
 
@@ -627,16 +617,15 @@ Raymond，三個概念分別對應：
 - **Concept 2**：最貼政策核心（學歷上限取消）、最有新聞性
 - **Concept 3**：最 fresh、最貼標書「vivid and eye-catching」要求、但 execute 成本同政治風險最高
 
-等你方向和明星 preference，揀中我哋即刻 develop 12 格 storyboard。</div></details></div><div class='submit'><button class='btn' onclick='submitRound()'>✅ Submit 六強 (<span id=cnt>6</span>)</button></div><div class='h2'>👀 睇返區</div><div class='lookback'>每輪冇進級嘅 idea 會自動歸檔喺度，永遠睇得返，撳「⤴️升級」補生返上嚟。</div></div>
-<div id='vid2' class='tabpanel'><div class='banner'>未有概念進入第二輪。返 VID 1 Submit 六強先。</div></div>
-<div id='vid3' class='tabpanel'><div class='banner'>BD 生成中…完成後喺度揀三甲。</div></div>
-<div id='vid4' class='tabpanel'><div class='banner'>未有三甲。返 VID 3 揀三甲先。</div></div>
-<div id='vid5' class='tabpanel'><div class='banner'>未有三甲。</div></div>
-<div class=foot>Idea Lab · 06-05 23:46 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+等你方向和明星 preference，揀中我哋即刻 develop 12 格 storyboard。</div></details></div><div class='submit'><button class='btn' onclick='submitRound()'>✅ Submit 六強 (<span class=cnt>6</span>)</button></div><div class='h2'>👀 睇返區</div><div class='lookback'>每輪冇進級嘅 idea 會自動歸檔喺度，永遠睇得返，撳「⤴️升級」補生返上嚟。</div></div>
+<div id='vid1_2' class='tabpanel' data-set='1'><div class='banner'>未有概念進入第二輪。返 VID 1 Submit 六強先。</div></div>
+<div id='vid1_3' class='tabpanel' data-set='1'><div class='banner'>BD 生成中…完成後喺度揀三甲。</div></div>
+<div id='vid1_4' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 3 揀三甲先。</div></div>
+<div id='vid1_5' class='tabpanel' data-set='1'><div class='banner'>未有三甲。</div></div>
+<div class=foot>Idea Lab · 06-05 23:58 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
 </div>
 
 <script>
-// ── Deadline countdown ──────────────────────────────────────────────────────
 var DL = new Date("2026-06-17T12:00:00+08:00").getTime();
 function cd() {
   var e = document.getElementById('cd'); if (!e) return;
@@ -651,32 +640,25 @@ function cd() {
 }
 cd(); setInterval(cd, 1000);
 
-// ── Tab switching ────────────────────────────────────────────────────────────
 var TABS   = document.querySelectorAll('.tab');
 var PANELS = document.querySelectorAll('.tabpanel');
 function showTab(id) {
+  if (!document.getElementById(id)) id = 'ph0';
   TABS.forEach(function(t) { t.classList.toggle('active', t.dataset.tab === id); });
   PANELS.forEach(function(p) { p.classList.toggle('active', p.id === id); });
   history.replaceState(null, '', '#' + id);
   upd();
 }
-TABS.forEach(function(t) {
-  t.addEventListener('click', function() { showTab(t.dataset.tab); });
-});
-var initTab = (location.hash.slice(1)) || 'vid1';
-showTab(initTab);
+TABS.forEach(function(t) { t.addEventListener('click', function() { showTab(t.dataset.tab); }); });
+showTab((location.hash.slice(1)) || 'vid1_1');
 
-// ── Notes (localStorage) ─────────────────────────────────────────────────────
 var NK = 'notes_ERB';
 var notesEl = document.getElementById('notes');
 if (notesEl) {
   notesEl.value = localStorage.getItem(NK) || '';
-  notesEl.addEventListener('input', function() {
-    localStorage.setItem(NK, notesEl.value);
-  });
+  notesEl.addEventListener('input', function() { localStorage.setItem(NK, notesEl.value); });
 }
 
-// ── Checkbox toggle ──────────────────────────────────────────────────────────
 function tk(el) {
   el.classList.toggle('on');
   el.textContent = el.classList.contains('on') ? '✓' : '';
@@ -684,13 +666,11 @@ function tk(el) {
 }
 function upd() {
   var n = document.querySelectorAll('.tabpanel.active .ck.on').length;
-  var c = document.getElementById('cnt');
-  if (c) {
+  document.querySelectorAll('.tabpanel.active .cnt').forEach(function(c) {
     c.textContent = n;
     c.parentElement.classList.toggle('cnt-warn', n > 6);
-  }
+  });
 }
-// whole-card click delegates to checkbox
 document.querySelectorAll('.card[data-cid]').forEach(function(card) {
   var ck = card.querySelector('.ck');
   if (!ck) return;
@@ -700,26 +680,25 @@ document.querySelectorAll('.card[data-cid]').forEach(function(card) {
   });
 });
 
-// ── Toast ────────────────────────────────────────────────────────────────────
 function toast(msg) {
   var t = document.createElement('div');
   t.className = 'toast'; t.textContent = msg;
   document.body.appendChild(t);
   setTimeout(function() { t.style.opacity = '0'; }, 6000);
 }
-
-// ── Top progress bar ─────────────────────────────────────────────────────────
 function showTopProc(msg) {
   var o = document.getElementById('topproc');
   if (!o) {
-    o = document.createElement('div');
-    o.id = 'topproc'; o.className = 'topproc';
+    o = document.createElement('div'); o.id = 'topproc'; o.className = 'topproc';
     document.body.insertBefore(o, document.body.firstChild);
   }
   o.innerHTML = '<span class="spin sm"></span><span id="tpmsg">' + msg + '</span>';
 }
 
-// ── Funnel helpers ───────────────────────────────────────────────────────────
+// active panel 嘅 set → GAS param（set 1 唔帶，backend 不變）
+function curSet() { var p = document.querySelector('.tabpanel.active'); return p ? (p.dataset.set || '1') : '1'; }
+function setQ()   { var s = curSet(); return (s && s !== '1') ? ('&set=' + s) : ''; }
+
 var VID_PHASE = 1;
 function pickedCids() {
   return [].map.call(
@@ -734,11 +713,11 @@ function submitAdvance(url) {
 }
 function submitRound() {
   var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
-  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=ERB&round=r2&cids=" + c.join(','));
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=ERB&round=r2&cids=" + c.join(',') + setQ());
 }
 function subStage(to) {
   var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
-  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=ERB&round=" + to + "&cids=" + c.join(','));
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=ERB&round=" + to + "&cids=" + c.join(',') + setQ());
 }
 function postFunnel(url, msg) {
   fetch(url, {mode:'no-cors'})
@@ -746,25 +725,26 @@ function postFunnel(url, msg) {
     .catch(function() { toast('⚠️ 再試一次'); });
 }
 
-// ── VID 2 — batch BD generation ──────────────────────────────────────────────
 function genBDBatch() {
-  var all   = [].slice.call(document.querySelectorAll('.tabpanel.active .card[data-cid]'));
-  var sel   = all.filter(function(c) { return !!c.querySelector('.ck.on'); });
-  var drop  = all.filter(function(c) { return !!c.querySelector('.ck:not(.on):not(.done)'); });
+  var all  = [].slice.call(document.querySelectorAll('.tabpanel.active .card[data-cid]'));
+  var sel  = all.filter(function(c) { return !!c.querySelector('.ck.on'); });
+  var drop = all.filter(function(c) { return !!c.querySelector('.ck:not(.on):not(.done)'); });
   if (!sel.length) { alert('未剔任何概念'); return; }
   if (drop.length && !confirm('未剔嘅 ' + drop.length + ' 個會入睇返區，確定?')) return;
   var cids = sel.map(function(c) { return c.dataset.cid; });
+  var sq = setQ();
   sessionStorage.setItem('bdsel', JSON.stringify(cids));
+  sessionStorage.setItem('bdset', curSet());
   showTopProc('🎨 生緊 0/' + cids.length + ' 塊 BD…（你照 scroll 睇 board）');
   drop.forEach(function(c) {
     if (c.dataset.cid)
-      fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=ERB&cid=" + c.dataset.cid + "&to=archived",
+      fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=move&dept=ERB&cid=" + c.dataset.cid + "&to=archived" + sq,
             {mode:'no-cors'}).catch(function(){});
   });
   sel.forEach(function(c) {
     var brd = c.dataset.brd;
     if (brd)
-      fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&concept=" + brd + "&stage=deck&target=main",
+      fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&concept=" + brd + "&stage=deck&target=main" + sq,
             {mode:'no-cors'}).catch(function(){});
   });
   bdBatchPoll();
@@ -772,27 +752,31 @@ function genBDBatch() {
 var _bdbp;
 function bdBatchPoll() {
   if (_bdbp) return;
+  var setN = sessionStorage.getItem('bdset') || '1';
+  var mf = 'assets/gen/manifest_ERB' + (setN !== '1' ? ('_s' + setN) : '') + '.json';
   _bdbp = setInterval(function() {
-    fetch('assets/gen/manifest_ERB.json?ck=' + Date.now())
+    fetch(mf + '?ck=' + Date.now())
       .then(function(r) { return r.json(); })
-      .then(function(mf) {
+      .then(function(m) {
         var sel = JSON.parse(sessionStorage.getItem('bdsel') || '[]');
         if (!sel.length) return;
         var have = {};
-        Object.keys(mf.concepts || {}).forEach(function(k) {
-          ((((mf.concepts[k].board || {}).versions) || [])).forEach(function(v) {
+        Object.keys(m.concepts || {}).forEach(function(k) {
+          ((((m.concepts[k].board || {}).versions) || [])).forEach(function(v) {
             if (v.cid) have[v.cid] = 1;
           });
         });
         var done = sel.filter(function(c) { return have[c]; }).length;
         var mm = document.getElementById('tpmsg');
         if (mm) mm.textContent = '🎨 生緊 ' + done + '/' + sel.length + ' 塊 BD…';
-        if (done >= sel.length) { sessionStorage.removeItem('bdsel'); location.reload(); }
+        if (done >= sel.length) {
+          sessionStorage.removeItem('bdsel'); sessionStorage.removeItem('bdset');
+          location.reload();
+        }
       }).catch(function(){});
   }, 30000);
 }
 
-// ── VID 5 — submit per-frame comments → GSlide ──────────────────────────────
 function submitGSlide(btn) {
   var card = btn.closest('.card[data-cid]');
   var cid  = card ? card.dataset.cid : '';
@@ -801,14 +785,12 @@ function submitGSlide(btn) {
   card.querySelectorAll('.frame-note').forEach(function(ta) {
     if (ta.value.trim()) frames[ta.dataset.frame] = ta.value.trim();
   });
-  var url = "https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submitComments&dept=ERB&cid=" + cid
-            + "&brd=" + brd
-            + "&comments=" + encodeURIComponent(JSON.stringify(frames));
+  var url = "https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submitComments&dept=ERB&cid=" + cid + "&brd=" + brd
+            + setQ() + "&comments=" + encodeURIComponent(JSON.stringify(frames));
   fetch(url, {mode:'no-cors'}).catch(function(){});
   toast('📊 已傳送，系統 paste 入 GSlide 中…');
 }
 
-// ── Restore pending states on reload ─────────────────────────────────────────
 (function() {
   var w = sessionStorage.getItem('fwait');
   if (w !== null) {
@@ -821,11 +803,7 @@ function submitGSlide(btn) {
   }
 })();
 (function() {
-  if (VID_PHASE >= 3) { sessionStorage.removeItem('bdsel'); return; }
   var sel = JSON.parse(sessionStorage.getItem('bdsel') || '[]');
-  if (sel.length) {
-    showTopProc('🎨 生緊 BD…');
-    bdBatchPoll();
-  }
+  if (sel.length) { showTopProc('🎨 生緊 BD…'); bdBatchPoll(); }
 })();
 </script></body></html>
