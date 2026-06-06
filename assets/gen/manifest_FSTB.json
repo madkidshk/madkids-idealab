@@ -336,9 +336,44 @@
           }
         ]
       }
+    },
+    "E": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260607-011627",
+            "sheet": "assets/gen/FSTB_E/v20260607-011627/board_sheet.png",
+            "frames": [
+              "assets/gen/FSTB_E/v20260607-011627/frame_01.png",
+              "assets/gen/FSTB_E/v20260607-011627/frame_02.png",
+              "assets/gen/FSTB_E/v20260607-011627/frame_03.png",
+              "assets/gen/FSTB_E/v20260607-011627/frame_04.png",
+              "assets/gen/FSTB_E/v20260607-011627/frame_05.png",
+              "assets/gen/FSTB_E/v20260607-011627/frame_06.png",
+              "assets/gen/FSTB_E/v20260607-011627/frame_07.png",
+              "assets/gen/FSTB_E/v20260607-011627/frame_08.png",
+              "assets/gen/FSTB_E/v20260607-011627/frame_09.png",
+              "assets/gen/FSTB_E/v20260607-011627/frame_10.png",
+              "assets/gen/FSTB_E/v20260607-011627/frame_11.png",
+              "assets/gen/FSTB_E/v20260607-011627/frame_12.png"
+            ],
+            "n": 12,
+            "ts": "2026-06-07T01:16:57",
+            "source": "committee",
+            "brd": "E",
+            "cid": "cm9958ace8",
+            "label": "[Agency kimi-k2.6] Concept 2:同頻 (Resonance)",
+            "gslide_pages": [
+              "assets/gen/FSTB_E/v20260607-011627/gslide_FSTB_E_p1.png",
+              "assets/gen/FSTB_E/v20260607-011627/gslide_FSTB_E_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1Ardf9DdhQQODHWNkohrj5F6JaEgDCw6U"
+          }
+        ]
+      }
     }
   },
   "drive_canonical": "https://drive.google.com/drive/folders/1ntsU_5aWcpTakrKVaLj6WeUga8etS20U",
   "drive_canonical_name": "FSTB_APEC FMM 2026 API",
-  "updated": "2026-06-06T03:36:22"
+  "updated": "2026-06-07T01:17:03"
 }
