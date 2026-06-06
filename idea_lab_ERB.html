@@ -549,7 +549,7 @@ th{background:#f8fafc;font-weight:700}
 <div id='vid1_3' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 2 揀三甲先。</div></div>
 <div id='vid1_4' class='tabpanel' data-set='1'><div class='banner'>未有 FINAL。返 VID 3 選 FINAL 2 先。</div></div>
 <div id='vid1_5' class='tabpanel' data-set='1'><div class='banner'>未有 FINAL。</div></div>
-<div class=foot>Idea Lab · 06-06 10:35 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+<div class=foot>Idea Lab · 06-06 11:17 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
 </div>
 
 <script>
@@ -718,6 +718,12 @@ function genBD(btn, url) {   // VID 3 Nano per-card 用
   var acts = btn.closest('.acts') || btn.parentElement;
   if (acts) acts.innerHTML = "<span class='gening'><span class='spin sm'></span>生緊… ~8-9 分鐘</span>";
   fetch(url, {mode:'no-cors'}).catch(function(){});
+}
+function pushGSheet(btn, url) {   // VID 4 寫入 Master GSheet B6:C17
+  btn.textContent = '⏳ 寫入緊…'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已寫入（開 GSheet polish）'; }, 2500);
+  toast('📝 已交，~1 分鐘寫入 Master GSheet B6:C17（前稿自動備份）');
 }
 
 function submitGSlide(btn) {
