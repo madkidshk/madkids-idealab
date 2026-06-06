@@ -70,6 +70,14 @@ header{padding:12px 0 4px}
 .btn.mini{padding:4px 9px;font-size:11px;margin-left:8px}
 .submit{position:fixed;bottom:14px;right:calc(50% - 215px + 13px);z-index:20}
 @media(max-width:456px){.submit{right:14px}}
+/* Desktop:唔好做窄電話條,放闊到正常 web 闊度（Raymond 2026-06-06）*/
+@media(min-width:760px){
+  .wrap{max-width:720px;padding:0 22px 130px}
+  .submit{right:calc(50% - 360px + 22px)}
+  .ccard{flex:0 0 46%;max-height:70vh}
+  .rest-row .ccard{flex:0 0 36%}
+  .briefcard{max-height:40vh}
+}
 .submit .btn{box-shadow:0 6px 20px rgba(79,70,229,.4);padding:11px 18px;font-size:13.5px}
 .foot{font-size:11px;color:#9aa0aa;text-align:center;margin-top:22px}
 .notes-win{width:100%;min-height:90px;border:1.5px solid var(--ac);
@@ -97,6 +105,8 @@ header{padding:12px 0 4px}
 .tlrow:last-child{border-bottom:none}
 .tldate{flex:0 0 auto;font-weight:800;color:var(--ink);min-width:96px}
 .tllabel{flex:1;color:#374151}
+.tlrow.hot{background:#fff7ed;border-radius:7px}
+.tlrow.hot .tldate{color:#c2410c}.tlrow.hot .tllabel{color:#9a3412;font-weight:700}
 /* Briefing 補充 treatment */
 summary.supp{display:flex;align-items:center;gap:8px}
 .suppbadge{font-size:10px;font-weight:800;color:#fff;background:#d97706;
@@ -140,12 +150,12 @@ th,td{border:1px solid var(--line);padding:5px 8px;text-align:left}
 th{background:#f8fafc;font-weight:700}
 .prev{font-size:12.5px;color:#4b5563;margin:6px 0 2px;line-height:1.5}
 /* ── VID 1 carousel：橫掃卡，卡內直 scroll ── */
-.carousel{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x proximity;
+.carousel{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
            padding:4px 2px 12px;margin:0 -2px;-webkit-overflow-scrolling:touch}
 .carousel::-webkit-scrollbar{height:6px}
 .carousel::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:6px}
-.ccard{flex:0 0 85%;max-width:340px;scroll-snap-align:center;background:var(--card);
-        border:1.5px solid var(--line);border-radius:14px;display:flex;
+.ccard{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;
+        background:var(--card);border:1.5px solid var(--line);border-radius:14px;display:flex;
         flex-direction:column;max-height:64vh;overflow:hidden;
         box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
 .ccard.sel{border-color:var(--ac);box-shadow:0 0 0 2px rgba(79,70,229,.25),
@@ -192,7 +202,7 @@ th{background:#f8fafc;font-weight:700}
   <div class=bdp><span class='dd'>D) 17/6 12:00 · <b id='cd'>—</b></span></div>
 </header>
 <div class='tabbar'><button class='tab' data-tab='ph0'>Ph 0</button><button class='tab' data-tab='vid1_1'>VID 1</button><button class='tab' data-tab='vid1_2'>VID 2</button><button class='tab' data-tab='vid1_3'>VID 3</button><button class='tab' data-tab='vid1_4'>VID 4</button><button class='tab' data-tab='vid1_5'>VID 5</button></div>
-<div id='ph0' class='tabpanel'><div class='h2'>📝 零碎想法 / Notes</div><p class='hint'>Phase 0 → VID 1 之間嗰幾日，諗到乜就入低，撳「＋ 加入」累積（VID 1 啟動委員會時一齊餵 AI）。</p><textarea id='notes' class='notes-win' placeholder='一個想法…'></textarea><div class='notes-act'><button class='btn' onclick='submitNotes()'>＋ 加入想法</button></div><div id='noteslist' class='noteslist'></div><div class='card empty'>Brief 撮要：未有（委員會跑完即有）</div><details class='soft'><summary>📅 補充日程</summary><div class='card'><p class='hint'>未抽到日程，撳入標書原文睇 schedule。</p><a class='btn ghost' target='_blank' href='https://drive.google.com/drive/folders/1xwWCyee7WH0J2pNvVuWwdgjaOSL6noPS'>📄 開標書原文</a></div></details><details class='soft'><summary>🔬 Research 背景調查</summary><div class='card'><div class='h3'>Web Research</div><p>直接幫你整理成做 API strategy 用到嘅 hard facts＋政策脈絡：</p>
+<div id='ph0' class='tabpanel'><div class='h2'>📝 零碎想法 / Notes</div><p class='hint'>Phase 0 → VID 1 之間嗰幾日，諗到乜就入低，撳「＋ 加入」累積（VID 1 啟動委員會時一齊餵 AI）。</p><textarea id='notes' class='notes-win' placeholder='一個想法…'></textarea><div class='notes-act'><button class='btn' onclick='submitNotes()'>＋ 加入想法</button></div><div id='noteslist' class='noteslist'></div><div class='card empty'>Brief 撮要：未有（委員會跑完即有）</div><details class='soft'><summary>📅 日程</summary><div class='card'><p class='hint'>未抽到製作日程，撳入標書原文睇 schedule。</p><a class='btn ghost' target='_blank' href='https://drive.google.com/drive/folders/1xwWCyee7WH0J2pNvVuWwdgjaOSL6noPS'>📄 開標書原文</a></div></details><details class='soft'><summary>🔬 Research 背景調查</summary><div class='card'><div class='h3'>Web Research</div><p>直接幫你整理成做 API strategy 用到嘅 hard facts＋政策脈絡：</p>
 <p>---</p>
 <h5>① 議題背景 / 政策脈絡：點解政府而家要推 ERB</h5>
 <p>- <strong>經濟結構轉型＋人手短缺</strong></p>
@@ -393,7 +403,7 @@ th{background:#f8fafc;font-weight:700}
 <p>— Application for Phase 3 of Simple Public Housing  [其他 | 房屋置業]</p>
 <p>  ▶ https://www.youtube.com/watch?v=BtU7TWHUSYI&amp;list=PL1188A9802575C33F</p>
 <p>  女旁白：「簡約公屋」首四個項目已經全面供住戶入住 / 女旁白：每個月租金只是約八百至三千多元不等 / 住戶的居住環境和生活質素大有改善！ / 女旁白：第三期申請包括位於啟德 / 熒幕蓋字：啟德世運道簡約公屋中英標誌 / 啟德世運道 / 女旁白：柴灣及屯門的四個項目 / 於今年第二季開始供住戶入住 / 熒幕蓋字：柴灣常安街簡約公屋中英標誌 / 柴灣常安街 / 熒幕蓋字：屯門欣寶路簡約公屋中英標誌 / 屯門欣寶路 / 女旁白：現已接受申請 / 熒幕蓋字：屯門青發街簡約公屋中英標誌 / 屯門青發街 / 女旁白：有迫切住屋需要便立即申請吧！ / 熒幕蓋字：「簡約公屋」第三期申請 / 啟德世運道 / 柴灣常安街 / 屯門欣寶路 / 屯門青發街 / 熒幕蓋字：「簡約公屋」第三期申請 / 啟德世運道 / 柴灣常安街 / 屯門欣寶路 / 屯門青發街 / 現已接受申請 / 「簡約公屋」標誌 / 「簡約公屋」網頁二維碼 / 房屋局標誌</p></div></details></div>
-<div id='vid1_1' class='tabpanel' data-set='1'><div class='banner'>👉 委員會揀咗六強（已預剔）。Submit 即自動幫佢哋生 BD（NBLM 連夜，VID 2 邊生邊揀三甲）。想加其他概念？隨時喺「其餘概念」剔多幾個再 Submit，佢哋一樣會生 BD 入 VID 2。</div><div class='h2'>🔻 委員會推薦六強（橫掃揀）</div><div class='carousel'><div class='ccard  sel' data-cid='cm27e96632'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>委員會</span><span class='oscore'>評審 88</span></div><div class='ctitle'>💬 你張 CV,幾時 last update?</div><div class='csub'>Concept 2:〔CV·Last Update〕</div><div class='cbody'><p><strong>創作概念</strong>:用一份典型大學生 CV 做主軸。開場 CV 睇落光鮮,但旁白帶出 AI 時代,CV 上嘅技能欄逐項「變灰、標住 outdated」——學歷仲喺度,但彈藥過晒期。主角報讀 ERB 課程後,每掌握一項實戰技能(AI 應用、數據分析、數碼營銷),CV 上即時「解鎖」一個新項目,由灰變亮,成份 CV 重新生猛。將抽象「技能提升」變成睇得明嘅「CV 升級」,硬訊息「即學即用、貼市實用」自然落地。</p>
+<div id='vid1_1' class='tabpanel' data-set='1'><div class='banner'>👉 委員會已預選六強，你可以隨選隨剔，撳右下 Submit，NBLM 即自動幫佢哋生 BD 入 VID 2。</div><div class='h2'>🔻 推薦六強（橫掃揀）</div><div class='carousel'><div class='ccard  sel' data-cid='cm27e96632'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>委員會</span><span class='oscore'>評審 88</span></div><div class='ctitle'>💬 你張 CV,幾時 last update?</div><div class='csub'>Concept 2:〔CV·Last Update〕</div><div class='cbody'><p><strong>創作概念</strong>:用一份典型大學生 CV 做主軸。開場 CV 睇落光鮮,但旁白帶出 AI 時代,CV 上嘅技能欄逐項「變灰、標住 outdated」——學歷仲喺度,但彈藥過晒期。主角報讀 ERB 課程後,每掌握一項實戰技能(AI 應用、數據分析、數碼營銷),CV 上即時「解鎖」一個新項目,由灰變亮,成份 CV 重新生猛。將抽象「技能提升」變成睇得明嘅「CV 升級」,硬訊息「即學即用、貼市實用」自然落地。</p>
 <p><strong>人/景</strong>:1 位代表核心群體嘅年輕高學歷在職主角(由焦慮到自信嘅轉變弧);實景穿插 ERB 現代化課室真實上堂 b-roll(操作 AI 軟件、寫 code 嘅 close-up),再對比佢喺新型工作環境應用同一技能。CV 升級用乾淨 motion graphic 呈現,<strong>克制、唔做 glitch / HUD</strong>,保持商業高級感。</p>
 <p><strong>Visual Device</strong>:<strong>「CV 技能欄即時解鎖」</strong>——一份真實 CV 上,技能 icon 由灰→亮、由舊→新,配輕量動效。一個睇一眼就明嘅「增值」視覺鈎,夠 fresh 但唔出位。</p>
 <p><strong>主打口號</strong>:你張 CV,幾時 last update?</p>
@@ -522,7 +532,7 @@ th{background:#f8fafc;font-weight:700}
 <div id='vid1_3' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 2 揀三甲先。</div></div>
 <div id='vid1_4' class='tabpanel' data-set='1'><div class='banner'>未有 FINAL。返 VID 3 選 FINAL 2 先。</div></div>
 <div id='vid1_5' class='tabpanel' data-set='1'><div class='banner'>未有 FINAL。</div></div>
-<div class=foot>Idea Lab · 06-06 09:59 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+<div class=foot>Idea Lab · 06-06 10:25 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
 </div>
 
 <script>
