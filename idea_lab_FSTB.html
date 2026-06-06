@@ -158,8 +158,18 @@ summary.supp{display:flex;align-items:center;gap:8px}
   transition:width .6s ease}
 .pgtxt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
   font-size:12px;font-weight:800;color:#1b1f27;z-index:1}
-@keyframes tabpulse{0%{box-shadow:0 0 0 0 rgba(220,38,38,.55)}70%{box-shadow:0 0 0 6px rgba(220,38,38,0)}100%{box-shadow:0 0 0 0 rgba(220,38,38,0)}}
-.tab.busy{border-color:#dc2626 !important;color:#dc2626;animation:tabpulse 1.2s infinite}
+/* VID 2 tab：紅色虛線繞邊行緊（marching ants），未出晒 BD 就一直行；出晒 = 無 busy class = 停 */
+@keyframes march{to{background-position:14px 0,-14px 100%,0 -14px,100% 14px}}
+.tab.busy{color:#dc2626;font-weight:800;border-color:transparent !important;
+  background-image:
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0);
+  background-repeat:repeat-x,repeat-x,repeat-y,repeat-y;
+  background-size:14px 2px,14px 2px,2px 14px,2px 14px;
+  background-position:0 0,0 100%,0 0,100% 0;
+  animation:march .5s linear infinite}
 .empty{font-size:12px;color:#9aa0aa;background:#f8fafc;border:1px dashed #cbd5e1;
         border-radius:9px;padding:9px 11px;margin:8px 0}
 .note{width:100%;min-height:48px;border:1px solid var(--line);border-radius:9px;
@@ -1200,7 +1210,7 @@ Insurance and Gender Mainstreaming for Bidding Agencies)</span></div><div class=
 <div id='rad1_1' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 1：流程設計中，完成 VID 後再開。</div></div>
 <div id='rad1_2' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 2：流程設計中，完成 VID 後再開。</div></div>
 <div id='rad1_3' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 3：流程設計中，完成 VID 後再開。</div></div>
-<div class=foot>Idea Lab · 06-07 02:05 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+<div class=foot>Idea Lab · 06-07 02:08 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
 </div>
 
 <script>
