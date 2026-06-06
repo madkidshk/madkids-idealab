@@ -152,6 +152,14 @@ summary.supp{display:flex;align-items:center;gap:8px}
 .refbtn{flex:none;font-size:16px;line-height:1;background:#eef0fe;border:1px solid #dcdffb;
   border-radius:8px;padding:5px 9px;cursor:pointer}
 .refbtn:active{background:#dcdffb;transform:scale(.94)}
+.pgbar{position:relative;height:30px;border-radius:9px;background:#eef0fe;border:1px solid #dcdffb;
+  overflow:hidden;margin:8px 0}
+.pgfill{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,#6366f1,#818cf8);
+  transition:width .6s ease}
+.pgtxt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:#1b1f27;z-index:1}
+@keyframes tabpulse{0%{box-shadow:0 0 0 0 rgba(220,38,38,.55)}70%{box-shadow:0 0 0 6px rgba(220,38,38,0)}100%{box-shadow:0 0 0 0 rgba(220,38,38,0)}}
+.tab.busy{border-color:#dc2626 !important;color:#dc2626;animation:tabpulse 1.2s infinite}
 .empty{font-size:12px;color:#9aa0aa;background:#f8fafc;border:1px dashed #cbd5e1;
         border-radius:9px;padding:9px 11px;margin:8px 0}
 .note{width:100%;min-height:48px;border:1px solid var(--line);border-radius:9px;
@@ -1192,7 +1200,7 @@ Insurance and Gender Mainstreaming for Bidding Agencies)</span></div><div class=
 <div id='rad1_1' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 1：流程設計中，完成 VID 後再開。</div></div>
 <div id='rad1_2' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 2：流程設計中，完成 VID 後再開。</div></div>
 <div id='rad1_3' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 3：流程設計中，完成 VID 後再開。</div></div>
-<div class=foot>Idea Lab · 06-07 01:38 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+<div class=foot>Idea Lab · 06-07 02:05 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
 </div>
 
 <script>
@@ -1231,14 +1239,37 @@ function vid2AutoBD() {
   var pend = panel.querySelectorAll('[data-needbd="1"]');
   pend.forEach(function(c) {
     var brd = c.dataset.brd; if (!brd) return;
+    var k = 'bdstart_FSTB_' + brd;
+    if (!localStorage.getItem(k)) localStorage.setItem(k, String(Date.now()));  // 開始時間 → 進度條
     fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FSTB&concept=" + encodeURIComponent(brd) + "&stage=deck&target=main" + setQ(),
           {mode:'no-cors'}).catch(function(){});
   });
+  tickProgress();
   if (pend.length && !_vid2timer) {
-    showTopProc('🎨 生緊 BD…（NBLM 連夜，一晚生得晒，你可閂頁）');
-    _vid2timer = setTimeout(function() { location.reload(); }, 45000);
+    _vid2timer = setInterval(function() { location.reload(); }, 90000);  // 靜靜每 90s 攞新 BD（冇 develop bar）
   }
 }
+
+// VID 2 進度條：按實測平均 BD 時間（~10 分鐘）推移，封頂 99% stall（NBLM 唔報幾時好）。
+var BD_AVG_MS = 600000;   // 平均 606s（manifest 連續 gap 實測）
+function tickProgress() {
+  document.querySelectorAll('.pgbar').forEach(function(bar) {
+    var brd = bar.dataset.brd; if (!brd) return;
+    var k = 'bdstart_FSTB_' + brd;
+    var s = +localStorage.getItem(k);
+    if (!s) { s = Date.now(); localStorage.setItem(k, String(s)); }
+    var pct = Math.min(99, (Date.now() - s) / BD_AVG_MS * 100);
+    var f = bar.querySelector('.pgfill'); if (f) f.style.width = pct.toFixed(0) + '%';
+    var t = bar.querySelector('.pgtxt');
+    if (t) t.textContent = pct >= 99 ? 'BD 生成中…就快好（99%）' : ('BD 生成中… ' + pct.toFixed(0) + '%（平均 ~10 分鐘）');
+  });
+}
+setInterval(tickProgress, 2000); tickProgress();
+// 已完成（卡有圖）→ 清走嗰個 brd 嘅開始時間，免下次重生即跳 99%
+document.querySelectorAll('.card[data-brd] img.sheet').forEach(function(im) {
+  var card = im.closest('.card[data-brd]');
+  if (card && card.dataset.brd) localStorage.removeItem('bdstart_FSTB_' + card.dataset.brd);
+});
 
 // 零碎想法：localStorage array(可入多次),即時累積顯示,每條 POST 去 GAS 畀委員會消化
 var NK = 'notes_FSTB';
@@ -1368,10 +1399,9 @@ function pickedCids() {
     function(k) { return k.closest('[data-cid]').dataset.cid; });
 }
 function submitAdvance(url) {
-  sessionStorage.setItem('fwait', getVidPhase());
-  showTopProc('✅ 已提交，系統 develop 緊…');
+  toast('✅ 已提交，十幾秒後自動刷新睇下一步（或撳右上 🔄）');
   fetch(url, {mode:'no-cors'}).catch(function(){});
-  setTimeout(function() { location.reload(); }, 20000);
+  setTimeout(function() { location.reload(); }, 13000);   // 單次刷新，冇 develop bar，冇無限 loop
 }
 function submitRound() {
   var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
@@ -1424,21 +1454,5 @@ function submitGSlide(btn) {
   toast('📊 已傳送，系統 paste 入 GSlide 中…');
 }
 
-(function() {
-  var w = sessionStorage.getItem('fwait');
-  if (w === null) return;
-  if (getVidPhase() > (+w)) {
-    sessionStorage.removeItem('fwait'); sessionStorage.removeItem('fwait_n');
-    toast('✅ 已進入下一階段'); return;
-  }
-  var n = (+sessionStorage.getItem('fwait_n') || 0) + 1;
-  sessionStorage.setItem('fwait_n', String(n));
-  if (n <= 6) {   // 最多 6 次自動 check（~2 分鐘）→ 唔再無限 loop 卡死
-    showTopProc('系統 develop 緊… 🔄 自動 check（' + n + '/6，約 ' + (n*20) + 's）');
-    setTimeout(function() { location.reload(); }, 20000);
-  } else {       // give-up：老實講，停自動 reload，畀手動 re-check
-    sessionStorage.removeItem('fwait'); sessionStorage.removeItem('fwait_n');
-    showTopProc('⏸ 等咗 2 分鐘未見更新 —— BD 可能仲 NBLM 連夜生緊，或要手動重生。睇返卡片狀態。', true);
-  }
-})();
+// 「develop 緊」bar 已移除（Raymond 2026-06-06）—— 改用 VID 2 tab 紅邊 + 各 concept 進度條。
 </script></body></html>
