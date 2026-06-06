@@ -522,7 +522,7 @@ th{background:#f8fafc;font-weight:700}
 <div id='vid1_3' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 2 揀三甲先。</div></div>
 <div id='vid1_4' class='tabpanel' data-set='1'><div class='banner'>未有 FINAL。返 VID 3 選 FINAL 2 先。</div></div>
 <div id='vid1_5' class='tabpanel' data-set='1'><div class='banner'>未有 FINAL。</div></div>
-<div class=foot>Idea Lab · 06-06 02:57 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+<div class=foot>Idea Lab · 06-06 09:59 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
 </div>
 
 <script>
@@ -561,7 +561,7 @@ function vid2AutoBD() {
   var pend = panel.querySelectorAll('[data-needbd="1"]');
   pend.forEach(function(c) {
     var brd = c.dataset.brd; if (!brd) return;
-    fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&concept=" + brd + "&stage=deck&target=main" + setQ(),
+    fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&concept=" + encodeURIComponent(brd) + "&stage=deck&target=main" + setQ(),
           {mode:'no-cors'}).catch(function(){});
   });
   if (pend.length && !_vid2timer) {
