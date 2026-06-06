@@ -22,6 +22,10 @@ h1 .dept{color:var(--ac)}
 .tab:hover{border-color:var(--ac);color:var(--ac)}
 .tab.active{background:var(--ac);border-color:var(--ac);color:#fff}
 header{padding:12px 0 4px}
+.homebtn{display:inline-block;font-size:12px;font-weight:800;color:var(--ac);
+          text-decoration:none;background:#eef0fe;border:1px solid #dcdffb;
+          border-radius:8px;padding:4px 11px;margin-bottom:7px}
+.homebtn:active{background:#dcdffb}
 .tabpanel{display:none;padding-top:10px}
 .tabpanel.active{display:block}
 .setlab{font-size:11px;font-weight:800;color:var(--ac);background:#eef0fe;
@@ -70,13 +74,25 @@ header{padding:12px 0 4px}
 .btn.mini{padding:4px 9px;font-size:11px;margin-left:8px}
 .submit{position:fixed;bottom:14px;right:calc(50% - 215px + 13px);z-index:20}
 @media(max-width:456px){.submit{right:14px}}
-/* Desktop:唔好做窄電話條,放闊到正常 web 闊度（Raymond 2026-06-06）*/
-@media(min-width:760px){
-  .wrap{max-width:720px;padding:0 22px 130px}
-  .submit{right:calc(50% - 360px + 22px)}
-  .ccard{flex:0 0 46%;max-height:70vh}
+/* ── Responsive 3 tier（Raymond 2026-06-06）：mobile(default) / tablet / desktop 用晒畫面 ── */
+/* Tablet:闊啲,carousel 一次 2 卡 */
+@media(min-width:700px) and (max-width:1099px){
+  .wrap{max-width:680px;padding:0 20px 130px}
+  .submit{right:calc(50% - 340px + 20px)}
+  .ccard{flex:0 0 46%;max-height:68vh}
   .rest-row .ccard{flex:0 0 36%}
   .briefcard{max-height:40vh}
+}
+/* Desktop:用晒畫面 —— carousel 變 grid(唔橫掃,鋪滿),六強 3 欄、其餘 4 欄 */
+@media(min-width:1100px){
+  .wrap{max-width:min(1280px,94vw);padding:0 28px 120px}
+  .submit{right:max(28px, calc(50vw - 640px + 28px))}
+  .carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}
+  .ccard{flex:0 0 calc(33.333% - 10px);max-width:none;max-height:64vh;scroll-snap-align:none}
+  .rest-row .ccard{flex:0 0 calc(25% - 11px)}
+  .briefcard{max-height:36vh}
+  .tabbar{flex-wrap:wrap}
+  .card.big .sheet{max-width:520px}
 }
 .submit .btn{box-shadow:0 6px 20px rgba(79,70,229,.4);padding:11px 18px;font-size:13.5px}
 .foot{font-size:11px;color:#9aa0aa;text-align:center;margin-top:22px}
@@ -198,6 +214,7 @@ th{background:#f8fafc;font-weight:700}
 </style></head><body>
 <div class=wrap>
 <header>
+  <a class=homebtn href="index.html">🏠 總目錄</a>
   <h1><span class=dept>FSTB</span> · APEC FMM 2026 宣傳 API</h1>
   <div class=bdp><span class='bb'>B) 29/5</span><span class='dd'>D) 9/6 03:00 · <b id='cd'>—</b></span><span class='pp'>P) 16/6</span></div>
 </header>
@@ -1151,7 +1168,7 @@ th{background:#f8fafc;font-weight:700}
 <div id='rad1_1' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 1：流程設計中，完成 VID 後再開。</div></div>
 <div id='rad1_2' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 2：流程設計中，完成 VID 後再開。</div></div>
 <div id='rad1_3' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 3：流程設計中，完成 VID 後再開。</div></div>
-<div class=foot>Idea Lab · 06-06 10:24 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+<div class=foot>Idea Lab · 06-06 10:35 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
 </div>
 
 <script>
