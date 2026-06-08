@@ -376,6 +376,33 @@
       "board": {
         "versions": [
           {
+            "v": "20260609-010917-nblm-i1",
+            "sheet": "assets/gen/FSTB_FINAL/v20260609-010917-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FSTB_FINAL/v20260609-010917-nblm-i1/frame_01.png",
+              "assets/gen/FSTB_FINAL/v20260609-010917-nblm-i1/frame_02.png",
+              "assets/gen/FSTB_FINAL/v20260609-010917-nblm-i1/frame_03.png",
+              "assets/gen/FSTB_FINAL/v20260609-010917-nblm-i1/frame_04.png",
+              "assets/gen/FSTB_FINAL/v20260609-010917-nblm-i1/frame_05.png",
+              "assets/gen/FSTB_FINAL/v20260609-010917-nblm-i1/frame_06.png",
+              "assets/gen/FSTB_FINAL/v20260609-010917-nblm-i1/frame_07.png",
+              "assets/gen/FSTB_FINAL/v20260609-010917-nblm-i1/frame_08.png",
+              "assets/gen/FSTB_FINAL/v20260609-010917-nblm-i1/frame_09.png",
+              "assets/gen/FSTB_FINAL/v20260609-010917-nblm-i1/frame_10.png",
+              "assets/gen/FSTB_FINAL/v20260609-010917-nblm-i1/frame_11.png"
+            ],
+            "n": 11,
+            "ts": "2026-06-09T01:10:18",
+            "source": "nblm",
+            "gslide_pages": [
+              "assets/gen/FSTB_FINAL/v20260609-010917-nblm-i1/gslide_FSTB_FINAL_p1.png",
+              "assets/gen/FSTB_FINAL/v20260609-010917-nblm-i1/gslide_FSTB_FINAL_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1XazZ__nL-2vNbZpcavtjRFT-z5z8c98l",
+            "deck_pdf": "https://drive.google.com/file/d/1N9tMDwId3ml1Sz--2DyZ6ngyeVunMEmi/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FSTB_FINAL/v20260609-010917-nblm-i1/deck.pdf"
+          },
+          {
             "v": "20260608-214501",
             "sheet": "assets/gen/FSTB_FINAL/v20260608-214501/board_sheet.png",
             "frames": [
@@ -456,5 +483,5 @@
   },
   "drive_canonical": "https://drive.google.com/drive/folders/1ntsU_5aWcpTakrKVaLj6WeUga8etS20U",
   "drive_canonical_name": "FSTB_APEC FMM 2026 API",
-  "updated": "2026-06-08T22:18:06"
+  "updated": "2026-06-09T01:11:15"
 }
