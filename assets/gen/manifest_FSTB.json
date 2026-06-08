@@ -392,6 +392,31 @@
               "assets/gen/FSTB_FINAL/v20260608-214501/frame_11.png"
             ],
             "n": 11,
+            "ts": "2026-06-08T22:17:52",
+            "source": "lineB",
+            "gslide_pages": [
+              "assets/gen/FSTB_FINAL/v20260608-214501/gslide_FSTB_FINAL_p1.png",
+              "assets/gen/FSTB_FINAL/v20260608-214501/gslide_FSTB_FINAL_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1byVLUw6z8iYdvljvbY5PmFffYM6PemyG"
+          },
+          {
+            "v": "20260608-214501",
+            "sheet": "assets/gen/FSTB_FINAL/v20260608-214501/board_sheet.png",
+            "frames": [
+              "assets/gen/FSTB_FINAL/v20260608-214501/frame_01.png",
+              "assets/gen/FSTB_FINAL/v20260608-214501/frame_02.png",
+              "assets/gen/FSTB_FINAL/v20260608-214501/frame_03.png",
+              "assets/gen/FSTB_FINAL/v20260608-214501/frame_04.png",
+              "assets/gen/FSTB_FINAL/v20260608-214501/frame_05.png",
+              "assets/gen/FSTB_FINAL/v20260608-214501/frame_06.png",
+              "assets/gen/FSTB_FINAL/v20260608-214501/frame_07.png",
+              "assets/gen/FSTB_FINAL/v20260608-214501/frame_08.png",
+              "assets/gen/FSTB_FINAL/v20260608-214501/frame_09.png",
+              "assets/gen/FSTB_FINAL/v20260608-214501/frame_10.png",
+              "assets/gen/FSTB_FINAL/v20260608-214501/frame_11.png"
+            ],
+            "n": 11,
             "ts": "2026-06-08T21:45:38",
             "source": "lineB",
             "gslide_pages": [
@@ -431,5 +456,5 @@
   },
   "drive_canonical": "https://drive.google.com/drive/folders/1ntsU_5aWcpTakrKVaLj6WeUga8etS20U",
   "drive_canonical_name": "FSTB_APEC FMM 2026 API",
-  "updated": "2026-06-08T21:45:48"
+  "updated": "2026-06-08T22:18:06"
 }
