@@ -1,251 +1,974 @@
-<!DOCTYPE html><html lang="zh-HK"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!DOCTYPE html><html lang=zh-HK><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
 <title>FEHD · Idea Lab</title>
 <style>
-:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#717784;--line:#e7e9ee;--accent:#4f46e5;--gold:#c79a2b;--grn:#15a34a;--red:#dc2626;--sh:0 1px 2px rgba(20,24,40,.04),0 4px 14px rgba(20,24,40,.05)}
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#6b7280;--line:#e6e8ec;
+      --ac:#4f46e5;--gold:#c79a2b;--red:#dc2626;--grn:#15a34a}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif;-webkit-font-smoothing:antialiased}
-.wrap{max-width:760px;margin:0 auto;padding:18px 15px 90px}
-header{padding:6px 2px 2px} h1{font-size:25px;font-weight:800;margin:0;letter-spacing:-.01em}
-.sub{color:var(--mut);font-size:14px;margin-top:3px}
-.stagebar{display:flex;gap:5px;margin:14px 0 8px}
-.stp{flex:1;text-align:center;padding:9px 3px;border-radius:11px;border:1px solid var(--line);background:#fff;text-decoration:none;display:block}
-.stp-i{font-size:15px;font-weight:800;line-height:1.2;color:var(--ink)} .stp-l{font-size:10.5px;font-weight:700;margin-top:2px;color:var(--mut)}
-.stp.cur{background:var(--accent);border-color:var(--accent)} .stp.cur .stp-i,.stp.cur .stp-l{color:#fff}
-.stp.done{background:#e7f7ee;border-color:#cdeedd} .stp.done .stp-i{color:var(--grn)} .stp.done .stp-l{color:#3f8c63}
-.stp.todo{opacity:.55}
-.nextact{display:block;text-decoration:none;background:#fff8e6;border:1px solid #f3e2ad;border-radius:11px;padding:12px 15px;font-size:14px;font-weight:700;color:#7a5b09;margin-bottom:4px}
-.nextact:active{background:#fdf0cf}
-.totop{position:fixed;right:16px;bottom:20px;z-index:20;width:46px;height:46px;border-radius:50%;background:var(--accent);color:#fff;font-size:22px;font-weight:800;display:none;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 14px rgba(79,70,229,.4)}
-.totop.show{display:flex}
-nav{position:sticky;top:0;z-index:9;display:flex;gap:7px;overflow-x:auto;padding:11px 0;margin:8px -15px 4px;padding-left:15px;background:rgba(244,245,247,.9);backdrop-filter:blur(8px);-webkit-overflow-scrolling:touch}
-nav a{flex:0 0 auto;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px}
-nav a:active{background:#eef}
-section{margin:26px 0}
-.sec-h{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);margin:0 0 11px;padding-left:2px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:17px 18px;box-shadow:var(--sh);margin:12px 0}
-.btn{display:inline-flex;align-items:center;gap:5px;text-decoration:none;font-weight:700;font-size:14px;border-radius:11px;padding:10px 15px;border:1px solid transparent;line-height:1}
-.btn.drive{background:#eef0ff;color:#3b35c7;border-color:#dfe1ff}
-.btn.cta{background:var(--accent);color:#fff} .btn.go{background:#0e7490;color:#fff} .btn.ghost{background:#fff;color:var(--ink);border-color:var(--line);font-weight:600}
-.btn.mini{font-size:12.5px;padding:7px 11px;background:var(--accent);color:#fff;border-radius:9px} .btn.mini.done{background:#fff;color:var(--gold);border-color:#ecd9a6}
-.btn.mini.nb{background:#f3eeff;color:#6b46c1;border:1px solid #e0d4ff}
-.ref .reftag{color:var(--mut);font-size:12.5px;margin-top:10px}
-.conflict{background:#fdeaea;color:#a01919;border:1px solid #f3c0c0;border-radius:11px;padding:11px 13px;font-size:13px;font-weight:600;margin-bottom:13px;line-height:1.5}
-.srctag{color:var(--mut);font-size:11.5px;margin-top:10px}
-.stats{display:grid;grid-template-columns:1fr;gap:9px;margin-top:13px}
-@media(min-width:520px){.stats{grid-template-columns:1fr 1fr 1fr}}
-.stat{background:#fafbfc;border:1px solid var(--line);border-radius:11px;padding:10px 12px}
-.stat-l{font-size:11.5px;color:var(--mut);font-weight:700;letter-spacing:.03em} .stat-v{font-size:14.5px;font-weight:600;margin-top:3px}
-.cd{font-size:11.5px;font-weight:800;border-radius:999px;padding:2px 8px;margin-left:4px} .cd.ok{background:#e7f7ee;color:var(--grn)} .cd.over{background:#fdeaea;color:var(--red)}
-.muted{color:var(--mut)} .empty{color:var(--mut);font-size:14px;padding:6px 2px} .hint{color:var(--mut);font-size:12.5px;margin:2px 2px 12px}
-.t3{padding:15px 16px} .t3head{display:flex;justify-content:space-between;align-items:center} .medal{font-size:22px} .t3score{font-weight:800;color:var(--accent);font-size:15px}
-.t3name{font-weight:700;font-size:16px;margin:7px 0 11px;line-height:1.4}
-.t3thumb{width:100%;border-radius:11px;border:1px solid var(--line);display:block;margin-bottom:11px}
-.t3act{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
-.lnk{color:var(--accent);text-decoration:none;font-size:13.5px;font-weight:600}
-.gen{padding:15px 16px} .genlbl{font-size:13.5px;margin-bottom:9px} .genimg{width:100%;border-radius:12px;border:1px solid var(--line);display:block}
-.gthumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:6px;margin-top:9px} .gthumb{width:100%;border-radius:7px;border:1px solid var(--line);display:block}
-.oldv{margin-top:9px}
-details.crow{border-bottom:1px solid var(--line)} details.crow:last-child{border-bottom:0}
-details.crow>summary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 4px;cursor:pointer;list-style:none}
-details.crow>summary::-webkit-details-marker{display:none}
-details.crow[open]{background:#fafbfc;border-radius:10px}
-.cname{font-size:14px;font-weight:600;flex:1;min-width:0}
-.cbody{padding:2px 6px 14px;font-size:14px} .cbody p{margin:.4em 0}
-details.soft{background:#fff;border:1px solid var(--line);border-radius:13px;padding:4px 15px;margin:11px 0;box-shadow:var(--sh)}
-details.soft>summary{cursor:pointer;font-weight:700;font-size:14px;padding:11px 0;list-style:none}
-details.soft>summary::-webkit-details-marker{display:none} details.soft>summary::before{content:"▸ ";color:var(--mut)} details.soft[open]>summary::before{content:"▾ "}
-details.soft.sec>summary{font-size:15.5px;font-weight:800;padding:13px 0} details.soft.sec[open]{padding-bottom:10px}
-.lab{font-size:11px;letter-spacing:.05em;color:var(--mut);text-transform:uppercase;font-weight:700;margin:13px 0 5px}
-.slo{color:var(--grn);font-weight:700} .nbcard{border-top:1px solid var(--line);padding-top:10px;margin-top:8px}
-.slogrp{margin:6px 0 12px} .slolist{margin:4px 0;padding-left:20px} .slolist li{margin:5px 0;font-size:14px;line-height:1.5}
-h4.cc{font-size:15px;margin:14px 0 6px}
-.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:11px}
-table{border-collapse:collapse;width:100%;min-width:380px;font-size:13.5px}
-th,td{border-bottom:1px solid var(--line);padding:9px 11px;text-align:center;vertical-align:top}
-th{background:#fafbfc;color:var(--mut);font-size:12px;font-weight:700} td.lt,th:first-child{text-align:left}
-p{margin:.55em 0}
-footer{color:var(--mut);font-size:12px;border-top:1px solid var(--line);margin-top:34px;padding-top:14px}
-</style></head><body><div class="wrap">
-<header><h1>FEHD</h1><div class="sub">Water Seepage APIs · 更新 06-04 01:53</div></header>
-<div class='stagebar'><a class='stp done' href='#cand'><div class='stp-i'>✓</div><div class='stp-l'>Brief</div></a><a class='stp done' href='#cand'><div class='stp-i'>✓</div><div class='stp-l'>概念·揀</div></a><a class='stp done' href='#cand'><div class='stp-i'>✓</div><div class='stp-l'>Board·揀</div></a><a class='stp cur' href='#gen'><div class='stp-i'>🎨</div><div class='stp-l'>生圖</div></a><a class='stp todo' href='#gen'><div class='stp-i'>📋</div><div class='stp-l'>出稿</div></a></div><a class='nextact' href='#gen'>👉 Round 3:storyboard 圖出咗,睇/重生 →</a>
-<nav><a href='#gen'>🎞️作品</a><a href='#top3'>🏆三甲</a><a href='#cand'>🗂️候選</a><a href='#lookback'>👀睇返</a><a href='#ref'>📌資料</a><a href='#5w1h'>💭5W1H</a><a href='#debrief'>📝Debrief</a><a href='#slogan'>💬Slogan</a><a href='#research'>🔬研究</a><a href='#isd'>📺ISD</a><a href='#score'>📊評分</a></nav>
-<section id='gen'><details class='soft sec' open><summary>🎞️ 生成作品(storyboard)</summary><div class='card gen' id='gen-1'><div class='genlbl'><b>brd 1</b> · Concept 1 · 12 格 · <a class='lnk' target='_blank' href='https://drive.google.com/drive/folders/1ieg2jo7oxFS4YuCXGDl97UeHZNZrVYFm'>📁 Drive</a></div><a href='assets/gen/FEHD_c1/v20260602-192855/board_sheet.png' target='_blank'><img class='genimg' src='assets/gen/FEHD_c1/v20260602-192855/board_sheet.png' loading='lazy'></a><details class='soft'><summary>逐格睇大圖(12)</summary><div class='gthumbs'><a href='assets/gen/FEHD_c1/v20260602-192855/frame_01.png' target='_blank'><img class='gthumb' src='assets/gen/FEHD_c1/v20260602-192855/frame_01.png' loading='lazy'></a><a href='assets/gen/FEHD_c1/v20260602-192855/frame_02.png' target='_blank'><img class='gthumb' src='assets/gen/FEHD_c1/v20260602-192855/frame_02.png' loading='lazy'></a><a href='assets/gen/FEHD_c1/v20260602-192855/frame_03.png' target='_blank'><img class='gthumb' src='assets/gen/FEHD_c1/v20260602-192855/frame_03.png' loading='lazy'></a><a href='assets/gen/FEHD_c1/v20260602-192855/frame_04.png' target='_blank'><img class='gthumb' src='assets/gen/FEHD_c1/v20260602-192855/frame_04.png' loading='lazy'></a><a href='assets/gen/FEHD_c1/v20260602-192855/frame_05.png' target='_blank'><img class='gthumb' src='assets/gen/FEHD_c1/v20260602-192855/frame_05.png' loading='lazy'></a><a href='assets/gen/FEHD_c1/v20260602-192855/frame_06.png' target='_blank'><img class='gthumb' src='assets/gen/FEHD_c1/v20260602-192855/frame_06.png' loading='lazy'></a><a href='assets/gen/FEHD_c1/v20260602-192855/frame_07.png' target='_blank'><img class='gthumb' src='assets/gen/FEHD_c1/v20260602-192855/frame_07.png' loading='lazy'></a><a href='assets/gen/FEHD_c1/v20260602-192855/frame_08.png' target='_blank'><img class='gthumb' src='assets/gen/FEHD_c1/v20260602-192855/frame_08.png' loading='lazy'></a><a href='assets/gen/FEHD_c1/v20260602-192855/frame_09.png' target='_blank'><img class='gthumb' src='assets/gen/FEHD_c1/v20260602-192855/frame_09.png' loading='lazy'></a><a href='assets/gen/FEHD_c1/v20260602-192855/frame_10.png' target='_blank'><img class='gthumb' src='assets/gen/FEHD_c1/v20260602-192855/frame_10.png' loading='lazy'></a><a href='assets/gen/FEHD_c1/v20260602-192855/frame_11.png' target='_blank'><img class='gthumb' src='assets/gen/FEHD_c1/v20260602-192855/frame_11.png' loading='lazy'></a><a href='assets/gen/FEHD_c1/v20260602-192855/frame_12.png' target='_blank'><img class='gthumb' src='assets/gen/FEHD_c1/v20260602-192855/frame_12.png' loading='lazy'></a></div></details><details class='soft'><summary>📚 舊版本(1)</summary><div class='oldv'><img class='genimg' src='assets/gen/FEHD_c1/board_sheet.png' loading='lazy'></div></details></div></details></section><section id='top3'><details class='soft sec' ><summary>🏆 三甲 · 評分頭三(可揀三甲以外)</summary><p class='hint'>三甲 = 評審團按官方 marking scheme 總分頭三。你可揀三甲以外(見「🗂️ 候選池」每個都有「轉 brd」掣)。</p><div class='card t3'><div class='t3head'><span class='medal'>🥇</span><span class='t3score'>86.7/100</span></div><div class='t3name'>[委員會 200541] Concept 2:證據在手，主動解困</div><div class='t3act'><a class='btn cta' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=cm953c841f&stage=board'>🎨 轉 brd 生圖</a> <a class='lnk' href='#cand-cm953c841f'>睇完整概念 ↓</a></div></div><div class='card t3'><div class='t3head'><span class='medal'>🥈</span><span class='t3score'>86.4/100</span></div><div class='t3name'>[NBLM] 測漏無所遁形 / Thermal Catch</div><div class='t3act'><a class='btn cta' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=nbe4e8f8d1&stage=board'>🎨 轉 brd 生圖</a> <a class='lnk' href='#cand-nbe4e8f8d1'>睇完整概念 ↓</a></div></div><div class='card t3'><div class='t3head'><span class='medal'>🥉</span><span class='t3score'>84.6/100</span></div><div class='t3name'>[委員會 200541] Concept 1:圈出源頭，同步解困</div><div class='t3act'><a class='btn cta' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=cm9e4f6ad5&stage=board'>🎨 轉 brd 生圖</a> <a class='lnk' href='#cand-cm9e4f6ad5'>睇完整概念 ↓</a></div></div><details class='soft'><summary>🎯 CD 推薦理由 + polish</summary><p>確認頭三（客觀三甲）：</p>
-<p>1. [委員會 200541] Concept 2「證據在手，主動解困」86.7  </p>
-<p>   強在：  </p>
-<p>   • 中 brief：最直接回應「主動出擊、盡早截漏」要求  </p>
-<p>   • 創意力：以「證據」為切入點，同時解決業主舉證難及屋署跟進難  </p>
-<p>   • 阻嚇力：把「證據」視覺化成即時行動，給違規者「無所遁形」壓力  </p>
-<p>   • 記憶點：口號簡短有力，易於口耳相傳  </p>
-<p>   • 落客成功率：雙贏敘事，官民均受落  </p>
-<p>   Polish 方向：把「證據」再轉化成更強的視覺符號（如即影即有證據包），令一擊即中。</p>
-<p>2. [NBLM]「測漏無所遁形 / Thermal Catch」86.4  </p>
-<p>   強在：  </p>
-<p>   • 中 brief：熱成像直擊「隱蔽滲漏」痛點  </p>
-<p>   • 創意力：把冷門儀器變成街知巷聞的「捉鬼」工具  </p>
-<p>   • 阻嚇力：高科技視覺自帶權威，違規者即聯想「無所遁形」  </p>
-<p>   • 記憶點：「Thermal Catch」雙語押韻，朗朗上口  </p>
-<p>   • 落客成功率：官民都愛新科技，易過海報  </p>
-<p>   Polish 方向：把儀器畫面轉化成更親民的「捉漏特工」人設，降低距離感。</p>
-<p>3. [委員會 200541] Concept 1「圈出源頭，同步解困」84.6  </p>
-<p>   強在：  </p>
-<p>   • 中 brief：同時處理「鎖源」與「解困」兩大程序難點  </p>
-<p>   • 創意力：以「圈」為核心圖像，簡潔易明  </p>
-<p>   • 阻嚇力：源頭被「圈」即代表即將被鎖定，視覺壓迫感強  </p>
-<p>   • 記憶點：單一符號貫穿全 campaign，易延伸  </p>
-<p>   • 落客成功率：官民均認同「源頭管理」理念  </p>
-<p>   Polish 方向：把「圈」由靜態圖形變成動態鎖定動畫，加強即時感。</p>
-<p>額外 flag（低分但值得 Raymond 留意）：</p>
-<p>• [NBLM]「破財擋災 / Cost of Delay」81.6  </p>
-<p>  低分主因是情緒負面，但「金錢 vs 災難」對比可成為官民最易共鳴的理性訴求，建議可作 B 計劃或網上影片素材。</p></details></details></section><section id='cand'><details class='soft sec' ><summary>🗂️ 候選池</summary><div class='card'><details class='crow' id='cand-cme4b66505'><summary><span class='cname'>[委員會 131010] Concept 1:〔文件對位〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=cme4b66505&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1:〔文件對位〕</h4>
-<p><strong>Creative Concept 創作概念</strong>:以「通知信與熱成像圖精準疊合」為核心視覺，強調調查已完成，通知信即為證據。紅外線熱成像化作法定文件附件，避開即時探測或透視意象，突顯業主收到信後責任清晰，需按程序處理。</p>
-<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
-<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>全黑背景，一封政府通知信由上垂直落入畫面中央。</td><td>（旁白）收到通知信。</td></tr><tr><td>2</td><td>信件靜止，信封印有「聯合辦事處」標誌。</td></tr><tr><td>3</td><td>信紙展開，顯示「滲水位置」欄位。</td></tr><tr><td>4</td><td>信紙表面緩緩浮現熱成像色階濾鏡。</td><td>（旁白）紅外線分析已完成。</td></tr><tr><td>5</td><td>濾鏡覆蓋信中「滲水位置」欄位。</td></tr><tr><td>6</td><td>熱成像異常區域與信件欄位精準對位。</td></tr><tr><td>7</td><td>對位完成，濾鏡轉為靜態印記。</td><td>（旁白）源頭位置已鎖定。</td></tr><tr><td>8</td><td>畫面顯示「新程序2026」字樣。</td></tr><tr><td>9</td><td>底部小字顯示「逾期不修，政府將追討測試費用」。</td></tr><tr><td>10</td><td>信件淡出，畫面轉為灰白底、黑字。</td></tr><tr><td>11</td><td>畫面出現「聯合辦事處 Joint Office」標誌。</td><td>（旁白）程序清晰，責任自現。</td></tr><tr><td>12</td><td>畫面定格，標誌及程序編號停留。</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cm29db08ee'><summary><span class='cname'>[委員會 131010] Concept 2:〔程序索引〕</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=cm29db08ee&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2:〔程序索引〕</h4>
-<p><strong>Creative Concept 創作概念</strong>:以「三階段欄柵式索引」呈現法定程序，首階段置入通知信與熱成像摘要，其餘階段以低視覺權重列示，強調程序嚴謹、步驟有序，業主按通知信要求行動即可履行責任。</p>
-<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
-<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>畫面左側浮現三組垂直細線，標註 I、II、III。</td><td>（旁白）滲水調查程序。</td></tr><tr><td>2</td><td>第一欄（I）向右展開，顯示通知信。</td></tr><tr><td>3</td><td>通知信表面疊加熱成像摘要。</td><td>（旁白）紅外線輔助定位。</td></tr><tr><td>4</td><td>熱成像異常區域與信件欄位對位重合。</td></tr><tr><td>5</td><td>第二、三欄保持收合，僅顯示法定條文編號。</td></tr><tr><td>6</td><td>底部小字列明「限期內完成維修」。</td></tr><tr><td>7</td><td>畫面轉灰白底、深藍線條。</td><td>（旁白）逾期不修，依法執行後續程序。</td></tr><tr><td>8</td><td>第二欄輕微高亮，顯示「第二、三階段調查」。</td></tr><tr><td>9</td><td>第三欄輕微高亮，顯示「追討測試費用」。</td></tr><tr><td>10</td><td>第一欄重新聚焦，通知信與熱成像靜態停留。</td></tr><tr><td>11</td><td>畫面出現「聯合辦事處 Joint Office」標誌。</td><td>（旁白）程序升級，責任明確。</td></tr><tr><td>12</td><td>畫面定格，標誌及階段編號停留。</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cm63db8305'><summary><span class='cname'>[委員會 145418] Concept 1:箭鎖漏源·程序實體化</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=cm63db8305&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1:箭鎖漏源·程序實體化</h4>
-<p><strong>Creative Concept 創作概念</strong>：以「紅外線箭咀」作為清晰導航，貫穿整個片段。開首一刻紅外線即鎖定漏源，隨即展示「通知信」有效期倒數；若業主錯過時限，畫面即分裂為堆疊文件與費用結算單，視覺化「程序同步追討」的後果。整段以「一秒安心 vs. 持續麻煩」作強烈對比，驅使業主即時行動。</p>
-<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
-<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>極近特寫：手緊揸通知信，紙張微皺，背景模糊滲水牆。</td><td>（無對白）</td></tr><tr><td>2</td><td>手微顫一下，信封上「聯辦處」Logo 清晰。</td><td>旁白（男，專業）：收到通知信……</td></tr><tr><td>3</td><td>手鬆開，畫面急速拉遠，牆上紅外線熱點閃一下。</td><td>旁白：第一階段紅外線已經鎖定源頭。</td></tr><tr><td>4</td><td>橙色箭咀彈出，精準指向最熱點，發出「嗶」聲。</td><td>旁白：一眼見到，唔使估估下。</td></tr><tr><td>5</td><td>箭咀旁浮現半透明標籤：「$0 檢測費」。</td><td>旁白：限期內自修，零檢測費。</td></tr><tr><td>6</td><td>時間進度條由綠轉橙，快速倒數。</td><td>旁白：拖得耐……</td></tr><tr><td>7</td><td>畫面瞬間「撕裂」，左邊箭咀變暗，右邊湧出堆疊文件、測試清單及費用結算單。</td><td>旁白：程序同步展開。</td></tr><tr><td>8</td><td>費用結算單由模糊變清晰，紅字「測試費用自付」。</td><td>旁白：測試費用就要自己畀。</td></tr><tr><td>9</td><td>箭咀再次閃現，鎖定同一熱點，旁邊標籤轉為紅色。</td><td>旁白：一箭鎖漏，拖過時限程序就追到。</td></tr><tr><td>10</td><td>畫面切回業主手持通知信的特寫，手指輕觸「自修」選項。</td><td>旁白：自己決定，源頭自己修。</td></tr><tr><td>11</td><td>0.5 秒 freeze frame：箭咀鎖定＋「咔」聲音效。</td><td>（無對白）</td></tr><tr><td>12</td><td>黑底白字 super：聯辦處 Logo + 「一箭鎖漏，拖過時限程序就追到。」</td><td>旁白：聯辦處，專業斷症，助你履行業主責任。</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cm19c18f10'><summary><span class='cname'>[委員會 145418] Concept 2:鄰里未投訴·預警勝於補救</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=cm19c18f10&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2:鄰里未投訴·預警勝於補救</h4>
-<p><strong>Creative Concept 創作概念</strong>：以「透視牆」為視覺主軸，紅外線成為業主與鄰里之間的「無聲橋樑」。片中先呈現和諧走廊（樓上樓下無人敲門），再切入紅外線箭咀鎖定漏點，讓業主在投訴發生前已掌握證據與解決方案。強調「預警」而非「監控」，同時回歸「業主責任」法律基礎。</p>
-<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
-<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>走廊中景，和諧寧靜，門縫無人影。</td><td>（無對白）</td></tr><tr><td>2</td><td>特寫門鈴，無人按動。</td><td>旁白（男，專業）：樓上樓下未投訴之前……</td></tr><tr><td>3</td><td>畫面切至室內滲水牆，熱圖暖橙色浮現。</td><td>旁白：聯辦處紅外線已經見到源頭。</td></tr><tr><td>4</td><td>箭咀彈出，鎖定漏點，發出「嗶」聲。</td><td>旁白：一秒斷症，唔使等到鄰里敲門。</td></tr><tr><td>5</td><td>畫面一分為二：左邊箭咀鎖定，右邊是和諧鄰里聊天畫面。</td><td>旁白：修好你層，上下安心。</td></tr><tr><td>6</td><td>箭咀旁浮現標籤：「$0 檢測費」。</td><td>旁白：趁早自修，零檢測費。</td></tr><tr><td>7</td><td>畫面切回單一畫面，箭咀持續閃爍。</td><td>旁白：收到通知信，就係你嘅責任。</td></tr><tr><td>8</td><td>時間進度條出現，由綠轉橙。</td><td>旁白：拖得耐，程序同步展開。</td></tr><tr><td>9</td><td>畫面右下角彈出費用結算單，紅字「測試費用自付」。</td><td>旁白：到時費用就要自己畀。</td></tr><tr><td>10</td><td>箭咀再次閃現，旁邊標籤轉紅。</td><td>旁白：一箭鎖漏，拖過時限程序就追到。</td></tr><tr><td>11</td><td>0.5 秒 freeze frame：箭咀鎖定＋「咔」聲。</td><td>（無對白）</td></tr><tr><td>12</td><td>黑底白字 super：聯辦處 Logo + 「一箭鎖漏，拖過時限程序就追到。」</td><td>旁白：聯辦處，專業斷症，助你履行業主責任。</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cm9e4f6ad5'><summary><span class='cname'>[委員會 200541] Concept 1:圈出源頭，同步解困</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=cm9e4f6ad5&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 1:圈出源頭，同步解困</h4>
-<p><strong>Creative Concept 創作概念</strong>: JO 用紅外線熱成像報告將模糊水漬轉化為清晰工程圖則，業主用紅筆圈出源頭後，雙軌進度條同步推進；透過「一圈即行動」的視覺對比，展示業主掌握話事權，就能加速程序、控制成本，避免延誤引致嘅更大損失。</p>
-<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
-<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>全黑。突然亮起冷灰水漬紋理，邊界模糊，隨輕微水滴聲擴散。</td><td>（環境音：滴水聲）</td></tr><tr><td>2</td><td>業主 POV，手持冷調手機，對住潮濕牆身，畫面微晃。</td><td>業主（喃喃）：又滲水？</td></tr><tr><td>3</td><td>冷暖對比切：左側灰暗水漬，右側切入橙紅熱圖，漸層清晰。</td><td>旁白（JO專業語氣）：聯合辦事處嘅紅外線熱成像。</td></tr><tr><td>4</td><td>熱圖疊加 A4 工程圖則，抬頭顯示 &quot;Infrared Thermography – Joint Office (JO)&quot;。</td><td>旁白：將水漬變工程圖則。</td></tr><tr><td>5</td><td>業主手持紅色 Marker，筆尖接觸圖則邊緣。</td><td>（音效：清脆 marker 聲）</td></tr><tr><td>6</td><td>紅筆快速一圈，圖則上熱源點被紅圈鎖定。</td><td>旁白：一圈。</td></tr><tr><td>7</td><td>Match Cut：紅圈同時出現在真實牆身相同位置。</td><td>（音效：確認低沉聲）</td></tr><tr><td>8</td><td>雙軌 UI 出現：藍軌（JO Stage II）、紅軌（Stage III），由業主手指輕點啟動。</td><td>旁白：程序同步進行。</td></tr><tr><td>9</td><td>雙軌同時狂飆填滿，視覺節奏加速。</td><td>旁白：你一動，調查就快。</td></tr><tr><td>10</td><td>邊緣冷色水漬紋理迅速收縮消失，轉為清晰線條。</td><td>旁白：成本自己控。</td></tr><tr><td>11</td><td>業主打電話，維修師傅入畫，雙軌完成。</td><td>業主（對電話）：即刻嚟。</td></tr><tr><td>12</td><td>黑底白字：「圖喺手，漏喺你控」。JO 標誌 + 網址。</td><td>旁白：聯合辦事處（JO）。</td></tr></tbody></table></div></div></details><details class='crow' id='cand-cm953c841f'><summary><span class='cname'>[委員會 200541] Concept 2:證據在手，主動解困</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=cm953c841f&stage=develop'>✏️ 寫 full board</a></summary><div class='cbody'><h4 class="cc">## Concept 2:證據在手，主動解困</h4>
-<p><strong>Creative Concept 創作概念</strong>: JO 將通知信重塑為可即時標註嘅工程圖則，業主手持圖則圈出問題後，畫面 Match Cut 回真實維修現場；強調「證據在手＝話事權在手」，透過雙軌進度條視覺化「你一動手，程序即加速」，確立專業、迅捷嘅品牌角色。</p>
-<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
-<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>業主 POV，推門入屋，牆身水漬特寫，環境音煩躁。</td><td>業主（自言自語）：呢滴水，煩到爆。</td></tr><tr><td>2</td><td>門縫滑入 A4 工程圖則，無信封，抬頭 &quot;Infrared Thermography – Joint Office (JO)&quot;。</td><td>（音效：紙張輕滑聲）</td></tr><tr><td>3</td><td>手持圖則，紅筆懸停於熱感色塊上方。</td><td>旁白（JO專業語氣）：收到通知信，證據已經喺你手。</td></tr><tr><td>4</td><td>紅筆快速畫圈，熱源被紅線鎖定。</td><td>旁白：源頭，一圈即明。</td></tr><tr><td>5</td><td>Match Cut：紅圈同時出現喺真實牆身。</td><td>（音效：確認聲）</td></tr><tr><td>6</td><td>畫面下緣雙色進度條出現，藍／紅兩軌靜止。</td><td>旁白：Stage II 同 Stage III。</td></tr><tr><td>7</td><td>業主手指輕點圖則，雙軌同時啟動並快速填滿。</td><td>旁白：你一行動，程序同步加速。</td></tr><tr><td>8</td><td>冷色水漬紋理由邊緣向中心收縮，消失。</td><td>旁白：拖得越耐，費用越高。</td></tr><tr><td>9</td><td>業主撥打電話，維修師傅帶工具入畫。</td><td>業主（對電話）：有圖則，嚟度睇。</td></tr><tr><td>10</td><td>師傅用工具對準紅圈位置，雙軌完成填滿。</td><td>旁白：自己搞掂，成本最精明。</td></tr><tr><td>11</td><td>業主滿意點頭，畫面轉為明亮暖調。</td><td>業主（微笑）：搞掂。</td></tr><tr><td>12</td><td>黑底白字：「證據喺手，漏喺你控」。JO 標誌 + 網址。</td><td>旁白：聯合辦事處（JO）。</td></tr></tbody></table></div></div></details><details class='crow' id='cand-nbe4e8f8d1'><summary><span class='cname'>[NBLM] 測漏無所遁形 / Thermal Catch</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=nbe4e8f8d1&stage=develop'>✏️ 寫 full board</a><a class='btn mini nb' target='_blank' href='https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6'>🅝 NBLM</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;測漏無所遁形 / Thermal Catch&quot;, &quot;big&quot;: &quot;紅外線熱像儀化身「照妖鏡」，令隱藏漏水源頭無所遁形，同時把拖延維修的代價直接轉化為業主的金錢損失。&quot;, &quot;slo&quot;: &quot;紅外線一照，漏水無所遁形；通知信唔理，代價自己畀！&quot;, &quot;kv&quot;: &quot;畫面左右分割，左邊 JO 人員手持紅外線熱像儀，螢幕透視出紅色警報的漏水管；右邊業主突然收到燃燒金幣符號的巨額調查費用通知單。&quot;}</p></div></details><details class='crow' id='cand-nb1e2c59de'><summary><span class='cname'>[NBLM] 滴水必究 / Leak Busters</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=nb1e2c59de&stage=develop'>✏️ 寫 full board</a><a class='btn mini nb' target='_blank' href='https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6'>🅝 NBLM</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;滴水必究 / Leak Busters&quot;, &quot;big&quot;: &quot;把漏水視為漏財，強調「一滴水 = 一塊錢」，用科技追蹤＋財務阻嚇雙管齊下，迫使業主即時行動。&quot;, &quot;slo&quot;: &quot;滴一滴都係錢，拖一日就畀錢！&quot;, &quot;kv&quot;: &quot;天花滴落的水滴瞬間變成一枚枚蒸發中的金幣，背景是紅外線熱像儀鎖定漏水源的紅色熱圖。&quot;}</p></div></details><details class='crow' id='cand-nbdad7d114'><summary><span class='cname'>[NBLM] 截漏行動 / Operation Dry-up</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=nbdad7d114&stage=develop'>✏️ 寫 full board</a><a class='btn mini nb' target='_blank' href='https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6'>🅝 NBLM</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;截漏行動 / Operation Dry-up&quot;, &quot;big&quot;: &quot;以特種部隊式行動命名，突出 JO 升級科技執法，收到通知信後若不作為，Stage II &amp; III 將同步展開，費用全數追討。&quot;, &quot;slo&quot;: &quot;收到信唔理？截漏行動即刻展開！&quot;, &quot;kv&quot;: &quot;黑夜中 JO 人員如特警般持紅外線儀器掃描單位，紅色熱能軌跡如雷射鎖定漏水點，旁邊浮現「調查費用」帳單。&quot;}</p></div></details><details class='crow' id='cand-nbb0821cdc'><summary><span class='cname'>[NBLM] 護業防漏網 / Leakage Radar</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=nbb0821cdc&stage=develop'>✏️ 寫 full board</a><a class='btn mini nb' target='_blank' href='https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6'>🅝 NBLM</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;護業防漏網 / Leakage Radar&quot;, &quot;big&quot;: &quot;把 JO 比喻為全天候雷達網絡，任何漏水都逃不過偵測，強調「早修 = 止血，拖延 = 失血」。&quot;, &quot;slo&quot;: &quot;漏水入網，一秒即現形；唔理通知，錢就飛走！&quot;, &quot;kv&quot;: &quot;半透明雷達掃描畫面覆蓋整幢大廈，紅點閃爍顯示漏水位置，右下角業主驚慌地接住一張標有「代價自負」的帳單。&quot;}</p></div></details><details class='crow' id='cand-nb23f2509a'><summary><span class='cname'>[NBLM] 科技查漏風暴 / Water-Tracing Matrix</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=nb23f2509a&stage=develop'>✏️ 寫 full board</a><a class='btn mini nb' target='_blank' href='https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6'>🅝 NBLM</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;科技查漏風暴 / Water-Tracing Matrix&quot;, &quot;big&quot;: &quot;以「風暴」比喻新政策的高壓執法，紅外線科技＋雙階段調查同時來襲，製造強烈危機感，逼使業主主動維修。&quot;, &quot;slo&quot;: &quot;風暴已到，唔修就畀錢！&quot;, &quot;kv&quot;: &quot;狂風暴雨式構圖，紅外線熱像儀發出強烈紅光如閃電劃破畫面，中央是業主被巨額調查費用帳單擊中的震撼一刻。&quot;}</p></div></details><details class='crow' id='cand-nb2c247273'><summary><span class='cname'>[NBLM] X光神探 / X-Ray Enforcer</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=nb2c247273&stage=develop'>✏️ 寫 full board</a><a class='btn mini nb' target='_blank' href='https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6'>🅝 NBLM</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;X光神探 / X-Ray Enforcer&quot;, &quot;big&quot;: &quot;把 JO 調查員變成擁有 X 光視覺的高科技神探，紅外線一掃即現形，展現科技無所遁形的威懾力。&quot;, &quot;slo&quot;: &quot;紅外線一掃，滲水無所遁形！&quot;, &quot;kv&quot;: &quot;調查員手持紅外線儀器，畫面瞬間由實牆變成透視熱像，滲水源頭發光現形。&quot;}</p></div></details><details class='crow' id='cand-nb43f92c8f'><summary><span class='cname'>[NBLM] 逆向驚嚇 / Reverse Shock</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=nb43f92c8f&stage=develop'>✏️ 寫 full board</a><a class='btn mini nb' target='_blank' href='https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6'>🅝 NBLM</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;逆向驚嚇 / Reverse Shock&quot;, &quot;big&quot;: &quot;以樓上違規業主為第一視角，聚焦「被科技捉到」及「收到巨額帳單」的震驚後果。&quot;, &quot;slo&quot;: &quot;拖得就拖？科技已經鎖定你！&quot;, &quot;kv&quot;: &quot;業主睇住通知單，畫面突變成紅外線熱像，巨型罰款單由畫面外飛撲而來。&quot;}</p></div></details><details class='crow' id='cand-nbadc10b72'><summary><span class='cname'>[NBLM] 水滴自爆 / Glow Leak</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=nbadc10b72&stage=develop'>✏️ 寫 full board</a><a class='btn mini nb' target='_blank' href='https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6'>🅝 NBLM</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;水滴自爆 / Glow Leak&quot;, &quot;big&quot;: &quot;水滴喺紅外線鏡頭下會發光，好似犯罪現場螢光反應，漏水源頭自己暴露位置。&quot;, &quot;slo&quot;: &quot;水滴會發光，隱藏都冇用！&quot;, &quot;kv&quot;: &quot;黑屏中只有紅外線熱像色塊，一滴水珠位置突然發出強烈紅光，帶出精準尋源概念。&quot;}</p></div></details><details class='crow' id='cand-nbfe04508d'><summary><span class='cname'>[NBLM] 倒數炸彈 / Ticking Notice</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=nbfe04508d&stage=develop'>✏️ 寫 full board</a><a class='btn mini nb' target='_blank' href='https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6'>🅝 NBLM</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;倒數炸彈 / Ticking Notice&quot;, &quot;big&quot;: &quot;將政府通知單變成倒數計時炸彈，逾期一刻即分裂成同步二三階段調查，最後變成追討費用帳單。&quot;, &quot;slo&quot;: &quot;通知單一出，倒數即時開始！&quot;, &quot;kv&quot;: &quot;特寫通知單上紅色倒數時鐘，零時炸開，兩份 Stage II / III 文件同時夾擊，最後變成巨型罰款單。&quot;}</p></div></details><details class='crow' id='cand-nbff2597ed'><summary><span class='cname'>[NBLM] 暗病 MRI / Seepage MRI</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=nbff2597ed&stage=develop'>✏️ 寫 full board</a><a class='btn mini nb' target='_blank' href='https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6'>🅝 NBLM</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;暗病 MRI / Seepage MRI&quot;, &quot;big&quot;: &quot;滲水好似身體暗病，紅外線即係 MRI，通知單係醫生處方；唔醫就入手術室，最後收天價醫療單。&quot;, &quot;slo&quot;: &quot;及早醫好，免收大醫藥費！&quot;, &quot;kv&quot;: &quot;分割畫面左邊正常浴室牆，右邊紅外線熱像如 MRI 掃描，中央覆蓋發光嘅政府通知單。&quot;}</p></div></details><details class='crow' id='cand-nbc01a1835'><summary><span class='cname'>[NBLM] 滲水特搜 / Seepage Task Force</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=nbc01a1835&stage=develop'>✏️ 寫 full board</a><a class='btn mini nb' target='_blank' href='https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6'>🅝 NBLM</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;滲水特搜 / Seepage Task Force&quot;, &quot;big&quot;: &quot;以CSI搜證手法包裝聯辦處，紅外線熱成像如透視眼，精準鎖定滲水源頭，同步調查＋追費形成強力阻嚇。&quot;, &quot;slo&quot;: &quot;紅外線睇穿滲水，即刻維修免追錢！&quot;, &quot;kv&quot;: &quot;Split-screen：左邊正常地磚，右邊紅外線屏幕顯示刺眼紅橙色漏水警號，專業探員持儀器站立一旁。&quot;}</p></div></details><details class='crow' id='cand-nb4103f7bb'><summary><span class='cname'>[NBLM] 限期倒數 / Ticking Deadline</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=nb4103f7bb&stage=develop'>✏️ 寫 full board</a><a class='btn mini nb' target='_blank' href='https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6'>🅝 NBLM</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;限期倒數 / Ticking Deadline&quot;, &quot;big&quot;: &quot;把通知信變成計時炸彈，限期倒數滴答作響，業主拖得愈耐，費用炸彈就愈大。&quot;, &quot;slo&quot;: &quot;通知信一到，計時開始；唔整就畀錢！&quot;, &quot;kv&quot;: &quot;特寫發光通知信，限期數字大倒數，背景隱約浮現巨額測試費賬單陰影。&quot;}</p></div></details><details class='crow' id='cand-nb7977cc95'><summary><span class='cname'>[NBLM] 紅外識破 / Infrared Uncovered</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=nb7977cc95&stage=develop'>✏️ 寫 full board</a><a class='btn mini nb' target='_blank' href='https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6'>🅝 NBLM</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;紅外識破 / Infrared Uncovered&quot;, &quot;big&quot;: &quot;紅外線鏡頭第一人稱視角，原本隱藏喺牆身嘅漏水源頭瞬間變成鮮紅發光體，無所遁形。&quot;, &quot;slo&quot;: &quot;紅外線一掃，滲水無處藏！&quot;, &quot;kv&quot;: &quot;暗室內紅外線POV，藍黑冷調畫面中，喉管位置猛然爆出刺眼紅光，指向業主。&quot;}</p></div></details><details class='crow' id='cand-nbeca12d84'><summary><span class='cname'>[NBLM] 破財擋災 / Cost of Delay</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=nbeca12d84&stage=develop'>✏️ 寫 full board</a><a class='btn mini nb' target='_blank' href='https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6'>🅝 NBLM</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;破財擋災 / Cost of Delay&quot;, &quot;big&quot;: &quot;強調拖延代價：同步二三階段調查＋天價測試費，直接打中業主「怕畀錢」嘅神經。&quot;, &quot;slo&quot;: &quot;拖得耐，荷包更痛！&quot;, &quot;kv&quot;: &quot;業主撕掉通知信後，畫面即切至巨額賬單砸落桌面，金額特寫震撼全屏。&quot;}</p></div></details><details class='crow' id='cand-nb906d6247'><summary><span class='cname'>[NBLM] 無所遁形 / Nowhere to Hide</span><a class='btn mini' target='_blank' href='https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&cid=nb906d6247&stage=develop'>✏️ 寫 full board</a><a class='btn mini nb' target='_blank' href='https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6'>🅝 NBLM</a></summary><div class='cbody'><p>{&quot;t&quot;: &quot;無所遁形 / Nowhere to Hide&quot;, &quot;big&quot;: &quot;高科技執法形象：聯辦處如現代探員，紅外線＋多重調查令業主無處可逃，逼使主動維修。&quot;, &quot;slo&quot;: &quot;聯辦處一到，滲水無處逃！&quot;, &quot;kv&quot;: &quot;冷峻藍調走廊，聯辦處人員手持儀器步步進逼，紅外線屏幕在黑暗中發亮，營造專業壓迫感。&quot;}</p></div></details></div><details class='soft'><summary>📖 睇全部委員會 / agency 完整提案 + storyboard</summary><details class='soft'><summary>🗳️ 委員會 20260601-200541</summary><h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
-<p>熱圖在手，源頭即揪。</p>
-<p>證據喺手，漏喺你控。</p>
-<p>收到通知信，維修快過人。</p>
-<p>拖得越耐，費用越金。</p>
-<p>業主一動手，程序同步走。</p>
-<h4 class="cc">## Concept 1:圈出源頭，同步解困</h4>
-<p><strong>Creative Concept 創作概念</strong>: JO 用紅外線熱成像報告將模糊水漬轉化為清晰工程圖則，業主用紅筆圈出源頭後，雙軌進度條同步推進；透過「一圈即行動」的視覺對比，展示業主掌握話事權，就能加速程序、控制成本，避免延誤引致嘅更大損失。</p>
-<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
-<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>全黑。突然亮起冷灰水漬紋理，邊界模糊，隨輕微水滴聲擴散。</td><td>（環境音：滴水聲）</td></tr><tr><td>2</td><td>業主 POV，手持冷調手機，對住潮濕牆身，畫面微晃。</td><td>業主（喃喃）：又滲水？</td></tr><tr><td>3</td><td>冷暖對比切：左側灰暗水漬，右側切入橙紅熱圖，漸層清晰。</td><td>旁白（JO專業語氣）：聯合辦事處嘅紅外線熱成像。</td></tr><tr><td>4</td><td>熱圖疊加 A4 工程圖則，抬頭顯示 &quot;Infrared Thermography – Joint Office (JO)&quot;。</td><td>旁白：將水漬變工程圖則。</td></tr><tr><td>5</td><td>業主手持紅色 Marker，筆尖接觸圖則邊緣。</td><td>（音效：清脆 marker 聲）</td></tr><tr><td>6</td><td>紅筆快速一圈，圖則上熱源點被紅圈鎖定。</td><td>旁白：一圈。</td></tr><tr><td>7</td><td>Match Cut：紅圈同時出現在真實牆身相同位置。</td><td>（音效：確認低沉聲）</td></tr><tr><td>8</td><td>雙軌 UI 出現：藍軌（JO Stage II）、紅軌（Stage III），由業主手指輕點啟動。</td><td>旁白：程序同步進行。</td></tr><tr><td>9</td><td>雙軌同時狂飆填滿，視覺節奏加速。</td><td>旁白：你一動，調查就快。</td></tr><tr><td>10</td><td>邊緣冷色水漬紋理迅速收縮消失，轉為清晰線條。</td><td>旁白：成本自己控。</td></tr><tr><td>11</td><td>業主打電話，維修師傅入畫，雙軌完成。</td><td>業主（對電話）：即刻嚟。</td></tr><tr><td>12</td><td>黑底白字：「圖喺手，漏喺你控」。JO 標誌 + 網址。</td><td>旁白：聯合辦事處（JO）。</td></tr></tbody></table></div>
-<h4 class="cc">## Concept 2:證據在手，主動解困</h4>
-<p><strong>Creative Concept 創作概念</strong>: JO 將通知信重塑為可即時標註嘅工程圖則，業主手持圖則圈出問題後，畫面 Match Cut 回真實維修現場；強調「證據在手＝話事權在手」，透過雙軌進度條視覺化「你一動手，程序即加速」，確立專業、迅捷嘅品牌角色。</p>
-<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
-<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>業主 POV，推門入屋，牆身水漬特寫，環境音煩躁。</td><td>業主（自言自語）：呢滴水，煩到爆。</td></tr><tr><td>2</td><td>門縫滑入 A4 工程圖則，無信封，抬頭 &quot;Infrared Thermography – Joint Office (JO)&quot;。</td><td>（音效：紙張輕滑聲）</td></tr><tr><td>3</td><td>手持圖則，紅筆懸停於熱感色塊上方。</td><td>旁白（JO專業語氣）：收到通知信，證據已經喺你手。</td></tr><tr><td>4</td><td>紅筆快速畫圈，熱源被紅線鎖定。</td><td>旁白：源頭，一圈即明。</td></tr><tr><td>5</td><td>Match Cut：紅圈同時出現喺真實牆身。</td><td>（音效：確認聲）</td></tr><tr><td>6</td><td>畫面下緣雙色進度條出現，藍／紅兩軌靜止。</td><td>旁白：Stage II 同 Stage III。</td></tr><tr><td>7</td><td>業主手指輕點圖則，雙軌同時啟動並快速填滿。</td><td>旁白：你一行動，程序同步加速。</td></tr><tr><td>8</td><td>冷色水漬紋理由邊緣向中心收縮，消失。</td><td>旁白：拖得越耐，費用越高。</td></tr><tr><td>9</td><td>業主撥打電話，維修師傅帶工具入畫。</td><td>業主（對電話）：有圖則，嚟度睇。</td></tr><tr><td>10</td><td>師傅用工具對準紅圈位置，雙軌完成填滿。</td><td>旁白：自己搞掂，成本最精明。</td></tr><tr><td>11</td><td>業主滿意點頭，畫面轉為明亮暖調。</td><td>業主（微笑）：搞掂。</td></tr><tr><td>12</td><td>黑底白字：「證據喺手，漏喺你控」。JO 標誌 + 網址。</td><td>旁白：聯合辦事處（JO）。</td></tr></tbody></table></div></details><details class='soft'><summary>🗳️ 委員會 20260601-200004</summary></details><details class='soft'><summary>🗳️ 委員會 20260601-145418</summary><h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
-<p>一箭鎖漏，拖過時限程序就追到。</p>
-<p>一箭鎖漏，自修最著數。</p>
-<p>收到通知信，趁早搞掂零檢測費。</p>
-<p>紅外線一眼斷症，源頭現形自己修。</p>
-<p>聯辦處幫你搵源頭，業主責任自己走唔甩。</p>
-<h4 class="cc">## Concept 1:箭鎖漏源·程序實體化</h4>
-<p><strong>Creative Concept 創作概念</strong>：以「紅外線箭咀」作為清晰導航，貫穿整個片段。開首一刻紅外線即鎖定漏源，隨即展示「通知信」有效期倒數；若業主錯過時限，畫面即分裂為堆疊文件與費用結算單，視覺化「程序同步追討」的後果。整段以「一秒安心 vs. 持續麻煩」作強烈對比，驅使業主即時行動。</p>
-<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
-<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>極近特寫：手緊揸通知信，紙張微皺，背景模糊滲水牆。</td><td>（無對白）</td></tr><tr><td>2</td><td>手微顫一下，信封上「聯辦處」Logo 清晰。</td><td>旁白（男，專業）：收到通知信……</td></tr><tr><td>3</td><td>手鬆開，畫面急速拉遠，牆上紅外線熱點閃一下。</td><td>旁白：第一階段紅外線已經鎖定源頭。</td></tr><tr><td>4</td><td>橙色箭咀彈出，精準指向最熱點，發出「嗶」聲。</td><td>旁白：一眼見到，唔使估估下。</td></tr><tr><td>5</td><td>箭咀旁浮現半透明標籤：「$0 檢測費」。</td><td>旁白：限期內自修，零檢測費。</td></tr><tr><td>6</td><td>時間進度條由綠轉橙，快速倒數。</td><td>旁白：拖得耐……</td></tr><tr><td>7</td><td>畫面瞬間「撕裂」，左邊箭咀變暗，右邊湧出堆疊文件、測試清單及費用結算單。</td><td>旁白：程序同步展開。</td></tr><tr><td>8</td><td>費用結算單由模糊變清晰，紅字「測試費用自付」。</td><td>旁白：測試費用就要自己畀。</td></tr><tr><td>9</td><td>箭咀再次閃現，鎖定同一熱點，旁邊標籤轉為紅色。</td><td>旁白：一箭鎖漏，拖過時限程序就追到。</td></tr><tr><td>10</td><td>畫面切回業主手持通知信的特寫，手指輕觸「自修」選項。</td><td>旁白：自己決定，源頭自己修。</td></tr><tr><td>11</td><td>0.5 秒 freeze frame：箭咀鎖定＋「咔」聲音效。</td><td>（無對白）</td></tr><tr><td>12</td><td>黑底白字 super：聯辦處 Logo + 「一箭鎖漏，拖過時限程序就追到。」</td><td>旁白：聯辦處，專業斷症，助你履行業主責任。</td></tr></tbody></table></div>
-<h4 class="cc">## Concept 2:鄰里未投訴·預警勝於補救</h4>
-<p><strong>Creative Concept 創作概念</strong>：以「透視牆」為視覺主軸，紅外線成為業主與鄰里之間的「無聲橋樑」。片中先呈現和諧走廊（樓上樓下無人敲門），再切入紅外線箭咀鎖定漏點，讓業主在投訴發生前已掌握證據與解決方案。強調「預警」而非「監控」，同時回歸「業主責任」法律基礎。</p>
-<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
-<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>走廊中景，和諧寧靜，門縫無人影。</td><td>（無對白）</td></tr><tr><td>2</td><td>特寫門鈴，無人按動。</td><td>旁白（男，專業）：樓上樓下未投訴之前……</td></tr><tr><td>3</td><td>畫面切至室內滲水牆，熱圖暖橙色浮現。</td><td>旁白：聯辦處紅外線已經見到源頭。</td></tr><tr><td>4</td><td>箭咀彈出，鎖定漏點，發出「嗶」聲。</td><td>旁白：一秒斷症，唔使等到鄰里敲門。</td></tr><tr><td>5</td><td>畫面一分為二：左邊箭咀鎖定，右邊是和諧鄰里聊天畫面。</td><td>旁白：修好你層，上下安心。</td></tr><tr><td>6</td><td>箭咀旁浮現標籤：「$0 檢測費」。</td><td>旁白：趁早自修，零檢測費。</td></tr><tr><td>7</td><td>畫面切回單一畫面，箭咀持續閃爍。</td><td>旁白：收到通知信，就係你嘅責任。</td></tr><tr><td>8</td><td>時間進度條出現，由綠轉橙。</td><td>旁白：拖得耐，程序同步展開。</td></tr><tr><td>9</td><td>畫面右下角彈出費用結算單，紅字「測試費用自付」。</td><td>旁白：到時費用就要自己畀。</td></tr><tr><td>10</td><td>箭咀再次閃現，旁邊標籤轉紅。</td><td>旁白：一箭鎖漏，拖過時限程序就追到。</td></tr><tr><td>11</td><td>0.5 秒 freeze frame：箭咀鎖定＋「咔」聲。</td><td>（無對白）</td></tr><tr><td>12</td><td>黑底白字 super：聯辦處 Logo + 「一箭鎖漏，拖過時限程序就追到。」</td><td>旁白：聯辦處，專業斷症，助你履行業主責任。</td></tr></tbody></table></div></details><details class='soft'><summary>🗳️ 委員會 20260601-131010</summary><h4 class="cc">## Slogan(畀 Raymond 揀)</h4>
-<p>收到通知信，紅外線已鎖源。</p>
-<p>紅外線鎖定異常，責任一目了然。</p>
-<p>新程序2026，技術輔助，責任自現。</p>
-<p>通知信到，源頭已清，維修在即。</p>
-<p>程序升級，源頭清晰，依法處理。</p>
-<h4 class="cc">## Concept 1:〔文件對位〕</h4>
-<p><strong>Creative Concept 創作概念</strong>:以「通知信與熱成像圖精準疊合」為核心視覺，強調調查已完成，通知信即為證據。紅外線熱成像化作法定文件附件，避開即時探測或透視意象，突顯業主收到信後責任清晰，需按程序處理。</p>
-<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
-<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>全黑背景，一封政府通知信由上垂直落入畫面中央。</td><td>（旁白）收到通知信。</td></tr><tr><td>2</td><td>信件靜止，信封印有「聯合辦事處」標誌。</td></tr><tr><td>3</td><td>信紙展開，顯示「滲水位置」欄位。</td></tr><tr><td>4</td><td>信紙表面緩緩浮現熱成像色階濾鏡。</td><td>（旁白）紅外線分析已完成。</td></tr><tr><td>5</td><td>濾鏡覆蓋信中「滲水位置」欄位。</td></tr><tr><td>6</td><td>熱成像異常區域與信件欄位精準對位。</td></tr><tr><td>7</td><td>對位完成，濾鏡轉為靜態印記。</td><td>（旁白）源頭位置已鎖定。</td></tr><tr><td>8</td><td>畫面顯示「新程序2026」字樣。</td></tr><tr><td>9</td><td>底部小字顯示「逾期不修，政府將追討測試費用」。</td></tr><tr><td>10</td><td>信件淡出，畫面轉為灰白底、黑字。</td></tr><tr><td>11</td><td>畫面出現「聯合辦事處 Joint Office」標誌。</td><td>（旁白）程序清晰，責任自現。</td></tr><tr><td>12</td><td>畫面定格，標誌及程序編號停留。</td></tr></tbody></table></div>
-<h4 class="cc">## Concept 2:〔程序索引〕</h4>
-<p><strong>Creative Concept 創作概念</strong>:以「三階段欄柵式索引」呈現法定程序，首階段置入通知信與熱成像摘要，其餘階段以低視覺權重列示，強調程序嚴謹、步驟有序，業主按通知信要求行動即可履行責任。</p>
-<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
-<div class="tw"><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>畫面左側浮現三組垂直細線，標註 I、II、III。</td><td>（旁白）滲水調查程序。</td></tr><tr><td>2</td><td>第一欄（I）向右展開，顯示通知信。</td></tr><tr><td>3</td><td>通知信表面疊加熱成像摘要。</td><td>（旁白）紅外線輔助定位。</td></tr><tr><td>4</td><td>熱成像異常區域與信件欄位對位重合。</td></tr><tr><td>5</td><td>第二、三欄保持收合，僅顯示法定條文編號。</td></tr><tr><td>6</td><td>底部小字列明「限期內完成維修」。</td></tr><tr><td>7</td><td>畫面轉灰白底、深藍線條。</td><td>（旁白）逾期不修，依法執行後續程序。</td></tr><tr><td>8</td><td>第二欄輕微高亮，顯示「第二、三階段調查」。</td></tr><tr><td>9</td><td>第三欄輕微高亮，顯示「追討測試費用」。</td></tr><tr><td>10</td><td>第一欄重新聚焦，通知信與熱成像靜態停留。</td></tr><tr><td>11</td><td>畫面出現「聯合辦事處 Joint Office」標誌。</td><td>（旁白）程序升級，責任明確。</td></tr><tr><td>12</td><td>畫面定格，標誌及階段編號停留。</td></tr></tbody></table></div></details></details></details></section><section id='lookback'><details class='soft sec' ><summary>👀 睇返區 · 冇進級嘅 idea(永遠睇得返)</summary><p class='hint'>每輪冇進級嘅 idea 會自動歸檔喺度,<b>永遠睇得返、隨時撳「⤴️ 升級」補生返上嚟</b>。(funnel 狀態機上線後填充)</p></details></section><section id='ref'><details class='soft sec' ><summary>📌 重要資料(GDrive · B/D/P)</summary><div class='card ref'><a class='btn drive' target='_blank' href='https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr'>📁 Project GDrive folder</a><div class='stats'><div class='stat'><div class='stat-l'>🗣️ Briefing</div><div class='stat-v'>2026-05-29 11:00 </div></div><div class='stat'><div class='stat-l'>⏰ Deadline</div><div class='stat-v'>2026-06-17 15:00 <span class='cd ok'>仲有 13 日</span></div></div><div class='stat'><div class='stat-l'>🎤 Presentation</div><div class='stat-v'>2026-06-23 </div></div></div><div class='srctag'>日子源:📅 日曆</div></div></details></section><section id='5w1h'><details class='soft sec' ><summary>💭 5W1H 創意 provocation(加咩 element / 風格)</summary><p class='empty'>未有 5W1H(委員會跑完即有)。</p></details></section><section id='debrief'><details class='soft sec' ><summary>📝 Internal Creative Debrief(事實參考)</summary><p class='empty'>未有 debrief(委員會跑完即有)。</p></details></section><section id='slogan'><details class='soft sec' ><summary>💬 Slogan 揀(第一 hard gate)</summary><p class='hint'>各來源 slogan(已去重)。揀好嘅 slogan 由你填入 Master GSheet(AI 唔掂 master 檔)。</p><div class='slogrp'><div class='lab'>委員會 20260601</div><ul class='slolist'><li>熱圖在手，源頭即揪。</li><li>證據喺手，漏喺你控。</li><li>收到通知信，維修快過人。</li><li>拖得越耐，費用越金。</li><li>業主一動手，程序同步走。</li></ul></div><div class='slogrp'><div class='lab'>委員會 20260601</div><ul class='slolist'><li>一箭鎖漏，拖過時限程序就追到。</li><li>一箭鎖漏，自修最著數。</li><li>收到通知信，趁早搞掂零檢測費。</li><li>紅外線一眼斷症，源頭現形自己修。</li><li>聯辦處幫你搵源頭，業主責任自己走唔甩。</li></ul></div><div class='slogrp'><div class='lab'>委員會 20260601</div><ul class='slolist'><li>收到通知信，紅外線已鎖源。</li><li>紅外線鎖定異常，責任一目了然。</li><li>新程序2026，技術輔助，責任自現。</li><li>通知信到，源頭已清，維修在即。</li><li>程序升級，源頭清晰，依法處理。</li></ul></div><div class='slogrp'><div class='lab'>NBLM</div><ul class='slolist'><li>紅外線一照，漏水無所遁形；通知信唔理，代價自己畀！</li><li>滴一滴都係錢，拖一日就畀錢！</li><li>收到信唔理？截漏行動即刻展開！</li><li>漏水入網，一秒即現形；唔理通知，錢就飛走！</li><li>風暴已到，唔修就畀錢！</li><li>紅外線一掃，滲水無所遁形！</li><li>拖得就拖？科技已經鎖定你！</li><li>水滴會發光，隱藏都冇用！</li><li>通知單一出，倒數即時開始！</li><li>及早醫好，免收大醫藥費！</li><li>紅外線睇穿滲水，即刻維修免追錢！</li><li>通知信一到，計時開始；唔整就畀錢！</li><li>紅外線一掃，滲水無處藏！</li><li>拖得耐，荷包更痛！</li><li>聯辦處一到，滲水無處逃！</li></ul></div></details></section><section id='research'><details class='soft sec' ><summary>🔬 研究背靠(Perplexity + Gemini + ISD)</summary><details class='soft' open><summary>🔬 深入研究 — 背景/政策/趨勢(生成源:Gemini grounding;Perplexity 未接)</summary><p>FEHD 未做外部 Gemini / Perplexity research。</p>
+body{margin:0;background:var(--bg);color:var(--ink);
+     font:15px/1.55 -apple-system,"PingFang HK",sans-serif}
+.wrap{max-width:430px;margin:0 auto;padding:0 13px 130px}
+h1{font-size:19px;font-weight:800;margin:0;line-height:1.25}
+h1 .dept{color:var(--ac)}
+.bdp{font-size:12px;font-weight:700;margin:3px 0 0;display:flex;gap:11px;flex-wrap:wrap}
+.bdp .bb{color:#2563eb}.bdp .dd{color:#dc2626}.bdp .pp{color:#7c3aed}
+.tabbar{position:sticky;top:0;z-index:30;background:var(--bg);
+         border-bottom:2px solid var(--line);display:flex;gap:5px;
+         overflow-x:auto;padding:8px 0 7px;scrollbar-width:none}
+.tabbar::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;background:var(--card);border:1.5px solid var(--line);
+      border-radius:9px;padding:5px 12px;font-size:12px;font-weight:800;
+      color:var(--mut);cursor:pointer;transition:all .12s;white-space:nowrap}
+.tab:hover{border-color:var(--ac);color:var(--ac)}
+.tab.active{background:var(--ac);border-color:var(--ac);color:#fff}
+header{padding:12px 0 4px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap}
+.titlerow h1{margin:0;min-width:0}
+.homebtn{flex:none;white-space:nowrap;font-size:16px;line-height:1;text-decoration:none;
+          background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:5px 9px}
+.homebtn:active{background:#dcdffb}
+.tabpanel{display:none;padding-top:10px}
+.tabpanel.active{display:block}
+.setlab{font-size:11px;font-weight:800;color:var(--ac);background:#eef0fe;
+         border:1px solid #dcdffb;border-radius:8px;padding:4px 10px;
+         display:inline-block;margin:0 0 8px}
+.banner{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;
+         padding:10px 12px;font-size:12.5px;font-weight:700;color:#92660c;margin:10px 0}
+.h2{font-size:12px;font-weight:800;letter-spacing:.03em;color:var(--mut);
+     text-transform:uppercase;margin:15px 2px 7px}
+.h3{font-size:12px;font-weight:700;color:var(--mut);margin:10px 0 5px}
+.stylepick{margin:10px 0}
+.styrow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:5px 0;padding:5px 0;border-bottom:1px solid var(--line)}
+.stylbl{min-width:84px;font-weight:600;font-size:13px}
+.styo{display:inline-flex;align-items:center;gap:4px;font-size:13px;padding:3px 10px;
+       border:1px solid var(--line);border-radius:14px;cursor:pointer;user-select:none;background:#fafafa}
+.styo input{margin:0}
+.styo:has(input:checked){background:#e6f7f1;border-color:#0a7;color:#066}
+.styanchor{margin-top:9px;font-size:12px;color:var(--mut)}
+#styanchor{color:#0a7;font-weight:600}
+.card{background:var(--card);border:1px solid var(--line);border-radius:13px;
+       padding:11px 12px;box-shadow:0 1px 2px rgba(20,24,40,.05),
+       0 5px 16px rgba(20,24,40,.06);margin-bottom:8px}
+.card.big{padding:13px}
+.card.empty{color:var(--mut);font-size:13px;font-style:italic}
+.row{display:flex;align-items:center;gap:9px}
+.rank{font-size:11px;font-weight:800;color:var(--mut);width:18px}
+.src{font-size:11px;color:var(--mut);font-weight:700;background:#f1f5f9;
+      border-radius:6px;padding:1px 6px}
+.score{font-size:12px;font-weight:800;color:var(--gold);margin-left:auto}
+.nm{font-weight:800;font-size:13.5px;line-height:1.35}
+.csub{font-size:11px;color:var(--mut);font-weight:600;margin-top:2px}
+.crow{margin:5px 0 0}
+.cflag{font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.cflag.hi{background:#dcfce7;color:#15803d}
+.cflag.lo{background:#fef3c7;color:#a16207}
+.cflag.rl{background:#fee2e2;color:#b91c1c}
+.ck{width:22px;height:22px;border:2px solid var(--ac);border-radius:6px;
+     display:inline-grid;place-items:center;font-size:13px;color:#fff;
+     cursor:pointer;flex:0 0 auto;position:relative}
+.ck::before{content:"";position:absolute;inset:-11px}
+.ck.on{background:var(--ac)}
+.ck.done{background:var(--grn);border-color:var(--grn);cursor:default}
+.divider{display:flex;align-items:center;gap:8px;margin:12px 2px;
+          color:#aab0ba;font-size:11px;font-weight:700}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.cnt-warn{color:var(--red)!important}
+.lookback{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:11px;
+           padding:10px 12px;font-size:12px;color:#475569}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;
+      padding:8px 13px;font-size:12.5px;font-weight:800;cursor:pointer;
+      text-decoration:none;display:inline-block}
+.btn.grn{background:var(--grn)}
+.btn.ghost{background:#fff;color:var(--ac);border:1.5px solid #dcdffb;
+            width:100%;text-align:center;padding:11px 13px;margin:2px 0 4px}
+.btn.mini{padding:4px 9px;font-size:11px;margin-left:8px}
+.submit{position:fixed;bottom:14px;right:calc(50% - 215px + 13px);z-index:20}
+@media(max-width:456px){.submit{right:14px}}
+/* ── Responsive 3 tier（Raymond 2026-06-06）：mobile(default) / tablet / desktop 用晒畫面 ── */
+/* Tablet:闊啲,carousel 一次 2 卡 */
+@media(min-width:700px) and (max-width:1099px){
+  .wrap{max-width:680px;padding:0 20px 130px}
+  .submit{right:calc(50% - 340px + 20px)}
+  .ccard{flex:0 0 46%;max-height:68vh}
+  .rest-row .ccard{flex:0 0 36%}
+  .briefcard{max-height:40vh}
+}
+/* Desktop:用晒畫面 —— carousel 變 grid(唔橫掃,鋪滿),六強 3 欄、其餘 4 欄 */
+@media(min-width:1100px){
+  .wrap{max-width:min(1280px,94vw);padding:0 28px 120px}
+  .submit{right:max(28px, calc(50vw - 640px + 28px))}
+  .carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}
+  .ccard{flex:0 0 calc(33.333% - 10px);max-width:none;max-height:64vh;scroll-snap-align:none}
+  .rest-row .ccard{flex:0 0 calc(25% - 11px)}
+  .briefcard{max-height:36vh}
+  .tabbar{flex-wrap:wrap}
+  .card.big .sheet{max-width:520px}
+}
+.submit .btn{box-shadow:0 6px 20px rgba(79,70,229,.4);padding:11px 18px;font-size:13.5px}
+.foot{font-size:11px;color:#9aa0aa;text-align:center;margin-top:22px}
+.notes-win{width:100%;min-height:90px;border:1.5px solid var(--ac);
+            border-radius:11px;padding:10px 12px;font:14px/1.6 inherit;
+            resize:vertical;background:#fafbff;margin-bottom:6px}
+.notes-act{text-align:right;margin-bottom:6px}
+.notes-act .btn{padding:6px 14px}
+.noteslist{margin-bottom:6px}
+.notecard{background:#fafbff;border:1px solid #e0e3f5;border-radius:10px;
+           padding:7px 10px;margin-bottom:6px}
+.noterow{display:flex;align-items:center;gap:8px}
+.notets{font-size:10.5px;font-weight:800;color:var(--ac)}
+.notedel{margin-left:auto;background:none;border:none;color:#b0b6c2;font-size:13px;
+          cursor:pointer;padding:0 2px}
+.notetxt{font-size:13px;color:var(--ink);line-height:1.5;margin-top:2px;white-space:pre-wrap}
+/* Brief 撮要緊湊卡（固定高度內部 scroll，似 VID 1 卡）*/
+.briefcard{max-height:46vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.briefcard h3,.briefcard h4{font-size:13px;margin:9px 0 3px}
+.suppinline{margin-top:10px;border-top:2px solid #fde68a;background:#fffbeb;
+             border-radius:9px;padding:8px 10px}
+.suppinline h3,.suppinline h4{color:#92660c;font-size:12.5px;margin:2px 0 5px}
+/* 補充日程簡單 list */
+.timeline{margin:2px 0}
+.tlrow{display:flex;gap:8px;padding:5px 2px;border-bottom:1px solid #f3f4f6;font-size:12.5px}
+.tlrow:last-child{border-bottom:none}
+.tldate{flex:0 0 auto;font-weight:800;color:var(--ink);min-width:96px}
+.tllabel{flex:1;color:#374151}
+.tlrow.hot{background:#fff7ed;border-radius:7px}
+.tlrow.hot .tldate{color:#c2410c}.tlrow.hot .tllabel{color:#9a3412;font-weight:700}
+/* Briefing 補充 treatment */
+summary.supp{display:flex;align-items:center;gap:8px}
+.suppbadge{font-size:10px;font-weight:800;color:#fff;background:#d97706;
+            border-radius:6px;padding:1px 7px;margin-left:7px;vertical-align:middle}
+.bd{margin:8px 0}
+.bdscroll{max-height:44vh;overflow-y:auto;border:1px solid var(--line);border-radius:10px;
+          padding:2px 12px;background:#fafbfc;-webkit-overflow-scrolling:touch}
+.genbox{text-align:center}
+.step2 .refsub{margin:8px 0}
+.refname{font-size:12.5px;font-weight:600;margin:6px 0 4px}
+.refname .refn{color:var(--mut);font-weight:400;font-size:11px}
+.refrow{display:flex;gap:6px;flex-wrap:wrap}
+.refthumb{width:74px;height:90px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.engrow{display:flex;gap:7px;flex-wrap:wrap;margin:4px 0 6px}
+.engo{display:inline-flex;align-items:center;gap:4px;font-size:13px;padding:4px 11px;
+       border:1px solid var(--line);border-radius:14px;cursor:pointer;user-select:none;background:#fafafa}
+.engo:has(input:checked){background:#eef2ff;border-color:var(--ac);color:#3730a3;font-weight:600}
+.engo.off{opacity:.55;cursor:not-allowed}
+.engo .soon{font-size:10px;color:#b45309;background:#fef3c7;border-radius:6px;padding:0 4px}
+.btn.big{font-size:14px;padding:12px 22px;box-shadow:0 4px 14px rgba(79,70,229,.3)}
+.scene{border-bottom:1px solid #f1f3f6;padding:7px 0;font-size:12.5px;line-height:1.5}
+.scene .sl{display:flex;gap:8px}
+.scene .sn{font-weight:800;color:var(--ac);flex:0 0 auto;min-width:17px}
+.scene .vo,.vo{color:var(--mut);font-size:11.5px;margin:4px 0 0 25px;
+               background:#f8fafc;border-radius:7px;padding:4px 8px}
+.sheet{width:100%;border-radius:10px;border:1px solid var(--line);margin:8px 0;display:block;cursor:zoom-in}
+.lbx{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;display:none;
+      align-items:center;justify-content:center;padding:12px}
+.lbx.on{display:flex}
+.lbx img{max-width:98vw;max-height:94vh;border-radius:8px;cursor:zoom-out}
+.lbx .x{position:fixed;top:10px;right:16px;color:#fff;font-size:30px;font-weight:800;cursor:pointer}
+.lbx .hint{position:fixed;bottom:12px;left:0;right:0;text-align:center;color:#bbb;font-size:12px}
+.preqs{display:flex;flex-direction:column;gap:7px;margin-top:4px}
+.prow{display:flex;align-items:center;gap:10px}
+.preqs .pl{flex:1;font-weight:700;font-size:14px;min-width:0}
+.preqs .pv{font-weight:800;font-size:13px;border-radius:8px;padding:3px 11px;white-space:nowrap}
+.preqs .pvon{background:#dcfce7;color:#15803d;border:1px solid #bbf7d0}
+.preqs .pvoff{background:#f1f3f5;color:#868e96;border:1px solid #e9ecef}
+.preqs .pp{font-size:11px;color:var(--ac);font-weight:700;cursor:help;min-width:34px;text-align:right}
+.hdrbtns{flex:none;display:flex;gap:7px;align-items:center}
+.refbtn{flex:none;font-size:16px;line-height:1;background:#eef0fe;border:1px solid #dcdffb;
+  border-radius:8px;padding:5px 9px;cursor:pointer}
+.refbtn:active{background:#dcdffb;transform:scale(.94)}
+.pgbar{position:relative;height:30px;border-radius:9px;background:#eef0fe;border:1px solid #dcdffb;
+  overflow:hidden;margin:8px 0}
+.pgfill{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,#6366f1,#818cf8);
+  transition:width .6s ease}
+.pgtxt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:#1b1f27;z-index:1}
+/* VID 2 tab：紅色虛線繞邊行緊（marching ants），未出晒 BD 就一直行；出晒 = 無 busy class = 停 */
+@keyframes march{to{background-position:14px 0,-14px 100%,0 -14px,100% 14px}}
+.tab.busy{color:#dc2626;font-weight:800;border-color:transparent !important;
+  background-image:
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0);
+  background-repeat:repeat-x,repeat-x,repeat-y,repeat-y;
+  background-size:14px 2px,14px 2px,2px 14px,2px 14px;
+  background-position:0 0,0 100%,0 0,100% 0;
+  animation:march .5s linear infinite}
+.empty{font-size:12px;color:#9aa0aa;background:#f8fafc;border:1px dashed #cbd5e1;
+        border-radius:9px;padding:9px 11px;margin:8px 0}
+.note{width:100%;min-height:48px;border:1px solid var(--line);border-radius:9px;
+       padding:7px 9px;font:13px/1.5 inherit;resize:vertical;margin-top:6px}
+.frames{margin:8px 0}
+.frame-card{border-bottom:1px solid #f1f3f6;padding:8px 0}
+.frame-head{display:flex;gap:8px;font-size:12.5px}
+.fv{flex:1;color:var(--ink)}
+.acts{margin-top:8px}
+.soft{margin-bottom:8px}
+.soft summary{font-size:12.5px;font-weight:800;color:var(--ink);cursor:pointer;
+               background:#f8fafc;border:1px solid var(--line);border-radius:10px;
+               padding:9px 12px;list-style:none}
+.soft summary::-webkit-details-marker{display:none}
+.soft[open] summary{border-radius:10px 10px 0 0;margin-bottom:0}
+.soft .card{border-radius:0 0 10px 10px;border-top:none;margin-bottom:0}
+.hint{font-size:12px;color:var(--mut);margin:0 0 8px}
+.det{margin-top:8px}
+.det summary{font-size:12.5px;font-weight:800;color:var(--ac);cursor:pointer;
+              list-style:none;background:#eef0fe;border:1px solid #dcdffb;
+              border-radius:9px;padding:8px 11px;text-align:center}
+.det[open] summary{margin-bottom:7px}
+.det summary::-webkit-details-marker{display:none}
+.detbody{font-size:12.5px;color:#374151;white-space:pre-wrap;margin-top:7px;
+          line-height:1.6;max-height:360px;overflow:auto;background:#f8fafc;
+          border-radius:9px;padding:10px 12px}
+.tw{overflow-x:auto;margin:6px 0}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid var(--line);padding:5px 8px;text-align:left}
+th{background:#f8fafc;font-weight:700}
+.prev{font-size:12.5px;color:#4b5563;margin:6px 0 2px;line-height:1.5}
+/* ── VID 1 carousel：橫掃卡，卡內直 scroll ── */
+.carousel{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
+           padding:4px 2px 12px;margin:0 -2px;-webkit-overflow-scrolling:touch}
+.carousel::-webkit-scrollbar{height:6px}
+.carousel::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:6px}
+.ccard{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;
+        background:var(--card);border:1.5px solid var(--line);border-radius:14px;display:flex;
+        flex-direction:column;max-height:64vh;overflow:hidden;
+        box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+.ccard.sel{border-color:var(--ac);box-shadow:0 0 0 2px rgba(79,70,229,.25),
+            0 6px 18px rgba(79,70,229,.18)}
+.rest-row .ccard{flex:0 0 70%;max-height:52vh}
+.chead{display:flex;align-items:center;gap:8px;padding:10px 12px 7px;cursor:pointer;
+        border-bottom:1px solid #f1f3f6}
+.badge{font-size:11px;font-weight:800;color:#fff;background:var(--ac);
+        border-radius:7px;padding:2px 9px;letter-spacing:.02em}
+.oscore{margin-left:auto;font-size:12px;font-weight:800;color:var(--gold)}
+.ctitle{font-weight:800;font-size:14px;line-height:1.35;padding:8px 12px 0}
+.ccard .csub{padding:2px 12px 0}
+.cbadges{padding:5px 12px 0}
+.cbody{flex:1;overflow-y:auto;padding:9px 12px 12px;font-size:12.5px;color:#374151;
+        line-height:1.62;-webkit-overflow-scrolling:touch}
+.cbody h3,.cbody h4,.cbody h5{font-size:12.5px;margin:9px 0 3px}
+.cbody p{margin:5px 0}
+.scores{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+.sline{font-size:11.5px;margin:6px 0 2px}
+.sline b{font-size:12px}
+.sline.muted{color:#9aa0aa;font-weight:600}
+.scrit{display:block;font-size:11px;color:var(--mut);margin-top:2px}
+.snote{font-size:11px;color:#6b7280;background:#f8fafc;border-radius:7px;
+        padding:5px 8px;margin:4px 0 2px;line-height:1.5}
+.toast{position:fixed;bottom:78px;left:50%;transform:translateX(-50%);
+        background:#1b1f27;color:#fff;padding:12px 18px;border-radius:12px;
+        font-size:13px;font-weight:700;z-index:90;max-width:90%;
+        box-shadow:0 8px 30px rgba(0,0,0,.3);transition:opacity .5s}
+.topproc{position:fixed;bottom:0;left:0;right:0;z-index:95;background:var(--ac);
+          color:#fff;font-size:13px;font-weight:800;padding:9px 14px;
+          display:flex;align-items:center;justify-content:center;gap:8px;
+          box-shadow:0 3px 14px rgba(79,70,229,.35)}
+.spin.sm{width:15px;height:15px;border:2.5px solid rgba(255,255,255,.4);
+          border-top-color:#fff;border-radius:50%;display:inline-block;
+          vertical-align:middle;margin-right:6px;animation:sp .9s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.gening{display:inline-flex;align-items:center;font-size:12px;font-weight:800;color:var(--ac);
+         background:#eef0fe;border:1px solid #dcdffb;border-radius:9px;padding:7px 11px}
+.gening .spin.sm{border-color:#c7cbf5;border-top-color:var(--ac)}
+</style></head><body>
+<div class=wrap>
+<header>
+  <div class=titlerow>
+    <h1><span class=dept>FEHD</span> · Water Seepage APIs</h1>
+    <span class=hdrbtns>
+      <a class=homebtn href="index.html" title="總目錄">🏠</a>
+      <button class=refbtn onclick="location.href=location.pathname+'?t='+Date.now()+location.hash" title="重新載入">🔄</button>
+    </span>
+  </div>
+  <div class=bdp><span class='bb'>B) 29/5</span><span class='dd'>D) 17/6 15:00 · <b id='cd'>—</b></span><span class='pp'>P) 23/6</span></div>
+</header>
+<div class='tabbar'><button class='tab' data-tab='ph0'>📋 標書</button><button class='tab' data-tab='vid1_1'>VID 1</button><button class='tab' data-tab='vid1_2'>VID 2</button><button class='tab' data-tab='vid1_3'>VID 3</button><button class='tab' data-tab='vid1_4'>VID 4</button><button class='tab' data-tab='vid1_5'>VID 5</button><button class='tab' data-tab='rad1_1'>RAD 1</button></div>
+<div id='ph0' class='tabpanel'><div class='h2'>📝 零碎想法 / Notes</div><p class='hint'>Phase 0 → VID 1 之間嗰幾日，諗到乜就入低，撳「＋ 加入」累積（VID 1 啟動委員會時一齊餵 AI）。</p><textarea id='notes' class='notes-win' placeholder='一個想法…'></textarea><div class='notes-act'><button class='btn' onclick='submitNotes()'>＋ 加入想法</button></div><div id='noteslist' class='noteslist'></div><div class='h2'>📋 Brief 撮要</div><div class='card briefcard'><h5>1. Background（背景）</h5>
+<p>為配合 2025 </p>
+<p>年《施政報告》公佈的措施，由食物環境衞生署（FEHD）與屋宇署（BD）成立的聯合辦事處</p>
+<p>（聯辦處/JO）將推出處理私人樓宇滲水的新調查及測試程序 </p>
+<p>[1]。政府希望透過新一輯電視及電台政府宣傳短片（API），向公眾宣傳這些旨在更有效解</p>
+<p>決滲水問題的加強措施 [1]。</p>
+<h5>2. Objective（目標）</h5>
+<p>提升公眾對聯辦處即將推出的新滲水調查程序及加強措施的認知；強調業主妥善保養物業及</p>
+<p>防止滲水的責任 </p>
+<p>[2]。具體需向受眾解釋精簡後的調查程序（包括使用紅外線熱成像分析及同步進行第二和</p>
+<p>第三階段調查），並促使收到「通知信」的業主主動及時進行檢驗和維修 [2]。</p>
+<h5>3. Key Message（核心訊息）</h5>
+<p>妥善保養物業、防止滲水，永遠是業主的責任 </p>
+<p>[3]。聯辦處在第一階段已引入紅外線探測以加快尋找滲水源頭；若發出「通知信」後業主</p>
+<p>仍未能在限期內完成維修，聯辦處將同步展開第二及第三階段調查，並會向不合作的業主追</p>
+<p>討相關測試費用 [3, 4]。</p>
+<h5>4. Deliverables（交付物）</h5>
+<p>*   <strong>TV API：</strong> 一條 30 </p>
+<p>秒電視宣傳短片，包含粵語（配繁體中文書面語字幕及手語）及英語（配英文字幕及手語）</p>
+<p>兩個版本 [5, 6]。需以 HDCam、RED ONE 或同等格式拍攝，輸出 16:9 (HD) XDCAM HD422 </p>
+<p>MXF 檔案 [5, 6]。手語視窗需佔畫面六分之一，位於右下角 [7, 8]。</p>
+<p>*   <strong>Radio API：</strong> 一條 30 </p>
+<p>秒電台宣傳聲帶，包含粵語、英語（獨白形式）及普通話（要求一級乙等水平）版本 </p>
+<p>[9-11]。</p>
+<p>*   <strong>其他：</strong> </p>
+<p>中英文口號（Slogan）、腳本、分鏡圖（Storyboard）、配音、原創或已獲版權許可的背景</p>
+<p>音樂 [10, 12-15]。</p>
+<p>*   （海報/平面廣告：資料不足，投標文件未列為必做項目）。</p>
+<h5>5. Timeline（時間表）</h5>
+<p>*   <strong>B (Briefing 簡介會):</strong> 2026-05-29 (必須於 2026-05-27 15:00 前提交回條) </p>
+<p>[16, 17]。</p>
+<p>*   <strong>D (Deadline 遞交死線):</strong> 2026-06-17T15:00 (香港時間) [17, 18]。</p>
+<p>*   <strong>P (Presentation 提案日):</strong> 2026-06-23 (以粵語進行) [19, 20]。</p>
+<p>*   <strong>Milestone:</strong> 2026-06-29 批出合約；2026-07-31 完成 Final Cut；2026-08-03 </p>
+<p>遞交廣播機構 [20]。</p></div><div class='card'><div class='h3'>📮 Submission method 交標方法</div><div class='hint'><b>Submit IN DUPLICATE in two separate plain, individually sealed envelopes to the FEHD office on or before 3:00 p.m. on Wednesday, 17 June 2026.</b><br>The completed quotation must be submitted IN DUPLICATE in separate plain, individually sealed envelopes (one for Price Information, one for Technical Information). Do not give any indication on the envelope surface/cover which may relate the proposal to your company. Deliver by hand or post to the specified address on or before 3:00 p.m. on Wednesday, 17 June 2026. Late submissions will not be considered.<br><span style='color:#8aa'>Ref: (89) in FEHD (PIED) 3-5/5/13 Pt. 24 · Closing: 3:00 p.m. on Wednesday, 17 June 2026</span></div><div class='hint' style='margin-top:6px'>📦 交標：共 <b>2</b> 封密封信封（一封一張 sticker，逐個印；地址在每張最頂）：</div><div style='background:#0e1d35;border:1px solid #25406b;border-radius:6px;margin:6px 0;padding:8px 11px'><div style='color:#e6c35a;font-weight:600;font-size:12px;letter-spacing:.04em'>🏷️ 信封 1/2 — Technical Information（入面放 2 份）</div><pre style='white-space:pre-wrap;font:600 13px/1.45 ui-monospace,Menlo,monospace;color:#f7f4ec;margin:5px 0 0'>Room 4419-4424, 44/F, Queensway Government Offices, 66 Queensway, Hong Kong
+
+Quotation Ref: (89) in FEHD (PIED) 3-5/5/13 Pt. 24
+Project: Production of TV and radio Announcements in the Public Interest (APIs) on new procedures of handling water seepage in private buildings
+Closing: 3:00 p.m. on Wednesday, 17 June 2026
+TECHNICAL INFORMATION
+Do not give any indication on the envelope surface / cover which may relate the proposal to your company</pre></div><div style='background:#0e1d35;border:1px solid #25406b;border-radius:6px;margin:6px 0;padding:8px 11px'><div style='color:#e6c35a;font-weight:600;font-size:12px;letter-spacing:.04em'>🏷️ 信封 2/2 — Price Information（入面放 2 份）</div><pre style='white-space:pre-wrap;font:600 13px/1.45 ui-monospace,Menlo,monospace;color:#f7f4ec;margin:5px 0 0'>Room 4419-4424, 44/F, Queensway Government Offices, 66 Queensway, Hong Kong
+
+Quotation Ref: (89) in FEHD (PIED) 3-5/5/13 Pt. 24
+Project: Production of TV and radio Announcements in the Public Interest (APIs) on new procedures of handling water seepage in private buildings
+Closing: 3:00 p.m. on Wednesday, 17 June 2026
+PRICE INFORMATION
+Do not give any indication on the envelope surface / cover which may relate the proposal to your company</pre></div><div class='h3'>📄 要交文件 Documents to submit（6，名跟標書原文）</div><div class='timeline'><div class='tlrow'><span class='tllabel'>Offer to be Bound</span><span style='color:#8aa;font-size:11px'>　Must be duly signed, mandatory for Stage 1 completeness check</span></div><div class='tlrow'><span class='tllabel'>Price Proposal (Schedule 2)</span><span style='color:#8aa;font-size:11px'>　Submit in duplicate in the Price Information envelope</span></div><div class='tlrow'><span class='tllabel'>Technical Proposal (Schedule 3)</span><span style='color:#8aa;font-size:11px'>　Submit in duplicate in the Technical Information envelope; must include storyboard and scripts</span></div><div class='tlrow'><span class='tllabel'>Pro-innovation Proposals and ESG Proposals (Schedule 4)</span><span style='color:#8aa;font-size:11px'>　Mandatory for Stage 1 completeness check</span></div><div class='tlrow'><span class='tllabel'>Non-collusive Bidding Certificate (Annex 4)</span><span style='color:#8aa;font-size:11px'>　Must be completed and returned with the quotation submission</span></div><div class='tlrow'><span class='tllabel'>Reply Slip</span><span style='color:#8aa;font-size:11px'>　Submit by 3:00 p.m. on Wednesday, 27 May 2026 to confirm briefing session attendance</span></div></div><div class='h3'>💰 Budget</div><div class='hint'>（標書未列明，由投標方報價）</div></div><details class='soft'><summary>📅 日程（製作里程，報明星拍攝期用）</summary><div class='card'><div class='timeline'><div class='tlrow'><span class='tldate'>2026-08-03</span><span class='tllabel'>Station copies of the TV and radio APIs shall be completed and delivered to broadcasting stations</span></div></div><a class='btn ghost' target='_blank' href='https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr'>📄 開標書原文</a></div></details><details class='soft'><summary>📑 要填嘅表（1 張）· Master Reply</summary><div class='card'><p class='hint'>真表頁（掃 PDF 表頭定位,已剔走條款 text）。🟦直 🟨橫。</p><button class='btn' onclick="renderForms(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&stage=render_forms&target=main')">🤖 一鍵自動 render 全部真表頁入 GSlide</button><p class='hint'>程式自動揀真表頁 + render → 插入對應 Master Reply GSlide 做 background（毋須手開 panel 貼頁碼）。render 完開 GSlide 直接填 → panel export（認 folder）。</p><button class='btn ghost' onclick="fillForms(this)">📝 自動填表（公司資料 vlookup → Fill tab）</button><script type='application/json' class='filldata'>{"folderName": "2605_FEHD_Water Seepage APIs", "forms": [{"name": "Offer to be Bound 簽署", "pages": "3", "text": "Quotation Ref.: (89) in FEHD (PIED) 3-5/5/13 Pt. 24                                            3 \nTerms of Quotation \n \nPart 1 \nTERMS OF QUOTATION \n \n1. \nService Providers are invited to submit Quotations for the provision of the Services mentioned \nin the Schedule.  A Service Provider’s Quotation will not be further considered if the \n“OFFER TO BE BOUND” section of the Quotation Form is not duly signed by or on behalf \nof the Service Provider and submitted with its Quotation before the Quotation Closing Time.  \nFor any missing information to be completed in “OFFER TO BE BOUND” or in relation to \nany ambiguity (including in relation to the signature), the FEHD may, but is not obliged to, \nseek clarification from the Service Provider under Paragraph 10(a).  In the case that the date \nis missing from the OFFER TO BE BOUND, it shall be deemed that the date shall be the \nQuotation Closing Date and no request for clarification will be made.  The provisions of the \nUnited Nations Convention on Contracts for the International Sale of Goods shall not apply \nto this Invitation to Quotation and a Quotation submitted by a Service Provider in response to \nthis Invitation to Quotation. \n \n2. \nA Quotation must be submitted before the quotation closing day (“Quotation Closing Date”) \nand quotation closing time on that day (“Quotation Closing Time”) as specified at the top of \nthe Quotation Form.  Depending on the permissible mode of submission of a Quotation (and \nsubmission by facsimile or by email is only allowed if a facsimile number and/or email address \nis/are provided at the top of the Quotation Form for this purpose but not otherwise), the Service \nProvider shall submit a Quotation in any one of the following manner: Where a Quotation is \nsubmitted by post or by hand delivery, the Quotation shall be submitted in DUPLICATE \nin plain and individually sealed envelopes with the quotation reference and Quotation \nClosing Date and delivered by post or by hand delivery to the address as specified at the top \nof the Quotation Form.  Where a Quotation is submitted by facsimile (if permitted), the \nService Provider shall write down the quotation reference and Quotation Closing Date on the \nQuotation and send it by facsimile to the facsimile number as specified at the top of the \nQuotation Form.  Where a Quotation is submitted by email (if permitted), the Service \nProvider shall write down the quotation reference and Quotation Closing Date on the subject \nheader of the email and the Quotation shall be attached to the email as a PDF file or other file \nformat specified in the Terms of Quotation (Supplement) (if any).  The email shall be sent to \nthe email address as specified at the top of the Quotation Form.  Regardless of the applicable \nmode of submission, late Quotations including Quotations posted or despatched or transmitted \nprior to, but received after, the Quotation Closing Time will not be considered.  Should it be \nnecessary for the Service Provider to attach other enclosures to the Quotation, reference to \nthese enclosures should be made on the Schedule. \n \n3. \nIn case Tropical Cyclone Warning Signal No. 8 or above is issued, or Black Rainstorm \nWarning Signal or “extreme conditions” announced by the Government is/are in force, for \nany duration between 11:00 a.m. and 3:00 p.m. on the Quotation Closing Date, the latest date \nand time before which Quotations are to be deposited at the quotation box and/or transmitted \nto such facsimile number or email address referred to in Paragraph 2 of the Terms of Quotation \nwill be extended to 3pm on the next working day. \n \n4. \nIn case the Public Information and Education Division’s office (address specified at the top \nof the Quotation Form) is temporarily closed, for any duration between 11:00 a.m. and 3:00 \np.m on the Quotation Closing Date, the latest date and time before which Quotations are to be \nsubmitted by post or by hand delivery referred to in Paragraph 2 of the Terms of Quotation \nwill be extended to 3:00 p.m. on the next working day when the office resumes services. \n \n5. \nAny amendments to the rates offered or any other part of the Quotation before the Quotation \n"}]}</script><p class='hint'>AI 讀每張表要填乜 → 對返 Master GSheet「公司資料」→ 寫入 <b>Fill_2605_FEHD_Water Seepage APIs</b> tab（值你 copy 去填；⚠️需人手＝價錢/簽名要自己填）。<b>GAS 直出，唔靠部 Mac。</b></p><div class='h3'>② 交標時 — Forms / Schedules（1）</div><p class='hint'>開 Form GSlide panel 貼頁碼 render 做 background → 人手填。</p><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/1nBf0Bdx17Jvo8owVWrvM-A_MlKxL98ttyMenXc-cewY/edit'>🎞️ 開 FEHD Form GSlide</a><div class='qconfirm' style='background:#eef0fe;color:#3730a3'>貼入 panel 頁碼：<b>3</b></div><div class='timeline'><div class='tlrow'><span class='tldate'>🟦 p3</span><span class='tllabel'>Offer to be Bound 簽署</span></div></div></div></details><details class='soft' open><summary class='supp'>⚠️ 製作要求（5 項）</summary><div class='card'><p class='hint'>讀標書判定。剔=要 / ✕=唔使；明星·吉祥物 Preferred/無Pref；動畫 2D/3D/無Pref。撳頁碼睇引文。</p><div class='preqs'><div class='prow'><span class='pl'>🤟 手語</span><span class='pv pvon'>✅ 要</span><span class='pp' title='Inclusion of sign language'>p35</span></div><div class='prow'><span class='pl'>♿ W3C影片</span><span class='pv pvoff'>❌ 唔使</span><span class='pp'></span></div><div class='prow'><span class='pl'>⭐ 明星</span><span class='pv pvoff'>無Preference</span><span class='pp' title='any celebrities performing'>p25</span></div><div class='prow'><span class='pl'>🧸 Mascot</span><span class='pv pvoff'>無Preference</span><span class='pp'></span></div><div class='prow'><span class='pl'>🎬 動畫</span><span class='pv pvoff'>無Preference</span><span class='pp' title='including animations'>p35</span></div></div></div></details><details class='soft'><summary>🔬 Research 背景調查</summary><div class='card'><div class='h3'>深入研究</div><p>FEHD 未做外部 Gemini / Perplexity research。</p>
 <p>完整創意方案見 Part 1 Brief 撮要 + NBLM notebook:</p>
-<p>https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6</p></details><details class='soft'><summary>🛡️ Gemini gatekeep — 官方正名/用字(防出錯)</summary><p>以下是為廣告創作團隊準備的『官方用語對照表』，確保用詞準確：</p>
+<p>https://notebooklm.google.com/notebook/fdeb3993-147b-48f4-b454-cdce2c7a4ba6</p><div class='h3'>Web Research</div><p>以下係一份<strong>以 FEHD 宣傳片 / API 做背景研究</strong>角度整理嘅重點，聚焦「<strong>Water Seepage APIs</strong>」喺香港而家點解成為政府宣傳同政策重點。</p>
 <p>---</p>
-<p><strong>『官方用語對照表』</strong></p>
-<p><strong>1. 部門 / 辦事處</strong></p>
-<p>*   <strong>食物環境衞生署 (FEHD)</strong></p>
-<p>    *   官方英文全名：Food and Environmental Hygiene Department</p>
-<p>    *   官方網址：[https://www.fehd.gov.hk/tc_chi/](https://www.fehd.gov.hk/tc_chi/)</p>
-<p>*   <strong>屋宇署 (BD)</strong></p>
-<p>    *   官方英文全名：Buildings Department</p>
-<p>    *   官方網址：[https://www.bd.gov.hk/tc/index.html](https://www.bd.gov.hk/tc/index.html)</p>
-<p>*   <strong>聯合辦事處 (聯辦處/JO)</strong></p>
-<p>    *   官方英文全名：Joint Office (JO)</p>
-<p>    *   官方網址：(此為食物環境衞生署與屋宇署共同成立的辦事處，通常在其各自部門網站或相關新聞稿中提及，沒有獨立官方網址)</p>
-<p><strong>2. 計劃 / 政策 / 程序 / 法例 / 措施 / 機構</strong></p>
-<p>*   <strong>《施政報告》</strong></p>
-<p>    *   官方英文名稱：Policy Address</p>
-<p>*   <strong>處理私人樓宇滲水的新調查及測試程序</strong></p>
-<p>    *   官方英文名稱：New investigation and testing procedures for handling water seepage in private buildings</p>
-<p>*   <strong>加強措施</strong></p>
-<p>    *   官方英文名稱：Enhanced measures</p>
-<p>*   <strong>精簡後的調查程序</strong></p>
-<p>    *   官方英文名稱：Streamlined investigation procedures</p>
-<p>*   <strong>紅外線熱成像分析</strong></p>
-<p>    *   官方英文名稱：Infrared thermography / Infrared thermal imaging analysis (文件中使用 &quot;infrared thermography&quot;)</p>
-<p>*   <strong>同步進行第二和第三階段調查</strong></p>
-<p>    *   官方英文名稱：Parallel conduct of Stage II and Stage III investigations</p>
-<p>*   <strong>通知信</strong></p>
-<p>    *   官方英文名稱：Notification Letter</p>
-<p>*   <strong>追討相關測試費用</strong></p>
-<p>    *   官方英文名稱：Recover the examination costs incurred</p>
-<p>*   <strong>妥善保養物業及防止滲水的責任</strong></p>
-<p>    *   官方英文名稱：Responsibilities of property owners in maintaining their properties and preventing water seepage</p>
-<p>*   <strong>私人樓宇滲水</strong></p>
-<p>    *   官方英文名稱：Water seepage in private buildings</p>
-<p>*   <strong>電視及電台政府宣傳短片 (API)</strong></p>
-<p>    *   官方英文名稱：Television and radio Announcements in the Public Interest (APIs)</p>
-<p>*   <strong>公務員事務局法定語文事務部</strong></p>
-<p>    *   官方英文名稱：Official Languages Division of the Civil Service Bureau</p>
-<p><strong>3. 專有名詞 / 技術詞</strong></p>
-<p>*   <strong>手語</strong></p>
-<p>    *   官方英文名稱：Sign language (文件提及「香港手語」Hong Kong Sign Language)</p>
-<p>*   <strong>繁體中文書面語</strong></p>
-<p>    *   官方英文名稱：Traditional Chinese written language</p>
-<p>*   <strong>一級乙等水平</strong> (普通話水平測試)</p>
-<p>    *   官方英文名稱：Grade 1B (Putonghua Shuiping Ceshi)</p>
-<p>*   <strong>國家語言文字工作委員會普通話水平測試</strong></p>
-<p>    *   官方英文名稱：Putonghua Shuiping Ceshi (State Language Commission&#x27;s Putonghua Proficiency Test)</p>
-<p>*   <strong>口號</strong></p>
-<p>    *   官方英文名稱：Slogan</p>
-<p>*   <strong>腳本</strong></p>
-<p>    *   官方英文名稱：Scripts</p>
-<p>*   <strong>分鏡圖</strong></p>
-<p>    *   官方英文名稱：Storyboards</p>
-<p>*   <strong>配音</strong></p>
-<p>    *   官方英文名稱：Voice-over</p>
-<p>*   <strong>背景音樂</strong></p>
-<p>    *   官方英文名稱：Background music</p>
-<p>*   <strong>HDCam, RED ONE, 16:9 (HD) XDCAM HD422 MXF 檔案</strong></p>
-<p>    *   這些是行業標準的拍攝格式和輸出檔案格式，無須特別翻譯，直接使用即可。</p>
-<p>*   <strong>Station copies</strong> (指提交給廣播機構的宣傳片副本)</p>
-<p>    *   中文慣用說法：廣播機構副本 / 送播版本</p>
-<p>*   <strong>Off-line and on-line editing</strong></p>
-<p>    *   中文慣用說法：離線剪接及在線剪接</p>
-<p>*   <strong>Audio recording, sound mixing, special sound effects</strong></p>
-<p>    *   中文慣用說法：錄音、混音、特別音效</p>
-<p>*   <strong>Creative and Copywriting</strong></p>
-<p>    *   中文慣用說法：創作及文案</p>
-<p>*   <strong>Production Logistics</strong></p>
-<p>    *   中文慣用說法：製作統籌</p>
-<p>*   <strong>Post-Production</strong></p>
-<p>    *   中文慣用說法：後期製作</p>
-<p>*   <strong>Voice-Over Talents</strong></p>
-<p>    *   中文慣用說法：配音員</p>
-<p><strong>4. 常見會錯譯 / 易混淆的地方</strong></p>
-<p>*   <strong>「聯辦處」</strong>：應使用「聯合辦事處」或其英文縮寫「JO」，避免自行翻譯為其他名稱。</p>
-<p>*   <strong>「API」</strong>：應使用「政府宣傳短片」或「電視及電台政府宣傳短片」，避免只稱「宣傳片」而失去政府性質。</p>
-<p>*   <strong>「滲水」</strong>：官方英文為 &quot;water seepage&quot;，避免使用 &quot;water leakage&quot; (漏水) 或 &quot;water penetration&quot; (滲透)，雖然意思相近，但 &quot;water seepage&quot; 是此情境下的官方用語。</p>
-<p>*   <strong>「業主」</strong>：官方英文為 &quot;property owner&quot;，避免使用 &quot;landlord&quot; (業主/房東，通常指租賃關係中的一方)。</p>
-<p>*   <strong>「保養物業」</strong>：官方英文為 &quot;maintaining their properties&quot;，避免使用 &quot;property maintenance&quot; (物業維修，較為籠統)。</p>
-<p>*   <strong>「追討費用」</strong>：官方英文為 &quot;recover the examination costs incurred&quot;，避免使用 &quot;claim expenses&quot; 或 &quot;demand payment&quot;，&quot;recover&quot; 更具官方追討的語氣。</p>
-<p>*   <strong>「手語」</strong>：文件明確提及「香港手語」，英文可直接使用 &quot;Hong Kong Sign Language&quot; 或 &quot;sign language interpretation (香港手語)&quot;。</p>
-<p>*   <strong>「書面語」</strong>：文件明確提及「繁體中文書面語」，英文為 &quot;Traditional Chinese written language&quot;，避免只稱 &quot;Traditional Chinese&quot;。</p></details><p class='hint'>📺 ISD 資料庫導入(相類政府舊片 + 字幕稿)見下面「ISD 對口參考」section。</p></details></section><section id='isd'><details class='soft sec' ><summary>📺 ISD 導入(相類政府舊片 + 字幕)</summary><p class='hint'>按呢條 brief 嘅目的×題材,自動抽返 6 條相類政府(ISD)舊片 + 字幕稿,已 feed 落委員會做參考(借橋唔抄)。</p><p><strong>【呢條 brief 判定】目的:勸喻/警示/形象/成就(propaganda)  題材:樓宇滲水/消防</strong></p><p><strong>【同目的(勸喻/警示)ISD 慣性】主開頭 真人/講者(88%);格式率 旁白55% 熒幕蓋字100% 標誌結尾88% CTA66% 感嘆88% 三段式·0%;慣用結尾 eTrafficTicket.gov.hk, 電子交通告票平台應用程式標誌, 積水要提防　蚊患無處藏, 食物環境衞生署標誌</strong></p><p><strong>【對口 ISD 舊作借鏡(同 目的×題材,參考佢點寫,唔好照抄,要創新)】</strong></p><div class='lab' style='margin-top:14px'>積水要提防　蚊患無處藏  [勸喻/警示 | 公共衞生]</div><p style='font-size:13px;color:var(--mut)'>女旁白： / 防蚊小教室！ / 熒幕蓋字： / 防蚊小教室 / 食物環境衞生署標誌 / 女旁白： / 蚊子可以傳播很多疾病 / 熒幕蓋字： / 登革熱 / 基孔肯雅熱 / 女旁白： / 而積水，是蚊子滋生的地方 / 想避免，就要徹底清除家居積水 / 例如盆栽底碟 / 花瓶內的水，至少每星期換一次 / 花瓶內壁亦要洗刷 / 女旁白： / 容易積水的垃圾和雜物，要妥善棄置 / 去水位也要清理 / 女旁白： / 前往叢林或蚊患較嚴重的地區 / 應穿着淺色長袖衣物 / 以及使用驅蚊劑 / 熒幕蓋字： / 叢林／蚊患較嚴重地區 / 女旁白： / 積水要提防　蚊患無處藏 / 熒幕蓋字： / 預防登革熱和基孔肯雅熱 / 積水要提防　蚊患無處藏 / 食物環境衞生署標誌</p><div class='lab' style='margin-top:14px'>繳交 4-6月季度差餉及/或地租  [勸喻/警示 | 差餉地租]</div><p style='font-size:13px;color:var(--mut)'>男旁白： / 本季的差餉地租通知書已經寄出 / 通知書已計算差餉寬減 / 地租並無寬減 / 緊記在4月30日或之前繳交 / 否則須繳付逾期附加費 / 通知書已列明今年重估的「應課差餉租值」 / 若有反對，必須在五月底前以書面提出 / 如若尚未收到通知書 / 請致電查詢熱線2152 0111 / 通知差餉物業估價署 / 熒幕蓋字： / 差餉及地租  準時繳交免罰款 / 差餉物業估價署 標誌  電子差餉地租單服務 標誌 / 登記電子差餉地租單服務 / 查詢熱線：2152 0111       www.rvd.gov.hk</p><div class='lab' style='margin-top:14px'>遠離賭博　咪「賭」亂自己人生  [勸喻/警示 | 其他]</div><p style='font-size:13px;color:var(--mut)'>男旁白： 你賭？他也賭？ /    不停地賭，甚至參與網上非法賭博。 /    除了輸錢、還輸掉家庭、輸掉朋友、輸掉前途，值得嗎？ / 戒賭吧。 /    遠離賭博，別「賭」亂自己人生。 / 熒幕蓋字： 遠離賭博　咪「賭」亂自己人生！ / 男旁白： 立即致電戒賭熱線183 4633 / 熒幕蓋字： 戒賭熱線 /    183 4633 /    遠離賭博　咪「賭」亂自己人生！ /    民政及青年事務局標誌 /    政府資助計劃標誌 /    平和基金標誌</p><div class='lab' style='margin-top:14px'>Prohibition of possession of alternative smoking products  [勸喻/警示 | 禁煙/控煙]</div><p style='font-size:13px;color:var(--mut)'>旁白：另類吸煙產品進口和銷售禁令已實施超過三年 / 熒幕蓋字：另類吸煙產品的禁令 / 　　　　　進口 / 　　　　　銷售 / 旁白：由4月30日開始 / 　　　政府將進一步禁止在公眾地方管有另類吸煙產品 / 熒幕蓋字：指明另類吸煙產品包括： / 　　　　　電子煙煙彈 / 　　　　　煙油 / 　　　　　加熱煙支 / 　　　　　草本煙 / 旁白：在公眾地方吸食另類煙會被視作管有並違法 / 熒幕蓋字：吸食 / 　　　　　管有 / 旁白：可被定額罰款三千元 / 熒幕蓋字：罰款 $3,000 / 旁白：管有超額另類煙或作商業用途 / 更可被判監！ / 熒幕蓋字：最高刑罰 / 　　　　　$50,000 / 　　　　　判監六個月 / 旁白：大家切勿以身試法！ / 熒幕蓋字：禁止在公眾地方管有指明另類吸煙產品 / 　　　　　將於2026 年 4 月 30 日生效 / 　　　　　衞生署控煙酒辦公室標誌 / 　　　　　www.taco.gov.hk</p><div class='lab' style='margin-top:14px'>2026年人口普查 – 做問卷前要記緊 核實統計員身份  [勸喻/警示 | 防騙]</div><p style='font-size:13px;color:var(--mut)'>阿普：2026年人口普查現正進行中 / 　　　上門協助住戶完成問卷的統計員 / 　　　會穿着印有統計處徽號的灰色背心制服 / 阿查：佩帶統計員身份證 / 熒幕蓋字：印有統計處徽號的灰色背心制服 / 　　　　　統計員身份證 / 阿查：有懷疑，請立刻致電18 2026核實統計員身份 / 　　　提防騙子！ / 　　　認清來電號碼「18 2026」 / 　　　和短訊發送人「#C&amp;SD」 / 熒幕蓋字：18 2026 / 　　　　　#C&amp;SD / 阿普：緊記！統計員不會搜集你的身份證、 / 　　　銀行戶口或信用卡資料 / 熒幕蓋字：身份證 / 　　　　　銀行戶口 / 　　　　　信用卡資料 / 　　　　　2026年人口普查標誌 / 　　　　　全年進行 / 　　　　　做問卷前要記緊 核實統計員身份 / 　　　　　政府統計處標誌 / 　　　　　普查熱線：18 2026 / 　　　　　www.census2026.gov.hk</p><div class='lab' style='margin-top:14px'>帶超額煙酒入境不報關  罰款最少HK$5,000甚或坐監  [勸喻/警示 | 盛事旅遊]</div><p style='font-size:13px;color:var(--mut)'>陳豪： / 我收到一則重要消息 / 在沒有向海關申報下帶超額煙酒入境 / 罰款已提高至港幣五千元 / 熒幕蓋字： / 罰款 HK$2,000 -) HK$5,000 / 陳豪： / 還有五倍稅款! / 熒幕蓋字： / 5倍稅款 / 龔嘉欣： / 那全港市民和入境旅客都要留意 / 陳豪： / 沒錯 / 涉及私煙相關罪行的最高刑罰 / 熒幕蓋字： / 私煙相關罪行 / 龔嘉欣： / 已經提高至罰款港幣二百萬 / 及監禁七年 / 熒幕蓋字： / 最高罰款（港幣）100萬 -) 200萬 / 最長監禁期2年 -) 7年 / 陳豪： / 任何人都不應以身試法！ / 熒幕蓋字： / 帶超額煙酒入境不報關 / 罰款最少HK$5,000甚或坐監 / 《應課稅品條例》（第109章）修訂 / 已於2025年9月19日生效 / 香港海關標誌</p></details></section><section id='score'><details class='soft sec' ><summary>📊 評分明細(官方 marking scheme)</summary><div class='lab'>📝 文字評分 · 預設只列頭三</div><div class='tw'><table><thead><tr><th>創意</th><th>總分</th><th>Accuracy</th><th>Creativi</th><th>Impact o</th><th>Recall</th><th>Resonanc</th><th>Pro-inno</th><th>ESG Prop</th></tr></thead><tbody><tr><td class='lt'>🥇 [委員會 200541] Concept 2:證據在手，主動解困</td><td><b>86.7</b></td><td>27.3</td><td>13.0</td><td>13.0</td><td>8.7</td><td>8.7</td><td>12.7</td><td>3.3</td></tr><tr><td class='lt'>🥈 [NBLM] 測漏無所遁形 / Thermal Catch</td><td><b>86.4</b></td><td>27.3</td><td>13.0</td><td>13.0</td><td>8.7</td><td>8.7</td><td>12.7</td><td>3.0</td></tr><tr><td class='lt'>🥉 [委員會 200541] Concept 1:圈出源頭，同步解困</td><td><b>84.6</b></td><td>26.3</td><td>13.0</td><td>12.3</td><td>8.3</td><td>8.7</td><td>12.7</td><td>3.3</td></tr></tbody></table></div><details class='soft'><summary>睇埋其餘 18 個</summary><div class='tw'><table><tbody><tr><td class='lt'>4. [委員會 145418] Concept 1:箭鎖漏源·程序實體化</td><td><b>84.5</b></td><td>26.8</td><td>13.0</td><td>12.5</td><td>8.5</td><td>8.7</td><td>12.0</td><td>3.0</td></tr><tr><td class='lt'>5. [委員會 145418] Concept 2:鄰里未投訴·預警勝於補救</td><td><b>84.3</b></td><td>27.0</td><td>12.7</td><td>12.7</td><td>8.3</td><td>8.3</td><td>12.0</td><td>3.3</td></tr><tr><td class='lt'>6. [NBLM] 暗病 MRI / Seepage MRI</td><td><b>83.7</b></td><td>26.3</td><td>13.0</td><td>12.7</td><td>8.7</td><td>8.7</td><td>11.3</td><td>3.0</td></tr><tr><td class='lt'>7. [委員會 131010] Concept 1:〔文件對位〕</td><td><b>83.2</b></td><td>27.2</td><td>12.2</td><td>12.0</td><td>8.0</td><td>8.5</td><td>12.0</td><td>3.3</td></tr><tr><td class='lt'>8. [NBLM] 滴水必究 / Leak Busters</td><td><b>81.9</b></td><td>26.2</td><td>12.5</td><td>11.7</td><td>8.2</td><td>8.0</td><td>12.0</td><td>3.3</td></tr><tr><td class='lt'>9. [NBLM] 破財擋災 / Cost of Delay</td><td><b>81.6</b></td><td>26.3</td><td>12.3</td><td>12.7</td><td>8.7</td><td>8.3</td><td>11.0</td><td>2.3</td></tr><tr><td class='lt'>10. [NBLM] 紅外識破 / Infrared Uncovered</td><td><b>81.0</b></td><td>26.3</td><td>13.0</td><td>11.7</td><td>8.7</td><td>7.7</td><td>11.3</td><td>2.3</td></tr><tr><td class='lt'>11. [NBLM] 滲水特搜 / Seepage Task Force</td><td><b>80.3</b></td><td>25.8</td><td>12.5</td><td>11.7</td><td>8.0</td><td>7.8</td><td>11.7</td><td>2.8</td></tr><tr><td class='lt'>12. [NBLM] 護業防漏網 / Leakage Radar</td><td><b>79.6</b></td><td>25.8</td><td>12.3</td><td>11.8</td><td>8.2</td><td>7.7</td><td>11.0</td><td>2.8</td></tr><tr><td class='lt'>13. [NBLM] 逆向驚嚇 / Reverse Shock</td><td><b>79.3</b></td><td>25.8</td><td>12.5</td><td>11.7</td><td>8.2</td><td>7.7</td><td>10.7</td><td>2.7</td></tr><tr><td class='lt'>14. [NBLM] X光神探 / X-Ray Enforcer</td><td><b>78.0</b></td><td>25.0</td><td>12.3</td><td>11.0</td><td>8.0</td><td>7.7</td><td>11.3</td><td>2.7</td></tr><tr><td class='lt'>15. [NBLM] 限期倒數 / Ticking Deadline</td><td><b>77.5</b></td><td>25.3</td><td>12.3</td><td>12.0</td><td>8.0</td><td>7.3</td><td>10.3</td><td>2.3</td></tr><tr><td class='lt'>16. [NBLM] 無所遁形 / Nowhere to Hide</td><td><b>77.2</b></td><td>25.3</td><td>12.3</td><td>11.3</td><td>8.0</td><td>7.3</td><td>10.7</td><td>2.3</td></tr><tr><td class='lt'>17. [NBLM] 截漏行動 / Operation Dry-up</td><td><b>76.4</b></td><td>24.5</td><td>11.7</td><td>11.0</td><td>8.2</td><td>7.0</td><td>11.3</td><td>2.7</td></tr><tr><td class='lt'>18. [NBLM] 倒數炸彈 / Ticking Notice</td><td><b>75.7</b></td><td>24.0</td><td>13.0</td><td>11.7</td><td>8.3</td><td>6.7</td><td>9.7</td><td>2.3</td></tr><tr><td class='lt'>19. [委員會 131010] Concept 2:〔程序索引〕</td><td><b>74.8</b></td><td>25.2</td><td>10.5</td><td>10.2</td><td>7.3</td><td>7.2</td><td>11.7</td><td>2.7</td></tr><tr><td class='lt'>20. [NBLM] 科技查漏風暴 / Water-Tracing Matrix</td><td><b>73.8</b></td><td>24.8</td><td>12.5</td><td>12.0</td><td>8.2</td><td>7.3</td><td>6.7</td><td>2.3</td></tr><tr><td class='lt'>21. [NBLM] 水滴自爆 / Glow Leak</td><td><b>54.4</b></td><td>17.0</td><td>8.7</td><td>8.0</td><td>5.7</td><td>5.0</td><td>8.0</td><td>2.0</td></tr></tbody></table></div></details></details></section>
-<footer>Madkids Idea Lab · FEHD · ⚠️ AI 初步創意,出客前需 Raymond review + gatekeep</footer>
+<h5>① 議題背景：點解政府而家要做、政策脈絡</h5>
+<p>- <strong>水滲（water seepage）係香港長期民生投訴之一</strong>，涉及住宅單位天花滴水、牆身滲水、霉菌、衛生滋擾，同時又容易引發樓上樓下糾紛，政府需要用更快嘅機制去減少積壓個案同社區摩擦。[6][8]</p>
+<p>- 政府已經將問題放入<strong>2025 Policy Address</strong> 跟進：行政長官提出要由 Joint Office 加強檢測流程，並喺<strong>2026 年中</strong>推出試行安排，目標係加快調查、縮短輪候時間、提升投訴處理效率。[2]</p>
+<p>- 新安排背後嘅政策邏輯係：<strong>由政府「代查」轉向「先由懷疑源頭單位負責自查／修理」</strong>，即係先用更快方法篩走明顯個案，再將成本同責任更明確咁推返畀源頭單位業主。[2][3][5]</p>
+<p>- 政府同時想減少 Joint Office 以往需要花大量時間入單位做全面調查嘅情況，因為滲水投訴處理時間長、程序重、而且經常因為無法及早找到源頭而拖延。[1][3]</p>
+<p>- 另一個政策脈絡係<strong>糾紛調解 / 社區協作</strong>：FEHD 近年推動物管公司參與處理滲水，並聯同環境及生態局、律政司喺<strong>2025 年 7 月</strong>推出社區調解試行計劃，反映政府想將部分個案由「執法式處理」轉向「協調式解決」。[2]</p>
+<p>---</p>
+<h5>② 關鍵事實 / 數據 / 日期</h5>
+<p>- <strong>2025 年《施政報告》</strong>提出，政府會喺<strong>2026 年中</strong>由 Joint Office 推行<strong>pilot scheme</strong>，改善水滲檢查及測試程序。[2]</p>
+<p>- 新流程重點係喺<strong>Stage I</strong> 同時加入 <strong>infrared thermography（紅外線熱成像）</strong> 及 <strong>electronic moisture meter（電子濕度計）</strong>，用作初步判斷滲水來源。[2][3]</p>
+<p>- 如果有合理理由相信滲水來自上層單位，Joint Office 會向上層業主發出 <strong>Notification Letter</strong>，要求其自行檢查及修理，並喺指定限期內完成。[2]</p>
+<p>- 若滲水持續，Joint Office 會將<strong>Stage II</strong> 同 <strong>Stage III</strong> 專業調查同時進行，以加快確定源頭。[2]</p>
+<p>- 一旦確認源頭屬上層單位，而又屬公共衛生滋擾，Joint Office 可按《<strong>Public Health and Municipal Services Ordinance</strong>》（Cap. 132）發出 <strong>Nuisance Notice</strong>。[2][6]</p>
+<p>- <strong>SCMP</strong> 引述政府消息指：若上層業主喺通知後<strong>28 日內</strong>都唔處理，最少要承擔約 <strong>HK$17,000</strong> 的檢測費；政府並計劃將測試費追返畀造成滋擾嘅單位業主。[5][3]</p>
+<p>- <strong>1823</strong> 資料指出，如違反 Nuisance Notice，最高可被罰款 <strong>HK$25,000</strong>，如持續違規另有每日 <strong>HK$450</strong>；若再申請到法院 <strong>Nuisance Order</strong> 而不遵從，最高可罰 <strong>HK$50,000</strong>，另有每日 <strong>HK$600</strong>。[6]</p>
+<p>- Buildings Department 指出，多數水滲成因係<strong>水喉、潔具或排水喉缺陷</strong>，通常屬可修復的樓宇維修問題。[8]</p>
+<p>- <strong>RTHK</strong> 報道政府預計新安排可於<strong>2026 年中</strong>生效，並提到符合資格、收到改善通知嘅業主可申請 <strong>Buildings Department loans</strong> 同 <strong>Urban Renewal Authority subsidies</strong> 支援維修。[3]</p>
+<p>---</p>
+<h5>③ 相關官員 / 單位（真名銜、部門）</h5>
+<p>- <strong>Food and Environmental Hygiene Department (FEHD)</strong>：主責民生滋擾投訴、與 Buildings Department 共同運作 <strong>Joint Office for Investigation of Water Seepage Complaints</strong>。[2][6]</p>
+<p>- <strong>Buildings Department (BD)</strong>：與 FEHD 共同負責聯合辦公室，並提供水滲 FAQ、調查流程及技術資料。[2][8]</p>
+<p>- <strong>Joint Office for Investigation of Water Seepage Complaints</strong>：實際執行調查、發通知、跟進滋擾通知及法律程序的核心單位。[2][6]</p>
+<p>- <strong>Chief Executive 李家超（John Lee Ka-chiu）</strong>：2025 Policy Address 提出加快水滲處理試行方案，屬政策源頭人物。[2]</p>
+<p>- <strong>Environment and Ecology Bureau</strong>：與 FEHD、律政司合作推出<strong>Pilot Scheme on Community Mediation</strong>，將水滲爭議納入調解框架。[2]</p>
+<p>- <strong>Department of Justice</strong>：與 FEHD、環境及生態局合作推動社區調解，反映政府希望用非訴訟方式減少糾紛。[2]</p>
+<p>- <strong>Legislative Council</strong>：2025 年 10 月議員曾就樓宇水滲機制作出討論，反映議題具持續政治及民生關注度。[10]</p>
+<p>- <strong>Hong Kong Housing Authority (HKHA)</strong>：雖然主要處理公屋，但亦被政府回應問及水滲問題，顯示議題並非只屬私人樓宇。[9]</p>
+<p>---</p>
+<h5>④ 受眾關注點 / 社會 sentiment</h5>
+<p>- <strong>最關心係「快唔快」同「邊個負責」</strong>：居民最常見嘅痛點係明明有滴水，但調查慢、來回多、難以證明源頭，結果問題拖住幾個月甚至更耐。[1][6][8]</p>
+<p>- <strong>上層業主成本會否上升</strong>係一個焦點：政府新安排明顯係將部分檢測責任同費用推向疑似源頭單位，社會上容易出現「係咪迫業主埋單」嘅觀感。[3][5]</p>
+<p>- <strong>支持聲音</strong>主要來自長期受滋擾居民：因為新流程可減少等待、避免政府先做大量高成本調查、亦有望加快迫使責任方修理。[2][3]</p>
+<p>- <strong>擔心聲音</strong>集中喺兩點：一係紅外線 / 濕度計初判會否出現誤判；二係即使發出通知，上層業主是否真係肯配合，否則程序會否只係換咗一套更快但未必更有效嘅流程。[2][3]</p>
+<p>- <strong>物管公司與業主立案法團</strong>通常希望政府提供更清晰指引，因為滲水處理牽涉入屋安排、業主溝通、維修協調同記錄保存；PMA Scheme 顯示政府亦期望物管成為第一線協調者。[2][7]</p>
+<p>- 社會整體情緒可以概括為：<strong>「支持加快，但唔想變成另一種轉嫁責任」</strong>，即係市民接受效率提升，但希望程序公平、證據清楚、責任分配明確。[3][5][6]</p>
+<p>---</p>
+<h5>⑤ 香港喺呢件事嘅角色</h5>
+<p>- 香港政府唔係只做「監管者」，而係同時扮演<strong>調查者、協調者、執法者、調解推動者</strong>四重角色；呢點由 FEHD + BD 的 Joint Office 最明顯體現。[2][6]</p>
+<p>- 香港嘅角色亦係<strong>樓宇密集城市的治理樣本</strong>：高密度居住令單位之間滲水問題更易社區化、常態化，所以政府需要一套兼顧技術、法律、行政效率嘅機制。[</p>
+<p>【來源 Sources】</p>
+<p>- https://www.thestandard.com.hk/news/article/329301/Govt-to-launch-faster-water-seepage-investigation-workflow-in-mid-2026</p>
+<p>- https://www.waterseepage.gov.hk/en/water_seepage/pilot_scheme.html</p>
+<p>- https://news.rthk.hk/rthk/en/component/k2/1851050-20260414.htm</p>
+<p>- https://ask.legal/en/blog/water-dripping-from-the-ceiling-in-hong-kong---legal-remedies-responsibilities-practical-steps</p>
+<p>- https://www.scmp.com/news/hong-kong/society/article/3350088/hong-kong-landlords-face-hk17000-inspection-bill-over-ignored-water-seepage</p>
+<p>- https://www.1823.gov.hk/en/faq/how-to-settle-water-seepage-in-residential-flats</p>
+<p>- https://www.pmsa.org.hk/file/3385/%E3%80%8C%E8%99%95%E7%90%86%E7%89%A9%E6%A5%AD%E6%BB%B2%E6%B0%B4%E6%83%85%E6%B3%81%E3%80%8D_%E6%8C%87%E5%8D%97_%E8%8B%B1_16Oct.pdf</p>
+<p>- https://www.bd.gov.hk/en/resources/faq/index_water_seepage_problem.html</p>
+<p>- https://www.info.gov.hk/gia/general/202601/2</p><div class='h3'>🛡️ 官方正名 / 用字（防出錯）</div><p>根據標書及官方來源文件，以下是為廣告創作團隊整理的『官方用語對照表』，所有用詞均嚴格對照標書原文及官方指引：</p>
+<p><strong>1. 部門 / 辦事處 中文正名 + 官方英文全名</strong></p>
+<p>*   <strong>食物環境衞生署</strong> (Food and Environmental Hygiene Department / FEHD) 。⚠️注意：官方寫法為「衞」生，而非「衛」生。</p>
+<p>*   <strong>屋宇署</strong> (Buildings Department / BD) 。</p>
+<p>*   <strong>滲水投訴調查聯合辦事處</strong> (Joint Office for Investigation of Water Seepage Complaints / Joint Office / JO) 。⚠️注意：官方正名為「聯合辦事處」，嚴禁使用「食環署滲水組」等單一部門稱呼；首次提述時必須使用全名，其後可簡稱「聯合辦事處」或俗稱「滲水辦」 。</p>
+<p>*   <strong>政府新聞處</strong> (Information Services Department / ISD) 。</p>
+<p><strong>2. 計劃 / 政策 / 程序 / 法例 / 措施 嘅官方中英名稱</strong></p>
+<p>*   <strong>2025年施政報告</strong> (Policy Address 2025) 。</p>
+<p>*   <strong>處理私人樓宇滲水新程序</strong> (New procedures of handling water seepage in private buildings) 。</p>
+<p>*   <strong>建議維修通知</strong> (Notification Letter) [8-10]。</p>
+<p>*   <strong>第一階段、第二及第三階段調查</strong> (Stage I, Stage II and Stage III investigations) [8-10]。</p>
+<p>*   <strong>《公眾衞生及市政條例》</strong> (Public Health and Municipal Services Ordinance) 。</p>
+<p>*   <strong>妨擾事故通知</strong> (Nuisance Notice / Notice of Nuisance) 。</p>
+<p><strong>3. 專有名詞 / 技術詞 嘅官方中英對照</strong></p>
+<p>*   <strong>樓宇滲水 / 滲水</strong> (Water seepage) 。</p>
+<p>*   <strong>滲水源頭</strong> (Water seepage sources) 。</p>
+<p>*   <strong>紅外線熱成像分析</strong> (Infrared thermography) [8-10]。</p>
+<p>*   <strong>微波斷層掃描</strong> (Microwave tomography) 。</p>
+<p><strong>4. 標書內出現嘅關鍵詞官方寫法（易錯譯嗰啲標明正確寫法）</strong></p>
+<p>*   <strong>電視及電台政府宣傳短片 / 聲帶</strong> (TV and radio Announcements in the Public Interest / APIs) 。⚠️注意：不要譯作普通「Commercial」或「Advertisement」。</p>
+<p>*   <strong>業主責任</strong> (Responsibilities of property owners) 。</p>
+<p>*   <strong>妥善保養物業</strong> (Properly maintain the property) 。</p>
+<p>*   <strong>檢驗費用</strong> (Examination costs) [8-10]。⚠️注意：官方用語為「收回檢驗費用」(Recover the examination costs)，而非「罰款」(Fine) 。</p>
+<p>*   <strong>繁體中文書面語</strong> (Written Traditional Chinese) 。⚠️注意：此為電視宣傳片中文字幕的官方指定要求。</p>
+<p>*   <strong>香港手語 / 手語翻譯</strong> (Sign language interpretation) 。</p>
+<p>*   <strong>一站式服務</strong> (One-stop service) 。</p></div></details><details class='soft'><summary>💭 5W1H 創意 Provocation</summary><div class='card'><p class='hint'>9 條尖問題，逼 agency 諗加咩 element / 風格，落橋前消化。</p><h3>5W1H 創意 Provocation — FEHD</h3>
+<h5>WHO — 對邊個講 + 佢而家點</h5>
+<p>- Q1 如果呢個 message 只可以打動「最唔關心、最 cynical」嗰個觀眾 —— 要加咩一個 element(畫面/聲/人物/情境)先 3 秒內 hook 住佢、令佢唔 skip?</p>
+<p>→ 加入極端特寫嘅天花水珠、霉菌斑點畫面，配合放大咗嘅滴水聲效 (ASMR-style)，直接呈現問題嘅滋擾感。</p>
+<p>- Q2 呢班受眾平時食開咩視聽語言(平台/節奏/語氣)?要 adapt 邊種佢熟悉嘅風格,先入到腦而唔似「政府嘢」?</p>
+<p>→ Adapt 社交平台「懶人包」/ explainer video 風格，用大量 motion graphics、快節奏剪接、pop-up 關鍵字 (e.g.「HK$17,000」、「28 日」) 取代傳統劇情演繹。</p>
+<h5>WHAT — 收窄到一個 + 證據</h5>
+<p>- Q3 成個 campaign 只准觀眾記住一個 element(一個畫面 / 一個 visual device / 一句)—— 你揀咩?點解係佢?</p>
+<p>→ 揀「紅外線熱成像」(infrared thermography) 畫面做 visual device，因為佢視覺上新鮮、有科技感，直接象徵新流程「更快、更科學」嘅核心轉變，容易被記住。</p>
+<p>- Q4 客戶 key message 好抽象,要用咩具體 element(真場面/真數字/真人/真物)去「show 唔 tell」,令佢落地、唔流口號?</p>
+<p>→ 加入 Joint Office 人員手持「紅外線熱成像儀」同「電子濕度計」嘅真實工作場景 shot，並疊加「HK$17,000」、「HK$25,000」等真實罰則數字，將抽象政策具象化。</p>
+<h5>WHY — 點解信 + 情感</h5>
+<p>- Q5 觀眾點解要信 / 關佢事?要加咩證據 element 或情感共鳴 element,先由「事不關己」變「同我有關」?</p>
+<p>→ 加入由行政長官李家超喺《2025 年施政報告》發言嘅真實片段 (archive footage)，以建立政策源頭嘅權威性；再配上不同單位業主（受影響 vs 疑似源頭）嘅真實表情特寫。</p>
+<h5>WHEN / WHERE — 出街情境</h5>
+<p>- Q6 呢條嘢實際喺邊度、咩狀態被睇到(電視 prime / 車廂無聲 / 手機 scroll / 戶外經過)?要 adapt 咩風格(有聲冇聲 / 首 3 秒 / 大字 / 節奏)先食到當下情境?</p>
+<p>→ 針對手機 scroll / 車廂無聲情境，adapt 字幕主導 (caption-led) 風格，用特大、置中嘅 graphic title card 貫穿全片，確保無聲狀態下仍能完整傳達核心資訊。</p>
+<p>- Q7 出街時間(事件前/中/後)decide 調子係「預告期待」定「總結成就」?要加咩 element 配合呢個時間感?</p>
+<p>→ 調子係「預告期待」，因為試行計劃喺 2026 年中先推行。要加入明確嘅日期 graphic：「2026 年中」，並使用 forward-moving / building up 節奏嘅配樂，營造「即將改變」嘅感覺。</p>
+<h5>HOW — 風格 + 差異化</h5>
+<p>- Q8 同類(同部門/同題材)政府片嘅「安全做法」係咩?要 adapt / 升級邊種風格 element(質感/節奏/transition/配樂/美術流派),先做到「框內最高質」而唔悶?</p>
+<p>→ 安全做法係溫情劇式演繹。要升級成帶有輕微懸疑感 (light suspense) 嘅紀實風格，例如用手搖鏡頭、冷色調、更快的 cut-to-cut 節奏，去呈現「調查」同「尋找源頭」嘅過程。</p>
+<p>- Q9 要加咩一個 unexpected element(反差/新 visual device/新手法),先同部門過往 campaign 拉開距離、唔似翻炒,但又唔踩紅線?</p>
+<p>→ 加入一個 split-screen (分割畫面) 的 visual device，一邊係樓下單位受滋擾嘅畫面，另一邊同時展示樓上單位喉管嘅紅外線熱成像圖，用視覺對比直接呈現「因」與「果」。</p></div></details><details class='soft'><summary>📺 ISD API Ref 相類政府舊片</summary><div class='card'><p>【呢條 brief 判定】目的:勸喻/警示/形象/成就(propaganda)  題材:樓宇滲水/消防</p>
+<p>【同目的(勸喻/警示)ISD 慣性】主開頭 真人/講者(88%);格式率 旁白55% 熒幕蓋字100% 標誌結尾88% CTA66% 感嘆88% 三段式·0%;慣用結尾 eTrafficTicket.gov.hk, 電子交通告票平台應用程式標誌, 積水要提防　蚊患無處藏, 食物環境衞生署標誌</p>
+<p>【對口 ISD 舊作借鏡(同 目的×題材,參考佢點寫,唔好照抄,要創新)】</p>
+<p>— 積水要提防　蚊患無處藏  [勸喻/警示 | 公共衞生]</p>
+<p>  ▶ https://www.youtube.com/watch?v=SPx1ZrIvWxM&amp;list=PL1188A9802575C33F</p>
+<p>  女旁白： / 防蚊小教室！ / 熒幕蓋字： / 防蚊小教室 / 食物環境衞生署標誌 / 女旁白： / 蚊子可以傳播很多疾病 / 熒幕蓋字： / 登革熱 / 基孔肯雅熱 / 女旁白： / 而積水，是蚊子滋生的地方 / 想避免，就要徹底清除家居積水 / 例如盆栽底碟 / 花瓶內的水，至少每星期換一次 / 花瓶內壁亦要洗刷 / 女旁白： / 容易積水的垃圾和雜物，要妥善棄置 / 去水位也要清理 / 女旁白： / 前往叢林或蚊患較嚴重的地區 / 應穿着淺色長袖衣物 / 以及使用驅蚊劑 / 熒幕蓋字： / 叢林／蚊患較嚴重地區 / 女旁白： / 積水要提防　蚊患無處藏 / 熒幕蓋字： / 預防登革熱和基孔肯雅熱 / 積水要提防　蚊患無處藏 / 食物環境衞生署標誌</p>
+<p>— 繳交 4-6月季度差餉及/或地租  [勸喻/警示 | 差餉地租]</p>
+<p>  ▶ https://www.youtube.com/watch?v=QRDo1HSviOM&amp;list=PL1188A9802575C33F</p>
+<p>  男旁白： / 本季的差餉地租通知書已經寄出 / 通知書已計算差餉寬減 / 地租並無寬減 / 緊記在4月30日或之前繳交 / 否則須繳付逾期附加費 / 通知書已列明今年重估的「應課差餉租值」 / 若有反對，必須在五月底前以書面提出 / 如若尚未收到通知書 / 請致電查詢熱線2152 0111 / 通知差餉物業估價署 / 熒幕蓋字： / 差餉及地租  準時繳交免罰款 / 差餉物業估價署 標誌  電子差餉地租單服務 標誌 / 登記電子差餉地租單服務 / 查詢熱線：2152 0111       www.rvd.gov.hk</p>
+<p>— 遠離賭博　咪「賭」亂自己人生  [勸喻/警示 | 其他]</p>
+<p>  ▶ https://www.youtube.com/watch?v=6-iNFKSWsws&amp;list=PL1188A9802575C33F</p>
+<p>  男旁白： 你賭？他也賭？ /    不停地賭，甚至參與網上非法賭博。 /    除了輸錢、還輸掉家庭、輸掉朋友、輸掉前途，值得嗎？ / 戒賭吧。 /    遠離賭博，別「賭」亂自己人生。 / 熒幕蓋字： 遠離賭博　咪「賭」亂自己人生！ / 男旁白： 立即致電戒賭熱線183 4633 / 熒幕蓋字： 戒賭熱線 /    183 4633 /    遠離賭博　咪「賭」亂自己人生！ /    民政及青年事務局標誌 /    政府資助計劃標誌 /    平和基金標誌</p>
+<p>— Prohibition of possession of alternative smoking products  [勸喻/警示 | 禁煙/控煙]</p>
+<p>  ▶ https://www.youtube.com/watch?v=2u1v3OIXSwI&amp;list=PL1188A9802575C33F</p>
+<p>  旁白：另類吸煙產品進口和銷售禁令已實施超過三年 / 熒幕蓋字：另類吸煙產品的禁令 / 　　　　　進口 / 　　　　　銷售 / 旁白：由4月30日開始 / 　　　政府將進一步禁止在公眾地方管有另類吸煙產品 / 熒幕蓋字：指明另類吸煙產品包括： / 　　　　　電子煙煙彈 / 　　　　　煙油 / 　　　　　加熱煙支 / 　　　　　草本煙 / 旁白：在公眾地方吸食另類煙會被視作管有並違法 / 熒幕蓋字：吸食 / 　　　　　管有 / 旁白：可被定額罰款三千元 / 熒幕蓋字：罰款 $3,000 / 旁白：管有超額另類煙或作商業用途 / 更可被判監！ / 熒幕蓋字：最高刑罰 / 　　　　　$50,000 / 　　　　　判監六個月 / 旁白：大家切勿以身試法！ / 熒幕蓋字：禁止在公眾地方管有指明另類吸煙產品 / 　　　　　將於2026 年 4 月 30 日生效 / 　　　　　衞生署控煙酒辦公室標誌 / 　　　　　www.taco.gov.hk</p>
+<p>— 2026年人口普查 – 做問卷前要記緊 核實統計員身份  [勸喻/警示 | 防騙]</p>
+<p>  ▶ https://www.youtube.com/watch?v=VlPsI1ZAbJo&amp;list=PL1188A9802575C33F</p>
+<p>  阿普：2026年人口普查現正進行中 / 　　　上門協助住戶完成問卷的統計員 / 　　　會穿着印有統計處徽號的灰色背心制服 / 阿查：佩帶統計員身份證 / 熒幕蓋字：印有統計處徽號的灰色背心制服 / 　　　　　統計員身份證 / 阿查：有懷疑，請立刻致電18 2026核實統計員身份 / 　　　提防騙子！ / 　　　認清來電號碼「18 2026」 / 　　　和短訊發送人「#C&amp;SD」 / 熒幕蓋字：18 2026 / 　　　　　#C&amp;SD / 阿普：緊記！統計員不會搜集你的身份證、 / 　　　銀行戶口或信用卡資料 / 熒幕蓋字：身份證 / 　　　　　銀行戶口 / 　　　　　信用卡資料 / 　　　　　2026年人口普查標誌 / 　　　　　全年進行 / 　　　　　做問卷前要記緊 核實統計員身份 / 　　　　　政府統計處標誌 / 　　　　　普查熱線：18 2026 / 　　　　　www.census2026.gov.hk</p>
+<p>— 帶超額煙酒入境不報關  罰款最少HK$5,000甚或坐監  [勸喻/警示 | 盛事旅遊]</p>
+<p>  ▶ https://www.youtube.com/watch?v=cWXqKvxk0wc&amp;list=PL1188A9802575C33F</p>
+<p>  陳豪： / 我收到一則重要消息 / 在沒有向海關申報下帶超額煙酒入境 / 罰款已提高至港幣五千元 / 熒幕蓋字： / 罰款 HK$2,000 -) HK$5,000 / 陳豪： / 還有五倍稅款! / 熒幕蓋字： / 5倍稅款 / 龔嘉欣： / 那全港市民和入境旅客都要留意 / 陳豪： / 沒錯 / 涉及私煙相關罪行的最高刑罰 / 熒幕蓋字： / 私煙相關罪行 / 龔嘉欣： / 已經提高至罰款港幣二百萬 / 及監禁七年 / 熒幕蓋字： / 最高罰款（港幣）100萬 -) 200萬 / 最長監禁期2年 -) 7年 / 陳豪： / 任何人都不應以身試法！ / 熒幕蓋字： / 帶超額煙酒入境不報關 / 罰款最少HK$5,000甚或坐監 / 《應課稅品條例》（第109章）修訂 / 已於2025年9月19日生效 / 香港海關標誌</p></div></details></div>
+<div id='vid1_1' class='tabpanel' data-set='1'><div class='banner'>👉 委員會已預選六強，你可以隨選隨剔，撳右下 Submit，NBLM 即自動幫佢哋生 BD 入 VID 2。</div><div class='h2'>🔻 推薦六強（橫掃揀）</div><div class='carousel'><div class='ccard  sel' data-cid='cm2ce5f694'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>委員會</span><span class='oscore'>評審 87</span></div><div class='ctitle'>💬 拖一日,多一筆;早處理,免追討。</div><div class='csub'>Concept 2:拖延計價器 — 拖一日,貴一截</div><div class='cbody'><p><strong>創作概念</strong>:</p>
+<p>將「拖延」呢個行為,直接同金錢成本做強制等價轉換。畫面入面,天花滲水嘅水漬唔再係水漬,而係一個冷酷跳動嘅 `$17,000` 計價器——每一滴水滴落,數字就「啪」一聲跳升、變紅。核心橋係打破業主「拖得就拖」嘅僥倖心理:新程序下,拖延嘅成本由「未知嘅麻煩」質變成「已知嘅金錢損失」。政府硬訊息(不合作會被「追討相關測試費用」)用最具阻嚇力嘅方式落地。關鍵守紅線:全程強調「主動處理就唔使畀」,將數字定性為「拖出嚟嘅代價」而非政府斂財,結尾扭返做正面出路(主動驗 = 歸零)。</p>
+<p><strong>人/景</strong>:</p>
+<p>香港典型住宅天花/牆身滲水現場做主視覺舞台。一封「通知信」上嘅限期日期,設計成機場航班牌式機械翻頁質感,翻出嚟嘅唔係目的地而係累積金額。穿插聯辦處同步調查嘅紀實 shot 建立「新程序」可信度。人物克制——唔拍住戶慘況,焦點全放喺「時間 × 金錢」嘅冷感計算上。</p>
+<p><strong>Visual Device</strong>:</p>
+<p><strong>「液態數字」與「實體水漬」強制疊合</strong>——水漬即計價器。Monospaced / 數碼顯示字體嘅冷硬數字,撞落水漬有機形態,形成「自然 vs 人造」「無情 vs 民生」嘅張力。畫面要有銀行對數單式嘅精確冷酷,唔煽情。結尾數字「啪」一聲歸零(業主主動處理),畫面由冷藍轉清——畀出路。</p>
+<p><strong>主打口號</strong>:拖一日,多一筆;早處理,免追討。</p>
+<p><strong>Proposed 明星/名人</strong>:</p>
+<p>不適用。此 concept 靠「數字衝擊 + 冷感精確」運作,明星反而會搶走數字焦點、削弱阻嚇力。旁白主導(冷靜、權威)更貼客戶「理性務實、非煽情」嘅調性要求。</p>
+<p>---</p>
+<p>⚠️ 兩個 concept 共用同一套 style_anchor 同熱成像/數字視覺語言,Round 2 揀中邊個都可以無縫 develop full board。Concept 1 走「科技權威」、Concept 2 走「後果阻嚇」,Raymond 揀中再拆 12 格。</p><div class='scores'><div class='sline'><b>📊 官方評審 87/100</b><span class='scrit'>訊息準確 27.8 · 創意手法 13.5 · 宣傳衝擊 13.0 · 記憶點 8.8 · 說服共鳴 8.3 · 6a 12.3 · 6b 3.3</span></div><div class='snote'>概念清晰有力，阻嚇效果強，但 ESG 元素較弱，創新度中規中矩。<br>訊息清晰具阻嚇力，創意執行將抽象成本視覺化，但說服力與記憶點略遜於情感共鳴類宣傳。<br>將抽象行政後果轉化為具象金錢損失嘅視覺計價器極具阻嚇力與記憶點，精準傳遞新程序核心訊息兼兼顧正面出路，唯ESG連結較弱。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard  sel' data-cid='cm9e4f6ad5'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>委員會</span><span class='oscore'>評審 87</span></div><div class='ctitle'>Concept 1:圈出源頭，同步解困</div><div class='cbody'><p><strong>Creative Concept 創作概念</strong>: JO 用紅外線熱成像報告將模糊水漬轉化為清晰工程圖則，業主用紅筆圈出源頭後，雙軌進度條同步推進；透過「一圈即行動」的視覺對比，展示業主掌握話事權，就能加速程序、控制成本，避免延誤引致嘅更大損失。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class='tw'><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>全黑。突然亮起冷灰水漬紋理，邊界模糊，隨輕微水滴聲擴散。</td><td>（環境音：滴水聲）</td></tr><tr><td>2</td><td>業主 POV，手持冷調手機，對住潮濕牆身，畫面微晃。</td><td>業主（喃喃）：又滲水？</td></tr><tr><td>3</td><td>冷暖對比切：左側灰暗水漬，右側切入橙紅熱圖，漸層清晰。</td><td>旁白（JO專業語氣）：聯合辦事處嘅紅外線熱成像。</td></tr><tr><td>4</td><td>熱圖疊加 A4 工程圖則，抬頭顯示 &quot;Infrared Thermography – Joint Office (JO)&quot;。</td><td>旁白：將水漬變工程圖則。</td></tr><tr><td>5</td><td>業主手持紅色 Marker，筆尖接觸圖則邊緣。</td><td>（音效：清脆 marker 聲）</td></tr><tr><td>6</td><td>紅筆快速一圈，圖則上熱源點被紅圈鎖定。</td><td>旁白：一圈。</td></tr><tr><td>7</td><td>Match Cut：紅圈同時出現在真實牆身相同位置。</td><td>（音效：確認低沉聲）</td></tr><tr><td>8</td><td>雙軌 UI 出現：藍軌（JO Stage II）、紅軌（Stage III），由業主手指輕點啟動。</td><td>旁白：程序同步進行。</td></tr><tr><td>9</td><td>雙軌同時狂飆填滿，視覺節奏加速。</td><td>旁白：你一動，調查就快。</td></tr><tr><td>10</td><td>邊緣冷色水漬紋理迅速收縮消失，轉為清晰線條。</td><td>旁白：成本自己控。</td></tr><tr><td>11</td><td>業主打電話，維修師傅入畫，雙軌完成。</td><td>業主（對電話）：即刻嚟。</td></tr><tr><td>12</td><td>黑底白字：「圖喺手，漏喺你控」。JO 標誌 + 網址。</td><td>旁白：聯合辦事處（JO）。</td></tr></tbody></table></div><div class='scores'><div class='sline'><b>📊 官方評審 87/100</b><span class='scrit'>訊息準確 27.2 · 創意手法 13.2 · 宣傳衝擊 12.7 · 記憶點 8.5 · 說服共鳴 8.7 · 6a 13.0 · 6b 3.3</span></div><div class='snote'>概念清晰有力，視覺對比強，但雙軌同步及 ESG 元素稍弱。<br>概念清晰運用科技視覺化，有效傳遞業主主導權訊息，但說服力與記憶點略遜。<br>以紅外線熱成像疊加工程圖則及雙軌進度條視覺化滲水調查流程，訊息精準且具創新說服力，惟ESG元素僅間接體現於減損節能。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard  sel' data-cid='cm98ccdb84'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>Claude</span><span class='oscore'>評審 86</span></div><div class='ctitle'>💬 紅外線一照，滲水源頭無得拗。</div><div class='csub'>Concept 1:〔紅外線之眼〕</div><div class='cbody'><p><strong>創作概念</strong>: 將「聯合辦事處」人員塑造成專業嘅「滲水偵探」，用佢哋嘅新武器——「紅外線熱成像儀」——去破解懸案。全片以一種輕懸疑、類紀實（docu-style）嘅手法，展現佢哋點樣用科技「看穿」牆壁，令以往難以追尋嘅滲水源頭無所遁形，強調新程序嘅科學性、準確性同權威性。</p>
+<p><strong>人/景</strong>: 聯合辦事處人員（著制服，專業形象），喺典型香港私人住宅單位內工作。場景包括：受影響單位（天花有水漬、滴水），同埋樓上源頭單位（表面睇落正常嘅廁所/廚房）。</p>
+<p><strong>Visual Device</strong>: <strong>「紅外線 POV 視角」</strong>。畫面會頻繁切換到紅外線熱成像儀嘅主觀視角，將肉眼睇唔到嘅濕氣、喉管熱點，用鮮艷嘅熱感顏色呈現出嚟。一個關鍵畫面係用分割畫面（split-screen），一邊係樓下單位滴緊水嘅天花，另一邊係樓上單位對應位置嘅紅外線畫面，一個紅色嘅「熱點」清晰標示出滲水源頭。</p>
+<p><strong>主打口號</strong>: 紅外線一照，滲水源頭無得拗。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。主角係「聯合辦事處」嘅專業人員同佢哋嘅科技，更能建立公信力。</p><div class='scores'><div class='sline'><b>📊 官方評審 86/100</b><span class='scrit'>訊息準確 27.0 · 創意手法 12.7 · 宣傳衝擊 12.3 · 記憶點 8.7 · 說服共鳴 8.3 · 6a 14.0 · 6b 3.0</span></div><div class='snote'>科技視覺化強，公信力高，但名人效應同 ESG 元素稍弱。<br>概念清晰且專業地突顯科技應用與程序權威，但情感共鳴與記憶點略顯保守。<br>以紅外線熱成像POV直觀呈現新程序科學性，訊息準確且具說服力，惟ESG元素欠奉略為失分。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard  sel' data-cid='cm96842a61'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>GPT</span><span class='oscore'>評審 86</span></div><div class='ctitle'>💬 滲水唔好拖，收到「通知信」就要即刻跟進。</div><div class='csub'>Concept 1:〔《一封信，兩個後果》〕</div><div class='cbody'><p><strong>創作概念</strong>:  </p>
+<p>用「通知信」做全片核心道具：同一封信，兩個選擇、兩個後果。上層單位業主收到「通知信」後，一邊係限期內主動檢驗維修；另一邊係拖延不理，最後滲水持續，聯合辦事處同步進行第二和第三階段調查，並追討相關測試費用。全片以權威旁白 + 大字 supers 把新程序（紅外線熱成像分析、同步調查）同責任/成本講到一清二楚。</p>
+<p><strong>人/景</strong>:  </p>
+<p>- 典型香港私人住宅：樓上單位（業主/住戶）、樓下單位（受影響住戶）同一座大廈兩層  </p>
+<p>- 聯合辦事處人員入屋做「紅外線熱成像分析」同基本量測（手持儀器、平板記錄）  </p>
+<p>- 信封/「通知信」特寫（桌面、門縫、手接信）</p>
+<p><strong>Visual Device</strong>:  </p>
+<p>「一封信」觸發 <strong>Split-screen 分叉宇宙</strong>：左邊「即刻跟進」，右邊「繼續拖」。畫面上用同款官方感圖章/標籤（例如「限期內完成」 vs「逾期」）一路疊加，最後兩邊收束回同一個結論：新程序更快，拖延成本更高（以大字打出追討相關測試費用、HK$17,000 等關鍵數字）。</p>
+<p><strong>主打口號</strong>:  </p>
+<p>滲水唔好拖，收到「通知信」就要即刻跟進。</p>
+<p><strong>Proposed 明星/名人</strong>:  </p>
+<p>不適用（保持持平公正同官方權威感；亦避免演員爭議風險）。</p>
+<p>---</p><div class='scores'><div class='sline'><b>📊 官方評審 86/100</b><span class='scrit'>訊息準確 27.7 · 創意手法 12.0 · 宣傳衝擊 12.7 · 記憶點 8.3 · 說服共鳴 9.0 · 6a 13.3 · 6b 3.0</span></div><div class='snote'>概念清晰有力，創新度及視覺衝擊稍遜，ESG元素較弱。<br>概念清晰且具對比張力，有效傳達新程序與拖延後果，但創意表現與記憶點尚有提升空間。<br>以分屏對比直觀呈現新調查程序與違規成本，訊息準確清晰且具阻嚇力，惟ESG元素僅限於減少重複檢測之隱性效益，未見具體環保或社會責任措施。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard  sel' data-cid='cmf5a996ed'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>Gemini</span><span class='oscore'>評審 86</span></div><div class='ctitle'>💬 樓上滲水？咪再話唔關你事。新科技一照，責任分明。</div><div class='csub'>Concept 1:〔無所遁形〕</div><div class='cbody'><p><strong>創作概念</strong>: 透過「看不見」與「看得見」嘅強烈對比，呈現新程序嘅威力。前半段描寫滲水問題對住戶嘅無形困擾，後半段以「紅外線熱成像」視覺，將隱藏嘅滲水源頭「顯形」，象徵政府新科技令責任變得清晰可見、無可抵賴，直接回應業主「證明唔到係我」嘅核心心態。</p>
+<p><strong>人/景</strong>:</p>
+<p>- 一個受滲水困擾嘅家庭 (e.g. 中產夫婦望住天花發霉嘅角落)。</p>
+<p>- 聯合辦事處職員，身穿制服，手持專業嘅「紅外線熱成像儀」同「電子濕度計」喺單位內進行檢測。</p>
+<p>- 場景為典型香港私人屋苑單位。</p>
+<p><strong>Visual Device</strong>: <strong>「紅外線視覺轉換」</strong>。畫面會由正常肉眼所見嘅平平無奇嘅天花/牆身，無縫轉換 (morph) 成紅外線熱成像畫面，當中隱藏嘅滲水管道或濕氣會以鮮明嘅藍色或橙紅色線條呈現，將問題源頭視覺化，極具衝擊力。</p>
+<p><strong>主打口號</strong>: 樓上滲水？咪再話唔關你事。新科技一照，責任分明。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。</p><div class='scores'><div class='sline'><b>📊 官方評審 86/100</b><span class='scrit'>訊息準確 27.3 · 創意手法 12.7 · 宣傳衝擊 12.7 · 記憶點 8.7 · 說服共鳴 8.7 · 6a 13.0 · 6b 2.7</span></div><div class='snote'>概念清晰有力，視覺轉換具衝擊，但ESG元素較弱，創新度中上。<br>概念清晰對比強烈，科技視覺化有效傳達訊息，但整體創意與記憶點尚有提升空間。<br>以紅外線熱成像視覺化隱蔽滲水源頭，精準傳遞新科技釐清責任之訊息，創意執行與說服力俱佳，惟ESG元素著墨較少。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard  sel' data-cid='cm6830ac96'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>委員會</span><span class='oscore'>評審 85</span></div><div class='ctitle'>💬 一照現形,賴唔甩。</div><div class='csub'>Concept 1:〔牆身嘅熱力證詞 / The Wall Confesses〕</div><div class='cbody'><p><strong>創作概念</strong>:滲水以前係樓上樓下嘅「羅生門」,口同鼻拗,各執一詞。今次政府唔再做和事佬,而係手持紅外線熱成像儀嘅「科學鑑證官」—— 紅外線一照,肉眼睇唔到嘅滲水路徑變成一道無法抵賴嘅「熱譜指紋」印喺牆身上。畫面本身就係證據,直接帶出硬訊息:聯辦處新程序用紅外線熱成像分析、同步進行第二和第三階段調查,業主有妥善保養物業嘅責任,唔合作將被追討相關測試費用。</p>
+<p><strong>人/景</strong>:典型香港私人住宅單位(中產、貼地,唔豪宅唔殘舊)。樓下住戶望住天花水漬無奈;聯辦處人員手持熱像儀、電子濕度計入屋工作。鏡頭跟儀器移動,牆身灰冷,熱源橙紅跳出。冇主角,焦點係「程序」同「業主」呢個身份。</p>
+<p><strong>Visual Device</strong>:「熱譜指紋」—— 將滲水痕跡處理成極高對比、邊緣銳利嘅橙紅熱譜,似一道蓋落牆身嘅簽名/罪證,印喺灰藍冷調牆面上。一照,痕跡現形,賴唔甩。</p>
+<p><strong>主打口號</strong>:一照現形,賴唔甩。</p>
+<p><strong>Proposed 明星/名人</strong>:不適用(品牌角色係冷靜中立嘅鑑證官,用明星反而削弱權威同公正觀感,亦容易踩「醜化一方」紅線)。</p>
+<p>---</p><div class='scores'><div class='sline'><b>📊 官方評審 85/100</b><span class='scrit'>訊息準確 28.0 · 創意手法 13.0 · 宣傳衝擊 12.0 · 記憶點 8.3 · 說服共鳴 8.7 · 6a 12.7 · 6b 2.7</span></div><div class='snote'>科學鑑證概念清晰有力，視覺衝擊強，但創新度及ESG元素稍弱。<br>訊息科學化呈現清晰有力，但創意執行略偏技術性，記憶點與情感共鳴尚有提升空間。<br>以「熱譜指紋」視覺化科學鑑證程序，精準傳遞新機制權威性與業主責任，創意執行貼地且具說服力，惟ESG元素著墨較少。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div></div><div class='h2'>其餘概念（分數高 → 低）</div><div class='carousel rest-row'><div class='ccard rest ' data-cid='cmfdeeea99'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>Qwen</span><span class='oscore'>評審 85</span></div><div class='ctitle'>💬 業主有責防滲水，違規追討測試費</div><div class='csub'>Concept 2:〔通知信到．責任倒數〕</div><div class='cbody'><p><strong>創作概念</strong>: 聚焦「業主責任」與「金錢後果」嘅直接連結，以「通知信」作為觸發行動嘅核心符號。全片模擬一份「通知信」嘅生命周期：從發出、限期、到逾期後觸發「同步調查」及「追討相關測試費用」嘅連鎖反應。用動態排版將 HK$17,000 等真實數字與程序節點綁定，將抽象責任轉化為具體、可計算嘅成本，直接回應受眾「拖得就拖」嘅心態，強調新程序下「不合作＝付費」嘅明確後果。</p>
+<p><strong>人/景</strong>: 典型私人住宅門外/信箱特寫（接收通知信）；聯合辦事處人員手持文件與檢測設備嘅專業鏡頭；配合全畫面動態資訊圖形，呈現數字與程序嘅壓迫感。</p>
+<p><strong>Visual Device</strong>: 「通知信 + 費用計時器」視覺錨點。畫面以一封設計還原嘅「通知信」為起點，隨旁白推進，信件元素動態拆解為程序步驟，同時疊加一個由零遞增至 HK$17,000+ 嘅費用計時器/數字跳動動畫，每觸發一個程序節點（如逾期、同步調查），數字即顯著放大並配以警示音效，形成強烈嘅行為制約視覺暗示。</p>
+<p><strong>主打口號</strong>: 業主有責防滲水，違規追討測試費</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用（以文件、數字、程序畫面為主體，避免任何人物角色引發標籤化或情緒化解讀，確保訊息持平公正）。</p><div class='scores'><div class='sline'><b>📊 官方評審 85/100</b><span class='scrit'>訊息準確 27.7 · 創意手法 12.0 · 宣傳衝擊 13.0 · 記憶點 8.7 · 說服共鳴 8.7 · 6a 12.3 · 6b 2.7</span></div><div class='snote'>概念清晰但創意及說服力稍弱，視覺以文件數字為主，欠缺強烈感染力。<br>訊息清晰準確且具威懾力，以動態成本視覺化有效連結責任與後果，但純靠程序畫面或削弱共鳴與記憶度。<br>以動態費用計時器將抽象責任轉化為具體金錢損失，訊息精準且具強烈行為制約力，惟ESG元素僅限無紙化隱喻稍顯薄弱。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cm953c841f'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>委員會</span><span class='oscore'>評審 85</span></div><div class='ctitle'>Concept 2:證據在手，主動解困</div><div class='cbody'><p><strong>Creative Concept 創作概念</strong>: JO 將通知信重塑為可即時標註嘅工程圖則，業主手持圖則圈出問題後，畫面 Match Cut 回真實維修現場；強調「證據在手＝話事權在手」，透過雙軌進度條視覺化「你一動手，程序即加速」，確立專業、迅捷嘅品牌角色。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<div class='tw'><table><thead><tr><th>格號</th><th>畫面(visual)</th><th>廣東話對白/旁白(標明邊個讀)</th></tr></thead><tbody><tr><td>1</td><td>業主 POV，推門入屋，牆身水漬特寫，環境音煩躁。</td><td>業主（自言自語）：呢滴水，煩到爆。</td></tr><tr><td>2</td><td>門縫滑入 A4 工程圖則，無信封，抬頭 &quot;Infrared Thermography – Joint Office (JO)&quot;。</td><td>（音效：紙張輕滑聲）</td></tr><tr><td>3</td><td>手持圖則，紅筆懸停於熱感色塊上方。</td><td>旁白（JO專業語氣）：收到通知信，證據已經喺你手。</td></tr><tr><td>4</td><td>紅筆快速畫圈，熱源被紅線鎖定。</td><td>旁白：源頭，一圈即明。</td></tr><tr><td>5</td><td>Match Cut：紅圈同時出現喺真實牆身。</td><td>（音效：確認聲）</td></tr><tr><td>6</td><td>畫面下緣雙色進度條出現，藍／紅兩軌靜止。</td><td>旁白：Stage II 同 Stage III。</td></tr><tr><td>7</td><td>業主手指輕點圖則，雙軌同時啟動並快速填滿。</td><td>旁白：你一行動，程序同步加速。</td></tr><tr><td>8</td><td>冷色水漬紋理由邊緣向中心收縮，消失。</td><td>旁白：拖得越耐，費用越高。</td></tr><tr><td>9</td><td>業主撥打電話，維修師傅帶工具入畫。</td><td>業主（對電話）：有圖則，嚟度睇。</td></tr><tr><td>10</td><td>師傅用工具對準紅圈位置，雙軌完成填滿。</td><td>旁白：自己搞掂，成本最精明。</td></tr><tr><td>11</td><td>業主滿意點頭，畫面轉為明亮暖調。</td><td>業主（微笑）：搞掂。</td></tr><tr><td>12</td><td>黑底白字：「證據喺手，漏喺你控」。JO 標誌 + 網址。</td><td>旁白：聯合辦事處（JO）。</td></tr></tbody></table></div><div class='scores'><div class='sline'><b>📊 官方評審 85/100</b><span class='scrit'>訊息準確 26.7 · 創意手法 13.0 · 宣傳衝擊 12.7 · 記憶點 8.3 · 說服共鳴 8.7 · 6a 12.3 · 6b 3.3</span></div><div class='snote'>概念清晰有力，視覺轉場及雙軌設計具創意，但 ESG 元素較弱，影響力及記憶點仍有提升空間。<br>概念清晰且具象化，將被動通知轉為主動工具，有效傳遞掌控權與效率訊息，創新與實用兼備。<br>以工程圖則結合Match Cut視覺化舉證流程，訊息精準且具創新說服力，有效將被動通知轉為主動解困行動。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cmf1a38ea3'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>GPT</span><span class='oscore'>評審 85</span></div><div class='ctitle'>💬 新程序更快更準：紅外線熱成像分析，快啲搵到源頭。</div><div class='csub'>Concept 2:〔《紅外線見真章》〕</div><div class='cbody'><p><strong>創作概念</strong>:  </p>
+<p>用「紅外線熱成像分析」做主角，將以往「口同鼻拗」嘅滲水羅生門，轉化成「科學查證、快速鎖定」。開場用滴水/牆身潮濕霉點極端特寫做 3 秒 hook，隨即切入聯合辦事處採用紅外線熱成像分析作第一階段，加快識別滲水源頭；如確認後會向上層單位業主發出「通知信」要求限期檢驗維修。若滲水持續且「通知信」逾期，就同步進行第二和第三階段調查，並追討相關測試費用——用「見真章」但唔妖魔化任何一方。</p>
+<p><strong>人/景</strong>:  </p>
+<p>- 樓下住戶牆身/天花受滲水位置（不過份慘、以「滋擾」為主）  </p>
+<p>- 上層單位業主（普通中產形象）聽旁白/睇信、做檢驗維修動作（搵師傅、檢查去水位/喉位等）  </p>
+<p>- 聯合辦事處人員：示範儀器掃描牆身/喉管位置  </p>
+<p>- 屏幕/牆身疊加「紅外線熱成像分析」色階圖（熱區/濕區視覺化）</p>
+<p><strong>Visual Device</strong>:  </p>
+<p>「現實畫面 + 紅外線熱成像分析 Overlay」：同一個牆角/喉位，畫面一半係正常影像，一半係紅外線色階；再用簡潔 motion graphics 把新流程三點釘死：  </p>
+<p>1) 第一階段：紅外線熱成像分析  </p>
+<p>2) 發出「通知信」→ 限期內檢驗維修  </p>
+<p>3) 逾期且滲水持續：同步進行第二和第三階段調查＋追討相關測試費用（HK$17,000 等關鍵數字大字置中）</p>
+<p><strong>主打口號</strong>:  </p>
+<p>新程序更快更準：紅外線熱成像分析，快啲搵到源頭。</p>
+<p><strong>Proposed 明星/名人</strong>:  </p>
+<p>不適用（避免娛樂化；以「聯合辦事處」專業形象建立公信力）。</p><div class='scores'><div class='sline'><b>📊 官方評審 85/100</b><span class='scrit'>訊息準確 27.3 · 創意手法 12.3 · 宣傳衝擊 12.3 · 記憶點 8.3 · 說服共鳴 8.3 · 6a 13.3 · 6b 3.0</span></div><div class='snote'>科學化流程清晰，創意中規中矩，公信力較強但視覺衝擊及情感共鳴稍弱。<br>訊息清晰準確展示新程序，科技視覺化具創意，但說服力與記憶點略遜，創新提案具體可行。<br>以紅外線熱成像視覺化精準傳遞新調查流程，兼顧科學公信力與程序清晰度，惟ESG元素僅隱含於儀器節能而未作獨立論述。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cma1bfce81'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>委員會</span><span class='oscore'>評審 85</span></div><div class='ctitle'>💬 紅外線之下,源頭無得匿。</div><div class='csub'>Concept 1:熱能審判 — 源頭無所遁形</div><div class='cbody'><p><strong>創作概念</strong>:</p>
+<p>將成個世界觀變成「紅外線熱成像視角」——牆壁、傢俬係冷藍,唯獨滲水源頭發出高熱橙紅光,喺科技面前「現形」。核心橋係:以前係樓上樓下「你估我估」嘅羅生門,而家聯辦處引入「紅外線熱成像分析」,源頭客觀實證、無得狡辯。政府硬訊息(業主責任 + 拖延要被追討測試費用)自然接喺「源頭已鎖定」之後——既然證據確鑿,主動檢驗維修就係唯一出路。扣住客戶「show 唔 tell」要求:用真儀器、真畫面證明「政府有新方法解決舊問題」。</p>
+<p><strong>人/景</strong>:</p>
+<p>典型香港私人住宅(中產、貼地,唔豪宅唔殘舊)。聯辦處人員(平實、專業形象)手持紅外線熱成像儀同電子濕度計,喺單位內進行同步調查。鏡頭由肉眼可見嘅尋常天花,切換成熱成像視角,源頭浮現。一位業主收到「通知信」嘅特寫。全程冇「奸角」,只有「程序」同「事實」。</p>
+<p><strong>Visual Device</strong>:</p>
+<p><strong>「偽色熱成像 UI」做全片視覺濾鏡</strong>——高端工業/軍事檢測級嘅銳利質感(避開新聞低解像度熱圖)。畫面在「真實單位」同「熱成像鎖定源頭」之間切換,源頭以橙白高熱光現形,旁邊疊加系統級 super:溫度讀數、座標、「源頭已辨識」。整支片就好似一份正在生成嘅「電子證供」。</p>
+<p><strong>主打口號</strong>:紅外線之下,源頭無得匿。</p>
+<p><strong>Proposed 明星/名人</strong>:</p>
+<p>不適用。此 concept 靠「科技 + 程序」嘅權威感,用真實聯辦處人員 + 旁白主導更可信;加明星反而削弱「官方公告」嘅執法感,亦慳製作費。(如客戶堅持要權威背書,可考慮片中段插入李家超《2025 年施政報告》archive footage 作政策源頭,但非「代言明星」。)</p>
+<p>---</p><div class='scores'><div class='sline'><b>📊 官方評審 85/100</b><span class='scrit'>訊息準確 26.7 · 創意手法 13.0 · 宣傳衝擊 12.0 · 記憶點 8.7 · 說服共鳴 8.0 · 6a 13.3 · 6b 3.0</span></div><div class='snote'>科技視覺強、訊息清晰，但公眾共鳴及ESG元素稍弱。<br>科技視覺化清晰傳遞執法訊息，但情感共鳴與社會影響力稍弱。<br>以熱成像視覺化滲水檢測精準傳達聯辦處科技執法訊息，兼顧說服力與創新，惟ESG元素僅隱含於減少重複檢測之效益中。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cm69caa4c6'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>Kimi</span><span class='oscore'>評審 85</span></div><div class='ctitle'>💬 收到通知信，廿八日內要搞掂</div><div class='csub'>Concept 2:〔廿八日倒數〕</div><div class='cbody'><p><strong>創作概念</strong>：以「時間」作為壓力裝置，將抽象嘅法律程序轉化為觀眾肉身感受到嘅緊迫感。核心橋係一個巨型倒數計時器貫穿全片——由「通知信發出」開始倒數 28 日，畫面平行剪接「上層業主嘅拖延日常」（睇電視、飲茶、無視信件）同「滲水惡化嘅物理證據」（水漬擴大、霉菌蔓延、樓下住戶表情變化）。倒數歸零一刻，畫面切換至聯合辦事處人員同步展開第二、三階段調查，疊上「追討測試費用 HK$17,000」嘅蓋字。整條片係一個「選擇」嘅隨示：主動處理 vs 被動承擔後果。</p>
+<p><strong>人/景</strong>：上層單位業主（中年男性/女性，平實中產形象，非「惡人」設定，強調「普通人都可能拖」）；樓下單位住戶（只出現局部——天花、水滴、抬頭嘅眼神，避免過度煽情）；聯合辦事處人員（敲門、遞信、持儀器調查）。場景：典型香港私人住宅走廊、單位門口、信箱、客廳（業主睇電視時信件擺埋一邊）、廁所喉管位。</p>
+<p><strong>Visual Device</strong>：巨型倒數計時器作為畫面 overlay——數字以 bold sans-serif 佔畫面上方 1/5 位置，紅色漸變至黑色，配合電子「滴答」聲效。計時器下方畫面分為上下兩層：上層係業主嘅拖延行為（慢動作），下層係滲水惡化嘅微距特寫（正常速度）。倒數歸零時，計時器數字碎裂，切換為聯合辦事處人員手持「紅外線熱成像儀」嘅調查畫面，最後定格於「食物環境衞生署」及「屋宇署」標誌 + 查詢網址。</p>
+<p><strong>主打口號</strong>：收到通知信，廿八日內要搞掂</p>
+<p><strong>Proposed 明星/名人</strong>：不適用。業主角色需極度貼地、似真，用素人特約演員或真實業主訪談風格（若客戶容許），避免明星效應令觀眾分心或產生「唔係講我」嘅距離感。</p>
+<p>---</p>
+<p><strong>Creative Team 內部備註（畀 Raymond）</strong>：</p>
+<p>- Concept 1 較似 ISD 慣性嘅「資訊傳遞優先」路線，但用紅外線視覺升級咗質感，風險低、收貨穩。</p>
+<p>- Concept 2 節奏更緊湊、戲劇性更強，但需小心控制「倒數」元素唔好太似電影預告或商業廣告，避免踩「過份戲劇化」紅線。建議若揀 Concept 2，倒數器設計要扁平化、官方感重啲，唔好太 Hollywood。</p>
+<p>- 兩個 concept 都預留咗「李家超 2025 施政報告 archive footage」插入位（約 3-5 秒），建立政策源頭權威性，但唔作為主軸，避免變成政治宣傳片。</p><div class='scores'><div class='sline'><b>📊 官方評審 85/100</b><span class='scrit'>訊息準確 27.2 · 創意手法 13.0 · 宣傳衝擊 12.8 · 記憶點 8.5 · 說服共鳴 8.7 · 6a 11.7 · 6b 2.7</span></div><div class='snote'>倒數裝置具戲劇張力，但官方感稍弱，ESG元素未有明顯發揮。<br>概念清晰有力，以倒數製造緊迫感有效傳達程序後果，戲劇性與資訊平衡得宜，創新提案稍欠技術細節。<br>以倒數計時器將抽象法定期限轉化為具體視覺壓力，訊息清晰且具行為推動力，惟ESG元素欠奉略為失分。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cma9d019bd'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>委員會</span><span class='oscore'>評審 84</span></div><div class='ctitle'>💬 樓下睇到水,樓上睇到數。</div><div class='csub'>Concept 2:〔一眼穿兩層樓 / Through the Floor〕</div><div class='cbody'><p><strong>創作概念</strong>:用「穿牆斷面」打破樓上樓下嘅物理隔閡,將抽象嘅「責任界定」變成一條睇得到嘅「因果線」。畫面一分為二:一邊樓下天花水漬(果),一邊樓上喉管熱源路徑(因),兩邊水點完美對齊,視覺上直接 link 起「邊個漏」同「邊個受苦」。帶出新程序「同步進行第二和第三階段調查」嘅核心 —— 以前要逐層逐階段慢慢查,而家一次過貫穿、提速提效,源頭一現形,測試費就追返。持平呈現,唔標籤任何一方,只係 show 個客觀因果。</p>
+<p><strong>人/景</strong>:同一棟樓嘅上下兩個典型住宅單位,split-screen 並置。下層:水漬、無奈等待嘅日常;上層:喉管、熱成像顯示嘅滲水源。聯辦處人員兩邊同步工作,呈現「同步調查」嘅程序感。</p>
+<p><strong>Visual Device</strong>:「因果對齊線」—— 一條貫穿 split-screen 嘅垂直線,上下兩邊嘅水點/熱源精準對位,一眼睇穿兩層樓嘅因果關係。配合官方數字(如 HK$17,000 測試費)以蓋字務實彈出,唔誇張。</p>
+<p><strong>主打口號</strong>:樓下睇到水,樓上睇到數。</p>
+<p><strong>Proposed 明星/名人</strong>:不適用(同 Concept 1,維持公正執法者形象,避免任何一方被聯想成「惡人」)。</p><div class='scores'><div class='sline'><b>📊 官方評審 84/100</b><span class='scrit'>訊息準確 27.0 · 創意手法 13.0 · 宣傳衝擊 12.0 · 記憶點 9.0 · 說服共鳴 8.0 · 6a 12.5 · 6b 3.0</span></div><div class='snote'>視覺因果線清晰有力，但創新度及ESG元素稍弱。<br>以「因果對齊線」視覺化同步調查程序，精準傳達新機制提速提效與責任釐清之核心訊息，兼顧專業中立與創新表達。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cm87086876'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>DeepSeek</span><span class='oscore'>評審 84</span></div><div class='ctitle'>💬 紅外線追源頭，新程序快解決。</div><div class='csub'>Concept 1:〔紅外線透視〕</div><div class='cbody'><p><strong>創作概念</strong>：以「紅外線熱成像」作為貫穿全片的視覺隱喻與核心賣點。畫面呈現紅外線視角下，隱藏在牆身、樓板後的「水跡熱能圖」逐漸顯現，象徵新程序如同「透視眼」，能快速、科學地穿透表象，直擊滲水源頭。這直接扣連政府「引入新技術、提速提效」的硬訊息，並暗示拖延將無所遁形。</p>
+<p><strong>人/景</strong>：</p>
+<p>- <strong>人</strong>：聯合辦事處 (JO) 調查員 (專業、幹練形象)，手持紅外線熱成像儀工作。</p>
+<p>- <strong>景</strong>：典型香港私人住宅單位內部 (客廳、浴室天花)、大廈外牆、JO辦公室內的監測屏幕。</p>
+<p>- <strong>其他</strong>：動態圖像輔助說明流程。</p>
+<p><strong>Visual Device</strong>：<strong>「紅外線視角切換」</strong>。畫面在正常視覺與紅外線熱成像視角之間流暢切換。正常畫面中的水漬，在切換後呈現為鮮明的彩色熱能圖，並有動畫箭頭指向源頭方向。這個視覺鈎子新穎、科技感強，易於記憶。</p>
+<p><strong>主打口號</strong>：紅外線追源頭，新程序快解決。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用。建議使用專業演員飾演 JO 調查員，以建立程序本身的權威性。</p>
+<p>---</p><div class='scores'><div class='sline'><b>📊 官方評審 84/100</b><span class='scrit'>訊息準確 26.5 · 創意手法 13.0 · 宣傳衝擊 12.2 · 記憶點 8.8 · 說服共鳴 8.0 · 6a 13.0 · 6b 2.8</span></div><div class='snote'>紅外線視覺新穎且扣題，但ESG元素較弱，說服力及影響力仍有提升空間。<br>概念清晰且緊扣主題，科技隱喻新穎有力，能有效傳達程序提速的硬訊息，但在情感共鳴與廣泛記憶度上略有不足。<br>紅外線熱成像視覺隱喻精準傳達新程序科學溯源與提速提效之核心訊息，創意執行具記憶點且高度契合服務創新，惟社會共鳴與ESG連結稍弱。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cmbbb2e4a1'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>Claude</span><span class='oscore'>評審 84</span></div><div class='ctitle'>💬 收到通知即刻搞，拖延費用自己找。</div><div class='csub'>Concept 2:〔倒數通知書〕</div><div class='cbody'><p><strong>創作概念</strong>: 聚焦喺「責任」同「後果」之上。成條片以「通知信」為核心，將佢塑造成一個啟動咗嘅「倒數計時器」。透過強烈嘅視覺同聽覺節奏（時鐘滴答聲、日曆快揭），營造一種時間壓力，直接向可能造成滲水嘅業主傳達一個訊息：觀望期已過，拖延將會直接導致金錢損失。呢個概念唔係講故仔，而係一個視覺化嘅「懶人包」，清晰解釋新程序下嘅「行動 vs 後果」。</p>
+<p><strong>人/景</strong>: 唔需要特定角色，主要係業主嘅手部特寫（收信、睇信、打電話俾師傅）。場景集中喺一個普通家居嘅書枱/飯枱，信件同日曆係主角。會穿插聯合辦事處人員工作嘅 montage 片段。</p>
+<p><strong>Visual Device</strong>: <strong>「Motion Graphic 時間線」</strong>。畫面底部會有一條由左至右推進嘅時間線 graphic，由「收到通知信」開始倒數。當時間線推進，畫面會用 pop-up motion graphics 疊加關鍵字，例如「28日限期」、「同步調查」、「HK$17,000*」，將抽象嘅程序同罰則具象化、圖像化，確保觀眾喺無聲狀態下（搭車碌手機）都完全收到 message。</p>
+<p><strong>主打口號</strong>: 收到通知即刻搞，拖延費用自己找。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。呢個概念係資訊主導，用明星會削弱官方公告嘅嚴肅性同直接性。</p><div class='scores'><div class='sline'><b>📊 官方評審 84/100</b><span class='scrit'>訊息準確 27.7 · 創意手法 12.0 · 宣傳衝擊 12.7 · 記憶點 9.0 · 說服共鳴 8.3 · 6a 11.7 · 6b 2.7</span></div><div class='snote'>訊息清晰但創意同說服力偏弱，視覺化時間線具一定衝擊。<br>概念清晰直接，以視覺化時間線有效傳達程序與後果，資訊主導且具說服力。<br>以動態時間線將抽象程序轉化為具壓迫感嘅視覺懶人包，訊息精準且兼顧無聲場景傳播，惟ESG元素僅限於數碼化減紙，深度稍遜。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cmefff63eb'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>Kimi</span><span class='oscore'>評審 84</span></div><div class='ctitle'>💬 紅外線一照，滲水無處藏</div><div class='csub'>Concept 1:〔紅外線對峙〕</div><div class='cbody'><p><strong>創作概念</strong>：以「紅外線熱成像」作為貫穿全片嘅視覺鈎，將抽象嘅科技程序轉化為觀眾一眼記得住嘅畫面語言。核心橋係「Before vs After」嘅調查速度對比——舊程序係漫長等待嘅黑白畫面，新程序係紅外線一掃即現真相嘅偽彩色世界。透過 split-screen 同時呈現「樓下住戶嘅困擾」同「樓上喉管嘅熱源蹤跡」，將「因」與「果」嘅責任關係視覺化，直接回應「業主有責任」嘅硬訊息。</p>
+<p><strong>人/景</strong>：典型香港私人住宅單位——樓下單位天花（實拍：水珠滲出、牆紙起泡、住戶抬頭無奈望）；樓上單位廁所/廚房喉管位置（紅外線熱成像畫面：喉管熱源呈亮黃色，滲水路徑呈紫色擴散）。聯合辦事處調查人員（實拍：手持紅外線熱成像儀、電子濕度計，制服為 FEHD/BD 標準裝備）。</p>
+<p><strong>Visual Device</strong>：Split-screen 分割畫面——左邊係樓下單位住戶嘅實拍畫面（冷色調、靜態、壓抑），右邊係同一時間樓上單位喉管嘅紅外線熱成像（偽彩色、動態、揭示性）。中間以一條幼細嘅光縫分隔，象徵「樓板」嘅物理界限。當調查人員掃描完成，光縫向兩邊擴展，畫面合成全屏，疊上「通知信」圖樣同「HK$17,000」罰則數字。</p>
+<p><strong>主打口號</strong>：紅外線一照，滲水無處藏</p>
+<p><strong>Proposed 明星/名人</strong>：不適用。調查人員以真實 FEHD/BD 聯合辦事處人員形象呈現（可考慮找真實人員或特約演員，但必須似真、有公信力），避免明星分散對政策權威性嘅注意力。</p>
+<p>---</p><div class='scores'><div class='sline'><b>📊 官方評審 84/100</b><span class='scrit'>訊息準確 26.7 · 創意手法 13.0 · 宣傳衝擊 12.3 · 記憶點 8.7 · 說服共鳴 8.0 · 6a 12.3 · 6b 3.0</span></div><div class='snote'>紅外線視覺強烈且準確傳達業主責任，但ESG元素較弱，公信力與說服力仍有提升空間。<br>視覺概念清晰有力，能有效傳達調查技術與責任訊息，但說服力與情感共鳴稍弱。<br>以紅外線熱成像分割畫面將抽象調查程序與責任歸屬直觀視覺化，訊息準確且具科技說服力，惟ESG元素僅限於設備節能而欠系統性永續論述。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='nbadc10b72'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>NBLM</span><span class='oscore'>評審 84</span></div><div class='ctitle'>水滴自爆 / Glow Leak</div><div class='cbody'><p class=empty>未有概念全文</p><div class='scores'><div class='sline'><b>📊 官方評審 84/100</b><span class='scrit'>訊息準確 26.7 · 創意手法 13.3 · 宣傳衝擊 12.3 · 記憶點 8.3 · 說服共鳴 8.0 · 6a 12.0 · 6b 3.3</span></div><div class='snote'>概念新穎但視覺衝擊稍弱，ESG元素較少。<br>創意概念生動，能清晰傳達科技尋源訊息，但實際影響力與說服力細節略顯不足。<br>以紅外線熱像視覺化漏水點極具創意與說服力，精準傳遞科技尋源訊息並強化公眾對創新檢測技術之認知。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='nb9492eb43'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>NBLM</span><span class='oscore'>評審 84</span></div><div class='ctitle'>滴水不漏 / Zero Leak Operation</div><div class='cbody'><p class=empty>未有概念全文</p><div class='scores'><div class='sline'><b>📊 官方評審 84/100</b><span class='scrit'>訊息準確 27.0 · 創意手法 13.0 · 宣傳衝擊 12.3 · 記憶點 8.7 · 說服共鳴 7.7 · 6a 12.0 · 6b 3.0</span></div><div class='snote'>概念清晰有力，創意中規中矩，ESG 元素較弱。<br>訊息清晰專業，比喻具創意且形象鮮明，但說服力與共鳴度稍弱。<br>以特遣隊結合紅外線科技精準傳達聯辦處專業執法形象，訊息清晰且具創新說服力，惟ESG元素著墨較少。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='nb7977cc95'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>NBLM</span><span class='oscore'>評審 83</span></div><div class='ctitle'>紅外識破 / Infrared Uncovered</div><div class='cbody'><p class=empty>未有概念全文</p><div class='scores'><div class='sline'><b>📊 官方評審 83/100</b><span class='scrit'>訊息準確 26.5 · 創意手法 13.2 · 宣傳衝擊 12.0 · 記憶點 8.8 · 說服共鳴 8.0 · 6a 12.0 · 6b 2.7</span></div><div class='snote'>紅外 POV 視覺衝擊強，但創意與 ESG 元素稍弱，總體仍具說服力。<br>創意視覺化強烈，訊息清晰具衝擊力，科技應用貼題但ESG元素較弱。<br>以紅外線POV直觀呈現科技執法成效，訊息清晰且創新貼題，惟說服力略側重威嚇而欠缺對業主配合誘因之溝通。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cmcd3c738c'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>DeepSeek</span><span class='oscore'>評審 83</span></div><div class='ctitle'>💬 滲水唔拖得，業主責任你要識。</div><div class='csub'>Concept 2:〔雙線時計〕</div><div class='cbody'><p><strong>創作概念</strong>：採用 <strong>split-screen (分割畫面)</strong> 視覺裝置，直接對比「業主拖延」與「政府程序啟動」兩條並行的時間線。一邊畫面顯示樓上單位業主收到「通知信」後的猶豫與拖延（日曆翻頁、時鐘特寫）；另一邊同步顯示樓下單位滲水惡化的慘狀，以及 JO 程序倒數啟動（紅外線檢測、文件蓋章、費用計算器跳動）。核心橋段在於「通知信」限期一到，拖延方的畫面變灰/鎖定，費用追討程序正式啟動，視覺上合二為一，強調「時間一到，後果自負」。</p>
+<p><strong>人/景</strong>：</p>
+<p>- <strong>人</strong>：兩位典型香港中產業主演員，分別飾演（疑似）源頭單位業主與受影響住戶。</p>
+<p>- <strong>景</strong>：兩個相鄰的住宅單位內景（樓上、樓下），JO辦公室。</p>
+<p>- <strong>其他</strong>：大量的文字與數字圖像化處理（如「28日」、「HK$17,000」）。</p>
+<p><strong>Visual Device</strong>：<strong>「動態分割畫面」</strong>。屏幕從中間分割，兩邊劇情同步推進。關鍵時刻（如限期屆滿），分割線會像閘門一樣關閉或畫面融合，視覺上宣告拖延選項結束，政府程序成為唯一主線。這手法直觀展現「選擇與後果」。</p>
+<p><strong>主打口號</strong>：滲水唔拖得，業主責任你要識。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用。避免使用明星，以確保焦點在於「業主」這個身份群體與政策本身，而非個別名人。</p><div class='scores'><div class='sline'><b>📊 官方評審 83/100</b><span class='scrit'>訊息準確 26.7 · 創意手法 12.7 · 宣傳衝擊 12.3 · 記憶點 8.3 · 說服共鳴 8.0 · 6a 12.3 · 6b 2.7</span></div><div class='snote'>概念清晰有力，但視覺裝置較常見，ESG元素較弱。<br>概念清晰對比強烈，但情感共鳴與記憶點稍弱。<br>分割畫面精準對比拖延後果與執法程序，訊息清晰且具視覺張力，有效強化業主責任意識並提升政策傳達效率。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='nb1e2c59de'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>NBLM</span><span class='oscore'>評審 83</span></div><div class='ctitle'>滴水必究 / Leak Busters</div><div class='cbody'><p class=empty>未有概念全文</p><div class='scores'><div class='sline'><b>📊 官方評審 83/100</b><span class='scrit'>訊息準確 26.3 · 創意手法 12.3 · 宣傳衝擊 12.3 · 記憶點 8.7 · 說服共鳴 8.3 · 6a 11.0 · 6b 3.7</span></div><div class='snote'>概念清晰但視覺化稍單一，創新與ESG元素未充分發揮。<br>訊息視覺化強烈，將漏水直接等同金錢損失，具說服力與創新性。<br>以金幣蒸發視覺化漏水損失直擊痛點，訊息清晰且具說服力，惟創新技術應用及ESG著墨稍遜。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='nbc01a1835'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>NBLM</span><span class='oscore'>評審 82</span></div><div class='ctitle'>滲水特搜 / Seepage Task Force</div><div class='cbody'><p class=empty>未有概念全文</p><div class='scores'><div class='sline'><b>📊 官方評審 82/100</b><span class='scrit'>訊息準確 26.3 · 創意手法 12.3 · 宣傳衝擊 12.3 · 記憶點 8.3 · 說服共鳴 8.0 · 6a 12.3 · 6b 3.0</span></div><div class='snote'>概念清晰但創意及 ESG 元素較弱，未能充分展示新程序優勢。<br>訊息清晰具創意，以偵查劇手法包裝專業程序，能有效提升公眾關注與合規意願。<br>以CSI搜證及紅外線熱成像包裝聯辦處新程序，訊息清晰且具創新科技應用，有效直擊業主怕破財心理提升阻嚇力，惟ESG元素僅限於儀器節能略顯單薄。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cm3a39ccb1'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>Gemini</span><span class='oscore'>評審 82</span></div><div class='ctitle'>💬 聯辦處新招：快查、快證。拖延處理，費用自理。</div><div class='csub'>Concept 2:〔時間競賽〕</div><div class='cbody'><p><strong>創作概念</strong>: 將處理滲水問題塑造成一場與時間嘅競賽。透過分割畫面 (split-screen) 同倒數計時器，一邊展示受影響住戶日復日嘅困擾，另一邊展示上層業主收到「通知信」後，解決問題嘅「黃金時間」正一分一秒流逝。核心係強調「拖延」將引致更嚴重嘅金錢後果，將抽象嘅「程序」變成具體、有壓迫感嘅「時限」。</p>
+<p><strong>人/景</strong>:</p>
+<p>- 分割畫面左邊：樓下住戶嘅日常生活被滲水滋擾 (e.g. 用水桶接水、牆紙剝落)。</p>
+<p>- 分割畫面右邊：樓上業主收到「通知信」嘅特寫，以及一個不斷倒數嘅大型電子計時器 (e.g. 由 28 日開始倒數)。</p>
+<p>- 聯合辦事處職員同步進行第二、三階段調查嘅快速剪接畫面。</p>
+<p><strong>Visual Device</strong>: <strong>「分割畫面 + 倒數計時器」</strong>。畫面大部分時間會以垂直分割形式呈現，強烈對比樓上樓下兩個世界。一個置於畫面中央嘅巨型 digital clock/calendar 會成為視覺焦點，不斷提醒觀眾時間嘅流逝。當限期一到，畫面會疊加「HK$17,000」等追討費用嘅巨大數字，視覺上直接將「時間」同「金錢」掛鈎。</p>
+<p><strong>主打口號</strong>: 聯辦處新招：快查、快證。拖延處理，費用自理。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。</p><div class='scores'><div class='sline'><b>📊 官方評審 82/100</b><span class='scrit'>訊息準確 26.2 · 創意手法 13.0 · 宣傳衝擊 12.3 · 記憶點 8.8 · 說服共鳴 8.3 · 6a 11.3 · 6b 2.3</span></div><div class='snote'>時間競賽概念清晰有力，但視覺重複及負面訴求或稍減共鳴與ESG分數。<br>訊息清晰具壓迫感，視覺創新強，但說服力與直接服務創新可加強。<br>分割畫面配合倒數計時器將抽象程序轉化為具體金錢後果，訊息清晰且具壓迫感，有效推動業主及時回應，惟ESG元素欠奉。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cmb4db7ed0'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>Qwen</span><span class='oscore'>評審 81</span></div><div class='ctitle'>💬 滲水調查新程序，科學溯源快準狠</div><div class='csub'>Concept 1:〔透視滲水．同步追蹤〕</div><div class='cbody'><p><strong>創作概念</strong>: 將抽象嘅「新調查程序」轉化為可視化嘅「科技偵查過程」。以「紅外線熱成像分析」作為貫穿全片嘅視覺核心，直觀呈現聯合辦事處如何運用新技術加速鎖定源頭；再以分割畫面動態圖解「同步進行第二和第三階段調查」嘅流程革新，強調政府解決積壓問題嘅決心與科學根據。成條片係一場「程序升級嘅實證示範」，用科技畫面取代人物對白，建立權威公信力。</p>
+<p><strong>人/景</strong>: 聯合辦事處人員（著制服/專業裝束）於典型私人住宅單位內手持紅外線熱成像儀進行檢測嘅真實工作場景；配合乾淨嘅動態圖形背景，展示程序流程。</p>
+<p><strong>Visual Device</strong>: 「熱成像視窗 + 程序時間軸」雙軌視覺。畫面左側或主視覺係紅外線熱成像儀嘅實時偵測畫面（色溫對比鮮明），右側或底部同步顯示精簡嘅程序時間軸動畫（Stage I → Notification Letter → Parallel Stage II &amp; III），兩者聯動推進，令觀眾一眼睇到「科技」與「流程提速」嘅因果關係。</p>
+<p><strong>主打口號</strong>: 滲水調查新程序，科學溯源快準狠</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用（以聯合辦事處專業人員嘅真實工作形象為主，強化政府公權力與科學性，避免明星效應稀釋政策嚴肅性）。</p><div class='scores'><div class='sline'><b>📊 官方評審 81/100</b><span class='scrit'>訊息準確 26.8 · 創意手法 11.8 · 宣傳衝擊 11.3 · 記憶點 8.0 · 說服共鳴 8.2 · 6a 13.0 · 6b 2.3</span></div><div class='snote'>科技視覺清晰但創意與公眾共鳴稍弱，ESG元素未有發揮。<br>概念清晰且具科技感，能有效展示新程序，但整體創意手法較為直觀，在情感共鳴與社會責任延伸方面略顯不足。<br>以熱成像雙軌視覺精準演繹新程序提速邏輯，科技實證感強且高度貼題，惟ESG元素欠奉略為失分。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='nb29f63b1d'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>NBLM</span><span class='oscore'>評審 81</span></div><div class='ctitle'>滲水MRI / Seepage MRI</div><div class='cbody'><p class=empty>未有概念全文</p><div class='scores'><div class='sline'><b>📊 官方評審 81/100</b><span class='scrit'>訊息準確 25.7 · 創意手法 12.3 · 宣傳衝擊 12.0 · 記憶點 8.3 · 說服共鳴 8.0 · 6a 11.3 · 6b 3.0</span></div><div class='snote'>概念有趣但執行細節不足，難以完全說服業主即時跟進。<br>比喻精準且具創意，將專業問題轉化為易理解的健康警示，有效提升市民關注與行動意願。<br>以醫療診斷比喻滲水檢測極具創意且訊息清晰，有效將紅外線技術與政府通知單連結，提升公眾對預防性維修的認知與說服力。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='nbdad7d114'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>NBLM</span><span class='oscore'>評審 80</span></div><div class='ctitle'>截漏行動 / Operation Dry-up</div><div class='cbody'><p class=empty>未有概念全文</p><div class='scores'><div class='sline'><b>📊 官方評審 80/100</b><span class='scrit'>訊息準確 25.8 · 創意手法 12.5 · 宣傳衝擊 11.7 · 記憶點 8.2 · 說服共鳴 8.0 · 6a 11.3 · 6b 3.0</span></div><div class='snote'>概念清晰但視覺與敘事仍較傳統，創新與ESG元素均屬一般。<br>訊息清晰具創意，但說服力與創新提案具體性可加強。<br>訊息精準且視覺化雙階段執法具強烈阻嚇力與創新性，惟ESG元素僅間接關連致該項得分略低。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='nbe4e8f8d1'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>NBLM</span><span class='oscore'>評審 80</span></div><div class='ctitle'>測漏無所遁形 / Thermal Catch</div><div class='cbody'><p class=empty>未有概念全文</p><div class='scores'><div class='sline'><b>📊 官方評審 80/100</b><span class='scrit'>訊息準確 26.3 · 創意手法 11.7 · 宣傳衝擊 11.7 · 記憶點 8.0 · 說服共鳴 8.0 · 6a 12.0 · 6b 2.7</span></div><div class='snote'>概念清晰但執行細節與 ESG 元素較弱，未能充分展示可量化的創新效益。<br>訊息清晰具創意，技術應用與經濟誘因結合，但社區共鳴與ESG細節可加強。<br>訊息清晰且具阻嚇力，紅外線熱像儀應用貼合服務創新，惟ESG元素僅限於減少水資源浪費略顯單薄。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='nb4103f7bb'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>NBLM</span><span class='oscore'>評審 80</span></div><div class='ctitle'>限期倒數 / Ticking Deadline</div><div class='cbody'><p class=empty>未有概念全文</p><div class='scores'><div class='sline'><b>📊 官方評審 80/100</b><span class='scrit'>訊息準確 25.3 · 創意手法 12.3 · 宣傳衝擊 12.7 · 記憶點 9.0 · 說服共鳴 7.3 · 6a 10.7 · 6b 2.7</span></div><div class='snote'>時間壓力概念清晰有力，但創意與 ESG 元素稍弱。<br>概念強烈且訊息清晰，透過倒數機制有效製造壓迫感與緊迫性，但在說服力與ESG關聯性上略顯薄弱。<br>訊息傳遞清晰且創意張力強，但恐嚇式語調欠說服力並有損政府專業形象，ESG元素亦近乎缺如。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cme4b66505'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>委員會</span><span class='oscore'>評審 80</span></div><div class='ctitle'>Concept 1:〔文件對位〕</div><div class='cbody'><p><strong>Creative Concept 創作概念</strong>:以「通知信與熱成像圖精準疊合」為核心視覺，強調調查已完成，通知信即為證據。紅外線熱成像化作法定文件附件，避開即時探測或透視意象，突顯業主收到信後責任清晰，需按程序處理。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<p>格號 | 畫面(visual) | 廣東話對白/旁白(標明邊個讀)</p>
+<p>1 | 全黑背景，一封政府通知信由上垂直落入畫面中央。 | （旁白）收到通知信。</p>
+<p>2 | 信件靜止，信封印有「聯合辦事處」標誌。 | </p>
+<p>3 | 信紙展開，顯示「滲水位置」欄位。 | </p>
+<p>4 | 信紙表面緩緩浮現熱成像色階濾鏡。 | （旁白）紅外線分析已完成。</p>
+<p>5 | 濾鏡覆蓋信中「滲水位置」欄位。 | </p>
+<p>6 | 熱成像異常區域與信件欄位精準對位。 | </p>
+<p>7 | 對位完成，濾鏡轉為靜態印記。 | （旁白）源頭位置已鎖定。</p>
+<p>8 | 畫面顯示「新程序2026」字樣。 | </p>
+<p>9 | 底部小字顯示「逾期不修，政府將追討測試費用」。 | </p>
+<p>10 | 信件淡出，畫面轉為灰白底、黑字。 | </p>
+<p>11 | 畫面出現「聯合辦事處 Joint Office」標誌。 | （旁白）程序清晰，責任自現。</p>
+<p>12 | 畫面定格，標誌及程序編號停留。 |</p><div class='scores'><div class='sline'><b>📊 官方評審 80/100</b><span class='scrit'>訊息準確 26.7 · 創意手法 12.0 · 宣傳衝擊 11.7 · 記憶點 8.0 · 說服共鳴 7.7 · 6a 11.3 · 6b 2.3</span></div><div class='snote'>概念清晰但創意及影響力一般，視覺對位雖準確，卻欠缺強烈感染力及記憶點。<br>概念清晰聚焦於程序結果與責任，視覺比喻新穎且符合法定文件嚴謹性，但說服力與記憶點稍弱。<br>以熱成像疊合通知信精準傳達新程序證據效力與責任歸屬，創意執行清晰且具說服力，惟ESG元素著墨甚少略為失分。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cmca100ff9'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>Grok</span><span class='oscore'>評審 79</span></div><div class='ctitle'>💬 紅外線一照，源頭即現形。</div><div class='csub'>Concept 1:〔紅外線對比〕</div><div class='cbody'><p><strong>創作概念</strong>:以 split-screen 同時展示樓下滴水滋擾與樓上喉管紅外線熱成像，視覺對比直接呈現「因果關係」，同時以彈出「HK$17,000」費用數字，show 出新程序更快、更科學，扣緊政府「提速、提效」硬訊息。  </p>
+<p><strong>人/景</strong>:典型中層私人住宅走廊及單位內，聯辦處職員手持紅外線熱成像儀及電子濕度計；樓下業主特寫表情。  </p>
+<p><strong>Visual Device</strong>:左右 split-screen，一邊實景滴水、一邊紅外線彩色熱圖；中間再 pop-up 罰款數字。  </p>
+<p><strong>主打口號</strong>:紅外線一照，源頭即現形。  </p>
+<p><strong>Proposed 明星/名人</strong>:不適用。</p><div class='scores'><div class='sline'><b>📊 官方評審 79/100</b><span class='scrit'>訊息準確 26.3 · 創意手法 12.0 · 宣傳衝擊 11.0 · 記憶點 7.7 · 說服共鳴 7.7 · 6a 12.0 · 6b 2.0</span></div><div class='snote'>概念清晰但視覺創意及社會影響力仍屬中規中矩，未能充分展現突破性。<br>概念清晰且科技感強，視覺對比有效傳達核心訊息，但情感共鳴與社會影響力稍弱。<br>紅外線熱成像對比直觀呈現新程序科學性與效率，準確傳遞提速提效訊息且創新度高，惟罰款數字或削弱說服力及社會共鳴。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='nbb0821cdc'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>NBLM</span><span class='oscore'>評審 78</span></div><div class='ctitle'>護業防漏網 / Leakage Radar</div><div class='cbody'><p class=empty>未有概念全文</p><div class='scores'><div class='sline'><b>📊 官方評審 78/100</b><span class='scrit'>訊息準確 25.2 · 創意手法 12.0 · 宣傳衝擊 11.5 · 記憶點 8.0 · 說服共鳴 7.8 · 6a 11.3 · 6b 2.7</span></div><div class='snote'>概念有趣但訊息過於威脅，創意與ESG元素均偏弱。<br>概念清晰具創意，將技術與責任隱喻結合，但說服力與社會共鳴可再強化。<br>雷達隱喻精準傳遞科技查漏與財務責任掛鈎之核心訊息，創意執行力強且具阻嚇力，惟罰單視覺或略損說服力與社會責任觀感。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='nbdb70c50c'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>NBLM</span><span class='oscore'>評審 78</span></div><div class='ctitle'>X光神探 / X-Ray Detective</div><div class='cbody'><p class=empty>未有概念全文</p><div class='scores'><div class='sline'><b>📊 官方評審 78/100</b><span class='scrit'>訊息準確 25.7 · 創意手法 11.7 · 宣傳衝擊 11.7 · 記憶點 8.0 · 說服共鳴 7.7 · 6a 11.0 · 6b 2.3</span></div><div class='snote'>概念清晰但創意與ESG元素較一般，未能突出強烈差異化。<br>概念清晰具科技感，但說服力與創新深度可加強。<br>以X光神探比喻紅外線檢測滲水，訊息準確且具科技威懾力，創新演繹有效提升公眾對JO調查技術之認知與信心。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='nb23f2509a'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>NBLM</span><span class='oscore'>評審 78</span></div><div class='ctitle'>科技查漏風暴 / Water-Tracing Matrix</div><div class='cbody'><p class=empty>未有概念全文</p><div class='scores'><div class='sline'><b>📊 官方評審 78/100</b><span class='scrit'>訊息準確 25.0 · 創意手法 12.3 · 宣傳衝擊 11.7 · 記憶點 7.7 · 說服共鳴 7.3 · 6a 11.3 · 6b 2.7</span></div><div class='snote'>概念清晰但視覺元素較單一，創新及ESG元素不足。<br>訊息清晰具科技壓迫感，創新視覺強，但說服力與ESG元素可更深入。<br>科技執法視覺衝擊強且創新度高，但高壓氛圍或削弱公眾共鳴及訊息清晰度。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='nb6923d2ba'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>NBLM</span><span class='oscore'>評審 77</span></div><div class='ctitle'>逆轉業主 / Reverse Owner</div><div class='cbody'><p class=empty>未有概念全文</p><div class='scores'><div class='sline'><b>📊 官方評審 77/100</b><span class='scrit'>訊息準確 25.0 · 創意手法 11.7 · 宣傳衝擊 11.7 · 記憶點 8.0 · 說服共鳴 7.7 · 6a 10.3 · 6b 2.3</span></div><div class='snote'>概念切題但創意及衝擊力偏弱，未能充分展示科技應用細節。<br>訊息清晰具震懾力，但說服力與創新執行可再強化。<br>訊息清晰且具震懾力，科技執法概念創新貼題，但說服力略嫌恐嚇主導而欠缺正向引導。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cm29db08ee'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>委員會</span><span class='oscore'>評審 75</span></div><div class='ctitle'>Concept 2:〔程序索引〕</div><div class='cbody'><p><strong>Creative Concept 創作概念</strong>:以「三階段欄柵式索引」呈現法定程序，首階段置入通知信與熱成像摘要，其餘階段以低視覺權重列示，強調程序嚴謹、步驟有序，業主按通知信要求行動即可履行責任。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<p>格號 | 畫面(visual) | 廣東話對白/旁白(標明邊個讀)</p>
+<p>1 | 畫面左側浮現三組垂直細線，標註 I、II、III。 | （旁白）滲水調查程序。</p>
+<p>2 | 第一欄（I）向右展開，顯示通知信。 | </p>
+<p>3 | 通知信表面疊加熱成像摘要。 | （旁白）紅外線輔助定位。</p>
+<p>4 | 熱成像異常區域與信件欄位對位重合。 | </p>
+<p>5 | 第二、三欄保持收合，僅顯示法定條文編號。 | </p>
+<p>6 | 底部小字列明「限期內完成維修」。 | </p>
+<p>7 | 畫面轉灰白底、深藍線條。 | （旁白）逾期不修，依法執行後續程序。</p>
+<p>8 | 第二欄輕微高亮，顯示「第二、三階段調查」。 | </p>
+<p>9 | 第三欄輕微高亮，顯示「追討測試費用」。 | </p>
+<p>10 | 第一欄重新聚焦，通知信與熱成像靜態停留。 | </p>
+<p>11 | 畫面出現「聯合辦事處 Joint Office」標誌。 | （旁白）程序升級，責任明確。</p>
+<p>12 | 畫面定格，標誌及階段編號停留。 |</p><div class='scores'><div class='sline'><b>📊 官方評審 75/100</b><span class='scrit'>訊息準確 25.7 · 創意手法 11.3 · 宣傳衝擊 10.3 · 記憶點 7.7 · 說服共鳴 7.0 · 6a 10.7 · 6b 2.7</span></div><div class='snote'>程序清晰但視覺層次單調，創意與感染力偏弱。<br>訊息清晰準確且具結構性，但說服力與記憶點稍弱，創新提案直接相關。<br>以三階段欄柵索引清晰呈現法定程序並結合熱成像技術，訊息準確且具創新性，惟後續階段視覺權重過低或削弱公眾對完整執法流程的記憶與說服力。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='nbeca12d84'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>NBLM</span><span class='oscore'>評審 75</span></div><div class='ctitle'>破財擋災 / Cost of Delay</div><div class='cbody'><p class=empty>未有概念全文</p><div class='scores'><div class='sline'><b>📊 官方評審 75/100</b><span class='scrit'>訊息準確 25.2 · 創意手法 11.3 · 宣傳衝擊 11.5 · 記憶點 8.2 · 說服共鳴 7.7 · 6a 9.0 · 6b 2.2</span></div><div class='snote'>概念清晰但創意及ESG元素偏弱，視覺衝擊有限。<br>訊息清晰具衝擊力，恐懼訴求有效，但說服力與創新提案細節可加強。<br>訊息精準直擊業主痛點且視覺衝擊力強，惟恐懼訴求略欠創新技術元素與ESG連結。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cm45037199'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>Grok</span><span class='oscore'>評審 74</span></div><div class='ctitle'>💬 通知信一到，修好先止罰。</div><div class='csub'>Concept 2:〔通知信倒數〕</div><div class='cbody'><p><strong>創作概念</strong>:以 28 日倒數 clock + 特寫「通知信」實物，由聯辦處職員親手遞上，緊接 cut 至紅外線儀器及「同步進行第二和第三階段調查」文字，配「追討費用」大字，強調業主拖延將有金錢後果，扣緊「有責 + 有後果」硬訊息。  </p>
+<p><strong>人/景</strong>:香港中型私人樓宇信箱及單位門口，聯辦處職員遞信；收信業主中景特寫。  </p>
+<p><strong>Visual Device</strong>:倒數動畫 + 信件特寫 + 儀器特寫三者快速 cut-to-cut。  </p>
+<p><strong>主打口號</strong>:通知信一到，修好先止罰。  </p>
+<p><strong>Proposed 明星/名人</strong>:不適用。</p><div class='scores'><div class='sline'><b>📊 官方評審 74/100</b><span class='scrit'>訊息準確 25.0 · 創意手法 10.3 · 宣傳衝擊 11.3 · 記憶點 7.7 · 說服共鳴 7.7 · 6a 10.3 · 6b 2.0</span></div><div class='snote'>訊息清晰但創意及感染力一般，視覺元素較單調。<br>訊息清晰具壓迫感，但說服力與共鳴稍弱，創新提案與服務直接相關。<br>訊息清晰且具阻嚇力，惟創意與ESG元素較傳統，說服力側重懲罰而欠缺正向引導。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='nb7e79fa17'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>NBLM</span><span class='oscore'>評審 73</span></div><div class='ctitle'>通知單炸彈 / Notice Bomb</div><div class='cbody'><p class=empty>未有概念全文</p><div class='scores'><div class='sline'><b>📊 官方評審 73/100</b><span class='scrit'>訊息準確 22.3 · 創意手法 13.0 · 宣傳衝擊 12.0 · 記憶點 8.7 · 說服共鳴 6.7 · 6a 8.3 · 6b 2.0</span></div><div class='snote'>概念具創意但訊息清晰度及說服力稍弱，ESG元素亦未見實質貢獻。<br>訊息清晰具衝擊力，但威嚇手法可能削弱說服力，且創新與ESG元素較弱。<br>視覺衝擊強且訊息清晰，但將政府公文比喻為炸彈或涉負面聯想，削弱說服力及與創新服務之直接關連。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cm19c18f10'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>委員會</span><span class='oscore'>評審 54</span></div><div class='ctitle'>Concept 2:鄰里未投訴·預警勝於補救</div><div class='cbody'><p><strong>Creative Concept 創作概念</strong>：以「透視牆」為視覺主軸，紅外線成為業主與鄰里之間的「無聲橋樑」。片中先呈現和諧走廊（樓上樓下無人敲門），再切入紅外線箭咀鎖定漏點，讓業主在投訴發生前已掌握證據與解決方案。強調「預警」而非「監控」，同時回歸「業主責任」法律基礎。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<p>格號 | 畫面(visual) | 廣東話對白/旁白(標明邊個讀)</p>
+<p>---|---|---</p>
+<p>1 | 走廊中景，和諧寧靜，門縫無人影。 | （無對白）</p>
+<p>2 | 特寫門鈴，無人按動。 | 旁白（男，專業）：樓上樓下未投訴之前……</p>
+<p>3 | 畫面切至室內滲水牆，熱圖暖橙色浮現。 | 旁白：聯辦處紅外線已經見到源頭。</p>
+<p>4 | 箭咀彈出，鎖定漏點，發出「嗶」聲。 | 旁白：一秒斷症，唔使等到鄰里敲門。</p>
+<p>5 | 畫面一分為二：左邊箭咀鎖定，右邊是和諧鄰里聊天畫面。 | 旁白：修好你層，上下安心。</p>
+<p>6 | 箭咀旁浮現標籤：「$0 檢測費」。 | 旁白：趁早自修，零檢測費。</p>
+<p>7 | 畫面切回單一畫面，箭咀持續閃爍。 | 旁白：收到通知信，就係你嘅責任。</p>
+<p>8 | 時間進度條出現，由綠轉橙。 | 旁白：拖得耐，程序同步展開。</p>
+<p>9 | 畫面右下角彈出費用結算單，紅字「測試費用自付」。 | 旁白：到時費用就要自己畀。</p>
+<p>10 | 箭咀再次閃現，旁邊標籤轉紅。 | 旁白：一箭鎖漏，拖過時限程序就追到。</p>
+<p>11 | 0.5 秒 freeze frame：箭咀鎖定＋「咔」聲。 | （無對白）</p>
+<p>12 | 黑底白字 super：聯辦處 Logo + 「一箭鎖漏，拖過時限程序就追到。」 | 旁白：聯辦處，專業斷症，助你履行業主責任。</p><div class='scores'><div class='sline'><b>📊 官方評審 54/100</b><span class='scrit'>訊息準確 17.3 · 創意手法 8.3 · 宣傳衝擊 8.0 · 記憶點 5.3 · 說服共鳴 5.7 · 6a 7.7 · 6b 2.0</span></div><div class='snote'>預警概念清晰有力，但視覺重複及法律警示稍重，創意與ESG空間仍可再提升。<br>無法評分：評審要求提供具體創意內容以對照標準評分，但查詢中未附上需評審的「創意」詳細方案內容，僅提供評分框架與概念標題，缺乏評分依據。<br>以紅外線透視牆視覺化『預警勝於補救』訊息清晰有力，兼顧科技應用與業主責任教育，惟ESG元素僅隱含於減少糾紛之社會效益而欠具體環保措施。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cm63db8305'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>委員會</span><span class='oscore'>評審 54</span></div><div class='ctitle'>Concept 1:箭鎖漏源·程序實體化</div><div class='cbody'><p><strong>Creative Concept 創作概念</strong>：以「紅外線箭咀」作為清晰導航，貫穿整個片段。開首一刻紅外線即鎖定漏源，隨即展示「通知信」有效期倒數；若業主錯過時限，畫面即分裂為堆疊文件與費用結算單，視覺化「程序同步追討」的後果。整段以「一秒安心 vs. 持續麻煩」作強烈對比，驅使業主即時行動。</p>
+<p><strong>TV API Storyboard(30 秒,12 格)</strong>:</p>
+<p>格號 | 畫面(visual) | 廣東話對白/旁白(標明邊個讀)</p>
+<p>---|---|---</p>
+<p>1 | 極近特寫：手緊揸通知信，紙張微皺，背景模糊滲水牆。 | （無對白）</p>
+<p>2 | 手微顫一下，信封上「聯辦處」Logo 清晰。 | 旁白（男，專業）：收到通知信……</p>
+<p>3 | 手鬆開，畫面急速拉遠，牆上紅外線熱點閃一下。 | 旁白：第一階段紅外線已經鎖定源頭。</p>
+<p>4 | 橙色箭咀彈出，精準指向最熱點，發出「嗶」聲。 | 旁白：一眼見到，唔使估估下。</p>
+<p>5 | 箭咀旁浮現半透明標籤：「$0 檢測費」。 | 旁白：限期內自修，零檢測費。</p>
+<p>6 | 時間進度條由綠轉橙，快速倒數。 | 旁白：拖得耐……</p>
+<p>7 | 畫面瞬間「撕裂」，左邊箭咀變暗，右邊湧出堆疊文件、測試清單及費用結算單。 | 旁白：程序同步展開。</p>
+<p>8 | 費用結算單由模糊變清晰，紅字「測試費用自付」。 | 旁白：測試費用就要自己畀。</p>
+<p>9 | 箭咀再次閃現，鎖定同一熱點，旁邊標籤轉為紅色。 | 旁白：一箭鎖漏，拖過時限程序就追到。</p>
+<p>10 | 畫面切回業主手持通知信的特寫，手指輕觸「自修」選項。 | 旁白：自己決定，源頭自己修。</p>
+<p>11 | 0.5 秒 freeze frame：箭咀鎖定＋「咔」聲音效。 | （無對白）</p>
+<p>12 | 黑底白字 super：聯辦處 Logo + 「一箭鎖漏，拖過時限程序就追到。」 | 旁白：聯辦處，專業斷症，助你履行業主責任。</p><div class='scores'><div class='sline'><b>📊 官方評審 54/100</b><span class='scrit'>訊息準確 17.7 · 創意手法 8.3 · 宣傳衝擊 8.0 · 記憶點 5.3 · 說服共鳴 5.7 · 6a 7.3 · 6b 1.3</span></div><div class='snote'>紅外線箭咀視覺化清晰有力，但程序實體化概念較抽象，ESG元素未有發揮。<br>評分標準與創意內容不匹配，無法進行有效評審。<br>以紅外線箭咀視覺化鎖定漏源並結合限時後果對比，訊息準確且創意執行力強，有效驅動業主履行責任，惟ESG元素著墨較少。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div></div><div class='submit'><button class='btn' onclick='submitRound()'>✅ Submit 六強 (<span class=cnt>6</span>)</button></div></div>
+<div id='vid1_2' class='tabpanel' data-set='1'><div class='banner'>未有概念進入第二輪。返 VID 1 揀六強（submit 即自動生 BD）先。</div></div>
+<div id='vid1_3' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 2 揀三甲先。</div></div>
+<div id='vid1_4' class='tabpanel' data-set='1'><div class='banner'>🎬 VID 4 — 5 步生 storyboard ＋ 片（STEP 1 → 5）</div><div class='card'><div class='h3'>📄 STEP 1 — 揀故事版（揀完即自動分析明星／實景）</div><button class='btn' onclick="pickTvApi('1','FEHD','https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&concept=FINAL&stage=facerefs&target=main')">TV API Script 1</button>&nbsp;<button class='btn ghost' onclick="pickTvApi('2','FEHD','https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&concept=FINAL&stage=facerefs&target=main')">TV API Script 2</button>&nbsp;<a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 GSheet 執稿</a></div><div class='card step2'><div class='h3'>🎭 STEP 2 — 偵測明星／實景 + 主角參考相（揀 TV API 後自動）</div><div class='hint'>仲未 source 主角相。撳上面掣，AI 自動由 ISD 官方相搵 + curate。</div></div><div class='stylepick card'><div class='h3'>🎨 STEP 3 — 揀風格（每行 0 或 1 個；唔剔 = 跟劇本）</div><div class='styrow'><span class='stylbl'>🏙️ 環境</span><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="realistic environment" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="2D comic-style environment" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="3D animated environment" onchange='styPick(this)'>3D動畫</label></div><div class='styrow'><span class='stylbl'>🧍 人物</span><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="photorealistic characters" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="2D comic-style characters" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="3D-modeled characters" onchange='styPick(this)'>3D建模</label></div><div class='styrow'><span class='stylbl'>🌗 光/時間</span><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="daytime lighting" onchange='styPick(this)'>日 Day</label><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="nighttime lighting" onchange='styPick(this)'>夜 Night</label></div><div class='styrow'><span class='stylbl'>🎨 色彩</span><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="vivid saturated color" onchange='styPick(this)'>鮮艷</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="muted desaturated tones" onchange='styPick(this)'>灰調</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="black and white" onchange='styPick(this)'>黑白</label></div><div class='styrow'><span class='stylbl'>😊 情緒</span><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="warm heartfelt mood" onchange='styPick(this)'>溫情</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="passionate uplifting mood" onchange='styPick(this)'>激昂</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="light humorous mood" onchange='styPick(this)'>幽默</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="solemn official tone" onchange='styPick(this)'>莊重官方</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="suspenseful mood" onchange='styPick(this)'>懸疑</label></div><div class='styrow'><span class='stylbl'>🎬 質感</span><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="cinematic look" onchange='styPick(this)'>電影感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="documentary realism" onchange='styPick(this)'>紀實</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="dynamic music-video energy" onchange='styPick(this)'>MV動感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="plain straightforward style" onchange='styPick(this)'>平實</label></div><div class='styanchor'>風格 anchor：<span id='styanchor'>（跟劇本）</span></div></div><div class='card genbox'><div class='h3'>🍌 STEP 4 — 生 BD 引擎（剔幾多生幾多套）</div><div class='engrow'><label class='engo'><input type=checkbox class='engopt' data-menu='bd' value="soul" checked>Higgsfield Soul（似真人）</label><label class='engo'><input type=checkbox class='engopt' data-menu='bd' value="kling">Kling O1（圖質靚）</label><label class='engo off'><input type=checkbox class='engopt' data-menu='bd' value="nano" disabled>Nano Banana <span class=soon>整緊</span></label><label class='engo off'><input type=checkbox class='engopt' data-menu='bd' value="gpt" disabled>OpenAI GPT Image 2 <span class=soon>整緊</span></label></div><div class='hint'>剔 Soul + Kling = 出兩套畀你揀。</div><button class='btn big' onclick="genFinalBD(this,'FEHD','https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&concept=FINAL&stage=gsheetbd&target=main')">由 B6:C17 生最終 BD</button></div><p class='hint'>BD 入咗 Master GSlide → 去 <b>VID 5</b> 生片。</p></div>
+<div id='vid1_5' class='tabpanel' data-set='1'><div class='banner'>未有 FINAL。返 VID 3 揀 FINAL 2 先。</div></div>
+<div id='rad1_1' class='tabpanel' data-set='1'><div class='banner'>📻 電台 — 跟定案概念改編（唔另開 idea）：一撳生，入 Master GSheet 你 polish 即定稿。</div><div class='card'><div class='h3'>📝 生 deliverable → GSheet 定稿</div><button class='btn' onclick="renderForms(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&concept=FINAL&stage=radscript&target=main')">📻 生 30 秒電台稿</button>&nbsp;<a class='btn ghost' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開「Radio API Script」tab 改＋定稿</a><div class='hint'>由定案 STORBD 改寫 30 秒電台稿（秒數｜SFX｜VO）。 寫入「Radio API Script」tab，你改＋confirm 即係定稿（同 client 對緊嗰份 single source）。完成 WhatsApp 通知。</div></div><details class='soft'><summary>🎯 定案概念參考（改編用）</summary><div class='banner'>未有定案概念。返 VID 3 揀 FINAL 先 —— 📻 電台 跟定案概念改編，唔另開 idea。</div></details></div>
+<div class=foot>Idea Lab · 06-09 23:59 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
 </div>
-<a href="#" class="totop" id="totop" aria-label="返頂">↑</a>
+
 <script>
-function openTarget(){var h=decodeURIComponent(location.hash.slice(1));if(!h||h==='')return;var el=document.getElementById(h);if(!el)return;var n=el;while(n){if(n.tagName==='DETAILS')n.open=true;n=n.parentElement;}setTimeout(function(){el.scrollIntoView({block:'start'});},30);}
-window.addEventListener('load',openTarget);window.addEventListener('hashchange',openTarget);
-var tt=document.getElementById('totop');
-window.addEventListener('scroll',function(){tt.classList.toggle('show',window.scrollY>500);});
-tt.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
-</script>
-</body></html>
+var DL = new Date("2026-06-17T07:00:00.000Z").getTime();
+function cd() {
+  var e = document.getElementById('cd'); if (!e) return;
+  var x = DL - Date.now();
+  if (x < 0) { e.textContent = '已截標'; return; }
+  var s = Math.floor(x/1000), d = Math.floor(s/86400);
+  s -= d*86400; var h = Math.floor(s/3600); s -= h*3600;
+  var m = Math.floor(s/60); s -= m*60;
+  e.textContent = (d > 0 ? d + '日 ' : '')
+    + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0')
+    + ':' + String(s).padStart(2,'0');
+}
+cd(); setInterval(cd, 1000);
+
+var TABS   = document.querySelectorAll('.tab');
+var PANELS = document.querySelectorAll('.tabpanel');
+function showTab(id) {
+  if (!document.getElementById(id)) id = 'ph0';
+  TABS.forEach(function(t) { t.classList.toggle('active', t.dataset.tab === id); });
+  PANELS.forEach(function(p) { p.classList.toggle('active', p.id === id); });
+  history.replaceState(null, '', '#' + id);
+  upd();
+  if (/vid\d+_2$/.test(id)) vid2AutoBD();   // 入 VID 2 即自動觸發六強生 BD + poll
+}
+TABS.forEach(function(t) { t.addEventListener('click', function() { showTab(t.dataset.tab); }); });
+showTab((location.hash.slice(1)) || 'vid1_1');
+
+// VID 2:六強 submit 後自動生 BD —— 對未有 BD(data-needbd=1)嘅概念逐個觸發 NBLM deck(GAS 去重,撳幾多次都唔重生)。
+// 未生晒就每 45s reload 一次睇新 BD(NBLM 連夜,一晚生得晒)。
+var _vid2timer;
+function vid2AutoBD() {
+  var panel = document.querySelector('.tabpanel.active'); if (!panel) return;
+  var pend = panel.querySelectorAll('[data-needbd="1"]');
+  pend.forEach(function(c) {
+    var brd = c.dataset.brd; if (!brd) return;
+    var k = 'bdstart_FEHD_' + brd;
+    if (!localStorage.getItem(k)) localStorage.setItem(k, String(Date.now()));  // 開始時間 → 進度條
+    fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&concept=" + encodeURIComponent(brd) + "&stage=deck&target=main" + setQ(),
+          {mode:'no-cors'}).catch(function(){});
+  });
+  tickProgress();
+  if (pend.length && !_vid2timer) {
+    _vid2timer = setInterval(function() { location.reload(); }, 90000);  // 靜靜每 90s 攞新 BD（冇 develop bar）
+  }
+}
+
+// VID 2 進度條：按實測平均 BD 時間（~10 分鐘）推移，封頂 99% stall（NBLM 唔報幾時好）。
+var BD_AVG_MS = 600000;   // 平均 606s（manifest 連續 gap 實測）
+function tickProgress() {
+  document.querySelectorAll('.pgbar').forEach(function(bar) {
+    var brd = bar.dataset.brd; if (!brd) return;
+    var k = 'bdstart_FEHD_' + brd;
+    var s = +localStorage.getItem(k);
+    if (!s) { s = Date.now(); localStorage.setItem(k, String(s)); }
+    var pct = Math.min(99, (Date.now() - s) / BD_AVG_MS * 100);
+    var f = bar.querySelector('.pgfill'); if (f) f.style.width = pct.toFixed(0) + '%';
+    var t = bar.querySelector('.pgtxt');
+    if (t) t.textContent = pct >= 99 ? 'BD 生成中…就快好（99%）' : ('BD 生成中… ' + pct.toFixed(0) + '%（平均 ~10 分鐘）');
+  });
+}
+setInterval(tickProgress, 2000); tickProgress();
+// 已完成（卡有圖）→ 清走嗰個 brd 嘅開始時間，免下次重生即跳 99%
+document.querySelectorAll('.card[data-brd] img.sheet').forEach(function(im) {
+  var card = im.closest('.card[data-brd]');
+  if (card && card.dataset.brd) localStorage.removeItem('bdstart_FEHD_' + card.dataset.brd);
+});
+
+// 零碎想法：localStorage array(可入多次),即時累積顯示,每條 POST 去 GAS 畀委員會消化
+var NK = 'notes_FEHD';
+var notesEl = document.getElementById('notes');
+function loadNotes() {
+  try { var a = JSON.parse(localStorage.getItem(NK) || '[]'); return Array.isArray(a) ? a : []; }
+  catch (e) { return []; }
+}
+function saveNotes(a) { localStorage.setItem(NK, JSON.stringify(a)); }
+function fmtTs(ts) {
+  var d = new Date(ts);
+  function p(n) { return String(n).padStart(2, '0'); }
+  return (d.getMonth()+1) + '/' + d.getDate() + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+}
+function renderNotes() {
+  var box = document.getElementById('noteslist'); if (!box) return;
+  var a = loadNotes();
+  if (!a.length) { box.innerHTML = "<p class='hint' style='margin:4px 2px'>未有想法。</p>"; return; }
+  box.innerHTML = a.map(function(n, i) {
+    var txt = (n.text || '').replace(/</g, '&lt;');
+    return "<div class='notecard'><div class='noterow'>"
+      + "<span class='notets'>" + fmtTs(n.ts) + "</span>"
+      + "<button class='notedel' onclick='delNote(" + i + ")'>✕</button></div>"
+      + "<div class='notetxt'>" + txt + "</div></div>";
+  }).join('');
+}
+function submitNotes() {
+  if (!notesEl || !notesEl.value.trim()) { alert('未有想法'); return; }
+  var txt = notesEl.value.trim();
+  var a = loadNotes(); a.push({ ts: Date.now(), text: txt }); saveNotes(a);
+  notesEl.value = ''; renderNotes();
+  var url = "https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=FEHD&text=" + encodeURIComponent(txt);
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('＋ 已加入（' + a.length + ' 條，VID 1 啟動時餵委員會）');
+}
+function delNote(i) {
+  var a = loadNotes(); if (i < 0 || i >= a.length) return;
+  if (!confirm('刪呢條想法?')) return;
+  a.splice(i, 1); saveNotes(a); renderNotes();
+}
+renderNotes();
+
+function tk(el) {
+  el.classList.toggle('on');
+  el.textContent = el.classList.contains('on') ? '✓' : '';
+  upd();
+}
+// carousel 卡：撳卡頭（唔係內文 scroll 區）toggle 揀選
+function tkCard(head) {
+  var card = head.closest('[data-cid]'); if (!card) return;
+  var ck = card.querySelector('.ck'); if (!ck) return;
+  tk(ck);
+  card.classList.toggle('sel', ck.classList.contains('on'));
+}
+function upd() {
+  var n = document.querySelectorAll('.tabpanel.active .ck.on').length;
+  document.querySelectorAll('.tabpanel.active .cnt').forEach(function(c) {
+    c.textContent = n;
+    c.parentElement.classList.toggle('cnt-warn', n > 6);
+  });
+}
+document.querySelectorAll('.card[data-cid]').forEach(function(card) {
+  var ck = card.querySelector('.ck');
+  if (!ck) return;
+  card.addEventListener('click', function(e) {
+    if (e.target.closest('.ck,.det,textarea,a,button')) return;
+    tk(ck);
+  });
+});
+
+function toast(msg) {
+  var t = document.createElement('div');
+  t.className = 'toast'; t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(function() { t.style.opacity = '0'; }, 6000);
+}
+function showTopProc(msg, stop) {
+  var o = document.getElementById('topproc');
+  if (!o) {
+    o = document.createElement('div'); o.id = 'topproc'; o.className = 'topproc';
+    document.body.insertBefore(o, document.body.firstChild);
+  }
+  if (stop) {
+    o.innerHTML = '<span id="tpmsg">' + msg + '</span>'
+      + ' <a href="#" onclick="location.reload();return false" style="margin-left:8px;font-weight:800;color:var(--ac)">🔄 再 check</a>'
+      + ' <a href="#" onclick="this.parentNode.remove();return false" style="margin-left:8px;color:#888">✕</a>';
+  } else {
+    o.innerHTML = '<span class="spin sm"></span><span id="tpmsg">' + msg + '</span>';
+  }
+}
+
+// 🔄 掣係靜態 HTML（穩陣）。呢度淨係加「切返嚟 >45s 自動攞最新」（standalone app 冇網址列）。
+(function() {
+  var loaded = Date.now();
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden && Date.now() - loaded > 45000)
+      location.href = location.pathname + '?t=' + Date.now() + location.hash;
+  });
+})();
+
+// BD 圖 click 放大（lightbox）—— event delegation，任何 .sheet 圖都得
+(function() {
+  var lb = document.createElement('div'); lb.className = 'lbx';
+  lb.innerHTML = '<span class="x">✕</span><img><div class="hint">撳任何位收返。放大後可用瀏覽器 pinch/scroll 睇每格。</div>';
+  document.body.appendChild(lb);
+  var lbimg = lb.querySelector('img');
+  lb.addEventListener('click', function() { lb.classList.remove('on'); });
+  document.addEventListener('click', function(e) {
+    var t = e.target;
+    if (t && t.classList && t.classList.contains('sheet') && t.src) {
+      lbimg.src = t.src; lb.classList.add('on');
+    }
+  });
+})();
+
+// active panel 嘅 set → GAS param（set 1 唔帶，backend 不變）
+function curSet() { var p = document.querySelector('.tabpanel.active'); return p ? (p.dataset.set || '1') : '1'; }
+function setQ()   { var s = curSet(); return (s && s !== '1') ? ('&set=' + s) : ''; }
+
+// 各 set 嘅 funnel phase（多-set 各 set 唔同）。getVidPhase() 隨 active 嘅 set 變。
+var VID_PHASES = {"1": 1};
+var PRIMARY_VID = 1;
+function getVidPhase() { var s = curSet(); return VID_PHASES[s] || PRIMARY_VID; }
+function pickedCids() {
+  return [].map.call(
+    document.querySelectorAll('.tabpanel.active [data-cid] .ck.on'),
+    function(k) { return k.closest('[data-cid]').dataset.cid; });
+}
+function submitAdvance(url) {
+  toast('✅ 已提交，十幾秒後自動刷新睇下一步（或撳右上 🔄）');
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { location.reload(); }, 13000);   // 單次刷新，冇 develop bar，冇無限 loop
+}
+function submitRound() {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=FEHD&round=r2&cids=" + c.join(',') + setQ());
+}
+function subStage(to) {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=FEHD&round=" + to + "&cids=" + c.join(',') + setQ());
+}
+function postFunnel(url, msg) {
+  fetch(url, {mode:'no-cors'})
+    .then(function() { toast(msg); })
+    .catch(function() { toast('⚠️ 再試一次'); });
+}
+
+function genBD(btn, url) {   // VID 3 Nano per-card 用
+  var acts = btn.closest('.acts') || btn.parentElement;
+  if (acts) acts.innerHTML = "<span class='gening'><span class='spin sm'></span>生緊… ~8-9 分鐘</span>";
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+}
+// STEP 3 風格 picker：每維互斥（但可 0 個）+ 夾成 style_anchor
+function styPick(cb) {
+  if (cb.checked) {
+    var sib = document.querySelectorAll(".styopt[data-dim='" + cb.getAttribute('data-dim') + "']");
+    for (var i = 0; i < sib.length; i++) { if (sib[i] !== cb) sib[i].checked = false; }
+  }
+  var el = document.getElementById('styanchor');
+  if (el) el.textContent = styleAnchor() || '（跟劇本）';
+}
+function styleAnchor() {
+  var dims = ['env', 'char', 'light', 'color', 'mood', 'feel'], picks = [];
+  for (var i = 0; i < dims.length; i++) {
+    var el = document.querySelector(".styopt[data-dim='" + dims[i] + "']:checked");
+    if (el) picks.push(el.value);
+  }
+  return picks.join(', ');
+}
+function pickTvApi(setN, dept, url) {   // STEP 1：揀 TV API set → 存 + 觸發分析(明星/實景)
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify({op:'set_style', dept:dept, tvset:setN})}).catch(function(){});
+  toast('已揀 TV API ' + setN + '，分析緊明星/實景…~2-3 分鐘');
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+}
+function srcRefs(btn, url) {   // STEP 2：AI 搵主角參考相
+  btn.textContent = '⏳ AI 搵相中…（~2-3 分鐘，完成 refresh 見）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('🔍 AI 自動由 ISD 官方相搵主角 + curate 中…');
+}
+function genFinalBD(btn, dept, baseUrl) {   // STEP 4：寫低 STEP 3 風格 → 生最終 BD
+  var anc = styleAnchor();
+  var eng = selectedEngines('bd');
+  // STEP3 風格 + STEP4 引擎寫入 _VID_STYLE（gsheet_to_bd 讀返：風格 override + 剔幾多引擎生幾多套）
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify({op:'set_style', dept:dept, style:anc, engines:eng})}).catch(function(){});
+  toast((anc ? ('🎨 ' + anc) : '🎨 跟劇本') + (eng ? '｜引擎：' + eng : ''));
+  genBD(btn, baseUrl);
+}
+function selectedEngines(menuId) {
+  var els = document.querySelectorAll(".engopt[data-menu='" + menuId + "']:checked");
+  var out = []; for (var i = 0; i < els.length; i++) out.push(els[i].value);
+  return out.join(',');
+}
+function pushGSheet(btn, url) {   // VID 4 寫入 Master GSheet B6:C17
+  btn.textContent = '⏳ 寫入緊…'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已寫入（開 GSheet polish）'; }, 2500);
+  toast('📝 已交，~1 分鐘寫入 Master GSheet B6:C17（前稿自動備份）');
+}
+function renderForms(btn, url) {   // 📋 標書:自動 render 真表頁入 Master Reply GSlide
+  btn.textContent = '⏳ render 緊…（~1-2 分鐘，完成會 WhatsApp）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('📋 已交，listener 會自動 render 真表頁入 Master Reply GSlide');
+}
+function fillForms(btn) {   // 📝 標書:自動填表 — GAS 直出（公司資料 vlookup 寫 Fill tab，唔靠部 Mac）
+  var jsTag = btn.nextElementSibling;  // <script class=filldata>
+  var data;
+  try { data = JSON.parse((jsTag && jsTag.textContent) || '{}'); } catch (e) { data = {}; }
+  if (!data.forms || !data.forms.length) { toast('⚠️ 冇表資料'); return; }
+  btn.textContent = '⏳ 自動填表中…（GAS ~30-60s）'; btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'fill_forms', folderName: data.folderName, forms: data.forms })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已寫 Fill tab（開 Master GSheet）'; btn.disabled = false; }, 3000);
+  toast('📝 GAS 自動填表中（~30-60s 寫入 Master GSheet Fill tab，唔靠部 Mac）');
+}
+function outScript(btn) {   // 📤 VID2:SCRIPT 接落 Master GSheet SCRIPT暫存 — 直接 GAS POST，唔經部 Mac
+  var jsTag = btn.nextElementSibling;  // <script class=bdj> board JSON
+  var board = [];
+  try { board = JSON.parse((jsTag && jsTag.textContent) || '[]'); } catch (e) {}
+  if (!board.length) { toast('⚠️ 冇 board 資料'); return; }
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'script_out', dept: 'FEHD',
+      brd: btn.dataset.brd, concept: btn.dataset.concept, board: board })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已接落「SCRIPT暫存」'; btn.disabled = false; }, 1500);
+  toast('📤 接落 Master GSheet「SCRIPT暫存」(GAS,唔經部 Mac,疊唔覆寫)');
+}
+function clearScript(btn) {   // 🧹 清空 SCRIPT暫存 — GAS（唔經 Mac）
+  if (!confirm('清空 SCRIPT暫存 tab？')) return;
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'clear' })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已清空'; btn.disabled = false; }, 1500);
+  toast('🧹 已清空 SCRIPT暫存（GAS,唔經部 Mac）');
+}
+
+function submitGSlide(btn) {
+  var card = btn.closest('.card[data-cid]');
+  if (!card) { toast('⚠️ 搵唔到卡'); return; }
+  var cid  = card ? card.dataset.cid : '';
+  var brd  = card ? card.dataset.brd : '';
+  var frames = {};
+  card.querySelectorAll('.frame-note').forEach(function(ta) {
+    if (ta.value.trim()) frames[ta.dataset.frame] = ta.value.trim();
+  });
+  var url = "https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submitComments&dept=FEHD&cid=" + cid + "&brd=" + brd
+            + setQ() + "&comments=" + encodeURIComponent(JSON.stringify(frames));
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('📊 已傳送，系統 paste 入 GSlide 中…');
+}
+
+// 「develop 緊」bar 已移除（Raymond 2026-06-06）—— 改用 VID 2 tab 紅邊 + 各 concept 進度條。
+</script></body></html>
