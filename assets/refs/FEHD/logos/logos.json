@@ -1,0 +1,23 @@
+{
+  "dept": "FEHD",
+  "slots": [
+    {
+      "slot": 1,
+      "query": "Food and Environmental Hygiene Department logo",
+      "file": "assets/refs/FEHD/logos/slot1.png",
+      "title": "Food and Environmental Hygiene Department - Wikipe"
+    },
+    {
+      "slot": 2,
+      "query": "Hong Kong FEHD logo",
+      "file": "assets/refs/FEHD/logos/slot2.png",
+      "title": "Food and Environmental Hygiene Department - Wikipe"
+    },
+    {
+      "slot": 3,
+      "query": "",
+      "file": "",
+      "title": "(空,可即場打字搵)"
+    }
+  ]
+}
