@@ -122,9 +122,45 @@
           }
         ]
       }
+    },
+    "C": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260610-235923-nblm-i1",
+            "sheet": "assets/gen/FEHD_C/v20260610-235923-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_C/v20260610-235923-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_C/v20260610-235923-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_C/v20260610-235923-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_C/v20260610-235923-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_C/v20260610-235923-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_C/v20260610-235923-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_C/v20260610-235923-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_C/v20260610-235923-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_C/v20260610-235923-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_C/v20260610-235923-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_C/v20260610-235923-nblm-i1/frame_11.png"
+            ],
+            "n": 11,
+            "ts": "2026-06-11T00:00:18",
+            "source": "committee",
+            "brd": "C",
+            "cid": "cm98ccdb84",
+            "label": "[claude-opus-4-8] Concept 1:〔紅外線之眼〕",
+            "gslide_pages": [
+              "assets/gen/FEHD_C/v20260610-235923-nblm-i1/gslide_FEHD_C_p1.png",
+              "assets/gen/FEHD_C/v20260610-235923-nblm-i1/gslide_FEHD_C_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1y9g4wmwz5_2tL57hB3EZ_J_bvhYKTR_i",
+            "deck_pdf": "https://drive.google.com/file/d/1_4_7bZSvlixs4yy8pbY3s7PEVPoF821U/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_C/v20260610-235923-nblm-i1/deck.pdf"
+          }
+        ]
+      }
     }
   },
-  "updated": "2026-06-10T23:54:38",
+  "updated": "2026-06-11T00:00:31",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "FEHD_WaterSeepageAPIs"
 }
