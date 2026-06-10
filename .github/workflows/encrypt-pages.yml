@@ -1,0 +1,62 @@
+name: Encrypt & Deploy Pages
+
+# 各 pipeline 照 push plaintext 去 main；呢個 Action 喺每次 push 後用 staticrypt
+# AES 加密全站 HTML（一個密碼 + 30 日 remember）→ 出去 GitHub Pages。
+# 密碼 = repo secret STATICRYPT_PASSWORD。salt 固定（公開冇問題）。
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Encrypt all HTML with staticrypt
+        env:
+          SC_PWD: ${{ secrets.STATICRYPT_PASSWORD }}
+        run: |
+          set -e
+          mkdir -p dist
+          rsync -a --exclude='.git' --exclude='.github' --exclude='dist' ./ dist/
+          count=0
+          while IFS= read -r -d '' f; do
+            npx --yes staticrypt "$f" -d "$(dirname "$f")" \
+              -p "$SC_PWD" -s 'da37644ab187b199430a20aa832bc9fa' \
+              --remember 30 --short -c false
+            count=$((count+1))
+          done < <(find dist -name '*.html' -print0)
+          echo "encrypted $count html file(s)"
+          # 安全網：每個 html 都一定要有 staticrypt marker，否則 = 未加密 → fail（唔出未加密站）
+          missing=0
+          while IFS= read -r -d '' f; do
+            grep -q 'staticrypt' "$f" || { echo "::error::not encrypted: $f"; missing=$((missing+1)); }
+          done < <(find dist -name '*.html' -print0)
+          if [ "$missing" -gt 0 ]; then echo "::error::$missing page(s) not encrypted"; exit 1; fi
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
