@@ -5,14 +5,18 @@
       "slot": 1,
       "query": "食物環境衞生署 標誌",
       "file": "assets/refs/FEHD/logos/slot1.png",
-      "title": "食物環境衞生署- 維基百科，自由的百科全書",
+      "title": "信心保證- 新天地坊國際有限公司",
+      "w": 6181,
+      "h": 1612,
       "enabled": true
     },
     {
       "slot": 2,
       "query": "屋宇署 標誌",
       "file": "assets/refs/FEHD/logos/slot2.png",
-      "title": "屋宇署設電話熱線供市民查詢住宅單位改動及加建工程",
+      "title": "屋宇署發現兩宗棚網未有遵從《作業備考》要求個案- RTHK",
+      "w": 1920,
+      "h": 1080,
       "enabled": true
     },
     {
@@ -20,6 +24,8 @@
       "query": "滲水投訴調查聯合辦事處 標誌",
       "file": "assets/refs/FEHD/logos/slot3.png",
       "title": "九龍區滲水個案調查聯辦處今起投入服務- 即時- 點新聞",
+      "w": 1754,
+      "h": 729,
       "enabled": true
     }
   ]
