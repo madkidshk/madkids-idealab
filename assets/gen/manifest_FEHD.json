@@ -231,9 +231,47 @@
           }
         ]
       }
+    },
+    "I": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260611-001508-nblm-i1",
+            "sheet": "assets/gen/FEHD_I/v20260611-001508-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_I/v20260611-001508-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_I/v20260611-001508-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_I/v20260611-001508-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_I/v20260611-001508-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_I/v20260611-001508-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_I/v20260611-001508-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_I/v20260611-001508-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_I/v20260611-001508-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_I/v20260611-001508-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_I/v20260611-001508-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_I/v20260611-001508-nblm-i1/frame_11.png",
+              "assets/gen/FEHD_I/v20260611-001508-nblm-i1/frame_12.png",
+              "assets/gen/FEHD_I/v20260611-001508-nblm-i1/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-11T00:16:06",
+            "source": "committee",
+            "brd": "I",
+            "cid": "cm63db8305",
+            "label": "[委員會 145418] Concept 1:箭鎖漏源·程序實體化",
+            "gslide_pages": [
+              "assets/gen/FEHD_I/v20260611-001508-nblm-i1/gslide_FEHD_I_p1.png",
+              "assets/gen/FEHD_I/v20260611-001508-nblm-i1/gslide_FEHD_I_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1NlfwxRh869kDbXIiPx3iYUw6w5sQZ-OO",
+            "deck_pdf": "https://drive.google.com/file/d/1gMaEFr4kAUr8qPc2NW1yl0i7Zu64xS8C/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_I/v20260611-001508-nblm-i1/deck.pdf"
+          }
+        ]
+      }
     }
   },
-  "updated": "2026-06-11T00:10:09",
+  "updated": "2026-06-11T00:16:17",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "FEHD_WaterSeepageAPIs"
 }
