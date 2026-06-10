@@ -48,9 +48,45 @@
           }
         ]
       }
+    },
+    "A": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260610-234951-nblm-i1",
+            "sheet": "assets/gen/FEHD_A/v20260610-234951-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_A/v20260610-234951-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_A/v20260610-234951-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_A/v20260610-234951-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_A/v20260610-234951-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_A/v20260610-234951-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_A/v20260610-234951-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_A/v20260610-234951-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_A/v20260610-234951-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_A/v20260610-234951-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_A/v20260610-234951-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_A/v20260610-234951-nblm-i1/frame_11.png"
+            ],
+            "n": 11,
+            "ts": "2026-06-10T23:50:41",
+            "source": "committee",
+            "brd": "A",
+            "cid": "cm2ce5f694",
+            "label": "[委員會 180030] Concept 2:拖延計價器 — 拖一日,貴一截",
+            "gslide_pages": [
+              "assets/gen/FEHD_A/v20260610-234951-nblm-i1/gslide_FEHD_A_p1.png",
+              "assets/gen/FEHD_A/v20260610-234951-nblm-i1/gslide_FEHD_A_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1POo9CQsJJAf_-OhuaHEGOaS_J6j3OXhI",
+            "deck_pdf": "https://drive.google.com/file/d/1kadF2af7TkFsCH8mUH7s4pGPA8Stjcvf/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_A/v20260610-234951-nblm-i1/deck.pdf"
+          }
+        ]
+      }
     }
   },
-  "updated": "2026-06-03T14:05:18",
+  "updated": "2026-06-10T23:50:51",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "FEHD_WaterSeepageAPIs"
 }
