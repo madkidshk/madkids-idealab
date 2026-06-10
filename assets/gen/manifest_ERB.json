@@ -46,9 +46,46 @@
           }
         ]
       }
+    },
+    "E": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260610-225753-nblm-i1",
+            "sheet": "assets/gen/ERB_E/v20260610-225753-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/ERB_E/v20260610-225753-nblm-i1/frame_01.png",
+              "assets/gen/ERB_E/v20260610-225753-nblm-i1/frame_02.png",
+              "assets/gen/ERB_E/v20260610-225753-nblm-i1/frame_03.png",
+              "assets/gen/ERB_E/v20260610-225753-nblm-i1/frame_04.png",
+              "assets/gen/ERB_E/v20260610-225753-nblm-i1/frame_05.png",
+              "assets/gen/ERB_E/v20260610-225753-nblm-i1/frame_06.png",
+              "assets/gen/ERB_E/v20260610-225753-nblm-i1/frame_07.png",
+              "assets/gen/ERB_E/v20260610-225753-nblm-i1/frame_08.png",
+              "assets/gen/ERB_E/v20260610-225753-nblm-i1/frame_09.png",
+              "assets/gen/ERB_E/v20260610-225753-nblm-i1/frame_10.png",
+              "assets/gen/ERB_E/v20260610-225753-nblm-i1/frame_11.png",
+              "assets/gen/ERB_E/v20260610-225753-nblm-i1/frame_12.png"
+            ],
+            "n": 12,
+            "ts": "2026-06-10T22:58:54",
+            "source": "committee",
+            "brd": "E",
+            "cid": "cmcb2293ce",
+            "label": "[deepseek-v3.2] Concept 3:實戰教室",
+            "gslide_pages": [
+              "assets/gen/ERB_E/v20260610-225753-nblm-i1/gslide_ERB_E_p1.png",
+              "assets/gen/ERB_E/v20260610-225753-nblm-i1/gslide_ERB_E_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/195z2isDao8auIDX9dQgw8TiD7-8bpdhO",
+            "deck_pdf": "https://drive.google.com/file/d/1SYhAn8W7GGGK6obVo5l32b_KLcQUuzPu/view?usp=drivesdk",
+            "deck_repo": "assets/gen/ERB_E/v20260610-225753-nblm-i1/deck.pdf"
+          }
+        ]
+      }
     }
   },
   "drive_canonical": "https://drive.google.com/drive/folders/1xwWCyee7WH0J2pNvVuWwdgjaOSL6noPS",
   "drive_canonical_name": "ERB_New Skills Training Video Seri",
-  "updated": "2026-06-10T19:16:48"
+  "updated": "2026-06-10T22:59:04"
 }
