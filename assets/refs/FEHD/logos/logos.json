@@ -3,21 +3,24 @@
   "slots": [
     {
       "slot": 1,
-      "query": "Food and Environmental Hygiene Department logo",
+      "query": "食物環境衞生署 標誌",
       "file": "assets/refs/FEHD/logos/slot1.png",
-      "title": "Food and Environmental Hygiene Department - Wikipe"
+      "title": "食物環境衞生署- 維基百科，自由的百科全書",
+      "enabled": true
     },
     {
       "slot": 2,
-      "query": "Buildings Department logo",
+      "query": "屋宇署 標誌",
       "file": "assets/refs/FEHD/logos/slot2.png",
-      "title": "Buildings Department - Wikipedia"
+      "title": "屋宇署設電話熱線供市民查詢住宅單位改動及加建工程",
+      "enabled": true
     },
     {
       "slot": 3,
-      "query": "Joint Office logo",
+      "query": "滲水投訴調查聯合辦事處 標誌",
       "file": "assets/refs/FEHD/logos/slot3.png",
-      "title": "Joint Office of Energy and Transportation"
+      "title": "九龍區滲水個案調查聯辦處今起投入服務- 即時- 點新聞",
+      "enabled": true
     }
   ]
 }
