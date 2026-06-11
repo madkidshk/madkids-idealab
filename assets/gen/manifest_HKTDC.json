@@ -1,0 +1,45 @@
+{
+  "dept": "HKTDC",
+  "concepts": {
+    "F": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260611-210405-nblm-i1",
+            "sheet": "assets/gen/HKTDC_F/v20260611-210405-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/HKTDC_F/v20260611-210405-nblm-i1/frame_01.png",
+              "assets/gen/HKTDC_F/v20260611-210405-nblm-i1/frame_02.png",
+              "assets/gen/HKTDC_F/v20260611-210405-nblm-i1/frame_03.png",
+              "assets/gen/HKTDC_F/v20260611-210405-nblm-i1/frame_04.png",
+              "assets/gen/HKTDC_F/v20260611-210405-nblm-i1/frame_05.png",
+              "assets/gen/HKTDC_F/v20260611-210405-nblm-i1/frame_06.png",
+              "assets/gen/HKTDC_F/v20260611-210405-nblm-i1/frame_07.png",
+              "assets/gen/HKTDC_F/v20260611-210405-nblm-i1/frame_08.png",
+              "assets/gen/HKTDC_F/v20260611-210405-nblm-i1/frame_09.png",
+              "assets/gen/HKTDC_F/v20260611-210405-nblm-i1/frame_10.png",
+              "assets/gen/HKTDC_F/v20260611-210405-nblm-i1/frame_11.png",
+              "assets/gen/HKTDC_F/v20260611-210405-nblm-i1/frame_12.png"
+            ],
+            "n": 12,
+            "ts": "2026-06-11T21:05:03",
+            "source": "committee",
+            "brd": "F",
+            "cid": "cmf20e1d5a",
+            "label": "[qwen3.7-max] Concept 1:〔專利加速棧 (The IP Stack)〕",
+            "gslide_pages": [
+              "assets/gen/HKTDC_F/v20260611-210405-nblm-i1/gslide_HKTDC_F_p1.png",
+              "assets/gen/HKTDC_F/v20260611-210405-nblm-i1/gslide_HKTDC_F_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1CxBrP558Rz8e_KlLDyOxWt_USnQSElGk",
+            "deck_pdf": "https://drive.google.com/file/d/1kNvroweHuI2cqckcCVXkw0FpiqF_cFIq/view?usp=drivesdk",
+            "deck_repo": "assets/gen/HKTDC_F/v20260611-210405-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "drive_canonical": "https://drive.google.com/drive/folders/1IFOmaB7ciBtTUpihpjo9xAwUzN9LF5P5",
+  "drive_canonical_name": "HKTDC_IPHatch Asia 2026 Post 2",
+  "updated": "2026-06-11T21:05:13"
+}
