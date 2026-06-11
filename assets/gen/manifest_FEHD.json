@@ -383,9 +383,45 @@
           }
         ]
       }
+    },
+    "H": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260612-032652-nblm-i1",
+            "sheet": "assets/gen/FEHD_H/v20260612-032652-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_H/v20260612-032652-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_H/v20260612-032652-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_H/v20260612-032652-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_H/v20260612-032652-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_H/v20260612-032652-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_H/v20260612-032652-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_H/v20260612-032652-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_H/v20260612-032652-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_H/v20260612-032652-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_H/v20260612-032652-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_H/v20260612-032652-nblm-i1/frame_11.png"
+            ],
+            "n": 11,
+            "ts": "2026-06-12T03:27:48",
+            "source": "nblm",
+            "brd": "H",
+            "cid": "nbe4e8f8d1",
+            "label": "[NBLM] 測漏無所遁形 / Thermal Catch",
+            "gslide_pages": [
+              "assets/gen/FEHD_H/v20260612-032652-nblm-i1/gslide_FEHD_H_p1.png",
+              "assets/gen/FEHD_H/v20260612-032652-nblm-i1/gslide_FEHD_H_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1NsrRcjjXohKstUIZ9JN7F17MUdYxCGLv",
+            "deck_pdf": "https://drive.google.com/file/d/1c6a4F6jBBSCNVwIt5Sj72lVMjg944vvh/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_H/v20260612-032652-nblm-i1/deck.pdf"
+          }
+        ]
+      }
     }
   },
-  "updated": "2026-06-11T15:29:26",
+  "updated": "2026-06-12T03:28:01",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "FEHD_WaterSeepageAPIs"
 }
