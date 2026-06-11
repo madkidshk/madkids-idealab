@@ -35,19 +35,11 @@ jobs:
           mkdir -p dist
           rsync -a --exclude='.git' --exclude='.github' --exclude='dist' ./ dist/
           count=0
+          # 全站同一密碼+salt（2026-06-12 Raymond：工具獨立密碼拎走 — landing 入一次全通行）
           while IFS= read -r -d '' f; do
-            base=$(basename "$f")
-            if [ "$base" = "supplier_video.html" ] && [ -n "$SC_PWD_TOOL" ]; then
-              # 工具頁：獨立密碼 + 獨立 salt + 獨立 localStorage key（同 landing 密碼互不干擾）
-              npx --yes staticrypt "$f" -d "$(dirname "$f")" \
-                -p "$SC_PWD_TOOL" -s 'b185a71e4ea96419c43cd989f276f69c' \
-                --remember 30 --short -c false
-              sed -i 's#"staticrypt_passphrase"#"staticrypt_passphrase_svtool"#g; s#"staticrypt_expiration"#"staticrypt_expiration_svtool"#g' "$f"
-            else
-              npx --yes staticrypt "$f" -d "$(dirname "$f")" \
-                -p "$SC_PWD" -s 'da37644ab187b199430a20aa832bc9fa' \
-                --remember 30 --short -c false
-            fi
+            npx --yes staticrypt "$f" -d "$(dirname "$f")" \
+              -p "$SC_PWD" -s 'da37644ab187b199430a20aa832bc9fa' \
+              --remember 30 --short -c false
             # noindex：連個 URL 都唔好被 Google index（內容本身已加密）
             sed -i 's#<head>#<head><meta name="robots" content="noindex,nofollow">#' "$f"
             count=$((count+1))
