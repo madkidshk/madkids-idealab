@@ -37,9 +37,47 @@
           }
         ]
       }
+    },
+    "D": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260611-210410-nblm-i1",
+            "sheet": "assets/gen/HKTDC_D/v20260611-210410-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/HKTDC_D/v20260611-210410-nblm-i1/frame_01.png",
+              "assets/gen/HKTDC_D/v20260611-210410-nblm-i1/frame_02.png",
+              "assets/gen/HKTDC_D/v20260611-210410-nblm-i1/frame_03.png",
+              "assets/gen/HKTDC_D/v20260611-210410-nblm-i1/frame_04.png",
+              "assets/gen/HKTDC_D/v20260611-210410-nblm-i1/frame_05.png",
+              "assets/gen/HKTDC_D/v20260611-210410-nblm-i1/frame_06.png",
+              "assets/gen/HKTDC_D/v20260611-210410-nblm-i1/frame_07.png",
+              "assets/gen/HKTDC_D/v20260611-210410-nblm-i1/frame_08.png",
+              "assets/gen/HKTDC_D/v20260611-210410-nblm-i1/frame_09.png",
+              "assets/gen/HKTDC_D/v20260611-210410-nblm-i1/frame_10.png",
+              "assets/gen/HKTDC_D/v20260611-210410-nblm-i1/frame_11.png",
+              "assets/gen/HKTDC_D/v20260611-210410-nblm-i1/frame_12.png",
+              "assets/gen/HKTDC_D/v20260611-210410-nblm-i1/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-11T21:05:24",
+            "source": "committee",
+            "brd": "D",
+            "cid": "cmfcb7d145",
+            "label": "[Agency claude-opus-4-8] Concept 2:〈一張訂單,連住成個香港〉",
+            "gslide_pages": [
+              "assets/gen/HKTDC_D/v20260611-210410-nblm-i1/gslide_HKTDC_D_p1.png",
+              "assets/gen/HKTDC_D/v20260611-210410-nblm-i1/gslide_HKTDC_D_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1F8THOx7fxzzwdBLNUHw2JAWkQmR1Je4f",
+            "deck_pdf": "https://drive.google.com/file/d/1WGHbwL3RkmesPtsDwn3y5jchkCA8Lqto/view?usp=drivesdk",
+            "deck_repo": "assets/gen/HKTDC_D/v20260611-210410-nblm-i1/deck.pdf"
+          }
+        ]
+      }
     }
   },
   "drive_canonical": "https://drive.google.com/drive/folders/1IFOmaB7ciBtTUpihpjo9xAwUzN9LF5P5",
   "drive_canonical_name": "HKTDC_IPHatch Asia 2026 Post 2",
-  "updated": "2026-06-11T21:05:13"
+  "updated": "2026-06-11T21:05:34"
 }
