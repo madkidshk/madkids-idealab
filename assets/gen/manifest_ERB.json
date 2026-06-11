@@ -169,9 +169,49 @@
           }
         ]
       }
+    },
+    "F": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260611-110922-nblm-i1",
+            "sheet": "assets/gen/ERB_F/v20260611-110922-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/ERB_F/v20260611-110922-nblm-i1/frame_01.png",
+              "assets/gen/ERB_F/v20260611-110922-nblm-i1/frame_02.png",
+              "assets/gen/ERB_F/v20260611-110922-nblm-i1/frame_03.png",
+              "assets/gen/ERB_F/v20260611-110922-nblm-i1/frame_04.png",
+              "assets/gen/ERB_F/v20260611-110922-nblm-i1/frame_05.png",
+              "assets/gen/ERB_F/v20260611-110922-nblm-i1/frame_06.png",
+              "assets/gen/ERB_F/v20260611-110922-nblm-i1/frame_07.png",
+              "assets/gen/ERB_F/v20260611-110922-nblm-i1/frame_08.png",
+              "assets/gen/ERB_F/v20260611-110922-nblm-i1/frame_09.png",
+              "assets/gen/ERB_F/v20260611-110922-nblm-i1/frame_10.png",
+              "assets/gen/ERB_F/v20260611-110922-nblm-i1/frame_11.png",
+              "assets/gen/ERB_F/v20260611-110922-nblm-i1/frame_12.png",
+              "assets/gen/ERB_F/v20260611-110922-nblm-i1/frame_13.png",
+              "assets/gen/ERB_F/v20260611-110922-nblm-i1/frame_14.png",
+              "assets/gen/ERB_F/v20260611-110922-nblm-i1/frame_15.png"
+            ],
+            "n": 15,
+            "ts": "2026-06-11T11:10:28",
+            "source": "committee",
+            "brd": "F",
+            "cid": "cme3a1354b",
+            "label": "[claude-opus-4-8] Concept 2:〔多咗一行〕",
+            "gslide_pages": [
+              "assets/gen/ERB_F/v20260611-110922-nblm-i1/gslide_ERB_F_p1.png",
+              "assets/gen/ERB_F/v20260611-110922-nblm-i1/gslide_ERB_F_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/15YsUzRGjjfSDCCKsMXUMDaafhYm167ay",
+            "deck_pdf": "https://drive.google.com/file/d/1jVkXaGKiZ0-wPkvPXFMswM0VV7Eo4ZHx/view?usp=drivesdk",
+            "deck_repo": "assets/gen/ERB_F/v20260611-110922-nblm-i1/deck.pdf"
+          }
+        ]
+      }
     }
   },
   "drive_canonical": "https://drive.google.com/drive/folders/1xwWCyee7WH0J2pNvVuWwdgjaOSL6noPS",
   "drive_canonical_name": "ERB_New Skills Training Video Seri",
-  "updated": "2026-06-11T11:10:00"
+  "updated": "2026-06-11T11:10:37"
 }
