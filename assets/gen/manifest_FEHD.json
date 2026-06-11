@@ -307,9 +307,47 @@
           }
         ]
       }
+    },
+    "G": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260611-152746-nblm-i1",
+            "sheet": "assets/gen/FEHD_G/v20260611-152746-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_G/v20260611-152746-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_G/v20260611-152746-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_G/v20260611-152746-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_G/v20260611-152746-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_G/v20260611-152746-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_G/v20260611-152746-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_G/v20260611-152746-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_G/v20260611-152746-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_G/v20260611-152746-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_G/v20260611-152746-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_G/v20260611-152746-nblm-i1/frame_11.png",
+              "assets/gen/FEHD_G/v20260611-152746-nblm-i1/frame_12.png",
+              "assets/gen/FEHD_G/v20260611-152746-nblm-i1/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-11T15:28:46",
+            "source": "committee",
+            "brd": "G",
+            "cid": "cm953c841f",
+            "label": "[委員會 200541] Concept 2:證據在手，主動解困",
+            "gslide_pages": [
+              "assets/gen/FEHD_G/v20260611-152746-nblm-i1/gslide_FEHD_G_p1.png",
+              "assets/gen/FEHD_G/v20260611-152746-nblm-i1/gslide_FEHD_G_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1b_ddDVsU3pO7i4Oy3zIl_gm5Tt7oqFG0",
+            "deck_pdf": "https://drive.google.com/file/d/1K9iqTnu8X3TRVzGvXZ_61lp9vfW-Zk5a/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_G/v20260611-152746-nblm-i1/deck.pdf"
+          }
+        ]
+      }
     }
   },
-  "updated": "2026-06-11T00:21:22",
+  "updated": "2026-06-11T15:28:56",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "FEHD_WaterSeepageAPIs"
 }
