@@ -37,7 +37,8 @@ jobs:
           count=0
           # 全站同一密碼+salt；工具頁（supplier_video.html）完全唔加密（2026-06-12 Raymond）
           while IFS= read -r -d '' f; do
-            if [ "$(basename "$f")" != "supplier_video.html" ]; then
+            case "$f" in dist/s/*) skip_enc=1;; *) skip_enc=0;; esac
+            if [ "$(basename "$f")" != "supplier_video.html" ] && [ "$skip_enc" != "1" ]; then
               npx --yes staticrypt "$f" -d "$(dirname "$f")" \
                 -p "$SC_PWD" -s 'da37644ab187b199430a20aa832bc9fa' \
                 --remember 30 --short -c false
@@ -51,6 +52,7 @@ jobs:
           missing=0
           while IFS= read -r -d '' f; do
             [ "$(basename "$f")" = "supplier_video.html" ] && continue
+            case "$f" in dist/s/*) continue;; esac
             grep -q 'staticrypt' "$f" || { echo "::error::not encrypted: $f"; missing=$((missing+1)); }
           done < <(find dist -name '*.html' -print0)
           if [ "$missing" -gt 0 ]; then echo "::error::$missing page(s) not encrypted"; exit 1; fi
