@@ -119,7 +119,7 @@ input.svtc{width:86px;text-align:center;padding:7px 6px;border:1.5px solid #dde1
 .svtcall{display:flex;gap:8px;align-items:center;justify-content:center;margin-top:13px;padding-top:11px;border-top:1px solid #eef0f3;font-size:13.5px;font-weight:800;flex-wrap:wrap}
 footer{color:#717784;font-size:12px;border-top:1px solid #e7e9ee;margin-top:34px;padding-top:13px}</style></head><body><div class='wrap'>
 <div class='titlerow'><h1>🎬 影片 Preview 站</h1><span class='hdrbtns'><a class='homebtn' href='index.html' title='總目錄'>🏠</a><button class='refbtn' onclick="location.href=location.pathname+'?t='+Date.now()+location.hash" title='重新載入'>🔄</button></span></div>
-<div class='sub'>自動更新 2026-06-12 15:40 HKT　·　收片（內部 / vendor）→ 上 madkidshk YouTube（Unlisted）方便 preview → 跟稿/客comment → 出客前 gatekeep</div>
+<div class='sub'>自動更新 2026-06-12 15:41 HKT　·　收片（內部 / vendor）→ 上 madkidshk YouTube（Unlisted）方便 preview → 跟稿/客comment → 出客前 gatekeep</div>
 <div class='card' style='border:2px solid #0A7D3F;background:#f0fbf4'><div style='font-size:17px;font-weight:800'>➕ 收新片／新圖</div><div class='st' style='margin:6px 0 10px'>貼片／圖嘅 Google Drive link，或者直接 drag 落嚟（內部定 vendor 都得）—— 片自動上 madkidshk YouTube（Unlisted）、圖直接出卡（Ver 1），都係方便 preview/比較。</div><div style='display:flex;gap:8px;margin-bottom:8px;align-items:center'><span class='st' style='margin:0;white-space:nowrap;font-weight:700'>📂 同時儲落：</span><select id='svproj' style='flex:1;min-width:0;padding:9px 10px;border:1.5px solid #bfe0cd;border-radius:10px;font-size:14px;background:#fff'><option value=''>（唔入 project folder，淨係 pipeline）</option></select></div><div style='display:flex;gap:8px;margin-bottom:10px'><input id='svlink' placeholder='貼影片／圖嘅 Google Drive link 落呢度…' style='flex:1;min-width:0;padding:11px 13px;border:1.5px solid #bfe0cd;border-radius:10px;font-size:14px;background:#fff'><button id='svlinkbtn' class='btn' style='border:0;cursor:pointer'>送出</button></div><div id='svdrop' style='border:2px dashed #0A7D3F;border-radius:12px;padding:20px 14px;text-align:center;color:#0A7D3F;font-weight:700;cursor:pointer;background:#fff'>⬆️ Drag 片／圖落呢度（或撳一下揀檔案）</div><input type='file' id='svfile' accept='video/*,image/*' style='display:none'><div id='svstatus' class='st' style='margin-top:9px;font-weight:700;font-size:13.5px'></div><div id='svprog' style='display:none;margin-top:9px;background:#fff;border:1.5px solid #bfe0cd;border-radius:10px;padding:10px 12px;font-size:13.5px;font-weight:700'></div><div class='st' id='nextpoll' style='margin-top:4px;font-weight:700'></div><div class='st' style='margin-top:7px'><a href='https://docs.google.com/spreadsheets/d/1BursVPnI6BVyXoRhmwKBtGg4VvK_gfL2xQkQTv9cdAk/edit#gid=630268274' target='_blank'>📥 Links Inbox</a> · <a href='https://docs.google.com/spreadsheets/d/1BursVPnI6BVyXoRhmwKBtGg4VvK_gfL2xQkQTv9cdAk/edit' target='_blank'>📊 Tracker Sheet</a> · <a href='https://drive.google.com/drive/folders/1hqWhqMYHBANJKIdUb9jA6uGzPkt3kxkw' target='_blank'>📁 intake folder</a></div><script>(function(){var GAS='https://script.google.com/macros/s/AKfycbwVvkFb8kXQFrJZnABGxFcywfVllsM3XSVHlAGwH8CzrWIBGChjIK2PhW1k61r6NJWIpg/exec';var TOK='mkv7q3z2link';var st=document.getElementById('svstatus');function say(m){st.textContent=m;}function jsonp(q,cb){var n='svcb'+Math.random().toString(36).slice(2);window[n]=function(o){try{cb(o);}finally{delete window[n];s.remove();}};var s=document.createElement('script');s.src=GAS+'?'+q+'&token='+TOK+'&callback='+n;s.onerror=function(){delete window[n];s.remove();cb({ok:false,err:'network'});};document.body.appendChild(s);}window.jsonp=jsonp;var sel=document.getElementById('svproj');jsonp('action=folders',function(o){if(!o.ok||!o.folders)return;o.folders.forEach(function(f){var op=document.createElement('option');op.value=f.id;op.textContent=f.name;sel.appendChild(op);});var saved=localStorage.getItem('svproj');if(saved)sel.value=saved;});sel.onchange=function(){localStorage.setItem('svproj',sel.value);};function fol(){return sel.value?'&folder='+encodeURIComponent(sel.value):'';}function escj(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}function watchProg(fid,name){var el=document.getElementById('svprog');el.style.display='block';var t0=Date.now();window._svWatch=fid;function step(txt){el.innerHTML='⬜ 已交收 → '+txt;}step('⏳ 等下次自動收片執行（睇上面倒數）…');(function poll(){if(window._svWatch!==fid)return;jsonp('action=status&fileid='+encodeURIComponent(fid),function(o){if(window._svWatch!==fid)return;var mins=Math.max(1,Math.round((Date.now()-t0)/60000));if(o.ok&&o.registered&&o.media==='image'){el.innerHTML='✅ <b>'+escj(o.name||name||'')+'</b> 登記咗（'+escj(o.vid||'')+'）— 新圖卡 refresh 後見。';return;}if(o.ok&&o.yt){el.innerHTML='✅ <b>'+escj(o.name||name||'')+'</b> 上咗 YouTube：'+'<a href="'+o.yt+'" target="_blank" style="color:#4f46e5;word-break:break-all">'+o.yt+'</a> '+'<button class="svcopy" data-url="'+o.yt+'" style="margin-left:6px">📋 Copy</button>';return;}if(o.ok&&o.registered){step('🔁 收咗（'+escj(o.vid||'')+'），上緊 YouTube…（通常 1-3 分鐘，已等 '+mins+' 分）');}else if(o.ok&&o.queued){step('📥 排咗隊（'+escj(o.inbox||'new')+'），等下次自動收片…');}else{step('⏳ 等緊系統接收…（已等 '+mins+' 分）');}if(Date.now()-t0<15*60000)setTimeout(poll,20000);else step('⚠️ 等咗 15 分鐘都未上到 YouTube — 可能有問題，開 Tracker Sheet 睇或者話我知。');});})();}function fidFromLink(v){var m=v.match(/\/d\/([a-zA-Z0-9_-]{20,})/)||v.match(/[?&]id=([a-zA-Z0-9_-]{20,})/);return m?m[1]:null;}var inp=document.getElementById('svlink');document.getElementById('svlinkbtn').onclick=function(){var v=inp.value.trim();if(!v){say('⚠️ 未貼 link');return;}say('送緊…');jsonp('action=link&link='+encodeURIComponent(v)+fol(),function(o){if(o.ok){say('✅ 收到 link！'+(sel.value?'會儲入「'+sel.options[sel.selectedIndex].text+'」。':''));inp.value='';var fid=fidFromLink(v);if(fid)watchProg(fid,'');}else say('⚠️ 送唔到：'+(o.err||'')+'（可改用 Links Inbox）');});};inp.addEventListener('keydown',function(ev){if(ev.key==='Enter')document.getElementById('svlinkbtn').click();});var dz=document.getElementById('svdrop'),fi=document.getElementById('svfile');dz.onclick=function(){fi.click();};['dragover','dragenter'].forEach(function(ev){dz.addEventListener(ev,function(e){e.preventDefault();dz.style.background='#dff3e7';});});['dragleave','drop'].forEach(function(ev){dz.addEventListener(ev,function(e){e.preventDefault();dz.style.background='#fff';});});dz.addEventListener('drop',function(e){var f=e.dataTransfer&&e.dataTransfer.files[0];if(f)up(f);});fi.onchange=function(){if(fi.files[0])up(fi.files[0]);};function up(f){window._svBusy=true;say('開緊上載 session…（'+f.name+'）');jsonp('action=initupload&origin='+encodeURIComponent(location.origin)+'&name='+encodeURIComponent(f.name)+'&size='+f.size+'&mime='+encodeURIComponent(f.type||'video/mp4'),function(o){if(!o.ok){window._svBusy=false;say('⚠️ 開唔到上載：'+(o.err||'')+'。可改用「📁 intake folder」drag 入去。');return;}var x=new XMLHttpRequest();x.open('PUT',o.uri);x.upload.onprogress=function(ev){if(ev.lengthComputable)say('⬆️ 上載中 '+Math.round(ev.loaded/ev.total*100)+'%（'+f.name+'）');};x.onload=function(){window._svBusy=false;if(x.status>=300){say('⚠️ 上載 fail HTTP '+x.status+'。可改用「📁 intake folder」。');return;}var fid='';try{fid=JSON.parse(x.responseText).id||'';}catch(_){}say('✅ 上載完成，登記緊…');jsonp('action=uploaded&fileid='+encodeURIComponent(fid)+'&name='+encodeURIComponent(f.name)+fol(),function(r){if(r.ok){say('✅ 上載+登記完成！'+(sel.value?'會儲入「'+sel.options[sel.selectedIndex].text+'」。':''));watchProg(r.fileid||fid,f.name);}else say('⚠️ 上載咗但登記 fail：'+(r.err||'')+'。唔緊要—poller 掃 intake folder 都會收到。');});};x.onerror=function(){window._svBusy=false;say('⚠️ 上載出錯（network/CORS）。可改用「📁 intake folder」drag 入去。');};x.send(f);});}function tick(){var now=new Date(Date.now()+(8*60+new Date().getTimezoneOffset())*60000);var h=now.getHours(),m=now.getMinutes(),s=now.getSeconds();var step=(h>=11&&h<19)?1:(h>=19?5:15);var lbl='';var nm=(Math.floor(m/step)+1)*step;var wait=(nm-m)*60-s;var mm=Math.floor(wait/60),ss=wait%60;var tgt=((nm>=60)?(h+1)%24:h)+':'+('0'+(nm%60)).slice(-2);document.getElementById('nextpoll').textContent='⏱ 下次自動收片：'+tgt+'（仲差 '+mm+' 分 '+ss+' 秒）'+lbl;}tick();setInterval(tick,1000);})();</script></div>
 <h2 class='allvids'>所有片（2）</h2><button id='cmpbtn' style='display:none'>已選 0 片 一鍵比較</button>
 <div class='card jobcard' data-job='SV26061102' data-media='video'><div class='po-h'><span class='hook'><span class='jt' data-cur='WhatsApp Video 2026-06-12 at 11.46.15'>WhatsApp Video 2026-06-12 at 11.46.15</span></span><button class='jted' title='改標題（會記落 Sales Reg Job Log）'>✏️</button><span class='gk none'>🛂 未把關</span><span class='gk ok'>Unlisted ✓</span></div><div class='st'>SV26061201 · madkidshk0@gmail.com · 收 2026-06-12 15:16</div><div class='cutrail'><div class='cutcell'><div class='cuthead'><b>Cut 2</b><label class='cmpv'><input type='checkbox' class='svcmp' data-media='video' data-yt='p6Rgp5B0adY' data-label='WhatsApp Video 2026-06-11 at 15.43.08.mp4（Cut 2）' data-orient='portrait' data-vid='SV26061102'> 比較</label></div><div class='ytlite p' data-yt='p6Rgp5B0adY' title='撳一下播放'><img src='https://i.ytimg.com/vi/p6Rgp5B0adY/hqdefault.jpg' alt='' loading='lazy'><div class='playbtn'>▶</div></div><div class='cutlink'><a href='https://youtu.be/p6Rgp5B0adY' target='_blank' rel='noopener'>youtu.be/p6Rgp5B0adY</a><button class='svcopy' data-url='https://youtu.be/p6Rgp5B0adY'>📋</button></div></div><div class='cutcell'><div class='cuthead'><b>Cut 2</b><span class='tag' style='background:#e7f7ee;color:#15a34a'>最新</span><label class='cmpv'><input type='checkbox' class='svcmp' data-media='video' data-yt='OZGDxktPF9E' data-label='WhatsApp Video 2026-06-12 at 11.46.15.mp4（Cut 2）' data-orient='portrait' data-vid='SV26061201'> 比較</label></div><div class='ytlite p' data-yt='OZGDxktPF9E' title='撳一下播放'><img src='https://i.ytimg.com/vi/OZGDxktPF9E/hqdefault.jpg' alt='' loading='lazy'><div class='playbtn'>▶</div></div><div class='cutlink'><a href='https://youtu.be/OZGDxktPF9E' target='_blank' rel='noopener'>youtu.be/OZGDxktPF9E</a><button class='svcopy' data-url='https://youtu.be/OZGDxktPF9E'>📋</button></div></div></div><div class='prefrow'>Msg 前綴（Copy 時自動加）：<select class='svmsg'><option value=''>（揀畀客Msg嘅前綴）</option><option>改好了，可以睇睇：</option><option>Revised, can take a look:</option><option>初版 rough cut，請過目：</option><option>Final version，請確認：</option></select></div><div style='margin:8px 0'><a class='reel gray' target='_blank' href='https://drive.google.com/file/d/1qbesm0uhOVxDSyVroVDl3fP4yz6E015y/view'>📁 Drive 原檔</a></div><div class='attwrap'><div class='attbox' data-job='SV26061102'><div class='attstage'></div><textarea class='atttext' rows='2' placeholder='打字 / ⌘V 貼客comment截圖 / 貼新cut Drive link / 貼客email地址或Gmail URL…'></textarea><div class='attbtns'><button class='attpick' title='由 desktop 揀檔'>📎 揀檔</button><button class='attsend'>送出 ⏎</button></div><div class='atthint'>一個窗：掉檔/貼圖/貼link/打字都得 —— <b>㩒「送出」或 Enter 先會處理</b>（唔會即時送）</div></div><div class='ckrow'>檢查（ <b>剔咗先做</b> ）：<label class='ckopt'><input type='checkbox' class='ckchk' data-k='voice'> 🎙 對對白</label><label class='ckopt'><input type='checkbox' class='ckchk' data-k='subtitle'> 📺 對字幕</label><label class='ckopt'><input type='checkbox' class='ckchk' data-k='comments'> 💬 對Comment</label></div><div class='attstatus st'></div></div><div class='st'>💬 客 comment：open 26 / addressed 0（🤖 = AI 初篩，hover 睇證據）</div><ul class='cmt'><li class=''>⬜ <b>c1</b> <span class='tag'>audio</span> <span class='tag'>r1</span> 開頭三秒加背景音樂</li><li class=''>⬜ <b>c2</b> <span class='tag'>visual</span> <span class='tag'>r1</span> 片尾加 Madkids logo</li><li class=''>⬜ <b>c3</b> <span class='tag'>timing</span> <span class='tag'>r2</span> 〔彩色背心設計〕太快，慢啲，睇唔清8款設計</li><li class=''>⬜ <b>c4</b> <span class='tag'>graphic</span> <span class='tag'>r2</span> 〔藍色箭咀由「8款設計」指向白色背心〕框線用白色同幼啲，跟返對齊咗嘅分鏡</li><li class=''>⬜ <b>c5</b> <span class='tag'>super</span> <span class='tag'>r2</span> 〔惠康廣告〕刪走「指定分店換購」</li><li class=''>⬜ <b>c6</b> <span class='tag'>graphic</span> <span class='tag'>r2</span> 〔惠康廣告〕用紅框框住惠康網店及門市嘅換購詳情</li><li class=''>⬜ <b>c7</b> <span class='tag'>graphic</span> <span class='tag'>r2</span> 〔惠康廣告〕置中</li><li class='hirisk'>🔴 <b>c8</b> <span class='tag'>legal</span> <span class='tag'>r2</span> 〔惠康廣告〕加上「受條款細則約束」</li><li class=''>⬜ <b>c9</b> <span class='tag'>timing</span> <span class='tag'>r2</span> 太快，減慢速度，要睇到8款設計</li><li class=''>⬜ <b>c10</b> <span class='tag'>graphic</span> <span class='tag'>r2</span> 邊框用白色、幼啲，跟返STB</li><li class=''>⬜ <b>c11</b> <span class='tag'>graphic</span> <span class='tag'>r2</span> 藍色箭咀由上方背心設計指向下方白色背心</li><li class=''>⬜ <b>c12</b> <span class='tag'>super</span> <span class='tag'>r2</span> 刪走「指定分店換購」</li><li class=''>⬜ <b>c13</b> <span class='tag'>graphic</span> <span class='tag'>r2</span> 用紅框框住網店及指定門市換購優惠詳情</li><li class=''>⬜ <b>c14</b> <span class='tag'>graphic</span> <span class='tag'>r2</span> 置中</li><li class='hirisk'>🔴 <b>c15</b> <span class='tag'>legal</span> <span class='tag'>r2</span> 加上「受條款細則約束」</li><li class=''>⬜ <b>c16</b> <span class='tag'>timing</span> <span class='tag'>r2</span> 展示8款設計的部分太快，要減慢速度〔參考圖為彩色厚邊背心〕</li><li class=''>⬜ <b>c17</b> <span class='tag'>graphic</span> <span class='tag'>r2</span> 背心改用白色幼邊，參考已對稿的STB〔參考圖為藍色幼邊的白色背心〕</li><li class=''>⬜ <b>c18</b> <span class='tag'>super</span> <span class='tag'>r2</span> 刪走「指定...換購」字眼</li><li class=''>⬜ <b>c19</b> <span class='tag'>graphic</span> <span class='tag'>r2</span> 用紅框框住「wellcome ONLINE」至「購物滿$88 +$30 換購1個」的優惠詳情</li><li class=''>⬜ <b>c20</b> <span class='tag'>graphic</span> <span class='tag'>r2</span> 將優惠詳情置中</li><li class='hirisk'>🔴 <b>c21</b> <span class='tag'>legal</span> <span class='tag'>r2</span> 加上「受條款細則約束」</li><li class=''>⬜ <b>c22</b> <span class='tag'>timing</span> <span class='tag'>r2</span> 太快，減慢速度，睇唔清8款設計〔參考圖：有彩色圖案的背心〕</li><li class=''>⬜ <b>c23</b> <span class='tag'>graphic</span> <span class='tag'>r2</span> 邊框用白色同幼啲，跟返STB〔參考圖：有藍色幼邊的白色背心〕</li><li class=''>⬜ <b>c24</b> <span class='tag'>super</span> <span class='tag'>r2</span> 刪走「指定分店換購」〔參考圖：惠康推廣活動詳情〕</li><li class=''>⬜ <b>c25</b> <span class='tag'>graphic</span> <span class='tag'>r2</span> 置中〔參考圖：惠康網店及指定門市的換購詳情〕</li><li class='hirisk'>🔴 <b>c26</b> <span class='tag'>legal</span> <span class='tag'>r2</span> 加上「受條款細則約束」〔參考圖：惠康推廣活動詳情圖的底部〕</li></ul><div class='st'>狀態：🆕 新收</div></div>
@@ -201,31 +201,88 @@ function cardUpload(card,f,forceKind){
     } else kind='doc';
   }
   var isNewVer=(kind!=='doc');
-  window._svBusy=true;attSay(card,'開緊上載 session…（'+f.name+'）');
+  window._svBusy=true;card._busy=true;
+  var sb=card.querySelector('.attsend');if(sb)sb.disabled=true;
+  attSay(card,'開緊上載 session…（'+f.name+'）');
+  function done(){window._svBusy=false;card._busy=false;if(sb)sb.disabled=false;}
   jsonp('action=initupload&origin='+encodeURIComponent(location.origin)+'&name='+encodeURIComponent(f.name)+'&size='+f.size+'&mime='+encodeURIComponent(f.type||'application/octet-stream'),function(o){
-    if(!o.ok){window._svBusy=false;attSay(card,'⚠️ 開唔到上載：'+(o.err||''));return;}
+    if(!o.ok){done();attSay(card,'⚠️ 開唔到上載：'+(o.err||''));return;}
     var x=new XMLHttpRequest();x.open('PUT',o.uri);
     x.upload.onprogress=function(ev){if(ev.lengthComputable)attSay(card,'⬆️ 上載中 '+Math.round(ev.loaded/ev.total*100)+'%（'+f.name+'）');};
-    x.onload=function(){window._svBusy=false;
-      if(x.status>=300){attSay(card,'⚠️ 上載 fail HTTP '+x.status);return;}
+    x.onload=function(){
+      if(x.status>=300){done();attSay(card,'⚠️ 上載 fail HTTP '+x.status);return;}
       var fid='';try{fid=JSON.parse(x.responseText).id||'';}catch(_){}
       jsonp('action=uploaded&fileid='+encodeURIComponent(fid)+'&name='+encodeURIComponent(f.name)+'&kind='+(kind==='doc'?'doc':'video')+'&job='+encodeURIComponent(job),function(r){
+        done();
         if(!r.ok){attSay(card,'⚠️ 登記 fail：'+(r.err||''));return;}
         if(isNewVer){attSay(card,'✅ 上載完成！等自動收片（睇頂部倒數）→ 會變呢張 card 嘅新 '+(card.dataset.media==='image'?'Ver':'cut')+'。');}
         else watchAtt(card,r.fileid||fid);
       });};
-    x.onerror=function(){window._svBusy=false;attSay(card,'⚠️ 上載出錯（network）');};
+    x.onerror=function(){done();attSay(card,'⚠️ 上載出錯（network）');};
     x.send(f);
   });
 }
+// ===== 收件區 v2：一個窗、staged、要送出先處理（Raymond 06-12）=====
+function isDriveLink(s){return /drive\.google\.com|docs\.google\.com/i.test(s);}
+function isGmailLink(s){return /mail\.google\.com\/mail/i.test(s);}
+function isEmailAddr(s){return /^[\w.+-]+@[\w.-]+\.\w+$/.test(s.trim());}
 document.querySelectorAll('.jobcard').forEach(function(card){
-  var dz=card.querySelector('.attzone');if(!dz)return;
+  var box=card.querySelector('.attbox');if(!box)return;
+  var ta=card.querySelector('.atttext');
+  var stage=card.querySelector('.attstage');
+  var pick=card.querySelector('.attpick');
+  var send=card.querySelector('.attsend');
   var fi=document.createElement('input');fi.type='file';fi.style.display='none';card.appendChild(fi);
-  dz.addEventListener('click',function(){fi.click();});
-  fi.addEventListener('change',function(){if(fi.files[0])cardUpload(card,fi.files[0]);});
-  ['dragover','dragenter'].forEach(function(ev){dz.addEventListener(ev,function(e){e.preventDefault();dz.classList.add('hov');});});
-  ['dragleave','drop'].forEach(function(ev){dz.addEventListener(ev,function(e){e.preventDefault();dz.classList.remove('hov');});});
-  dz.addEventListener('drop',function(e){var f=e.dataTransfer&&e.dataTransfer.files[0];if(f)cardUpload(card,f);});
+  card._staged=null;   // 待送出嘅 File（圖/片/檔）；text 由 textarea 拎
+
+  function showStaged(f){
+    card._staged=f;
+    var isImg=(f.type||'').indexOf('image/')===0;
+    stage.innerHTML="<span class='stchip'>"+(isImg?'🖼':'📎')+" "+esc(f.name)+
+      " <button class='ststrip' title='移除'>✕</button></span>";
+    stage.querySelector('.ststrip').addEventListener('click',function(){card._staged=null;stage.innerHTML='';});
+  }
+  // 揀檔 / drag / 貼圖 = 只 STAGE，唔送
+  pick.addEventListener('click',function(){fi.click();});
+  fi.addEventListener('change',function(){if(fi.files[0]){showStaged(fi.files[0]);fi.value='';}});
+  ['dragover','dragenter'].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.add('hov');});});
+  ['dragleave','drop'].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.remove('hov');});});
+  box.addEventListener('drop',function(e){var f=e.dataTransfer&&e.dataTransfer.files[0];if(f)showStaged(f);});
+  ta.addEventListener('paste',function(e){
+    var fs=(e.clipboardData&&e.clipboardData.files)||[];
+    if(fs.length){e.preventDefault();var f=fs[0];
+      if(!f.name||f.name==='image.png'){var ts=new Date();
+        f=new File([f],'comment_貼圖_'+ts.getHours()+''+String(ts.getMinutes()).padStart(2,'0')+'.png',{type:f.type||'image/png'});}
+      showStaged(f);attSay(card,'已暫存圖，㩒「送出」先會處理。');}
+  });
+  // 送出：按 staged 檔 / textarea 內容 自動路由（唯一處理入口）
+  function submit(){
+    if(card._busy){attSay(card,'處理緊，等陣…');return;}
+    var f=card._staged; var txt=(ta.value||'').trim();
+    if(f){ // 有檔 = 上載（片→新cut / 圖→問Ver定comment / 其他→attach）
+      card._staged=null;stage.innerHTML='';cardUpload(card,f);return;}
+    if(!txt){attSay(card,'⚠️ 未有嘢送出（打字／貼圖／貼link 先）');return;}
+    if(isDriveLink(txt)){ // Drive link = 新 cut
+      card._busy=true;send.disabled=true;attSay(card,'送緊新 cut link…');
+      jsonp('action=link&link='+encodeURIComponent(txt)+'&job='+encodeURIComponent(card.dataset.job),function(o){
+        card._busy=false;send.disabled=false;
+        if(o.ok){attSay(card,'✅ 收到！會做呢張 card 嘅新 round（睇頂部倒數，自動收片）。');ta.value='';}
+        else attSay(card,'⚠️ '+(o.err||'送唔到'));});
+      return;}
+    if(isGmailLink(txt)||isEmailAddr(txt)){ // Gmail URL / email 地址 = 跟客 email
+      card._busy=true;send.disabled=true;attSay(card,'登記緊跟客email…');
+      jsonp('action=mailthread&job='+encodeURIComponent(card.dataset.job)+'&val='+encodeURIComponent(txt),function(o){
+        card._busy=false;send.disabled=false;
+        if(o.ok){attSay(card,'✅ 跟開呢條email — 客每封reply自動抽comment入呢張card（1分鐘內）。');ta.value='';}
+        else attSay(card,'⚠️ '+(o.err||'登記唔到'));});
+      return;}
+    // 純文字 = 客 comment
+    var ts=new Date();var nm='comment_貼字_'+ts.getHours()+''+String(ts.getMinutes()).padStart(2,'0')+'.txt';
+    var tf=new File([new Blob([txt],{type:'text/plain'})],nm,{type:'text/plain'});
+    ta.value='';cardUpload(card,tf);
+  }
+  send.addEventListener('click',submit);
+  ta.addEventListener('keydown',function(ev){if(ev.key==='Enter'&&!ev.shiftKey){ev.preventDefault();submit();}});
   card.querySelectorAll('.ckchk').forEach(function(cb){
     cb.addEventListener('change',function(){
       var opts=[...card.querySelectorAll('.ckchk')].filter(function(x){return x.checked;}).map(function(x){return x.dataset.k;}).join(',');
@@ -233,38 +290,6 @@ document.querySelectorAll('.jobcard').forEach(function(card){
         attSay(card,o.ok?('✅ 檢查設定咗：'+(opts||'（全部關）')+' — 有對應稿嘅話幾分鐘內自動跑'):('⚠️ '+(o.err||'設定失敗')));});
     });
   });
-  var ta=card.querySelector('.atttext');var tb=card.querySelector('.atttextbtn');
-  if(ta&&tb){
-    tb.addEventListener('click',function(){
-      var v=ta.value.trim();if(!v){attSay(card,'⚠️ 未打字');return;}
-      var ts=new Date();var nm='comment_貼字_'+ts.getHours()+''+String(ts.getMinutes()).padStart(2,'0')+'.txt';
-      var f=new File([new Blob([v],{type:'text/plain'})],nm,{type:'text/plain'});
-      ta.value='';cardUpload(card,f);
-    });
-    ta.addEventListener('paste',function(e){
-      var fs=(e.clipboardData&&e.clipboardData.files)||[];
-      if(fs.length){e.preventDefault();
-        var f=fs[0];
-        if(!f.name||f.name==='image.png'){var ts=new Date();
-          f=new File([f],'comment_貼圖_'+ts.getHours()+''+String(ts.getMinutes()).padStart(2,'0')+'.png',{type:f.type||'image/png'});}
-        cardUpload(card,f);}
-    });
-  }
-  var lb=card.querySelector('.attlinkbtn');var li=card.querySelector('.attlink');
-  if(lb&&li){lb.addEventListener('click',function(){var v=li.value.trim();if(!v){attSay(card,'⚠️ 未貼 link');return;}
-    attSay(card,'送緊…');
-    jsonp('action=link&link='+encodeURIComponent(v)+'&job='+encodeURIComponent(card.dataset.job),function(o){
-      if(o.ok){attSay(card,'✅ 收到！會做呢張 card 嘅新 round（等自動收片）。');li.value='';}
-      else attSay(card,'⚠️ '+(o.err||'送唔到'));});});
-    li.addEventListener('keydown',function(ev){if(ev.key==='Enter')lb.click();});}
-  // 📧 跟客 email（地址 或 Gmail URL）
-  var mb=card.querySelector('.mailbtn');var mi=card.querySelector('.mailin');
-  if(mb&&mi){mb.addEventListener('click',function(){var v=mi.value.trim();if(!v){attSay(card,'⚠️ 未貼email地址/URL');return;}
-    attSay(card,'登記緊…');
-    jsonp('action=mailthread&job='+encodeURIComponent(card.dataset.job)+'&val='+encodeURIComponent(v),function(o){
-      if(o.ok){attSay(card,'✅ 收到！跟開呢條email — 客每封reply會自動抽comment入呢張card（1分鐘內生效）。');mi.value='';}
-      else attSay(card,'⚠️ '+(o.err||'登記唔到'));});});
-    mi.addEventListener('keydown',function(ev){if(ev.key==='Enter')mb.click();});}
   // ✏️ 改標題（橫線後嗰part）→ 即寫 tracker + log 落 Sales Reg「Job Log」
   var tb=card.querySelector('.jted');var jt=card.querySelector('.jt');
   if(tb&&jt){tb.addEventListener('click',function(){
