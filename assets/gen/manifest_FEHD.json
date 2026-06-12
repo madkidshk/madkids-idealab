@@ -380,6 +380,38 @@
       "board": {
         "versions": [
           {
+            "v": "20260612-223542-nblm-i1",
+            "sheet": "assets/gen/FEHD_F/v20260612-223542-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_F/v20260612-223542-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_F/v20260612-223542-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_F/v20260612-223542-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_F/v20260612-223542-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_F/v20260612-223542-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_F/v20260612-223542-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_F/v20260612-223542-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_F/v20260612-223542-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_F/v20260612-223542-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_F/v20260612-223542-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_F/v20260612-223542-nblm-i1/frame_11.png",
+              "assets/gen/FEHD_F/v20260612-223542-nblm-i1/frame_12.png",
+              "assets/gen/FEHD_F/v20260612-223542-nblm-i1/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-12T22:36:44",
+            "source": "committee",
+            "brd": "F",
+            "cid": "cm6830ac96",
+            "label": "[委員會 180356] Concept 1:〔牆身嘅熱力證詞 / The Wall Confesses〕",
+            "gslide_pages": [
+              "assets/gen/FEHD_F/v20260612-223542-nblm-i1/gslide_FEHD_F_p1.png",
+              "assets/gen/FEHD_F/v20260612-223542-nblm-i1/gslide_FEHD_F_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1leMecqscoAxlRvQwA6LiUsrsz0Gyc0j9",
+            "deck_pdf": "https://drive.google.com/file/d/1eObIOwzqlbMTVGV9Fevl1BcEd6aAYQbQ/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_F/v20260612-223542-nblm-i1/deck.pdf"
+          },
+          {
             "v": "20260611-152820-nblm-i1",
             "sheet": "assets/gen/FEHD_F/v20260611-152820-nblm-i1/board_sheet.png",
             "frames": [
@@ -451,7 +483,7 @@
       }
     }
   },
-  "updated": "2026-06-12T14:06:20",
+  "updated": "2026-06-12T22:36:54",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "2605_FEHD_Water Seepage APIs"
 }
