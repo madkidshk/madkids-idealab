@@ -88,6 +88,37 @@
       "board": {
         "versions": [
           {
+            "v": "20260614-040248-nblm-i1",
+            "sheet": "assets/gen/ERB_A/v20260614-040248-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/ERB_A/v20260614-040248-nblm-i1/frame_01.png",
+              "assets/gen/ERB_A/v20260614-040248-nblm-i1/frame_02.png",
+              "assets/gen/ERB_A/v20260614-040248-nblm-i1/frame_03.png",
+              "assets/gen/ERB_A/v20260614-040248-nblm-i1/frame_04.png",
+              "assets/gen/ERB_A/v20260614-040248-nblm-i1/frame_05.png",
+              "assets/gen/ERB_A/v20260614-040248-nblm-i1/frame_06.png",
+              "assets/gen/ERB_A/v20260614-040248-nblm-i1/frame_07.png",
+              "assets/gen/ERB_A/v20260614-040248-nblm-i1/frame_08.png",
+              "assets/gen/ERB_A/v20260614-040248-nblm-i1/frame_09.png",
+              "assets/gen/ERB_A/v20260614-040248-nblm-i1/frame_10.png",
+              "assets/gen/ERB_A/v20260614-040248-nblm-i1/frame_11.png",
+              "assets/gen/ERB_A/v20260614-040248-nblm-i1/frame_12.png"
+            ],
+            "n": 12,
+            "ts": "2026-06-14T04:03:38",
+            "source": "committee",
+            "brd": "A",
+            "cid": "cm27e96632",
+            "label": "[委員會 193851] Concept 2:〔CV·Last Update〕",
+            "gslide_pages": [
+              "assets/gen/ERB_A/v20260614-040248-nblm-i1/gslide_ERB_A_p1.png",
+              "assets/gen/ERB_A/v20260614-040248-nblm-i1/gslide_ERB_A_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1bawSfTCJN6zJGvUJv6kLit2w-DcbQQp-",
+            "deck_pdf": "https://drive.google.com/file/d/1xJZWdb6a6pg3rip_Z1I1TZA4fvPg3Hxu/view?usp=drivesdk",
+            "deck_repo": "assets/gen/ERB_A/v20260614-040248-nblm-i1/deck.pdf"
+          },
+          {
             "v": "20260610-234128-nblm-i1",
             "sheet": "assets/gen/ERB_A/v20260610-234128-nblm-i1/board_sheet.png",
             "frames": [
@@ -258,6 +289,6 @@
     }
   },
   "drive_canonical": "https://drive.google.com/drive/folders/1xwWCyee7WH0J2pNvVuWwdgjaOSL6noPS",
-  "drive_canonical_name": "ERB_New Skills Training Video Seri",
-  "updated": "2026-06-11T15:30:01"
+  "drive_canonical_name": "2606_erb",
+  "updated": "2026-06-14T04:03:48"
 }
