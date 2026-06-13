@@ -1270,7 +1270,7 @@ th{background:#f8fafc;font-weight:700}
 <div id='rad1_1' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 1：流程設計中，完成 VID 後再開。</div></div>
 <div id='rad1_2' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 2：流程設計中，完成 VID 後再開。</div></div>
 <div id='rad1_3' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 3：流程設計中，完成 VID 後再開。</div></div>
-<div class=foot>Idea Lab · 06-13 03:09 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+<div class=foot>Idea Lab · 06-13 12:43 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
 </div>
 
 <script>
@@ -1475,10 +1475,12 @@ function submitAdvance(url) {
 }
 function submitRound() {
   var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個做六強？submit 後會自動後台生 BD（用 NBLM），落選自動歸檔。')) return;
   submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=FEHD&round=r2&cids=" + c.join(',') + setQ());
 }
 function subStage(to) {
   var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個 → ' + (to === 'r3' ? '三甲' : 'FINAL 2') + '？')) return;
   submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=FEHD&round=" + to + "&cids=" + c.join(',') + setQ());
 }
 function postFunnel(url, msg) {
@@ -1572,20 +1574,7 @@ function clearScript(btn) {   // 🧹 清空 SCRIPT暫存 — GAS（唔經 Mac�
   toast('🧹 已清空 SCRIPT暫存（GAS,唔經部 Mac）');
 }
 
-function submitGSlide(btn) {
-  var card = btn.closest('.card[data-cid]');
-  if (!card) { toast('⚠️ 搵唔到卡'); return; }
-  var cid  = card ? card.dataset.cid : '';
-  var brd  = card ? card.dataset.brd : '';
-  var frames = {};
-  card.querySelectorAll('.frame-note').forEach(function(ta) {
-    if (ta.value.trim()) frames[ta.dataset.frame] = ta.value.trim();
-  });
-  var url = "https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submitComments&dept=FEHD&cid=" + cid + "&brd=" + brd
-            + setQ() + "&comments=" + encodeURIComponent(JSON.stringify(frames));
-  fetch(url, {mode:'no-cors'}).catch(function(){});
-  toast('📊 已傳送，系統 paste 入 GSlide 中…');
-}
+// submitGSlide/submitComments 已移除（dead code:前端零 call site + 冇 .frame-note input — 2026-06-13 audit）
 
 // 「develop 緊」bar 已移除（Raymond 2026-06-06）—— 改用 VID 2 tab 紅邊 + 各 concept 進度條。
 </script></body></html>
