@@ -295,6 +295,25 @@ document.querySelectorAll('.jobcard').forEach(function(card){
   }
   // 揀檔 / drag / 貼圖 = 只 STAGE，唔送
   pick.addEventListener('click',function(){fi.click();});
+  // 📁 GDrive Recent：列 MK Project Recent folder → 揀一個 = 綁做 vendor folder（以後新片自動入）
+  var gd=card.querySelector('.attgdrive');
+  if(gd)gd.addEventListener('click',function(){
+    var st=card.querySelector('.attstatus');
+    var old=card.querySelector('.gdmenu');if(old){old.remove();return;}  // 再撳收返
+    st.textContent='攞緊 GDrive Recent folder…';
+    jsonp('action=folders',function(o){
+      st.textContent='';
+      if(!o.ok||!o.folders||!o.folders.length){attSay(card,'⚠️ 攞唔到 folder 清單');return;}
+      var m=document.createElement('div');m.className='gdmenu';
+      m.innerHTML="<div style='font-size:11.5px;color:#9aa0ab;padding:2px 9px 5px'>揀一個 vendor folder 綁定（以後放入去嘅新片自動做新 Cut）：</div>";
+      o.folders.forEach(function(f){
+        var b=document.createElement('button');b.textContent='📁 '+f.name;
+        b.addEventListener('click',function(){
+          m.remove();attSay(card,'綁緊…');
+          jsonp('action=link&link='+encodeURIComponent('https://drive.google.com/drive/folders/'+f.id)+'&job='+encodeURIComponent(card.dataset.job),function(r){
+            attSay(card, r.ok?('✅ 綁咗「'+f.name+'」— 以後 vendor 放新片入去自動做新 Cut（1分鐘內生效）。'):('⚠️ '+(r.err||'綁唔到')));});});
+        m.appendChild(b);});
+      gd.parentNode.parentNode.insertBefore(m,gd.parentNode.nextSibling);});});
   fi.addEventListener('change',function(){if(fi.files[0]){showStaged(fi.files[0]);fi.value='';}});
   ['dragover','dragenter'].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.add('hov');});});
   ['dragleave','drop'].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.remove('hov');});});
