@@ -26,10 +26,14 @@ h2{font-size:16px;font-weight:800;margin:26px 0 10px;border-left:4px solid #111;
 .gk{font-size:11px;font-weight:800;border-radius:999px;padding:2px 9px}
 .gk.hi{background:#fdeaea;color:#dc2626}.gk.med{background:#fff4e5;color:#b45309}.gk.ok{background:#e7f7ee;color:#15a34a}.gk.none{background:#eef0f3;color:#717784}
 .st{font-size:12.5px;color:#717784;margin-top:6px}
-ul.cmt{list-style:none;padding:0;margin:8px 0 0;font-size:13.5px}
+ul.cmt{list-style:none;padding:0;margin:6px 0 0;font-size:13.5px}
 ul.cmt li{padding:4px 0;border-bottom:1px solid #f1f2f5}
 ul.cmt li.done{color:#9aa0ab;text-decoration:line-through}
 ul.cmt li.hirisk{background:#fff7f7}
+/* comment 按 round 並排 box：整行左右 scroll，每 box 內上下 scroll，新 round 喺左 */
+.cmtboxrow{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 2px;-webkit-overflow-scrolling:touch}
+.cmtbox{flex:0 0 auto;width:min(320px,82vw);max-height:300px;overflow-y:auto;border:1px solid #e7e9ee;border-radius:10px;background:#fff;padding:6px 10px 8px}
+.cmtboxhd{position:sticky;top:0;background:#fff;padding:3px 0 5px;font-weight:800;font-size:12.5px;color:#3b4150;border-bottom:1px solid #f1f2f5;display:flex;align-items:center;gap:6px;z-index:1}
 .svmsg{flex:1;min-width:170px;padding:8px 9px;border:1px solid #dde1e8;border-radius:9px;font-size:13px;background:#fff}
 /* ⭐ 統一掣系統（§9）：.btnp primary紫=主動作(送出) / 工具掣全部 ghost白底灰框 / danger紅=刪。同類同色 */
 .svcopy,.vlbtn,.attpick,.attgdrive{background:#fff;color:#3b4150;border:1.5px solid #c9cfd9;border-radius:9px;padding:7px 12px;font-size:12.5px;font-weight:700;cursor:pointer;white-space:nowrap}
@@ -208,7 +212,7 @@ footer{color:#717784;font-size:12px;border-top:1px solid #e7e9ee;margin-top:34px
 【客戶意見】
 1. 太快，減慢速度，睇唔清8款設計〔參考圖：有彩色圖案的背心〕（似未改）
 2. 刪走「指定分店換購」〔參考圖：惠康推廣活動詳情〕（似未改）</pre></div><div class='basewrap st'>🎯 對比基準：<select class='basesel' data-job='SV26061102'><option value='' selected>自動（智能：跟客上次睇嗰版）</option><option value='SV26061102'>Cut 2</option></select></div><div class='cmtwrap'><details class='foldsec' open><summary>💬 客 comment 文字（open 5 / addressed 0）</summary><div class='cmtboxrow'><div class='cmtbox'><div class='cmtboxhd'>💬 comment 2<span class='tag'>5 open</span></div><ul class='cmt'><li class=''>⬜ <b>c1</b> <span class='tag'>timing</span> 太快，減慢速度，睇唔清8款設計〔參考圖：有彩色圖案的背心〕</li><li class=''>⬜ <b>c2</b> <span class='tag'>graphic</span> 邊框用白色同幼啲，跟返STB〔參考圖：有藍色幼邊的白色背心〕</li><li class=''>⬜ <b>c3</b> <span class='tag'>super</span> 刪走「指定分店換購」〔參考圖：惠康推廣活動詳情〕</li><li class=''>⬜ <b>c4</b> <span class='tag'>graphic</span> 置中〔參考圖：惠康網店及指定門市的換購詳情〕</li><li class='hirisk'>🔴 <b>c5</b> <span class='tag'>legal</span> 加上「受條款細則約束」〔參考圖：惠康推廣活動詳情圖的底部〕</li></ul></div></div></details></div><div class='st'>狀態：🆕 新收</div></div>
-<div class='sub' style='margin-top:18px;text-align:center'>自動更新 2026-06-14 01:30 HKT</div>
+<div class='sub' style='margin-top:18px;text-align:center'>自動更新 2026-06-14 01:35 HKT</div>
 <footer>⚠️ AI 拆 comment + 檢查係輔助，出客前 Raymond 最終定。<span class='helpopen'>❓ 點用教學</span>　此頁加密，要密碼先入到。</footer>
 <div id='helpov'><div id='helpbox'>
 <div id='helphd'><b>🛂 創意把關站 — 點用</b><button id='helpx'>✕</button></div>
@@ -270,13 +274,11 @@ document.addEventListener('click',function(ev){
     function fallback(){var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();try{done(document.execCommand('copy'));}catch(_){done(false);}ta.remove();}
   })();
 });
-// ===== 📋 vendor 修改清單（撳開 / Copy）=====
+// ===== 📋 出修改清單：直接 copy 去剪貼簿（唔再開 box 重複顯示 comment）=====
 document.addEventListener('click',function(ev){
-  var t=ev.target.closest&&ev.target.closest('.vlbtn');
-  if(t){var jc=t.closest('.jobcard');var box=jc?jc.querySelector('.vlbox'):null;if(box)box.style.display=box.style.display==='none'?'block':'none';return;}
-  var c=ev.target.closest&&ev.target.closest('.vlcopy');if(!c)return;
-  var pre=c.parentNode.querySelector('.vltext');var txt=pre?pre.textContent:'';
-  function done(ok){var o=c.textContent;c.textContent=ok?'✅ Copy咗!':'⚠️ copy唔到';setTimeout(function(){c.textContent=o;},1600);}
+  var t=ev.target.closest&&ev.target.closest('.vlbtn');if(!t)return;
+  var jc=t.closest('.jobcard');var pre=jc?jc.querySelector('.vltext'):null;var txt=pre?pre.textContent:'';
+  function done(ok){var o=t.textContent;t.textContent=ok?'✅ 複製咗,貼去 WhatsApp/email 畀 vendor':'⚠️ copy唔到';setTimeout(function(){t.textContent=o;},2000);}
   if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){done(true);},function(){fb();});}else fb();
   function fb(){var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();try{done(document.execCommand('copy'));}catch(_){done(false);}ta.remove();}
 });
@@ -291,6 +293,8 @@ document.addEventListener('click',function(ev){
 function attSay(card,msg,spin){var el=card.querySelector('.attstatus');if(el)el.innerHTML=(spin?'<span class="spin"></span> ':'')+msg;}
 function watchAtt(card,fid){
   var t0=Date.now();
+  attSay(card,'⏳ 處理緊…（會自動出結果）',true);
+  if(window.svMarkPending)window.svMarkPending(card.dataset.job,'客 comment 處理緊',true);  // 持久 banner，survive reload
   (function poll(){
     jsonp('action=attstatus&fileid='+encodeURIComponent(fid),function(o){
       var mins=Math.round((Date.now()-t0)/60000);
@@ -559,11 +563,12 @@ function svSeek(p,t,muted){try{
 function svAll(fn){(window._svPlayers||[]).forEach(function(p){try{p&&p[fn]&&p[fn]();}catch(_){}});}
 function openCmp(){
   var c=cmpChecked();if(c.length<2)return;   // 1 條冇得比
-  // 排序：ver/原圖 喺左（舊→新），comment 喺右（舊→新）→ 版本比較舊左新右、原圖vs comment 原圖左comment右
+  // 排序：ver/原圖 喺左、comment 喺右；ver 舊左新右；comment 新左舊右（Raymond 06-14）
   c.sort(function(a,b){
     var ka=(a.dataset.kind==='comment')?1:0, kb=(b.dataset.kind==='comment')?1:0;
     if(ka!==kb)return ka-kb;
-    return (parseInt(a.dataset.round||'0',10)-parseInt(b.dataset.round||'0',10));
+    var ra=parseInt(a.dataset.round||'0',10), rb=parseInt(b.dataset.round||'0',10);
+    return ka===1 ? (rb-ra) : (ra-rb);   // comment：新(大round)喺左；ver：舊(細round)喺左
   });
   window._svCmpOpen=true;window._svPlayers=[];
   var org='&origin='+encodeURIComponent(location.origin);
@@ -585,11 +590,20 @@ function openCmp(){
   var jobs=[];c.forEach(function(b){var jc=b.closest('.jobcard');if(jc&&jobs.indexOf(jc)<0)jobs.push(jc);});
   var leftHTML='';
   if(jobs.length===1){
-    var orig=jobs[0].querySelector('.cmorigwrap');   // 客 comment 原圖（擺左邊最上，對住片睇）
-    var cmt=jobs[0].querySelector('ul.cmt');
-    if(orig||cmt)leftHTML="<div id='svcmpleft'>"
-      +(orig?"<div class='svcmplh'>🖼 客 comment 原圖</div>"+orig.outerHTML:"")
-      +(cmt?"<div class='svcmplh'>💬 客 comment 文字</div>"+cmt.outerHTML:"")+"</div>";
+    var jc0=jobs[0];
+    var cmtRow=jc0.querySelector('.cmtboxrow');   // 客 comment 文字（並排 box，新左舊右）
+    // 版本比較（冇剔 comment）→ 左邊 default 出最新版 comment 圖（圖上、字下）
+    var hasCmtTicked=c.some(function(b){return b.dataset.kind==='comment';});
+    var imgHTML='';
+    if(!hasCmtTicked){
+      var ccs=[].slice.call(jc0.querySelectorAll(".svcmp[data-kind='comment']"));
+      ccs.sort(function(a,b){return parseInt(b.dataset.round||'0',10)-parseInt(a.dataset.round||'0',10);});
+      if(ccs[0]&&ccs[0].dataset.img)
+        imgHTML="<div class='svcmplh'>🖼 最新版客 comment 圖</div>"
+               +"<img class='cmpimg' src='"+ccs[0].dataset.img+"' style='max-height:40vh;object-fit:contain;margin-bottom:8px'>";
+    }
+    if(imgHTML||cmtRow)leftHTML="<div id='svcmpleft'>"+imgHTML
+      +(cmtRow?"<div class='svcmplh'>💬 客 comment 文字</div>"+cmtRow.outerHTML:"")+"</div>";
   }
   var ov=document.createElement('div');ov.id='svcmpov';
   ov.innerHTML="<div id='svcmpbox'><div id='svcmphead'><b>🆚 比較 "+c.length+" 條片</b>"+
