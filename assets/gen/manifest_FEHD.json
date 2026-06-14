@@ -225,6 +225,38 @@
       "board": {
         "versions": [
           {
+            "v": "20260614-193418-nblm-i1",
+            "sheet": "assets/gen/FEHD_D/v20260614-193418-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_D/v20260614-193418-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_D/v20260614-193418-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_D/v20260614-193418-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_D/v20260614-193418-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_D/v20260614-193418-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_D/v20260614-193418-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_D/v20260614-193418-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_D/v20260614-193418-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_D/v20260614-193418-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_D/v20260614-193418-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_D/v20260614-193418-nblm-i1/frame_11.png",
+              "assets/gen/FEHD_D/v20260614-193418-nblm-i1/frame_12.png",
+              "assets/gen/FEHD_D/v20260614-193418-nblm-i1/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-14T19:35:11",
+            "source": "committee",
+            "brd": "D",
+            "cid": "cm96842a61",
+            "label": "[gpt-5.2] Concept 1:〔《一封信，兩個後果》〕",
+            "gslide_pages": [
+              "assets/gen/FEHD_D/v20260614-193418-nblm-i1/gslide_FEHD_D_p1.png",
+              "assets/gen/FEHD_D/v20260614-193418-nblm-i1/gslide_FEHD_D_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1cb5j3WtkuS7kVaQx_ty4oGv1mQFUyK1C",
+            "deck_pdf": "https://drive.google.com/file/d/1tpnRero9r8hWYNFWA6FkVCIaguepVxrd/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_D/v20260614-193418-nblm-i1/deck.pdf"
+          },
+          {
             "v": "20260611-000356-nblm-i1",
             "sheet": "assets/gen/FEHD_D/v20260611-000356-nblm-i1/board_sheet.png",
             "frames": [
@@ -515,7 +547,7 @@
       }
     }
   },
-  "updated": "2026-06-14T19:20:15",
+  "updated": "2026-06-14T19:35:20",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "2605_FEHD_Water Seepage APIs"
 }
