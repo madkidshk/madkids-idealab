@@ -496,6 +496,38 @@
       "board": {
         "versions": [
           {
+            "v": "20260614-211317-nblm-i1",
+            "sheet": "assets/gen/FEHD_J/v20260614-211317-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_J/v20260614-211317-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_J/v20260614-211317-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_J/v20260614-211317-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_J/v20260614-211317-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_J/v20260614-211317-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_J/v20260614-211317-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_J/v20260614-211317-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_J/v20260614-211317-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_J/v20260614-211317-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_J/v20260614-211317-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_J/v20260614-211317-nblm-i1/frame_11.png",
+              "assets/gen/FEHD_J/v20260614-211317-nblm-i1/frame_12.png",
+              "assets/gen/FEHD_J/v20260614-211317-nblm-i1/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-14T21:14:00",
+            "source": "committee",
+            "brd": "J",
+            "cid": "cm19c18f10",
+            "label": "[委員會 145418] Concept 2:鄰里未投訴·預警勝於補救",
+            "gslide_pages": [
+              "assets/gen/FEHD_J/v20260614-211317-nblm-i1/gslide_FEHD_J_p1.png",
+              "assets/gen/FEHD_J/v20260614-211317-nblm-i1/gslide_FEHD_J_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1F9HWtwT4mut5-x0N3D5EJKA_kkKvGEus",
+            "deck_pdf": "https://drive.google.com/file/d/1WdZ6XTUXo-OwEuGeENaBuSxEhiNOJmLs/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_J/v20260614-211317-nblm-i1/deck.pdf"
+          },
+          {
             "v": "20260611-001950-nblm-i1",
             "sheet": "assets/gen/FEHD_J/v20260611-001950-nblm-i1/board_sheet.png",
             "frames": [
@@ -739,7 +771,7 @@
       }
     }
   },
-  "updated": "2026-06-14T21:04:29",
+  "updated": "2026-06-14T21:14:09",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "2605_FEHD_Water Seepage APIs"
 }
