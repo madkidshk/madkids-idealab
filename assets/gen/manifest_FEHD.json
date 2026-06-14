@@ -470,6 +470,38 @@
       "board": {
         "versions": [
           {
+            "v": "20260614-194543-nblm-i1",
+            "sheet": "assets/gen/FEHD_G/v20260614-194543-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_G/v20260614-194543-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_G/v20260614-194543-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_G/v20260614-194543-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_G/v20260614-194543-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_G/v20260614-194543-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_G/v20260614-194543-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_G/v20260614-194543-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_G/v20260614-194543-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_G/v20260614-194543-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_G/v20260614-194543-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_G/v20260614-194543-nblm-i1/frame_11.png",
+              "assets/gen/FEHD_G/v20260614-194543-nblm-i1/frame_12.png",
+              "assets/gen/FEHD_G/v20260614-194543-nblm-i1/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-14T19:46:37",
+            "source": "committee",
+            "brd": "G",
+            "cid": "cm953c841f",
+            "label": "[委員會 200541] Concept 2:證據在手，主動解困",
+            "gslide_pages": [
+              "assets/gen/FEHD_G/v20260614-194543-nblm-i1/gslide_FEHD_G_p1.png",
+              "assets/gen/FEHD_G/v20260614-194543-nblm-i1/gslide_FEHD_G_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1lLz9pLCS7Unhzi2wRoOQ-1CkqaCG9WXn",
+            "deck_pdf": "https://drive.google.com/file/d/1WrcR30bCMpRMDobEC46aTIgCFhwdfglD/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_G/v20260614-194543-nblm-i1/deck.pdf"
+          },
+          {
             "v": "20260611-152746-nblm-i1",
             "sheet": "assets/gen/FEHD_G/v20260611-152746-nblm-i1/board_sheet.png",
             "frames": [
@@ -611,7 +643,7 @@
       }
     }
   },
-  "updated": "2026-06-14T19:36:45",
+  "updated": "2026-06-14T19:46:47",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "2605_FEHD_Water Seepage APIs"
 }
