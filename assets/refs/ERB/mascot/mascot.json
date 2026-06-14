@@ -3,9 +3,14 @@
   "has": true,
   "name": "Captain K (蔣知識)",
   "existing": true,
-  "desc": "ERB 官方卡通吉祥物/代言人,戴黑框眼鏡、黑色蓬鬆短髮、淺藍牛仔恤衫襯白Tee,友善笑容。可3D動畫化,同真人/KOL互動。",
-  "source": "IG @captaink_erb 官方 profile (me profile 登入直接攞)",
+  "desc": "ERB 官方插畫代言人 Captain K(蔣知識):後生香港男仔,黑色蓬鬆短髮、清爽五官、友善笑容;signature 造型 = 淺藍牛仔恤衫襯白Tee(亦有白恤衫/深藍西裝等不同 campaign 造型,但同一張面)。日系清新插畫風。每格出現必須照 mascot source 嗰張真設計嘅同一張面/髮型畫,outfit 可按 scene 變但個樣唔走。可同真人/明星互動。",
+  "source": "IG @captaink_erb 官方 + Raymond 提供 5 張 ERB campaign 造型圖(2026-06-14)",
   "files": [
-    "assets/refs/ERB/mascot/mascot1.png"
+    "assets/refs/ERB/mascot/mascot1.png",
+    "assets/refs/ERB/mascot/mascot2.jpeg",
+    "assets/refs/ERB/mascot/mascot3.jpeg",
+    "assets/refs/ERB/mascot/mascot4.jpeg",
+    "assets/refs/ERB/mascot/mascot5.jpeg",
+    "assets/refs/ERB/mascot/mascot6.jpeg"
   ]
 }
