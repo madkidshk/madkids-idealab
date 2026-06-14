@@ -5,6 +5,46 @@
       "board": {
         "versions": [
           {
+            "v": "20260614-190728-nblm-i1",
+            "sheet": "assets/gen/ERB_D/v20260614-190728-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_01.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_02.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_03.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_04.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_05.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_06.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_07.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_08.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_09.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_10.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_11.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_12.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_13.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_14.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_15.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_16.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_17.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_18.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_19.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_20.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/frame_21.png"
+            ],
+            "n": 21,
+            "ts": "2026-06-14T19:09:00",
+            "source": "committee",
+            "brd": "D",
+            "cid": "cm1fa3b580",
+            "label": "[gpt-5.2] Concept 2:〔CV 多一行〕",
+            "gslide_pages": [
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/gslide_ERB_D_p1.png",
+              "assets/gen/ERB_D/v20260614-190728-nblm-i1/gslide_ERB_D_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1FDIEB9vjsIXSrLw0IhaTgdHt9qYPYBhm",
+            "deck_pdf": "https://drive.google.com/file/d/1hq4wkbp4onSIBAxFzQTsKzz_DctydMiZ/view?usp=drivesdk",
+            "deck_repo": "assets/gen/ERB_D/v20260614-190728-nblm-i1/deck.pdf"
+          },
+          {
             "v": "20260610-191422-nblm-i1",
             "sheet": "assets/gen/ERB_D/v20260610-191422-nblm-i1/board_sheet.png",
             "frames": [
@@ -515,5 +555,5 @@
   },
   "drive_canonical": "https://drive.google.com/drive/folders/1xwWCyee7WH0J2pNvVuWwdgjaOSL6noPS",
   "drive_canonical_name": "2606_erb",
-  "updated": "2026-06-14T19:07:00"
+  "updated": "2026-06-14T19:09:10"
 }
