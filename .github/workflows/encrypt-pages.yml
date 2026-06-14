@@ -42,6 +42,9 @@ jobs:
               npx --yes staticrypt "$f" -d "$(dirname "$f")" \
                 -p "$SC_PWD" -s 'da37644ab187b199430a20aa832bc9fa' \
                 --remember 30 --short -c false
+              # Raymond 06-14：30 日 remember 要永遠生效。--short 收埋咗 remember 剔格又冇預設剔，
+              # 令 login JS 嘅 isRememberChecked=false 永遠唔記 → 強制 checkbox 預設 checked。
+              sed -i 's#id="staticrypt-remember" type="checkbox" name="remember"#id="staticrypt-remember" type="checkbox" name="remember" checked#' "$f"
             fi
             # noindex：唔好被 Google index（加密頁/工具頁都要）
             sed -i 's#<head>#<head><meta name="robots" content="noindex,nofollow">#' "$f"
