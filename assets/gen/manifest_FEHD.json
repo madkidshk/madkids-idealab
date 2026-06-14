@@ -358,6 +358,38 @@
       "board": {
         "versions": [
           {
+            "v": "20260614-194628-nblm-i1",
+            "sheet": "assets/gen/FEHD_E/v20260614-194628-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_E/v20260614-194628-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_E/v20260614-194628-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_E/v20260614-194628-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_E/v20260614-194628-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_E/v20260614-194628-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_E/v20260614-194628-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_E/v20260614-194628-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_E/v20260614-194628-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_E/v20260614-194628-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_E/v20260614-194628-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_E/v20260614-194628-nblm-i1/frame_11.png",
+              "assets/gen/FEHD_E/v20260614-194628-nblm-i1/frame_12.png",
+              "assets/gen/FEHD_E/v20260614-194628-nblm-i1/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-14T19:47:11",
+            "source": "committee",
+            "brd": "E",
+            "cid": "cmf5a996ed",
+            "label": "[gemini-2.5-pro] Concept 1:〔無所遁形〕",
+            "gslide_pages": [
+              "assets/gen/FEHD_E/v20260614-194628-nblm-i1/gslide_FEHD_E_p1.png",
+              "assets/gen/FEHD_E/v20260614-194628-nblm-i1/gslide_FEHD_E_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1n1IAUtV1XIPkxPrF3h-f4aLhYD82sbqO",
+            "deck_pdf": "https://drive.google.com/file/d/1GoB3bI-U1dKeNfScaFRlVPPt5V2sTc5l/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_E/v20260614-194628-nblm-i1/deck.pdf"
+          },
+          {
             "v": "20260611-000903-nblm-i1",
             "sheet": "assets/gen/FEHD_E/v20260611-000903-nblm-i1/board_sheet.png",
             "frames": [
@@ -643,7 +675,7 @@
       }
     }
   },
-  "updated": "2026-06-14T19:46:47",
+  "updated": "2026-06-14T19:47:24",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "2605_FEHD_Water Seepage APIs"
 }
