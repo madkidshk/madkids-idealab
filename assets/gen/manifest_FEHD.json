@@ -151,6 +151,38 @@
       "board": {
         "versions": [
           {
+            "v": "20260614-193450-nblm-i1",
+            "sheet": "assets/gen/FEHD_B/v20260614-193450-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_B/v20260614-193450-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_B/v20260614-193450-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_B/v20260614-193450-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_B/v20260614-193450-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_B/v20260614-193450-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_B/v20260614-193450-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_B/v20260614-193450-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_B/v20260614-193450-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_B/v20260614-193450-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_B/v20260614-193450-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_B/v20260614-193450-nblm-i1/frame_11.png",
+              "assets/gen/FEHD_B/v20260614-193450-nblm-i1/frame_12.png",
+              "assets/gen/FEHD_B/v20260614-193450-nblm-i1/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-14T19:35:38",
+            "source": "committee",
+            "brd": "B",
+            "cid": "cm9e4f6ad5",
+            "label": "[委員會 200541] Concept 1:圈出源頭，同步解困",
+            "gslide_pages": [
+              "assets/gen/FEHD_B/v20260614-193450-nblm-i1/gslide_FEHD_B_p1.png",
+              "assets/gen/FEHD_B/v20260614-193450-nblm-i1/gslide_FEHD_B_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/19KTyReNNHM1RRnF3-aPEH4CH7rlH369-",
+            "deck_pdf": "https://drive.google.com/file/d/1RQU5l0EeFEJ9JXBE3M18y4htnNxWIjU5/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_B/v20260614-193450-nblm-i1/deck.pdf"
+          },
+          {
             "v": "20260610-235333-nblm-i1",
             "sheet": "assets/gen/FEHD_B/v20260610-235333-nblm-i1/board_sheet.png",
             "frames": [
@@ -547,7 +579,7 @@
       }
     }
   },
-  "updated": "2026-06-14T19:35:20",
+  "updated": "2026-06-14T19:35:47",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "2605_FEHD_Water Seepage APIs"
 }
