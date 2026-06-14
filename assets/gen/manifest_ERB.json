@@ -88,6 +88,126 @@
       "board": {
         "versions": [
           {
+            "v": "20260614-102705-nblm-i3",
+            "sheet": "assets/gen/ERB_A/v20260614-102705-nblm-i3/board_sheet.png",
+            "frames": [
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_01.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_02.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_03.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_04.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_05.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_06.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_07.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_08.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_09.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_10.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_11.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_12.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_13.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_14.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_15.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_16.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_17.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_18.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_19.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_20.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/frame_21.png"
+            ],
+            "n": 21,
+            "ts": "2026-06-14T10:28:27",
+            "source": "committee",
+            "brd": "A",
+            "cid": "cm27e96632",
+            "label": "[委員會 193851] Concept 2:〔CV·Last Update〕",
+            "gslide_pages": [
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/gslide_ERB_A_p1.png",
+              "assets/gen/ERB_A/v20260614-102705-nblm-i3/gslide_ERB_A_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/10BWMIIfAT-m-Bb-nanqdyFLiRBa6BshJ",
+            "deck_pdf": "https://drive.google.com/file/d/12dmjKzzfJVURwxu3S-ZjA1wBc2P3kwwR/view?usp=drivesdk",
+            "deck_repo": "assets/gen/ERB_A/v20260614-102705-nblm-i3/deck.pdf"
+          },
+          {
+            "v": "20260614-102416-nblm-i2",
+            "sheet": "assets/gen/ERB_A/v20260614-102416-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_01.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_02.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_03.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_04.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_05.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_06.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_07.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_08.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_09.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_10.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_11.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_12.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_13.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_14.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_15.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_16.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_17.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_18.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_19.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_20.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/frame_21.png"
+            ],
+            "n": 21,
+            "ts": "2026-06-14T10:25:43",
+            "source": "committee",
+            "brd": "A",
+            "cid": "cm27e96632",
+            "label": "[委員會 193851] Concept 2:〔CV·Last Update〕",
+            "gslide_pages": [
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/gslide_ERB_A_p1.png",
+              "assets/gen/ERB_A/v20260614-102416-nblm-i2/gslide_ERB_A_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1Aaf7gJYBphzLsQAJ4lCT7ABABxzzlax4",
+            "deck_pdf": "https://drive.google.com/file/d/1gHqDHhiyQkCNhf9uYEwa_YpkfsFmaGyl/view?usp=drivesdk",
+            "deck_repo": "assets/gen/ERB_A/v20260614-102416-nblm-i2/deck.pdf"
+          },
+          {
+            "v": "20260614-102132-nblm-i1",
+            "sheet": "assets/gen/ERB_A/v20260614-102132-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_01.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_02.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_03.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_04.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_05.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_06.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_07.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_08.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_09.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_10.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_11.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_12.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_13.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_14.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_15.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_16.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_17.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_18.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_19.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_20.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/frame_21.png"
+            ],
+            "n": 21,
+            "ts": "2026-06-14T10:23:00",
+            "source": "committee",
+            "brd": "A",
+            "cid": "cm27e96632",
+            "label": "[委員會 193851] Concept 2:〔CV·Last Update〕",
+            "gslide_pages": [
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/gslide_ERB_A_p1.png",
+              "assets/gen/ERB_A/v20260614-102132-nblm-i1/gslide_ERB_A_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1Hqm-iCHBxqnsNf4uaVNqTKiW7PM65hJg",
+            "deck_pdf": "https://drive.google.com/file/d/1TPz2C3Q0Qvlgpgxrin-crj8iYJ-PW5_a/view?usp=drivesdk",
+            "deck_repo": "assets/gen/ERB_A/v20260614-102132-nblm-i1/deck.pdf"
+          },
+          {
             "v": "20260614-040248-nblm-i1",
             "sheet": "assets/gen/ERB_A/v20260614-040248-nblm-i1/board_sheet.png",
             "frames": [
@@ -290,5 +410,5 @@
   },
   "drive_canonical": "https://drive.google.com/drive/folders/1xwWCyee7WH0J2pNvVuWwdgjaOSL6noPS",
   "drive_canonical_name": "2606_erb",
-  "updated": "2026-06-14T04:03:48"
+  "updated": "2026-06-14T10:28:35"
 }
