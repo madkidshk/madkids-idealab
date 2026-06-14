@@ -221,6 +221,38 @@
       "board": {
         "versions": [
           {
+            "v": "20260614-193559-nblm-i1",
+            "sheet": "assets/gen/FEHD_C/v20260614-193559-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_C/v20260614-193559-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_C/v20260614-193559-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_C/v20260614-193559-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_C/v20260614-193559-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_C/v20260614-193559-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_C/v20260614-193559-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_C/v20260614-193559-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_C/v20260614-193559-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_C/v20260614-193559-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_C/v20260614-193559-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_C/v20260614-193559-nblm-i1/frame_11.png",
+              "assets/gen/FEHD_C/v20260614-193559-nblm-i1/frame_12.png",
+              "assets/gen/FEHD_C/v20260614-193559-nblm-i1/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-14T19:36:39",
+            "source": "committee",
+            "brd": "C",
+            "cid": "cm98ccdb84",
+            "label": "[claude-opus-4-8] Concept 1:〔紅外線之眼〕",
+            "gslide_pages": [
+              "assets/gen/FEHD_C/v20260614-193559-nblm-i1/gslide_FEHD_C_p1.png",
+              "assets/gen/FEHD_C/v20260614-193559-nblm-i1/gslide_FEHD_C_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1OZe4Pnl_JALBS4VZNgxqIIF3trTacTNN",
+            "deck_pdf": "https://drive.google.com/file/d/1yhrWE4l4cuzaC2HT7UOCwD_YeORXDrzC/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_C/v20260614-193559-nblm-i1/deck.pdf"
+          },
+          {
             "v": "20260610-235923-nblm-i1",
             "sheet": "assets/gen/FEHD_C/v20260610-235923-nblm-i1/board_sheet.png",
             "frames": [
@@ -579,7 +611,7 @@
       }
     }
   },
-  "updated": "2026-06-14T19:35:47",
+  "updated": "2026-06-14T19:36:45",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "2605_FEHD_Water Seepage APIs"
 }
