@@ -769,9 +769,55 @@
           }
         ]
       }
+    },
+    "I": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260615-020844-nblm-i1",
+            "sheet": "assets/gen/ERB_I/v20260615-020844-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_01.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_02.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_03.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_04.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_05.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_06.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_07.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_08.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_09.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_10.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_11.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_12.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_13.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_14.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_15.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_16.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_17.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_18.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_19.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_20.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/frame_21.png"
+            ],
+            "n": 21,
+            "ts": "2026-06-15T02:10:18",
+            "source": "committee",
+            "brd": "I",
+            "cid": "cmbe60b175",
+            "label": "[deepseek-v4-pro] Concept 2:【十年後的感謝信】",
+            "gslide_pages": [
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/gslide_ERB_I_p1.png",
+              "assets/gen/ERB_I/v20260615-020844-nblm-i1/gslide_ERB_I_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1za46oM7e1714vPP-mIT8gf9YAsoZfg5F",
+            "deck_pdf": "https://drive.google.com/file/d/1Yo6M-r0-GrrOlBdy6N3cKGN_r_8j942W/view?usp=drivesdk",
+            "deck_repo": "assets/gen/ERB_I/v20260615-020844-nblm-i1/deck.pdf"
+          }
+        ]
+      }
     }
   },
   "drive_canonical": "https://drive.google.com/drive/folders/1xwWCyee7WH0J2pNvVuWwdgjaOSL6noPS",
   "drive_canonical_name": "2606_erb",
-  "updated": "2026-06-15T02:09:43"
+  "updated": "2026-06-15T02:10:26"
 }
