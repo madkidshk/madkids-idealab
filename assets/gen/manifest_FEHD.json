@@ -53,6 +53,38 @@
       "board": {
         "versions": [
           {
+            "v": "20260614-191915-nblm-i1",
+            "sheet": "assets/gen/FEHD_A/v20260614-191915-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_A/v20260614-191915-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_A/v20260614-191915-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_A/v20260614-191915-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_A/v20260614-191915-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_A/v20260614-191915-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_A/v20260614-191915-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_A/v20260614-191915-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_A/v20260614-191915-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_A/v20260614-191915-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_A/v20260614-191915-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_A/v20260614-191915-nblm-i1/frame_11.png",
+              "assets/gen/FEHD_A/v20260614-191915-nblm-i1/frame_12.png",
+              "assets/gen/FEHD_A/v20260614-191915-nblm-i1/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-14T19:20:08",
+            "source": "committee",
+            "brd": "A",
+            "cid": "cm2ce5f694",
+            "label": "[委員會 180030] Concept 2:拖延計價器 — 拖一日,貴一截",
+            "gslide_pages": [
+              "assets/gen/FEHD_A/v20260614-191915-nblm-i1/gslide_FEHD_A_p1.png",
+              "assets/gen/FEHD_A/v20260614-191915-nblm-i1/gslide_FEHD_A_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/19OD7nJexPJTl3yOx4pUmC9DCAznHvXQg",
+            "deck_pdf": "https://drive.google.com/file/d/1paKi61MxZ_SkK20hSpfQi3Aiky5F70yZ/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_A/v20260614-191915-nblm-i1/deck.pdf"
+          },
+          {
             "v": "20260612-140523-nblm-i1",
             "sheet": "assets/gen/FEHD_A/v20260612-140523-nblm-i1/board_sheet.png",
             "frames": [
@@ -483,7 +515,7 @@
       }
     }
   },
-  "updated": "2026-06-12T22:36:54",
+  "updated": "2026-06-14T19:20:15",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "2605_FEHD_Water Seepage APIs"
 }
