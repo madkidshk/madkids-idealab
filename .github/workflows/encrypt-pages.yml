@@ -28,7 +28,11 @@ jobs:
         run: |
           set -e
           mkdir -p dist
-          rsync -a --exclude='.git' --exclude='.github' --exclude='dist' ./ dist/
+          # ⛔ 排除個別 frame_*.png(3.3GB,dashboard 只用 board_sheet.png 合成圖) + grounding .source.pdf(NLM 餵料,唔上 live)
+          #    解 Pages artifact 爆 6.6GB upload 卡死(Raymond 一直見舊版根因,2026-06-16)。board_sheet.png 照上。
+          rsync -a --exclude='.git' --exclude='.github' --exclude='dist' \
+                --exclude='frame_*.png' --exclude='*.source.pdf' ./ dist/
+          echo "dist size:"; du -sh dist
           # 唔再加密;只加 noindex(唔好畀 Google index;dashboard 仍靠隱蔽 URL)
           count=0
           while IFS= read -r -d '' f; do
