@@ -1279,9 +1279,111 @@
           }
         ]
       }
+    },
+    "HANDL2": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260615-205715-nblm-i3",
+            "sheet": "assets/gen/FEHD_HANDL2/v20260615-205715-nblm-i3/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDL2/v20260615-205715-nblm-i3/frame_01.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205715-nblm-i3/frame_02.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205715-nblm-i3/frame_03.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205715-nblm-i3/frame_04.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205715-nblm-i3/frame_05.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205715-nblm-i3/frame_06.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205715-nblm-i3/frame_07.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205715-nblm-i3/frame_08.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205715-nblm-i3/frame_09.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205715-nblm-i3/frame_10.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205715-nblm-i3/frame_11.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205715-nblm-i3/frame_12.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205715-nblm-i3/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T20:58:07",
+            "source": "gsheet_handscript",
+            "brd": "HANDL2",
+            "cid": "hand-HANDL2",
+            "label": "手寫稿·不擴寫·線稿·FEHD 手寫稿（原稿）",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDL2/v20260615-205715-nblm-i3/gslide_FEHD_HANDL2_p1.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205715-nblm-i3/gslide_FEHD_HANDL2_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1Ar9U1WeAqSsT0eM9Ion7KuSxtYYID-8J",
+            "deck_pdf": "https://drive.google.com/file/d/17ccDO4btMSDm_uZ_YIu1w3K2dAdITnxV/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDL2/v20260615-205715-nblm-i3/deck.pdf"
+          },
+          {
+            "v": "20260615-205511-nblm-i2",
+            "sheet": "assets/gen/FEHD_HANDL2/v20260615-205511-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDL2/v20260615-205511-nblm-i2/frame_01.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205511-nblm-i2/frame_02.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205511-nblm-i2/frame_03.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205511-nblm-i2/frame_04.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205511-nblm-i2/frame_05.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205511-nblm-i2/frame_06.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205511-nblm-i2/frame_07.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205511-nblm-i2/frame_08.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205511-nblm-i2/frame_09.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205511-nblm-i2/frame_10.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205511-nblm-i2/frame_11.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205511-nblm-i2/frame_12.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205511-nblm-i2/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T20:56:06",
+            "source": "gsheet_handscript",
+            "brd": "HANDL2",
+            "cid": "hand-HANDL2",
+            "label": "手寫稿·不擴寫·線稿·FEHD 手寫稿（原稿）",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDL2/v20260615-205511-nblm-i2/gslide_FEHD_HANDL2_p1.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205511-nblm-i2/gslide_FEHD_HANDL2_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1Wp3cAvTz0kU949-2d2JVS6B4fLh3N7he",
+            "deck_pdf": "https://drive.google.com/file/d/1D2NlkjzeRkT7VLle_KUO0ZCB8G7OjNus/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDL2/v20260615-205511-nblm-i2/deck.pdf"
+          },
+          {
+            "v": "20260615-205304-nblm-i1",
+            "sheet": "assets/gen/FEHD_HANDL2/v20260615-205304-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDL2/v20260615-205304-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205304-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205304-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205304-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205304-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205304-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205304-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205304-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205304-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205304-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205304-nblm-i1/frame_11.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205304-nblm-i1/frame_12.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205304-nblm-i1/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T20:53:58",
+            "source": "gsheet_handscript",
+            "brd": "HANDL2",
+            "cid": "hand-HANDL2",
+            "label": "手寫稿·不擴寫·線稿·FEHD 手寫稿（原稿）",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDL2/v20260615-205304-nblm-i1/gslide_FEHD_HANDL2_p1.png",
+              "assets/gen/FEHD_HANDL2/v20260615-205304-nblm-i1/gslide_FEHD_HANDL2_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1b1xnOmGN_ZGHISMDUwnGk9zLPUcmXzFb",
+            "deck_pdf": "https://drive.google.com/file/d/1JV84Tpny6wgTbRraaznOj2ougg6Yqeoc/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDL2/v20260615-205304-nblm-i1/deck.pdf"
+          }
+        ]
+      }
     }
   },
-  "updated": "2026-06-15T19:08:28",
+  "updated": "2026-06-15T20:58:15",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "2605_FEHD_Water Seepage APIs"
 }
