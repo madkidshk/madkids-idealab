@@ -1,8 +1,9 @@
-name: Encrypt & Deploy Pages
+name: Deploy Pages
 
-# 各 pipeline 照 push plaintext 去 main；呢個 Action 喺每次 push 後用 staticrypt
-# AES 加密全站 HTML（一個密碼 + 30 日 remember）→ 出去 GitHub Pages。
-# 密碼 = repo secret STATICRYPT_PASSWORD。salt 固定（公開冇問題）。
+# Raymond 2026-06-15：加密已 DISABLE（唔好再浪費時間加密全站）。
+# 呢個 Action 只係 copy 全站 + 加 noindex → 出 GitHub Pages（plaintext，公開）。
+# ⚠️ dashboard 內容（標書／創意）而家公開，靠 noindex + 隱蔽 URL，冇密碼。
+#    要復原加密 = git revert 呢個 commit（之前 staticrypt 版喺 git history）。
 
 on:
   push:
@@ -23,44 +24,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-      - name: Install staticrypt once（唔好逐檔 npx：每檔重裝 + 起 Node = 慢死,真兇）
-        run: npm install -g staticrypt
-      - name: Encrypt all HTML with staticrypt
-        env:
-          SC_PWD: ${{ secrets.STATICRYPT_PASSWORD }}
-          SC_PWD_TOOL: ${{ secrets.STATICRYPT_PASSWORD_TOOL }}
+      - name: Prepare site — copy + noindex only（加密已 disable，唔再浪費時間）
         run: |
           set -e
           mkdir -p dist
           rsync -a --exclude='.git' --exclude='.github' --exclude='dist' ./ dist/
+          # 唔再加密;只加 noindex(唔好畀 Google index;dashboard 仍靠隱蔽 URL)
           count=0
-          # 全站同一密碼+salt；工具頁（supplier_video.html）完全唔加密（2026-06-12 Raymond）
           while IFS= read -r -d '' f; do
-            case "$f" in dist/s/*) skip_enc=1;; *) skip_enc=0;; esac
-            if [ "$(basename "$f")" != "supplier_video.html" ] && [ "$skip_enc" != "1" ]; then
-              staticrypt "$f" -d "$(dirname "$f")" \
-                -p "$SC_PWD" -s 'da37644ab187b199430a20aa832bc9fa' \
-                --remember 30 --short -c false
-              # Raymond 06-14：30 日 remember 要永遠生效。--short 收埋咗 remember 剔格又冇預設剔，
-              # 令 login JS 嘅 isRememberChecked=false 永遠唔記 → 強制 checkbox 預設 checked。
-              sed -i 's#id="staticrypt-remember" type="checkbox" name="remember"#id="staticrypt-remember" type="checkbox" name="remember" checked#' "$f"
-            fi
-            # noindex：唔好被 Google index（加密頁/工具頁都要）
-            sed -i 's#<head>#<head><meta name="robots" content="noindex,nofollow">#' "$f"
+            grep -q 'name="robots"' "$f" || sed -i 's#<head>#<head><meta name="robots" content="noindex,nofollow">#' "$f"
             count=$((count+1))
           done < <(find dist -name '*.html' -print0)
-          echo "encrypted $count html file(s)"
-          # 安全網：除咗工具頁（特准 plaintext），每個 html 都要有 staticrypt marker，否則 fail
-          missing=0
-          while IFS= read -r -d '' f; do
-            [ "$(basename "$f")" = "supplier_video.html" ] && continue
-            case "$f" in dist/s/*) continue;; esac
-            grep -q 'staticrypt' "$f" || { echo "::error::not encrypted: $f"; missing=$((missing+1)); }
-          done < <(find dist -name '*.html' -print0)
-          if [ "$missing" -gt 0 ]; then echo "::error::$missing page(s) not encrypted"; exit 1; fi
+          echo "prepared $count html file(s) — plaintext + noindex"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
