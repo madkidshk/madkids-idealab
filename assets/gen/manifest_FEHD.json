@@ -769,9 +769,251 @@
           }
         ]
       }
+    },
+    "HANDL": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260615-165354-nblm-i3",
+            "sheet": "assets/gen/FEHD_HANDL/v20260615-165354-nblm-i3/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDL/v20260615-165354-nblm-i3/frame_01.png",
+              "assets/gen/FEHD_HANDL/v20260615-165354-nblm-i3/frame_02.png",
+              "assets/gen/FEHD_HANDL/v20260615-165354-nblm-i3/frame_03.png",
+              "assets/gen/FEHD_HANDL/v20260615-165354-nblm-i3/frame_04.png",
+              "assets/gen/FEHD_HANDL/v20260615-165354-nblm-i3/frame_05.png",
+              "assets/gen/FEHD_HANDL/v20260615-165354-nblm-i3/frame_06.png",
+              "assets/gen/FEHD_HANDL/v20260615-165354-nblm-i3/frame_07.png",
+              "assets/gen/FEHD_HANDL/v20260615-165354-nblm-i3/frame_08.png",
+              "assets/gen/FEHD_HANDL/v20260615-165354-nblm-i3/frame_09.png",
+              "assets/gen/FEHD_HANDL/v20260615-165354-nblm-i3/frame_10.png",
+              "assets/gen/FEHD_HANDL/v20260615-165354-nblm-i3/frame_11.png",
+              "assets/gen/FEHD_HANDL/v20260615-165354-nblm-i3/frame_12.png",
+              "assets/gen/FEHD_HANDL/v20260615-165354-nblm-i3/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T16:54:45",
+            "source": "gsheet_handscript",
+            "brd": "HANDL",
+            "cid": "hand-HANDL",
+            "label": "手寫稿·線稿·擊退天花烏雲",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDL/v20260615-165354-nblm-i3/gslide_FEHD_HANDL_p1.png",
+              "assets/gen/FEHD_HANDL/v20260615-165354-nblm-i3/gslide_FEHD_HANDL_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1XeeXUeUUMdRy6ouyadFNvL_6qjKmRktl",
+            "deck_pdf": "https://drive.google.com/file/d/1XX_js95JM3tTnJYl5gOkc-PJwE7Ql5db/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDL/v20260615-165354-nblm-i3/deck.pdf"
+          },
+          {
+            "v": "20260615-165200-nblm-i2",
+            "sheet": "assets/gen/FEHD_HANDL/v20260615-165200-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDL/v20260615-165200-nblm-i2/frame_01.png",
+              "assets/gen/FEHD_HANDL/v20260615-165200-nblm-i2/frame_02.png",
+              "assets/gen/FEHD_HANDL/v20260615-165200-nblm-i2/frame_03.png",
+              "assets/gen/FEHD_HANDL/v20260615-165200-nblm-i2/frame_04.png",
+              "assets/gen/FEHD_HANDL/v20260615-165200-nblm-i2/frame_05.png",
+              "assets/gen/FEHD_HANDL/v20260615-165200-nblm-i2/frame_06.png",
+              "assets/gen/FEHD_HANDL/v20260615-165200-nblm-i2/frame_07.png",
+              "assets/gen/FEHD_HANDL/v20260615-165200-nblm-i2/frame_08.png",
+              "assets/gen/FEHD_HANDL/v20260615-165200-nblm-i2/frame_09.png",
+              "assets/gen/FEHD_HANDL/v20260615-165200-nblm-i2/frame_10.png",
+              "assets/gen/FEHD_HANDL/v20260615-165200-nblm-i2/frame_11.png",
+              "assets/gen/FEHD_HANDL/v20260615-165200-nblm-i2/frame_12.png",
+              "assets/gen/FEHD_HANDL/v20260615-165200-nblm-i2/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T16:52:49",
+            "source": "gsheet_handscript",
+            "brd": "HANDL",
+            "cid": "hand-HANDL",
+            "label": "手寫稿·線稿·擊退天花烏雲",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDL/v20260615-165200-nblm-i2/gslide_FEHD_HANDL_p1.png",
+              "assets/gen/FEHD_HANDL/v20260615-165200-nblm-i2/gslide_FEHD_HANDL_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1_stCnxCCx6m8L_ESd1cTUbkyciDZ13wh",
+            "deck_pdf": "https://drive.google.com/file/d/1eeteUrIaaRpTFYGcEC4sKoWlNZKkJHW4/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDL/v20260615-165200-nblm-i2/deck.pdf"
+          },
+          {
+            "v": "20260615-165010-nblm-i1",
+            "sheet": "assets/gen/FEHD_HANDL/v20260615-165010-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDL/v20260615-165010-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_HANDL/v20260615-165010-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_HANDL/v20260615-165010-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_HANDL/v20260615-165010-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_HANDL/v20260615-165010-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_HANDL/v20260615-165010-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_HANDL/v20260615-165010-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_HANDL/v20260615-165010-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_HANDL/v20260615-165010-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_HANDL/v20260615-165010-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_HANDL/v20260615-165010-nblm-i1/frame_11.png",
+              "assets/gen/FEHD_HANDL/v20260615-165010-nblm-i1/frame_12.png",
+              "assets/gen/FEHD_HANDL/v20260615-165010-nblm-i1/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T16:50:58",
+            "source": "gsheet_handscript",
+            "brd": "HANDL",
+            "cid": "hand-HANDL",
+            "label": "手寫稿·線稿·擊退天花烏雲",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDL/v20260615-165010-nblm-i1/gslide_FEHD_HANDL_p1.png",
+              "assets/gen/FEHD_HANDL/v20260615-165010-nblm-i1/gslide_FEHD_HANDL_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1_r6d5jy-EQMbKrEmoaMpjVXOMbB3_Q2w",
+            "deck_pdf": "https://drive.google.com/file/d/1FyXprTDYMwW1rG0eiHdlHC-sQMu67bPh/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDL/v20260615-165010-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HANDS": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260615-165245-nblm-i2",
+            "sheet": "assets/gen/FEHD_HANDS/v20260615-165245-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDS/v20260615-165245-nblm-i2/frame_01.png",
+              "assets/gen/FEHD_HANDS/v20260615-165245-nblm-i2/frame_02.png",
+              "assets/gen/FEHD_HANDS/v20260615-165245-nblm-i2/frame_03.png",
+              "assets/gen/FEHD_HANDS/v20260615-165245-nblm-i2/frame_04.png",
+              "assets/gen/FEHD_HANDS/v20260615-165245-nblm-i2/frame_05.png",
+              "assets/gen/FEHD_HANDS/v20260615-165245-nblm-i2/frame_06.png",
+              "assets/gen/FEHD_HANDS/v20260615-165245-nblm-i2/frame_07.png",
+              "assets/gen/FEHD_HANDS/v20260615-165245-nblm-i2/frame_08.png",
+              "assets/gen/FEHD_HANDS/v20260615-165245-nblm-i2/frame_09.png",
+              "assets/gen/FEHD_HANDS/v20260615-165245-nblm-i2/frame_10.png",
+              "assets/gen/FEHD_HANDS/v20260615-165245-nblm-i2/frame_11.png",
+              "assets/gen/FEHD_HANDS/v20260615-165245-nblm-i2/frame_12.png",
+              "assets/gen/FEHD_HANDS/v20260615-165245-nblm-i2/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T16:53:44",
+            "source": "gsheet_handscript",
+            "brd": "HANDS",
+            "cid": "hand-HANDS",
+            "label": "手寫稿·插畫·擊退天花烏雲",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDS/v20260615-165245-nblm-i2/gslide_FEHD_HANDS_p1.png",
+              "assets/gen/FEHD_HANDS/v20260615-165245-nblm-i2/gslide_FEHD_HANDS_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1Z0HSzPSC4O4kbVTtVtj9h-afN5yLq8x2",
+            "deck_pdf": "https://drive.google.com/file/d/11IbtVZ_xeBiQU6YDxMILc27ScGgFuDzj/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDS/v20260615-165245-nblm-i2/deck.pdf"
+          },
+          {
+            "v": "20260615-165044-nblm-i1",
+            "sheet": "assets/gen/FEHD_HANDS/v20260615-165044-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDS/v20260615-165044-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_HANDS/v20260615-165044-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_HANDS/v20260615-165044-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_HANDS/v20260615-165044-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_HANDS/v20260615-165044-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_HANDS/v20260615-165044-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_HANDS/v20260615-165044-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_HANDS/v20260615-165044-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_HANDS/v20260615-165044-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_HANDS/v20260615-165044-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_HANDS/v20260615-165044-nblm-i1/frame_11.png",
+              "assets/gen/FEHD_HANDS/v20260615-165044-nblm-i1/frame_12.png",
+              "assets/gen/FEHD_HANDS/v20260615-165044-nblm-i1/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T16:51:40",
+            "source": "gsheet_handscript",
+            "brd": "HANDS",
+            "cid": "hand-HANDS",
+            "label": "手寫稿·插畫·擊退天花烏雲",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDS/v20260615-165044-nblm-i1/gslide_FEHD_HANDS_p1.png",
+              "assets/gen/FEHD_HANDS/v20260615-165044-nblm-i1/gslide_FEHD_HANDS_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1atMG-akf9KsHzt8dD_axZqPxqURmIadH",
+            "deck_pdf": "https://drive.google.com/file/d/1AqUxRivBQEezbahEsOB2r9DdBnY-_bbn/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDS/v20260615-165044-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HANDR": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260615-165253-nblm-i2",
+            "sheet": "assets/gen/FEHD_HANDR/v20260615-165253-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDR/v20260615-165253-nblm-i2/frame_01.png",
+              "assets/gen/FEHD_HANDR/v20260615-165253-nblm-i2/frame_02.png",
+              "assets/gen/FEHD_HANDR/v20260615-165253-nblm-i2/frame_03.png",
+              "assets/gen/FEHD_HANDR/v20260615-165253-nblm-i2/frame_04.png",
+              "assets/gen/FEHD_HANDR/v20260615-165253-nblm-i2/frame_05.png",
+              "assets/gen/FEHD_HANDR/v20260615-165253-nblm-i2/frame_06.png",
+              "assets/gen/FEHD_HANDR/v20260615-165253-nblm-i2/frame_07.png",
+              "assets/gen/FEHD_HANDR/v20260615-165253-nblm-i2/frame_08.png",
+              "assets/gen/FEHD_HANDR/v20260615-165253-nblm-i2/frame_09.png",
+              "assets/gen/FEHD_HANDR/v20260615-165253-nblm-i2/frame_10.png",
+              "assets/gen/FEHD_HANDR/v20260615-165253-nblm-i2/frame_11.png",
+              "assets/gen/FEHD_HANDR/v20260615-165253-nblm-i2/frame_12.png",
+              "assets/gen/FEHD_HANDR/v20260615-165253-nblm-i2/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T16:53:48",
+            "source": "gsheet_handscript",
+            "brd": "HANDR",
+            "cid": "hand-HANDR",
+            "label": "手寫稿·真人·擊退天花烏雲",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDR/v20260615-165253-nblm-i2/gslide_FEHD_HANDR_p1.png",
+              "assets/gen/FEHD_HANDR/v20260615-165253-nblm-i2/gslide_FEHD_HANDR_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1QDYoDRImhBBziCt77PPiD051vzO-X5ji",
+            "deck_pdf": "https://drive.google.com/file/d/1We40AGMgoourqvQUdNy1YyhHMaVAdhk8/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDR/v20260615-165253-nblm-i2/deck.pdf"
+          },
+          {
+            "v": "20260615-165056-nblm-i1",
+            "sheet": "assets/gen/FEHD_HANDR/v20260615-165056-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDR/v20260615-165056-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_HANDR/v20260615-165056-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_HANDR/v20260615-165056-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_HANDR/v20260615-165056-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_HANDR/v20260615-165056-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_HANDR/v20260615-165056-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_HANDR/v20260615-165056-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_HANDR/v20260615-165056-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_HANDR/v20260615-165056-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_HANDR/v20260615-165056-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_HANDR/v20260615-165056-nblm-i1/frame_11.png",
+              "assets/gen/FEHD_HANDR/v20260615-165056-nblm-i1/frame_12.png",
+              "assets/gen/FEHD_HANDR/v20260615-165056-nblm-i1/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T16:51:51",
+            "source": "gsheet_handscript",
+            "brd": "HANDR",
+            "cid": "hand-HANDR",
+            "label": "手寫稿·真人·擊退天花烏雲",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDR/v20260615-165056-nblm-i1/gslide_FEHD_HANDR_p1.png",
+              "assets/gen/FEHD_HANDR/v20260615-165056-nblm-i1/gslide_FEHD_HANDR_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1WHd2CEjIo8sMR5OySRy3RkrxZKtXpBIs",
+            "deck_pdf": "https://drive.google.com/file/d/1ELQBEAtgaxMZ_GyUSQaxzAVb90b2dZiR/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDR/v20260615-165056-nblm-i1/deck.pdf"
+          }
+        ]
+      }
     }
   },
-  "updated": "2026-06-14T21:14:09",
+  "updated": "2026-06-15T16:54:52",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "2605_FEHD_Water Seepage APIs"
 }
