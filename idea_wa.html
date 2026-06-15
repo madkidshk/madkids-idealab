@@ -78,11 +78,11 @@ code{background:#eef0f3;padding:1px 6px;border-radius:6px;font-size:12.5px}
 <div id="setupSec" style="display:none">
   <h2>🔑 一次性設定</h2>
   <div class="card">
-    <p class="muted">呢個頁要用你自己一個 GitHub fine-grained token（只存喺你部機 browser，唔會入 repo）去寫入私人 queue。</p>
+    <p class="muted">呢個頁要用你自己一個 GitHub fine-grained token（只存喺你部機 browser，唔會入 repo）去寫入 queue。</p>
     <div id="helpbody" style="padding:0">
       <ol>
         <li>開 <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">GitHub → Fine-grained token</a></li>
-        <li>Repository access → 只揀 <code>raymond-idealab</code></li>
+        <li>Repository access → 只揀 <code>madkids-idealab</code></li>
         <li>Permissions → <b>Contents: Read and write</b></li>
         <li>Generate → copy → 貼落嚟</li>
       </ol>
@@ -121,7 +121,7 @@ code{background:#eef0f3;padding:1px 6px;border-radius:6px;font-size:12.5px}
 
 <footer>
   夠鐘由 GitHub Actions（每 5 分鐘）經 CallMeBot send 去 WhatsApp。<br>
-  🔒 訊息存喺私人 repo <code>raymond-idealab</code>；apikey 只喺 GitHub Secrets，唔落 browser。
+  🔒 訊息存喺 <code>madkids-idealab</code>（public，暫時得你用）；apikey 只喺 GitHub Secrets，唔落 browser。
 </footer>
 </div>
 
@@ -144,7 +144,7 @@ code{background:#eef0f3;padding:1px 6px;border-radius:6px;font-size:12.5px}
 <div id="toast"></div>
 
 <script>
-const OWNER="madkidshk", REPO="raymond-idealab", API=`https://api.github.com/repos/${OWNER}/${REPO}/contents`;
+const OWNER="madkidshk", REPO="madkids-idealab", API=`https://api.github.com/repos/${OWNER}/${REPO}/contents`;
 const PATKEY="idealab_pat";
 const $=s=>document.querySelector(s);
 let token=localStorage.getItem(PATKEY)||"", pickedWhen=null;
