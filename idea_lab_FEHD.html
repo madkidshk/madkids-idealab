@@ -11,6 +11,9 @@ body{margin:0;background:var(--bg);color:var(--ink);
 h1{font-size:19px;font-weight:800;margin:0;line-height:1.25}
 h1 .dept{color:var(--ac)}
 .bdp{font-size:12px;font-weight:700;margin:3px 0 0;display:flex;gap:11px;flex-wrap:wrap}
+.fresh{font-size:11px;color:#7a8290;margin:6px 0 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.fresh .fr{background:#f1f3f6;border-radius:6px;padding:2px 7px;white-space:nowrap}
+.fresh .fr b{color:#4a5462;font-weight:700}
 .bdp .bb{color:#2563eb}.bdp .dd{color:#dc2626}.bdp .pp{color:#7c3aed}
 .tabbar{position:sticky;top:0;z-index:30;background:var(--bg);
          border-bottom:2px solid var(--line);display:flex;gap:5px;
@@ -278,43 +281,67 @@ th{background:#f8fafc;font-weight:700}
     </span>
   </div>
   <div class=bdp><span class='bb'>B) 29/5</span><span class='dd'>D) 17/6 07:00 · <b id='cd'>—</b></span><span class='pp'>P) 22/6</span></div>
+  <div class=fresh>🕒 資料更新：<span class=fr><b>標書</b> 06-15 11:23</span> · <span class=fr><b>研究</b> 06-15 10:14</span> · <span class=fr><b>概念</b> 06-12 23:01</span> · <span class=fr><b>評分</b> 06-13 03:09</span></div>
 </header>
 <div class='tabbar'><button class='tab' data-tab='ph0'>📋 標書</button><button class='tab' data-tab='vid1_1'>VID 1</button><button class='tab busy' data-tab='vid1_2'>VID 2</button><button class='tab' data-tab='vid1_3'>VID 3</button><button class='tab' data-tab='vid1_4'>VID 4</button><button class='tab' data-tab='vid1_5'>VID 5</button><button class='tab' data-tab='kv1_1'>KV 1</button><button class='tab' data-tab='kv1_2'>KV 2</button><button class='tab' data-tab='kv1_3'>KV 3</button><button class='tab' data-tab='rad1_1'>RAD 1</button><button class='tab' data-tab='rad1_2'>RAD 2</button><button class='tab' data-tab='rad1_3'>RAD 3</button></div>
-<div id='ph0' class='tabpanel'><div class='h2'>📝 零碎想法 / Notes</div><p class='hint'>Phase 0 → VID 1 之間嗰幾日，諗到乜就入低，撳「＋ 加入」累積（VID 1 啟動委員會時一齊餵 AI）。</p><textarea id='notes' class='notes-win' placeholder='一個想法…'></textarea><div class='notes-act'><button class='btn' onclick='submitNotes()'>＋ 加入想法</button></div><div id='noteslist' class='noteslist'></div><div class='h2'>📋 Brief 撮要<span class='suppbadge'>+Briefing補充</span></div><div class='card briefcard'><h5>1. Background（背景）</h5>
-<p>為配合 2025 </p>
-<p>年《施政報告》公佈的措施，由食物環境衞生署（FEHD）與屋宇署（BD）成立的聯合辦事處</p>
-<p>（聯辦處/JO）將推出處理私人樓宇滲水的新調查及測試程序 </p>
-<p>[1]。政府希望透過新一輯電視及電台政府宣傳短片（API），向公眾宣傳這些旨在更有效解</p>
-<p>決滲水問題的加強措施 [1]。</p>
-<h5>2. Objective（目標）</h5>
-<p>提升公眾對聯辦處即將推出的新滲水調查程序及加強措施的認知；強調業主妥善保養物業及</p>
-<p>防止滲水的責任 </p>
-<p>[2]。具體需向受眾解釋精簡後的調查程序（包括使用紅外線熱成像分析及同步進行第二和</p>
-<p>第三階段調查），並促使收到「通知信」的業主主動及時進行檢驗和維修 [2]。</p>
-<h5>3. Key Message（核心訊息）</h5>
-<p>妥善保養物業、防止滲水，永遠是業主的責任 </p>
-<p>[3]。聯辦處在第一階段已引入紅外線探測以加快尋找滲水源頭；若發出「通知信」後業主</p>
-<p>仍未能在限期內完成維修，聯辦處將同步展開第二及第三階段調查，並會向不合作的業主追</p>
-<p>討相關測試費用 [3, 4]。</p>
-<h5>4. Deliverables（交付物）</h5>
-<p>*   <strong>TV API：</strong> 一條 30 </p>
-<p>秒電視宣傳短片，包含粵語（配繁體中文書面語字幕及手語）及英語（配英文字幕及手語）</p>
-<p>兩個版本 [5, 6]。需以 HDCam、RED ONE 或同等格式拍攝，輸出 16:9 (HD) XDCAM HD422 </p>
-<p>MXF 檔案 [5, 6]。手語視窗需佔畫面六分之一，位於右下角 [7, 8]。</p>
-<p>*   <strong>Radio API：</strong> 一條 30 </p>
-<p>秒電台宣傳聲帶，包含粵語、英語（獨白形式）及普通話（要求一級乙等水平）版本 </p>
-<p>[9-11]。</p>
-<p>*   <strong>其他：</strong> </p>
-<p>中英文口號（Slogan）、腳本、分鏡圖（Storyboard）、配音、原創或已獲版權許可的背景</p>
-<p>音樂 [10, 12-15]。</p>
-<p>*   （海報/平面廣告：資料不足，投標文件未列為必做項目）。</p>
-<h5>5. Timeline（時間表）</h5>
-<p>*   <strong>B (Briefing 簡介會):</strong> 2026-05-29 (必須於 2026-05-27 15:00 前提交回條) </p>
-<p>[16, 17]。</p>
-<p>*   <strong>D (Deadline 遞交死線):</strong> 2026-06-17T15:00 (香港時間) [17, 18]。</p>
-<p>*   <strong>P (Presentation 提案日):</strong> 2026-06-23 (以粵語進行) [19, 20]。</p>
-<p>*   <strong>Milestone:</strong> 2026-06-29 批出合約；2026-07-31 完成 Final Cut；2026-08-03 </p>
-<p>遞交廣播機構 [20]。</p><div class='suppinline'><h3>Briefing 補充 — FEHD</h3>
+<div id='ph0' class='tabpanel'><div class='h2'>📝 零碎想法 / Notes</div><p class='hint'>Phase 0 → VID 1 之間嗰幾日，諗到乜就入低，撳「＋ 加入」累積（VID 1 啟動委員會時一齊餵 AI）。</p><textarea id='notes' class='notes-win' placeholder='一個想法…'></textarea><div class='notes-act'><button class='btn' onclick='submitNotes()'>＋ 加入想法</button></div><div id='noteslist' class='noteslist'></div><div class='h2'>📋 Brief 撮要<span class='suppbadge'>+Briefing補充</span></div><div class='card briefcard'><p>呢份標書係食物環境衞生署（FEHD）為咗宣傳處理私人樓宇滲水新程序而招標嘅電視及電台宣傳運動（TV and Radio APIs）。根據標書文件及簡介會錄音內容，為你詳細拆解如下：</p>
+<h5>① 背景同目的</h5>
+<p>*   <strong>背景</strong>：配合 2025 年施政報告，由食環署（FEHD）及屋宇署（BD）組成嘅「滲水投訴調查聯合辦事處」（Joint Office, JO）即將推出優化樓宇滲水調查嘅新程序及測試。</p>
+<p>*   <strong>目的</strong>：</p>
+<p>    1. 提升公眾對聯合辦事處即將推出嘅新程序及優化措施嘅認知。</p>
+<p>    2. 強調業主妥善保養物業及防止滲水嘅責任。</p>
+<p>    3. 解釋精簡後嘅調查程序（包括引入紅外線熱成像分析，以及同步進行第二和第三階段調查）。</p>
+<p>    4. 提醒業主收到「建議維修通知」後必須主動進行檢查及維修。</p>
+<p>    5. 帶出若限期後滲水持續，將向不合作業主收回檢驗費用嘅阻嚇訊息。</p>
+<p>    *(資料來源：Quotation Document, Schedule 1, 第 34 頁 -)*</p>
+<h5>② 目標受眾</h5>
+<p>*   <strong>普羅大眾（General public）</strong>。*(資料來源：Quotation Document, Schedule 1, 第 34 頁 )*</p>
+<h5>③ 傳意目標 / 核心訊息</h5>
+<p>標書明文規定宣傳片必須包含以下 3 點 Key Messages：</p>
+<p>1. 妥善保養物業及防止造成滲水，始終係業主嘅責任。</p>
+<p>2. 喺新程序下，聯辦處會喺第一階段引入「紅外線熱成像分析」以加快找出源頭。若發現滲水，會向樓上業主發出「建議維修通知」，要求喺指定限期內檢查及維修。</p>
+<p>3. 若「建議維修通知」限期屆滿後滲水仍然持續，聯辦處會同步進行第二及第三階段調查，並向不合作嘅業主「收回檢驗費用」。</p>
+<p>*(資料來源：Quotation Document, Schedule 1, 第 34 頁 -)*</p>
+<h5>④ 影片 / 製作規格</h5>
+<p>*   <strong>電視宣傳短片 (TV API)</strong>：</p>
+<p>    *   <strong>集數及長度</strong>：1 條，長度 30 秒。</p>
+<p>    *   <strong>語言</strong>：廣東話及英文 2 個版本。</p>
+<p>    *   <strong>字幕</strong>：廣東話版配「繁體中文書面語」字幕；英文版配英文字幕。</p>
+<p>    *   <strong>手語視窗</strong>：兩個語言版本均必須加入「香港手語翻譯」視窗（規定為橢圓形，佔畫面右下角 1/6，淺灰或淺藍底色，翻譯員穿深色衫）。</p>
+<p>    *   <strong>格式</strong>：16:9 (HD) XDCAM HD422 at 50Mbps in MXF，建議用 HDCam 或 RED ONE 拍攝。</p>
+<p>*   <strong>電台宣傳聲帶 (Radio API)</strong>：</p>
+<p>    *   <strong>集數及長度</strong>：1 條相應嘅聲帶，長度 30 秒。</p>
+<p>    *   <strong>語言</strong>：包含廣東話、英文及普通話 3 個版本（英文版須為獨白形式 Monologue-style）。</p>
+<p>*   <strong>配樂</strong>：屬意度身訂造（tailor-made）或原創配樂。</p>
+<p>*(資料來源：Quotation Document, Schedule 1, 第 35-37 頁 -, -)*</p>
+<h5>⑤ 指定班底</h5>
+<p>*   <strong>無指定 ERB 導師 / KOL / 吉祥物</strong>。</p>
+<p>*   <strong>演員偏好</strong>：簡介會錄音中部門明確表示「希望係真人（實境拍攝）」，暫時唔考慮用動畫或吉祥物（例如阿德/阿金華等）形式。</p>
+<p>*   <strong>配音員特別要求</strong>：普通話版配音員最好考獲國家語言文字工作委員會普通話水平測試「一級乙等」或以上資格。如播出後被公務員事務局法定語文事務部評為發音不準，承辦商須自費重錄。</p>
+<p>*(資料來源：Quotation Document, Schedule 1, 第 35 頁 -; 簡介會錄音 )*</p>
+<h5>⑥ 創意及策略重點 / 風格要求</h5>
+<p>*   <strong>風格基調</strong>：部門於簡介會明言，風格唔需要係「恐嚇式」或「嚴厲式」，希望係「忠誠啲（貼地）」、能夠入屋，令市民知道有新措施，並提醒業主切勿將「建議維修通知」當普通信件置之不理。</p>
+<p>*   <strong>雙語獨立拍攝 (Double-shoot)</strong>：若 TV API 內有角色喺鏡頭前講對白，必須分開實拍中文及英文版本（Double-shoot），盡量避免中英夾雜。</p>
+<p>*   <strong>原創及口號</strong>：需創作中、英雙語 Slogan 貫穿主題；橋段必須原創，投標成功後不能將橋段轉售第三方。</p>
+<p>*   <strong>性別主流化 (Gender Mainstreaming)</strong>：所有提交嘅作品必須確保沒有性別偏見或不平等，需以性別敏感嘅方式呈現。</p>
+<p>*(資料來源：Quotation Document, Schedule 1, 第 35 頁 , 第 37 頁 ; 簡介會錄音 -)*</p>
+<h5>⑦ 交付物同時間表</h5>
+<p>*   <strong>投標（Technical Proposal）階段交付物</strong>：TV API 中英 draft storyboard、TV API 中英 draft script、Radio API 粵/英/普 draft script、填妥嘅 Schedule 4 (Pro-innovation &amp; ESG proposals)。*(第 39 頁 -)*</p>
+<p>*   <strong>最終交付物</strong>：TV API 及 Radio API 之最終廣播檔案（需分別派送至 TVB, HOY TV, Now TV, Viu TV, RTHK, 商業電台, 新城電台, ISD, 及 FEHD）。*(第 36 頁, 第 50-56 頁 -, -)*</p>
+<p>*   <strong>關鍵時間表</strong>：</p>
+<p>    *   <strong>截標時間</strong>：2026 年 6 月 17 日下午 3:00。</p>
+<p>    *   <strong>向評審簡報 (Presentation)</strong>：2026 年 6 月 23 日。</p>
+<p>    *   <strong>批出合約及 Storyboard 會議</strong>：2026 年 6 月 29 日。</p>
+<p>    *   <strong>提交初剪版 (Rough cut)</strong>：2026 年 7 月 22 日。</p>
+<p>    *   <strong>完成最終版 (Final cut)</strong>：2026 年 7 月 31 日。</p>
+<p>    *   <strong>送交電視台及電台</strong>：2026 年 8 月 3 日。</p>
+<p>*(資料來源：Quotation Document, Schedule 1, 第 26-27 頁 -)*</p>
+<h5>⑧ 任何強制要求或紅線 (DQ 風險)</h5>
+<p>1.  <strong>雙信封制（絕對紅線）</strong>：必須將「價格資料」同「技術資料」分開放入兩個<strong>獨立、無標籤、無任何公司 Logo 或名稱</strong>嘅密封信封內。*(Part 1.1, 第 7-8 頁 -)*</p>
+<p>2.  <strong>技術標絕不可含價格</strong>：技術信封內（包括 Storyboard 等）如有任何價格資訊，會即時被 DQ。*(Part 1, 第 3 頁 )*</p>
+<p>3.  <strong>必交文件</strong>：必須交齊並簽妥「Offer to be Bound」（政府曾補發此表格電郵）、Schedule 2 (價格表)、Schedule 3 (技術提案材料)、Schedule 4 (創新及 ESG 建議) 及 Annex 4 (反圍標證明書)，漏交或漏簽均不會獲考慮。*(Annex 1, 第 41 頁 -)*</p>
+<p>4.  <strong>國家安全 / 防貪條例</strong>：承辦商不得從事危害國家安全嘅行為；嚴禁向公職人員提供利益，違者會被取消資格及終止合約。*(Part 1, 第 4-5 頁 , )*</p>
+<p>5.  <strong>手語視窗硬性規定</strong>：Storyboard 構圖必須預留右下角 1/6 畫面作手語翻譯，否則視為不符合規格。*(Schedule 1, 第 35 頁 -)*</p><div class='suppinline'><h3>Briefing 補充 — FEHD</h3>
 <p>- <strong>詳細時間表:</strong> 客戶代表提供了標書未提及的詳細製作時間表：</p>
 <p>    - <strong>6月17日下午3時:</strong> 截標</p>
 <p>    - <strong>6月23日:</strong> 投標者向遴選小組介紹創作意念</p>
@@ -350,7 +377,7 @@ th{background:#f8fafc;font-weight:700}
 <p>   - 💡 可以點做橋：可以用跳字鐘或日曆逐日加 $600 嘅視覺及音效，強調「拖得越耐，罰得越甘」嘅無底深淵。</p>
 <p>6. 💡 <strong>七成個案靠物管拆掂</strong></p>
 <p>   - 事實：食環署數據顯示，參與「物管參與處理樓宇滲水計劃」嘅屋苑中，約 70% 滲水個案由物管透過協調成功解決。（出處：背景 research - 成效數據（物管參與））</p>
-<p>   - 💡 可以點做橋：可以將物管人員塑造成第一時間介入嘅「拆彈專家」，引導市民遇事第一步先搵管理處協調而唔係即刻報政府。</p></div><details class='soft'><summary>📅 日程（製作里程，報明星拍攝期用）</summary><div class='card'><div class='timeline'><div class='tlrow'><span class='tldate'>2026-08-03</span><span class='tllabel'>Station copies completed and delivered to broadcasting stations</span></div></div><a class='btn ghost' target='_blank' href='https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr'>📄 開標書原文</a></div></details><details class='soft'><summary>📑 要填嘅表（1 張）· Master Reply</summary><div class='card'><p class='hint'>真表頁（掃 PDF 表頭定位,已剔走條款 text）。🟦直 🟨橫。</p><button class='btn' onclick="renderForms(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&stage=render_forms&target=main')">🤖 一鍵自動 render 全部真表頁入 GSlide</button><p class='hint'>程式自動揀真表頁 + render → 插入對應 Master Reply GSlide 做 background（毋須手開 panel 貼頁碼）。render 完開 GSlide 直接填 → panel export（認 folder）。</p><button class='btn ghost' onclick="fillForms(this)">📝 自動填表（公司資料 vlookup → Fill tab）</button><script type='application/json' class='filldata'>{"folderName": "2605_FEHD_Water Seepage APIs", "forms": [{"name": "Offer to be Bound 簽署", "pages": "3", "text": "Quotation Ref.: (89) in FEHD (PIED) 3-5/5/13 Pt. 24                                            3 \nTerms of Quotation \n \nPart 1 \nTERMS OF QUOTATION \n \n1. \nService Providers are invited to submit Quotations for the provision of the Services mentioned \nin the Schedule.  A Service Provider’s Quotation will not be further considered if the \n“OFFER TO BE BOUND” section of the Quotation Form is not duly signed by or on behalf \nof the Service Provider and submitted with its Quotation before the Quotation Closing Time.  \nFor any missing information to be completed in “OFFER TO BE BOUND” or in relation to \nany ambiguity (including in relation to the signature), the FEHD may, but is not obliged to, \nseek clarification from the Service Provider under Paragraph 10(a).  In the case that the date \nis missing from the OFFER TO BE BOUND, it shall be deemed that the date shall be the \nQuotation Closing Date and no request for clarification will be made.  The provisions of the \nUnited Nations Convention on Contracts for the International Sale of Goods shall not apply \nto this Invitation to Quotation and a Quotation submitted by a Service Provider in response to \nthis Invitation to Quotation. \n \n2. \nA Quotation must be submitted before the quotation closing day (“Quotation Closing Date”) \nand quotation closing time on that day (“Quotation Closing Time”) as specified at the top of \nthe Quotation Form.  Depending on the permissible mode of submission of a Quotation (and \nsubmission by facsimile or by email is only allowed if a facsimile number and/or email address \nis/are provided at the top of the Quotation Form for this purpose but not otherwise), the Service \nProvider shall submit a Quotation in any one of the following manner: Where a Quotation is \nsubmitted by post or by hand delivery, the Quotation shall be submitted in DUPLICATE \nin plain and individually sealed envelopes with the quotation reference and Quotation \nClosing Date and delivered by post or by hand delivery to the address as specified at the top \nof the Quotation Form.  Where a Quotation is submitted by facsimile (if permitted), the \nService Provider shall write down the quotation reference and Quotation Closing Date on the \nQuotation and send it by facsimile to the facsimile number as specified at the top of the \nQuotation Form.  Where a Quotation is submitted by email (if permitted), the Service \nProvider shall write down the quotation reference and Quotation Closing Date on the subject \nheader of the email and the Quotation shall be attached to the email as a PDF file or other file \nformat specified in the Terms of Quotation (Supplement) (if any).  The email shall be sent to \nthe email address as specified at the top of the Quotation Form.  Regardless of the applicable \nmode of submission, late Quotations including Quotations posted or despatched or transmitted \nprior to, but received after, the Quotation Closing Time will not be considered.  Should it be \nnecessary for the Service Provider to attach other enclosures to the Quotation, reference to \nthese enclosures should be made on the Schedule. \n \n3. \nIn case Tropical Cyclone Warning Signal No. 8 or above is issued, or Black Rainstorm \nWarning Signal or “extreme conditions” announced by the Government is/are in force, for \nany duration between 11:00 a.m. and 3:00 p.m. on the Quotation Closing Date, the latest date \nand time before which Quotations are to be deposited at the quotation box and/or transmitted \nto such facsimile number or email address referred to in Paragraph 2 of the Terms of Quotation \nwill be extended to 3pm on the next working day. \n \n4. \nIn case the Public Information and Education Division’s office (address specified at the top \nof the Quotation Form) is temporarily closed, for any duration between 11:00 a.m. and 3:00 \np.m on the Quotation Closing Date, the latest date and time before which Quotations are to be \nsubmitted by post or by hand delivery referred to in Paragraph 2 of the Terms of Quotation \nwill be extended to 3:00 p.m. on the next working day when the office resumes services. \n \n5. \nAny amendments to the rates offered or any other part of the Quotation before the Quotation \n"}]}</script><p class='hint'>AI 讀每張表要填乜 → 對返 Master GSheet「公司資料」→ 寫入 <b>Fill_2605_FEHD_Water Seepage APIs</b> tab（值你 copy 去填；⚠️需人手＝價錢/簽名要自己填）。<b>GAS 直出，唔靠部 Mac。</b></p><div class='h3'>② 交標時 — Forms / Schedules（1）</div><p class='hint'>開 Form GSlide panel 貼頁碼 render 做 background → 人手填。</p><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/1nBf0Bdx17Jvo8owVWrvM-A_MlKxL98ttyMenXc-cewY/edit'>🎞️ 開 FEHD Form GSlide</a><div class='qconfirm' style='background:#eef0fe;color:#3730a3'>貼入 panel 頁碼：<b>3</b></div><div class='timeline'><div class='tlrow'><span class='tldate'>🟦 p3</span><span class='tllabel'>Offer to be Bound 簽署</span></div></div></div></details><details class='soft' open><summary class='supp'>⚠️ 製作要求（5 項）</summary><div class='card'><p class='hint'>讀標書判定。剔=要 / ✕=唔使；明星·吉祥物 Preferred/無Pref；動畫 2D/3D/無Pref。撳頁碼睇引文。</p><div class='preqs'><div class='prow'><span class='pl'>🤟 手語</span><span class='pv pvon'>✅ 要</span><span class='pp' title='提供手語傳譯服務的直播或影片...'>p69</span></div><div class='prow'><span class='pl'>♿ W3C影片</span><span class='pv pvon'>✅ 要</span><span class='pp' title='影片須提供繁體中文字幕...'>p69</span></div><div class='prow'><span class='pl'>⭐ 明星</span><span class='pv pvoff'>無Preference</span><span class='pp' title='構思、創作及制定宣傳運動的整體策略...'>p18</span></div><div class='prow'><span class='pl'>🧸 Mascot</span><span class='pv pvoff'>無Preference</span><span class='pp' title='設計及製作一套全新的主視覺形象...'>p19</span></div><div class='prow'><span class='pl'>🎬 動畫</span><span class='pv pvoff'>無Preference</span><span class='pp' title='製作宣傳影片（例如宣傳聲帶、劇集、動畫等）...'>p68</span></div></div></div></details><details class='soft'><summary>🔬 Research 背景調查</summary><div class='card'><div class='h3'>深入研究</div><h3>Deep Research — FEHD · Water Seepage APIs</h3>
+<p>   - 💡 可以點做橋：可以將物管人員塑造成第一時間介入嘅「拆彈專家」，引導市民遇事第一步先搵管理處協調而唔係即刻報政府。</p></div><details class='soft'><summary>📅 日程（製作里程，報明星拍攝期用）</summary><div class='card'><div class='timeline'><div class='tlrow'><span class='tldate'>2026-08-03</span><span class='tllabel'>Station copies completed and delivered to broadcasting stations</span></div></div><a class='btn ghost' target='_blank' href='https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr'>📄 開標書原文</a></div></details><details class='soft'><summary>📑 要填嘅表（1 張）· Master Reply</summary><div class='card'><p class='hint'>真表頁（掃 PDF 表頭定位,已剔走條款 text）。🟦直 🟨橫。</p><button class='btn' onclick="renderForms(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHD&stage=render_forms&target=main')">🤖 一鍵自動 render 全部真表頁入 GSlide</button><p class='hint'>程式自動揀真表頁 + render → 插入對應 Master Reply GSlide 做 background（毋須手開 panel 貼頁碼）。render 完開 GSlide 直接填 → panel export（認 folder）。</p><button class='btn ghost' onclick="fillForms(this)">📝 自動填表（公司資料 vlookup → Fill tab）</button><script type='application/json' class='filldata'>{"folderName": "2605_FEHD_Water Seepage APIs", "forms": [{"name": "Offer to be Bound 簽署", "pages": "3", "text": "Quotation Ref.: (89) in FEHD (PIED) 3-5/5/13 Pt. 24                                            3 \nTerms of Quotation \n \nPart 1 \nTERMS OF QUOTATION \n \n1. \nService Providers are invited to submit Quotations for the provision of the Services mentioned \nin the Schedule.  A Service Provider’s Quotation will not be further considered if the \n“OFFER TO BE BOUND” section of the Quotation Form is not duly signed by or on behalf \nof the Service Provider and submitted with its Quotation before the Quotation Closing Time.  \nFor any missing information to be completed in “OFFER TO BE BOUND” or in relation to \nany ambiguity (including in relation to the signature), the FEHD may, but is not obliged to, \nseek clarification from the Service Provider under Paragraph 10(a).  In the case that the date \nis missing from the OFFER TO BE BOUND, it shall be deemed that the date shall be the \nQuotation Closing Date and no request for clarification will be made.  The provisions of the \nUnited Nations Convention on Contracts for the International Sale of Goods shall not apply \nto this Invitation to Quotation and a Quotation submitted by a Service Provider in response to \nthis Invitation to Quotation. \n \n2. \nA Quotation must be submitted before the quotation closing day (“Quotation Closing Date”) \nand quotation closing time on that day (“Quotation Closing Time”) as specified at the top of \nthe Quotation Form.  Depending on the permissible mode of submission of a Quotation (and \nsubmission by facsimile or by email is only allowed if a facsimile number and/or email address \nis/are provided at the top of the Quotation Form for this purpose but not otherwise), the Service \nProvider shall submit a Quotation in any one of the following manner: Where a Quotation is \nsubmitted by post or by hand delivery, the Quotation shall be submitted in DUPLICATE \nin plain and individually sealed envelopes with the quotation reference and Quotation \nClosing Date and delivered by post or by hand delivery to the address as specified at the top \nof the Quotation Form.  Where a Quotation is submitted by facsimile (if permitted), the \nService Provider shall write down the quotation reference and Quotation Closing Date on the \nQuotation and send it by facsimile to the facsimile number as specified at the top of the \nQuotation Form.  Where a Quotation is submitted by email (if permitted), the Service \nProvider shall write down the quotation reference and Quotation Closing Date on the subject \nheader of the email and the Quotation shall be attached to the email as a PDF file or other file \nformat specified in the Terms of Quotation (Supplement) (if any).  The email shall be sent to \nthe email address as specified at the top of the Quotation Form.  Regardless of the applicable \nmode of submission, late Quotations including Quotations posted or despatched or transmitted \nprior to, but received after, the Quotation Closing Time will not be considered.  Should it be \nnecessary for the Service Provider to attach other enclosures to the Quotation, reference to \nthese enclosures should be made on the Schedule. \n \n3. \nIn case Tropical Cyclone Warning Signal No. 8 or above is issued, or Black Rainstorm \nWarning Signal or “extreme conditions” announced by the Government is/are in force, for \nany duration between 11:00 a.m. and 3:00 p.m. on the Quotation Closing Date, the latest date \nand time before which Quotations are to be deposited at the quotation box and/or transmitted \nto such facsimile number or email address referred to in Paragraph 2 of the Terms of Quotation \nwill be extended to 3pm on the next working day. \n \n4. \nIn case the Public Information and Education Division’s office (address specified at the top \nof the Quotation Form) is temporarily closed, for any duration between 11:00 a.m. and 3:00 \np.m on the Quotation Closing Date, the latest date and time before which Quotations are to be \nsubmitted by post or by hand delivery referred to in Paragraph 2 of the Terms of Quotation \nwill be extended to 3:00 p.m. on the next working day when the office resumes services. \n \n5. \nAny amendments to the rates offered or any other part of the Quotation before the Quotation \n"}]}</script><p class='hint'>AI 讀每張表要填乜 → 對返 Master GSheet「公司資料」→ 寫入 <b>Fill_2605_FEHD_Water Seepage APIs</b> tab（值你 copy 去填；⚠️需人手＝價錢/簽名要自己填）。<b>GAS 直出，唔靠部 Mac。</b></p><div class='h3'>② 交標時 — Forms / Schedules（1）</div><p class='hint'>開 Form GSlide panel 貼頁碼 render 做 background → 人手填。</p><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/1nBf0Bdx17Jvo8owVWrvM-A_MlKxL98ttyMenXc-cewY/edit'>🎞️ 開 FEHD Form GSlide</a><div class='qconfirm' style='background:#eef0fe;color:#3730a3'>貼入 panel 頁碼：<b>3</b></div><div class='timeline'><div class='tlrow'><span class='tldate'>🟦 p3</span><span class='tllabel'>Offer to be Bound 簽署</span></div></div></div></details><details class='soft' open><summary class='supp'>⚠️ 製作要求（5 項）</summary><div class='card'><p class='hint'>讀標書判定。剔=要 / ✕=唔使；明星·吉祥物 Preferred/無Pref；動畫 2D/3D/無Pref。撳頁碼睇引文。</p><div class='preqs'><div class='prow'><span class='pl'>🤟 手語</span><span class='pv pvon'>✅ 要</span><span class='pp' title='Inclusion of sign language interpretation (手語翻譯 – 香港手語 ) for'>p35</span></div><div class='prow'><span class='pl'>♿ W3C影片</span><span class='pv pvoff'>❌ 唔使</span><span class='pp'></span></div><div class='prow'><span class='pl'>⭐ 明星</span><span class='pv pvoff'>無Preference</span><span class='pp'></span></div><div class='prow'><span class='pl'>🧸 Mascot</span><span class='pv pvoff'>無Preference</span><span class='pp'></span></div><div class='prow'><span class='pl'>🎬 動畫</span><span class='pv pvoff'>無Preference</span><span class='pp' title='including animations, if specified in the storyboard'>p35</span></div></div></div></details><details class='soft'><summary>🔬 Research 背景調查</summary><div class='card'><div class='h3'>深入研究</div><h3>Deep Research — FEHD · Water Seepage APIs</h3>
 <h4>1. 議題深度背景(近期發展,補充事實)</h4>
 <p>*   香港滲水投訴數字持續高企。根據申訴專員公署 2023 年 10 月發表的調查報告，聯合辦事處（JO）在 2021 年及 2022 年分別接獲約 28,000 宗及 29,000 宗滲水投訴，數字龐大且有上升趨勢，顯示問題嚴重性及市民對政府處理效率的關注。</p>
 <p>*   現行處理滲水投訴的程序被指冗長且效率低下，導致大量個案積壓，平均處理時間長達數月甚至一年以上。申訴專員公署的報告指出，JO 在 2021 年及 2022 年分別有 13,000 宗及 15,000 宗個案未能於 90 天內完成調查。</p>
@@ -1286,7 +1313,7 @@ th{background:#f8fafc;font-weight:700}
 <div id='rad1_1' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 1：流程設計中，完成 VID 後再開。</div></div>
 <div id='rad1_2' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 2：流程設計中，完成 VID 後再開。</div></div>
 <div id='rad1_3' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 3：流程設計中，完成 VID 後再開。</div></div>
-<div class=foot>Idea Lab · 06-14 21:14 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+<div class=foot>Idea Lab · 06-15 11:23 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
 </div>
 
 <script>

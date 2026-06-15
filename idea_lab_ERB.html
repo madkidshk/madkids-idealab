@@ -11,6 +11,9 @@ body{margin:0;background:var(--bg);color:var(--ink);
 h1{font-size:19px;font-weight:800;margin:0;line-height:1.25}
 h1 .dept{color:var(--ac)}
 .bdp{font-size:12px;font-weight:700;margin:3px 0 0;display:flex;gap:11px;flex-wrap:wrap}
+.fresh{font-size:11px;color:#7a8290;margin:6px 0 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.fresh .fr{background:#f1f3f6;border-radius:6px;padding:2px 7px;white-space:nowrap}
+.fresh .fr b{color:#4a5462;font-weight:700}
 .bdp .bb{color:#2563eb}.bdp .dd{color:#dc2626}.bdp .pp{color:#7c3aed}
 .tabbar{position:sticky;top:0;z-index:30;background:var(--bg);
          border-bottom:2px solid var(--line);display:flex;gap:5px;
@@ -278,50 +281,70 @@ th{background:#f8fafc;font-weight:700}
     </span>
   </div>
   <div class=bdp><span class='dd'>D) 17/6 12:00 · <b id='cd'>—</b></span></div>
+  <div class=fresh>🕒 資料更新：<span class=fr><b>標書</b> 06-15 11:19</span> · <span class=fr><b>研究</b> 06-15 11:43</span> · <span class=fr><b>概念</b> 06-15 00:55</span> · <span class=fr><b>評分</b> 06-15 01:20</span></div>
 </header>
 <div class='tabbar'><button class='tab' data-tab='ph0'>📋 標書</button><button class='tab' data-tab='vid1_1'>VID 1</button><button class='tab' data-tab='vid1_2'>VID 2</button><button class='tab' data-tab='vid1_3'>VID 3</button><button class='tab' data-tab='vid1_4'>VID 4</button><button class='tab' data-tab='vid1_5'>VID 5</button></div>
-<div id='ph0' class='tabpanel'><div class='h2'>📝 零碎想法 / Notes</div><p class='hint'>Phase 0 → VID 1 之間嗰幾日，諗到乜就入低，撳「＋ 加入」累積（VID 1 啟動委員會時一齊餵 AI）。</p><textarea id='notes' class='notes-win' placeholder='一個想法…'></textarea><div class='notes-act'><button class='btn' onclick='submitNotes()'>＋ 加入想法</button></div><div id='noteslist' class='noteslist'></div><div class='h2'>📋 Brief 撮要</div><div class='card briefcard'><h5>1. Background（背景）</h5>
-<p>是次項目為僱員再培訓局（ERB）因應香港經濟轉型及科技普及化（如 AI+ </p>
-<p>跨行業應用大趨勢），由傳統「就業為本」全面升格至「技能為本」的重大策略轉型 </p>
-<p>[1-3]。社會環境下面對激烈競爭，加上自 2025 年起 ERB </p>
-<p>課程已取消學歷上限，服務對象擴展至全港 15 歲或以上人士 </p>
-<p>[3]。為洗脫過往只針對基層或失業人士的刻板印象，ERB </p>
-<p>需要製作全新短片系列，以貼地方式向大眾（特別是擁有多元學歷背景及年輕世代）推廣數</p>
-<p>碼新技能培訓 [4-6]。</p>
-<h5>2. Objective（目標）</h5>
-<p><strong>傳意目標：</strong> 強調在數碼轉型時代持續進修及學習新興技能（如生成式 </p>
-<p>AI、數據分析等）的重要性，改變受眾對 ERB </p>
-<p>的固有印象，帶出課程具備高度實戰應用價值 [2, 7, 8]。</p>
-<p><strong>受眾改變：</strong> </p>
-<p>令持有大專學歷的在職人士及年輕人從「抗拒傳統進修」轉變為「主動尋求技能升級」以完</p>
-<p>勝職場 [5, 8, 9]。</p>
-<p><strong>KPI：</strong> 大幅提升 ERB 於 Facebook、IG、LinkedIn 及 YouTube </p>
-<p>的流量與互動率（Reach, Views &amp; Engagement），從而帶動相關課程查詢及報讀人數 [8, </p>
-<p>10]。</p>
-<h5>3. Key Message（核心訊息）</h5>
-<p>1. 在各行各業科技應用及 AI+ </p>
-<p>的大趨勢下，持續學習與提升數碼技能是保住職場競爭力的唯一出路 [2]。</p>
-<p>2. ERB </p>
-<p>課程不設學歷上限，提供具實戰性、能即學即用的高階未來技能培訓，助你輕鬆拆解工作難</p>
-<p>題 [2, 5]。</p>
-<p>3. 掌握數碼新技能，助你完勝職場！（Emotional Appeal: 告別職場焦慮；CTA: 立即報讀</p>
-<p>ERB 課程為自己 Upgrade）[11]。</p>
-<h5>4. Deliverables（交付物）</h5>
-<p>*   <strong>短片系列：</strong> 3 至 4 集，每集約 1.5 分鐘 [12, 13]。</p>
-<p>*   <strong>精華片段：</strong> 1 條涵蓋所有集數的 30 秒 Highlight 版本 [12, 13]。</p>
-<p>*   <strong>KOL 參與：</strong> 邀請及安排至少 1 位具人氣、形象正面且受年輕人歡迎的藝人 / KOL</p>
-<p>參與拍攝 [14, 15]。</p>
-<p>*   <strong>語言及格式：</strong> 廣東話旁白/對白，配以繁體中文熒幕蓋字及字幕 [16, 17]。</p>
-<p>*   <strong>Optional 項目：</strong> 將吉祥物「蔣知識 (Captain K)」開發為 3D 動畫角色，透過 </p>
-<p>AI 輔助動畫技術，在真人實景中與導師及 KOL 自然互動 [17, 18]。</p>
-<h5>5. Timeline（時間表）</h5>
-<p>*   <strong>B (Briefing date):</strong> 資料不足（標書未有列明截標前的簡介會日期）</p>
-<p>*   <strong>D (Deadline):</strong> 2026-06-17 12:00:00 (ISO 日期，香港時間) [19]</p>
-<p>*   <strong>P (Presentation date):</strong> 資料不足</p>
-<p>*   <strong>Milestone 1:</strong> 2026-06-29 (成功中標及會面) [20]</p>
-<p>*   <strong>Milestone 2:</strong> 2026年7月下旬至8月上旬 (拍攝及後期製作) [21]</p>
-<p>*   <strong>Milestone 3:</strong> 2026年8月中旬 (推出第 1 集) [21]</p>
-<p>*   <strong>Milestone 4:</strong> 2026年9月至10月 (推出餘下集數及精華片段) [21]</p></div><div class='h2'>⚡ 創意亮點 Hooks</div><div class='card briefcard'><p class='hint'>research 掘出嚟嘅真嘢（logo 故事/mascot/官員/歷屆/文化位）。委員會出橋會扣連呢啲；你自己睇到有橋，直接寫入上面 Notes。</p><h4>⚡ 創意亮點 — ERB·ERB_New Skills Training Video Seri（research 掘出嚟，可以做橋嘅真嘢）</h4>
+<div id='ph0' class='tabpanel'><div class='h2'>📝 零碎想法 / Notes</div><p class='hint'>Phase 0 → VID 1 之間嗰幾日，諗到乜就入低，撳「＋ 加入」累積（VID 1 啟動委員會時一齊餵 AI）。</p><textarea id='notes' class='notes-win' placeholder='一個想法…'></textarea><div class='notes-act'><button class='btn' onclick='submitNotes()'>＋ 加入想法</button></div><div id='noteslist' class='noteslist'></div><div class='h2'>📋 標書撮要</div><div class='card briefcard'><p>明白，為咗幫你哋廣告公司準備投標，我已經嚴格根據你提供嘅標書文件（Tender Invitation），詳細梳理咗呢個《ERB 新技能培訓宣傳短片系列》項目嘅 8 大核心要求。以下分析並附上標書內嘅段落（Paragraph）參考：</p>
+<h5>① 背景同目的</h5>
+<p>*   <strong>機構背景</strong>：ERB 為 15 歲或以上合資格香港僱員提供超過 800 個「技能為本」培訓課程，涵蓋 28 個行業類別 。</p>
+<p>*   <strong>項目背景</strong>：因應各行各業廣泛應用科技嘅大趨勢，ERB 開發咗一系列新技能培訓課程（例如商業生成式 AI、AI 工作間方案、AI 視覺設計及遊戲開發、電動車維修、無人機表演設計等） 。</p>
+<p>*   <strong>宣傳目的</strong>：計劃於 2026-27 年度推出短片系列，以推廣上述「數碼新技能」及「行業科技應用」課程，支援公眾提升技能及職場競爭力 。</p>
+<h5>② 目標受眾</h5>
+<p>*   <strong>整體受眾</strong>：一般公眾，以及 ERB 嘅服務對象（即 15 歲或以上合資格香港僱員） 。</p>
+<p>*   <strong>重點目標群組</strong>：特別針對<strong>年輕觀眾（younger audiences）</strong>以及<strong>具備學位程度的人士（individuals with degree-level attainment）</strong> 。</p>
+<h5>③ 傳意目標 / 核心訊息</h5>
+<p>標書第 7 及第 9 段明確列出以下重點：</p>
+<p>*   <strong>4 大傳意目標 (Objectives)</strong>：</p>
+<p>    1.  強調提升技能嘅重要性，鼓勵大眾學習數碼新技能以支援行業數碼轉型 。</p>
+<p>    2.  提高公眾對 ERB 技能為本課程嘅認識，讓觀眾從影片中獲得實用貼士 。</p>
+<p>    3.  提升 ERB 社交媒體平台（Facebook、IG、LinkedIn、YouTube）的流量及互動率 。</p>
+<p>    4.  整體推廣及加強 ERB 的品牌形象 。</p>
+<p>*   <strong>3 大核心訊息 (Key Messages)</strong>：</p>
+<p>    1.  喺各行各業應用科技及 AI+ 嘅大趨勢下，持續學習同提升技能對僱員保持職場競爭力至關重要 。</p>
+<p>    2.  展示不同行業從業員如何應用數碼技能提升工作效率，重點介紹 ERB 課程的核心學習內容、實用性及真實行業應用 。</p>
+<p>    3.  宣傳 ERB 已取消學員學歷要求上限，並開發了更高階及未來技能培訓課程，協助不同背景人士掌握新技能 。</p>
+<h5>④ 影片 / 製作規格</h5>
+<p>*   <strong>集數及長度</strong>：需要製作 <strong>3 至 4 集短片</strong>（每集約 1.5 分鐘），以及 <strong>1 條精華片段</strong>（約 30 秒）涵蓋所有集數 。</p>
+<p>*   <strong>語言及字幕</strong>：影片旁白/配音必須使用<strong>廣東話 (Cantonese)</strong>；必須提供<strong>繁體中文 (Traditional Chinese)</strong> 嘅字幕 (captions and subtitles) 。</p>
+<p>*   <strong>一站式製作 (Scope of Services)</strong>：承辦商需包辦概念發展、分鏡、劇本、AI 動畫、拍攝團隊及器材、版權音樂、收音混音、美術指導、化妝髮型、後期製作及授權等所有工序 。</p>
+<h5>⑤ 指定班底</h5>
+<p>*   <strong>ERB 導師</strong>：需於影片中親身介紹及示範實用數碼技能、分享貼士或行業見解 。承辦商需為導師安排實地硬照拍攝，ERB 會負責聯絡協調導師 。</p>
+<p>*   <strong>名人 / KOL</strong>：<strong>必須邀請 1 位</strong>名人或 KOL 參與拍攝，人選由廣告公司建議，條件為具備知名度、形象正面、有合適演出經驗，並特別要受年輕觀眾歡迎 [12-14]。廣告公司需在技術建議書中提供建議名單 。</p>
+<p>*   <strong>吉祥物「Captain K」 (Optional)</strong>：標書列明為「可選項目」（optional item） 。可視乎創作手法，建議將其開發為 <strong>3D 動畫角色 (avatar)</strong>，並透過 AI 輔助動畫融入真人實景，與導師及 KOL 自然互動 。</p>
+<h5>⑥ 創意及策略重點 / 風格要求</h5>
+<p>*   <strong>專屬副主題</strong>：由於「具備學位程度人士」係全新目標群體，標書建議可為此群體設計專屬嘅副主題（dedicated sub-theme） 。</p>
+<p>*   <strong>風格要求</strong>：必須新鮮、有創意、生動且吸睛（fresh, creative, vivid and eye-catching），以時尚及現代嘅手法傳達訊息 。</p>
+<p>*   <strong>表達形式</strong>：接受多種形式，包括但不限於：職場情景劇（work scenario drama）、體驗課（taster courses）或技能競賽（skills competitions） 。</p>
+<h5>⑦ 交付物同時間表</h5>
+<p>根據標書第 13 段的暫定時間表：</p>
+<p>*   <strong>截標及批標</strong>：2026年6月17日中午12時截標 ；預計 6月29日 批出合約 。</p>
+<p>*   <strong>前期籌備 (6月下旬至7月中)</strong>：構思概念、分鏡、劇本、落實邀請名人/KOL 。</p>
+<p>*   <strong>拍攝及後期 (7月下旬至8月上旬)</strong>：確認劇本、場地、服裝安排，進行拍攝及後期製作 。</p>
+<p>*   <strong>影片發佈</strong>：2026年8月中旬推出第 1 集；9月至10月推出其餘集數及精華片段 。</p>
+<h5>⑧ 任何強制要求或紅線</h5>
+<p>1.  <strong>經驗門檻 (Experience)</strong>：投標者<strong>必須</strong>在過去 3 年內曾為相關機構（教育、政府、NGO 或商業機構等）製作過長度少於 2 分鐘的宣傳片 。無相關經驗者<strong>將不獲考慮</strong> 。</p>
+<p>2.  <strong>遞交方式</strong>：必須於截標前以<strong>兩個獨立電郵</strong>（Email 1: Technical Proposal / Email 2: Price Quotation）提交 PDF 檔案，遲交將不獲受理（第14及15段） 。</p>
+<p>3.  <strong>報價紅線</strong>：必須根據 Annex 6 填寫報價，<strong>不接受部分報價或不完整報價</strong>（Partial offers or incomplete offers will not be considered）（第26段） 。</p>
+<p>4.  <strong>保險要求</strong>：承辦商必須購買總額 <strong>HK$10,000,000（一千萬港元）</strong> 嘅保險，涵蓋拍攝團隊、器材、ERB 導師、KOL 及公眾等（第45段） 。</p>
+<p>5.  <strong>外判限制 (Sub-contracting)</strong>：未經 ERB 同意，不允許將任何服務外判給其他公司（第36段） 。</p>
+<p>6.  <strong>合規與國安條款</strong>：投標者需簽署遞交「防勾結條款確認書」及「個人資料及私隱保密協議」 [23, 28-30]。若投標者曾從事或被合理相信從事危害國家安全嘅活動，ERB 有權取消其資格（第44段） 。</p></div><div class='h2'>⚠️ 製作要求（標書硬性，每個概念必跟，違 = 廢稿）</div><div class='card briefcard'><p>- <strong>手語</strong>：唔使（標書原文:N/A，p0）</p>
+<p>- <strong>W3C影片</strong>：唔使（標書原文:N/A，p0）</p>
+<p>- <strong>明星</strong>：Preferred（標書原文:To invite and coordinate with one celebrity / KOL ，p21）</p>
+<p>- <strong>Mascot</strong>：Preferred（標書原文:contractor can consider and propose as an optional，p10）</p>
+<p>- <strong>動畫</strong>：Prefer 3D（標書原文:developing “Captain K” into a 3D animated characte，p10）</p></div><div class='h2'>📑 要交文件</div><div class='card briefcard'><p>- Creative proposal on the video series in Annex 2（以 PDF 格式透過 Email 1 (Technical Proposal) 於 202）</p>
+<p>- Tenderer and Other Information in Annex 3（以 PDF 格式透過 Email 1 於 2026年6月17日中午12時前提交）</p>
+<p>- Confirmation Letter for Compliance with Anti-Collusion Clauses in Tender in Annex 4（須由授權人簽署，以 PDF 格式透過 Email 1 於 2026年6月17日中午12時前）</p>
+<p>- Non-Disclosure Agreement for Personal Data and Privacy in Annex 5（須由授權人簽署，以 PDF 格式透過 Email 1 於 2026年6月17日中午12時前）</p>
+<p>- Price Proposal in Annex 6（以 PDF 格式透過獨立的 Email 2 (Price Quotation) 於 202）</p></div><div class='h2'>⛔ 注意事項 / 紅線</div><div class='card briefcard'><p>- [無障礙] 繁體中文字幕：影片必須提供繁體中文的 captions and subtitles</p>
+<p>- [其他] 廣東話配音：影片旁白配音必須使用廣東話 (Cantonese)</p>
+<p>- [明星] 邀請名人 / KOL：必須邀請及協調 1 位具知名度且受年輕觀眾歡迎的 celebrity / KOL 參與拍攝</p>
+<p>- [mascot] 吉祥物 Captain K：可視乎創作手法，作為可選項目 (optional item) 融入影片</p>
+<p>- [3D] 3D 動畫角色：如使用吉祥物，可將其開發成 3D 動畫角色，透過 AI 輔助動畫融入真人實景</p>
+<p>- [其他] 影片數量及長度：需製作 3 至 4 集短片 (每集約 1.5 分鐘) 及 1 條精華片段 (約 30 秒)</p>
+<p>- [其他] 製作經驗紅線：必須具備過去 3 年內製作長度少於 2 分鐘宣傳片的經驗，否則不獲考慮</p>
+<p>- [其他] 完整報價紅線：不接受部分或不完整報價 (Partial offers or incomplete offers will not be</p>
+<p>- [其他] 外判限制紅線：未經 ERB 同意，不允許將任何服務外判給其他公司</p>
+<p>- [其他] 拍攝保險要求：必須購買總額 HK$10,000,000 的保險，涵蓋拍攝團隊、器材、導師及 KOL 等</p></div><div class='h2'>⚡ 創意亮點（research 掘出嘅真嘢）</div><div class='card briefcard'><h4>⚡ 創意亮點 — ERB·ERB_New Skills Training Video Seri（research 掘出嚟，可以做橋嘅真嘢）</h4>
 <p>1. 🏷️ <strong>蔣知識變身 AI 導師</strong></p>
 <p>   - 事實：ERB 有官方吉祥物「蔣知識 (Captain K)」，客戶更提議可開發為 3D 動畫角色並結合 AI 技術。（出處：debrief）</p>
 <p>   - 💡 可以點做橋：可以將 Captain K 化身為高科技 AI Avatar 穿梭真實職場指導 KOL。</p>
@@ -342,7 +365,11 @@ th{background:#f8fafc;font-weight:700}
 <p>   - 💡 可以點做橋：可以將老一輩的「一技傍身」概念翻新，變成白領應對 AI 時代的「新技傍身」。</p>
 <p>7. 👤 <strong>老闆視角的技能需求</strong></p>
 <p>   - 事實：ERB 主席黃傑龍是知名商界人士，親自推動取消學歷上限及引入新技能課程的改革。（出處：背景 research）</p>
-<p>   - 💡 可以點做橋：可以借用商界老闆的角度，點出「現今職場最渴求邊種新技能人才」。</p></div><details class='soft'><summary>📅 日程（製作里程，報明星拍攝期用）</summary><div class='card'><div class='timeline'><div class='tlrow'><span class='tldate'>2026-06-29</span><span class='tllabel'>Meeting with the successful contractor</span></div><div class='tlrow'><span class='tldate'>2026-07-15</span><span class='tllabel'>Finalisation of storyboard and scripts / Arrangement of shooting locations, wardrobe and styling, props, selection of background talent(s)</span></div><div class='tlrow'><span class='tldate'>2026-07-25</span><span class='tllabel'>Video shooting and post-production</span></div><div class='tlrow'><span class='tldate'>2026-08-15</span><span class='tllabel'>Launch of Episodes 1</span></div><div class='tlrow'><span class='tldate'>2026-09-01</span><span class='tllabel'>Launch of the remaining episodes and the highlighted video</span></div></div><a class='btn ghost' target='_blank' href='https://drive.google.com/drive/folders/1xwWCyee7WH0J2pNvVuWwdgjaOSL6noPS'>📄 開標書原文</a></div></details><details class='soft'><summary>🔬 Research 背景調查</summary><div class='card'><div class='h3'>Web Research</div><p>以下內容聚焦「ERB 新技能訓練」相關的真實政策背景同最新改革走向，方便你落廣告策略同內容 angle。  </p>
+<p>   - 💡 可以點做橋：可以借用商界老闆的角度，點出「現今職場最渴求邊種新技能人才」。</p></div><div class='h2'>📅 日程</div><div class='card briefcard'><p>- 2026-06-29 Meeting with the successful contractor</p>
+<p>- 2026-07-15 Finalisation of storyboard and scripts / Arrangement of shooting locations, wardrobe and styling, props, selection of background talent(s)</p>
+<p>- 2026-07-25 Video shooting and post-production</p>
+<p>- 2026-08-15 Launch of Episodes 1</p>
+<p>- 2026-09-01 Launch of the remaining episodes and the highlighted video</p></div><a class='btn ghost' target='_blank' href='https://drive.google.com/drive/folders/1xwWCyee7WH0J2pNvVuWwdgjaOSL6noPS'>📄 開標書原文</a><details class='soft'><summary>🔬 Research 背景調查</summary><div class='card'><div class='h3'>Web Research</div><p>以下內容聚焦「ERB 新技能訓練」相關的真實政策背景同最新改革走向，方便你落廣告策略同內容 angle。  </p>
 <p>---</p>
 <h4>① 議題背景：點解政府而家要推 ERB「新技能」？</h4>
 <p>- <strong>政策大方向：由「就業為本」轉做「技能為本」</strong>  </p>
@@ -1069,7 +1096,7 @@ th{background:#f8fafc;font-weight:700}
 <div id='vid1_3' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 2 揀三甲先。</div></div>
 <div id='vid1_4' class='tabpanel' data-set='1'><div class='banner'>🎬 VID 4 — 5 步生 storyboard ＋ 片（STEP 1 → 5）</div><div class='card'><div class='h3'>📄 STEP 1 — 故事版（你親手執 Master GSheet B6:C17，9-12 格）</div><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card step2'><div class='h3'>🎭 STEP 2 — 主角參考相（AI 自動搵 ISD 官方相 + curate；face-swap 用嚟貼真面）</div><button class='btn ghost mini' onclick="srcRefs(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&concept=FINAL&stage=facerefs&target=main')">🔍 AI 搵／更新主角參考相</button><div class='hint'>仲未 source 主角相。撳上面掣，AI 自動由 ISD 官方相搵 + curate。</div></div><div class='stylepick card'><div class='h3'>🎨 STEP 3 — 揀風格（每行 0 或 1 個；唔剔 = 跟劇本）</div><div class='styrow'><span class='stylbl'>🏙️ 環境</span><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="realistic environment" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="2D comic-style environment" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="3D animated environment" onchange='styPick(this)'>3D動畫</label></div><div class='styrow'><span class='stylbl'>🧍 人物</span><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="photorealistic characters" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="2D comic-style characters" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="3D-modeled characters" onchange='styPick(this)'>3D建模</label></div><div class='styrow'><span class='stylbl'>🌗 光/時間</span><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="daytime lighting" onchange='styPick(this)'>日 Day</label><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="nighttime lighting" onchange='styPick(this)'>夜 Night</label></div><div class='styrow'><span class='stylbl'>🎨 色彩</span><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="vivid saturated color" onchange='styPick(this)'>鮮艷</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="muted desaturated tones" onchange='styPick(this)'>灰調</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="black and white" onchange='styPick(this)'>黑白</label></div><div class='styrow'><span class='stylbl'>😊 情緒</span><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="warm heartfelt mood" onchange='styPick(this)'>溫情</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="passionate uplifting mood" onchange='styPick(this)'>激昂</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="light humorous mood" onchange='styPick(this)'>幽默</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="solemn official tone" onchange='styPick(this)'>莊重官方</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="suspenseful mood" onchange='styPick(this)'>懸疑</label></div><div class='styrow'><span class='stylbl'>🎬 質感</span><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="cinematic look" onchange='styPick(this)'>電影感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="documentary realism" onchange='styPick(this)'>紀實</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="dynamic music-video energy" onchange='styPick(this)'>MV動感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="plain straightforward style" onchange='styPick(this)'>平實</label></div><div class='styanchor'>風格 anchor：<span id='styanchor'>（跟劇本）</span></div></div><div class='card genbox'><div class='h3'>🍌 STEP 4 — 生 BD（讀 B6:C17 ＋ face-swap 主角真面）</div><button class='btn big' title='讀你喺 Master GSheet B6:C17 執好嘅 script ＋ STEP 3 風格 ＋ face-swap 主角真面 → 生最終 BD（brd=FINAL，唔污染候選）' onclick="genFinalBD(this,'ERB','https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ERB&concept=FINAL&stage=gsheetbd&target=main')">由 B6:C17 生最終 BD</button></div><div class='card'><div class='h3'>🎬 STEP 5 — 生片（Higgsfield Kling/Seedance，開發中）</div><div class='hint'>BD 揀好 → 生片。Higgsfield CLI 整緊。</div></div></div>
 <div id='vid1_5' class='tabpanel' data-set='1'><div class='banner'>未有 FINAL。返 VID 3 揀 FINAL 2 先。</div></div>
-<div class=foot>Idea Lab · 06-15 02:32 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+<div class=foot>Idea Lab · 06-15 12:00 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
 </div>
 
 <script>
