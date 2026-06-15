@@ -1488,6 +1488,38 @@
       "board": {
         "versions": [
           {
+            "v": "20260615-225336-nblm-i3",
+            "sheet": "assets/gen/FEHD_HANDN2/v20260615-225336-nblm-i3/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDN2/v20260615-225336-nblm-i3/frame_01.png",
+              "assets/gen/FEHD_HANDN2/v20260615-225336-nblm-i3/frame_02.png",
+              "assets/gen/FEHD_HANDN2/v20260615-225336-nblm-i3/frame_03.png",
+              "assets/gen/FEHD_HANDN2/v20260615-225336-nblm-i3/frame_04.png",
+              "assets/gen/FEHD_HANDN2/v20260615-225336-nblm-i3/frame_05.png",
+              "assets/gen/FEHD_HANDN2/v20260615-225336-nblm-i3/frame_06.png",
+              "assets/gen/FEHD_HANDN2/v20260615-225336-nblm-i3/frame_07.png",
+              "assets/gen/FEHD_HANDN2/v20260615-225336-nblm-i3/frame_08.png",
+              "assets/gen/FEHD_HANDN2/v20260615-225336-nblm-i3/frame_09.png",
+              "assets/gen/FEHD_HANDN2/v20260615-225336-nblm-i3/frame_10.png",
+              "assets/gen/FEHD_HANDN2/v20260615-225336-nblm-i3/frame_11.png",
+              "assets/gen/FEHD_HANDN2/v20260615-225336-nblm-i3/frame_12.png",
+              "assets/gen/FEHD_HANDN2/v20260615-225336-nblm-i3/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T22:54:30",
+            "source": "gsheet_handscript",
+            "brd": "HANDN2",
+            "cid": "hand-HANDN2",
+            "label": "手寫稿·不擴寫·Watercolor 水彩",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDN2/v20260615-225336-nblm-i3/gslide_FEHD_HANDN2_p1.png",
+              "assets/gen/FEHD_HANDN2/v20260615-225336-nblm-i3/gslide_FEHD_HANDN2_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/14ACjGvnQH1Nr5GY0qPCNN8oWQgVe8hKF",
+            "deck_pdf": "https://drive.google.com/file/d/1_e-2D528kTVp7rs6MRFgPLHNw4pIEgpG/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDN2/v20260615-225336-nblm-i3/deck.pdf"
+          },
+          {
             "v": "20260615-225127-nblm-i2",
             "sheet": "assets/gen/FEHD_HANDN2/v20260615-225127-nblm-i2/board_sheet.png",
             "frames": [
@@ -1762,6 +1794,38 @@
       "board": {
         "versions": [
           {
+            "v": "20260615-225417-nblm-i3",
+            "sheet": "assets/gen/FEHD_HANDN3/v20260615-225417-nblm-i3/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDN3/v20260615-225417-nblm-i3/frame_01.png",
+              "assets/gen/FEHD_HANDN3/v20260615-225417-nblm-i3/frame_02.png",
+              "assets/gen/FEHD_HANDN3/v20260615-225417-nblm-i3/frame_03.png",
+              "assets/gen/FEHD_HANDN3/v20260615-225417-nblm-i3/frame_04.png",
+              "assets/gen/FEHD_HANDN3/v20260615-225417-nblm-i3/frame_05.png",
+              "assets/gen/FEHD_HANDN3/v20260615-225417-nblm-i3/frame_06.png",
+              "assets/gen/FEHD_HANDN3/v20260615-225417-nblm-i3/frame_07.png",
+              "assets/gen/FEHD_HANDN3/v20260615-225417-nblm-i3/frame_08.png",
+              "assets/gen/FEHD_HANDN3/v20260615-225417-nblm-i3/frame_09.png",
+              "assets/gen/FEHD_HANDN3/v20260615-225417-nblm-i3/frame_10.png",
+              "assets/gen/FEHD_HANDN3/v20260615-225417-nblm-i3/frame_11.png",
+              "assets/gen/FEHD_HANDN3/v20260615-225417-nblm-i3/frame_12.png",
+              "assets/gen/FEHD_HANDN3/v20260615-225417-nblm-i3/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T22:55:14",
+            "source": "gsheet_handscript",
+            "brd": "HANDN3",
+            "cid": "hand-HANDN3",
+            "label": "手寫稿·不擴寫·宮崎駿風",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDN3/v20260615-225417-nblm-i3/gslide_FEHD_HANDN3_p1.png",
+              "assets/gen/FEHD_HANDN3/v20260615-225417-nblm-i3/gslide_FEHD_HANDN3_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1_jt7yBZ6PumIQBbmVBWKsdQZB_lUiybu",
+            "deck_pdf": "https://drive.google.com/file/d/1ZNeVPBkHhXJANmDb-hAxrFbGwhsL8i8z/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDN3/v20260615-225417-nblm-i3/deck.pdf"
+          },
+          {
             "v": "20260615-225217-nblm-i2",
             "sheet": "assets/gen/FEHD_HANDN3/v20260615-225217-nblm-i2/board_sheet.png",
             "frames": [
@@ -1899,7 +1963,7 @@
       }
     }
   },
-  "updated": "2026-06-15T22:54:31",
+  "updated": "2026-06-15T22:55:23",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "2605_FEHD_Water Seepage APIs"
 }
