@@ -1,0 +1,247 @@
+<!DOCTYPE html><html lang="zh-HK"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Idea → WhatsApp · Madkids Idea Lab</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#717784;--line:#e7e9ee;--accent:#4f46e5;--grn:#15a34a;--red:#dc2626;--amber:#d97706;--sh:0 1px 2px rgba(20,24,40,.04),0 4px 14px rgba(20,24,40,.05)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:640px;margin:0 auto;padding:18px 15px 96px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px}
+h1{font-size:23px;font-weight:800;margin:.1em 0;letter-spacing:-.01em}
+.sub{color:var(--mut);font-size:13px;margin:2px 0 16px}
+.iconbtn{border:1px solid var(--line);background:var(--card);border-radius:12px;width:40px;height:40px;font-size:18px;cursor:pointer;box-shadow:var(--sh)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--sh);margin-bottom:14px}
+.card h2{font-size:15px;font-weight:800;margin:0 0 10px}
+label{display:block;font-size:13px;color:var(--mut);font-weight:600;margin:10px 0 5px}
+textarea,input[type=text],input[type=password],input[type=datetime-local]{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px 12px;font:inherit;color:var(--ink);background:#fcfcfd}
+textarea{min-height:92px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin:4px 0 2px}
+.chip{border:1px solid var(--line);background:#fcfcfd;border-radius:999px;padding:7px 13px;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;width:100%;border:0;border-radius:13px;padding:13px;font:inherit;font-weight:800;font-size:15px;color:#fff;background:var(--accent);cursor:pointer;margin-top:14px}
+.btn:disabled{opacity:.5}
+.btn.ghost{background:#fff;color:var(--accent);border:1px solid var(--line)}
+.row{display:flex;gap:8px;align-items:center}
+.q{border:1px solid var(--line);border-radius:13px;padding:12px 13px;margin-bottom:9px;display:flex;gap:10px;align-items:flex-start;background:#fff}
+.q .when{font-size:12px;font-weight:800;color:var(--accent);white-space:nowrap}
+.q .when.due{color:var(--amber)}
+.q .txt{flex:1;font-size:14px;white-space:pre-wrap;word-break:break-word}
+.q .x{border:0;background:none;color:var(--mut);font-size:18px;cursor:pointer;padding:0 2px}
+.muted{color:var(--mut);font-size:13px}
+.tag{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:2px 9px;background:#eef0f3;color:var(--mut)}
+details.soft>summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--mut);list-style:none;padding:6px 0}
+details.soft>summary::-webkit-details-marker{display:none}
+details.soft>summary::before{content:"▸ "}details.soft[open]>summary::before{content:"▾ "}
+.fab{position:fixed;right:18px;bottom:20px;width:56px;height:56px;border-radius:50%;border:0;background:var(--accent);color:#fff;font-size:26px;box-shadow:0 6px 20px rgba(79,70,229,.4);cursor:pointer}
+.overlay{position:fixed;inset:0;background:rgba(15,18,28,.5);display:none;align-items:flex-end;justify-content:center;z-index:30}
+.overlay.on{display:flex}
+.sheet{background:#fff;border-radius:20px 20px 0 0;max-width:640px;width:100%;padding:20px 18px 30px;max-height:82vh;overflow:auto}
+.sheet h3{margin:0 0 8px;font-size:17px}
+.sheet ol{padding-left:20px} .sheet li{margin:6px 0;font-size:14px}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:#1b1f27;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;font-weight:700;opacity:0;transition:opacity .2s;z-index:40;pointer-events:none;max-width:90%}
+.toast.on{opacity:1}
+code{background:#eef0f3;padding:1px 6px;border-radius:6px;font-size:12.5px}
+footer{color:var(--mut);font-size:12px;border-top:1px solid var(--line);margin-top:24px;padding-top:12px}
+a{color:var(--accent)}
+</style></head><body><div class="wrap">
+
+<div class="titlerow">
+  <div>
+    <h1>💬 Idea → WhatsApp</h1>
+    <div class="sub" id="sub">寫定 idea，夠鐘自動 send 去你 WhatsApp · HKT</div>
+  </div>
+  <button class="iconbtn" id="refresh" title="重新整理">🔄</button>
+</div>
+
+<!-- Token gate -->
+<div class="card" id="setup" style="display:none">
+  <h2>🔑 一次性設定</h2>
+  <p class="muted">呢個頁要用你自己一個 GitHub fine-grained token（只存喺你部機 browser，唔會入 repo）去寫入私人 queue。</p>
+  <ol class="muted" style="padding-left:18px">
+    <li>開 <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">GitHub → Fine-grained token</a></li>
+    <li>Repository access → 揀 <code>mk-idea-lab</code></li>
+    <li>Permissions → <b>Contents: Read and write</b></li>
+    <li>Generate，copy 個 token 貼落嚟</li>
+  </ol>
+  <label>Token</label>
+  <input type="password" id="pat" placeholder="github_pat_…">
+  <button class="btn" id="savePat">儲存 token</button>
+</div>
+
+<!-- Compose -->
+<div class="card" id="compose" style="display:none">
+  <h2>📝 寫個 message</h2>
+  <textarea id="msg" placeholder="例：記得攞乾洗 / 諗下今個 campaign 個 hook…"></textarea>
+  <label>幾時 send（香港時間）</label>
+  <div class="chips" id="chips">
+    <button class="chip" data-q="now">即刻</button>
+    <button class="chip" data-q="1h">+1 鐘</button>
+    <button class="chip" data-q="3h">+3 鐘</button>
+    <button class="chip" data-q="tonight">今晚 9:00</button>
+    <button class="chip" data-q="tmr9">聽朝 9:00</button>
+    <button class="chip" data-q="custom">自訂…</button>
+  </div>
+  <input type="datetime-local" id="custom" style="display:none;margin-top:8px">
+  <button class="btn" id="schedule" disabled>排程 →</button>
+</div>
+
+<!-- Pending -->
+<div class="card" id="pendingCard" style="display:none">
+  <h2>⏳ 排緊隊（<span id="pcount">0</span>）</h2>
+  <div id="pending"></div>
+</div>
+
+<!-- Sent -->
+<div class="card" id="sentCard" style="display:none">
+  <details class="soft">
+    <summary>📨 已 send 紀錄</summary>
+    <div id="sent" style="margin-top:8px"></div>
+  </details>
+</div>
+
+<footer>
+  夠鐘由 GitHub Actions（每 5 分鐘）經 CallMeBot send。<br>
+  🔒 訊息存喺私人 repo <code>mk-idea-lab</code>；apikey 只喺 GitHub Secrets，唔落 browser。
+</footer>
+</div>
+
+<button class="fab" id="fab" title="寫新 idea">✚</button>
+
+<div class="overlay" id="help"><div class="sheet">
+  <h3>❓ 點用</h3>
+  <ol>
+    <li>寫個 message，揀個時間（即刻 / 預設 / 自訂）。</li>
+    <li>撳「排程」→ 入咗私人 queue。</li>
+    <li>GitHub Actions cron <b>每 5 分鐘</b>掃一次，夠鐘就經 CallMeBot send 去你 WhatsApp。</li>
+    <li>「即刻」會排去當下時間，下一個 cron tick（≤5 分鐘）到。要秒到就本機行 <code>./idealab now</code>。</li>
+    <li>send 咗會由「排緊隊」移去「已 send 紀錄」。</li>
+  </ol>
+  <p class="muted">⚠️ cron 高峰期可能拖多幾分鐘，做提醒 OK，唔好當鬧鐘秒準。</p>
+  <button class="btn ghost" id="closeHelp">明白</button>
+</div></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const OWNER="madkidshk", REPO="mk-idea-lab", API=`https://api.github.com/repos/${OWNER}/${REPO}/contents`;
+const PATKEY="idealab_pat";
+const $=s=>document.querySelector(s);
+let token=localStorage.getItem(PATKEY)||"", pickedWhen=null, picking=null;
+
+function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("on");setTimeout(()=>e.classList.remove("on"),2200);}
+function b64enc(s){return btoa(unescape(encodeURIComponent(s)));}
+function b64dec(b){return decodeURIComponent(escape(atob(b)));}
+function pad(n){return String(n).padStart(2,"0");}
+function fmtHKT(iso){const d=new Date(iso);return d.toLocaleString("zh-HK",{timeZone:"Asia/Hong_Kong",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hour12:false});}
+
+async function gh(path,opts={}){
+  const r=await fetch(path,{...opts,headers:{Authorization:`Bearer ${token}`,Accept:"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28",...(opts.headers||{})}});
+  if(r.status===404) return {__404:true};
+  if(!r.ok){const t=await r.text();throw new Error(`${r.status} ${t.slice(0,120)}`);}
+  return r.status===204?{}:r.json();
+}
+
+function gate(){
+  const has=!!token;
+  $("#setup").style.display=has?"none":"block";
+  $("#compose").style.display=has?"block":"none";
+  if(has) refresh();
+}
+
+// ---- 時間 ----
+function quickWhen(q){
+  const n=new Date();
+  if(q==="now") return n;
+  if(q==="1h") return new Date(n.getTime()+3600e3);
+  if(q==="3h") return new Date(n.getTime()+3*3600e3);
+  if(q==="tonight"){const d=new Date(n);d.setHours(21,0,0,0);if(d<=n)d.setDate(d.getDate()+1);return d;}
+  if(q==="tmr9"){const d=new Date(n);d.setDate(d.getDate()+1);d.setHours(9,0,0,0);return d;}
+  return null;
+}
+function setChip(el){document.querySelectorAll(".chip").forEach(c=>c.classList.remove("on"));if(el)el.classList.add("on");}
+$("#chips").addEventListener("click",e=>{
+  const b=e.target.closest(".chip"); if(!b)return;
+  const q=b.dataset.q; picking=q; setChip(b);
+  if(q==="custom"){$("#custom").style.display="block";$("#custom").focus();pickedWhen=$("#custom").value?new Date($("#custom").value):null;}
+  else{$("#custom").style.display="none";pickedWhen=quickWhen(q);}
+  validate();
+});
+$("#custom").addEventListener("input",()=>{pickedWhen=$("#custom").value?new Date($("#custom").value):null;validate();});
+$("#msg").addEventListener("input",validate);
+function validate(){$("#schedule").disabled=!($("#msg").value.trim()&&pickedWhen);}
+
+// ---- 排程 ----
+$("#schedule").addEventListener("click",async()=>{
+  const text=$("#msg").value.trim(); if(!text||!pickedWhen)return;
+  const sendAtUTC=new Date(pickedWhen.getTime()-pickedWhen.getMilliseconds()).toISOString().replace(/\.\d{3}Z$/,"Z");
+  const id=sendAtUTC.replace(/[-:Z]/g,"").replace("T","T")+"-"+Math.random().toString(36).slice(2,7);
+  const body={id,send_at:sendAtUTC,text,created:new Date().toISOString()};
+  $("#schedule").disabled=true;
+  try{
+    await gh(`${API}/queue/${id}.json`,{method:"PUT",body:JSON.stringify({message:`idea: ${text.slice(0,40)}`,content:b64enc(JSON.stringify(body,null,2)),branch:"main"})});
+    toast("已排程 ✅ "+fmtHKT(sendAtUTC));
+    $("#msg").value="";pickedWhen=null;picking=null;setChip(null);$("#custom").style.display="none";
+    validate(); refresh();
+  }catch(e){toast("排程失敗：圖示 token 權限？");console.error(e);$("#schedule").disabled=false;}
+});
+
+// ---- 讀 queue / sent ----
+async function listDir(dir){
+  const r=await gh(`${API}/${dir}?ref=main`);
+  if(r.__404||!Array.isArray(r)) return [];
+  const files=r.filter(f=>f.name.endsWith(".json"));
+  const items=await Promise.all(files.map(async f=>{
+    const c=await gh(`${API}/${f.path}?ref=main`);
+    try{return {...JSON.parse(b64dec(c.content)),sha:c.sha,path:f.path};}catch{return null;}
+  }));
+  return items.filter(Boolean);
+}
+async function refresh(){
+  if(!token)return;
+  $("#sub").textContent="載入中…";
+  try{
+    const [pend,sent]=await Promise.all([listDir("queue"),listDir("sent")]);
+    pend.sort((a,b)=>a.send_at<b.send_at?-1:1);
+    sent.sort((a,b)=>(b.sent_at||b.send_at)<(a.sent_at||a.send_at)?-1:1);
+    renderPending(pend); renderSent(sent.slice(0,20));
+    $("#sub").textContent=`寫定 idea，夠鐘自動 send · HKT · ${new Date().toLocaleTimeString("zh-HK",{hour:"2-digit",minute:"2-digit",hour12:false})}`;
+  }catch(e){$("#sub").textContent="讀唔到 queue（token？）";console.error(e);}
+}
+function renderPending(items){
+  $("#pendingCard").style.display="block";$("#pcount").textContent=items.length;
+  const now=Date.now();
+  $("#pending").innerHTML=items.length?items.map(m=>{
+    const due=new Date(m.send_at).getTime()<=now;
+    return `<div class="q"><span class="when${due?" due":""}">${due?"⏰ ":""}${fmtHKT(m.send_at)}</span><span class="txt">${esc(m.text)}</span><button class="x" data-path="${m.path}" data-sha="${m.sha}" title="取消">✕</button></div>`;
+  }).join(""):`<div class="muted">隊列冇嘢。</div>`;
+}
+function renderSent(items){
+  $("#sentCard").style.display="block";
+  $("#sent").innerHTML=items.length?items.map(m=>`<div class="q"><span class="when" style="color:var(--grn)">✓ ${fmtHKT(m.sent_at||m.send_at)}</span><span class="txt">${esc(m.text)}</span></div>`).join(""):`<div class="muted">未有紀錄。</div>`;
+}
+function esc(s){return (s||"").replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));}
+
+$("#pending").addEventListener("click",async e=>{
+  const b=e.target.closest(".x"); if(!b)return;
+  if(!confirm("取消呢條？"))return;
+  try{await gh(`${API}/${b.dataset.path}`,{method:"DELETE",body:JSON.stringify({message:"rm queued idea",sha:b.dataset.sha,branch:"main"})});toast("已取消");refresh();}
+  catch(err){toast("取消失敗");console.error(err);}
+});
+
+// ---- token / ui ----
+$("#savePat").addEventListener("click",()=>{
+  const v=$("#pat").value.trim(); if(!v){toast("貼個 token 先");return;}
+  token=v;localStorage.setItem(PATKEY,v);toast("已儲存 🔑");gate();
+});
+$("#refresh").addEventListener("click",refresh);
+$("#fab").addEventListener("click",()=>{$("#msg").scrollIntoView({behavior:"smooth"});$("#msg").focus();});
+$("#help").addEventListener("click",e=>{if(e.target.id==="help")$("#help").classList.remove("on");});
+$("#closeHelp").addEventListener("click",()=>$("#help").classList.remove("on"));
+// 長撳標題開 help
+$("#refresh").addEventListener("dblclick",()=>$("#help").classList.add("on"));
+document.querySelector("h1").addEventListener("click",()=>$("#help").classList.add("on"));
+
+gate();
+</script>
+</body></html>
