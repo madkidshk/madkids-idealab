@@ -1896,6 +1896,38 @@
       "board": {
         "versions": [
           {
+            "v": "20260615-225513-nblm-i3",
+            "sheet": "assets/gen/FEHD_HANDE2/v20260615-225513-nblm-i3/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDE2/v20260615-225513-nblm-i3/frame_01.png",
+              "assets/gen/FEHD_HANDE2/v20260615-225513-nblm-i3/frame_02.png",
+              "assets/gen/FEHD_HANDE2/v20260615-225513-nblm-i3/frame_03.png",
+              "assets/gen/FEHD_HANDE2/v20260615-225513-nblm-i3/frame_04.png",
+              "assets/gen/FEHD_HANDE2/v20260615-225513-nblm-i3/frame_05.png",
+              "assets/gen/FEHD_HANDE2/v20260615-225513-nblm-i3/frame_06.png",
+              "assets/gen/FEHD_HANDE2/v20260615-225513-nblm-i3/frame_07.png",
+              "assets/gen/FEHD_HANDE2/v20260615-225513-nblm-i3/frame_08.png",
+              "assets/gen/FEHD_HANDE2/v20260615-225513-nblm-i3/frame_09.png",
+              "assets/gen/FEHD_HANDE2/v20260615-225513-nblm-i3/frame_10.png",
+              "assets/gen/FEHD_HANDE2/v20260615-225513-nblm-i3/frame_11.png",
+              "assets/gen/FEHD_HANDE2/v20260615-225513-nblm-i3/frame_12.png",
+              "assets/gen/FEHD_HANDE2/v20260615-225513-nblm-i3/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T22:56:15",
+            "source": "gsheet_handscript",
+            "brd": "HANDE2",
+            "cid": "hand-HANDE2",
+            "label": "手寫稿·擴寫·插畫",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDE2/v20260615-225513-nblm-i3/gslide_FEHD_HANDE2_p1.png",
+              "assets/gen/FEHD_HANDE2/v20260615-225513-nblm-i3/gslide_FEHD_HANDE2_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1QW4CxUCWN-a7k8ZlyBqDZVlEY42FnsRL",
+            "deck_pdf": "https://drive.google.com/file/d/1bdCzMabS1Ma-BXL0B1c9A2fHoOLvOfQn/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDE2/v20260615-225513-nblm-i3/deck.pdf"
+          },
+          {
             "v": "20260615-225312-nblm-i2",
             "sheet": "assets/gen/FEHD_HANDE2/v20260615-225312-nblm-i2/board_sheet.png",
             "frames": [
@@ -1963,7 +1995,7 @@
       }
     }
   },
-  "updated": "2026-06-15T22:55:23",
+  "updated": "2026-06-15T22:56:23",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "2605_FEHD_Water Seepage APIs"
 }
