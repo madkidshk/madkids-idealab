@@ -876,6 +876,38 @@
       "board": {
         "versions": [
           {
+            "v": "20260615-165449-nblm-i3",
+            "sheet": "assets/gen/FEHD_HANDS/v20260615-165449-nblm-i3/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDS/v20260615-165449-nblm-i3/frame_01.png",
+              "assets/gen/FEHD_HANDS/v20260615-165449-nblm-i3/frame_02.png",
+              "assets/gen/FEHD_HANDS/v20260615-165449-nblm-i3/frame_03.png",
+              "assets/gen/FEHD_HANDS/v20260615-165449-nblm-i3/frame_04.png",
+              "assets/gen/FEHD_HANDS/v20260615-165449-nblm-i3/frame_05.png",
+              "assets/gen/FEHD_HANDS/v20260615-165449-nblm-i3/frame_06.png",
+              "assets/gen/FEHD_HANDS/v20260615-165449-nblm-i3/frame_07.png",
+              "assets/gen/FEHD_HANDS/v20260615-165449-nblm-i3/frame_08.png",
+              "assets/gen/FEHD_HANDS/v20260615-165449-nblm-i3/frame_09.png",
+              "assets/gen/FEHD_HANDS/v20260615-165449-nblm-i3/frame_10.png",
+              "assets/gen/FEHD_HANDS/v20260615-165449-nblm-i3/frame_11.png",
+              "assets/gen/FEHD_HANDS/v20260615-165449-nblm-i3/frame_12.png",
+              "assets/gen/FEHD_HANDS/v20260615-165449-nblm-i3/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T16:55:51",
+            "source": "gsheet_handscript",
+            "brd": "HANDS",
+            "cid": "hand-HANDS",
+            "label": "手寫稿·插畫·擊退天花烏雲",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDS/v20260615-165449-nblm-i3/gslide_FEHD_HANDS_p1.png",
+              "assets/gen/FEHD_HANDS/v20260615-165449-nblm-i3/gslide_FEHD_HANDS_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1SZeTmIPgJ6zV9y7WXwTr3L1ilsEijIWd",
+            "deck_pdf": "https://drive.google.com/file/d/1vyG-HDhhs_XWV_1etOtlbsKJ5H4v_6DP/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDS/v20260615-165449-nblm-i3/deck.pdf"
+          },
+          {
             "v": "20260615-165245-nblm-i2",
             "sheet": "assets/gen/FEHD_HANDS/v20260615-165245-nblm-i2/board_sheet.png",
             "frames": [
@@ -946,6 +978,38 @@
       "board": {
         "versions": [
           {
+            "v": "20260615-165455-nblm-i3",
+            "sheet": "assets/gen/FEHD_HANDR/v20260615-165455-nblm-i3/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDR/v20260615-165455-nblm-i3/frame_01.png",
+              "assets/gen/FEHD_HANDR/v20260615-165455-nblm-i3/frame_02.png",
+              "assets/gen/FEHD_HANDR/v20260615-165455-nblm-i3/frame_03.png",
+              "assets/gen/FEHD_HANDR/v20260615-165455-nblm-i3/frame_04.png",
+              "assets/gen/FEHD_HANDR/v20260615-165455-nblm-i3/frame_05.png",
+              "assets/gen/FEHD_HANDR/v20260615-165455-nblm-i3/frame_06.png",
+              "assets/gen/FEHD_HANDR/v20260615-165455-nblm-i3/frame_07.png",
+              "assets/gen/FEHD_HANDR/v20260615-165455-nblm-i3/frame_08.png",
+              "assets/gen/FEHD_HANDR/v20260615-165455-nblm-i3/frame_09.png",
+              "assets/gen/FEHD_HANDR/v20260615-165455-nblm-i3/frame_10.png",
+              "assets/gen/FEHD_HANDR/v20260615-165455-nblm-i3/frame_11.png",
+              "assets/gen/FEHD_HANDR/v20260615-165455-nblm-i3/frame_12.png",
+              "assets/gen/FEHD_HANDR/v20260615-165455-nblm-i3/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T16:55:48",
+            "source": "gsheet_handscript",
+            "brd": "HANDR",
+            "cid": "hand-HANDR",
+            "label": "手寫稿·真人·擊退天花烏雲",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDR/v20260615-165455-nblm-i3/gslide_FEHD_HANDR_p1.png",
+              "assets/gen/FEHD_HANDR/v20260615-165455-nblm-i3/gslide_FEHD_HANDR_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1CKgPkZcbG3TeXbsIT6JzG5Y7ywpHHzyG",
+            "deck_pdf": "https://drive.google.com/file/d/1IA2fD4ScJo19-JCK4cxaOhMF2yY9aq4Y/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDR/v20260615-165455-nblm-i3/deck.pdf"
+          },
+          {
             "v": "20260615-165253-nblm-i2",
             "sheet": "assets/gen/FEHD_HANDR/v20260615-165253-nblm-i2/board_sheet.png",
             "frames": [
@@ -1013,7 +1077,7 @@
       }
     }
   },
-  "updated": "2026-06-15T16:54:52",
+  "updated": "2026-06-15T16:55:59",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "2605_FEHD_Water Seepage APIs"
 }
