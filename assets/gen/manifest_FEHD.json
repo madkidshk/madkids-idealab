@@ -1075,9 +1075,213 @@
           }
         ]
       }
+    },
+    "HANDR2": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260615-190710-nblm-i3",
+            "sheet": "assets/gen/FEHD_HANDR2/v20260615-190710-nblm-i3/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDR2/v20260615-190710-nblm-i3/frame_01.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190710-nblm-i3/frame_02.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190710-nblm-i3/frame_03.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190710-nblm-i3/frame_04.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190710-nblm-i3/frame_05.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190710-nblm-i3/frame_06.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190710-nblm-i3/frame_07.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190710-nblm-i3/frame_08.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190710-nblm-i3/frame_09.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190710-nblm-i3/frame_10.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190710-nblm-i3/frame_11.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190710-nblm-i3/frame_12.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190710-nblm-i3/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T19:08:12",
+            "source": "gsheet_handscript",
+            "brd": "HANDR2",
+            "cid": "hand-HANDR2",
+            "label": "手寫稿·不擴寫·真人·FEHD 手寫稿（原稿）",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDR2/v20260615-190710-nblm-i3/gslide_FEHD_HANDR2_p1.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190710-nblm-i3/gslide_FEHD_HANDR2_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1Yu02pioOBFtGDfCH7uSXxIWlravRIT_Z",
+            "deck_pdf": "https://drive.google.com/file/d/1M3FiI6ReLiTEr3t9N9sKa4Bv91JSq0bK/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDR2/v20260615-190710-nblm-i3/deck.pdf"
+          },
+          {
+            "v": "20260615-190441-nblm-i2",
+            "sheet": "assets/gen/FEHD_HANDR2/v20260615-190441-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDR2/v20260615-190441-nblm-i2/frame_01.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190441-nblm-i2/frame_02.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190441-nblm-i2/frame_03.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190441-nblm-i2/frame_04.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190441-nblm-i2/frame_05.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190441-nblm-i2/frame_06.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190441-nblm-i2/frame_07.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190441-nblm-i2/frame_08.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190441-nblm-i2/frame_09.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190441-nblm-i2/frame_10.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190441-nblm-i2/frame_11.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190441-nblm-i2/frame_12.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190441-nblm-i2/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T19:05:43",
+            "source": "gsheet_handscript",
+            "brd": "HANDR2",
+            "cid": "hand-HANDR2",
+            "label": "手寫稿·不擴寫·真人·FEHD 手寫稿（原稿）",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDR2/v20260615-190441-nblm-i2/gslide_FEHD_HANDR2_p1.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190441-nblm-i2/gslide_FEHD_HANDR2_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1KFZIGx2N2EsqK-363Wpp5MB7-cASC6sx",
+            "deck_pdf": "https://drive.google.com/file/d/1mFDMJ7gn1Tp0WFnsQbuXZSFH1ZUXCZ7j/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDR2/v20260615-190441-nblm-i2/deck.pdf"
+          },
+          {
+            "v": "20260615-190223-nblm-i1",
+            "sheet": "assets/gen/FEHD_HANDR2/v20260615-190223-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDR2/v20260615-190223-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190223-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190223-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190223-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190223-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190223-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190223-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190223-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190223-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190223-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190223-nblm-i1/frame_11.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190223-nblm-i1/frame_12.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190223-nblm-i1/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T19:03:27",
+            "source": "gsheet_handscript",
+            "brd": "HANDR2",
+            "cid": "hand-HANDR2",
+            "label": "手寫稿·不擴寫·真人·FEHD 手寫稿（原稿）",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDR2/v20260615-190223-nblm-i1/gslide_FEHD_HANDR2_p1.png",
+              "assets/gen/FEHD_HANDR2/v20260615-190223-nblm-i1/gslide_FEHD_HANDR2_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1ZylODiGmAoDLQHkHS8yHR8CkVNeXNVcs",
+            "deck_pdf": "https://drive.google.com/file/d/1yOCtr9-n5Dy6bg_tOyKl6GqwqOFhuDeq/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDR2/v20260615-190223-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HANDS2": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260615-190717-nblm-i3",
+            "sheet": "assets/gen/FEHD_HANDS2/v20260615-190717-nblm-i3/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDS2/v20260615-190717-nblm-i3/frame_01.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190717-nblm-i3/frame_02.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190717-nblm-i3/frame_03.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190717-nblm-i3/frame_04.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190717-nblm-i3/frame_05.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190717-nblm-i3/frame_06.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190717-nblm-i3/frame_07.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190717-nblm-i3/frame_08.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190717-nblm-i3/frame_09.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190717-nblm-i3/frame_10.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190717-nblm-i3/frame_11.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190717-nblm-i3/frame_12.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190717-nblm-i3/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T19:08:19",
+            "source": "gsheet_handscript",
+            "brd": "HANDS2",
+            "cid": "hand-HANDS2",
+            "label": "手寫稿·不擴寫·插畫·FEHD 手寫稿（原稿）",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDS2/v20260615-190717-nblm-i3/gslide_FEHD_HANDS2_p1.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190717-nblm-i3/gslide_FEHD_HANDS2_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1RMiBWA85hgv5wcXMyq3yM3WvFVYuV7QR",
+            "deck_pdf": "https://drive.google.com/file/d/1gDf-ywj13K1m1HcUNtqOMFg-fE2ROnvX/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDS2/v20260615-190717-nblm-i3/deck.pdf"
+          },
+          {
+            "v": "20260615-190455-nblm-i2",
+            "sheet": "assets/gen/FEHD_HANDS2/v20260615-190455-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDS2/v20260615-190455-nblm-i2/frame_01.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190455-nblm-i2/frame_02.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190455-nblm-i2/frame_03.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190455-nblm-i2/frame_04.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190455-nblm-i2/frame_05.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190455-nblm-i2/frame_06.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190455-nblm-i2/frame_07.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190455-nblm-i2/frame_08.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190455-nblm-i2/frame_09.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190455-nblm-i2/frame_10.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190455-nblm-i2/frame_11.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190455-nblm-i2/frame_12.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190455-nblm-i2/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T19:05:53",
+            "source": "gsheet_handscript",
+            "brd": "HANDS2",
+            "cid": "hand-HANDS2",
+            "label": "手寫稿·不擴寫·插畫·FEHD 手寫稿（原稿）",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDS2/v20260615-190455-nblm-i2/gslide_FEHD_HANDS2_p1.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190455-nblm-i2/gslide_FEHD_HANDS2_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1L08n_tb_wP0K64IZyYb4p4KbhZmFq43a",
+            "deck_pdf": "https://drive.google.com/file/d/1cnfRYkHbB1x9wI21cPvT1xzpOdziRccS/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDS2/v20260615-190455-nblm-i2/deck.pdf"
+          },
+          {
+            "v": "20260615-190240-nblm-i1",
+            "sheet": "assets/gen/FEHD_HANDS2/v20260615-190240-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDS2/v20260615-190240-nblm-i1/frame_01.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190240-nblm-i1/frame_02.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190240-nblm-i1/frame_03.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190240-nblm-i1/frame_04.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190240-nblm-i1/frame_05.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190240-nblm-i1/frame_06.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190240-nblm-i1/frame_07.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190240-nblm-i1/frame_08.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190240-nblm-i1/frame_09.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190240-nblm-i1/frame_10.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190240-nblm-i1/frame_11.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190240-nblm-i1/frame_12.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190240-nblm-i1/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-15T19:03:38",
+            "source": "gsheet_handscript",
+            "brd": "HANDS2",
+            "cid": "hand-HANDS2",
+            "label": "手寫稿·不擴寫·插畫·FEHD 手寫稿（原稿）",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDS2/v20260615-190240-nblm-i1/gslide_FEHD_HANDS2_p1.png",
+              "assets/gen/FEHD_HANDS2/v20260615-190240-nblm-i1/gslide_FEHD_HANDS2_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/19_7pN1Laq5mkE3CzLliTEt8K0mB-cNHR",
+            "deck_pdf": "https://drive.google.com/file/d/1yqquq7fCVpz8kL8JcwZ5sJQeq2hTTUic/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDS2/v20260615-190240-nblm-i1/deck.pdf"
+          }
+        ]
+      }
     }
   },
-  "updated": "2026-06-15T16:55:59",
+  "updated": "2026-06-15T19:08:28",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "2605_FEHD_Water Seepage APIs"
 }
