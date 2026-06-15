@@ -105,7 +105,7 @@ a{color:#4f46e5}code{background:#eef0f3;padding:1px 6px;border-radius:6px;font-s
       </div>
       <div class="reprow" id="intervalRow" style="display:none">
         <span class="atthint" style="margin:0">間隔：每</span>
-        <select id="interval"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option></select>
+        <input type="number" id="interval" min="1" value="1" style="width:74px;padding:7px 9px;border:1.5px solid #dde1e8;border-radius:8px;font-size:13.5px;font-weight:700;background:#fff;text-align:center">
         <span class="atthint" id="unitLbl" style="margin:0">日</span>
       </div>
 
@@ -186,7 +186,7 @@ $("#schedule").addEventListener("click",async()=>{
   const text=$("#msg").value.trim(); if(!text||!$("#dt").value)return;
   const local=new Date($("#dt").value);
   const sendAt=new Date(local.getTime()).toISOString().replace(/\.\d{3}Z$/,"Z");
-  const repeat=freq==="none"?null:{freq,interval:parseInt($("#interval").value,10)};
+  const repeat=freq==="none"?null:{freq,interval:Math.max(1,parseInt($("#interval").value,10)||1)};
   const id=sendAt.replace(/[-:Z.]/g,"")+"-"+Math.random().toString(36).slice(2,6);
   const body={id,send_at:sendAt,text,created:new Date().toISOString(),repeat};
   $("#schedule").disabled=true;$("#schedule").textContent="送緊…";
