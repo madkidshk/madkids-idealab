@@ -57,7 +57,7 @@ def step(dt, freq, interval):
 def next_occurrence(dt, repeat, now):
     """由 dt 推去下一個 > now 嘅時間。"""
     freq = repeat.get("freq")
-    interval = max(1, min(9, int(repeat.get("interval", 1))))
+    interval = max(1, int(repeat.get("interval", 1)))
     nxt = step(dt, freq, interval)
     if nxt is None:
         return None
