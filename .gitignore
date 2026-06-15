@@ -1,0 +1,5 @@
+# ⛔ 止血(Raymond 2026-06-16):listener auto-publish 用 git add -A,將 publish 寫落嘅個別 frame 圖
+# 一路 commit 落 history → repo 爆 6.6GB + .git 5.2GB + Pages deploy 卡死。
+# dashboard 只用 board_sheet.png(6 格合成圖),frame_*.png 同 grounding .source.pdf 都唔需要上 repo/live。
+frame_*.png
+*.source.pdf
