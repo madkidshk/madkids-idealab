@@ -774,6 +774,38 @@
       "board": {
         "versions": [
           {
+            "v": "20260616-010330-nblm-i3",
+            "sheet": "assets/gen/FEHD_HANDL/v20260616-010330-nblm-i3/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_HANDL/v20260616-010330-nblm-i3/frame_01.png",
+              "assets/gen/FEHD_HANDL/v20260616-010330-nblm-i3/frame_02.png",
+              "assets/gen/FEHD_HANDL/v20260616-010330-nblm-i3/frame_03.png",
+              "assets/gen/FEHD_HANDL/v20260616-010330-nblm-i3/frame_04.png",
+              "assets/gen/FEHD_HANDL/v20260616-010330-nblm-i3/frame_05.png",
+              "assets/gen/FEHD_HANDL/v20260616-010330-nblm-i3/frame_06.png",
+              "assets/gen/FEHD_HANDL/v20260616-010330-nblm-i3/frame_07.png",
+              "assets/gen/FEHD_HANDL/v20260616-010330-nblm-i3/frame_08.png",
+              "assets/gen/FEHD_HANDL/v20260616-010330-nblm-i3/frame_09.png",
+              "assets/gen/FEHD_HANDL/v20260616-010330-nblm-i3/frame_10.png",
+              "assets/gen/FEHD_HANDL/v20260616-010330-nblm-i3/frame_11.png",
+              "assets/gen/FEHD_HANDL/v20260616-010330-nblm-i3/frame_12.png",
+              "assets/gen/FEHD_HANDL/v20260616-010330-nblm-i3/frame_13.png"
+            ],
+            "n": 13,
+            "ts": "2026-06-16T01:04:15",
+            "source": "gsheet_handscript",
+            "brd": "HANDL",
+            "cid": "hand-HANDL",
+            "label": "手寫稿·擴寫·線稿·天花烏雲一掃空",
+            "gslide_pages": [
+              "assets/gen/FEHD_HANDL/v20260616-010330-nblm-i3/gslide_FEHD_HANDL_p1.png",
+              "assets/gen/FEHD_HANDL/v20260616-010330-nblm-i3/gslide_FEHD_HANDL_p2.png"
+            ],
+            "drive_sub": "https://drive.google.com/drive/folders/1l8xjTsNejZzfbwFSidXW-CH1jXtBP1kx",
+            "deck_pdf": "https://drive.google.com/file/d/1iSKBX8kHIX0pUgZD7pfUdAgDJUDHTYj9/view?usp=drivesdk",
+            "deck_repo": "assets/gen/FEHD_HANDL/v20260616-010330-nblm-i3/deck.pdf"
+          },
+          {
             "v": "20260616-010135-nblm-i2",
             "sheet": "assets/gen/FEHD_HANDL/v20260616-010135-nblm-i2/board_sheet.png",
             "frames": [
@@ -2411,7 +2443,7 @@
       }
     }
   },
-  "updated": "2026-06-16T01:04:01",
+  "updated": "2026-06-16T01:04:22",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "2605_FEHD_Water Seepage APIs"
 }
