@@ -1,32 +1,32 @@
 {
- "dept": "FEHD",
- "slots": [
-  {
-   "slot": 1,
-   "query": "食物環境衞生署 標誌",
-   "file": "assets/refs/FEHD/logos/slot1.png",
-   "title": "食物環境衞生署- 行政及發展特別職務隊(綠色殯葬) - 照顧者資訊網",
-   "w": 1638,
-   "h": 1427,
-   "enabled": true
-  },
-  {
-   "slot": 2,
-   "query": "屋宇署 標誌",
-   "file": "assets/refs/FEHD/logos/slot2.png",
-   "title": "屋宇署發現兩宗棚網未有遵從《作業備考》要求個案- RTHK",
-   "w": 1920,
-   "h": 1080,
-   "enabled": true
-  },
-  {
-   "slot": 3,
-   "query": "滲水投訴調查聯合辦事處 標誌",
-   "file": "assets/refs/FEHD/logos/slot3.png",
-   "title": "九龍區滲水個案調查聯辦處今起投入服務- 即時- 點新聞",
-   "w": 1754,
-   "h": 729,
-   "enabled": false
-  }
- ]
+  "dept": "FEHD",
+  "slots": [
+    {
+      "slot": 1,
+      "query": "食物環境衞生署 標誌",
+      "file": "assets/refs/FEHD/logos/slot1.png",
+      "title": "觀塘有糧食店有鼠隻出沒投訴食環署巡查後向相關人士提出檢控- RTHK",
+      "w": 1888,
+      "h": 1074,
+      "enabled": true
+    },
+    {
+      "slot": 2,
+      "query": "屋宇署 標誌",
+      "file": "assets/refs/FEHD/logos/slot2.png",
+      "title": "屋宇署發現兩宗棚網未有遵從《作業備考》要求個案- RTHK",
+      "w": 1920,
+      "h": 1080,
+      "enabled": true
+    },
+    {
+      "slot": 3,
+      "query": "滲水投訴調查聯合辦事處 標誌",
+      "file": "assets/refs/FEHD/logos/slot3.png",
+      "title": "申訴專員全面調查滲水投訴調查聯合辦事處就滲水問題的處理- 申訴專員公署",
+      "w": 2127,
+      "h": 1409,
+      "enabled": false
+    }
+  ]
 }

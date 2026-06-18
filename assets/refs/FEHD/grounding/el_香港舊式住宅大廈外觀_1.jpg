@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <script>
+      (function(){
+          setTimeout(function(){
+              window.location.reload();
+          }, 5000);
+      }())
+  </script>
+  <link rel="icon" href="data:,">
+  <title>One moment, please...</title>
+  <style>
+.spinner {
+    -webkit-animation: spin 1s ease-out;
+    animation: spin 1s ease-out;
+}
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+#outer-container {
+    text-align: center;
+}
+#container {
+        display: inline-block;
+        height: 100px;
+    }
+#text {
+    float: left;
+    height: 100px;
+    line-height: 100px;
+    font-size: 3rem;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    padding: 0 .4em 0 .2em;
+    letter-spacing: 0.06em;
+    color: rgba(38, 122, 72, 0.86);
+}
+@media (min-height: 180px) {
+    #outer-container {
+        margin-top: 0;
+    }
+}
+@media (min-height: 360px) {
+    #outer-container {
+        margin-top: 5%;
+    }
+}
+@media (min-height: 540px) {
+    #outer-container {
+        margin-top: 10%;
+    }
+}
+@media (min-height: 720px) {
+    #outer-container {
+        margin-top: 20%;
+    }
+}
+@media (min-width: 1450px) {
+    .throbber {
+        width: 90px;
+        height: 90px;
+        float: left;
+        padding: 5px 0 5px 5px;
+        opacity: 0.86;
+    }
+    #container {
+        display: inline-block;
+        border: 3px solid rgb(38, 122, 72, 0.86);
+        border-radius: 51px;
+        height: 100px;
+    }
+}
+
+  </style>
+</head>
+<body>
+  <div id="outer-container">
+    <div id="container">
+<div class="throbber">
+    <svg class="spinner" width="90px" height="90px" viewBox="0 0 47 47"
+         version="1.1"
+         xmlns="http://www.w3.org/2000/svg"
+         xmlns:xlink="http://www.w3.org/1999/xlink">
+        <title>Loader</title>
+        <defs>
+            <polygon id="path-1"
+                     points="0 0.375484146 0 15.7255695 15.7013244 15.7255695 15.7013244 0.375484146 0 0.375484146"></polygon>
+        </defs>
+        <g id="Page-1" stroke="none" stroke-width="1" fill="none"
+           fill-rule="evenodd">
+            <g id="Logo" transform="translate(-5.000000, -2.000000)">
+                <g id="Group-2" transform="translate(5.000000, 2.000000)">
+                    <path d="M22.6150244,4.52988293 C23.1538049,3.06256585 23.6031707,1.59582195 24.231939,0.158882927 C25.1902805,2.22459024 25.8190488,4.43989512 26.7768171,6.47579756 C29.1417195,7.40376098 31.7164024,7.7929439 34.1116829,8.69110244 C28.9623171,11.2663585 23.7229634,13.7510537 18.4836098,16.176139 C19.7709512,12.2545049 21.2382683,8.4217122 22.6150244,4.52988293 L22.6150244,4.52988293 Z"
+                          id="Fill-1" fill="#467C45"></path>
+                    <path d="M13.7718598,8.94461585 C16.1424939,7.68077439 18.4500793,6.28968902 20.8207134,5.02527439 C18.9240915,10.8412378 16.7747012,16.5614817 14.8465549,22.3774451 C12.7292622,18.3950549 10.895689,14.2544695 8.9044939,10.2090305 C8.27228659,8.85004268 7.5455061,7.55353049 7.00844512,6.16359146 C9.31545732,6.95342073 11.4648476,8.24935976 13.7718598,8.94461585"
+                          id="Fill-3" fill="#467C45"></path>
+                    <path d="M24.2134256,15.0745049 C29.4602305,12.4969561 34.7379866,9.91940732 40.0157427,7.4031878 C39.1565598,9.61276098 38.1747183,11.7300537 37.2232549,13.9086756 C38.4504134,16.2099561 39.9544134,18.388578 41.0898646,20.7511878 C35.4435598,18.9405415 29.8287793,17.0381878 24.2134256,15.0745049"
+                          id="Fill-5" fill="#467C45"></path>
+                    <g id="Group-9"
+                       transform="translate(0.000000, 11.919659)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Clip-8"></g>
+                        <path d="M8.34869024,0.375484146 C9.93064146,3.33419146 11.2781659,6.43963049 12.7426171,9.45622805 C13.7387878,11.5362646 14.793422,13.5876427 15.7013244,15.7255695 C10.4579585,13.9091915 5.21401951,12.03435 -0.000114634146,10.0718134 C2.05069024,9.1341061 4.21842195,8.4898622 6.29845854,7.61119146 C6.97193415,5.17980122 7.67521463,2.77706951 8.34869024,0.375484146"
+                              id="Fill-7" fill="#467C45"
+                              mask="url(#mask-2)"></path>
+                    </g>
+                    <path d="M29.1793195,18.0496049 C33.5600634,19.4670561 37.9081366,21.0776659 42.2888805,22.5593122 C43.6742341,23.0745927 45.1558805,23.4609098 46.5085634,24.1372512 C44.2216122,25.039422 41.9025634,25.9100683 39.6477098,26.8110927 C38.8103073,29.4195927 38.2302585,32.1261049 37.3607585,34.7346049 C35.5890878,31.4497634 34.0432463,28.0353854 32.3684415,24.6852024 C31.3052098,22.4945439 30.1456854,20.3044585 29.1793195,18.0496049"
+                          id="Fill-10" fill="#467C45"></path>
+                    <path d="M28.9972232,29.3489207 C29.5789915,27.69475 30.0684793,26.0113476 30.7419549,24.3887012 C31.538089,25.7660305 32.1811866,27.2356402 32.9154183,28.6444939 C34.7220524,32.4709817 36.68115,36.205189 38.4568329,40.0316768 C36.2827963,39.1449817 34.1402841,38.1654329 31.9364427,37.2460671 C29.6403207,38.4709329 27.4662841,39.9405427 25.1094061,41.1035061 C26.3033207,37.1549329 27.7419793,33.2671159 28.9972232,29.3489207"
+                          id="Fill-12" fill="#467C45"></path>
+                    <path d="M4.97133902,25.64555 C9.93385122,27.1873793 14.7737049,29.036428 19.6748878,30.6705378 C20.4148512,30.9170012 21.1542415,31.1944159 21.8328756,31.5337329 C16.5304732,33.9685622 11.3214976,36.6498549 5.95776585,38.99355 C6.82096098,36.8355622 7.89966829,34.7698549 8.7319122,32.581489 C7.68358293,30.1764646 6.11194878,28.01905 4.97133902,25.64555"
+                          id="Fill-14" fill="#467C45"></path>
+                    <path d="M15.4549183,35.8770488 C19.4671134,33.9317073 23.4483573,31.8952317 27.4915037,30.0433171 C26.4110768,33.6542927 25.0222841,37.203939 23.8186256,40.8143415 C23.1090402,42.7275854 22.5530646,44.7033049 21.7511988,46.5855976 C20.7630524,44.4866463 20.0534671,42.2650366 19.1277963,40.1351341 C16.6276256,39.2094634 14.0042232,38.684439 11.4736744,37.9748537 C12.6773329,37.0801341 14.1584061,36.586061 15.4549183,35.8770488"
+                          id="Fill-16" fill="#467C45"></path>
+                </g>
+            </g>
+        </g>
+    </svg>
+</div>
+      <div id="text">
+        Please wait while your request is being verified...
+      </div>
+    </div>
+  </div>
+  <div id="po4g8vs1xlpl"></div>
+  <script>
+function a0U(){var P=['44AmWXqM','techange','entries','(((.+)+)+)','document','constructo','ent','map','GET','method','createElem','webdriver','apply','navigator','appendChil','stener','action','value','userAgent','submit','form','onreadysta','send','496641PguuVt','languages','182462yZcxjj','1190637eKhVPd','ById','5768592gXLNxQ','attachEven','__proto__','78395flonKJ','getElement','test','ne;','7fa3b767c4','display:no','addEventLi','language','mimeTypes','DOMContent','hidden','outerWidth','3131526lmwvgX','d49030b349','0950635027','search','a6105c0a61','type','plugins','8LMXBQl','open','prototype','forEach','name','append','3654798KJvsNi','length','toString','input'];a0U=function(){return P;};return a0U();}function a0A(R,l){var U=a0U();return a0A=function(A,n){A=A-0x18f;var h=U[A];return h;},a0A(R,l);}var a0L=a0A;(function(R,l){var a0p={R:0x195,l:0x197,U:0x1ba,A:0x19a,n:0x1b6,h:0x198},Y=a0A,U=R();while(!![]){try{var A=parseInt(Y(a0p.R))/0x1+-parseInt(Y(a0p.l))/0x2+-parseInt(Y(0x1a9))/0x3+-parseInt(Y(a0p.U))/0x4*(parseInt(Y(0x19d))/0x5)+parseInt(Y(a0p.A))/0x6+parseInt(Y(a0p.n))/0x7+parseInt(Y(0x1b0))/0x8*(-parseInt(Y(a0p.h))/0x9);if(A===l)break;else U['push'](U['shift']());}catch(n){U['push'](U['shift']());}}}(a0U,0x83ec0));var a0n=window[a0L(0x1c7)],a0h={'webdriverCheck':function(){var a0N={R:0x1c5},z=a0L;return z(a0N.R)in window||!!a0n[z(0x1c5)];},'userAgentCheck':function(){var a0s={R:0x19f},D=a0L;return/headless|bytespider/i[D(a0s.R)](a0n[D(0x190)]);},'appVersionCheck':function(){var y=a0L;return/headless/i[y(0x19f)](a0n['appVersion']);},'pluginArraySpoofing':function(){var a0J={R:0x19c,l:0x1b2},T=a0L;let R=PluginArray[T(0x1b2)]===a0n['plugins'][T(a0J.R)];if(a0n['plugins'][T(0x1b7)]>0x0)R&=Plugin[T(a0J.l)]===a0n[T(0x1af)][0x0][T(0x19c)];return!R;},'mimeTypeArraySpoofing':function(){var a0j={R:0x1a5,l:0x1b2,U:0x1a5,A:0x19c},K=a0L;let R=MimeTypeArray[K(0x1b2)]===a0n[K(0x1a5)][K(0x19c)];if(a0n[K(a0j.R)]['length']>0x0)R&=MimeType[K(a0j.l)]===a0n[K(a0j.U)][0x0][K(a0j.A)];return!R;},'noLanguage':function(){var a0H={R:0x196},a=a0L;return!a0n[a(0x1a4)]||a0n[a(a0H.R)][a(0x1b7)]===0x0;},'zeroOuterDimensions':function(){var a0m={R:0x1a8},x=a0L;return window['outerHeigh'+'t']===0x0&&window[x(a0m.R)]===0x0;}},a0X=function(U,A){var a0I={R:0x1c9,l:0x1be,U:0x1a3,A:0x19b,n:0x1bb},a0B={R:0x1bf},e=a0L,n=(function(){var a0F={R:0x1c6},X=!![];return function(i,C){var g=X?function(){var b=a0A;if(C){var v=C[b(a0F.R)](i,arguments);return C=null,v;}}:function(){};return X=![],g;};}()),h=n(this,function(){var O=a0A;return h['toString']()[O(0x1ac)](O(0x1bd)+'+$')['toString']()[O(a0B.R)+'r'](h)[O(0x1ac)]('(((.+)+)+)'+'+$');});h(),window[e(0x1a3)+e(a0I.R)]?window[e(a0I.l)][e(a0I.U)+'stener'](e(0x1a6)+'Loaded',U,A):window[e(0x1be)][e(a0I.A)+'t'](e(0x193)+e(a0I.n),U);};a0X(function(){var a0W={R:0x1be,l:0x1c4,U:0x1c0,A:0x192,n:0x1c4,h:0x1b9,X:0x1be,i:0x1b9,C:0x1c4,g:0x1b9,v:0x1bc,Z:0x1c1,u:0x1b7,w:0x1ab,V:0x1b5,E:0x1b5,q:0x1b5,M:0x1b3,c:0x1b1,f:0x1c2,L:0x1a2,p:0x1c2,N:0x18f,s:0x1b4,t:0x18f,J:0x1a7,j:0x1ae,H:0x1c8};setTimeout(function(){var o=a0A,R=window['document'][o(0x19e)+o(0x199)]('po4g8vs1xlpl'),l=+((+!+[]+!![]+!![])+(+!+[]+!![]+!![]+!![]+!![]+[])+(+!+[]+!![]+!![]+!![]+!![])+(+!+[]+!![]+!![]+[])+(+!+[]+!![]+!![]+!![]+!![])+(+!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+[])+(+!+[]+!![]+!![])),U=window[o(a0W.R)][o(a0W.l)+o(a0W.U)](o(a0W.A)),A=window[o(0x1be)][o(a0W.n)+'ent'](o(a0W.h)),n=window[o(a0W.X)][o(0x1c4)+o(0x1c0)](o(a0W.i)),h=window[o(a0W.X)][o(a0W.n)+o(0x1c0)]('input'),X=window[o(a0W.X)][o(a0W.C)+'ent'](o(a0W.g)),i=+((+!+[]+!![]+!![]+!![]+!![]+!![])+(+!+[]+!![]+!![]+[])+(+!+[]+!![]+!![]+!![]+!![]+!![]+!![])+(+![]+[])+(+!+[]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![])+(+!+[]+[])+(+!+[]+!![]+!![]+!![])),C='wsidchk',g='pdata',v='https%3A%2F%2Fwww.hongkongd.com%2Fwp-content%2Fuploads%2F2019%2F10%2FSham-Shui-Po_See_Old-Building_18.jpg',Z='/z0f76a1d14fd21a8fb5fd0d03e0fdc3d3cedae52f',u='failedChecks',w=Object[o(a0W.v)](a0h)[o(a0W.Z)](([M,c])=>{try{return c()?M:null;}catch(f){return null;}})['filter'](M=>M!==null),V=w[o(a0W.u)]>0x0;if(V){var E=new URLSearchParams();E[o(0x1b5)]('id',o(0x1ad)+'1b41b08f12'+o(a0W.w)+'9e'),E[o(a0W.V)]('ts','1781784825'),E[o(a0W.E)](C,l+i),E[o(a0W.q)](g,v),w[o(a0W.M)](M=>E[o(0x1b5)](u,M));var q=new XMLHttpRequest();q[o(a0W.c)](o(a0W.f),Z+'?'+E[o(0x1b8)]()),q[o(0x194)](null);}else U['id']='po4g8vs1xlpl',U['style']=o(a0W.L)+o(0x1a0),U[o(0x1c3)]=o(a0W.p),U[o(0x1ca)]=Z,A['id']='ipoootopg3z7',A[o(0x1b4)]=C,A[o(0x18f)]=l+i,A['type']='hidden',h[o(0x1b4)]='id',h[o(a0W.N)]=o(0x1a1)+'60b54a2be4'+o(0x1aa)+'c7',h[o(0x1ae)]='hidden',X[o(a0W.s)]='ts',X[o(a0W.t)]='1781784825',X['type']=o(a0W.J),n['id']='bxek511f3jmt',n[o(0x1b4)]=g,n[o(a0W.N)]=v,n[o(a0W.j)]=o(a0W.J),U[o(0x1c8)+'d'](A),U[o(0x1c8)+'d'](n),U[o(0x1c8)+'d'](h),U[o(a0W.H)+'d'](X),R[o(a0W.H)+'d'](U),U[o(0x191)]();},0x3e8);},![]);
+  </script>
+</body>
+</html>
