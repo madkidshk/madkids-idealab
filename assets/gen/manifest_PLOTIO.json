@@ -1,0 +1,906 @@
+{
+ "dept": "PLOTIO",
+ "concepts": {
+  "B": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260625-091320-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/frame_07.jpg"
+      ],
+      "n": 7,
+      "ts": "2026-06-25T09:19:01",
+      "source": "nblm",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/gslide_PLOTIO_B_p1.png",
+       "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/gslide_PLOTIO_B_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260625-091320-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/frame_07.jpg"
+      ],
+      "n": 7,
+      "ts": "2026-06-25T09:13:21",
+      "source": "nblm",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/gslide_PLOTIO_B_p1.png",
+       "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/gslide_PLOTIO_B_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_B/v20260625-091320-nblm-i1/deck.pdf"
+     }
+    ]
+   }
+  },
+  "G": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260625-093016-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/frame_07.jpg"
+      ],
+      "n": 7,
+      "ts": "2026-06-25T09:31:40",
+      "source": "nblm",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/gslide_PLOTIO_G_p1.png",
+       "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/gslide_PLOTIO_G_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260625-093016-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/frame_07.jpg"
+      ],
+      "n": 7,
+      "ts": "2026-06-25T09:30:16",
+      "source": "nblm",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/gslide_PLOTIO_G_p1.png",
+       "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/gslide_PLOTIO_G_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_G/v20260625-093016-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260625-091404-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/frame_07.jpg"
+      ],
+      "n": 7,
+      "ts": "2026-06-25T09:19:08",
+      "source": "nblm",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/gslide_PLOTIO_G_p1.png",
+       "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/gslide_PLOTIO_G_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260625-091404-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/frame_07.jpg"
+      ],
+      "n": 7,
+      "ts": "2026-06-25T09:14:05",
+      "source": "nblm",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/gslide_PLOTIO_G_p1.png",
+       "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/gslide_PLOTIO_G_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_G/v20260625-091404-nblm-i1/deck.pdf"
+     }
+    ]
+   }
+  },
+  "C": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260625-091733-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/frame_07.jpg"
+      ],
+      "n": 7,
+      "ts": "2026-06-25T09:19:03",
+      "source": "nblm",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/gslide_PLOTIO_C_p1.png",
+       "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/gslide_PLOTIO_C_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260625-091733-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/frame_07.jpg"
+      ],
+      "n": 7,
+      "ts": "2026-06-25T09:17:33",
+      "source": "nblm",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/gslide_PLOTIO_C_p1.png",
+       "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/gslide_PLOTIO_C_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_C/v20260625-091733-nblm-i1/deck.pdf"
+     }
+    ]
+   }
+  },
+  "D": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260625-091736-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/frame_07.jpg"
+      ],
+      "n": 7,
+      "ts": "2026-06-25T09:19:05",
+      "source": "nblm",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/gslide_PLOTIO_D_p1.png",
+       "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/gslide_PLOTIO_D_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260625-091736-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/frame_07.jpg"
+      ],
+      "n": 7,
+      "ts": "2026-06-25T09:17:37",
+      "source": "nblm",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/gslide_PLOTIO_D_p1.png",
+       "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/gslide_PLOTIO_D_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_D/v20260625-091736-nblm-i1/deck.pdf"
+     }
+    ]
+   }
+  },
+  "F": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260625-091753-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/frame_07.jpg"
+      ],
+      "n": 7,
+      "ts": "2026-06-25T09:19:07",
+      "source": "nblm",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/gslide_PLOTIO_F_p1.png",
+       "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/gslide_PLOTIO_F_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260625-091753-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/frame_07.jpg"
+      ],
+      "n": 7,
+      "ts": "2026-06-25T09:17:53",
+      "source": "nblm",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/gslide_PLOTIO_F_p1.png",
+       "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/gslide_PLOTIO_F_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_F/v20260625-091753-nblm-i1/deck.pdf"
+     }
+    ]
+   }
+  },
+  "E": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260625-091815-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/frame_07.jpg"
+      ],
+      "n": 7,
+      "ts": "2026-06-25T09:19:06",
+      "source": "nblm",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/gslide_PLOTIO_E_p1.png",
+       "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/gslide_PLOTIO_E_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260625-091815-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/frame_07.jpg"
+      ],
+      "n": 7,
+      "ts": "2026-06-25T09:18:16",
+      "source": "nblm",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/gslide_PLOTIO_E_p1.png",
+       "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/gslide_PLOTIO_E_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_E/v20260625-091815-nblm-i1/deck.pdf"
+     }
+    ]
+   }
+  },
+  "A": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260625-022607-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/frame_07.jpg"
+      ],
+      "n": 7,
+      "ts": "2026-06-25T09:19:00",
+      "source": "nblm",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/gslide_PLOTIO_A_p1.png",
+       "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/gslide_PLOTIO_A_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260625-022607-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/frame_07.jpg"
+      ],
+      "n": 7,
+      "ts": "2026-06-25T09:18:21",
+      "source": "nblm",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/gslide_PLOTIO_A_p1.png",
+       "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/gslide_PLOTIO_A_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_A/v20260625-022607-nblm-i1/deck.pdf"
+     }
+    ]
+   }
+  },
+  "HZ08": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260625-103117-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/frame_07.jpg",
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/frame_08.jpg",
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/frame_09.jpg"
+      ],
+      "n": 9,
+      "ts": "2026-06-25T10:46:27",
+      "source": "gsheet_handscript_allstyles",
+      "brd": "HZ08",
+      "cid": "hand-HZ08",
+      "label": "全風格·Paper-craft 紙藝",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/gslide_PLOTIO_HZ08_p1.png",
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/gslide_PLOTIO_HZ08_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260625-103117-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/frame_07.jpg",
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/frame_08.jpg",
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/frame_09.jpg"
+      ],
+      "n": 9,
+      "ts": "2026-06-25T10:31:18",
+      "source": "gsheet_handscript_allstyles",
+      "brd": "HZ08",
+      "cid": "hand-HZ08",
+      "label": "全風格·Paper-craft 紙藝",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/gslide_PLOTIO_HZ08_p1.png",
+       "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/gslide_PLOTIO_HZ08_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_HZ08/v20260625-103117-nblm-i1/deck.pdf"
+     }
+    ]
+   }
+  },
+  "HZ13": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260625-103150-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/frame_07.jpg",
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/frame_08.jpg",
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/frame_09.jpg"
+      ],
+      "n": 9,
+      "ts": "2026-06-25T10:46:29",
+      "source": "gsheet_handscript_allstyles",
+      "brd": "HZ13",
+      "cid": "hand-HZ13",
+      "label": "全風格·Heritage 古典",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/gslide_PLOTIO_HZ13_p1.png",
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/gslide_PLOTIO_HZ13_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260625-103150-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/frame_07.jpg",
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/frame_08.jpg",
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/frame_09.jpg"
+      ],
+      "n": 9,
+      "ts": "2026-06-25T10:31:52",
+      "source": "gsheet_handscript_allstyles",
+      "brd": "HZ13",
+      "cid": "hand-HZ13",
+      "label": "全風格·Heritage 古典",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/gslide_PLOTIO_HZ13_p1.png",
+       "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/gslide_PLOTIO_HZ13_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_HZ13/v20260625-103150-nblm-i1/deck.pdf"
+     }
+    ]
+   }
+  },
+  "HZ04": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260625-103156-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/frame_07.jpg",
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/frame_08.jpg",
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/frame_09.jpg"
+      ],
+      "n": 9,
+      "ts": "2026-06-25T10:46:21",
+      "source": "gsheet_handscript_allstyles",
+      "brd": "HZ04",
+      "cid": "hand-HZ04",
+      "label": "全風格·新海誠風",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/gslide_PLOTIO_HZ04_p1.png",
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/gslide_PLOTIO_HZ04_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260625-103156-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/frame_07.jpg",
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/frame_08.jpg",
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/frame_09.jpg"
+      ],
+      "n": 9,
+      "ts": "2026-06-25T10:31:57",
+      "source": "gsheet_handscript_allstyles",
+      "brd": "HZ04",
+      "cid": "hand-HZ04",
+      "label": "全風格·新海誠風",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/gslide_PLOTIO_HZ04_p1.png",
+       "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/gslide_PLOTIO_HZ04_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_HZ04/v20260625-103156-nblm-i1/deck.pdf"
+     }
+    ]
+   }
+  },
+  "HZ07": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260625-103201-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/frame_07.jpg",
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/frame_08.jpg",
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/frame_09.jpg"
+      ],
+      "n": 9,
+      "ts": "2026-06-25T10:46:26",
+      "source": "gsheet_handscript_allstyles",
+      "brd": "HZ07",
+      "cid": "hand-HZ07",
+      "label": "全風格·Retro 復古印刷",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/gslide_PLOTIO_HZ07_p1.png",
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/gslide_PLOTIO_HZ07_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260625-103201-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/frame_07.jpg",
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/frame_08.jpg",
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/frame_09.jpg"
+      ],
+      "n": 9,
+      "ts": "2026-06-25T10:32:03",
+      "source": "gsheet_handscript_allstyles",
+      "brd": "HZ07",
+      "cid": "hand-HZ07",
+      "label": "全風格·Retro 復古印刷",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/gslide_PLOTIO_HZ07_p1.png",
+       "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/gslide_PLOTIO_HZ07_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_HZ07/v20260625-103201-nblm-i1/deck.pdf"
+     }
+    ]
+   }
+  },
+  "HZ03": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260625-103207-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/frame_07.jpg",
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/frame_08.jpg",
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/frame_09.jpg"
+      ],
+      "n": 9,
+      "ts": "2026-06-25T10:46:20",
+      "source": "gsheet_handscript_allstyles",
+      "brd": "HZ03",
+      "cid": "hand-HZ03",
+      "label": "全風格·插畫",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/gslide_PLOTIO_HZ03_p1.png",
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/gslide_PLOTIO_HZ03_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260625-103207-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/frame_07.jpg",
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/frame_08.jpg",
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/frame_09.jpg"
+      ],
+      "n": 9,
+      "ts": "2026-06-25T10:32:08",
+      "source": "gsheet_handscript_allstyles",
+      "brd": "HZ03",
+      "cid": "hand-HZ03",
+      "label": "全風格·插畫",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/gslide_PLOTIO_HZ03_p1.png",
+       "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/gslide_PLOTIO_HZ03_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_HZ03/v20260625-103207-nblm-i1/deck.pdf"
+     }
+    ]
+   }
+  },
+  "HZ14": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260625-103212-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/frame_07.jpg",
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/frame_08.jpg",
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/frame_09.jpg"
+      ],
+      "n": 9,
+      "ts": "2026-06-25T10:46:31",
+      "source": "gsheet_handscript_allstyles",
+      "brd": "HZ14",
+      "cid": "hand-HZ14",
+      "label": "全風格·Classic 經典",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/gslide_PLOTIO_HZ14_p1.png",
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/gslide_PLOTIO_HZ14_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260625-103212-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/frame_07.jpg",
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/frame_08.jpg",
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/frame_09.jpg"
+      ],
+      "n": 9,
+      "ts": "2026-06-25T10:32:14",
+      "source": "gsheet_handscript_allstyles",
+      "brd": "HZ14",
+      "cid": "hand-HZ14",
+      "label": "全風格·Classic 經典",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/gslide_PLOTIO_HZ14_p1.png",
+       "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/gslide_PLOTIO_HZ14_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_HZ14/v20260625-103212-nblm-i1/deck.pdf"
+     }
+    ]
+   }
+  },
+  "HZ12": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260625-103217-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/frame_07.jpg",
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/frame_08.jpg",
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/frame_09.jpg"
+      ],
+      "n": 9,
+      "ts": "2026-06-25T10:46:28",
+      "source": "gsheet_handscript_allstyles",
+      "brd": "HZ12",
+      "cid": "hand-HZ12",
+      "label": "全風格·Whiteboard 白板",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/gslide_PLOTIO_HZ12_p1.png",
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/gslide_PLOTIO_HZ12_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260625-103217-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/frame_07.jpg",
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/frame_08.jpg",
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/frame_09.jpg"
+      ],
+      "n": 9,
+      "ts": "2026-06-25T10:32:19",
+      "source": "gsheet_handscript_allstyles",
+      "brd": "HZ12",
+      "cid": "hand-HZ12",
+      "label": "全風格·Whiteboard 白板",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/gslide_PLOTIO_HZ12_p1.png",
+       "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/gslide_PLOTIO_HZ12_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_HZ12/v20260625-103217-nblm-i1/deck.pdf"
+     }
+    ]
+   }
+  },
+  "HZ05": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260625-103223-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/frame_07.jpg",
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/frame_08.jpg",
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/frame_09.jpg"
+      ],
+      "n": 9,
+      "ts": "2026-06-25T10:46:24",
+      "source": "gsheet_handscript_allstyles",
+      "brd": "HZ05",
+      "cid": "hand-HZ05",
+      "label": "全風格·宮崎駿風",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/gslide_PLOTIO_HZ05_p1.png",
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/gslide_PLOTIO_HZ05_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260625-103223-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/frame_07.jpg",
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/frame_08.jpg",
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/frame_09.jpg"
+      ],
+      "n": 9,
+      "ts": "2026-06-25T10:32:25",
+      "source": "gsheet_handscript_allstyles",
+      "brd": "HZ05",
+      "cid": "hand-HZ05",
+      "label": "全風格·宮崎駿風",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/gslide_PLOTIO_HZ05_p1.png",
+       "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/gslide_PLOTIO_HZ05_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_HZ05/v20260625-103223-nblm-i1/deck.pdf"
+     }
+    ]
+   }
+  },
+  "HZ01": {
+   "board": {
+    "versions": [
+     {
+      "v": "20260625-103229-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/frame_07.jpg",
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/frame_08.jpg",
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/frame_09.jpg"
+      ],
+      "n": 9,
+      "ts": "2026-06-25T10:46:18",
+      "source": "gsheet_handscript_allstyles",
+      "brd": "HZ01",
+      "cid": "hand-HZ01",
+      "label": "全風格·寫實真人",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/gslide_PLOTIO_HZ01_p1.png",
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/gslide_PLOTIO_HZ01_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/deck.pdf"
+     },
+     {
+      "v": "20260625-103229-nblm-i1",
+      "sheet": "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/board_sheet.png",
+      "frames": [
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/frame_01.jpg",
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/frame_02.jpg",
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/frame_03.jpg",
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/frame_04.jpg",
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/frame_05.jpg",
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/frame_06.jpg",
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/frame_07.jpg",
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/frame_08.jpg",
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/frame_09.jpg"
+      ],
+      "n": 9,
+      "ts": "2026-06-25T10:32:30",
+      "source": "gsheet_handscript_allstyles",
+      "brd": "HZ01",
+      "cid": "hand-HZ01",
+      "label": "全風格·寫實真人",
+      "gslide_pages": [
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/gslide_PLOTIO_HZ01_p1.png",
+       "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/gslide_PLOTIO_HZ01_p2.png"
+      ],
+      "deck_repo": "assets/gen/PLOTIO_HZ01/v20260625-103229-nblm-i1/deck.pdf"
+     }
+    ]
+   }
+  }
+ },
+ "updated": "2026-06-25T10:46:31"
+}

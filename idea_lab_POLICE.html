@@ -1,0 +1,1644 @@
+<!DOCTYPE html><html lang=zh-HK><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>POLICE · Idea Lab</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#6b7280;--line:#e6e8ec;
+      --ac:#4f46e5;--gold:#c79a2b;--red:#dc2626;--grn:#15a34a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+     font:15px/1.55 -apple-system,"PingFang HK",sans-serif}
+.wrap{max-width:430px;margin:0 auto;padding:0 13px 130px}
+h1{font-size:19px;font-weight:800;margin:0;line-height:1.25}
+h1 .dept{color:var(--ac)}
+.bdp{font-size:12px;font-weight:700;margin:3px 0 0;display:flex;gap:11px;flex-wrap:wrap}
+.fresh{font-size:11px;color:#7a8290;margin:6px 0 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.fresh .fr{background:#f1f3f6;border-radius:6px;padding:2px 7px;white-space:nowrap}
+.fresh .fr b{color:#4a5462;font-weight:700}
+.bdp .bb{color:#2563eb}.bdp .dd{color:#dc2626}.bdp .pp{color:#7c3aed}
+.tabbar{position:sticky;top:0;z-index:30;background:var(--bg);
+         border-bottom:2px solid var(--line);display:flex;gap:5px;
+         overflow-x:auto;padding:8px 0 7px;scrollbar-width:none}
+.tabbar::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;background:var(--card);border:1.5px solid var(--line);
+      border-radius:9px;padding:5px 12px;font-size:12px;font-weight:800;
+      color:var(--mut);cursor:pointer;transition:all .12s;white-space:nowrap}
+.tab:hover{border-color:var(--ac);color:var(--ac)}
+.tab.active{background:var(--ac);border-color:var(--ac);color:#fff}
+header{padding:12px 0 4px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap}
+.titlerow h1{margin:0;min-width:0}
+.homebtn{flex:none;white-space:nowrap;font-size:16px;line-height:1;text-decoration:none;
+          background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:5px 9px}
+.homebtn:active{background:#dcdffb}
+.tabpanel{display:none;padding-top:10px}
+.tabpanel.active{display:block}
+.setlab{font-size:11px;font-weight:800;color:var(--ac);background:#eef0fe;
+         border:1px solid #dcdffb;border-radius:8px;padding:4px 10px;
+         display:inline-block;margin:0 0 8px}
+.banner{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;
+         padding:10px 12px;font-size:12.5px;font-weight:700;color:#92660c;margin:10px 0}
+.h2{font-size:14.5px;font-weight:800;letter-spacing:.01em;color:var(--ink);
+     margin:16px 2px 8px}
+.h3{font-size:13px;font-weight:700;color:#374151;margin:11px 0 5px}
+.stylepick{margin:10px 0}
+.styrow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:5px 0;padding:5px 0;border-bottom:1px solid var(--line)}
+.stylbl{min-width:84px;font-weight:600;font-size:13px}
+.styo{display:inline-flex;align-items:center;gap:4px;font-size:13px;padding:3px 10px;
+       border:1px solid var(--line);border-radius:14px;cursor:pointer;user-select:none;background:#fafafa}
+.styo input{margin:0}
+.styo:has(input:checked){background:#e6f7f1;border-color:#0a7;color:#066}
+.styanchor{margin-top:9px;font-size:12px;color:var(--mut)}
+#styanchor{color:#0a7;font-weight:600}
+.card{background:var(--card);border:1px solid var(--line);border-radius:13px;
+       padding:11px 12px;box-shadow:0 1px 2px rgba(20,24,40,.05),
+       0 5px 16px rgba(20,24,40,.06);margin-bottom:8px}
+.hgrid{display:grid;grid-template-columns:1fr;gap:13px}
+@media(min-width:720px){.hgrid{grid-template-columns:1fr 1fr 1fr}}
+.hcard{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:10px;box-shadow:0 1px 2px rgba(20,24,40,.05)}
+.hcap{font-weight:800;font-size:13px;margin-bottom:7px}
+.sgrp{font-weight:800;font-size:12px;color:#475569;background:#eef1f6;border-radius:7px;padding:5px 10px;margin:11px 0 2px}
+.sgrp:first-child{margin-top:2px}
+.tlrow.todo{opacity:.55} .tlrow.todo .tllabel{color:#9aa0ab}
+.tlrow.na{opacity:.4} .tlrow.na .tllabel{color:#b6bbc4;text-decoration:line-through}
+.dsp{width:100%;border-collapse:collapse;font-size:12.5px}
+.dsp th{text-align:left;color:var(--mut);font-weight:700;padding:4px 7px;border-bottom:1px solid var(--line)}
+.dsp td{padding:4px 7px;border-bottom:1px solid #f3f4f6;vertical-align:top}
+.vacarou{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.vacard{flex:0 0 134px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px;font-size:11px}
+.vathumb{position:relative;height:90px;border-radius:7px;overflow:hidden;background:#f1f3f7;display:flex;align-items:center;justify-content:center}
+.vathumb img{width:100%;height:100%;object-fit:cover}
+.vacat{margin-top:5px;font-size:10px;color:#7b4fc0;font-weight:800}
+.vaname{font-weight:600;line-height:1.25;min-height:28px;color:#374151}
+.vasrc{font-size:10.5px} .vatick{display:block;font-size:11px;margin-bottom:4px;cursor:pointer;font-weight:700}
+.vaprovide{margin:12px 0 2px}
+.upbox .refelemin{display:block;width:100%;margin:0 0 8px;padding:6px 8px;border:1px solid var(--line);border-radius:7px;font-size:12px}
+/* ── 標書 tab restructure 2026-06-16 ── */
+/* 💡 提供窗口(Notes + 元素名 group + 參考相,細 + button 統一) */
+.h2sm{font-size:13px;margin:12px 2px 5px}
+.provide{padding:9px 10px}
+.pvgrp{background:#f8fafc;border:1px solid var(--line);border-radius:9px;padding:8px}
+.pvrow{display:flex;gap:6px;align-items:stretch}
+.provta{flex:1;min-width:0;box-sizing:border-box;border:1px solid var(--line);border-radius:8px;padding:6px 9px;font:12.5px/1.4 inherit;resize:vertical}
+.provel{display:block;width:100%;box-sizing:border-box;margin:6px 0 0;padding:6px 9px;border:1px solid var(--line);border-radius:8px;font-size:12.5px}
+.provbtn{white-space:nowrap;padding:0 14px;align-self:stretch}
+.pvup{margin-top:8px}
+/* 加入想法 + upbox 送出 統一設計(都係 .btn 觀感) */
+.provide .upbox{margin:0;border-radius:9px;padding:9px}
+.provide .upbox .attsend{background:var(--ac);border-radius:9px;padding:0 14px;font-size:12.5px;font-weight:800}
+.provide .noteslist{margin-top:7px}
+/* 三梯隊標題:左色條 + 副標 */
+.tierh{border-left:4px solid var(--ac);padding-left:9px;margin:18px 2px 2px;font-size:14px}
+.tierhint{margin:2px 2px 7px 13px}
+/* ✍️ 邊個 model 寫(#5):mdl 真 / mdef 預設(灰) / mfb fallback(橙) */
+.mdl{flex:0 0 auto;font-size:10px;font-weight:800;color:#3730a3;background:#eef0fe;border:1px solid #dcdffb;
+      border-radius:6px;padding:1px 6px;white-space:nowrap;margin-left:auto}
+.mdl.mdef{color:#6b7280;background:#f1f3f6;border-color:#e3e6ea}
+.mdl.mfb{color:#9a5a00;background:#fff4e5;border-color:#fde6c0}
+.h3 .mdl{margin-left:6px;vertical-align:middle}
+/* 📋 標書內容 carousel 卡 — 字體/行寬完全跟返 VID1 .ccard(Raymond 2026-06-16:之前縮 12px 太難讀,
+   改返用 VID1 base .cbody 12.5px/1.62、.ctitle 14px。卡內 md 標題用 base .cbody h3/h4 12.5px,統一)。 */
+.brfcarou{margin-top:2px}
+.brfcard .chead{cursor:default}
+/* 🔄 重生緊 signal(手寫稿 BD) */
+.regbadge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;color:#fff;background:var(--ac);border-radius:8px;padding:4px 9px;margin:0 0 6px}
+/* 🔀 換格 + BD 英文字 */
+.bdletter{display:inline-block;min-width:18px;text-align:center;font-weight:800;color:#fff;background:var(--ac);border-radius:6px;padding:0 5px;margin-right:4px}
+.swrow{display:flex;align-items:center;gap:6px;margin-bottom:7px;flex-wrap:wrap}
+.swlbl{font-size:12px;color:var(--mut);white-space:nowrap}
+.swrow select{flex:1;min-width:90px;font-size:12.5px;padding:6px 7px;border:1px solid var(--line);border-radius:7px;background:#fff}
+/* 標書原文 link 喺 撮要 標題右邊 */
+.rawlink{flex:0 0 auto;margin-left:auto;font-size:10.5px;font-weight:800;color:var(--ac);background:#eef0fe;border:1px solid #dcdffb;border-radius:6px;padding:1px 6px;cursor:pointer;white-space:nowrap}
+/* 部門官方來源 search-result row(似 youtube search) */
+.srcrow{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid #f1f3f6}
+.srcrow:last-child{border-bottom:0}
+.srcthumb{flex:0 0 54px;height:40px;border-radius:5px;object-fit:cover;background:#f1f3f7}
+.srctit{font-size:11.5px;font-weight:700;line-height:1.3;color:var(--ac)}
+.srcsnip{font-size:10.5px;color:#6b7280;line-height:1.4;margin-top:1px}
+/* 🎧 Briefing 錄音逐字 overlay(撳先出,唔常設) */
+.ovl{position:fixed;inset:0;z-index:120;background:rgba(15,18,28,.55);display:none;align-items:center;justify-content:center;padding:18px}
+.ovl.on{display:flex}
+.ovlbox{background:#fff;border-radius:14px;max-width:560px;width:100%;max-height:82vh;display:flex;flex-direction:column;box-shadow:0 18px 60px rgba(0,0,0,.4)}
+.ovlhd{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--line);font-weight:800;font-size:13px}
+.ovlhd .x{cursor:pointer;color:#888;font-size:16px;border:0;background:0}
+.ovlbody{overflow:auto;padding:12px 14px;font-size:11.5px;line-height:1.6;color:#333;white-space:pre-wrap}
+.ovllink{color:var(--ac);font-weight:700;cursor:pointer;text-decoration:underline}
+/* 📸 Visual 素材:⭐首選 badge + 三 action 掣(三格一樣大) + 重搜漏斗 */
+.vacard{position:relative;transition:order .2s}
+.vacard.pref{border-color:var(--gold);box-shadow:0 0 0 2px rgba(199,154,43,.22)}
+.vastar{position:absolute;top:5px;right:5px;font-size:9.5px;font-weight:800;color:#fff;background:var(--gold);border-radius:6px;padding:1px 5px}
+.vafunnel{position:absolute;bottom:4px;right:4px;font-size:9.5px;font-weight:800;color:#fff;background:rgba(79,70,229,.94);border-radius:6px;padding:2px 6px;display:inline-flex;align-items:center;gap:3px}
+.vaacts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}   /* 三格一樣大(grid 1fr×3,鐵定相等) */
+.vaacts .btn{width:auto;text-align:center;margin:0;padding:9px 0}
+
+.upbox{background:#fff;border:1.5px dashed #bcd;border-radius:11px;padding:11px;margin:6px 0}
+.upbox.hov{background:#eef6ff;border-color:#6aa3e0}
+.upbox .attstage{min-height:0;margin-bottom:4px}
+.upbox .stchip{display:inline-block;background:#eef7f0;border:1px solid #bfe0cd;border-radius:20px;padding:3px 9px;font-size:11.5px;font-weight:700;color:#176b3a}
+.upbox .stchip .ststrip{border:0;background:0;cursor:pointer;color:#999;font-weight:700;margin-left:3px}
+.upbox .attrow1{display:flex;gap:6px}
+.upbox .atttext{flex:1;border:1px solid var(--line,#dde);border-radius:8px;padding:9px 11px;font-size:14px;line-height:1.5;min-height:84px;resize:vertical;font-family:inherit}
+.upbox .attsend{border:0;background:#0A7D3F;color:#fff;border-radius:8px;padding:0 14px;font-weight:700;cursor:pointer;white-space:nowrap}
+.upbox .attbtns2{margin-top:6px}
+.upbox .attpick{border:1px solid var(--line,#dde);background:#f7f9fc;border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer;font-weight:600}
+.upst{font-size:11.5px;color:#176b3a;margin-top:5px;min-height:0}
+
+.bdcm{margin-top:7px}
+.bdcm textarea{width:100%;box-sizing:border-box;font:13px/1.45 inherit;border:1px solid var(--line);border-radius:8px;padding:6px 8px;resize:vertical}
+.bdcm .btn.mini{margin-top:5px}
+.cmlog{font-size:11px;color:#2e8b57;margin-top:5px}
+.card.big{padding:13px}
+.card.empty{color:var(--mut);font-size:13px;font-style:italic}
+.row{display:flex;align-items:center;gap:9px}
+.rank{font-size:11px;font-weight:800;color:var(--mut);width:18px}
+.src{font-size:11px;color:var(--mut);font-weight:700;background:#f1f5f9;
+      border-radius:6px;padding:1px 6px}
+.score{font-size:12px;font-weight:800;color:var(--gold);margin-left:auto}
+.nm{font-weight:800;font-size:13.5px;line-height:1.35}
+.csub{font-size:11px;color:var(--mut);font-weight:600;margin-top:2px}
+.crow{margin:5px 0 0}
+.cflag{font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.cflag.hi{background:#dcfce7;color:#15803d}
+.cflag.lo{background:#fef3c7;color:#a16207}
+.cflag.rl{background:#fee2e2;color:#b91c1c}
+.ck{width:22px;height:22px;border:2px solid var(--ac);border-radius:6px;
+     display:inline-grid;place-items:center;font-size:13px;color:#fff;
+     cursor:pointer;flex:0 0 auto;position:relative}
+.ck::before{content:"";position:absolute;inset:-11px}
+.ck.on{background:var(--ac)}
+.ck.done{background:var(--grn);border-color:var(--grn);cursor:default}
+.divider{display:flex;align-items:center;gap:8px;margin:12px 2px;
+          color:#aab0ba;font-size:11px;font-weight:700}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.cnt-warn{color:var(--red)!important}
+.lookback{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:11px;
+           padding:10px 12px;font-size:12px;color:#475569}
+.btn{background:var(--ac);color:#fff;border:none;border-radius:9px;
+      padding:8px 13px;font-size:12.5px;font-weight:800;cursor:pointer;
+      text-decoration:none;display:inline-block}
+.btn.grn{background:var(--grn)}
+.btn.ghost{background:#fff;color:var(--ac);border:1.5px solid #dcdffb;
+            width:100%;text-align:center;padding:11px 13px;margin:2px 0 4px}
+.btn.mini{padding:4px 9px;font-size:11px;margin-left:8px}
+.submit{position:fixed;bottom:14px;right:calc(50% - 215px + 13px);z-index:20}
+@media(max-width:456px){.submit{right:14px}}
+/* ── Responsive 3 tier（Raymond 2026-06-06）：mobile(default) / tablet / desktop 用晒畫面 ── */
+/* Tablet:闊啲,carousel 一次 2 卡 */
+@media(min-width:700px) and (max-width:1099px){
+  .wrap{max-width:680px;padding:0 20px 130px}
+  .submit{right:calc(50% - 340px + 20px)}
+  .ccard{flex:0 0 46%;max-height:68vh}
+  .rest-row .ccard{flex:0 0 36%}
+  .briefcard{max-height:40vh}
+}
+/* Desktop:用晒畫面 —— carousel 變 grid(唔橫掃,鋪滿),六強 3 欄、其餘 4 欄 */
+@media(min-width:1100px){
+  .wrap{max-width:min(1280px,94vw);padding:0 28px 120px}
+  .submit{right:max(28px, calc(50vw - 640px + 28px))}
+  .carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}
+  .ccard{flex:0 0 calc(33.333% - 10px);max-width:none;max-height:43vh;scroll-snap-align:none}   /* Raymond 2026-06-16:桌面每格短 1/3(64→43vh),標書 tab 跟 VID1 */
+  .rest-row .ccard{flex:0 0 calc(25% - 11px)}
+  .briefcard{max-height:36vh}
+  .tabbar{flex-wrap:wrap}
+  .card.big .sheet{max-width:520px}
+}
+.submit .btn{box-shadow:0 6px 20px rgba(79,70,229,.4);padding:11px 18px;font-size:13.5px}
+.foot{font-size:11px;color:#9aa0aa;text-align:center;margin-top:22px}
+.notes-win{width:100%;min-height:90px;border:1.5px solid var(--ac);
+            border-radius:11px;padding:10px 12px;font:14px/1.6 inherit;
+            resize:vertical;background:#fafbff;margin-bottom:6px}
+.notes-act{text-align:right;margin-bottom:6px}
+.notes-act .btn{padding:6px 14px}
+.noteslist{margin-bottom:6px}
+.notecard{background:#fafbff;border:1px solid #e0e3f5;border-radius:10px;
+           padding:7px 10px;margin-bottom:6px}
+.noterow{display:flex;align-items:center;gap:8px}
+.notets{font-size:10.5px;font-weight:800;color:var(--ac)}
+.notedel{margin-left:auto;background:none;border:none;color:#b0b6c2;font-size:13px;
+          cursor:pointer;padding:0 2px}
+.notetxt{font-size:13px;color:var(--ink);line-height:1.5;margin-top:2px;white-space:pre-wrap}
+/* Brief 撮要緊湊卡（固定高度內部 scroll，似 VID 1 卡）*/
+.briefcard{max-height:46vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.briefcard h3,.briefcard h4{font-size:13px;margin:9px 0 3px}
+.suppinline{margin-top:10px;border-top:2px solid #fde68a;background:#fffbeb;
+             border-radius:9px;padding:8px 10px}
+.suppinline h3,.suppinline h4{color:#92660c;font-size:12.5px;margin:2px 0 5px}
+/* 補充日程簡單 list */
+.timeline{margin:2px 0}
+.tlrow{display:flex;gap:8px;padding:5px 2px;border-bottom:1px solid #f3f4f6;font-size:12.5px}
+.tlrow:last-child{border-bottom:none}
+.tldate{flex:0 0 auto;font-weight:800;color:var(--ink);min-width:96px}
+.tllabel{flex:1;color:#374151}
+.tlrow.hot{background:#fff7ed;border-radius:7px}
+.tlrow.hot .tldate{color:#c2410c}.tlrow.hot .tllabel{color:#9a3412;font-weight:700}
+/* Briefing 補充 treatment */
+summary.supp{display:flex;align-items:center;gap:8px}
+.suppbadge{font-size:10px;font-weight:800;color:#fff;background:#d97706;
+            border-radius:6px;padding:1px 7px;margin-left:7px;vertical-align:middle}
+.bd{margin:8px 0}
+.bdscroll{max-height:44vh;overflow-y:auto;border:1px solid var(--line);border-radius:10px;
+          padding:2px 12px;background:#fafbfc;-webkit-overflow-scrolling:touch}
+.genbox{text-align:center}
+.step2 .refsub{margin:8px 0}
+.refname{font-size:12.5px;font-weight:600;margin:6px 0 4px}
+.refname .refn{color:var(--mut);font-weight:400;font-size:11px}
+.refrow{display:flex;gap:6px;flex-wrap:wrap}
+.refthumb{width:74px;height:90px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.btn.big{font-size:14px;padding:12px 22px;box-shadow:0 4px 14px rgba(79,70,229,.3)}
+.scene{border-bottom:1px solid #f1f3f6;padding:7px 0;font-size:12.5px;line-height:1.5}
+.scene .sl{display:flex;gap:8px}
+.scene .sn{font-weight:800;color:var(--ac);flex:0 0 auto;min-width:17px}
+.scene .vis{flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
+.scene .vis.open{-webkit-line-clamp:unset;overflow:visible}
+.scene .vo,.vo{color:var(--mut);font-size:11.5px;margin:4px 0 0 25px;
+               background:#f8fafc;border-radius:7px;padding:4px 8px}
+.sheet{width:100%;border-radius:10px;border:1px solid var(--line);margin:8px 0;display:block;cursor:zoom-in}
+.lbx{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;display:none;
+      align-items:center;justify-content:center;padding:12px}
+.lbx.on{display:flex}
+.lbx img{max-width:98vw;max-height:94vh;border-radius:8px;cursor:zoom-out}
+.lbx .x{position:fixed;top:10px;right:16px;color:#fff;font-size:30px;font-weight:800;cursor:pointer}
+.lbx .hint{position:fixed;bottom:12px;left:0;right:0;text-align:center;color:#bbb;font-size:12px}
+.preqs{display:flex;flex-direction:column;gap:7px;margin-top:4px}
+.prow{display:flex;align-items:center;gap:10px}
+.preqs .pl{flex:1;font-weight:700;font-size:14px;min-width:0}
+.preqs .pv{font-weight:800;font-size:13px;border-radius:8px;padding:3px 11px;white-space:nowrap}
+.preqs .pvon{background:#dcfce7;color:#15803d;border:1px solid #bbf7d0}
+.preqs .pvoff{background:#f1f3f5;color:#868e96;border:1px solid #e9ecef}
+.preqs .pp{font-size:11px;color:var(--ac);font-weight:700;cursor:help;min-width:34px;text-align:right}
+.hdrbtns{flex:none;display:flex;gap:7px;align-items:center}
+.refbtn{flex:none;font-size:16px;line-height:1;background:#eef0fe;border:1px solid #dcdffb;
+  border-radius:8px;padding:5px 9px;cursor:pointer}
+.refbtn:active{background:#dcdffb;transform:scale(.94)}
+.pgbar{position:relative;height:30px;border-radius:9px;background:#eef0fe;border:1px solid #dcdffb;
+  overflow:hidden;margin:8px 0}
+.pgfill{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,#6366f1,#818cf8);
+  transition:width .6s ease}
+.pgtxt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:#1b1f27;z-index:1}
+/* VID 2 tab：紅色虛線繞邊行緊（marching ants），未出晒 BD 就一直行；出晒 = 無 busy class = 停 */
+@keyframes march{to{background-position:14px 0,-14px 100%,0 -14px,100% 14px}}
+.tab.busy{color:#dc2626;font-weight:800;border-color:transparent !important;
+  background-image:
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0);
+  background-repeat:repeat-x,repeat-x,repeat-y,repeat-y;
+  background-size:14px 2px,14px 2px,2px 14px,2px 14px;
+  background-position:0 0,0 100%,0 0,100% 0;
+  animation:march .5s linear infinite}
+.empty{font-size:12px;color:#9aa0aa;background:#f8fafc;border:1px dashed #cbd5e1;
+        border-radius:9px;padding:9px 11px;margin:8px 0}
+.note{width:100%;min-height:48px;border:1px solid var(--line);border-radius:9px;
+       padding:7px 9px;font:13px/1.5 inherit;resize:vertical;margin-top:6px}
+.frames{margin:8px 0}
+.frame-card{border-bottom:1px solid #f1f3f6;padding:8px 0}
+.frame-head{display:flex;gap:8px;font-size:12.5px}
+.fv{flex:1;color:var(--ink)}
+.acts{margin-top:8px}
+.soft{margin-bottom:8px}
+.soft summary{font-size:12.5px;font-weight:800;color:var(--ink);cursor:pointer;
+               background:#f8fafc;border:1px solid var(--line);border-radius:10px;
+               padding:9px 12px;list-style:none}
+.soft summary::-webkit-details-marker{display:none}
+.soft[open] summary{border-radius:10px 10px 0 0;margin-bottom:0}
+.soft .card{border-radius:0 0 10px 10px;border-top:none;margin-bottom:0}
+.hint{font-size:12px;color:var(--mut);margin:0 0 8px}
+.det{margin-top:8px}
+.det summary{font-size:12.5px;font-weight:800;color:var(--ac);cursor:pointer;
+              list-style:none;background:#eef0fe;border:1px solid #dcdffb;
+              border-radius:9px;padding:8px 11px;text-align:center}
+.det[open] summary{margin-bottom:7px}
+.det summary::-webkit-details-marker{display:none}
+.detbody{font-size:12.5px;color:#374151;white-space:pre-wrap;margin-top:7px;
+          line-height:1.6;max-height:360px;overflow:auto;background:#f8fafc;
+          border-radius:9px;padding:10px 12px}
+.tw{overflow-x:auto;margin:6px 0}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid var(--line);padding:5px 8px;text-align:left}
+th{background:#f8fafc;font-weight:700}
+.prev{font-size:12.5px;color:#4b5563;margin:6px 0 2px;line-height:1.5}
+/* ── VID 1 carousel：橫掃卡，卡內直 scroll ── */
+.carousel{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
+           padding:4px 2px 12px;margin:0 -2px;-webkit-overflow-scrolling:touch}
+.carousel::-webkit-scrollbar{height:6px}
+.carousel::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:6px}
+.ccard{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;
+        background:var(--card);border:1.5px solid var(--line);border-radius:14px;display:flex;
+        flex-direction:column;max-height:64vh;overflow:hidden;
+        box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+.ccard.sel{border-color:var(--ac);box-shadow:0 0 0 2px rgba(79,70,229,.25),
+            0 6px 18px rgba(79,70,229,.18)}
+.rest-row .ccard{flex:0 0 70%;max-height:52vh}
+.chead{display:flex;align-items:center;gap:8px;padding:10px 12px 7px;cursor:pointer;
+        border-bottom:1px solid #f1f3f6}
+.badge{font-size:11px;font-weight:800;color:#fff;background:var(--ac);
+        border-radius:7px;padding:2px 9px;letter-spacing:.02em}
+.oscore{margin-left:auto;font-size:12px;font-weight:800;color:var(--gold)}
+.ctitle{font-weight:800;font-size:14px;line-height:1.35;padding:8px 12px 0}
+.ccard .csub{padding:2px 12px 0}
+.cbadges{padding:5px 12px 0}
+.cbody{flex:1;overflow-y:auto;padding:9px 12px 12px;font-size:12.5px;color:#374151;
+        line-height:1.62;-webkit-overflow-scrolling:touch}
+.cbody h3,.cbody h4,.cbody h5{font-size:12.5px;margin:9px 0 3px}
+.cbody p{margin:5px 0}
+.scores{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+.sline{font-size:11.5px;margin:6px 0 2px}
+.sline b{font-size:12px}
+.sline.muted{color:#9aa0aa;font-weight:600}
+.scrit{display:block;font-size:11px;color:var(--mut);margin-top:2px}
+.snote{font-size:11px;color:#6b7280;background:#f8fafc;border-radius:7px;
+        padding:5px 8px;margin:4px 0 2px;line-height:1.5}
+.toast{position:fixed;bottom:78px;left:50%;transform:translateX(-50%);
+        background:#1b1f27;color:#fff;padding:12px 18px;border-radius:12px;
+        font-size:13px;font-weight:700;z-index:90;max-width:90%;
+        box-shadow:0 8px 30px rgba(0,0,0,.3);transition:opacity .5s}
+.topproc{position:fixed;bottom:0;left:0;right:0;z-index:95;background:var(--ac);
+          color:#fff;font-size:13px;font-weight:800;padding:9px 14px;
+          display:flex;align-items:center;justify-content:center;gap:8px;
+          box-shadow:0 3px 14px rgba(79,70,229,.35)}
+.spin.sm{width:15px;height:15px;border:2.5px solid rgba(255,255,255,.4);
+          border-top-color:#fff;border-radius:50%;display:inline-block;
+          vertical-align:middle;margin-right:6px;animation:sp .9s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.gening{display:inline-flex;align-items:center;font-size:12px;font-weight:800;color:var(--ac);
+         background:#eef0fe;border:1px solid #dcdffb;border-radius:9px;padding:7px 11px}
+.gening .spin.sm{border-color:#c7cbf5;border-top-color:var(--ac)}
+/* ⬇️ 最後置:桌面卡長短 1/3(64→43vh)。2-class + 排最尾,壓得過 base .ccard 64vh —— Raymond 2026-06-16
+   (VID1 + 標書 tab 一齊短;手機保持 base 64vh 唔郁) */
+@media(min-width:1100px){.carousel .ccard{max-height:43vh}}
+</style></head><body>
+<div class=wrap>
+<header>
+  <div class=titlerow>
+    <h1><span class=dept>POLICE</span> · POLICE</h1>
+    <span class=hdrbtns>
+      <a class=homebtn href="index.html" title="總目錄">🏠</a>
+      <button class=refbtn onclick="location.href=location.pathname+'?t='+Date.now()+location.hash" title="重新載入">🔄</button>
+    </span>
+  </div>
+  <div class=bdp><span class='dd'>D) 6/7 12:00 · 仲有 <b id='cd'>—</b></span></div>
+  <div class=fresh>🕒 資料更新：<span class=fr><b>標書</b> 06-26 19:40</span> · <span class=fr><b>研究</b> 06-26 19:57</span> · <span class=fr><b>概念</b> 06-26 20:23</span> · <span class=fr><b>評分</b> 06-26 20:59</span></div>
+</header>
+<div class='tabbar'><button class='tab' data-tab='ph0'>📋 標書</button><button class='tab' data-tab='debrief'>📨 DEBRIEF</button><button class='tab' data-tab='handbd'>✍️ TVAPI FINAL</button><button class='tab' data-tab='theme1_1'>THEME</button><button class='tab' data-tab='tvapi1_1'>TVAPI 1</button><button class='tab' data-tab='tvapi1_2'>TVAPI 2</button><button class='tab' data-tab='tvapi1_3'>TVAPI 3</button><button class='tab' data-tab='tvapi1_4'>TVAPI 4</button><button class='tab' data-tab='tvapi1_5'>TVAPI 5</button><button class='tab' data-tab='kv1_1'>KV 1</button><button class='tab' data-tab='kv1_2'>KV 2</button><button class='tab' data-tab='kv1_3'>KV 3</button></div>
+<div id='ph0' class='tabpanel'><div class='h2 h2sm'>💡 額外想法 / 相片</div><div class='card provide'>
+<div class="upbox" id="ref_POLICE_box">
+  
+  <div class="attstage" id="ref_POLICE_stage"></div>
+  <div class="attrow1">
+    <textarea id="ref_POLICE_link" class="atttext" rows="4" placeholder="💭 諗到嘅想法打喺度；想畀參考相就 ⌘V／drag／揀相入埋，喺格仔寫明呢張相係咩 → 一齊送出"></textarea>
+    <button id="ref_POLICE_send" class="attsend">送出 ⏎</button></div>
+  <div class="attbtns2"><button id="ref_POLICE_pick" class="attpick">📎 電腦揀檔</button></div>
+  <input type="file" id="ref_POLICE_file" accept="image/*" style="display:none">
+  <div class="upst" id="ref_POLICE_st"></div>
+</div>
+<script>(function(){
+var GAS="https://script.google.com/macros/s/AKfycbwVvkFb8kXQFrJZnABGxFcywfVllsM3XSVHlAGwH8CzrWIBGChjIK2PhW1k61r6NJWIpg/exec",TOK="mkv7q3z2link",FOLDER="1flRdjYr1EFxsAlnDXFZAkG8Xi38jGzFP";
+var st=document.getElementById("ref_POLICE_st");
+function say(m){st.textContent=m;}
+// —— 把關站 proven mechanic（照搬）——
+function jsonp(q,cb){var n="upcb"+Math.random().toString(36).slice(2);
+  window[n]=function(o){try{cb(o);}finally{delete window[n];s.remove();}};
+  var s=document.createElement("script");s.src=GAS+"?"+q+"&token="+TOK+"&callback="+n;
+  s.onerror=function(){delete window[n];s.remove();cb({ok:false,err:"network"});};
+  document.body.appendChild(s);}
+function fidFromLink(v){var m=v.match(/\/d\/([a-zA-Z0-9_-]{20,})/)||v.match(/[?&]id=([a-zA-Z0-9_-]{20,})/);return m?m[1]:null;}
+var inp=document.getElementById("ref_POLICE_link");
+var box=document.getElementById("ref_POLICE_box"),stage=document.getElementById("ref_POLICE_stage");
+var fi=document.getElementById("ref_POLICE_file"),send=document.getElementById("ref_POLICE_send");
+var _staged=null,_busy=false;
+function showStaged(f){_staged=f;var isImg=(f.type||"").indexOf("image/")===0;
+  stage.innerHTML="<span class='stchip'>"+(isImg?"🖼":"📎")+" "+f.name.replace(/</g,"&lt;")+" <button class='ststrip'>✕</button></span>";
+  stage.querySelector(".ststrip").onclick=function(){_staged=null;stage.innerHTML="";};}
+document.getElementById("ref_POLICE_pick").onclick=function(){fi.click();};
+fi.onchange=function(){if(fi.files[0]){showStaged(fi.files[0]);fi.value="";}};
+["dragover","dragenter"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.add("hov");});});
+["dragleave","drop"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.remove("hov");});});
+box.addEventListener("drop",function(e){var f=e.dataTransfer&&e.dataTransfer.files[0];if(f)showStaged(f);});
+inp.addEventListener("paste",function(ev){var fs=(ev.clipboardData&&ev.clipboardData.files)||[];if(fs.length){ev.preventDefault();showStaged(fs[0]);}});
+// 收到 file id（檔上載完）或原 link → 交畀各站自己嘅 complete handler
+function done(val,isFile){ var ip=document.getElementById('ref_POLICE_link');var desc=(ip&&ip.value||'').trim();if(window._clearDraft)window._clearDraft('ref_POLICE_link');if(isFile){var el=desc||'參考相';fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=POLICE&concept='+encodeURIComponent(el)+'&stage=add_ref&engine='+encodeURIComponent(val)+'&target=main&cid=ACT_add_ref',{mode:'no-cors'}).catch(function(){});if(ip)ip.value='';say(desc?('✅ 已收參考相「'+el+'」（排最前＋嚴格比照）'):'✅ 收咗相；下次喺格仔寫埋係咩元素，AI 跟得準啲');}else if(/^https?:|drive\.google|docs\.google/.test(val)){fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=POLICE&concept='+encodeURIComponent('參考連結')+'&stage=add_ref&engine='+encodeURIComponent(val)+'&target=main&cid=ACT_add_ref',{mode:'no-cors'}).catch(function(){});say('✅ 已收參考連結（排最前＋嚴格比照）');}else{var a=loadNotes();a.push({ts:Date.now(),text:val});saveNotes(a);renderNotes();fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=POLICE&text='+encodeURIComponent(val),{mode:'no-cors'}).catch(function(){});say('✅ 已加想法（'+a.length+'，累積餵委員會）');} }
+// 檔：initupload(folder)→browser 直 PUT 任何 size→CORS 讀唔到都 fallback→進度
+function up(f){_busy=true;send.disabled=true;say("開緊上載…（"+f.name+"）");
+  jsonp("action=initupload&origin="+encodeURIComponent(location.origin)+"&name="+encodeURIComponent(f.name)
+    +"&size="+f.size+"&mime="+encodeURIComponent(f.type||"image/jpeg")+"&folder="+encodeURIComponent(FOLDER),function(o){
+    if(!o.ok){_busy=false;send.disabled=false;say("⚠️ 開唔到上載："+(o.err||"")+"（可改貼 Drive 連結）");return;}
+    var x=new XMLHttpRequest();x.open("PUT",o.uri);
+    x.upload.onprogress=function(ev){if(ev.lengthComputable)say("⬆️ 上載中 "+Math.round(ev.loaded/ev.total*100)+"%（"+f.name+"）");};
+    x.onload=function(){_busy=false;send.disabled=false;
+      if(x.status>=300){say("⚠️ 上載 fail HTTP "+x.status);return;}
+      var fid="";try{fid=JSON.parse(x.responseText).id||"";}catch(_){}
+      if(!fid){say("⚠️ 上載咗但攞唔到 file id（可改貼 Drive 連結）");return;}
+      stage.innerHTML="";say("✅ 上載完成");done(fid,true);};
+    x.onerror=function(){_busy=false;send.disabled=false;say("⚠️ 上載出錯（network）。可改貼 Drive 連結");};
+    x.send(f);});}
+function submit(){if(_busy){say("處理緊…");return;}
+  var f=_staged;var v=inp.value.trim();
+  if(f){_staged=null;stage.innerHTML="";up(f);return;}
+  if(!v){say("⚠️ 未貼 link／未揀檔");return;}
+  inp.value="";done(v,false);}   // 貼 link → 直接交（後端 add_manual_ref 認 link/Drive id/URL）
+send.onclick=submit;
+inp.addEventListener("keydown",function(ev){if(ev.key==="Enter"&&!ev.shiftKey){ev.preventDefault();submit();}});
+})();</script>
+<div id='noteslist' class='noteslist'></div></div><details class='soft' open><summary>📸 Visual 素材（43 個：LOGO 2、視覺參考 27、新聞配圖 8、海報/單張 6）</summary><p class='hint'>搵到嘅 LOGO／海報／單張／宣傳片／真實參考相，每個有原網址 · <a href='https://drive.google.com/drive/folders/1flRdjYr1EFxsAlnDXFZAkG8Xi38jGzFP' target=_blank>📁 GDrive 存檔 folder</a>。<b>剔相後揀：⭐首選＝呢張參考優先過其他；🔁重搜＝搵過好啲（e.g. logo 污糟）；🗑刪除＝搵錯即清。</b></p><div class='vacarou'><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='LOGO_slot1.png'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/logos/slot1.png' loading=lazy></div><div class='vacat'>LOGO</div><div class='vaname'>跨部門反恐專責組</div><div><span class='vasrc' style='color:#bbb'>（無網址）</span> · <a href='https://drive.google.com/file/d/1woLJgfVJ1E_2H7ejXjYh-M4zkNbkMOpy/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='LOGO_slot2.png'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/logos/slot2.png' loading=lazy></div><div class='vacat'>LOGO</div><div class='vaname'>見疑即報</div><div><span class='vasrc' style='color:#bbb'>（無網址）</span> · <a href='https://drive.google.com/file/d/1dFJYM4mEgkDpn-8VtGYfotXEeKIIvU5K/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署職員制服_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_食環署職員制服_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署職員制服</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/05-05-2012-2000.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1YYDz8IDqFjmzsfBSR3AcCV3Mk-d1sHzu/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署職員制服_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_食環署職員制服_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署職員制服</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/31-10-2012-2115.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1IKCHlxK0A4YA3UHACrWvxWeSbAsoIWhZ/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署職員制服_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_食環署職員制服_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署職員制服</div><div><a href='https://www.hk01.com/%E7%A4%BE%E6%9C%83%E6%96%B0%E8%81%9E/915037/%E9%A3%9F%E7%92%B0%E7%BD%B2%E5%B0%8F%E8%B2%A9%E7%AE%A1%E7%90%86%E9%9A%8A%E9%85%8D%E5%82%99%E9%9A%A8%E8%BA%AB%E6%94%9D%E9%8C%84%E6%A9%9F-%E5%B7%A5%E6%9C%83%E6%96%99%E5%A2%9E%E8%AD%A6%E6%83%95%E4%BD%9C%E7%94%A8%E6%B8%9B%E5%9F%B7%E6%B3%95%E8%A1%9D%E7%AA%81' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1Xww02azMTPH82AOOHukJ-1JFHg7RouvI/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_警務人員制服_夏季常服__0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_警務人員制服_夏季常服__0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>警務人員制服 (夏季常服)</div><div><a href='https://zhuanlan.zhihu.com/p/437915665' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1ATaBliZVdxCwm3sFhSPCYKPTcPo5LFBv/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_警務人員制服_夏季常服__1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_警務人員制服_夏季常服__1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>警務人員制服 (夏季常服)</div><div><a href='https://www.instagram.com/p/CSGyBmahx2n/' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1pEaGl4P6qjgUxfMUJXhgDB0yt7N0wX6O/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_警務人員制服_夏季常服__2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_警務人員制服_夏季常服__2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>警務人員制服 (夏季常服)</div><div><a href='https://www.police.gov.hk/museum/qrpage/hk/inner/46/3.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/17GSUsowA_u2JNPHnPzntmMflceGOx7VB/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_消防員制服_滅火服__0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_消防員制服_滅火服__0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>消防員制服 (滅火服)</div><div><a href='https://www.hkfsd.gov.hk/chi/aboutus/gallery/uniform/fire/officer/officer_opp_m.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1-IKJCX83qlnhBn-n81TiWnGZlOT6Reph/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_消防員制服_滅火服__1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_消防員制服_滅火服__1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>消防員制服 (滅火服)</div><div><a href='https://www.hkfsd.gov.hk/chi/aboutus/gallery/uniform/fire/rank/rank_opp.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1QMlWqzUXw0jy9m3TTRLQ0bjOpLiVBBnv/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_消防員制服_滅火服__2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_消防員制服_滅火服__2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>消防員制服 (滅火服)</div><div><a href='https://www.hk01.com/%E7%A4%BE%E6%9C%83%E6%96%B0%E8%81%9E/98366/%E6%B6%88%E9%98%B2%E5%88%B6%E6%9C%8D20%E5%B9%B4%E5%B7%A1%E7%A6%AE-%E9%BB%83%E9%87%91%E6%88%B0%E8%A1%A3-%E7%A2%A7%E5%A3%AB%E5%9C%96-%E6%99%AE%E7%8F%AD%E7%9F%A5%E5%A4%9A%E5%B0%91' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1tR-G91YQuJrNjgeY7cIBazpEsPZXsTmQ/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_救護員制服_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_救護員制服_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>救護員制服</div><div><a href='https://www.hkfsd.gov.hk/chi/aboutus/gallery/uniform/amb/rank/officer_no3_f.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1JMHBAjbJYK4ywPXkhu33ylWk6s1WZjSD/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_救護員制服_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_救護員制服_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>救護員制服</div><div><a href='https://www.hkfsd.gov.hk/chi/aboutus/gallery/uniform/amb/rank/rank_no4_m.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1Xsbsu5fZHH9Dhjel9O0mVMSNgU5eTeAW/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_救護員制服_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_救護員制服_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>救護員制服</div><div><a href='https://www.hkfsd.gov.hk/chi/aboutus/gallery/uniform/amb/rank/officer_no2_f.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1_fOfwnGygLwHIjvjf6xMd8XSqp1mdYyI/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_醫護人員制服_公立醫院__0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_醫護人員制服_公立醫院__0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>醫護人員制服 (公立醫院)</div><div><a href='https://www.igift.hk/%E5%85%AC%E7%AB%8B%E9%86%AB%E9%99%A2%E5%88%B6%E6%9C%8D%E9%A1%8F%E8%89%B2.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1CZG4dOhFoVOVmRtsax0xXFy-S4MuAEC2/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_醫護人員制服_公立醫院__1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_醫護人員制服_公立醫院__1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>醫護人員制服 (公立醫院)</div><div><a href='https://www.igift.hk/%E5%85%AC%E7%AB%8B%E9%86%AB%E9%99%A2%E5%88%B6%E6%9C%8D%E9%A1%8F%E8%89%B2.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1-P-oVmZk9BwHyTXmN6RUXxSkCymQ1O8X/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_醫護人員制服_公立醫院__2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_醫護人員制服_公立醫院__2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>醫護人員制服 (公立醫院)</div><div><a href='https://hk.news.yahoo.com/%E9%86%AB%E7%AE%A1%E5%B1%80%E6%98%8E%E5%B9%B4%E9%80%90%E6%AD%A5%E7%B5%B1-%E5%B7%A5%E4%BD%9C%E6%9C%8D-050552412.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1D_Rib5peHXdFhtwwO5dlBIFzDMEntxB9/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_郵差制服_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_郵差制服_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>郵差制服</div><div><a href='https://www.grs.gov.hk/ws/online/postman/tc/uniform.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1zWMgktLsQb_qxIOMkj6-4tjKsSJUkzEz/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_郵差制服_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_郵差制服_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>郵差制服</div><div><a href='http://keyman7.blogspot.com/2017/01/2017_17.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1ZwhxiROojRw0JePNOg-EJIx7T7gclznQ/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_入境事務處職員制服_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_入境事務處職員制服_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>入境事務處職員制服</div><div><a href='https://www.immd.gov.hk/publications/a_report_2022/tc/chapter1.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1wxwBqg9XIIB47SHkliYMnOsu4ADoMDMy/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_入境事務處職員制服_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_入境事務處職員制服_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>入境事務處職員制服</div><div><a href='https://www.immd.gov.hk/publications/a_report_2022/tc/appendix2.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1WRkyhH_hro6xUE0qZk1fjt6OMQjkRilt/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_海關關員制服_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_海關關員制服_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>海關關員制服</div><div><a href='https://www.customs.gov.hk/hcms/filemanager/common/customs_newsletter/issue_71/tc/article/14/' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1-tlNjFDB2LW8I4ki4b-uS4ecJeqpZSlC/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_海關關員制服_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_海關關員制服_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>海關關員制服</div><div><a href='https://www.customs.gov.hk/tc/about-us/departmental-grades/customs-excise-service/index.html?index.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1RvTENoFqLnZLNZTz7ayv5awq0mJmqlGx/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_海關關員制服_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_海關關員制服_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>海關關員制服</div><div><a href='https://www.customs.gov.hk/hcms/filemanager/common/customs_newsletter/issue_72/tc/article/3/' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1BpdaSYxZfjKIMeOVkpBpt0-DEV3inGpV/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_懲教署職員制服_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_懲教署職員制服_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>懲教署職員制服</div><div><a href='http://paper.wenweipo.com/2017/03/19/YO1703190012.htm' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1Z3pi6lq-yk6DMLP-pN2w0y-ZNyuDZlhE/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_懲教署職員制服_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_懲教署職員制服_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>懲教署職員制服</div><div><a href='https://www.csd.gov.hk/annualreview/2015/htm_tc/Print/04_human.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1OMkPd9z4qV9isiXLwiHwkbmY3ZyZLBR1/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_康文署職員制服_公園管理員__0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_康文署職員制服_公園管理員__0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>康文署職員制服 (公園管理員)</div><div><a href='https://www.voacantonese.com/a/cantonese-ithk-reactions-to-police-warned-not-to-test-enforce-law-on-june-4-anniversary-20220603-ry/6601792.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1QCwEFZPlRsvMFM56Qqc9AyfV8bN6X09m/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_康文署職員制服_公園管理員__1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_康文署職員制服_公園管理員__1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>康文署職員制服 (公園管理員)</div><div><a href='https://www.instagram.com/p/DCQhiy9Bxfm/' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1Ou_8sH1m2z_MNJ_8pUMFXrHH0TixEo9Z/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_康文署職員制服_公園管理員__2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/el_康文署職員制服_公園管理員__2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>康文署職員制服 (公園管理員)</div><div><a href='https://www.tkww.hk/a/202202/20/AP621192c5e4b0b5c7e1e58451.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1JbVoav5ouP_XjGVmTGjWw0QXenr6hkx1/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_91e365cd.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/news_91e365cd.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>頤養院：灣區養老有望成常見退休方式</div><div><a href='https://www.wenweipo.com/epaper/view/newsDetail/2069110783261937664.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1GY1CH9C_0TvymdzR2bbv_0yCcZwFTRKz/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_d93a096d.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/news_d93a096d.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>出海專班廣東首辦大型推廣活動 鼓勵粵</div><div><a href='https://www.info.gov.hk/gia/general/202604/28/P2026042800333.htm' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/17hzdYH3KlYblp0pKdjPFV2eBDiNfLZX9/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_1ee4288c.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/news_1ee4288c.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>香港政府新聞網- 二元優惠計劃下月調</div><div><a href='https://www.news.gov.hk/chi/2026/03/20260323/20260323_103632_636.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1kKMRLjRAdLjuroeHXYKCZAmaLjRd1an5/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_39b60443.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/news_39b60443.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>&quot;川港攜手 融通四海&quot;香港特區政府投</div><div><a href='https://jdonline.com.hk/content_104727.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1AnA0xsRMZCZLuWf1Jo3qpUQamJ-ffE8L/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_e72e6c2c.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/news_e72e6c2c.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>財政預算案｜中小企融資擔保計劃繼續 </div><div><a href='http://www.hkcd.com.hk/hkcdweb/content/2026/02/25/content_8741516.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1Bf1PVKaiayOVfy32hkbiyDYqX7-DgHHR/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_72cbd1b5.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/news_72cbd1b5.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>二元優惠計劃4月3日起調整為「兩蚊兩</div><div><a href='https://news.rthk.hk/rthk/ch/component/k2/1848393-20260323.htm' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1U-UUGKcznyg9LDtiVgjx7tNmv0bAIKfo/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_5fed5328.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/news_5fed5328.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>陳迪源：數碼企業身份——香港數字經濟</div><div><a href='https://www.capital-hk.com/column/BloggerChan_07012026' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1ut1ZjeWHOOXYf9gl3U4tWOnOfuRCjQgq/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_c7f9ebbb.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/news_c7f9ebbb.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>立法會選舉｜專訪：「公務員親身投票是</div><div><a href='https://www.tkww.hk/a/202511/12/AP6913cc71e4b0a55cc6d7214e.html' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/15IIQzaRKqgW5_wDcOp1KafDWodh_S8zS/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_d25f7341.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/poster_d25f7341.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>宣傳及推廣科- 政府新聞處</div><div><a href='https://www.isd.gov.hk/chi/pub.htm' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1vXXxL9j8t1JEkD3plI3oqLBby4Vxkytc/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_422f403e.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/poster_422f403e.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>宣傳及推廣科- 政府新聞處</div><div><a href='https://www.isd.gov.hk/chi/pub.htm' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1aOtBAXi2J-7n0jj8Mx7pcBRVw7TluHbg/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_ac5b91da.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/poster_ac5b91da.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>宣傳及推廣科- 政府新聞處</div><div><a href='https://www.isd.gov.hk/chi/pub.htm' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1N6ez_cpjAiS-_Jog_HvJrTImMejK6sXE/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_225c07c0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/poster_225c07c0.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>宣傳及推廣科- 政府新聞處</div><div><a href='https://www.isd.gov.hk/chi/pub.htm' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1tIWxv8qEKY-ozXFYOkW9LDQG5ArkGajG/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_fe6f89ba.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/poster_fe6f89ba.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>宣傳及推廣科- 政府新聞處</div><div><a href='https://www.isd.gov.hk/chi/pub.htm' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/1A5gtyb0MGlk623IcF0LcQnBZNj_OCvEk/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_224014c4.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/POLICE/grounding/poster_224014c4.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>宣傳及推廣科- 政府新聞處</div><div><a href='https://www.isd.gov.hk/chi/pub.htm' target=_blank class='vasrc'>原網址 ↗</a> · <a href='https://drive.google.com/file/d/16baAGhYdDP07rhifdwUGACQH8rEy1j9D/view' target=_blank class='vasrc'>GDrive</a></div></div></div><div class='acts vaacts' style='margin-top:8px'><button class='btn grn' onclick="preferAssets('POLICE')">⭐ 設首選</button><button class='btn ghost vbtn' onclick="researchAssets('POLICE')">🔁 重搜</button><button class='btn' style='background:var(--red)' onclick="delAssets('POLICE')">🗑 刪除選取</button></div></details><div class='h2 tierh'>🎯 必定餵 AI（諗橋一定收）</div><p class='hint tierhint'>委員會／agency 諗橋一定收呢批做底，必跟。</p><div class='carousel brfcarou'><div class='ccard brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📋 標書撮要</span><span class='rawlink' onclick="showOvl('raw_POLICE')">📄 標書原文</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><p>這是一份針對香港警務處跨部門反恐專責組（ICTU）「見疑即報」設計及電視宣傳短片（TV API）製作項目的標書分析。以下根據標書及相關 ISD 寫稿指引，為你詳細拆解這 8 大核心要點：</p>
+<h5>① 背景同目的</h5>
+<p>*   <strong>客戶背景</strong>：跨部門反恐專責組（ICTU），由六個紀律部隊成員組成 。</p>
+<p>*   <strong>項目目的</strong>：為 ICTU 的標誌性反恐主題「見疑即報」（Spot and Report）重新設計全新形象，並製作電視宣傳短片（TV API）進行公眾宣傳，以提高市民對反恐及「見疑即報」的警覺性與認識 。</p>
+<h5>② 目標受眾</h5>
+<p>*   <strong>大眾市民</strong>：目標為一般社會大眾（members of the public） 。</p>
+<p>*   <strong>無分年齡性別</strong>：標書的評分準則特別強調，設計內容必須清晰，讓所有年齡層及性別的受眾都能輕易理解及產生共鳴 。</p>
+<h5>③ 傳意目標 / 核心訊息</h5>
+<p>*   <strong>核心訊息</strong>：推廣「見疑即報」及「反恐舉報熱線」 。</p>
+<p>*   <strong>預期成效（Expected Outcome）</strong>：透過全新宣傳活動，增加公眾對恐怖主義的防範意識，教導市民在遇到恐怖或暴力事件時應如何應對，並藉此建立市民與執法機構之間更緊密的關係 。</p>
+<h5>④ 影片 / 製作規格（集數、每集長度、語言、字幕、配音）</h5>
+<p>*   <strong>集數</strong>：只須製作 <strong>1 個版本</strong>（One version only） 。</p>
+<p>*   <strong>長度</strong>：30 秒 。</p>
+<p>*   <strong>語言及字幕</strong>：需提供廣東話及英文兩個版本。廣東話版必須配備<strong>繁體中文書面語</strong>字幕；英文版配備英文字幕 。</p>
+<p>*   <strong>配音（VO）</strong>：包含廣東話及英語配音，英文版須盡量以英語表達 。</p>
+<p>*   <strong>ISD 寫稿及排版慣性</strong>：根據政府新聞處（ISD）指引，旁白及對白須用廣東話口語，畫面字幕（Super）必須為書面語；劇本須標明「旁白：(VO)」及「熒幕蓋字：」，長度約為 9-12 句，結尾必須有部門標誌、區徽及行動呼籲（CTA） [9-11]。</p>
+<p>*   <strong>其他製作規格</strong>：建議使用 HDCAM、RED ONE 或同等高清器材拍攝，並需提交檔案格式（XDCAM HD422, MXF）、錄影帶格式（HDCAM），以及額外交出一個符合 W3C 無障礙網頁（WCAG 2.2 Level AA）標準的版本供網上發布 。影片需另外截取 12 張劇照（JPEG） 。</p>
+<h5>⑤ 指定班底（ERB 導師 / KOL / 吉祥物等）</h5>
+<p>標書內<strong>沒有</strong>強制要求使用指定的 ERB 導師、KOL 或既定實體吉祥物，但針對角色與演員有以下明確規定：</p>
+<p>*   <strong>3D 動畫主角</strong>：創意要求中明確指出，需透過創意及靈活運用 3D 動畫來建立「主要角色」（main characters） 。</p>
+<p>*   <strong>名人 / 演員（Celebrity involvement）</strong>：如提議邀請名人或演員參與 TV API，廣告公司（即承辦商）必須全面負責聯絡、藝人合約及版權清理（確保可作全球、永久、跨媒體播放）。此外，所有髮型、化妝、服裝、道具及交通費用，均須由廣告公司自行與藝人協商並包含在項目預算內 。</p>
+<h5>⑥ 創意及策略重點 / 風格要求</h5>
+<p>*   <strong>視覺風格</strong>：官方指定整體設計風格為 <strong>「3D 漫畫」（3D Comics）</strong> 。</p>
+<p>*   <strong>敘事手法</strong>：需透過生動的故事及細節來帶出反恐意識，而非單純說教 。利用 3D 動畫及視覺特效（Visual Effects）吸引觀眾，加深大眾對「見疑即報」的印象 。</p>
+<p>*   <strong>形象要求</strong>：整體設計必須為 ICTU 建立「正面形象」（positive image） 。</p>
+<p>*   <strong>創意加分位（Innovative Suggestions）</strong>：標書設有創新建議加分區，可提出能提升市民參與度、吸引眼球的點子（Type I）；或提出 ESG（環境保護、社會責任或管治）相關建議，例如環保無紙化製作、聘用殘疾/更生人士等（Type II），越多實際可行的方案分數越高 [21-24]。</p>
+<h5>⑧ 任何強制要求或紅線 (Red Lines)</h5>
+<p>*   <strong>嚴禁用 AI 配音</strong>：配音工作必須由真人聲優進行，<strong>絕對不允許使用 AI 生成聲音（AI-generated voices are not permitted）</strong> 。</p>
+<p>*   <strong>TV API 預算封頂（DQ 位）</strong>：電視宣傳短片（Item 2）的製作預算<strong>硬性規定不可超過 HK$250,000</strong>。若報價高於此數，標書將不獲考慮 。</p>
+<p>*   <strong>遞交方式（DQ 位）</strong>：必須採用「雙信封制」（技術建議書 Envelope B 與價格建議書 Envelope A 分開密封，再裝入 Envelope C），且信封表面<strong>絕不能</strong>顯示投標者公司名稱。只接受專人遞交或掛號信，遲交、傳真或電郵遞交一律作廢 [37-40]。</p>
+<p>*   <strong>原創及版權買斷</strong>：提案必須是原創且未售予第三方的意念。一旦中標，絕不能將橋段轉售 。版權屬政府所有，需向政府交出完整源文件（Source files/ aep/ fla/ 分層大 file） [42-44]。</p>
+<p>*   <strong>國安及守法紅線</strong>：嚴禁聘用非法勞工 。如承辦商從事可能構成危害國家安全罪行的行為，政府有權立即中止合約 [46-48]。</p>
+<p>*   <strong>必須出席簡報會</strong>：缺席 2026 年 7 月 8 日的簡報會，已遞交的標書將直接作廢 。</p><div id='raw_POLICE' class='ovl'><div class='ovlbox'><div class='ovlhd'><span>📄 標書原文（逐字）</span><button class='x' onclick="hideOvl('raw_POLICE')">✕</button></div><div class='ovlbody'><p class='hint'>fetch_source（pypdf）抽嘅標書逐字原文 —— 委員會／agency／debrief／5W1H 都餵呢份做 ground-truth。　·　<a href='https://drive.google.com/drive/folders/1ZuchSNAdSmpzHCq6W5B4bNA811llkw5h' target='_blank' style='font-weight:700;color:var(--ac)'>📄 開原始檔 ↗</a></p><pre style='white-space:pre-wrap;font-size:11px;line-height:1.5;background:#fafbfc;border:1px solid var(--line);border-radius:8px;padding:9px;color:#333;margin:0'>===== Invitation to Quotation - Spot and Report Design Service and TV API Production for ICTU (Final Version) - PDF.pdf(Specification 原件)=====
+[p31]
+Ref. (23) in ICTU/GEN/6 -20/1/3 Pt.6 Part IV – Quotation Specifications 
+31 
+ 
+ 
+Part IV – Quotation Specifications 
+ 
+1. Background and Key Message 
+1.1 The Inter-departmental Counter Terrorism Unit (ICTU), which comprises members 
+from six disciplinary forces intends to hire a service (‘Service’) from a professional 
+design company to redesign our signature Counter-Terrorism (CT) theme ‘Spot and 
+Report’ with a new image with  TV API for publicity.  The key message of the design 
+is to enhance the vigilance and awareness of members of the public in better 
+understanding of ‘Spot and Report’ and CT.   
+1.2 Design Service including two parts as follows:  
+(I) Promotion Truck, Advertisement Boards and Digital Advertisement 
+(a) Design Service for Promotion Truck, various size of advertisement boards 
+including billboards, wall stickers, poster, easy stand, etc (Annex D) 
+(b) Design Service for Digital Advertisements including e-banner, screensaver, e-
+display board and digital panel, etc (Annex E) 
+(II) Production of 30 seconds ‘TV Announcements in the Public Interest (API)’ , 
+including both Cantonese and English version  fulfill all requirements of 
+Information Services Department (ISD) (Annex F &amp; G) 
+ 
+2. Specifications for the Service Required 
+2.1      (I) Promotion Truck, Advertisement Boards and Digital Advertisement 
+(a) Design Service for Promotion Truck, various size of advertisement boards 
+including billboards, wall stickers, poster, easy stand, etc (Annex D) 
+Artwork Requirements are specified as follows: 
+i). Colour: CMYK mode 
+ii). Design and file format: The whole artwork must be in illustration and with 
+separate layer, which can be modified in the future. File format must be  in high-
+res and in jpg/TIFF, with minimum 300dpi or above 
+iii). Fonts: Must be created to outline / converted to path (please provide the document 
+of fonts style for further edition) 
+iv). File Size minimum 500MB or above 
+v). Preview file in JPG or PDF format 
+vi). Please provide colour proof for colour reference if necessary 
+vii). The theme of the overall design must project a positive image of ICTU. The key 
+message of the design is to enhance the vigilance and awareness of members of 
+the public understanding a signature CT theme ‘ Spot and Report ’ and other 
+themes as required by ICTU 
+viii). The theme style of artwork: 3D Comics
+[p32]
+Ref. (23) in ICTU/GEN/6 -20/1/3 Pt.6 Part IV – Quotation Specifications 
+32 
+ 
+ 
+2.2 Scope of Work: 
+i). The Contractor is required to design and produce various sets of ‘Spot and Report’ 
+stories for ICTU.  Once these stories are confirmed, the Contractor is required to 
+provide services for amendments (unlimited times). 
+ii). The Contractor is required to design with the following specifications (Width x 
+High) under paragraph (2.2) (ii).  Details please see (Annex D). 
+(a) Wide Wall Sticker inside Tsim Sha Tsui MTR Station:  
+1943cm (W) x 195cm (H) 
+(b) Sticker of Promotion Truck: Interior and Outer (Actual Size to be confirmed) 
+(c) 2 Styles of Posters (size: A3 / A4) 
+(d) 2 Styles of Easy Stand: 80cm (W) x 200cm (H) 
+(e) Outer Wall Sticker of Central Police Station: 43m(W) x 33m(H) 
+(f) Standard Banner (for LCSD venue): 300cm (W) x 100cm(H) 
+(g) Large Billboard besides Mandarin Oriental Hong Kong:  
+1080cm (W) x 300cm (H) 
+(h) 5 Styles of Billboards at Subway of Chater Garden:  
+Design (1)-(4): 825mm (W) x 326mm (H) 
+Design (5): 1000mm (W) x 350mm (H) 
+ 
+2.3         (I) Promotion Truck, Advertisement Boards and Digital Advertisement 
+(b) Design Service for Digital Advertisements including e -banner, 
+screensaver, e-display board and digital panel, etc (Annex E) 
+Digital Requirements are specified as follows: 
+i). Colour: RGB mode 
+ii). Design and file format: The whole artwork must be in after effect/animation 
+and with separate layer, which can be modified in the future. File format 
+must be in 4K and in aep/fla format, with minimum 300dpi or above  
+iii). Preview file in MP4 format 
+iv). The theme of the overall design must project a positive image of ICTU. The 
+key message of the design is to enhance the vigilance and awareness of 
+members of the public understanding a signature CT theme ‘ Spot and 
+Report’ and other themes as required by ICTU 
+v). The theme style of artwork: 3D Comics 
+ 
+ 
+2.4 Scope of Work: 
+i). The Contractor is required to design with the following specifications 
+(Width x High) under paragraph (2.4) (i).  Details please see (Annex E).
+[p33]
+Ref. (23) in ICTU/GEN/6 -20/1/3 Pt.6 Part IV – Quotation Specifications 
+33 
+ 
+ 
+(a) 2 Styles of e-banner: 1024(W) x 200(H) px 
+(b) 2 Styles of screensaver: 1024(W) x 768(H) px 
+(c) 2 Styles of e-display Board: 1920(H) x 1080(W) px 
+(d) 2 Styles of Digital Board at Police Officers’ Club (POC) and  
+Mong Kok Police Station: 1920(H) x 1080(W) px 
+(e) Digital Panel (30 seconds Animation) for MTR Advertisement: 
+5440(W) x 1440(H) px 
+ 
+2.5      (II) Production of 30 seconds ‘TV Announcements in the Public Interest (API)’, 
+including both Cantonese and English version with the following 
+specifications under paragraph (2.5) -(2.9).  Details please see (Annex F &amp; 
+G). 
+            
+           Deliverables (TV API) 
+ 
+i). One version only 
+ii). Shooting format: HDCAM, RED ONE or equivalent is preferred. High-definition 
+Video (HDV) formats and still camera shooting may be considered depending on 
+the creative. 
+iii). Output:  
+(1) File-based format : 16:9 (HD) in XDCAM HD422 at 50Mbps in MXF  
+(2) Video-tape format: 16:9 (HD) in HD CAM 
+iv). Duration: 30 seconds each 
+v). Language: Cantonese (with written Traditional Chinese sub titles 繁體中文書面
+語) and English (with English subtitles) 
+vi). Background music: tailor-made / post-scored music is preferred 
+vii). Soft and hard copies of the scripts 
+viii). Soft and hard copies of the storyboard (together with draft scripts and description 
+of visuals in both Chinese and English) 
+ix). Copies required: Please refer to (Annex F) 
+x). Twelve still pictures from the footage of the completed TV API in JPEG format 
+for each language version 
+xi). Essential information in the visuals of the TV API, such as website address, 
+telephone number or e-mail address, is required to be accompanied by voice-over 
+script as appropriate. 
+xii). “Contractor is required to provide another version of the TV API which conforms 
+to the World Wide Web Consortium (W3C) Web Content Accessibility 
+Guidelines (WCAG) 2.2 Level AA standard for posting on the Internet. For 
+details, please visit the websites: http://www.webforall.gov.hk and
+[p34]
+Ref. (23) in ICTU/GEN/6 -20/1/3 Pt.6 Part IV – Quotation Specifications 
+34 
+ 
+ 
+https://www.w3.org/WAI/WCAG22/quickref/#time-based-media ” 
+xiii). For details, please visit the Web Accessibility Theme Page under ITG InfoStation 
+(https://itginfo.ccgo.hksarg/content/accessibility/index.htm). For enquiries, 
+please contact the Digital Accessibility Support Team of the Digital Policy Office 
+(Tel: 3974 6026, Email: wac@digitalpolicy.gov.hk) 
+ 
+2.6 Service Required (TV API): 
+The Contractor is required to provide the following services, materials and 
+professionals for the production of the TV and radio APIs: 
+i). Creative and copywriting services/materials for providing the creative concept, 
+scripts, slogans, storyboards, subtitles and graphic and photographic 
+images/materials; The creative proposal should be the contractor&#x27;s original 
+idea and must not have been purchas ed by other parties beforehand.  If the 
+contractor’s creative proposal is accepted in this quotation exercise, the 
+awarded contractor should not re-sell the idea to other parties. 
+ii). Full crew and equipment for location shooting both outdoor and indoor in Hon g 
+Kong (including transportation); 
+iii). Off-line and on-line editing; 
+iv). Cantonese and English voice-over talents for the conversations/narrations for the 
+TV API. The voice -over/ conversations/ narrations of the English TV version 
+should be delivered in English as  far as possible.  All voice-over work must be 
+conducted by human talents; AI-generated voices are not permitted; 
+v). The Contractor should be responsible for musical arrangement of the APIs (tailor-
+made / post -scored music is preferred), clearance of all copyright issues and 
+obtain necessary licences at its own cost and expense for broadcasting anywhere 
+within and outside Hong Kong, any occasion and any usage using any media, 
+including, but not limited to, radio channels, TV, video walls, the Internet and 
+multi-media advertisements on public transport, and at seminars, exhibitions and 
+other public functions/activities, and for production of VCDs/DVDs/CD -ROMs 
+and other publicity materials by the Government for non-profit making purpose; 
+vi). Worldwide and perpetu al copyright of the APIs, VCDs/DVDs/CD -ROMs and 
+other publicity materials produced shall belong to the Government; 
+vii). Audio recording and sound mixing; 
+viii). All post-production services; 
+ix). Subtitles in written Traditional Chinese subtitles 繁 體 中 文 書 面 語 for the 
+Cantonese version and in English for the English version for the TV API; 
+x). Delivery of the TV to local TV, i.e. TVB, iCABLE HOY TV, PCCW Media (Now 
+TV), HKTVE (V iu TV), RTHK TV, under the instruction  of the ISD .  The 
+Contractor is also responsible for any station copy fees charged by the aforesaid 
+TV stations.
+[p35]
+Ref. (23) in ICTU/GEN/6 -20/1/3 Pt.6 Part IV – Quotation Specifications 
+35 
+ 
+ 
+2.7 Celebrity involvement (TV API): 
+If a celebrity/celebrities will take part in the TV API(s), the Contractor should be 
+responsible for lining up of celebrities and talents and clearance of performers’ rights 
+to enable the API(s) to be broadcast anywhere within and outside Hong Kong, any 
+occasion and any usage using any media, including, but not limited to, radio channels, 
+TV, video walls, the Internet and multi-media advertisements on public transport, and 
+at seminars, exhibitions and other public functions/activities, and for production of 
+VCDs/DVDs/CD-ROMs and other publicity materials by the Government for non -
+profit making purpose; handling arrangements for filming and audio recording for 
+celebrities and talen ts and absorbing under this project the hair -styling, make -up, 
+costume, equipment/props and transportation/traveling fees incurred, the level of such 
+fees should be negotiated between the Contractor and the celebrities/talents. 
+ 
+2.8 Supervision (TV API): 
+The Contractor will be supervised by ICTU and ISD. In the course of production, the 
+contractor should cooperate with ICTU and ISD, and shall comply with all reasonable 
+instructions of ICTU and ISD.  ICTU  and ISD reserves the right to amend the 
+storyboards, scripts, slogans, subtitles and rough cuts if necessary. 
+ 
+2.9 Budget (TV API): 
+Our estimate for the cost inclusive of agency fee for the production of the TV API is 
+HK$250,000. Quotations above HK$ 250,000 will not be considered.  Payment will 
+be made upon satisfactory completion of the required services and delivery of all 
+deliverables and submission of the fully completed “Information on Music Copyright 
+Form” and receipt by Government of the Contractor’s original invoice. 
+ 
+3. Launch Date 
+3.1 The new ‘Spot and Report’ theme core design work should be completed on or before 
+2026-09-11 as blueprint of remaining design. 
+3.2 The design of ‘Promotion Truck ’ (including interior and outer  parts), ‘Poster’  and 
+‘EasyStand’ should be completed on or before 2026-09-18. 
+3.3 The TV API should be completed on or before 2026-12-15. 
+3.4 All design of ‘Digital Advertisements’ should be completed on or before 2027-01-08. 
+3.5 The design of ‘Wide Wall Sticker’ Advertisement inside Tsim Sha Tsui MTR Station 
+should be completed on or before 2027-01-15. 
+3.6 All remaining design services under the Contract should be completed on or before 
+2027-02-05.
+[p36]
+Ref. (23) in ICTU/GEN/6 -20/1/3 Pt.6 Part IV – Quotation Specifications 
+36 
+ 
+ 
+4. Expected Outcome 
+4.1 Through the new theme campaign , the key message of the design is to increase the 
+public awareness towards ‘Terrorism’, ‘Spot and Report’ and ‘CT Reporting Hotline’, 
+also know what to do in the event of a terrorist or violent incident as well as to build 
+a closer relationship between citizens and law enforcement agencies. 
+ 
+5. Proven Experience 
+5.1 The profile of the bidder, Project Manager, Programming Engineer and Designer shall 
+be provided in the submission of quotation documents. 
+ 
+6. Supervision 
+6.1 The Contractor shall be supervised by ICTU.   The Contractor shall fully cooperate 
+with ICTU and comply with all instructions and requests for the design and production 
+services from ICTU throughout the Service Period.  All the design of the publicity 
+truck shall seek confirmation from ICTU.   The Contractor shall arrange a designated 
+contact person to be the contact point between the Contractor and the HKP. 
+ 
+7. Copyright 
+7.1 The ownership, copyright and all other intellectual property rights in all deliverables, 
+all copies, footages, shooting segments, editing leftover and negatives thereof, plans, 
+models (computer models or otherwise), sketches, drawings, computer software, 
+manuals, or other particulars or things prepared by the Contractor/Sub -contractors or 
+received by the Contractor/Sub-contractors in the course of the services shall be vested 
+in and belong to ICTU of HKP. 
+7.2 The contractor shall ensure that no intellectual rights of any third party have been or 
+will be infringed as a result of execution of the project and shall indemnify ICTU 
+against any claims for breach of intellectual property rights. 
+7.3 A complete set of source files, including but not limited to graphic designs and layouts, 
+and other related projects files and materials shall be provided to ICTU’s further 
+adaptations on any platform, not limited to that of ICTU or HKP, in the future. 
+ 
+8. Management of the Services Provided 
+8.1 The progress of work regarding the provision of services will be overseen by ICTU.  
+During the term of the contract, the Contractor is required to coop erate and work 
+closely with ICTU and/or other designates to ensure smooth delivery of the package. 
+The Contractor need to comply with all reasonable instructions of ICTU. 
+8.2 ICTU reserves the rights to amend and revise the proposed plan whenever necessary.
+[p37]
+Ref. (23) in ICTU/GEN/6 -20/1/3 Pt.6 Part IV – Quotation Specifications 
+37 
+ 
+ 
+9. Other Remarks 
+9.1 The potential service provider is required to attend a mandatory presentation session on 
+2026-07-08 (Wednesday) at Inter -departmental Counter -Terrorism Unit, Police 
+Headquarters, 1 Arsenal Street, Wan Chai, Hong Kong to explain their content in the 
+technical proposal and present the innovative suggestions to the selection committee.  
+9.2 The presentation session is only a platform for the potential service providers to further 
+elaborate their submitted documents or context and enables the selection committee 
+to clarify any ambiguities.  No additional quotation document should be submitted nor 
+will be accepted by the selection committee.  Failure to attend the presentation session 
+will render the previously submitted written proposal (technical proposal and price 
+proposal) by the potential service providers invalid .  Each potential service provider 
+will only be allocated 25 minutes for the presentation session and will be informed of 
+the exact time by the responsible ICTU project officer. 
+ 
+ 
+- END -</pre></div></div></div></div></div><div class='ccard brfcard'><div class='chead'><span class='ctitle' style='padding:0'>⚠️ 製作要求</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><p class='hint'>每個概念必跟，違 = 廢稿。</p><div class='preqs'><div class='prow'><span class='pl'>🤟 手語</span><span class='pv pvoff'>❌ 唔使</span><span class='pp' title='Language: Cantonese (with written Traditional Chinese subtit'>p33</span></div><div class='prow'><span class='pl'>♿ W3C影片</span><span class='pv pvon'>✅ 要</span><span class='pp' title='Contractor is required to provide another version of the TV '>p156</span></div><div class='prow'><span class='pl'>⭐ 明星/名人/官員</span><span class='pv pvoff'>無Preference</span><span class='pp' title='If a celebrity/celebrities will take part in the TV API(s), '>p162</span></div><div class='prow'><span class='pl'>🧸 Mascot</span><span class='pv pvon'>Preferred</span><span class='pp' title='3D animation is used creatively and flexibly to establish ma'>p14</span></div><div class='prow'><span class='pl'>🎬 動畫</span><span class='pv pvon'>Prefer 3D</span><span class='pp' title='3D animation is used creatively and flexibly to establish ma'>p14</span></div></div><div class='h3' style='margin-top:11px'>⛔ 注意 / 紅線</div><div class='timeline'><div class='tlrow'><span class='tllabel'>[無障礙] <b>必須提供無障礙版本</b>：須提供符合 W3C WCAG 2.2 Level AA 標準的 TV API 版本供網上發布。</span></div><div class='tlrow'><span class='tllabel'>[無障礙] <b>指定字幕規格</b>：廣東話版必須配備繁體中文書面語字幕；英文版須配備英文字幕。</span></div><div class='tlrow'><span class='tllabel'>[明星] <b>明星或藝人參與條款</b>：如邀請明星參與，承辦商須全包聯絡、處理全球永久跨媒體版權清理，並承擔化妝、服裝及交通等費用。</span></div><div class='tlrow'><span class='tllabel'>[3D] <b>指定 3D 漫畫風格與角色</b>：整體視覺風格指定為「3D Comics」(3D 漫畫)，並須靈活運用 3D 動畫建立主要角色 (main characters)。</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>嚴禁使用 AI 配音</b>：所有配音工作必須由真人聲優 (human talents) 進行，絕對不允許使用 AI 生成聲音。</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>預算上限紅線 (DQ位)</b>：TV API 製作報價硬性規定不可超過 HK$250,000，否則標書將不獲考慮。</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>原創及版權買斷</b>：創作意念必須原創且未曾售予第三方，中標後不可將橋段轉售；版權全歸政府所有。</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>必須出席簡報會 (DQ位)</b>：潛在供應商必須出席 2026 年 7 月 8 日的簡報會，缺席會導致標書作廢。</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>正面形象要求</b>：所有設計內容必須為跨部門反恐專責組 (ICTU) 建立正面形象。</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>指定影片交付格式</b>：影片只須製作一個版本 (30秒)，並須提交 XDCAM HD422 (MXF) 及 HDCAM 格式檔案。</span></div></div></div></div><div class='ccard brfcard'><div class='chead'><span class='ctitle' style='padding:0'>⚡ 創意亮點</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ Gemini Flash＋Search</span></div><div class='cbody'><h4>⚡ 創意亮點 — POLICE·POLICE（research 掘出嚟，可以做橋嘅真嘢）</h4>
+<p>1. 🏷️ <strong>官方放大鏡標誌</strong></p>
+<p>   - 事實：官方 Logo 以紅、黑、白為主色，設計核心是一個放大鏡圖像聚焦於可疑人物。（出處：官方來源 正名）</p>
+<p>   - 💡 可以點做橋：可以將「放大鏡」實體化，變成 3D 漫畫平民主角專屬的「看透隱藏細節」超能力或雷達裝備。</p>
+<p>2. 🏷️ <strong>六大紀律部隊集結</strong></p>
+<p>   - 事實：跨部門反恐專責組 (ICTU) 實際上由警務處、海關、入境處、懲教署、消防處及飛行服務隊共 6 個部隊組成。（出處：研究 Research Brief）</p>
+<p>   - 💡 可以點做橋：影片結尾可以安排六款不同制服的人員以「復仇者聯盟」美漫風格同框登場，作為平民主角的最強後盾。</p>
+<p>3. 🏷️ <strong>反恐賞金機制</strong></p>
+<p>   - 事實：官方推廣包含「反恐賞金」(CT Reward) 制度，如提供的線索對偵查罪案有關鍵協助可獲發賞金。（出處：研究 Research Brief / Annex D 草圖）</p>
+<p>   - 💡 可以點做橋：可以將「見疑即報」包裝成動漫世界中「賞金獵人」接任務、賺金幣解鎖成就的破格設定。</p>
+<p>4. 🏷️ <strong>中區警署巨型牆身</strong></p>
+<p>   - 事實：標書強制交付物包括一幅面積達 43 米闊、33 米高的中區警署外牆巨型貼紙廣告。（出處：Invitation to Quotation - Part IV）</p>
+<p>   - 💡 可以點做橋：可以利用這幅巨牆設計 3D 錯覺大畫 (Trompe-l&#x27;œil)，畫出一個巨大漫畫角色「破牆而出」俯瞰街道尋找線索。</p>
+<p>5. 💡 <strong>的士司機破案實錄</strong></p>
+<p>   - 事實：真實案例中，曾有的士司機透過舉報可疑乘客，成功協助警方拘捕販毒人士，證明舉報機制能打擊一般嚴重罪案。（出處：研究 Research Brief）</p>
+<p>   - 💡 可以點做橋：可以選用的士司機作第一身視角，將日常載客遇到的古怪客變成懸疑漫畫主線。</p>
+<p>6. 💡 <strong>5000名隱形神探</strong></p>
+<p>   - 事實：截至2023年中，反恐熱線已收到超過 20,000 個舉報訊息，背後涉及超過 5,000 名真實的報料人。（出處：研究 Research Brief）</p>
+<p>   - 💡 可以點做橋：可以用「全港已有5000名隱藏神探」為號召，邀請觀眾撳手機成為第 5001 個社區英雄。</p>
+<p>7. 🇭🇰 <strong>洗走「篤灰」負面觀感</strong></p>
+<p>   - 事實：香港社會對「舉報」一詞容易聯想到「篤灰」，產生心理抗拒，市民傾向「多一事不如少一事」。（出處：研究 Research Brief）</p>
+<p>   - 💡 可以點做橋：橋段絕口不提宏大政治，純粹將主角描寫為幫街坊趕走危險品、守護自身社區「小確幸」的日常英雄。</p>
+<p>8. 🏷️ <strong>指尖上的 SMS 大絕</strong></p>
+<p>   - 事實：除了緊急的 999，宣傳焦點落在利用短訊 (SMS) 63-666-999 及微信小程式作非緊急舉報。（出處：研究 Research Brief / Annex D 草圖）</p>
+<p>   - 💡 可以點做橋：畫面可以將「撳手機 Send 短訊」這個平淡動作，用 3D 特效誇張化成發射動漫光波大絕。</p>
+<p>9. 🎯 <strong>Hidden Agenda（政府點解而家做）</strong></p>
+<p>   - 事實：這條宣傳片背後的隱藏議程，是政府希望在經濟下行和社會對福利開支有疑慮的背景下，<strong>積極重塑其「為民服務」的形象，並強化香港在國家發展中的獨特角色</strong>。透過宣傳如「頤養院」和「出海專班」等政策，政府試圖<strong>軟性地推動市民接受與內地更緊密的融合，並將此包裝成香港發展的機遇</strong>。同時，針對「二元優惠計劃」的調整，政府則希望<strong>回應社會對公共財政可持續性的關注，並在調整福利的同時，透過宣傳強調其對弱勢社群的持續照顧</strong>，以維持社會穩定和政府的管治認受性。</p>
+<p>   - 💡 可以點做橋：可以將呢個深層目的織入概念，令片唔止講程序，更打中政府想傳達嘅 message。</p></div></div><div class='ccard brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📊 研究（深入＋Web 整合）</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ gemini-2.5-flash</span></div><div class='cbody'><p>好的，這是一份整合後的乾淨研究報告：</p>
+<p>---</p>
+<h4>香港警務處跨部門反恐專責組「見疑即報」宣傳片策略研究</h4>
+<h5>議題背景</h5>
+<p>*   <strong>客戶背景</strong>：跨部門反恐專責組（ICTU）於 2018 年成立，由六個紀律部隊組成，職能包括監察恐怖主義趨勢、跨部門情報協調、演習訓練及公眾教育。「見疑即報」屬其公眾教育主題之一，反恐舉報熱線 63-666-999 於 2022 年推出。(來源：zh.wikipedia.org)</p>
+<p>*   <strong>政策脈絡</strong>：</p>
+<p>    *   政府現時的「POLICE」題材，核心涵蓋「安全城市 + 防騙 + 國安 + 科技執法」。</p>
+<p>    *   《2025年施政報告》將「維護國家安全」列入「一國兩制」及治理體系重點，並提出成立「AI 效能提升組」，推動政府部門利用 AI 提升效率，警務宣傳可與「智慧政府 / 智慧警政」連結。(來源：policyaddress.gov.hk)</p>
+<p>*   <strong>反恐傳播重點轉向</strong>：近年反恐傳播重點已由「襲擊應對」（如「閃、避、求」）轉向「早期發現」，「見疑即報」更側重事前識別、舉報及建立公眾警覺。(來源：zh.wikipedia.org)</p>
+<p>*   <strong>本地反恐演習趨勢</strong>：2024-2025 年公開資料顯示，「先驅」（青衣城）、「慧光」（啟德體育園）、「勇光」（啟德郵輪碼頭）等跨部門反恐演習，場景集中於大型商場、體育園、口岸／郵輪碼頭等人流密集公共空間。(來源：zh.wikipedia.org)</p>
+<p>*   <strong>全球風險語境複雜化</strong>：Global Terrorism Index 近年重點包括 lone actor、網上激化、青年涉案、低技術襲擊等，公眾宣傳不再只關注「炸彈」，而是更廣泛的可疑行為、網上內容及社群早期訊號。(來源：theguardian.com)</p>
+<p>*   <strong>海外「報告可疑」與「易用通報渠道」結合</strong>：英國 BTP 61016 短訊服務於 2023 年迎來十周年，累計超過 668,000 條公眾短訊；2025 年新版「See it. Say it. Sorted」再放大 61016 號碼及具體可疑例子。(來源：btp.police.uk, gov.uk)</p>
+<h5>關鍵事實與數據</h5>
+<p>*   <strong>最新官方罪案比較（2026年1月至3月 vs 2025年1月至3月）</strong>：</p>
+<p>    *   整體罪案：20,490 宗，按年少 266 宗，跌 1.3%。</p>
+<p>    *   暴力罪案：1,966 宗，按年跌 6.2%。</p>
+<p>    *   詐騙：9,427 宗，按年微跌 0.6%，佔整體罪案約 46%，為最大壓力點。</p>
+<p>    *   爆竊：167 宗，按年跌 39.1%。</p>
+<p>    *   傷人及嚴重毆打：808 宗，按年升 6.7%。</p>
+<p>*   <strong>青少年罪犯數據</strong>：</p>
+<p>    *   10至15歲少年罪犯：302 人，按年升 13.5%。</p>
+<p>    *   16至20歲青年罪犯：451 人，按年升 27.0%。青少年法治 / 防罪教育可成為宣傳片支線。</p>
+<p>*   <strong>AI deepfake 風險</strong>：2024年香港有跨國公司職員被 deepfake 視像會議騙走約 2億港元，警方列作以欺騙手段取得財產案，由網罪部門跟進。(來源：theguardian.com)</p>
+<p>*   <strong>警方防騙工具產品化</strong>：警務處「守網者」下的 Scameter / 防騙視伏器，可查電話、電郵、網址、付款戶口等；新版加入 AI 分析、用戶舉報、即時風險提示及熱門騙案排名。(來源：cyberdefender.hk)</p>
+<h5>相關官員與單位</h5>
+<p>*   <strong>行政長官</strong>：李家超 (施政報告及整體安全治理方向代表)</p>
+<p>*   <strong>保安局局長</strong>：鄧炳強, GBS, PDSM, JP (2021年6月至今；1987年加入警隊，2019年任警務處處長) (來源：gov.hk)</p>
+<p>*   <strong>警務處處長</strong>：周一鳴 (1995年加入警隊，2025年4月獲任命；背景包括刑事調查、情報、國際刑警經驗)</p>
+<p>*   <strong>警務處副處長（行動）</strong>：葉雲龍 (2025年4月獲委任)</p>
+<p>*   <strong>警務處副處長（管理）</strong>：陳俊燊</p>
+<p>*   <strong>警務處副處長（國家安全）</strong>：簡啟恩 (負責警務處維護國家安全部門)</p>
+<p>*   <strong>警務處助理處長（公共關係）</strong>：陳思達 (宣傳、傳訊、警民關係相關)</p>
+<p>*   <strong>相關單位</strong>：香港警務處、保安局、反詐騙協調中心、網絡安全及科技罪案調查科、商業罪案調查科、公共關係部。</p>
+<h5>受眾關注點與社會 Sentiment</h5>
+<p>*   <strong>市民最切身關注</strong>：騙案「日日都有」，長者 / 家庭 / 打工仔怕中招。宣傳片應落實到生活場景，例如 WhatsApp、網購、求職、投資、假冒客服、假冒親友。</p>
+<p>*   <strong>年輕人關注</strong>：網絡帳戶被盜、裸聊勒索、求職騙案、網購騙案；數據顯示青年被捕人數首季升幅明顯。</p>
+<p>*   <strong>商界關注</strong>：AI deepfake、商業電郵詐騙、跨境匯款風險；可作警示「一個 click / 一個 call 都可以令公司損失巨大」。</p>
+<p>*   <strong>對科技執法 Sentiment</strong>：兩極化。市民一方面希望警方快速破案、防騙、防暴力；另一方面關注私隱、監控、資料保存、誤標風險。Scameter 官方已特別說明資料來源及私隱安排，宣傳片可主動交代「工具幫你判斷風險，不取代個人核實」。(來源：cyberdefender.hk)</p>
+<p>*   <strong>警隊形象</strong>：仍受 2019 年後社會記憶影響，宣傳片不宜只講權威；更有效是講「守護日常」「可求助」「市民與警隊一同防罪」。</p>
+<h5>近期宣傳與競品掃描</h5>
+<p>*   <strong>ICTU「安全社區體驗館」（2023）</strong>：實體體驗館，將反恐／公共安全由抽象議題變成可參觀、可學習的體驗式教育。偏線下、參觀式，未必能即時轉化為大眾媒體的 30 秒記憶點。(來源：zh.wikipedia.org)</p>
+<p>*   <strong>ICTU / 警方「閃、避、求」（持續使用）</strong>：清晰三步驟，直接教市民遇襲時如何應對。功能性指示強，但已是常見「三字訣」公共安全傳播；若再只做步驟口訣，差異化有限。(來源：zh.wikipedia.org)</p>
+<p>*   <strong>香港警務處 HKSOS（2024-2025）</strong>：利用 App、定位、山野活動、越野跑等方式，將「求助」變成具體工具使用；2025 年一周年報道指成功救援 135 名市民、下載約 12 萬。成功之處在於「市民有一個明確工具可以用」，而不只是呼籲小心。(來源：zh.wikipedia.org)</p>
+<p>*   <strong>新界北防罪聯盟 / Project HERO（2023-2024）</strong>：夥拍企業、學界、社區網絡散播防騙資訊；以「全民防罪」及「你我都可以是 Hero」將防罪責任社區化。香港政府安全類宣傳近年常用「全民參與」「你都有角色」語氣；反恐若同樣講法，容易與防騙、防罪訊息調性重疊。(來源：zh.wikipedia.org)</p>
+<p>*   <strong>英國 BTP「See it. Say it. Sorted」（2025 refresh）</strong>：多年鐵路安全耳蟲，2025 年首次大更新；新海報／廣播將 61016 號碼放得更清楚，並明示 unattended bag、有人進入不應進入區域等例子。官方指 61016 年報告量增至 255,088，較 2016 campaign launch 後增逾八倍。可借鑑之處在於「可疑例子 + 低摩擦通報渠道 + 重複曝光」。(來源：gov.uk)</p>
+<p>*   <strong>英國 BTP 61016 十周年（2023）</strong>：強調 discrete reporting，即搭車時可改用 SMS 而非打電話；列出實際破案／救援例子。公眾不一定是「不想報」，而是怕尷尬、怕麻煩、怕即場講不方便；渠道設計是傳播一部分。(來源：btp.police.uk)</p>
+<p>*   <strong>新加坡 SGSecure「What’s Your Role?」（2023 起）</strong>：將國民分成多個社會角色，包括 lookout、guardian、lifesaver、uniter、fact-checker 等；反恐連結急救、fake news、社會凝聚。不只講「見到可疑就報」，而是擴闊成「每個人有不同安全角色」。(來源：en.wikipedia.org)</p>
+<p>*   <strong>澳洲 / Five Eyes 青年激化警示（2024）</strong>：安全機構與傳媒聚焦青少年網上激化、gaming / messaging platform、家長老師醫護早期識別。近年反恐教育開始由公共空間可疑物件，擴展到 online radicalisation 及身邊人行為變化。(來源：theguardian.com)</p>
+<h5>差異化空白（機會點）</h5>
+<p>*   <strong>「如何判斷可疑」仍是空白</strong>：現有宣傳多強調警覺、舉報，但較少逐層拆解「可疑」與「正常」之間的灰色地帶。</p>
+<p>*   <strong>「報錯如何處理」講得少</strong>：市民最大心理阻力可能是怕小題大做、怕麻煩；同類宣傳較少正面處理這種猶豫。</p>
+<p>*   <strong>「日常非英雄角色」未被充分使用</strong>：海外 SGSecure 會拆分角色；香港同類安全宣傳仍多用大眾籠統身份，少聚焦保安員、清潔工、車站職員、商場店員、學生、家長等日常觀察者。</p>
+<p>*   <strong>「線上可疑訊號」本地反恐宣傳相對少見</strong>：近年海外討論增多青年網上激化、平台內容、身邊人行為轉變；香港「見疑即報」仍容易被理解為街上可疑物件。</p>
+<p>*   <strong>「跨部門」本身未被轉化成市民可理解價值</strong>：ICTU 六部門協作是硬事實，但大眾未必知道與自己有何關係；現有公開材料多是組織／演習層面，少見從市民生活場景理解六部門如何接力。</p>
+<p>*   <strong>「低摩擦報告」可被講得更具體</strong>：英國 BTP 成功之處在於 61016 可 discreet text；香港熱線、短訊、微信等渠道若只在結尾出現，未必解除「如何報、報什麼、何時報」的不確定感。</p>
+<h5>香港角色</h5>
+<p>*   <strong>國際樞紐與風險節點</strong>：香港作為國際金融中心、貿易中心、航空樞紐，資金流、人流、數據流密集，因此也是跨境騙案、洗黑錢、網絡罪案的高風險節點。施政報告亦將國際金融、貿易、航運、航空中心定位列為核心優勢。(來源：policyaddress.gov.hk)</p>
+<p>*   <strong>城市風險管理者</strong>：香港警隊的角色不只是「拉人」，更是城市風險管理者，涵蓋前線巡邏、重大活動保安、國安執法、跨境情報、防騙教育、網絡風險提示。</p>
+<p>*   <strong>對外敘事定位</strong>：香港要保持「安全、穩定、可信」才能支撐金融、旅遊、盛事經濟及國際商業。</p>
+<p>*   <strong>對內敘事定位</strong>：警察不是離市民很遠的符號，而是每日處理報案、救急、防騙、保護家庭財產的公共服務。</p>
+<p>---</p></div></div><div class='ccard brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🛡️ 官方正名 / 用字</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ Gemini Flash＋Search</span></div><div class='cbody'><p>以下以官方網站／官方機構網站核實。創作稿建議統一用以下寫法。</p>
+<p><strong>1. 部門／辦事處正名</strong></p>
+<p>- 跨部門反恐專責組（專責組）／Inter-departmental Counter Terrorism Unit (ICTU)  </p>
+<p>  網址：https://www.ictu.gov.hk/  </p>
+<p>  備註：2018年4月成立，由六個紀律部隊成員組成；英文不要寫成 “Interdepartmental” 或 “Counter-terrorism Unit”。來源：ICTU「認識我們」列明中英文及成立背景。([ictu.gov.hk](https://www.ictu.gov.hk/tc/about-us/)) ([ictu.gov.hk](https://www.ictu.gov.hk/en/about-us/))</p>
+<p>- 保安局／Security Bureau  </p>
+<p>  網址：https://www.sb.gov.hk/  </p>
+<p>  備註：ICTU 是「於保安局協調下」成立，不宜寫成警務處轄下單位。([ictu.gov.hk](https://www.ictu.gov.hk/tc/about-us/))</p>
+<p>- 警務處／Hong Kong Police Force (HKPF)  </p>
+<p>  網址：https://www.police.gov.hk/  </p>
+<p>  備註：官方網站頁首用「香港警務處／Hong Kong Police Force」；ICTU 成員列表用「警務處」。([police.gov.hk](https://www.police.gov.hk/ppp_tc/index.html)) ([police.gov.hk](https://www.police.gov.hk/ppp_en/index.html))</p>
+<p>- 香港海關／Customs and Excise Department (C&amp;ED)；懲教署／Correctional Services Department (CSD)；消防處／Fire Services Department (FSD)；政府飛行服務隊／Government Flying Service (GFS)；入境事務處／Immigration Department (ImmD)  </p>
+<p>  備註：以上為 ICTU 六個成員部門官方寫法。([ictu.gov.hk](https://www.ictu.gov.hk/tc/about-us/)) ([ictu.gov.hk](https://www.ictu.gov.hk/en/about-us/))</p>
+<p>- 政府新聞處／Information Services Department (ISD)  </p>
+<p>  網址：https://www.isd.gov.hk/  </p>
+<p>  備註：標書提及 TV API 須符合 ISD 要求；ICTU 亦指「閃、避、求」政府宣傳片與 ISD 合作製作。([isd.gov.hk](https://www.isd.gov.hk/)) ([ictu.gov.hk](https://www.ictu.gov.hk/tc/about-us/))</p>
+<p>- 康樂及文化事務署／Leisure and Cultural Services Department (LCSD)  </p>
+<p>  網址：https://www.lcsd.gov.hk/  </p>
+<p>  備註：LCSD venue 中文應寫「康文署場地」或「康樂及文化事務署場地」。([lcsd.gov.hk](https://www.lcsd.gov.hk/))</p>
+<p><strong>2. 計劃／政策／程序正名</strong></p>
+<p>- 「見疑即報」／“Spot and Report”  </p>
+<p>  備註：ICTU 官方公眾教育主題；的士及物流業界運動均用此英文。不要譯成 “See Something Say Something”。([ictu.gov.hk](https://www.ictu.gov.hk/en/about-us/))</p>
+<p>- 反恐舉報熱線 63-666-999／CT Reporting Hotline 63-666-999  </p>
+<p>  備註：2022年6月推出，首階段包括短訊及微信舉報渠道。([ictu.gov.hk](https://www.ictu.gov.hk/tc/about-us/)) ([ictu.gov.hk](https://www.ictu.gov.hk/en/about-us/))</p>
+<p>- 作出舉報／Report Suspicious Incidents  </p>
+<p>  備註：非緊急懷疑恐怖主義相關消息可用 ICTU 系統；緊急或可能緊急情況須致電 999。([ictu.gov.hk](https://www.ictu.gov.hk/tc/ct-awareness/report/)) ([ictu.gov.hk](https://www.ictu.gov.hk/en/ct-awareness/report/))</p>
+<p>- 「閃、避、求」／“Run, Hide, Report”  </p>
+<p>  備註：暴力襲擊／恐襲應變指引；不要寫成 “Run, Hide, Tell”。([ictu.gov.hk](https://www.ictu.gov.hk/tc/emergency-response/rhr/)) ([ictu.gov.hk](https://www.ictu.gov.hk/en/emergency-response/rhr/))</p>
+<p>- 「應急三識」／“Three Basic Skills on Emergency Preparedness”  </p>
+<p>  備註：包括「識滅火、識自救、識逃生」；英文不是 “Three Emergency Knowledge”。([ictu.gov.hk](https://www.ictu.gov.hk/en/about-us/)) ([ictu.gov.hk](https://www.ictu.gov.hk/en/emergency-response/3-basic-skills/))</p>
+<p>- 「安全社區體驗館」／“Safe Community Hub”  </p>
+<p>  備註：ICTU 官方頁面及影片用語。([ictu.gov.hk](https://www.ictu.gov.hk/en/))</p>
+<p>- 「安全社區小程式」／“Safe Community” WeChat Mini Program  </p>
+<p>  備註：用於便利市民「見疑即報」。([ictu.gov.hk](https://www.ictu.gov.hk/en/about-us/))</p>
+<p>- 《聯合國（反恐怖主義措施）條例》（香港法例第575章）／United Nations (Anti-Terrorism Measures) Ordinance (Cap. 575)  </p>
+<p>  備註：ICTU 官方恐怖主義定義頁引用此法例；括號用全形中文括號。([ictu.gov.hk](https://www.ictu.gov.hk/tc/terrorist-threat/terrorism/)) ([ictu.gov.hk](https://www.ictu.gov.hk/en/terrorist-threat/terrorism/))</p>
+<p>- 《中華人民共和國香港特別行政區維護國家安全法》（《港區國安法》）／The Law of the People’s Republic of China on Safeguarding National Security in the Hong Kong Special Administrative Region (National Security Law)  </p>
+<p>  備註：ICTU 官方用作列明「恐怖主義活動罪」定義。([ictu.gov.hk](https://www.ictu.gov.hk/tc/terrorist-threat/terrorism/)) ([ictu.gov.hk](https://www.ictu.gov.hk/en/terrorist-threat/terrorism/))</p>
+<p><strong>3. 專有名詞／技術詞對照</strong></p>
+<p>- 反恐／counter-terrorism；簡稱 CT  </p>
+<p>  備註：ICTU 英文網站用 CT。([ictu.gov.hk](https://www.ictu.gov.hk/en/))</p>
+<p>- 反恐意識／CT awareness  </p>
+<p>  備註：官方頁面為 “Enhance CT Awareness”。([ictu.gov.hk](https://www.ictu.gov.hk/en/))</p>
+<p>- 應變能力／Emergency Response  </p>
+<p>  備註：官方欄目為「加強應變能力／Emergency Response」。([ictu.gov.hk](https://www.ictu.gov.hk/en/))</p>
+<p>- 可疑活動／Suspicious Activities；可疑物品／Suspicious Objects；可疑事件／Suspicious Incidents  </p>
+<p>  備註：三者分開用，不要混用。([ictu.gov.hk](https://www.ictu.gov.hk/en/ct-awareness/suspicious-activities/)) ([ictu.gov.hk](https://www.ictu.gov.hk/en/ct-awareness/suspicious-object/)) ([ictu.gov.hk](https://www.ictu.gov.hk/en/ct-awareness/report/))</p>
+<p>- 恐怖主義行為／terrorist act；恐怖主義活動／terrorist activities  </p>
+<p>  備註：Cap.575 用 “terrorist act”；《港區國安法》相關段落用 “terrorist activities”。([ictu.gov.hk](https://www.ictu.gov.hk/en/terrorist-threat/terrorism/))</p>
+<p>- SPOT 四類可疑活動：Support 支援、Preparation 前期準備、Online Materials 網上內容、Terrorist Ideologies 恐怖主義思想  </p>
+<p>  備註：官方以 “SPOT” 作 acronym。([ictu.gov.hk](https://www.ictu.gov.hk/tc/ct-awareness/suspicious-activities/)) ([ictu.gov.hk](https://www.ictu.gov.hk/en/ct-awareness/suspicious-activities/))</p>
+<p>- 政府宣傳短片／TV Announcements in the Public Interest (TV API)  </p>
+<p>  備註：API 在此不是「應用程式介面」。ICTU 英文里程碑亦用 Announcement on Public Interest 指「閃、避、求」宣傳片。([ictu.gov.hk](https://www.ictu.gov.hk/tc/about-us/)) ([ictu.gov.hk](https://www.ictu.gov.hk/en/about-us/))</p>
+<p><strong>4. 易錯／易混淆</strong></p>
+<p>- 正：跨部門反恐專責組／Inter-departmental Counter Terrorism Unit  </p>
+<p>  錯：跨部門反恐怖主義專責組、Interdepartmental Counter-terrorism Unit。</p>
+<p>- 正：「見疑即報」／“Spot and Report”  </p>
+<p>  錯：見疑即舉報、Spot &amp; Report、See and Report。</p>
+<p>- 正：「閃、避、求」／“Run, Hide, Report”  </p>
+<p>  錯：Run, Hide, Tell /</p></div></div><div class='ccard brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🔗 部門官方來源</span></div><div class='cbody'><p class='hint'>搵到嘅官方來源（網頁名 + 撮要，似 search 結果；撳入睇原文）：</p><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.isd.gov.hk' target=_blank>🏛️ 政府新聞處 官網 ↗</a><div class='srcsnip'>https://www.isd.gov.hk</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.youtube.com/@isdgovhk' target=_blank>▶️ 部門 YouTube 頻道 ↗</a><div class='srcsnip'>官方宣傳片頻道</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.wenweipo.com/epaper/view/newsDetail/2069110783261937664.html' target=_blank>📰 頤養院：灣區養老有望成常見退休方式 ↗</a><div class='srcsnip'>在香港回歸祖國二十九周年之際，銀髮「北流」之路，正等待更多政策潤滑與社會觀念的轉變，才能真正暢通無阻。作為特區政府「廣東院舍照顧服務計劃」認可...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.info.gov.hk/gia/general/202604/28/P2026042800333.htm' target=_blank>📰 出海專班廣東首辦大型推廣活動 鼓勵粵企善用香港優勢出海（附圖） ↗</a><div class='srcsnip'>商務及經濟發展局（商經局）局長丘應樺今日（四月二十八日）於廣州出席由投資推廣署（投資署）、香港特別行政區政府駐粵經濟貿易辦事處（駐粵辦）、香港貿易...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.news.gov.hk/chi/2026/03/20260323/20260323_103632_636.html' target=_blank>📰 香港政府新聞網- 二元優惠計劃下月調整為兩蚊兩折 ↗</a><div class='srcsnip'>政府宣布，簡稱二元優惠計劃的政府長者及合資格殘疾人士公共交通票價優惠計劃下月3日起調整為「兩蚊兩折」。勞工及福利局局長孫玉菡表示，此舉估計讓...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://jdonline.com.hk/content_104727.html' target=_blank>📰 &quot;川港攜手 融通四海&quot;香港特區政府投資推廣署“金融+”賦能川企出海交流會在成都成功舉辦 ↗</a><div class='srcsnip'>4月23日，以“金融+”賦能川企出海為主題，由香港特區政府投資推廣署、香港特區政府駐成都經濟貿易辦事處，聯合四川省商務廳、四川省港澳事務辦公室、中共...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='http://www.hkcd.com.hk/hkcdweb/content/2026/02/25/content_8741516.html' target=_blank>📰 財政預算案｜中小企融資擔保計劃繼續 還息不還本申請期延長至11月中 ↗</a><div class='srcsnip'>財政司司長陳茂波今日（25日）在立法會發表2026至27年度財政預算案。陳茂波表示，政府繼續通過「中小企融資擔保計劃」為企業提供信貸擔保，已將八成擔保...</div></div></div></div></div><div class='ccard brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🏛️ 政府 JOB 鐵則</span></div><div class='cbody'><ol id='rulelist' style='margin:2px 0 8px;padding-left:18px;line-height:1.7'><li id='rule0'>除標書表明，人物一般使用華人面孔（東亞／香港華人），唔好生成西方／白人臉</li><li id='rule1'>衣著連戲：同一角色每一格都著返同一套衫（衫款／顏色／髮型／配件固定），除非故事明寫佢換咗衫</li><li id='rule2'>全 board 畫風完全一致：同一 render 風格／同一打燈／同一色調／同一線條筆觸，由頭到尾統一，似同一個畫師一次過畫</li><li id='rule3'>Storyboard 盡量唔好出現雨傘；若劇情一定要有雨傘，唔可以係黃色</li></ol><div class='bdcm'><textarea id='newrule' rows='2' placeholder='加一條鐵則：例「Storyboard 唔好有雨傘」'></textarea><button class='btn mini' onclick="addRule('POLICE')">＋ 加鐵則（即時生效）</button></div></div></div></div><div class='h2 tierh'>🔧 Optional 餵 AI（於 Debriefing 階段隨機餵 AI）</div><p class='hint tierhint'>唔強制，諗橋時隨機抽嚟畀 agency 撞火花。</p><div class='carousel brfcarou'><div class='ccard brfcard'><div class='chead'><span class='ctitle' style='padding:0'>💭 5W1H Provocation</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ Gemini 2.5 Pro·預設</span></div><div class='cbody'><h3>5W1H 創意 Provocation — POLICE</h3>
+<h5>WHO — 對邊個講 + 佢而家點</h5>
+<p>- Q1 如果呢個 message 只可以打動「最唔關心、最 cynical」嗰個觀眾 —— 要加咩一個 element(畫面/聲/人物/情境)先 3 秒內 hook 住佢、令佢唔 skip?</p>
+<p>→ 加入「反恐賞金 (CT Reward)」真實派發現金或數字跳動嘅 3D 動漫視覺特效，或者用極端特寫（Extreme Close-up）呈現日常生活中極具侵入性嘅異常細節（例如唐樓梯間漏出誇張嘅化學品綠色煙霧）。</p>
+<p>- Q2 呢班受眾平時食開咩視聽語言(平台/節奏/語氣)?要 adapt 邊種佢熟悉嘅風格,先入到腦而唔似「政府嘢」?</p>
+<p>→ 佢哋睇開 IG Reels 同熱血動漫。要 adapt 日系 Webtoon 嘅「多格畫面分割（Split-panel）」同帶有動態集中線嘅極快剪接節奏，徹底捨棄傳統政府 API 單一機位、慢推鏡嘅說教節奏。</p>
+<h5>WHAT — 收窄到一個 + 證據</h5>
+<p>- Q3 成個 campaign 只准觀眾記住一個 element(一個畫面 / 一個 visual device / 一句)—— 你揀咩?點解係佢?</p>
+<p>→ 官方標誌核心嗰個「紅、黑、白放大鏡」。可以將佢實體化，變成 3D 漫畫世界入面平民主角發現破綻時，雙眼發光或畫面瞬間變色聚焦嘅專屬 Visual Device。</p>
+<p>- Q4 客戶 key message 好抽象,要用咩具體 element(真場面/真數字/真人/真物)去「show 唔 tell」,令佢落地、唔流口號?</p>
+<p>→ 放入官方真實數據「超過 5,000 名隱形神探 / 收到 20,000 個舉報」，配合主角撳智能電話輸入「SMS 63-666-999」或微信小程式嘅真實 UI 互動畫面。</p>
+<h5>WHY — 點解信 + 情感</h5>
+<p>- Q5 觀眾點解要信 / 關佢事?要加咩證據 element 或情感共鳴 element,先由「事不關己」變「同我有關」?</p>
+<p>→ 加入的士車廂、茶餐廳水吧或物流貨倉等極具香港基層搵食氣息嘅 3D 漫畫場景，將防恐情感轉化為「保護自己開工範圍同飯碗」，避開宏大嘅政治敘事。</p>
+<h5>WHEN / WHERE — 出街情境</h5>
+<p>- Q6 呢條嘢實際喺邊度、咩狀態被睇到(電視 prime / 車廂無聲 / 手機 scroll / 戶外經過)?要 adapt 咩風格(有聲冇聲 / 首 3 秒 / 大字 / 節奏)先食到當下情境?</p>
+<p>→ 影片會喺港鐵 5440x1440 數碼展板及電子屏幕等無聲環境出街。必須 adapt 「高度視覺化、零聲音依賴」嘅風格，首 3 秒加入巨大、爆出畫面嘅 3D 美漫擬聲詞字體（如 BOOM!、SNIFF!）。</p>
+<p>- Q7 出街時間(事件前/中/後)decide 調子係「預告期待」定「總結成就」?要加咩 element 配合呢個時間感?</p>
+<p>→ 宣傳屬於「事件前預防」性質，調子係「懸疑與化解」。可以加入類似計時炸彈倒數嘅視覺跳動，或者配合急促心跳聲效嘅 3D 畫面震動元素，喺主角撳掣舉報嗰一秒瞬間靜止。</p>
+<h5>HOW — 風格 + 差異化</h5>
+<p>- Q8 同類(同部門/同題材)政府片嘅「安全做法」係咩?要 adapt / 升級邊種風格 element(質感/節奏/transition/配樂/美術流派),先做到「框內最高質」而唔悶?</p>
+<p>→ 治安類安全做法係「警員巡邏真人演繹 + 書面語 Super」。今次要升級採用對標高質動畫嘅「Cel-shading（卡通渲染）3D 漫畫」美術流派，並利用穿透物件（如鏡頭穿過鎖匙窿或手機屏幕）嘅誇張 3D 運鏡過場。</p>
+<p>- Q9 要加咩一個 unexpected element(反差/新 visual device/新手法),先同部門過往 campaign 拉開距離、唔似翻炒,但又唔踩紅線?</p>
+<p>→ 營造與《守城》重裝備大製作嘅極大反差——影片首 25 秒畫面「零警察、零制服」，全程只用平民視角推進，直到最後結尾先出六個紀律部隊嘅元素作為後盾。</p></div></div><div class='ccard brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📺 ISD 相類政府舊片</span></div><div class='cbody'><p>【呢條 brief 判定】目的:其他  題材:未定</p>
+<p>【同目的(其他)ISD 慣性】主開頭 真人/講者(65%);格式率 旁白73% 熒幕蓋字96% 標誌結尾96% CTA53% 感嘆65% 三段式·0%;慣用結尾 社會福利署標誌, 衞生防護中心標誌, 衞生署標誌, 熒幕蓋字： iAM Smart+ 標誌</p>
+<p>【對口 ISD 舊作借鏡(同 目的×題材,參考佢點寫,唔好照抄,要創新)】</p>
+<p>— 幸福上流　置業圓夢  [其他 | 房屋置業/長者家庭]</p>
+<p>  ▶ https://www.youtube.com/watch?v=phWv4V2eOh0&amp;list=PL1188A9802575C33F</p>
+<p>  男旁白：請等等！ / 男旁白：啊，我想上車啊！ / 熒幕蓋字：未來5年 / 大約60,000個資助出售單位供應 / 女旁白：放心，未來有許多機會 / 熒幕蓋字：新一期居者有其屋計劃及 / 綠表置居計劃 / 4月30日起接受申請 / 女旁白：新一期居屋及綠置居4月30日起接受申請 / 女旁白：前兩次未能成功置業的申請者 / 可獲得額外一個抽籤號碼 / 熒幕蓋字：居屋綠表配額比例由40%升至50% / 女旁白：今期居屋會增加綠表比例 / 熒幕蓋字：40歲以下白表申請者 / 抽籤號碼＋1個 / 女旁白：白表青年申請者可獲得額外一個抽籤號碼 / 女旁白：「白居二」亦會增加配額 / 女旁白：置業的機會多了 / 熒幕蓋字：分布多區 / 可負擔的售價 / 居者有其屋計劃屋苑 / 綠表置居計劃屋苑 / 女旁白：價格亦在可負擔範圍內 / 熒幕蓋字：家有初生 / 家有長者 / 女旁白：家有初生或長者的家庭更可優先選樓 / 熒幕蓋字：出售居者有其屋計劃單位 / 出售綠表置居計劃單位 / 白表居屋第二市場計劃 / 4月30日起接受申請 / 男女旁白：幸福上流　置業圓夢 / </p>
+<p>— 選擇註冊中成藥  認住HKC  [其他 | 環保/節能]</p>
+<p>  ▶ https://www.youtube.com/watch?v=X9zWre8b7ts&amp;list=PL1188A9802575C33F</p>
+<p>  消費者： / 這麼多款式，怎樣選？ / 藥樽們： / 購買我吧 / 紫色藥樽： / 選擇我吧 / 綠色藥樽： / 我比較好呢 / 粉紅色藥樽： / 我便宜一點呢！ / 藍色藥樽： / 選中成藥 / 當然要選擇我這些已註冊的中成藥HKC / 熒幕蓋字： / HKC 註冊中成藥 / 藍色藥樽： / 我的包裝上印有「中成藥註冊編號」 / 即HKC開頭加五位數字 / 熒幕蓋字： / 中成藥註冊編號 HKC-XXXXX / 熒幕蓋字： / 安全　品質　成效 / 藍色藥樽： / 所有香港合法銷售的註冊中成藥 / 都已經符合安全、品質及成效的註冊要求 / 熒幕蓋字： / cmchk.org.hk / 衞生署標誌 / 藍色藥樽： / 可以上cmchk.org.hk查看註冊中成藥名單</p>
+<p>— Hong Kong&#x27;s iconic cultural and arts venues  [其他 | 盛事旅遊]</p>
+<p>  ▶ https://www.youtube.com/watch?v=5I3eUgnX5eM&amp;list=PL1188A9802575C33F</p>
+<p>  旁白：文化藝術 / 　　　展現香港多元魅力 / 熒幕蓋字：當下──香港藝術展 / 旁白：特區政府以文化藝術的「軟實力」 / 　　　結合設施建設的「硬實力」 / 　　　推動文化藝術產業發展並吸引旅客 / 熒幕蓋字：天馬凌雲——故宮博物院藏繪畫珍品 / 旁白：香港的文化藝術場地各具特色 / 　　　融入傳統與現代優點 / 　　　配合先進科技 / 　　　致力將香港打造成為更具活力 / 熒幕蓋字：油街焦點—左旋們浴場 / 旁白：更富創意的國際文化都會 / 熒幕蓋字：2026年巴塞爾藝術展香港展會 / 旁白：香港—國際文化都會 / 熒幕蓋字：中華人民共和國香港特別行政區區徽</p>
+<p>— 水果蔬菜 2+3　輕鬆融入每一餐  [其他 | 公共衞生]</p>
+<p>  ▶ https://www.youtube.com/watch?v=_iNDAroBSLc&amp;list=PL1188A9802575C33F</p>
+<p>  熒幕蓋字： 日日2+3 / 女旁白（唱）： 水果兩份 / 熒幕蓋字： 水果2份 /    「1份水果」約等於： /    2個小型水果 /    1個中型水果 /    半碗水果塊 / 女旁白（唱）： 蔬菜三份 / 熒幕蓋字： 蔬菜3份 /    「1份蔬菜」約等於： /    1碗未經烹調葉菜 /    半碗煮熟的蔬菜 /    ¾杯純蔬菜汁 /    *部分含澱粉質根莖類及醃製類蔬菜除外 / 女旁白（唱）： 天天來為健康加分 / 熒幕蓋字： 提供不同營養 /    維生素C /    鉀 /    葉酸 /    膳食纖維 / 女旁白（唱）： 多款多色 /     好吃有益 / 熒幕蓋字： 有助預防疾病 / 男旁白： 進食足夠蔬果 /    可以預防肥胖和減低患上慢性疾病的風險 / 熒幕蓋字： 心臟病 /    中風 /    肥胖 /    糖尿病 /    某些癌症（如大腸癌） / 女旁白（唱）： 早餐 / 熒幕蓋字： 早餐 / 女旁白（唱）： 午餐 / 熒幕蓋字： 午餐 / 女旁白（唱）： 還有晚餐 / 熒幕蓋字： 晚餐 / 星級有營食肆標誌 / 女旁白（唱）： </p>
+<p>— 2026年4月3日起二元優惠計劃由每程劃一$2調整為「兩蚊兩折」  [其他 | 長者家庭/公共衞生]</p>
+<p>  ▶ https://www.youtube.com/watch?v=-UAWGShCdCw&amp;list=PL1188A9802575C33F</p>
+<p>  熒幕蓋字 ： 兩蚊兩折 /     政府長者及合資格殘疾人士公共交通票價優惠計劃 /     運輸署網頁二維碼 / 馮素波（唱）： 兩元兩折　跟我學唱歌 / 馮素雲（唱）： 兩元兩折　我約了人逛街 / 馮素波（唱）： 低於或等於十元　只算兩元 / 熒幕蓋字 ： $2 / 馮素雲（唱）： 高於十元　兩折一樣興奮 / 熒幕蓋字 ： 兩折 / 馮素波旁白 ： 由2026 年4 月3日起 / 熒幕蓋字 ： 2026 年 4 月3日起 / 馮素波旁白 ： 二元優惠計劃由每程劃一兩元調整為「兩蚊兩折」 /     轉乘車程一樣適用 / 熒幕蓋字 ： 轉乘車程同樣適用 / 馮素波旁白 ： 受惠對象維持不變 / 熒幕蓋字 ： 60歲或以上香港居民 /     合資格殘疾人士 / 馮素波旁白 ： 詳情請瀏覽網頁或致電1823查詢 / 熒幕蓋字 ： 兩蚊兩折 /     運輸署網頁 /     www.td.gov.hk /     查詢電話：1823 / 馮素波、馮素雲（合唱） ： 兩元兩折　優惠相伴最開心 / 熒幕蓋字 ： 2026 </p>
+<p>— Application for Phase 3 of Simple Public Housing  [其他 | 房屋置業]</p>
+<p>  ▶ https://www.youtube.com/watch?v=BtU7TWHUSYI&amp;list=PL1188A9802575C33F</p>
+<p>  女旁白：「簡約公屋」首四個項目已經全面供住戶入住 / 女旁白：每個月租金只是約八百至三千多元不等 / 住戶的居住環境和生活質素大有改善！ / 女旁白：第三期申請包括位於啟德 / 熒幕蓋字：啟德世運道簡約公屋中英標誌 / 啟德世運道 / 女旁白：柴灣及屯門的四個項目 / 於今年第二季開始供住戶入住 / 熒幕蓋字：柴灣常安街簡約公屋中英標誌 / 柴灣常安街 / 熒幕蓋字：屯門欣寶路簡約公屋中英標誌 / 屯門欣寶路 / 女旁白：現已接受申請 / 熒幕蓋字：屯門青發街簡約公屋中英標誌 / 屯門青發街 / 女旁白：有迫切住屋需要便立即申請吧！ / 熒幕蓋字：「簡約公屋」第三期申請 / 啟德世運道 / 柴灣常安街 / 屯門欣寶路 / 屯門青發街 / 熒幕蓋字：「簡約公屋」第三期申請 / 啟德世運道 / 柴灣常安街 / 屯門欣寶路 / 屯門青發街 / 現已接受申請 / 「簡約公屋」標誌 / 「簡約公屋」網頁二維碼 / 房屋局標誌</p></div></div></div><div class='h2 tierh'>📋 ADMIN（交標用 · 唔餵創意）</div><p class='hint tierhint'>交標 logistics：要交咩表格/文件、幾時截。</p><div class='carousel brfcarou'><div class='ccard brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📑 要交表格 / 文件</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><div class='h3'>📝 要填嘅表格（9 張）</div><p class='hint'>真表頁自動 render 入對應<b>部門 Master Form GSlide</b>（開 GSlide 直接填）。🟦直 🟨橫。</p><div class='qconfirm' style='background:#fff4e5;color:#8a5a00'>⏳ pipeline 收到表會自動開 GSlide + render；此 dept 暫未配置，下次 run 自動補。</div><a class='btn ghost' target='_blank' href='https://docs.google.com/spreadsheets/d/1yiDJ3H8VFK3-6kZQZEzwkiD8VaRgVOzCwxcFbAyP3XE/edit'>📋 開 Master Form Registry（填表值喺度）</a><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/1nBf0Bdx17Jvo8owVWrvM-A_MlKxL98ttyMenXc-cewY/edit'>🎞️ 開 POLICE Master Form GSlide（真表頁，直接填）</a><button class='btn' style='width:100%;margin-top:6px' onclick="fillForms(this)">🤖 AI 自動填公司資料入 Registry</button><script type='application/json' class='filldata'>{"folderName": "2606_POLICE_ICTU Spot and Report Design", "forms": [{"name": "Quotation Schedule 1 ((1) Schedule of Rates & (2) Payment Method)", "pages": "38", "text": "Ref. (23) in ICTU/GEN/6-20/1/3 Pt.6 \nPart V – Quotation Schedule 1 \n38 \n \n \nPart V – Quotation Schedule 1 \n(to be submitted in duplicate and in “Envelope A – Price Information”) \n(1) Schedule of Rates \n \nItem \nItem Description \nUnit Rate (HK$) \n1 \nDesign Service for Promotion Truck, Advertisement \nBoards and Digital Advertisements  \n(Annex D & E) \n \n2 \nProduction of 30 seconds 'TV Announcements in the \nPublic Interest (API)'  \n(Annex F & G ) \nRemarks: \nQuotations above HK$250,000 for Item (2) will not be \nconsidered under Clause 2.9 of Part IV – Quotation \nSpecifications. \n \nAmount (HK$): \n \n \nNote for Bidders: \nThe above mentioned both Item (1) and (2) must be combined as One package of service \nfor our final selected bidder and will not separate as two separate services for two different \nbidders. \n \nAuthorised Signature & Company Chop \n: \nName of person authorised to sign the Contract \n(in Block Letters) \n: \n \nName of Bidder in English \n(in Block Letters) \n: \n \n \nTel. No.:  \nFax No.:  \nDate:    \n"}, {"name": "Breakdown of cost for Item (1) & Item (2)", "pages": "2", "text": "Ref. (23) in ICTU/GEN/6-20/1/3 Pt.6 \nPart I – Lodging of Quotation \n2 \n \n \n(d) The technical proposal should also include soft and hard copies of the proposal \n(together with relevant materials not limited to 3D design of theme, character, \nsub-slogan, storyboard, animation and reference) in Chinese/English; \n(e) The quotation comprising both Envelope A and Envelope B must be enclosed in \na sealed envelope (Envelope C) and clearly marked “Quotation No.: (23) in \nICTU/GEN/6-20/1/3 Pt.6”; \n(f) \nPlease fill in a completed “Information of Contractor” (see Annex C) together \nwith the above documents; \n(g) Envelope C must be received by ICTU before the Quotation Closing Date and \nTime.   You can either dispatch Envelope C by registered post or in person to \nthe following address: \n \nRegistered Post:  \nAttn: Inter-departmental Counter Terrorism Unit, \nPolice Headquarters, 1 Arsenal Street, \nWanchai, Hong Kong \n \nIn Person: \nContact person: Ms. Niky NG (Tel: 3669 4402) \nOffice hour: 0830 hours and 1730 hours on Monday to Friday \nAddress: Police Headquarters, 1 Arsenal Street, Wanchai, \nHong Kong \n \nLate, fax and/or email quotation will NOT be considered. \n \n4. \nIf you are not interested/unable to quote, please complete (Annex B) and return it by \nfax. \n \n5. \nIf a Black Rainstorm Warning Signal is in force or Tropical Cyclone Warning Signal \nNo. 8 or above is hoisted for any duration between 7:00 a.m. (Hong Kong time) and 10:00 \na.m. (Hong Kong time) on the Quotation Closing Date, the latest date and time before which \nquotations are to be received will be extended to 10:00 a.m. on the next working day (i.e. \nexcept Saturday, Sunday and public holiday). \n \n6. \nThe shortlisted contractors will be notified to present their creative ideas to a selection \ncommittee comprising representatives of the Inter-departmental Counter Terrorism Unit (ICTU) \non or before 2026-07-07 (Tuesday).  Details are as follows: \n \nPresentation Session: \n2026-07-08 (Wednesday) (Exact time and venue to be confirmed) \n \nAt Inter-departmental Counter Terrorism Unit (ICTU), Police Headquarters,  \n1 Arsenal Street, Wanchai, Hong Kong. \n[The Contractor will be informed of the exact time in due course] \n"}, {"name": "Technical Proposal", "pages": "2", "text": "Ref. (23) in ICTU/GEN/6-20/1/3 Pt.6 \nPart I – Lodging of Quotation \n2 \n \n \n(d) The technical proposal should also include soft and hard copies of the proposal \n(together with relevant materials not limited to 3D design of theme, character, \nsub-slogan, storyboard, animation and reference) in Chinese/English; \n(e) The quotation comprising both Envelope A and Envelope B must be enclosed in \na sealed envelope (Envelope C) and clearly marked “Quotation No.: (23) in \nICTU/GEN/6-20/1/3 Pt.6”; \n(f) \nPlease fill in a completed “Information of Contractor” (see Annex C) together \nwith the above documents; \n(g) Envelope C must be received by ICTU before the Quotation Closing Date and \nTime.   You can either dispatch Envelope C by registered post or in person to \nthe following address: \n \nRegistered Post:  \nAttn: Inter-departmental Counter Terrorism Unit, \nPolice Headquarters, 1 Arsenal Street, \nWanchai, Hong Kong \n \nIn Person: \nContact person: Ms. Niky NG (Tel: 3669 4402) \nOffice hour: 0830 hours and 1730 hours on Monday to Friday \nAddress: Police Headquarters, 1 Arsenal Street, Wanchai, \nHong Kong \n \nLate, fax and/or email quotation will NOT be considered. \n \n4. \nIf you are not interested/unable to quote, please complete (Annex B) and return it by \nfax. \n \n5. \nIf a Black Rainstorm Warning Signal is in force or Tropical Cyclone Warning Signal \nNo. 8 or above is hoisted for any duration between 7:00 a.m. (Hong Kong time) and 10:00 \na.m. (Hong Kong time) on the Quotation Closing Date, the latest date and time before which \nquotations are to be received will be extended to 10:00 a.m. on the next working day (i.e. \nexcept Saturday, Sunday and public holiday). \n \n6. \nThe shortlisted contractors will be notified to present their creative ideas to a selection \ncommittee comprising representatives of the Inter-departmental Counter Terrorism Unit (ICTU) \non or before 2026-07-07 (Tuesday).  Details are as follows: \n \nPresentation Session: \n2026-07-08 (Wednesday) (Exact time and venue to be confirmed) \n \nAt Inter-departmental Counter Terrorism Unit (ICTU), Police Headquarters,  \n1 Arsenal Street, Wanchai, Hong Kong. \n[The Contractor will be informed of the exact time in due course] \n"}, {"name": "Statement of Compliance", "pages": "40", "text": "Ref. (23) in ICTU/GEN/6-20/1/3 Pt.6 \nPart VI – Quotation Schedule 2 \n40 \n \n \nPart VI - Quotation Schedule 2 \n(to be submitted in duplicate and in “Envelope B – Technical Information”) \n(1) Statement of Compliance \n(a) A Bidder is requested to confirm whether its offer submitted complies with the \nrequired Quotation Specifications by selecting the following statements: \nPlease tick as appropriate \n \nI/We confirm that my/our offer does comply fully with all of the essential \nrequirements specified in the Quotation Specifications. \n \nI/We confirm that my/our offer does NOT comply fully with the essential \nrequirements specified in the Quotation Specifications. \n \n(b) If a Bidder expressly indicates non-compliance with any of the essential \nrequirements and specifications stipulated in the Quotation Specifications in its \noffer, its offer will not be considered further. \n(2) Submission of Documentary Proof \n \n(3) Information / Documents to be submitted in Technical Proposal \n \n \n \nAuthorised Signature & Company Chop \n: \nName of person authorised to sign the Contract \n(in Block Letters) \n: \n \nName of Bidder in English \n(in Block Letters) \n: \n \nTel. No.:  \nFax No.:  \nDate:    \n \n   YES \nNO \n(Please tick to indicate) \nCopies of the Business/Branch Registration Certificate \nshould be provided and have been attached to Quotation \nSchedule 2. \nYES \n   NO \n(Please tick to indicate) \nTechnical proposal with relevant supporting information / \ndocuments as required in the marking scheme under Part \nII and the Quotation Specifications shall be provided \ntogether with Quotation Schedule 2 before the Quotation \nClosing Date. \n"}, {"name": "Offer to be Bound", "pages": "41", "text": "Ref. (23) in ICTU/GEN/6-20/1/3 Pt.6 \nPart VI – Quotation Schedule 2 \n41 \n \n \nPart VI - Quotation Schedule 2 \n(to be submitted in duplicate and in “Envelope B – Technical Information”) \nOFFER TO BE BOUND \n \n1. Having read the Quotation Document, I / we agree to be bound by the terms and conditions as \nstipulated therein. \n \n2. I / We do hereby agree to execute orders for any or all of the Services specified in the Schedule, \nwhich may during the Contract Period be placed by the Government at the prices quoted in the \nPrice Schedule free of all other charges, subject to and in accordance with the terms of the \nQuotation Document. \n \n3. I / We also certify that the particulars given by me / us below, are correct: \n \n(a) Business Registration Certificate No. ....................................................................................... \nwhich expires on ....................................................................................................................... \n(b) Employees' Compensation Insurance Policy No. .....................................................…............ \nwhich expires on ................................…………….................................................….............. \n \n4. I am / We are duly authorised to bind the Company hereafter mentioned by my / our signature(s). \n5.   The name of the Company is ...............................................................................................……… \n...........................................................................................................................................………… \n \n6.   The registered office of the Company is situated at ...................................................…………….. \n \n.....................................................................…...............................................................Hong Kong. \n \n7. Name(s), post(s) / title(s) and address(es) of person(s) signing: \n \n............................................................................................................................................................ \n............................................................................................................................................................ \n \n \n \nSignature(s) with Company \nChop: .................................................................................................... \n \nDated this .......................... day of .......................... 20 ................ \n \nNote \n(i) All the particulars required above must be provided. \n(ii) Strike out clearly alternatives which are not applicable. \n"}, {"name": "Copies of the Business/Branch Registration Certificate", "pages": "40", "text": "Ref. (23) in ICTU/GEN/6-20/1/3 Pt.6 \nPart VI – Quotation Schedule 2 \n40 \n \n \nPart VI - Quotation Schedule 2 \n(to be submitted in duplicate and in “Envelope B – Technical Information”) \n(1) Statement of Compliance \n(a) A Bidder is requested to confirm whether its offer submitted complies with the \nrequired Quotation Specifications by selecting the following statements: \nPlease tick as appropriate \n \nI/We confirm that my/our offer does comply fully with all of the essential \nrequirements specified in the Quotation Specifications. \n \nI/We confirm that my/our offer does NOT comply fully with the essential \nrequirements specified in the Quotation Specifications. \n \n(b) If a Bidder expressly indicates non-compliance with any of the essential \nrequirements and specifications stipulated in the Quotation Specifications in its \noffer, its offer will not be considered further. \n(2) Submission of Documentary Proof \n \n(3) Information / Documents to be submitted in Technical Proposal \n \n \n \nAuthorised Signature & Company Chop \n: \nName of person authorised to sign the Contract \n(in Block Letters) \n: \n \nName of Bidder in English \n(in Block Letters) \n: \n \nTel. No.:  \nFax No.:  \nDate:    \n \n   YES \nNO \n(Please tick to indicate) \nCopies of the Business/Branch Registration Certificate \nshould be provided and have been attached to Quotation \nSchedule 2. \nYES \n   NO \n(Please tick to indicate) \nTechnical proposal with relevant supporting information / \ndocuments as required in the marking scheme under Part \nII and the Quotation Specifications shall be provided \ntogether with Quotation Schedule 2 before the Quotation \nClosing Date. \n"}, {"name": "Information of Contractor", "pages": "44", "text": " \n \n(Annex C – Page 1) \nINFORMATION OF CONTRACTOR \n \nContractors shall complete the following and submit the documents requested: \n \n \n(i) \nName of Contractor \n:    \n \n \n(ii) \nParticulars of Contractor i.e. proprietorship, shareholders/partners of the \nContractor \n:    \n \n \n(iii) Office Address \n:    \n \n    \n                                                       \n \n \n(iv) Telephone Number \n:   \n \n \n(v) \nFax Number \n:   \n \n \n(vi) E-mail Address \n:   \n \n \n[Important : Contractor must attach a copy of relevant documents such as Business \nRegistration Certificates, tax returns, etc. to support its claims in \nparagraphs (vii) and (viii).] \n \n(vii) Present Business \n:   \n \n \n(viii) Previous experience in providing personnel services (the provision is optional)\n :   \n \n \n(ix) If the Contractor is a corporation/company: \n(A) \na certified true copy of its Memorandum and Articles of Association or \nother constitutional document; and \n \n(B) \nthe instrument that authorises the signatory to sign the “Offer to be Bound” \nto prove due execution of that document by the Contractor, \n \nin all cases duly certified by a director of the Contractor. \n \n \n"}, {"name": "Quotation Label", "pages": "42", "text": "Ref. (23) in ICTU/GEN/6-20/1/3 Pt.6 \n(Annex A) \n \n \n \nQuotation Label \n(Please refer to Part I – Paragraph 3 of this Quotation Document.) \n  \n  \n  \n \n \nTo: \nInter-departmental Counter Terrorism Unit,  \nPolice Headquarters, 1 Arsenal Street, Wanchai, Hong Kong \nEnvelope A - Price Information \nQuotation for Design Service - ‘Spot and Report’ CT Advertisement and TV API \nfor Inter-departmental Counter Terrorism Unit (ICTU) \nQuotation Ref.  No. : (23) in ICTU/GEN/6-20/1/3 Pt.6    Closing Date : \n \n2026-07-06 \n  \n  \n  \n \n \nTo: \nInter-departmental Counter Terrorism Unit,  \nPolice Headquarters, 1 Arsenal Street, Wanchai, Hong Kong \nEnvelope B - Technical Information \nQuotation for Design Service - ‘Spot and Report’ CT Advertisement and TV API    \nfor Inter-departmental Counter Terrorism Unit (ICTU) \nQuotation Ref.  No.:  (23) in ICTU/GEN/6-20/1/3 Pt.6   Closing Date : \n \n2026-07-06 \n  \n  \n  \n \n \nTo: \nInter-departmental Counter Terrorism Unit,  \nPolice Headquarters, 1 Arsenal Street, Wanchai, Hong Kong \nEnvelope C – (Please in duplicate and put both Envelope A & B inside Envelope C) \nQuotation for Design Service - ‘Spot and Report’ CT Advertisement and TV API \nfor Inter-departmental Counter Terrorism Unit (ICTU) \nQuotation Ref.  No.: (23) in ICTU/GEN/6-20/1/3 Pt.6    Closing Date : \n \n2026-07-06 \n  \n  \n  \n \n"}, {"name": "Acknowledgement Slip", "pages": "43", "text": "Ref. (23) in ICTU/GEN/6-20/1/3/Pt.6 \n(Annex B) \n \n \nTo \n: \nInter-departmental Counter Terrorism Unit (ICTU), \nHong Kong Police Force  \n(Attn. IP 5 ICTU) \nBy Fax : \n2200 4520  \nOn or before 2026-07-06 (Monday), (12:00 p.m., Hong Kong time) \n \nACKNOWLEDGEMENT \n \nWe acknowledge receipt of your Invitation to Quotation of the captioned subject \nwith the relevant quotation documents and would like to inform you that: --- \n(please tick as appropriate) \n     We are not interested in bidding the captioned / unable to quote due to the \nfollowing reason(s): \n \nReasons and remarks if any \n \nThe requirement is out of our range of \nservices. \nThe required specification cannot be met. \n \nThe delivery schedule cannot be met. \n        \nThe closing date cannot be met. \n \nOthers (Please specify) : \n \n \nAuthorised Signature & Company Chop \n: \n \nName of the above Signatory \n: \n \n \nName of Company in English \n: \n \n \n \n \nTel No. \n:   \n Fax No. \n:   \n \nEmail Address \n:     \n Date \n:     \n \n"}]}</script><p class='hint'>撳上面掣 → AI 逐張表認要填咩欄（公司名/地址/BR…）→ 自動填入 <b>Master Form Registry</b> 嘅 <b>Fill_2606_POLICE_ICTU Spot and Report Design</b> tab → 你開 Registry copy 啲值入 GSlide 真表頁。⚠️ 價錢/簽名要自己填。（全程 GAS 做，唔使部 Mac 開機）</p><div class='h3'>② 交標時 — Forms / Schedules（9）</div><p class='hint'>Form GSlide 已 render 真表頁做 background → 人手填。</p><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/1nBf0Bdx17Jvo8owVWrvM-A_MlKxL98ttyMenXc-cewY/edit'>🎞️ 開 POLICE Form GSlide</a><div class='qconfirm' style='background:#eef0fe;color:#3730a3'>貼入 panel 頁碼：<b>38,2,2,40,41,40,44,42,43</b></div><div class='timeline'><div class='tlrow'><span class='tldate'>🟦 p38</span><span class='tllabel'>Quotation Schedule 1 ((1) Schedule of Rates &amp; (2) Payment Method)</span></div><div class='tlrow'><span class='tldate'>🟦 p2</span><span class='tllabel'>Breakdown of cost for Item (1) &amp; Item (2)</span></div><div class='tlrow'><span class='tldate'>🟦 p2</span><span class='tllabel'>Technical Proposal</span></div><div class='tlrow'><span class='tldate'>🟦 p40</span><span class='tllabel'>Statement of Compliance</span></div><div class='tlrow'><span class='tldate'>🟦 p41</span><span class='tllabel'>Offer to be Bound</span></div><div class='tlrow'><span class='tldate'>🟦 p40</span><span class='tllabel'>Copies of the Business/Branch Registration Certificate</span></div><div class='tlrow'><span class='tldate'>🟦 p44</span><span class='tllabel'>Information of Contractor</span></div><div class='tlrow'><span class='tldate'>🟦 p42</span><span class='tllabel'>Quotation Label</span></div><div class='tlrow'><span class='tldate'>🟦 p43</span><span class='tllabel'>Acknowledgement Slip</span></div></div></div></div><div class='ccard brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📮 交標方法（地址 / 信封 / 份數）</span></div><div class='cbody'><p>- <strong>截標</strong>：2026-07-06 (Monday) 12:00 p.m. (Hong Kong time)</p>
+<p>- <strong>印幾多份</strong>：in duplicate (the original copy and one copy)</p>
+<p>- <strong>幾多信封</strong>：3 個</p>
+<p>- <strong>Soft copy（電子副本：CD/USB？）</strong>：需要交 soft copy。標書原文明文要求：「The technical proposal should also include soft and hard copies of the proposal (together with relevant materials not limited to 3D design of theme, character, sub-slogan, storyboard, animation and reference) in Chinese/English」(未有明確指定 CD 或 USB 等格式)</p>
+<p>- <strong>交去邊 — To</strong>：Inter-departmental Counter Terrorism Unit</p>
+<p>- <strong>交去邊 — Address</strong>：Police Headquarters, 1 Arsenal Street, Wanchai, Hong Kong</p>
+<p>- <strong>信封 label「Envelope A - Price Information」要寫</strong>：`Envelope A - Price Information</p>
+<p>Quotation for Design Service - ‘Spot and Report’ CT Advertisement and TV API for Inter-departmental Counter Terrorism Unit (ICTU)</p>
+<p>Quotation Ref. No. : (23) in ICTU/GEN/6-20/1/3 Pt.6 Closing Date : 2026-07-06`（絕對不能在信封面顯示投標者/公司名稱 (should bear no reference to the name of the Bidder)。必須密封 (sealed)。）</p>
+<p>- <strong>信封 label「Envelope B - Technical Information」要寫</strong>：`Envelope B - Technical Information</p>
+<p>Quotation for Design Service - ‘Spot and Report’ CT Advertisement and TV API for Inter-departmental Counter Terrorism Unit (ICTU)</p>
+<p>Quotation Ref. No.: (23) in ICTU/GEN/6-20/1/3 Pt.6 Closing Date : 2026-07-06`（絕對不能在信封面顯示投標者/公司名稱。必須密封 (sealed)。）</p>
+<p>- <strong>信封 label「Envelope C」要寫</strong>：`Envelope C – (Please in duplicate and put both Envelope A &amp; B inside Envelope C)</p>
+<p>Quotation for Design Service - ‘Spot and Report’ CT Advertisement and TV API for Inter-departmental Counter Terrorism Unit (ICTU)</p>
+<p>Quotation Ref. No.: (23) in ICTU/GEN/6-20/1/3 Pt.6 Closing Date : 2026-07-06`（將 A、B 兩個信封及 Annex C 放進此最外層信封。絕對不能在信封面顯示投標者/公司名稱。必須密封 (sealed)。）</p></div></div><div class='ccard brfcard'><div class='chead'><span class='ctitle' style='padding:0'>💰 預算 / 費用（Budget / Fee Breakdown）</span></div><div class='cbody'><p>- <strong>預算（Budget）</strong>：TV API 製作預算為 HK$250,000 (報價超過 HK$250,000 將不獲考慮)</p>
+<p>- <strong>費用明細要求（Fee Proposal Breakdown）</strong>：有要求，須於 Envelope A (Price Proposal) 提交 Item (1) 及 Item (2) 的成本報價明細 (breakdown of cost) 硬本 (Part I 第 2 頁)。</p></div></div><div class='ccard brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📅 日程</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ Gemini 2.5 Pro·預設</span></div><div class='cbody'><p>- 2026-07-06 截標 Quotation Closing</p>
+<p>- 2026-07-07 通知入圍名單</p>
+<p>- 2026-07-08 評審簡報會 Presentation Session</p>
+<p>- 2026-09-11 完成主視覺核心設計</p>
+<p>- 2026-09-18 完成宣傳車、海報及易拉架設計</p>
+<p>- 2026-12-15 完成 30 秒 TV API 製作及獲最終審批</p>
+<p>- 2027-01-08 完成所有電子屏幕廣告設計</p>
+<p>- 2027-01-15 完成尖沙咀港鐵站牆身貼紙設計</p>
+<p>- 2027-02-05 完成所有剩餘設計服務</p></div></div></div></div>
+<div id='debrief' class='tabpanel'><div class='h2' style='margin-top:14px'>🎯 創意 DISPATCH（7 個單位各自收咗咩唔同）</div><p class='hint'>標書無指定 → 亂數 spread（≥1 名人、≥1 動畫，其餘正常）。每間 agency 收唔同 <b>💡創意角度＋🎨畫風＋🎭device</b> 做發散；標書寫明要名人／動畫就全部跟，無指定先亂數。<b>🏛 委員會＝第 8 個單位</b>（紫色行），同 7 間 agency 並列。</p><div class='card'><table class='dsp'><thead><tr><th>🏢 單位</th><th>🤖 Model</th><th>💡 創意角度</th><th>🎨 畫風</th><th>🎭 Device</th></tr></thead><tbody><tr><td><b>Agency 1</b></td><td>grok-sub</td><td>【反轉慣例】搵出呢類政府片最公式化嘅拍法，然後反轉佢：由意想不到嘅角度、次序或結局講同一個訊</td><td>寫實真人</td><td>⭐ 名人</td></tr><tr><td><b>Agency 2</b></td><td>claude-sub</td><td>【格式騎劫】騎劫一個香港人日日見慣嘅熟悉格式（天氣報告/交通消息/茶記餐牌/拍賣會/遊戲直播</td><td>Paper-craft 紙藝</td><td>—</td></tr><tr><td><b>Agency 3</b></td><td>chatgpt-codex</td><td>【極端對比】用一個極端 before/after 或 with/without 對比，將件事</td><td>3D Animation 立體動畫</td><td>—</td></tr><tr><td><b>Agency 4</b></td><td>gemini-2.5-flash-search</td><td>【第一身視角】成條片由一個意想不到嘅第一身視角講（一件物/一隻動物/個 logo 本身/一對</td><td>Watercolor 水彩</td><td>🎬 動畫</td></tr><tr><td><b>Agency 5</b></td><td>nlm</td><td>【時間錯位】玩時間：倒帶/快進/十年後回望今日/過去同未來對話，令訊息有時間重量。</td><td>Classic</td><td>—</td></tr><tr><td><b>Agency 6</b></td><td>deepseek-chat</td><td>【視覺 device 行先】由一個強烈、簡單、可重複嘅視覺 device 出發（一件物/一個</td><td>Heritage 古典</td><td>—</td></tr><tr style='background:#f3f0ff'><td><b>🏛 委員會</b></td><td>8 崗位協作（見下表）</td><td>跨崗位協作：策略總監定向→CD 踢橋→AD 執行，用齊全部策略種子收斂（vs agency </td><td>跨畫風（每概念各自揀）</td><td>🎲 混合</td></tr></tbody></table></div><div class='h2' style='margin-top:12px'>🏛 委員會組成（崗位 → model）</div><p class='hint'>委員會內部係多崗位協作（上面紫色行嗰個單位嘅細節）：</p><div class='card'><table class='dsp'><tbody><tr><td colspan='2'>　↳ <b>策略總監</b></td><td colspan='3'>gemini-3.1-pro-preview</td></tr><tr><td colspan='2'>　↳ <b>文案(Copywriter)</b></td><td colspan='3'>deepseek/deepseek-v4-pro | qwen/qwen3.7-max | moonshotai/kimi-k2.6</td></tr><tr><td colspan='2'>　↳ <b>美術指導(Art Director)</b></td><td colspan='3'>qwen/qwen3.7-max</td></tr><tr><td colspan='2'>　↳ <b>CD 創意總監(踢橋,唔出 final)</b></td><td colspan='3'>moonshotai/kimi-k2.6</td></tr><tr><td colspan='2'>　↳ <b>AD 客戶總監 / Account Director(踢橋,代表客)</b></td><td colspan='3'>gpt-5.5</td></tr><tr><td colspan='2'>　↳ <b>CD 收斂(出最終交付)</b></td><td colspan='3'>claude-opus-4-8</td></tr><tr><td colspan='2'>　↳ <b>Agency 獨立提案(Route A — 每間 agency 一個 model 單 call,多樣性)</b></td><td colspan='3'>(run_route_a.py</td></tr><tr><td colspan='2'>　↳ <b>CD 揀三甲(評分驅動 — confirm 評審團 top3 + 推薦理由)</b></td><td colspan='3'>x-ai/grok-4.3</td></tr></tbody></table></div><div class='h2' style='margin-top:14px'>🎲 隨機資料點派落各單位</div><p class='hint'><b>共用底料（8 個單位全部一定收）</b>：標書原文、DEBRIEF、💭 5W1H provocation、⚡ 創意亮點 hooks、🔬 差異化 research、🛡️ 官方正名 grounding。<br><b>每間 agency 隨機唔同（種子發散，避免 7 把聲撞同一橋）</b>：①🧭 創意進路種子（每 run offset +1 輪換，同一 model 下個 run 換進路）②📺 ISD 舊作暴露隨機派（對口／原文／both／完全唔餵 4 選 1，部分 agency 完全唔受舊作框）③🎭 device（名人／動畫／正常，標書指定就全跟）④🎨 畫風（9 款亂數唔撞）。</p><p class='hint' style='margin-top:8px'>本次最新 run 各 agency <b>實際抽到</b>嘅隨機種子：</p><div class='card'><table class='dsp'><thead><tr><th>🤖 Agency</th><th>🧭 創意進路（種子）</th><th>📺 ISD 舊作暴露</th></tr></thead><tbody><tr><td>chatgpt-codex</td><td>【極端對比】用一個極端 before/after 或 with/without 對比，將件事</td><td>對口+原文</td></tr><tr><td>claude-sub</td><td>【格式騎劫】騎劫一個香港人日日見慣嘅熟悉格式（天氣報告/交通消息/茶記餐牌/拍賣會/遊戲直播</td><td>完全唔餵（純種子）</td></tr><tr><td>deepseek-chat</td><td>【視覺 device 行先】由一個強烈、簡單、可重複嘅視覺 device 出發（一件物/一個</td><td>完全唔餵（純種子）</td></tr><tr><td>gemini-2.5-flash-search</td><td>【第一身視角】成條片由一個意想不到嘅第一身視角講（一件物/一隻動物/個 logo 本身/一對</td><td>完全唔餵（純種子）</td></tr><tr><td>grok-sub</td><td>【反轉慣例】搵出呢類政府片最公式化嘅拍法，然後反轉佢：由意想不到嘅角度、次序或結局講同一個訊</td><td>對口+原文</td></tr><tr><td>nlm</td><td>【時間錯位】玩時間：倒帶/快進/十年後回望今日/過去同未來對話，令訊息有時間重量。</td><td>原文節錄</td></tr></tbody></table></div><div class='h2' style='margin-top:14px'>📨 共用 BRIEF（標書 tab 全份）</div><p class='hint'>8 間諗橋時都收到呢份 brief（製作要求 3D/mascot/明星、老闆方向…）做底，再各自加上面 dispatch 嘅角度/畫風/device。概念諗咗會 gatekeep 對返 brief 符合先生 BD。</p><div class='card briefcard'><h3>標書 TAB（你嘅 BRIEF — 全份，必跟）</h3>
+<h4>📋 標書撮要</h4>
+<p>這是一份針對香港警務處跨部門反恐專責組（ICTU）「見疑即報」設計及電視宣傳短片（TV API）製作項目的標書分析。以下根據標書及相關 ISD 寫稿指引，為你詳細拆解這 8 大核心要點：</p>
+<h5>① 背景同目的</h5>
+<p>*   <strong>客戶背景</strong>：跨部門反恐專責組（ICTU），由六個紀律部隊成員組成 。</p>
+<p>*   <strong>項目目的</strong>：為 ICTU 的標誌性反恐主題「見疑即報」（Spot and Report）重新設計全新形象，並製作電視宣傳短片（TV API）進行公眾宣傳，以提高市民對反恐及「見疑即報」的警覺性與認識 。</p>
+<h5>② 目標受眾</h5>
+<p>*   <strong>大眾市民</strong>：目標為一般社會大眾（members of the public） 。</p>
+<p>*   <strong>無分年齡性別</strong>：標書的評分準則特別強調，設計內容必須清晰，讓所有年齡層及性別的受眾都能輕易理解及產生共鳴 。</p>
+<h5>③ 傳意目標 / 核心訊息</h5>
+<p>*   <strong>核心訊息</strong>：推廣「見疑即報」及「反恐舉報熱線」 。</p>
+<p>*   <strong>預期成效（Expected Outcome）</strong>：透過全新宣傳活動，增加公眾對恐怖主義的防範意識，教導市民在遇到恐怖或暴力事件時應如何應對，並藉此建立市民與執法機構之間更緊密的關係 。</p>
+<h5>④ 影片 / 製作規格（集數、每集長度、語言、字幕、配音）</h5>
+<p>*   <strong>集數</strong>：只須製作 <strong>1 個版本</strong>（One version only） 。</p>
+<p>*   <strong>長度</strong>：30 秒 。</p>
+<p>*   <strong>語言及字幕</strong>：需提供廣東話及英文兩個版本。廣東話版必須配備<strong>繁體中文書面語</strong>字幕；英文版配備英文字幕 。</p>
+<p>*   <strong>配音（VO）</strong>：包含廣東話及英語配音，英文版須盡量以英語表達 。</p>
+<p>*   <strong>ISD 寫稿及排版慣性</strong>：根據政府新聞處（ISD）指引，旁白及對白須用廣東話口語，畫面字幕（Super）必須為書面語；劇本須標明「旁白：(VO)」及「熒幕蓋字：」，長度約為 9-12 句，結尾必須有部門標誌、區徽及行動呼籲（CTA） [9-11]。</p>
+<p>*   <strong>其他製作規格</strong>：建議使用 HDCAM、RED ONE 或同等高清器材拍攝，並需提交檔案格式（XDCAM HD422, MXF）、錄影帶格式（HDCAM），以及額外交出一個符合 W3C 無障礙網頁（WCAG 2.2 Level AA）標準的版本供網上發布 。影片需另外截取 12 張劇照（JPEG） 。</p>
+<h5>⑤ 指定班底（ERB 導師 / KOL / 吉祥物等）</h5>
+<p>標書內<strong>沒有</strong>強制要求使用指定的 ERB 導師、KOL 或既定實體吉祥物，但針對角色與演員有以下明確規定：</p>
+<p>*   <strong>3D 動畫主角</strong>：創意要求中明確指出，需透過創意及靈活運用 3D 動畫來建立「主要角色」（main characters） 。</p>
+<p>*   <strong>名人 / 演員（Celebrity involvement）</strong>：如提議邀請名人或演員參與 TV API，廣告公司（即承辦商）必須全面負責聯絡、藝人合約及版權清理（確保可作全球、永久、跨媒體播放）。此外，所有髮型、化妝、服裝、道具及交通費用，均須由廣告公司自行與藝人協商並包含在項目預算內 。</p>
+<h5>⑥ 創意及策略重點 / 風格要求</h5>
+<p>*   <strong>視覺風格</strong>：官方指定整體設計風格為 <strong>「3D 漫畫」（3D Comics）</strong> 。</p>
+<p>*   <strong>敘事手法</strong>：需透過生動的故事及細節來帶出反恐意識，而非單純說教 。利用 3D 動畫及視覺特效（Visual Effects）吸引觀眾，加深大眾對「見疑即報」的印象 。</p>
+<p>*   <strong>形象要求</strong>：整體設計必須為 ICTU 建立「正面形象」（positive image） 。</p>
+<p>*   <strong>創意加分位（Innovative Suggestions）</strong>：標書設有創新建議加分區，可提出能提升市民參與度、吸引眼球的點子（Type I）；或提出 ESG（環境保護、社會責任或管治）相關建議，例如環保無紙化製作、聘用殘疾/更生人士等（Type II），越多實際可行的方案分數越高 [21-24]。</p>
+<h5>⑦ 交付物同時間表</h5>
+<p>項目分為三大交付部分，與付款期掛鉤 [4, 25-28]：</p>
+<p>*   <strong>投標截標</strong>：<strong>2026年7月6日 中午12:00</strong> 。</p>
+<p>*   <strong>遴選簡報會</strong>：<strong>2026年7月8日</strong>（必席，每間公司 25 分鐘） [30-32]。</p>
+<p>*   <strong>第一階段（佔 50% 服務費）</strong>：</p>
+<p>    *   2026年9月11日前：完成「見疑即報」主視覺核心設計（作為藍本）。</p>
+<p>    *   2026年9月18日前：完成宣傳車（內外）、海報（A3/A4）及易拉架（80x200cm）設計。</p>
+<p>*   <strong>第二階段（佔 40% 服務費）</strong>：</p>
+<p>    *   2026年12月15日前：完成 30 秒 TV API（須獲 ISD 及 ICTU 最終審批）。</p>
+<p>    *   2027年1月8日前：完成所有電子屏幕廣告設計（包括警官俱樂部/旺角警署電子展板、MTR 5440x1440 30秒數碼動畫等）。</p>
+<p>    *   2027年1月15日前：完成尖沙咀港鐵站巨型牆身貼紙設計（1943x195cm）。</p>
+<p>*   <strong>第三階段（佔 10% 服務費）</strong>：</p>
+<p>    *   2027年2月5日前：完成合約內所有剩餘的設計服務（如戶外橫額、中環警署外牆貼紙、遮打花園行人隧道廣告板等） 。</p>
+<h5>⑧ 任何強制要求或紅線 (Red Lines)</h5>
+<p>*   <strong>嚴禁用 AI 配音</strong>：配音工作必須由真人聲優進行，<strong>絕對不允許使用 AI 生成聲音（AI-generated voices are not permitted）</strong> 。</p>
+<p>*   <strong>TV API 預算封頂（DQ 位）</strong>：電視宣傳短片（Item 2）的製作預算<strong>硬性規定不可超過 HK$250,000</strong>。若報價高於此數，標書將不獲考慮 。</p>
+<p>*   <strong>遞交方式（DQ 位）</strong>：必須採用「雙信封制」（技術建議書 Envelope B 與價格建議書 Envelope A 分開密封，再裝入 Envelope C），且信封表面<strong>絕不能</strong>顯示投標者公司名稱。只接受專人遞交或掛號信，遲交、傳真或電郵遞交一律作廢 [37-40]。</p>
+<p>*   <strong>原創及版權買斷</strong>：提案必須是原創且未售予第三方的意念。一旦中標，絕不能將橋段轉售 。版權屬政府所有，需向政府交出完整源文件（Source files/ aep/ fla/ 分層大 file） [42-44]。</p>
+<p>*   <strong>國安及守法紅線</strong>：嚴禁聘用非法勞工 。如承辦商從事可能構成危害國家安全罪行的行為，政府有權立即中止合約 [46-48]。</p>
+<p>*   <strong>必須出席簡報會</strong>：缺席 2026 年 7 月 8 日的簡報會，已遞交的標書將直接作廢 。</p>
+<h4>⚠️ 製作要求（標書硬性，每個概念必跟，違 = 廢稿）</h4>
+<p>- <strong>手語</strong>：唔使（標書原文:Language: Cantonese (with written Traditional Chin，p33）</p>
+<p>- <strong>W3C影片</strong>：要（標書原文:Contractor is required to provide another version ，p156）</p>
+<p>- <strong>明星/名人/官員</strong>：無Preference（標書原文:If a celebrity/celebrities will take part in the T，p162）</p>
+<p>- <strong>Mascot</strong>：Preferred（標書原文:3D animation is used creatively and flexibly to es，p14）</p>
+<p>- <strong>動畫</strong>：Prefer 3D（標書原文:3D animation is used creatively and flexibly to es，p14）</p>
+<h4>📑 要交文件（邊份 DOC + 頁碼）</h4>
+<p>- <strong>Quotation Schedule 1 ((1) Schedule of Rates &amp; (2) Payment Method)</strong>（Part V – Quotation Schedule 1 · p38） — 一式兩份(Original copy and one copy)；填寫固定報價、銀行過數資</p>
+<p>- <strong>Breakdown of cost for Item (1) &amp; Item (2)</strong>（Part I – Lodging of Quotation · p2） — 包含 Item 1 (Truck/Boards) 及 Item 2 (TV API) 的詳</p>
+<p>- <strong>Technical Proposal</strong>（Part I – Lodging of Quotation · p2） — 一式兩份(硬本)及電子檔，需包括 3D 主題設計、角色、分句、故事板等；正文連圖限 80 </p>
+<p>- <strong>Statement of Compliance</strong>（Part VI – Quotation Schedule 2 · p40） — 一式兩份；需剔選確認提案是否完全符合所有強制要求(Essential Requiremen</p>
+<p>- <strong>Offer to be Bound</strong>（Part VI – Quotation Schedule 2 · p41） — 一式兩份；必須由授權人簽署及蓋公司印章，並填寫商業登記證(BR)及勞工保險號碼與到期日；必</p>
+<p>- <strong>Copies of the Business/Branch Registration Certificate</strong>（Part VI – Quotation Schedule 2 · p40） — 商業登記證(BR)副本；必須作為證明文件夾附於 Schedule 2 內，一併放入 Env</p>
+<p>- <strong>Information of Contractor</strong>（Annex C · p44） — 填寫公司背景、現有業務、聯絡人資訊等；如屬公司/法團，須附上 BR、報稅表及公司章程(M&amp;</p>
+<p>- <strong>Quotation Label</strong>（Annex A · p42） — 必須將標籤分別列印及貼於 Envelope A、Envelope B 及最外層 Envel</p>
+<p>- <strong>Acknowledgement Slip</strong>（Annex B · p43） — 回條；只適用於「不參與」或「無法」投標的情況，須填妥原因並於截標前傳真(Fax)交回。</p>
+<h4>📮 交標方法（地址／信封／份數）</h4>
+<p>- <strong>截標</strong>：2026-07-06 (Monday) 12:00 p.m. (Hong Kong time)</p>
+<p>- <strong>印幾多份</strong>：in duplicate (the original copy and one copy)</p>
+<p>- <strong>幾多信封</strong>：3 個</p>
+<p>- <strong>Soft copy（電子副本：CD/USB？）</strong>：需要交 soft copy。標書原文明文要求：「The technical proposal should also include soft and hard copies of the proposal (together with relevant materials not limited to 3D design of theme, character, sub-slogan, storyboard, animation and reference) in Chinese/English」(未有明確指定 CD 或 USB 等格式)</p>
+<p>- <strong>交去邊 — To</strong>：Inter-departmental Counter Terrorism Unit</p>
+<p>- <strong>交去邊 — Address</strong>：Police Headquarters, 1 Arsenal Street, Wanchai, Hong Kong</p>
+<p>- <strong>信封 label「Envelope A - Price Information」要寫</strong>：`Envelope A - Price Information</p>
+<p>Quotation for Design Service - ‘Spot and Report’ CT Advertisement and TV API for Inter-departmental Counter Terrorism Unit (ICTU)</p>
+<p>Quotation Ref. No. : (23) in ICTU/GEN/6-20/1/3 Pt.6 Closing Date : 2026-07-06`（絕對不能在信封面顯示投標者/公司名稱 (should bear no reference to the name of the Bidder)。必須密封 (sealed)。）</p>
+<p>- <strong>信封 label「Envelope B - Technical Information」要寫</strong>：`Envelope B - Technical Information</p>
+<p>Quotation for Design Service - ‘Spot and Report’ CT Advertisement and TV API for Inter-departmental Counter Terrorism Unit (ICTU)</p>
+<p>Quotation Ref. No.: (23) in ICTU/GEN/6-20/1/3 Pt.6 Closing Date : 2026-07-06`（絕對不能在信封面顯示投標者/公司名稱。必須密封 (sealed)。）</p>
+<p>- <strong>信封 label「Envelope C」要寫</strong>：`Envelope C – (Please in duplicate and put both Envelope A &amp; B inside Envelope C)</p>
+<p>Quotation for Design Service - ‘Spot and Report’ CT Advertisement and TV API for Inter-departmental Counter Terrorism Unit (ICTU)</p>
+<p>Quotation Ref. No.: (23) in ICTU/GEN/6-20/1/3 Pt.6 Closing Date : 2026-07-06`（將 A、B 兩個信封及 Annex C 放進此最外層信封。絕對不能在信封面顯示投標者/公司名稱。必須密封 (sealed)。）</p>
+<h4>💰 預算 / 費用</h4>
+<p>- <strong>預算（Budget）</strong>：TV API 製作預算為 HK$250,000 (報價超過 HK$250,000 將不獲考慮)</p>
+<p>- <strong>費用明細要求（Fee Proposal Breakdown）</strong>：有要求，須於 Envelope A (Price Proposal) 提交 Item (1) 及 Item (2) 的成本報價明細 (breakdown of cost) 硬本 (Part I 第 2 頁)。</p>
+<h4>⛔ 注意事項 / 紅線</h4>
+<p>- [無障礙] 必須提供無障礙版本：須提供符合 W3C WCAG 2.2 Level AA 標準的 TV API 版本供網上發布。</p>
+<p>- [無障礙] 指定字幕規格：廣東話版必須配備繁體中文書面語字幕；英文版須配備英文字幕。</p>
+<p>- [明星] 明星或藝人參與條款：如邀請明星參與，承辦商須全包聯絡、處理全球永久跨媒體版權清理，並承擔化妝、服裝及交通等費用。</p>
+<p>- [3D] 指定 3D 漫畫風格與角色：整體視覺風格指定為「3D Comics」(3D 漫畫)，並須靈活運用 3D 動畫建立主要角色 (main charact</p>
+<p>- [其他] 嚴禁使用 AI 配音：所有配音工作必須由真人聲優 (human talents) 進行，絕對不允許使用 AI 生成聲音。</p>
+<p>- [其他] 預算上限紅線 (DQ位)：TV API 製作報價硬性規定不可超過 HK$250,000，否則標書將不獲考慮。</p>
+<p>- [其他] 原創及版權買斷：創作意念必須原創且未曾售予第三方，中標後不可將橋段轉售；版權全歸政府所有。</p>
+<p>- [其他] 必須出席簡報會 (DQ位)：潛在供應商必須出席 2026 年 7 月 8 日的簡報會，缺席會導致標書作廢。</p>
+<p>- [其他] 正面形象要求：所有設計內容必須為跨部門反恐專責組 (ICTU) 建立正面形象。</p>
+<p>- [其他] 指定影片交付格式：影片只須製作一個版本 (30秒)，並須提交 XDCAM HD422 (MXF) 及 HDCAM 格式檔案。</p>
+<h4>⚡ 創意亮點（research 掘出嘅真嘢）</h4>
+<h4>⚡ 創意亮點 — POLICE·POLICE（research 掘出嚟，可以做橋嘅真嘢）</h4>
+<p>1. 🏷️ <strong>官方放大鏡標誌</strong></p>
+<p>   - 事實：官方 Logo 以紅、黑、白為主色，設計核心是一個放大鏡圖像聚焦於可疑人物。（出處：官方來源 正名）</p>
+<p>   - 💡 可以點做橋：可以將「放大鏡」實體化，變成 3D 漫畫平民主角專屬的「看透隱藏細節」超能力或雷達裝備。</p>
+<p>2. 🏷️ <strong>六大紀律部隊集結</strong></p>
+<p>   - 事實：跨部門反恐專責組 (ICTU) 實際上由警務處、海關、入境處、懲教署、消防處及飛行服務隊共 6 個部隊組成。（出處：研究 Research Brief）</p>
+<p>   - 💡 可以點做橋：影片結尾可以安排六款不同制服的人員以「復仇者聯盟」美漫風格同框登場，作為平民主角的最強後盾。</p>
+<p>3. 🏷️ <strong>反恐賞金機制</strong></p>
+<p>   - 事實：官方推廣包含「反恐賞金」(CT Reward) 制度，如提供的線索對偵查罪案有關鍵協助可獲發賞金。（出處：研究 Research Brief / Annex D 草圖）</p>
+<p>   - 💡 可以點做橋：可以將「見疑即報」包裝成動漫世界中「賞金獵人」接任務、賺金幣解鎖成就的破格設定。</p>
+<p>4. 🏷️ <strong>中區警署巨型牆身</strong></p>
+<p>   - 事實：標書強制交付物包括一幅面積達 43 米闊、33 米高的中區警署外牆巨型貼紙廣告。（出處：Invitation to Quotation - Part IV）</p>
+<p>   - 💡 可以點做橋：可以利用這幅巨牆設計 3D 錯覺大畫 (Trompe-l&#x27;œil)，畫出一個巨大漫畫角色「破牆而出」俯瞰街道尋找線索。</p>
+<p>5. 💡 <strong>的士司機破案實錄</strong></p>
+<p>   - 事實：真實案例中，曾有的士司機透過舉報可疑乘客，成功協助警方拘捕販毒人士，證明舉報機制能打擊一般嚴重罪案。（出處：研究 Research Brief）</p>
+<p>   - 💡 可以點做橋：可以選用的士司機作第一身視角，將日常載客遇到的古怪客變成懸疑漫畫主線。</p>
+<p>6. 💡 <strong>5000名隱形神探</strong></p>
+<p>   - 事實：截至2023年中，反恐熱線已收到超過 20,000 個舉報訊息，背後涉及超過 5,000 名真實的報料人。（出處：研究 Research Brief）</p>
+<p>   - 💡 可以點做橋：可以用「全港已有5000名隱藏神探」為號召，邀請觀眾撳手機成為第 5001 個社區英雄。</p>
+<p>7. 🇭🇰 <strong>洗走「篤灰」負面觀感</strong></p>
+<p>   - 事實：香港社會對「舉報」一詞容易聯想到「篤灰」，產生心理抗拒，市民傾向「多一事不如少一事」。（出處：研究 Research Brief）</p>
+<p>   - 💡 可以點做橋：橋段絕口不提宏大政治，純粹將主角描寫為幫街坊趕走危險品、守護自身社區「小確幸」的日常英雄。</p>
+<p>8. 🏷️ <strong>指尖上的 SMS 大絕</strong></p>
+<p>   - 事實：除了緊急的 999，宣傳焦點落在利用短訊 (SMS) 63-666-999 及微信小程式作非緊急舉報。（出處：研究 Research Brief / Annex D 草圖）</p>
+<p>   - 💡 可以點做橋：畫面可以將「撳手機 Send 短訊」這個平淡動作，用 3D 特效誇張化成發射動漫光波大絕。</p>
+<h4>📅 日程</h4>
+<p>- 2026-07-06 截標 Quotation Closing</p>
+<p>- 2026-07-07 通知入圍名單</p>
+<p>- 2026-07-08 評審簡報會 Presentation Session</p>
+<p>- 2026-09-11 完成主視覺核心設計</p>
+<p>- 2026-09-18 完成宣傳車、海報及易拉架設計</p>
+<p>- 2026-12-15 完成 30 秒 TV API 製作及獲最終審批</p>
+<p>- 2027-01-08 完成所有電子屏幕廣告設計</p>
+<p>- 2027-01-15 完成尖沙咀港鐵站牆身貼紙設計</p>
+<p>- 2027-02-05 完成所有剩餘設計服務</p></div></div>
+<div id='handbd' class='tabpanel'><p class='hint'>喺 Master GSheet 開「TV API Script <b>1／2／3</b>」三個 tab 放唔同 TV API 稿，<b>撳邊個 SET 就生邊個</b>（全 NLM 風格各一，純畫面唔蓋字）。</p><div class='acts' style='margin-bottom:6px'><button class='btn' title='讀 Master GSheet「TV API Script 1」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=POLICE&concept=1&stage=handbd&engine=allstyles&target=main')">🎬 SET 1 → 生 BD</button><button class='btn' title='讀 Master GSheet「TV API Script 2」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=POLICE&concept=2&stage=handbd&engine=allstyles&target=main')">🎬 SET 2 → 生 BD</button><button class='btn' title='讀 Master GSheet「TV API Script 3」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=POLICE&concept=3&stage=handbd&engine=allstyles&target=main')">🎬 SET 3 → 生 BD</button><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card empty'>未生過手寫稿 BD —— 撳上面 SET 生成（或先喺 Master GSheet 放稿）。</div></div>
+<div id='theme1_1' class='tabpanel' data-set='1'><div class='banner'>🧭 北極星未定。撳掣 → 7 agency + 委員會就住成份標書諗一個大主題（big idea）+ 一個綜合口號。所有 MOD ladder 返呢度。</div><div class='card'><button class='btn big' title='' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=POLICE&concept=PLAN&stage=gen_theme&target=main')">🧭 生成大主題 + 綜合口號</button></div><div class='card'><button class='btn ghost' title='將呢個 dept 全部已生成嘅 MOD planning（主題／系列／SOC／MEDIA／KOL）出去 Master GSheet，每個 mod 一個 tab；你喺 GSheet 改完，自己貼返入真 deck（GSlide）。design 你話事。' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=POLICE&concept=all&stage=mod_gsheet&target=main')">📤 全部 MOD → Master GSheet（畀你改）</button></div></div>
+<div id='tvapi1_1' class='tabpanel' data-set='1'><div class='banner'>👉 委員會已預選六強，你可以隨選隨剔，撳右下 Submit，NBLM 即自動幫佢哋生 BD 入 VID 2。</div><div class='h2'>🔻 推薦六強（橫掃揀）</div><div class='carousel'><div class='ccard  sel' data-cid='cm9213d36f'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>Claude</span><span class='oscore'>評審 83</span></div><div class='ctitle'>💬 你嘅一句,守住成個社區。</div><div class='csub'>Concept 2:〔的士台 call 緊你〕</div><div class='cbody'><p><strong>創作概念</strong>:騎劫香港夜晚最有味道嘅聲音格式——<strong>的士無線電「call 台」廣播</strong>。一把沙啞嘅「台長」聲穿插全片:「各位車友,旺角站留意吓……」但佢 call 嘅唔係搵客,而係街坊之間互相通水報可疑。鏡頭跟一個紙雕的士司機落夜更,接力到水吧伙計、物流叔叔、看更——每個基層紙公仔都係城市嘅「眼仔耳仔」,一句通一句,訊號像紙做嘅電波一圈圈擴散全城。Big idea:<strong>「見疑即報」唔係高高在上嘅反恐,而係街坊之間「睇住你頭家」嘅老香港人情味網絡</strong>;最後六個部隊嘅紙公仔企喺街坊身後做最強後盾。對焦 empowerment + 警民夥伴,絕口不提政治,只講「守住自己搵食嘅街」。</p>
+<p><strong>人/景</strong>:紙雕的士司機(主角第一身)、水吧伙計、物流貨倉叔叔、街市看更;場景係夜晚紙摺香港——霓虹紙招牌、的士車廂、後巷貨倉,暖黃路燈。</p>
+<p><strong>Visual Device</strong>:<strong>紙電波漣漪</strong>——每當有人 send 短訊報料,手機彈出一圈圈摺紙波紋,由一個紙公仔傳到下一個,織成一張覆蓋全城嘅「紙線眼網」。視覺上一眼睇明「一個人報 → 全城連成一線」,muted 都成立。</p>
+<p><strong>主打口號</strong>:你嘅一句,守住成個社區。</p>
+<p><strong>Proposed 明星/名人</strong>:不適用。賣點係街坊嘅匿名英雄感,有面孔明星反而破壞「人人都係主角」嘅 framing;真人 VO 搵一把有的士台滄桑味嘅聲線就夠,守實 budget。</p>
+<p><strong>亮點扣連</strong>:用咗 ⑤的士司機破案實錄(主角第一身視角)、②六大紀律部隊集結(結尾六款紙制服公仔同框做後盾)、⑥5000名隱形神探(「全港 5000 個眼仔,夜晚冇瞓」)、⑦洗走篤灰(重新包裝成街坊互相睇住、人情味)、⑧SMS 63-666-999(紙電波由短訊觸發)。</p>
+<p>---</p>
+<p>兩條都係「3D 紙藝 + 格式騎劫」出發:<strong>Concept 1 走遊戲化、好玩、全年齡通殺、muted 環境最強</strong>;<strong>Concept 2 走基層人情味、暖、警民夥伴感最足</strong>。揀中邊條(或者邊個方向想溝),先 develop full 12-格 board。</p><div class='scores'><div class='sline'><b>📊 官方評審 83/100</b><span class='scrit'>訊息準確 26.3 · 創意手法 13.0 · 宣傳衝擊 12.0 · 記憶點 8.2 · 說服共鳴 8.7 · 6a 12.5 · 6b 2.3</span></div><div class='snote'>格式騎劫的士call台+紙電波視覺device極具記憶點與人情味,將「篤灰」重塑為街坊互守的reframing聰明且貼題;惟「call台搵客」框架略削弱反恐主訊息的即時清晰度,ESG僅靠紙藝環保暗示、未明確著墨故失分。<br>騎劫的士台廣播+紙電波漣漪,format hijack 與 visual device 都好搶,muted 成立、人情味框架說服力強且絕口不提政治政治風險低;扣分位在於聲音格式偏窄受眾、ESG 只靠紙藝隱性帶過冇明寫環保/管治,故 6b 偏<br>訊息清楚、貼地有香港夜更人情味，的士台格式同紙電波記憶點強，能有效包裝見疑即報同警民夥伴，但ESG元素較薄弱。</div><div class='sline'><b>🎨 創意質素 30/40</b><span class='scrit'>（落地 7.0 / 扣brief 6.3 / 鋒利 7.7）</span></div><div class='snote'>最弱係把反恐徹底軟化成街坊人情味、絕口不提威脅，恐令「見疑即報/反恐」核心訊息失焦；加上『紙藝』風同標書死限嘅『3D Comics』有出入，貼客度被拖低。 | 的士台 call 台 hijack 好正、夠地夠香港味,但最弱係偏離標書白紙黑字死限嘅『3D Comics 漫畫』——你交『紙藝 paper craft』係另一回事,隨時 DQ;加上『閃、避、求』幾乎冇帶到。 | 最弱係scenario教育未夠實，個format好香港好有記憶點，但要補清楚咩叫可疑同點樣報，否則會變成氣</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard  sel' data-cid='cm75d72597'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>委員會</span><span class='oscore'>評審 78</span></div><div class='ctitle'>💬 你嗰下「唔對路」,就係成個香港嘅雷達。</div><div class='csub'>Concept 1:【第六感雷達】</div><div class='cbody'><p><strong>創作概念</strong>: 將市民嗰下「唔多對路」嘅直覺,視覺化成一種人人都有嘅「超能力」。當主角察覺異常,世界會瞬間變成漫畫風格,官方嘅「放大鏡」標誌會變成主角嘅第六感雷達,鎖定可疑物件。呢個設定直接將「見疑即報」由一個猶豫嘅決定,變成一個自信、有型嘅本能反應,洗走「驚報錯案」嘅心理包袱。</p>
+<p><strong>人/景</strong>: 茶餐廳侍應、物流倉務員、巴士上層學生等,全部係最貼地嘅平民角色。場景係極具香港特色嘅日常空間,例如後巷、貨櫃碼頭、公共交通工具。</p>
+<p><strong>Visual Device</strong>: <strong>放大鏡 HUD (Heads-Up Display)</strong>。當主角第六感啟動,眼前世界會短暫變成灰調漫畫,只有可疑物件(例如無人看管嘅背囊)會被 ICTU 官方 logo 嘅「放大鏡」紅框鎖定並保留顏色,極具視覺衝擊力。</p>
+<p><strong>主打口號</strong>: 你嗰下「唔對路」,就係成個香港嘅雷達。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。</p>
+<p><strong>亮點扣連</strong>: 用咗亮點 🏷️<strong>官方放大鏡標誌</strong> (將 logo 變成主角嘅超能力 HUD) + 🇭🇰<strong>洗走「篤灰」負面觀感</strong> (將舉報包裝成一種型格嘅「直覺」本能,而唔係告密)。</p><div class='scores'><div class='sline'><b>📊 官方評審 78/100</b><span class='scrit'>訊息準確 25.7 · 創意手法 12.8 · 宣傳衝擊 12.3 · 記憶點 8.3 · 說服共鳴 7.8 · 6a 10.0 · 6b 0.7</span></div><div class='snote'>訊息清晰有型,放大鏡HUD視覺device極具記憶點兼成功淡化「篤灰」感;惟欠具體創新服務建議(6a薄弱),亦完全無ESG元素(6b零分),拖低總分。<br>概念新穎,將「見疑即報」轉化為型格直覺並巧用官方放大鏡logo做HUD,有效洗走篤灰負面感、貼地角色易共鳴及記憶點強;惟訊息對具體舉報行動(如何報、報咩)略嫌含蓄,且完全欠ESG元素拖低總分。<br>訊息清晰貼合「見疑即報」，以放大鏡HUD和第六感包裝有效降低舉報心理障礙，視覺記憶點強，但ESG元素幾乎未見。</div><div class='sline'><b>🎨 創意質素 30/40</b><span class='scrit'>（落地 7.7 / 扣brief 7.7 / 鋒利 7.0）</span></div><div class='snote'>最弱係 sharp——『偵探視覺/detective vision HUD』本身已經係遊戲電影玩到爛嘅 trope,加上成個概念重 spot 輕 report,『見疑』有型但『即報』動作同熱線俾雷達特效蓋過咗。 | 角色場景夠貼地、放大鏡HUD有記憶點,但「世界變灰調only可疑物保留顏色」係Sin City/超能力廣告嘅熟口面視覺套路,加上30秒+25萬cap要做到呢種變調漫畫切換好食力,執行落地存疑——sharp同預算可行性係最弱嗰環。 | 最弱係『第六感雷達』有少少超能</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard  sel' data-cid='cm364bb161'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>Gemini</span><span class='oscore'>評審 83</span></div><div class='ctitle'>💬 指尖一報，全城多一重防線。</div><div class='csub'>Concept 2:〔我係Send鍵〕</div><div class='cbody'><p><strong>創作概念</strong>:  </p>
+<p>由一部手機入面嘅「Send 鍵」第一身出發：平時佢送出飯局訊息、工作 WhatsApp、屋企人提醒，但今次，佢送出一條可以守護社區嘅重要線索。故事聚焦「舉報其實好具體」：市民見到可疑情況，唔需要自己冒險查證，只要用手機透過 <strong>SMS 63-666-999</strong> 或「安全社區小程式」作出舉報。畫面將撳 Send 嘅一刻變成水彩漫畫光軌，連到跨部門反恐專責組，令「見疑即報」變成一個記得住嘅指尖動作。</p>
+<p><strong>人/景</strong>:  </p>
+<p>一部手機穿梭幾個日常人物手上：的士司機、外賣員、商場保安、學生家長。場景包括的士車廂、商場儲物櫃附近、後巷收貨區、港鐵站出口；每個人都只係普通市民，但都可以係守護城市嘅一份子。</p>
+<p><strong>Visual Device</strong>:  </p>
+<p>「Send 鍵」係一粒有表情嘅 3D 水彩漫畫小角色，住喺手機屏幕入面。當手指撳落去，63-666-999 數字會變成紅白光軌，由手機飛過香港街景，最後匯聚成 ICTU 嘅六部門防線。KV poster 可用一隻手指即將撳下「Send」，光軌由手機屏幕延伸成香港城市輪廓，主畫面大字鎖定熱線。</p>
+<p><strong>主打口號</strong>:  </p>
+<p>指尖一報，全城多一重防線。</p>
+<p><strong>Proposed 明星/名人</strong>:  </p>
+<p>不適用。建議用不同年齡真人聲優做短句 VO，代表全港市民都可以參與；避免明星授權、全球永久使用權同 HK$250,000 budget 壓力。</p>
+<p><strong>亮點扣連</strong>：用咗亮點 8「指尖上的 SMS 大絕」將 63-666-999 變成記憶點；亮點 5「的士司機破案實錄」轉化為的士車廂場景；亮點 6「5000名隱形神探」可喺結尾用「下一個線索，可能就由你發現」帶出參與感。</p><div class='scores'><div class='sline'><b>📊 官方評審 83/100</b><span class='scrit'>訊息準確 27.0 · 創意手法 12.7 · 宣傳衝擊 12.0 · 記憶點 8.8 · 說服共鳴 8.2 · 6a 12.2 · 6b 2.5</span></div><div class='snote'>「我係Send鍵」第一身視角新鮮,將63-666-999熱線轉成記得住嘅指尖動作,訊息具體清晰(見疑即報、唔使自己查證)、口號朗朗上口、不用明星亦避開版權同預算風險屬聰明取捨;惟反恐/ICTU六部門等核心防線訊息略被「日常感」沖淡,impa<br>將熱線63-666-999化成「指尖一報」記憶點，訊息具體清晰、口號易記、全民參與感強;惟ESG着墨極少(僅省授權成本)、跨部門防線視覺略概念化,影響力與創新機制可再深化。<br>訊息準確清晰，能把熱線及小程式化成易記的「撳 Send」行動，創意和記憶點強，但 ESG 內容較薄弱。</div><div class='sline'><b>🎨 創意質素 27/40</b><span class='scrit'>（落地 7.0 / 扣brief 6.7 / 鋒利 6.3）</span></div><div class='snote'>「Send鍵擬人」概念清晰貼brief、用真人聲優穩陣守紅線,但『有表情嘅Send鍵小角色』係廣告常見擬人套路,未夠distinctive,且強推SMS/小程式而淡化咗官方熱線致電同『閃避求』,訊息焦點略散。 | 最弱係擅自將官方『反恐舉報熱線 63-666-999』改成 SMS 舉報加自創『安全社區小程式』,篡改咗法定渠道有 mandatory 風險;加上『擬人化死物 Send 鍵』其實係廣告行貨 trope,水彩光軌亦偏向離地視覺詩,同標書死限嘅『3D Comics』有少</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard  sel' data-cid='cm2d5c70f6'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>Claude</span><span class='oscore'>評審 82</span></div><div class='ctitle'>💬 見到唔同,即刻報。</div><div class='csub'>Concept 1:〔全港搵不同大賽〕</div><div class='cbody'><p><strong>創作概念</strong>:騎劫香港人細個玩到大嘅「<strong>大家來找不同</strong>」遊戲格式。畫面一開二,左右兩格幾乎一模一樣嘅紙雕香港街景(街市 / 港鐵月台 / 商場),計時器跳緊,旁白用遊戲節目主持人語氣叫觀眾「<strong>搵下邊度唔同</strong>」。觀眾望真啲——原來唔同位係「一件無人看管嘅可疑行李」或者「一個鬼鬼祟祟放低紙箱嘅紙公仔」。搵到嗰刻,官方「放大鏡」logo「咔」一聲圈住,畫面變色聚焦,主角撳手機 send 短訊。Big idea:<strong>「見疑即報」其實就係一場全城都識玩、人人都贏到嘅搵不同遊戲</strong>——將沉重嘅「反恐舉報」變成有得玩、有成就感嘅日常觸覺,徹底洗走「篤灰」嘅心理包袱。</p>
+<p><strong>人/景</strong>:紙雕主角係一個普通街坊(師奶 / 後生仔 / 的士司機都得),場景係最日常嘅紙摺香港——街市檔口、港鐵車廂、商場中庭。背景一堆紙小人行緊。</p>
+<p><strong>Visual Device</strong>:<strong>官方紅黑白放大鏡 = 遊戲游標</strong>。佢喺紙世界滑過,掃到可疑位就「咔」一聲圈實、紙面彈出紅圈 + 厚卡紙摺嘅擬聲詞「SPOT!」,其餘畫面定格降彩度,淨係嗰件可疑物高光——零聲都明。</p>
+<p><strong>主打口號</strong>:見到唔同,即刻報。</p>
+<p><strong>Proposed 明星/名人</strong>:不適用。靠紙公仔角色 + 一把有親和力嘅真人遊戲主持式 VO 撐起,慳返明星費,守實 25 萬 cap(若 Raymond 想加分,可後補一把市民熟口熟面嘅遊戲節目主持聲線,但唔入鏡、唔搶 budget)。</p>
+<p><strong>亮點扣連</strong>:用咗 ①官方放大鏡標誌(實體化做遊戲游標 visual device)、⑥5000名隱形神探(尾段「你係全港第 5001 個搵不同高手」CTA)、⑦洗走篤灰(整個遊戲化 framing 就係解呢個痛點)、⑧SMS 63-666-999(搵到即撳手機 send 短訊收結)。</p>
+<p>---</p><div class='scores'><div class='sline'><b>📊 官方評審 82/100</b><span class='scrit'>訊息準確 26.8 · 創意手法 13.0 · 宣傳衝擊 11.8 · 記憶點 8.7 · 說服共鳴 8.0 · 6a 11.8 · 6b 1.5</span></div><div class='snote'>遊戲化「搵不同」framing極具記憶點兼巧妙化解篤灰心理包袱,訊息清晰且緊扣官方放大鏡、5000神探、SMS等亮點;惟ESG幾近零着墨,衝擊力受紙雕靜態風格略為拉低。<br>「搵不同」遊戲格式騎劫得聰明,可疑物一眼即明、近乎零聲都睇得通,概念創意同去『篤灰』包袱嘅切入點都好強;扣連官方放大鏡、5000神探、SMS全部到位,惟ESG只靠紙雕間接帶過、欠明確環保論述,impact亦偏靠單一遊戲機制略嫌單薄。<br>訊息清晰易明，遊戲化『搵不同』能有效降低舉報心理包袱並提升記憶點，但ESG元素幾乎未有實質提案。</div><div class='sline'><b>🎨 創意質素 27/40</b><span class='scrit'>（落地 5.7 / 扣brief 6.3 / 鋒利 7.7）</span></div><div class='snote'>遊戲化「搵不同」framing 夠 sharp 又有記憶點、洗到「篤灰」包袱,但紙雕世界太離地——可疑情境純靠摺紙堆砌,睇唔到真實香港人真場景,grounded 最弱拖低共鳴。 | 最弱係 on_brief——標書白紙黑字限死『3D Comics』,你交『紙雕/紙摺』係另一種 style,踩中視覺死線有 DQ 風險;加上只見街坊唔見得到 ICTU 代表六個紀律部隊嘅 framing。 | 最弱係grounded：『搵不同』idea sharp又貼地，但紙雕遊戲化會削弱真實危機</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard  sel' data-cid='cm2c58bb89'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>Nlm</span><span class='oscore'>評審 83</span></div><div class='ctitle'>💬 見疑即報,改寫結局就喺呢一秒。</div><div class='csub'>Concept 1:〔倒帶嗰一秒 · Rewind〕</div><div class='cbody'><p><strong>創作概念</strong>:一場意外過後,鬧市一片頹垣、人群驚散 —— 突然畫面開始<strong>一格格倒帶</strong>:碎片飛返原位、人群退返轉頭、慌亂逆走,一路 rewind 到今朝一個最平凡嘅一秒,定格喺「嗰個冇人理會、擺喺月台角落嘅可疑背囊」。Super 打出:「改寫結局,只差當時一個舉報。」呢次,擦身而過嗰個返工女望返轉頭 —— 雙眼聚焦變色(放大鏡 device)、撳手機 Send 短訊 63-666-999,災難由頭到尾冇發生過。硬訊息:防範恐怖主義係全城責任,「見疑即報」就改寫得到結局。</p>
+<p><strong>人/景</strong>:一個普通返工嘅後生女做主角(平民第一身,零制服首 25 秒);場景係人流密集嘅港鐵月台 / 大型商場入口(扣近年反恐演習愛用嘅商場、體育園、口岸場景)。結尾六款制服人員以 Classic 美漫「集結」一 frame 同框,做平民最強後盾。</p>
+<p><strong>Visual Device</strong>:<strong>全城倒帶</strong> —— 整個畫面時光逆流、碎片自我重組;接駁「放大鏡聚焦」:主角望向可疑背囊嗰刻,畫面瞬間抽色、紅黑白聚焦光圈鎖實目標。一冷(倒帶廢墟)一暖(撳掣化解)嘅時間落差,就係記憶鈎。</p>
+<p><strong>主打口號</strong>:見疑即報,改寫結局就喺呢一秒。</p>
+<p><strong>Proposed 明星/名人</strong>:不適用。主角為 3D 漫畫平民角色,慳低明星版權/酬金,將 25 萬 budget 全數推落動畫質感同倒帶特效。</p>
+<p><strong>亮點扣連</strong>:用咗 #1 官方放大鏡(實體化成主角聚焦超能力 device)+ #2 六部隊復仇者式同框(結尾後盾)+ #8 SMS 63-666-999 大絕(撳掣化解嗰一 beat),場景扣演習熱點商場/車站。</p>
+<p>---</p><div class='scores'><div class='sline'><b>📊 官方評審 83/100</b><span class='scrit'>訊息準確 27.3 · 創意手法 13.0 · 宣傳衝擊 12.5 · 記憶點 8.7 · 說服共鳴 8.3 · 6a 12.2 · 6b 1.3</span></div><div class='snote'>倒帶＋放大鏡聚焦概念新穎、平民第一身代入感強，三大官方亮點(放大鏡/六部隊/SMS)扣連到位且省下明星費投落特效屬聰明分配；訊息「見疑即報」清晰但反恐主旨偏沉重、結局逆轉略套路，最大失分在ESG近乎留白，建議補環保製作或社區共融元素。<br>倒帶+放大鏡聚焦概念新穎、記憶鈎強,訊息與SMS熱線清晰,平民第一身具說服力;惟ESG著墨近乎零,僅以慳budget帶過,失分明顯。<br>訊息清晰直接、倒帶記憶點強且能有效帶出見疑即報，但ESG元素較弱，創新建議主要集中於視覺及敘事執行。</div><div class='sline'><b>🎨 創意質素 26/40</b><span class='scrit'>（落地 6.7 / 扣brief 7.3 / 鋒利 6.7）</span></div><div class='snote'>場景夠 ground、紅線安全,但「全城倒帶」係保險/PSA 廣告用到爛嘅 generic device,放邊個城市都得、唔夠香港味,而且只 cover『見疑即報』漏咗『閃避求』——最弱係 local + 行貨度。 | 倒帶+災難廢墟開場其實偏向販賣恐懼,同客戶『賦權唔好 fear-mongering』調性有張力;復仇者式同框係國際 cliché,本地語感未夠抓,最弱係 local 同隱性違反 Positive 調性。 | 最弱係倒帶災難同超能力視覺有啲離地兼重CG，真實『點</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard  sel' data-cid='cm8edd21a0'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>委員會</span><span class='oscore'>評審 78</span></div><div class='ctitle'>💬 你嘅第六感，我哋嘅最強後盾。</div><div class='csub'>Concept 1:〔第六感裝置〕</div><div class='cbody'><p><strong>創作概念</strong>:</p>
+<p>將官方 Logo 嘅「放大鏡」實體化，變成每個市民內心都有嘅「第六感裝置」。當主角感覺「唔對路」，呢個裝置就會喺主觀視角啟動，畫面瞬間轉為漫畫風格，將可疑之處高光鎖定。成個概念係將抽象嘅「警覺性」視覺化成一種人人都有嘅超能力，而「見疑即報」就係啟動呢種能力嘅最後一步。</p>
+<p><strong>人/景</strong>:</p>
+<p>外賣仔穿梭舊區唐樓後樓梯、的士司機喺倒後鏡觀察乘客、學生喺人多擠迫嘅商場行過。全部都係極具香港特色嘅基層日常場景。</p>
+<p><strong>Visual Device</strong>:</p>
+<p><strong>「放大鏡視界」(The Lens)</strong>。當主角眉頭一皺，畫面會疊加一個半透明嘅圓形「放大鏡」UI。鏡內，可疑物件（如漏出不明液體嘅紙箱）會以高飽和度、帶有發光描邊嘅方式呈現；鏡外嘅世界則瞬間變成 desaturated（去飽和）嘅灰調，形成強烈視覺反差，將「見疑」呢個動作做到極致。</p>
+<p><strong>主打口號</strong>:</p>
+<p>你嘅第六感，我哋嘅最強後盾。</p>
+<p><strong>Proposed 明星/名人</strong>:</p>
+<p>不適用。</p>
+<p><strong>亮點扣連</strong>：用咗亮點 1 (官方放大鏡標誌) 將 Logo 核心變成 Visual Device；亦扣連亮點 7 (洗走「篤灰」負面觀感)，將舉報昇華為啟動個人「第六感」嘅自衛本能。</p><div class='scores'><div class='sline'><b>📊 官方評審 78/100</b><span class='scrit'>訊息準確 26.7 · 創意手法 12.8 · 宣傳衝擊 11.3 · 記憶點 7.8 · 說服共鳴 7.8 · 6a 10.7 · 6b 0.8</span></div><div class='snote'>視覺語言強烈、將Logo放大鏡轉化為「第六感」Visual Device有創意且成功洗淡篤灰負面感,訊息清晰;惟欠名人加持令傳播力存疑,且幾乎無ESG元素失分。<br>放大鏡視界視覺鈎子強、緊扣官方Logo又化解「篤灰」負面感,訊息清晰且具記憶點;惟對服務本身嘅創新建議偏弱,ESG元素近乎缺席,拉低總分。<br>訊息清晰準確，將「見疑即報」轉化為人人有嘅警覺本能，視覺裝置有創意及記憶點，香港日常場景有共鳴，但實際擴散影響及ESG元素較弱。</div><div class='sline'><b>🎨 創意質素 28/40</b><span class='scrit'>（落地 7.0 / 扣brief 7.0 / 鋒利 6.7）</span></div><div class='snote'>場景夠香港夠貼地,但「放大鏡overlay高光鎖定+去飽和」其實係偵探/AR UI嘅常見trope,記憶點唔夠sharp;而且過度聚焦市民個人超能力,冇真正帶出ICTU六部門『警民夥伴』,差少少貼客。 | 場景夠貼地,但『放大鏡高光鎖定+去飽和背景』係廣告行貨手法,且概念建喺主觀視角device上,冇按死線起到『3D Comics Main Characters』,有失分風險。 | 最弱係功能訊息未夠硬，『第六感』visual device 幾 sharp，但要更清楚教市民點</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div></div><div class='h2'>其餘概念（分數高 → 低）</div><div class='carousel rest-row'><div class='ccard rest ' data-cid='cma83313dd'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>DeepSeek</span><span class='oscore'>評審 79</span></div><div class='ctitle'>💬 睇真啲，就係幫手。</div><div class='csub'>Concept 1:【老夫子·新任務】</div><div class='cbody'><p><strong>創作概念</strong>：</p>
+<p>將香港經典漫畫《老夫子》嘅 heritage 視覺基因注入 3D Comics 世界。主角係一個喺街市送貨嘅「老夫子式」平民（戴鴨舌帽、格仔衫、懷舊波鞋），佢嘅日常生活場景（街市、唐樓、茶餐廳）就係「偵探基地」。橋嘅核心係：<strong>「你對眼，就係放大鏡」</strong>——透過主角嘅視角，日常事物會瞬間「漫畫化」：一袋無人認領嘅行李會爆出誇張嘅漫畫問號、一個行蹤可疑嘅人會出現「集中線」focus 佢嘅手腳動作。最後主角撳手機 Send SMS 63-666-999，畫面變成一束光射向天空，6個紀律部隊以「復仇者聯盟」pose 同框登場。</p>
+<p><strong>人/景</strong>：</p>
+<p>一個 40 歲左右、草根味濃嘅送貨佬（設計成「老夫子」三毫子小人風格但 3D 化），場景係深水埗街市、唐樓後樓梯、茶餐廳水吧。</p>
+<p><strong>Visual Device</strong>：</p>
+<p><strong>「漫畫放大鏡」</strong>——當主角對某件事物起疑心，畫面會出現一個漫畫風格嘅圓形「聚焦框」（模擬放大鏡鏡片），框內事物會瞬間變成紅色高光 + 誇張細節線條，框外變黑白。呢個 device 可以喺成個 campaign（海報、宣傳車、MTR 牆貼）重複使用。</p>
+<p><strong>主打口號</strong>：</p>
+<p><strong>「睇真啲，就係幫手。」</strong></p>
+<p><strong>Proposed 明星/名人</strong>：</p>
+<p>不適用。用原創 3D 角色，唔用真人明星，慳 budget + 版權乾淨。</p>
+<p><strong>亮點扣連</strong>：</p>
+<p>用咗 #1 官方放大鏡標誌（變成漫畫聚焦框）、#2 六大紀律部隊集結（結尾同框）、#5 的士司機破案實錄（轉做送貨佬日常）、#7 洗走「篤灰」（草根主角保護街坊飯碗）、#8 指尖 SMS 大絕（Send SMS 畫面變光波）。</p>
+<p>---</p><div class='scores'><div class='sline'><b>📊 官方評審 79/100</b><span class='scrit'>訊息準確 25.2 · 創意手法 12.7 · 宣傳衝擊 11.5 · 記憶點 8.0 · 說服共鳴 7.7 · 6a 11.7 · 6b 2.0</span></div><div class='snote'>老夫子IP喚起本土集體記憶、放大鏡聚焦框device有記憶點兼可跨媒介複用,口號精煉;但訊息只突出「觀察舉報」而舉報渠道/熱線資訊偏弱,影響力規模欠數據支撐,ESG幾乎缺席,整體執行紮實但未見突破性大招。<br>老夫子IP+漫畫放大鏡device貫穿全campaign,recall同clarity都強,草根主角夠貼地;原創角色版權乾淨,但ESG著墨太弱(只提慳budget),創新性偏向視覺風格多於真正科技應用。<br>訊息清楚兼有本地共鳴，漫畫放大鏡同SMS記憶點強，但結尾英雄集結略公式化，ESG提案較薄弱。</div><div class='sline'><b>🎨 創意質素 28/40</b><span class='scrit'>（落地 7.0 / 扣brief 6.7 / 鋒利 6.0）</span></div><div class='snote'>最弱位:借《老夫子》IP基因直撞「必須100%原創、唔可以買罐頭橋」死線,係DQ級版權地雷;加結尾『復仇者聯盟pose』係人人都諗到嘅行貨,削弱咗原本貼地嘅放大鏡device。 | 最弱係『老夫子』本身係註冊版權IP,踩標書『100%原創』死線,有DQ風險;結尾六部隊『復仇者聯盟pose』同框亦偏行貨。 | 最弱係用老夫子同復仇者聯盟式集結太借殼，版權/原創紅線高危，亦令反恐教育尾段變得離地。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cma52a1316'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>Grok</span><span class='oscore'>評審 84</span></div><div class='ctitle'>💬 真正嘅冠軍反應,係留神嗰一秒。</div><div class='csub'>Concept 2:〔金牌反應〕</div><div class='cbody'><p><strong>創作概念</strong>:反轉「英雄定義」。開場係張家朗劍道奪金嗰下經典定格,旁白引你以為要講拼搏熱血——點知畫面急轉:鏡頭跟住佢收工落場,喺日常一程車/一條街,眼尾瞄到一件唔對路嘅可疑物,<strong>個反應快過揮劍嗰一下</strong>,即刻 63-666-999 見疑即報。Big idea:<strong>真正嘅「冠軍反應」唔係場上嗰一劍,而係生活入面留神嗰一秒</strong>——而呢種反應,全港 5000 個隱形神探都有,你都得。完全唔靠制服英雄主義,將「反恐警覺」重新定義成一種人人練得到嘅本能反射。</p>
+<p><strong>人/景</strong>:張家朗(便服,收工狀態);場景由比賽場館切去真實香港街景——港鐵、街市、行人天橋。可疑物用日常化處理(無人看管嘅背囊/紙箱),唔賣血腥恐懼。</p>
+<p><strong>Visual Device</strong>:<strong>「反射神經」定格 + 放大鏡聚焦</strong>。揮劍 freeze-frame 同「見疑」freeze-frame 用同一種子彈時間鏡頭語言對照剪接,告訴觀眾兩者係同一種反應;「見疑」嗰格同樣抽色、放大鏡光圈罩實可疑物,SPOT! 爆框。</p>
+<p><strong>主打口號</strong>:<strong>真正嘅冠軍反應,係留神嗰一秒。</strong></p>
+<p><strong>Proposed 明星/名人</strong>:<strong>張家朗</strong>(香港男子花劍奧運金牌)。全民英雄、跨代認受、年輕有活力;「冠軍反應 / reflex」概念天生為佢度身,由運動場 reflex 借喻到civic reflex,reframe 順理成章又有話題性,啱晒「無分年齡性別」嘅大眾受眾。</p>
+<p><strong>亮點扣連</strong>:用咗 #6 5000 名隱形神探(「人人都有冠軍反應」嘅號召)、#1 官方放大鏡(視覺 device)、#8 SMS 63-666-999、#7 洗走篤灰(將舉報重新定義成本能反應、唔關政治);結尾可選 #2 六大部隊作後盾。</p>
+<p>---</p>
+<p>兩個概念最大分別:<strong>Concept 1 玩敘事次序(倒帶 + 賞金溫情),Concept 2 玩定義反轉(運動 reflex → civic reflex,熱血)</strong>;一個低調影帝扮路人、一個全民英雄做自己,情緒一暖一燃,夠晒對沖。Raymond 揀邊個(或邊條 slogan)我先 develop 足 12 格 full board。</p><div class='scores'><div class='sline'><b>📊 官方評審 84/100</b><span class='scrit'>訊息準確 27.0 · 創意手法 13.3 · 宣傳衝擊 12.5 · 記憶點 8.7 · 說服共鳴 8.5 · 6a 12.3 · 6b 1.7</span></div><div class='snote'>「冠軍反應」定義反轉概念出色,張家朗選角與全民認受度極強,訊息清晰且緊扣官方元素(放大鏡、SMS、5000神探);惟可疑物日常化處理略削警示力度,ESG面向只觸及公民責任、欠環保/可持續實質提案,故6b偏低。<br>「冠軍反應」把運動 reflex 借喻為 civic reflex,定義反轉聰明、記憶點強、張家朗選角貼大眾,核心訊息(見疑即報 63-666-999)清晰且巧妙扣連隱形神探與洗走篤灰;惟 ESG 維度幾乎缺位、可疑物日常化雖好但實際說服力<br>訊息清楚連到見疑即報及熱線，運動反應轉化成公民警覺有新鮮感和高記憶點，張家朗有助擴散及說服力，但ESG內容幾乎未見具體方案。</div><div class='sline'><b>🎨 創意質素 25/40</b><span class='scrit'>（落地 6.0 / 扣brief 4.0 / 鋒利 7.3）</span></div><div class='snote'>idea 夠 sharp 夠貼地,但致命傷係明刀明槍違咗標書白紙黑字限死嘅「3D Comics」視覺死線——成條 concept 係張家朗真人 bullet-time,完全冇 3D 動畫角色,加埋 25 萬 budget 根本食唔起明星+子彈時間,係 DQ 位。 | Idea夠sharp夠貼地,但踩中兩條DQ死線——完全冇接『3D Comics』必跟視覺框架(用真人實拍而非3D角色),加上25萬API budget根本買唔起張家朗全球永久跨媒體版權,on_brief最弱。 |</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cm8ff6c20c'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>GPT</span><span class='oscore'>評審 81</span></div><div class='ctitle'>💬 你多望一眼，全城少一分險</div><div class='csub'>Concept 2:〔一件小事，大到壓城〕</div><div class='cbody'><p><strong>創作概念</strong>:  </p>
+<p>用「唔理佢」同「見疑即報」嘅極端後果對比。開場一件無人看管可疑物品喺港鐵站／商場角落，本來只係一個細背包；當路人選擇扮睇唔到，它喺 3D 漫畫世界越變越大，陰影幾乎壓住成條街。到一位普通市民停低、多望一眼、用反恐舉報熱線 63-666-999 作出舉報，巨物即時縮返真實大小，交由跨部門反恐專責組跟進，帶出「小小警覺，可以阻止危險放大」。</p>
+<p><strong>人/景</strong>:  </p>
+<p>3D 動畫上班族、學生、長者、商場保安、港鐵乘客；場景可放喺港鐵月台、商場通道、行人天橋，方便延展到尖沙咀港鐵站巨型牆身貼紙、港鐵 5440x1440 數碼動畫 Panel 同宣傳車。</p>
+<p><strong>Visual Device</strong>:  </p>
+<p>「危險放大鏡反差」：可疑物品喺無人理時不斷膨脹，變成漫畫式巨大黑影；主角一用放大鏡 HUD 聚焦細節，畫面由恐慌式巨大化反轉成清晰資訊分層，包括「可疑物品」、「保持距離」、「見疑即報」、「緊急情況致電 999」。視覺上做到一眼記得：唔報，件事會被放大；報咗，風險會被正確處理。</p>
+<p><strong>主打口號</strong>:  </p>
+<p>你多望一眼，全城少一分險</p>
+<p><strong>Proposed 明星/名人</strong>:  </p>
+<p>不適用。以原創 3D mascot 式「放大鏡眼」市民角色作主角，可長線用於海報、易拉架、電子屏幕同巨型牆身，版權乾淨、易改易延展。</p>
+<p><strong>亮點扣連</strong>：用咗「官方放大鏡標誌」變成主角視覺能力；用「中區警署巨型牆身」可延展成巨物壓城／破牆 3D 錯覺 KV；同時扣「洗走『篤灰』負面觀感」，將舉報包裝成守護街坊日常安全。</p><div class='scores'><div class='sline'><b>📊 官方評審 81/100</b><span class='scrit'>訊息準確 27.0 · 創意手法 12.7 · 宣傳衝擊 12.2 · 記憶點 8.3 · 說服共鳴 7.8 · 6a 11.3 · 6b 1.8</span></div><div class='snote'>放大鏡反差視覺概念清晰有記憶點、口號扣題且成功淡化「篤灰」觀感、延展性強(MTR panel/巨型牆身);惟Pro-innovation偏視覺手法多於服務層面創新,ESG幾乎只得版權乾淨一點、缺環保/可持續實質內容,故6b明顯失分。<br>訊息清晰、放大壓城反差概念搶眼且口號易記，多渠道延展力強；惟ESG幾乎缺席、明星元素欠奉，整體屬高水準但未滿分。<br>訊息清晰兼有強記憶點，3D放大反差及熱線行動扣題有說服力，但ESG建議較薄弱。</div><div class='sline'><b>🎨 創意質素 26/40</b><span class='scrit'>（落地 6.3 / 扣brief 7.0 / 鋒利 6.3）</span></div><div class='snote'>最弱係調性——「巨物壓城黑影」本質仲係賣恐懼,同客戶明令『唔好過度販賣恐懼、要賦權感』有張力;加上『放大鏡眼』mascot偏generic、又冇帶出ICTU六部門角度,記憶點有但唔夠sharp。 | 放大鏡反差有記憶點，但『細物膨脹壓城』本質係好行貨嘅恐懼放大 metaphor，而且偏向販賣恐懼、同客戶要嘅 empowerment 正向調性相撞，係最弱嗰點。 | 最弱係貼地度：港鐵／商場情境啱，但『巨物壓城＋放大鏡HUD』仍偏廣告視覺橋，香港人生活語感未夠入肉。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cmc3259db9'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>Nlm</span><span class='oscore'>評審 84</span></div><div class='ctitle'>💬 你今日撳一下,就係十年後全城嘅安穩。</div><div class='csub'>Concept 2:〔2036,同你講聲多謝 · 十年後回望〕</div><div class='cbody'><p><strong>創作概念</strong>:2036 年,一個退咗休嘅的士司機拖住孫仔,行過一條熱鬧平安嘅街。佢同孫講當年事 —— 畫面倒返 2026 夜更:佢載到一個神色有異、落車留低可疑物嘅乘客,一度心諗「多一事不如少一事」,最後仲係撳咗短訊 63-666-999 舉報。十年時空對接:老年嘅佢隔住時間望住壯年嘅自己,一句「好彩你嗰晚撳咗」。硬訊息:你今日一個微小舉動,就係未來全城嘅安穩 —— 警民夥伴、賦權,唔賣恐懼。</p>
+<p><strong>人/景</strong>:的士司機做主角(扣真實的士司機破案實錄);2036 暖燈街景 vs 2026 的士車廂霓虹夜更,兩個時空交叉剪。街坊味十足,茶記、街市、貨倉做背景。</p>
+<p><strong>Visual Device</strong>:<strong>時間對倒接力</strong> —— 同一個司機,老年(2036)同壯年(2026)隔住時空對望、一個動作接落另一個時空;當年舉報化成一粒「賞金/金幣」光點,飛越十年變成成條街嘅燈火,同時 counter 跳出「第 5001 個」。含蓄處理賞金,唔好太市儈,重點係「守住自己開工嗰條街」。</p>
+<p><strong>主打口號</strong>:你今日撳一下,就係十年後全城嘅安穩。</p>
+<p><strong>Proposed 明星/名人</strong>:可考慮以<strong>許紹雄(歡喜哥)</strong>型嘅親民老香港熟面孔做老司機形象藍本兼廣東話 VO —— 街坊、有正義感、入屋,洗到「篤灰」嘅負面觀感。⚠️ 但須計實版權/酬金能否壓喺 25 萬 budget 內;若爆 cap,即回落用真人聲優 + 純 3D 漫畫平民司機角色(VO 仍真人,跟紅線)。</p>
+<p><strong>亮點扣連</strong>:用咗 #5 的士司機破案(主角第一身)+ #6 5000 神探/第 5001(時空 counter)+ #3 反恐賞金(含蓄化成燈火 device)+ #7 洗「篤灰」(純守護街坊飯碗、絕口不提宏大政治)+ #8 SMS 63-666-999。</p>
+<p>---</p>
+<p>兩個橋揀邊個(或兩個都要 develop full board),話我知就落 12 格 storyboard + 完整 script(廣東話 VO / 書面語 Super / CTA)。</p><div class='scores'><div class='sline'><b>📊 官方評審 84/100</b><span class='scrit'>訊息準確 26.7 · 創意手法 13.3 · 宣傳衝擊 12.3 · 記憶點 8.5 · 說服共鳴 8.5 · 6a 12.2 · 6b 2.7</span></div><div class='snote'>時空對倒接力 device 新鮮入屋、的士司機第一身洗『篤灰』情感說服力強,主訊息賦權不販賣恐懼且帶齊 SMS 63-666-999;惟賞金/counter 含蓄處理令『安穩』訊息略抽象、明星版權有 budget 風險,ESG 只觸及社會責<br>硬訊息(微小舉動=全城安穩、警民夥伴、洗篤灰)清晰準確;時空對倒接力+金幣化燈火device有記憶點且情感共鳴強,的士司機第一身+第5001 counter扣連亮點到位;惟賞金含蓄化雖避市儈卻削弱了訊息力度,星級版權/budget風險未解,<br>訊息清晰、情感同記憶點強，時空對倒創意突出並能淡化「篤灰」負面感，但 ESG 只屬間接社會責任層面，未有具體環保或管治建議。</div><div class='sline'><b>🎨 創意質素 25/40</b><span class='scrit'>（落地 6.0 / 扣brief 5.0 / 鋒利 5.7）</span></div><div class='snote'>最弱係 on_brief:把『反恐/ICTU 六部隊/3D Comics 視覺死線』溝淡成的士司機篤灰回望劇,key message 走咗去防騙式街坊故事,而『十年後同你講聲多謝』本身亦係保險廣告級行貨煽情套路。 | 最弱係冇真正咬實『3D Comics』視覺死線——成個概念寫到似真人催淚時空片，3D漫畫得個講字，加時空對倒+賞金化燈火偏視覺詩堆砌,且淨focus司機一個部門,溝淡咗6紀律部隊嘅ICTU。 | 最弱係時間穿越同金幣燈火 device 有少少視覺詩化，會削弱政府</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cmbc137e86'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>委員會</span><span class='oscore'>評審 80</span></div><div class='ctitle'>💬 見疑即報,全城嘅線索,等緊你解鎖。</div><div class='csub'>Concept 2:【賞金獵人檔案】</div><div class='cbody'><p><strong>創作概念</strong>: 將「見疑即報」包裝成一個動漫世界入面嘅「賞金獵人」任務。以一個極具代表性嘅基層職業(如的士司機)做第一身視角,將佢日常工作中遇到嘅可疑乘客同事件,用懸疑漫畫手法呈現。當佢決定舉報,就係「接咗個任務」,最後暗示有「反恐賞金」,將行動誘因由純粹嘅公民責任,增加一層更 personal、更有趣嘅動力。</p>
+<p><strong>人/景</strong>: 主角係一個飽經世故、觀察力強嘅的士司機。場景主要係佢嘅的士車廂內,透過倒後鏡、車窗觀察城市中嘅古怪乘客同可疑事件。</p>
+<p><strong>Visual Device</strong>: <strong>任務觸發介面 (Quest Trigger UI)</strong>。當司機主角發現關鍵線索,佢嘅手機會彈出一個漫畫化嘅「任務檔案」介面,顯示可疑事件嘅簡報。佢撳掣 send SMS,就好似遊戲中「確認接取任務」,畫面會出現金幣彈出或「任務完成」嘅爽快特效。</p>
+<p><strong>主打口號</strong>: 見疑即報,全城嘅線索,等緊你解鎖。</p>
+<p><strong>Proposed 明星/名人</strong>: <strong>黃子華</strong>。佢嘅「的士判官」形象深入民心,由佢演繹一個觀察力強、帶點 cynical 但內心正義嘅司機,極具說服力同親和力,能夠輕易將一個硬訊息軟化。</p>
+<p><strong>亮點扣連</strong>: 用咗亮點 🏷️<strong>反恐賞金機制</strong> (將舉報 game 化,變成賞金任務) + 💡<strong>的士司機破案實錄</strong> (直接採用最 relatable 嘅真實案例做主角設定)。</p><div class='scores'><div class='sline'><b>📊 官方評審 80/100</b><span class='scrit'>訊息準確 25.0 · 創意手法 13.0 · 宣傳衝擊 12.3 · 記憶點 8.5 · 說服共鳴 8.0 · 6a 12.3 · 6b 1.2</span></div><div class='snote'>創意執行出色,賞金獵人 game 化框架配黃子華的士司機極具記憶點同說服力;惟「反恐賞金」誘因易令訊息失焦甚至誤導(舉報非為錢),準確性扣分,且全無 ESG 着墨。<br>概念新鮮、黃子華選角貼地有說服力、game化機制提高記憶點;但「反恐賞金」誘因易誤導觀眾以為真有金錢回報、偏離純公民責任,訊息準確性有風險,且ESG元素近乎缺席。<br>訊息清楚而且以的士司機視角令舉報行動具體易明，動漫任務化和賞金誘因有記憶點，但需小心避免過度遊戲化反恐議題，ESG元素亦較弱。</div><div class='sline'><b>🎨 創意質素 25/40</b><span class='scrit'>（落地 6.0 / 扣brief 4.0 / 鋒利 7.0）</span></div><div class='snote'>的士司機+黃子華超貼地有記憶點，但『反恐賞金』係致命傷——政府要嘅係公民責任同賦權感，硬塞金錢誘因離 brief 又唔現實，包裝到舉報恐襲為咗攞錢，調性都歪。 | 最弱係『反恐賞金』:虛構金錢誘因偷換咗客戶硬指定嘅 empowerment 調性,將公民責任貶成搵錢遊戲,仲會令市民誤以為舉報真係有錢收(失實),加上單一的士視角窄化咗 ICTU 六部門定位。 | 最弱係貼客度：『賞金獵人／金幣／任務完成』太似鼓勵為錢舉報，容易沖淡全城責任同正面警民夥伴訊息，黃子華亦明顯超出25萬</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cm9d4521be'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>GPT</span><span class='oscore'>評審 79</span></div><div class='ctitle'>💬 見疑即報，一撳有後盾</div><div class='csub'>Concept 1:〔灰城一撳變彩城〕</div><div class='cbody'><p><strong>創作概念</strong>:  </p>
+<p>用「當無事」同「即刻報」做極端 before/after。故事由一架的士穿過一個灰色、靜音、人人低頭嘅香港開始，司機留意到可疑乘客同可疑物品細節；一撳反恐舉報熱線 63-666-999，成條街即時由灰白變成紅黑白 3D 漫畫防線，跨部門反恐專責組成為市民背後嘅實在後盾。核心訊息係：市民唔需要做英雄，只要見疑即報，就已經係守護社區安全嘅第一步。</p>
+<p><strong>人/景</strong>:  </p>
+<p>3D 動畫的士司機、乘客、茶餐廳伙記、街坊；場景包括的士車廂、旺角街口、樓下商舖、路邊可疑物品。結尾見到警務處、香港海關、入境事務處、懲教署、消防處、政府飛行服務隊六個紀律部隊元素以漫畫分格形式同框，代表跨部門反恐專責組支援。</p>
+<p><strong>Visual Device</strong>:  </p>
+<p>「灰城開關」：未報之前，全城灰白、聲音被吸走、人物似機械公仔；司機手指撳出「63-666-999」一刻，手機短訊化成紅黑白光線，沿街道、窗框、倒後鏡擴散，將可疑細節逐格放大，城市即時變回有反應、有後盾嘅彩色 3D 漫畫世界。</p>
+<p><strong>主打口號</strong>:  </p>
+<p>見疑即報，一撳有後盾</p>
+<p><strong>Proposed 明星/名人</strong>:  </p>
+<p>不適用。建議用原創 3D 平民角色，控制 HK$250,000 TV API 預算，同時避免全球永久跨媒體藝人版權成本。</p>
+<p><strong>亮點扣連</strong>：用咗「的士司機破案實錄」做平民視角；用「指尖上的 SMS 大絕」將短訊 63-666-999 視覺化；結尾扣「六大紀律部隊集結」建立跨部門反恐專責組正面後盾。</p><div class='scores'><div class='sline'><b>📊 官方評審 79/100</b><span class='scrit'>訊息準確 26.3 · 創意手法 12.5 · 宣傳衝擊 11.8 · 記憶點 8.0 · 說服共鳴 7.8 · 6a 10.7 · 6b 1.7</span></div><div class='snote'>灰變彩的視覺裝置鮮明、口號扣連熱線號碼利於記憶,平民的士視角易產生共鳴;但訊息上反恐情境略嫌戲劇化、可疑細節呈現不夠具體,ESG著墨幾乎欠奉,創新建議仍偏服務本身而未見突破。<br>灰變彩開關裝置搶眼、平民的士視角易代入，熱線同口號清晰利記憶；但屬常規3D動畫無突破性創新建議，且完全欠ESG元素拖低總分。<br>訊息清晰、視覺轉換有記憶點，能扣連熱線及跨部門後盾，但ESG元素較弱，創新建議亦偏向創意表現多於服務層面實質創新。</div><div class='sline'><b>🎨 創意質素 26/40</b><span class='scrit'>（落地 6.3 / 扣brief 7.7 / 鋒利 4.7）</span></div><div class='snote'>最弱係 sharp:『灰變彩』根本係廣告界用爛嘅 cliché,記憶點唔夠 distinctive,而且只 cover『見疑即報』冇好好帶出『閃避求』。 | 『灰城一撳變彩』係教科書級 before/after 行貨transition,人變機械公仔嘅全城變灰偏視覺詩堆砌,的士司機視角同六部隊集結雖貼地貼客,但記憶點全靠一個人人都諗到嘅變色機關,最弱係 sharp。 | 最弱係灰城變彩城同光線擴散呢套 before/after 視覺太廣告行貨，貼 brief 但 idea 記</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cme272ca63'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>DeepSeek</span><span class='oscore'>評審 78</span></div><div class='ctitle'>💬 你，就係第 5,001 個神探。</div><div class='csub'>Concept 2:【隱形神探檔案】</div><div class='cbody'><p><strong>創作概念</strong>：</p>
+<p>以「已有超過 5,000 名隱形神探」嘅真實數據做 hook。將「見疑即報」包裝成一個「全民隱形神探」嘅 3D 漫畫世界。主角唔係一個固定角色，而係一個<strong>「神探裝備箱」</strong>——一個 3D 漫畫風格嘅金屬箱，打開之後會彈出各種偵探 gadget：放大鏡（變形金剛式摺疊）、對講機（變 63-666-999 熱線手機）、徽章（變 6 個部隊標誌合集）。故事係「裝備箱」被不同嘅平民角色打開：一個巴士司機、一個學生、一個街市阿姐——每人打開箱後，畫面會 flash 去佢哋遇到嘅可疑情境（巴士上有無人看管背囊、學校附近有人拍攝敏感設施、街市有人搬運古怪化學品），然後佢哋用裝備箱入面嘅「熱線手機」舉報。最後一個 wide shot，全港各區嘅「裝備箱」同時發光，形成一個保護網覆蓋香港地圖。</p>
+<p><strong>人/景</strong>：</p>
+<p>3 個 quick-cut 角色：巴士司機（車廂內）、中學生（學校後巷）、街市阿姐（菜檔前）。場景係典型香港公共空間。</p>
+<p><strong>Visual Device</strong>：</p>
+<p><strong>「神探裝備箱」</strong>——一個可以喺所有物料（海報、宣傳車、MTR 牆貼、TV API）重複出現嘅實體物件。箱嘅外形係復古偵探皮箱 + 漫畫機械感（紅黑配色）。每次打開有機械變形動畫，彈出不同 gadgets。</p>
+<p><strong>主打口號</strong>：</p>
+<p><strong>「你，就係第 5,001 個神探。」</strong></p>
+<p><strong>Proposed 明星/名人</strong>：</p>
+<p>不適用。用 3D 角色 + 裝備箱做主角，唔使明星，啱 budget。</p>
+<p><strong>亮點扣連</strong>：</p>
+<p>用咗 #1 官方放大鏡標誌（箱入面 gadget）、#3 反恐賞金機制（「神探」身份取代賞金）、#5 5000名隱形神探（直接做 hook）、#7 洗走「篤灰」（裝備箱包裝成「幫手」工具）、#8 指尖 SMS 大絕（熱線手機 gadget）。</p>
+<p>---</p>
+<p><strong>Raymond，兩個 concept 都係由「一個視覺 device 行先」</strong>：</p>
+<p>- Concept 1：「漫畫放大鏡」——一個視覺動作，可以喺所有物料無限變奏</p>
+<p>- Concept 2：「神探裝備箱」——一個實體物件，可以喺所有物料重複出現</p>
+<p>兩者都符合 Heritage 古典畫風（Concept 1 直接 reference 老夫子；Concept 2 用復古偵探箱 + 機械變形，有 classic 味道），都係 3D Comics，都跟足 red lines，都唔超 25 萬 budget（無明星、無大製作 CG，用 cel-shading style 可以做得 efficient）。</p>
+<p>你揀邊個，我哋再 develop full board + storyboard。</p><div class='scores'><div class='sline'><b>📊 官方評審 78/100</b><span class='scrit'>訊息準確 25.7 · 創意手法 12.7 · 宣傳衝擊 11.3 · 記憶點 8.5 · 說服共鳴 7.8 · 6a 11.0 · 6b 0.8</span></div><div class='snote'>裝備箱視覺device統一性強、5001神探hook記憶點高且巧妙化解篤灰污名，惟三場景quick-cut訊息略雜、科技層面創新有限，ESG幾乎缺席。<br>視覺device統一、口號入腦、成功將「篤灰」重塑為「神探」極具說服力,但裝備箱比喻略增認知負擔削弱訊息直接性,且完全欠缺ESG/環保可持續內容,6b近乎失分。<br>(1)訊息清楚扣緊見疑即報但略帶娛樂化；(2)裝備箱同3D漫畫化處理有新鮮感；(3)跨海報、車身、MTR、TV API延展性強；(4)「第5001個神探」易記；(5)平民角色有代入感但恐襲風險說服仍可更實；(6a)視覺device同舉報工具</div><div class='sline'><b>🎨 創意質素 25/40</b><span class='scrit'>（落地 5.7 / 扣brief 7.0 / 鋒利 6.3）</span></div><div class='snote'>「裝備箱」device 比放大鏡有記憶點、5001個神探 hook 抵讚,但巴士背囊/拍攝設施/古怪化學品三個情境太行貨教科書,街市阿姐外其餘角色語感薄,最弱係場景堆砌多過真實生活質感、貼地度未夠狠。 | 最弱係個『神探裝備箱』本身——彈出變形gadget嘅魔法箱偏離地、似玩具廣告多過真實情境,而且只攻『見疑即報』,『閃避求』暴力應對幾乎冇落地。 | 最弱係『神探裝備箱』太似玩具廣告橋，雖有香港場景但核心 device 離地，容易蓋過見疑即報嘅實際行動教育。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cm1c1abddb'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>Gemini</span><span class='oscore'>評審 76</span></div><div class='ctitle'>💬 見到可疑，唔好估估吓。見疑即報。</div><div class='csub'>Concept 1:〔放大鏡上身〕</div><div class='cbody'><p><strong>創作概念</strong>:  </p>
+<p>由「見疑即報」標誌入面個放大鏡第一身講故事：佢每日喺香港街頭「睇多一步」，幫市民將容易忽略嘅可疑細節放大。水彩 3D 漫畫畫面由普通日常，瞬間被紅黑白放大鏡框住：無人看管嘅可疑物品、異常行為、危險訊號逐格浮現。最後帶出：市民唔需要自己查，見到可疑，就用 <strong>反恐舉報熱線 63-666-999</strong> 或相關渠道向 <strong>跨部門反恐專責組</strong> 作出舉報；緊急情況即打 999，遇暴力事件記住「閃、避、求」。</p>
+<p><strong>人/景</strong>:  </p>
+<p>港鐵月台、茶餐廳門口、屋邨通道、商場扶手電梯等香港日常場景；主角係「見疑即報」放大鏡本身，旁邊出現上班族、學生、長者、店員等普通市民。結尾先出現六個紀律部隊元素，以制服剪影／徽章色塊方式同框，代表 ICTU 作為市民後盾。</p>
+<p><strong>Visual Device</strong>:  </p>
+<p>一個紅黑白水彩放大鏡喺畫面游走，每掃過一個場景，世界會由柔和水彩變成高對比漫畫格，可疑細節被「咔嚓」放大成分鏡。KV poster 可用一個巨大放大鏡框住香港街景，鏡內見到市民用手機作出舉報，鏡外係平靜社區，形成「睇多一步，安全多一步」嘅主視覺。</p>
+<p><strong>主打口號</strong>:  </p>
+<p>見到可疑，唔好估估吓。見疑即報。</p>
+<p><strong>Proposed 明星/名人</strong>:  </p>
+<p>不適用。建議用真人聲優配放大鏡 VO，聲線親切、有少少機智感，避免明星版權同預算風險。</p>
+<p><strong>亮點扣連</strong>：用咗亮點 1「官方放大鏡標誌」作主角同 KV 核心；亮點 2「六大紀律部隊集結」作結尾後盾；亮點 7「洗走篤灰負面觀感」將舉報包裝成市民睇多一步、守護日常。</p><div class='scores'><div class='sline'><b>📊 官方評審 76/100</b><span class='scrit'>訊息準確 26.7 · 創意手法 12.2 · 宣傳衝擊 11.3 · 記憶點 7.8 · 說服共鳴 7.8 · 6a 9.7 · 6b 1.0</span></div><div class='snote'>放大鏡第一身敘事清晰連結官方標誌、熱線同「閃避求」三招齊全,訊息準確易記;但純水彩漫畫手法創意中規中矩,缺乏互動或科技亮點,ESG元素近乎空白,拖低整體創新分。<br>訊息清晰且齊全(熱線/ICTU/999/閃避求),放大鏡第一身敍事有記憶點並巧妙化解篤灰負面觀感;惟創意執行屬穩陣非突破,反創新落地建議偏弱,ESG幾近欠奉,拉低總分。<br>訊息準確清晰，放大鏡第一身視覺有記憶點並能淡化「篤灰」觀感，但缺少具體媒體落地、成效機制及ESG內容。</div><div class='sline'><b>🎨 創意質素 25/40</b><span class='scrit'>（落地 6.0 / 扣brief 7.0 / 鋒利 5.3）</span></div><div class='snote'>最弱係主角竟然係一支會講嘢嘅放大鏡標誌——客明明要 3D Comics 砌 Main characters,你用擬人化 logo 當角色係偷雞,情感無從投射,六大部隊又淪為片尾剪影,概念偏向視覺 device 多過貼地真人故事。 | 最弱係 sharp:由 logo 放大鏡做主角係最 literal、人人都諗到嘅行貨 metaphor(放大鏡=搜尋/見疑),欠記憶點同 idea twist。 | 最弱係主角放大鏡擬人有少少廣告化，雖然場景貼地，但要靠具體可疑情境先夠落地。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cmbfc057bb'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>委員會</span><span class='oscore'>評審 72</span></div><div class='ctitle'>💬 成為第 5001 個隱形神探。</div><div class='csub'>Concept 2:〔賞金獵人遊戲〕</div><div class='cbody'><p><strong>創作概念</strong>:</p>
+<p>將「見疑即報」徹底遊戲化，包裝成一個全民參與嘅「城市賞金獵人」任務。利用官方真有嘅「反恐賞金」制度做餌，將市民描寫成接收任務、尋找線索、舉報嚟賺取「金幣」（賞金）同榮譽嘅玩家。呢個概念旨在用年輕人熟悉嘅手遊語言，將沉重議題變輕鬆，強調舉報係一種有回報、有成就感嘅集體行動。</p>
+<p><strong>人/景</strong>:</p>
+<p>貨倉物流從業員、茶餐廳水吧師傅、屋邨保安員。全部都係喺崗位上最容易觀察到異常嘅「情報員」角色。</p>
+<p><strong>Visual Device</strong>:</p>
+<p><strong>「任務觸發」(Quest Triggered)</strong>。當主角發現可疑人同事，佢哋嘅手機會彈出一個 3D 漫畫風格嘅遊戲任務介面，顯示「新線索發現！」、「點擊上報」。當佢透過 SMS 63-666-999 或微信小程式舉報，畫面會出現誇張嘅「任務完成」特效，伴隨住金幣彈出同分數增加嘅視覺效果，最後手機畫面顯示「CT Reward +$XXXX」。</p>
+<p><strong>主打口號</strong>:</p>
+<p>成為第 5001 個隱形神探。</p>
+<p><strong>Proposed 明星/名人</strong>:</p>
+<p>不適用。</p>
+<p><strong>亮點扣連</strong>：直接用亮點 3 (反恐賞金機制) 做核心驅動力；同時利用亮點 6 (5000名隱形神探) 創造一個「玩家社群」嘅感覺，號召觀眾加入成為第 5001 人；亦用亮點 8 (指尖上的 SMS 大絕) 將舉報動作變成遊戲化嘅「出招」瞬間。</p><div class='scores'><div class='sline'><b>📊 官方評審 72/100</b><span class='scrit'>訊息準確 22.2 · 創意手法 13.0 · 宣傳衝擊 10.7 · 記憶點 8.2 · 說服共鳴 5.8 · 6a 11.3 · 6b 1.3</span></div><div class='snote'>遊戲化概念新穎搶眼、口號易記且善用賞金與SMS亮點,但以「賺金幣」為主調易淡化反恐嚴肅性、有誘發濫報之嫌,說服力打折,ESG幾乎缺席。<br>遊戲化手法新鮮、口號(第5001個隱形神探)易記且能號召年輕人,但用『賞金/金幣』做核心誘因有將反恐嚴肅議題娛樂化、甚至誘發為錢亂報之風險,訊息準確度同說服力打折;ESG著墨少。<br>概念鮮明易記兼有創新遊戲化包裝，但過度強調賞金同任務感，容易淡化反恐嚴肅性並引發誤報或觀感風險。</div><div class='sline'><b>🎨 創意質素 22/40</b><span class='scrit'>（落地 5.7 / 扣brief 4.3 / 鋒利 6.0）</span></div><div class='snote'>最弱係 on_brief：將反恐舉報變「賺金幣賞金」遊戲，同客戶要的『賦權而非販賣』『破除怕報錯案』背道而馳——獎金誘因反而鼓勵亂報、市儈化敏感議題；加上叫港人用『微信小程式』舉報極離地,水吧屋邨保安雖貼地都救唔返個 tone。 | 角色夠貼地(水吧、屋邨保安)，但用「賺金幣賞金」遊戲化反恐太輕佻，反而鼓勵市民為錢報假案，正撞中客戶最驚嘅『報錯案』痛點，empowerment變咗貪錢；加埋亂作個『微信小程式』官方渠道，貼客度同調性都跌watt。 | 最弱係貼客度：將反恐舉報包</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard rest ' data-cid='cmcd1d0059'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>Grok</span><span class='oscore'>評審 85</span></div><div class='ctitle'>💬 唔使做英雄,撳一下,就守到成個社區。</div><div class='csub'>Concept 1:〔倒帶‧多謝你〕</div><div class='cbadges'><span class='cflag rl'>⛔違紅線</span></div><div class='cbody'><p><strong>創作概念</strong>:反轉「次序」。片頭直接畀你睇結局——一個低調打工仔(古天樂飾)企喺 ICTU 嘅嘉許場合,收到「反恐賞金」同一句「多謝你」,溫情大團圓。觀眾一頭霧水:佢做咗咩咁勁?跟住畫面<strong>逐格倒帶</strong>,一路退返去當日某個平平無奇嘅早上——原來佢喺港鐵車廂見到一件無人認領嘅可疑行李,冇驚動任何人,只係靜靜攞起電話,SMS 去 63-666-999。Big idea:<strong>英雄唔係做咗驚天動地嘅事,只係喺日常嗰一秒肯留神</strong>;倒敘令觀眾自己「砌返」因果,把硬訊息變成懸念。直接洗走「篤灰」觀感——佢得到嘅係全城多謝,唔係出賣街坊。</p>
+<p><strong>人/景</strong>:古天樂演普通中年打工仔(恤衫、公事包);場景由嘉許室倒退到清晨港鐵車廂、月台、站內。尾段六大紀律部隊代表(警務處、海關、入境處、懲教署、消防處、政府飛行服務隊)以漫畫分格定格同框,做佢背後嘅後盾。</p>
+<p><strong>Visual Device</strong>:<strong>倒帶 + 抽色放大鏡</strong>。全片逆向播放,每退一步畫面就少一分色彩;直到「見疑」嗰一格,官方紅黑白放大鏡 3D 光圈「啪」一聲罩住可疑行李,SPOT! 擬聲詞爆框——成條片嘅情緒鈎同記憶點。</p>
+<p><strong>主打口號</strong>:<strong>唔使做英雄,撳一下,就守到成個社區。</strong></p>
+<p><strong>Proposed 明星/名人</strong>:<strong>古天樂</strong>。影帝級親和力,平民裝扮零違和、最能洗走「明星 = 離地」距離感;佢長年低調行善(古天樂基金建校)嘅公眾形象,同「英雄不張揚、善行唔聲張」嘅橋天生夾,令「普通人都做得到」嘅賦權訊息有說服力。</p>
+<p><strong>亮點扣連</strong>:用咗 #3 反恐賞金機制(頭嗰場嘉許/賞金作為倒敘鈎)、#8 指尖 SMS 63-666-999(高潮動作)、#1 官方放大鏡(視覺 device)、#7 洗走篤灰(全程只講守護社區、得到多謝)、#2 六大部隊結尾同框。</p>
+<p>---</p><div class='scores'><div class='sline'><b>📊 官方評審 85/100</b><span class='scrit'>訊息準確 27.0 · 創意手法 13.5 · 宣傳衝擊 12.7 · 記憶點 9.0 · 說服共鳴 8.8 · 6a 12.2 · 6b 1.7</span></div><div class='snote'>倒敘懸念+抽色放大鏡記憶點極強,古天樂選角貼題,清晰扣連63-666-999同六大部隊;唯ESG着墨近乎零,衝擊力受限於溫情調性,失分主要在6b。<br>倒敘+抽色放大鏡的視覺鈎極強、記憶點高,古天樂選角貼題並有效化解「篤灰」觀感;訊息準確涵蓋熱線與賞金機制,惟63-666-999非真實官方反恐熱線需核實,且ESG/環保元素近乎缺席,僅創新建議稍欠突破。<br>整體概念完整、易記兼有情感說服力，最大弱項係ESG及服務創新建議未夠實質。</div><div class='sline'><b>🎨 創意質素 25/40</b><span class='scrit'>（落地 5.7 / 扣brief 4.7 / 鋒利 7.0）</span></div><div class='snote'>最弱係撞死標書「3D Comics」視覺死線——通片真人古天樂演出,只喺尾段補漫畫分格,等於冇 base on 3D 動畫框架;加上影帝 + 3D 要塞入 25 萬硬 cap 根本唔現實,橋再靚都隨時 DQ。 | 倒帶反轉idea本身sharp又貼地,但用古天樂真人影帝做主角直接撞爆兩條死線——標書白紙黑字限死『3D Comics』主角必須係3D動畫角色(而家漫畫只淪為分格/放大鏡device),加上25萬硬cap根本搵唔起影帝級全球永久版權,人物級數錯+budget DQ。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div></div><div class='submit'><button class='btn' onclick='submitRound()'>✅ Submit 六強 (<span class=cnt>6</span>)</button></div></div>
+<div id='tvapi1_2' class='tabpanel' data-set='1'><div class='banner'>未有概念進入第二輪。返 VID 1 揀六強（submit 即自動生 BD）先。</div></div>
+<div id='tvapi1_3' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 2 揀三甲先。</div></div>
+<div id='tvapi1_4' class='tabpanel' data-set='1'><div class='banner'>🎬 VID 4 — 5 步生 storyboard ＋ 片（STEP 1 → 5）</div><div class='card'><div class='h3'>📄 STEP 1 — 故事版（你親手執 Master GSheet B6:C17，9-12 格）</div><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card step2'><div class='h3'>🎭 STEP 2 — 主角參考相（AI 自動搵 ISD 官方相 + curate；face-swap 用嚟貼真面）</div><button class='btn ghost mini' onclick="srcRefs(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=POLICE&concept=FINAL&stage=facerefs&target=main')">🔍 AI 搵／更新主角參考相</button><div class='hint'>仲未 source 主角相。撳上面掣，AI 自動由 ISD 官方相搵 + curate。</div></div><div class='stylepick card'><div class='h3'>🎨 STEP 3 — 揀風格（每行 0 或 1 個；唔剔 = 跟劇本）</div><div class='styrow'><span class='stylbl'>🏙️ 環境</span><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="realistic environment" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="2D comic-style environment" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="3D animated environment" onchange='styPick(this)'>3D動畫</label></div><div class='styrow'><span class='stylbl'>🧍 人物</span><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="photorealistic characters" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="2D comic-style characters" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="3D-modeled characters" onchange='styPick(this)'>3D建模</label></div><div class='styrow'><span class='stylbl'>🌗 光/時間</span><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="daytime lighting" onchange='styPick(this)'>日 Day</label><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="nighttime lighting" onchange='styPick(this)'>夜 Night</label></div><div class='styrow'><span class='stylbl'>🎨 色彩</span><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="vivid saturated color" onchange='styPick(this)'>鮮艷</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="muted desaturated tones" onchange='styPick(this)'>灰調</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="black and white" onchange='styPick(this)'>黑白</label></div><div class='styrow'><span class='stylbl'>😊 情緒</span><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="warm heartfelt mood" onchange='styPick(this)'>溫情</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="passionate uplifting mood" onchange='styPick(this)'>激昂</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="light humorous mood" onchange='styPick(this)'>幽默</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="solemn official tone" onchange='styPick(this)'>莊重官方</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="suspenseful mood" onchange='styPick(this)'>懸疑</label></div><div class='styrow'><span class='stylbl'>🎬 質感</span><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="cinematic look" onchange='styPick(this)'>電影感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="documentary realism" onchange='styPick(this)'>紀實</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="dynamic music-video energy" onchange='styPick(this)'>MV動感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="plain straightforward style" onchange='styPick(this)'>平實</label></div><div class='styanchor'>風格 anchor：<span id='styanchor'>（跟劇本）</span></div></div><div class='card genbox'><div class='h3'>🍌 STEP 4 — 生 BD（讀 B6:C17 ＋ face-swap 主角真面）</div><button class='btn big' title='讀你喺 Master GSheet B6:C17 執好嘅 script ＋ STEP 3 風格 ＋ face-swap 主角真面 → 生最終 BD（brd=FINAL，唔污染候選）' onclick="genFinalBD(this,'POLICE','https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=POLICE&concept=FINAL&stage=gsheetbd&target=main')">由 B6:C17 生最終 BD</button></div><div class='card'><div class='h3'>🎬 STEP 5 — 生片（Higgsfield Kling/Seedance，開發中）</div><div class='hint'>BD 揀好 → 生片。Higgsfield CLI 整緊。</div></div></div>
+<div id='tvapi1_5' class='tabpanel' data-set='1'><div class='banner'>未有 FINAL。返 VID 3 揀 FINAL 2 先。</div></div>
+<div id='kv1_1' class='tabpanel' data-set='1'><div class='banner'>🔧 KV Ph 1：流程設計中，完成 VID 後再開。</div></div>
+<div id='kv1_2' class='tabpanel' data-set='1'><div class='banner'>🔧 KV Ph 2：流程設計中，完成 VID 後再開。</div></div>
+<div id='kv1_3' class='tabpanel' data-set='1'><div class='banner'>🔧 KV Ph 3：流程設計中，完成 VID 後再開。</div></div>
+<div class=foot>Idea Lab · 06-26 20:59 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+</div>
+
+<script>
+var DL = new Date("2026-07-06T12:00:00+08:00").getTime();
+function cd() {
+  var e = document.getElementById('cd'); if (!e) return;
+  var x = DL - Date.now();
+  if (x < 0) { e.textContent = '已截標'; return; }
+  var s = Math.floor(x/1000), d = Math.floor(s/86400);
+  s -= d*86400; var h = Math.floor(s/3600); s -= h*3600;
+  var m = Math.floor(s/60); s -= m*60;
+  e.textContent = (d > 0 ? d + '日 ' : '')
+    + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0')
+    + ':' + String(s).padStart(2,'0');
+}
+cd(); setInterval(cd, 1000);
+
+var TABS   = document.querySelectorAll('.tab');
+var PANELS = document.querySelectorAll('.tabpanel');
+function showTab(id) {
+  if (!document.getElementById(id)) id = 'ph0';
+  TABS.forEach(function(t) { t.classList.toggle('active', t.dataset.tab === id); });
+  PANELS.forEach(function(p) { p.classList.toggle('active', p.id === id); });
+  history.replaceState(null, '', '#' + id);
+  upd();
+  if (/(vid|tvapi)\d+_2$/.test(id)) vid2AutoBD();   // 入 VID／TVAPI 2 即自動觸發六強生 BD + poll
+}
+TABS.forEach(function(t) { t.addEventListener('click', function() { showTab(t.dataset.tab); }); });
+showTab((location.hash.slice(1)) || 'tvapi1_1');
+
+// VID 2:六強 submit 後自動生 BD —— 對未有 BD(data-needbd=1)嘅概念逐個觸發 NBLM deck(GAS 去重,撳幾多次都唔重生)。
+// 未生晒就每 45s reload 一次睇新 BD(NBLM 連夜,一晚生得晒)。
+var _vid2timer;
+function vid2AutoBD() {
+  var panel = document.querySelector('.tabpanel.active'); if (!panel) return;
+  var pend = panel.querySelectorAll('[data-needbd="1"]');
+  pend.forEach(function(c) {
+    var brd = c.dataset.brd; if (!brd) return;
+    var k = 'bdstart_POLICE_' + brd;
+    if (!localStorage.getItem(k)) localStorage.setItem(k, String(Date.now()));  // 開始時間 → 進度條
+    fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=POLICE&concept=" + encodeURIComponent(brd) + "&stage=deck&target=main" + setQ(),
+          {mode:'no-cors'}).catch(function(){});
+  });
+  tickProgress();
+  if (pend.length && !_vid2timer) {
+    _vid2timer = setInterval(function() { location.reload(); }, 90000);  // 靜靜每 90s 攞新 BD（冇 develop bar）
+  }
+}
+
+// VID 2 進度條：按實測平均 BD 時間（~10 分鐘）推移，封頂 99% stall（NBLM 唔報幾時好）。
+var BD_AVG_MS = 600000;   // 平均 606s（manifest 連續 gap 實測）
+function tickProgress() {
+  document.querySelectorAll('.pgbar').forEach(function(bar) {
+    var brd = bar.dataset.brd; if (!brd) return;
+    var k = 'bdstart_POLICE_' + brd;
+    var s = +localStorage.getItem(k);
+    if (!s) { s = Date.now(); localStorage.setItem(k, String(s)); }
+    var pct = Math.min(99, (Date.now() - s) / BD_AVG_MS * 100);
+    var f = bar.querySelector('.pgfill'); if (f) f.style.width = pct.toFixed(0) + '%';
+    var t = bar.querySelector('.pgtxt');
+    if (t) t.textContent = pct >= 99 ? 'BD 生成中…就快好（99%）' : ('BD 生成中… ' + pct.toFixed(0) + '%（平均 ~10 分鐘）');
+  });
+}
+setInterval(tickProgress, 2000); tickProgress();
+// 已完成（卡有圖）→ 清走嗰個 brd 嘅開始時間，免下次重生即跳 99%
+document.querySelectorAll('.card[data-brd] img.sheet').forEach(function(im) {
+  var card = im.closest('.card[data-brd]');
+  if (card && card.dataset.brd) localStorage.removeItem('bdstart_POLICE_' + card.dataset.brd);
+});
+
+// 零碎想法：localStorage array(可入多次),即時累積顯示,每條 POST 去 GAS 畀委員會消化
+var NK = 'notes_POLICE';
+var notesEl = document.getElementById('notes');
+function loadNotes() {
+  try { var a = JSON.parse(localStorage.getItem(NK) || '[]'); return Array.isArray(a) ? a : []; }
+  catch (e) { return []; }
+}
+function saveNotes(a) { localStorage.setItem(NK, JSON.stringify(a)); }
+function fmtTs(ts) {
+  var d = new Date(ts);
+  function p(n) { return String(n).padStart(2, '0'); }
+  return (d.getMonth()+1) + '/' + d.getDate() + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+}
+function renderNotes() {
+  var box = document.getElementById('noteslist'); if (!box) return;
+  var a = loadNotes();
+  if (!a.length) { box.innerHTML = "<p class='hint' style='margin:4px 2px'>未有想法。</p>"; return; }
+  box.innerHTML = a.map(function(n, i) {
+    var txt = (n.text || '').replace(/</g, '&lt;');
+    return "<div class='notecard'><div class='noterow'>"
+      + "<span class='notets'>" + fmtTs(n.ts) + "</span>"
+      + "<button class='notedel' onclick='delNote(" + i + ")'>✕</button></div>"
+      + "<div class='notetxt'>" + txt + "</div></div>";
+  }).join('');
+}
+function submitNotes() {
+  if (!notesEl || !notesEl.value.trim()) { alert('未有想法'); return; }
+  var txt = notesEl.value.trim();
+  var a = loadNotes(); a.push({ ts: Date.now(), text: txt }); saveNotes(a);
+  notesEl.value = ''; renderNotes();
+  var url = "https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=POLICE&text=" + encodeURIComponent(txt);
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('＋ 已加入（' + a.length + ' 條，VID 1 啟動時餵委員會）');
+}
+function delNote(i) {
+  var a = loadNotes(); if (i < 0 || i >= a.length) return;
+  if (!confirm('刪呢條想法?')) return;
+  a.splice(i, 1); saveNotes(a); renderNotes();
+}
+renderNotes();
+
+function tk(el) {
+  el.classList.toggle('on');
+  el.textContent = el.classList.contains('on') ? '✓' : '';
+  upd();
+}
+// carousel 卡：撳卡頭（唔係內文 scroll 區）toggle 揀選
+function tkCard(head) {
+  var card = head.closest('[data-cid]'); if (!card) return;
+  var ck = card.querySelector('.ck'); if (!ck) return;
+  tk(ck);
+  card.classList.toggle('sel', ck.classList.contains('on'));
+}
+function upd() {
+  var n = document.querySelectorAll('.tabpanel.active .ck.on').length;
+  document.querySelectorAll('.tabpanel.active .cnt').forEach(function(c) {
+    c.textContent = n;
+    c.parentElement.classList.toggle('cnt-warn', n > 6);
+  });
+}
+document.querySelectorAll('.card[data-cid]').forEach(function(card) {
+  var ck = card.querySelector('.ck');
+  if (!ck) return;
+  card.addEventListener('click', function(e) {
+    if (e.target.closest('.ck,.det,textarea,a,button')) return;
+    tk(ck);
+  });
+});
+
+function toast(msg) {
+  var t = document.createElement('div');
+  t.className = 'toast'; t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(function() { t.style.opacity = '0'; }, 6000);
+}
+function showTopProc(msg, stop) {
+  var o = document.getElementById('topproc');
+  if (!o) {
+    o = document.createElement('div'); o.id = 'topproc'; o.className = 'topproc';
+    document.body.insertBefore(o, document.body.firstChild);
+  }
+  if (stop) {
+    o.innerHTML = '<span id="tpmsg">' + msg + '</span>'
+      + ' <a href="#" onclick="location.reload();return false" style="margin-left:8px;font-weight:800;color:var(--ac)">🔄 再 check</a>'
+      + ' <a href="#" onclick="this.parentNode.remove();return false" style="margin-left:8px;color:#888">✕</a>';
+  } else {
+    o.innerHTML = '<span class="spin sm"></span><span id="tpmsg">' + msg + '</span>';
+  }
+}
+
+// ⛔⛔ 防 comment 冇咗(Raymond 2026-06-16 爆:手寫稿 BD comment 位打咗字,redeploy → reload 冧晒):
+//   **全部**輸入格(額外想法 / 6 塊手寫稿 BD comment / 鐵則 / 任何 textarea·text input)每次打字即存 localStorage,
+//   reload/redeploy 都還原返;tab 切返嚟 auto-refresh **有未存字就唔 reload**。每格按 element id 存。
+(function() {
+  var DP = 'draft_POLICE_';
+  function fields() {
+    return [].slice.call(document.querySelectorAll('textarea, input[type=text]')).filter(function(e){ return e.id; });
+  }
+  function hasUnsaved() { return fields().some(function(e){ return (e.value||'').trim().length>0; }); }
+  // 載入時還原每格 draft
+  var restored = 0;
+  try { fields().forEach(function(e){ var v=localStorage.getItem(DP+e.id); if(v && !e.value){ e.value=v; restored++; } }); } catch(_) {}
+  if (restored) setTimeout(function(){ toast('↩︎ 幫你還原咗 '+restored+' 格未送出嘅文字'); }, 500);
+  // 每次打字即存(任何有 id 嘅 textarea / text input)
+  document.addEventListener('input', function(ev) {
+    var t = ev.target; if (!t || !t.id) return;
+    if (t.tagName==='TEXTAREA' || (t.tagName==='INPUT' && t.type==='text')) {
+      try { if ((t.value||'').trim()) localStorage.setItem(DP+t.id, t.value); else localStorage.removeItem(DP+t.id); } catch(_) {}
+    }
+  });
+  window._clearDraft = function(id) { try { localStorage.removeItem(DP+id); } catch(_) {} };
+  var loaded = Date.now();
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden && Date.now() - loaded > 45000 && !hasUnsaved())   // 有未存嘅字 → 唔 reload,唔好冧佢
+      location.href = location.pathname + '?t=' + Date.now() + location.hash;
+  });
+})();
+
+// BD 圖 click 放大（lightbox）—— event delegation，任何 .sheet 圖都得
+(function() {
+  var lb = document.createElement('div'); lb.className = 'lbx';
+  lb.innerHTML = '<span class="x">✕</span><img><div class="hint">撳任何位收返。放大後可用瀏覽器 pinch/scroll 睇每格。</div>';
+  document.body.appendChild(lb);
+  var lbimg = lb.querySelector('img');
+  lb.addEventListener('click', function() { lb.classList.remove('on'); });
+  document.addEventListener('click', function(e) {
+    var t = e.target;
+    if (t && t.classList && t.classList.contains('sheet') && t.src) {
+      lbimg.src = t.src; lb.classList.add('on');
+    }
+  });
+})();
+
+// active panel 嘅 set → GAS param（set 1 唔帶，backend 不變）
+function curSet() { var p = document.querySelector('.tabpanel.active'); return p ? (p.dataset.set || '1') : '1'; }
+function setQ()   { var s = curSet(); return (s && s !== '1') ? ('&set=' + s) : ''; }
+
+// 各 set 嘅 funnel phase（多-set 各 set 唔同）。getVidPhase() 隨 active 嘅 set 變。
+var VID_PHASES = {"1": 1};
+var PRIMARY_VID = 1;
+function getVidPhase() { var s = curSet(); return VID_PHASES[s] || PRIMARY_VID; }
+function pickedCids() {
+  return [].map.call(
+    document.querySelectorAll('.tabpanel.active [data-cid] .ck.on'),
+    function(k) { return k.closest('[data-cid]').dataset.cid; });
+}
+function submitAdvance(url) {
+  toast('✅ 已提交，十幾秒後自動刷新睇下一步（或撳右上 🔄）');
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { location.reload(); }, 13000);   // 單次刷新，冇 develop bar，冇無限 loop
+}
+function submitRound() {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個做六強？submit 後會自動後台生 BD（用 NBLM），落選自動歸檔。')) return;
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=POLICE&round=r2&cids=" + c.join(',') + setQ());
+}
+function subStage(to) {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個 → ' + (to === 'r3' ? '三甲' : 'FINAL 2') + '？')) return;
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=POLICE&round=" + to + "&cids=" + c.join(',') + setQ());
+}
+function postFunnel(url, msg) {
+  fetch(url, {mode:'no-cors'})
+    .then(function() { toast(msg); })
+    .catch(function() { toast('⚠️ 再試一次'); });
+}
+
+function genBD(btn, url) {   // VID 3 Nano per-card 用
+  var acts = btn.closest('.acts') || btn.parentElement;
+  if (acts) acts.innerHTML = "<span class='gening'><span class='spin sm'></span>生緊… ~8-9 分鐘</span>";
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+}
+function addRule(dept) {   // 政府 JOB 鐵則:加一條 → listener append gov_job_rules.json(全 JOB 累積)
+  var ta = document.getElementById('newrule');
+  var txt = (ta && ta.value || '').trim();
+  if (!txt) { if(ta) ta.focus(); return; }
+  var url = 'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=' + encodeURIComponent(dept) + '&concept=rule&stage=add_rule'
+          + '&engine=' + encodeURIComponent(txt) + '&target=main';
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  if (window._clearDraft) window._clearDraft('newrule');   // 送出咗 → 清 draft
+  var ol = document.getElementById('rulelist');
+  if (ol) { var li=document.createElement('li'); li.textContent=txt; ol.appendChild(li); }  // 即時顯示
+  if (ta) { ta.value=''; ta.placeholder='✅ 已加，下次生 BD 即跟'; }
+}
+// ⭐ Raymond 提供參考相窗口嘅上載 mechanic = dash_upload.upload_box(reuse 創意把關站,JS 已內嵌喺 widget,呢度唔再寫)
+function _vchecked() { return [].slice.call(document.querySelectorAll('.tabpanel.active .vchk:checked')); }
+function delAssets(dept) {   // 🗑 整張即刻刪(像真網頁,唔問;listener 後台存底 + 真刪)
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=delasset&stage=del_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){ var card=c.closest('.vacard'); if(card) card.remove(); });   // 即刻消失
+  toast('🗑 刪咗 '+ids.length+' 張');
+}
+function preferAssets(dept) {   // ⭐ 首選:即刻 ⭐ + 嗰啲相搬去最左(像真網頁);listener pref + 餵 NLM 優先
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=prefasset&stage=prefer_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){
+    var card=c.closest('.vacard'); if(!card) return;
+    card.classList.add('pref');
+    if(!card.querySelector('.vastar')){ var s=document.createElement('div'); s.className='vastar'; s.textContent='⭐ 首選'; card.appendChild(s); }
+    var row=card.parentNode; row.insertBefore(card, row.firstChild);   // 搬去最左
+    c.checked=false;
+  });
+  toast('⭐ 已設首選 '+ids.length+' 張（搬咗去最左 + 餵 NLM 優先）');
+}
+function showOvl(id) { var o=document.getElementById(id); if(o) o.classList.add('on'); }   // 🎧 錄音逐字 overlay(撳先出)
+function hideOvl(id) { var o=document.getElementById(id); if(o) o.classList.remove('on'); }
+document.addEventListener('click', function(e){   // 撳 overlay 背景(唔係 box)收返
+  if(e.target && e.target.classList && e.target.classList.contains('ovl')) e.target.classList.remove('on');
+});
+function researchAssets(dept) {   // 🔁 重搜:即刻喺相右下角顯示漏斗「重搜中」,後台搵新相,搵到自動換(reload 時)
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=researchasset&stage=research_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){
+    var card=c.closest('.vacard'); if(!card) return;
+    var th=card.querySelector('.vathumb');
+    if(th && !th.querySelector('.vafunnel')){ var f=document.createElement('div'); f.className='vafunnel';
+      f.innerHTML='<span class="spin sm" style="width:10px;height:10px;margin:0"></span> 重搜中'; th.appendChild(f); }
+    c.checked=false;
+  });
+  toast('🔁 重搜 '+ids.length+' 個，後台搵緊清晰啲嘅相，搵到自動換（~30-60s，會自動 refresh）');
+}
+function bdComment(dept, brd) {   // 手寫稿 BD:送 comment → listener AI 解意見 → 改 specific 格(留舊版)
+  var ta = document.getElementById('cm_' + brd);
+  var txt = (ta && ta.value || '').trim();
+  if (!txt) { if (ta) ta.focus(); return; }
+  var url = 'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=' + encodeURIComponent(dept)
+          + '&concept=' + encodeURIComponent(brd) + '&stage=bdcomment'
+          + '&engine=' + encodeURIComponent(txt) + '&target=main&cid=ACT_bdcomment';
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  if (window._clearDraft) window._clearDraft('cm_' + brd);   // 送出咗 → 清 draft
+  if (ta) { ta.disabled = true;
+    ta.insertAdjacentHTML('afterend', "<div class='cmlog'>✅ 已送出，AI 改緊嗰格，改完自動換圖（舊版會留喺下面）。</div>"); }
+}
+// STEP 3 風格 picker：每維互斥（但可 0 個）+ 夾成 style_anchor
+function styPick(cb) {
+  if (cb.checked) {
+    var sib = document.querySelectorAll(".styopt[data-dim='" + cb.getAttribute('data-dim') + "']");
+    for (var i = 0; i < sib.length; i++) { if (sib[i] !== cb) sib[i].checked = false; }
+  }
+  var el = document.getElementById('styanchor');
+  if (el) el.textContent = styleAnchor() || '（跟劇本）';
+}
+function styleAnchor() {
+  var dims = ['env', 'char', 'light', 'color', 'mood', 'feel'], picks = [];
+  for (var i = 0; i < dims.length; i++) {
+    var el = document.querySelector(".styopt[data-dim='" + dims[i] + "']:checked");
+    if (el) picks.push(el.value);
+  }
+  return picks.join(', ');
+}
+function srcRefs(btn, url) {   // STEP 2：AI 搵主角參考相
+  btn.textContent = '⏳ AI 搵相中…（~2-3 分鐘，完成 refresh 見）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('🔍 AI 自動由 ISD 官方相搵主角 + curate 中…');
+}
+function genFinalBD(btn, dept, baseUrl) {   // STEP 4：寫低 STEP 3 風格 → 生最終 BD
+  var anc = styleAnchor();
+  // STEP3 風格寫入 Master GSheet _VID_STYLE（gsheet_to_bd 讀返做 override；空 = 跟劇本）
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify({op:'set_style', dept:dept, style:anc})}).catch(function(){});
+  toast(anc ? ('🎨 已套用風格：' + anc) : '🎨 風格：跟劇本（冇限制）');
+  genBD(btn, baseUrl);
+}
+function pushGSheet(btn, url) {   // VID 4 寫入 Master GSheet B6:C17
+  btn.textContent = '⏳ 寫入緊…'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已寫入（開 GSheet polish）'; }, 2500);
+  toast('📝 已交，~1 分鐘寫入 Master GSheet B6:C17（前稿自動備份）');
+}
+function renderForms(btn, url) {   // 📋 標書:自動 render 真表頁入 Master Reply GSlide
+  btn.textContent = '⏳ render 緊…（~1-2 分鐘，完成會 WhatsApp）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('📋 已交，listener 會自動 render 真表頁入 Master Reply GSlide');
+}
+function fillForms(btn) {   // 📝 標書:自動填表 — GAS 直出（公司資料 vlookup 寫 Fill tab，唔靠部 Mac）
+  var jsTag = btn.nextElementSibling;  // <script class=filldata>
+  var data;
+  try { data = JSON.parse((jsTag && jsTag.textContent) || '{}'); } catch (e) { data = {}; }
+  if (!data.forms || !data.forms.length) { toast('⚠️ 冇表資料'); return; }
+  var reg='https://docs.google.com/spreadsheets/d/1yiDJ3H8VFK3-6kZQZEzwkiD8VaRgVOzCwxcFbAyP3XE/edit';
+  btn.textContent = '⏳ AI 填緊…（~30-60s）'; btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'fill_forms', folderName: data.folderName, forms: data.forms })
+  }).catch(function(){});
+  // 清楚講做緊乜 + 完咗點做(開 Registry copy 值)
+  setTimeout(function() {
+    btn.outerHTML = "<a class='btn' style='width:100%;text-align:center' target='_blank' href='"+reg
+      +"'>✅ 已填好 → 開 Master Form Registry copy 啲值</a>";
+  }, 30000);
+  toast('🤖 AI 填緊公司資料入 Master Form Registry 嘅 Fill tab（~30-60s）。完咗開 Registry copy 啲值入真表頁。');
+}
+function outScript(btn) {   // 📤 VID2:SCRIPT 接落 Master GSheet SCRIPT暫存 — 直接 GAS POST，唔經部 Mac
+  var jsTag = btn.nextElementSibling;  // <script class=bdj> board JSON
+  var board = [];
+  try { board = JSON.parse((jsTag && jsTag.textContent) || '[]'); } catch (e) {}
+  if (!board.length) { toast('⚠️ 冇 board 資料'); return; }
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'script_out', dept: 'POLICE',
+      brd: btn.dataset.brd, concept: btn.dataset.concept, board: board })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已接落「SCRIPT暫存」'; btn.disabled = false; }, 1500);
+  toast('📤 接落 Master GSheet「SCRIPT暫存」(GAS,唔經部 Mac,疊唔覆寫)');
+}
+function clearScript(btn) {   // 🧹 清空 SCRIPT暫存 — GAS（唔經 Mac）
+  if (!confirm('清空 SCRIPT暫存 tab？')) return;
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'clear' })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已清空'; btn.disabled = false; }, 1500);
+  toast('🧹 已清空 SCRIPT暫存（GAS,唔經部 Mac）');
+}
+
+// submitGSlide/submitComments 已移除（dead code:前端零 call site + 冇 .frame-note input — 2026-06-13 audit）
+
+// 「develop 緊」bar 已移除（Raymond 2026-06-06）—— 改用 VID 2 tab 紅邊 + 各 concept 進度條。
+</script></body></html>

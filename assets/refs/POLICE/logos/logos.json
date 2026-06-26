@@ -1,0 +1,29 @@
+{
+  "dept": "POLICE",
+  "slots": [
+    {
+      "slot": 1,
+      "query": "跨部門反恐專責組 標誌",
+      "file": "assets/refs/POLICE/logos/slot1.png",
+      "title": "認識我們- 跨部門反恐專責組Inter-departmental Counter Terrorism",
+      "w": 2048,
+      "h": 1144,
+      "enabled": true
+    },
+    {
+      "slot": 2,
+      "query": "見疑即報 標誌",
+      "file": "assets/refs/POLICE/logos/slot2.png",
+      "title": "下載內容Archives - 跨部門反恐專責組Inter-departmental Counter ",
+      "w": 1240,
+      "h": 1754,
+      "enabled": true
+    },
+    {
+      "slot": 3,
+      "query": "",
+      "file": "",
+      "title": "(空,可即場打字搵)"
+    }
+  ]
+}
