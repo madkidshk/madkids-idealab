@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>MK Lab · 由圖開始</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#717784;--line:#e7e9ee;--accent:#4f46e5;--grn:#0a7d3f;--sh:0 1px 2px rgba(20,24,40,.04),0 4px 14px rgba(20,24,40,.05)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:22px 15px 80px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap}
+h1{font-size:25px;font-weight:800;margin:.1em 0;letter-spacing:-.01em}
+.hdrbtns{flex:none;display:flex;gap:7px;align-items:center}
+.homebtn,.refbtn{flex:none;white-space:nowrap;font-size:16px;line-height:1;text-decoration:none;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:5px 9px;color:#222}
+.sub{color:var(--mut);font-size:13px;margin:8px 0 18px}
+.grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:760px){.grid{grid-template-columns:1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 17px;box-shadow:var(--sh)}
+.card h2{margin:0 0 8px;font-size:17px}
+.card p,.card li{font-size:14px;line-height:1.55}
+.card ul{margin:8px 0 0 18px;padding:0}
+.pillrow{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}
+.pill{font-size:12px;border-radius:999px;padding:3px 10px;background:#eef0fe;color:var(--accent);font-weight:700}
+.pill.g{background:#e7f5ec;color:var(--grn)}
+.path{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;background:#f7f7f4;border:1px solid var(--line);border-radius:10px;padding:10px;overflow:auto;white-space:pre-wrap;word-break:break-word}
+.step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 15px;box-shadow:var(--sh)}
+.step h3{margin:0 0 6px;font-size:15px}
+.step .n{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:999px;background:#eef0fe;color:var(--accent);font-weight:800;font-size:12px;margin-right:6px}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.lk{display:inline-block;text-decoration:none;padding:7px 11px;border-radius:10px;border:1px solid var(--line);background:#fff;color:#222;font-size:13px}
+footer{color:var(--mut);font-size:12px;border-top:1px solid var(--line);margin-top:30px;padding-top:14px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="titlerow">
+    <h1>由圖開始</h1>
+    <span class="hdrbtns">
+      <a class="homebtn" href="index.html" title="總目錄">🏠</a>
+      <button class="refbtn" onclick="location.href=location.pathname+'?t='+Date.now()" title="重新載入">🔄</button>
+    </span>
+  </div>
+  <div class="sub">先 rough 3D，再 Blender refine。呢頁係 mk lab 內部固定入口，唔使每次重新解釋流程。</div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>輸入</h2>
+      <ul>
+        <li>一張圖可以做 rough 3D，但四肢比例只係初稿。</li>
+        <li>最好有正面 + 側面 + 背面，會準好多。</li>
+        <li>如果目標係 3D printer，最後一定要做封閉 mesh 檢查。</li>
+      </ul>
+      <div class="pillrow">
+        <span class="pill">Reference image</span>
+        <span class="pill">Rough 3D</span>
+        <span class="pill g">Printable</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>輸出</h2>
+      <div class="path">rough model: GLB / OBJ / STL
+refined model: STL / 3MF / OBJ
+print check: non-manifold / watertight / scale</div>
+      <div class="links">
+        <a class="lk" href="3d_print_workflow.html">開 3D 模型流程</a>
+        <a class="lk" href="3d_print_scripts/refine_rough_mesh.py">開 Blender refine script</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="step" style="margin-top:12px">
+    <h3><span class="n">1</span> 先出 rough 3D</h3>
+    <p>先用 image-to-3D 工具起草，重點係捉姿勢、輪廓、主體比例。呢一步唔追求 print-ready。</p>
+  </div>
+
+  <div class="step" style="margin-top:10px">
+    <h3><span class="n">2</span> 再入 Blender</h3>
+    <p>將 rough mesh import 入 Blender，修四肢圓潤度、厚度、連接位同底部穩定性。</p>
+  </div>
+
+  <div class="step" style="margin-top:10px">
+    <h3><span class="n">3</span> 最後出檔</h3>
+    <p>輸出 STL 或 3MF，然後重 import 檢查 mesh。未過檢查就唔當真係完成。</p>
+  </div>
+
+  <footer>MK Lab · image-to-3D entry</footer>
+</div>
+</body>
+</html>

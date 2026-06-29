@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>MK Lab · 3D 模型流程</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#717784;--line:#e7e9ee;--accent:#4f46e5;--grn:#0a7d3f;--sh:0 1px 2px rgba(20,24,40,.04),0 4px 14px rgba(20,24,40,.05)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:22px 15px 80px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap}
+h1{font-size:25px;font-weight:800;margin:.1em 0;letter-spacing:-.01em}
+.hdrbtns{flex:none;display:flex;gap:7px;align-items:center}
+.homebtn,.refbtn{flex:none;white-space:nowrap;font-size:16px;line-height:1;text-decoration:none;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:5px 9px;color:#222}
+.sub{color:var(--mut);font-size:13px;margin:8px 0 18px}
+.grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:760px){.grid{grid-template-columns:1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 17px;box-shadow:var(--sh)}
+.card h2{margin:0 0 8px;font-size:17px}
+.card p,.card li{font-size:14px;line-height:1.55}
+.card ul{margin:8px 0 0 18px;padding:0}
+.pillrow{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0}
+.pill{font-size:12px;border-radius:999px;padding:3px 10px;background:#eef0fe;color:var(--accent);font-weight:700}
+.pill.g{background:#e7f5ec;color:var(--grn)}
+.path{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;background:#f7f7f4;border:1px solid var(--line);border-radius:10px;padding:10px;overflow:auto;white-space:pre-wrap;word-break:break-word}
+.step{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 15px;box-shadow:var(--sh)}
+.step h3{margin:0 0 6px;font-size:15px}
+.step .n{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:999px;background:#eef0fe;color:var(--accent);font-weight:800;font-size:12px;margin-right:6px}
+.step p{margin:0;font-size:14px}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.lk{display:inline-block;text-decoration:none;padding:7px 11px;border-radius:10px;border:1px solid var(--line);background:#fff;color:#222;font-size:13px}
+footer{color:var(--mut);font-size:12px;border-top:1px solid var(--line);margin-top:30px;padding-top:14px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="titlerow">
+    <h1>3D 模型流程</h1>
+    <span class="hdrbtns">
+      <a class="homebtn" href="index.html" title="總目錄">🏠</a>
+      <button class="refbtn" onclick="location.href=location.pathname+'?t='+Date.now()" title="重新載入">🔄</button>
+    </span>
+  </div>
+  <div class="sub">MK Lab 內嘅 3D / 3D print 工作流：先做 rough 3D，再落 Blender 修成可印檔。</div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>工作流</h2>
+      <ul>
+        <li>先用 reference image 起 rough 3D，重點係捉比例、姿勢、輪廓。</li>
+        <li>再用 Blender 修身體、四肢厚度、圓角同可印性。</li>
+        <li>最後 export 做 <code>STL</code> / <code>3MF</code> / <code>OBJ</code>，再做 manifold 檢查。</li>
+      </ul>
+      <div class="pillrow">
+        <span class="pill">Image → 3D</span>
+        <span class="pill">Blender refine</span>
+        <span class="pill g">Printer-ready</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>目前做法</h2>
+      <div class="path">1. Gemma 出建模方案 / Blender script 方向
+2. Higgsfield rough 3D
+3. Blender 厚度、圓角、尺寸修正
+4. voxel remesh / smooth / printability report
+5. export STL
+6. import 回 Blender 檢查 non-manifold</div>
+      <div class="links">
+        <a class="lk" href="3d_gatekeep.html">開 3D 把關站</a>
+        <a class="lk" href="3d_from_image.html">開 由圖開始</a>
+        <a class="lk" href="#source">看 source path</a>
+        <a class="lk" href="#output">看現成輸出</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="step" style="margin-top:12px">
+    <h3><span class="n">1</span> Rough 3D</h3>
+    <p>用圖片先起草模，目的唔係一次到位，而係先定姿態、重心、手腳方向同整體比例。</p>
+  </div>
+
+  <div class="step" style="margin-top:10px">
+    <h3><span class="n">2</span> Blender refine</h3>
+    <p>喺 Blender 入面將四肢做圓潤，收口位補厚，減少扁平感，兼做可列印結構。</p>
+  </div>
+
+  <div class="step" style="margin-top:10px">
+    <h3><span class="n">3</span> Export / verify</h3>
+    <p>輸出 STL 或 3MF，然後再 import 回 Blender 檢查 mesh，睇有冇 non-manifold、碎面、孤立碎件。</p>
+  </div>
+
+  <div class="step" style="margin-top:10px">
+    <h3><span class="n">4</span> Reusable script</h3>
+    <p>如果你已經有 rough mesh，可以直接用 <code>3d_print_scripts/refine_rough_mesh.py</code> 做厚度、圓角、尺寸、remesh、smooth、printability report 同 export。</p>
+  </div>
+
+  <div class="grid" style="margin-top:12px">
+    <div class="card" id="source">
+      <h2>Source</h2>
+      <div class="path">3d_print_scripts/refine_rough_mesh.py
+local server: http://127.0.0.1:8013/3d_gatekeep.html</div>
+      <p style="margin-top:8px">呢個係而家喺本機跑緊嘅 Blender 生成腳本，之後可以直接改做其他角色。</p>
+      <div class="links">
+        <a class="lk" href="3d_print_scripts/refine_rough_mesh.py">開 reusable refine script</a>
+      </div>
+    </div>
+    <div class="card" id="output">
+      <h2>現成輸出</h2>
+      <div class="path">3d_print_assets/fairwood_mascot_round_v1.stl
+3d_print_assets/fairwood_mascot_round_v1.png</div>
+      <p style="margin-top:8px">呢版係可印 STL，並已驗過 non-manifold edges = 0。</p>
+      <div class="links" style="margin-top:10px">
+        <a class="lk" href="3d_print_assets/fairwood_mascot_round_v1.png">開預覽圖</a>
+        <a class="lk" href="3d_print_assets/fairwood_mascot_round_v1.stl">下載 STL</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>MK Lab · 3D workflow note</footer>
+</div>
+</body>
+</html>

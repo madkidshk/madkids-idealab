@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>MK Lab · 3D 模型站</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#717784;--line:#e7e9ee;--accent:#4f46e5;--grn:#0a7d3f;--red:#b91c1c;--sh:0 1px 2px rgba(20,24,40,.04),0 4px 14px rgba(20,24,40,.05)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:18px 14px 80px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap;margin-bottom:8px}
+h1{font-size:24px;font-weight:800;margin:0;letter-spacing:-.01em}
+.hdrbtns{flex:none;display:flex;gap:7px;align-items:center}
+.homebtn,.refbtn,.lk{flex:none;white-space:nowrap;font-size:15px;line-height:1;text-decoration:none;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:6px 10px;color:#222}
+.sub{color:var(--mut);font-size:13px;margin:8px 0 18px}
+.topgrid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:980px){.topgrid{grid-template-columns:360px 1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 15px;box-shadow:var(--sh)}
+.card h2{margin:0 0 10px;font-size:16px}
+.drop{border:1.5px dashed #cfd3dc;border-radius:14px;background:#fbfbfe;padding:12px}
+.drop.drag{border-color:var(--accent);background:#f6f7ff}
+.drop h3{margin:0 0 6px;font-size:14px}
+.drop p,.note,.path,.empty{font-size:13px;color:var(--mut);margin:0}
+.drop input{display:none}
+textarea{width:100%;min-height:84px;resize:vertical;border:1px solid var(--line);border-radius:10px;padding:9px 10px;font:inherit;font-size:13px;background:#fff;color:var(--ink)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{border:none;background:var(--accent);color:#fff;border-radius:9px;padding:8px 11px;font:inherit;font-weight:700;cursor:pointer}
+.btn.alt{background:#eef0fe;color:#222;border:1px solid #dcdffb}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.thumbs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
+@media(min-width:560px){.thumbs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.thumb{position:relative;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.thumb img{display:block;width:100%;height:128px;object-fit:cover;background:#111}
+.thumb .cap{padding:6px 8px;font-size:12px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.viewer{position:relative;min-height:560px;background:linear-gradient(180deg,#f6f7fb 0,#eceef4 100%);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--sh)}
+#three{position:absolute;inset:0}
+.overlay{position:absolute;left:14px;top:14px;right:14px;display:flex;justify-content:space-between;gap:10px;pointer-events:none}
+.badge{pointer-events:none;background:rgba(255,255,255,.88);backdrop-filter:blur(8px);border:1px solid rgba(0,0,0,.06);border-radius:999px;padding:6px 10px;font-size:12px;color:#333;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.panelrow{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px}
+@media(min-width:960px){.panelrow{grid-template-columns:1fr 1fr}}
+.path{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:#f7f7f4;border:1px solid var(--line);border-radius:10px;padding:10px;white-space:pre-wrap;word-break:break-word;color:#3b4250}
+.result{font-size:13px;line-height:1.55;background:#f7f7f4;border:1px solid var(--line);border-radius:10px;padding:10px;white-space:pre-wrap;color:#2d3440;max-height:260px;overflow:auto}
+.small{font-size:12px;color:var(--mut)}
+footer{color:var(--mut);font-size:12px;border-top:1px solid var(--line);margin-top:28px;padding-top:14px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+</style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "./vendor/three/build/three.module.js",
+    "three/addons/": "./vendor/three/examples/jsm/"
+  }
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+  <div class="titlerow">
+    <h1>3D 模型站</h1>
+    <span class="hdrbtns">
+      <a class="homebtn" href="index.html" title="總目錄">🏠</a>
+      <button class="refbtn" onclick="location.href=location.pathname+'?t='+Date.now()" title="重新載入">🔄</button>
+    </span>
+  </div>
+  <div class="sub">先入圖，再預覽 3D。右邊個 viewer 支援鼠標拖拽 360 度轉，亦可上下傾斜。</div>
+
+  <div class="topgrid">
+    <div class="card">
+      <h2>輸入</h2>
+      <div class="drop" id="imgDrop">
+        <h3>Reference image</h3>
+        <p>拖圖入嚟，或者用按鈕揀圖。呢度係 rough 3D 前嘅把關位。</p>
+        <div class="btnrow">
+          <button class="btn" id="pickImage">揀圖</button>
+          <button class="btn alt" id="clearImages">清空</button>
+        </div>
+        <input id="imageInput" type="file" accept="image/*" multiple>
+        <div class="thumbs" id="thumbs"></div>
+      </div>
+
+      <div class="drop" id="modelDrop" style="margin-top:12px">
+        <h3>3D file</h3>
+        <p>揀 STL / OBJ。載入後右邊即時 360 預覽。</p>
+        <div class="btnrow">
+          <button class="btn" id="pickModel">揀 3D file</button>
+          <button class="btn alt" id="loadSample">載入 sample</button>
+          <button class="btn alt" id="clearModel">清空</button>
+        </div>
+        <input id="modelInput" type="file" accept=".stl,.obj,.glb,.gltf">
+        <div class="small" id="modelInfo" style="margin-top:10px">未載入 3D file</div>
+      </div>
+
+      <div class="drop" style="margin-top:12px">
+        <h3>Gemma → Blender</h3>
+        <p>上圖 + rough 3D 後，Gemma 出建模方案，Blender 即刻 refine 成可下載 STL。</p>
+        <textarea id="modelNotes">四肢要圓潤、有厚度，唔好扁平；輸出 STL 供 3D printer。</textarea>
+        <div class="btnrow">
+          <button class="btn" id="runGemmaBlender">Gemma 出方案 + Blender refine</button>
+        </div>
+        <div class="small" id="jobStatus" style="margin-top:10px">未開始</div>
+      </div>
+    </div>
+
+    <div class="viewer card" style="padding:0">
+      <div id="three"></div>
+      <div class="overlay">
+        <div class="badge" id="status">等你入 3D file</div>
+        <div class="badge">拖動旋轉 / 滾輪縮放 / 右鍵平移</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panelrow">
+    <div class="card">
+      <h2>流程</h2>
+      <div class="path">1. 上 reference image
+2. 載入 rough 3D
+3. Gemma 出建模方案
+4. Blender refine / export STL
+5. 喺右邊 viewer 360 度檢視結果</div>
+      <div class="result" id="gemmaPlan" style="margin-top:10px">Gemma 方案會顯示喺呢度。</div>
+    </div>
+    <div class="card">
+      <h2>輸出位置</h2>
+      <div class="path">3d_print_workflow.html
+3d_print_scripts/refine_rough_mesh.py
+local server: http://127.0.0.1:8013/3d_gatekeep.html</div>
+      <p class="small" style="margin-top:8px">呢兩個頁面會做 workflow／refine。呢頁專做入圖 + 3D 預覽。</p>
+      <div class="btnrow" style="margin-top:10px">
+        <a class="lk" href="3d_print_workflow.html">開流程頁</a>
+        <a class="lk" id="downloadRefined" href="#" style="display:none">下載 refined STL</a>
+        <a class="lk" id="openReport" href="#" style="display:none">開 report</a>
+      </div>
+      <div class="result" id="printReport" style="display:none;margin-top:10px"></div>
+    </div>
+  </div>
+
+  <footer>MK Lab · 3D model preview</footer>
+</div>
+
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { STLLoader } from 'three/addons/loaders/STLLoader.js';
+import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+
+const viewer = document.getElementById('three');
+const statusEl = document.getElementById('status');
+const modelInfo = document.getElementById('modelInfo');
+const thumbs = document.getElementById('thumbs');
+const imageInput = document.getElementById('imageInput');
+const modelInput = document.getElementById('modelInput');
+const imgDrop = document.getElementById('imgDrop');
+const modelDrop = document.getElementById('modelDrop');
+
+function setStatus(msg) {
+  statusEl.textContent = msg;
+}
+
+window.addEventListener('error', (event) => {
+  setStatus(`JS error: ${event.message || 'unknown'}`);
+});
+window.addEventListener('unhandledrejection', (event) => {
+  setStatus(`JS error: ${event.reason?.message || event.reason || 'promise rejection'}`);
+});
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xf0f2f7);
+
+const camera = new THREE.PerspectiveCamera(45, 1, 0.01, 1000);
+camera.position.set(3.5, 2.4, 3.2);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+renderer.setSize(viewer.clientWidth, viewer.clientHeight);
+viewer.appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.dampingFactor = 0.08;
+controls.minDistance = 0.45;
+controls.maxDistance = 18;
+controls.target.set(0, 0.6, 0);
+
+const amb = new THREE.HemisphereLight(0xffffff, 0xbfc7d8, 2.2);
+scene.add(amb);
+const dir = new THREE.DirectionalLight(0xffffff, 2.6);
+dir.position.set(4, 7, 6);
+scene.add(dir);
+const fill = new THREE.DirectionalLight(0xffffff, 1.2);
+fill.position.set(-5, 2, 2);
+scene.add(fill);
+
+const grid = new THREE.GridHelper(12, 24, 0xd6dbe6, 0xe4e8f0);
+grid.position.y = -1.1;
+grid.material.opacity = 0.55;
+grid.material.transparent = true;
+scene.add(grid);
+
+let currentModel = null;
+let currentUrls = [];
+let currentImageUrls = [];
+let currentModelFile = null;
+let sampleLoaded = false;
+setStatus('JS ready');
+
+function fitObject(object3d) {
+  const box = new THREE.Box3().setFromObject(object3d);
+  const size = box.getSize(new THREE.Vector3());
+  const center = box.getCenter(new THREE.Vector3());
+  const maxDim = Math.max(size.x, size.y, size.z) || 1;
+  const scale = 2.2 / maxDim;
+  object3d.scale.setScalar(scale);
+  object3d.position.sub(center.multiplyScalar(scale));
+  object3d.position.y += 0.6;
+  controls.target.set(0, 0.6, 0);
+  controls.update();
+}
+
+function disposeObject(obj) {
+  if (!obj) return;
+  obj.traverse((child) => {
+    if (child.geometry) child.geometry.dispose();
+    if (child.material) {
+      if (Array.isArray(child.material)) child.material.forEach((m) => m.dispose());
+      else child.material.dispose();
+    }
+  });
+  scene.remove(obj);
+}
+
+function clearModel() {
+  disposeObject(currentModel);
+  currentModel = null;
+  currentModelFile = null;
+  sampleLoaded = false;
+  modelInfo.textContent = '未載入 3D file';
+  setStatus('等你入 3D file');
+}
+
+function loadMesh(material, mesh) {
+  disposeObject(currentModel);
+  currentModel = mesh;
+  scene.add(mesh);
+  fitObject(mesh);
+  modelInfo.textContent = mesh.userData.label || '已載入 3D file';
+  setStatus('可 360 轉');
+}
+
+async function loadFile(url, name) {
+  const ext = name.split('.').pop().toLowerCase();
+  if (ext === 'stl') {
+    const loader = new STLLoader();
+    const geom = await new Promise((resolve, reject) => loader.load(url, resolve, undefined, reject));
+    geom.computeVertexNormals();
+    const mat = new THREE.MeshStandardMaterial({ color: 0xf5f5f5, roughness: 0.42, metalness: 0.0 });
+    const mesh = new THREE.Mesh(geom, mat);
+    mesh.userData.label = name;
+    loadMesh(mat, mesh);
+    return;
+  }
+  if (ext === 'obj') {
+    const loader = new OBJLoader();
+    const obj = await new Promise((resolve, reject) => loader.load(url, resolve, undefined, reject));
+    obj.traverse((child) => {
+      if (child.isMesh) {
+        child.material = new THREE.MeshStandardMaterial({ color: 0xf5f5f5, roughness: 0.42, metalness: 0.0 });
+        child.geometry.computeVertexNormals?.();
+      }
+    });
+    obj.userData.label = name;
+    loadMesh(null, obj);
+    return;
+  }
+  throw new Error(`Unsupported file: ${ext}`);
+}
+
+function addThumbnails(files) {
+  for (const file of files) {
+    const url = URL.createObjectURL(file);
+    currentImageUrls.push(url);
+    const div = document.createElement('div');
+    div.className = 'thumb';
+    div.innerHTML = `<img src="${url}" alt=""><div class="cap">${file.name}</div>`;
+    thumbs.appendChild(div);
+  }
+}
+
+document.getElementById('pickImage').addEventListener('click', () => imageInput.click());
+document.getElementById('pickModel').addEventListener('click', () => modelInput.click());
+document.getElementById('clearImages').addEventListener('click', () => {
+  thumbs.innerHTML = '';
+  currentImageUrls.forEach((u) => URL.revokeObjectURL(u));
+  currentImageUrls = [];
+  imageInput.value = '';
+});
+document.getElementById('clearModel').addEventListener('click', clearModel);
+
+document.getElementById('loadSample').addEventListener('click', async () => {
+  await loadSampleModel();
+});
+
+async function loadSampleModel() {
+  try {
+    const sample = '3d_print_assets/fairwood_mascot_round_v1.stl';
+    const res = await fetch(sample);
+    if (!res.ok) throw new Error('sample fetch failed');
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    currentUrls.push(url);
+    currentModelFile = null;
+    sampleLoaded = true;
+    await loadFile(url, 'fairwood_mascot_round_v1.stl');
+  } catch (err) {
+    setStatus('sample 未能載入');
+    modelInfo.textContent = String(err?.message || err);
+  }
+}
+
+imageInput.addEventListener('change', () => {
+  if (imageInput.files?.length) addThumbnails(imageInput.files);
+});
+
+modelInput.addEventListener('change', async () => {
+  const file = modelInput.files?.[0];
+  if (!file) return;
+  const url = URL.createObjectURL(file);
+  currentUrls.push(url);
+  currentModelFile = file;
+  sampleLoaded = false;
+  try {
+    await loadFile(url, file.name);
+  } catch (err) {
+    setStatus('載入失敗');
+    modelInfo.textContent = String(err?.message || err);
+  }
+});
+
+function onResize() {
+  const w = viewer.clientWidth;
+  const h = viewer.clientHeight;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+}
+window.addEventListener('resize', onResize);
+
+function animate() {
+  controls.update();
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+}
+animate();
+
+function handleDrop(target, kind) {
+  target.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    target.classList.add('drag');
+  });
+  target.addEventListener('dragleave', () => target.classList.remove('drag'));
+  target.addEventListener('drop', async (e) => {
+    e.preventDefault();
+    target.classList.remove('drag');
+    const files = [...(e.dataTransfer?.files || [])];
+    if (!files.length) return;
+    if (kind === 'image') {
+      addThumbnails(files.filter((f) => f.type.startsWith('image/')));
+    } else {
+  const file = files.find((f) => /\.(stl|obj)$/i.test(f.name));
+      if (!file) return;
+      const url = URL.createObjectURL(file);
+      currentUrls.push(url);
+      currentModelFile = file;
+      sampleLoaded = false;
+      try {
+        await loadFile(url, file.name);
+      } catch (err) {
+        setStatus('載入失敗');
+        modelInfo.textContent = String(err?.message || err);
+      }
+    }
+  });
+}
+handleDrop(imgDrop, 'image');
+handleDrop(modelDrop, 'model');
+
+async function runGemmaBlender() {
+  const btn = document.getElementById('runGemmaBlender');
+  const jobStatus = document.getElementById('jobStatus');
+  const planEl = document.getElementById('gemmaPlan');
+  const reportEl = document.getElementById('printReport');
+  const download = document.getElementById('downloadRefined');
+  const reportLink = document.getElementById('openReport');
+
+  if (!currentModelFile && !sampleLoaded) {
+    jobStatus.textContent = '要先載入 rough 3D file';
+    return;
+  }
+
+  btn.disabled = true;
+  jobStatus.textContent = 'Gemma 出方案中，之後會自動跑 Blender...';
+  planEl.textContent = '';
+  reportEl.style.display = 'none';
+  download.style.display = 'none';
+  reportLink.style.display = 'none';
+
+  const form = new FormData();
+  const image = imageInput.files?.[0];
+  if (image) form.append('image', image);
+  if (currentModelFile) form.append('model', currentModelFile);
+  if (sampleLoaded) form.append('useSample', '1');
+  form.append('notes', document.getElementById('modelNotes').value || '');
+
+  try {
+    const res = await fetch('/api/3d/plan-refine', { method: 'POST', body: form });
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.error || data.blender?.stderr || 'failed');
+    jobStatus.textContent = `完成：${data.jobId}`;
+    planEl.textContent = data.plan || 'Gemma 無文字輸出';
+    reportEl.style.display = 'block';
+    reportEl.textContent = JSON.stringify(data.report || {}, null, 2);
+    if (data.outputUrl) {
+      download.href = data.outputUrl;
+      download.style.display = 'inline-block';
+      await loadFile(data.outputUrl, 'refined_for_print.stl');
+    }
+    if (data.reportUrl) {
+      reportLink.href = data.reportUrl;
+      reportLink.style.display = 'inline-block';
+    }
+  } catch (err) {
+    jobStatus.textContent = `失敗：請用本機 server 開 http://127.0.0.1:8013/3d_gatekeep.html`;
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+document.getElementById('runGemmaBlender').addEventListener('click', runGemmaBlender);
+
+loadSampleModel();
+</script>
+</body>
+</html>

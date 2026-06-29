@@ -3,3 +3,5 @@
 # dashboard 只用 board_sheet.png(6 格合成圖),frame_*.png 同 grounding .source.pdf 都唔需要上 repo/live。
 frame_*.png
 *.source.pdf
+3d_jobs/
+.DS_Store
