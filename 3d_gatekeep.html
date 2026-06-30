@@ -82,13 +82,13 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
 
       <div class="drop" id="modelDrop" style="margin-top:12px">
         <h3>3D file</h3>
-        <p>揀 STL / OBJ。載入後右邊即時 360 預覽。</p>
+        <p>揀 STL / OBJ / 3MF。STL/OBJ 即時預覽；3MF 會經 Blender refine 後轉 STL 預覽。</p>
         <div class="btnrow">
           <button class="btn" id="pickModel">揀 3D file</button>
           <button class="btn alt" id="loadSample">載入 sample</button>
           <button class="btn alt" id="clearModel">清空</button>
         </div>
-        <input id="modelInput" type="file" accept=".stl,.obj,.glb,.gltf">
+        <input id="modelInput" type="file" accept=".stl,.obj,.3mf,.glb,.gltf">
         <div class="small" id="modelInfo" style="margin-top:10px">未載入 3D file</div>
       </div>
 
@@ -116,7 +116,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
     <div class="card">
       <h2>流程</h2>
       <div class="path">1. 上 reference image
-2. 載入 rough 3D
+2. 載入 rough 3D（STL / OBJ / 3MF）
 3. Gemma 出建模方案
 4. Blender refine / export STL
 5. 喺右邊 viewer 360 度檢視結果</div>
@@ -274,6 +274,12 @@ async function loadFile(url, name) {
     loadMesh(null, obj);
     return;
   }
+  if (ext === '3mf') {
+    currentModel = null;
+    modelInfo.textContent = `${name}（3MF 已載入，按 Gemma + Blender 後會轉 STL preview）`;
+    setStatus('3MF 待 Blender refine');
+    return;
+  }
   throw new Error(`Unsupported file: ${ext}`);
 }
 
@@ -368,7 +374,7 @@ function handleDrop(target, kind) {
     if (kind === 'image') {
       addThumbnails(files.filter((f) => f.type.startsWith('image/')));
     } else {
-  const file = files.find((f) => /\.(stl|obj)$/i.test(f.name));
+  const file = files.find((f) => /\.(stl|obj|3mf|glb|gltf)$/i.test(f.name));
       if (!file) return;
       const url = URL.createObjectURL(file);
       currentUrls.push(url);

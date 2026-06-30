@@ -4,6 +4,8 @@ import json
 import bpy
 import os
 import sys
+import zipfile
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 
@@ -17,12 +19,68 @@ def reset_scene():
     bpy.context.scene.unit_settings.system = "METRIC"
 
 
+def import_3mf_mesh(path):
+    unit_scale = {
+        "micron": 0.001,
+        "millimeter": 1.0,
+        "centimeter": 10.0,
+        "inch": 25.4,
+        "foot": 304.8,
+        "meter": 1000.0,
+    }
+    with zipfile.ZipFile(path) as archive:
+        model_name = "3D/3dmodel.model"
+        if model_name not in archive.namelist():
+            candidates = [name for name in archive.namelist() if name.endswith(".model")]
+            if not candidates:
+                raise RuntimeError("3MF model XML not found")
+            model_name = candidates[0]
+        root = ET.fromstring(archive.read(model_name))
+
+    ns = {"m": root.tag.split("}")[0].strip("{")} if root.tag.startswith("{") else {}
+    scale = unit_scale.get(root.attrib.get("unit", "millimeter"), 1.0)
+    objects = {}
+    for obj_el in root.findall(".//m:resources/m:object", ns) if ns else root.findall(".//resources/object"):
+        obj_id = obj_el.attrib.get("id")
+        mesh_el = obj_el.find("m:mesh", ns) if ns else obj_el.find("mesh")
+        if not obj_id or mesh_el is None:
+            continue
+        verts_el = mesh_el.find("m:vertices", ns) if ns else mesh_el.find("vertices")
+        tris_el = mesh_el.find("m:triangles", ns) if ns else mesh_el.find("triangles")
+        if verts_el is None or tris_el is None:
+            continue
+        vertices = []
+        for v in list(verts_el):
+            vertices.append((float(v.attrib["x"]) * scale, float(v.attrib["y"]) * scale, float(v.attrib["z"]) * scale))
+        faces = []
+        for tri in list(tris_el):
+            faces.append((int(tri.attrib["v1"]), int(tri.attrib["v2"]), int(tri.attrib["v3"])))
+        objects[obj_id] = (vertices, faces)
+
+    build_items = root.findall(".//m:build/m:item", ns) if ns else root.findall(".//build/item")
+    object_ids = [item.attrib.get("objectid") for item in build_items if item.attrib.get("objectid") in objects] or list(objects)
+    imported = []
+    for obj_id in object_ids:
+        vertices, faces = objects[obj_id]
+        mesh = bpy.data.meshes.new(f"3mf_mesh_{obj_id}")
+        mesh.from_pydata(vertices, [], faces)
+        mesh.update()
+        obj = bpy.data.objects.new(f"3mf_object_{obj_id}", mesh)
+        bpy.context.collection.objects.link(obj)
+        imported.append(obj)
+    if not imported:
+        raise RuntimeError("No mesh geometry found in 3MF")
+    return imported
+
+
 def import_mesh(path):
     ext = Path(path).suffix.lower()
     if ext == ".stl":
         bpy.ops.wm.stl_import(filepath=path)
     elif ext == ".obj":
         bpy.ops.wm.obj_import(filepath=path)
+    elif ext == ".3mf":
+        return import_3mf_mesh(path)
     elif ext in {".glb", ".gltf"}:
         bpy.ops.import_scene.gltf(filepath=path)
     else:
@@ -166,7 +224,7 @@ def export_mesh(obj, path):
 
 def main():
     parser = argparse.ArgumentParser(description="Import a rough mesh, clean it, and export a printable mesh.")
-    parser.add_argument("--input", required=True, help="Input mesh path (.stl, .obj, .glb, .gltf)")
+    parser.add_argument("--input", required=True, help="Input mesh path (.stl, .obj, .3mf, .glb, .gltf)")
     parser.add_argument("--output", required=True, help="Output mesh path (.stl or .obj)")
     parser.add_argument("--target-height-mm", type=float, default=80.0, help="Scale model to this height before export; use 0 to keep scale")
     parser.add_argument("--solidify-mm", type=float, default=0.0, help="Add centered thickness for thin/flat source meshes")
