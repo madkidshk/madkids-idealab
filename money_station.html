@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>🧰 錢銀工作站</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang HK","Microsoft JhengHei",Roboto,sans-serif;background:#f6f7fb;color:#1b1f27}
+.wrap{max-width:720px;margin:0 auto;padding:16px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+.titlerow h1{margin:0;font-size:19px;min-width:0}
+.hdrbtns{display:flex;gap:7px;flex:none}
+.homebtn,.refbtn{text-decoration:none;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:5px 9px;color:#222;font-size:16px;cursor:pointer}
+/* ── lane 切換：🔴 找數(錢出) vs 🟡 開單(錢入)，視覺一眼分得開 ── */
+.lanes{display:flex;gap:8px;margin-bottom:14px}
+.lane{flex:1;border:1.5px solid #e7e9ee;background:#fff;border-radius:12px;padding:10px 12px;cursor:pointer;text-align:left;font-size:13.5px;line-height:1.45;transition:.15s}
+.lane b{display:block;font-size:14.5px;margin-bottom:2px}
+.lane small{color:#888}
+.lane.pay.on{border-color:#EE382F;background:#fff5f4;box-shadow:0 0 0 3px rgba(238,56,47,.10)}
+.lane.bill.on{border-color:#4f46e5;background:#f3f2ff;box-shadow:0 0 0 3px rgba(79,70,229,.10)}
+.card{background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 1px 2px rgba(20,24,40,.04),0 4px 14px rgba(20,24,40,.05)}
+.card.pay{border-top:3px solid #EE382F}
+.card.bill{border-top:3px solid #4f46e5}
+.drop{border:2px dashed #c7cbe0;border-radius:12px;padding:30px 14px;text-align:center;color:#666;cursor:pointer;transition:.15s}
+.drop.over{border-color:#EE382F;background:#fff5f4}
+.drop input{display:none}
+.filelist{margin-top:10px;font-size:13px}
+.filelist .frow{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid #f0f0f4}
+.filelist .frow:last-child{border-bottom:none}
+.opt-row{display:flex;gap:16px;margin:14px 0;font-size:13.5px}
+.opt-row label{display:flex;align-items:center;gap:6px;cursor:pointer}
+textarea{width:100%;border:1px solid #dcdffb;border-radius:8px;padding:8px;font-size:13px;font-family:inherit;resize:vertical}
+#extraText{min-height:60px}
+#billRaw{min-height:170px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;line-height:1.55}
+.btn{background:#4f46e5;color:#fff;border:none;border-radius:9px;padding:10px 18px;font-size:14px;font-weight:800;cursor:pointer}
+.btn:disabled{background:#c7cbe0;cursor:default}
+.btn.danger{background:#EE382F}
+.status{font-size:13px;color:#666;margin-top:10px;white-space:pre-wrap}
+.pill{display:inline-block;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;background:#eef0f3;color:#555}
+.pill.ok{background:#e7f7ee;color:#15803d}
+.pill.warn{background:#fff4e5;color:#b45309}
+.note{font-size:12px;color:#8a8f98;margin-top:10px;line-height:1.5}
+.resultcard{border:1.5px solid #e7e9ee;border-radius:12px;padding:14px;margin-bottom:12px}
+.resultcard.manual{border-color:#fcd9b6;background:#fff8f1}
+.resultcard h3{margin:0 0 8px;font-size:15px}
+.kv{display:grid;grid-template-columns:110px 1fr;gap:4px 8px;font-size:13px;margin-bottom:8px}
+.kv b{color:#555;font-weight:600}
+.links a{display:inline-block;margin:2px 8px 2px 0;font-size:12.5px;color:#4f46e5;text-decoration:none;background:#eef0fe;padding:4px 9px;border-radius:7px}
+.warnlist{font-size:12px;color:#b45309;margin-top:6px}
+.warnlist div{margin-bottom:2px}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid #dcdffb;border-top-color:#4f46e5;border-radius:50%;animation:sp .8s linear infinite;vertical-align:middle;margin-right:6px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="titlerow">
+    <h1>🧰 錢銀工作站</h1>
+    <div class="hdrbtns">
+      <a class="homebtn" href="index.html" title="總目錄">🏠</a>
+      <button class="refbtn" onclick="location.reload()" title="重新載入">🔄</button>
+    </div>
+  </div>
+
+  <div class="lanes">
+    <button class="lane pay on" id="lanePay">
+      <b>🔴 找數</b><small>錢出 · 上載供應商發票 → AutoPay CSV</small>
+    </button>
+    <button class="lane bill" id="laneBill">
+      <b>🟡 開單</b><small>錢入 · 貼開單要求 → QUO draft</small>
+    </button>
+  </div>
+
+  <!-- ══════ 🔴 找數 lane（錢出）══════ -->
+  <div id="payPane">
+    <div class="card pay">
+      <div class="drop" id="drop">
+        📎 拖入或撳呢度揀發票（PDF/相），可以一次揀多張
+        <input type="file" id="fileInput" accept=".pdf,.png,.jpg,.jpeg" multiple>
+      </div>
+      <div class="filelist" id="fileList"></div>
+
+      <textarea id="extraText" placeholder="補充資料（可選）——例如供應商事後 WhatsApp 補嘅戶口/電話/銀行名"></textarea>
+
+      <div class="opt-row">
+        <label><input type="radio" name="mode" value="separate" checked> 一張單一個CSV</label>
+        <label><input type="radio" name="mode" value="combined"> 所有單入一個CSV</label>
+      </div>
+
+      <button class="btn danger" id="submitBtn" disabled>上載 + 生成CSV</button>
+      <div class="status" id="status"></div>
+      <div class="note">🔴 呢條 lane 出嘅係 <b>AutoPay CSV</b>，唔會自動過數。真正畀錢＝你自己 import 落 HSBC BIZ 撳。</div>
+    </div>
+    <div id="results"></div>
+  </div>
+
+  <!-- ══════ 🟡 開單 lane（錢入）══════ -->
+  <div id="billPane" class="hide">
+    <div class="card bill">
+      <textarea id="billRaw" placeholder="貼低開單要求，爛文法冇所謂，AI 會執返（中文/換行/bullets 全部保留）——例：
+
+雞胸腸Campaign 103000
+* KOL engagement with CR2 Bump吧
+* Boosting Dollar
+* Protein蓋地達成祭Social Game Design &amp; Maintenance
+
+西多士Campaign 105000
+* KOL engagement with Eric &amp; 葆琳
+* Video Script Writing"></textarea>
+      <button class="btn" id="billBtn" style="margin-top:12px" disabled>入單 → 出 QUO draft</button>
+      <div class="status" id="billStatus"></div>
+      <div class="note">
+        🟡 出咗係 <b>QUO draft</b>（喺 Sales Register 開一對 QUO/INV tab），<b>唔會自動寄客</b>——你自己 check 完先寄。<br>
+        入完單最多等 <b>5 分鐘</b>（Sales Register 每 5 分鐘自己撈一次）。⛔ 唔會 send 通知嘈你，自己返嚟 Sales Register 睇。
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const GAS_EXEC = "https://script.google.com/macros/s/AKfycbw-kUv0oZ0fMdH2HOext81ydHePzgao-nG8Wln37DOXPdtUHVc_4anUaSfOLF2HZzI-/exec";
+const ACT_PHP = "https://madkids.hk/mk-lab/act.php";
+
+/* ── lane 切換 ── */
+const lanePay = document.getElementById('lanePay'), laneBill = document.getElementById('laneBill');
+const payPane = document.getElementById('payPane'), billPane = document.getElementById('billPane');
+lanePay.onclick = () => { lanePay.classList.add('on'); laneBill.classList.remove('on'); payPane.classList.remove('hide'); billPane.classList.add('hide'); };
+laneBill.onclick = () => { laneBill.classList.add('on'); lanePay.classList.remove('on'); billPane.classList.remove('hide'); payPane.classList.add('hide'); };
+
+/* ══════ 🟡 開單 lane ══════ */
+const billRaw = document.getElementById('billRaw'), billBtn = document.getElementById('billBtn'), billStatus = document.getElementById('billStatus');
+billRaw.addEventListener('input', () => { billBtn.disabled = !billRaw.value.trim(); });
+billBtn.addEventListener('click', async () => {
+  const raw = billRaw.value.trim();
+  if (!raw) return;
+  billBtn.disabled = true;
+  billStatus.innerHTML = '<span class="spin"></span>入緊單...';
+  try {
+    // ⚠️ Content-Type 一定要 text/plain：application/json 會觸發 CORS preflight(OPTIONS)，
+    // GAS web app 唔識答 → Failed to fetch。GAS doPost 只讀 e.postData.contents，中文原樣過。
+    const resp = await fetch(GAS_EXEC, {
+      method: 'POST',
+      headers: {'Content-Type': 'text/plain'},
+      body: JSON.stringify({action: 'wkInvoice', raw: raw})
+    });
+    const j = await resp.json();
+    if (!j.ok) { billStatus.textContent = `❌ 入單失敗：${j.error||''}`; billBtn.disabled = false; return; }
+    billStatus.innerHTML = `✅ 入咗單 <span class="pill ok">${j.event_id}</span><br>` +
+      `Sales Register 最多 5 分鐘內出 QUO draft，去 Sales Register 睇。`;
+    billRaw.value = '';
+  } catch (e) {
+    billStatus.textContent = `❌ 入單失敗：${e}`;
+    billBtn.disabled = false;
+  }
+});
+
+/* ══════ 🔴 找數 lane（原封不動搬過嚟，logic 零改動）══════ */
+let selectedFiles = [];
+const drop = document.getElementById('drop');
+const fileInput = document.getElementById('fileInput');
+const fileList = document.getElementById('fileList');
+const submitBtn = document.getElementById('submitBtn');
+const statusEl = document.getElementById('status');
+const resultsEl = document.getElementById('results');
+
+drop.addEventListener('click', () => fileInput.click());
+drop.addEventListener('dragover', e => { e.preventDefault(); drop.classList.add('over'); });
+drop.addEventListener('dragleave', () => drop.classList.remove('over'));
+drop.addEventListener('drop', e => { e.preventDefault(); drop.classList.remove('over'); addFiles(e.dataTransfer.files); });
+fileInput.addEventListener('change', () => addFiles(fileInput.files));
+
+function addFiles(fl) { for (const f of fl) selectedFiles.push(f); renderFileList(); }
+function removeFile(i) { selectedFiles.splice(i, 1); renderFileList(); }
+function renderFileList() {
+  fileList.innerHTML = selectedFiles.map((f, i) =>
+    `<div class="frow"><span>${f.name}</span><a href="#" onclick="removeFile(${i});return false;" style="color:#EE382F">移除</a></div>`
+  ).join('');
+  submitBtn.disabled = selectedFiles.length === 0;
+}
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result.split(',')[1]);
+    r.onerror = reject;
+    r.readAsDataURL(file);
+  });
+}
+
+submitBtn.addEventListener('click', async () => {
+  if (!selectedFiles.length) return;
+  // 🔴 lane 二次確認：錢出方向,加一道摩擦(⛔ 唔喺呢度講供應商/金額——嗰陣 AI 未抽料,講咗即係作)
+  if (!confirm(`🔴 找數 lane：確認上載 ${selectedFiles.length} 張發票做 AutoPay CSV？\n\n（呢步唔會過數，出咗 CSV 你自己 import 落 HSBC 先真係畀錢）`)) return;
+  submitBtn.disabled = true;
+  resultsEl.innerHTML = '';
+  const extraText = document.getElementById('extraText').value.trim();
+  const uploadedFolderIds = [];
+
+  for (let i = 0; i < selectedFiles.length; i++) {
+    const f = selectedFiles[i];
+    statusEl.innerHTML = `<span class="spin"></span>上載緊 ${i+1}/${selectedFiles.length}：${f.name}`;
+    try {
+      const b64 = await fileToBase64(f);
+      const resp = await fetch(GAS_EXEC, {
+        method: 'POST',
+        headers: {'Content-Type': 'text/plain'},
+        body: JSON.stringify({action: 'uploadInvoice', filename: f.name, mime: f.type || 'application/pdf', data: b64})
+      });
+      const j = await resp.json();
+      if (!j.ok) { statusEl.textContent = `❌ ${f.name} 上載失敗：${j.error||''}`; submitBtn.disabled = false; return; }
+      uploadedFolderIds.push({fid: j.file_id, name: f.name});
+    } catch (e) {
+      statusEl.textContent = `❌ ${f.name} 上載失敗：${e}`;
+      submitBtn.disabled = false; return;
+    }
+  }
+
+  statusEl.innerHTML = '<span class="spin"></span>已上載，排緊隊做AI抽料...';
+  for (const u of uploadedFolderIds) {
+    await fetch(`${ACT_PHP}?push&route=invoice&folder=${encodeURIComponent(u.fid)}`);
+  }
+  pollResults(uploadedFolderIds.length);
+});
+
+let pollCount = 0;
+async function pollResults(expectN) {
+  pollCount++;
+  if (pollCount > 40) { statusEl.textContent = '⏱️ 等太耐，遲啲返嚟撳🔄睇結果（listener可能離線）。'; return; }
+  try {
+    const resp = await fetch(`${ACT_PHP}?action=status&topic=invoice`);
+    const j = await resp.json();
+    const running = j.state && j.state.running;
+    statusEl.innerHTML = running ? '<span class="spin"></span>AI 抽緊料，請等...' : '';
+    if (!running && j.rows && j.rows.length) {
+      renderResults(j.rows);
+      submitBtn.disabled = false;
+      selectedFiles = []; renderFileList();
+      return;
+    }
+  } catch (e) {}
+  setTimeout(() => pollResults(expectN), 5000);
+}
+
+// CSV 一行 → 拆欄。格式 Type,BankCode,Account,Name,Amount,Reference；⛔ 收款人(Name)可能含逗號，
+// 所以頭 3 欄同尾 2 欄由兩端數，中間全部 join 返做收款人。
+function csvCols(row){
+  const p = (row||'').split(',');
+  if (p.length < 6) return null;
+  return { type:p[0], bank:p[1], acct:p[2],
+           name:p.slice(3, p.length-2).join(','),
+           amount:p[p.length-2], ref:p[p.length-1] };
+}
+function esc(s){ return String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+function renderResults(rows) {
+  resultsEl.innerHTML = rows.map(r => {
+    if (r.need_manual) {
+      return `<div class="resultcard manual">
+        <h3>⚠️ ${esc(r.source_file) || '?'} <span class="pill warn">需要人手處理</span></h3>
+        <div class="kv"><b>供應商</b><span>${esc(r.supplier)}</span><b>金額</b><span>${r.amount!=null?'HK$'+esc(r.amount):''}</span></div>
+        <div class="warnlist"><div>${esc(r.reason)}</div></div>
+      </div>`;
+    }
+    const warns = (r.warnings||[]).map(w => `<div>⚠️ ${esc(w)}</div>`).join('');
+    const c = csvCols(r.row);
+    const paid = r.paid_remark || '';
+    const paidCls = paid.indexOf('可能已找')===0 ? 'warn' : (paid.indexOf('未找')===0 ? 'ok' : 'warn');
+    const amtNum = c ? Number(String(c.amount).replace(/[^0-9.]/g,'')) : 0;
+    const table = c ? `<table style="width:100%;border-collapse:collapse;margin:6px 0;font-size:13px">
+        <tr style="background:#f3f4f6;text-align:left">
+          <th style="padding:5px 8px;border:1px solid #e5e7eb">類型</th>
+          <th style="padding:5px 8px;border:1px solid #e5e7eb">Bank Code</th>
+          <th style="padding:5px 8px;border:1px solid #e5e7eb">戶口號 / Proxy</th>
+          <th style="padding:5px 8px;border:1px solid #e5e7eb">收款人</th>
+          <th style="padding:5px 8px;border:1px solid #e5e7eb;text-align:right">金額</th>
+          <th style="padding:5px 8px;border:1px solid #e5e7eb">編號 Ref</th></tr>
+        <tr>
+          <td style="padding:5px 8px;border:1px solid #e5e7eb">${esc(c.type)}</td>
+          <td style="padding:5px 8px;border:1px solid #e5e7eb;font-family:monospace">${esc(c.bank)}</td>
+          <td style="padding:5px 8px;border:1px solid #e5e7eb;font-family:monospace">${esc(c.acct)}</td>
+          <td style="padding:5px 8px;border:1px solid #e5e7eb">${esc(c.name)}</td>
+          <td style="padding:5px 8px;border:1px solid #e5e7eb;text-align:right;font-weight:600">HK$${amtNum.toLocaleString()}</td>
+          <td style="padding:5px 8px;border:1px solid #e5e7eb;font-family:monospace">${esc(c.ref)}</td></tr>
+      </table>` : `<div style="font-family:monospace;font-size:12px">${esc(r.row)}</div>`;
+    return `<div class="resultcard">
+      <h3>✅ ${esc(r.source_file)} <span class="pill ok">已生成 AutoPay CSV</span></h3>
+      ${table}
+      ${paid ? `<div class="kv"><b>🏦 找數狀態</b><span class="pill ${paidCls}">${esc(paid)}</span></div>` : ''}
+      <div class="kv"><b>建議Payslip名</b><span style="font-family:monospace;font-size:12px">${esc(r.payslip_filename)}</span></div>
+      <div class="links">
+        ${r.csv_download_link ? `<a href="${esc(r.csv_download_link)}" target="_blank">⬇️ 下載CSV</a>` : ''}
+        ${r.archive_link ? `<a href="${esc(r.archive_link)}" target="_blank">📁 發票已歸檔</a>` : `<span class="pill">${esc(r.archive_note)||'等 payslip 出現先自動歸檔'}</span>`}
+      </div>
+      <div class="warnlist">${warns}</div>
+    </div>`;
+  }).join('');
+}
+</script>
+</body>
+</html>
