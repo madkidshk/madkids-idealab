@@ -1,0 +1,114 @@
+{
+  "dept": "ICTU",
+  "concepts": {
+    "HAND3D": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260705-203423-nblm-i1",
+            "sheet": "assets/gen/ICTU_HAND3D/v20260705-203423-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/ICTU_HAND3D/v20260705-203423-nblm-i1/frame_01.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-203423-nblm-i1/frame_02.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-203423-nblm-i1/frame_03.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-203423-nblm-i1/frame_04.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-203423-nblm-i1/frame_05.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-203423-nblm-i1/frame_06.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-203423-nblm-i1/frame_07.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-203423-nblm-i1/frame_08.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-203423-nblm-i1/frame_09.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-203423-nblm-i1/frame_10.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-203423-nblm-i1/frame_11.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-203423-nblm-i1/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-07-05T20:34:24",
+            "source": "gsheet_handscript",
+            "brd": "HAND3D",
+            "cid": "hand-HAND3D",
+            "label": "手寫稿·原稿·3D Animation",
+            "gslide_pages": [
+              "assets/gen/ICTU_HAND3D/v20260705-203423-nblm-i1/gslide_ICTU_HAND3D_p1.png",
+              "assets/gen/ICTU_HAND3D/v20260705-203423-nblm-i1/gslide_ICTU_HAND3D_p2.png"
+            ],
+            "deck_repo": "assets/gen/ICTU_HAND3D/v20260705-203423-nblm-i1/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "場景氛圍與角色設定嚴重偏離（畫面看起來像卡通風格的實驗室或工作室，而非陰暗恐怖氣氛；人物表情更像滑稽/狂熱而非典型恐怖分子）。",
+                "fix": "重新生成一張色調陰暗、光影壓抑的寫實或寫實風格分鏡圖，強化爆炸品組裝的危險感，並將角色面孔修改為更符合「瘋狂反派」特徵的嚴肅表情。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面中出現了明顯的文字（如背景招牌上的字母）以及兩個顯眼的對話框，不符合「不要出文字」的要求。",
+                "fix": "移除所有對話框及背景中的雜亂字體，並確保人物表情更符合「冷酷囂張」的特徵。"
+              },
+              {
+                "slide": 3,
+                "flag": "場景與人物狀態不符分鏡稿要求（角色表情過於平淡，且身處人流密集區時動作過於顯眼）。",
+                "fix": "將恐怖分子 B 的神情修改為更具威脅性的「冷笑」，並調整其姿勢使其在人群中顯得更隱蔽或具有壓迫感。"
+              },
+              {
+                "slide": 4,
+                "flag": "頭頂的 NPC 標籤破碎處仍有模糊的文字殘影，且人物眼神的「銳利感」不足。",
+                "fix": "去除所有可讀字體碎片，並加強兩位主角眼神的聚焦與神情變化。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面並未採用「漫畫格」分割，而是用流動的虛擬線條將兩個場景連接。",
+                "fix": "請重新製作分鏡圖，明確劃分出兩格：左邊為西裝男盯著背包，右邊為師奶回憶恐怖分子搬運化學品的畫面。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面只出現一隻手而非兩位市民，且背景為模糊的車站環境，未能體現「兩人同時行動」的群眾參與感。",
+                "fix": "增加第二個人物的手或側面剪影，並確保場景能展現出多人共同參與舉報的氛圍。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面中兩名被拘捕者表情過於平淡，缺乏「錯愕」的動態張力；且警員動作偏向靜止對峙而非「迅速截停」的動態節奏。",
+                "fix": "增加被拘捕者的驚恐表情與肢體反抗感，並加入動態模糊（Motion Blur）效果來強化警員衝入現場及快速制壓的動作張力。"
+              },
+              {
+                "slide": 8,
+                "flag": "場景過於聚焦於兩位主角對視，而非分鏡稿要求的「平凡市民」群體互動與日常動作。",
+                "fix": "增加更多背景路人的特寫或廣角鏡頭，捕捉他們互相點頭、拿著購物袋或提著公事包轉身離開的動態。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面包含明顯的文字/符號（手機上的盾牌圖標）且構圖過於抽象，未明確呈現「舉報行動」等具體意象。",
+                "fix": "移除複雜的 3D 渲染效果，改用更簡潔、扁平化的圖形來代表 ICTU 與舉報動作，並確保畫面純淨無雜訊。"
+              }
+            ]
+          },
+          {
+            "v": "20260705-161944-nblm-i1",
+            "sheet": "assets/gen/ICTU_HAND3D/v20260705-161944-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/ICTU_HAND3D/v20260705-161944-nblm-i1/frame_01.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-161944-nblm-i1/frame_02.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-161944-nblm-i1/frame_03.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-161944-nblm-i1/frame_04.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-161944-nblm-i1/frame_05.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-161944-nblm-i1/frame_06.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-161944-nblm-i1/frame_07.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-161944-nblm-i1/frame_08.jpg",
+              "assets/gen/ICTU_HAND3D/v20260705-161944-nblm-i1/frame_09.jpg"
+            ],
+            "n": 9,
+            "ts": "2026-07-05T16:19:44",
+            "source": "gsheet_handscript",
+            "brd": "HAND3D",
+            "cid": "hand-HAND3D",
+            "label": "手寫稿·原稿·3D Animation",
+            "gslide_pages": [
+              "assets/gen/ICTU_HAND3D/v20260705-161944-nblm-i1/gslide_ICTU_HAND3D_p1.png",
+              "assets/gen/ICTU_HAND3D/v20260705-161944-nblm-i1/gslide_ICTU_HAND3D_p2.png"
+            ],
+            "deck_repo": "assets/gen/ICTU_HAND3D/v20260705-161944-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "updated": "2026-07-05T20:34:24"
+}

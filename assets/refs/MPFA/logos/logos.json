@@ -1,0 +1,29 @@
+{
+  "dept": "MPFA",
+  "slots": [
+    {
+      "slot": 1,
+      "query": "強制性公積金計劃管理局 標誌",
+      "file": "assets/refs/MPFA/logos/slot1.png",
+      "title": "許慧儀再獲委任為強制性公積金計劃管理局營運總監-紫荊網",
+      "w": 1920,
+      "h": 1280,
+      "enabled": true
+    },
+    {
+      "slot": 2,
+      "query": "強積金「全自由行」 標誌",
+      "file": "assets/refs/MPFA/logos/slot2.png",
+      "title": "積金局就強積金「全自由行」諮詢公眾1個月- 香港- 香港文匯報",
+      "w": 2604,
+      "h": 2297,
+      "enabled": true
+    },
+    {
+      "slot": 3,
+      "query": "",
+      "file": "",
+      "title": "(空,可即場打字搵)"
+    }
+  ]
+}

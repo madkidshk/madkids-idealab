@@ -6,26 +6,28 @@
 *{box-sizing:border-box}
 body{margin:0;background:#f4f5f7;color:#1b1f27;font:16px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif;-webkit-font-smoothing:antialiased}
 .wrap{max-width:880px;margin:0 auto;padding:20px 15px 96px}
-.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap}
+.titlerow h1{margin:0;min-width:0}
 h1{font-size:24px;font-weight:800;margin:6px 0 2px}
 .sub{color:#717784;font-size:13px;margin-bottom:6px}
 .hdrbtns{flex:none;display:flex;gap:7px;align-items:center}
-.homebtn,.refbtn{flex:none;font-size:16px;line-height:1;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:5px 9px;cursor:pointer;text-decoration:none}
+.homebtn,.refbtn{flex:none;white-space:nowrap;font-size:16px;line-height:1;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:5px 9px;cursor:pointer;text-decoration:none;color:#222}
 h2{font-size:16px;font-weight:800;margin:24px 0 10px;border-left:4px solid #4f46e5;padding-left:9px}
 .card{background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:15px 17px;margin:11px 0;box-shadow:0 1px 2px rgba(20,24,40,.04),0 4px 14px rgba(20,24,40,.05)}
-.tag{display:inline-block;font-size:11px;font-weight:700;border-radius:999px;padding:2px 9px;background:#eef0f3;color:#717784}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:#eef0f3;color:#555}
 .gk{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:2px 9px}
-.gk.med{background:#fff4e5;color:#b45309}.gk.ok{background:#e7f7ee;color:#15a34a}.gk.rep{background:#eef0fe;color:#4f46e5}
+.gk.med{background:#fff4e5;color:#b45309}.gk.ok{background:#e7f7ee;color:#15803d}.gk.rep{background:#eef0fe;color:#4f46e5}
 footer{color:#717784;font-size:12px;border-top:1px solid #e7e9ee;margin-top:30px;padding-top:13px;line-height:1.7}
 a{color:#4f46e5}code{background:#eef0f3;padding:1px 6px;border-radius:6px;font-size:12.5px}
 .attbox{border:1.5px dashed #b9bfd0;border-radius:12px;padding:12px;background:#fff}
 .atttext{display:block;width:100%;padding:10px 11px;border:1px solid #dde1e8;border-radius:9px;font-size:14px;font-family:inherit;line-height:1.5;resize:vertical;min-height:88px}
 .atthint{font-size:11.5px;color:#8b8fa3;margin:11px 0 5px;font-weight:700}
-.attsend{display:block;width:100%;background:#4f46e5;color:#fff;border:0;border-radius:10px;padding:13px;font-size:15px;font-weight:800;cursor:pointer;margin-top:13px}
-.attsend:disabled{opacity:.45;cursor:default}
+.attsend{display:block;width:100%;margin-top:12px;background:#1c1c1e;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;padding:11px;cursor:pointer;font-family:inherit}
+.attsend:hover{background:#333}
+.attsend:disabled{background:#999;cursor:default}
 .tin{width:100%;padding:10px 11px;border:1.5px solid #dde1e8;border-radius:9px;font-size:14px;font-family:inherit;background:#fff}
 .chips{display:flex;flex-wrap:wrap;gap:7px}
-.svtag{background:#fff;border:1.5px solid #4f46e5;color:#4f46e5;border-radius:8px;padding:6px 12px;font-size:13px;font-weight:700;cursor:pointer}
+.svtag{background:#fff;border:1.5px solid #dcdffb;color:#4f46e5;border-radius:8px;padding:6px 12px;font-size:13px;font-weight:700;cursor:pointer}
 .svtag.on{background:#4f46e5;color:#fff}
 .reprow{display:flex;align-items:center;gap:8px;margin-top:8px;flex-wrap:wrap}
 .reprow select{padding:7px 9px;border:1.5px solid #dde1e8;border-radius:8px;font-size:13.5px;font-weight:700;background:#fff}
@@ -50,7 +52,8 @@ a{color:#4f46e5}code{background:#eef0f3;padding:1px 6px;border-radius:6px;font-s
 #helpbody h4{margin:15px 0 4px;font-size:15px;color:#0A7D3F}#helpbody p{margin:2px 0;color:#3b4150}#helpbody b{color:#1b1f27}
 #toast{position:fixed;left:50%;bottom:80px;transform:translateX(-50%);z-index:9999;display:none;background:#0f2a1c;color:#eafff3;font-size:13.5px;font-weight:700;padding:11px 16px;border-radius:13px;box-shadow:0 8px 28px rgba(10,20,14,.34);max-width:90vw}
 #toast.show{display:block}
-</style></head><body><div class="wrap">
+@media(max-width:480px){.homebtn,.refbtn{font-size:14px;padding:5px 8px}}
+</style></head><body><!-- generated-by: 2026-05-28/notebooklm-bridge/scripts/lab_ui_shell.py --><div class="wrap">
 
 <div class="titlerow">
   <h1>📲 WA 預SEND站</h1>

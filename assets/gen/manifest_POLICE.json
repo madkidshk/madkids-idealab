@@ -1,0 +1,871 @@
+{
+  "dept": "POLICE",
+  "concepts": {
+    "A": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260626-220618-nblm-i3",
+            "sheet": "assets/gen/POLICE_A/v20260626-220618-nblm-i3/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_A/v20260626-220618-nblm-i3/frame_01.jpg",
+              "assets/gen/POLICE_A/v20260626-220618-nblm-i3/frame_02.jpg",
+              "assets/gen/POLICE_A/v20260626-220618-nblm-i3/frame_03.jpg",
+              "assets/gen/POLICE_A/v20260626-220618-nblm-i3/frame_04.jpg",
+              "assets/gen/POLICE_A/v20260626-220618-nblm-i3/frame_05.jpg",
+              "assets/gen/POLICE_A/v20260626-220618-nblm-i3/frame_06.jpg",
+              "assets/gen/POLICE_A/v20260626-220618-nblm-i3/frame_07.jpg",
+              "assets/gen/POLICE_A/v20260626-220618-nblm-i3/frame_08.jpg",
+              "assets/gen/POLICE_A/v20260626-220618-nblm-i3/frame_09.jpg",
+              "assets/gen/POLICE_A/v20260626-220618-nblm-i3/frame_10.jpg",
+              "assets/gen/POLICE_A/v20260626-220618-nblm-i3/frame_11.jpg",
+              "assets/gen/POLICE_A/v20260626-220618-nblm-i3/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-06-26T22:06:19",
+            "source": "committee",
+            "brd": "A",
+            "cid": "cmc3259db9",
+            "label": "[nlm] Concept 2:〔2036,同你講聲多謝 · 十年後回望〕",
+            "gslide_pages": [
+              "assets/gen/POLICE_A/v20260626-220618-nblm-i3/gslide_POLICE_A_p1.png",
+              "assets/gen/POLICE_A/v20260626-220618-nblm-i3/gslide_POLICE_A_p2.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_A/v20260626-220618-nblm-i3/deck.pdf"
+          },
+          {
+            "v": "20260626-220523-nblm-i2",
+            "sheet": "assets/gen/POLICE_A/v20260626-220523-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_A/v20260626-220523-nblm-i2/frame_01.jpg",
+              "assets/gen/POLICE_A/v20260626-220523-nblm-i2/frame_02.jpg",
+              "assets/gen/POLICE_A/v20260626-220523-nblm-i2/frame_03.jpg",
+              "assets/gen/POLICE_A/v20260626-220523-nblm-i2/frame_04.jpg",
+              "assets/gen/POLICE_A/v20260626-220523-nblm-i2/frame_05.jpg",
+              "assets/gen/POLICE_A/v20260626-220523-nblm-i2/frame_06.jpg",
+              "assets/gen/POLICE_A/v20260626-220523-nblm-i2/frame_07.jpg",
+              "assets/gen/POLICE_A/v20260626-220523-nblm-i2/frame_08.jpg",
+              "assets/gen/POLICE_A/v20260626-220523-nblm-i2/frame_09.jpg",
+              "assets/gen/POLICE_A/v20260626-220523-nblm-i2/frame_10.jpg",
+              "assets/gen/POLICE_A/v20260626-220523-nblm-i2/frame_11.jpg",
+              "assets/gen/POLICE_A/v20260626-220523-nblm-i2/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-06-26T22:05:24",
+            "source": "committee",
+            "brd": "A",
+            "cid": "cmc3259db9",
+            "label": "[nlm] Concept 2:〔2036,同你講聲多謝 · 十年後回望〕",
+            "gslide_pages": [
+              "assets/gen/POLICE_A/v20260626-220523-nblm-i2/gslide_POLICE_A_p1.png",
+              "assets/gen/POLICE_A/v20260626-220523-nblm-i2/gslide_POLICE_A_p2.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_A/v20260626-220523-nblm-i2/deck.pdf"
+          },
+          {
+            "v": "20260626-220428-nblm-i1",
+            "sheet": "assets/gen/POLICE_A/v20260626-220428-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_A/v20260626-220428-nblm-i1/frame_01.jpg",
+              "assets/gen/POLICE_A/v20260626-220428-nblm-i1/frame_02.jpg",
+              "assets/gen/POLICE_A/v20260626-220428-nblm-i1/frame_03.jpg",
+              "assets/gen/POLICE_A/v20260626-220428-nblm-i1/frame_04.jpg",
+              "assets/gen/POLICE_A/v20260626-220428-nblm-i1/frame_05.jpg",
+              "assets/gen/POLICE_A/v20260626-220428-nblm-i1/frame_06.jpg",
+              "assets/gen/POLICE_A/v20260626-220428-nblm-i1/frame_07.jpg",
+              "assets/gen/POLICE_A/v20260626-220428-nblm-i1/frame_08.jpg",
+              "assets/gen/POLICE_A/v20260626-220428-nblm-i1/frame_09.jpg",
+              "assets/gen/POLICE_A/v20260626-220428-nblm-i1/frame_10.jpg",
+              "assets/gen/POLICE_A/v20260626-220428-nblm-i1/frame_11.jpg",
+              "assets/gen/POLICE_A/v20260626-220428-nblm-i1/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-06-26T22:04:29",
+            "source": "committee",
+            "brd": "A",
+            "cid": "cmc3259db9",
+            "label": "[nlm] Concept 2:〔2036,同你講聲多謝 · 十年後回望〕",
+            "gslide_pages": [
+              "assets/gen/POLICE_A/v20260626-220428-nblm-i1/gslide_POLICE_A_p1.png",
+              "assets/gen/POLICE_A/v20260626-220428-nblm-i1/gslide_POLICE_A_p2.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_A/v20260626-220428-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "B": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260626-220703-nblm-i3",
+            "sheet": "assets/gen/POLICE_B/v20260626-220703-nblm-i3/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_B/v20260626-220703-nblm-i3/frame_01.jpg",
+              "assets/gen/POLICE_B/v20260626-220703-nblm-i3/frame_02.jpg",
+              "assets/gen/POLICE_B/v20260626-220703-nblm-i3/frame_03.jpg",
+              "assets/gen/POLICE_B/v20260626-220703-nblm-i3/frame_04.jpg",
+              "assets/gen/POLICE_B/v20260626-220703-nblm-i3/frame_05.jpg",
+              "assets/gen/POLICE_B/v20260626-220703-nblm-i3/frame_06.jpg",
+              "assets/gen/POLICE_B/v20260626-220703-nblm-i3/frame_07.jpg",
+              "assets/gen/POLICE_B/v20260626-220703-nblm-i3/frame_08.jpg",
+              "assets/gen/POLICE_B/v20260626-220703-nblm-i3/frame_09.jpg",
+              "assets/gen/POLICE_B/v20260626-220703-nblm-i3/frame_10.jpg",
+              "assets/gen/POLICE_B/v20260626-220703-nblm-i3/frame_11.jpg",
+              "assets/gen/POLICE_B/v20260626-220703-nblm-i3/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-06-26T22:07:04",
+            "source": "committee",
+            "brd": "B",
+            "cid": "cma52a1316",
+            "label": "[grok-sub] Concept 2:〔金牌反應〕",
+            "gslide_pages": [
+              "assets/gen/POLICE_B/v20260626-220703-nblm-i3/gslide_POLICE_B_p1.png",
+              "assets/gen/POLICE_B/v20260626-220703-nblm-i3/gslide_POLICE_B_p2.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_B/v20260626-220703-nblm-i3/deck.pdf"
+          },
+          {
+            "v": "20260626-220610-nblm-i2",
+            "sheet": "assets/gen/POLICE_B/v20260626-220610-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_B/v20260626-220610-nblm-i2/frame_01.jpg",
+              "assets/gen/POLICE_B/v20260626-220610-nblm-i2/frame_02.jpg",
+              "assets/gen/POLICE_B/v20260626-220610-nblm-i2/frame_03.jpg",
+              "assets/gen/POLICE_B/v20260626-220610-nblm-i2/frame_04.jpg",
+              "assets/gen/POLICE_B/v20260626-220610-nblm-i2/frame_05.jpg",
+              "assets/gen/POLICE_B/v20260626-220610-nblm-i2/frame_06.jpg",
+              "assets/gen/POLICE_B/v20260626-220610-nblm-i2/frame_07.jpg",
+              "assets/gen/POLICE_B/v20260626-220610-nblm-i2/frame_08.jpg",
+              "assets/gen/POLICE_B/v20260626-220610-nblm-i2/frame_09.jpg",
+              "assets/gen/POLICE_B/v20260626-220610-nblm-i2/frame_10.jpg",
+              "assets/gen/POLICE_B/v20260626-220610-nblm-i2/frame_11.jpg",
+              "assets/gen/POLICE_B/v20260626-220610-nblm-i2/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-06-26T22:06:11",
+            "source": "committee",
+            "brd": "B",
+            "cid": "cma52a1316",
+            "label": "[grok-sub] Concept 2:〔金牌反應〕",
+            "gslide_pages": [
+              "assets/gen/POLICE_B/v20260626-220610-nblm-i2/gslide_POLICE_B_p1.png",
+              "assets/gen/POLICE_B/v20260626-220610-nblm-i2/gslide_POLICE_B_p2.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_B/v20260626-220610-nblm-i2/deck.pdf"
+          },
+          {
+            "v": "20260626-220506-nblm-i1",
+            "sheet": "assets/gen/POLICE_B/v20260626-220506-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_B/v20260626-220506-nblm-i1/frame_01.jpg",
+              "assets/gen/POLICE_B/v20260626-220506-nblm-i1/frame_02.jpg",
+              "assets/gen/POLICE_B/v20260626-220506-nblm-i1/frame_03.jpg",
+              "assets/gen/POLICE_B/v20260626-220506-nblm-i1/frame_04.jpg",
+              "assets/gen/POLICE_B/v20260626-220506-nblm-i1/frame_05.jpg",
+              "assets/gen/POLICE_B/v20260626-220506-nblm-i1/frame_06.jpg",
+              "assets/gen/POLICE_B/v20260626-220506-nblm-i1/frame_07.jpg",
+              "assets/gen/POLICE_B/v20260626-220506-nblm-i1/frame_08.jpg",
+              "assets/gen/POLICE_B/v20260626-220506-nblm-i1/frame_09.jpg",
+              "assets/gen/POLICE_B/v20260626-220506-nblm-i1/frame_10.jpg",
+              "assets/gen/POLICE_B/v20260626-220506-nblm-i1/frame_11.jpg",
+              "assets/gen/POLICE_B/v20260626-220506-nblm-i1/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-06-26T22:05:07",
+            "source": "committee",
+            "brd": "B",
+            "cid": "cma52a1316",
+            "label": "[grok-sub] Concept 2:〔金牌反應〕",
+            "gslide_pages": [
+              "assets/gen/POLICE_B/v20260626-220506-nblm-i1/gslide_POLICE_B_p1.png",
+              "assets/gen/POLICE_B/v20260626-220506-nblm-i1/gslide_POLICE_B_p2.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_B/v20260626-220506-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "C": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260626-222018-nblm-i3",
+            "sheet": "assets/gen/POLICE_C/v20260626-222018-nblm-i3/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_C/v20260626-222018-nblm-i3/frame_01.jpg",
+              "assets/gen/POLICE_C/v20260626-222018-nblm-i3/frame_02.jpg",
+              "assets/gen/POLICE_C/v20260626-222018-nblm-i3/frame_03.jpg",
+              "assets/gen/POLICE_C/v20260626-222018-nblm-i3/frame_04.jpg",
+              "assets/gen/POLICE_C/v20260626-222018-nblm-i3/frame_05.jpg",
+              "assets/gen/POLICE_C/v20260626-222018-nblm-i3/frame_06.jpg",
+              "assets/gen/POLICE_C/v20260626-222018-nblm-i3/frame_07.jpg",
+              "assets/gen/POLICE_C/v20260626-222018-nblm-i3/frame_08.jpg",
+              "assets/gen/POLICE_C/v20260626-222018-nblm-i3/frame_09.jpg",
+              "assets/gen/POLICE_C/v20260626-222018-nblm-i3/frame_10.jpg",
+              "assets/gen/POLICE_C/v20260626-222018-nblm-i3/frame_11.jpg",
+              "assets/gen/POLICE_C/v20260626-222018-nblm-i3/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-06-26T22:20:19",
+            "source": "committee",
+            "brd": "C",
+            "cid": "cm364bb161",
+            "label": "[gemini-2.5-flash-search] Concept 2:〔我係Send鍵〕",
+            "gslide_pages": [
+              "assets/gen/POLICE_C/v20260626-222018-nblm-i3/gslide_POLICE_C_p1.png",
+              "assets/gen/POLICE_C/v20260626-222018-nblm-i3/gslide_POLICE_C_p2.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_C/v20260626-222018-nblm-i3/deck.pdf"
+          },
+          {
+            "v": "20260626-221917-nblm-i2",
+            "sheet": "assets/gen/POLICE_C/v20260626-221917-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_C/v20260626-221917-nblm-i2/frame_01.jpg",
+              "assets/gen/POLICE_C/v20260626-221917-nblm-i2/frame_02.jpg",
+              "assets/gen/POLICE_C/v20260626-221917-nblm-i2/frame_03.jpg",
+              "assets/gen/POLICE_C/v20260626-221917-nblm-i2/frame_04.jpg",
+              "assets/gen/POLICE_C/v20260626-221917-nblm-i2/frame_05.jpg",
+              "assets/gen/POLICE_C/v20260626-221917-nblm-i2/frame_06.jpg",
+              "assets/gen/POLICE_C/v20260626-221917-nblm-i2/frame_07.jpg",
+              "assets/gen/POLICE_C/v20260626-221917-nblm-i2/frame_08.jpg",
+              "assets/gen/POLICE_C/v20260626-221917-nblm-i2/frame_09.jpg",
+              "assets/gen/POLICE_C/v20260626-221917-nblm-i2/frame_10.jpg",
+              "assets/gen/POLICE_C/v20260626-221917-nblm-i2/frame_11.jpg",
+              "assets/gen/POLICE_C/v20260626-221917-nblm-i2/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-06-26T22:19:18",
+            "source": "committee",
+            "brd": "C",
+            "cid": "cm364bb161",
+            "label": "[gemini-2.5-flash-search] Concept 2:〔我係Send鍵〕",
+            "gslide_pages": [
+              "assets/gen/POLICE_C/v20260626-221917-nblm-i2/gslide_POLICE_C_p1.png",
+              "assets/gen/POLICE_C/v20260626-221917-nblm-i2/gslide_POLICE_C_p2.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_C/v20260626-221917-nblm-i2/deck.pdf"
+          },
+          {
+            "v": "20260626-221822-nblm-i1",
+            "sheet": "assets/gen/POLICE_C/v20260626-221822-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_C/v20260626-221822-nblm-i1/frame_01.jpg",
+              "assets/gen/POLICE_C/v20260626-221822-nblm-i1/frame_02.jpg",
+              "assets/gen/POLICE_C/v20260626-221822-nblm-i1/frame_03.jpg",
+              "assets/gen/POLICE_C/v20260626-221822-nblm-i1/frame_04.jpg",
+              "assets/gen/POLICE_C/v20260626-221822-nblm-i1/frame_05.jpg",
+              "assets/gen/POLICE_C/v20260626-221822-nblm-i1/frame_06.jpg",
+              "assets/gen/POLICE_C/v20260626-221822-nblm-i1/frame_07.jpg",
+              "assets/gen/POLICE_C/v20260626-221822-nblm-i1/frame_08.jpg",
+              "assets/gen/POLICE_C/v20260626-221822-nblm-i1/frame_09.jpg",
+              "assets/gen/POLICE_C/v20260626-221822-nblm-i1/frame_10.jpg",
+              "assets/gen/POLICE_C/v20260626-221822-nblm-i1/frame_11.jpg",
+              "assets/gen/POLICE_C/v20260626-221822-nblm-i1/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-06-26T22:18:23",
+            "source": "committee",
+            "brd": "C",
+            "cid": "cm364bb161",
+            "label": "[gemini-2.5-flash-search] Concept 2:〔我係Send鍵〕",
+            "gslide_pages": [
+              "assets/gen/POLICE_C/v20260626-221822-nblm-i1/gslide_POLICE_C_p1.png",
+              "assets/gen/POLICE_C/v20260626-221822-nblm-i1/gslide_POLICE_C_p2.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_C/v20260626-221822-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "E": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260626-222056-nblm-i3",
+            "sheet": "assets/gen/POLICE_E/v20260626-222056-nblm-i3/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_E/v20260626-222056-nblm-i3/frame_01.jpg",
+              "assets/gen/POLICE_E/v20260626-222056-nblm-i3/frame_02.jpg",
+              "assets/gen/POLICE_E/v20260626-222056-nblm-i3/frame_03.jpg",
+              "assets/gen/POLICE_E/v20260626-222056-nblm-i3/frame_04.jpg",
+              "assets/gen/POLICE_E/v20260626-222056-nblm-i3/frame_05.jpg",
+              "assets/gen/POLICE_E/v20260626-222056-nblm-i3/frame_06.jpg",
+              "assets/gen/POLICE_E/v20260626-222056-nblm-i3/frame_07.jpg",
+              "assets/gen/POLICE_E/v20260626-222056-nblm-i3/frame_08.jpg",
+              "assets/gen/POLICE_E/v20260626-222056-nblm-i3/frame_09.jpg",
+              "assets/gen/POLICE_E/v20260626-222056-nblm-i3/frame_10.jpg",
+              "assets/gen/POLICE_E/v20260626-222056-nblm-i3/frame_11.jpg",
+              "assets/gen/POLICE_E/v20260626-222056-nblm-i3/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-06-26T22:20:57",
+            "source": "committee",
+            "brd": "E",
+            "cid": "cm9213d36f",
+            "label": "[claude-sub] Concept 2:〔的士台 call 緊你〕",
+            "gslide_pages": [
+              "assets/gen/POLICE_E/v20260626-222056-nblm-i3/gslide_POLICE_E_p1.png",
+              "assets/gen/POLICE_E/v20260626-222056-nblm-i3/gslide_POLICE_E_p2.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_E/v20260626-222056-nblm-i3/deck.pdf"
+          },
+          {
+            "v": "20260626-222003-nblm-i2",
+            "sheet": "assets/gen/POLICE_E/v20260626-222003-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_E/v20260626-222003-nblm-i2/frame_01.jpg",
+              "assets/gen/POLICE_E/v20260626-222003-nblm-i2/frame_02.jpg",
+              "assets/gen/POLICE_E/v20260626-222003-nblm-i2/frame_03.jpg",
+              "assets/gen/POLICE_E/v20260626-222003-nblm-i2/frame_04.jpg",
+              "assets/gen/POLICE_E/v20260626-222003-nblm-i2/frame_05.jpg",
+              "assets/gen/POLICE_E/v20260626-222003-nblm-i2/frame_06.jpg",
+              "assets/gen/POLICE_E/v20260626-222003-nblm-i2/frame_07.jpg",
+              "assets/gen/POLICE_E/v20260626-222003-nblm-i2/frame_08.jpg",
+              "assets/gen/POLICE_E/v20260626-222003-nblm-i2/frame_09.jpg",
+              "assets/gen/POLICE_E/v20260626-222003-nblm-i2/frame_10.jpg",
+              "assets/gen/POLICE_E/v20260626-222003-nblm-i2/frame_11.jpg",
+              "assets/gen/POLICE_E/v20260626-222003-nblm-i2/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-06-26T22:20:04",
+            "source": "committee",
+            "brd": "E",
+            "cid": "cm9213d36f",
+            "label": "[claude-sub] Concept 2:〔的士台 call 緊你〕",
+            "gslide_pages": [
+              "assets/gen/POLICE_E/v20260626-222003-nblm-i2/gslide_POLICE_E_p1.png",
+              "assets/gen/POLICE_E/v20260626-222003-nblm-i2/gslide_POLICE_E_p2.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_E/v20260626-222003-nblm-i2/deck.pdf"
+          },
+          {
+            "v": "20260626-221908-nblm-i1",
+            "sheet": "assets/gen/POLICE_E/v20260626-221908-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_E/v20260626-221908-nblm-i1/frame_01.jpg",
+              "assets/gen/POLICE_E/v20260626-221908-nblm-i1/frame_02.jpg",
+              "assets/gen/POLICE_E/v20260626-221908-nblm-i1/frame_03.jpg",
+              "assets/gen/POLICE_E/v20260626-221908-nblm-i1/frame_04.jpg",
+              "assets/gen/POLICE_E/v20260626-221908-nblm-i1/frame_05.jpg",
+              "assets/gen/POLICE_E/v20260626-221908-nblm-i1/frame_06.jpg",
+              "assets/gen/POLICE_E/v20260626-221908-nblm-i1/frame_07.jpg",
+              "assets/gen/POLICE_E/v20260626-221908-nblm-i1/frame_08.jpg",
+              "assets/gen/POLICE_E/v20260626-221908-nblm-i1/frame_09.jpg",
+              "assets/gen/POLICE_E/v20260626-221908-nblm-i1/frame_10.jpg",
+              "assets/gen/POLICE_E/v20260626-221908-nblm-i1/frame_11.jpg",
+              "assets/gen/POLICE_E/v20260626-221908-nblm-i1/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-06-26T22:19:09",
+            "source": "committee",
+            "brd": "E",
+            "cid": "cm9213d36f",
+            "label": "[claude-sub] Concept 2:〔的士台 call 緊你〕",
+            "gslide_pages": [
+              "assets/gen/POLICE_E/v20260626-221908-nblm-i1/gslide_POLICE_E_p1.png",
+              "assets/gen/POLICE_E/v20260626-221908-nblm-i1/gslide_POLICE_E_p2.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_E/v20260626-221908-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "KOL": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260704-171106-nblm-i2",
+            "sheet": "assets/gen/POLICE_KOL/v20260704-171106-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_KOL/v20260704-171106-nblm-i2/frame_01.jpg",
+              "assets/gen/POLICE_KOL/v20260704-171106-nblm-i2/frame_02.jpg",
+              "assets/gen/POLICE_KOL/v20260704-171106-nblm-i2/frame_03.jpg",
+              "assets/gen/POLICE_KOL/v20260704-171106-nblm-i2/frame_04.jpg",
+              "assets/gen/POLICE_KOL/v20260704-171106-nblm-i2/frame_05.jpg",
+              "assets/gen/POLICE_KOL/v20260704-171106-nblm-i2/frame_06.jpg",
+              "assets/gen/POLICE_KOL/v20260704-171106-nblm-i2/frame_07.jpg",
+              "assets/gen/POLICE_KOL/v20260704-171106-nblm-i2/frame_08.jpg",
+              "assets/gen/POLICE_KOL/v20260704-171106-nblm-i2/frame_09.jpg",
+              "assets/gen/POLICE_KOL/v20260704-171106-nblm-i2/frame_10.jpg",
+              "assets/gen/POLICE_KOL/v20260704-171106-nblm-i2/frame_11.jpg",
+              "assets/gen/POLICE_KOL/v20260704-171106-nblm-i2/frame_12.jpg",
+              "assets/gen/POLICE_KOL/v20260704-171106-nblm-i2/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-07-04T17:11:09",
+            "source": "gsheet_handscript",
+            "label": "Idea 1 · 反恐 KOL",
+            "gslide_pages": [
+              "assets/gen/POLICE_KOL/v20260704-171106-nblm-i2/gslide_POLICE_KOL_p1.png",
+              "assets/gen/POLICE_KOL/v20260704-171106-nblm-i2/gslide_POLICE_KOL_p2.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_KOL/v20260704-171106-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "背景中的中文標誌出現嚴重亂碼及無意義字符，且部分人物（如左側穿橙色上衣女子）的肢體與比例略顯扭曲。",
+                "fix": "重新生成背景建築物上的招牌，確保中文字體正確清晰；同時修正遠景人群的肢體結構，確保畫面整潔。"
+              },
+              {
+                "slide": 2,
+                "flag": "雲台手柄與主角手部銜接處結構混亂，且背景建築物透視略顯不自然。",
+                "fix": "重新生成或修補手部握持雲台的連接點，確保機械構造邏輯正確；同時優化背景建築物的透視線條。"
+              },
+              {
+                "slide": 3,
+                "flag": "化學品樽身嘅標籤字體模糊且無意義，亦未清晰顯示「危險/易燃」警告。",
+                "fix": "要求 AI 生成更清晰、具備明顯警示圖示及明確文字（如 'DANGER' 或 'FLAMMABLE'）的化學品瓶身。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，電腦螢幕顯示的是「人體解剖/醫療影像」而非「自製炸彈教學」。",
+                "fix": "重新生成或修改電腦螢幕內容，將目前的醫學圖示替換為明顯的爆炸物構造或相關警語網頁。"
+              },
+              {
+                "slide": 5,
+                "flag": "人物雙手與電線連接處處理模糊，且左側牆壁管道結構不對稱。",
+                "fix": "優化 AI 生成參數以強化手部細節及電線連接點的寫實度，並修正背景建築結構的一致性。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面中人物手部與器材比例異常，左側女性拿著兩個手機（或一個手機加一塊奇怪物件），且中間男性的右手握持姿勢不自然。",
+                "fix": "重新生成手部特寫，確保每個人只拿一支手機，並修正手指數量及抓握角度。"
+              },
+              {
+                "slide": 7,
+                "flag": "人物面孔出現明顯 AI 瑕疵（左側女性角色眼鏡框與眼球融合異常，且三人的瞳孔呈現不自然的數位方塊/電路圖樣）。",
+                "fix": "重新生成畫面，移除眼睛內的科技元素，確保鏡頭聚焦於角色專注的表情而非虛擬特效。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前只見一個人的手指觸摸盾牌圖示，並無「三人同時舉報」的動作，亦未出現要求的電話號碼、微信或 999 圖示。",
+                "fix": "重新製作分鏡圖：畫面需包含三個人同時操作手機，且在螢幕上清晰顯示「63-666-999」、「微信小程式」及「999」等關鍵資訊圖標。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面中出現大量重複且重疊的「Like」圖示，視覺上顯得雜亂混亂而非有序動感。",
+                "fix": "減少重複圖示數量，並將其排列成更清晰、流暢的動態軌跡，以符合『充滿動感』的描述。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，並無「警察盾牌」、「KO!」字樣或明顯的對峙場景。",
+                "fix": "重新生成畫面：加入兩名手持發光盾牌的特警，在一個巨大的「KO!」字樣爆裂特效中制服一名疑犯。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面缺少「巨大主題標題」，且人物手部與手機握持姿勢略顯僵硬（AI 生成特徵）。",
+                "fix": "加入明顯的文字標題，並修正中間女性角色拿手機的手指位置。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前係一個 3D 渲染的科技感球體。",
+                "fix": "請更換為純白背景，並加入 ICTU 官方標誌及「見疑即報 Spot and Report」字樣。"
+              },
+              {
+                "slide": 13,
+                "flag": "字體渲染不清晰且帶有明顯的噪點，特別是「反恐」兩個中文字符與底部的標語細節處理粗糙。",
+                "fix": "重新渲染高解析度圖層，確保中文字體邊緣銳利，並去除背景及文字周邊的數位雜訊。"
+              }
+            ]
+          },
+          {
+            "v": "20260704-170655-nblm-i1",
+            "sheet": "assets/gen/POLICE_KOL/v20260704-170655-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_KOL/v20260704-170655-nblm-i1/frame_01.jpg",
+              "assets/gen/POLICE_KOL/v20260704-170655-nblm-i1/frame_02.jpg",
+              "assets/gen/POLICE_KOL/v20260704-170655-nblm-i1/frame_03.jpg",
+              "assets/gen/POLICE_KOL/v20260704-170655-nblm-i1/frame_04.jpg",
+              "assets/gen/POLICE_KOL/v20260704-170655-nblm-i1/frame_05.jpg",
+              "assets/gen/POLICE_KOL/v20260704-170655-nblm-i1/frame_06.jpg",
+              "assets/gen/POLICE_KOL/v20260704-170655-nblm-i1/frame_07.jpg",
+              "assets/gen/POLICE_KOL/v20260704-170655-nblm-i1/frame_08.jpg",
+              "assets/gen/POLICE_KOL/v20260704-170655-nblm-i1/frame_09.jpg",
+              "assets/gen/POLICE_KOL/v20260704-170655-nblm-i1/frame_10.jpg",
+              "assets/gen/POLICE_KOL/v20260704-170655-nblm-i1/frame_11.jpg",
+              "assets/gen/POLICE_KOL/v20260704-170655-nblm-i1/frame_12.jpg",
+              "assets/gen/POLICE_KOL/v20260704-170655-nblm-i1/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-07-04T17:06:56",
+            "source": "gsheet_handscript",
+            "label": "Idea 1 · 反恐 KOL",
+            "gslide_pages": [
+              "assets/gen/POLICE_KOL/v20260704-170655-nblm-i1/gslide_POLICE_KOL_p1.png",
+              "assets/gen/POLICE_KOL/v20260704-170655-nblm-i1/gslide_POLICE_KOL_p2.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_KOL/v20260704-170655-nblm-i1/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "背景中的中文字體出現嚴重扭曲及亂碼，且部分人物的手部與雲台連接處比例不對。 ",
+                "fix": "重新生成背景招牌，確保繁體中文正確；並修正手部抓握器材的結構。"
+              },
+              {
+                "slide": 2,
+                "flag": "人物手部與雲台握把連接處比例失真，且背景行人模糊度不均勻。",
+                "fix": "重新生成或修飾主角右手抓握雲台的結構，確保手指與器材融合自然，並統一背景虛化效果。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面中「危險/易燃」標籤的圖形與文字模糊不清，且化學品瓶子數量與袋子比例不協調。",
+                "fix": "重新生成背景人物手中的化學品樽，確保警告標誌清晰可辨識，並修正手部抓握物品的姿勢。"
+              },
+              {
+                "slide": 4,
+                "flag": "電腦螢幕內容為抽象的電路圖或地圖，並非明顯的「自製炸彈教學」網頁文字。",
+                "fix": "要求 AI 生成更具體的網頁介面，包含清晰可辨識的「How to make a bomb」字樣或相關警告標誌。"
+              },
+              {
+                "slide": 5,
+                "flag": "人物的手部結構有明顯 AI 瑕疵，手指數量及與電線連接的邏輯不清晰。",
+                "fix": "重新生成或修補手部細節，確保手指數量正確且動作自然地握住工具或接駁點。"
+              },
+              {
+                "slide": 6,
+                "flag": "人物表情過於平淡，未能體現「認真/鎖定」的緊迫感；且背景中的人流與環境細節出現明顯 AI 扭曲（如左側路人肢體比例異常、遠處文字模糊）。",
+                "fix": "要求 AI 生成更具戲劇張力的表情（如皺眉或眼神銳利），並優化背景人物的寫實度，確保場景一致性。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面中兩部手機的螢幕內容不一致，且左側人物的手部結構與比例顯得不自然。",
+                "fix": "統一兩部手機顯示的預覽畫面內容，並修正左側人手的骨骼構造與抓握位置。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面中出現多個通訊應用圖示（如 WhatsApp、電話），而非要求的「舉報」按鈕及特定數字/微信小程式。",
+                "fix": "重新製作分鏡圖，確保螢幕上清晰顯示「舉報」字樣，並正確呈現 63-666-999、微信小程式及 999 的具體圖示。"
+              },
+              {
+                "slide": 9,
+                "flag": "圖中「Like」按讚圖示的比例不一，且部分箭頭與手勢重疊混亂。",
+                "fix": "統一所有 Like 和 Share 圖示的視覺風格與大小，並優化動態軌跡線條，確保畫面整潔且具備強烈導向感。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面中沒有出現分鏡稿要求的「Like/Share」圖示，亦無「KO!」字樣。",
+                "fix": "加入 Like/Share 圖標轉變過程的動態特效，並在疑犯頭部上方加上醒目的「KO!」字體。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面缺少分鏡稿要求的「巨大主題標題」，且背景建築物與人物比例略顯不協調。",
+                "fix": "在畫面中央加入醒目的大型文字標題，並微調構圖確保城市背景與前景人物的視覺層次。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面內容與分鏡稿描述不符，目前顯示的是一個包含眼睛和盾牌的 3D 圖形，而非 ICTU 官方標誌及「見疑即報 Spot and Report」口號。",
+                "fix": "請更換為正確的 ICTU 官方 Logo 並加入對應的文字內容。"
+              },
+              {
+                "slide": 13,
+                "flag": "場景過度模糊且缺乏細節，無法辨識具體建築物特徵。",
+                "fix": "提高圖像清晰度，保留城市天際線的輪廓與建築質感。"
+              }
+            ]
+          },
+          {
+            "v": "20260704-090729-nblm-i1",
+            "sheet": "assets/gen/POLICE_KOL/v20260704-090729-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_KOL/v20260704-090729-nblm-i1/frame_01.jpg",
+              "assets/gen/POLICE_KOL/v20260704-090729-nblm-i1/frame_02.jpg",
+              "assets/gen/POLICE_KOL/v20260704-090729-nblm-i1/frame_03.jpg",
+              "assets/gen/POLICE_KOL/v20260704-090729-nblm-i1/frame_04.jpg",
+              "assets/gen/POLICE_KOL/v20260704-090729-nblm-i1/frame_05.jpg",
+              "assets/gen/POLICE_KOL/v20260704-090729-nblm-i1/frame_06.jpg",
+              "assets/gen/POLICE_KOL/v20260704-090729-nblm-i1/frame_07.jpg",
+              "assets/gen/POLICE_KOL/v20260704-090729-nblm-i1/frame_08.jpg",
+              "assets/gen/POLICE_KOL/v20260704-090729-nblm-i1/frame_09.jpg",
+              "assets/gen/POLICE_KOL/v20260704-090729-nblm-i1/frame_10.jpg",
+              "assets/gen/POLICE_KOL/v20260704-090729-nblm-i1/frame_11.jpg",
+              "assets/gen/POLICE_KOL/v20260704-090729-nblm-i1/frame_12.jpg",
+              "assets/gen/POLICE_KOL/v20260704-090729-nblm-i1/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-07-04T09:07:30",
+            "source": "gsheet_handscript",
+            "label": "Idea 1 · 反恐 KOL",
+            "gslide_pages": [
+              "assets/gen/POLICE_KOL/v20260704-090729-nblm-i1/gslide_POLICE_KOL_p1.png",
+              "assets/gen/POLICE_KOL/v20260704-090729-nblm-i1/gslide_POLICE_KOL_p2.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_KOL/v20260704-090729-nblm-i1/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面中人物的手部結構明顯異常（如西裝男握相機的指頭數量與位置錯誤，以及左側小孩手部變形）。",
+                "fix": "重新生成或修補受影響的人物手部細節，確保手指數量正確且符合抓握器材的邏輯。"
+              },
+              {
+                "slide": 2,
+                "flag": "背景中的中文字體出現嚴重扭曲及亂碼，且場景細節過於雜亂。",
+                "fix": "重新生成背景建築物，確保招牌字體清晰可辨或使用模糊處理；同時簡化背景人物與物件數量，聚焦主角。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面中主角手部與化學品瓶子重疊嚴重，且「危險」標籤的圖示過於簡略，視覺衝擊力不足。",
+                "fix": "修正人物手指抓握瓶子的結構，並將警告標誌設計得更具警示性（如鮮艷的黃底黑框），以強化化學品不尋常的危險感。"
+              },
+              {
+                "slide": 4,
+                "flag": "螢幕內容顯示「炸彈結構圖」而非「自製炸彈教學」網頁，且畫面缺乏明顯的文字提示。",
+                "fix": "將電腦螢幕上的圖像更換為帶有明確標題『Homemade Bomb Tutorial』或類似字樣的網頁介面。"
+              },
+              {
+                "slide": 5,
+                "flag": "場景與分鏡稿描述不符，畫面呈現的是明亮的歐式街區而非「幽暗後巷」。",
+                "fix": "將背景更換為光線昏暗、陰森的後巷環境。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面中三位人物的表情並不一致，尤其是中間女性和右側長者顯得平淡或困惑，而非「認真鎖定」；此外，左側男性的手部與手機連接處有明顯 AI 扭曲。",
+                "fix": "重新生成人物面部表情，確保三人都展現出警覺且堅定的眼神；同時修正左側男子的手部結構及握持手機的透視。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面中出現多隻手同時拿手機（5隻），與分鏡稿描述的『三人』對準目標不符，且部分手指結構模糊。",
+                "fix": "刪除多餘的手機和手部，僅保留三個角色各自持有一部手機，並修正手部骨骼構造。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前只有一個人的手指在按手機，且螢幕上僅有盾牌圖示，缺少要求的 63-666-999、微信小程式及 999 等具體資訊。",
+                "fix": "重新繪製畫面：需呈現三個人同時果斷按下手機上的「舉報」按鈕，並在螢幕上清晰顯示 63-666-999、微信小程式及 999 的圖示。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面中出現大量無意義的亂碼及扭曲字體（如「龍」、「紅」等），且背景建築物與街道細節有明顯 AI 生成雜訊。",
+                "fix": "要求重新生成背景，確保招牌文字清晰或移除，並優化遠景建築的結構一致性。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面中出現「POLICE」字樣而非要求的「KO!」，且場景缺乏「Like/Share」圖示轉化為盾牌的動態過度。",
+                "fix": "將警察盾牌上的文字修改為「KO!」，並在左側加入從社交媒體按鈕（Like/Share）演變而來的視覺特效。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面中央的標題框是空白的，沒有顯示任何文字。",
+                "fix": "在黃色/粉色橫幅中加入「你也可以是 KO 恐怖活動的 KOL！」這行字。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面內容與分鏡稿描述不符（目前為放大鏡與盾牌圖標，而非官方標誌及口號文字）。",
+                "fix": "更換成包含 ICTU 官方標誌及「見疑即報 Spot and Report」字樣的白底設計。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面中出現大量中英文混雜且排版不整齊的文字，並非標準的廣告分鏡圖。",
+                "fix": "請提供實際的場景分鏡圖（Storyboard），而非一張包含標題與機構 Logo 的宣傳或資訊圖表。"
+              }
+            ]
+          },
+          {
+            "v": "20260704-083656-nblm-i1",
+            "sheet": "assets/gen/POLICE_KOL/v20260704-083656-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_KOL/v20260704-083656-nblm-i1/frame_01.jpg",
+              "assets/gen/POLICE_KOL/v20260704-083656-nblm-i1/frame_02.jpg",
+              "assets/gen/POLICE_KOL/v20260704-083656-nblm-i1/frame_03.jpg",
+              "assets/gen/POLICE_KOL/v20260704-083656-nblm-i1/frame_04.jpg",
+              "assets/gen/POLICE_KOL/v20260704-083656-nblm-i1/frame_05.jpg",
+              "assets/gen/POLICE_KOL/v20260704-083656-nblm-i1/frame_06.jpg",
+              "assets/gen/POLICE_KOL/v20260704-083656-nblm-i1/frame_07.jpg",
+              "assets/gen/POLICE_KOL/v20260704-083656-nblm-i1/frame_08.jpg",
+              "assets/gen/POLICE_KOL/v20260704-083656-nblm-i1/frame_09.jpg",
+              "assets/gen/POLICE_KOL/v20260704-083656-nblm-i1/frame_10.jpg",
+              "assets/gen/POLICE_KOL/v20260704-083656-nblm-i1/frame_11.jpg",
+              "assets/gen/POLICE_KOL/v20260704-083656-nblm-i1/frame_12.jpg",
+              "assets/gen/POLICE_KOL/v20260704-083656-nblm-i1/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-07-04T08:36:57",
+            "source": "gsheet_handscript",
+            "label": "Idea 1 · 反恐 KOL",
+            "gslide_pages": [
+              "assets/gen/POLICE_KOL/v20260704-083656-nblm-i1/gslide_POLICE_KOL_p1.png",
+              "assets/gen/POLICE_KOL/v20260704-083656-nblm-i1/gslide_POLICE_KOL_p2.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_KOL/v20260704-083656-nblm-i1/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "背景中的廣告牌文字出現嚴重亂碼及無意義符號，且部分人物的手部與比例略顯扭曲。",
+                "fix": "重新生成場景時要求 AI 修正所有看板上的中文字體，並確保人手的結構正確。"
+              },
+              {
+                "slide": 2,
+                "flag": "主角手部與雲台握法不自然，手指重疊且比例失真。",
+                "fix": "重新生成或修補手部細節，確保手指數量正確並符合抓握雲台的力學結構。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面中男子手部與化學品瓶子銜接處略顯模糊，且「危險」標籤的圖示過於簡約。",
+                "fix": "優化人物雙手的抓握細節，並將警告標誌改為更具警示性的標準圖形。"
+              },
+              {
+                "slide": 4,
+                "flag": "電腦螢幕內容與分鏡稿要求的「自製炸彈教學」文字/畫面不符，目前僅顯示模糊的 3D 模型。",
+                "fix": "將電腦螢幕內容修改為明顯帶有「Homemade Bomb Tutorial」字樣或相關警告標誌的網頁界面。"
+              },
+              {
+                "slide": 5,
+                "flag": "人物的手部結構混亂，手指數量與連接電線的動作不自然。",
+                "fix": "重新生成或修補手部細節，確保手指數量正確且抓握電線的姿勢符合解剖學。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面中兩位女性的手部與手機握持位置明顯扭曲，且中間女生的手部與手機融合不清。",
+                "fix": "重新繪製或修正三位人物的雙手結構，確保手指數量正確並清晰地握住手機。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面並非「三人對準目標」，而是三部手機展示不同內容，且手部比例與結構明顯異常。",
+                "fix": "重新繪製為三個角色實體出現，眼神聚焦於同一個可疑物體；同時修正 AI 生成的畸形手指及不自然的握持姿勢。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面缺少要求的關鍵資訊（63-666-999、微信小程式及 999 圖示），且手部與手機比例略顯不協調。",
+                "fix": "加入指定的報案電話及平台圖標，並優化手指按壓位置的視覺對齊。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面內容與分鏡稿描述不符，目前是雲朵與愛心流動，並無手機螢幕及「Like/Share」圖示。",
+                "fix": "重新生成或修改場景，加入一個發光的智慧型手機作為核心視覺點，並從屏幕中噴射出帶有「Like」和「Share」字樣的動態圖標。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面內容與分鏡稿描述完全不符，並無「Like/Share」圖示、盾牌或「KO!」字樣。",
+                "fix": "重新繪製符合要求的場景：加入 Like/Share 圖標轉變為盾牌的特效，增加 KO 字樣，並確保人物動作與文字內容一致。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面缺少「巨大主題標題」以及相關的文字內容。",
+                "fix": "在畫面中央加入醒目的廣告標題字體，並確保人物動作與手機互動更具動態感。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面內容與分鏡稿要求完全不符，目前是雲海與陽光場景而非白底標誌。",
+                "fix": "將此張風景圖替換為純白色背景，並加入 ICTU 官方標誌及「見疑即報 Spot and Report」字樣。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面中出現大量錯字（如「異報」而非「偵報」、「Spot and Report」拼寫與中文對應不符）。",
+                "fix": "修正所有文字內容，確保中英文標題正確且一致。"
+              }
+            ]
+          },
+          {
+            "v": "20260704-023929-nblm-i1",
+            "sheet": "assets/gen/POLICE_KOL/v20260704-023929-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_KOL/v20260704-023929-nblm-i1/frame_01.jpg",
+              "assets/gen/POLICE_KOL/v20260704-023929-nblm-i1/frame_02.jpg",
+              "assets/gen/POLICE_KOL/v20260704-023929-nblm-i1/frame_03.jpg",
+              "assets/gen/POLICE_KOL/v20260704-023929-nblm-i1/frame_04.jpg",
+              "assets/gen/POLICE_KOL/v20260704-023929-nblm-i1/frame_05.jpg",
+              "assets/gen/POLICE_KOL/v20260704-023929-nblm-i1/frame_06.jpg",
+              "assets/gen/POLICE_KOL/v20260704-023929-nblm-i1/frame_07.jpg",
+              "assets/gen/POLICE_KOL/v20260704-023929-nblm-i1/frame_08.jpg",
+              "assets/gen/POLICE_KOL/v20260704-023929-nblm-i1/frame_09.jpg",
+              "assets/gen/POLICE_KOL/v20260704-023929-nblm-i1/frame_10.jpg",
+              "assets/gen/POLICE_KOL/v20260704-023929-nblm-i1/frame_11.jpg",
+              "assets/gen/POLICE_KOL/v20260704-023929-nblm-i1/frame_12.jpg",
+              "assets/gen/POLICE_KOL/v20260704-023929-nblm-i1/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-07-04T02:39:30",
+            "source": "gsheet_handscript",
+            "label": "Idea 1 · 反恐 KOL",
+            "gslide_pages": [
+              "assets/gen/POLICE_KOL/v20260704-023929-nblm-i1/gslide_POLICE_KOL_p1.png",
+              "assets/gen/POLICE_KOL/v20260704-023929-nblm-i1/gslide_POLICE_KOL_p2.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_KOL/v20260704-023929-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "NPC": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260704-024456-nblm-i1",
+            "sheet": "assets/gen/POLICE_NPC/v20260704-024456-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_NPC/v20260704-024456-nblm-i1/frame_01.jpg",
+              "assets/gen/POLICE_NPC/v20260704-024456-nblm-i1/frame_02.jpg",
+              "assets/gen/POLICE_NPC/v20260704-024456-nblm-i1/frame_03.jpg",
+              "assets/gen/POLICE_NPC/v20260704-024456-nblm-i1/frame_04.jpg",
+              "assets/gen/POLICE_NPC/v20260704-024456-nblm-i1/frame_05.jpg",
+              "assets/gen/POLICE_NPC/v20260704-024456-nblm-i1/frame_06.jpg",
+              "assets/gen/POLICE_NPC/v20260704-024456-nblm-i1/frame_07.jpg",
+              "assets/gen/POLICE_NPC/v20260704-024456-nblm-i1/frame_08.jpg",
+              "assets/gen/POLICE_NPC/v20260704-024456-nblm-i1/frame_09.jpg",
+              "assets/gen/POLICE_NPC/v20260704-024456-nblm-i1/frame_10.jpg",
+              "assets/gen/POLICE_NPC/v20260704-024456-nblm-i1/frame_11.jpg",
+              "assets/gen/POLICE_NPC/v20260704-024456-nblm-i1/frame_12.jpg",
+              "assets/gen/POLICE_NPC/v20260704-024456-nblm-i1/frame_13.jpg",
+              "assets/gen/POLICE_NPC/v20260704-024456-nblm-i1/frame_14.jpg"
+            ],
+            "n": 14,
+            "ts": "2026-07-04T02:45:03",
+            "source": "gsheet_handscript",
+            "label": "Idea 2 · NPC→英雄",
+            "gslide_pages": [
+              "assets/gen/POLICE_NPC/v20260704-024456-nblm-i1/gslide_POLICE_NPC_p1.png",
+              "assets/gen/POLICE_NPC/v20260704-024456-nblm-i1/gslide_POLICE_NPC_p2.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_NPC/v20260704-024456-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "KVKOL": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260704-173244-nblm-i1",
+            "sheet": "assets/gen/POLICE_KVKOL/v20260704-173244-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_KVKOL/v20260704-173244-nblm-i1/frame_01.jpg",
+              "assets/gen/POLICE_KVKOL/v20260704-173244-nblm-i1/frame_02.jpg"
+            ],
+            "n": 2,
+            "ts": "2026-07-04T17:32:45",
+            "source": "gsheet_handscript",
+            "label": "KV KOL",
+            "gslide_pages": [
+              "assets/gen/POLICE_KVKOL/v20260704-173244-nblm-i1/gslide_POLICE_KVKOL_p1.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_KVKOL/v20260704-173244-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "KVNPC": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260705-100924-nblm-i1",
+            "sheet": "assets/gen/POLICE_KVNPC/v20260705-100924-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/POLICE_KVNPC/v20260705-100924-nblm-i1/frame_01.jpg",
+              "assets/gen/POLICE_KVNPC/v20260705-100924-nblm-i1/frame_02.jpg"
+            ],
+            "n": 2,
+            "ts": "2026-07-05T10:09:25",
+            "source": "gsheet_handscript",
+            "label": "KV NPC",
+            "gslide_pages": [
+              "assets/gen/POLICE_KVNPC/v20260705-100924-nblm-i1/gslide_POLICE_KVNPC_p1.png"
+            ],
+            "deck_repo": "assets/gen/POLICE_KVNPC/v20260705-100924-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "updated": "2026-07-05T10:09:25"
+}

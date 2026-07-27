@@ -1,0 +1,883 @@
+<!DOCTYPE html><html lang=zh-HK><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>IPHATCH · Idea Lab</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#6b7280;--line:#e6e8ec;
+      --ac:#4f46e5;--gold:#c79a2b;--red:#dc2626;--grn:#15a34a}
+*{box-sizing:border-box}
+.btn{background:#4f46e5;color:#fff;border:none;border-radius:9px;padding:8px 13px;font-size:12.5px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.ghost{background:#fff;color:#4f46e5;border:1.5px solid #dcdffb}
+.btn.grn{background:#15a34a}
+.btn.mini{padding:4px 9px;font-size:11px}
+.btn:hover,.btn.ghost:hover{filter:brightness(.98)}
+details.soft{background:#fff;border:1px solid #e7e9ee;border-radius:10px;padding:4px 12px}
+details.soft>summary{cursor:pointer;font-size:12.5px;font-weight:700;color:#444;padding:8px 0;list-style:none}
+details.soft>summary::-webkit-details-marker{display:none}
+details.soft>summary::before{content:"▸ ";color:#9aa0ab}
+details.soft[open]>summary::before{content:"▾ "}
+.ovl{position:fixed;inset:0;z-index:120;background:rgba(15,18,28,.55);display:none;align-items:center;justify-content:center;padding:18px}
+.ovl.on{display:flex}
+.ovlbox{background:#fff;border-radius:14px;box-shadow:0 18px 60px rgba(0,0,0,.4)}
+.pill{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:#eef0f3;color:#555}
+.pill.ok{background:#e7f7ee;color:#15803d}
+.pill.warn{background:#fff4e5;color:#b45309}
+.pill.bad{background:#fdeaea;color:#dc2626}
+.pill.accent{background:#eef0fe;color:#4f46e5}
+.secthead{font-size:16px;font-weight:800;margin:24px 0 10px;border-left:4px solid #4f46e5;padding-left:9px;color:#1b1f27}
+.secthead.tight{margin-top:10px}
+.sectbadge{display:inline-block;margin-left:8px;font-size:11px;font-weight:800;border-radius:999px;padding:2px 8px;background:#eef0fe;color:#4f46e5}
+.carousel{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 12px;-webkit-overflow-scrolling:touch}
+.carousel::-webkit-scrollbar{height:6px}
+.carousel::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:6px}
+.carousel-card{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;background:#fff;border:1.5px solid #e7e9ee;border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+@media(min-width:700px) and (max-width:1099px){.carousel-card{flex:0 0 46%}}
+@media(min-width:1100px){.carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}.carousel-card{flex:0 0 calc(33.333% - 10px);max-width:none;scroll-snap-align:none}}
+.lbx{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;display:none;align-items:center;justify-content:center;padding:12px}
+.lbx.on{display:flex}
+.lbx img{max-width:98vw;max-height:94vh;border-radius:8px;cursor:zoom-out}
+.lbx .x{position:fixed;top:10px;right:16px;color:#fff;font-size:30px;font-weight:800;cursor:pointer}
+.lbx .hint{position:fixed;bottom:12px;left:0;right:0;text-align:center;color:#bbb;font-size:12px}
+.badge{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:#4f46e5;border-radius:7px;padding:2px 9px;letter-spacing:.02em}
+.score-badge{display:inline-block;background:#c79a2b;color:#fff;font-size:12px;font-weight:800;border-radius:20px;padding:2px 10px}
+.status-badge{display:inline-block;font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.status-badge.ok{background:#dcfce7;color:#15803d}
+.status-badge.warn{background:#fef3c7;color:#a16207}
+.status-badge.bad{background:#fee2e2;color:#b91c1c}
+.status-badge.mute{background:#eef0f3;color:#717784}
+.surface-card{background:#fff;border:1px solid #e7e9ee;border-radius:14px;box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+.surface-card.soft{background:#fafbfd}
+.surface-card.warn{background:#fff8f1;border-color:#fcd9b6}
+.surface-card.danger{border-color:#f3b4ae;box-shadow:0 2px 16px rgba(238,56,47,.08)}
+.surface-card.pad-sm{padding:9px 10px}
+.surface-card.pad-md{padding:15px 17px}
+.surface-card.pad-lg{padding:18px}
+.surface-card.selected{border-color:#4f46e5;box-shadow:0 0 0 2px rgba(79,70,229,.25),0 6px 18px rgba(79,70,229,.18)}
+body{margin:0;background:var(--bg);color:var(--ink);
+     font:15px/1.55 -apple-system,"PingFang HK",sans-serif}
+.wrap{max-width:430px;margin:0 auto;padding:0 13px 130px}
+h1{font-size:19px;font-weight:800;margin:0;line-height:1.25}
+h1 .dept{color:var(--ac)}
+.bdp{font-size:12px;font-weight:700;margin:3px 0 0;display:flex;gap:11px;flex-wrap:wrap}
+.fresh{font-size:11px;color:#7a8290;margin:6px 0 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.fresh .fr{background:#f1f3f6;border-radius:6px;padding:2px 7px;white-space:nowrap}
+.fresh .fr b{color:#4a5462;font-weight:700}
+.bdp .bb{color:#2563eb}.bdp .dd{color:#dc2626}.bdp .pp{color:#7c3aed}
+.tabbar{position:sticky;top:0;z-index:30;background:var(--bg);
+         border-bottom:2px solid var(--line);display:flex;gap:5px;
+         overflow-x:auto;padding:8px 0 7px;scrollbar-width:none}
+.tabbar::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;background:var(--card);border:1.5px solid var(--line);
+      border-radius:9px;padding:5px 12px;font-size:12px;font-weight:800;
+      color:var(--mut);cursor:pointer;transition:all .12s;white-space:nowrap}
+.tab:hover{border-color:var(--ac);color:var(--ac)}
+.tab.active{background:var(--ac);border-color:var(--ac);color:#fff}
+header{padding:12px 0 4px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap}
+.titlerow h1{margin:0;min-width:0}
+.hdrbtns{flex:none;display:flex;gap:7px;align-items:center}
+.homebtn,.refbtn{flex:none;white-space:nowrap;font-size:16px;line-height:1;text-decoration:none;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:5px 9px;color:#222}
+.refbtn{cursor:pointer}
+.labbtn{flex:none;white-space:nowrap;font-size:13px;line-height:1;text-decoration:none;border-radius:9px;padding:7px 10px;font-weight:800;border:1px solid transparent}
+.labbtn.mk{background:#fff5f5;color:#EE382F;border-color:#f3b4ae}
+.labbtn.mm{background:#fff7ed;color:#d97706;border-color:#fdba74}
+@media(max-width:480px){.homebtn,.refbtn{font-size:14px;padding:5px 8px}}
+.tabpanel{display:none;padding-top:10px}
+.tabpanel.active{display:block}
+.setlab{font-size:11px;font-weight:800;color:var(--ac);background:#eef0fe;
+         border:1px solid #dcdffb;border-radius:8px;padding:4px 10px;
+         display:inline-block;margin:0 0 8px}
+.banner{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;
+         padding:10px 12px;font-size:12.5px;font-weight:700;color:#92660c;margin:10px 0}
+.h2{font-size:14.5px;font-weight:800;letter-spacing:.01em;color:var(--ink);
+     margin:16px 2px 8px}
+.h3{font-size:13px;font-weight:700;color:#374151;margin:11px 0 5px}
+.stylepick{margin:10px 0}
+.styrow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:5px 0;padding:5px 0;border-bottom:1px solid var(--line)}
+.stylbl{min-width:84px;font-weight:600;font-size:13px}
+.styo{display:inline-flex;align-items:center;gap:4px;font-size:13px;padding:3px 10px;
+       border:1px solid var(--line);border-radius:14px;cursor:pointer;user-select:none;background:#fafafa}
+.styo input{margin:0}
+.styo:has(input:checked){background:#e6f7f1;border-color:#0a7;color:#066}
+.styanchor{margin-top:9px;font-size:12px;color:var(--mut)}
+#styanchor{color:#0a7;font-weight:600}
+.card{background:var(--card);border-color:var(--line);border-radius:13px;
+       padding:11px 12px;margin-bottom:8px}
+.hgrid{display:grid;grid-template-columns:1fr;gap:13px}
+@media(min-width:720px){.hgrid{grid-template-columns:1fr 1fr 1fr}}
+.hcard{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:10px;box-shadow:0 1px 2px rgba(20,24,40,.05)}
+.hcap{font-weight:800;font-size:13px;margin-bottom:7px}
+.sgrp{font-weight:800;font-size:12px;color:#475569;background:#eef1f6;border-radius:7px;padding:5px 10px;margin:11px 0 2px}
+.sgrp:first-child{margin-top:2px}
+.tlrow.todo{opacity:.55} .tlrow.todo .tllabel{color:#9aa0ab}
+.tlrow.na{opacity:.4} .tlrow.na .tllabel{color:#b6bbc4;text-decoration:line-through}
+.dsp{width:100%;border-collapse:collapse;font-size:12.5px}
+.dsp th{text-align:left;color:var(--mut);font-weight:700;padding:4px 7px;border-bottom:1px solid var(--line)}
+.dsp td{padding:4px 7px;border-bottom:1px solid #f3f4f6;vertical-align:top}
+.vacarou{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.vacard{flex:0 0 134px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px;font-size:11px}
+.vathumb{position:relative;height:90px;border-radius:7px;overflow:hidden;background:#f1f3f7;display:flex;align-items:center;justify-content:center}
+.vathumb img{width:100%;height:100%;object-fit:cover}
+.vacat{margin-top:5px;font-size:10px;color:#7b4fc0;font-weight:800}
+.vaname{font-weight:600;line-height:1.25;min-height:28px;color:#374151}
+.vasrc{font-size:10.5px} .vatick{display:block;font-size:11px;margin-bottom:4px;cursor:pointer;font-weight:700}
+.vaprovide{margin:12px 0 2px}
+.upbox .refelemin{display:block;width:100%;margin:0 0 8px;padding:6px 8px;border:1px solid var(--line);border-radius:7px;font-size:12px}
+/* ── 標書 tab restructure 2026-06-16 ── */
+/* 💡 提供窗口(Notes + 元素名 group + 參考相,細 + button 統一) */
+.h2sm{font-size:13px;margin:12px 2px 5px}
+.provide{padding:9px 10px}
+.pvgrp{background:#f8fafc;border:1px solid var(--line);border-radius:9px;padding:8px}
+.pvrow{display:flex;gap:6px;align-items:stretch}
+.provta{flex:1;min-width:0;box-sizing:border-box;border:1px solid var(--line);border-radius:8px;padding:6px 9px;font:12.5px/1.4 inherit;resize:vertical}
+.provel{display:block;width:100%;box-sizing:border-box;margin:6px 0 0;padding:6px 9px;border:1px solid var(--line);border-radius:8px;font-size:12.5px}
+.provbtn{white-space:nowrap;padding:0 14px;align-self:stretch}
+.pvup{margin-top:8px}
+/* 加入想法 + upbox 送出 統一設計(都係 .btn 觀感) */
+.provide .upbox{margin:0;border-radius:9px;padding:9px}
+.provide .upbox .attsend{background:var(--ac);border-radius:9px;padding:0 14px;font-size:12.5px;font-weight:800}
+.provide .noteslist{margin-top:7px}
+/* 三梯隊標題:左色條 + 副標 */
+.tierh{border-left:4px solid var(--ac);padding-left:9px;margin:18px 2px 2px;font-size:14px}
+.tierhint{margin:2px 2px 7px 13px}
+/* ✍️ 邊個 model 寫(#5):mdl 真 / mdef 預設(灰) / mfb fallback(橙) */
+.mdl{flex:0 0 auto;font-size:10px;font-weight:800;color:#3730a3;background:#eef0fe;border:1px solid #dcdffb;
+      border-radius:6px;padding:1px 6px;white-space:nowrap;margin-left:auto}
+.mdl.mdef{color:#6b7280;background:#f1f3f6;border-color:#e3e6ea}
+.mdl.mfb{color:#9a5a00;background:#fff4e5;border-color:#fde6c0}
+.h3 .mdl{margin-left:6px;vertical-align:middle}
+/* 📋 標書內容 carousel 卡 — 字體/行寬完全跟返 VID1 .ccard(Raymond 2026-06-16:之前縮 12px 太難讀,
+   改返用 VID1 base .cbody 12.5px/1.62、.ctitle 14px。卡內 md 標題用 base .cbody h3/h4 12.5px,統一)。 */
+.brfcarou{margin-top:2px}
+.brfcard .chead{cursor:default}
+/* 🔄 重生緊 signal(手寫稿 BD) */
+.regbadge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;color:#fff;background:var(--ac);border-radius:8px;padding:4px 9px;margin:0 0 6px}
+/* 🔀 換格 + BD 英文字 */
+.bdletter{display:inline-block;min-width:18px;text-align:center;font-weight:800;color:#fff;background:var(--ac);border-radius:6px;padding:0 5px;margin-right:4px}
+.swrow{display:flex;align-items:center;gap:6px;margin-bottom:7px;flex-wrap:wrap}
+.swlbl{font-size:12px;color:var(--mut);white-space:nowrap}
+.swrow select{flex:1;min-width:90px;font-size:12.5px;padding:6px 7px;border:1px solid var(--line);border-radius:7px;background:#fff}
+/* 標書原文 link 喺 撮要 標題右邊 */
+.rawlink{flex:0 0 auto;margin-left:auto;font-size:10.5px;font-weight:800;color:var(--ac);background:#eef0fe;border:1px solid #dcdffb;border-radius:6px;padding:1px 6px;cursor:pointer;white-space:nowrap}
+/* 部門官方來源 search-result row(似 youtube search) */
+.srcrow{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid #f1f3f6}
+.srcrow:last-child{border-bottom:0}
+.srcthumb{flex:0 0 54px;height:40px;border-radius:5px;object-fit:cover;background:#f1f3f7}
+.srctit{font-size:11.5px;font-weight:700;line-height:1.3;color:var(--ac)}
+.srcsnip{font-size:10.5px;color:#6b7280;line-height:1.4;margin-top:1px}
+/* 🎧 Briefing 錄音逐字 overlay(撳先出,唔常設) */
+.ovlbox{max-width:560px;width:100%;max-height:82vh;display:flex;flex-direction:column}
+.ovlhd{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--line);font-weight:800;font-size:13px}
+.ovlhd .x{cursor:pointer;color:#888;font-size:16px;border:0;background:0}
+.ovlbody{overflow:auto;padding:12px 14px;font-size:11.5px;line-height:1.6;color:#333;white-space:pre-wrap}
+.ovllink{color:var(--ac);font-weight:700;cursor:pointer;text-decoration:underline}
+/* 📸 Visual 素材:⭐首選 badge + 三 action 掣(三格一樣大) + 重搜漏斗 */
+.vacard{position:relative;transition:order .2s}
+.vacard.pref{border-color:var(--gold);box-shadow:0 0 0 2px rgba(199,154,43,.22)}
+.vastar{position:absolute;top:5px;right:5px;font-size:9.5px;font-weight:800;color:#fff;background:var(--gold);border-radius:6px;padding:1px 5px}
+.vafunnel{position:absolute;bottom:4px;right:4px;font-size:9.5px;font-weight:800;color:#fff;background:rgba(79,70,229,.94);border-radius:6px;padding:2px 6px;display:inline-flex;align-items:center;gap:3px}
+.vaacts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}   /* 三格一樣大(grid 1fr×3,鐵定相等) */
+.vaacts .btn{width:auto;text-align:center;margin:0;padding:9px 0}
+
+.upbox{background:#fff;border:1.5px dashed #bcd;border-radius:11px;padding:11px;margin:6px 0}
+.upbox.hov{background:#eef6ff;border-color:#6aa3e0}
+.upbox .attstage{min-height:0;margin-bottom:4px}
+.upbox .stchip{display:inline-block;background:#eef7f0;border:1px solid #bfe0cd;border-radius:20px;padding:3px 9px;font-size:11.5px;font-weight:700;color:#176b3a}
+.upbox .stchip .ststrip{border:0;background:0;cursor:pointer;color:#999;font-weight:700;margin-left:3px}
+.upbox .attrow1{display:flex;gap:6px}
+.upbox .atttext{flex:1;border:1px solid var(--line,#dde);border-radius:8px;padding:9px 11px;font-size:14px;line-height:1.5;min-height:84px;resize:vertical;font-family:inherit}
+.upbox .attsend{border:0;background:#0A7D3F;color:#fff;border-radius:8px;padding:0 14px;font-weight:700;cursor:pointer;white-space:nowrap}
+.upbox .attbtns2{margin-top:6px}
+.upbox .attpick{border:1px solid var(--line,#dde);background:#f7f9fc;border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer;font-weight:600}
+.upst{font-size:11.5px;color:#176b3a;margin-top:5px;min-height:0}
+
+.bdcm{margin-top:7px}
+.bdcm textarea{width:100%;box-sizing:border-box;font:13px/1.45 inherit;border:1px solid var(--line);border-radius:8px;padding:6px 8px;resize:vertical}
+.bdcm .btn.mini{margin-top:5px}
+.gflags{margin:7px 0 4px;padding:7px 9px;background:#fffbec;border:1px solid #f0d96a;border-radius:8px;font-size:12px;color:#6b4d00}
+.gflag{padding:2px 0;line-height:1.5}
+.gflag+.gflag{border-top:1px solid #f5ebb0;margin-top:3px;padding-top:5px}
+.gfslide{font-weight:600;background:#f5e07c;border-radius:4px;padding:1px 5px;margin-right:4px}
+.cmlog{font-size:11px;color:#2e8b57;margin-top:5px}
+.card.big{padding:13px}
+.card.empty{color:var(--mut);font-size:13px;font-style:italic}
+.row{display:flex;align-items:center;gap:9px}
+.rank{font-size:11px;font-weight:800;color:var(--mut);width:18px}
+.src{font-size:11px;color:var(--mut);font-weight:700;background:#f1f5f9;
+      border-radius:6px;padding:1px 6px}
+.score{font-size:12px;font-weight:800;color:var(--gold);margin-left:auto}
+.nm{font-weight:800;font-size:13.5px;line-height:1.35}
+.csub{font-size:11px;color:var(--mut);font-weight:600;margin-top:2px}
+.crow{margin:5px 0 0}
+.cflag{font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.cflag.hi{background:#dcfce7;color:#15803d}
+.cflag.lo{background:#fef3c7;color:#a16207}
+.cflag.rl{background:#fee2e2;color:#b91c1c}
+.ck{width:22px;height:22px;border:2px solid var(--ac);border-radius:6px;
+     display:inline-grid;place-items:center;font-size:13px;color:#fff;
+     cursor:pointer;flex:0 0 auto;position:relative}
+.ck::before{content:"";position:absolute;inset:-11px}
+.ck.on{background:var(--ac)}
+.ck.done{background:var(--grn);border-color:var(--grn);cursor:default}
+.divider{display:flex;align-items:center;gap:8px;margin:12px 2px;
+          color:#aab0ba;font-size:11px;font-weight:700}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.cnt-warn{color:var(--red)!important}
+.lookback{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:11px;
+           padding:10px 12px;font-size:12px;color:#475569}
+.btn{background:var(--ac)}
+.btn.grn{background:var(--grn)}
+.btn.ghost{width:100%;text-align:center;padding:11px 13px;margin:2px 0 4px}
+.btn.mini{padding:4px 9px;font-size:11px;margin-left:8px}
+.submit{position:fixed;bottom:14px;right:calc(50% - 215px + 13px);z-index:20}
+@media(max-width:456px){.submit{right:14px}}
+/* ── Responsive 3 tier（Raymond 2026-06-06）：mobile(default) / tablet / desktop 用晒畫面 ── */
+/* Tablet:闊啲,carousel 一次 2 卡 */
+@media(min-width:700px) and (max-width:1099px){
+  .wrap{max-width:680px;padding:0 20px 130px}
+  .submit{right:calc(50% - 340px + 20px)}
+  .ccard{flex:0 0 46%;max-height:68vh}
+  .rest-row .ccard{flex:0 0 36%}
+  .briefcard{max-height:40vh}
+}
+/* Desktop:用晒畫面 —— carousel 變 grid(唔橫掃,鋪滿),六強 3 欄、其餘 4 欄 */
+@media(min-width:1100px){
+  .wrap{max-width:min(1280px,94vw);padding:0 28px 120px}
+  .submit{right:max(28px, calc(50vw - 640px + 28px))}
+  .carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}
+  .ccard{flex:0 0 calc(33.333% - 10px);max-width:none;max-height:43vh;scroll-snap-align:none}   /* Raymond 2026-06-16:桌面每格短 1/3(64→43vh),標書 tab 跟 VID1 */
+  .rest-row .ccard{flex:0 0 calc(25% - 11px)}
+  .briefcard{max-height:36vh}
+  .tabbar{flex-wrap:wrap}
+  .card.big .sheet{max-width:520px}
+}
+.submit .btn{box-shadow:0 6px 20px rgba(79,70,229,.4);padding:11px 18px;font-size:13.5px}
+.foot{font-size:11px;color:#9aa0aa;text-align:center;margin-top:22px}
+.notes-win{width:100%;min-height:90px;border:1.5px solid var(--ac);
+            border-radius:11px;padding:10px 12px;font:14px/1.6 inherit;
+            resize:vertical;background:#fafbff;margin-bottom:6px}
+.notes-act{text-align:right;margin-bottom:6px}
+.notes-act .btn{padding:6px 14px}
+.noteslist{margin-bottom:6px}
+.notecard{background:#fafbff;border:1px solid #e0e3f5;border-radius:10px;
+           padding:7px 10px;margin-bottom:6px}
+.noterow{display:flex;align-items:center;gap:8px}
+.notets{font-size:10.5px;font-weight:800;color:var(--ac)}
+.notedel{margin-left:auto;background:none;border:none;color:#b0b6c2;font-size:13px;
+          cursor:pointer;padding:0 2px}
+.notetxt{font-size:13px;color:var(--ink);line-height:1.5;margin-top:2px;white-space:pre-wrap}
+/* Brief 撮要緊湊卡（固定高度內部 scroll，似 VID 1 卡）*/
+.briefcard{max-height:46vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.briefcard h3,.briefcard h4{font-size:13px;margin:9px 0 3px}
+.suppinline{margin-top:10px;border-top:2px solid #fde68a;background:#fffbeb;
+             border-radius:9px;padding:8px 10px}
+.suppinline h3,.suppinline h4{color:#92660c;font-size:12.5px;margin:2px 0 5px}
+/* 補充日程簡單 list */
+.timeline{margin:2px 0}
+.tlrow{display:flex;gap:8px;padding:5px 2px;border-bottom:1px solid #f3f4f6;font-size:12.5px}
+.tlrow:last-child{border-bottom:none}
+.tldate{flex:0 0 auto;font-weight:800;color:var(--ink);min-width:96px}
+.tllabel{flex:1;color:#374151}
+.tlrow.hot{background:#fff7ed;border-radius:7px}
+.tlrow.hot .tldate{color:#c2410c}.tlrow.hot .tllabel{color:#9a3412;font-weight:700}
+/* Briefing 補充 treatment */
+summary.supp{display:flex;align-items:center;gap:8px}
+.suppbadge{font-size:10px;font-weight:800;color:#fff;background:#d97706;
+            border-radius:6px;padding:1px 7px;margin-left:7px;vertical-align:middle}
+.bd{margin:8px 0}
+.bdscroll{max-height:44vh;overflow-y:auto;border:1px solid var(--line);border-radius:10px;
+          padding:2px 12px;background:#fafbfc;-webkit-overflow-scrolling:touch}
+.genbox{text-align:center}
+.step2 .refsub{margin:8px 0}
+.refname{font-size:12.5px;font-weight:600;margin:6px 0 4px}
+.refname .refn{color:var(--mut);font-weight:400;font-size:11px}
+.refrow{display:flex;gap:6px;flex-wrap:wrap}
+.refthumb{width:74px;height:90px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.btn.big{font-size:14px;padding:12px 22px;box-shadow:0 4px 14px rgba(79,70,229,.3)}
+.scene{border-bottom:1px solid #f1f3f6;padding:7px 0;font-size:12.5px;line-height:1.5}
+.scene .sl{display:flex;gap:8px}
+.scene .sn{font-weight:800;color:var(--ac);flex:0 0 auto;min-width:17px}
+.scene .vis{flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
+.scene .vis.open{-webkit-line-clamp:unset;overflow:visible}
+.scene .vo,.vo{color:var(--mut);font-size:11.5px;margin:4px 0 0 25px;
+               background:#f8fafc;border-radius:7px;padding:4px 8px}
+.sheet{width:100%;border-radius:10px;border:1px solid var(--line);margin:8px 0;display:block;cursor:zoom-in}
+.preqs{display:flex;flex-direction:column;gap:7px;margin-top:4px}
+.prow{display:flex;align-items:center;gap:10px}
+.preqs .pl{flex:1;font-weight:700;font-size:14px;min-width:0}
+.preqs .pv{font-weight:800;font-size:13px;border-radius:8px;padding:3px 11px;white-space:nowrap}
+.preqs .pvon{background:#dcfce7;color:#15803d;border:1px solid #bbf7d0}
+.preqs .pvoff{background:#f1f3f5;color:#868e96;border:1px solid #e9ecef}
+.preqs .pp{font-size:11px;color:var(--ac);font-weight:700;cursor:help;min-width:34px;text-align:right}
+.pgbar{position:relative;height:30px;border-radius:9px;background:#eef0fe;border:1px solid #dcdffb;
+  overflow:hidden;margin:8px 0}
+.pgfill{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,#6366f1,#818cf8);
+  transition:width .6s ease}
+.pgtxt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:#1b1f27;z-index:1}
+/* VID 2 tab：紅色虛線繞邊行緊（marching ants），未出晒 BD 就一直行；出晒 = 無 busy class = 停 */
+@keyframes march{to{background-position:14px 0,-14px 100%,0 -14px,100% 14px}}
+.tab.busy{color:#dc2626;font-weight:800;border-color:transparent !important;
+  background-image:
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0);
+  background-repeat:repeat-x,repeat-x,repeat-y,repeat-y;
+  background-size:14px 2px,14px 2px,2px 14px,2px 14px;
+  background-position:0 0,0 100%,0 0,100% 0;
+  animation:march .5s linear infinite}
+.empty{font-size:12px;color:#9aa0aa;background:#f8fafc;border:1px dashed #cbd5e1;
+        border-radius:9px;padding:9px 11px;margin:8px 0}
+.note{width:100%;min-height:48px;border:1px solid var(--line);border-radius:9px;
+       padding:7px 9px;font:13px/1.5 inherit;resize:vertical;margin-top:6px}
+.frames{margin:8px 0}
+.frame-card{border-bottom:1px solid #f1f3f6;padding:8px 0}
+.frame-head{display:flex;gap:8px;font-size:12.5px}
+.fv{flex:1;color:var(--ink)}
+.acts{margin-top:8px}
+.soft{margin-bottom:8px}
+.soft summary{font-size:12.5px;font-weight:800;color:var(--ink);cursor:pointer;
+               background:#f8fafc;border:1px solid var(--line);border-radius:10px;
+               padding:9px 12px;list-style:none}
+.soft[open] summary{border-radius:10px 10px 0 0;margin-bottom:0}
+.soft .card{border-radius:0 0 10px 10px;border-top:none;margin-bottom:0}
+.hint{font-size:12px;color:var(--mut);margin:0 0 8px}
+.det{margin-top:8px}
+.det summary{font-size:12.5px;font-weight:800;color:var(--ac);cursor:pointer;
+              list-style:none;background:#eef0fe;border:1px solid #dcdffb;
+              border-radius:9px;padding:8px 11px;text-align:center}
+.det[open] summary{margin-bottom:7px}
+.det summary::-webkit-details-marker{display:none}
+.detbody{font-size:12.5px;color:#374151;white-space:pre-wrap;margin-top:7px;
+          line-height:1.6;max-height:360px;overflow:auto;background:#f8fafc;
+          border-radius:9px;padding:10px 12px}
+.tw{overflow-x:auto;margin:6px 0}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid var(--line);padding:5px 8px;text-align:left}
+th{background:#f8fafc;font-weight:700}
+.prev{font-size:12.5px;color:#4b5563;margin:6px 0 2px;line-height:1.5}
+/* ── VID 1 carousel：橫掃卡，卡內直 scroll ── */
+.carousel{margin:0 -2px}
+.ccard{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;
+        background:var(--card);border:1.5px solid var(--line);border-radius:14px;display:flex;
+        flex-direction:column;max-height:64vh;overflow:hidden;
+        box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+.ccard.sel{border-color:var(--ac);box-shadow:0 0 0 2px rgba(79,70,229,.25),
+            0 6px 18px rgba(79,70,229,.18)}
+.rest-row .ccard{flex:0 0 70%;max-height:52vh}
+.chead{display:flex;align-items:center;gap:8px;padding:10px 12px 7px;cursor:pointer;
+        border-bottom:1px solid #f1f3f6}
+.oscore{margin-left:auto;font-size:12px;font-weight:800;color:var(--gold)}
+.ctitle{font-weight:800;font-size:14px;line-height:1.35;padding:8px 12px 0}
+.ccard .csub{padding:2px 12px 0}
+.cbadges{padding:5px 12px 0}
+.cbody{flex:1;overflow-y:auto;padding:9px 12px 12px;font-size:12.5px;color:#374151;
+        line-height:1.62;-webkit-overflow-scrolling:touch}
+.cbody h3,.cbody h4,.cbody h5{font-size:12.5px;margin:9px 0 3px}
+.cbody p{margin:5px 0}
+.scores{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+.sline{font-size:11.5px;margin:6px 0 2px}
+.sline b{font-size:12px}
+.sline.muted{color:#9aa0aa;font-weight:600}
+.scrit{display:block;font-size:11px;color:var(--mut);margin-top:2px}
+.snote{font-size:11px;color:#6b7280;background:#f8fafc;border-radius:7px;
+        padding:5px 8px;margin:4px 0 2px;line-height:1.5}
+.toast{position:fixed;bottom:78px;left:50%;transform:translateX(-50%);
+        background:#1b1f27;color:#fff;padding:12px 18px;border-radius:12px;
+        font-size:13px;font-weight:700;z-index:90;max-width:90%;
+        box-shadow:0 8px 30px rgba(0,0,0,.3);transition:opacity .5s}
+.topproc{position:fixed;bottom:0;left:0;right:0;z-index:95;background:var(--ac);
+          color:#fff;font-size:13px;font-weight:800;padding:9px 14px;
+          display:flex;align-items:center;justify-content:center;gap:8px;
+          box-shadow:0 3px 14px rgba(79,70,229,.35)}
+.spin.sm{width:15px;height:15px;border:2.5px solid rgba(255,255,255,.4);
+          border-top-color:#fff;border-radius:50%;display:inline-block;
+          vertical-align:middle;margin-right:6px;animation:sp .9s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.gening{display:inline-flex;align-items:center;font-size:12px;font-weight:800;color:var(--ac);
+         background:#eef0fe;border:1px solid #dcdffb;border-radius:9px;padding:7px 11px}
+.gening .spin.sm{border-color:#c7cbf5;border-top-color:var(--ac)}
+/* ⬇️ 最後置:桌面卡長短 1/3(64→43vh)。2-class + 排最尾,壓得過 base .ccard 64vh —— Raymond 2026-06-16
+   (VID1 + 標書 tab 一齊短;手機保持 base 64vh 唔郁) */
+@media(min-width:1100px){.carousel .ccard{max-height:43vh}}
+</style></head><body><!-- generated-by: 2026-05-28/notebooklm-bridge/scripts/lab_ui_shell.py -->
+<div class=wrap>
+<header>
+  <div class=titlerow>
+    <h1><span class=dept>IPHATCH</span> · IPHATCH</h1>
+    <span class=hdrbtns>
+      <a class=homebtn href="." title="總目錄">🏠</a>
+      <button class=refbtn onclick="location.href=location.pathname+'?t='+Date.now()+location.hash" title="重新載入">🔄</button>
+    </span>
+  </div>
+  <div class=bdp></div>
+  <div class=fresh>🕒 資料更新：<span class=fr><b>標書</b> —</span> · <span class=fr><b>研究</b> —</span> · <span class=fr><b>概念</b> —</span> · <span class=fr><b>評分</b> —</span></div>
+</header>
+<div class='tabbar'><button class='tab' data-tab='ph0'>📋 標書</button><button class='tab' data-tab='debrief'>📨 DEBRIEF</button><button class='tab' data-tab='handbd'>✍️ TVAPI FINAL</button><button class='tab' data-tab='theme1_1'>THEME</button><button class='tab' data-tab='tvapi1_1'>TVAPI 1</button><button class='tab' data-tab='tvapi1_2'>TVAPI 2</button><button class='tab' data-tab='tvapi1_3'>TVAPI 3</button><button class='tab' data-tab='tvapi1_4'>TVAPI 4</button><button class='tab' data-tab='tvapi1_5'>TVAPI 5</button></div>
+<div id='ph0' class='tabpanel'><div class='h2 h2sm'>💡 額外想法 / 相片</div><div class='card provide'>
+<div class="upbox" id="ref_IPHATCH_box">
+  
+  <div class="attstage" id="ref_IPHATCH_stage"></div>
+  <div class="attrow1">
+    <textarea id="ref_IPHATCH_link" class="atttext" rows="4" placeholder="💭 諗到嘅想法打喺度；想畀參考相就 ⌘V／drag／揀相入埋，喺格仔寫明呢張相係咩 → 一齊送出"></textarea>
+    <button id="ref_IPHATCH_send" class="attsend">送出 ⏎</button></div>
+  <div class="attbtns2"><button id="ref_IPHATCH_pick" class="attpick">📎 電腦揀檔</button></div>
+  <input type="file" id="ref_IPHATCH_file" accept="image/*" style="display:none">
+  <div class="upst" id="ref_IPHATCH_st"></div>
+</div>
+<script>(function(){
+var GAS="https://script.google.com/macros/s/AKfycbwVvkFb8kXQFrJZnABGxFcywfVllsM3XSVHlAGwH8CzrWIBGChjIK2PhW1k61r6NJWIpg/exec",TOK="mkv7q3z2link",FOLDER="";
+var st=document.getElementById("ref_IPHATCH_st");
+function say(m){st.textContent=m;}
+// —— 把關站 proven mechanic（照搬）——
+function jsonp(q,cb){var n="upcb"+Math.random().toString(36).slice(2);
+  window[n]=function(o){try{cb(o);}finally{delete window[n];s.remove();}};
+  var s=document.createElement("script");s.src=GAS+"?"+q+"&token="+TOK+"&callback="+n;
+  s.onerror=function(){delete window[n];s.remove();cb({ok:false,err:"network"});};
+  document.body.appendChild(s);}
+function fidFromLink(v){var m=v.match(/\/d\/([a-zA-Z0-9_-]{20,})/)||v.match(/[?&]id=([a-zA-Z0-9_-]{20,})/);return m?m[1]:null;}
+var inp=document.getElementById("ref_IPHATCH_link");
+var box=document.getElementById("ref_IPHATCH_box"),stage=document.getElementById("ref_IPHATCH_stage");
+var fi=document.getElementById("ref_IPHATCH_file"),send=document.getElementById("ref_IPHATCH_send");
+var _staged=null,_busy=false;
+function showStaged(f){_staged=f;var isImg=(f.type||"").indexOf("image/")===0;
+  stage.innerHTML="<span class='stchip'>"+(isImg?"🖼":"📎")+" "+f.name.replace(/</g,"&lt;")+" <button class='ststrip'>✕</button></span>";
+  stage.querySelector(".ststrip").onclick=function(){_staged=null;stage.innerHTML="";};}
+document.getElementById("ref_IPHATCH_pick").onclick=function(){fi.click();};
+fi.onchange=function(){if(fi.files[0]){showStaged(fi.files[0]);fi.value="";}};
+["dragover","dragenter"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.add("hov");});});
+["dragleave","drop"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.remove("hov");});});
+box.addEventListener("drop",function(e){var f=e.dataTransfer&&e.dataTransfer.files[0];if(f)showStaged(f);});
+inp.addEventListener("paste",function(ev){var fs=(ev.clipboardData&&ev.clipboardData.files)||[];if(fs.length){ev.preventDefault();showStaged(fs[0]);}});
+// 收到 file id（檔上載完）或原 link → 交畀各站自己嘅 complete handler
+function done(val,isFile){ var ip=document.getElementById('ref_IPHATCH_link');var desc=(ip&&ip.value||'').trim();if(window._clearDraft)window._clearDraft('ref_IPHATCH_link');if(isFile){var el=desc||'參考相';fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=IPHATCH&concept='+encodeURIComponent(el)+'&stage=add_ref&engine='+encodeURIComponent(val)+'&target=main&cid=ACT_add_ref',{mode:'no-cors'}).catch(function(){});if(ip)ip.value='';say(desc?('✅ 已收參考相「'+el+'」（排最前＋嚴格比照）'):'✅ 收咗相；下次喺格仔寫埋係咩元素，AI 跟得準啲');}else if(/^https?:|drive\.google|docs\.google/.test(val)){fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=IPHATCH&concept='+encodeURIComponent('參考連結')+'&stage=add_ref&engine='+encodeURIComponent(val)+'&target=main&cid=ACT_add_ref',{mode:'no-cors'}).catch(function(){});say('✅ 已收參考連結（排最前＋嚴格比照）');}else{var a=loadNotes();a.push({ts:Date.now(),text:val});saveNotes(a);renderNotes();fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=IPHATCH&text='+encodeURIComponent(val),{mode:'no-cors'}).catch(function(){});say('✅ 已加想法（'+a.length+'，累積餵委員會）');} }
+// 檔：initupload(folder)→browser 直 PUT 任何 size→CORS 讀唔到都 fallback→進度
+function up(f){_busy=true;send.disabled=true;say("開緊上載…（"+f.name+"）");
+  jsonp("action=initupload&origin="+encodeURIComponent(location.origin)+"&name="+encodeURIComponent(f.name)
+    +"&size="+f.size+"&mime="+encodeURIComponent(f.type||"image/jpeg")+"&folder="+encodeURIComponent(FOLDER),function(o){
+    if(!o.ok){_busy=false;send.disabled=false;say("⚠️ 開唔到上載："+(o.err||"")+"（可改貼 Drive 連結）");return;}
+    var x=new XMLHttpRequest();x.open("PUT",o.uri);
+    x.upload.onprogress=function(ev){if(ev.lengthComputable)say("⬆️ 上載中 "+Math.round(ev.loaded/ev.total*100)+"%（"+f.name+"）");};
+    x.onload=function(){_busy=false;send.disabled=false;
+      if(x.status>=300){say("⚠️ 上載 fail HTTP "+x.status);return;}
+      var fid="";try{fid=JSON.parse(x.responseText).id||"";}catch(_){}
+      if(!fid){say("⚠️ 上載咗但攞唔到 file id（可改貼 Drive 連結）");return;}
+      stage.innerHTML="";say("✅ 上載完成");done(fid,true);};
+    x.onerror=function(){_busy=false;send.disabled=false;say("⚠️ 上載出錯（network）。可改貼 Drive 連結");};
+    x.send(f);});}
+function submit(){if(_busy){say("處理緊…");return;}
+  var f=_staged;var v=inp.value.trim();
+  if(f){_staged=null;stage.innerHTML="";up(f);return;}
+  if(!v){say("⚠️ 未貼 link／未揀檔");return;}
+  inp.value="";done(v,false);}   // 貼 link → 直接交（後端 add_manual_ref 認 link/Drive id/URL）
+send.onclick=submit;
+inp.addEventListener("keydown",function(ev){if(ev.key==="Enter"&&!ev.shiftKey){ev.preventDefault();submit();}});
+})();</script>
+<div id='noteslist' class='noteslist'></div></div><div class='h2 tierh'>🎯 必定餵 AI（諗橋一定收）</div><p class='hint tierhint'>委員會／agency 諗橋一定收呢批做底，必跟。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🏛️ 政府 JOB 鐵則</span></div><div class='cbody'><ol id='rulelist' style='margin:2px 0 8px;padding-left:18px;line-height:1.7'><li id='rule0'>除標書表明，人物一般使用華人面孔（東亞／香港華人），唔好生成西方／白人臉</li><li id='rule1'>衣著連戲：同一角色每一格都著返同一套衫（衫款／顏色／髮型／配件固定），除非故事明寫佢換咗衫</li><li id='rule2'>全 board 畫風完全一致：同一 render 風格／同一打燈／同一色調／同一線條筆觸，由頭到尾統一，似同一個畫師一次過畫</li><li id='rule3'>Storyboard 盡量唔好出現雨傘；若劇情一定要有雨傘，唔可以係黃色</li></ol><div class='bdcm'><textarea id='newrule' rows='2' placeholder='加一條鐵則：例「Storyboard 唔好有雨傘」'></textarea><button class='btn mini' onclick="addRule('IPHATCH')">＋ 加鐵則（即時生效）</button></div></div></div></div></div>
+<div id='debrief' class='tabpanel'><div class='card empty'>未有 brief / dispatch（pipeline 跑完即有）</div></div>
+<div id='handbd' class='tabpanel'><p class='hint'>喺 Master GSheet 開「TV API Script <b>1／2／3</b>」三個 tab 放唔同 TV API 稿，<b>撳邊個 SET 就生邊個</b>（全 NLM 風格各一，純畫面唔蓋字）。</p><div class='acts' style='margin-bottom:6px'><button class='btn' title='讀 Master GSheet「TV API Script 1」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=IPHATCH&concept=1&stage=handbd&engine=allstyles&target=main')">🎬 SET 1 → 生 BD</button><button class='btn' title='讀 Master GSheet「TV API Script 2」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=IPHATCH&concept=2&stage=handbd&engine=allstyles&target=main')">🎬 SET 2 → 生 BD</button><button class='btn' title='讀 Master GSheet「TV API Script 3」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=IPHATCH&concept=3&stage=handbd&engine=allstyles&target=main')">🎬 SET 3 → 生 BD</button><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card empty'>未生過手寫稿 BD —— 撳上面 SET 生成（或先喺 Master GSheet 放稿）。</div></div>
+<div id='theme1_1' class='tabpanel' data-set='1'><div class='banner'>🧭 北極星未定。撳掣 → 7 agency + 委員會就住成份標書諗一個大主題（big idea）+ 一個綜合口號。所有 MOD ladder 返呢度。</div><div class='card'><button class='btn big' title='' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=IPHATCH&concept=PLAN&stage=gen_theme&target=main')">🧭 生成大主題 + 綜合口號</button></div><div class='card'><button class='btn ghost' title='將呢個 dept 全部已生成嘅 MOD planning（主題／系列／SOC／MEDIA／KOL）出去 Master GSheet，每個 mod 一個 tab；你喺 GSheet 改完，自己貼返入真 deck（GSlide）。design 你話事。' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=IPHATCH&concept=all&stage=mod_gsheet&target=main')">📤 全部 MOD → Master GSheet（畀你改）</button></div></div>
+<div id='tvapi1_1' class='tabpanel' data-set='1'><div class='banner'>委員會仲未跑，等 briefing gate 過咗先有概念。</div></div>
+<div id='tvapi1_2' class='tabpanel' data-set='1'><div class='banner'>未有概念進入第二輪。返 VID 1 揀六強（submit 即自動生 BD）先。</div></div>
+<div id='tvapi1_3' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 2 揀三甲先。</div></div>
+<div id='tvapi1_4' class='tabpanel' data-set='1'><div class='banner'>🎬 VID 4 — 5 步生 storyboard ＋ 片（STEP 1 → 5）</div><div class='card'><div class='h3'>📄 STEP 1 — 故事版（你親手執 Master GSheet B6:C17，9-12 格）</div><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card step2'><div class='h3'>🎭 STEP 2 — 主角參考相（AI 自動搵 ISD 官方相 + curate；face-swap 用嚟貼真面）</div><button class='btn ghost mini' onclick="srcRefs(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=IPHATCH&concept=FINAL&stage=facerefs&target=main')">🔍 AI 搵／更新主角參考相</button><div class='hint'>仲未 source 主角相。撳上面掣，AI 自動由 ISD 官方相搵 + curate。</div></div><div class='stylepick card'><div class='h3'>🎨 STEP 3 — 揀風格（每行 0 或 1 個；唔剔 = 跟劇本）</div><div class='styrow'><span class='stylbl'>🏙️ 環境</span><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="realistic environment" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="2D comic-style environment" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="3D animated environment" onchange='styPick(this)'>3D動畫</label></div><div class='styrow'><span class='stylbl'>🧍 人物</span><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="photorealistic characters" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="2D comic-style characters" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="3D-modeled characters" onchange='styPick(this)'>3D建模</label></div><div class='styrow'><span class='stylbl'>🌗 光/時間</span><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="daytime lighting" onchange='styPick(this)'>日 Day</label><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="nighttime lighting" onchange='styPick(this)'>夜 Night</label></div><div class='styrow'><span class='stylbl'>🎨 色彩</span><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="vivid saturated color" onchange='styPick(this)'>鮮艷</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="muted desaturated tones" onchange='styPick(this)'>灰調</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="black and white" onchange='styPick(this)'>黑白</label></div><div class='styrow'><span class='stylbl'>😊 情緒</span><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="warm heartfelt mood" onchange='styPick(this)'>溫情</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="passionate uplifting mood" onchange='styPick(this)'>激昂</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="light humorous mood" onchange='styPick(this)'>幽默</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="solemn official tone" onchange='styPick(this)'>莊重官方</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="suspenseful mood" onchange='styPick(this)'>懸疑</label></div><div class='styrow'><span class='stylbl'>🎬 質感</span><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="cinematic look" onchange='styPick(this)'>電影感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="documentary realism" onchange='styPick(this)'>紀實</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="dynamic music-video energy" onchange='styPick(this)'>MV動感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="plain straightforward style" onchange='styPick(this)'>平實</label></div><div class='styanchor'>風格 anchor：<span id='styanchor'>（跟劇本）</span></div></div><div class='card genbox'><div class='h3'>🍌 STEP 4 — 生 BD（讀 B6:C17 ＋ face-swap 主角真面）</div><button class='btn big' title='讀你喺 Master GSheet B6:C17 執好嘅 script ＋ STEP 3 風格 ＋ face-swap 主角真面 → 生最終 BD（brd=FINAL，唔污染候選）' onclick="genFinalBD(this,'IPHATCH','https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=IPHATCH&concept=FINAL&stage=gsheetbd&target=main')">由 B6:C17 生最終 BD</button></div><div class='card'><div class='h3'>🎬 STEP 5 — 生片（Higgsfield Kling/Seedance，開發中）</div><div class='hint'>BD 揀好 → 生片。Higgsfield CLI 整緊。</div></div></div>
+<div id='tvapi1_5' class='tabpanel' data-set='1'><div class='banner'>未有 FINAL。返 VID 3 揀 FINAL 2 先。</div></div>
+<div class=foot>Idea Lab · 07-04 01:44 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+</div>
+
+<script>
+var DL = new Date("2099-12-31T23:59:59+08:00").getTime();
+function cd() {
+  var e = document.getElementById('cd'); if (!e) return;
+  var x = DL - Date.now();
+  if (x < 0) { e.textContent = '已截標'; return; }
+  var s = Math.floor(x/1000), d = Math.floor(s/86400);
+  s -= d*86400; var h = Math.floor(s/3600); s -= h*3600;
+  var m = Math.floor(s/60); s -= m*60;
+  e.textContent = (d > 0 ? d + '日 ' : '')
+    + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0')
+    + ':' + String(s).padStart(2,'0');
+}
+cd(); setInterval(cd, 1000);
+
+var TABS   = document.querySelectorAll('.tab');
+var PANELS = document.querySelectorAll('.tabpanel');
+function showTab(id) {
+  if (!document.getElementById(id)) id = 'ph0';
+  TABS.forEach(function(t) { t.classList.toggle('active', t.dataset.tab === id); });
+  PANELS.forEach(function(p) { p.classList.toggle('active', p.id === id); });
+  history.replaceState(null, '', '#' + id);
+  upd();
+  if (/(vid|tvapi)\d+_2$/.test(id)) vid2AutoBD();   // 入 VID／TVAPI 2 即自動觸發六強生 BD + poll
+}
+TABS.forEach(function(t) { t.addEventListener('click', function() { showTab(t.dataset.tab); }); });
+showTab((location.hash.slice(1)) || 'ph0');
+
+// VID 2:六強 submit 後自動生 BD —— 對未有 BD(data-needbd=1)嘅概念逐個觸發 NBLM deck(GAS 去重,撳幾多次都唔重生)。
+// 未生晒就每 45s reload 一次睇新 BD(NBLM 連夜,一晚生得晒)。
+var _vid2timer;
+function vid2AutoBD() {
+  var panel = document.querySelector('.tabpanel.active'); if (!panel) return;
+  var pend = panel.querySelectorAll('[data-needbd="1"]');
+  pend.forEach(function(c) {
+    var brd = c.dataset.brd; if (!brd) return;
+    var k = 'bdstart_IPHATCH_' + brd;
+    if (!localStorage.getItem(k)) localStorage.setItem(k, String(Date.now()));  // 開始時間 → 進度條
+    fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=IPHATCH&concept=" + encodeURIComponent(brd) + "&stage=deck&target=main" + setQ(),
+          {mode:'no-cors'}).catch(function(){});
+  });
+  tickProgress();
+  if (pend.length && !_vid2timer) {
+    _vid2timer = setInterval(function() { location.reload(); }, 90000);  // 靜靜每 90s 攞新 BD（冇 develop bar）
+  }
+}
+
+// VID 2 進度條：按實測平均 BD 時間（~10 分鐘）推移，封頂 99% stall（NBLM 唔報幾時好）。
+var BD_AVG_MS = 600000;   // 平均 606s（manifest 連續 gap 實測）
+function tickProgress() {
+  document.querySelectorAll('.pgbar').forEach(function(bar) {
+    var brd = bar.dataset.brd; if (!brd) return;
+    var k = 'bdstart_IPHATCH_' + brd;
+    var s = +localStorage.getItem(k);
+    if (!s) { s = Date.now(); localStorage.setItem(k, String(s)); }
+    var pct = Math.min(99, (Date.now() - s) / BD_AVG_MS * 100);
+    var f = bar.querySelector('.pgfill'); if (f) f.style.width = pct.toFixed(0) + '%';
+    var t = bar.querySelector('.pgtxt');
+    if (t) t.textContent = pct >= 99 ? 'BD 生成中…就快好（99%）' : ('BD 生成中… ' + pct.toFixed(0) + '%（平均 ~10 分鐘）');
+  });
+}
+setInterval(tickProgress, 2000); tickProgress();
+// 已完成（卡有圖）→ 清走嗰個 brd 嘅開始時間，免下次重生即跳 99%
+document.querySelectorAll('.card[data-brd] img.sheet').forEach(function(im) {
+  var card = im.closest('.card[data-brd]');
+  if (card && card.dataset.brd) localStorage.removeItem('bdstart_IPHATCH_' + card.dataset.brd);
+});
+
+// 零碎想法：localStorage array(可入多次),即時累積顯示,每條 POST 去 GAS 畀委員會消化
+var NK = 'notes_IPHATCH';
+var notesEl = document.getElementById('notes');
+function loadNotes() {
+  try { var a = JSON.parse(localStorage.getItem(NK) || '[]'); return Array.isArray(a) ? a : []; }
+  catch (e) { return []; }
+}
+function saveNotes(a) { localStorage.setItem(NK, JSON.stringify(a)); }
+function fmtTs(ts) {
+  var d = new Date(ts);
+  function p(n) { return String(n).padStart(2, '0'); }
+  return (d.getMonth()+1) + '/' + d.getDate() + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+}
+function renderNotes() {
+  var box = document.getElementById('noteslist'); if (!box) return;
+  var a = loadNotes();
+  if (!a.length) { box.innerHTML = "<p class='hint' style='margin:4px 2px'>未有想法。</p>"; return; }
+  box.innerHTML = a.map(function(n, i) {
+    var txt = (n.text || '').replace(/</g, '&lt;');
+    return "<div class='notecard'><div class='noterow'>"
+      + "<span class='notets'>" + fmtTs(n.ts) + "</span>"
+      + "<button class='notedel' onclick='delNote(" + i + ")'>✕</button></div>"
+      + "<div class='notetxt'>" + txt + "</div></div>";
+  }).join('');
+}
+function submitNotes() {
+  if (!notesEl || !notesEl.value.trim()) { alert('未有想法'); return; }
+  var txt = notesEl.value.trim();
+  var a = loadNotes(); a.push({ ts: Date.now(), text: txt }); saveNotes(a);
+  notesEl.value = ''; renderNotes();
+  var url = "https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=IPHATCH&text=" + encodeURIComponent(txt);
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('＋ 已加入（' + a.length + ' 條，VID 1 啟動時餵委員會）');
+}
+function delNote(i) {
+  var a = loadNotes(); if (i < 0 || i >= a.length) return;
+  if (!confirm('刪呢條想法?')) return;
+  a.splice(i, 1); saveNotes(a); renderNotes();
+}
+renderNotes();
+
+function tk(el) {
+  el.classList.toggle('on');
+  el.textContent = el.classList.contains('on') ? '✓' : '';
+  upd();
+}
+// carousel 卡：撳卡頭（唔係內文 scroll 區）toggle 揀選
+function tkCard(head) {
+  var card = head.closest('[data-cid]'); if (!card) return;
+  var ck = card.querySelector('.ck'); if (!ck) return;
+  tk(ck);
+  card.classList.toggle('sel', ck.classList.contains('on'));
+}
+function upd() {
+  var n = document.querySelectorAll('.tabpanel.active .ck.on').length;
+  document.querySelectorAll('.tabpanel.active .cnt').forEach(function(c) {
+    c.textContent = n;
+    c.parentElement.classList.toggle('cnt-warn', n > 6);
+  });
+}
+document.querySelectorAll('.card[data-cid]').forEach(function(card) {
+  var ck = card.querySelector('.ck');
+  if (!ck) return;
+  card.addEventListener('click', function(e) {
+    if (e.target.closest('.ck,.det,textarea,a,button')) return;
+    tk(ck);
+  });
+});
+
+function toast(msg) {
+  var t = document.createElement('div');
+  t.className = 'toast'; t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(function() { t.style.opacity = '0'; }, 6000);
+}
+function showTopProc(msg, stop) {
+  var o = document.getElementById('topproc');
+  if (!o) {
+    o = document.createElement('div'); o.id = 'topproc'; o.className = 'topproc';
+    document.body.insertBefore(o, document.body.firstChild);
+  }
+  if (stop) {
+    o.innerHTML = '<span id="tpmsg">' + msg + '</span>'
+      + ' <a href="#" onclick="location.reload();return false" style="margin-left:8px;font-weight:800;color:var(--ac)">🔄 再 check</a>'
+      + ' <a href="#" onclick="this.parentNode.remove();return false" style="margin-left:8px;color:#888">✕</a>';
+  } else {
+    o.innerHTML = '<span class="spin sm"></span><span id="tpmsg">' + msg + '</span>';
+  }
+}
+
+// ⛔⛔ 防 comment 冇咗(Raymond 2026-06-16 爆:手寫稿 BD comment 位打咗字,redeploy → reload 冧晒):
+//   **全部**輸入格(額外想法 / 6 塊手寫稿 BD comment / 鐵則 / 任何 textarea·text input)每次打字即存 localStorage,
+//   reload/redeploy 都還原返;tab 切返嚟 auto-refresh **有未存字就唔 reload**。每格按 element id 存。
+(function() {
+  var DP = 'draft_IPHATCH_';
+  function fields() {
+    return [].slice.call(document.querySelectorAll('textarea, input[type=text]')).filter(function(e){ return e.id; });
+  }
+  function hasUnsaved() { return fields().some(function(e){ return (e.value||'').trim().length>0; }); }
+  // 載入時還原每格 draft
+  var restored = 0;
+  try { fields().forEach(function(e){ var v=localStorage.getItem(DP+e.id); if(v && !e.value){ e.value=v; restored++; } }); } catch(_) {}
+  if (restored) setTimeout(function(){ toast('↩︎ 幫你還原咗 '+restored+' 格未送出嘅文字'); }, 500);
+  // 每次打字即存(任何有 id 嘅 textarea / text input)
+  document.addEventListener('input', function(ev) {
+    var t = ev.target; if (!t || !t.id) return;
+    if (t.tagName==='TEXTAREA' || (t.tagName==='INPUT' && t.type==='text')) {
+      try { if ((t.value||'').trim()) localStorage.setItem(DP+t.id, t.value); else localStorage.removeItem(DP+t.id); } catch(_) {}
+    }
+  });
+  window._clearDraft = function(id) { try { localStorage.removeItem(DP+id); } catch(_) {} };
+  var loaded = Date.now();
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden && Date.now() - loaded > 45000 && !hasUnsaved())   // 有未存嘅字 → 唔 reload,唔好冧佢
+      location.href = location.pathname + '?t=' + Date.now() + location.hash;
+  });
+})();
+
+// BD 圖 click 放大（lightbox）—— event delegation，任何 .sheet 圖都得
+(function() {
+  var lb = document.createElement('div'); lb.className = 'lbx';
+  lb.innerHTML = '<span class="x">✕</span><img><div class="hint">撳任何位收返。放大後可用瀏覽器 pinch/scroll 睇每格。</div>';
+  document.body.appendChild(lb);
+  var lbimg = lb.querySelector('img');
+  lb.addEventListener('click', function() { lb.classList.remove('on'); });
+  document.addEventListener('click', function(e) {
+    var t = e.target;
+    if (t && t.classList && t.classList.contains('sheet') && t.src) {
+      lbimg.src = t.src; lb.classList.add('on');
+    }
+  });
+})();
+
+// active panel 嘅 set → GAS param（set 1 唔帶，backend 不變）
+function curSet() { var p = document.querySelector('.tabpanel.active'); return p ? (p.dataset.set || '1') : '1'; }
+function setQ()   { var s = curSet(); return (s && s !== '1') ? ('&set=' + s) : ''; }
+
+// 各 set 嘅 funnel phase（多-set 各 set 唔同）。getVidPhase() 隨 active 嘅 set 變。
+var VID_PHASES = {"1": 1};
+var PRIMARY_VID = 1;
+function getVidPhase() { var s = curSet(); return VID_PHASES[s] || PRIMARY_VID; }
+function pickedCids() {
+  return [].map.call(
+    document.querySelectorAll('.tabpanel.active [data-cid] .ck.on'),
+    function(k) { return k.closest('[data-cid]').dataset.cid; });
+}
+function submitAdvance(url) {
+  toast('✅ 已提交，十幾秒後自動刷新睇下一步（或撳右上 🔄）');
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { location.reload(); }, 13000);   // 單次刷新，冇 develop bar，冇無限 loop
+}
+function submitRound() {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個做六強？submit 後會自動後台生 BD（用 NBLM），落選自動歸檔。')) return;
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=IPHATCH&round=r2&cids=" + c.join(',') + setQ());
+}
+function subStage(to) {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個 → ' + (to === 'r3' ? '三甲' : 'FINAL 2') + '？')) return;
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=IPHATCH&round=" + to + "&cids=" + c.join(',') + setQ());
+}
+function postFunnel(url, msg) {
+  fetch(url, {mode:'no-cors'})
+    .then(function() { toast(msg); })
+    .catch(function() { toast('⚠️ 再試一次'); });
+}
+
+function genBD(btn, url) {   // VID 3 Nano per-card 用
+  var acts = btn.closest('.acts') || btn.parentElement;
+  if (acts) acts.innerHTML = "<span class='gening'><span class='spin sm'></span>生緊… ~8-9 分鐘</span>";
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+}
+function addRule(dept) {   // 政府 JOB 鐵則:加一條 → listener append gov_job_rules.json(全 JOB 累積)
+  var ta = document.getElementById('newrule');
+  var txt = (ta && ta.value || '').trim();
+  if (!txt) { if(ta) ta.focus(); return; }
+  var url = 'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=' + encodeURIComponent(dept) + '&concept=rule&stage=add_rule'
+          + '&engine=' + encodeURIComponent(txt) + '&target=main';
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  if (window._clearDraft) window._clearDraft('newrule');   // 送出咗 → 清 draft
+  var ol = document.getElementById('rulelist');
+  if (ol) { var li=document.createElement('li'); li.textContent=txt; ol.appendChild(li); }  // 即時顯示
+  if (ta) { ta.value=''; ta.placeholder='✅ 已加，下次生 BD 即跟'; }
+}
+// ⭐ Raymond 提供參考相窗口嘅上載 mechanic = dash_upload.upload_box(reuse 創意把關站,JS 已內嵌喺 widget,呢度唔再寫)
+function _vchecked() { return [].slice.call(document.querySelectorAll('.tabpanel.active .vchk:checked')); }
+function delAssets(dept) {   // 🗑 整張即刻刪(像真網頁,唔問;listener 後台存底 + 真刪)
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=delasset&stage=del_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){ var card=c.closest('.vacard'); if(card) card.remove(); });   // 即刻消失
+  toast('🗑 刪咗 '+ids.length+' 張');
+}
+function preferAssets(dept) {   // ⭐ 首選:即刻 ⭐ + 嗰啲相搬去最左(像真網頁);listener pref + 餵 NLM 優先
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=prefasset&stage=prefer_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){
+    var card=c.closest('.vacard'); if(!card) return;
+    card.classList.add('pref');
+    if(!card.querySelector('.vastar')){ var s=document.createElement('div'); s.className='vastar'; s.textContent='⭐ 首選'; card.appendChild(s); }
+    var row=card.parentNode; row.insertBefore(card, row.firstChild);   // 搬去最左
+    c.checked=false;
+  });
+  toast('⭐ 已設首選 '+ids.length+' 張（搬咗去最左 + 餵 NLM 優先）');
+}
+function showOvl(id) { var o=document.getElementById(id); if(o) o.classList.add('on'); }   // 🎧 錄音逐字 overlay(撳先出)
+function hideOvl(id) { var o=document.getElementById(id); if(o) o.classList.remove('on'); }
+document.addEventListener('click', function(e){   // 撳 overlay 背景(唔係 box)收返
+  if(e.target && e.target.classList && e.target.classList.contains('ovl')) e.target.classList.remove('on');
+});
+function researchAssets(dept) {   // 🔁 重搜:即刻喺相右下角顯示漏斗「重搜中」,後台搵新相,搵到自動換(reload 時)
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=researchasset&stage=research_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){
+    var card=c.closest('.vacard'); if(!card) return;
+    var th=card.querySelector('.vathumb');
+    if(th && !th.querySelector('.vafunnel')){ var f=document.createElement('div'); f.className='vafunnel';
+      f.innerHTML='<span class="spin sm" style="width:10px;height:10px;margin:0"></span> 重搜中'; th.appendChild(f); }
+    c.checked=false;
+  });
+  toast('🔁 重搜 '+ids.length+' 個，後台搵緊清晰啲嘅相，搵到自動換（~30-60s，會自動 refresh）');
+}
+function bdComment(dept, brd) {   // 手寫稿 BD:送 comment → listener AI 解意見 → 改 specific 格(留舊版)
+  var ta = document.getElementById('cm_' + brd);
+  var txt = (ta && ta.value || '').trim();
+  if (!txt) { if (ta) ta.focus(); return; }
+  var url = 'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=' + encodeURIComponent(dept)
+          + '&concept=' + encodeURIComponent(brd) + '&stage=bdcomment'
+          + '&engine=' + encodeURIComponent(txt) + '&target=main&cid=ACT_bdcomment';
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  if (window._clearDraft) window._clearDraft('cm_' + brd);   // 送出咗 → 清 draft
+  if (ta) { ta.disabled = true;
+    ta.insertAdjacentHTML('afterend', "<div class='cmlog'>✅ 已送出，AI 改緊嗰格，改完自動換圖（舊版會留喺下面）。</div>"); }
+}
+// STEP 3 風格 picker：每維互斥（但可 0 個）+ 夾成 style_anchor
+function styPick(cb) {
+  if (cb.checked) {
+    var sib = document.querySelectorAll(".styopt[data-dim='" + cb.getAttribute('data-dim') + "']");
+    for (var i = 0; i < sib.length; i++) { if (sib[i] !== cb) sib[i].checked = false; }
+  }
+  var el = document.getElementById('styanchor');
+  if (el) el.textContent = styleAnchor() || '（跟劇本）';
+}
+function styleAnchor() {
+  var dims = ['env', 'char', 'light', 'color', 'mood', 'feel'], picks = [];
+  for (var i = 0; i < dims.length; i++) {
+    var el = document.querySelector(".styopt[data-dim='" + dims[i] + "']:checked");
+    if (el) picks.push(el.value);
+  }
+  return picks.join(', ');
+}
+function srcRefs(btn, url) {   // STEP 2：AI 搵主角參考相
+  btn.textContent = '⏳ AI 搵相中…（~2-3 分鐘，完成 refresh 見）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('🔍 AI 自動由 ISD 官方相搵主角 + curate 中…');
+}
+function genFinalBD(btn, dept, baseUrl) {   // STEP 4：寫低 STEP 3 風格 → 生最終 BD
+  var anc = styleAnchor();
+  // STEP3 風格寫入 Master GSheet _VID_STYLE（gsheet_to_bd 讀返做 override；空 = 跟劇本）
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify({op:'set_style', dept:dept, style:anc})}).catch(function(){});
+  toast(anc ? ('🎨 已套用風格：' + anc) : '🎨 風格：跟劇本（冇限制）');
+  genBD(btn, baseUrl);
+}
+function pushGSheet(btn, url) {   // VID 4 寫入 Master GSheet B6:C17
+  btn.textContent = '⏳ 寫入緊…'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已寫入（開 GSheet polish）'; }, 2500);
+  toast('📝 已交，~1 分鐘寫入 Master GSheet B6:C17（前稿自動備份）');
+}
+function renderForms(btn, url) {   // 📋 標書:自動 render 真表頁入 Master Reply GSlide
+  btn.textContent = '⏳ render 緊…（~1-2 分鐘，完成會 WhatsApp）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('📋 已交，listener 會自動 render 真表頁入 Master Reply GSlide');
+}
+function fillForms(btn) {   // 📝 標書:自動填表 — GAS 直出（公司資料 vlookup 寫 Fill tab，唔靠部 Mac）
+  var jsTag = btn.nextElementSibling;  // <script class=filldata>
+  var data;
+  try { data = JSON.parse((jsTag && jsTag.textContent) || '{}'); } catch (e) { data = {}; }
+  if (!data.forms || !data.forms.length) { toast('⚠️ 冇表資料'); return; }
+  var reg='https://docs.google.com/spreadsheets/d/1yiDJ3H8VFK3-6kZQZEzwkiD8VaRgVOzCwxcFbAyP3XE/edit';
+  btn.textContent = '⏳ AI 填緊…（~30-60s）'; btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'fill_forms', folderName: data.folderName, forms: data.forms })
+  }).catch(function(){});
+  // 清楚講做緊乜 + 完咗點做(開 Registry copy 值)
+  setTimeout(function() {
+    btn.outerHTML = "<a class='btn' style='width:100%;text-align:center' target='_blank' href='"+reg
+      +"'>✅ 已填好 → 開 Master Form Registry copy 啲值</a>";
+  }, 30000);
+  toast('🤖 AI 填緊公司資料入 Master Form Registry 嘅 Fill tab（~30-60s）。完咗開 Registry copy 啲值入真表頁。');
+}
+function outScript(btn) {   // 📤 VID2:SCRIPT 接落 Master GSheet SCRIPT暫存 — 直接 GAS POST，唔經部 Mac
+  var jsTag = btn.nextElementSibling;  // <script class=bdj> board JSON
+  var board = [];
+  try { board = JSON.parse((jsTag && jsTag.textContent) || '[]'); } catch (e) {}
+  if (!board.length) { toast('⚠️ 冇 board 資料'); return; }
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'script_out', dept: 'IPHATCH',
+      brd: btn.dataset.brd, concept: btn.dataset.concept, board: board })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已接落「SCRIPT暫存」'; btn.disabled = false; }, 1500);
+  toast('📤 接落 Master GSheet「SCRIPT暫存」(GAS,唔經部 Mac,疊唔覆寫)');
+}
+function clearScript(btn) {   // 🧹 清空 SCRIPT暫存 — GAS（唔經 Mac）
+  if (!confirm('清空 SCRIPT暫存 tab？')) return;
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'clear' })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已清空'; btn.disabled = false; }, 1500);
+  toast('🧹 已清空 SCRIPT暫存（GAS,唔經部 Mac）');
+}
+
+// submitGSlide/submitComments 已移除（dead code:前端零 call site + 冇 .frame-note input — 2026-06-13 audit）
+
+// 「develop 緊」bar 已移除（Raymond 2026-06-06）—— 改用 VID 2 tab 紅邊 + 各 concept 進度條。
+</script></body></html>

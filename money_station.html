@@ -285,6 +285,7 @@ function renderResults(rows) {
     return `<div class="resultcard">
       <h3>✅ ${esc(r.source_file)} <span class="pill ok">已生成 AutoPay CSV</span></h3>
       ${table}
+      ${r.due_date ? `<div class="kv"><b>⏰ 找數限期</b><span style="font-weight:700;color:#b45309">${esc(r.due_date)}</span></div>` : ''}
       ${paid ? `<div class="kv"><b>🏦 找數狀態</b><span class="pill ${paidCls}">${esc(paid)}</span></div>` : ''}
       <div class="kv"><b>建議Payslip名</b><span style="font-family:monospace;font-size:12px">${esc(r.payslip_filename)}</span></div>
       <div class="links">
@@ -295,6 +296,18 @@ function renderResults(rows) {
     </div>`;
   }).join('');
 }
+
+/* ══════ on-load：列返 server 上已生成嘅 CSV，畀 Raymond 隨時下載（唔使先 upload）══════
+   act.php status store 只保留未過 180 日日落嘅 invoice（`ap-autopay-csv-180d` policy →
+   ap_cleanup.py 週跑清過期），所以直接 renderResults 出嚟就係「180 日內可下載」清單。
+   ⛔ 純加、零改動找數/開單既有邏輯。*/
+(async function loadExistingInvoices(){
+  try {
+    const resp = await fetch(`${ACT_PHP}?action=status&topic=invoice`);
+    const j = await resp.json();
+    if (j && j.rows && j.rows.length) renderResults(j.rows);
+  } catch (e) { /* 靜默：load 唔到唔阻頁面其他功能 */ }
+})();
 </script>
 </body>
 </html>

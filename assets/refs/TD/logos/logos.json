@@ -1,0 +1,26 @@
+{
+  "dept": "TD",
+  "slots": [
+    {
+      "slot": 1,
+      "query": "香港 TD 部門標誌",
+      "file": "assets/refs/TD/logos/slot1.png",
+      "title": "運輸署- 牌照服務",
+      "w": 2381,
+      "h": 1890,
+      "enabled": true
+    },
+    {
+      "slot": 2,
+      "query": "",
+      "file": "",
+      "title": "(空,可即場打字搵)"
+    },
+    {
+      "slot": 3,
+      "query": "",
+      "file": "",
+      "title": "(空,可即場打字搵)"
+    }
+  ]
+}

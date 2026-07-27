@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>MK Lab · 出Post把關站</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#717784;--line:#e7e9ee;--accent:#4f46e5;--grn:#0a7d3f;--red:#EE382F;--sh:0 1px 2px rgba(20,24,40,.04),0 4px 14px rgba(20,24,40,.05)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1100px;margin:0 auto;padding:18px 14px 80px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px}
+h1{font-size:24px;font-weight:800;margin:0;letter-spacing:-.01em}
+.hdrbtns{flex:none;display:flex;gap:7px;align-items:center}
+.homebtn,.refbtn{flex:none;white-space:nowrap;font-size:15px;line-height:1;text-decoration:none;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:6px 10px;color:#222;cursor:pointer}
+.sub{color:var(--mut);font-size:13px;margin:8px 0 18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 15px;box-shadow:var(--sh)}
+.card h2{margin:0 0 10px;font-size:16px}
+textarea{width:100%;min-height:170px;resize:vertical;border:1px solid var(--line);border-radius:10px;padding:10px 11px;font:inherit;font-size:14px;background:#fff;color:var(--ink)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.btn{border:none;background:var(--accent);color:#fff;border-radius:9px;padding:9px 14px;font:inherit;font-weight:700;cursor:pointer}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.small{font-size:12px;color:var(--mut)}
+.grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:14px}
+@media(min-width:800px){.grid{grid-template-columns:1fr 1fr}}
+.pill{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:3px 10px;vertical-align:middle}
+.pill.ok{background:#e8f5ec;color:var(--grn)}
+.pill.bad{background:#fdeceb;color:var(--red)}
+.meter{height:8px;background:#eef0f4;border-radius:99px;overflow:hidden;margin:4px 0 2px}
+.meter i{display:block;height:100%;background:var(--grn);border-radius:99px}
+.meter i.over{background:var(--red)}
+.mrow{font-size:12.5px;color:var(--mut);display:flex;justify-content:space-between;margin-top:8px}
+.iss{margin:10px 0 0;padding:0;list-style:none;font-size:13.5px}
+.iss li{margin:4px 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{font-size:12.5px;border-radius:999px;padding:3px 10px;background:#eef0fe;border:1px solid #dcdffb;color:#333}
+.chip.cut{background:#fdeceb;border-color:#f6c9c6;color:var(--red);text-decoration:line-through}
+.fold{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:#fafafa;padding:10px 12px;font-size:13.5px;line-height:1.6;color:#2d3440;white-space:pre-wrap;word-break:break-word}
+.fold b{color:var(--mut);font-weight:600}
+.sect{display:flex;align-items:center;gap:8px;margin:24px 0 10px}
+.sect:before{content:"";display:block;width:4px;height:18px;border-radius:2px;background:var(--accent)}
+.sect h2{margin:0;font-size:17px}
+#media{overflow-x:auto}
+table{width:100%;min-width:640px;border-collapse:collapse;font-size:12.5px}
+th,td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mut);font-weight:600;white-space:nowrap}
+.empty{color:var(--mut);font-size:13px}
+footer{color:var(--mut);font-size:12px;border-top:1px solid var(--line);margin-top:28px;padding-top:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="titlerow">
+    <h1>📏 出Post把關站</h1>
+    <span class="hdrbtns">
+      <a class="homebtn" href="index.html" title="總目錄">🏠</a>
+      <button class="refbtn" onclick="location.href=location.pathname+'?t='+Date.now()" title="重新載入">🔄</button>
+    </span>
+  </div>
+  <div class="sub">貼 caption → 即對「社交平台出Post規格」真源：字數／hashtag／摺疊位／link 一眼睇晒四平台。零 AI，規則改 GSheet 即生效。</div>
+
+  <div class="card">
+    <h2>輸入</h2>
+    <textarea id="cap" placeholder="貼成篇 caption 落嚟（連 hashtag 同 link）"></textarea>
+    <div class="btnrow">
+      <button class="btn" id="go">✅ Check 四平台</button>
+      <span class="small" id="stat"></span>
+    </div>
+  </div>
+
+  <div class="sect"><h2>結果</h2></div>
+  <div class="grid" id="out"><div class="empty">check 完會喺度出四平台卡</div></div>
+
+  <div class="sect"><h2>圖／片規格（真源唯讀）</h2></div>
+  <div class="card" id="media"><div class="empty">載入緊媒體規格…</div></div>
+
+  <footer>真源：GSheet「社交平台出Post規格」（規則改 sheet 即生效，10 分鐘 cache）｜引擎：SocialPostLib（同一個 lib 將來直入排程出post工具）</footer>
+</div>
+
+<script>
+var API='https://script.google.com/macros/s/AKfycbz5prCZU4JeI8LsjZOLGYCxTr-jGJdqi2i0KQRtbwk7S00LQQYeIs28c5NcMUn_3Ddajg/exec';
+var seq=0;
+function jsonp(params,fn){ // GAS 免CORS通道（repo 已證模式）
+  var cb='__gk'+(++seq);
+  window[cb]=function(d){fn(d);delete window[cb];s.remove()};
+  var s=document.createElement('script');
+  s.src=API+'?'+params+'&callback='+cb;
+  s.onerror=function(){fn({error:'載入失敗，試多次'});delete window[cb];s.remove()};
+  document.body.appendChild(s);
+}
+var NAMES={ig:'Instagram',fb:'Facebook',threads:'Threads',linkedin:'LinkedIn'};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+// cut 建議（NLM 裁：deterministic——最長 ∪ 排尾優先，⛔ 唔用 AI）
+function cutSet(tags,max){
+  if(max===null||tags.length<=max) return {};
+  var k=tags.length-max;
+  var idx=tags.map(function(t,i){return{t:t,i:i,len:t.length}});
+  idx.sort(function(a,b){return b.len-a.len||b.i-a.i});
+  var cut={};idx.slice(0,k).forEach(function(x){cut[x.i]=1});
+  return cut;
+}
+function meter(val,max){
+  if(max===null||!max) return '';
+  var pct=Math.min(100,Math.round(val/max*100));
+  return '<div class="meter"><i class="'+(val>max?'over':'')+'" style="width:'+pct+'%"></i></div>';
+}
+function cardHtml(r){
+  if(r.error) return '<div class="card">'+esc(r.error)+'</div>';
+  var h='<div class="card"><h2>'+NAMES[r.platform]+' <span class="pill '+(r.ok?'ok':'bad')+'">'+(r.ok?'✅ 可出':'❌ 有嘢改')+'</span></h2>';
+  h+='<div class="mrow"><span>字數</span><span>'+r.chars+(r.max_chars?' / '+r.max_chars:'')+'</span></div>'+meter(r.chars,r.max_chars);
+  h+='<div class="mrow"><span>hashtag</span><span>'+r.n_hashtags+(r.max_hashtags!==null?' / '+r.max_hashtags:'（冇硬限）')+'</span></div>'+meter(r.n_hashtags,r.max_hashtags);
+  if(r.hashtags.length){
+    var cut=cutSet(r.hashtags,r.max_hashtags);
+    h+='<div class="chips">'+r.hashtags.map(function(t,i){return '<span class="chip'+(cut[i]?' cut':'')+'">'+esc(t)+'</span>'}).join('')+'</div>';
+    if(Object.keys(cut).length) h+='<div class="small" style="margin-top:6px">紅色劃線＝建議 cut（最長／排尾優先，機械準則可自行調換）</div>';
+  }
+  var extra=[];
+  if(r.platform==='threads'&&r.max_chars&&r.chars>r.max_chars){
+    extra.push('⚠️ Threads 超 500 唔係出唔到——2026-05 起會 auto-split 自動拆做 linked posts「跌落」thread 下方；自己控制拆位好過畀佢亂拆');
+  }
+  if(r.issues.length||extra.length) h+='<ul class="iss">'+r.issues.concat(extra).map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>';
+  if(r.fold_preview){
+    h+='<div class="fold">'+esc(r.fold_preview)+' <b>……more</b><br><b>↑ 讀者喺 feed 淨係見到呢啲（'+r.fold_chars+' 字元摺疊位）</b></div>';
+  }
+  return h+'</div>';
+}
+document.getElementById('go').onclick=function(){
+  var t=document.getElementById('cap').value;
+  if(!t.trim()){alert('未貼 caption');return}
+  var st=document.getElementById('stat');st.textContent='check 緊…';
+  this.disabled=true;var btn=this;
+  jsonp('text='+encodeURIComponent(t)+'&platform=all',function(d){
+    btn.disabled=false;st.textContent='';
+    if(d.error){st.textContent=d.error;return}
+    var order=['ig','fb','threads','linkedin'];
+    document.getElementById('out').innerHTML=order.map(function(p){return d[p]?cardHtml(d[p]):''}).join('');
+  });
+};
+// 媒體規格唯讀卡
+jsonp('mode=media',function(rows){
+  var el=document.getElementById('media');
+  if(rows.error||!rows.length){el.innerHTML='<div class="empty">'+esc(rows.error||'暫無資料')+'</div>';return}
+  var h='<table><tr><th>平台</th><th>格式</th><th>比例</th><th>建議px</th><th>片長上限</th><th>圖上限</th><th>檔案</th><th>safe area</th></tr>';
+  rows.forEach(function(r){
+    h+='<tr><td>'+esc(NAMES[r.platform]||r.platform)+'</td><td>'+esc(r.format)+'</td><td>'+esc(r.ratio)+'</td><td>'+esc(r.rec_px)+'</td><td>'+(r.max_duration_s?esc(r.max_duration_s)+'s':'—')+'</td><td>'+(r.max_images?esc(r.max_images)+'張':'—')+'</td><td>'+esc(r.max_filesize||'—')+'</td><td>'+esc(r.safe_area_note||'—')+'</td></tr>';
+  });
+  el.innerHTML=h+'</table><div class="small" style="margin-top:8px">⚠️ safe area：top14%_bottom35%_sides6% ＝ 9:16 直片上 14%／下 35%／側 6% 唔好放字幕 logo CTA（2026-03 Meta 統一四 placement）</div>';
+});
+</script>
+</body>
+</html>

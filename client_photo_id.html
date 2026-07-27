@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang='zh-HK'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>客戶相 → 產品識別</title><style>*{box-sizing:border-box}body{margin:0;background:#f4f5f7;color:#1b1f27;font:16px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:20px 15px 90px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap}
+h1{font-size:23px;font-weight:800;margin:6px 0 2px}.sub{color:#717784;font-size:13px;margin-bottom:14px}
+.hdrbtns{flex:none;display:flex;gap:7px}
+.homebtn,.refbtn{flex:none;font-size:16px;line-height:1;text-decoration:none;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:5px 9px;cursor:pointer}
+.card{background:#fff;border:1px solid #e7e9ee;border-radius:15px;padding:16px 18px;margin:12px 0;box-shadow:0 1px 2px rgba(20,24,40,.04),0 4px 14px rgba(20,24,40,.05)}
+h2{font-size:16px;font-weight:800;margin:24px 0 8px;border-left:4px solid #d97706;padding-left:9px}
+.introw{display:flex;gap:9px;align-items:stretch;flex-wrap:wrap}
+#folder{flex:1;min-width:240px;font-size:14px;padding:10px 12px;border:1px solid #dcdfe6;border-radius:10px}
+.pri{background:#4f46e5;color:#fff;border:0;border-radius:10px;font-size:14px;font-weight:700;padding:10px 18px;cursor:pointer}
+.pri:disabled{background:#c7c9d6;cursor:not-allowed}
+.hint{color:#717784;font-size:12.5px;margin-top:8px}
+#bar{height:6px;background:#eef0f3;border-radius:99px;overflow:hidden;margin:12px 0 0;display:none}
+#bar>i{display:block;height:100%;width:8%;background:#4f46e5;border-radius:99px;animation:creep 18s ease-out forwards}
+@keyframes creep{to{width:92%}}
+#bar.done>i{width:100%;animation:none;transition:width .4s}
+#stat{font-size:13px;color:#4f46e5;font-weight:700;margin-top:8px;display:none}
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:4px}
+th,td{border:1px solid #eef0f3;padding:6px 8px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-weight:700;white-space:nowrap}
+.yes{color:#0A7D3F;font-weight:700}.no{color:#EE382F;font-weight:700}
+.cf-高{color:#0A7D3F}.cf-中{color:#b45309}.cf-低{color:#EE382F}
+a.lk{color:#4f46e5;text-decoration:none}a.lk:hover{text-decoration:underline}
+.empty{color:#717784;font-size:13px;padding:10px}
+footer{color:#717784;font-size:12px;border-top:1px solid #e7e9ee;margin-top:30px;padding-top:13px}</style></head><body><div class='wrap'>
+<div class='titlerow'><h1>📸 客戶相 → 產品識別</h1>
+<span class='hdrbtns'><a class='homebtn' href='index.html' title='總目錄'>🏠</a>
+<button class='refbtn' onclick="location.href=location.pathname+'?t='+Date.now()" title='重新載入'>🔄</button></span></div>
+<div class='sub'>貼一個 Google Drive folder link（入面放客戶產品相）→ 送出 → 識別產品 + 華文網（香港／惠康／台灣／淘寶）搵正確叫法。自動更新 2026-06-29 22:17 HKT</div>
+<h2>① 貼客戶相 folder</h2>
+<div class='card'>
+<div class='introw'><input id='folder' placeholder='貼 Google Drive folder link（drive.google.com/drive/folders/…）'>
+<button class='pri' id='go'>送出 ⏎</button></div>
+<div id='bar'><i></i></div><div id='stat'></div>
+<div class='hint'>📌 folder 要 share 到「有連結可看」。客戶相未必喺惠康網店有（offline 限定都搵到台／淘叫法）。
+要主機開住 <code>pipeline_listener</code>（你經 AnyDesk 喺本機就 OK）。</div>
+</div>
+<h2>② 識別結果</h2>
+<div class='card' style='overflow-x:auto'>
+<table><thead><tr><th>客戶相</th><th>識別產品</th><th>品牌</th><th>香港叫法</th><th>惠康有冇</th><th>台灣叫法</th><th>淘寶/天貓</th><th>信心</th><th>備註</th></tr></thead>
+<tbody id='tb'><tr><td colspan=9 class='empty'>未有結果 —— 貼 Drive folder link 送出。</td></tr></tbody></table></div>
+<footer>⚠️ AI 初稿，撞名／offline 限定要人手覆核。引擎：Gemini Flash 識別 + 華文網 grounding（香港／惠康／台灣／淘寶，Serper）。</footer>
+<script>
+const LB="http://localhost:8899";
+function esc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function lk(u,t){return u?("<a class='lk' href='"+esc(u)+"' target='_blank'>"+esc(t||'連結')+"</a>"):esc(t||'');}
+function render(rows){
+ const tb=document.getElementById('tb');
+ if(!rows||!rows.length){tb.innerHTML="<tr><td colspan=9 class='empty'>未有結果 —— 貼 Drive folder link 送出。</td></tr>";return;}
+ tb.innerHTML=rows.map(r=>{
+  const has=(r.wellcome_has||'').indexOf('有')>=0;
+  return "<tr><td>"+esc(r.img_name)+"</td><td><b>"+esc(r.product)+"</b></td><td>"+esc(r.brand)+"</td>"+
+   "<td>"+esc(r.hk_name)+(r.hk_link?"<br>"+lk(r.hk_link,'香港連結'):'')+"</td>"+
+   "<td class='"+(has?'yes':'no')+"'>"+esc(r.wellcome_has||'?')+(r.wellcome_link?"<br>"+lk(r.wellcome_link,'惠康連結'):'')+"</td>"+
+   "<td>"+esc(r.tw_name)+"</td><td>"+esc(r.taobao_name)+"</td>"+
+   "<td class='cf-"+esc(r.confidence)+"'>"+esc(r.confidence)+"</td><td>"+esc(r.note)+"</td></tr>";
+ }).join('');
+}
+let poll=null;
+function setBusy(b){document.getElementById('go').disabled=b;
+ document.getElementById('bar').style.display=b?'block':'none';
+ document.getElementById('stat').style.display=b?'block':'none';}
+async function status(){
+ try{const r=await fetch(LB+'/photoid?action=status&t='+Date.now());const j=await r.json();
+  render(j.rows||[]);
+  if(j.running){document.getElementById('stat').textContent='⏳ 識別緊…（以圖搜圖 + 華文網 grounding，每張相要陣）';}
+  else{clearInterval(poll);poll=null;setBusy(false);
+   const bar=document.getElementById('bar');bar.classList.add('done');
+   document.getElementById('stat').style.display='block';
+   document.getElementById('stat').textContent=j.err?('✗ '+j.err):('✅ 完成 '+(j.n||0)+' 件 · '+(j.ts||''));
+   setTimeout(()=>{bar.style.display='none';bar.classList.remove('done');},1500);}
+ }catch(e){}
+}
+async function go(){
+ const f=document.getElementById('folder').value.trim();
+ if(!f){alert('貼個 Google Drive folder link');return;}
+ setBusy(true);document.getElementById('stat').textContent='送緊…';
+ try{
+  const r=await fetch(LB+'/photoid?folder='+encodeURIComponent(f));const j=await r.json();
+  if(!r.ok||j.err){document.getElementById('stat').textContent='✗ '+(j.err||r.status);setBusy(false);return;}
+  if(!poll)poll=setInterval(status,5000);status();
+ }catch(e){document.getElementById('stat').textContent='✗ 連唔到 listener（要喺本機開住 pipeline_listener）';setBusy(false);}
+}
+// draft 持久 + 開頭 load 現有結果
+window.addEventListener('DOMContentLoaded',()=>{
+ const fi=document.getElementById('folder');
+ fi.value=localStorage.getItem('photoid_folder')||'';
+ fi.addEventListener('input',()=>localStorage.setItem('photoid_folder',fi.value));
+ document.getElementById('go').addEventListener('click',go);
+ status();
+});
+</script>
+</div></body></html>

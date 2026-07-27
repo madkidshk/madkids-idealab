@@ -1,0 +1,26 @@
+{
+  "dept": "LABOUR",
+  "slots": [
+    {
+      "slot": 1,
+      "query": "勞工處 標誌",
+      "file": "assets/refs/LABOUR/logos/slot1.png",
+      "title": "Full Stack網頁開發| Cozy Code Academy",
+      "w": 3284,
+      "h": 730,
+      "enabled": true
+    },
+    {
+      "slot": 2,
+      "query": "",
+      "file": "",
+      "title": "(空,可即場打字搵)"
+    },
+    {
+      "slot": 3,
+      "query": "",
+      "file": "",
+      "title": "(空,可即場打字搵)"
+    }
+  ]
+}

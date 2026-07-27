@@ -24,10 +24,23 @@ table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px}td,th{
 .idea{background:#f0fbf4;border-color:#bfe9cf}
 .reel{display:inline-block;background:#111;color:#fff;text-decoration:none;font-size:12.5px;font-weight:700;border-radius:8px;padding:6px 11px;margin-top:6px}
 .st{font-size:12px;color:#717784;margin-top:6px}
-footer{color:#717784;font-size:12px;border-top:1px solid #e7e9ee;margin-top:34px;padding-top:13px}</style></head><body><div class='wrap'>
-<div class='titlerow'><h1>📣 惠康 Wellcome — Social Dashboard</h1><span class='hdrbtns'><a class='homebtn' href='index.html' title='總目錄'>🏠</a><button class='refbtn' onclick="location.href=location.pathname+'?t='+Date.now()+location.hash" title='重新載入'>🔄</button></span></div>
-<div class='sub'>自動更新 2026-06-11 17:21 HKT　·　動作喺 Google Sheet 撳掣（有 confirm；Reel 一定人手撳）</div>
+.gate{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:11px;padding-top:11px;border-top:1px dashed #e7e9ee}
+.act{font-size:12.5px;font-weight:700;border:0;border-radius:9px;padding:8px 13px;cursor:pointer}
+.act.cf{background:#eef0fe;color:#3730a3}.act.cf.on{background:#e7f7ee;color:#15a34a}
+.act.deck{background:#111;color:#fff}.act.deck:disabled{background:#e7e9ee;color:#a3a8b3;cursor:not-allowed}
+.act.undo{background:#fff;color:#717784;border:1px solid #e7e9ee;font-weight:600}
+.cfby{font-size:11px;color:#717784}
+.deckok{font-size:12px;color:#15a34a;font-weight:700}
+footer{color:#717784;font-size:12px;border-top:1px solid #e7e9ee;margin-top:34px;padding-top:13px}
+#pidbar{display:none;height:6px;background:#eef0f3;border-radius:99px;overflow:hidden;margin:9px 0 0}
+#pidbar>i{display:block;height:100%;width:8%;background:#d97706;border-radius:99px;animation:pidcreep 16s ease-out forwards}
+#pidbar.done>i{width:100%;animation:none;transition:width .4s}
+@keyframes pidcreep{to{width:92%}}</style></head><body><!-- generated-by: 2026-05-28/notebooklm-bridge/scripts/lab_ui_shell.py --><div class='wrap'>
+<div class='titlerow'><h1>📣 惠康 Wellcome — Social Dashboard</h1><span class='hdrbtns'><a class='homebtn' href='.' title='總目錄'>🏠</a><button class='refbtn' onclick="location.href=location.pathname+'?t='+Date.now()+location.hash" title='重新載入'>🔄</button></span></div>
+<div class='sub'>自動更新 2026-07-04 01:50 HKT　·　PO 下面撳掣 CONFIRM creative+storyboard → 解鎖貼內部總 DECK（雲端，任何裝置）</div>
 <div class='bar'><a class='btn' href='https://docs.google.com/spreadsheets/d/1_raEl0mVc3U-bcq6JA6-pa4_j4fzcz-Cy7I3QiMLZe4/edit' target='_blank'>📊 開 Google Sheet 撳掣</a></div>
+<h2 style='border-left-color:#d97706'>📸 客戶相 → 產品識別（起點）</h2>
+<div class='card'><div style='display:flex;gap:8px;flex-wrap:wrap'><input id='pidfolder' placeholder='貼客戶相 Google Drive folder link…' style='flex:1;min-width:230px;font-size:14px;padding:9px 11px;border:1px solid #dcdfe6;border-radius:9px'><button class='act deck' onclick='pidGo(this)'>送出 ⏎</button></div><div id='pidbar'><i></i></div><div id='pidstat' class='st'></div><details style='margin-top:9px'><summary>識別結果（0）</summary><div style='overflow-x:auto'><table id='pidtb'><tr><th>相</th><th>產品</th><th>品牌</th><th>香港叫法</th><th>惠康</th><th>台灣</th><th>淘寶/天貓</th><th>信心</th><th>備註</th></tr><tr><td colspan=9 class='st'>未有 — 貼 folder link 送出</td></tr></table></div></details><div class='st'>客畀相做起點 → 識別產品 + 華文網（香港／惠康／台灣／淘寶）搵正確叫法。客戶相未必喺惠康網店有（offline 限定都搵到台/淘叫法）。📲 任何裝置（手機都得）貼 folder link 送出即入隊；主機識別緊，得閒返嚟睇結果即出。folder 要 share「有連結可看」。</div></div>
 <h2>💡 下月題材 BRAINSTORM · 2026-07</h2>
 <div class='card idea'><div class='po-h'><span class='hook'>1. 【動漫節生存物資包】打書釘前必囤糧</span><span class='tag'>建議 2 帖</span></div><div class='st'>🗓 2026年7月香港動漫電玩節（一般於7月底紅館旁會展舉行），人潮逼爆、排隊入場排到腳軟　·　🎯 用『陣營分類』玩法，將零食飲品包裝成『排隊黨 / 打書釘黨 / Cosplay 黨 / 手辦黨』四大生存物資清單，叫粉絲對號入座；唔直呼任何動漫 IP，純用『補給站』概念抽水</div><div class='prod'>🛒 卡樂B薯片、Meadows 話題口味薯片、紅牛能量飲品、UCC咖啡、可口可樂、四洲紫菜芥末味，主打『一手揸住、唔怕陣腳大亂』的方便零食</div><div class='st'>💡 動漫節係 7 月香港年輕人最大盛事，啱晒惠康年輕受眾；陣營分類正正係客戶最受落 angle，又可避開版權雷區</div></div>
 <div class='card idea'><div class='po-h'><span class='hook'>2. 【書展打卡 brunch 救星】文青入場前嘅優雅早餐</span><span class='tag'>建議 1 帖</span></div><div class='st'>🗓 2026年7月香港書展（通常7月中於會展舉行），打書釘行到頭暈眼花，需要快靚正補給　·　🎯 唔好硬銷，用『小編一齊去書展』語氣，講排隊期間用 YOZM 希臘乳酪做『文青 brunch』，高蛋白食得有風格仲似忌廉芝士，iF設計獎包裝啱晒打卡放上 IG</div><div class='prod'>🛒 YOZM 希臘乳酪（士多啤梨/藍莓/濟州抹茶/低糖布冧）、早晨微笑牧場漢拿峰柑橘味乳酪</div><div class='st'>💡 書展受眾＝文青＝重視 packaging 同打卡；乳酪係 Notebook 主推產品，高蛋白可講客觀成分唔踩健康聲明紅線</div></div>
@@ -65,7 +78,7 @@ footer{color:#717784;font-size:12px;border-top:1px solid #e7e9ee;margin-top:34px
 
 #惠康 #Wellcome #世界盃 #WorldCup2026 #睇波必備 #睇波美食 #重口味陣營 #戰術板</div><details><summary>🛒 片中真產品（8）</summary><ul class='prod'><li>亨氏有機茄汁397GM</li><li>地捫原味茄汁340GM</li><li>樂魚牌茄汁沙甸魚155GM</li><li>百得阿姨香辣番茄意粉醬400GM (新舊包裝隨機發送)</li><li>芫茜1PK</li><li>公仔芫茜豬肉餃6PC</li><li>萬意牌法式芥末籽醬210GM</li><li>四洲紫菜芥末味100PC</li></ul></details><div class='st'>🚩 MED
 ⚠ [health_claim] 養生／功效暗示字眼（出客前核）：提神
-→ 如客戶介意，改成中性成分描述</div><div class='st'>狀態：draft</div></div>
+→ 如客戶介意，改成中性成分描述</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(1,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(1,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(1,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
 <div class='card'><div class='po-h'><span class='hook'>【⚽世界盃重口味陣容！絕密名單率先流出🤫】</span><span class='tag'>Instagram</span><span class='tag'>NBLM</span><span class='gk ok'>OK</span></div><div class='st'>PO2 · 世界盃 totebag · 預熱 teaser</div><div class='cap'>【⚽世界盃重口味陣容！絕密名單率先流出🤫】
 
 世界盃就快開波啦！大家嘅胃口熱好身未呢？🍻 我哋惠康教練團秘密搞緊個「重口味睇波神物」集訓營，準備為大家送上三大極端陣營！🤩 今日一於等我哋率先劇透少少初選名單，等大家熱定身、揀定心水愛將啦！👇
@@ -87,7 +100,7 @@ footer{color:#717784;font-size:12px;border-top:1px solid #e7e9ee;margin-top:34px
 緊貼我哋最新動向:
 👉 WhatsApp頻道 https://bit.ly/4dISWRR
 
-#惠康 #Wellcome #世界盃 #WorldCup2026 #睇波必備 #重口味陣營 #絕密流出 #睇波美食</div><details><summary>🛒 片中真產品（8）</summary><ul class='prod'><li>亨氏有機茄汁397GM</li><li>地捫原味茄汁340GM</li><li>樂魚牌茄汁沙甸魚155GM</li><li>百得阿姨香辣番茄意粉醬400GM (新舊包裝隨機發送)</li><li>芫茜1PK</li><li>公仔芫茜豬肉餃6PC</li><li>萬意牌法式芥末籽醬210GM</li><li>四洲紫菜芥末味100PC</li></ul></details><div class='st'>狀態：draft</div></div>
+#惠康 #Wellcome #世界盃 #WorldCup2026 #睇波必備 #重口味陣營 #絕密流出 #睇波美食</div><details><summary>🛒 片中真產品（8）</summary><ul class='prod'><li>亨氏有機茄汁397GM</li><li>地捫原味茄汁340GM</li><li>樂魚牌茄汁沙甸魚155GM</li><li>百得阿姨香辣番茄意粉醬400GM (新舊包裝隨機發送)</li><li>芫茜1PK</li><li>公仔芫茜豬肉餃6PC</li><li>萬意牌法式芥末籽醬210GM</li><li>四洲紫菜芥末味100PC</li></ul></details><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(2,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(2,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(2,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
 <div class='card'><div class='po-h'><span class='hook'>【⚽重口味神物公投！留言撐你專屬陣營🏆】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk med'>MED</span></div><div class='st'>PO3 · 世界盃 totebag · 互動參與 / UGC</div><div class='cap'>【⚽重口味神物公投！留言撐你專屬陣營🏆】
 
 世界盃激戰連場，睇波點少得重口味美食加持？🍻 我哋為大家準備咗三大「睇波神物陣營」，今次唔講戰術，淨係講你對口味嘅忠誠度！即刻喺留言區一人一票，話畀我哋知你最撐邊隊啦！👇
@@ -111,7 +124,7 @@ footer{color:#717784;font-size:12px;border-top:1px solid #e7e9ee;margin-top:34px
 
 #惠康 #Wellcome #世界盃 #WorldCup2026 #睇波必備 #重口味陣營 #球迷公投 #睇波美食</div><details><summary>🛒 片中真產品（8）</summary><ul class='prod'><li>亨氏有機茄汁397GM</li><li>地捫原味茄汁340GM</li><li>樂魚牌茄汁沙甸魚155GM</li><li>百得阿姨香辣番茄意粉醬400GM (新舊包裝隨機發送)</li><li>芫茜1PK</li><li>公仔芫茜豬肉餃6PC</li><li>萬意牌法式芥末籽醬210GM</li><li>四洲紫菜芥末味100PC</li></ul></details><div class='st'>🚩 MED
 ⚠ [health_claim] 養生／功效暗示字眼（出客前核）：提神
-→ 如客戶介意，改成中性成分描述</div><div class='st'>狀態：draft</div></div>
+→ 如客戶介意，改成中性成分描述</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(3,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(3,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(3,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
 <div class='card'><div class='po-h'><span class='hook'>【**致敬型佬老竇👨🏻父親節最強禮物陣出擊**】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk med'>MED</span></div><div class='st'>PO4 · 父親節 · 主打賣點</div><div class='cap'>【**致敬型佬老竇👨🏻父親節最強禮物陣出擊**】
 
 就快又到父親節啦！年年送禮都R爆頭？🤔 其實爸爸最需要嘅，可能就係你花心思為佢準備嘅 Me Time！今年我哋為大家準備咗一個「父親節最強心意禮物陣」，無論你爸爸係品味型佬、無酒不歡定係實用主義者，今次都同你逐一拆解佢哋嘅必殺賣點，保證實有一款啱佢心水！即刻揀定禮物氹老竇開心啦！👇
@@ -138,7 +151,7 @@ footer{color:#717784;font-size:12px;border-top:1px solid #e7e9ee;margin-top:34px
 
 #惠康 #Wellcome #父親節 #父親節禮物 #致敬爸爸 #超人老豆 #型佬必備 #心意之選</div><details><summary>🛒 片中真產品（8）</summary><ul class='prod'><li>尊尼獲加藍牌威士忌750ML</li><li>原箱芝華士12年威士忌12 X 70 CL</li><li>加拿大會所調和威士忌750ML</li><li>吉列f5+1刮鬍刀1SET</li><li>藍妹啤酒罐裝12 X 330ML (包裝隨機發放)</li><li>原箱海特他拿啤酒6罐裝4 X 500 ML</li><li>阿華田金裝3合1咖啡10PC</li><li>Illy 深焙咖啡豆250GM</li></ul></details><div class='st'>🚩 MED
 ⚠ [health_claim] 養生／功效暗示字眼（出客前核）：提神
-→ 如客戶介意，改成中性成分描述</div><div class='st'>狀態：draft</div></div>
+→ 如客戶介意，改成中性成分描述</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(4,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(4,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(4,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
 <div class='card'><div class='po-h'><span class='hook'>【**🇰🇷韓國乳酪狂熱！微醺冰爽甜品陣登場✨**】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk hi'>HIGH_RISK</span></div><div class='st'>PO5 · 韓國乳酪 YOZM 乳（包括另一隻韓國乳酪） · 主打賣點</div><div class='cap'>【**🇰🇷韓國乳酪狂熱！微醺冰爽甜品陣登場✨**】
 
 韓風乳酪熱潮直捲全城！🤩 繼正宗韓國 YOZM 乳酪大受歡迎之後，我哋知大家對韓國乳酪已經愛不釋手！今次特別為大家準備咗一個「韓國乳酪冰爽甜品陣」，由微醺米酒到透心涼雪糕，款款都賣點十足，等我哋同你逐一解鎖呢份韓式甜蜜滋味啦！👇
@@ -164,7 +177,7 @@ footer{color:#717784;font-size:12px;border-top:1px solid #e7e9ee;margin-top:34px
 ⚠ (AI) official_naming(MED):YOZM 產品未用標準全名『Plain Greek Yogurt with Strawberry Compote』，亦見『真露韓國乳酪菌米酒』官方命名宜核實
 ⚠ (AI) health_claim:『極速幫你解暑』『解暑』屬功效暗示，需移除
 ⚠ (AI) ip_copyright:借競爭對手品牌記憶點『Binggrae』直接寫對手商標名，應改擦邊球(例:韓國國民級藍莓乳酪雪糕)，hashtag #Binggrae 同樣違規
-→ 移除『解暑』等功效字眼、用YOZM標準全名，並將Binggrae改為擦邊球描述如『韓國國民級藍莓乳酪雪糕』</div><div class='st'>狀態：draft</div></div>
+→ 移除『解暑』等功效字眼、用YOZM標準全名，並將Binggrae改為擦邊球描述如『韓國國民級藍莓乳酪雪糕』</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(5,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(5,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(5,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
 <div class='card'><div class='po-h'><span class='hook'>【**🐉端午必食指南：8大糭陣賣點解碼！**】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk med'>MED</span></div><div class='st'>PO6 · 端午節 · 主打賣點</div><div class='cap'>【**🐉端午必食指南：8大糭陣賣點解碼！**】
 
 端午節又到啦！今年你準備好食咩糭未呢？🤤 我哋惠康為大家搜羅咗全城最正嘅「端午最強糭陣」！無論你係傳統派、甜食控定係追求破格口味，今次呢個超強排陣絕對滿足到你！即刻同你逐一解碼各路好漢嘅必殺賣點，揀定心水準備過節啦！🛶
@@ -191,7 +204,7 @@ footer{color:#717784;font-size:12px;border-top:1px solid #e7e9ee;margin-top:34px
 
 #惠康 #Wellcome #端午節 #端午必食 #端午佳節 #最強糭陣 #糭有你心水 #節日限定</div><details><summary>🛒 片中真產品（8）</summary><ul class='prod'><li>家湯加餸鹹肉裹蒸糭650克</li><li>陳記點心鮑魚瑤柱豚肉糭280 GM</li><li>家湯加餸西米奶黃糭200克</li><li>翠山牌貓山王榴槤水晶糭2PC</li><li>家湯加餸田園五穀糭250克</li><li>美心精緻裹蒸粽400GM</li><li>思念黑松露豬肉爆料粽280GM</li><li>御品皇精選鹹蛋4 PC</li></ul></details><div class='st'>🚩 MED
 ⚠ [health_claim] 養生／功效暗示字眼（出客前核）：養生
-→ 如客戶介意，改成中性成分描述</div><div class='st'>狀態：draft</div></div>
+→ 如客戶介意，改成中性成分描述</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(6,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(6,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(6,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
 <div class='card'><div class='po-h'><span class='hook'>【**玩具派對大爆發🎉零食主角賣點解碼**】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk hi'>HIGH_RISK</span></div><div class='st'>PO7 · 反斗奇兵 · 主打賣點</div><div class='cap'>【**玩具派對大爆發🎉零食主角賣點解碼**】
 
 打開屋企個玩具箱，除咗搵返昔日嘅小玩伴，仲可以搵到啲咩驚喜？🤩 今次我哋為大家精心準備咗一個「玩具大冒險」零食陣容！每一款零食都代表住一位經典玩伴，各有獨特賣點，保證一食就勾起你嘅歡樂回憶！即刻同你逐一解碼啦！👇
@@ -221,6 +234,69 @@ footer{color:#717784;font-size:12px;border-top:1px solid #e7e9ee;margin-top:34px
 ⚠ (AI) ip_copyright:標題及內文借用反斗奇兵/玩具總動員IP，『玩具總動員果汁軟糖』直接出現受版權保護電影商標名稱，『西部警長』『牧羊女』『外星小夥伴』為受保護角色暗示，需用惠康有售零食暗示角色而非IP角色名
 ⚠ (AI) ip_copyright:hashtag #JoyStory 為Toy Story擦邊但仍屬IP聯想，須審慎
 → 刪走商標／角色名，只用惠康零食暗示角色；如係聯乘記得叫法務睇
-→ 刪除『玩具總動員』商標名及Toy Story角色名(警長/牧羊女等)，全部改用惠康在售零食作角色暗示(例:珍珍牛仔片=Woody)</div><div class='st'>狀態：draft</div></div>
-<footer>⚠️ AI 初稿，出客前 Raymond gatekeep（HIGH_RISK 必改）。做帖/storyboard/Reel/改稿喺 Google Sheet 菜單撳（Reel 一定人手 confirm）。</footer>
+→ 刪除『玩具總動員』商標名及Toy Story角色名(警長/牧羊女等)，全部改用惠康在售零食作角色暗示(例:珍珍牛仔片=Woody)</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(7,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(7,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(7,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
+<footer>⚠️ AI 初稿，出客前 Raymond gatekeep（HIGH_RISK 必改）。每 PO 喺下面撳 ① Confirm Creative + ② Confirm Storyboard，兩樣 ✅ 先解鎖 ③ 貼上內部總 DECK。<br>⚠️ 撳掣經雲端入隊，任何裝置都得；主機處理緊，約 10 秒後更新。總 DECK 係內部，唔好畀客。</footer>
+<script>
+const ACT="act.php", CLIENT="wellcome";
+function toast(m,ok){let t=document.createElement('div');t.textContent=m;
+ t.style.cssText='position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:99;'+
+ 'background:'+(ok?'#15a34a':'#dc2626')+';color:#fff;font-weight:700;font-size:13px;'+
+ 'padding:11px 18px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.25)';
+ document.body.appendChild(t);setTimeout(()=>t.remove(),3200);}
+async function soc(stage,po,engine,btn){
+ if(btn)btn.disabled=true;
+ try{
+  const u=ACT+'?push=1&route=social&client='+encodeURIComponent(CLIENT)+'&stage='+stage+'&po='+po+
+    (engine?'&engine='+encodeURIComponent(engine):'')+'&by=cloud';
+  const r=await fetch(u,{method:'GET'});const j=await r.json();
+  if(!r.ok||j.err){toast('✗ '+(j.err||r.status),false);if(btn)btn.disabled=false;return false;}
+  return true;
+ }catch(e){toast('✗ 送唔到（網絡）',false);if(btn)btn.disabled=false;return false;}
+}
+async function confirmCreative(po,btn){if(await soc('socconfirm',po,'creative',btn)){
+  toast('✅ 已入隊 Creative — 主機處理緊，約 10 秒後自動更新',true);setTimeout(()=>location.reload(),11000);}}
+async function confirmBoard(po,btn){if(await soc('socconfirm',po,'storyboard',btn)){
+  toast('✅ 已入隊 Storyboard — 約 10 秒後自動更新',true);setTimeout(()=>location.reload(),11000);}}
+async function pasteDeck(po,btn){
+  if(!confirm('PO'+po+'：貼 BD frames 入【內部總 DECK】？(客戶睇唔到，總DECK 唔好畀客)'))return;
+  if(await soc('socdeck',po,'',btn)){toast('🚀 已入隊 — 主機貼緊入總 DECK(render+貼,要陣)…',true);}
+}
+// 📸 客戶相→產品識別
+function pidEsc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function pidRender(rows){const tb=document.getElementById('pidtb');if(!tb)return;
+ const head="<tr><th>相</th><th>產品</th><th>品牌</th><th>香港叫法</th><th>惠康</th><th>台灣</th><th>淘寶/天貓</th><th>信心</th><th>備註</th></tr>";
+ if(!rows||!rows.length){tb.innerHTML=head+"<tr><td colspan=9 class='st'>未有 — 貼 folder link 送出</td></tr>";return;}
+ tb.innerHTML=head+rows.map(r=>{const has=(r.wellcome_has||'').indexOf('有')>=0;
+  const a=(u,t)=>u?(" <a class='reel' style='padding:2px 7px' href='"+pidEsc(u)+"' target=_blank>"+t+"</a>"):"";
+  return "<tr><td>"+pidEsc(r.img_name)+"</td><td><b>"+pidEsc(r.product)+"</b></td><td>"+pidEsc(r.brand)+"</td>"+
+   "<td>"+pidEsc(r.hk_name)+a(r.hk_link,'連結')+"</td><td style='color:"+(has?'#0A7D3F':'#EE382F')+";font-weight:700'>"+
+   pidEsc(r.wellcome_has||'?')+a(r.wellcome_link,'惠康')+"</td><td>"+pidEsc(r.tw_name)+"</td><td>"+pidEsc(r.taobao_name)+
+   "</td><td>"+pidEsc(r.confidence)+"</td><td>"+pidEsc(r.note)+"</td></tr>";}).join('');}
+// 雲端 queue（任何裝置都觸發到，唔靠本機）：共用 act.php（route=photoid），同 social/authfix 同一條 bus
+function pidFolderId(s){s=(s||'').trim();let m=s.match(/\/folders\/([A-Za-z0-9_-]{20,})/)||s.match(/[?&]id=([A-Za-z0-9_-]{20,})/);
+ if(m)return m[1];if(/^[A-Za-z0-9_-]{20,}$/.test(s))return s;return '';}
+let pidPoll=null;
+function pidBar(on){const b=document.getElementById('pidbar');if(!b)return;
+ if(on){b.style.display='block';b.classList.remove('done');}else{b.classList.add('done');setTimeout(()=>{b.style.display='none';b.classList.remove('done');},600);}}
+async function pidStatus(){try{const r=await fetch(ACT+'?action=status&topic=photoid&t='+Date.now());const j=await r.json();
+ pidRender(j.rows||[]);const s=document.getElementById('pidstat');const st=j.state||{};
+ if(st.running){pidBar(true);s.textContent='⏳ 識別緊…（每張相要陣，得閒先返嚟睇都得）';
+   if(!pidPoll)pidPoll=setInterval(pidStatus,5000);}
+ else{if(pidPoll){clearInterval(pidPoll);pidPoll=null;}pidBar(false);
+   s.textContent=st.ts?('✅ 最近更新 '+(st.n!=null?st.n+' 件 · ':'')+st.ts):'';}
+ }catch(e){}}
+async function pidGo(btn){const raw=document.getElementById('pidfolder').value.trim();
+ const fid=pidFolderId(raw);
+ if(!fid){toast('貼客戶相 Google Drive folder link（要 share 到有連結可看）',false);return;}
+ btn.disabled=true;pidBar(true);document.getElementById('pidstat').textContent='送緊…';
+ try{const r=await fetch(ACT+'?push=1&route=photoid&folder='+encodeURIComponent(fid));const j=await r.json();
+  if(!r.ok||j.err){pidBar(false);document.getElementById('pidstat').textContent='✗ '+(j.err||r.status);btn.disabled=false;return;}
+  toast('📸 已入隊 — 主機識別緊',true);document.getElementById('pidstat').textContent='⏳ 已入隊，識別緊…（每張相要陣）';
+  if(!pidPoll)pidPoll=setInterval(pidStatus,5000);pidStatus();
+ }catch(e){pidBar(false);document.getElementById('pidstat').textContent='✗ 送唔到（網絡）';}
+ finally{btn.disabled=false;}}
+(function(){const fi=document.getElementById('pidfolder');if(fi){fi.value=localStorage.getItem('pidfolder_wellcome')||'';
+ fi.addEventListener('input',()=>localStorage.setItem('pidfolder_wellcome',fi.value));pidStatus();
+ if(!pidPoll)pidPoll=setInterval(pidStatus,8000);}})();
+</script>
 </div></body></html>
