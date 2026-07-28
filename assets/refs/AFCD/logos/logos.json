@@ -1,0 +1,26 @@
+{
+  "dept": "AFCD",
+  "slots": [
+    {
+      "slot": 1,
+      "query": "香港 AFCD 部門標誌",
+      "file": "assets/refs/AFCD/logos/slot1.png",
+      "title": "AFCD launches Hong Kong Biodiversity Information H",
+      "w": 2982,
+      "h": 3127,
+      "enabled": true
+    },
+    {
+      "slot": 2,
+      "query": "",
+      "file": "",
+      "title": "(空,可即場打字搵)"
+    },
+    {
+      "slot": 3,
+      "query": "",
+      "file": "",
+      "title": "(空,可即場打字搵)"
+    }
+  ]
+}

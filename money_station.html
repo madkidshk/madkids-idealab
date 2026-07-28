@@ -46,8 +46,12 @@ textarea{width:100%;border:1px solid #dcdffb;border-radius:8px;padding:8px;font-
 .resultcard h3{margin:0 0 8px;font-size:15px}
 .kv{display:grid;grid-template-columns:110px 1fr;gap:4px 8px;font-size:13px;margin-bottom:8px}
 .kv b{color:#555;font-weight:600}
-.links a{display:inline-block;margin:2px 8px 2px 0;font-size:12.5px;color:#4f46e5;text-decoration:none;background:#eef0fe;padding:4px 9px;border-radius:7px}
+.links a{display:inline-block;margin:2px 8px 2px 0;font-size:13px;color:#4f46e5;text-decoration:none;background:#eef0fe;padding:4px 9px;border-radius:7px}
 .warnlist{font-size:12px;color:#b45309;margin-top:6px}
+/* 統一結果卡表格：固定欄寬（全卡對齊）+ 內容自動換行防溢出 */
+.resultcard table{table-layout:fixed}
+.resultcard table th,.resultcard table td{word-break:break-word;overflow-wrap:anywhere;font-size:13px}
+.resultcard .kv b{font-size:13px}
 .warnlist div{margin-bottom:2px}
 .spin{display:inline-block;width:14px;height:14px;border:2px solid #dcdffb;border-top-color:#4f46e5;border-radius:50%;animation:sp .8s linear infinite;vertical-align:middle;margin-right:6px}
 @keyframes sp{to{transform:rotate(360deg)}}
@@ -253,7 +257,9 @@ function csvCols(row){
 }
 function esc(s){ return String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
 function renderResults(rows) {
-  resultsEl.innerHTML = rows.map(r => {
+  // 2026-07-27：按開單日排序，新單喺上、最舊喺最底（Raymond）
+  const _k = r => String(r.invoice_date || r.ts || '');
+  resultsEl.innerHTML = rows.slice().sort((a,b)=>_k(b).localeCompare(_k(a))).map(r => {
     if (r.need_manual) {
       return `<div class="resultcard manual">
         <h3>⚠️ ${esc(r.source_file) || '?'} <span class="pill warn">需要人手處理</span></h3>
@@ -263,10 +269,11 @@ function renderResults(rows) {
     }
     const warns = (r.warnings||[]).map(w => `<div>⚠️ ${esc(w)}</div>`).join('');
     const c = csvCols(r.row);
-    const paid = r.paid_remark || '';
+    const paid = r.paid_remark || '未查';
     const paidCls = paid.indexOf('可能已找')===0 ? 'warn' : (paid.indexOf('未找')===0 ? 'ok' : 'warn');
     const amtNum = c ? Number(String(c.amount).replace(/[^0-9.]/g,'')) : 0;
     const table = c ? `<table style="width:100%;border-collapse:collapse;margin:6px 0;font-size:13px">
+        <colgroup><col style="width:9%"><col style="width:13%"><col style="width:22%"><col style="width:31%"><col style="width:15%"><col style="width:10%"></colgroup>
         <tr style="background:#f3f4f6;text-align:left">
           <th style="padding:5px 8px;border:1px solid #e5e7eb">類型</th>
           <th style="padding:5px 8px;border:1px solid #e5e7eb">Bank Code</th>
@@ -281,15 +288,16 @@ function renderResults(rows) {
           <td style="padding:5px 8px;border:1px solid #e5e7eb">${esc(c.name)}</td>
           <td style="padding:5px 8px;border:1px solid #e5e7eb;text-align:right;font-weight:600">HK$${amtNum.toLocaleString()}</td>
           <td style="padding:5px 8px;border:1px solid #e5e7eb;font-family:monospace">${esc(c.ref)}</td></tr>
-      </table>` : `<div style="font-family:monospace;font-size:12px">${esc(r.row)}</div>`;
+      </table>` : `<div style="font-family:monospace;font-size:13px">${esc(r.row)}</div>`;
     return `<div class="resultcard">
       <h3>✅ ${esc(r.source_file)} <span class="pill ok">已生成 AutoPay CSV</span></h3>
       ${table}
-      ${r.due_date ? `<div class="kv"><b>⏰ 找數限期</b><span style="font-weight:700;color:#b45309">${esc(r.due_date)}</span></div>` : ''}
-      ${paid ? `<div class="kv"><b>🏦 找數狀態</b><span class="pill ${paidCls}">${esc(paid)}</span></div>` : ''}
-      <div class="kv"><b>建議Payslip名</b><span style="font-family:monospace;font-size:12px">${esc(r.payslip_filename)}</span></div>
+      <div class="kv"><b>⏰ 找數限期</b><span style="font-weight:700;color:#b45309">${esc(r.due_date || '冇印')}</span></div>
+      <div class="kv"><b>🏦 找數狀態</b><span class="pill ${paidCls}">${esc(paid)}</span></div>
+      <div class="kv"><b>建議Payslip名</b><span style="font-family:monospace;font-size:13px">${esc(r.payslip_filename)}</span></div>
       <div class="links">
         ${r.csv_download_link ? `<a href="${esc(r.csv_download_link)}" target="_blank">⬇️ 下載CSV</a>` : ''}
+        ${r.invoice_link ? `<a href="${esc(r.invoice_link)}" target="_blank">📄 睇返張單</a>` : ''}
         ${r.archive_link ? `<a href="${esc(r.archive_link)}" target="_blank">📁 發票已歸檔</a>` : `<span class="pill">${esc(r.archive_note)||'等 payslip 出現先自動歸檔'}</span>`}
       </div>
       <div class="warnlist">${warns}</div>
