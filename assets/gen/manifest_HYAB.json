@@ -1,0 +1,337 @@
+{
+  "dept": "HYAB",
+  "concepts": {
+    "B": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260728-223335-nblm-i2",
+            "sheet": "assets/gen/HYAB_B/v20260728-223335-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/HYAB_B/v20260728-223335-nblm-i2/frame_01.jpg",
+              "assets/gen/HYAB_B/v20260728-223335-nblm-i2/frame_02.jpg",
+              "assets/gen/HYAB_B/v20260728-223335-nblm-i2/frame_03.jpg",
+              "assets/gen/HYAB_B/v20260728-223335-nblm-i2/frame_04.jpg",
+              "assets/gen/HYAB_B/v20260728-223335-nblm-i2/frame_05.jpg",
+              "assets/gen/HYAB_B/v20260728-223335-nblm-i2/frame_06.jpg",
+              "assets/gen/HYAB_B/v20260728-223335-nblm-i2/frame_07.jpg",
+              "assets/gen/HYAB_B/v20260728-223335-nblm-i2/frame_08.jpg",
+              "assets/gen/HYAB_B/v20260728-223335-nblm-i2/frame_09.jpg",
+              "assets/gen/HYAB_B/v20260728-223335-nblm-i2/frame_10.jpg",
+              "assets/gen/HYAB_B/v20260728-223335-nblm-i2/frame_11.jpg",
+              "assets/gen/HYAB_B/v20260728-223335-nblm-i2/frame_12.jpg",
+              "assets/gen/HYAB_B/v20260728-223335-nblm-i2/frame_13.jpg",
+              "assets/gen/HYAB_B/v20260728-223335-nblm-i2/frame_14.jpg",
+              "assets/gen/HYAB_B/v20260728-223335-nblm-i2/frame_15.jpg"
+            ],
+            "n": 15,
+            "ts": "2026-07-28T22:33:36",
+            "source": "committee",
+            "brd": "B",
+            "cid": "cmb5fb7edd",
+            "label": "[grok-sub] Concept 1:席位開市（港股行情板騎劫）",
+            "gslide_pages": [
+              "assets/gen/HYAB_B/v20260728-223335-nblm-i2/gslide_HYAB_B_p1.png",
+              "assets/gen/HYAB_B/v20260728-223335-nblm-i2/gslide_HYAB_B_p2.png"
+            ],
+            "deck_repo": "assets/gen/HYAB_B/v20260728-223335-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面中心並非「引擎儀表板」，而是一個帶有幾何結構與齒輪元素的抽象科技圖標，且沒有出現要求的「跳動數字（60）」。",
+                "fix": "重新生成一張包含明顯機械/汽車風格儀表盤、具體數值跳動以及更多數據流線條的畫面。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前是抽象的科技齒輪圖案而非「引擎儀表板」及「跳動數字」。",
+                "fix": "重新製作視覺，將背景更換為具體的機械/數位儀表板設計，並在中心加入從 60 到 180+ 的動態數值變化。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面左側並非「儀表板縮略圖」，而是過於複雜且帶有科技感的電路與數據圖形；右側人物雖然符合年齡，但背景出現多個模糊人影及不自然的構圖。",
+                "fix": "將左側簡化為更具象的『青年引擎』視覺符號或儀表板 UI 縮略圖；並優化右側場景，移除背景雜亂的人影，聚焦於單一清晰的小組討論特寫。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是一個帶有虛擬人物和數據圖表的科技風格介面。",
+                "fix": "重新繪製：底部加入流動的 Ticker 帶出「創新科技委員會」及「18-35歲」，上方特寫顯示「諮詢委員會數目」與相關數據。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前是「青年與長者互動」的實景插畫，而非要求的「全螢幕儀表板」。",
+                "fix": "將現有場景替換為科技感強烈的 UI 介面（Dashboard），加入滾動文字、年齡門檻彈窗及代表不同領域的抽象圖示。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是科技感介面而非包含特定人物、文字及年份門檻。",
+                "fix": "重新繪製場景：中心需顯示帶有「地區青年發展及公民教育委員會」字樣的儀表板，並加入「16-35歲」標籤，左側加入穿校服且正在發言的 18 歲青年畫中畫。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前僅為單一女性在辦公室寫作的實拍圖，完全沒有出現「儀表板介面」、「Ticker 資訊」、「16-35歲字樣」以及「與長者交流的畫中畫」。",
+                "fix": "需重新製作或合成畫面：左側加入科技感十足的『青年引擎』儀表板 UI（含點亮 icon 及相關文字），右側將現有人物替換為在社區活動中與長者互動的青年，並加上對應的資訊標籤。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是藝術/文化主題的儀表板而非「文件蓋章」動畫。",
+                "fix": "重新繪製或更換素材，確保中心視覺為一個帶有「委員意見已錄入」字樣的印章動畫，並保留數據流線條背景。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是科技感十足的虛擬儀表板圖，而非要求的「動態分割畫面（左側縮略圖、右側人物特寫）」。",
+                "fix": "重新繪製分鏡圖：將畫面分為左右兩部分。左邊放一個帶有汽車儀錶風格的「青年引擎」縮略圖；右邊放一個約30歲年輕人在會議室專注記錄的近景特寫，並加入流動的委員會名稱文字滾動條（Ticker）。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前是「青年在辦公室交流」的插畫而非「引擎儀表板」介面。",
+                "fix": "重新繪製左側為科技感強烈的數據儀表板（Dashboard）風格，並加入具體的文字標籤如「文化藝術諮詢委員會」及「18-35歲」。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是抽象的科技圓形圖而非「青年引擎儀表板」及相關文字。",
+                "fix": "重新繪製場景，將中心圓形更換為具體的儀表板介面，並加入正確的倒數計時器、交通諮詢委員會字樣及 18-35 歲年齡標籤。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是抽象的動態光影與城市背景，而非「青年引擎儀表板」特寫。",
+                "fix": "重新繪製或更換素材，聚焦於一個具備科技感的機械式儀表板，並在中心位置清晰顯示正確的日期文字。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是齒輪與網絡圖形背景。",
+                "fix": "重新製作分鏡圖：左側加入「青年引擎儀表板」縮略圖，右側放入 22 歲青年互動的畫中畫，並加上正確的 Ticker 字樣及年齡門檻。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前是城市科技背景而非「儀表板」介面，且完全沒有出現要求的文字（如「環境及自然保育基金委員會」、「18-35歲」）。",
+                "fix": "重新生成一張以「儀表板 (Dashboard)」為核心的 UI 設計圖，加入對應的領域 icon 與發光連線，並將指定的中文與數字正確嵌入畫面中。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是片尾致謝畫面而非「能量波紋」特效。",
+                "fix": "重新製作該場景，加入抽象的能量波紋視覺效果及符合要求的漸變背景。"
+              }
+            ]
+          },
+          {
+            "v": "20260728-222931-nblm-i1",
+            "sheet": "assets/gen/HYAB_B/v20260728-222931-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/HYAB_B/v20260728-222931-nblm-i1/frame_01.jpg",
+              "assets/gen/HYAB_B/v20260728-222931-nblm-i1/frame_02.jpg",
+              "assets/gen/HYAB_B/v20260728-222931-nblm-i1/frame_03.jpg",
+              "assets/gen/HYAB_B/v20260728-222931-nblm-i1/frame_04.jpg",
+              "assets/gen/HYAB_B/v20260728-222931-nblm-i1/frame_05.jpg",
+              "assets/gen/HYAB_B/v20260728-222931-nblm-i1/frame_06.jpg",
+              "assets/gen/HYAB_B/v20260728-222931-nblm-i1/frame_07.jpg",
+              "assets/gen/HYAB_B/v20260728-222931-nblm-i1/frame_08.jpg",
+              "assets/gen/HYAB_B/v20260728-222931-nblm-i1/frame_09.jpg",
+              "assets/gen/HYAB_B/v20260728-222931-nblm-i1/frame_10.jpg",
+              "assets/gen/HYAB_B/v20260728-222931-nblm-i1/frame_11.jpg",
+              "assets/gen/HYAB_B/v20260728-222931-nblm-i1/frame_12.jpg",
+              "assets/gen/HYAB_B/v20260728-222931-nblm-i1/frame_13.jpg",
+              "assets/gen/HYAB_B/v20260728-222931-nblm-i1/frame_14.jpg",
+              "assets/gen/HYAB_B/v20260728-222931-nblm-i1/frame_15.jpg"
+            ],
+            "n": 15,
+            "ts": "2026-07-28T22:29:32",
+            "source": "committee",
+            "brd": "B",
+            "cid": "cmb5fb7edd",
+            "label": "[grok-sub] Concept 1:席位開市（港股行情板騎劫）",
+            "gslide_pages": [
+              "assets/gen/HYAB_B/v20260728-222931-nblm-i1/gslide_HYAB_B_p1.png",
+              "assets/gen/HYAB_B/v20260728-222931-nblm-i1/gslide_HYAB_B_p2.png"
+            ],
+            "deck_repo": "assets/gen/HYAB_B/v20260728-222931-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "A": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260728-224052-nblm-i2",
+            "sheet": "assets/gen/HYAB_A/v20260728-224052-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_01.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_02.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_03.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_04.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_05.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_06.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_07.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_08.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_09.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_10.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_11.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_12.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_13.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_14.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_15.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_16.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_17.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_18.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_19.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_20.jpg",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/frame_21.jpg"
+            ],
+            "n": 21,
+            "ts": "2026-07-28T22:40:52",
+            "source": "committee",
+            "brd": "A",
+            "cid": "cm496d16bd",
+            "label": "[deepseek-chat] Concept 2:【我嘅未來，由我「自薦」】",
+            "gslide_pages": [
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/gslide_HYAB_A_p1.png",
+              "assets/gen/HYAB_A/v20260728-224052-nblm-i2/gslide_HYAB_A_p2.png"
+            ],
+            "deck_repo": "assets/gen/HYAB_A/v20260728-224052-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面為極簡線條風格的白底黑線插畫，與分鏡稿要求的「夜景延時攝影（實拍素材）」及「燈光閃爍」效果完全不符。",
+                "fix": "請更換為真實拍攝的香港維多利亞港夜景影片，並加入動態燈光特效。"
+              },
+              {
+                "slide": 2,
+                "flag": "人物面孔比例略顯不協調（如眼睛過大或線條過於簡約），且背景的會議室細節較模糊。",
+                "fix": "優化人臉特徵比例，並增加背景家具與空間層次的細節描繪。"
+              },
+              {
+                "slide": 4,
+                "flag": "人物手部動作過於誇張且手指數量/形狀不自然，與分鏡稿要求的「輕微、強調觀點」不符。",
+                "fix": "重新繪製或修正女主角的手部動作，使其更自然平實，並確保手指結構正確。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面未切合分鏡稿要求，目前為遠景/中景構圖而非「嘴唇及臉部表情特寫」，且缺乏標記出的藍色路線圖與輪椅小圖標。",
+                "fix": "將鏡頭切換至女人的面部特寫（Close-up），並在 3D 城鎮模型上加入明顯的藍色導航線條及對應的輪椅圖示。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面中缺乏「青年發展項目」的文字標籤，且人物手勢與動態數據圖表的結合感不足。",
+                "fix": "在後期動畫處加入清晰的「青年發展項目」文字標籤，並強化數據柱狀圖的動態上升效果。"
+              },
+              {
+                "slide": 7,
+                "flag": "圖中「建議書」上的文字係無意義的線條，未能呈現出「青年人才庫」字樣。",
+                "fix": "需要重新生成或後期處理該立體圖標，確保其上清晰顯示「青年人才庫」的中文字樣。"
+              },
+              {
+                "slide": 8,
+                "flag": "人物面孔比例不對稱（眼部與鼻樑位置偏移），且手部結構模糊不清。",
+                "fix": "重新生成或修補臉部五官對稱性，並清晰化手部的線條構造。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面中缺乏「18區名稱」的文字標示，且背景地圖僅為抽象光點網絡，未能清晰傳達特定區域覆蓋的資訊。",
+                "fix": "在後期動畫處理時，需於地圖對應位置加入清晰的 18 區名稱字體，並強化不同區域間的光點連接感。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面未展現「多位青年委員」的蒙太奇，而是四個單一鏡頭（憂慮、專業、歡笑、握手），且缺乏快速剪輯感。",
+                "fix": "增加更多不同面孔與動作的特寫，並在分鏡中標註快節奏切換（Fast Cuts）的動態指示。"
+              },
+              {
+                "slide": 11,
+                "flag": "圖中圓環上的標籤為抽象圖示而非明確文字，且女人的手部與指尖與圓環交界處處理模糊。",
+                "fix": "要求後期製作時在圓環特定區域加入清晰的中文/英文政策標籤（如「交通」、「環保」），並優化手指指向位置的視覺層次。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面中的文字為無意義的線條，未能呈現「可行性分析」及「預算評估」等具體字樣。",
+                "fix": "請重新生成或後期處理，確保虛擬介面上的關鍵詞彙清晰可辨，並符合要求的內容。"
+              },
+              {
+                "slide": 13,
+                "flag": "人物手部線條過於簡略且比例不對，手指與手掌連接處模糊。",
+                "fix": "重新繪製或修正手部細節，確保手指數量正確且結構清晰。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面中齒輪上沒有標示「180+」的數字，且背景齒輪過於密集導致視覺混亂。",
+                "fix": "在核心位置的齒輪上加入明顯的「180+」字樣，並稍微簡化背景齒輪層次以突出重點。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前是線條畫風格的女性在觸摸虛擬方框，並無「書寫動作」及「申請表介面（姓名、年齡等欄位）」。",
+                "fix": "重新繪製或生成：要求角色正在動手書寫，並在畫面中加入明顯的虛擬 UI 界面，包含清晰可辨識的文字內容如『Name』、『Age』及突出顯示的『16』。"
+              },
+              {
+                "slide": 16,
+                "flag": "人物數量與構圖比例不均勻，中間人物過大導致視覺重心失衡。",
+                "fix": "調整人物高度與寬度比例，讓所有青年委員在畫面中呈現更平衡的集體感。"
+              },
+              {
+                "slide": 17,
+                "flag": "畫面中心並無出現「青年」字樣，而是呈現一個抽象的放射狀光芒圖形。",
+                "fix": "請重新生成或修改後期動畫效果，確保在城市中心匯聚的光點能清晰組成「青年」兩個中文字。"
+              },
+              {
+                "slide": 18,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是建築設計與流體動態的插畫而非文字動畫。",
+                "fix": "請重新繪製或製作符合要求的純動畫：在白色背景上，將「我覺得」字樣平滑過度轉變為「落場建言」，並確保字體有力且無雜訊。"
+              },
+              {
+                "slide": 19,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是帶有建築結構線條的 3D 線框風格人物圖。",
+                "fix": "請更換為純動畫風格：背景簡潔，中心出現動態數字「16」，並配上清晰的「歲已可申請地區委員會」文字。"
+              },
+              {
+                "slide": 20,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是電路板風格的樹狀圖而非動態數字與文字。",
+                "fix": "請重新生成符合要求的視覺：中心出現帶有動感力量的「180+」字樣，並配上「個諮詢委員會等你加入」的對應文字。"
+              },
+              {
+                "slide": 21,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是抽象的圓形圖案而非政府宣傳結尾。且畫面中沒有標誌、網址或二維碼。",
+                "fix": "重新繪製符合要求的結尾畫面：背景改為簡潔藍/白色，中心放置「青年自薦計劃」標誌，並清晰加入政府網站連結及申請 QR Code。"
+              }
+            ]
+          },
+          {
+            "v": "20260728-223250-nblm-i1",
+            "sheet": "assets/gen/HYAB_A/v20260728-223250-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_01.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_02.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_03.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_04.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_05.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_06.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_07.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_08.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_09.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_10.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_11.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_12.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_13.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_14.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_15.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_16.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_17.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_18.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_19.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_20.jpg",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/frame_21.jpg"
+            ],
+            "n": 21,
+            "ts": "2026-07-28T22:32:51",
+            "source": "committee",
+            "brd": "A",
+            "cid": "cm496d16bd",
+            "label": "[deepseek-chat] Concept 2:【我嘅未來，由我「自薦」】",
+            "gslide_pages": [
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/gslide_HYAB_A_p1.png",
+              "assets/gen/HYAB_A/v20260728-223250-nblm-i1/gslide_HYAB_A_p2.png"
+            ],
+            "deck_repo": "assets/gen/HYAB_A/v20260728-223250-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "updated": "2026-07-28T22:40:53"
+}

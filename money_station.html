@@ -257,9 +257,17 @@ function csvCols(row){
 }
 function esc(s){ return String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
 function renderResults(rows) {
-  // 2026-07-27：按開單日排序，新單喺上、最舊喺最底（Raymond）
-  const _k = r => String(r.invoice_date || r.ts || '');
-  resultsEl.innerHTML = rows.slice().sort((a,b)=>_k(b).localeCompare(_k(a))).map(r => {
+  // 2026-07-27：新單喺上、最舊喺最底（Raymond）
+  // 2026-07-29 修：原本主 key 用開單日，但張單冇印日期（invoice_date=null）就變空字串跌到最底
+  //   —— 今朝經 email 入嘅兩張新單就係咁被沉底。改用「入到工作站嗰刻」(ts_epoch) 做主 key，
+  //   冇 ts_epoch 先用開單日／ts 頂上。
+  const _t = r => {
+    const e = Number(r.ts_epoch || 0);
+    if (e) return e;
+    const d = Date.parse(String(r.ts || r.invoice_date || '').replace(' ', 'T'));
+    return isNaN(d) ? 0 : d / 1000;
+  };
+  resultsEl.innerHTML = rows.slice().sort((a,b)=>_t(b) - _t(a)).map(r => {
     if (r.need_manual) {
       return `<div class="resultcard manual">
         <h3>⚠️ ${esc(r.source_file) || '?'} <span class="pill warn">需要人手處理</span></h3>
