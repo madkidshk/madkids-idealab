@@ -1,0 +1,32 @@
+{
+  "dept": "LCSD",
+  "slots": [
+    {
+      "slot": 1,
+      "query": "康樂及文化事務署 標誌",
+      "file": "assets/refs/LCSD/logos/slot1.png",
+      "title": "康樂及文化事務署短片完整版（廣東話）",
+      "w": 1280,
+      "h": 720,
+      "enabled": true
+    },
+    {
+      "slot": 2,
+      "query": "弘揚中華文化辦公室 標誌",
+      "file": "assets/refs/LCSD/logos/slot2.png",
+      "title": "弘揚中華文化辦公室",
+      "w": 1276,
+      "h": 1276,
+      "enabled": true
+    },
+    {
+      "slot": 3,
+      "query": "香港抗戰及海防博物館 標誌",
+      "file": "assets/refs/LCSD/logos/slot3.png",
+      "title": "有片+多圖）香港抗戰及海防博物館明起免費參觀有這些新展品- 港聞- 點新聞",
+      "w": 4739,
+      "h": 3160,
+      "enabled": true
+    }
+  ]
+}

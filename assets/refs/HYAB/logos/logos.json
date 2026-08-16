@@ -3,21 +3,25 @@
   "slots": [
     {
       "slot": 1,
-      "query": "民政及青年事務局 標誌",
+      "query": "民政及青年事務局 官方標誌",
       "file": "assets/refs/HYAB/logos/slot1.png",
-      "title": "民安隊三隊員獲民政及青年事務局局長嘉許-民安隊-紫荊號",
-      "w": 2500,
-      "h": 2500,
-      "enabled": true
+      "title": "The Dragon Foundation 龍傳基金– 專為培育全球華裔青年而設的「龍傳基金」，聯繫",
+      "w": 1889,
+      "h": 831,
+      "enabled": true,
+      "verified": true,
+      "verified_org": "民政及青年事務局 Home and Youth Affairs Bureau",
+      "source_domain": "hyab.gov.hk"
     },
     {
       "slot": 2,
-      "query": "青年委員自薦計劃 標誌",
-      "file": "assets/refs/HYAB/logos/slot2.png",
-      "title": "第五期「青年委員自薦計劃」今起公開招募冀為增加青年人議政機會| 香城公民媒體Hong Kong Ci",
-      "w": 1600,
-      "h": 1600,
-      "enabled": true
+      "query": "青年委員自薦計劃 標誌 site:hyab.gov.hk",
+      "file": "",
+      "title": "(核實唔到官方標誌,可即場打字重搵)",
+      "enabled": true,
+      "verified": false,
+      "verified_org": "",
+      "source_domain": "hyab.gov.hk"
     },
     {
       "slot": 3,

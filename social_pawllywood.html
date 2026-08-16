@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang='zh-HK'><head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<title>Pawllywood · Social Dashboard</title><style>*{box-sizing:border-box}body{margin:0;background:#f4f5f7;color:#1b1f27;font:16px/1.6 -apple-system,BlinkMacSystemFont,"PingFang HK","Microsoft JhengHei",sans-serif}
+.wrap{max-width:880px;margin:0 auto;padding:20px 15px 90px}
+a.back{color:#717784;font-size:13px;text-decoration:none}
+h1{font-size:24px;font-weight:800;margin:6px 0 2px}.sub{color:#717784;font-size:13px;margin-bottom:6px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap}
+.hdrbtns{flex:none;display:flex;gap:7px;align-items:center}
+.homebtn{flex:none;white-space:nowrap;font-size:16px;line-height:1;text-decoration:none;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:5px 9px}
+.refbtn{flex:none;font-size:16px;line-height:1;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:5px 9px;cursor:pointer}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 18px}
+.btn{display:inline-block;background:#0A7D3F;color:#fff;text-decoration:none;font-size:13px;font-weight:700;border-radius:10px;padding:9px 14px}
+.btn.gray{background:#fff;color:#1b1f27;border:1px solid #e7e9ee}
+h2{font-size:16px;font-weight:800;margin:26px 0 10px;border-left:4px solid #0A7D3F;padding-left:9px}
+.card{background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:15px 17px;margin:11px 0;box-shadow:0 1px 2px rgba(20,24,40,.04),0 4px 14px rgba(20,24,40,.05)}
+.po-h{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.po-h .hook{font-size:18px;font-weight:800}
+.tag{font-size:11px;font-weight:700;border-radius:999px;padding:2px 9px;background:#eef0f3;color:#717784}
+.gk{font-size:11px;font-weight:800;border-radius:999px;padding:2px 9px}
+.gk.hi{background:#fdeaea;color:#dc2626}.gk.med{background:#fff4e5;color:#b45309}.gk.ok{background:#e7f7ee;color:#15a34a}.gk.none{background:#eef0f3;color:#717784}
+.cap{white-space:pre-wrap;font-size:14.5px;color:#26303b;margin:9px 0;max-height:150px;overflow:hidden}
+details{margin:7px 0}summary{cursor:pointer;font-size:13px;font-weight:700;color:#4f46e5}
+table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px}td,th{border:1px solid #eef0f3;padding:4px 7px;text-align:left;vertical-align:top}
+.prod{font-size:13px;color:#26303b}.prod li{margin:1px 0}
+.idea{background:#f0fbf4;border-color:#bfe9cf}
+.reel{display:inline-block;background:#111;color:#fff;text-decoration:none;font-size:12.5px;font-weight:700;border-radius:8px;padding:6px 11px;margin-top:6px}
+.st{font-size:12px;color:#717784;margin-top:6px}
+.gate{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:11px;padding-top:11px;border-top:1px dashed #e7e9ee}
+.act{font-size:12.5px;font-weight:700;border:0;border-radius:9px;padding:8px 13px;cursor:pointer}
+.act.cf{background:#eef0fe;color:#3730a3}.act.cf.on{background:#e7f7ee;color:#15a34a}
+.act.deck{background:#111;color:#fff}.act.deck:disabled{background:#e7e9ee;color:#a3a8b3;cursor:not-allowed}
+.act.undo{background:#fff;color:#717784;border:1px solid #e7e9ee;font-weight:600}
+.cfby{font-size:11px;color:#717784}
+.deckok{font-size:12px;color:#15a34a;font-weight:700}
+footer{color:#717784;font-size:12px;border-top:1px solid #e7e9ee;margin-top:34px;padding-top:13px}
+#pidbar{display:none;height:6px;background:#eef0f3;border-radius:99px;overflow:hidden;margin:9px 0 0}
+#pidbar>i{display:block;height:100%;width:8%;background:#d97706;border-radius:99px;animation:pidcreep 16s ease-out forwards}
+#pidbar.done>i{width:100%;animation:none;transition:width .4s}
+@keyframes pidcreep{to{width:92%}}</style></head><body><!-- generated-by: scripts/core/nlm-bridge/lab_ui_shell.py --><div class='wrap'>
+<div class='titlerow'><h1>📣 Pawllywood — Social Dashboard</h1><span class='hdrbtns'><a class='homebtn' href='.' title='總目錄'>🏠</a><button class='refbtn' onclick="location.href=location.pathname+'?t='+Date.now()+location.hash" title='重新載入'>🔄</button></span></div>
+<div class='sub'>自動更新 2026-08-14 17:59 HKT　·　PO 下面撳掣 CONFIRM creative+storyboard → 解鎖貼內部總 DECK（雲端，任何裝置）</div>
+<div class='bar'><a class='btn' href='https://docs.google.com/spreadsheets/d/1EAyg2NH6YBO-uA1VWBPXKAGsFfCjd-xt6A0EufYZjPQ/edit' target='_blank'>📊 開 Google Sheet 撳掣</a></div>
+<h2 style='border-left-color:#d97706'>📸 客戶相 → 產品識別（起點）</h2>
+<div class='card'><div style='display:flex;gap:8px;flex-wrap:wrap'><input id='pidfolder' placeholder='貼客戶相 Google Drive folder link…' style='flex:1;min-width:230px;font-size:14px;padding:9px 11px;border:1px solid #dcdfe6;border-radius:9px'><button class='act deck' onclick='pidGo(this)'>送出 ⏎</button></div><div id='pidbar'><i></i></div><div id='pidstat' class='st'></div><details style='margin-top:9px' open><summary>識別結果（4）</summary><div style='overflow-x:auto'><table id='pidtb'><tr><th>相</th><th>產品</th><th>品牌</th><th>香港叫法</th><th>惠康</th><th>台灣</th><th>淘寶/天貓</th><th>信心</th><th>備註</th></tr><tr><td>011338.JPEG</td><td><b>貓砂</b></td><td>富士貓</td><td></td><td style='color:#EE382F;font-weight:700'>?</td><td></td><td></td><td>低</td><td>⚠️ 自動綜合失敗，僅憑識別結果，請覆核各市場叫法</td></tr><tr><td>011619.JPEG</td><td><b>貓砂</b></td><td>富士姬</td><td>富士姬之淡雪 豆腐貓砂<br><a class=reel style='padding:2px 7px' href='https://www.hongkongmall.com/tc/product/1319068-%E5%AF%8C%E5%A3%AB%E5%A7%AC%E4%B9%8B%E6%B7%A1%E9%9B%AA+-+%E8%B1%86%E8%85%90%E8%B2%93%E7%A0%82+3.0%2B1.5+%E7%B2%97%E5%B9%BC%E7%B2%92%E6%B7%B7%E5%90%88%E5%A4%A9%E7%84%B6%E6%B7%A8%E7%99%BD%E8%B1%86%E4%B9%B3+%E7%B6%A0%E8%8C%B6%E5%91%B3+%2817.5L+%2B+0.5L%E5%A2%9E%E9%87%8F%E8%A3%9D%29+18L+x+3%E5%8C%85?srsltid=AfmBOorpynNWv6FTyrZ-YMI6nVKDRKQTyDL2TQZBnDIBrrEpje5hDdd4' target=_blank>連結</a></td><td style='color:#EE382F;font-weight:700'>冇</td><td>富士姬豆腐貓砂</td><td>富士姬豆腐砂</td><td>高</td><td>惠康冇。香港市場多數稱作「富士姬之淡雪 豆腐貓砂」，台灣和淘寶則多稱「富士姬豆腐貓砂」或「富士姬豆腐砂」。</td></tr><tr><td>011684.PNG</td><td><b>豆腐貓砂</b></td><td>富士一</td><td>富士一 豆腐貓砂3.0粗粒豆腐砂綠茶味6L<br><a class=reel style='padding:2px 7px' href='https://www.hktvmall.com/p/H9623001_S_6970750189659_6' target=_blank>連結</a></td><td style='color:#EE382F;font-weight:700'>冇</td><td>富士一豆腐礦物混合貓砂功能款原味6L</td><td>富士一天然極簡日常3.0 豆腐貓砂原味6L</td><td>高</td><td>台灣和淘寶的連結雖然是香港網站，但內容顯示了產品名稱，且在台灣和淘寶的搜索結果中未找到更直接的零售連結。惠康沒有此產品。</td></tr><tr><td>PHOTO-2026-08-14-12-27-38.jpg</td><td><b>豆腐貓砂</b></td><td>富士一</td><td></td><td style='color:#EE382F;font-weight:700'>?</td><td></td><td></td><td>低</td><td>⚠️ 自動綜合失敗，僅憑識別結果，請覆核各市場叫法</td></tr></table></div></details><div class='st'>客畀相做起點 → 識別產品 + 華文網（香港／惠康／台灣／淘寶）搵正確叫法。客戶相未必喺惠康網店有（offline 限定都搵到台/淘叫法）。📲 任何裝置（手機都得）貼 folder link 送出即入隊；主機識別緊，得閒返嚟睇結果即出。folder 要 share「有連結可看」。</div></div>
+<h2>💡 下月題材 BRAINSTORM</h2>
+<div class='card'>未有下月題材 —— 喺 Sheet 撳「💡 諗下月 IDEA」。</div>
+<h2>🎛️ 本月控制台</h2>
+<div class='card'><div class='st'>狀態：✅ 08-14 17:49 生成 3 帖 → 「PO1–PO3」｜🚩HIGH=3 MED=0</div><ul class='prod'><div class='st'>控制台未填主題。</div></div>
+<h2 style='border-left-color:#111'>🎬 REEL 模組 · 惠康 IG Reel（直度 9:16）</h2>
+<div class='card'><table><tr><th>PO</th><th>主題</th><th>Storyboard</th><th>Reel cut</th><th>狀態</th></tr><tr><td><b>PO1</b></td><td>豆腐貓砂點揀先啱主子</td><td>—</td><td><span class='st'>未做</span></td><td>draft</td></tr><tr><td><b>PO2</b></td><td>貓砂盆除臭清潔懶人包</td><td>—</td><td><span class='st'>未做</span></td><td>draft</td></tr><tr><td><b>PO3</b></td><td>主子開箱新貓砂反應</td><td>—</td><td><span class='st'>未做</span></td><td>draft</td></tr></table><div class='st' style='margin-top:9px'>做 storyboard／Reel 喺 Google Sheet 菜單撳（🎬砌片 storyboard → 🎞️做真產品 Reel）。真產品相 montage rough-cut，同事攞去執／換音樂／補真人鏡頭。<b>Reel 一定人手 confirm。</b></div></div>
+<h2>📣 本月帖（3）</h2>
+<div class='card'><div class='po-h'><span class='hook'>【豆腐貓砂點樣揀？兩大陣營話你知！】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk hi'>HIGH_RISK</span></div><div class='st'>PO1 · 豆腐貓砂點揀先啱主子 · 主打賣點</div><div class='cap'>**【豆腐貓砂點樣揀？兩大陣營話你知！】**
+
+各位貓奴主子！市面上咁多款豆腐貓砂，到底點樣揀先至最啱你家主子嘅心水？🤔 唔使抓晒頭，我哋今日就將兩款超人氣貓砂分門別類，等你可以跟返主子嘅日常習慣，一秒揀出命定神砂！👇
+
+💚 **陣營一：極致呵護、健康監測型 ➡️ 富士姬之淡雪 豆腐貓砂**
+如果家中有個容易敏感、或者鍾意周圍肉緊舔砂嘅「大頭蝦」主子，呢款就啱晒喇！佢採用食品級豆腐渣製成，天然無害，就算主子唔小心舔食都唔使擔心！最正嘅係佢獨有嘅極微粉塵配方，可以有效避免刺激主子同奴才嘅呼吸道。而且高密度壓縮技術能迅速吸收排泄物並形成緊實團塊，有效除臭，直接沖馬桶都得！18L（17.5L + 0.5L增量裝）大容量，有天然淨白豆乳原味同綠茶味揀。奴才用淨白原色貓砂，仲可以及早觀察主子嘅尿液顏色變化，時時刻刻監測主子健康！
+
+🍵 **陣營二：強效除臭、小資快捷型 ➡️ 富士一 豆腐貓砂3.0粗粒豆腐砂綠茶味6L**
+如果你間屋對氣味極度敏感，或者係平時好忙、想極速搞掂清潔嘅香港小家庭，咁 6L 輕量真空包裝嘅富士一粗粒豆腐貓砂就係你嘅完美伴侶！佢嘅綠茶成分遮味能力超強，能有效減少貓尿異味，等家居環境保持清爽茶香。而且佢吸水力強，遇到少量液體就會快速溶解凝結成結實塊狀，極易清理又不易被帶出貓砂盆。清貓砂嗰陣直接沖入馬桶，秒速搞掂，簡單直接！
+
+🎉 提提大家！mark 實我哋嘅月曆，**8月17號** 將會推出 **富士一/富士姬 cat litter 多件優惠** 呀！咁抵，真係要即刻囤貨啦！🛒
+
+👉 搶購「富士姬之淡雪 豆腐貓砂」：https://www.hongkongmall.com/tc/product/1319068-%E5%AF%8C%E5%A3%AB%E5%A7%AC%E4%B9%8B%E6%B7%A1%E9%9B%AA+-+%E8%B1%86%E8%85%90%E8%B2%93%E7%A0%82+3.0%2B1.5+%E7%B2%97%E5%B9%BC%E7%B2%92%E6%B7%B7%E5%90%88%E5%A4%A9%E7%84%B6%E6%B7%B8%E7%99%BD%E8%B1%86%E4%B9%B3+%E7%B6%A0%E8%8C%B6%E5%91%B3+%2817.5L+%2B+0.5L%E5%A2%9E%E9%87%8F%E8%A3%9D%29+18L+x+3%E5%8C%85?srsltid=AfmBOop9hv4anCdO88AdhT2Cnes4cQWNmwtSq4UQq9ev6Xp4TDaPl0Uc
+👉 搶購「富士一 豆腐貓砂3.0粗粒豆腐砂綠茶味6L」：https://www.hktvmall.com/p/H9623001_S_6970750189659_6
+📲 惠康 APP 24小時送貨：(deck未提)
+💬 立即加入我哋 WhatsApp 頻道獲取最新優惠：(deck未提)
+
+*優惠條款及細則：
+多件優惠數量有限，售完即止。優惠期及適用平台詳情以官方公佈為準。產品及優惠只供參考。我哋保留此優惠之最終決定權。
+
+#Pawllywood #富士姬之淡雪 #富士一 #豆腐貓砂 #貓砂推薦 #香港貓奴 #惠康優惠 #除臭救星</div><div class='st'>🚩 HIGH_RISK
+⚠ [health_claim] 養生／功效暗示字眼（出客前核）：除臭, 凝結, 天然, 食品級
+⚠ (AI) {&#x27;rule&#x27;: &#x27;pet_health_claim&#x27;, &#x27;quote&#x27;: &#x27;有效避免刺激主子同奴才嘅呼吸道&#x27;}
+⚠ (AI) {&#x27;rule&#x27;: &#x27;pet_health_claim&#x27;, &#x27;quote&#x27;: &#x27;時時刻刻監測主子健康！&#x27;}
+→ 如客戶介意，改成中性成分描述
+→ 將「有效避免刺激主子同奴才嘅呼吸道」改為客觀描述，例如「極微粉塵配方有助維持空氣潔淨」。
+→ 將「時時刻刻監測主子健康」改為客觀描述，例如「方便觀察主子尿液顏色變化」。</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(1,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(1,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(1,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
+<div class='card'><div class='po-h'><span class='hook'>【貓奴必學！貓砂盆除臭清潔懶人包】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk hi'>HIGH_RISK</span></div><div class='st'>PO2 · 貓砂盆除臭清潔懶人包 · 主打賣點</div><div class='cap'>**【貓奴必學！貓砂盆除臭清潔懶人包】**
+
+哈囉各位貓奴！每日幫主子清理貓砂盆係咪好似打仗咁，次次開蓋都好似開毒氣彈？臭到暈之餘，仲要忍受漫天飛散嘅粉塵？🤢 想間屋無臭味，但又想極速偷懶？我哋今日就為大家整理咗個超實用嘅「除臭清潔懶人包」，教你用最輕鬆嘅方法維持貓砂盆乾淨清爽，徹底擺脫『生化危機』！
+
+第一招，緊係要揀一隻吸水快、凝結強、零粉塵嘅神級貓砂！好似我哋大推嘅 **富士姬之淡雪 豆腐貓砂**，佢採用食品級豆腐渣製成，天然無害，加上極微粉塵配方，唔會刺激到主子同奴才嘅呼吸道，每次倒砂都乾乾淨淨。而且佢嘅高密度壓縮技術，可以超快速吸收排泄物並形成緊實團塊，瞬間鎖死異味！如果你偏好清新茶香，亦可以揀 **富士一 豆腐貓砂3.0粗粒豆腐砂綠茶味6L**，入面嘅天然綠茶成分遮味力一級棒，幫你將主子嘅尿味瞬間變做清新茶葉香，連吸一口氣都舒服過人！🍵
+
+第二招，就係要『極速清理、即沖即走』！呢兩款豆腐貓砂都極具環保概念，遇水即溶，每次清理完，奴才都可以直接將佢哋沖入馬桶，秒速送走排泄物，唔使再儲埋一大袋垃圾等倒，真係懶人最愛！🚽
+
+第三招，健康監測同步做！好似 **富士姬之淡雪 豆腐貓砂** 係天然淨白豆乳原色，奴才清理嘅時候可以順便觀察主子嘅尿液顏色變化，輕鬆監測主子嘅健康狀況，防患於未然！
+
+想體驗超無痛嘅除臭清潔？記住 mark 實我哋嘅月曆！**8月17號** 將會推出 **富士一/富士姬 cat litter 多件優惠**！快啲襯住優惠，幫主子全方位升級如廁環境啦！🛒
+
+👉 搶購「富士姬之淡雪 豆腐貓砂」：https://www.hongkongmall.com/tc/product/1319068-%E5%AF%8C%E5%A3%AB%E5%A7%AC%E4%B9%8B%E6%B7%A1%E9%9B%AA+-+%E8%B1%86%E8%85%90%E8%B2%93%E7%A0%82+3.0%2B1.5+%E7%B2%97%E5%B9%BC%E7%B2%92%E6%B7%B7%E5%90%88%E5%A4%A9%E7%84%B6%E6%B7%B8%E7%99%BD%E8%B1%86%E4%B9%B3+%E7%B6%A0%E8%8C%B6%E5%91%B3+%2817.5L+%2B+0.5L%E5%A2%9E%E9%87%8F%E8%A3%9D%29+18L+x+3%E5%8C%85?srsltid=AfmBOop9hv4anCdO88AdhT2Cnes4cQWNmwtSq4UQq9ev6Xp4TDaPl0Uc
+👉 搶購「富士一 豆腐貓砂3.0粗粒豆腐砂綠茶味6L」：https://www.hktvmall.com/p/H9623001_S_6970750189659_6
+📲 惠康 APP 24小時送貨：(deck未提)
+💬 立即加入我哋 WhatsApp 頻道獲取最新優惠：(deck未提)
+
+*優惠條款及細則：
+多件優惠數量有限，售完即止。優惠期及適用平台詳情以官方公佈為準。產品及優惠只供參考。我哋保留此優惠之最終決定權。
+
+#Pawllywood #貓砂盆除臭 #清潔懶人包 #富士姬之淡雪 #富士一 #豆腐貓砂 #貓奴日常 #除臭神物</div><div class='st'>🚩 HIGH_RISK
+⚠ [health_claim] 養生／功效暗示字眼（出客前核）：除臭, 凝結, 天然, 食品級
+⚠ (AI) {&#x27;rule&#x27;: &#x27;ip_copyright&#x27;, &#x27;quote&#x27;: &#x27;徹底擺脫『生化危機』！&#x27;}
+⚠ (AI) {&#x27;rule&#x27;: &#x27;pet_health_claim&#x27;, &#x27;quote&#x27;: &#x27;唔會刺激到主子同奴才嘅呼吸道&#x27;}
+⚠ (AI) {&#x27;rule&#x27;: &#x27;pet_health_claim&#x27;, &#x27;quote&#x27;: &#x27;輕鬆監測主子嘅健康狀況，防患於未然！&#x27;}
+→ 如客戶介意，改成中性成分描述
+→ 將「生化危機」改為非版權描述，例如「難聞氣味危機」。
+→ 將「唔會刺激到主子同奴才嘅呼吸道」改為客觀描述，例如「極微粉塵配方有助維持空氣潔淨」。
+→ 將「輕鬆監測主子嘅健康狀況，防患於未然」改為客觀描述，例如「方便觀察主子尿液顏色變化」。</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(2,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(2,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(2,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
+<div class='card'><div class='po-h'><span class='hook'>【主子開箱實測！貓砂定紙箱最好玩？】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk hi'>HIGH_RISK</span></div><div class='st'>PO3 · 主子開箱新貓砂反應 · 主打賣點</div><div class='cap'>**【主子開箱實測！貓砂定紙箱最好玩？】**
+
+網購最興奮嘅時刻又嚟喇！每次快遞一到，最興奮嘅往往唔係奴才，而係屋企位主子！📦 
+
+我哋今日就同大家一齊實測吓主子開箱新貓砂嘅真實反應！當奴才辛辛苦苦搬住箱 **富士姬之淡雪 豆腐貓砂** 返屋企，一放低，主子就已經極速飛奔過去霸住個紙箱，仲縮到好似一塊「貓餅」咁，完美示範「紙箱先係本體，入面裝咩根本唔重要」！😹 
+
+不過，當奴才一剪開包裝，真正嘅魔法就嚟喇！✨ 倒入貓砂盆嗰陣，竟然真係「零粉塵」！呢款富士姬貓砂獨有極微粉塵配方，主子湊埋去索都完全無打噴嚏，對呼吸道極之溫和。加上佢採用食品級豆腐渣製成，天然無害，就算好奇心爆棚嘅主子不小心舔食到，奴才都可以一百個放心！主子一踩入去，感受到極致柔軟舒適嘅腳感，即刻舒服到踩奶，簡直係五星級享受！🐾
+
+如果主子係綠茶控，開箱 **富士一 豆腐貓砂3.0粗粒豆腐砂綠茶味6L** 更加係驚喜！一開包裝就散發住天然清新嘅綠茶香氣，連主子都聞到好專注。佢吸水超強，遇到少量液體即時快速凝結結團，清理極之方便，而且可以直接沖入馬桶，簡直係奴才同主子嘅雙重福音！🚽
+
+🎉 係咪睇到心癢癢？mark 實我哋嘅月曆，**8月17號** 將會推出 **富士一/富士姬 cat litter 多件優惠**！快啲襯住優惠幫主子囤貨，等佢哋可以盡情玩紙箱同享受頂級貓砂啦！🛒
+
+👉 搶購「富士姬之淡雪 豆腐貓砂」：https://www.hongkongmall.com/tc/product/1319068-%E5%AF%8C%E5%A3%AB%E5%A7%AC%E4%B9%8B%E6%B7%A1%E9%9B%AA+-+%E8%B1%86%E8%85%90%E8%B2%93%E7%A0%82+3.0%2B1.5+%E7%B2%97%E5%B9%BC%E7%B2%92%E6%B7%B7%E5%90%88%E5%A4%A9%E7%84%B6%E6%B7%A8%E7%99%BD%E8%B1%86%E4%B9%B3+%E7%B6%A0%E8%8C%B6%E5%91%B3+%2817.5L+%2B+0.5L%E5%A2%9E%E9%87%8F%E8%A3%9D%29+18L+x+3%E5%8C%85?srsltid=AfmBOop9hv4anCdO88AdhT2Cnes4cQWNmwtSq4UQq9ev6Xp4TDaPl0Uc
+👉 搶購「富士一 豆腐貓砂3.0粗粒豆腐砂綠茶味6L」：https://www.hktvmall.com/p/H9623001_S_6970750189659_6
+📲 惠康 APP 24小時送貨：(deck未提)
+💬 立即加入我哋 WhatsApp 頻道獲取最新優惠：(deck未提)
+
+*優惠條款及細則：
+多件優惠數量有限，售完即止。優惠期及適用平台詳情以官方公佈為準。產品及優惠只供參考。我哋保留此優惠之最終決定權。
+
+#Pawllywood #主子開箱 #富士姬之淡雪 #富士一 #豆腐貓砂 #貓餅日常 #貓奴必備 #綠茶貓砂</div><div class='st'>🚩 HIGH_RISK
+⚠ [health_claim] 養生／功效暗示字眼（出客前核）：凝結, 天然, 食品級
+⚠ (AI) {&#x27;rule&#x27;: &#x27;pet_health_claim&#x27;, &#x27;quote&#x27;: &#x27;對呼吸道極之溫和&#x27;}
+⚠ (AI) {&#x27;rule&#x27;: &#x27;pet_health_claim&#x27;, &#x27;quote&#x27;: &#x27;奴才都可以一百個放心！&#x27;}
+→ 如客戶介意，改成中性成分描述
+→ 將「對呼吸道極之溫和」改為客觀描述，例如「採用極微粉塵配方」。
+→ 將「奴才都可以一百個放心」改為客觀描述，例如「採用食品級豆腐渣製成」。</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(3,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(3,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(3,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
+<footer>⚠️ AI 初稿，出客前 Raymond gatekeep（HIGH_RISK 必改）。每 PO 喺下面撳 ① Confirm Creative + ② Confirm Storyboard，兩樣 ✅ 先解鎖 ③ 貼上內部總 DECK。<br>⚠️ 撳掣經雲端入隊，任何裝置都得；主機處理緊，約 10 秒後更新。總 DECK 係內部，唔好畀客。</footer>
+<script>
+const ACT="act.php", CLIENT="pawllywood";
+function toast(m,ok){let t=document.createElement('div');t.textContent=m;
+ t.style.cssText='position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:99;'+
+ 'background:'+(ok?'#15a34a':'#dc2626')+';color:#fff;font-weight:700;font-size:13px;'+
+ 'padding:11px 18px;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.25)';
+ document.body.appendChild(t);setTimeout(()=>t.remove(),3200);}
+async function soc(stage,po,engine,btn){
+ if(btn)btn.disabled=true;
+ try{
+  const u=ACT+'?push=1&route=social&client='+encodeURIComponent(CLIENT)+'&stage='+stage+'&po='+po+
+    (engine?'&engine='+encodeURIComponent(engine):'')+'&by=cloud';
+  const r=await fetch(u,{method:'GET'});const j=await r.json();
+  if(!r.ok||j.err){toast('✗ '+(j.err||r.status),false);if(btn)btn.disabled=false;return false;}
+  return true;
+ }catch(e){toast('✗ 送唔到（網絡）',false);if(btn)btn.disabled=false;return false;}
+}
+async function confirmCreative(po,btn){if(await soc('socconfirm',po,'creative',btn)){
+  toast('✅ 已入隊 Creative — 主機處理緊，約 10 秒後自動更新',true);setTimeout(()=>location.reload(),11000);}}
+async function confirmBoard(po,btn){if(await soc('socconfirm',po,'storyboard',btn)){
+  toast('✅ 已入隊 Storyboard — 約 10 秒後自動更新',true);setTimeout(()=>location.reload(),11000);}}
+async function pasteDeck(po,btn){
+  if(!confirm('PO'+po+'：貼 BD frames 入【內部總 DECK】？(客戶睇唔到，總DECK 唔好畀客)'))return;
+  if(await soc('socdeck',po,'',btn)){toast('🚀 已入隊 — 主機貼緊入總 DECK(render+貼,要陣)…',true);}
+}
+// 📸 客戶相→產品識別
+function pidEsc(s){return (s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function pidRender(rows){const tb=document.getElementById('pidtb');if(!tb)return;
+ const head="<tr><th>相</th><th>產品</th><th>品牌</th><th>香港叫法</th><th>惠康</th><th>台灣</th><th>淘寶/天貓</th><th>信心</th><th>備註</th></tr>";
+ if(!rows||!rows.length){tb.innerHTML=head+"<tr><td colspan=9 class='st'>未有 — 貼 folder link 送出</td></tr>";return;}
+ tb.innerHTML=head+rows.map(r=>{const has=(r.wellcome_has||'').indexOf('有')>=0;
+  const a=(u,t)=>u?(" <a class='reel' style='padding:2px 7px' href='"+pidEsc(u)+"' target=_blank>"+t+"</a>"):"";
+  return "<tr><td>"+pidEsc(r.img_name)+"</td><td><b>"+pidEsc(r.product)+"</b></td><td>"+pidEsc(r.brand)+"</td>"+
+   "<td>"+pidEsc(r.hk_name)+a(r.hk_link,'連結')+"</td><td style='color:"+(has?'#0A7D3F':'#EE382F')+";font-weight:700'>"+
+   pidEsc(r.wellcome_has||'?')+a(r.wellcome_link,'惠康')+"</td><td>"+pidEsc(r.tw_name)+"</td><td>"+pidEsc(r.taobao_name)+
+   "</td><td>"+pidEsc(r.confidence)+"</td><td>"+pidEsc(r.note)+"</td></tr>";}).join('');}
+// 雲端 queue（任何裝置都觸發到，唔靠本機）：共用 act.php（route=photoid），同 social/authfix 同一條 bus
+function pidFolderId(s){s=(s||'').trim();let m=s.match(/\/folders\/([A-Za-z0-9_-]{20,})/)||s.match(/[?&]id=([A-Za-z0-9_-]{20,})/);
+ if(m)return m[1];if(/^[A-Za-z0-9_-]{20,}$/.test(s))return s;return '';}
+let pidPoll=null;
+function pidBar(on){const b=document.getElementById('pidbar');if(!b)return;
+ if(on){b.style.display='block';b.classList.remove('done');}else{b.classList.add('done');setTimeout(()=>{b.style.display='none';b.classList.remove('done');},600);}}
+async function pidStatus(){try{const r=await fetch(ACT+'?action=status&topic=photoid&t='+Date.now());const j=await r.json();
+ pidRender(j.rows||[]);const s=document.getElementById('pidstat');const st=j.state||{};
+ if(st.running){pidBar(true);s.textContent='⏳ 識別緊…（每張相要陣，得閒先返嚟睇都得）';
+   if(!pidPoll)pidPoll=setInterval(pidStatus,5000);}
+ else{if(pidPoll){clearInterval(pidPoll);pidPoll=null;}pidBar(false);
+   s.textContent=st.ts?('✅ 最近更新 '+(st.n!=null?st.n+' 件 · ':'')+st.ts):'';}
+ }catch(e){}}
+async function pidGo(btn){const raw=document.getElementById('pidfolder').value.trim();
+ const fid=pidFolderId(raw);
+ if(!fid){toast('貼客戶相 Google Drive folder link（要 share 到有連結可看）',false);return;}
+ btn.disabled=true;pidBar(true);document.getElementById('pidstat').textContent='送緊…';
+ try{const r=await fetch(ACT+'?push=1&route=photoid&folder='+encodeURIComponent(fid));const j=await r.json();
+  if(!r.ok||j.err){pidBar(false);document.getElementById('pidstat').textContent='✗ '+(j.err||r.status);btn.disabled=false;return;}
+  toast('📸 已入隊 — 主機識別緊',true);document.getElementById('pidstat').textContent='⏳ 已入隊，識別緊…（每張相要陣）';
+  if(!pidPoll)pidPoll=setInterval(pidStatus,5000);pidStatus();
+ }catch(e){pidBar(false);document.getElementById('pidstat').textContent='✗ 送唔到（網絡）';}
+ finally{btn.disabled=false;}}
+(function(){const fi=document.getElementById('pidfolder');if(fi){fi.value=localStorage.getItem('pidfolder_pawllywood')||'';
+ fi.addEventListener('input',()=>localStorage.setItem('pidfolder_pawllywood',fi.value));pidStatus();
+ if(!pidPoll)pidPoll=setInterval(pidStatus,8000);}})();
+</script>
+</div></body></html>

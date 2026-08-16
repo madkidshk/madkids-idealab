@@ -1,0 +1,400 @@
+{
+  "dept": "MPFA3",
+  "concepts": {
+    "HZ01": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260812-021327-nblm-i2",
+            "sheet": "assets/gen/MPFA3_HZ01/v20260812-021327-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/MPFA3_HZ01/v20260812-021327-nblm-i2/frame_01.jpg",
+              "assets/gen/MPFA3_HZ01/v20260812-021327-nblm-i2/frame_02.jpg",
+              "assets/gen/MPFA3_HZ01/v20260812-021327-nblm-i2/frame_03.jpg",
+              "assets/gen/MPFA3_HZ01/v20260812-021327-nblm-i2/frame_04.jpg",
+              "assets/gen/MPFA3_HZ01/v20260812-021327-nblm-i2/frame_05.jpg",
+              "assets/gen/MPFA3_HZ01/v20260812-021327-nblm-i2/frame_06.jpg",
+              "assets/gen/MPFA3_HZ01/v20260812-021327-nblm-i2/frame_07.jpg"
+            ],
+            "n": 7,
+            "ts": "2026-08-12T02:13:27",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·寫實真人",
+            "gslide_pages": [
+              "assets/gen/MPFA3_HZ01/v20260812-021327-nblm-i2/gslide_MPFA3_HZ01_p1.png",
+              "assets/gen/MPFA3_HZ01/v20260812-021327-nblm-i2/gslide_MPFA3_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/MPFA3_HZ01/v20260812-021327-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，包括人物特徵、文字標題、場景細節（如鎖鏈位置及數量）以及整體資訊圖表構圖。",
+                "fix": "重新生成圖片：左邊需為高瘦農夫在灰暗且被鎖鏈束縛的麥田前露出羨慕表情，並帶有「以往·半自由行」字樣；右邊為矮肥農夫在金黃茂盛、鎖鏈斷裂的麥田中得意攤手，並帶有「今日·全自由行」字樣；畫面中央需加入標題「全自由行（第一階段）正式實施」。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面內容與分鏡稿要求的文字資訊（如「2025 年 5 月 1 日」、「新僱員」、「既有僱員」等）完全不符，且場景僅為農村風景而非時間軸資訊圖表。",
+                "fix": "重新生成圖片，將背景改為簡約的平面化資訊圖表設計，並在正確位置加入對應的文字內容。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面內容與分鏡稿要求嚴重不符，目前是兩個農夫在麥田中間的房子旁，而非「三欄式資訊圖表」；且缺乏標題、icon 及對應的文字。",
+                "fix": "重新生成畫面：將背景改為帶有三個明顯區塊（自主權、市場競爭、管理費下調）的資訊圖表，並在每個區塊加入對應的 icon 與標題，農夫需站在最前方指向這些具體的資訊點。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，圖中並無 2x2 田字格資訊圖表、農具店招牌 icon 或「保證基金」溫室細節。",
+                "fix": "重新生成畫面：將背景改為整齊的 2x2 分割區塊（田字格），在每個格子放入對應的 icon，並確保中央紅章文字清晰可辨。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面中缺乏明確的「三步流程箭嘴」及對應文字，且手機螢幕內容過於抽象。",
+                "fix": "增加三個帶有簡潔標籤（登入、指令、計劃）的箭頭圖示，並將手機介面細化為更具體的理財 App 視覺。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面缺少標題文字、MPFA/積金易 Logo 及 QR Code 等政府宣傳片標準結尾排版。",
+                "fix": "加入「強積金自由轉移 退休規劃你話事」大字標題，並在底部加入相關機構 Logo、網址及 QR Code。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面內容與分鏡稿描述不符（目前僅為單色漸變背景，無任何視覺元素）。",
+                "fix": "根據分鏡稿要求加入對應的場景、人物或動作。"
+              }
+            ]
+          },
+          {
+            "v": "20260812-021038-nblm-i1",
+            "sheet": "assets/gen/MPFA3_HZ01/v20260812-021038-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/MPFA3_HZ01/v20260812-021038-nblm-i1/frame_01.jpg",
+              "assets/gen/MPFA3_HZ01/v20260812-021038-nblm-i1/frame_02.jpg",
+              "assets/gen/MPFA3_HZ01/v20260812-021038-nblm-i1/frame_03.jpg",
+              "assets/gen/MPFA3_HZ01/v20260812-021038-nblm-i1/frame_04.jpg",
+              "assets/gen/MPFA3_HZ01/v20260812-021038-nblm-i1/frame_05.jpg",
+              "assets/gen/MPFA3_HZ01/v20260812-021038-nblm-i1/frame_06.jpg",
+              "assets/gen/MPFA3_HZ01/v20260812-021038-nblm-i1/frame_07.jpg"
+            ],
+            "n": 7,
+            "ts": "2026-08-12T02:10:38",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·寫實真人",
+            "gslide_pages": [
+              "assets/gen/MPFA3_HZ01/v20260812-021038-nblm-i1/gslide_MPFA3_HZ01_p1.png",
+              "assets/gen/MPFA3_HZ01/v20260812-021038-nblm-i1/gslide_MPFA3_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/MPFA3_HZ01/v20260812-021038-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ02": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260812-022225-nblm-i2",
+            "sheet": "assets/gen/MPFA3_HZ02/v20260812-022225-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/MPFA3_HZ02/v20260812-022225-nblm-i2/frame_01.jpg",
+              "assets/gen/MPFA3_HZ02/v20260812-022225-nblm-i2/frame_02.jpg",
+              "assets/gen/MPFA3_HZ02/v20260812-022225-nblm-i2/frame_03.jpg",
+              "assets/gen/MPFA3_HZ02/v20260812-022225-nblm-i2/frame_04.jpg",
+              "assets/gen/MPFA3_HZ02/v20260812-022225-nblm-i2/frame_05.jpg",
+              "assets/gen/MPFA3_HZ02/v20260812-022225-nblm-i2/frame_06.jpg",
+              "assets/gen/MPFA3_HZ02/v20260812-022225-nblm-i2/frame_07.jpg"
+            ],
+            "n": 7,
+            "ts": "2026-08-12T02:22:25",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·Sketch 分鏡草稿",
+            "gslide_pages": [
+              "assets/gen/MPFA3_HZ02/v20260812-022225-nblm-i2/gslide_MPFA3_HZ02_p1.png",
+              "assets/gen/MPFA3_HZ02/v20260812-022225-nblm-i2/gslide_MPFA3_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/MPFA3_HZ02/v20260812-022225-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，缺少標題文字、人物特徵（如圍裙顏色、服裝款式）及場景細節錯誤。",
+                "fix": "重新生成圖片：確保加入「以往·半自由行」與「今日·全自由行」對比標題，修正左邊農夫為黃綠格仔衫與深藍圍裙，右邊農夫為紅藍格仔衫與卡其圍裙，並確保背景包含明亮藍天及正確的麥田比例。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，包括文字內容、人物數量及場景細節。",
+                "fix": "重新繪製：左側高瘦農夫需佩戴寫有「第二階段·專項帳戶」的木牌，中間路牌必須寫上「2025 年 5 月 1 日」，並加入「新僱員」與「既有僱員」兩個區域標題。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前圖中僅有農夫、方向盤、農具及肥料袋，缺乏「三欄式資訊圖表」的排版結構、標題文字以及擬人化的招牌。",
+                "fix": "重新繪製：將背景改為三條金黃田壟並劃分出三個清晰區域，加入對應的標題（自主權、市場競爭、管理費下調）及正確的 Icon（如農具店招牌），確保兩位農夫在前景指引這些資訊。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前的圖表僅為簡單的農具、肥料與人物頭像堆砌，缺乏「保證基金」溫室等關鍵元素，且中央印章文字缺失。",
+                "fix": "重新繪製 2x2 田字格資訊圖表：左上角改為農具店招牌，右上角為肥料價錢牌，左下角保留三個不同年齡的頭像，右下角加入帶有「保證基金」文字且有一棵植物移出溫室的場景；並在中心圓圈內加上正確的中文字體「切忌為轉而轉」。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面中缺少關鍵的文字標籤（「登入」、「輸入轉移指令」、「揀自選計劃」），且手機介面內容過於抽象，未體現具體的理財 App 特徵。",
+                "fix": "在三段箭頭上方加入對應的中文或英文標題，並在手機螢幕上加入更具辨識度的圖表與按鈕設計。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面缺少要求的標題文字、底部 Logo 區塊及 QR Code，且人物比例與場景構圖未完全符合 End Frame 排版要求。",
+                "fix": "加入「強積金自由轉移 退休規劃你話事」大字標題，並在底部加上 MPFA/eMPF 標誌、網址及 QR Code。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面內容與「分鏡稿描述」無關，因為你未提供任何分鏡稿文字或描述。",
+                "fix": "請提供對應的分鏡稿描述，以便我判斷畫面是否符合要求。"
+              }
+            ]
+          },
+          {
+            "v": "20260812-021652-nblm-i1",
+            "sheet": "assets/gen/MPFA3_HZ02/v20260812-021652-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/MPFA3_HZ02/v20260812-021652-nblm-i1/frame_01.jpg",
+              "assets/gen/MPFA3_HZ02/v20260812-021652-nblm-i1/frame_02.jpg",
+              "assets/gen/MPFA3_HZ02/v20260812-021652-nblm-i1/frame_03.jpg",
+              "assets/gen/MPFA3_HZ02/v20260812-021652-nblm-i1/frame_04.jpg",
+              "assets/gen/MPFA3_HZ02/v20260812-021652-nblm-i1/frame_05.jpg",
+              "assets/gen/MPFA3_HZ02/v20260812-021652-nblm-i1/frame_06.jpg",
+              "assets/gen/MPFA3_HZ02/v20260812-021652-nblm-i1/frame_07.jpg"
+            ],
+            "n": 7,
+            "ts": "2026-08-12T02:16:52",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·Sketch 分鏡草稿",
+            "gslide_pages": [
+              "assets/gen/MPFA3_HZ02/v20260812-021652-nblm-i1/gslide_MPFA3_HZ02_p1.png",
+              "assets/gen/MPFA3_HZ02/v20260812-021652-nblm-i1/gslide_MPFA3_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/MPFA3_HZ02/v20260812-021652-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ04": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260812-022233-nblm-i2",
+            "sheet": "assets/gen/MPFA3_HZ04/v20260812-022233-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/MPFA3_HZ04/v20260812-022233-nblm-i2/frame_01.jpg",
+              "assets/gen/MPFA3_HZ04/v20260812-022233-nblm-i2/frame_02.jpg",
+              "assets/gen/MPFA3_HZ04/v20260812-022233-nblm-i2/frame_03.jpg",
+              "assets/gen/MPFA3_HZ04/v20260812-022233-nblm-i2/frame_04.jpg",
+              "assets/gen/MPFA3_HZ04/v20260812-022233-nblm-i2/frame_05.jpg",
+              "assets/gen/MPFA3_HZ04/v20260812-022233-nblm-i2/frame_06.jpg",
+              "assets/gen/MPFA3_HZ04/v20260812-022233-nblm-i2/frame_07.jpg"
+            ],
+            "n": 7,
+            "ts": "2026-08-12T02:22:34",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ04",
+            "cid": "hand-HZ04",
+            "label": "手寫稿·全風格·新海誠風",
+            "gslide_pages": [
+              "assets/gen/MPFA3_HZ04/v20260812-022233-nblm-i2/gslide_MPFA3_HZ04_p1.png",
+              "assets/gen/MPFA3_HZ04/v20260812-022233-nblm-i2/gslide_MPFA3_HZ04_p2.png"
+            ],
+            "deck_repo": "assets/gen/MPFA3_HZ04/v20260812-022233-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面缺少所有要求的文字標題（如「以往·半自由行」、「今日·全自由行」及中央大標題），且左邊農田並未呈現「一半金黃、一半灰暗」的對比效果。",
+                "fix": "重新生成或修改圖片，加入指定的中文/英文標題，並修正左側場景為一半金黃與一半灰暗（被鎖鏈束縛）的視覺對比。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，缺少關鍵文字資訊（如「2025 年 5 月 1 日」、「新僱員」、「既有僱員」等標題及細字），且路牌內容為空白。",
+                "fix": "重新生成圖像，確保中心木牌顯示正確日期，並在左右兩側加入對應的文字標籤與「專項帳戶」相關資訊。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前圖中並無農夫人物、標題文字或正確的 Icon 組合。",
+                "fix": "重新生成圖片：加入兩位對比明顯的農夫在前景指引；將背景改為三欄式資訊圖表（包含「自主權」、「市場競爭」、「管理費下調」三個區塊及對應的特定 icon）；移除所有無意義的裝飾，確保文字與排版符合要求的 30/70 分佈。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前的圖案是隨機的插畫而非要求的 2x2 田字格資訊圖表。",
+                "fix": "重新生成符合要求：將場景改為包含 4 個區塊（農具店、肥料牌、三階段頭像、透明溫室）的田地型態資訊圖，並在中心加入「切忌為轉而轉」的紅色圓形印章。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，尤其是人物造型、箭頭上的文字以及麥苗的呈現方式。",
+                "fix": "重新生成：確保農夫符合「矮胖/圓面/肚腩/草帽/紅藍格仔衫」特徵；將三個箭頭上的文字替換為正確的中文（登入、輸入轉移指令、揀自選計劃）；移除麥苗周圍多餘的發光特效，並確保背景是廣闊的農田而非單純的小花盆。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面缺少要求的標題文字、底部品牌 Logo 及 QR Code，且人物比例與場景構圖未符合 End Frame 排版要求。",
+                "fix": "加入「強積金自由轉移 退休規劃你話事」大字標題及底部的相關機構標誌與 QR Code，並確保畫面佈局留有足夠空間放置文字。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面內容與「分鏡稿」無關，此圖為一張標題投影片（Title Slide），而非動態或靜態的場景分鏡。",
+                "fix": "請提供實際的分鏡圖（Storyboard）進行審核，而非展示產品推廣用的資訊圖表。"
+              }
+            ]
+          },
+          {
+            "v": "20260812-021706-nblm-i1",
+            "sheet": "assets/gen/MPFA3_HZ04/v20260812-021706-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/MPFA3_HZ04/v20260812-021706-nblm-i1/frame_01.jpg",
+              "assets/gen/MPFA3_HZ04/v20260812-021706-nblm-i1/frame_02.jpg",
+              "assets/gen/MPFA3_HZ04/v20260812-021706-nblm-i1/frame_03.jpg",
+              "assets/gen/MPFA3_HZ04/v20260812-021706-nblm-i1/frame_04.jpg",
+              "assets/gen/MPFA3_HZ04/v20260812-021706-nblm-i1/frame_05.jpg",
+              "assets/gen/MPFA3_HZ04/v20260812-021706-nblm-i1/frame_06.jpg",
+              "assets/gen/MPFA3_HZ04/v20260812-021706-nblm-i1/frame_07.jpg"
+            ],
+            "n": 7,
+            "ts": "2026-08-12T02:17:07",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ04",
+            "cid": "hand-HZ04",
+            "label": "手寫稿·全風格·新海誠風",
+            "gslide_pages": [
+              "assets/gen/MPFA3_HZ04/v20260812-021706-nblm-i1/gslide_MPFA3_HZ04_p1.png",
+              "assets/gen/MPFA3_HZ04/v20260812-021706-nblm-i1/gslide_MPFA3_HZ04_p2.png"
+            ],
+            "deck_repo": "assets/gen/MPFA3_HZ04/v20260812-021706-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ03": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260812-021719-nblm-i1",
+            "sheet": "assets/gen/MPFA3_HZ03/v20260812-021719-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/MPFA3_HZ03/v20260812-021719-nblm-i1/frame_01.jpg",
+              "assets/gen/MPFA3_HZ03/v20260812-021719-nblm-i1/frame_02.jpg",
+              "assets/gen/MPFA3_HZ03/v20260812-021719-nblm-i1/frame_03.jpg",
+              "assets/gen/MPFA3_HZ03/v20260812-021719-nblm-i1/frame_04.jpg",
+              "assets/gen/MPFA3_HZ03/v20260812-021719-nblm-i1/frame_05.jpg",
+              "assets/gen/MPFA3_HZ03/v20260812-021719-nblm-i1/frame_06.jpg",
+              "assets/gen/MPFA3_HZ03/v20260812-021719-nblm-i1/frame_07.jpg"
+            ],
+            "n": 7,
+            "ts": "2026-08-12T02:17:20",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·插畫",
+            "gslide_pages": [
+              "assets/gen/MPFA3_HZ03/v20260812-021719-nblm-i1/gslide_MPFA3_HZ03_p1.png",
+              "assets/gen/MPFA3_HZ03/v20260812-021719-nblm-i1/gslide_MPFA3_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/MPFA3_HZ03/v20260812-021719-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ05": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260812-040345-nblm-i2",
+            "sheet": "assets/gen/MPFA3_HZ05/v20260812-040345-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/MPFA3_HZ05/v20260812-040345-nblm-i2/frame_01.jpg",
+              "assets/gen/MPFA3_HZ05/v20260812-040345-nblm-i2/frame_02.jpg",
+              "assets/gen/MPFA3_HZ05/v20260812-040345-nblm-i2/frame_03.jpg",
+              "assets/gen/MPFA3_HZ05/v20260812-040345-nblm-i2/frame_04.jpg",
+              "assets/gen/MPFA3_HZ05/v20260812-040345-nblm-i2/frame_05.jpg",
+              "assets/gen/MPFA3_HZ05/v20260812-040345-nblm-i2/frame_06.jpg",
+              "assets/gen/MPFA3_HZ05/v20260812-040345-nblm-i2/frame_07.jpg"
+            ],
+            "n": 7,
+            "ts": "2026-08-12T04:03:45",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ05",
+            "cid": "hand-HZ05",
+            "label": "手寫稿·全風格·宮崎駿風",
+            "gslide_pages": [
+              "assets/gen/MPFA3_HZ05/v20260812-040345-nblm-i2/gslide_MPFA3_HZ05_p1.png",
+              "assets/gen/MPFA3_HZ05/v20260812-040345-nblm-i2/gslide_MPFA3_HZ05_p2.png"
+            ],
+            "deck_repo": "assets/gen/MPFA3_HZ05/v20260812-040345-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，包括人物外貌、服裝顏色、場景細節及文字標題完全缺失。",
+                "fix": "重新生成符合要求的插畫：左邊為高瘦農夫（黃綠格仔衫、藍圍裙）在鎖鏈封閉的田地；右邊為矮肥農夫（紅藍格仔衫、卡其圍裙）在開闊的田地；並加入對應的中文標題與資訊圖表元素。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，包括文字資訊缺失、場景構圖錯誤及人物動作不對。",
+                "fix": "重新繪製：將畫面改為橫向對稱的資訊圖表（Infographic），正中加入「2025 年 5 月 1 日」路牌；左側標註「既有僱員」並讓高瘦農夫掛上「第二階段·專項帳戶」木牌；右側標註「新僱員」，矮肥農夫在帶有綠色勾選符號的肥沃土地上開心跳躍。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面中完全沒有出現要求的「三欄式資訊圖表」標題文字（如『自主權』、『市場競爭』、『管理費下調』），且農夫並非在指點圖表，而是單純站立。",
+                "fix": "加入對應的中文或英文標題字樣到三個區塊上方，並調整兩位農夫的手勢為指向後方資訊圖表的動作。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前的圖表僅為草圖且缺少核心元素（如「保證基金」溫室、具體文字印章及正確的農夫造型）。",
+                "fix": "重新繪製符合要求的資訊圖表：確保 2x2 田字格包含正確的四個 Icon，在中心加入帶有「切忌為轉而轉」字樣的紅色圓形印章，並將左側農夫角色與場景要求完全對齊。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，特別是箭頭圖表內的文字缺失、麥苗位置錯誤以及農夫動作不對。",
+                "fix": "重新生成：確保三個箭頭內出現「登入」、「輸入轉移指令」、「揀自選計劃」字樣；將麥苗放在大片金黃農田中而非單獨盆子；讓農夫的手指點擊手機邊緣，並產生明顯的流動特效連接到麥苗。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面缺少要求的繁體中文字標題，且底部 Logo 與 QR Code 處於不對稱或未正確排版的狀態。",
+                "fix": "加入上方巨大的「強積金自由轉移 退休規劃你話事」字樣，並將底部的 MPFA、eMPF 標誌與 QR Code 整齊排列。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面中出現了明顯的 AI 產生雜訊，特別是底部兩個圓形圖標內的字母（e）與葉子裝飾呈現不對稱且扭曲。",
+                "fix": "重新生成或手繪底部的兩個 logo 圖標，確保其設計風格統一且字體清晰。"
+              }
+            ]
+          },
+          {
+            "v": "20260812-040107-nblm-i1",
+            "sheet": "assets/gen/MPFA3_HZ05/v20260812-040107-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/MPFA3_HZ05/v20260812-040107-nblm-i1/frame_01.jpg",
+              "assets/gen/MPFA3_HZ05/v20260812-040107-nblm-i1/frame_02.jpg",
+              "assets/gen/MPFA3_HZ05/v20260812-040107-nblm-i1/frame_03.jpg",
+              "assets/gen/MPFA3_HZ05/v20260812-040107-nblm-i1/frame_04.jpg",
+              "assets/gen/MPFA3_HZ05/v20260812-040107-nblm-i1/frame_05.jpg",
+              "assets/gen/MPFA3_HZ05/v20260812-040107-nblm-i1/frame_06.jpg",
+              "assets/gen/MPFA3_HZ05/v20260812-040107-nblm-i1/frame_07.jpg"
+            ],
+            "n": 7,
+            "ts": "2026-08-12T04:01:07",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ05",
+            "cid": "hand-HZ05",
+            "label": "手寫稿·全風格·宮崎駿風",
+            "gslide_pages": [
+              "assets/gen/MPFA3_HZ05/v20260812-040107-nblm-i1/gslide_MPFA3_HZ05_p1.png",
+              "assets/gen/MPFA3_HZ05/v20260812-040107-nblm-i1/gslide_MPFA3_HZ05_p2.png"
+            ],
+            "deck_repo": "assets/gen/MPFA3_HZ05/v20260812-040107-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "updated": "2026-08-12T04:03:45"
+}

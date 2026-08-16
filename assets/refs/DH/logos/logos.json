@@ -1,0 +1,37 @@
+{
+  "dept": "DH",
+  "slots": [
+    {
+      "slot": 1,
+      "query": "民政及青年事務局 標誌",
+      "file": "",
+      "title": "(核實唔到官方標誌,可即場打字重搵)",
+      "enabled": true,
+      "verified": false,
+      "verified_org": "",
+      "source_domain": ""
+    },
+    {
+      "slot": 2,
+      "query": "青年發展委員會 標誌",
+      "file": "assets/refs/DH/logos/slot2.png",
+      "title": "Logo Design for YDC by RCGraphics | Design #289626",
+      "w": 2499,
+      "h": 1567,
+      "enabled": true,
+      "verified": true,
+      "verified_org": "青年發展委員會 (Youth Development Commission)",
+      "source_domain": ""
+    },
+    {
+      "slot": 3,
+      "query": "青年節@HK 標誌",
+      "file": "",
+      "title": "(核實唔到官方標誌,可即場打字重搵)",
+      "enabled": true,
+      "verified": false,
+      "verified_org": "",
+      "source_domain": ""
+    }
+  ]
+}

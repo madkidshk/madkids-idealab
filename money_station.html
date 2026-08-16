@@ -56,6 +56,14 @@ textarea{width:100%;border:1px solid #dcdffb;border-radius:8px;padding:8px;font-
 .spin{display:inline-block;width:14px;height:14px;border:2px solid #dcdffb;border-top-color:#4f46e5;border-radius:50%;animation:sp .8s linear infinite;vertical-align:middle;margin-right:6px}
 @keyframes sp{to{transform:rotate(360deg)}}
 .hide{display:none}
+/* 📱 mobile：剔卡掣變右下懸浮 FAB（Raymond 2026-08-10「錢銀站都要做Mobile 懸浮掣」；
+   同 TODO 站同一 NLM spec：56px 圓形 fixed right/bottom 16px，desktop 不變） */
+@media(max-width:640px){
+  #dismissBar{position:fixed !important;right:16px;bottom:16px;margin:0 !important;z-index:1000}
+  #dismissBar button{width:56px;height:56px;border-radius:50% !important;padding:0 !important;
+    font-size:20px !important;box-shadow:0 4px 12px rgba(107,114,128,.5)}
+  #dismissBar button .btxt,#dismissBar span{display:none}
+}
 </style>
 </head>
 <body>
@@ -96,6 +104,10 @@ textarea{width:100%;border:1px solid #dcdffb;border-radius:8px;padding:8px;font-
       <button class="btn danger" id="submitBtn" disabled>上載 + 生成CSV</button>
       <div class="status" id="status"></div>
       <div class="note">🔴 呢條 lane 出嘅係 <b>AutoPay CSV</b>，唔會自動過數。真正畀錢＝你自己 import 落 HSBC BIZ 撳。</div>
+    </div>
+    <div id="dismissBar" style="display:none;margin:10px 0">
+      <button onclick="dismissSelected()" style="background:#6b7280;color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer">🗑️<span class="btxt"> 移走已剔嘅卡</span></button>
+      <span style="font-size:11.5px;color:#b3261e;margin-left:8px">⚠️ 會真刪：Drive 張單入垃圾筒 ＋ 記帳大表相關行移走（有存底，撈得返）</span>
     </div>
     <div id="results"></div>
   </div>
@@ -256,18 +268,90 @@ function csvCols(row){
            amount:p[p.length-2], ref:p[p.length-1] };
 }
 function esc(s){ return String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+function copyText(btn, txt) {
+  // Raymond 2026-08-09：「建議Payslip名…名右應有個 COPY 掣畀我 COPY」
+  const done = () => { const o = btn.textContent; btn.textContent = '\u2705'; setTimeout(() => btn.textContent = o, 1400); };
+  const fb = () => {
+    const ta = document.createElement('textarea');
+    ta.value = txt; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) { alert(txt); }
+    document.body.removeChild(ta);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(txt).then(done).catch(fb);
+  } else { fb(); }
+}
+
+function copyPayslip(btn, link) {
+  // Raymond 2026-08-05：「應連埋 PAY SLIP： 喺 LINK 前面，等我一 COPY 就可以 SEND 畀人」
+  const txt = "Pay Slip:\n" + link;
+  const done = () => { const o = btn.textContent; btn.textContent = "✅ Copy 咗"; setTimeout(() => btn.textContent = o, 1600); };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(txt).then(done).catch(() => fallback());
+  } else { fallback(); }
+  function fallback() {
+    const ta = document.createElement('textarea');
+    ta.value = txt; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); done(); } catch (e) { alert(txt); }
+    document.body.removeChild(ta);
+  }
+}
+
+let DISMISSED = new Set(JSON.parse(localStorage.getItem('mkDismissed') || '[]'));
+
+/* ⛔ 剔走 = 只喺前端／dismissed 清單隱藏，⛔ 絕不刪 Drive 原檔、⛔ 絕不郁記帳大表
+   （NB 紅線 job bd8hmrwk2）。剔走之後同步去 act.php，令自癒唔會再當佢漏單重推。 */
+function dismissSelected() {
+  const boxes = [...document.querySelectorAll('.dismiss-box:checked')];
+  if (!boxes.length) { alert('未剔任何卡'); return; }
+  if (!confirm(`確認刪除 ${boxes.length} 張單？\n⚠️ 會一併：Drive 張單入垃圾筒 ＋ 記帳大表相關行移走\n（全部有存底，撈得返）`)) return;
+  boxes.forEach(b => {
+    DISMISSED.add(b.dataset.fid);
+    fetch(`${ACT_PHP}?push&route=dismiss&folder=${encodeURIComponent(b.dataset.fid)}`,
+          {headers: {'User-Agent': 'Mozilla/5.0'}}).catch(() => {});
+  });
+  localStorage.setItem('mkDismissed', JSON.stringify([...DISMISSED]));
+  document.querySelectorAll('.dismiss-box:checked').forEach(b => {
+    const card = b.closest('.resultcard'); if (card) card.remove();
+  });
+}
+
 function renderResults(rows) {
+  const _bar = document.getElementById('dismissBar');
+  if (_bar) _bar.style.display = (rows && rows.length) ? 'block' : 'none';
+  rows = (rows || []).filter(r => !DISMISSED.has(String(r._fid || r.reference || '')));
   // 2026-07-27：新單喺上、最舊喺最底（Raymond）
   // 2026-07-29 修：原本主 key 用開單日，但張單冇印日期（invoice_date=null）就變空字串跌到最底
   //   —— 今朝經 email 入嘅兩張新單就係咁被沉底。改用「入到工作站嗰刻」(ts_epoch) 做主 key，
   //   冇 ts_epoch 先用開單日／ts 頂上。
+  // 2026-08-04（NLM job 0172ead3）：排序主 key 改用 sort_epoch＝**入單日子**（email Date header），
+  //   唔再用「我幾時 process 完」。同一封 email 嘅幾張單 sort_epoch 一樣 → 再用 msgid 黐埋一齊。
   const _t = r => {
-    const e = Number(r.ts_epoch || 0);
+    const e = Number(r.sort_epoch || r.ts_epoch || 0);
     if (e) return e;
     const d = Date.parse(String(r.ts || r.invoice_date || '').replace(' ', 'T'));
     return isNaN(d) ? 0 : d / 1000;
   };
-  resultsEl.innerHTML = rows.slice().sort((a,b)=>_t(b) - _t(a)).map(r => {
+  // 2026-08-04 Raymond：「已找要放晒喺最底，一撳就睇到晒，而唔係插喺各未找單中間」
+  //   → 先分兩組：未找喺上（按入單日子新→舊），已找全部沉底。
+  const _paid = r => String(r.paid_remark || '').startsWith('✅') ? 1 : 0;
+  const _sorted = rows.slice().sort((a,b)=>{
+    if (_paid(a) !== _paid(b)) return _paid(a) - _paid(b);   // 未找(0) 行先，已找(1) 沉底
+    const diff = _t(b) - _t(a);
+    if (Math.abs(diff) > 0.001) return diff;
+    return String(a.msgid || '').localeCompare(String(b.msgid || ''));
+  });
+  const _paidCount = _sorted.filter(_paid).length;
+  let _sepDone = false;
+  resultsEl.innerHTML = _sorted.map((r, _i) => {
+    let _sep = '';
+    if (!_sepDone && _paid(r)) {                             // 已找區開頭插一條分隔線
+      _sepDone = true;
+      _sep = `<div style="margin:18px 0 10px;padding-top:12px;border-top:2px dashed #cfe8cf;color:#15803d;font-weight:700;font-size:13.5px">✅ 已找（${_paidCount} 張）— 撳開先睇詳情</div>`;
+    }
+    return _sep + _render1(r);
+  }).join('');
+  function _render1(r) {
     if (r.need_manual) {
       return `<div class="resultcard manual">
         <h3>⚠️ ${esc(r.source_file) || '?'} <span class="pill warn">需要人手處理</span></h3>
@@ -297,20 +381,85 @@ function renderResults(rows) {
           <td style="padding:5px 8px;border:1px solid #e5e7eb;text-align:right;font-weight:600">HK$${amtNum.toLocaleString()}</td>
           <td style="padding:5px 8px;border:1px solid #e5e7eb;font-family:monospace">${esc(c.ref)}</td></tr>
       </table>` : `<div style="font-family:monospace;font-size:13px">${esc(r.row)}</div>`;
+    // 2026-07-29 Raymond：「張卡要有一長駐欄寫明係畀 MK 定 MM，唔可以用附註形式」
+    //   → 固定一行，判唔到都要出「⚠️ 未判到」，⛔ 唔准淨係喺 warnings 提。
+    const co = r.company || '';
+    const coTxt = co === 'Madman' ? 'Madman（MM）' : (co === 'Madkids' ? 'Madkids（MK）' : '⚠️ 未判到');
+    const coColor = co === 'Madman' ? '#b3261e' : (co === 'Madkids' ? '#1a44a3' : '#b45309');
+    // 2026-08-04 Raymond：「已找嘅 CARD MARK 返已找，並要 DEFAULT 摺起，我想睇才睇返」
+    //   → 已找＝<details> 摺埋（一行標題睇到係邊張單、幾多錢）；未找＝照樣攤開。
+    const _isPaid = String(r.paid_remark || '').startsWith('✅');
+    if (_isPaid) {
+      return `<details class="resultcard" style="background:#f6fbf6;border-color:#cfe8cf">
+        <summary style="cursor:pointer;font-weight:700;font-size:14px;list-style:none">
+          <label onclick="event.stopPropagation()" style="font-weight:400;cursor:pointer"><input type="checkbox" class="dismiss-box" data-fid="${esc(r._fid || r.reference || '')}" style="margin-right:6px;transform:scale(1.15)"></label>✅ 已找 ｜ ${esc(r.source_file)} ｜ HK$${(Number(String(r.row||'').split(',')[4])||0).toLocaleString()}
+          <span style="font-weight:500;color:#4b5563;font-size:12px"> — ${esc(r.paid_remark)}（撳開睇詳情）</span>
+        </summary>
+        <div style="margin-top:10px">
+          ${table}
+          <div class="kv"><b>建議Payslip名</b><span style="font-family:monospace;font-size:13px">${esc(r.payslip_filename)}<button onclick="copyText(this,'${esc(r.payslip_filename)}')" title="Copy 檔名" style="margin-left:6px;background:#eef0fe;border:1px solid #dcdffb;border-radius:6px;padding:1px 7px;font-size:12px;cursor:pointer;vertical-align:middle">\ud83d\udccb</button></span></div>
+          <div class="links">
+            ${r.csv_download_link ? `<a href="${esc(r.csv_download_link)}" target="_blank">⬇️ 下載CSV</a>` : ''}
+            ${r.invoice_link ? `<a href="${esc(r.invoice_link)}" target="_blank">📄 睇返張單</a>` : ''}
+            ${r.payslip_link ? `<a href="${esc(r.payslip_link)}" target="_blank">🧾 睇過數紙</a>` : ''}
+            ${r.archive_link ? `<a href="${esc(r.archive_link)}" target="_blank">📁 發票已歸檔</a>` : ''}
+          </div>
+          ${r.payslip_link ? `<div style="margin-top:8px">
+            <button onclick="copyPayslip(this,'${esc(r.payslip_link)}')" style="background:#15803d;color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:700;cursor:pointer">📋 Copy 過數紙（連 Pay Slip: 字樣）</button>
+            <div style="font-family:monospace;font-size:11.5px;color:#4b5563;margin-top:5px;word-break:break-all">Pay Slip:<br>${esc(r.payslip_link)}</div>
+          </div>` : ''}
+        </div>
+      </details>`;
+    }
+    /* ⭐ 外國單（Raymond 2026-08-09 指定版式）：同其他卡一樣有個表，
+       ⛔ 唔顯示「已生成 AutoPay CSV」／「🏢 邊間公司找數」／「💱 外幣單折算」／warnings。 */
+    if (r.foreign) {
+      return `<div class="resultcard" style="border-color:#f3c9c4;background:#fffaf9">
+        <h3><label style="font-weight:400;cursor:pointer"><input type="checkbox" class="dismiss-box" data-fid="${esc(r._fid || r.reference || '')}" style="margin-right:6px;transform:scale(1.15)"></label>🌏 ${esc(r.source_file)} <span class="pill warn">外國單 · 要自己電匯</span></h3>
+        <table style="width:100%;border-collapse:collapse;margin-bottom:8px">
+          <tr style="background:#faf7f7">
+            <th style="padding:5px 8px;border:1px solid #e5e7eb;text-align:left">受款公司</th>
+            <th style="padding:5px 8px;border:1px solid #e5e7eb;text-align:left">Bank</th>
+            <th style="padding:5px 8px;border:1px solid #e5e7eb;text-align:left">戶口號 / Proxy</th>
+            <th style="padding:5px 8px;border:1px solid #e5e7eb;text-align:right">金額</th>
+            <th style="padding:5px 8px;border:1px solid #e5e7eb;text-align:left">編號 Ref</th>
+          </tr>
+          <tr>
+            <td style="padding:5px 8px;border:1px solid #e5e7eb">${esc(r.supplier || '—')}</td>
+            <td style="padding:5px 8px;border:1px solid #e5e7eb">${esc(r.bank_name_raw || '—')}</td>
+            <td style="padding:5px 8px;border:1px solid #e5e7eb;font-family:monospace">${esc(r.account_number_raw || '—')}</td>
+            <td style="padding:5px 8px;border:1px solid #e5e7eb;text-align:right;font-weight:600">${esc(r.currency || '')} ${esc(r.amount)}</td>
+            <td style="padding:5px 8px;border:1px solid #e5e7eb;font-family:monospace">${esc(r.reference)}</td>
+          </tr>
+        </table>
+        <div class="kv"><b>⏰ 找數限期</b><span style="font-weight:700;color:#b45309">${esc(r.due_date || '冇印')}</span></div>
+        <div class="kv"><b>🏦 找數狀態</b><span class="pill ${String(r.paid_remark||'').startsWith('✅') ? 'ok' : 'warn'}">${esc(r.paid_remark || '未找')}</span></div>
+        <div class="kv"><b>建議Payslip名</b><span style="font-family:monospace;font-size:13px">${esc(r.payslip_filename)}<button onclick="copyText(this,'${esc(r.payslip_filename)}')" title="Copy 檔名" style="margin-left:6px;background:#eef0fe;border:1px solid #dcdffb;border-radius:6px;padding:1px 7px;font-size:12px;cursor:pointer;vertical-align:middle">\ud83d\udccb</button></span></div>
+        <div class="links">
+          ${r.invoice_link ? `<a href="${esc(r.invoice_link)}" target="_blank">📄 睇返張單</a>` : ''}
+          ${r.payslip_link ? `<a href="${esc(r.payslip_link)}" target="_blank">🧾 睇過數紙</a>` : ''}
+          ${r.archive_link ? `<a href="${esc(r.archive_link)}" target="_blank">📁 發票已歸檔</a>` : `<span class="pill">${esc(r.archive_note)||'等 payslip 出現先自動歸檔'}</span>`}
+        </div>
+      </div>`;
+    }
     return `<div class="resultcard">
-      <h3>✅ ${esc(r.source_file)} <span class="pill ok">已生成 AutoPay CSV</span></h3>
+      <h3><label style="font-weight:400;cursor:pointer"><input type="checkbox" class="dismiss-box" data-fid="${esc(r._fid || r.reference || '')}" style="margin-right:6px;transform:scale(1.15)"></label>✅ ${esc(r.source_file)} <span class="pill ok">已生成 AutoPay CSV</span></h3>
+      <div class="kv"><b>🏢 邊間公司找數</b><span style="font-weight:800;color:${coColor}">${coTxt}</span></div>
       ${table}
+      ${r.foreign ? `<div class="kv" style="color:#b3261e"><b>🌏 外國單</b><span style="font-weight:700">⛔ 冇 AutoPay CSV，要你自己去銀行電匯<br>銀行：${esc(r.bank_name_raw || '睇返張單')}　戶口：${esc(r.account_number_raw || '睇返張單')}<br><span style="font-weight:400;font-size:11.5px;color:#8a8f98">${esc(r.foreign_reason || '')}｜發票同過數紙照樣歸檔入帳</span></span></div>` : ''}
+      ${r.currency && r.currency !== 'HKD' ? `<div class="kv" style="color:#b45309"><b>💱 外幣單折算</b><span style="font-weight:700">原幣 ${esc(r.currency)} ${esc(r.amount)} × 匯率 ${esc(r.exchange_rate)} ＝ <b>HK$ ${esc(r.hkd_equivalent)}</b>（CSV 用呢個數；參考價，真找數以銀行嗰日匯率為準）</span></div>` : ''}
       <div class="kv"><b>⏰ 找數限期</b><span style="font-weight:700;color:#b45309">${esc(r.due_date || '冇印')}</span></div>
       <div class="kv"><b>🏦 找數狀態</b><span class="pill ${paidCls}">${esc(paid)}</span></div>
-      <div class="kv"><b>建議Payslip名</b><span style="font-family:monospace;font-size:13px">${esc(r.payslip_filename)}</span></div>
+      <div class="kv"><b>建議Payslip名</b><span style="font-family:monospace;font-size:13px">${esc(r.payslip_filename)}<button onclick="copyText(this,'${esc(r.payslip_filename)}')" title="Copy 檔名" style="margin-left:6px;background:#eef0fe;border:1px solid #dcdffb;border-radius:6px;padding:1px 7px;font-size:12px;cursor:pointer;vertical-align:middle">\ud83d\udccb</button></span></div>
       <div class="links">
         ${r.csv_download_link ? `<a href="${esc(r.csv_download_link)}" target="_blank">⬇️ 下載CSV</a>` : ''}
         ${r.invoice_link ? `<a href="${esc(r.invoice_link)}" target="_blank">📄 睇返張單</a>` : ''}
+        ${r.payslip_link ? `<a href="${esc(r.payslip_link)}" target="_blank">🧾 睇過數紙</a>` : ''}
         ${r.archive_link ? `<a href="${esc(r.archive_link)}" target="_blank">📁 發票已歸檔</a>` : `<span class="pill">${esc(r.archive_note)||'等 payslip 出現先自動歸檔'}</span>`}
       </div>
       <div class="warnlist">${warns}</div>
     </div>`;
-  }).join('');
+  }
 }
 
 /* ══════ on-load：列返 server 上已生成嘅 CSV，畀 Raymond 隨時下載（唔使先 upload）══════

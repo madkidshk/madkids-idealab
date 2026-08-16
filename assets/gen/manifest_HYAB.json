@@ -331,7 +331,1222 @@
           }
         ]
       }
+    },
+    "D": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260803-165904-nblm-i2",
+            "sheet": "assets/gen/HYAB_D/v20260803-165904-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/HYAB_D/v20260803-165904-nblm-i2/frame_01.jpg",
+              "assets/gen/HYAB_D/v20260803-165904-nblm-i2/frame_02.jpg",
+              "assets/gen/HYAB_D/v20260803-165904-nblm-i2/frame_03.jpg",
+              "assets/gen/HYAB_D/v20260803-165904-nblm-i2/frame_04.jpg",
+              "assets/gen/HYAB_D/v20260803-165904-nblm-i2/frame_05.jpg",
+              "assets/gen/HYAB_D/v20260803-165904-nblm-i2/frame_06.jpg",
+              "assets/gen/HYAB_D/v20260803-165904-nblm-i2/frame_07.jpg",
+              "assets/gen/HYAB_D/v20260803-165904-nblm-i2/frame_08.jpg",
+              "assets/gen/HYAB_D/v20260803-165904-nblm-i2/frame_09.jpg",
+              "assets/gen/HYAB_D/v20260803-165904-nblm-i2/frame_10.jpg",
+              "assets/gen/HYAB_D/v20260803-165904-nblm-i2/frame_11.jpg",
+              "assets/gen/HYAB_D/v20260803-165904-nblm-i2/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-08-03T16:59:06",
+            "source": "committee",
+            "brd": "D",
+            "cid": "cma35ac093",
+            "label": "[grok-sub] Concept 2:下一站・你有位（港鐵廣播＋路綫圖騎劫）",
+            "gslide_pages": [
+              "assets/gen/HYAB_D/v20260803-165904-nblm-i2/gslide_HYAB_D_p1.png",
+              "assets/gen/HYAB_D/v20260803-165904-nblm-i2/gslide_HYAB_D_p2.png"
+            ],
+            "deck_repo": "assets/gen/HYAB_D/v20260803-165904-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面包含明顯的 3D 建模質感與複雜的背景線條，而非要求的「2D 路線圖 UI」及「純色靜態底」。",
+                "fix": "移除背景中複雜的圓形/幾何裝飾線條，將背景簡化為單一深藍或灰色純色；並將軌跡處理成扁平化的 2D 向量風格而非帶有體積感的 3D 模型。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面左側並非「多個空白站點以細圓點列成弧線」，而是帶有發光效果的實體軌道與圈狀結構；且下方字幕區塊為空白長條，未出現要求的文字內容。",
+                "fix": "將左側圖形簡化為純淨的細圓點弧線，並在底部白色框內加入「各位青年請注意」字樣。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面中完全沒有出現分鏡稿要求的「路線圖」、「大字 Super 標題」及「站名牌」，目前僅為人物與一個空白的發光框。",
+                "fix": "需重新製作 Motion Graphics，將文字內容、路線圖元素及動態轉場效果加入到前景框內。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面中出現了明顯的 AI 瑕疵，特別是人物面孔模糊、手部結構不對稱，且背景中的文字框為空白，未出現要求的「創科站」、「文康站」、「環保站」字樣。",
+                "fix": "重新生成或修補圖像，確保人像特徵清晰、手部比例正確，並在三個圓角矩形框內加入指定的中文站名。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面未呈現「路線圖」及「UI 卡片」，亦無出現要求的特定文字（如「諮詢委員會」）或跳動數字 icon。",
+                "fix": "重新繪製 UI 特寫鏡頭，包含帶有站點名稱與細字類別的卡片、明顯的數量 icon，並確保背景人物處於壓暗處理。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面中出現了明顯的 AI 生成瑕疵，特別是三個「車窗」窗口內的人物面孔模糊且比例不對稱，且背景地圖與路線流動感缺乏細節。",
+                "fix": "重新渲染或手繪修正三處窗口中的人像，確保臉部特徵清晰；同時強化 Light Trail 的發光質感，並將地圖區域劃分更清晰以符合「呼吸格」的視覺層次。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面缺少關鍵文字資訊（「轉車站」、「十六歲起」、「地區層級」）且背景並無明顯的母帶發言者特寫。",
+                "fix": "加入對應的標題與副標，將背景人像更換為較年輕感的發言者特寫，並確保 UI 元素符合要求的配色區隔。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面文字未顯示完整官方名稱，且圓點數量與「十八區」不符（目前僅約 16 個）。",
+                "fix": "重新生成或修改圖層，確保兩行長標題完整呈現，並將放射狀支線及末端圓點精確調整為 18 個。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面缺少關鍵的「總站大牌」文字內容，且目前僅為空白白框。",
+                "fix": "在上方白色長方框中加入「政府諮詢及法定組織」字樣。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面中左側的 CTA Super 區域為空白框，並未包含要求的文字「有意發揮　請準備自薦」及「申請資訊位」。",
+                "fix": "在左側長條形狀的區塊內加入對應的廣播文案與預留位置標籤。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前僅為抽象的發光線條圖，完全沒有「路線圖」、「文字標語」及「日期資訊」。",
+                "fix": "重新生成符合要求的 KV 海報：加入具體的城市地圖/路線元素、清晰可讀的大字標題「下一站：你有位」，並在右下角加入指定的細項文字。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面內容與「MTR 廣播及路線圖劫持」的劇情描述不符，目前的圖片僅是帶有政府機構標誌的靜態文字圖。",
+                "fix": "應更換為具備視覺張力的分鏡圖，描繪出 MTR 車廂內乘客反應、或地鐵路線圖出現異常變化的動態場景。"
+              }
+            ]
+          },
+          {
+            "v": "20260803-164444-nblm-i1",
+            "sheet": "assets/gen/HYAB_D/v20260803-164444-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/HYAB_D/v20260803-164444-nblm-i1/frame_01.jpg",
+              "assets/gen/HYAB_D/v20260803-164444-nblm-i1/frame_02.jpg",
+              "assets/gen/HYAB_D/v20260803-164444-nblm-i1/frame_03.jpg",
+              "assets/gen/HYAB_D/v20260803-164444-nblm-i1/frame_04.jpg",
+              "assets/gen/HYAB_D/v20260803-164444-nblm-i1/frame_05.jpg",
+              "assets/gen/HYAB_D/v20260803-164444-nblm-i1/frame_06.jpg",
+              "assets/gen/HYAB_D/v20260803-164444-nblm-i1/frame_07.jpg",
+              "assets/gen/HYAB_D/v20260803-164444-nblm-i1/frame_08.jpg",
+              "assets/gen/HYAB_D/v20260803-164444-nblm-i1/frame_09.jpg",
+              "assets/gen/HYAB_D/v20260803-164444-nblm-i1/frame_10.jpg",
+              "assets/gen/HYAB_D/v20260803-164444-nblm-i1/frame_11.jpg",
+              "assets/gen/HYAB_D/v20260803-164444-nblm-i1/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-08-03T16:44:46",
+            "source": "committee",
+            "brd": "D",
+            "cid": "cma35ac093",
+            "label": "[grok-sub] Concept 2:下一站・你有位（港鐵廣播＋路綫圖騎劫）",
+            "gslide_pages": [
+              "assets/gen/HYAB_D/v20260803-164444-nblm-i1/gslide_HYAB_D_p1.png",
+              "assets/gen/HYAB_D/v20260803-164444-nblm-i1/gslide_HYAB_D_p2.png"
+            ],
+            "deck_repo": "assets/gen/HYAB_D/v20260803-164444-nblm-i1/deck.pdf",
+            "flags": [
+              {
+                "slide": 2,
+                "flag": "畫面中完全沒有出現分鏡稿要求的「站點名稱」文字（如『創科站』、『文康站』）。",
+                "fix": "在對應的圓形節點位置加入半透明、帶有科技感的虛擬標籤字體。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面中完全沒有出現「青年委員自薦計劃」及「第十期現正開放申請」等文字內容。",
+                "fix": "需要重新生成或修改分鏡圖，確保兩行指定文字以發光效果清晰呈現在路線圖中央。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面缺乏明顯的「光點」動態感，且沒有任何文字標示或視覺元素來對應「政府諮詢及法定組織」這個具體站點。",
+                "fix": "在第一個主要節點處加入發光的圓點與簡約的文字標籤『政府諮詢及法定組織』，並強化光點沿軌跡移動的動態視覺效果。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面中完全沒有出現「政府諮詢及法定組織」的文字 Super，且路線圖上的站點名稱模糊不清或缺失。",
+                "fix": "需在特定位置加入清晰的大字標題（Super），並確保所有主要站點的名稱在視覺上可辨識。"
+              },
+              {
+                "slide": 6,
+                "flag": "人物面孔比例略顯不協調（眼部過大），且背景路線圖與「創新科技」站點的視覺連結不明確。",
+                "fix": "優化人像繪製細節，並加強 Motion Graphics 效果中亮起時的光暈與對應標籤的視覺聯繫。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面中出現多個發光點且路線複雜，未明確聚焦於單一的「文化藝術及體育」站點。",
+                "fix": "簡化背景路線圖，僅保留並強化一個明顯的、與目標內容相關的亮點，確保視覺焦點集中在人物與特定資訊上。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面中沒有出現「環境保護」的站名文字，且光點移動與聚焦的動態感不夠明確。",
+                "fix": "在亮起的圓形站點處加入明顯的「環境保護」字樣特效，並強化該區域的光芒擴散效果以突顯重點。"
+              },
+              {
+                "slide": 9,
+                "flag": "人物外貌與要求的「青年」特徵不符，且背景路線圖的動態感（光點移動到特定站點）在靜態圖片中無法體現。",
+                "fix": "重新繪製角色為更具活力、符合 18-22 歲特徵的形象；並在後期製作或動畫中加入光點流動至「青年發展」標籤的視覺特效。"
+              },
+              {
+                "slide": 10,
+                "flag": "場景與分鏡稿描述不符（目前畫面為人物在路線圖前，但「社會服務」站點並未明顯亮起或標示）。",
+                "fix": "增加一個明顯發光的『社會服務』文字標籤或特定顏色的高亮效果於對應路徑點上。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面缺乏明確的「轉車站」符號及相關文字標示，僅為抽象的線條與圓圈。",
+                "fix": "在兩個重疊圓圈處加入明顯的站點圖示（如圓形內含字母或特定圖騰），並配合動態特效讓其閃爍。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面中完全沒有出現「轉車站」符號，亦無任何文字（Super 字樣）。",
+                "fix": "重新生成或修改分鏡圖，加入明顯的交通樞紐/轉車站視覺元素，並在下方位置加上動態效果的「16歲亦可參與」字體。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面中出現多個模糊且比例不對的背景人物（如左側與後方的人影），且光線穿梭效果過於雜亂，影響視覺焦點。",
+                "fix": "簡化背景人物數量並清晰化輪廓，同時將發光線條聚焦在主角與居民互動的核心區域，減少雜訊。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面內容與分鏡稿描述不符（目前是特寫/中景的單一人物在處理發光數據，而非『另一段舊委員分享片段』）。",
+                "fix": "需更換為一個正在會議室或演講台上積極發言、表情認真的青年委員形象。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面雖然呈現了路線圖與發光點，但視覺風格偏向抽象的電路板或地圖設計，缺乏「多樣參與機會」帶來的動態感與活力。",
+                "fix": "增加更多色彩層次（如不同顏色的線條代表不同類型的機會），並在後期製作中加入明顯的閃爍特效與光暈擴散效果。"
+              },
+              {
+                "slide": 17,
+                "flag": "人物身後的路線圖光線與背景融合得不夠清晰，且部分路徑連接處出現斷裂或雜亂的視覺噪點。",
+                "fix": "優化背景路線圖的連續性，確保光暈效果更平滑且符合「光環」的意境，並去除細微的像素雜訊。"
+              },
+              {
+                "slide": 19,
+                "flag": "畫面中沒有出現「立即申請」字樣、日期 Super 字樣，且光點並未停留在特定終點站。",
+                "fix": "需重新生成或修改圖層，在中心發光區域或右側框內加入清晰的「立即申請」及具體日期的文字，並讓視覺焦點集中於該按鈕。"
+              },
+              {
+                "slide": 20,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是抽象的電路板風格圖形而非「路線圖」及指定的文字口號。",
+                "fix": "重新製作畫面：移除目前的電路背景，改為簡約設計。在純黑背景中央以發光字體呈現「下一站：你有位」，並於下方加入正確的機構標誌。"
+              },
+              {
+                "slide": 21,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是電路板風格的抽象圖形而非文字口號。",
+                "fix": "重新製作畫面：純黑背景，中心置入「下一站：你有位」字樣，下方加入指定機構標誌。"
+              }
+            ]
+          },
+          {
+            "v": "20260731-223947-nblm-i2",
+            "sheet": "assets/gen/HYAB_D/v20260731-223947-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_01.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_02.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_03.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_04.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_05.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_06.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_07.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_08.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_09.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_10.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_11.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_12.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_13.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_14.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_15.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_16.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_17.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_18.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_19.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_20.jpg",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/frame_21.jpg"
+            ],
+            "n": 21,
+            "ts": "2026-07-31T22:39:48",
+            "source": "committee",
+            "brd": "D",
+            "cid": "cma35ac093",
+            "label": "[grok-sub] Concept 2:下一站・你有位（港鐵廣播＋路綫圖騎劫）",
+            "gslide_pages": [
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/gslide_HYAB_D_p1.png",
+              "assets/gen/HYAB_D/v20260731-223947-nblm-i2/gslide_HYAB_D_p2.png"
+            ],
+            "deck_repo": "assets/gen/HYAB_D/v20260731-223947-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 2,
+                "flag": "畫面中完全沒有出現分鏡稿要求的「站點名稱」文字（如『創科站』、『文康站』）。",
+                "fix": "在對應的圓形節點位置加入半透明、帶有科技感的動態字體標籤。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面中完全沒有出現「青年委員自薦計劃」及「第十期現正開放申請」等文字內容。",
+                "fix": "需要重新生成或修改圖像，將指定的兩行文字以發光效果清晰地置於路線圖中央的框內。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面缺乏明確的「光點」動態感，且完全沒有文字標示或視覺暗示出「政府諮詢及法定組織」這個特定站點。",
+                "fix": "在圖中加入一個明顯發光的圓點作為移動目標，並在第一個主要節點處添加對應的文字標籤或顯著的視覺特徵。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面中完全沒有出現「政府諮詢及法定組織」的大字 Super，且路線圖上的站點名稱模糊不清或缺失。",
+                "fix": "需在特定位置加入清晰的文字標籤（Super），並確保所有站點名稱可辨識。"
+              },
+              {
+                "slide": 6,
+                "flag": "人物手部比例與形狀略顯不自然，且背景路線圖的線條在某些交匯處處理較為雜亂。",
+                "fix": "優化 AI 生成時對人體結構（特別是手指）的精確度控制，並簡化 Motion Graphics 元素，確保光點與路徑連接更清晰、專業。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面中路線圖的光點並未明確聚焦在「文化藝術及體育」站點，且背景中的線條過於雜亂，未能展現出要求的「柔和、聚焦人物」的視覺層次。",
+                "fix": "簡化背景線條，將光點明顯地定位在特定目標區域，並增加光暈效果以突出該站點，同時強化人物與背景的對比度。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面中沒有出現「環境保護」的站名文字，且光點移動與聚焦的動態感不夠明確。",
+                "fix": "在亮起的圓形站點中心加入明顯的「環境保護」字樣，並強化該區域的光芒特效以突顯焦點。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面中人物的表情過於平淡且缺乏「充滿活力」的特徵，同時背景路線圖與「青年發展」站點的關聯性不明確。",
+                "fix": "要求繪師加強角色的動態神情（如更燦爛的笑容或自信的眼神），並在亮起的圓圈處加入明顯的標籤文字『青年發展』以強化視覺重點。"
+              },
+              {
+                "slide": 10,
+                "flag": "背景路線圖的設計過於複雜且不符合「移動到特定站點亮起」的動態描述，目前看起來像靜態網絡。",
+                "fix": "簡化背景路線，明確標示出『社會服務』站點位置，並確保光點在該處有明顯的視覺聚焦效果。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面缺乏明確的「轉車站」符號，且沒有明顯的標示或文字來代表特定的委員會名稱。",
+                "fix": "在畫面中心兩個圓圈交疊處加入一個具體的圖形標誌（如站點圖示），並配合動態特效讓其閃爍。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面中完全沒有出現「轉車站」符號，亦無任何文字（Super）出現。",
+                "fix": "重新生成或修改分鏡圖，加入明顯的交通樞紐/轉車站視覺元素，並在下方位置加上動態設計感的「16歲亦可參與」字樣。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面中出現多個模糊且比例不對的背景人物（如左側穿紅衣男子與小孩），且光影線條過於雜亂，影響視覺焦點。",
+                "fix": "簡化背景人物數量並清晰化輪廓，同時優化發光線條的流動感，確保核心互動（青年委員與居民）為畫面焦點。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面內容與分鏡稿描述不符，目前畫面上是多個人物在辦公室環境中與發光線條互動，而非「一名青年委員在會議中積極發言」的特寫或近景。",
+                "fix": "重新生成畫面：聚焦於一名表情認真、正在會議桌前發言的青年委員（中景），並保留作為過場連接的發光線條元素。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面雖然呈現了路線圖與發光點，但視覺風格偏向抽象的電路板或地圖設計，而非具備「多樣參與機會」動態感的城市交通/網絡路線圖。",
+                "fix": "建議增加更多色彩層次及更明顯的連接線條流動感，並確保光點在不同站點間有明顯的視覺跳躍效果。"
+              },
+              {
+                "slide": 17,
+                "flag": "人物面孔與手部細節出現明顯 AI 瑕疵（如手指數量/形狀不自然，且臉部過於平滑）。",
+                "fix": "重新生成或修補該角色，確保手部結構正確，並增加一點寫實質感以符合「代表性青年」的形象。"
+              },
+              {
+                "slide": 19,
+                "flag": "畫面中沒有出現「立即申請」字樣、日期 Super 字樣，且光點並未聚焦在特定終點站。",
+                "fix": "需要重新生成或修改圖像，加入明確的文字標籤（如『立即申請』及具體日期），並讓光效集中在一個明顯的目標圓點上。"
+              },
+              {
+                "slide": 20,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是抽象的電路板風格圖形而非文字口號。",
+                "fix": "請重新生成或修改畫面，將背景換成純黑，並在中央以發光字體呈現「下一站：你有位」，下方加入指定的兩個機構標誌。"
+              },
+              {
+                "slide": 21,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是抽象的電路圖與箭頭圖形，而非要求的文字口號及政府標誌。",
+                "fix": "重新製作畫面：背景改為純黑，中心位置放置「下一站：你有位」字樣，下方加入「青年事務委員會」及「香港特別行政區政府」官方 Logo。"
+              }
+            ]
+          },
+          {
+            "v": "20260731-223056-nblm-i1",
+            "sheet": "assets/gen/HYAB_D/v20260731-223056-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_01.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_02.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_03.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_04.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_05.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_06.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_07.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_08.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_09.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_10.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_11.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_12.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_13.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_14.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_15.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_16.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_17.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_18.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_19.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_20.jpg",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/frame_21.jpg"
+            ],
+            "n": 21,
+            "ts": "2026-07-31T22:30:57",
+            "source": "committee",
+            "brd": "D",
+            "cid": "cma35ac093",
+            "label": "[grok-sub] Concept 2:下一站・你有位（港鐵廣播＋路綫圖騎劫）",
+            "gslide_pages": [
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/gslide_HYAB_D_p1.png",
+              "assets/gen/HYAB_D/v20260731-223056-nblm-i1/gslide_HYAB_D_p2.png"
+            ],
+            "deck_repo": "assets/gen/HYAB_D/v20260731-223056-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "C": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260803-165557-nblm-i2",
+            "sheet": "assets/gen/HYAB_C/v20260803-165557-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/HYAB_C/v20260803-165557-nblm-i2/frame_01.jpg",
+              "assets/gen/HYAB_C/v20260803-165557-nblm-i2/frame_02.jpg",
+              "assets/gen/HYAB_C/v20260803-165557-nblm-i2/frame_03.jpg",
+              "assets/gen/HYAB_C/v20260803-165557-nblm-i2/frame_04.jpg",
+              "assets/gen/HYAB_C/v20260803-165557-nblm-i2/frame_05.jpg",
+              "assets/gen/HYAB_C/v20260803-165557-nblm-i2/frame_06.jpg",
+              "assets/gen/HYAB_C/v20260803-165557-nblm-i2/frame_07.jpg",
+              "assets/gen/HYAB_C/v20260803-165557-nblm-i2/frame_08.jpg",
+              "assets/gen/HYAB_C/v20260803-165557-nblm-i2/frame_09.jpg",
+              "assets/gen/HYAB_C/v20260803-165557-nblm-i2/frame_10.jpg",
+              "assets/gen/HYAB_C/v20260803-165557-nblm-i2/frame_11.jpg",
+              "assets/gen/HYAB_C/v20260803-165557-nblm-i2/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-08-03T16:56:03",
+            "source": "committee",
+            "brd": "C",
+            "cid": "cm05754a64",
+            "label": "[grok-sub] Concept 1:〔先鬧後入局 · Rant → Agenda〕",
+            "gslide_pages": [
+              "assets/gen/HYAB_C/v20260803-165557-nblm-i2/gslide_HYAB_C_p1.png",
+              "assets/gen/HYAB_C/v20260803-165557-nblm-i2/gslide_HYAB_C_p2.png"
+            ],
+            "deck_repo": "assets/gen/HYAB_C/v20260803-165557-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面中手機螢幕內容為空白，並無出現分鏡稿要求的「搵工又話要經驗？」手寫塗鴉留言泡泡。",
+                "fix": "在手機上方或周圍加入一個帶有手寫風格字體的對話框（Speech Bubble），內容填上指定的文字。"
+              },
+              {
+                "slide": 2,
+                "flag": "對話泡泡內的文字缺失（目前為空白）且背景霓虹燈與茶餐廳氛圍融合度尚可，但需確保字體符合預期。",
+                "fix": "在對話泡泡中加入「講咗都冇用啦」的繁體中文字體，並檢查細節線條是否過於平滑。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面內容與分鏡稿描述嚴重不符（場景為現代辦公室而非觀塘共享空間，人物服裝、螢幕內容及動畫紅筆標註位置均未符合要求）。",
+                "fix": "重新生成或修改素材：確保女主角穿著「恤衫外搭針織背心」，螢幕內容必須明確顯示「現金流、租金、人才」字樣並由紅圈標出，且場景需符合觀塘共享空間的視覺特徵。"
+              },
+              {
+                "slide": 4,
+                "flag": "廣告燈箱內容為空白白框，未出現「住屋」「向上流」「尊重」三個流動字卡。",
+                "fix": "將背景中的三個白色矩形區域替換成帶有對應文字的動畫或靜態圖層。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面尚未執行「紙張摺疊」及「收攏到中心」的視覺轉變，目前仍是四個獨立分鏡。",
+                "fix": "需加入動態過場或合成特效，將四個邊角向中心摺疊並融合為白色背景。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面中紙張上的文字為模糊的橫線，未能呈現要求的具體條目（「就業支援」、「創科生態」、「住屋議題」）。",
+                "fix": "重新生成或修改圖層，將清晰可辨識的中文標題打印在會議議程紙上。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面中的文字「AGENDA」及介面內容模糊不清，且人物手部與桌上筆記本的互動略顯生硬。",
+                "fix": "要求 AI 重新生成清晰的「第10期青年委員自薦計劃」中文字體，並修正手部抓握筆或紙張的姿勢，確保介面設計更具科技感且字體可辨識。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面中人物數量過多（共 10 人），且多人同時在看文件或發言，與分鏡稿要求的「一位青年委員發言、另一位翻看文件」的對比焦點不符。",
+                "fix": "縮減場景人數至兩位主要角色，並將背景人物模糊化或移除，以突出單一發言者與文件細節的特寫。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是 3D 立方體與線條人影的抽象藝術圖。",
+                "fix": "重新生成符合要求的畫面：白底 Kinetic Typography 動畫疊加會議枱細節，並包含正確的文字「地區委員會」及「16至35歲」，以及地圖線框與人群 icon。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是抽象的科技/數據風格插畫，而非要求的「指定委員會」文字、特定年齡層資訊及舊片合照。",
+                "fix": "重新製作場景：左側或中心位置需出現清晰易讀的大字「指定委員會」，下方配上「18至35歲」；背景需更換為真實的青年委員合照或活動片段，並確保所有文字符合規範。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前僅為一個帶有發光框線的抽象圖形，完全沒有出現要求的「大型申請頁面」、「超大字標語」、「截止日期」及「機構標誌」。",
+                "fix": "重新繪製或修改畫面，將中心區域替換為具體的申請網頁 UI 設計，並加入指定的文字內容與官方 Logo。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面內容與「分鏡稿」無關，此為一張包含文字資訊的簡報投影片。",
+                "fix": "請提供實際的第 12 幕分鏡圖（Storyboard），而非目前的標題頁或提示頁。"
+              }
+            ]
+          },
+          {
+            "v": "20260803-164304-nblm-i1",
+            "sheet": "assets/gen/HYAB_C/v20260803-164304-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/HYAB_C/v20260803-164304-nblm-i1/frame_01.jpg",
+              "assets/gen/HYAB_C/v20260803-164304-nblm-i1/frame_02.jpg",
+              "assets/gen/HYAB_C/v20260803-164304-nblm-i1/frame_03.jpg",
+              "assets/gen/HYAB_C/v20260803-164304-nblm-i1/frame_04.jpg",
+              "assets/gen/HYAB_C/v20260803-164304-nblm-i1/frame_05.jpg",
+              "assets/gen/HYAB_C/v20260803-164304-nblm-i1/frame_06.jpg",
+              "assets/gen/HYAB_C/v20260803-164304-nblm-i1/frame_07.jpg",
+              "assets/gen/HYAB_C/v20260803-164304-nblm-i1/frame_08.jpg",
+              "assets/gen/HYAB_C/v20260803-164304-nblm-i1/frame_09.jpg",
+              "assets/gen/HYAB_C/v20260803-164304-nblm-i1/frame_10.jpg",
+              "assets/gen/HYAB_C/v20260803-164304-nblm-i1/frame_11.jpg",
+              "assets/gen/HYAB_C/v20260803-164304-nblm-i1/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-08-03T16:43:05",
+            "source": "committee",
+            "brd": "C",
+            "cid": "cm05754a64",
+            "label": "[grok-sub] Concept 1:〔先鬧後入局 · Rant → Agenda〕",
+            "gslide_pages": [
+              "assets/gen/HYAB_C/v20260803-164304-nblm-i1/gslide_HYAB_C_p1.png",
+              "assets/gen/HYAB_C/v20260803-164304-nblm-i1/gslide_HYAB_C_p2.png"
+            ],
+            "deck_repo": "assets/gen/HYAB_C/v20260803-164304-nblm-i1/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "場景過於寫實且缺乏特定住宅單位的特寫，與『推向一個住宅單位』的動作描述不符。",
+                "fix": "在畫面中加入明顯的目標建築物或窗戶高亮，並增加一點點虛化效果以營造從遠處推近的空間感。"
+              },
+              {
+                "slide": 2,
+                "flag": "手機屏幕上未顯示出「0尊」、「躺平」等具體文字。",
+                "fix": "在手機螢幕區域加入明顯的社交媒體界面，並包含對應的關鍵字（如：0 Respect, Lying Flat）。"
+              },
+              {
+                "slide": 3,
+                "flag": "人物手部比例與結構不對稱（左手手指過多且融合），且背景中遠處桌椅的透視線條略顯混亂。",
+                "fix": "重新生成或修正主角的手部構造，確保五指清晰；同時優化背景家具的透視一致性。"
+              },
+              {
+                "slide": 4,
+                "flag": "電腦屏幕上的內容為抽象幾何線條，未能準確呈現分鏡稿要求的「密密麻麻的Excel表格」。",
+                "fix": "將螢幕內容修改為具備網格結構、包含數據與文字排列的 Excel 表格樣式。"
+              },
+              {
+                "slide": 5,
+                "flag": "背景中的地鐵車廂門與窗戶線條混亂，且遠處的列車連接處結構不對稱。",
+                "fix": "重新繪製或修正背景建築結構，確保地鐵車廂的透視與線條流暢一致。"
+              },
+              {
+                "slide": 6,
+                "flag": "人物面孔比例不均勻且線條粗細不一，部分臉部陰影過於生硬。",
+                "fix": "統一四位角色的繪圖風格與線條粗細，並優化面部陰影的平滑度。"
+              },
+              {
+                "slide": 7,
+                "flag": "人物面孔模糊且比例不對稱，背景人物與前景「rant bubble」的層次感不清晰。",
+                "fix": "重新繪製或處理背景人物，確保其作為背景元素時不會干擾視覺重心，並清晰定義紙張摺疊的幾何結構。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面中的文字為英文（Employment, Tech, Housing, Medical），與分鏡稿要求的中文內容不符。",
+                "fix": "將圖中對應的英文標題修改為「就業支援」、「創科生態」、「住屋議題」及「醫療人手」。"
+              },
+              {
+                "slide": 9,
+                "flag": "人物手部與拿著的文件重疊不清，且手指數量及形狀略顯扭曲。",
+                "fix": "重新生成或修補手部細節，確保手指數量正確並清晰地抓握文件邊緣。"
+              },
+              {
+                "slide": 10,
+                "flag": "人物面孔比例略顯不協調，且手部與筆的銜接處線條較模糊。",
+                "fix": "優化人臉五官比例，並加強手部與握筆動作的線條清晰度。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面中的人物面孔比例不均且特徵模糊，部分人臉呈現扁平化或扭曲。",
+                "fix": "重新生成更具寫實風格、五官清晰的青年角色，確保每個人臉都有辨識度。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面中雖然有公事包圖示，但完全沒有出現分鏡稿要求的「就業支援」文字內容。",
+                "fix": "在公事包旁邊或下方加入清晰的『Employment Support』字樣。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面中的文字「Tech Ecology」拼寫不完整且字體模糊，與分鏡稿要求的「Innotech Ecology」內容不符。",
+                "fix": "修正圖中文字為正確的「Innotech Ecology」，並確保字體清晰、專業。"
+              },
+              {
+                "slide": 15,
+                "flag": "人物手部與筆的銜接不自然，且手中的藍色夾板上出現無意義的雜亂線條。",
+                "fix": "重新繪製手部動作，確保握筆姿勢正確；移除夾板上的雜訊，並可加入簡單的文字或勾選框以增加真實感。"
+              },
+              {
+                "slide": 16,
+                "flag": "畫面內容與分鏡稿描述不符（圖中為抽象建築/水紋，無標題文字；且背景非藍色漸變）。",
+                "fix": "重新繪製場景：移除複雜的建築線條與水紋，改為簡約的藍色漸變背景，並在畫面中心加入「第10期青年委員自薦計劃」的簡潔有力字體。"
+              },
+              {
+                "slide": 17,
+                "flag": "畫面完全沒有出現要求的「16至35歲」及「18至35歲」文字，亦無任何字體動態呈現。",
+                "fix": "在對應的兩個藍色節點位置加入清晰、鮮艷的數字與文字標籤（例如：16-35 及 18-35），以符合分鏡稿中要求的資訊傳達。"
+              },
+              {
+                "slide": 18,
+                "flag": "畫面中沒有顯示「截止日期」，且按鈕文字為英文 'Call to Action' 而非要求的「立即申請」。",
+                "fix": "將按鈕文字修改為中文「立即申請」，並在頁面顯眼位置加入具體的截止日期。"
+              },
+              {
+                "slide": 19,
+                "flag": "畫面中按鈕上沒有任何文字（如 'Submit'），且光芒效果過於誇張，略顯卡通。",
+                "fix": "在按鈕上加入清晰的「提交」或「Submit」字樣，並將光效調整得更具質感而非單純的線條放射。"
+              },
+              {
+                "slide": 20,
+                "flag": "人物比例不一且構圖略顯擁擠，部分人臉線條與背景融合不清。",
+                "fix": "調整人物高度層次，確保每個人臉輪廓清晰，並加強前景人物與遠景地標的視覺區隔。"
+              },
+              {
+                "slide": 21,
+                "flag": "畫面中完全沒有出現要求的「唔好淨係 rant——入局改」字體設計，亦無民政及青年事務局的標誌和網站地址。",
+                "fix": "在畫面上方或中心位置加入強而有力的對白文字，並在底部加入相關機構 Logo 及網址。"
+              }
+            ]
+          },
+          {
+            "v": "20260731-224130-nblm-i2",
+            "sheet": "assets/gen/HYAB_C/v20260731-224130-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_01.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_02.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_03.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_04.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_05.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_06.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_07.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_08.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_09.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_10.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_11.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_12.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_13.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_14.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_15.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_16.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_17.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_18.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_19.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_20.jpg",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/frame_21.jpg"
+            ],
+            "n": 21,
+            "ts": "2026-07-31T22:41:34",
+            "source": "committee",
+            "brd": "C",
+            "cid": "cm05754a64",
+            "label": "[grok-sub] Concept 1:〔先鬧後入局 · Rant → Agenda〕",
+            "gslide_pages": [
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/gslide_HYAB_C_p1.png",
+              "assets/gen/HYAB_C/v20260731-224130-nblm-i2/gslide_HYAB_C_p2.png"
+            ],
+            "deck_repo": "assets/gen/HYAB_C/v20260731-224130-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "場景過於寫實且缺乏重點聚焦，目前的廣角全景無法體現『推向一個住宅單位』的動態感。",
+                "fix": "縮小鏡頭範圍或加入視覺焦點（如點亮特定窗戶），以突顯從宏觀城市到微觀個人空間的轉場。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面中手機屏幕內容為空白，未出現分鏡稿要求的「0尊」、「躺平」等關鍵字眼。",
+                "fix": "在手機屏幕上加入明顯的社交媒體界面及相關文字（如『0尊』、『躺平』）。"
+              },
+              {
+                "slide": 3,
+                "flag": "人物手部比例與結構不對稱（左手手指過多且變形），且背景中的桌椅透視略顯混亂。",
+                "fix": "重新生成或修補主角的手部細節，確保手指數量正確；同時優化背景家具的透視線條，使其更符合茶餐廳空間邏輯。"
+              },
+              {
+                "slide": 4,
+                "flag": "電腦屏幕上的內容為抽象幾何線條，未能準確呈現分鏡稿要求的「密密麻麻的Excel表格」。",
+                "fix": "將螢幕內容修改為具備網格結構、包含數據與標題的 Excel 表格樣式。"
+              },
+              {
+                "slide": 5,
+                "flag": "背景中的地鐵車廂門與窗戶線條混亂，且遠處的車廂結構不對稱。",
+                "fix": "重新繪製背景，確保地鐵車廂的透視線條一致，並簡化遠處重複出現的車廂細節。"
+              },
+              {
+                "slide": 6,
+                "flag": "人物面孔比例不均勻且線條過於簡略，尤其是左二與右一的五官細節明顯低於中間女性角色。",
+                "fix": "統一四位角色的繪製風格與精細度，確保臉部結構對稱且符合一致的動漫/寫實比例。"
+              },
+              {
+                "slide": 7,
+                "flag": "人物面孔模糊且比例失真，背景與前景的層次感不清晰。",
+                "fix": "重新繪製或處理背景人物，確保臉部輪廓清晰；同時加強「rant bubble」摺疊結構的線條質感，使其更像實體紙張。"
+              },
+              {
+                "slide": 8,
+                "flag": "圖中文字為英文（Employment, Tech, Housing, Medical），與分鏡稿要求的中文內容不符。",
+                "fix": "將圖片中的英文標題及項目替換為對應的中文：『就業支援』、『創科生態』、『住屋議題』、『醫療人手』。"
+              },
+              {
+                "slide": 9,
+                "flag": "人物手部與拿著的文件重疊不清，且文件上的文字呈現為無意義的線條。",
+                "fix": "修正手部抓握動作，確保手指清晰且不與紙張融合；並在文件上加入具體的標題或模擬文字。"
+              },
+              {
+                "slide": 10,
+                "flag": "人物面孔比例略顯不協調（如眼睛位置），且手部與筆的銜接處線條處理較為生硬。",
+                "fix": "優化人臉五官對稱度，並加強手部抓握筆的結構清晰度。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面中人物手部動作不自然（如左側女性拿筆姿勢及中間男性手部與紙張重疊處），且桌上文件上的字體模糊不清。",
+                "fix": "重新生成或修飾手部結構，確保手指數量正確；並將桌上文件的文字處理為清晰的標題或簡約設計。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面中缺乏具體的文字內容（如「Employment Support」），僅以一個公事包圖示代替。",
+                "fix": "在公事包圖形旁邊或下方加入清晰的「Employment Support」字樣，並確保手寫筆記與重點符號更符合強調細節的要求。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面中的文字「Tech Ecology」拼寫不全且字體模糊，與分鏡稿要求的「Innotech Ecology」不符。",
+                "fix": "修正圖中文字為正確的「Innotech Ecology」，並確保字體清晰、專業。"
+              },
+              {
+                "slide": 15,
+                "flag": "人物手部與筆的銜接不自然，且背景建築物的窗戶排列有明顯重複性錯誤。",
+                "fix": "重新生成手部抓握筆的動作，並修正背景建築物透視及窗戶細節。"
+              },
+              {
+                "slide": 16,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前是抽象的建築/水紋圖形而非要求的「標題文字」及「藍色漸變」。",
+                "fix": "將目前的抽象場景替換為簡約設計：背景改為純粹的藍色漸變，並在中心位置加入字體清晰、有力的「第10期青年委員自薦計劃」標題。"
+              },
+              {
+                "slide": 17,
+                "flag": "畫面完全沒有出現要求的「16至35歲」及「18至35歲」文字，僅用抽象圖形呈現。",
+                "fix": "在對應的軌道上加入動態字體，清晰標示出兩個不同年齡層的範圍。"
+              },
+              {
+                "slide": 18,
+                "flag": "畫面中缺少要求的「截止日期」文字，且按鈕上的字樣為英文 'Call to Action' 而非中文 '立即申請'。",
+                "fix": "將按鈕文字修改為「立即申請」，並在頁面顯眼位置加入具體的截止日期。"
+              },
+              {
+                "slide": 19,
+                "flag": "畫面中按鈕上沒有文字（如 'Submit'），且手部與按鈕接觸處的線條處理略顯混亂。",
+                "fix": "在按鈕上加入清晰的「Submit」字樣，並優化點擊處的光效邊界，確保視覺焦點集中於動作。"
+              },
+              {
+                "slide": 20,
+                "flag": "人物比例不一且構圖略顯雜亂，部分人臉線條與背景融合不清。",
+                "fix": "統一青年群像的比例與透視角度，強化角色與地標景觀的層次感。"
+              },
+              {
+                "slide": 21,
+                "flag": "畫面中完全沒有出現要求的「唔好淨係 rant——入局改」字體設計，亦無民政及青年事務局的標誌和網站地址。",
+                "fix": "在畫面上方或中心位置加入強而有力的對白文字，並於底部加入相關機構 Logo 及網址。"
+              }
+            ]
+          },
+          {
+            "v": "20260731-223224-nblm-i1",
+            "sheet": "assets/gen/HYAB_C/v20260731-223224-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_01.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_02.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_03.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_04.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_05.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_06.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_07.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_08.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_09.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_10.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_11.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_12.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_13.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_14.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_15.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_16.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_17.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_18.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_19.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_20.jpg",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/frame_21.jpg"
+            ],
+            "n": 21,
+            "ts": "2026-07-31T22:32:25",
+            "source": "committee",
+            "brd": "C",
+            "cid": "cm05754a64",
+            "label": "[grok-sub] Concept 1:〔先鬧後入局 · Rant → Agenda〕",
+            "gslide_pages": [
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/gslide_HYAB_C_p1.png",
+              "assets/gen/HYAB_C/v20260731-223224-nblm-i1/gslide_HYAB_C_p2.png"
+            ],
+            "deck_repo": "assets/gen/HYAB_C/v20260731-223224-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "E": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260803-173326-nblm-i2",
+            "sheet": "assets/gen/HYAB_E/v20260803-173326-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/HYAB_E/v20260803-173326-nblm-i2/frame_01.jpg",
+              "assets/gen/HYAB_E/v20260803-173326-nblm-i2/frame_02.jpg",
+              "assets/gen/HYAB_E/v20260803-173326-nblm-i2/frame_03.jpg",
+              "assets/gen/HYAB_E/v20260803-173326-nblm-i2/frame_04.jpg",
+              "assets/gen/HYAB_E/v20260803-173326-nblm-i2/frame_05.jpg",
+              "assets/gen/HYAB_E/v20260803-173326-nblm-i2/frame_06.jpg",
+              "assets/gen/HYAB_E/v20260803-173326-nblm-i2/frame_07.jpg",
+              "assets/gen/HYAB_E/v20260803-173326-nblm-i2/frame_08.jpg",
+              "assets/gen/HYAB_E/v20260803-173326-nblm-i2/frame_09.jpg",
+              "assets/gen/HYAB_E/v20260803-173326-nblm-i2/frame_10.jpg",
+              "assets/gen/HYAB_E/v20260803-173326-nblm-i2/frame_11.jpg",
+              "assets/gen/HYAB_E/v20260803-173326-nblm-i2/frame_12.jpg",
+              "assets/gen/HYAB_E/v20260803-173326-nblm-i2/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-08-03T17:33:29",
+            "source": "committee",
+            "brd": "E",
+            "cid": "cm3704cf6f",
+            "label": "[deepseek-chat] Concept 2:**【青年委員會「Live」】**",
+            "gslide_pages": [
+              "assets/gen/HYAB_E/v20260803-173326-nblm-i2/gslide_HYAB_E_p1.png",
+              "assets/gen/HYAB_E/v20260803-173326-nblm-i2/gslide_HYAB_E_p2.png"
+            ],
+            "deck_repo": "assets/gen/HYAB_E/v20260803-173326-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前僅為抽象藍色流線圖形，缺乏「LIVE」圓點、特定字卡、走馬燈及虛擬新聞框等核心元素。",
+                "fix": "重新製作符合要求的視覺：加入紅色脈動「LIVE」圓點、粗體「突發／重點報道」字卡、底部跑馬燈文字，並在中心加入帶有時鐘與頻道角標的深藍紅色新聞 UI 框架。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面中出現大量無意義的白色色塊遮蓋文字，且人物面孔與肢體比例不對稱。",
+                "fix": "移除所有白塊，將標題、LIVE 標誌及走馬燈內容實質化；修正背景人物的臉部細節並確保構圖符合新聞直播風格。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面左半部出現大量模糊的背景人物及雜亂的白色遮蓋塊，並未呈現要求的「CG 新聞資訊欄」文字內容。",
+                "fix": "移除背景的人物與遮蓋塊，將左側區域替換為清晰的 CG 資訊欄，包含標題「獨家：青年意見直達委員會」及細項「諮詢角色｜實質貢獻」。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面缺少「連線中」細字、走馬燈具體文字內容，且背景波形圖過於明顯而非「輕微視覺化」。",
+                "fix": "在每人框角加入「連線中」小字，將底部空白條填入指定的日期與招募文字，並縮減邊緣波形柱的比例。"
+              },
+              {
+                "slide": 5,
+                "flag": "背景中的縮圖牆人物面孔模糊且比例不一，部分人像出現明顯的 AI 扭曲（如頭部與肩膀連接處不自然）。",
+                "fix": "將背景縮圖換成更清晰、風格統一的平面設計元素或實拍剪影，確保所有人物特徵一致。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面中出現大量無意義的亂碼/虛構文字，且中心圖形與「地區委員會」主題無關。",
+                "fix": "移除所有雜訊字體，將圓形圖標替換為具體的社區、規劃等政府風扁平 icon，並加入正確的 Super 文字。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前僅為一個帶有爆炸圖形、人物及空白橫條的示意圖，完全沒有「16」字樣、相關文字 Super 或要求的走馬燈效果。",
+                "fix": "重新製作該場景：加入大號「16」動畫、完整的對白文字、符合要求的新聞框設計，並確保背景青年形象與分鏡稿描述一致。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前是單一男性角色且無任何文字資訊。",
+                "fix": "需更換為不同造型/性別的青年中景，並在右側加入三條帶有勾號動效的 bullet supers 及底部的 ticker 跑馬燈。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前是四個獨立的插畫場景（討論、聚會、慶祝、網絡圖），而非要求的「新聞 montage 包裝」及包含「LIVE/Ticker/走馬燈文字」。",
+                "fix": "重新繪製或替換為符合要求的新聞直播風格畫面：必須包含統一的新聞外框、LIVE 標誌、滾動字幕（Ticker），並將內容處理成快速切換的片段，而非目前的插畫風格。"
+              },
+              {
+                "slide": 10,
+                "flag": "地圖內容錯誤（顯示為希臘而非香港）、文字內容與要求不符、人物比例及構圖不符合描述。",
+                "fix": "重新生成符合「香港十八區簡化地圖」的 CG 畫面，並將側欄文字更正為「青年地區委員會｜現正接受申請」，確保人像窗位置正確且無 AI 生成雜訊。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面中缺乏「Super 大字」提示語，且底部 ticker 未顯示具體文字內容。",
+                "fix": "加入『申請截止日期就快到』的大型標題，並在底部的橙色區塊加入高對比的滾動文字。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前僅為簡單的卡通人物排列，缺乏要求的「新聞外框」、「大標口號（中英雙語）」、底欄實用資訊以及正確的年齡標籤。",
+                "fix": "重新設計視覺：加入簡約的新聞風格框架，置入中心對稱的中英雙語 Slogan，在底部橫條加入指定的招募資訊文字，並確保背景人物符合「母帶青年」形象且附上正確年齡。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面中嘅中文及英文字體出現明顯扭曲，特別係「Live」一詞同埋下方政府機構名稱嘅字體處理唔到。",
+                "fix": "重新製作圖層，確保所有文字採用清晰、正確的字體設計，避免 AI 生成時產生的字符錯亂。"
+              }
+            ]
+          },
+          {
+            "v": "20260803-172628-nblm-i1",
+            "sheet": "assets/gen/HYAB_E/v20260803-172628-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/HYAB_E/v20260803-172628-nblm-i1/frame_01.jpg",
+              "assets/gen/HYAB_E/v20260803-172628-nblm-i1/frame_02.jpg",
+              "assets/gen/HYAB_E/v20260803-172628-nblm-i1/frame_03.jpg",
+              "assets/gen/HYAB_E/v20260803-172628-nblm-i1/frame_04.jpg",
+              "assets/gen/HYAB_E/v20260803-172628-nblm-i1/frame_05.jpg",
+              "assets/gen/HYAB_E/v20260803-172628-nblm-i1/frame_06.jpg",
+              "assets/gen/HYAB_E/v20260803-172628-nblm-i1/frame_07.jpg",
+              "assets/gen/HYAB_E/v20260803-172628-nblm-i1/frame_08.jpg",
+              "assets/gen/HYAB_E/v20260803-172628-nblm-i1/frame_09.jpg",
+              "assets/gen/HYAB_E/v20260803-172628-nblm-i1/frame_10.jpg",
+              "assets/gen/HYAB_E/v20260803-172628-nblm-i1/frame_11.jpg",
+              "assets/gen/HYAB_E/v20260803-172628-nblm-i1/frame_12.jpg",
+              "assets/gen/HYAB_E/v20260803-172628-nblm-i1/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-08-03T17:26:28",
+            "source": "committee",
+            "brd": "E",
+            "cid": "cm3704cf6f",
+            "label": "[deepseek-chat] Concept 2:**【青年委員會「Live」】**",
+            "gslide_pages": [
+              "assets/gen/HYAB_E/v20260803-172628-nblm-i1/gslide_HYAB_E_p1.png",
+              "assets/gen/HYAB_E/v20260803-172628-nblm-i1/gslide_HYAB_E_p2.png"
+            ],
+            "deck_repo": "assets/gen/HYAB_E/v20260803-172628-nblm-i1/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面與分鏡稿描述嚴重不符，目前是線條風格的日間港島/維港插畫，缺乏夜景、車流、「LIVE」標誌及走馬燈文字。",
+                "fix": "重新繪製或生成一張寫實風格的香港維港夜景縮時攝影畫面，加入動態光影效果，並在左上角添加紅色閃爍「LIVE」字樣及底部滾動的新聞條。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面缺少新聞標題蓋字「青年聲音直達政府委員會！」以及底部的走馬燈。",
+                "fix": "在畫面下方加入對應的文字內容，並增加滾動條設計。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面缺少「新聞直播介面」元素，且右下角標籤為空白色塊而非「現場連線」字樣。",
+                "fix": "加入電視框、新聞橫幅等直播視覺元素，並將橙色方塊替換為正確的「現場連線」中文字體。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面中嘅文字內容（標題同走馬燈）係空白，未出現分鏡稿要求嘅具體文字。",
+                "fix": "將長條框入面嘅空白區域替換成「16歲即可申請地區委員會！」同埋走馬燈內容「首次擴大至16歲！」。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面並無呈現「新聞直播介面」及「走馬燈」，亦未出現相關文字。",
+                "fix": "加入新聞直播框（News Ticker）設計，並在底部加入滾動的字幕或標語「資格下調，更多機會」。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面中沒有出現要求的「新聞直播介面」及「標題蓋字」。",
+                "fix": "需在畫面中央或底部加入模擬新聞直播的 UI 框，並加上『青年聲音，塑造社區未來』的文字。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面內容與分鏡稿描述不符（圖中為青年在挖掘/挖土，而非執拾垃圾或講解）。",
+                "fix": "更換為一名正在撿拾垃圾或進行環保宣傳的青年形象，並加上新聞直播介面及走馬燈文字。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面中缺少要求的「新聞標題蓋字」內容，且目前只有空白框位。",
+                "fix": "在長方形框內加入對應的文字：「加入委員會，貢獻你的專長」。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面中出現兩隻手，且姿勢與「單一女性青年」的特寫描述不符；此外底部走馬燈文字為空白框，未顯示要求的內容。",
+                "fix": "重新繪製一張只有一雙手在比劃動作的特寫圖，並將底部的走馬燈填上正確的日期文字。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面中缺乏要求的「新聞標題蓋字」內容。",
+                "fix": "在畫面上方或下方加入「與政府攜手，共建理想香港」的文字標題。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面缺乏「新聞直播介面」及「LIVE 標誌」，僅為人物特寫與抽象波紋圖形。",
+                "fix": "加入新聞直播框線、底部跑馬燈，並在角落加入閃爍的紅色 'LIVE' 字樣。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面中人物的手部動作與比例略顯不自然，且桌上的紙張內容為無意義的線條。",
+                "fix": "優化手部結構並將桌面文件處理成模糊或簡約圖形，避免視覺干擾。"
+              },
+              {
+                "slide": 13,
+                "flag": "人物手部結構明顯異常（手指數量與形狀扭曲），且表情過於誇張，不像是在正式會議中發言。",
+                "fix": "重新生成或修正手部細節，並將表情調整為更穩重、自信的專業演講神情。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面中底部兩格的標題文字為空白，未出現要求的「集思廣益，匯聚青年力量」。",
+                "fix": "將下方兩個框內的空白區域替換成正確的新聞標題字體。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面中人物面孔細節模糊且比例不均勻，且圖表中的文字/數據完全是無意義的亂碼。",
+                "fix": "建議使用更清晰的人物插畫，並將背景中的數據圖表簡化為具備視覺美感的抽象線條或色塊，避免出現明顯的 AI 生成字體雜訊。"
+              },
+              {
+                "slide": 16,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，圖中是橙色無線電/廣播訊號圖示，而非「LIVE」標誌及走馬燈。",
+                "fix": "重新製作素材，將現有圖示替換為帶有閃爍紅光效果的「LIVE」字樣，並加入底部快速滾動的文字條。"
+              },
+              {
+                "slide": 17,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是抽象的建築線條插畫而非「香港政府總部大樓夜景」，且缺少新聞直播介面及標題。",
+                "fix": "更換為真實拍攝或高品質 3D 渲染的香港政府總部大樓夜景素材，並疊加符合要求的廣播式新聞 UI 及對應文字。"
+              },
+              {
+                "slide": 18,
+                "flag": "人物表情過於平淡（帶有微笑），與分鏡稿要求的「堅定而充滿希望」略有出入。",
+                "fix": "調整人臉表情，增加眼神的專注度與眉宇的力度，展現更強烈的決心感。"
+              },
+              {
+                "slide": 19,
+                "flag": "畫面中缺乏「LIVE」標誌及走馬燈文字，且人物面孔細節過於簡約。",
+                "fix": "加入閃爍的 LIVE 圖示與跑馬燈內容，並增加人臉線條細節以提升質感。"
+              },
+              {
+                "slide": 20,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前僅為抽象的線條與圓形圖案，並無「新聞直播介面」、「LIVE 標誌」及正確的「走馬燈文字」。",
+                "fix": "重新繪製畫面，加入電視廣播框、明顯的 LIVE 字樣，並將招募資訊字體清晰地置於底部或滾動帶中。"
+              },
+              {
+                "slide": 21,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前僅為一個抽象的網頁佈局草圖，並無顯示「青年委員會」字樣、具體網址或「立即申請」按鈕。",
+                "fix": "請重新製作 CG 動畫畫面，明確呈現官方網站連結文字及明顯的橙色「立即申請」按鈕。"
+              }
+            ]
+          },
+          {
+            "v": "20260731-230652-nblm-i2",
+            "sheet": "assets/gen/HYAB_E/v20260731-230652-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_01.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_02.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_03.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_04.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_05.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_06.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_07.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_08.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_09.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_10.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_11.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_12.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_13.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_14.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_15.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_16.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_17.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_18.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_19.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_20.jpg",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/frame_21.jpg"
+            ],
+            "n": 21,
+            "ts": "2026-07-31T23:06:57",
+            "source": "committee",
+            "brd": "E",
+            "cid": "cm3704cf6f",
+            "label": "[deepseek-chat] Concept 2:**【青年委員會「Live」】**",
+            "gslide_pages": [
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/gslide_HYAB_E_p1.png",
+              "assets/gen/HYAB_E/v20260731-230652-nblm-i2/gslide_HYAB_E_p2.png"
+            ],
+            "deck_repo": "assets/gen/HYAB_E/v20260731-230652-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面與分鏡稿描述嚴重不符，目前是線條風格的日間港島維港插畫，缺乏「夜景」、「車流如織」以及最重要的「LIVE 標誌」和「新聞走馬燈」等關鍵元素。",
+                "fix": "重新繪製或修改場景：將色調改為璀璨夜景，加入動態光影效果；在左上角添加紅色閃爍的 LIVE 圖示，並在底部加入滾動的新聞標題文字。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面底部的新聞標題蓋字與走馬燈內容為空白，未出現要求的文字。",
+                "fix": "在下方長條框內加入「青年聲音直達政府委員會！」的標題文字，並在最底層細線框中加入滾動的資訊。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面缺少「新聞直播介面」元素及右下角「現場連線」字樣。",
+                "fix": "加入電視框邊框、底部跑馬燈，並在右下角加上『現場連線』的文字標籤。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面中嘅文字內容（標題同走馬燈）係空白，冇出現分鏡稿要求嘅「16歲即可申請地區委員會！」同「首次擴大至16歲！」。",
+                "fix": "需要將對應嘅廣播/新聞標題字體加入到兩個長條框內。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面並無呈現「新聞直播介面」及「走馬燈」，亦未出現相關文字內容。",
+                "fix": "加入新聞直播框（News Ticker）與標題，並在底部加入滾動的字幕或走馬燈顯示「資格下調，更多機會」。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面中沒有出現要求的「新聞直播介面」及「標題蓋字」。",
+                "fix": "需在畫面中央或底部加入模擬新聞直播的 UI 框，並加上『青年聲音，塑造社區未來』的文字。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面內容與分鏡稿描述不符（目前為青年在森林/草地用鏟子挖掘，而非執拾垃圾或講解）。",
+                "fix": "更換為一名青年正在戶外撿拾垃圾或進行宣傳活動的場景，並加上新聞直播介面及走馬燈文字。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面中缺乏要求的「新聞標題蓋字」內容，且目前只有空白框位。",
+                "fix": "在長方形框內加入對應的文字：「加入委員會，貢獻你的專長」。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面中出現兩隻手，且動作與「單一女性青年」的特寫描述不符；此外底部走馬燈區域僅為空白框，未顯示要求的文字。",
+                "fix": "修正為單手或雙手由同一人伸出的清晰特寫，並在底部的長條框中加入正確的截止日期與行動號召字體。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面中缺少要求的「與政府攜手，共建理想香港」新聞標題蓋字。",
+                "fix": "在畫面上方或下方加入對應的文字標題。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面缺乏新聞直播介面及「LIVE」標誌，且無明顯的推近動態感。",
+                "fix": "加入電視框邊框、底部的跑馬燈以及閃爍的紅色「LIVE」字樣，並在分鏡中註明攝影機推進（Zoom in）動作。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面中人物的手部比例與姿勢略顯僵硬，且桌上的文件內容為無意義的線條。",
+                "fix": "優化手部動作的自然度，並在後期處理時加入清晰的文字或圖標到紙張上。"
+              },
+              {
+                "slide": 13,
+                "flag": "人物手部線條處理不清晰且比例略顯突兀，與整體插畫風格略有出入。",
+                "fix": "優化手部的線條細節，確保手指結構更自然、精確。"
+              },
+              {
+                "slide": 14,
+                "flag": "底部新聞標題蓋字內容缺失或模糊不清，無法辨認出「集思廣益，匯聚青年力量」字樣。",
+                "fix": "重新生成底部的文字區塊，確保中文字體清晰且內容正確。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面中人物面孔細節模糊且比例不均，且圖表中的文字/數據完全是無意義的亂碼。",
+                "fix": "使用更高解析度的角色模型確保臉部清晰，並將圖表內容替換為具體的、可辨識的資訊或簡約的設計元素。"
+              },
+              {
+                "slide": 16,
+                "flag": "畫面內容與分鏡稿描述完全不符，圖中是橙色無線電/廣播訊號圖示，而非「LIVE」標誌及走馬燈。",
+                "fix": "重新繪製或更換素材，確保畫面出現紅色閃爍的「LIVE」字樣、模糊背景以及帶有「立即申請！」文字的快速滾動條。"
+              },
+              {
+                "slide": 17,
+                "flag": "畫面與分鏡稿描述嚴重不符，目前是抽象的線條建築圖而非「香港政府總部大樓夜景」，且缺少新聞直播介面及標題文字。",
+                "fix": "更換為真實拍攝或高品質 3D 渲染的香港政府總部大樓夜景素材，並疊加符合要求的廣播式新聞 UI 與對應的中文字幕。"
+              },
+              {
+                "slide": 18,
+                "flag": "畫面中出現了明顯的文字/圖形雜訊（底部橫條上的亂碼與不規則線條），且人物表情偏向平淡，未充分體現「堅定而充滿希望」的情緒。",
+                "fix": "移除底部的抽象幾何裝飾及雜訊，並調整人像神情，強化眼神的專注度與嘴角上揚的自信感。"
+              },
+              {
+                "slide": 19,
+                "flag": "畫面缺少「LIVE」標誌及走馬燈文字內容。",
+                "fix": "在右上角加入閃爍的「LIVE」圖示，並在底部橫條中加入「青年委員會招募，立即申請！」字樣。"
+              },
+              {
+                "slide": 20,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前僅為抽象的線條與圓形圖案，沒有「新聞直播介面」、「LIVE 標誌」及正確的「走馬燈文字」。",
+                "fix": "重新繪製畫面，加入模擬電視新聞畫面的 UI 元素（如 LIVE 圖示、底部跑馬燈帶有指定招募文字），並將背景更換為具體的城市光影動態圖案。"
+              },
+              {
+                "slide": 21,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前只是一張抽象的網頁佈局線框圖（Wireframe），沒有顯示具體的「青年委員會」官網連結、清晰字體或「立即申請」按鈕動畫。",
+                "fix": "請更換為實際的 CG 動畫畫面，包含清晰可辨識的官方網站 URL 文字及一個明顯的橙色/醒目顏色「立即申請」按鈕。"
+              }
+            ]
+          },
+          {
+            "v": "20260731-230039-nblm-i1",
+            "sheet": "assets/gen/HYAB_E/v20260731-230039-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_01.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_02.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_03.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_04.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_05.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_06.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_07.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_08.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_09.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_10.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_11.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_12.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_13.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_14.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_15.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_16.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_17.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_18.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_19.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_20.jpg",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/frame_21.jpg"
+            ],
+            "n": 21,
+            "ts": "2026-07-31T23:00:39",
+            "source": "committee",
+            "brd": "E",
+            "cid": "cm3704cf6f",
+            "label": "[deepseek-chat] Concept 2:**【青年委員會「Live」】**",
+            "gslide_pages": [
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/gslide_HYAB_E_p1.png",
+              "assets/gen/HYAB_E/v20260731-230039-nblm-i1/gslide_HYAB_E_p2.png"
+            ],
+            "deck_repo": "assets/gen/HYAB_E/v20260731-230039-nblm-i1/deck.pdf"
+          }
+        ]
+      }
     }
   },
-  "updated": "2026-07-28T22:40:53"
+  "updated": "2026-08-03T17:33:29"
 }

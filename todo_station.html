@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-HK"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>📋 TODO 工作站</title>
+<style>
+  body{margin:0;background:#f4f5f7;font-family:-apple-system,"PingFang HK","Microsoft JhengHei",sans-serif;color:#1f2430}
+  .wrap{max-width:760px;margin:0 auto;padding:18px 14px 60px}
+  header{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+  header h1{font-size:20px;margin:0;flex:1}
+  header a{text-decoration:none;font-size:20px}
+  .sub{font-size:12px;color:#6b7280;margin-bottom:14px}
+  .ov{display:flex;gap:10px;margin-bottom:16px}
+  .ovc{flex:1;background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:10px 14px;text-align:center}
+  .ovc b{display:block;font-size:22px}
+  .ovc span{font-size:12px;color:#6b7280}
+  .sect{display:flex;align-items:center;gap:8px;margin:18px 0 10px;font-weight:700;font-size:14px}
+  .sect::before{content:"";width:4px;height:16px;background:#4f46e5;border-radius:2px}
+  .card{background:#fff;border:1px solid #e7e9ee;border-radius:14px;padding:12px 14px;margin-bottom:10px}
+  .card.goal{border-left:4px solid #4f46e5}
+  .row1{display:flex;gap:10px}
+  .tick input{width:18px;height:18px;margin-top:3px;cursor:pointer}
+  .body{flex:1;min-width:0}
+  .ttl{font-size:14px;font-weight:600;line-height:1.45}
+  .meta{font-size:12px;color:#6b7280;margin-top:2px}
+  .notes{font-size:12px;color:#4b5563;margin-top:6px;background:#f9fafb;border-radius:8px;padding:6px 8px}
+  .pro{font-size:12px;margin-top:8px;border-radius:8px;padding:6px 8px;line-height:1.5}
+  .p-done{background:#ecfdf5;color:#0A7D3F}
+  .p-run{background:#eef2ff;color:#4f46e5}
+  .p-act{background:#fff7ed;color:#d97706}
+  .p-red{background:#fef2f2;color:#EE382F}
+  .p-idle{background:#f3f4f6;color:#6b7280}
+  .pro a{color:inherit;font-weight:700}
+  .pill{font-size:10px;font-weight:700;border-radius:99px;padding:2px 8px;margin-left:6px;vertical-align:1px}
+  .pill-high{background:#fef2f2;color:#EE382F}
+  .pill-low{background:#f3f4f6;color:#6b7280}
+  .pill-wait{background:#eef2ff;color:#4f46e5}
+  .empty{text-align:center;color:#6b7280;padding:30px 0}
+  .done-row{font-size:12px;color:#6b7280;padding:4px 2px}
+  #doneBar{display:none;position:sticky;bottom:14px;margin-top:10px}
+  #doneBar button{width:100%;background:#0A7D3F;color:#fff;border:none;border-radius:10px;padding:11px;font-size:14px;font-weight:700;cursor:pointer}
+  /* 📱 mobile：右下角懸浮 FAB（Raymond 2026-08-10；NLM spec 56px 圓形） */
+  @media(max-width:640px){
+    #doneBar{position:fixed;right:16px;bottom:16px;width:auto;margin:0;z-index:1000}
+    #doneBar button{width:56px;height:56px;border-radius:50%;padding:0;font-size:20px;
+      box-shadow:0 4px 12px rgba(79,70,229,.4)}
+    #doneBar .hint{display:none}
+    #doneBar button .btxt{display:none}
+  }
+  .hint{font-size:11px;color:#9ca3af;margin-top:4px;text-align:center}
+  details{margin-top:18px} summary{font-size:13px;font-weight:700;cursor:pointer;color:#6b7280}
+</style></head><body><div class="wrap">
+<header><h1>📋 TODO 工作站</h1><a href="." title="返 Hub">🏠</a><a href="javascript:location.reload()" title="重新整理">🔄</a></header>
+<div class="sub">更新 2026-08-13 10:01 HKT · TG 打「TODO: xxx」即加入 · 真源＝taskbus 池</div>
+<div class="ov">
+  <div class="ovc"><b>23</b><span>open</span></div>
+  <div class="ovc"><b style="color:#EE382F">2</b><span>HIGH</span></div>
+  <div class="ovc"><b style="color:#4f46e5">0</b><span>等你審</span></div>
+</div>
+<div class="sect">待做（剔 box = 標完成）</div>
+<div class="card" id="EVT-20260720225905-905a">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260720225905-905a"></label>
+    <div class="body">
+      <div class="ttl">填 MM 公司報稅表 <span class="pill pill-high">HIGH</span></div>
+      <div class="meta">手加 · madman · 加入 2026-07-20</div>
+      <div class="notes">系統已預備：拆步驟＋備料 draft（advancer prep 2026-08-11 17:00），開 TODO 站見 ✅</div>
+      <div class="pro p-red">🔴 一定先問級：AI 只可備料出 draft，⛔ 唔郁申報／資金／portal 登入，落實要你拍板</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260720225906-b4b6">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260720225906-b4b6"></label>
+    <div class="body">
+      <div class="ttl">交保費：FWD / 永明 Sun Life / Prudential <span class="pill pill-high">HIGH</span></div>
+      <div class="meta">手加 · insurance · 加入 2026-07-20</div>
+      <div class="notes">系統已預備：拆步驟＋備料 draft（advancer prep 2026-08-11 17:00），開 TODO 站見 ✅</div>
+      <div class="pro p-red">🔴 一定先問級：AI 只可備料出 draft，⛔ 唔郁申報／資金／portal 登入，落實要你拍板</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260719102344-3ced">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260719102344-3ced"></label>
+    <div class="body">
+      <div class="ttl">報安成宰稅 </div>
+      <div class="meta">seed-2026-07-19 · 加入 2026-07-19</div>
+      <div class="notes">系統已預備：拆步驟＋備料 draft（advancer prep 2026-08-10 23:30），開 TODO 站見 ✅</div>
+      <div class="pro p-idle">💤 未有自動推進 lane — todo_nudge 會喺 session 收尾提你；想 AI 開題可 TG 加「🔬research:」前綴</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260719102345-336a">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260719102345-336a"></label>
+    <div class="body">
+      <div class="ttl">填公司報稅表 </div>
+      <div class="meta">seed-2026-07-19 · 加入 2026-07-19</div>
+      <div class="notes">系統已預備：拆步驟＋備料 draft（advancer prep 2026-08-10 23:30），開 TODO 站見 ✅</div>
+      <div class="pro p-red">🔴 一定先問級：AI 只可備料出 draft，⛔ 唔郁申報／資金／portal 登入，落實要你拍板</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260719102347-231b">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260719102347-231b"></label>
+    <div class="body">
+      <div class="ttl">上 DFI 網站 submit inv </div>
+      <div class="meta">seed-2026-07-19 · 加入 2026-07-19</div>
+      <div class="notes">系統已預備：拆步驟＋備料 draft（advancer prep 2026-08-11 12:00），開 TODO 站見 ✅</div>
+      <div class="pro p-red">🔴 一定先問級：AI 只可備料出 draft，⛔ 唔郁申報／資金／portal 登入，落實要你拍板</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260719102348-65b8">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260719102348-65b8"></label>
+    <div class="body">
+      <div class="ttl">同 TACO：send email 傾價錢 + 計數 </div>
+      <div class="meta">seed-2026-07-19 · 加入 2026-07-19</div>
+      <div class="notes">系統已預備：拆步驟＋備料 draft（advancer prep 2026-08-11 12:00），開 TODO 站見 ✅</div>
+      <div class="pro p-idle">💤 未有自動推進 lane — todo_nudge 會喺 session 收尾提你；想 AI 開題可 TG 加「🔬research:」前綴</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260720225908-49e3">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260720225908-49e3"></label>
+    <div class="body">
+      <div class="ttl">IPHatch：post-campaign report </div>
+      <div class="meta">手加 · iphatch · 加入 2026-07-20</div>
+      <div class="notes">系統已預備：拆步驟＋備料 draft（advancer prep 2026-08-11 23:30），開 TODO 站見 ✅</div>
+      <div class="pro p-idle">💤 未有自動推進 lane — todo_nudge 會喺 session 收尾提你；想 AI 開題可 TG 加「🔬research:」前綴</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260720225909-3c3d">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260720225909-3c3d"></label>
+    <div class="body">
+      <div class="ttl">BOC Life：執 KV + 報價 </div>
+      <div class="meta">手加 · boc-life · 加入 2026-07-20</div>
+      <div class="notes">系統已預備：拆步驟＋備料 draft（advancer prep 2026-08-11 23:30），開 TODO 站見 ✅</div>
+      <div class="pro p-idle">💤 未有自動推進 lane — todo_nudge 會喺 session 收尾提你；想 AI 開題可 TG 加「🔬research:」前綴</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260720225910-a271">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260720225910-a271"></label>
+    <div class="body">
+      <div class="ttl">Wellcome/惠康：諗九月 plan </div>
+      <div class="meta">手加 · wellcome · 加入 2026-07-20</div>
+      <div class="notes">系統已預備：拆步驟＋備料 draft（advancer prep 2026-08-12 12:00），開 TODO 站見 ✅</div>
+      <div class="pro p-idle">💤 未有自動推進 lane — todo_nudge 會喺 session 收尾提你；想 AI 開題可 TG 加「🔬research:」前綴</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260722172357-a11d">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260722172357-a11d"></label>
+    <div class="body">
+      <div class="ttl">不是靈感，這是一個工作，要做前期預備 </div>
+      <div class="meta">TG · 加入 2026-07-22</div>
+      <div class="notes">系統已預備：拆步驟＋備料 draft（advancer prep 2026-08-12 12:00），開 TODO 站見 ✅</div>
+      <div class="pro p-idle">💤 未有自動推進 lane — todo_nudge 會喺 session 收尾提你；想 AI 開題可 TG 加「🔬research:」前綴</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260804213334-b649">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260804213334-b649"></label>
+    <div class="body">
+      <div class="ttl">Raymond/MK LinkedIn post（講大快活campaign） </div>
+      <div class="meta">seed · 加入 2026-08-04</div>
+      <div class="notes">系統已預備：拆步驟＋備料 draft（advancer prep 2026-08-12 17:00），開 TODO 站見 ✅</div>
+      <div class="pro p-idle">💤 未有自動推進 lane — todo_nudge 會喺 session 收尾提你；想 AI 開題可 TG 加「🔬research:」前綴</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260804213335-46d1">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260804213335-46d1"></label>
+    <div class="body">
+      <div class="ttl">大快活入獎 </div>
+      <div class="meta">seed · 加入 2026-08-04</div>
+      <div class="notes">系統已預備：拆步驟＋備料 draft（advancer prep 2026-08-12 17:00），開 TODO 站見 ✅</div>
+      <div class="pro p-idle">💤 未有自動推進 lane — todo_nudge 會喺 session 收尾提你；想 AI 開題可 TG 加「🔬research:」前綴</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260804213336-eea1">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260804213336-eea1"></label>
+    <div class="body">
+      <div class="ttl">Pawllywood 八月八條 FEED research + copywriting（客已畀 content plan） </div>
+      <div class="meta">seed · 加入 2026-08-04</div>
+      <div class="notes">系統已預備：拆步驟＋備料 draft（advancer prep 2026-08-12 23:30），開 TODO 站見 ✅</div>
+      <div class="pro p-idle">💤 未有自動推進 lane — todo_nudge 會喺 session 收尾提你；想 AI 開題可 TG 加「🔬research:」前綴</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260804213337-e2a2">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260804213337-e2a2"></label>
+    <div class="body">
+      <div class="ttl">MPFA API（倩已畀初步想法） </div>
+      <div class="meta">seed · 加入 2026-08-04</div>
+      <div class="notes">系統已預備：拆步驟＋備料 draft（advancer prep 2026-08-12 23:30），開 TODO 站見 ✅</div>
+      <div class="pro p-idle">💤 未有自動推進 lane — todo_nudge 會喺 session 收尾提你；想 AI 開題可 TG 加「🔬research:」前綴</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260806084008-de4b">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260806084008-de4b"></label>
+    <div class="body">
+      <div class="ttl">📋 [人手開單提醒] 商業客 大快活 - 西多士 項目進度已達 QUO_REQ。
+👉 現況：報價確認不經電郵（屬口頭/WhatsApp 盲區），冇 NLM 數據真源。
+👉 處置：請覆核後，手動去 Sales Register 出單。 </div>
+      <div class="meta">campaign哨 · 大快活 · 加入 2026-08-06</div>
+      
+      <div class="pro p-act">📣 系統偵測到 campaign 到咗開單位，等你人手去 Sales Register 出單</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260806204526-4177">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260806204526-4177"></label>
+    <div class="body">
+      <div class="ttl">將mm company credential 譯做簡體字版本，上傳到內地雲端 </div>
+      <div class="meta">TG · 加入 2026-08-06</div>
+      <div class="notes">TG TODO: Raymond 待辦(等 advancer 推進)</div>
+      <div class="pro p-idle">💤 未有自動推進 lane — todo_nudge 會喺 session 收尾提你；想 AI 開題可 TG 加「🔬research:」前綴</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260811154036-c3c9">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260811154036-c3c9"></label>
+    <div class="body">
+      <div class="ttl">惠康品牌大賞 </div>
+      <div class="meta">手加 · wellcome · 加入 2026-08-11</div>
+      
+      <div class="pro p-idle">💤 未有自動推進 lane — todo_nudge 會喺 session 收尾提你；想 AI 開題可 TG 加「🔬research:」前綴</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260811154037-6439">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260811154037-6439"></label>
+    <div class="body">
+      <div class="ttl">大快活中秋emoji </div>
+      <div class="meta">手加 · fairwood · 加入 2026-08-11</div>
+      
+      <div class="pro p-idle">💤 未有自動推進 lane — todo_nudge 會喺 session 收尾提你；想 AI 開題可 TG 加「🔬research:」前綴</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260812085531-493e">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260812085531-493e"></label>
+    <div class="body">
+      <div class="ttl">📋 [人手開單提醒] 商業客 大快活 - 變色阿活尋寶 項目進度已達 DONE。
+👉 現況：報價確認不經電郵（屬口頭/WhatsApp 盲區），冇 NLM 數據真源。
+👉 處置：請覆核後，手動去 Sales Register 出單。 </div>
+      <div class="meta">campaign哨 · 大快活 · 加入 2026-08-12</div>
+      
+      <div class="pro p-act">📣 系統偵測到 campaign 到咗開單位，等你人手去 Sales Register 出單</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260812153123-adf6">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260812153123-adf6"></label>
+    <div class="body">
+      <div class="ttl">[待審Draft] 覆: MKTD_Procurement | Re: &lt;Madkids Communications Limited&gt; 詢價 Quot </div>
+      <div class="meta">email腦 · r-959294221576657516 · 加入 2026-08-12</div>
+      
+      <div class="pro p-done">✅ AI 已寫好回覆草稿（Gmail Drafts，⛔ 唔會自動發送） — <a href="https://mail.google.com/mail/u/madkids@madkids.hk/#drafts" target="_blank">開 Gmail Draft</a></div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260812170059-4cb1">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260812170059-4cb1"></label>
+    <div class="body">
+      <div class="ttl">[待審Draft] 覆: Mail Delivery Subsystem | Re: Delivery Status Notification (Delay) </div>
+      <div class="meta">email腦 · r-6847815277489775806 · 加入 2026-08-12</div>
+      
+      <div class="pro p-done">✅ AI 已寫好回覆草稿（Gmail Drafts，⛔ 唔會自動發送） — <a href="https://mail.google.com/mail/u/madkidshk0@gmail.com/#drafts" target="_blank">開 Gmail Draft</a></div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260813091443-cd00">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260813091443-cd00"></label>
+    <div class="body">
+      <div class="ttl">MK SZ 每月15日報稅 </div>
+      <div class="meta">手加 · 加入 2026-08-13</div>
+      <div class="notes">🔁 recurring：每月15日報一次（MK 深圳）。🔴 一定先問級：AI 只備料，⛔ 絕不自動申報</div>
+      <div class="pro p-red">🔴 一定先問級：AI 只可備料出 draft，⛔ 唔郁申報／資金／portal 登入，落實要你拍板</div>
+    </div>
+  </div>
+</div>
+<div class="card" id="EVT-20260813091444-039b">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="done-box" data-eid="EVT-20260813091444-039b"></label>
+    <div class="body">
+      <div class="ttl">大快活交中秋emoji quotation </div>
+      <div class="meta">手加 · fairwood · 加入 2026-08-13</div>
+      
+      <div class="pro p-idle">💤 未有自動推進 lane — todo_nudge 會喺 session 收尾提你；想 AI 開題可 TG 加「🔬research:」前綴</div>
+    </div>
+  </div>
+</div>
+<div id="doneBar"><button onclick="markDone()">✅<span class="btxt"> 剔咗嘅處理</span><span id="tickCnt"></span></button>
+<div class="hint">TODO 標 done／Goal 屏蔽；90 日後先完全日落，之前隨時撈返</div></div>
+<div class="sect">🎯 十大 Goal（系統每晚自動推進）</div>
+<div class="card goal" id="goal-1">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="goal-box" data-gn="1"></label>
+    <div class="body">
+      <div class="ttl">🎯 Goal 1：Harness+Loop Engineering 更自動化</div>
+      <div class="meta">最新推進 2026-08-13（goal_advancer 每晚自動同 NLM 傾）</div>
+      <div class="pro p-run">目標 1（Harness + Loop 更自動化）已 100% 部署 SQLite WAL 總帳、流式解析、自省熔斷雙閘與 UAT 14/14 斷言防線 [1-3]；當前最大 Gap 仍是 40 多個背景 `launchd` 任務尚未以 `run_once_daily` 殼包裝併入大總帳，致使 Admin 🚦健康卡存在觀測盲區 [1, 4…</div>
+      <div class="pro p-act">🚦 等你批：「將 `rates-reminder` 等常駐排程併網大總帳 ＆ 實裝 `personal_obligations` 實體驗收」23:00 HKT 割接授權 [ZERO-TAP] <a href="." target="_top">去 Admin 撳批</a></div>
+    </div>
+  </div>
+</div>
+<div class="card goal" id="goal-2">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="goal-box" data-gn="2"></label>
+    <div class="body">
+      <div class="ttl">🎯 Goal 2：更 proactive（未出聲先做定 + 主動偵察新工具做佢做緊嘅嘢）</div>
+      <div class="meta">最新推進 2026-08-13（goal_advancer 每晚自動同 NLM 傾）</div>
+      <div class="pro p-run">目標 2（更 Proactive 主動偵察）已完成「活期標書背景注入 ➔ 需求驅動爬文 ➔ 待審票生成 ➔ 實體環境 A∩B 對帳去重」之自癒閉環 [1-4]；當前最大 Gap 在於被批准之新工具在對帳自癒後僅停留在 GSheet，缺乏自動增量回填沈澱至本地 `memory/research/proactive_tools_registr…</div>
+      <div class="pro p-act">🚦 等你批：「已核准新工具自動沈澱本地 RAG 知識庫暨 MOC 重編」23:00 HKT 部署授權 [ZERO-TAP] <a href="." target="_top">去 Admin 撳批</a></div>
+    </div>
+  </div>
+</div>
+<div class="card goal" id="goal-3">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="goal-box" data-gn="3"></label>
+    <div class="body">
+      <div class="ttl">🎯 Goal 3：本人狀況監察（保費/屋苑管理費/填表等個人義務）</div>
+      <div class="meta">最新推進 2026-08-13（goal_advancer 每晚自動同 NLM 傾）</div>
+      <div class="pro p-run">目標 3（個人義務監察）底層「Gmail 增量掃描 ➔ CMT 免費提取 ➔ GSheet / 本地雙寫 ➔ Admin 狀況卡」之自癒閉環已 100% 落地 [passage 157]，並配有 `rates_reminder.py` 每朝 09:00 對帳提醒 [passage 8]；目前最大 Gap 在於缺乏週末無新信時的強制全量對帳…</div>
+      <div class="pro p-act">🚦 等你批：「`rates_reminder.py` 增設 `--force-check` 強制自檢 ＆ 納入 `daily_review` 狀態守衛」23:00 HKT 部署授權 [ZERO… <a href="." target="_top">去 Admin 撳批</a></div>
+    </div>
+  </div>
+</div>
+<div class="card goal" id="goal-4">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="goal-box" data-gn="4"></label>
+    <div class="body">
+      <div class="ttl">🎯 Goal 4：用錢監察（支付寶/信用卡/八達通,經 Gmail 月結單入 Ledger）</div>
+      <div class="meta">最新推進 2026-08-13（goal_advancer 每晚自動同 NLM 傾）</div>
+      <div class="pro p-run">目標 4（用錢監察）目前已 100% 跑通「10箱增量掃描 ➔ 4-model 交叉核對 ➔ GAS 自動入帳」之自動化閉環 [1]；當前最大 Gap 仍是 `expense_email.py` 缺乏針對個人帳戶（me/rk1/kr1）AlipayHK 電子收據與信用卡月結單 PDF 的專屬解析特徵 [2]。</div>
+      <div class="pro p-act">🚦 等你批：「個人 e-wallet &amp; 信用卡 JIT 提取與 email_scan.py 增量攔截補丁」明晚 HKT 23:00 併網部署授權 [ZERO-TAP] <a href="." target="_top">去 Admin 撳批</a></div>
+    </div>
+  </div>
+</div>
+<div class="card goal" id="goal-5">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="goal-box" data-gn="5"></label>
+    <div class="body">
+      <div class="ttl">🎯 Goal 5：本機存儲監察+適時清檔</div>
+      <div class="meta">最新推進 2026-08-13（goal_advancer 每晚自動同 NLM 傾）</div>
+      <div class="pro p-run">目標 5（本機存儲與自癒自清）目前已 100% 合攏「shutil.disk_usage 實時對數 ➔ GSheet 投影 ➔ Admin 狀況卡紅字 ➔ 待辦自動開票」之觀測閉環 [1, 2]；當前最大 Gap 仍是 `disk_offloader.py` 實體自癒搬遷與 `vault_housekeeper.py --apply` 的…</div>
+      <div class="pro p-act">🚦 等你批：「將 vault_housekeeper.py --apply 納入低風險 0-Tap 自癒白名單」23:00 HKT 割接授權 [ZERO-TAP] <a href="." target="_top">去 Admin 撳批</a></div>
+    </div>
+  </div>
+</div>
+<div class="card goal" id="goal-6">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="goal-box" data-gn="6"></label>
+    <div class="body">
+      <div class="ttl">🎯 Goal 6：MK 檔案主權（mk 攞 EDIT 權+獨立 NLM profile,mk0 留 storage owner）</div>
+      <div class="meta">最新推進 2026-08-13（goal_advancer 每晚自動同 NLM 傾）</div>
+      <div class="pro p-run">目標 6（MK 檔案主權）底層 mkbiz / madkids0 / madkids 三端 Profile 隔離與 REST API 授權基建已 100% 部署完畢 [1, 2]；目前最大 Gap 在於 share_to_company_accts.py 尚未實行 Active 商業客之實體 folderId 映射與每週日定時增量授權對帳…</div>
+      <div class="pro p-act">🚦 等你批：「限權 EDIT ＋ 週度 Housekeeper 增量聯鎖」23:00 HKT 併網部署授權 [ZERO-TAP] <a href="." target="_top">去 Admin 撳批</a></div>
+    </div>
+  </div>
+</div>
+<div class="card goal" id="goal-7">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="goal-box" data-gn="7"></label>
+    <div class="body">
+      <div class="ttl">🎯 Goal 7：MMMAG 檔案主權（mm 同上）</div>
+      <div class="meta">最新推進 2026-08-13（goal_advancer 每晚自動同 NLM 傾）</div>
+      <div class="pro p-run">目標 7（MMMAG 檔案主權）已完成多帳戶 Profile 隔離與 `mmono`/`mmmag` 協作端 EDIT 權限同步 [1, 2]；目前最大 Gap 在於此兩協作帳號的 NLM Token 狀態（`cookies.json`）尚未與 `capability_scan.py` 健康看板聯鎖，存在過期未察風險 [3]。</div>
+      <div class="pro p-act">🚦 等你批：「`capability_scan.py` 增設 mmono ＆ mmmag Token 實時監測 ＆ GDrive 增量 Feed 投影」23:00 HKT 部署授權 [ZERO… <a href="." target="_top">去 Admin 撳批</a></div>
+    </div>
+  </div>
+</div>
+<div class="card goal" id="goal-8">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="goal-box" data-gn="8"></label>
+    <div class="body">
+      <div class="ttl">🎯 Goal 8：電郵有序管理</div>
+      <div class="meta">最新推進 2026-08-13（goal_advancer 每晚自動同 NLM 傾）</div>
+      <div class="pro p-run">**目標 8（電郵有序管理）**已全面貫通**「10箱增量掃描 ➔ 3系累積庫定時 Sync ➔ 背景非同步預生 Draft ➔ TODO 工作站」**之自癒閉環 [1-4]；目前最大 Gap 在於自動預生 Draft 僅限於 **`lead-action`**，對於高價值現有客戶（**`client-action`**）仍缺乏主動 RA…</div>
+      <div class="pro p-act">🚦 等你批：「將 `email_scan.py` 背景自動預生 Draft 擴展至 Active 商業客 `client-action`」23:00 HKT 部署授權 [ZERO-TAP] <a href="." target="_top">去 Admin 撳批</a></div>
+    </div>
+  </div>
+</div>
+<div class="card goal" id="goal-9">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="goal-box" data-gn="9"></label>
+    <div class="body">
+      <div class="ttl">🎯 Goal 9：GDrive 檔案有序管理</div>
+      <div class="meta">最新推進 2026-08-13（goal_advancer 每晚自動同 NLM 傾）</div>
+      <div class="pro p-run">目標 9（GDrive 有序管理）已全面打通「每週全量 audit + 增量變動日誌」雙向閉環 [1]；目前最大 Gap 在於昨日變動 Feed 尚未投影至 Master Admin 首頁 [user_query, 413]，且 `04-pdf-email.js` 認不出客戶時自動開空夾、以及 Staging 濾網過寬等兩大亂源尚未在根源…</div>
+      <div class="pro p-act">🚦 等你批：「實裝昨日 Drive 異動 Feed 投影至 Admin 首頁 ＆ 04-pdf-email.js 拒建空殼資料夾自癒」23:00 HKT 割接授權 [ZERO-TAP] <a href="." target="_top">去 Admin 撳批</a></div>
+    </div>
+  </div>
+</div>
+<div class="card goal" id="goal-10">
+  <div class="row1">
+    <label class="tick"><input type="checkbox" class="goal-box" data-gn="10"></label>
+    <div class="body">
+      <div class="ttl">🎯 Goal 10：Mac mini 程式交易（投資腦;AI 只 build/回測/paper,落盤=Raymond）</div>
+      <div class="meta">最新推進 2026-08-13（goal_advancer 每晚自動同 NLM 傾）</div>
+      <div class="pro p-run">目標 10（投資腦程式交易）已完成 `onboard_macmini.sh` 環境引導與 `watcher_daemon.py` 哨兵對帳腳本配置 [1, 2]，且 M4 Mac mini 已實體上機與 Tailscale 聯網 [3]；目前最大 Gap 在於該機尚未執行 onboard 環境引導，協作板 GSheet 仍未見其實體心跳 …</div>
+      <div class="pro p-act">🚦 等你批：「M4 投資腦實體引導 ＆ 協作板首航心跳激活」今晚 23:00 部署授權 [ZERO-TAP] <a href="." target="_top">去 Admin 撳批</a></div>
+    </div>
+  </div>
+</div>
+<details><summary>最近完成（8）</summary><div class="done-row">✅ MPFA post campaign report <span class="meta">2026-08-10</span></div>
+<div class="done-row">✅ [待審Draft] 覆: MKTD_Procurement | Re: RE: [External] Re: [Exte <span class="meta">2026-08-10</span></div>
+<div class="done-row">✅ [待審Draft] 覆: MKTD_Procurement | Re: RE: [External] Re: [Exte <span class="meta">2026-08-10</span></div>
+<div class="done-row">✅ [待審Draft] 覆: Miranda Y M YUNG | Re: [Invitation] Award Dinne <span class="meta">2026-08-10</span></div>
+<div class="done-row">✅ boc send confirm 給yuki 經理人by wong <span class="meta">2026-08-10</span></div>
+<div class="done-row">✅ 畀 QUO/INV 大快活 <span class="meta">2026-08-05</span></div>
+<div class="done-row">✅ 計 Terry Yeung 數 <span class="meta">2026-07-24</span></div>
+<div class="done-row">✅ 🔬research: 香港 2026 廣告代理商 AI 應用趨勢 <span class="meta">2026-07-22</span></div></details>
+</div>
+<script>
+const ACT_PHP = "https://madkids.hk/mk-lab/act.php";
+document.addEventListener("change", e => {
+  if (!e.target.classList.contains("done-box") && !e.target.classList.contains("goal-box")) return;
+  const n = document.querySelectorAll(".done-box:checked,.goal-box:checked").length;
+  document.getElementById("doneBar").style.display = n ? "block" : "none";
+  document.getElementById("tickCnt").textContent = n > 1 ? ` ${n}` : "";
+});
+/* TODO 剔=status done（唔即刪 row）；Goal 剔=goal_dismiss 屏蔽（advancer 停推）。
+   兩者 90 日後由 sunset_engine 完全日落（存底先行）。
+   同錢銀站同一條軌：act.php queue → listener 8 秒 poll → 回寫 → 重編本頁。 */
+function markDone() {
+  const todos = [...document.querySelectorAll(".done-box:checked")];
+  const goals = [...document.querySelectorAll(".goal-box:checked")];
+  if (!todos.length && !goals.length) return;
+  todos.forEach(b => {
+    fetch(`${ACT_PHP}?push&route=todo_done&folder=${encodeURIComponent(b.dataset.eid)}`,
+          {method: "GET", keepalive: true}).catch(() => {});
+    const card = document.getElementById(b.dataset.eid);
+    if (card) card.style.display = "none";
+  });
+  goals.forEach(b => {
+    fetch(`${ACT_PHP}?push&route=goal_dismiss&folder=GOAL${encodeURIComponent(b.dataset.gn)}`,
+          {method: "GET", keepalive: true}).catch(() => {});
+    const card = document.getElementById(`goal-${b.dataset.gn}`);
+    if (card) card.style.display = "none";
+  });
+  document.getElementById("doneBar").style.display = "none";
+}
+</script></body></html>

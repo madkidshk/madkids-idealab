@@ -1,0 +1,1224 @@
+<!DOCTYPE html><html lang=zh-HK><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>LCSD · Idea Lab</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#6b7280;--line:#e6e8ec;
+      --ac:#4f46e5;--gold:#c79a2b;--red:#dc2626;--grn:#15a34a}
+*{box-sizing:border-box}
+.btn{background:#4f46e5;color:#fff;border:none;border-radius:9px;padding:8px 13px;font-size:12.5px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.ghost{background:#fff;color:#4f46e5;border:1.5px solid #dcdffb}
+.btn.grn{background:#15a34a}
+.btn.mini{padding:4px 9px;font-size:11px}
+.btn:hover,.btn.ghost:hover{filter:brightness(.98)}
+details.soft{background:#fff;border:1px solid #e7e9ee;border-radius:10px;padding:4px 12px}
+details.soft>summary{cursor:pointer;font-size:12.5px;font-weight:700;color:#444;padding:8px 0;list-style:none}
+details.soft>summary::-webkit-details-marker{display:none}
+details.soft>summary::before{content:"▸ ";color:#9aa0ab}
+details.soft[open]>summary::before{content:"▾ "}
+.ovl{position:fixed;inset:0;z-index:120;background:rgba(15,18,28,.55);display:none;align-items:center;justify-content:center;padding:18px}
+.ovl.on{display:flex}
+.ovlbox{background:#fff;border-radius:14px;box-shadow:0 18px 60px rgba(0,0,0,.4)}
+.pill{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:#eef0f3;color:#555}
+.pill.ok{background:#e7f7ee;color:#15803d}
+.pill.warn{background:#fff4e5;color:#b45309}
+.pill.bad{background:#fdeaea;color:#dc2626}
+.pill.accent{background:#eef0fe;color:#4f46e5}
+.secthead{font-size:16px;font-weight:800;margin:24px 0 10px;border-left:4px solid #4f46e5;padding-left:9px;color:#1b1f27}
+.secthead.tight{margin-top:10px}
+.sectbadge{display:inline-block;margin-left:8px;font-size:11px;font-weight:800;border-radius:999px;padding:2px 8px;background:#eef0fe;color:#4f46e5}
+.carousel{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 12px;-webkit-overflow-scrolling:touch}
+.carousel::-webkit-scrollbar{height:6px}
+.carousel::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:6px}
+.carousel-card{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;background:#fff;border:1.5px solid #e7e9ee;border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+@media(min-width:700px) and (max-width:1099px){.carousel-card{flex:0 0 46%}}
+@media(min-width:1100px){.carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}.carousel-card{flex:0 0 calc(33.333% - 10px);max-width:none;scroll-snap-align:none}}
+.lbx{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;display:none;align-items:center;justify-content:center;padding:12px}
+.lbx.on{display:flex}
+.lbx img{max-width:98vw;max-height:94vh;border-radius:8px;cursor:zoom-out}
+.lbx .x{position:fixed;top:10px;right:16px;color:#fff;font-size:30px;font-weight:800;cursor:pointer}
+.lbx .hint{position:fixed;bottom:12px;left:0;right:0;text-align:center;color:#bbb;font-size:12px}
+.badge{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:#4f46e5;border-radius:7px;padding:2px 9px;letter-spacing:.02em}
+.score-badge{display:inline-block;background:#c79a2b;color:#fff;font-size:12px;font-weight:800;border-radius:20px;padding:2px 10px}
+.status-badge{display:inline-block;font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.status-badge.ok{background:#dcfce7;color:#15803d}
+.status-badge.warn{background:#fef3c7;color:#a16207}
+.status-badge.bad{background:#fee2e2;color:#b91c1c}
+.status-badge.mute{background:#eef0f3;color:#717784}
+.surface-card{background:#fff;border:1px solid #e7e9ee;border-radius:14px;box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+.surface-card.soft{background:#fafbfd}
+.surface-card.warn{background:#fff8f1;border-color:#fcd9b6}
+.surface-card.danger{border-color:#f3b4ae;box-shadow:0 2px 16px rgba(238,56,47,.08)}
+.surface-card.pad-sm{padding:9px 10px}
+.surface-card.pad-md{padding:15px 17px}
+.surface-card.pad-lg{padding:18px}
+.surface-card.selected{border-color:#4f46e5;box-shadow:0 0 0 2px rgba(79,70,229,.25),0 6px 18px rgba(79,70,229,.18)}
+body{margin:0;background:var(--bg);color:var(--ink);
+     font:15px/1.55 -apple-system,"PingFang HK",sans-serif}
+.wrap{max-width:430px;margin:0 auto;padding:0 13px 130px}
+h1{font-size:19px;font-weight:800;margin:0;line-height:1.25}
+h1 .dept{color:var(--ac)}
+.bdp{font-size:12px;font-weight:700;margin:3px 0 0;display:flex;gap:11px;flex-wrap:wrap}
+.fresh{font-size:11px;color:#7a8290;margin:6px 0 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.fresh .fr{background:#f1f3f6;border-radius:6px;padding:2px 7px;white-space:nowrap}
+.fresh .fr b{color:#4a5462;font-weight:700}
+.bdp .bb{color:#2563eb}.bdp .dd{color:#dc2626}.bdp .pp{color:#7c3aed}
+.tabbar{position:sticky;top:0;z-index:30;background:var(--bg);
+         border-bottom:2px solid var(--line);display:flex;gap:5px;
+         overflow-x:auto;padding:8px 0 7px;scrollbar-width:none}
+.tabbar::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;background:var(--card);border:1.5px solid var(--line);
+      border-radius:9px;padding:5px 12px;font-size:12px;font-weight:800;
+      color:var(--mut);cursor:pointer;transition:all .12s;white-space:nowrap}
+.tab:hover{border-color:var(--ac);color:var(--ac)}
+.tab.active{background:var(--ac);border-color:var(--ac);color:#fff}
+header{padding:12px 0 4px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap}
+.titlerow h1{margin:0;min-width:0}
+.hdrbtns{flex:none;display:flex;gap:7px;align-items:center}
+.homebtn,.refbtn{flex:none;white-space:nowrap;font-size:16px;line-height:1;text-decoration:none;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:5px 9px;color:#222}
+.refbtn{cursor:pointer}
+.labbtn{flex:none;white-space:nowrap;font-size:13px;line-height:1;text-decoration:none;border-radius:9px;padding:7px 10px;font-weight:800;border:1px solid transparent}
+.labbtn.mk{background:#fff5f5;color:#EE382F;border-color:#f3b4ae}
+.labbtn.mm{background:#fff7ed;color:#d97706;border-color:#fdba74}
+@media(max-width:480px){.homebtn,.refbtn{font-size:14px;padding:5px 8px}}
+.tabpanel{display:none;padding-top:10px}
+.tabpanel.active{display:block}
+.setlab{font-size:11px;font-weight:800;color:var(--ac);background:#eef0fe;
+         border:1px solid #dcdffb;border-radius:8px;padding:4px 10px;
+         display:inline-block;margin:0 0 8px}
+.banner{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;
+         padding:10px 12px;font-size:12.5px;font-weight:700;color:#92660c;margin:10px 0}
+.h2{font-size:14.5px;font-weight:800;letter-spacing:.01em;color:var(--ink);
+     margin:16px 2px 8px}
+.h3{font-size:13px;font-weight:700;color:#374151;margin:11px 0 5px}
+.stylepick{margin:10px 0}
+.styrow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:5px 0;padding:5px 0;border-bottom:1px solid var(--line)}
+.stylbl{min-width:84px;font-weight:600;font-size:13px}
+.styo{display:inline-flex;align-items:center;gap:4px;font-size:13px;padding:3px 10px;
+       border:1px solid var(--line);border-radius:14px;cursor:pointer;user-select:none;background:#fafafa}
+.styo input{margin:0}
+.styo:has(input:checked){background:#e6f7f1;border-color:#0a7;color:#066}
+.styanchor{margin-top:9px;font-size:12px;color:var(--mut)}
+#styanchor{color:#0a7;font-weight:600}
+.card{background:var(--card);border-color:var(--line);border-radius:13px;
+       padding:11px 12px;margin-bottom:8px}
+.hgrid{display:grid;grid-template-columns:1fr;gap:13px}
+@media(min-width:720px){.hgrid{grid-template-columns:1fr 1fr 1fr}}
+.hcard{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:10px;box-shadow:0 1px 2px rgba(20,24,40,.05)}
+.hcap{font-weight:800;font-size:13px;margin-bottom:7px}
+.sgrp{font-weight:800;font-size:12px;color:#475569;background:#eef1f6;border-radius:7px;padding:5px 10px;margin:11px 0 2px}
+.sgrp:first-child{margin-top:2px}
+.tlrow.todo{opacity:.55} .tlrow.todo .tllabel{color:#9aa0ab}
+.tlrow.na{opacity:.4} .tlrow.na .tllabel{color:#b6bbc4;text-decoration:line-through}
+.dsp{width:100%;border-collapse:collapse;font-size:12.5px}
+.dsp th{text-align:left;color:var(--mut);font-weight:700;padding:4px 7px;border-bottom:1px solid var(--line)}
+.dsp td{padding:4px 7px;border-bottom:1px solid #f3f4f6;vertical-align:top}
+.vacarou{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.vacard{flex:0 0 134px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px;font-size:11px}
+.vathumb{position:relative;height:90px;border-radius:7px;overflow:hidden;background:#f1f3f7;display:flex;align-items:center;justify-content:center}
+.vathumb img{width:100%;height:100%;object-fit:cover}
+.vacat{margin-top:5px;font-size:10px;color:#7b4fc0;font-weight:800}
+.vaname{font-weight:600;line-height:1.25;min-height:28px;color:#374151}
+.vasrc{font-size:10.5px} .vatick{display:block;font-size:11px;margin-bottom:4px;cursor:pointer;font-weight:700}
+.vaprovide{margin:12px 0 2px}
+.upbox .refelemin{display:block;width:100%;margin:0 0 8px;padding:6px 8px;border:1px solid var(--line);border-radius:7px;font-size:12px}
+/* ── 標書 tab restructure 2026-06-16 ── */
+/* 💡 提供窗口(Notes + 元素名 group + 參考相,細 + button 統一) */
+.h2sm{font-size:13px;margin:12px 2px 5px}
+.provide{padding:9px 10px}
+.pvgrp{background:#f8fafc;border:1px solid var(--line);border-radius:9px;padding:8px}
+.pvrow{display:flex;gap:6px;align-items:stretch}
+.provta{flex:1;min-width:0;box-sizing:border-box;border:1px solid var(--line);border-radius:8px;padding:6px 9px;font:12.5px/1.4 inherit;resize:vertical}
+.provel{display:block;width:100%;box-sizing:border-box;margin:6px 0 0;padding:6px 9px;border:1px solid var(--line);border-radius:8px;font-size:12.5px}
+.provbtn{white-space:nowrap;padding:0 14px;align-self:stretch}
+.pvup{margin-top:8px}
+/* 加入想法 + upbox 送出 統一設計(都係 .btn 觀感) */
+.provide .upbox{margin:0;border-radius:9px;padding:9px}
+.provide .upbox .attsend{background:var(--ac);border-radius:9px;padding:0 14px;font-size:12.5px;font-weight:800}
+.provide .noteslist{margin-top:7px}
+/* 三梯隊標題:左色條 + 副標 */
+.tierh{border-left:4px solid var(--ac);padding-left:9px;margin:18px 2px 2px;font-size:14px}
+.tierhint{margin:2px 2px 7px 13px}
+/* ✍️ 邊個 model 寫(#5):mdl 真 / mdef 預設(灰) / mfb fallback(橙) */
+.mdl{flex:0 0 auto;font-size:10px;font-weight:800;color:#3730a3;background:#eef0fe;border:1px solid #dcdffb;
+      border-radius:6px;padding:1px 6px;white-space:nowrap;margin-left:auto}
+.mdl.mdef{color:#6b7280;background:#f1f3f6;border-color:#e3e6ea}
+.mdl.mfb{color:#9a5a00;background:#fff4e5;border-color:#fde6c0}
+.h3 .mdl{margin-left:6px;vertical-align:middle}
+/* 📋 標書內容 carousel 卡 — 字體/行寬完全跟返 VID1 .ccard(Raymond 2026-06-16:之前縮 12px 太難讀,
+   改返用 VID1 base .cbody 12.5px/1.62、.ctitle 14px。卡內 md 標題用 base .cbody h3/h4 12.5px,統一)。 */
+.brfcarou{margin-top:2px}
+.brfcard .chead{cursor:default}
+/* 🔄 重生緊 signal(手寫稿 BD) */
+.regbadge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;color:#fff;background:var(--ac);border-radius:8px;padding:4px 9px;margin:0 0 6px}
+/* 🔀 換格 + BD 英文字 */
+.bdletter{display:inline-block;min-width:18px;text-align:center;font-weight:800;color:#fff;background:var(--ac);border-radius:6px;padding:0 5px;margin-right:4px}
+.swrow{display:flex;align-items:center;gap:6px;margin-bottom:7px;flex-wrap:wrap}
+.swlbl{font-size:12px;color:var(--mut);white-space:nowrap}
+.swrow select{flex:1;min-width:90px;font-size:12.5px;padding:6px 7px;border:1px solid var(--line);border-radius:7px;background:#fff}
+/* 標書原文 link 喺 撮要 標題右邊 */
+.rawlink{flex:0 0 auto;margin-left:auto;font-size:10.5px;font-weight:800;color:var(--ac);background:#eef0fe;border:1px solid #dcdffb;border-radius:6px;padding:1px 6px;cursor:pointer;white-space:nowrap}
+/* 部門官方來源 search-result row(似 youtube search) */
+.srcrow{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid #f1f3f6}
+.srcrow:last-child{border-bottom:0}
+.srcthumb{flex:0 0 54px;height:40px;border-radius:5px;object-fit:cover;background:#f1f3f7}
+.srctit{font-size:11.5px;font-weight:700;line-height:1.3;color:var(--ac)}
+.srcsnip{font-size:10.5px;color:#6b7280;line-height:1.4;margin-top:1px}
+/* 🎧 Briefing 錄音逐字 overlay(撳先出,唔常設) */
+.ovlbox{max-width:560px;width:100%;max-height:82vh;display:flex;flex-direction:column}
+.ovlhd{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--line);font-weight:800;font-size:13px}
+.ovlhd .x{cursor:pointer;color:#888;font-size:16px;border:0;background:0}
+.ovlbody{overflow:auto;padding:12px 14px;font-size:11.5px;line-height:1.6;color:#333;white-space:pre-wrap}
+.ovllink{color:var(--ac);font-weight:700;cursor:pointer;text-decoration:underline}
+/* 📸 Visual 素材:⭐首選 badge + 三 action 掣(三格一樣大) + 重搜漏斗 */
+.vacard{position:relative;transition:order .2s}
+.vacard.pref{border-color:var(--gold);box-shadow:0 0 0 2px rgba(199,154,43,.22)}
+.vastar{position:absolute;top:5px;right:5px;font-size:9.5px;font-weight:800;color:#fff;background:var(--gold);border-radius:6px;padding:1px 5px}
+.vafunnel{position:absolute;bottom:4px;right:4px;font-size:9.5px;font-weight:800;color:#fff;background:rgba(79,70,229,.94);border-radius:6px;padding:2px 6px;display:inline-flex;align-items:center;gap:3px}
+.vaacts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}   /* 三格一樣大(grid 1fr×3,鐵定相等) */
+.vaacts .btn{width:auto;text-align:center;margin:0;padding:9px 0}
+
+.upbox{background:#fff;border:1.5px dashed #bcd;border-radius:11px;padding:11px;margin:6px 0}
+.upbox.hov{background:#eef6ff;border-color:#6aa3e0}
+.upbox .attstage{min-height:0;margin-bottom:4px}
+.upbox .stchip{display:inline-block;background:#eef7f0;border:1px solid #bfe0cd;border-radius:20px;padding:3px 9px;font-size:11.5px;font-weight:700;color:#176b3a}
+.upbox .stchip .ststrip{border:0;background:0;cursor:pointer;color:#999;font-weight:700;margin-left:3px}
+.upbox .attrow1{display:flex;gap:6px}
+.upbox .atttext{flex:1;border:1px solid var(--line,#dde);border-radius:8px;padding:9px 11px;font-size:14px;line-height:1.5;min-height:84px;resize:vertical;font-family:inherit}
+.upbox .attsend{border:0;background:#0A7D3F;color:#fff;border-radius:8px;padding:0 14px;font-weight:700;cursor:pointer;white-space:nowrap}
+.upbox .attbtns2{margin-top:6px}
+.upbox .attpick{border:1px solid var(--line,#dde);background:#f7f9fc;border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer;font-weight:600}
+.upst{font-size:11.5px;color:#176b3a;margin-top:5px;min-height:0}
+
+.bdcm{margin-top:7px}
+.bdcm textarea{width:100%;box-sizing:border-box;font:13px/1.45 inherit;border:1px solid var(--line);border-radius:8px;padding:6px 8px;resize:vertical}
+.bdcm .btn.mini{margin-top:5px}
+.gflags{margin:7px 0 4px;padding:7px 9px;background:#fffbec;border:1px solid #f0d96a;border-radius:8px;font-size:12px;color:#6b4d00}
+.gflag{padding:2px 0;line-height:1.5}
+.gflag+.gflag{border-top:1px solid #f5ebb0;margin-top:3px;padding-top:5px}
+.gfslide{font-weight:600;background:#f5e07c;border-radius:4px;padding:1px 5px;margin-right:4px}
+.cmlog{font-size:11px;color:#2e8b57;margin-top:5px}
+.card.big{padding:13px}
+.card.empty{color:var(--mut);font-size:13px;font-style:italic}
+.row{display:flex;align-items:center;gap:9px}
+.rank{font-size:11px;font-weight:800;color:var(--mut);width:18px}
+.src{font-size:11px;color:var(--mut);font-weight:700;background:#f1f5f9;
+      border-radius:6px;padding:1px 6px}
+.score{font-size:12px;font-weight:800;color:var(--gold);margin-left:auto}
+.nm{font-weight:800;font-size:13.5px;line-height:1.35}
+.csub{font-size:11px;color:var(--mut);font-weight:600;margin-top:2px}
+.crow{margin:5px 0 0}
+.cflag{font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.cflag.hi{background:#dcfce7;color:#15803d}
+.cflag.lo{background:#fef3c7;color:#a16207}
+.cflag.rl{background:#fee2e2;color:#b91c1c}
+.ck{width:22px;height:22px;border:2px solid var(--ac);border-radius:6px;
+     display:inline-grid;place-items:center;font-size:13px;color:#fff;
+     cursor:pointer;flex:0 0 auto;position:relative}
+.ck::before{content:"";position:absolute;inset:-11px}
+.ck.on{background:var(--ac)}
+.ck.done{background:var(--grn);border-color:var(--grn);cursor:default}
+.divider{display:flex;align-items:center;gap:8px;margin:12px 2px;
+          color:#aab0ba;font-size:11px;font-weight:700}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.cnt-warn{color:var(--red)!important}
+.lookback{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:11px;
+           padding:10px 12px;font-size:12px;color:#475569}
+.btn{background:var(--ac)}
+.btn.grn{background:var(--grn)}
+.btn.ghost{width:100%;text-align:center;padding:11px 13px;margin:2px 0 4px}
+.btn.mini{padding:4px 9px;font-size:11px;margin-left:8px}
+.submit{position:fixed;bottom:14px;right:calc(50% - 215px + 13px);z-index:20}
+@media(max-width:456px){.submit{right:14px}}
+/* ── Responsive 3 tier（Raymond 2026-06-06）：mobile(default) / tablet / desktop 用晒畫面 ── */
+/* Tablet:闊啲,carousel 一次 2 卡 */
+@media(min-width:700px) and (max-width:1099px){
+  .wrap{max-width:680px;padding:0 20px 130px}
+  .submit{right:calc(50% - 340px + 20px)}
+  .ccard{flex:0 0 46%;max-height:68vh}
+  .rest-row .ccard{flex:0 0 36%}
+  .briefcard{max-height:40vh}
+}
+/* Desktop:用晒畫面 —— carousel 變 grid(唔橫掃,鋪滿),六強 3 欄、其餘 4 欄 */
+@media(min-width:1100px){
+  .wrap{max-width:min(1280px,94vw);padding:0 28px 120px}
+  .submit{right:max(28px, calc(50vw - 640px + 28px))}
+  .carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}
+  .ccard{flex:0 0 calc(33.333% - 10px);max-width:none;max-height:43vh;scroll-snap-align:none}   /* Raymond 2026-06-16:桌面每格短 1/3(64→43vh),標書 tab 跟 VID1 */
+  .rest-row .ccard{flex:0 0 calc(25% - 11px)}
+  .briefcard{max-height:36vh}
+  .tabbar{flex-wrap:wrap}
+  .card.big .sheet{max-width:520px}
+}
+.submit .btn{box-shadow:0 6px 20px rgba(79,70,229,.4);padding:11px 18px;font-size:13.5px}
+.foot{font-size:11px;color:#9aa0aa;text-align:center;margin-top:22px}
+.notes-win{width:100%;min-height:90px;border:1.5px solid var(--ac);
+            border-radius:11px;padding:10px 12px;font:14px/1.6 inherit;
+            resize:vertical;background:#fafbff;margin-bottom:6px}
+.notes-act{text-align:right;margin-bottom:6px}
+.notes-act .btn{padding:6px 14px}
+.noteslist{margin-bottom:6px}
+.notecard{background:#fafbff;border:1px solid #e0e3f5;border-radius:10px;
+           padding:7px 10px;margin-bottom:6px}
+.noterow{display:flex;align-items:center;gap:8px}
+.notets{font-size:10.5px;font-weight:800;color:var(--ac)}
+.notedel{margin-left:auto;background:none;border:none;color:#b0b6c2;font-size:13px;
+          cursor:pointer;padding:0 2px}
+.notetxt{font-size:13px;color:var(--ink);line-height:1.5;margin-top:2px;white-space:pre-wrap}
+/* Brief 撮要緊湊卡（固定高度內部 scroll，似 VID 1 卡）*/
+.briefcard{max-height:46vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.briefcard h3,.briefcard h4{font-size:13px;margin:9px 0 3px}
+.suppinline{margin-top:10px;border-top:2px solid #fde68a;background:#fffbeb;
+             border-radius:9px;padding:8px 10px}
+.suppinline h3,.suppinline h4{color:#92660c;font-size:12.5px;margin:2px 0 5px}
+/* 補充日程簡單 list */
+.timeline{margin:2px 0}
+.tlrow{display:flex;gap:8px;padding:5px 2px;border-bottom:1px solid #f3f4f6;font-size:12.5px}
+.tlrow:last-child{border-bottom:none}
+.tldate{flex:0 0 auto;font-weight:800;color:var(--ink);min-width:96px}
+.tllabel{flex:1;color:#374151}
+.tlrow.hot{background:#fff7ed;border-radius:7px}
+.tlrow.hot .tldate{color:#c2410c}.tlrow.hot .tllabel{color:#9a3412;font-weight:700}
+/* Briefing 補充 treatment */
+summary.supp{display:flex;align-items:center;gap:8px}
+.suppbadge{font-size:10px;font-weight:800;color:#fff;background:#d97706;
+            border-radius:6px;padding:1px 7px;margin-left:7px;vertical-align:middle}
+.bd{margin:8px 0}
+.bdscroll{max-height:44vh;overflow-y:auto;border:1px solid var(--line);border-radius:10px;
+          padding:2px 12px;background:#fafbfc;-webkit-overflow-scrolling:touch}
+.genbox{text-align:center}
+.step2 .refsub{margin:8px 0}
+.refname{font-size:12.5px;font-weight:600;margin:6px 0 4px}
+.refname .refn{color:var(--mut);font-weight:400;font-size:11px}
+.refrow{display:flex;gap:6px;flex-wrap:wrap}
+.refthumb{width:74px;height:90px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.btn.big{font-size:14px;padding:12px 22px;box-shadow:0 4px 14px rgba(79,70,229,.3)}
+.scene{border-bottom:1px solid #f1f3f6;padding:7px 0;font-size:12.5px;line-height:1.5}
+.scene .sl{display:flex;gap:8px}
+.scene .sn{font-weight:800;color:var(--ac);flex:0 0 auto;min-width:17px}
+.scene .vis{flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
+.scene .vis.open{-webkit-line-clamp:unset;overflow:visible}
+.scene .vo,.vo{color:var(--mut);font-size:11.5px;margin:4px 0 0 25px;
+               background:#f8fafc;border-radius:7px;padding:4px 8px}
+.sheet{width:100%;border-radius:10px;border:1px solid var(--line);margin:8px 0;display:block;cursor:zoom-in}
+.preqs{display:flex;flex-direction:column;gap:7px;margin-top:4px}
+.prow{display:flex;align-items:center;gap:10px}
+.preqs .pl{flex:1;font-weight:700;font-size:14px;min-width:0}
+.preqs .pv{font-weight:800;font-size:13px;border-radius:8px;padding:3px 11px;white-space:nowrap}
+.preqs .pvon{background:#dcfce7;color:#15803d;border:1px solid #bbf7d0}
+.preqs .pvoff{background:#f1f3f5;color:#868e96;border:1px solid #e9ecef}
+.preqs .pp{font-size:11px;color:var(--ac);font-weight:700;cursor:help;min-width:34px;text-align:right}
+.pgbar{position:relative;height:30px;border-radius:9px;background:#eef0fe;border:1px solid #dcdffb;
+  overflow:hidden;margin:8px 0}
+.pgfill{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,#6366f1,#818cf8);
+  transition:width .6s ease}
+.pgtxt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:#1b1f27;z-index:1}
+/* VID 2 tab：紅色虛線繞邊行緊（marching ants），未出晒 BD 就一直行；出晒 = 無 busy class = 停 */
+@keyframes march{to{background-position:14px 0,-14px 100%,0 -14px,100% 14px}}
+.tab.busy{color:#dc2626;font-weight:800;border-color:transparent !important;
+  background-image:
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0);
+  background-repeat:repeat-x,repeat-x,repeat-y,repeat-y;
+  background-size:14px 2px,14px 2px,2px 14px,2px 14px;
+  background-position:0 0,0 100%,0 0,100% 0;
+  animation:march .5s linear infinite}
+.empty{font-size:12px;color:#9aa0aa;background:#f8fafc;border:1px dashed #cbd5e1;
+        border-radius:9px;padding:9px 11px;margin:8px 0}
+.note{width:100%;min-height:48px;border:1px solid var(--line);border-radius:9px;
+       padding:7px 9px;font:13px/1.5 inherit;resize:vertical;margin-top:6px}
+.frames{margin:8px 0}
+.frame-card{border-bottom:1px solid #f1f3f6;padding:8px 0}
+.frame-head{display:flex;gap:8px;font-size:12.5px}
+.fv{flex:1;color:var(--ink)}
+.acts{margin-top:8px}
+.soft{margin-bottom:8px}
+.soft summary{font-size:12.5px;font-weight:800;color:var(--ink);cursor:pointer;
+               background:#f8fafc;border:1px solid var(--line);border-radius:10px;
+               padding:9px 12px;list-style:none}
+.soft[open] summary{border-radius:10px 10px 0 0;margin-bottom:0}
+.soft .card{border-radius:0 0 10px 10px;border-top:none;margin-bottom:0}
+.hint{font-size:12px;color:var(--mut);margin:0 0 8px}
+.det{margin-top:8px}
+.det summary{font-size:12.5px;font-weight:800;color:var(--ac);cursor:pointer;
+              list-style:none;background:#eef0fe;border:1px solid #dcdffb;
+              border-radius:9px;padding:8px 11px;text-align:center}
+.det[open] summary{margin-bottom:7px}
+.det summary::-webkit-details-marker{display:none}
+.detbody{font-size:12.5px;color:#374151;white-space:pre-wrap;margin-top:7px;
+          line-height:1.6;max-height:360px;overflow:auto;background:#f8fafc;
+          border-radius:9px;padding:10px 12px}
+.tw{overflow-x:auto;margin:6px 0}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid var(--line);padding:5px 8px;text-align:left}
+th{background:#f8fafc;font-weight:700}
+.prev{font-size:12.5px;color:#4b5563;margin:6px 0 2px;line-height:1.5}
+/* ── VID 1 carousel：橫掃卡，卡內直 scroll ── */
+.carousel{margin:0 -2px}
+.ccard{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;
+        background:var(--card);border:1.5px solid var(--line);border-radius:14px;display:flex;
+        flex-direction:column;max-height:64vh;overflow:hidden;
+        box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+.ccard.sel{border-color:var(--ac);box-shadow:0 0 0 2px rgba(79,70,229,.25),
+            0 6px 18px rgba(79,70,229,.18)}
+.rest-row .ccard{flex:0 0 70%;max-height:52vh}
+.chead{display:flex;align-items:center;gap:8px;padding:10px 12px 7px;cursor:pointer;
+        border-bottom:1px solid #f1f3f6}
+.oscore{margin-left:auto;font-size:12px;font-weight:800;color:var(--gold)}
+.ctitle{font-weight:800;font-size:14px;line-height:1.35;padding:8px 12px 0}
+.ccard .csub{padding:2px 12px 0}
+.cbadges{padding:5px 12px 0}
+.cbody{flex:1;overflow-y:auto;padding:9px 12px 12px;font-size:12.5px;color:#374151;
+        line-height:1.62;-webkit-overflow-scrolling:touch}
+.cbody h3,.cbody h4,.cbody h5{font-size:12.5px;margin:9px 0 3px}
+.cbody p{margin:5px 0}
+.scores{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+.sline{font-size:11.5px;margin:6px 0 2px}
+.sline b{font-size:12px}
+.sline.muted{color:#9aa0aa;font-weight:600}
+.scrit{display:block;font-size:11px;color:var(--mut);margin-top:2px}
+.snote{font-size:11px;color:#6b7280;background:#f8fafc;border-radius:7px;
+        padding:5px 8px;margin:4px 0 2px;line-height:1.5}
+.toast{position:fixed;bottom:78px;left:50%;transform:translateX(-50%);
+        background:#1b1f27;color:#fff;padding:12px 18px;border-radius:12px;
+        font-size:13px;font-weight:700;z-index:90;max-width:90%;
+        box-shadow:0 8px 30px rgba(0,0,0,.3);transition:opacity .5s}
+.topproc{position:fixed;bottom:0;left:0;right:0;z-index:95;background:var(--ac);
+          color:#fff;font-size:13px;font-weight:800;padding:9px 14px;
+          display:flex;align-items:center;justify-content:center;gap:8px;
+          box-shadow:0 3px 14px rgba(79,70,229,.35)}
+.spin.sm{width:15px;height:15px;border:2.5px solid rgba(255,255,255,.4);
+          border-top-color:#fff;border-radius:50%;display:inline-block;
+          vertical-align:middle;margin-right:6px;animation:sp .9s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.gening{display:inline-flex;align-items:center;font-size:12px;font-weight:800;color:var(--ac);
+         background:#eef0fe;border:1px solid #dcdffb;border-radius:9px;padding:7px 11px}
+.gening .spin.sm{border-color:#c7cbf5;border-top-color:var(--ac)}
+/* ⬇️ 最後置:桌面卡長短 1/3(64→43vh)。2-class + 排最尾,壓得過 base .ccard 64vh —— Raymond 2026-06-16
+   (VID1 + 標書 tab 一齊短;手機保持 base 64vh 唔郁) */
+@media(min-width:1100px){.carousel .ccard{max-height:43vh}}
+</style></head><body><!-- generated-by: scripts/core/nlm-bridge/lab_ui_shell.py -->
+<div class=wrap>
+<header>
+  <div class=titlerow>
+    <h1><span class=dept>LCSD</span> · LCSD</h1>
+    <span class=hdrbtns>
+      <a class=homebtn href="." title="總目錄">🏠</a>
+      <button class=refbtn onclick="location.href=location.pathname+'?t='+Date.now()+location.hash" title="重新載入">🔄</button>
+    </span>
+  </div>
+  <div class=bdp><span class='dd'>D) 25/8 00:00 · 仲有 <b id='cd'>—</b></span></div>
+  <div class=fresh>🕒 資料更新：<span class=fr><b>標書</b> 08-02 14:36</span> · <span class=fr><b>研究</b> 08-01 22:24</span> · <span class=fr><b>概念</b> —</span> · <span class=fr><b>評分</b> —</span></div>
+</header>
+<div class='tabbar'><button class='tab' data-tab='ph0'>📋 標書</button><button class='tab' data-tab='debrief'>📨 DEBRIEF</button><button class='tab' data-tab='handbd'>✍️ TVAPI FINAL</button><button class='tab' data-tab='theme1_1'>THEME</button><button class='tab' data-tab='tvapi1_1'>TVAPI 1</button><button class='tab' data-tab='tvapi1_2'>TVAPI 2</button><button class='tab' data-tab='tvapi1_3'>TVAPI 3</button><button class='tab' data-tab='tvapi1_4'>TVAPI 4</button><button class='tab' data-tab='tvapi1_5'>TVAPI 5</button></div>
+<div id='ph0' class='tabpanel'><div class='h2 h2sm'>💡 額外想法 / 相片</div><div class='card provide'>
+<div class="upbox" id="ref_LCSD_box">
+  
+  <div class="attstage" id="ref_LCSD_stage"></div>
+  <div class="attrow1">
+    <textarea id="ref_LCSD_link" class="atttext" rows="4" placeholder="💭 諗到嘅想法打喺度；想畀參考相就 ⌘V／drag／揀相入埋，喺格仔寫明呢張相係咩 → 一齊送出"></textarea>
+    <button id="ref_LCSD_send" class="attsend">送出 ⏎</button></div>
+  <div class="attbtns2"><button id="ref_LCSD_pick" class="attpick">📎 電腦揀檔</button></div>
+  <input type="file" id="ref_LCSD_file" accept="image/*" style="display:none">
+  <div class="upst" id="ref_LCSD_st"></div>
+</div>
+<script>(function(){
+var GAS="https://script.google.com/macros/s/AKfycbwVvkFb8kXQFrJZnABGxFcywfVllsM3XSVHlAGwH8CzrWIBGChjIK2PhW1k61r6NJWIpg/exec",TOK="mkv7q3z2link",FOLDER="11c4Mrm7y1IIoE-AXHV2zJhrUZdRzLqyJ";
+var st=document.getElementById("ref_LCSD_st");
+function say(m){st.textContent=m;}
+// —— 把關站 proven mechanic（照搬）——
+function jsonp(q,cb){var n="upcb"+Math.random().toString(36).slice(2);
+  window[n]=function(o){try{cb(o);}finally{delete window[n];s.remove();}};
+  var s=document.createElement("script");s.src=GAS+"?"+q+"&token="+TOK+"&callback="+n;
+  s.onerror=function(){delete window[n];s.remove();cb({ok:false,err:"network"});};
+  document.body.appendChild(s);}
+function fidFromLink(v){var m=v.match(/\/d\/([a-zA-Z0-9_-]{20,})/)||v.match(/[?&]id=([a-zA-Z0-9_-]{20,})/);return m?m[1]:null;}
+var inp=document.getElementById("ref_LCSD_link");
+var box=document.getElementById("ref_LCSD_box"),stage=document.getElementById("ref_LCSD_stage");
+var fi=document.getElementById("ref_LCSD_file"),send=document.getElementById("ref_LCSD_send");
+var _staged=null,_busy=false;
+function showStaged(f){_staged=f;var isImg=(f.type||"").indexOf("image/")===0;
+  stage.innerHTML="<span class='stchip'>"+(isImg?"🖼":"📎")+" "+f.name.replace(/</g,"&lt;")+" <button class='ststrip'>✕</button></span>";
+  stage.querySelector(".ststrip").onclick=function(){_staged=null;stage.innerHTML="";};}
+document.getElementById("ref_LCSD_pick").onclick=function(){fi.click();};
+fi.onchange=function(){if(fi.files[0]){showStaged(fi.files[0]);fi.value="";}};
+["dragover","dragenter"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.add("hov");});});
+["dragleave","drop"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.remove("hov");});});
+box.addEventListener("drop",function(e){var f=e.dataTransfer&&e.dataTransfer.files[0];if(f)showStaged(f);});
+inp.addEventListener("paste",function(ev){var fs=(ev.clipboardData&&ev.clipboardData.files)||[];if(fs.length){ev.preventDefault();showStaged(fs[0]);}});
+// 收到 file id（檔上載完）或原 link → 交畀各站自己嘅 complete handler
+function done(val,isFile){ var ip=document.getElementById('ref_LCSD_link');var desc=(ip&&ip.value||'').trim();if(window._clearDraft)window._clearDraft('ref_LCSD_link');if(isFile){var el=desc||'參考相';fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=LCSD&concept='+encodeURIComponent(el)+'&stage=add_ref&engine='+encodeURIComponent(val)+'&target=main&cid=ACT_add_ref',{mode:'no-cors'}).catch(function(){});if(ip)ip.value='';say(desc?('✅ 已收參考相「'+el+'」（排最前＋嚴格比照）'):'✅ 收咗相；下次喺格仔寫埋係咩元素，AI 跟得準啲');}else if(/^https?:|drive\.google|docs\.google/.test(val)){fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=LCSD&concept='+encodeURIComponent('參考連結')+'&stage=add_ref&engine='+encodeURIComponent(val)+'&target=main&cid=ACT_add_ref',{mode:'no-cors'}).catch(function(){});say('✅ 已收參考連結（排最前＋嚴格比照）');}else{var a=loadNotes();a.push({ts:Date.now(),text:val});saveNotes(a);renderNotes();fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=LCSD&text='+encodeURIComponent(val),{mode:'no-cors'}).catch(function(){});say('✅ 已加想法（'+a.length+'，累積餵委員會）');} }
+// 檔：initupload(folder)→browser 直 PUT 任何 size→CORS 讀唔到都 fallback→進度
+function up(f){_busy=true;send.disabled=true;say("開緊上載…（"+f.name+"）");
+  jsonp("action=initupload&origin="+encodeURIComponent(location.origin)+"&name="+encodeURIComponent(f.name)
+    +"&size="+f.size+"&mime="+encodeURIComponent(f.type||"image/jpeg")+"&folder="+encodeURIComponent(FOLDER),function(o){
+    if(!o.ok){_busy=false;send.disabled=false;say("⚠️ 開唔到上載："+(o.err||"")+"（可改貼 Drive 連結）");return;}
+    var x=new XMLHttpRequest();x.open("PUT",o.uri);
+    x.upload.onprogress=function(ev){if(ev.lengthComputable)say("⬆️ 上載中 "+Math.round(ev.loaded/ev.total*100)+"%（"+f.name+"）");};
+    x.onload=function(){_busy=false;send.disabled=false;
+      if(x.status>=300){say("⚠️ 上載 fail HTTP "+x.status);return;}
+      var fid="";try{fid=JSON.parse(x.responseText).id||"";}catch(_){}
+      if(!fid){say("⚠️ 上載咗但攞唔到 file id（可改貼 Drive 連結）");return;}
+      stage.innerHTML="";say("✅ 上載完成");done(fid,true);};
+    x.onerror=function(){_busy=false;send.disabled=false;say("⚠️ 上載出錯（network）。可改貼 Drive 連結");};
+    x.send(f);});}
+function submit(){if(_busy){say("處理緊…");return;}
+  var f=_staged;var v=inp.value.trim();
+  if(f){_staged=null;stage.innerHTML="";up(f);return;}
+  if(!v){say("⚠️ 未貼 link／未揀檔");return;}
+  inp.value="";done(v,false);}   // 貼 link → 直接交（後端 add_manual_ref 認 link/Drive id/URL）
+send.onclick=submit;
+inp.addEventListener("keydown",function(ev){if(ev.key==="Enter"&&!ev.shiftKey){ev.preventDefault();submit();}});
+})();</script>
+<div id='noteslist' class='noteslist'></div></div><details class='soft' open><summary>📸 Visual 素材（3 個：LOGO 3）</summary><p class='hint'>搵到嘅 LOGO／海報／單張／宣傳片／真實參考相，每個有原網址 · <a href='https://drive.google.com/drive/folders/11c4Mrm7y1IIoE-AXHV2zJhrUZdRzLqyJ' target=_blank>📁 GDrive 存檔 folder</a>。<b>剔相後揀：⭐首選＝呢張參考優先過其他；🔁重搜＝搵過好啲（e.g. logo 污糟）；🗑刪除＝搵錯即清。</b></p><div class='vacarou'><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='LOGO_slot1.png'> 剔</label><div class='vathumb'><img src='assets/refs/LCSD/logos/slot1.png' loading=lazy></div><div class='vacat'>LOGO</div><div class='vaname'>康樂及文化事務署</div><div><span class='vasrc' style='color:#bbb'>（無網址）</span> · <a href='https://drive.google.com/file/d/1xe3KnaX5so_eG5kIdMfdnH1j3SyNVHmQ/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='LOGO_slot2.png'> 剔</label><div class='vathumb'><img src='assets/refs/LCSD/logos/slot2.png' loading=lazy></div><div class='vacat'>LOGO</div><div class='vaname'>弘揚中華文化辦公室</div><div><span class='vasrc' style='color:#bbb'>（無網址）</span> · <a href='https://drive.google.com/file/d/1mstOT5sjPm5HLgc1Im6jOpoWlb4qU9BZ/view' target=_blank class='vasrc'>GDrive</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='LOGO_slot3.png'> 剔</label><div class='vathumb'><img src='assets/refs/LCSD/logos/slot3.png' loading=lazy></div><div class='vacat'>LOGO</div><div class='vaname'>香港抗戰及海防博物館</div><div><span class='vasrc' style='color:#bbb'>（無網址）</span> · <a href='https://drive.google.com/file/d/1GSpASCsKVP6NKiadV0juZNjzZb1jDXSW/view' target=_blank class='vasrc'>GDrive</a></div></div></div><div class='acts vaacts' style='margin-top:8px'><button class='btn grn' onclick="preferAssets('LCSD')">⭐ 設首選</button><button class='btn ghost vbtn' onclick="researchAssets('LCSD')">🔁 重搜</button><button class='btn' style='background:var(--red)' onclick="delAssets('LCSD')">🗑 刪除選取</button></div></details><div class='h2 tierh'>🎯 必定餵 AI（諗橋一定收）</div><p class='hint tierhint'>委員會／agency 諗橋一定收呢批做底，必跟。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📋 標書撮要</span><span class='rawlink' onclick="showOvl('raw_LCSD')">📄 標書原文</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><p>這份標書文件（Quotation Ref.: <strong>CCP-D00199</strong>）為香港特別行政區政府康樂及文化事務署（LCSD）轄下香港抗戰及海防博物館發出的<strong>「專題展覽製作、安裝、保養及拆卸服務」工程與展覽佈置合約</strong> [第 130-131 頁，Clause 1.1-1.2]。</p>
+<p>以下<strong>嚴格只根據標書（CCP-D00199 及 Annex V 設計圖紙）內容</strong>，為貴公司詳細整理標書的八大核心範疇：</p>
+<p>---</p>
+<h5>1. 背景同目的（Background &amp; Objective）</h5>
+<p>* <strong>項目背景</strong>：康樂及文化事務署（LCSD）弘揚中華文化辦公室轄下之香港抗戰及海防博物館（MWRCD），籌劃舉辦名為「青春向延安 – 抗戰時期的愛國青年（Youth Heading to Yan’an – Patriotic Youth During the War of Resistance）」（暫名）之特別展覽 [第 131-132 頁，Clause 1.1, 1.3]。</p>
+<p>* <strong>展覽地點與面積</strong>：香港筲箕灣東喜道 175 號香港抗戰及海防博物館 [第 132 頁，Clause 1.3]：</p>
+<p>  1. 專題展覽廳（Thematic Gallery）：約 50 平方米。</p>
+<p>  2. 展覽廳 5（Gallery 5 互動區）：約 21 平方米。</p>
+<p>  3. 上層展覽廳（Upper Gallery 教育區）：約 38 平方米。</p>
+<p>* <strong>展期</strong>：暫定 <strong>2026 年 8 月 28 日至 2027 年 7 月 7 日</strong> [第 132 頁，Clause 1.3]。</p>
+<p>* <strong>合約目的</strong>：委辦獲委任之承辦商，負責現有展覽設施之拆卸清場、依據博物館設計圖紙（Annex V）完成三大展區之木結構搭建、圖畫噴畫、展櫃重刷包覆、影音外框安裝及互動/教育設施供應，並為 2026 年 8 月 27 日之開幕典禮（Opening Event）提供舞台與背板搭建，以及提供展期內約 12 個月之保養維修服務 [第 133-136 頁，Clause 2.1-2.3]。</p>
+<p>---</p>
+<h5>2. 目標受眾（Target Audience）</h5>
+<p>* <strong>標書說明</strong>：本標書為實體展覽工程搭建與製作規格書（Specifications for Fabrication, Installation &amp; Maintenance），標書條文中未有獨立撰寫廣告宣傳層面的受眾人物畫像（Persona）。</p>
+<p>* <strong>展區設施面向對象</strong>：從展覽功能規劃可見，場地設施主要供參觀博物館之<strong>公眾人士、青少年、學生及親子家庭團體</strong>使用（例如展覽廳 5 設有 Photo Op 打卡檯與印章體驗區；上層展覽廳教育區設有互動遊戲機箱及水寫布體驗區）[第 144-146 頁，Clause 3.2-3.3；Annex V D1-D10, E1-E11]。</p>
+<p>---</p>
+<h5>3. 傳意目標 / 核心訊息（Communication Objective / Key Message）</h5>
+<p>* <strong>展覽主題</strong>：介紹延安抗戰歷史，以及抗戰時期愛國青年的奮鬥事跡與精神 [第 131-132 頁，Clause 1.1, 1.3]。</p>
+<p>* <strong>實體傳意載體</strong>：透過入口立體主題板（Head Panel）、歷史文字/圖畫展板（Graphic Panels）、展示文物的塗漆展櫃與亞加力托架、影音播放電視、互動印章檯及教育區遊戲機箱，向入場觀眾傳遞展覽內容 [第 137-146 頁，Clause 3.1-3.3]。</p>
+<p>* <strong>標書標示</strong>：由於本合約屬展覽場地陳列與製作工程標（非廣告宣傳媒體標），標書文字內<strong>並無設定</strong>獨立的廣告宣傳 Slogan 或 Key Message 策略。</p>
+<p>---</p>
+<h5>4. 影片 / 製作規格（集數、每集長度、語言、字幕、配音）</h5>
+<p>* <strong>關鍵條款</strong>：標書 Clause 3.1.7、3.3.1-3.3.2 及 Clause 3.5.1 明確指出，專題展覽廳及上層展覽廳將設有嵌入式電視及觸控螢幕（Built-in TVs, 32-inch TV / Touch monitor, 13-inch touch screen tablet），<strong>所有電視影音硬體及影片內容均由博物館直接提供（Provided by the Museum）</strong> [第 140 頁 Clause 3.1.7；第 146 頁 Clause 3.3.1-3.3.2；第 149-150 頁 Clause 3.5.1]。</p>
+<p>* <strong>承辦商職責</strong>：僅需負責製作影音外框/機箱（AV housing）、固定電視螢幕、拉設電源線及安裝定時開關器（Timer switch）[第 140 頁 Clause 3.1.7；第 149-150 頁 Clause 3.5.1]。</p>
+<p>* <strong>標書標示</strong>：<strong>標書資料並無要求承辦商拍攝或製作影片</strong>，因此標書內<strong>無</strong>「影片集數、每集長度、語言、字幕、配音」等影片製作規格。</p>
+<p>---</p>
+<h5>5. 指定班底與團隊要求（Designated Personnel &amp; Team Requirements）</h5>
+<p>* <strong>標書實際團隊/專業人員要求</strong>：</p>
+<p>  1. <strong>項目經理（Project Manager）</strong> [強制性基本要求 Clause 6.1，第 190-191 頁]：須指定至少 1 名項目經理全權負責項目。資歷要求：具備至少 <strong>10 年</strong> 相關展覽/活動設施製作管理經驗，且在截標前最近 3 年內曾完成至少 <strong>3 個</strong> 單一合約金額不少於 <strong>50 萬港元</strong> 的本地博物館、文化或藝術機構之展覽製作項目（須於截標時提交合約副本/客戶完工證明 Annex III）。</p>
+<p>  2. <strong>現場監督（On-site Supervisor）</strong> [Clause 5.15，第 184-185 頁]：於施工安裝期間全程派駐 1 名現場監督，負責技術圖紙理解、現場問題解決、材料採購及木工/漆工/安裝工人之人力調配。</p>
+<p>  3. <strong>法定專業工程認證人員</strong>：</p>
+<p>     * <strong>註冊結構工程師（RSE / RPE）</strong> [Clause 3.5.1, 7.2，第 153 頁, 199 頁]：負責為所有現場搭建結構進行安全檢查並簽發結構安全證明書。</p>
+<p>     * <strong>註冊電工（Registered Electrical Worker/Contractor）</strong> [Clause 4.9, 5.13，第 163 頁, 180-181 頁]：負責所有電力工程接駁，完工後檢驗並簽發 <strong>WR1 電力完工證明書</strong>。</p>
+<p>     * <strong>現場施工工人</strong> [Clause 3.7.3, 6.2，第 157-158 頁, 192 頁]：須年滿 18 歲並持有有效安全<strong>綠卡（Green Card）</strong>。</p>
+<p>* <strong>標書標示</strong>：<strong>標書完全沒有要求 ERB 導師、KOL 或吉祥物</strong>（本項目屬展覽工程製作標）。</p>
+<p>---</p>
+<h5>6. 創意及策略重點 / 風格與佈置要求（Creative &amp; Strategic Focus / Style Requirements）</h5>
+<p>根據標書條文及 Annex V 設計圖紙，三大展區及開幕典禮佈置要求如下：</p>
+<p>1. <strong>專題展覽廳（Thematic Gallery）與入口走廊</strong>：</p>
+<p>   * <strong>入口 Head Panel</strong>：木結構配合浮雕噴畫、3D 立體字（15mm-25mm 厚，石頭漆+噴漆）、3 層 Pop-up 貼紙面板，並嵌入可調光 LED 霓虹燈（Recessed Dimmable LED Neon Light）打造背光效果（Backlit illuminated effect）[第 137 頁 Clause 3.1.1；Annex V B5]。</p>
+<p>   * <strong>入口地貼</strong>：8m W x 1.2m D 防滑切形地貼（Die-cut Floor Sticker with anti-slip surface）[Annex V B5]。</p>
+<p>   * <strong>牆身與展櫃</strong>：走廊牆身鋪設印花壁紙（Printed Wallpaper mounted on forex board）；重新刷漆既有展櫃（SC-3, SC-4）；包覆展櫃/Kiosk（SC-1, TV-1, SC-5）；製作 Painted Wooden Angled Plinth，以及提供 3mm/5mm 亞加力托架（L-shape/U-shape Acrylic Holders）與文物固定組件 [第 137-139 頁 Clause 3.1.2-3.1.6；Annex V C1-C12]。</p>
+<p>2. <strong>展覽廳 5 互動區（Gallery 5 Interactive Area）</strong>：</p>
+<p>   * 設有木製裝飾拱門與拱窗（Painted Wooden Decorative Arch Window &amp; Door，含 0.4mm 霧面 PVC 板及 LED 背光）[Annex V D8, D10]。</p>
+<p>   * 拍照打卡區（Photo op / Photo booth）、裝飾牆面及防滑地貼（~2.74mW x 5.99mD）[第 144-145 頁 Clause 3.2.1-3.2.3；Annex V D5-D9]。</p>
+<p>   * 放置新製塗漆木檯，設有<strong>亞加力印章定位器（Acrylic Stamp Positioner）</strong>，承辦商須提供 <strong>16 個專屬印章</strong>（8 套每套 2 色）供觀眾蓋章互動 [第 145 頁 Clause 3.2.2；Annex V D6-D7, E11]。</p>
+<p>3. <strong>上層展覽廳教育區（Upper Gallery Education Area）</strong>：</p>
+<p>   * 特製木長椅（Tailor-made seating bench）[第 145 頁 Clause 3.3.1；Annex V E3]。</p>
+<p>   * 特製拱形木穹頂（Wooden Vault，連 LED 霓虹燈效果）[Annex V E5]。</p>
+<p>   * 32 吋電視/遊戲機箱木框（Game booth cover / Removable Metal Framing with Magnetic Mount）[第 146 頁 Clause 3.3.2；Annex V E6, E9]。</p>
+<p>   * 樓梯及上層玻璃圍欄裝設窗貼（Window Sticker）[第 147 頁 Clause 3.3.3；Annex V E10]。</p>
+<p>   * 現場道具設施（Supply of Decorative Facilities）：木枱櫈（2 組）、訂製水寫布及毛筆套裝（10 套）、印章（8 套共 16 個）、畫框（8 個）[第 145 頁 Clause 3.2.3, 3.3.1；Annex V E11]。</p>
+<p>4. <strong>開幕典禮設施（Opening Event Facilities, 中庭 Atrium）</strong> [第 136, 147-148 頁 Clause 2.3, 3.4.1-3.4.3；Annex V F1-F2]：</p>
+<p>   * 主舞台背板（9.76mW x 0.8mD x 3.6mH，Vinyl Banner 黑底，背面及頂部封黑布）。</p>
+<p>   * 主舞台（9.76mW x 2.44mD x 0.3mH，鋪地毯）。</p>
+<p>   * 傳媒台（Press Stage, 4.88mW x 1.22mD x 0.6mH，連 2 級台階）及斜道（Ramp，1:8 斜度）。</p>
+<p>---</p>
+<h5>8. 強制要求或紅線（Mandatory Requirements &amp; Red Lines）</h5>
+<h6>A. 強制資格與投標紅線（Essential Requirements &amp; Submission Rules）</h6>
+<p>1. <strong>項目經理資格（Clause 6.1）</strong> [第 190-191 頁]：必須符合「至少 10 年經驗 + 最近 3 年完成至少 3 個單一金額不低於 50 萬港元之本地博物館/文化機構項目」的要求，並於截標前附交證明文件（合約副本/客戶完工證 Annex III），<strong>否則標書不予考慮</strong>。</p>
+<p>2. <strong>法定認證人員（Clause 3.5.1, 3.7.3, 4.9）</strong> [第 153, 157-158, 163 頁]：</p>
+<p>   * 須由註冊結構工程師（RSE / RPE）簽發結構安全證明書。</p>
+<p>   * 須由註冊電工簽發 <strong>WR1 電力完工證明書</strong>。</p>
+<p>   * 現場施工人員須持有有效安全<strong>綠卡（Green Card）</strong>。</p>
+<p>3. <strong>公眾責任保險（Clause 7.1）</strong> [第 197-198 頁]：保額不得少於 <strong>1,000 萬港元（HK$10,000,000）</strong>，須以「香港特區政府與承包商」聯名方式投保。</p>
+<p>4. <strong>遞交規格（Clause 11.1-11.2）</strong> [第 208-210 頁]：標書須一式三份（TRIPLICATE），密封於信封並註明 Quotation Reference: <strong>CCP-D00199</strong>，於 <strong>2026 年 7 月 22 日 15:00 前</strong> 遞交至香港灣仔告士打道 5 號稅務大樓 3 樓 305 室弘揚中華文化辦公室「報價開啟小組」；<strong>不接受傳真報價，逾期或不完整者概不受理</strong>。標書有效期為 90 天。</p>
+<h6>B. 現場施工與材料禁忌（Strict Site Restrictions &amp; Material Red Lines）</h6>
+<p>1. <strong>現場施工禁止事項（Clause 5.14）</strong> [第 182-183 頁]：</p>
+<p>   * 現場<strong>嚴禁</strong>在現有牆身鑽孔或打螺絲固定（No screwing or drilling on wall）。</p>
+<p>   * 現場<strong>嚴禁</strong>進行焊接（No welding on-site）及噴漆（No spraying on-site）。</p>
+<p>   * 產生大聲浪的施工若影響博物館運作及訪客，必須於閉館後進行，不另加收費 [Clause 4.12，第 165 頁]。</p>
+<p>2. <strong>材料環保與無毒規範（Clause 3.1.5, 5.2, 5.6, 5.12）</strong> [第 139, 169-170, 172, 178 頁]：</p>
+<p>   * 所有展櫃、底座及牆身油漆必須採用低 VOC 水性塗料（例如 Dulux Breathe Easy，<strong>嚴禁含甲醛 Formaldehyde</strong>）。</p>
+<p>   * 展櫃內部膠水及矽膠必須為中性無酸（Non-acidic / neutral silicone），<strong>嚴禁使用油性漆、酸性釋放物或稀釋劑（Thinner）</strong>。</p>
+<p>   * 所有木材及 MDF 板必須預先經殺蟲劑處理（Insecticide pre-treated），以防蟲害。</p>
+<p>3. <strong>印刷品質與色樣（Clause 3.1.9, Annex G1）</strong> [第 141-144 頁；Annex V G1]：</p>
+<p>   * 數位噴畫須採用 3M / Ritrama / Neschen / Mactac 或同等獲認可品牌，解析度不低於 1,400 dpi，具防光 (UV resistant)、防水及阻燃 (fire retardant) 特性。</p>
+<p>   * 批量生產前須提交色樣（1st proof 須於 2 個工作天內提交，2nd/3rd proof 須於 1 個工作天內提交）經博物館批核。</p>
+<p>4. <strong>國家安全條款（Clause 15.1-15.2）</strong> [第 218-220 頁]：政府保留因承包商參與或被合理相信參與危害國家安全活動而即時取消投標資格或終止合約之權利，且承包商無權索償。</p>
+<p>---</p>
+<p>💡 <strong>下一步建議</strong>：這份展覽工程標書包含嚴格的施工安全限制（如現場禁鑽孔/噴漆）及專業認證要求（RSE 認證與 WR1 電工證）。如果您需要為此項目籌備工程施工方案或成本核算，我可以進一步協助您整理各展區材料製作數量及細節清單！</p><div id='raw_LCSD' class='ovl'><div class='ovlbox'><div class='ovlhd'><span>📄 標書原文（逐字）</span><button class='x' onclick="hideOvl('raw_LCSD')">✕</button></div><div class='ovlbody'><a class='btn ghost' target='_blank' href='https://drive.google.com/drive/folders/1-F6WK_TxszWyC1DHqUOmoop4wf4yf13k'>📄 開標書原文</a></div></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>⚠️ 製作要求</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><div class='h3' style='margin-bottom:6px'>🚨 標書特別紅線 / 強制要求</div><div class='timeline' style='margin-bottom:10px'><div class='tlrow'><span class='tllabel'>🚨 <b>其他</b>（p138）：採用低 VOC 水性塗料（如 Dulux Breathe Easy，嚴禁含甲醛）；展櫃內部採用中性無酸矽膠及膠水；木材須經殺蟲劑預處理。</span></div></div><p class='hint'>每個概念必跟，違 = 廢稿。</p><div class='preqs'><div class='prow'><span class='pl'>🤟 手語</span><span class='pv pvoff'>❌ 唔使</span><span class='pp'></span></div><div class='prow'><span class='pl'>♿ W3C影片</span><span class='pv pvon'>✅ 要</span><span class='pp' title='開幕舞台設有斜道（Ramp，Gradient 1:8）以符合無障礙通道要求；廢料處置須符合環保署法例指引。'>p147</span></div><div class='prow'><span class='pl'>⭐ 明星/名人/官員</span><span class='pv pvoff'>無Preference</span><span class='pp'></span></div><div class='prow'><span class='pl'>🧸 Mascot</span><span class='pv pvoff'>無Preference</span><span class='pp'></span></div><div class='prow'><span class='pl'>🎬 動畫</span><span class='pv pvon'>Prefer 2D</span><span class='pp' title='數位噴畫貼紙（解析度不低於 1,400 dpi，3M/Ritrama/Neschen/Mactac或同等認可品牌，防光/'>p140</span></div></div><div class='h3' style='margin-top:11px'>⛔ 注意 / 紅線</div><div class='timeline'><div class='tlrow'><span class='tllabel'>[其他] <b>Project Manager Essential Qualification</b>：Project Manager must have at least 10 years relevant experience and handled at l</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>Structural Safety Certificate (RSE)</b>：Structural safety certificate by Registered Structural Engineer (RSE) / Register</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>Electrical Work Certificate (WR1)</b>：Registered Electrical Worker and Contractor must inspect, test and sign Work Com</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>Public Liability Insurance</b>：Public Liability Policy of Insurance in joint names of HKSAR Government and Cont</span></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>⚡ 創意亮點</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ Gemini Flash＋Search</span></div><div class='cbody'><h4>⚡ 創意亮點 — LCSD·LCSD（research 掘出嚟，可以做橋嘅真嘢）</h4>
+<p>1. 🏷️ <strong>吉祥物雙子「活力仔與思文喵」</strong></p>
+<p>   - 事實：康文署官方吉祥物「活力仔」（代表康體，活潑）與「思文喵」（代表文化，文靜），以見習生身份推廣文康活動，目標係「藝文康體樣樣得」。（出處：[hooks-research] LCSD）</p>
+<p>   - 💡 可以點做橋：可以將兩隻吉祥物由「文康見習生」化身為時空導賞員，帶領現代青年穿梭歷史。</p>
+<p>2. 🏷️ <strong>展覽廳5亞加力印章定位檯與16個印章</strong></p>
+<p>   - 事實：展覽廳5互動區設有特製亞加力印章定位檯，並配備8套共16個專屬印章供參觀者蓋章體驗。（出處：[Spec] CCP-D00199 / AnnexV_low.pdf (Drawing D6-D7)）</p>
+<p>   - 💡 可以點做橋：可以將實體「蓋章」動作包裝成與1930年代延安青年簽署「時空誓約」的解謎儀式。</p>
+<p>3. 🏷️ <strong>Head Panel 吹號角青年剪影與背光霓虹燈</strong></p>
+<p>   - 事實：專題展覽廳入口 Head Panel 設有吹號角青年的立體剪影，並嵌入可調光 LED 霓虹燈營造背光效果。（出處：AnnexV_low.pdf (Drawing B5)）</p>
+<p>   - 💡 可以點做橋：可以以號角聲響起配合霓虹光束亮起做開場 Hook，召集現代青年親臨現場。</p>
+<p>4. 🏷️ <strong>窯洞與堡壘雙重拱門建築結構</strong></p>
+<p>   - 事實：海防博物館由舊堡壘改建，展區內部特別設計了仿延安窯洞的木製拱門、拱窗及木穹頂（Wooden Vault）。（出處：[Spec] CCP-D00199 / AnnexV_low.pdf (Drawing D8, E5, E8)）</p>
+<p>   - 💡 可以點做橋：可以利用「窯洞拱門」與「古蹟堡壘」的雙重拱形空間做畫面穿梭過渡。</p>
+<p>5. 🏷️ <strong>教育區10套訂製水寫布與毛筆套裝</strong></p>
+<p>   - 事實：上層展覽廳教育區現場提供10套訂製水寫布及毛筆套裝，供觀眾進行水寫書法體驗。（出處：AnnexV_low.pdf (Drawing E11)）</p>
+<p>   - 💡 可以點做橋：可以水寫布「揮毫顯影、水乾無痕」的特性做視覺 Hook，象徵重現歷史記憶。</p>
+<p>6. 🏷️ <strong>弘揚中華文化辦公室「華」字斗拱標誌</strong></p>
+<p>   - 事實：項目由康文署新成立的「弘揚中華文化辦公室」發起，其官方 Logo 為傳統建築「華」字形斗拱構造。（出處：AnnexV_low.pdf / [Spec] CCP-D00199）</p>
+<p>   - 💡 可以點做橋：可以將「華」字斗拱的堆疊結構轉化為建構歷史與現代青春對話的視覺梯級。</p>
+<p>7. 💡 <strong>年輕受眾追求「體驗式抽離」</strong></p>
+<p>   - 事實：後疫情時代香港年輕受眾追求低成本的在地體驗式療癒與精神抽離，對展覽場館的互動體驗要求增加。（出處：研究 Research Brief）</p>
+<p>   - 💡 可以點做橋：可以將展覽包裝為現代青年在繁忙都市中尋找熱血與精神寄托的「時空避風港」。</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📊 研究（深入＋Web 整合）</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ Gemini Flash＋Search</span></div><div class='cbody'><h3>Deep Research — LCSD · 這份標書文件（Quotation Ref.: **CCP-D00199**）為香港特別行政區政府康樂及文化事務署（LCSD）轄下香港抗戰及海防博物館發出的**「專題展覽製作、安裝、保養及拆卸服務」工程與展覽佈置合約** 。</h3>
+<p>以下嚴格<strong>只做差異化研究</strong></p>
+<h4>1. 議題深度背景(近期發展,補充事實)</h4>
+<p>*   香港抗戰及海防博物館近年積極更新展覽內容，以吸引不同年齡層的訪客。例如，2023年舉辦了「海防故事」常設展覽，利用多媒體互動裝置和歷史文物，呈現香港的海防歷史。</p>
+<p>*   香港政府近年大力推動文化藝術和歷史教育，鼓勵市民認識香港的歷史和文化遺產。康文署轄下多個博物館亦積極舉辦專題展覽及教育活動，以提升市民對歷史文化的興趣。</p>
+<p>*   隨著科技發展，博物館展覽趨向數碼化和互動化，以提供更沉浸式的觀展體驗。虛擬實境（VR）、擴增實境（AR）和互動裝置等技術在博物館展覽中的應用越來越普遍。</p>
+<h4>2. 近期同類宣傳掃描(香港政府 + 相關機構)</h4>
+<p>*   <strong>香港歷史博物館</strong>：</p>
+<p>    *   <strong>「香港故事」常設展覽宣傳 (2022-2023)</strong>：主要透過電視廣告、港鐵廣告和社交媒體宣傳，強調展覽的歷史深度和豐富的文物收藏。宣傳片多以歷史片段和文物特寫為主，語氣莊重，旨在喚起市民對香港歷史的興趣和認同感。</p>
+<p>    *   <strong>「萬壽載德：清宮帝后誕辰慶典」專題展覽宣傳 (2023)</strong>：宣傳著重展覽的獨特性和珍貴展品，利用精美的視覺效果和歷史故事吸引觀眾。宣傳策略包括與KOL合作，製作導賞影片，並在社交媒體上舉辦有獎問答遊戲。</p>
+<p>*   <strong>香港文化博物館</strong>：</p>
+<p>    *   <strong>「瞧潮香港60+」展覽宣傳 (2022)</strong>：宣傳片以輕鬆活潑的風格呈現香港過去60年的流行文化，吸引年輕觀眾。運用大量懷舊元素和流行音樂，營造共鳴感。</p>
+<p>    *   <strong>「敦煌尋夢：石窟的智慧」展覽宣傳 (2023)</strong>：宣傳強調敦煌藝術的宏偉和文化意義，透過精美的動畫和實景拍攝，展現石窟的藝術魅力。</p>
+<p>*   <strong>M+博物館</strong>：</p>
+<p>    *   <strong>開幕宣傳及常設展覽宣傳 (2021-2023)</strong>：M+的宣傳策略非常注重其作為亞洲首間全球當代視覺文化博物館的定位，強調其國際視野和多元文化。宣傳片多採用現代感強烈的視覺風格，並邀請不同界別人士分享觀展體驗，吸引年輕和追求潮流的觀眾。</p>
+<h4>3. 競品 / 同類創意做法(本地 + 國際參考)</h4>
+<p>*   <strong>故宮博物院 (北京)</strong>：</p>
+<p>    *   <strong>「我在故宮修文物」紀錄片 (2016)</strong>：以紀錄片形式深入介紹文物修復師的日常工作，展現文物背後的故事和修復師的匠人精神。這種「人」的角度和真實感，引起了廣泛共鳴，成功提升了故宮的形象和關注度。</p>
+<p>    *   <strong>故宮文創產品宣傳 (近年)</strong>：將傳統文化元素融入現代生活用品，透過創意設計和幽默感，讓年輕人重新認識和喜愛故宮文化。宣傳多以年輕人為目標，利用社交媒體和KOL進行推廣。</p>
+<p>*   <strong>大英博物館 (英國)</strong>：</p>
+<p>    *   <strong>「A History of the World in 100 Objects」廣播節目及書籍 (2010)</strong>：透過講述100件文物的歷史故事，串聯起人類文明的發展。這種以「物件」為中心的敘事方式，讓觀眾從微觀角度了解宏觀歷史，引發思考。</p>
+<p>*   <strong>國家地理雜誌 (國際)</strong>：</p>
+<p>    *   <strong>歷史題材紀錄片及專題報導</strong>：善於運用震撼的視覺效果、引人入勝的敘事手法和權威的專家訪談，將歷史事件和文化遺產呈現得生動有趣，吸引廣泛觀眾。</p>
+<h4>4. 已經做到濫嘅 approach / trope(要避開)</h4>
+<p>*   <strong>單純羅列歷史事件和年份</strong>：過於學術和枯燥，難以吸引大眾，特別是年輕一代。</p>
+<p>*   <strong>過度強調「愛國情懷」或「民族主義」</strong>：容易引起部分觀眾的反感或疲勞，尤其是在香港的語境下。</p>
+<p>*   <strong>只展示文物，缺乏故事性</strong>：展覽宣傳如果只呈現靜態文物，而沒有引人入勝的故事或背景，會顯得平淡無奇。</p>
+<p>*   <strong>使用沉重、悲情的色調和音樂</strong>：雖然歷史題材可能涉及沉重內容，但過度使用會讓觀眾感到壓抑，難以產生積極的觀展意願。</p>
+<p>*   <strong>官方口吻，缺乏互動和共鳴</strong>：政府機構的宣傳容易流於官方和說教，缺乏與觀眾的情感連結。</p>
+<p>*   <strong>過時的視覺風格和製作技術</strong>：如果宣傳片視覺效果老舊，缺乏現代感，會讓觀眾覺得展覽本身也過時。</p>
+<h4>5. 差異化空白(機會,唔係 idea)</h4>
+<p>*   <strong>個人化連結與情感共鳴</strong>：較少宣傳從個人角度出發，探討歷史事件對普通人生活的影響，或如何與當代生活產生連結。</p>
+<p>*   <strong>「非典型」歷史人物或小眾故事</strong>：大部分宣傳集中於主要歷史人物或事件，較少挖掘鮮為人知但同樣重要的「小人物」故事或被忽略的歷史面向。</p>
+<p>*   <strong>互動性與參與感</strong>：雖然有些展覽本身有互動元素，但宣傳片較少直接呈現或鼓勵觀眾參與展覽的互動性，或提供觀展前的「預體驗」。</p>
+<p>*   <strong>跨世代對話與傳承</strong>：較少宣傳著重於不同世代之間對歷史的理解和傳承，例如祖孫兩代如何共同探索歷史。</p>
+<p>*   <strong>歷史的「當代意義」</strong>：較少宣傳深入探討歷史事件對當今社會的啟示或影響，讓觀眾思考歷史與現實的關聯。</p>
+<p>*   <strong>幽默感或輕快風格</strong>：在嚴肅的歷史題材中，較少看到以幽默或輕快的方式來呈現，以降低觀看門檻，吸引更廣泛的受眾。</p>
+<p>*   <strong>藝術與歷史的結合</strong>：較少宣傳將歷史展覽與當代藝術創作或表演藝術結合，以創新的方式詮釋歷史。</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🏛️ 政府 JOB 鐵則</span></div><div class='cbody'><ol id='rulelist' style='margin:2px 0 8px;padding-left:18px;line-height:1.7'><li id='rule0'>除標書表明，人物一般使用華人面孔（東亞／香港華人），唔好生成西方／白人臉</li><li id='rule1'>衣著連戲：同一角色每一格都著返同一套衫（衫款／顏色／髮型／配件固定），除非故事明寫佢換咗衫</li><li id='rule2'>全 board 畫風完全一致：同一 render 風格／同一打燈／同一色調／同一線條筆觸，由頭到尾統一，似同一個畫師一次過畫</li><li id='rule3'>Storyboard 盡量唔好出現雨傘；若劇情一定要有雨傘，唔可以係黃色</li></ol><div class='bdcm'><textarea id='newrule' rows='2' placeholder='加一條鐵則：例「Storyboard 唔好有雨傘」'></textarea><button class='btn mini' onclick="addRule('LCSD')">＋ 加鐵則（即時生效）</button></div></div></div></div><div class='h2 tierh'>🔧 Optional 餵 AI（於 Debriefing 階段隨機餵 AI）</div><p class='hint tierhint'>唔強制，諗橋時隨機抽嚟畀 agency 撞火花。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>💭 5W1H Provocation</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ Gemini 2.5 Pro·預設</span></div><div class='cbody'><h3>5W1H 創意 Provocation — LCSD</h3>
+<h5>WHO — 對邊個講 + 佢而家點</h5>
+<p>- Q1 如果呢個 message 只可以打動「最唔關心、最 cynical」嗰個觀眾 —— 要加咩一個 element(畫面/聲/人物/情境)先 3 秒內 hook 住佢、令佢唔 skip?</p>
+<p>→ 加入香港抗戰及海防博物館（HKMWRCD）專題展覽廳入口 Head Panel 的「吹號角青年剪影」配搭「可調光 LED 霓虹燈（Recessed Dimmable LED Neon）」開場亮起，同步爆發實體號角聲效 ，以極高光影反差與強烈音效 3 秒內 Hook 住觀眾。</p>
+<p>- Q2 呢班受眾平時食開咩視聽語言(平台/節奏/語氣)?要 adapt 邊種佢熟悉嘅風格,先入到腦而唔似「政府嘢」?</p>
+<p>→ Adapt 社交平台常見的「第一人稱 Vlogging 快節奏視角」，配合廣東話口語（如「放電」、「打卡」、「熱血」）的對白語氣 ，避開傳統政府 API 嚴肅宣告感，讓視聽質感更貼近青年日常。</p>
+<h5>WHAT — 收窄到一個 + 證據</h5>
+<p>- Q3 成個 campaign 只准觀眾記住一個 element(一個畫面 / 一個 visual device / 一句)—— 你揀咩?點解係佢?</p>
+<p>→ 揀展覽廳 5（Gallery 5）互動區的「特製亞加力印章定位檯連 16 個專屬印章」作為核心 Visual Device ；因為它將抽象的歷史傳承轉化為手感極強的實體蓋章儀式 ，兼具 O2O 線下體驗與社媒打卡屬性。</p>
+<p>- Q4 客戶 key message 好抽象,要用咩具體 element(真場面/真數字/真人/真物)去「show 唔 tell」,令佢落地、唔流口號?</p>
+<p>→ 加入展覽現場的真實物理物件與場面——如上層展覽廳教育區（Upper Gallery）的「10 套訂製水寫布與毛筆套裝」水寫顯影過程  以及「仿延安窯洞拱門木結構」，用真實觸感與場景氣氛替代抽象口號。</p>
+<h5>WHY — 點解信 + 情感</h5>
+<p>- Q5 觀眾點解要信 / 关佢事?要加咩證據 element 或情感共鳴 element,先由「事不關己」變「同我有關」?</p>
+<p>→ 加入「1930 年代愛國青年赴延安追夢」與「2026 年香港青年面對未來的思考」之雙重時空情境對比 Element ，將歷史上的奮鬥抉擇連結至現代青年對人生意義與熱血的尋求。</p>
+<h5>WHEN / WHERE — 出街情境</h5>
+<p>- Q6 呢條嘢實際喺邊度、咩狀態被睇到(電視 prime / 車廂無聲 / 手機 scroll / 戶外經過)?要 adapt 咩風格(有聲冇聲 / 首 3 秒 / 大字 / 節奏)先食到當下情境?</p>
+<p>→ 針對車廂及手機無聲 Scroll 情境，Adapt「高對比動態大字 Super（書面語）」風格 ，配合首 3 秒衝擊力視覺與滿屏畫面，確保在無聲狀態下重點訊息依然清晰傳達。</p>
+<p>- Q7 出街時間(事件前/中/後)decide 調子係「預告期待」定「總結成就」?要加咩 element 配合呢個時間感?</p>
+<p>→ 因應 2026 年 8 月 28 日展覽正式開放前的宣傳期 ，採用「預告期待」調子；加入「展覽開幕倒數視覺」與「弘揚中華文化辦公室（CCPO）開幕典禮（Opening Event）舞台搭建幕後直擊」等動態 Element ，營造即將盛大揭幕的期待感。</p>
+<h5>HOW — 風格 + 差異化</h5>
+<p>- Q8 同類(同部門/同題材)政府片嘅「安全做法」係咩?要 adapt / 升級邊種風格 element(質感/節奏/transition/配樂/美術流派),先做到「框內最高質」而唔悶?</p>
+<p>→ 傳統安全做法是旁白平鋪直敘配歷史圖展；應升級 Adapt「Cinematic 電影級光影質感 + 電影原聲音效 + 無縫時空 Transition（如穿過展廳木拱門畫面切換）」，提升整體視覺層次。</p>
+<p>- Q9 要加咩一個 unexpected element(反差/新 visual device/新手法),先同部門過往 campaign 拉開距離、唔似翻炒,但又唔踩紅線?</p>
+<p>→ 加入「水寫布揮毫顯影（Water-writing Display）」視覺手法作為 Transition Device ——以水水分散時畫面顯示歷史圖畫、水乾時融入現代場景的「顯影與隱沒」反差呈現歷史記憶，既具視覺新意又符合文化主題。</p>
+<p>---</p>
+<p>*用法:agency / 委員會落橋前先消化呢 9 條,順住 element + 風格方向諗,唔好離地。*</p></div></div></div><div class='h2 tierh'>📋 ADMIN（交標用 · 唔餵創意）</div><p class='hint tierhint'>交標 logistics：要交咩表格/文件、幾時截。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📑 要交表格 / 文件</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><div class='h3' style='margin-top:11px'>📄 要交嘅文件（5 份 · 表格以外，標明出自邊份 DOC + 頁碼）</div><div class='timeline'><div class='tlrow'><span class='tllabel'><b>Invitation to Submit Quotation for Provision of Services (LCS 664)</b> <span class='hint'>（Specifications Clause 11.1(i) · p207）</span> — Duly completed and signed</span></div><div class='tlrow'><span class='tllabel'><b>Quotation Schedule (Annex I)</b> <span class='hint'>（Specifications Clause 11.1(ii) · p207）</span> — Completed unit cost and total cost</span></div><div class='tlrow'><span class='tllabel'><b>Statement of Compliance (Annex II)</b> <span class='hint'>（Specifications Clause 11.1(iii) · p207）</span> — Completed and signed</span></div><div class='tlrow'><span class='tllabel'><b>Detail Services of Project Manager (Annex III)</b> <span class='hint'>（Specifications Clause 11.1(iv) · p207）</span> — Completed with documentary proof of PM experi</span></div><div class='tlrow'><span class='tllabel'><b>Business Registration Certificate</b> <span class='hint'>（Specifications Clause 11.1(v) · p207）</span> — Copy of valid Business Registration Certifica</span></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📮 交標方法（地址 / 信封 / 份數）</span></div><div class='cbody'><p>- <strong>截標</strong>：2026-07-22 15:00</p>
+<p>- <strong>印幾多份</strong>：TRIPLICATE</p>
+<p>- <strong>幾多信封</strong>：1 個</p>
+<p>- <strong>Soft copy（電子副本：CD/USB？）</strong>：標書無提及 → 只交紙本,不需 soft_copy</p>
+<p>- <strong>交去邊 — To</strong>：Quotation Opening Team, Chinese Culture Promotion Office</p>
+<p>- <strong>交去邊 — Address</strong>：Rm 305, 3/F, Revenue Tower, 5 Gloucester Road, Wanchai, Hong Kong</p>
+<p>- <strong>信封 label「Sealed Envelope」要寫</strong>：`Quotation Reference: CCP-D00199`（Submitted by post or by hand on or before 3:00 pm on 22 July 2026 with Quotation Reference: CCP-D00199 marked on the sealed envelope.）</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>💰 預算 / 費用（Budget / Fee Breakdown）</span></div><div class='cbody'><p>- <strong>預算（Budget）</strong>：無標明</p>
+<p>- <strong>費用明細要求（Fee Proposal Breakdown）</strong>：無要求</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📅 日程</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ Gemini 2.5 Pro·預設</span></div><div class='cbody'><p>- 2026-07-22 截標</p>
+<p>- 2026-07-27 啟動會議 Kick-off meeting</p>
+<p>- 2026-07-30 清拆及騰空展覽區</p>
+<p>- 2026-08-17 展覽組件製作及安裝完成</p>
+<p>- 2026-08-21 展板及圖案貼紙安裝完成</p>
+<p>- 2026-08-25 展品上架完成</p>
+<p>- 2026-08-26 開幕典禮設施搭建完成</p>
+<p>- 2026-08-27 開幕典禮（下午）及典禮設施拆卸（18:00後）</p>
+<p>- 2026-08-28 展覽開放展期開始（暫定）</p>
+<p>- 2027-07-07 展覽期及保養期完結（暫定）</p></div></div></div></div>
+<div id='debrief' class='tabpanel'><div class='h2' style='margin-top:14px'>📨 共用 BRIEF（標書 tab 全份）</div><p class='hint'>8 間諗橋時都收到呢份 brief（製作要求 3D/mascot/明星、老闆方向…）做底，再各自加上面 dispatch 嘅角度/畫風/device。概念諗咗會 gatekeep 對返 brief 符合先生 BD。</p><div class='card briefcard'><h3>標書 TAB（你嘅 BRIEF — 全份，必跟）</h3>
+<h4>📋 標書撮要</h4>
+<p>這份標書文件（Quotation Ref.: <strong>CCP-D00199</strong>）為香港特別行政區政府康樂及文化事務署（LCSD）轄下香港抗戰及海防博物館發出的<strong>「專題展覽製作、安裝、保養及拆卸服務」工程與展覽佈置合約</strong> [第 130-131 頁，Clause 1.1-1.2]。</p>
+<p>以下<strong>嚴格只根據標書（CCP-D00199 及 Annex V 設計圖紙）內容</strong>，為貴公司詳細整理標書的八大核心範疇：</p>
+<p>---</p>
+<h5>1. 背景同目的（Background &amp; Objective）</h5>
+<p>* <strong>項目背景</strong>：康樂及文化事務署（LCSD）弘揚中華文化辦公室轄下之香港抗戰及海防博物館（MWRCD），籌劃舉辦名為「青春向延安 – 抗戰時期的愛國青年（Youth Heading to Yan’an – Patriotic Youth During the War of Resistance）」（暫名）之特別展覽 [第 131-132 頁，Clause 1.1, 1.3]。</p>
+<p>* <strong>展覽地點與面積</strong>：香港筲箕灣東喜道 175 號香港抗戰及海防博物館 [第 132 頁，Clause 1.3]：</p>
+<p>  1. 專題展覽廳（Thematic Gallery）：約 50 平方米。</p>
+<p>  2. 展覽廳 5（Gallery 5 互動區）：約 21 平方米。</p>
+<p>  3. 上層展覽廳（Upper Gallery 教育區）：約 38 平方米。</p>
+<p>* <strong>展期</strong>：暫定 <strong>2026 年 8 月 28 日至 2027 年 7 月 7 日</strong> [第 132 頁，Clause 1.3]。</p>
+<p>* <strong>合約目的</strong>：委辦獲委任之承辦商，負責現有展覽設施之拆卸清場、依據博物館設計圖紙（Annex V）完成三大展區之木結構搭建、圖畫噴畫、展櫃重刷包覆、影音外框安裝及互動/教育設施供應，並為 2026 年 8 月 27 日之開幕典禮（Opening Event）提供舞台與背板搭建，以及提供展期內約 12 個月之保養維修服務 [第 133-136 頁，Clause 2.1-2.3]。</p>
+<p>---</p>
+<h5>2. 目標受眾（Target Audience）</h5>
+<p>* <strong>標書說明</strong>：本標書為實體展覽工程搭建與製作規格書（Specifications for Fabrication, Installation &amp; Maintenance），標書條文中未有獨立撰寫廣告宣傳層面的受眾人物畫像（Persona）。</p>
+<p>* <strong>展區設施面向對象</strong>：從展覽功能規劃可見，場地設施主要供參觀博物館之<strong>公眾人士、青少年、學生及親子家庭團體</strong>使用（例如展覽廳 5 設有 Photo Op 打卡檯與印章體驗區；上層展覽廳教育區設有互動遊戲機箱及水寫布體驗區）[第 144-146 頁，Clause 3.2-3.3；Annex V D1-D10, E1-E11]。</p>
+<p>---</p>
+<h5>3. 傳意目標 / 核心訊息（Communication Objective / Key Message）</h5>
+<p>* <strong>展覽主題</strong>：介紹延安抗戰歷史，以及抗戰時期愛國青年的奮鬥事跡與精神 [第 131-132 頁，Clause 1.1, 1.3]。</p>
+<p>* <strong>實體傳意載體</strong>：透過入口立體主題板（Head Panel）、歷史文字/圖畫展板（Graphic Panels）、展示文物的塗漆展櫃與亞加力托架、影音播放電視、互動印章檯及教育區遊戲機箱，向入場觀眾傳遞展覽內容 [第 137-146 頁，Clause 3.1-3.3]。</p>
+<p>* <strong>標書標示</strong>：由於本合約屬展覽場地陳列與製作工程標（非廣告宣傳媒體標），標書文字內<strong>並無設定</strong>獨立的廣告宣傳 Slogan 或 Key Message 策略。</p>
+<p>---</p>
+<h5>4. 影片 / 製作規格（集數、每集長度、語言、字幕、配音）</h5>
+<p>* <strong>關鍵條款</strong>：標書 Clause 3.1.7、3.3.1-3.3.2 及 Clause 3.5.1 明確指出，專題展覽廳及上層展覽廳將設有嵌入式電視及觸控螢幕（Built-in TVs, 32-inch TV / Touch monitor, 13-inch touch screen tablet），<strong>所有電視影音硬體及影片內容均由博物館直接提供（Provided by the Museum）</strong> [第 140 頁 Clause 3.1.7；第 146 頁 Clause 3.3.1-3.3.2；第 149-150 頁 Clause 3.5.1]。</p>
+<p>* <strong>承辦商職責</strong>：僅需負責製作影音外框/機箱（AV housing）、固定電視螢幕、拉設電源線及安裝定時開關器（Timer switch）[第 140 頁 Clause 3.1.7；第 149-150 頁 Clause 3.5.1]。</p>
+<p>* <strong>標書標示</strong>：<strong>標書資料並無要求承辦商拍攝或製作影片</strong>，因此標書內<strong>無</strong>「影片集數、每集長度、語言、字幕、配音」等影片製作規格。</p>
+<p>---</p>
+<h5>5. 指定班底與團隊要求（Designated Personnel &amp; Team Requirements）</h5>
+<p>* <strong>標書實際團隊/專業人員要求</strong>：</p>
+<p>  1. <strong>項目經理（Project Manager）</strong> [強制性基本要求 Clause 6.1，第 190-191 頁]：須指定至少 1 名項目經理全權負責項目。資歷要求：具備至少 <strong>10 年</strong> 相關展覽/活動設施製作管理經驗，且在截標前最近 3 年內曾完成至少 <strong>3 個</strong> 單一合約金額不少於 <strong>50 萬港元</strong> 的本地博物館、文化或藝術機構之展覽製作項目（須於截標時提交合約副本/客戶完工證明 Annex III）。</p>
+<p>  2. <strong>現場監督（On-site Supervisor）</strong> [Clause 5.15，第 184-185 頁]：於施工安裝期間全程派駐 1 名現場監督，負責技術圖紙理解、現場問題解決、材料採購及木工/漆工/安裝工人之人力調配。</p>
+<p>  3. <strong>法定專業工程認證人員</strong>：</p>
+<p>     * <strong>註冊結構工程師（RSE / RPE）</strong> [Clause 3.5.1, 7.2，第 153 頁, 199 頁]：負責為所有現場搭建結構進行安全檢查並簽發結構安全證明書。</p>
+<p>     * <strong>註冊電工（Registered Electrical Worker/Contractor）</strong> [Clause 4.9, 5.13，第 163 頁, 180-181 頁]：負責所有電力工程接駁，完工後檢驗並簽發 <strong>WR1 電力完工證明書</strong>。</p>
+<p>     * <strong>現場施工工人</strong> [Clause 3.7.3, 6.2，第 157-158 頁, 192 頁]：須年滿 18 歲並持有有效安全<strong>綠卡（Green Card）</strong>。</p>
+<p>* <strong>標書標示</strong>：<strong>標書完全沒有要求 ERB 導師、KOL 或吉祥物</strong>（本項目屬展覽工程製作標）。</p>
+<p>---</p>
+<h5>6. 創意及策略重點 / 風格與佈置要求（Creative &amp; Strategic Focus / Style Requirements）</h5>
+<p>根據標書條文及 Annex V 設計圖紙，三大展區及開幕典禮佈置要求如下：</p>
+<p>1. <strong>專題展覽廳（Thematic Gallery）與入口走廊</strong>：</p>
+<p>   * <strong>入口 Head Panel</strong>：木結構配合浮雕噴畫、3D 立體字（15mm-25mm 厚，石頭漆+噴漆）、3 層 Pop-up 貼紙面板，並嵌入可調光 LED 霓虹燈（Recessed Dimmable LED Neon Light）打造背光效果（Backlit illuminated effect）[第 137 頁 Clause 3.1.1；Annex V B5]。</p>
+<p>   * <strong>入口地貼</strong>：8m W x 1.2m D 防滑切形地貼（Die-cut Floor Sticker with anti-slip surface）[Annex V B5]。</p>
+<p>   * <strong>牆身與展櫃</strong>：走廊牆身鋪設印花壁紙（Printed Wallpaper mounted on forex board）；重新刷漆既有展櫃（SC-3, SC-4）；包覆展櫃/Kiosk（SC-1, TV-1, SC-5）；製作 Painted Wooden Angled Plinth，以及提供 3mm/5mm 亞加力托架（L-shape/U-shape Acrylic Holders）與文物固定組件 [第 137-139 頁 Clause 3.1.2-3.1.6；Annex V C1-C12]。</p>
+<p>2. <strong>展覽廳 5 互動區（Gallery 5 Interactive Area）</strong>：</p>
+<p>   * 設有木製裝飾拱門與拱窗（Painted Wooden Decorative Arch Window &amp; Door，含 0.4mm 霧面 PVC 板及 LED 背光）[Annex V D8, D10]。</p>
+<p>   * 拍照打卡區（Photo op / Photo booth）、裝飾牆面及防滑地貼（~2.74mW x 5.99mD）[第 144-145 頁 Clause 3.2.1-3.2.3；Annex V D5-D9]。</p>
+<p>   * 放置新製塗漆木檯，設有<strong>亞加力印章定位器（Acrylic Stamp Positioner）</strong>，承辦商須提供 <strong>16 個專屬印章</strong>（8 套每套 2 色）供觀眾蓋章互動 [第 145 頁 Clause 3.2.2；Annex V D6-D7, E11]。</p>
+<p>3. <strong>上層展覽廳教育區（Upper Gallery Education Area）</strong>：</p>
+<p>   * 特製木長椅（Tailor-made seating bench）[第 145 頁 Clause 3.3.1；Annex V E3]。</p>
+<p>   * 特製拱形木穹頂（Wooden Vault，連 LED 霓虹燈效果）[Annex V E5]。</p>
+<p>   * 32 吋電視/遊戲機箱木框（Game booth cover / Removable Metal Framing with Magnetic Mount）[第 146 頁 Clause 3.3.2；Annex V E6, E9]。</p>
+<p>   * 樓梯及上層玻璃圍欄裝設窗貼（Window Sticker）[第 147 頁 Clause 3.3.3；Annex V E10]。</p>
+<p>   * 現場道具設施（Supply of Decorative Facilities）：木枱櫈（2 組）、訂製水寫布及毛筆套裝（10 套）、印章（8 套共 16 個）、畫框（8 個）[第 145 頁 Clause 3.2.3, 3.3.1；Annex V E11]。</p>
+<p>4. <strong>開幕典禮設施（Opening Event Facilities, 中庭 Atrium）</strong> [第 136, 147-148 頁 Clause 2.3, 3.4.1-3.4.3；Annex V F1-F2]：</p>
+<p>   * 主舞台背板（9.76mW x 0.8mD x 3.6mH，Vinyl Banner 黑底，背面及頂部封黑布）。</p>
+<p>   * 主舞台（9.76mW x 2.44mD x 0.3mH，鋪地毯）。</p>
+<p>   * 傳媒台（Press Stage, 4.88mW x 1.22mD x 0.6mH，連 2 級台階）及斜道（Ramp，1:8 斜度）。</p>
+<p>---</p>
+<h5>7. 交付物同時間表（Deliverables &amp; Timeline）</h5>
+<p>* <strong>交付物（Deliverables）</strong>：</p>
+<p>  1. 清拆現有展覽設施並清理處置廢料 [第 133-134 頁 Clause 2.1]。</p>
+<p>  2. 三大展區之木結構、噴畫貼紙/壁紙、展櫃重刷包覆、影音外框安裝及文物亞加力架 [第 135, 137-147 頁 Clause 2.2, 3.1-3.3]。</p>
+<p>  3. 供應裝飾與互動設施（16 個印章、10 套水寫布毛筆套裝、2 組木枱櫈、8 個畫框等）[第 145 頁 Clause 3.2.3；Annex V E11]。</p>
+<p>  4. 2026 年 8 月 27 日開幕典禮設施搭建、現場技術支援及典禮完結後即時拆卸復原 [第 136, 147-148 頁 Clause 2.3, 3.4.1-3.4.3]。</p>
+<p>  5. 展期約 12 個月之免費保養維修服務（Maintenance Services，含 Retouching/Repainting，接獲通知 24 小時內到場，3 個工作天內完成修復）[第 155-156 頁 Clause 3.6.1-3.6.2]。</p>
+<p>* <strong>時間表（Proposed Work Schedule）</strong> [Clause 10，第 206-207 頁]：</p>
+<p>  * <strong>2026 年 7 月 22 日 15:00</strong>：截標（Deadline for submission of quotation）。</p>
+<p>  * <strong>2026 年 7 月 27 日</strong>：啟動會議（Kick-off meeting）。</p>
+<p>  * <strong>2026 年 7 月 30 日</strong>：清場及拆卸現有展覽（Dismantling and vacating exhibition area）。</p>
+<p>  * <strong>2026 年 8 月 17 日</strong>：展覽組件製作及現場安裝完成（Fabrication / Installation）。</p>
+<p>  * <strong>2026 年 8 月 21 日</strong>：展板/圖畫貼紙安裝完成（Mounting of panels）。</p>
+<p>  * <strong>2026 年 8 月 25 日</strong>：展品上架完成（Mounting of exhibits）。</p>
+<p>  * <strong>2026 年 8 月 26 日</strong>：開幕典禮設施搭建完成（Setting of Opening Event Facilities）。</p>
+<p>  * <strong>2026 年 8 月 27 日</strong>：開幕典禮（下午），綵排於當晨舉行；典禮完結後（下午 6 時後）即時拆卸開幕設施及復原場地。</p>
+<p>  * <strong>2026 年 8 月 28 日 – 2027 年 7 月 7 日</strong>：展覽開放展期及約 12 個月保養期。</p>
+<p>---</p>
+<h5>8. 強制要求或紅線（Mandatory Requirements &amp; Red Lines）</h5>
+<h6>A. 強制資格與投標紅線（Essential Requirements &amp; Submission Rules）</h6>
+<p>1. <strong>項目經理資格（Clause 6.1）</strong> [第 190-191 頁]：必須符合「至少 10 年經驗 + 最近 3 年完成至少 3 個單一金額不低於 50 萬港元之本地博物館/文化機構項目」的要求，並於截標前附交證明文件（合約副本/客戶完工證 Annex III），<strong>否則標書不予考慮</strong>。</p>
+<p>2. <strong>法定認證人員（Clause 3.5.1, 3.7.3, 4.9）</strong> [第 153, 157-158, 163 頁]：</p>
+<p>   * 須由註冊結構工程師（RSE / RPE）簽發結構安全證明書。</p>
+<p>   * 須由註冊電工簽發 <strong>WR1 電力完工證明書</strong>。</p>
+<p>   * 現場施工人員須持有有效安全<strong>綠卡（Green Card）</strong>。</p>
+<p>3. <strong>公眾責任保險（Clause 7.1）</strong> [第 197-198 頁]：保額不得少於 <strong>1,000 萬港元（HK$10,000,000）</strong>，須以「香港特區政府與承包商」聯名方式投保。</p>
+<p>4. <strong>遞交規格（Clause 11.1-11.2）</strong> [第 208-210 頁]：標書須一式三份（TRIPLICATE），密封於信封並註明 Quotation Reference: <strong>CCP-D00199</strong>，於 <strong>2026 年 7 月 22 日 15:00 前</strong> 遞交至香港灣仔告士打道 5 號稅務大樓 3 樓 305 室弘揚中華文化辦公室「報價開啟小組」；<strong>不接受傳真報價，逾期或不完整者概不受理</strong>。標書有效期為 90 天。</p>
+<h6>B. 現場施工與材料禁忌（Strict Site Restrictions &amp; Material Red Lines）</h6>
+<p>1. <strong>現場施工禁止事項（Clause 5.14）</strong> [第 182-183 頁]：</p>
+<p>   * 現場<strong>嚴禁</strong>在現有牆身鑽孔或打螺絲固定（No screwing or drilling on wall）。</p>
+<p>   * 現場<strong>嚴禁</strong>進行焊接（No welding on-site）及噴漆（No spraying on-site）。</p>
+<p>   * 產生大聲浪的施工若影響博物館運作及訪客，必須於閉館後進行，不另加收費 [Clause 4.12，第 165 頁]。</p>
+<p>2. <strong>材料環保與無毒規範（Clause 3.1.5, 5.2, 5.6, 5.12）</strong> [第 139, 169-170, 172, 178 頁]：</p>
+<p>   * 所有展櫃、底座及牆身油漆必須採用低 VOC 水性塗料（例如 Dulux Breathe Easy，<strong>嚴禁含甲醛 Formaldehyde</strong>）。</p>
+<p>   * 展櫃內部膠水及矽膠必須為中性無酸（Non-acidic / neutral silicone），<strong>嚴禁使用油性漆、酸性釋放物或稀釋劑（Thinner）</strong>。</p>
+<p>   * 所有木材及 MDF 板必須預先經殺蟲劑處理（Insecticide pre-treated），以防蟲害。</p>
+<p>3. <strong>印刷品質與色樣（Clause 3.1.9, Annex G1）</strong> [第 141-144 頁；Annex V G1]：</p>
+<p>   * 數位噴畫須採用 3M / Ritrama / Neschen / Mactac 或同等獲認可品牌，解析度不低於 1,400 dpi，具防光 (UV resistant)、防水及阻燃 (fire retardant) 特性。</p>
+<p>   * 批量生產前須提交色樣（1st proof 須於 2 個工作天內提交，2nd/3rd proof 須於 1 個工作天內提交）經博物館批核。</p>
+<p>4. <strong>國家安全條款（Clause 15.1-15.2）</strong> [第 218-220 頁]：政府保留因承包商參與或被合理相信參與危害國家安全活動而即時取消投標資格或終止合約之權利，且承包商無權索償。</p>
+<p>---</p>
+<p>💡 <strong>下一步建議</strong>：這份展覽工程標書包含嚴格的施工安全限制（如現場禁鑽孔/噴漆）及專業認證要求（RSE 認證與 WR1 電工證）。如果您需要為此項目籌備工程施工方案或成本核算，我可以進一步協助您整理各展區材料製作數量及細節清單！</p>
+<h4>⚠️ 製作要求（標書硬性，每個概念必跟，違 = 廢稿）</h4>
+<p>- <strong>手語</strong>：唔使（標書原文:標書無提及，p）</p>
+<p>- <strong>W3C影片</strong>：要（標書原文:開幕舞台設有斜道（Ramp，Gradient 1:8）以符合無障礙通道要求；廢料處置須符合環保署法例，p147）</p>
+<p>- <strong>明星/名人/官員</strong>：無Preference（標書原文:標書無提及，p）</p>
+<p>- <strong>Mascot</strong>：無Preference（標書原文:標書無提及，p）</p>
+<p>- <strong>動畫</strong>：Prefer 2D（標書原文:數位噴畫貼紙（解析度不低於 1,400 dpi，3M/Ritrama/Neschen/Mactac或，p140）</p>
+<h4>📑 要交文件（邊份 DOC + 頁碼）</h4>
+<p>- <strong>Invitation to Submit Quotation for Provision of Services (LCS 664)</strong>（Specifications Clause 11.1(i) · p207） — Duly completed and signed</p>
+<p>- <strong>Quotation Schedule (Annex I)</strong>（Specifications Clause 11.1(ii) · p207） — Completed unit cost and total cost</p>
+<p>- <strong>Statement of Compliance (Annex II)</strong>（Specifications Clause 11.1(iii) · p207） — Completed and signed</p>
+<p>- <strong>Detail Services of Project Manager (Annex III)</strong>（Specifications Clause 11.1(iv) · p207） — Completed with documentary proof of PM experi</p>
+<p>- <strong>Business Registration Certificate</strong>（Specifications Clause 11.1(v) · p207） — Copy of valid Business Registration Certifica</p>
+<h4>📮 交標方法（地址／信封／份數）</h4>
+<p>- <strong>截標</strong>：2026-07-22 15:00</p>
+<p>- <strong>印幾多份</strong>：TRIPLICATE</p>
+<p>- <strong>幾多信封</strong>：1 個</p>
+<p>- <strong>Soft copy（電子副本：CD/USB？）</strong>：標書無提及 → 只交紙本,不需 soft_copy</p>
+<p>- <strong>交去邊 — To</strong>：Quotation Opening Team, Chinese Culture Promotion Office</p>
+<p>- <strong>交去邊 — Address</strong>：Rm 305, 3/F, Revenue Tower, 5 Gloucester Road, Wanchai, Hong Kong</p>
+<p>- <strong>信封 label「Sealed Envelope」要寫</strong>：`Quotation Reference: CCP-D00199`（Submitted by post or by hand on or before 3:00 pm on 22 July 2026 with Quotation Reference: CCP-D00199 marked on the sealed envelope.）</p>
+<h4>💰 預算 / 費用</h4>
+<p>- <strong>預算（Budget）</strong>：無標明</p>
+<p>- <strong>費用明細要求（Fee Proposal Breakdown）</strong>：無要求</p>
+<h4>⛔ 注意事項 / 紅線</h4>
+<p>- [其他] Project Manager Essential Qualification：Project Manager must have at least 10 years relevant experie</p>
+<p>- [其他] Structural Safety Certificate (RSE)：Structural safety certificate by Registered Structural Engin</p>
+<p>- [其他] Electrical Work Certificate (WR1)：Registered Electrical Worker and Contractor must inspect, te</p>
+<p>- [其他] Public Liability Insurance：Public Liability Policy of Insurance in joint names of HKSAR</p>
+<h4>⚡ 創意亮點（research 掘出嘅真嘢）</h4>
+<h4>⚡ 創意亮點 — LCSD·LCSD（research 掘出嚟，可以做橋嘅真嘢）</h4>
+<p>1. 🏷️ <strong>吉祥物雙子「活力仔與思文喵」</strong></p>
+<p>   - 事實：康文署官方吉祥物「活力仔」（代表康體，活潑）與「思文喵」（代表文化，文靜），以見習生身份推廣文康活動，目標係「藝文康體樣樣得」。（出處：[hooks-research] LCSD）</p>
+<p>   - 💡 可以點做橋：可以將兩隻吉祥物由「文康見習生」化身為時空導賞員，帶領現代青年穿梭歷史。</p>
+<p>2. 🏷️ <strong>展覽廳5亞加力印章定位檯與16個印章</strong></p>
+<p>   - 事實：展覽廳5互動區設有特製亞加力印章定位檯，並配備8套共16個專屬印章供參觀者蓋章體驗。（出處：[Spec] CCP-D00199 / AnnexV_low.pdf (Drawing D6-D7)）</p>
+<p>   - 💡 可以點做橋：可以將實體「蓋章」動作包裝成與1930年代延安青年簽署「時空誓約」的解謎儀式。</p>
+<p>3. 🏷️ <strong>Head Panel 吹號角青年剪影與背光霓虹燈</strong></p>
+<p>   - 事實：專題展覽廳入口 Head Panel 設有吹號角青年的立體剪影，並嵌入可調光 LED 霓虹燈營造背光效果。（出處：AnnexV_low.pdf (Drawing B5)）</p>
+<p>   - 💡 可以點做橋：可以以號角聲響起配合霓虹光束亮起做開場 Hook，召集現代青年親臨現場。</p>
+<p>4. 🏷️ <strong>窯洞與堡壘雙重拱門建築結構</strong></p>
+<p>   - 事實：海防博物館由舊堡壘改建，展區內部特別設計了仿延安窯洞的木製拱門、拱窗及木穹頂（Wooden Vault）。（出處：[Spec] CCP-D00199 / AnnexV_low.pdf (Drawing D8, E5, E8)）</p>
+<p>   - 💡 可以點做橋：可以利用「窯洞拱門」與「古蹟堡壘」的雙重拱形空間做畫面穿梭過渡。</p>
+<p>5. 🏷️ <strong>教育區10套訂製水寫布與毛筆套裝</strong></p>
+<p>   - 事實：上層展覽廳教育區現場提供10套訂製水寫布及毛筆套裝，供觀眾進行水寫書法體驗。（出處：AnnexV_low.pdf (Drawing E11)）</p>
+<p>   - 💡 可以點做橋：可以水寫布「揮毫顯影、水乾無痕」的特性做視覺 Hook，象徵重現歷史記憶。</p>
+<p>6. 🏷️ <strong>弘揚中華文化辦公室「華」字斗拱標誌</strong></p>
+<p>   - 事實：項目由康文署新成立的「弘揚中華文化辦公室」發起，其官方 Logo 為傳統建築「華」字形斗拱構造。（出處：AnnexV_low.pdf / [Spec] CCP-D00199）</p>
+<p>   - 💡 可以點做橋：可以將「華」字斗拱的堆疊結構轉化為建構歷史與現代青春對話的視覺梯級。</p>
+<p>7. 💡 <strong>年輕受眾追求「體驗式抽離」</strong></p>
+<p>   - 事實：後疫情時代香港年輕受眾追求低成本的在地體驗式療癒與精神抽離，對展覽場館的互動體驗要求增加。（出處：研究 Research Brief）</p>
+<p>   - 💡 可以點做橋：可以將展覽包裝為現代青年在繁忙都市中尋找熱血與精神寄托的「時空避風港」。</p>
+<h4>📅 日程</h4>
+<p>- 2026-07-22 截標</p>
+<p>- 2026-07-27 啟動會議 Kick-off meeting</p>
+<p>- 2026-07-30 清拆及騰空展覽區</p>
+<p>- 2026-08-17 展覽組件製作及安裝完成</p>
+<p>- 2026-08-21 展板及圖案貼紙安裝完成</p>
+<p>- 2026-08-25 展品上架完成</p>
+<p>- 2026-08-26 開幕典禮設施搭建完成</p>
+<p>- 2026-08-27 開幕典禮（下午）及典禮設施拆卸（18:00後）</p>
+<p>- 2026-08-28 展覽開放展期開始（暫定）</p>
+<p>- 2027-07-07 展覽期及保養期完結（暫定）</p></div></div>
+<div id='handbd' class='tabpanel'><p class='hint'>喺 Master GSheet 開「TV API Script <b>1／2／3</b>」三個 tab 放唔同 TV API 稿，<b>撳邊個 SET 就生邊個</b>（全 NLM 風格各一，純畫面唔蓋字）。</p><div class='acts' style='margin-bottom:6px'><button class='btn' title='讀 Master GSheet「TV API Script 1」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=LCSD&concept=1&stage=handbd&engine=allstyles&target=main')">🎬 SET 1 → 生 BD</button><button class='btn' title='讀 Master GSheet「TV API Script 2」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=LCSD&concept=2&stage=handbd&engine=allstyles&target=main')">🎬 SET 2 → 生 BD</button><button class='btn' title='讀 Master GSheet「TV API Script 3」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=LCSD&concept=3&stage=handbd&engine=allstyles&target=main')">🎬 SET 3 → 生 BD</button><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card empty'>未生過手寫稿 BD —— 撳上面 SET 生成（或先喺 Master GSheet 放稿）。</div></div>
+<div id='theme1_1' class='tabpanel' data-set='1'><div class='banner'>🧭 北極星未定。撳掣 → 7 agency + 委員會就住成份標書諗一個大主題（big idea）+ 一個綜合口號。所有 MOD ladder 返呢度。</div><div class='card'><button class='btn big' title='' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=LCSD&concept=PLAN&stage=gen_theme&target=main')">🧭 生成大主題 + 綜合口號</button></div><div class='card'><button class='btn ghost' title='將呢個 dept 全部已生成嘅 MOD planning（主題／系列／SOC／MEDIA／KOL）出去 Master GSheet，每個 mod 一個 tab；你喺 GSheet 改完，自己貼返入真 deck（GSlide）。design 你話事。' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=LCSD&concept=all&stage=mod_gsheet&target=main')">📤 全部 MOD → Master GSheet（畀你改）</button></div></div>
+<div id='tvapi1_1' class='tabpanel' data-set='1'><div class='banner'>委員會仲未跑，等 briefing gate 過咗先有概念。</div></div>
+<div id='tvapi1_2' class='tabpanel' data-set='1'><div class='banner'>未有概念進入第二輪。返 VID 1 揀六強（submit 即自動生 BD）先。</div></div>
+<div id='tvapi1_3' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 2 揀三甲先。</div></div>
+<div id='tvapi1_4' class='tabpanel' data-set='1'><div class='banner'>🎬 VID 4 — 5 步生 storyboard ＋ 片（STEP 1 → 5）</div><div class='card'><div class='h3'>📄 STEP 1 — 故事版（你親手執 Master GSheet B6:C17，9-12 格）</div><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card step2'><div class='h3'>🎭 STEP 2 — 主角參考相（AI 自動搵 ISD 官方相 + curate；face-swap 用嚟貼真面）</div><button class='btn ghost mini' onclick="srcRefs(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=LCSD&concept=FINAL&stage=facerefs&target=main')">🔍 AI 搵／更新主角參考相</button><div class='hint'>仲未 source 主角相。撳上面掣，AI 自動由 ISD 官方相搵 + curate。</div></div><div class='stylepick card'><div class='h3'>🎨 STEP 3 — 揀風格（每行 0 或 1 個；唔剔 = 跟劇本）</div><div class='styrow'><span class='stylbl'>🏙️ 環境</span><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="realistic environment" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="2D comic-style environment" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="3D animated environment" onchange='styPick(this)'>3D動畫</label></div><div class='styrow'><span class='stylbl'>🧍 人物</span><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="photorealistic characters" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="2D comic-style characters" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="3D-modeled characters" onchange='styPick(this)'>3D建模</label></div><div class='styrow'><span class='stylbl'>🌗 光/時間</span><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="daytime lighting" onchange='styPick(this)'>日 Day</label><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="nighttime lighting" onchange='styPick(this)'>夜 Night</label></div><div class='styrow'><span class='stylbl'>🎨 色彩</span><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="vivid saturated color" onchange='styPick(this)'>鮮艷</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="muted desaturated tones" onchange='styPick(this)'>灰調</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="black and white" onchange='styPick(this)'>黑白</label></div><div class='styrow'><span class='stylbl'>😊 情緒</span><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="warm heartfelt mood" onchange='styPick(this)'>溫情</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="passionate uplifting mood" onchange='styPick(this)'>激昂</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="light humorous mood" onchange='styPick(this)'>幽默</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="solemn official tone" onchange='styPick(this)'>莊重官方</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="suspenseful mood" onchange='styPick(this)'>懸疑</label></div><div class='styrow'><span class='stylbl'>🎬 質感</span><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="cinematic look" onchange='styPick(this)'>電影感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="documentary realism" onchange='styPick(this)'>紀實</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="dynamic music-video energy" onchange='styPick(this)'>MV動感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="plain straightforward style" onchange='styPick(this)'>平實</label></div><div class='styanchor'>風格 anchor：<span id='styanchor'>（跟劇本）</span></div></div><div class='card genbox'><div class='h3'>🍌 STEP 4 — 生 BD（讀 B6:C17 ＋ face-swap 主角真面）</div><button class='btn big' title='讀你喺 Master GSheet B6:C17 執好嘅 script ＋ STEP 3 風格 ＋ face-swap 主角真面 → 生最終 BD（brd=FINAL，唔污染候選）' onclick="genFinalBD(this,'LCSD','https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=LCSD&concept=FINAL&stage=gsheetbd&target=main')">由 B6:C17 生最終 BD</button></div><div class='card'><div class='h3'>🎬 STEP 5 — 生片（Higgsfield Kling/Seedance，開發中）</div><div class='hint'>BD 揀好 → 生片。Higgsfield CLI 整緊。</div></div></div>
+<div id='tvapi1_5' class='tabpanel' data-set='1'><div class='banner'>未有 FINAL。返 VID 3 揀 FINAL 2 先。</div></div>
+<div class=foot>Idea Lab · 08-02 14:36 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+</div>
+
+<script>
+var DL = new Date("2026-08-25").getTime();
+function cd() {
+  var e = document.getElementById('cd'); if (!e) return;
+  var x = DL - Date.now();
+  if (x < 0) { e.textContent = '已截標'; return; }
+  var s = Math.floor(x/1000), d = Math.floor(s/86400);
+  s -= d*86400; var h = Math.floor(s/3600); s -= h*3600;
+  var m = Math.floor(s/60); s -= m*60;
+  e.textContent = (d > 0 ? d + '日 ' : '')
+    + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0')
+    + ':' + String(s).padStart(2,'0');
+}
+cd(); setInterval(cd, 1000);
+
+var TABS   = document.querySelectorAll('.tab');
+var PANELS = document.querySelectorAll('.tabpanel');
+function showTab(id) {
+  if (!document.getElementById(id)) id = 'ph0';
+  TABS.forEach(function(t) { t.classList.toggle('active', t.dataset.tab === id); });
+  PANELS.forEach(function(p) { p.classList.toggle('active', p.id === id); });
+  history.replaceState(null, '', '#' + id);
+  upd();
+  if (/(vid|tvapi)\d+_2$/.test(id)) vid2AutoBD();   // 入 VID／TVAPI 2 即自動觸發六強生 BD + poll
+}
+TABS.forEach(function(t) { t.addEventListener('click', function() { showTab(t.dataset.tab); }); });
+showTab((location.hash.slice(1)) || 'ph0');
+
+// VID 2:六強 submit 後自動生 BD —— 對未有 BD(data-needbd=1)嘅概念逐個觸發 NBLM deck(GAS 去重,撳幾多次都唔重生)。
+// 未生晒就每 45s reload 一次睇新 BD(NBLM 連夜,一晚生得晒)。
+var _vid2timer;
+function vid2AutoBD() {
+  var panel = document.querySelector('.tabpanel.active'); if (!panel) return;
+  var pend = panel.querySelectorAll('[data-needbd="1"]');
+  pend.forEach(function(c) {
+    var brd = c.dataset.brd; if (!brd) return;
+    var k = 'bdstart_LCSD_' + brd;
+    if (!localStorage.getItem(k)) localStorage.setItem(k, String(Date.now()));  // 開始時間 → 進度條
+    fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=LCSD&concept=" + encodeURIComponent(brd) + "&stage=deck&target=main" + setQ(),
+          {mode:'no-cors'}).catch(function(){});
+  });
+  tickProgress();
+  if (pend.length && !_vid2timer) {
+    _vid2timer = setInterval(function() { location.reload(); }, 90000);  // 靜靜每 90s 攞新 BD（冇 develop bar）
+  }
+}
+
+// VID 2 進度條：按實測平均 BD 時間（~10 分鐘）推移，封頂 99% stall（NBLM 唔報幾時好）。
+var BD_AVG_MS = 600000;   // 平均 606s（manifest 連續 gap 實測）
+function tickProgress() {
+  document.querySelectorAll('.pgbar').forEach(function(bar) {
+    var brd = bar.dataset.brd; if (!brd) return;
+    var k = 'bdstart_LCSD_' + brd;
+    var s = +localStorage.getItem(k);
+    if (!s) { s = Date.now(); localStorage.setItem(k, String(s)); }
+    var pct = Math.min(99, (Date.now() - s) / BD_AVG_MS * 100);
+    var f = bar.querySelector('.pgfill'); if (f) f.style.width = pct.toFixed(0) + '%';
+    var t = bar.querySelector('.pgtxt');
+    if (t) t.textContent = pct >= 99 ? 'BD 生成中…就快好（99%）' : ('BD 生成中… ' + pct.toFixed(0) + '%（平均 ~10 分鐘）');
+  });
+}
+setInterval(tickProgress, 2000); tickProgress();
+// 已完成（卡有圖）→ 清走嗰個 brd 嘅開始時間，免下次重生即跳 99%
+document.querySelectorAll('.card[data-brd] img.sheet').forEach(function(im) {
+  var card = im.closest('.card[data-brd]');
+  if (card && card.dataset.brd) localStorage.removeItem('bdstart_LCSD_' + card.dataset.brd);
+});
+
+// 零碎想法：localStorage array(可入多次),即時累積顯示,每條 POST 去 GAS 畀委員會消化
+var NK = 'notes_LCSD';
+var notesEl = document.getElementById('notes');
+function loadNotes() {
+  try { var a = JSON.parse(localStorage.getItem(NK) || '[]'); return Array.isArray(a) ? a : []; }
+  catch (e) { return []; }
+}
+function saveNotes(a) { localStorage.setItem(NK, JSON.stringify(a)); }
+function fmtTs(ts) {
+  var d = new Date(ts);
+  function p(n) { return String(n).padStart(2, '0'); }
+  return (d.getMonth()+1) + '/' + d.getDate() + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+}
+function renderNotes() {
+  var box = document.getElementById('noteslist'); if (!box) return;
+  var a = loadNotes();
+  if (!a.length) { box.innerHTML = "<p class='hint' style='margin:4px 2px'>未有想法。</p>"; return; }
+  box.innerHTML = a.map(function(n, i) {
+    var txt = (n.text || '').replace(/</g, '&lt;');
+    return "<div class='notecard'><div class='noterow'>"
+      + "<span class='notets'>" + fmtTs(n.ts) + "</span>"
+      + "<button class='notedel' onclick='delNote(" + i + ")'>✕</button></div>"
+      + "<div class='notetxt'>" + txt + "</div></div>";
+  }).join('');
+}
+function submitNotes() {
+  if (!notesEl || !notesEl.value.trim()) { alert('未有想法'); return; }
+  var txt = notesEl.value.trim();
+  var a = loadNotes(); a.push({ ts: Date.now(), text: txt }); saveNotes(a);
+  notesEl.value = ''; renderNotes();
+  var url = "https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=LCSD&text=" + encodeURIComponent(txt);
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('＋ 已加入（' + a.length + ' 條，VID 1 啟動時餵委員會）');
+}
+function delNote(i) {
+  var a = loadNotes(); if (i < 0 || i >= a.length) return;
+  if (!confirm('刪呢條想法?')) return;
+  a.splice(i, 1); saveNotes(a); renderNotes();
+}
+renderNotes();
+
+function tk(el) {
+  el.classList.toggle('on');
+  el.textContent = el.classList.contains('on') ? '✓' : '';
+  upd();
+}
+// carousel 卡：撳卡頭（唔係內文 scroll 區）toggle 揀選
+function tkCard(head) {
+  var card = head.closest('[data-cid]'); if (!card) return;
+  var ck = card.querySelector('.ck'); if (!ck) return;
+  tk(ck);
+  card.classList.toggle('sel', ck.classList.contains('on'));
+}
+function upd() {
+  var n = document.querySelectorAll('.tabpanel.active .ck.on').length;
+  document.querySelectorAll('.tabpanel.active .cnt').forEach(function(c) {
+    c.textContent = n;
+    c.parentElement.classList.toggle('cnt-warn', n > 6);
+  });
+}
+document.querySelectorAll('.card[data-cid]').forEach(function(card) {
+  var ck = card.querySelector('.ck');
+  if (!ck) return;
+  card.addEventListener('click', function(e) {
+    if (e.target.closest('.ck,.det,textarea,a,button')) return;
+    tk(ck);
+  });
+});
+
+function toast(msg) {
+  var t = document.createElement('div');
+  t.className = 'toast'; t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(function() { t.style.opacity = '0'; }, 6000);
+}
+function showTopProc(msg, stop) {
+  var o = document.getElementById('topproc');
+  if (!o) {
+    o = document.createElement('div'); o.id = 'topproc'; o.className = 'topproc';
+    document.body.insertBefore(o, document.body.firstChild);
+  }
+  if (stop) {
+    o.innerHTML = '<span id="tpmsg">' + msg + '</span>'
+      + ' <a href="#" onclick="location.reload();return false" style="margin-left:8px;font-weight:800;color:var(--ac)">🔄 再 check</a>'
+      + ' <a href="#" onclick="this.parentNode.remove();return false" style="margin-left:8px;color:#888">✕</a>';
+  } else {
+    o.innerHTML = '<span class="spin sm"></span><span id="tpmsg">' + msg + '</span>';
+  }
+}
+
+// ⛔⛔ 防 comment 冇咗(Raymond 2026-06-16 爆:手寫稿 BD comment 位打咗字,redeploy → reload 冧晒):
+//   **全部**輸入格(額外想法 / 6 塊手寫稿 BD comment / 鐵則 / 任何 textarea·text input)每次打字即存 localStorage,
+//   reload/redeploy 都還原返;tab 切返嚟 auto-refresh **有未存字就唔 reload**。每格按 element id 存。
+(function() {
+  var DP = 'draft_LCSD_';
+  function fields() {
+    return [].slice.call(document.querySelectorAll('textarea, input[type=text]')).filter(function(e){ return e.id; });
+  }
+  function hasUnsaved() { return fields().some(function(e){ return (e.value||'').trim().length>0; }); }
+  // 載入時還原每格 draft
+  var restored = 0;
+  try { fields().forEach(function(e){ var v=localStorage.getItem(DP+e.id); if(v && !e.value){ e.value=v; restored++; } }); } catch(_) {}
+  if (restored) setTimeout(function(){ toast('↩︎ 幫你還原咗 '+restored+' 格未送出嘅文字'); }, 500);
+  // 每次打字即存(任何有 id 嘅 textarea / text input)
+  document.addEventListener('input', function(ev) {
+    var t = ev.target; if (!t || !t.id) return;
+    if (t.tagName==='TEXTAREA' || (t.tagName==='INPUT' && t.type==='text')) {
+      try { if ((t.value||'').trim()) localStorage.setItem(DP+t.id, t.value); else localStorage.removeItem(DP+t.id); } catch(_) {}
+    }
+  });
+  window._clearDraft = function(id) { try { localStorage.removeItem(DP+id); } catch(_) {} };
+  var loaded = Date.now();
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden && Date.now() - loaded > 45000 && !hasUnsaved())   // 有未存嘅字 → 唔 reload,唔好冧佢
+      location.href = location.pathname + '?t=' + Date.now() + location.hash;
+  });
+})();
+
+// BD 圖 click 放大（lightbox）—— event delegation，任何 .sheet 圖都得
+(function() {
+  var lb = document.createElement('div'); lb.className = 'lbx';
+  lb.innerHTML = '<span class="x">✕</span><img><div class="hint">撳任何位收返。放大後可用瀏覽器 pinch/scroll 睇每格。</div>';
+  document.body.appendChild(lb);
+  var lbimg = lb.querySelector('img');
+  lb.addEventListener('click', function() { lb.classList.remove('on'); });
+  document.addEventListener('click', function(e) {
+    var t = e.target;
+    if (t && t.classList && t.classList.contains('sheet') && t.src) {
+      lbimg.src = t.src; lb.classList.add('on');
+    }
+  });
+})();
+
+// active panel 嘅 set → GAS param（set 1 唔帶，backend 不變）
+function curSet() { var p = document.querySelector('.tabpanel.active'); return p ? (p.dataset.set || '1') : '1'; }
+function setQ()   { var s = curSet(); return (s && s !== '1') ? ('&set=' + s) : ''; }
+
+// 各 set 嘅 funnel phase（多-set 各 set 唔同）。getVidPhase() 隨 active 嘅 set 變。
+var VID_PHASES = {"1": 1};
+var PRIMARY_VID = 1;
+function getVidPhase() { var s = curSet(); return VID_PHASES[s] || PRIMARY_VID; }
+function pickedCids() {
+  return [].map.call(
+    document.querySelectorAll('.tabpanel.active [data-cid] .ck.on'),
+    function(k) { return k.closest('[data-cid]').dataset.cid; });
+}
+function submitAdvance(url) {
+  toast('✅ 已提交，十幾秒後自動刷新睇下一步（或撳右上 🔄）');
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { location.reload(); }, 13000);   // 單次刷新，冇 develop bar，冇無限 loop
+}
+function submitRound() {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個做六強？submit 後會自動後台生 BD（用 NBLM），落選自動歸檔。')) return;
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=LCSD&round=r2&cids=" + c.join(',') + setQ());
+}
+function subStage(to) {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個 → ' + (to === 'r3' ? '三甲' : 'FINAL 2') + '？')) return;
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=LCSD&round=" + to + "&cids=" + c.join(',') + setQ());
+}
+function postFunnel(url, msg) {
+  fetch(url, {mode:'no-cors'})
+    .then(function() { toast(msg); })
+    .catch(function() { toast('⚠️ 再試一次'); });
+}
+
+function genBD(btn, url) {   // VID 3 Nano per-card 用
+  var acts = btn.closest('.acts') || btn.parentElement;
+  if (acts) acts.innerHTML = "<span class='gening'><span class='spin sm'></span>生緊… ~8-9 分鐘</span>";
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+}
+function addRule(dept) {   // 政府 JOB 鐵則:加一條 → listener append gov_job_rules.json(全 JOB 累積)
+  var ta = document.getElementById('newrule');
+  var txt = (ta && ta.value || '').trim();
+  if (!txt) { if(ta) ta.focus(); return; }
+  var url = 'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=' + encodeURIComponent(dept) + '&concept=rule&stage=add_rule'
+          + '&engine=' + encodeURIComponent(txt) + '&target=main';
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  if (window._clearDraft) window._clearDraft('newrule');   // 送出咗 → 清 draft
+  var ol = document.getElementById('rulelist');
+  if (ol) { var li=document.createElement('li'); li.textContent=txt; ol.appendChild(li); }  // 即時顯示
+  if (ta) { ta.value=''; ta.placeholder='✅ 已加，下次生 BD 即跟'; }
+}
+// ⭐ Raymond 提供參考相窗口嘅上載 mechanic = dash_upload.upload_box(reuse 創意把關站,JS 已內嵌喺 widget,呢度唔再寫)
+function _vchecked() { return [].slice.call(document.querySelectorAll('.tabpanel.active .vchk:checked')); }
+function delAssets(dept) {   // 🗑 整張即刻刪(像真網頁,唔問;listener 後台存底 + 真刪)
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=delasset&stage=del_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){ var card=c.closest('.vacard'); if(card) card.remove(); });   // 即刻消失
+  toast('🗑 刪咗 '+ids.length+' 張');
+}
+function preferAssets(dept) {   // ⭐ 首選:即刻 ⭐ + 嗰啲相搬去最左(像真網頁);listener pref + 餵 NLM 優先
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=prefasset&stage=prefer_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){
+    var card=c.closest('.vacard'); if(!card) return;
+    card.classList.add('pref');
+    if(!card.querySelector('.vastar')){ var s=document.createElement('div'); s.className='vastar'; s.textContent='⭐ 首選'; card.appendChild(s); }
+    var row=card.parentNode; row.insertBefore(card, row.firstChild);   // 搬去最左
+    c.checked=false;
+  });
+  toast('⭐ 已設首選 '+ids.length+' 張（搬咗去最左 + 餵 NLM 優先）');
+}
+function showOvl(id) { var o=document.getElementById(id); if(o) o.classList.add('on'); }   // 🎧 錄音逐字 overlay(撳先出)
+function hideOvl(id) { var o=document.getElementById(id); if(o) o.classList.remove('on'); }
+document.addEventListener('click', function(e){   // 撳 overlay 背景(唔係 box)收返
+  if(e.target && e.target.classList && e.target.classList.contains('ovl')) e.target.classList.remove('on');
+});
+function researchAssets(dept) {   // 🔁 重搜:即刻喺相右下角顯示漏斗「重搜中」,後台搵新相,搵到自動換(reload 時)
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=researchasset&stage=research_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){
+    var card=c.closest('.vacard'); if(!card) return;
+    var th=card.querySelector('.vathumb');
+    if(th && !th.querySelector('.vafunnel')){ var f=document.createElement('div'); f.className='vafunnel';
+      f.innerHTML='<span class="spin sm" style="width:10px;height:10px;margin:0"></span> 重搜中'; th.appendChild(f); }
+    c.checked=false;
+  });
+  toast('🔁 重搜 '+ids.length+' 個，後台搵緊清晰啲嘅相，搵到自動換（~30-60s，會自動 refresh）');
+}
+function bdComment(dept, brd) {   // 手寫稿 BD:送 comment → listener AI 解意見 → 改 specific 格(留舊版)
+  var ta = document.getElementById('cm_' + brd);
+  var txt = (ta && ta.value || '').trim();
+  if (!txt) { if (ta) ta.focus(); return; }
+  var url = 'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=' + encodeURIComponent(dept)
+          + '&concept=' + encodeURIComponent(brd) + '&stage=bdcomment'
+          + '&engine=' + encodeURIComponent(txt) + '&target=main&cid=ACT_bdcomment';
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  if (window._clearDraft) window._clearDraft('cm_' + brd);   // 送出咗 → 清 draft
+  if (ta) { ta.disabled = true;
+    ta.insertAdjacentHTML('afterend', "<div class='cmlog'>✅ 已送出，AI 改緊嗰格，改完自動換圖（舊版會留喺下面）。</div>"); }
+}
+// STEP 3 風格 picker：每維互斥（但可 0 個）+ 夾成 style_anchor
+function styPick(cb) {
+  if (cb.checked) {
+    var sib = document.querySelectorAll(".styopt[data-dim='" + cb.getAttribute('data-dim') + "']");
+    for (var i = 0; i < sib.length; i++) { if (sib[i] !== cb) sib[i].checked = false; }
+  }
+  var el = document.getElementById('styanchor');
+  if (el) el.textContent = styleAnchor() || '（跟劇本）';
+}
+function styleAnchor() {
+  var dims = ['env', 'char', 'light', 'color', 'mood', 'feel'], picks = [];
+  for (var i = 0; i < dims.length; i++) {
+    var el = document.querySelector(".styopt[data-dim='" + dims[i] + "']:checked");
+    if (el) picks.push(el.value);
+  }
+  return picks.join(', ');
+}
+function srcRefs(btn, url) {   // STEP 2：AI 搵主角參考相
+  btn.textContent = '⏳ AI 搵相中…（~2-3 分鐘，完成 refresh 見）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('🔍 AI 自動由 ISD 官方相搵主角 + curate 中…');
+}
+function genFinalBD(btn, dept, baseUrl) {   // STEP 4：寫低 STEP 3 風格 → 生最終 BD
+  var anc = styleAnchor();
+  // STEP3 風格寫入 Master GSheet _VID_STYLE（gsheet_to_bd 讀返做 override；空 = 跟劇本）
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify({op:'set_style', dept:dept, style:anc})}).catch(function(){});
+  toast(anc ? ('🎨 已套用風格：' + anc) : '🎨 風格：跟劇本（冇限制）');
+  genBD(btn, baseUrl);
+}
+function pushGSheet(btn, url) {   // VID 4 寫入 Master GSheet B6:C17
+  btn.textContent = '⏳ 寫入緊…'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已寫入（開 GSheet polish）'; }, 2500);
+  toast('📝 已交，~1 分鐘寫入 Master GSheet B6:C17（前稿自動備份）');
+}
+function renderForms(btn, url) {   // 📋 標書:自動 render 真表頁入 Master Reply GSlide
+  btn.textContent = '⏳ render 緊…（~1-2 分鐘，完成會 WhatsApp）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('📋 已交，listener 會自動 render 真表頁入 Master Reply GSlide');
+}
+function fillForms(btn) {   // 📝 標書:自動填表 — GAS 直出（公司資料 vlookup 寫 Fill tab，唔靠部 Mac）
+  var jsTag = btn.nextElementSibling;  // <script class=filldata>
+  var data;
+  try { data = JSON.parse((jsTag && jsTag.textContent) || '{}'); } catch (e) { data = {}; }
+  if (!data.forms || !data.forms.length) { toast('⚠️ 冇表資料'); return; }
+  var reg='https://docs.google.com/spreadsheets/d/1yiDJ3H8VFK3-6kZQZEzwkiD8VaRgVOzCwxcFbAyP3XE/edit';
+  btn.textContent = '⏳ AI 填緊…（~30-60s）'; btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'fill_forms', folderName: data.folderName, forms: data.forms })
+  }).catch(function(){});
+  // 清楚講做緊乜 + 完咗點做(開 Registry copy 值)
+  setTimeout(function() {
+    btn.outerHTML = "<a class='btn' style='width:100%;text-align:center' target='_blank' href='"+reg
+      +"'>✅ 已填好 → 開 Master Form Registry copy 啲值</a>";
+  }, 30000);
+  toast('🤖 AI 填緊公司資料入 Master Form Registry 嘅 Fill tab（~30-60s）。完咗開 Registry copy 啲值入真表頁。');
+}
+function outScript(btn) {   // 📤 VID2:SCRIPT 接落 Master GSheet SCRIPT暫存 — 直接 GAS POST，唔經部 Mac
+  var jsTag = btn.nextElementSibling;  // <script class=bdj> board JSON
+  var board = [];
+  try { board = JSON.parse((jsTag && jsTag.textContent) || '[]'); } catch (e) {}
+  if (!board.length) { toast('⚠️ 冇 board 資料'); return; }
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'script_out', dept: 'LCSD',
+      brd: btn.dataset.brd, concept: btn.dataset.concept, board: board })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已接落「SCRIPT暫存」'; btn.disabled = false; }, 1500);
+  toast('📤 接落 Master GSheet「SCRIPT暫存」(GAS,唔經部 Mac,疊唔覆寫)');
+}
+function clearScript(btn) {   // 🧹 清空 SCRIPT暫存 — GAS（唔經 Mac）
+  if (!confirm('清空 SCRIPT暫存 tab？')) return;
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'clear' })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已清空'; btn.disabled = false; }, 1500);
+  toast('🧹 已清空 SCRIPT暫存（GAS,唔經部 Mac）');
+}
+
+// submitGSlide/submitComments 已移除（dead code:前端零 call site + 冇 .frame-note input — 2026-06-13 audit）
+
+// 「develop 緊」bar 已移除（Raymond 2026-06-06）—— 改用 VID 2 tab 紅邊 + 各 concept 進度條。
+</script></body></html>
