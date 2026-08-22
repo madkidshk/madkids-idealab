@@ -1,0 +1,3074 @@
+{
+  "dept": "PLOTIO2",
+  "concepts": {
+    "HZ04": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260819-033633-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_15.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_16.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_17.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_18.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_19.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_20.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_21.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_22.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_23.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_24.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_25.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_26.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_27.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_28.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_29.jpg"
+            ],
+            "n": 29,
+            "ts": "2026-08-19T07:32:06",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ04",
+            "cid": "hand-HZ04",
+            "label": "手寫稿·全風格·新海誠風",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/gslide_PLOTIO2_HZ04_p1.png",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/gslide_PLOTIO2_HZ04_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面雖然符合「魔幻時刻」與「藍金對比」，但作為極大遠景（EWS）的開場，目前的構圖過於強調雲層細節而非海面的廣闊延伸感。",
+                "fix": "建議增加海面比例，減少上方雲朵佔比，並強化鏡頭滑行時水面波紋與光斑的動態連續性。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面完全沒有出現分鏡稿要求的「滿版字幕層」及「關鍵字內容」。",
+                "fix": "需重新生成或製作後期特效，在海空背景上疊加動態閃現的金色金屬質感文字（如「創造財富」、「創新視野」等）。"
+              },
+              {
+                "slide": 3,
+                "flag": "Logo 造型與「百利好」品牌識別不符，且光暈效果過於分散。",
+                "fix": "將 Logo 修改為正確的「百利好」商標設計，並強化中心聚攏後的邊緣銳度，減少周圍雜亂的光點。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面中缺少要求的「三行定版字卡」內容，且 Logo 比例與位置未完全符合設計要求。",
+                "fix": "加入「金融業務」、「立足香港 16 年」、「商譽先行，共創遠價值」三行寬鬆間距的文字，並確保 Logo 與背景光影融合更自然。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面缺乏「百利好 Logo 變形」及「推軌穿透」的動態過程，目前僅為靜態地球。",
+                "fix": "需增加動態過場特效，將 Logo 的幾何元素與地球轉化過程結合，並加入明顯的運動模糊（Motion Blur）來體現速度感。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面呈現為靜態的遠景構圖，未能體現「俯衝下降」與「穿雲撥開」的動態速度感。",
+                "fix": "建議增加動態模糊（Motion Blur）效果以表現高速俯衝，並在雲層邊緣加入更多破碎、飛散的粒子與光暈，強化從雲霧中破繭而出的視覺張力。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面中完全沒有出現「百利好 Plotio」的標誌，且帆船設計過於簡約，缺乏品牌識別度。",
+                "fix": "在帆船側面明顯位置加入「百利好 Plotio」Logo，並強化帆船與海浪互動的動態質感。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面缺乏「帆船」與「金色尾浪」的視覺元素，且構圖過於靜態，未能體現「拉升穿透」的動態速度感。",
+                "fix": "加入帆船殘留的金色波紋特效作為起點，並增加動態模糊（Motion Blur）處理以強化快速穿越的空間感。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面中左側的現代建築（解放碑區域）與右側的傳統建築（洪崖洞）比例不對稱，且兩者之間的過渡過於突兀，缺乏層次感。",
+                "fix": "調整構圖比例，增加中間地帶的景深過度，並強化江面反射光影的連續性，讓現代與傳統兩種場景在視覺上更和諧融合。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面呈現為靜態全景，未能體現「穿街推鏡」的動態空間感；且部分人物面孔模糊，背景建築與人流比例略顯混亂。",
+                "fix": "建議增加透視拉伸效果以強化推入感，並對核心人物進行細節重繪，同時優化遠景建築的結構清晰度。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面角度為平視或略微仰角，而非明顯的「仰角上搖」；且塔身大部分處於雲層下方，並非「沒入流動雲層」。",
+                "fix": "調整構圖使鏡頭更貼近地面向上仰望，增加塔身的垂直高度感，並讓建築頂部與雲層交界處更自然地融合。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面中出現明顯的 AI 噪點與構圖邏輯錯誤，特別是右側建築物與河岸邊界模糊不清，且部分船隻的尾波過於規則。",
+                "fix": "重新生成時要求強化建築物的細節紋理，並優化水面反光的自然隨機性，確保遠景與近景的透視關係更清晰。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面呈現的是一個靜態的、帶有插畫風格（2D/3D 混合藝術感）的場景，而非要求的「實景」拍攝，且人物動作偏向單獨操作而非「熱烈討論」。",
+                "fix": "將繪圖風格改為寫實攝影風格（Photorealistic），並增加多個交易員聚集在同一個螢幕前進行互動與對話的動態感。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面中部分人物的面部特徵出現明顯的 AI 扭曲（如第 12 張與第 16 張男性的五官比例不對稱），且背景中的光斑效果在某些分鏡中過於雜亂。",
+                "fix": "重新生成或修飾受影響的人物面孔，確保每位員工的面部特徵清晰、自然且符合專業形象；同時優化背景散景的穩定度。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面人數與分鏡稿要求不符（目前僅有 2 人，而非 6 位主管），且人物手部動作過於誇張。 ",
+                "fix": "重新生成包含 6 位不同年齡層、穿著專業套裝的區域主管在辦公室環境進行訪談的畫面，並修正手勢為更自然的專業交流。"
+              },
+              {
+                "slide": 16,
+                "flag": "人物面孔模糊且比例不一，部分碎片中的人臉扭曲。",
+                "fix": "優化 AI 生成參數以確保每塊碎片的面孔清晰、特徵穩定，並統一各個片段的構圖比例。"
+              },
+              {
+                "slide": 17,
+                "flag": "畫面未呈現「大浪蓋鏡」的動態轉折，目前是靜態構圖且水花未填滿全屏。",
+                "fix": "需增加動態過渡效果，讓右側巨浪在瞬間衝入鏡頭並轉為純白場，再由白場淡出至曙光。"
+              },
+              {
+                "slide": 18,
+                "flag": "畫面內容與分鏡稿要求的「航海日誌/海圖」及「企業里程碑相片（如產品發布、培訓等）」完全不符，目前呈現的是一個帶有插畫風格的奇幻故事書。",
+                "fix": "重新生成圖像：將場景改為古樸的航海質感紙張與海圖元素，並將插圖內容替換為具體的企業活動實景照片或寫實風格的里程碑記錄。"
+              },
+              {
+                "slide": 19,
+                "flag": "畫面缺少「數字計數器」元素，且沒有出現「媒體商標牆」。",
+                "fix": "加入金色光芒的數字計數器動畫特效，並在獎盃旁或背景加入具體的媒體 Logo 牆。"
+              },
+              {
+                "slide": 20,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前僅為兩張獨立的插畫拼接（乒乓球與賽車），缺乏要求的「Plotio Logo」以及「動態對比」的剪輯邏輯。",
+                "fix": "重新製作或合成畫面：確保乒乓球場景包含 Plotio Logo 及清晰的汗珠/球體細節；將兩場運動場景透過蒙太奇手法銜接，並強化賽車光軌與強逆光對比的視覺張力。"
+              },
+              {
+                "slide": 21,
+                "flag": "畫面中完全沒有出現要求的「大字特效」及相關文字內容，且場景為電影院/大型演講廳而非金融博覽會展位。",
+                "fix": "加入「舉辦多場講座」與「培訓眾多投資者」的大字體特效，並將背景修改為充滿商業氛圍的金融博覽會現場。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-033633-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_15.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_16.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_17.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_18.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_19.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_20.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/frame_21.jpg"
+            ],
+            "n": 21,
+            "ts": "2026-08-19T03:36:34",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ04",
+            "cid": "hand-HZ04",
+            "label": "手寫稿·全風格·新海誠風",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/gslide_PLOTIO2_HZ04_p1.png",
+              "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/gslide_PLOTIO2_HZ04_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ04/v20260819-033633-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面雖然符合「魔幻時刻」與「藍金對比」，但海面上的光斑過於規則且密集，看起來更像人工添加的粒子特效而非自然折射。",
+                "fix": "建議降低水面金色點狀物的密度，並增加不同大小、模糊程度的動態閃爍感，使其更符合真實波浪在強逆光下的物理反射。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面中完全沒有出現分鏡稿要求的「滿版字幕層」及相關關鍵字（如『創造財富』等）。",
+                "fix": "需在海空背景上疊加動態文字，將指定的六個核心價值關鍵字以極快速度閃現並加入金光與粒子特效。"
+              },
+              {
+                "slide": 3,
+                "flag": "Logo 造型與「百利好」品牌識別不符，且畫面中出現了明顯的第三方加密貨幣（Binance）標誌。",
+                "fix": "重新生成符合「百利好」特定視覺識別系統的 Logo，並移除任何與外部平台相關的圖形元素。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面缺少要求的「三行定版字卡」內容，且 Logo 比例與構圖略顯突兀。",
+                "fix": "加入指定的文字內容（金融業務、立足香港 16 年、商譽先行，共創遠價值），並優化 Logo 與背景的融合度。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面缺乏「百利好 Logo 變形」及「推軌穿透」的動態過度，僅為靜態地球。",
+                "fix": "需增加動畫轉場特效，將 Logo 的幾何線條與地球輪廓融合，並加入強烈的速度光暈（Speed Lines）來強化推軌感。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面呈現為靜態的遠景構圖，未能體現「俯衝下降」與「穿雲」的動態速度感。",
+                "fix": "增加動態模糊（Motion Blur）效果以表現高速穿梭感，並在雲層邊緣加入更明顯的破碎與流動動態，強化從空間到城市的過度。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面中缺乏「百利好 Plotio」標誌，且帆船設計與實際航海結構不符。",
+                "fix": "重新生成或修改圖像，在船身明顯位置加入正確的品牌 Logo，並修正帆船桅杆與索具的邏輯構造。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面缺乏「帆船」及「金色尾浪」的視覺元素，且無法體現「拉升穿透」的動態過程。",
+                "fix": "需加入帆船與海面波紋作為起點，並增加明顯的動態模糊或多層景深變化來呈現從海上到城市的快速轉場。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面中左側的現代建築與解放碑廣場的霓虹燈光表現過於簡略，且缺乏明顯的「流動變幻」動態感。",
+                "fix": "強化左側城市區的細節，增加更多色彩豐富的霓虹招牌，並在水面反射中加入更具動態感的長條狀閃爍光帶。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面呈現靜態全景而非要求的「穿街推鏡」動態感，且人物面孔模糊不清。",
+                "fix": "建議增加動態模糊或多個層次的透視構圖來體現推進感，並優化近景人物的面部細節。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面角度為平視或略微仰角，而非明顯的「仰角上搖」；且塔身大部分處於雲層下方，並非「沒入流動雲層」。",
+                "fix": "調整構圖讓鏡頭更低、更靠近地平線以強化仰望感，並將建築物高度延伸至更高處與雲層交織。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面中出現多處明顯的 AI 瑕疵，包括遠處建築物結構扭曲、水面上的船隻數量過多且位置混亂（如右下角與中間重疊）、以及部分光影邏輯不連貫。",
+                "fix": "重新生成時需強化場景的一致性，減少雜亂的細節物件，並確保長尾船的數量適中且動態軌跡清晰。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面內容與分鏡稿要求的「實景」及「熱烈討論」不符，目前呈現的是靜態的、帶有明顯 AI 痕跡的插畫風格。",
+                "fix": "將場景改為寫實攝影風格（Photorealistic），並增加人物之間的互動動作與對話表情，同時修正背景螢幕上模糊不清的虛構字體。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面中出現明顯的 AI 瑕疵，特別是第 12 張（第三排最後一格）與第 16 張（第四排最後一格）的人物面孔比例不對稱且特徵模糊。",
+                "fix": "重新生成這兩張分鏡圖，確保所有人物的面部五官清晰、對稱，並符合專業商務人士的形象。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面人數與分鏡稿要求不符（目前僅有 2 人，而非 6 位主管），且場景過於空曠。",
+                "fix": "重新生成或修改畫面，確保出現 6 位不同年齡層、穿著專業的百利好區域主管進行訪談。"
+              },
+              {
+                "slide": 16,
+                "flag": "畫面中人物面孔模糊且比例不均，部分碎片中的人臉扭曲。",
+                "fix": "優化 AI 生成參數以提升人像清晰度，並確保每個碎裂片段中的員工形象更具辨識度與一致性。"
+              },
+              {
+                "slide": 17,
+                "flag": "畫面未呈現「大浪蓋鏡」的動態轉折，目前只是靜態的帆船與水花。",
+                "fix": "需增加動態分鏡感，強調海浪衝向鏡頭並將畫面填滿成白色的過渡過程。"
+              },
+              {
+                "slide": 18,
+                "flag": "畫面內容與分鏡稿要求的「航海日誌/海圖」及具體里程碑場景（如產品發布、員工培訓等）不符，目前的插畫風格過於童話化且缺乏具體的企業元素。",
+                "fix": "重新生成或修改圖像，將書本內容替換為包含航海地圖元素與特定企業活動相片的實體感更強的日誌，並確保手寫日期清晰可辨。"
+              },
+              {
+                "slide": 19,
+                "flag": "畫面缺少「數字計數器」及「媒體商標牆」，且獎盃與背景的對比度不足。",
+                "fix": "加入金色光芒閃爍的動態計數器特效，並在場景中加入明顯的品牌 Logo 牆，強化聚光燈點亮特定獎盃的視覺層次。"
+              },
+              {
+                "slide": 20,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，且兩張圖拼接在一起而非單一場景的轉場。",
+                "fix": "請重新生成一張包含「乒乓球扣殺瞬間（含汗珠、強逆光）」與「賽車過彎產生煙霧及尾燈光軌」兩個動作連續或對比明顯的單一視覺作品，並加入 Plotio Logo。"
+              },
+              {
+                "slide": 21,
+                "flag": "畫面中完全沒有出現要求的「大字特效」及相關文字內容，且場景為電影院/大型演講廳而非博覽會展位。",
+                "fix": "重新生成包含「舉辦多場講座」與「培訓眾多投資者」兩組大字特效的畫面，並將場景更正為充滿人頭攢動、有明顯攤位的金融博覽會現場。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-032953-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_15.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_16.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_17.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_18.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_19.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_20.jpg",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/frame_21.jpg"
+            ],
+            "n": 21,
+            "ts": "2026-08-19T03:29:54",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ04",
+            "cid": "hand-HZ04",
+            "label": "手寫稿·全風格·新海誠風",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/gslide_PLOTIO2_HZ04_p1.png",
+              "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/gslide_PLOTIO2_HZ04_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ04/v20260819-032953-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ04B": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260819-073003-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ04B/v20260819-073003-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ04B/v20260819-073003-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ04B/v20260819-073003-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ04B/v20260819-073003-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ04B/v20260819-073003-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ04B/v20260819-073003-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ04B/v20260819-073003-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ04B/v20260819-073003-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ04B/v20260819-073003-nblm-i2/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-08-19T07:30:04",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ04B",
+            "cid": "hand-HZ04B",
+            "label": "手寫稿·全風格·新海誠風（尾8格 22-29 補生）",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ04B/v20260819-073003-nblm-i2/gslide_PLOTIO2_HZ04B_p1.png",
+              "assets/gen/PLOTIO2_HZ04B/v20260819-073003-nblm-i2/gslide_PLOTIO2_HZ04B_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ04B/v20260819-073003-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "場景與內容不符（畫面為抽象科技/星空背景，無具體動作或角色）。",
+                "fix": "若此幕旨在展現虛擬空間或數據流動，則可保留；若需特定劇情，請重新生成包含人物或明確物件的場景。"
+              },
+              {
+                "slide": 2,
+                "flag": "場景與內容過於抽象，缺乏具體的敘事元素或角色互動。",
+                "fix": "增加明確的視覺重點（如特定人物、產品或核心動作），並移除背景中雜亂且無意義的漂浮方塊。"
+              },
+              {
+                "slide": 6,
+                "flag": "場景與旁白內容不符（目前僅有風景，無對應動作或角色）。",
+                "fix": "請根據具體分鏡描述加入相關人物、物件或特定動態元素。"
+              },
+              {
+                "slide": 7,
+                "flag": "場景與內容過於抽象且缺乏敘事重點，僅為單一的藝術插圖而非具體的劇情分鏡。",
+                "fix": "增加明確的分鏡描述（如：角色動作、鏡頭角度、環境細節），並確保畫面能體現特定劇情的轉折點而非純裝飾性背景。"
+              },
+              {
+                "slide": 8,
+                "flag": "場景與內容過於空泛，缺乏具體的視覺敘事重點。",
+                "fix": "增加更具體的分鏡描述（如：帆船的數量、光影的對比度、雲層的質感），並確保畫面中的元素符合特定劇情需求而非單純的意境圖。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-072742-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ04B/v20260819-072742-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ04B/v20260819-072742-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ04B/v20260819-072742-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ04B/v20260819-072742-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ04B/v20260819-072742-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ04B/v20260819-072742-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ04B/v20260819-072742-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ04B/v20260819-072742-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ04B/v20260819-072742-nblm-i1/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-08-19T07:27:43",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ04B",
+            "cid": "hand-HZ04B",
+            "label": "手寫稿·全風格·新海誠風（尾8格 22-29 補生）",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ04B/v20260819-072742-nblm-i1/gslide_PLOTIO2_HZ04B_p1.png",
+              "assets/gen/PLOTIO2_HZ04B/v20260819-072742-nblm-i1/gslide_PLOTIO2_HZ04B_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ04B/v20260819-072742-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ01B": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260819-074324-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ01B/v20260819-074324-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074324-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074324-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074324-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074324-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074324-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074324-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074324-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074324-nblm-i2/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-08-19T07:43:26",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01B",
+            "cid": "hand-HZ01B",
+            "label": "手寫稿·全風格·寫實真人（尾8格 22-29）",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074324-nblm-i2/gslide_PLOTIO2_HZ01B_p1.png",
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074324-nblm-i2/gslide_PLOTIO2_HZ01B_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ01B/v20260819-074324-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "場景與內容不符（畫面為抽象科技背景，無具體動作或角色）。",
+                "fix": "請提供具體的分鏡描述文字，以便判斷視覺元素是否符合劇情需求。"
+              },
+              {
+                "slide": 2,
+                "flag": "場景與旁白內容完全脫節（無分鏡描述可推斷為意境圖，但畫面過於抽象且缺乏敘事重點）。",
+                "fix": "增加具體的分鏡描述要求，或將畫面調整為更符合故事情境的實景/角色互動。"
+              },
+              {
+                "slide": 4,
+                "flag": "場景與內容過於抽象，缺乏具體的敘事元素或角色互動。",
+                "fix": "增加具體的人物動作、對話框或更明確的視覺焦點來符合廣告劇情。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面中出現大量無意義的亂碼文字（Garbage text）出現在螢幕與背景中。",
+                "fix": "移除或替換成具備實際意義的內容，並清理掉背景中的雜訊點。"
+              },
+              {
+                "slide": 6,
+                "flag": "場景過於寫實且缺乏敘事重點，僅為單一風景圖。",
+                "fix": "增加具體的人物動作或物件互動，以符合『分鏡』的劇情推進功能。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面內容與「分鏡稿描述」無對應關係（因提供資訊中缺少具體文字描述）。",
+                "fix": "請提供具體的『分鏡稿描述』文字，以便判斷圖像是否符合要求。"
+              },
+              {
+                "slide": 8,
+                "flag": "場景與內容過於抽象、超現實，且背景中的幾何框框與彩虹效果與一般廣告敘事邏輯脫節。",
+                "fix": "移除誇張的幾何框架與多重彩虹特效，將畫面聚焦於帆船在夕陽下的寫實航行，強化光影質感。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-074113-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ01B/v20260819-074113-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074113-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074113-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074113-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074113-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074113-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074113-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074113-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074113-nblm-i1/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-08-19T07:41:14",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01B",
+            "cid": "hand-HZ01B",
+            "label": "手寫稿·全風格·寫實真人（尾8格 22-29）",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074113-nblm-i1/gslide_PLOTIO2_HZ01B_p1.png",
+              "assets/gen/PLOTIO2_HZ01B/v20260819-074113-nblm-i1/gslide_PLOTIO2_HZ01B_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ01B/v20260819-074113-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ01": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260819-074855-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_15.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_16.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_17.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_18.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_19.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_20.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_21.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_22.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_23.jpg"
+            ],
+            "n": 23,
+            "ts": "2026-08-19T21:46:26",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·寫實真人",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/gslide_PLOTIO2_HZ01_p1.png",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/gslide_PLOTIO2_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面雖然符合「藍金對比」與「魔幻時刻」的視覺風格，但作為廣告分鏡圖，其構圖過於寫實且缺乏敘事空間（如品牌 Logo 或產品展示位置），且明顯帶有 AI 生成特徵。",
+                "fix": "建議重新繪製或調整構圖，在畫面中心或特定區域預留品牌標識空間，並確保雲層與海面的銜接更具藝術設計感而非純粹的寫實渲染。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面中完全沒有出現分鏡稿要求的「滿版字幕」及具體的關鍵字（如「創造財富」、「創新視野」等）。",
+                "fix": "需重新生成或合成畫面，在保留現有藍金海空背景與金色光粒效果的基礎上，加入動態閃現的文字層。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面為靜態的城市全景插畫，完全沒有出現「金色關鍵字光粒」、「凝聚變形」以及最重要的「百利好 Logo」。",
+                "fix": "需重新繪製或製作動態特效，將背景中的城市場景轉化為粒子流，並在中心位置實質呈現出品牌 Logo 及相關的閃爍光暈效果。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前是動態帆船衝浪場景而非靜謐倒影。",
+                "fix": "移除帆船及濺起的水花，將背景更換為平靜如鏡的海面，並加入要求的三行定版字卡。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是靜態的城市夜景與河流，並無「推軌穿透」、「百利好 Logo 變形為地球」或「太空冷藍色調」等動態視覺元素。",
+                "fix": "重新生成符合要求的動態特效畫面：執行快速推入鏡頭，將 Logo 轉化為帶有新海誠風格雲層與金邊高光的藍色地球。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前呈現的是一座孤立的塔（類似台北101）矗立在雲端之上，而非「香港中港城與維多利亞港」的城市全景。",
+                "fix": "重新生成或修改場景，將單一建築物替換為密集的香港摩天大樓群、維多利亞港海面及明顯的城市地標。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是兩名商務人士在辦公室看螢幕，而非維多利亞港的帆船。",
+                "fix": "重新生成符合要求的場景：一艘印有「百利好 Plotio」標誌的白色帆船在維多利亞港破浪前行，伴隨強逆光下的金色水花與香港島天際線背景。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是兩名商務人士在室內對話的近景。",
+                "fix": "需重新生成或更換素材，將場景替換為從海面（帆船尾浪）拉升穿透至深圳金融中心摩天大樓群的壯麗空拍航拍鏡頭。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面與分鏡稿描述完全不符，目前是白天的海上帆船衝浪場景而非重慶夜景。",
+                "fix": "重新生成或更換素材：需呈現重慶洪崖洞及解放碑的夜景，包含暖黃燈光、江面倒影及霓虹燈效果。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面與分鏡稿描述完全不符，目前是「書中出現人物」的奇幻意象，而非要求的「成都太古里街景」。",
+                "fix": "重新生成符合場景要求的畫面：拍攝成都太古里巷弄，包含人流、飛簷古建、現代玻璃建築與暖色燈籠，並加入金色光塵與淺景深效果。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是演唱會/大型演藝場景而非台北 101 與雲層。",
+                "fix": "重新生成符合要求的畫面：仰角拍攝台北 101 大樓沒入流動雲層，並加入夕陽金光、星芒及穿透雲隙的金色光柱。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面與分鏡稿描述完全不符，提供的圖片是抽象的科技數據圖表（Data Visualization），而非泰國曼谷寺廟與長尾船的實景。 ",
+                "fix": "請重新生成符合要求的場景：高空俯瞰曼谷河岸、金色寺廟群、夕陽下的長尾船及橘紅色雲層。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面與分鏡稿描述完全不符，目前僅為抽象的金色圓弧線條圖案，完全沒有出現香港辦公室、交易員人物或實景環境。",
+                "fix": "重新生成符合要求的場景：在香港辦公室內拍攝一群專業人士圍繞電腦螢幕討論，並加入慢速環繞運鏡與丁達爾效應（光柱與浮塵）。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面與分鏡稿描述完全不符（目前為一張風景圖，而非 16 位員工的快速剪接）。",
+                "fix": "需重新製作或更換素材，確保畫面包含 16 個不同地區、多元背景的員工半身定鏡，並符合要求的場景及光影效果。"
+              },
+              {
+                "slide": 15,
+                "flag": "提供的圖片與分鏡稿描述完全不符，目前是一張帶有帆船、抽象幾何圖形及極光效果的超現實藝術海報。",
+                "fix": "請重新生成或提供符合要求的畫面：6 位專業人士在窗邊柔和自然光下進行訪談的胸像特寫。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-074855-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/frame_15.jpg"
+            ],
+            "n": 15,
+            "ts": "2026-08-19T07:48:56",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·寫實真人",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/gslide_PLOTIO2_HZ01_p1.png",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/gslide_PLOTIO2_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ01/v20260819-074855-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面與分鏡稿描述不符：海面並非『平靜如鏡』，而是有明顯波浪；且雲層過於密集，遮擋了大部分的『通透天空』。",
+                "fix": "調整渲染參數，降低海面波動強度以呈現鏡面效果，並減少雲朵密度，增加藍色天空與強逆光穿透的空間感。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面中完全沒有出現分鏡稿要求的「滿版字幕層」及指定的關鍵字（如「創造財富」、「創新視野」等）。",
+                "fix": "需重新製作或合成，在藍金漸層海空背景上疊加動態閃現的金色文字特效。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是城市建築與雲海風景圖，而非「百利好 Logo」的動態變形過程。",
+                "fix": "請重新生成或更換素材，確保畫面呈現金色光粒匯聚並精準組成「百利好 Logo」，並加入對應的高光爆點與邊緣閃爍效果。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前是動態帆船在海浪中破浪的寫實場景，而非要求的「定版字卡」與「平靜如鏡的海面」。",
+                "fix": "需重新生成或修改為極簡風格：移除帆船與波浪，改為平靜的海面倒影，並將三行指定的文字以寬鬆間距置於畫面中央。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是靜態的城市夜景與河流，並無「推軌穿透」、「百利好 Logo 變形為地球」或「太空冷藍色調」等動態視覺元素。",
+                "fix": "重新生成符合要求的動畫/特效畫面：執行快速推入鏡頭，將 Logo 轉化為帶有新海誠風格雲層與金邊高光的藍色地球。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面與分鏡稿描述嚴重不符，目前僅為單一建築物（類似台北101）矗立於雲端，並無「俯衝穿雲」、「維多利亞港」或「城市摩天大樓群」的景觀。",
+                "fix": "重新生成畫面，需包含從高空快速下降穿過厚重雲層的動態感，並在雲霧散開後呈現出香港中港城與維多利亞港的密集建築群及海面波光。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是兩名商務人士在辦公室看數據圖表。",
+                "fix": "重新生成符合要求的場景：一艘印有「百利好 Plotio」標誌的白色帆船在維多利亞港破浪前行，伴隨強逆光下的金色水花與香港島天際線背景。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是兩個人在室內對話的近景。",
+                "fix": "需更換為從海上帆船尾浪拉升穿梭至深圳金融中心摩天大樓群的遠景空拍鏡頭。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面與分鏡稿描述完全不符，目前是白天的大海與帆船，而非重慶夜景。",
+                "fix": "重新生成或更換素材：需呈現重慶洪崖洞、解放碑的城市夜景，並包含水面反光及流動的霓虹燈光。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面與分鏡稿描述完全不符，目前是「書中出現人物」的奇幻意象，而非「成都太古里街景」。",
+                "fix": "重新生成符合要求的場景：拍攝成都太古里巷弄，包含人流、飛簷古建、現代玻璃建築及黃昏暖色調與金色光塵。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前呈現的是一個大型演唱會或演講場景的觀眾席，而非台北 101 大樓與雲層。",
+                "fix": "重新生成影像，將場景更換為仰望台北 101 的遠景，並加入流動雲層、夕陽星芒及金色光柱效果。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面與分鏡稿描述完全不符，目前圖片是抽象的數據圖表與科技感線條，而非泰國曼谷寺廟、長尾船及落日風景。",
+                "fix": "重新生成符合要求的場景：高空俯瞰曼谷河岸，包含金色寺廟群、夕陽下的橘紅色雲層以及帶有金光尾波的長尾船。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面與分鏡稿描述完全不符，目前圖片僅為抽象的金色圓弧線條疊加在藍色雲層背景上，完全沒有出現香港辦公室、交易員人物或任何實景元素。",
+                "fix": "重新生成符合要求的場景：一個充滿活力的香港辦公室，一群專業人士圍繞螢幕討論，並採用慢速環繞運鏡的視覺構圖。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面與分鏡稿描述完全不符（目前為一張風景海景圖，而非 16 位員工的快剪定鏡）。",
+                "fix": "請更換為符合要求的 16 人快速切換、帶有辦公室虛化散景及專業商務裝扮的實拍或高品質渲染畫面。"
+              },
+              {
+                "slide": 15,
+                "flag": "提供的圖片與分鏡稿描述完全不符，目前是一張帶有帆船、抽象幾何圖形及極光效果的超現實藝術海報。",
+                "fix": "請更換為符合要求的實景拍攝或高品質 3D 渲染畫面：包含 6 位穿著西裝的主管在窗前進行訪談，並確保人物面孔與手部比例正確。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-074402-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_15.jpg"
+            ],
+            "n": 15,
+            "ts": "2026-08-19T07:46:40",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·寫實真人",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/gslide_PLOTIO2_HZ01_p1.png",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/gslide_PLOTIO2_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/deck.pdf"
+          },
+          {
+            "v": "20260819-074402-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_15.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_16.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_17.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_18.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_19.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_20.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_21.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_22.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_23.jpg"
+            ],
+            "n": 23,
+            "ts": "2026-08-19T07:46:18",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·寫實真人",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/gslide_PLOTIO2_HZ01_p1.png",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/gslide_PLOTIO2_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/deck.pdf"
+          },
+          {
+            "v": "20260819-074402-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/frame_15.jpg"
+            ],
+            "n": 15,
+            "ts": "2026-08-19T07:44:03",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·寫實真人",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/gslide_PLOTIO2_HZ01_p1.png",
+              "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/gslide_PLOTIO2_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ01/v20260819-074402-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ02": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260819-080732-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_15.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_16.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_17.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_18.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_19.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_20.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/frame_21.jpg"
+            ],
+            "n": 21,
+            "ts": "2026-08-19T08:07:34",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·Sketch 分鏡草稿",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/gslide_PLOTIO2_HZ02_p1.png",
+              "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/gslide_PLOTIO2_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ02/v20260819-080732-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面構圖與分鏡稿要求的「極大遠景（EWS）」及「幾乎貼著海面」的低角度視角不符，目前的透視較高。",
+                "fix": "降低攝影機高度至接近水面水平線，並拉開廣角鏡頭以展現更宏大的空間感與深藍色海面的延伸。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面目前僅為一張靜態的藝術插畫，完全沒有出現分鏡稿要求的「滿版字幕層」、「關鍵字閃現堆疊」以及「2010→2026 快進」等動態視覺元素。",
+                "fix": "需要重新製作動畫或動態圖層，將指定的六個核心價值關鍵字以金光特效與粒子效果進行極速閃剪處理，並在頂部加入時間軸快進的文字動效。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前呈現的是一個帶有「三角形」形狀的抽象光影與地球背景，而非「百利好 Logo」。",
+                "fix": "重新繪製或修改素材，將中心變形（morph）後的視覺元素更換為正確的「百利好 Logo」，並確保邊緣有符合要求的金色光暈效果。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前是寫實風格的城市風景插畫，缺乏要求的「百利好 Logo」及「三行定版字卡」。",
+                "fix": "需重新製作或修改場景：加入品牌 Logo 置於中心，並在下方加入對應的三行文字（金融業務、立足香港 16 年、商譽先行，共創遠價值），同時將藝術風格調整為更符合廣告質感要求的視覺。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是帆船在城市海灘航行的寫實/動漫風格場景，而非太空背景下的地球變形特效。",
+                "fix": "重新生成或更換素材：需符合「推軌穿透」動態感、百利好 Logo 轉化為藍色地球、帶有新海誠風格雲層與金邊高光的太空冷藍色調場景。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面缺乏「從太空俯衝」及「穿過厚重雲層」的動態過程，目前僅為靜止的城市全景。",
+                "fix": "增加多個分鏡圖：第一幕為高空俯視雲海，第二幕為快速穿透雲霧的動態模糊感，第三幕才進入目前的城市特寫。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面與分鏡稿描述嚴重不符，目前僅為靜態城市夜景/黃昏插畫，完全沒有帆船、水花或「百利好 Plotio」標誌。",
+                "fix": "重新生成或更換素材：需包含一艘帶有特定 Logo 的白色帆船在海面上破浪前行，並呈現強逆光下的金色水沫與香港島天際線背景。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面內容與分鏡稿描述完全不符（目前是東方風格的街道，而非深圳金融中心摩天大樓）。",
+                "fix": "重新生成符合「現代都市、摩天大樓群、晨霧、玻璃幕牆反射」場景的視覺圖。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面內容與分鏡稿描述完全不符（目前是白天的雲端建築，而非重慶夜景）。",
+                "fix": "重新生成或更換素材：需呈現重慶洪崖洞、解放碑的夜景，包含暖黃色燈光、江面倒影及霓虹燈效果。"
+              },
+              {
+                "slide": 10,
+                "flag": "場景與內容完全不符（畫面為泰國風格的河流與寺廟，而非成都太古里及現代建築）。",
+                "fix": "重新生成符合「成都太古里」地標、包含現代玻璃建築與傳統元素並存的城市街景。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是兩個人在辦公室看電腦螢幕的近景。 ",
+                "fix": "請重新生成符合要求的場景：仰角上搖鏡頭拍攝台北 101 大樓穿過雲層，並加入夕陽星芒與金色耶穌光效果。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面與分鏡稿描述完全不符（目前是兩人的近景人像，而非泰國曼谷河岸的遠景俯瞰）。",
+                "fix": "重新生成符合要求的場景：採用高空俯瞰視角，呈現夕陽下閃耀的金色寺廟群、穿梭於水面留有金光尾波的長尾船，以及橘紅色的層雲背景。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前僅有兩個人對話，而非一群交易員圍繞多個螢幕討論。此外，人物手部比例及細節略顯模糊。",
+                "fix": "重新生成場景：需包含多名專業人士（25-45歲）在辦公室內圍繞多個大型電腦螢幕熱烈討論；確保手部結構正確，並加入窗外強烈逆光與空氣中閃爍的浮塵效果。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面與分鏡稿描述嚴重不符，目前呈現的是超現實的碎片式藝術風格（人物臉孔鑲嵌在破碎玻璃中），而非要求的「半身定鏡」及「辦公室虛化散景」。",
+                "fix": "重新生成畫面：要求 16 個獨立的、寫實風格的員工半身特寫，背景為模糊的現代辦公室環境。移除所有碎片效果與超現實視覺元素。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面與分鏡稿描述完全不符（目前是帆船在海浪中航行的風景畫，而非 6 位主管的訪談場景）。",
+                "fix": "請重新生成符合要求的內容：採用淺景深胸像，呈現 6 位專業形象的主管進行對話，並加入正確的旁白文字。"
+              },
+              {
+                "slide": 16,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是書本在雲端發光，而非多格拼合的全球團隊群像。",
+                "fix": "重新生成或更換素材：需呈現多個不同地區員工的縮影片段如碎片般匯聚成一個巨大的、充滿活力的全球團隊群像。"
+              },
+              {
+                "slide": 17,
+                "flag": "畫面與分鏡稿描述完全不符（目前是室內獎項展廳，而非海上帆船衝浪場景）。",
+                "fix": "重新繪製：將背景更換為大海，加入巨大的百利好帆船在逆光中駛來，並加入從右側翻湧而來的巨大海浪蓋過鏡頭的動態效果。"
+              },
+              {
+                "slide": 18,
+                "flag": "畫面內容與分鏡稿描述完全不符，圖中是乒乓球拍、賽車場景及雲朵，而非航海日誌。",
+                "fix": "重新生成符合要求的畫面：一本古樸的航海日誌在帆船甲板上自動翻頁並飄向藍天，每頁包含里程碑相片與手寫日期，伴隨暖光與光塵效果。"
+              },
+              {
+                "slide": 19,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是抽象的數據圖表與虛擬空間，而非「獎盃牆」及「媒體商標牆」。",
+                "fix": "重新繪製場景：背景需更深邃，並加入具體的金屬質感獎盃、清晰可辨識的媒體 Logo 牆，以及明顯的聚光燈特效。"
+              },
+              {
+                "slide": 20,
+                "flag": "畫面內容與分鏡稿描述完全不符（目前是心形書頁在雲端，而非乒乓球賽事或賽車場景）。",
+                "fix": "重新生成符合要求的畫面：包含強逆光下的乒乓球扣殺瞬間及澳門格蘭披治賽車過彎的動態煙霧與光軌。"
+              },
+              {
+                "slide": 21,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是航海帆船在海上，而非金融博覽會現場。",
+                "fix": "重新生成或更換素材：需呈現泰馬兩國金融博覽會場景、人頭攢動的展位、分析師與學員互動的講座畫面，並加入對應的大字特效。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-075953-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_15.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_16.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_17.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_18.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_19.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_20.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_21.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_22.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_23.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_24.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_25.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_26.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_27.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_28.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_29.jpg"
+            ],
+            "n": 29,
+            "ts": "2026-08-19T08:02:10",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·Sketch 分鏡草稿",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/gslide_PLOTIO2_HZ02_p1.png",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/gslide_PLOTIO2_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/deck.pdf"
+          },
+          {
+            "v": "20260819-075953-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_15.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_16.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_17.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_18.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_19.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_20.jpg",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/frame_21.jpg"
+            ],
+            "n": 21,
+            "ts": "2026-08-19T07:59:54",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·Sketch 分鏡草稿",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/gslide_PLOTIO2_HZ02_p1.png",
+              "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/gslide_PLOTIO2_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ02/v20260819-075953-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ02B": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260819-080503-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ02B/v20260819-080503-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080503-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080503-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080503-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080503-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080503-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080503-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080503-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080503-nblm-i2/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-08-19T08:05:04",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02B",
+            "cid": "hand-HZ02B",
+            "label": "手寫稿·全風格·Sketch 分鏡草稿（尾8格 22-29）",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080503-nblm-i2/gslide_PLOTIO2_HZ02B_p1.png",
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080503-nblm-i2/gslide_PLOTIO2_HZ02B_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ02B/v20260819-080503-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "場景與內容不符（畫面僅為抽象的科技風格背景，缺乏具體故事或角色動作）。",
+                "fix": "根據實際腳本需求，加入具體的場景元素、人物動作或產品展示。"
+              },
+              {
+                "slide": 4,
+                "flag": "場景與內容不符（畫面呈現的是網絡安全/數據保護概念，而非具體的劇情分鏡）。",
+                "fix": "請提供具體的分鏡描述文字，以便判斷視覺元素是否符合劇本要求。"
+              },
+              {
+                "slide": 5,
+                "flag": "人物面孔比例略顯不自然，尤其是眼部與鼻樑的銜接處過於平滑。",
+                "fix": "微調臉部結構細節，增加一點皮膚紋理以減少 AI 生成的過度平滑感。"
+              },
+              {
+                "slide": 8,
+                "flag": "場景中出現大量重複且比例不一的帆船，構圖過於雜亂，與通常廣告追求的視覺焦點模糊。",
+                "fix": "減少背景中的船隻數量，聚焦於前景或中景的 1-3 艘主要帆船，並確保每艘船的結構完整、比例一致。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-080115-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ02B/v20260819-080115-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080115-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080115-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080115-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080115-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080115-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080115-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080115-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080115-nblm-i1/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-08-19T08:01:16",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02B",
+            "cid": "hand-HZ02B",
+            "label": "手寫稿·全風格·Sketch 分鏡草稿（尾8格 22-29）",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080115-nblm-i1/gslide_PLOTIO2_HZ02B_p1.png",
+              "assets/gen/PLOTIO2_HZ02B/v20260819-080115-nblm-i1/gslide_PLOTIO2_HZ02B_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ02B/v20260819-080115-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ03": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260819-082527-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_15.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_16.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_17.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_18.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_19.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_20.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_21.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_22.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_23.jpg"
+            ],
+            "n": 23,
+            "ts": "2026-08-19T21:46:27",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·插畫",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/gslide_PLOTIO2_HZ03_p1.png",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/gslide_PLOTIO2_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 2,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前僅為一個帶有粒子特效的抽象圖形（類似 Logo），完全沒有出現要求的「滿版字幕」、「關鍵字堆疊」以及「海空藍漸層背景」。",
+                "fix": "重新製作分鏡圖：保留新海誠風格的海空藍漸層底色，並在畫面中心快速疊加金色發光字體（如「創造財富」、「創新視野」等），加入金屬質感與粒子飄散效果。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是城市建築全景圖而非「百利好 Logo」的凝聚變形特效。",
+                "fix": "請重新生成或更換素材，確保畫面呈現金色光粒匯聚成特定品牌 Logo 的動態轉場效果。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面與分鏡稿描述嚴重不符，目前是動態帆船衝浪場景而非靜謐海面。",
+                "fix": "移除帆船及濺起的水花，將背景更換為平靜如鏡的海面，並加入要求的三行定版字卡。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面與分鏡稿描述嚴重不符（目前為靜態城市建築，無地球、無變形特效及速度感）。",
+                "fix": "需重新生成或製作動畫：加入推軌穿透動效，將 Logo 轉化為帶有新海誠風格雲層的藍色地球，並加入太空冷藍調與金邊高線光影。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面與分鏡稿描述嚴重不符，目前僅為單一建築物仰視圖（Low-angle shot），而非要求的「俯衝穿雲」及「維多利亞港全景」。",
+                "fix": "重新生成畫面：採用第一人稱視角或航拍視角，呈現從高空穿過厚重雲層、破霧而出後展現整個香港城市天際線與維多利亞港海面的壯闊全景。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面與分鏡稿描述完全不符，目前是室內辦公室場景而非維多利亞港的帆船航行。",
+                "fix": "請重新繪製：畫面應為一艘印有「百利好 Plotio」標誌的白色帆船在維多利亞港破浪前行，採用側追鏡頭，並呈現強逆光下的藍金對比與水花金色光粒效果。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面與分鏡稿描述完全不符（目前是人物近景，而非航拍/穿透城市建築的動態場景）。",
+                "fix": "需重新生成或更換素材：需呈現從海上金色尾浪拉升至深圳金融中心摩天大樓群、帶有晨霧與金黃色邊框光影的廣角空拍鏡頭。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面與分鏡稿描述完全不符，目前是白天的海浪與帆船場景，而非重慶夜景。",
+                "fix": "重新生成或更換素材，需符合「重慶洪崖洞、解放碑霓虹燈、江面流光溢彩」的城市夜景要求。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面與分鏡稿描述完全不符（場景為虛擬魔法書，而非成都太古里街景）。",
+                "fix": "重新生成符合要求的實景拍攝風格：包含成都太古里建築、人流、暖色燈籠及金色光塵的黃昏街景。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是運動員在暗色背景下揮動器材的特寫，而非台北 101 與夕陽雲層。",
+                "fix": "重新生成符合要求的場景：仰角上搖鏡頭拍攝台北 101，加入流動雲層、塔尖星芒及金色耶穌光。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是心形裝飾與漂浮照片的抽象意象。",
+                "fix": "重新生成符合要求的場景：高空俯瞰泰國曼谷河岸、金色寺廟群、長尾船及橘紅色落日背景。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面與分鏡稿描述完全不符（提供的是一個破碎科技風格的地球 3D 渲染圖，而非香港辦公室實景及交易員團隊）。",
+                "fix": "請重新製作符合要求的場景：在香港辦公室內拍攝一群專業人士圍繞電腦螢幕討論，並加入自然光與浮塵效果。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面與分鏡稿描述完全不符（目前是風景圖，而非 16 位員工的快速切換定鏡）。",
+                "fix": "請更換為符合要求的 16 個不同地區員工半身定鏡拼接或快剪序列。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是大量帆船在海上的風景圖。",
+                "fix": "請重新生成或更換素材，需符合「6位專業人士在窗邊自然光下進行訪談」的胸像景深場景。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-082527-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/frame_15.jpg"
+            ],
+            "n": 15,
+            "ts": "2026-08-19T08:25:28",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·插畫",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/gslide_PLOTIO2_HZ03_p1.png",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/gslide_PLOTIO2_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ03/v20260819-082527-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 2,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前僅有一張帶有金光粒子效果的抽象圖形（類似 Logo），完全沒有出現要求的「滿版字幕」、「關鍵字堆疊」以及「新海誠風格的海空背景」。",
+                "fix": "重新製作分鏡圖：需包含藍色漸層大海/天空背景，並在畫面中心以極快閃現的動態效果呈現「創造財富」、「創新視野」等具體中文字體。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是城市建築全景圖而非「百利好 Logo」的凝聚變形特效。",
+                "fix": "請重新生成或更換素材，將場景替換為符合要求的金色光粒聚攏並轉化為特定品牌 Logo 的動態視覺效果。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前是動態帆船在海面上破浪，而非靜止的 Logo 與平靜如鏡的海面。",
+                "fix": "需重新生成或修改場景：移除帆船，將背景改為極簡的、倒影清晰的平靜海面，並在畫面中央加入「百利好」Logo 及三行指定的定版字卡。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前僅為靜態的城市建築群景，缺乏「推軌穿透」、「Logo 變形為地球」及「太空/大氣層」等關鍵視覺元素。",
+                "fix": "重新生成或修改場景，需包含高速移動的動態感、百利好 Logo 轉化為帶有新海誠風格雲層與晨昏線的藍色地球，並加入太空冷藍調及金邊高光特效。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面與分鏡稿描述嚴重不符，目前僅為單一建築物仰視圖，並無「俯衝穿雲」的動態感及維多利亞港全景。",
+                "fix": "重新生成或修改場景：需採用廣角航拍視角，呈現從高空穿過雲層後出現整個維多利亞港與城市天際線的宏大畫面。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是室內辦公室場景而非維多利亞港帆船航行。",
+                "fix": "重新生成符合要求的畫面：一艘印有「百利好 Plotio」標誌的白色帆船在維多利亞港破浪前行，採用側追鏡頭，呈現強逆光下的藍金對比與金色水花。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面與分鏡稿描述完全不符（目前是人物近景，而非航拍/拉升的城市建築場景）。",
+                "fix": "需重新生成或更換素材，將畫面替換為晨霧中的深圳金融中心摩天大樓群、帶有金邊光影及玻璃反光的廣角空鏡。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面與分鏡稿描述完全不符，目前是白天的海浪與帆船，而非重慶夜景。",
+                "fix": "重新生成或更換素材，需呈現包含洪崖洞、解放碑等地標的璀璨夜色及江面流光。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面與分鏡稿描述完全不符（場景為虛擬魔法書，而非成都太古里街景）。",
+                "fix": "重新生成符合要求的實景拍攝風格：包含成都太古里建築、人流、暖色燈籠及金色光塵的黃昏街景。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是運動員在夜色下揮動器材的特寫，而非台北 101 與夕陽雲層的遠景。",
+                "fix": "重新生成符合要求的場景：採用仰角上搖鏡頭，拍攝台北 101 穿過流動雲層、帶有金色耶穌光與星芒效果的壯麗夕陽全景。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是心形晶體與漂浮照片的超現實意象，而非泰國曼谷河岸寺廟與長尾船。",
+                "fix": "重新生成符合要求的場景：高空俯瞰角度、金色的泰國寺廟群、河流中的長尾船以及橘紅色的熱帶落日天空。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面與分鏡稿描述完全不符，目前是科幻風格的地球破裂特效圖，而非辦公室實景。",
+                "fix": "請重新生成或更換素材：需拍攝/製作一個在香港辦公室內、有專業人士圍繞電腦螢幕討論、帶有自然光與塵埃效果的環繞運鏡畫面。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面與分鏡稿描述完全不符（提供的是一張自然風景/雲海光影圖，而非 16 位員工的快速剪接特寫）。",
+                "fix": "請更換為符合要求的 16 人快剪分鏡圖：包含不同地區、多元背景的百利好員工半身定鏡，並確保場景有虛化散景與專業商務氛圍。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面與分鏡稿描述完全不符（提供的是一幅大量帆船在海上航行的藝術圖，而非 6 位主管的訪談胸像）。",
+                "fix": "請重新生成符合要求的場景：包含 6 位專業人士、淺景深胸像、窗戶自然光及溫暖色調的訪談畫面。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-082015-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_15.jpg"
+            ],
+            "n": 15,
+            "ts": "2026-08-19T08:24:07",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·插畫",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/gslide_PLOTIO2_HZ03_p1.png",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/gslide_PLOTIO2_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/deck.pdf"
+          },
+          {
+            "v": "20260819-082015-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/frame_15.jpg"
+            ],
+            "n": 15,
+            "ts": "2026-08-19T08:20:16",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·插畫",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/gslide_PLOTIO2_HZ03_p1.png",
+              "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/gslide_PLOTIO2_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ03/v20260819-082015-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ03B": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260819-082559-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ03B/v20260819-082559-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082559-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082559-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082559-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082559-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082559-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082559-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082559-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082559-nblm-i2/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-08-19T08:26:00",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03B",
+            "cid": "hand-HZ03B",
+            "label": "手寫稿·全風格·插畫（尾8格 22-29）",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082559-nblm-i2/gslide_PLOTIO2_HZ03B_p1.png",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082559-nblm-i2/gslide_PLOTIO2_HZ03B_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ03B/v20260819-082559-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "場景與內容過於抽象，缺乏具體視覺元素（如人物、產品或明確的動作）。",
+                "fix": "增加具體的產品展示或角色互動，並根據旁白內容加入對應的視覺重點。"
+              },
+              {
+                "slide": 4,
+                "flag": "場景與「分鏡稿描述」不符（因提供內容中並無文字描述，僅有圖片）。",
+                "fix": "請提供具體的文字分鏡描述，以便判斷畫面是否符合預期。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面中帆上的 Logo 設計過於複雜且不對稱，且背景光暈與水花特效顯得過於寫實（Photorealistic），與一般動漫/插畫風格略有出入。",
+                "fix": "簡化帆上 logo 的線條設計，並統一整幅畫面的渲染質感，減少過度寫生的光影雜訊。"
+              },
+              {
+                "slide": 8,
+                "flag": "場景與內容嚴重不符（畫面為幻想風格的海洋帆船與光影特效，而非具體的劇情分鏡）。",
+                "fix": "重新繪製符合劇本要求的第 8 幕特定場景。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-082239-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-08-19T08:24:08",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03B",
+            "cid": "hand-HZ03B",
+            "label": "手寫稿·全風格·插畫（尾8格 22-29）",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/gslide_PLOTIO2_HZ03B_p1.png",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/gslide_PLOTIO2_HZ03B_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/deck.pdf"
+          },
+          {
+            "v": "20260819-082239-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-08-19T08:22:40",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03B",
+            "cid": "hand-HZ03B",
+            "label": "手寫稿·全風格·插畫（尾8格 22-29）",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/gslide_PLOTIO2_HZ03B_p1.png",
+              "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/gslide_PLOTIO2_HZ03B_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ03B/v20260819-082239-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ05B": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260819-084114-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-08-19T08:44:09",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ05B",
+            "cid": "hand-HZ05B",
+            "label": "手寫稿·全風格·宮崎駿風（尾8格 22-29）",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/gslide_PLOTIO2_HZ05B_p1.png",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/gslide_PLOTIO2_HZ05B_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面內容與「分鏡稿描述」完全不符，因為你提供的要求中並沒有任何文字描述。",
+                "fix": "請提供具體的場景、動作或氛圍描述，以便我判斷視覺呈現是否符合你的創意意圖。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面中人物面孔比例略顯不對稱，且背景光暈與粒子效果過於雜亂，容易分散觀眾對主角表情的專注度。",
+                "fix": "微調臉部五官對稱性，並簡化背景特效，讓視覺重心集中在角色眼神與微笑上。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面中出現多個重複且相似的帆船，構圖過於擁擠。",
+                "fix": "將背景中的兩艘帆船移除或移動到更遠處，聚焦於中心主體，以營造更有層次感的空間感。"
+              },
+              {
+                "slide": 8,
+                "flag": "場景與內容嚴重離題（出現明顯的品牌 Logo 且構圖過於像插畫而非分鏡）。",
+                "fix": "移除畫面中央巨大的綠色 logo，並將背景修改為符合劇情要求的寫實或動漫風格海景。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-084114-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-08-19T08:41:16",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ05B",
+            "cid": "hand-HZ05B",
+            "label": "手寫稿·全風格·宮崎駿風（尾8格 22-29）",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/gslide_PLOTIO2_HZ05B_p1.png",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/gslide_PLOTIO2_HZ05B_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ05B/v20260819-084114-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面內容與『分鏡稿描述』完全不符，因為你提供的要求中並沒有任何文字描述。",
+                "fix": "請提供具體的場景描述或腳本內容，以便我判斷視覺效果是否符合預期。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面中人物面孔雖然清晰，但背景的發光特效與粒子過於雜亂且缺乏空間層次感。",
+                "fix": "簡化背景的光效處理，增加場景深度，並確保視覺重心集中在角色身上。"
+              },
+              {
+                "slide": 7,
+                "flag": "場景與內容不符（分鏡稿描述缺失，但畫面呈現極具藝術感的帆船航行於海面上的意境）。",
+                "fix": "由於缺乏文字描述對比，建議確認此視覺風格是否符合品牌調性。"
+              },
+              {
+                "slide": 8,
+                "flag": "場景與品牌 Logo 融合過度，且背景中的帆船數量過多、排列混亂，導致視覺焦點分散。",
+                "fix": "減少帆船數量並整齊排列在遠景，強化中心 Sailpoint Logo 與落日光芒的視覺聯動。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-083859-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ05B/v20260819-083859-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ05B/v20260819-083859-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-083859-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-083859-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-083859-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-083859-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-083859-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-083859-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-083859-nblm-i1/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-08-19T08:39:00",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ05B",
+            "cid": "hand-HZ05B",
+            "label": "手寫稿·全風格·宮崎駿風（尾8格 22-29）",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ05B/v20260819-083859-nblm-i1/gslide_PLOTIO2_HZ05B_p1.png",
+              "assets/gen/PLOTIO2_HZ05B/v20260819-083859-nblm-i1/gslide_PLOTIO2_HZ05B_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ05B/v20260819-083859-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ05": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260819-084729-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_15.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_16.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_17.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_18.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_19.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_20.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_21.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_22.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_23.jpg"
+            ],
+            "n": 23,
+            "ts": "2026-08-19T21:46:28",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ05",
+            "cid": "hand-HZ05",
+            "label": "手寫稿·全風格·宮崎駿風",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/gslide_PLOTIO2_HZ05_p1.png",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/gslide_PLOTIO2_HZ05_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面與分鏡稿描述不符，目前圖像呈現的是極高飽和度的插畫風格而非寫實攝影感，且光暈效果過於誇張（如巨大的圓形環狀光暈），與「微小波峰折射」的細節要求有落差。",
+                "fix": "調整視覺風格為更具電影感的寫實渲染，去除明顯的人工合成感大圓環，將強逆光聚焦在海面細碎閃爍的點狀反光上，並優化雲層與天空的色彩過渡。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前僅為一個帶有光效的抽象幾何圖形（類似菱形/方塊組合），並無任何文字資訊。",
+                "fix": "請重新生成或修改素材，將「創造財富」、「創新視野」等關鍵字以金光特效疊加於藍色漸層背景中，並確保畫面符合新海誠風格的視覺質感。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是城市風景插畫而非 Logo 變形動畫。",
+                "fix": "需重新製作或更換素材，將場景替換為符合要求的「金色光粒凝聚成百利好 Logo」的動態特效畫面。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是動態帆船衝浪場景而非靜謐海面。",
+                "fix": "重新繪製：移除帆船，將背景更換為平靜如鏡的海面（含倒影），並在畫面中央加入「百利好」Logo 及三行指定的定版字卡。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是充滿暖色調的城市與海港風景，而非太空、地球或百利好 Logo。",
+                "fix": "重新生成符合要求的場景：一個快速推軌穿透的動態鏡頭，從近處的百利好 Logo 迅速拉遠並變形為帶有新海誠風格雲層和金邊高光的藍色地球。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面內容與分鏡稿要求的場景完全不符，目前是單一建築在雲端發光，而非「香港中港城與維多利亞港」的城市全景。",
+                "fix": "重新生成或修改素材，確保能呈現出明顯的香港地標（如 IFC、ICC）、維多利亞港海面及密集的摩天大樓群，並加入穿雲後的廣角城市全景。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是三個人在辦公室看螢幕的插畫，而非維多利亞港帆船的動態場景。",
+                "fix": "重新生成符合要求的畫面：一艘印有「百利好 Plotio」標誌的白色帆船在維多利亞港破浪前行，採用側追鏡頭，呈現強逆光下的藍金對比與金色水花。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是動漫風格的群像拼貼圖而非都市晨霧、帆船尾浪或摩天大樓。",
+                "fix": "重新生成符合要求的實景/寫實風格場景：包含帆船金色尾浪、拉升穿透過城市建築（深圳金融中心）的動態感，並加入清晨薄霧與冷藍暖金交織的光影。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是白天的海上帆船場景而非重慶夜景。",
+                "fix": "重新生成或更換素材：需呈現重慶洪崖洞及解放碑的城市夜景，包含藍色基調、暖黃燈火倒影及江面流光。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是室內獎盃陳列室而非成都太古里街景。",
+                "fix": "重新生成符合要求的場景：包含成都太古里特色建築、人流穿梭的巷弄、暖色燈籠與現代玻璃建築結合，並加入金色光塵與淺景深效果。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面與分鏡稿描述完全不符，提供的是科技感數據圖表（Data Visualization）而非台北 101 與夕陽雲層場景。",
+                "fix": "重新生成符合要求的實景攝影風格畫面：仰角拍攝台北 101 大樓，結合流動雲層、夕陽星芒及金色耶穌光效果。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面與分鏡稿描述完全不符，目前是抽象的科技感地球/星球圖，而非泰國曼谷寺廟、長尾船及落日風景。",
+                "fix": "重新生成符合要求的場景：高空俯瞰曼谷河岸，包含金色寺廟群、水面上的長尾船與橘紅色落日背景。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面與分鏡稿描述完全不符，提供的圖片是一張抽象的雲海與陽光穿透雲層的海景圖，而非要求的香港辦公室實景及交易員團隊。",
+                "fix": "請更換為符合描述的實景拍攝或高品質 3D 渲染畫面：包含專業人士在辦公室討論、多個電腦螢幕以及明顯的逆光塵埃效果。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是三艘帆船在海上的風景圖。",
+                "fix": "請更換為 16 位不同地區員工的半身定鏡快速剪接畫面，並確保背景為虛化辦公室散景。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面與分鏡稿描述完全不符，目前是航海主題的插畫而非人物訪談場景。",
+                "fix": "請重新生成符合要求的內容：6 位專業人士在有窗戶自然光的室內進行胸像對話，並移除所有帆船、大海及超現實光暈元素。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-084729-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/frame_15.jpg"
+            ],
+            "n": 15,
+            "ts": "2026-08-19T08:47:30",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ05",
+            "cid": "hand-HZ05",
+            "label": "手寫稿·全風格·宮崎駿風",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/gslide_PLOTIO2_HZ05_p1.png",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/gslide_PLOTIO2_HZ05_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ05/v20260819-084729-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面與分鏡稿描述不符，海面並非「平靜如鏡」，而是有明顯波浪且光斑分布過於規則（像粒子特效），且缺乏要求的「極緩慢滑行」動態感。",
+                "fix": "重新渲染海面質感，去除人工點狀光斑，改為自然折射的粼粼波光；並強化雲層與地平線交界處的漸變過渡。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面中出現了明顯的文字/符號扭曲，且並非要求的「關鍵字」內容。",
+                "fix": "請重新生成或修改素材，確保核心價值關鍵字（如『創造財富』等）清晰可辨，並移除中間模糊不清的菱形圖形與雜亂的線條。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是城市風景插畫而非 Logo 變形動畫。",
+                "fix": "需重新製作或更換素材，將場景替換為符合要求的「金色光粒凝聚成百利好 Logo」的動態特效畫面。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前是動態帆船衝浪場景而非靜謐倒影。",
+                "fix": "需重新繪製：移除帆船，將海面處理為平靜如鏡的倒影，並在畫面中央加入「百利好」Logo 及三行指定的定版字卡。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面與分鏡稿描述完全不符，目前是靜態的城市/港口風景圖，而非動態穿透地球的特效場景。",
+                "fix": "重新生成符合要求的 3D 動態感畫面：包含「藍色地球、新海誠風格雲層、金邊大氣層」以及「百利好 Logo 變形轉化」的視覺元素。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前呈現的是一座孤立的塔狀建築在雲端之上，而非「香港中港城與維多利亞港」的城市景觀。",
+                "fix": "重新生成或修改場景，將中心建築替換為具有辨識度的香港摩天大樓群與維多利亞港海景，並確保穿雲後的視覺是廣闊的城市全景而非單一建築。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是三個人在辦公室看螢幕的插畫。",
+                "fix": "重新生成符合要求的場景：一艘印有「百利好 Plotio」標誌的白色帆船在維多利亞港破浪前行，採用側追鏡頭，並加入強逆光下的金色水花與香港島天際線背景。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面內容與分鏡稿描述完全不符，原圖為動漫風格的群像拼貼（多個人物頭像在發光中心旋轉），而非要求的「深圳金融中心」城市景觀。",
+                "fix": "重新生成或更換素材，需呈現晨霧中的摩天大樓、金邊輪廓及玻璃幕牆反射光影的寫實/藝術化都市場景。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是白天大海上的帆船。",
+                "fix": "重新生成或更換素材，需符合「重慶夜景、洪崖洞燈火、解放碑霓虹」及「江面流光溢彩」的場景要求。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是室內獎盃陳列室而非成都太古里街景。",
+                "fix": "重新生成符合要求的場景：拍攝成都太古里巷弄，結合傳統建築與現代玻璃建築、暖色燈籠及金色光塵的黃昏街景。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是抽象的數據圖表與科技感光影，而非台北 101 大樓及夕陽雲層場景。",
+                "fix": "重新生成符合要求的實景建築攝影風格：仰拍角度、包含台北 101 塔身、流動雲層、以及帶有星芒與金色耶穌光的夕陽背景。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是抽象的科技/地球風格藝術圖，而非泰國曼谷河岸寺廟與長尾船。",
+                "fix": "重新生成符合要求的場景：高空俯瞰角度、包含金色寺廟群、河流中的長尾船以及橘紅色的熱帶落日背景。"
+              },
+              {
+                "slide": 13,
+                "flag": "提供的圖片與分鏡稿描述完全不符，這是一張抽象的雲海與陽光穿透雲層的海景插畫，而非要求的香港辦公室實景。 ",
+                "fix": "請更換為符合要求內容的實景拍攝或寫實風格渲染圖：包含專業人士在辦公室討論、多個電腦螢幕、以及明顯的窗外逆光與空氣塵埃效果。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面與分鏡稿描述完全不符（目前是三艘帆船在海上的插畫，而非 16 位員工的半身定鏡）。",
+                "fix": "請更換為符合要求的實拍或寫實風格素材：包含 16 個不同地區、多元背景的員工近景/半身特寫，並確保光影與場景符合描述。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面與分鏡稿描述完全不符，目前是壯麗的帆船航行於落日海景的插畫。",
+                "fix": "請重新生成或更換素材：需為 6 位穿著西裝、在有窗戶自然光的室內進行訪談的人像胸像。要求淺景深、暖色調，並移除所有帆船與海洋元素。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-084231-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_15.jpg"
+            ],
+            "n": 15,
+            "ts": "2026-08-19T08:44:08",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ05",
+            "cid": "hand-HZ05",
+            "label": "手寫稿·全風格·宮崎駿風",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/gslide_PLOTIO2_HZ05_p1.png",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/gslide_PLOTIO2_HZ05_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/deck.pdf"
+          },
+          {
+            "v": "20260819-084231-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/frame_15.jpg"
+            ],
+            "n": 15,
+            "ts": "2026-08-19T08:42:33",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ05",
+            "cid": "hand-HZ05",
+            "label": "手寫稿·全風格·宮崎駿風",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/gslide_PLOTIO2_HZ05_p1.png",
+              "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/gslide_PLOTIO2_HZ05_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ05/v20260819-084231-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ06": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260819-090042-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_15.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_16.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_17.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_18.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_19.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_20.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_21.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_22.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_23.jpg"
+            ],
+            "n": 23,
+            "ts": "2026-08-19T21:46:29",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ06",
+            "cid": "hand-HZ06",
+            "label": "手寫稿·全風格·Paper-craft 紙藝",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/gslide_PLOTIO2_HZ06_p1.png",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/gslide_PLOTIO2_HZ06_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 2,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前僅為一個靜態的品牌 Logo 視覺圖，完全沒有出現要求的「滿版字幕層」、「快閃關鍵字」以及「2010→2026 快進」等動態元素。",
+                "fix": "需要重新製作動畫或多張分鏡圖，明確呈現文字快速堆疊、金光粒子效果及時間軸跳轉的視覺動態。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面中出現了明顯的 AI 噪點與構圖混亂，且背景建築物比例不對稱，最嚴重的是「百利好 Logo」尚未成形，僅有散亂的金色粒子。",
+                "fix": "重新生成或修飾場景，確保金屬質感光粒在中心匯聚成清晰的品牌 Logo，並修正背景建築物的透視與細節，去除雜訊。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是摩天大樓建築群而非海面倒影。",
+                "fix": "重新生成場景：將城市建築更換為平靜的藍色海面，加入一束金色晨光斜射入水，並在畫面中央加入「百利好」Logo 及三行指定的定版字卡。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是實景風格的重慶洪崖洞夜景，而非太空中的地球與品牌 Logo 變形過程。",
+                "fix": "重新生成符合要求的 3D 動態視覺：需包含「藍色地球、流動雲層、金邊高光」以及「Logo 轉化為地球」的穿透感特效。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面內容與分鏡稿描述完全不符。分鏡稿要求「從太空俯衝穿雲進入維多利亞港」，但現有圖片僅為靜止的建築頂端仰視圖。",
+                "fix": "重新生成或更換素材，需呈現動態感強烈的「穿雲」瞬間及清晰的香港維多利亞港城市全景。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面內容與分鏡稿描述完全不符（目前是辦公室場景，而非維多利亞港帆船）。",
+                "fix": "重新生成符合要求的場景：一艘印有「百利好 Plotio」標誌的白色帆船在維多利亞港破浪前行，伴隨強逆光下的金色水花與香港島天際線背景。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是兩個人對話的近景特寫，而非要求的「帆船尾浪、拉升穿透、深圳金融中心」等宏大場景。",
+                "fix": "重新生成符合分鏡稿要求的空鏡/遠景：需包含晨霧中的摩天大樓群、金色的邊緣光影及玻璃幕牆反射，並體現出從海上到城市的動態過度。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是「全球精英」的拼貼圖而非重慶夜景。",
+                "fix": "重新生成或替換為包含洪崖洞、解放碑及江面流光溢彩效果的重慶夜景橫移鏡頭。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是帆船在海浪中航行的意象。",
+                "fix": "重新生成符合要求的成都太古里街景：包含人流、古建與現代建築並置的巷弄，並加入黃昏暖調及金色光塵效果。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是書本、獎盃及照片的靜態插畫，而非台北 101 與夕陽雲層的實景空拍。",
+                "fix": "重新生成符合要求的場景：仰角拍攝台北 101 大樓穿透流動雲層，加入夕陽星芒與金色光柱（耶穌光）效果。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面與分鏡稿描述完全不符，目前是「心形拼貼圖」而非「曼谷寺廟與長尾船的航拍空景」。",
+                "fix": "重新生成符合要求的場景：高空俯瞰泰國曼谷河岸、金色寺廟群在夕陽下閃耀、有長尾船劃過水面並產生金光，色調為暖橘色。"
+              },
+              {
+                "slide": 13,
+                "flag": "提供的圖片是一張設計概念圖（Blueprint Panel），而非實際的影片分鏡實景或 3D 渲染畫面。",
+                "fix": "請提供實際拍攝的場景照片或符合描述要求的 3D 動態預覽圖，而非這張包含「Visual Engineering Matrix」文字的設計草圖。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前呈現的是一張「雲層中透出陽光」的意境插圖，而非 16 位員工的快速剪接定鏡。",
+                "fix": "請更換為符合要求的實拍或寫實風格素材：包含 16 個不同地區、多元背景的員工半身特寫，並確保每人眼神自信且帶有光影效果。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面與分鏡稿描述完全不符（目前是大量帆船在海上的意象圖，而非 6 位主管的胸像訪談場景）。",
+                "fix": "重新生成符合要求的實拍風格人像：6 位專業外貌的主管在有自然光窗邊進行對話，並加入正確的旁白字幕。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-090042-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_15.jpg"
+            ],
+            "n": 15,
+            "ts": "2026-08-19T09:04:17",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ06",
+            "cid": "hand-HZ06",
+            "label": "手寫稿·全風格·Paper-craft 紙藝",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/gslide_PLOTIO2_HZ06_p1.png",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/gslide_PLOTIO2_HZ06_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 2,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前僅為一個靜態的 Logo 視覺設計圖，完全沒有出現要求的「滿版字幕層」、「極快閃剪」以及「2010→2026 快進」等動態元素。",
+                "fix": "需重新製作動畫或多幀分鏡，將核心價值關鍵字以金光特效與粒子效果進行快速切換堆疊，並加入時間軸的跳轉視覺。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面中出現了明顯的 AI 噪點與構圖混亂，且背景建築物細節模糊，未能展現出「凝聚變形」時的高級質感。",
+                "fix": "重新生成 Masterframe，要求去除背景雜訊，強化帆船與 Logo 組成過程中的光影對比，並確保遠處城市景觀的線條清晰。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面與分鏡稿描述完全不符，目前是摩天大樓建築群而非海面倒影。",
+                "fix": "重新生成場景：將城市建築更換為平靜的藍色海面，加入一束金色晨光斜射入水，並在畫面中央加入「百利好」Logo 及三行指定的定版字卡。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面內容與分鏡稿描述完全不符。目前是「重慶洪崖洞」的夜景實景，而非要求的「太空、地球、百利好 Logo 變形及速度感穿透」。",
+                "fix": "重新繪製或更換素材：需呈現宇宙空間中帶有新海誠風格雲層的藍色地球，並加入動態模糊與光暈效果以體現高速移動。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面與分鏡稿描述嚴重不符，目前是靜態的建築特寫而非動態穿雲俯衝，且場景為台北101而非維多利亞港。",
+                "fix": "重新生成符合「從太空俯衝穿過雲層」動態感的廣角鏡頭，並將背景更換為香港中港城與維多利亞港的晨光實景。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面內容與分鏡稿描述完全不符（目前是辦公室場景，而非維多利亞港帆船）。",
+                "fix": "重新生成符合要求的畫面：一艘印有「百利好 Plotio」標誌的白色帆船在維多利亞港破浪前行，伴隨強逆光下的金色水花與香港島天際線背景。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面與分鏡稿描述完全不符，目前是兩個人對話的近景特寫，而非要求的「帆船尾浪、拉升穿透、深圳金融中心」等宏大場景。",
+                "fix": "重新生成符合分鏡稿要求的廣角遠景：包含海上帆船金色尾浪、快速拉升過渡到霧氣繚繞的深圳金融區摩天大樓群，並加入冷藍與暖金交織的光影。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是「全球精英」的拼貼圖而非重慶夜景。",
+                "fix": "重新生成或替換為包含洪崖洞、解放碑及江面流光溢彩效果的重慶夜景橫移鏡頭。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面內容與分鏡稿描述完全不符，原圖為一艘在巨浪中航行的帆船（PLUTO），而非成都太古里街景。",
+                "fix": "重新生成符合要求的場景：穿梭於成都太古里巷弄、包含飛簷古建與現代建築對比、有暖色燈籠及金色光塵的推近鏡頭。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是書本、獎盃及照片的靜態插畫。",
+                "fix": "重新生成符合要求的實景攝影風格：仰角拍攝台北 101 大樓穿透雲層，並加入夕陽金光與耶穌光效果。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是「心形拼貼圖」而非「曼谷寺廟與長尾船的航拍景觀」。",
+                "fix": "重新生成符合要求的場景：高空俯瞰泰國曼谷河岸、金色寺廟群在夕陽下閃耀、有長尾船劃過水面並產生金光，色調需為暖橘色。"
+              },
+              {
+                "slide": 13,
+                "flag": "提供的圖片並非要求的「香港辦公室實景」與「交易員團隊」分鏡圖，而是一張包含產品概念圖（地球與盾牌）及設計流程說明（Visual Engineering Matrix）的平面設計稿。",
+                "fix": "請提供正確的第 13 幕分鏡圖，內容應包含描述中提到的辦公室場景、人物互動及光影效果。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是「雲層中透出的陽光」意象圖而非 16 位員工的快剪定鏡。",
+                "fix": "請更換為符合要求的 16 人快速切換（Fast Cut）系列人像特寫畫面。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面與分鏡稿描述完全不符（目前是大量帆船在海上的意象圖，而非 6 位主管的訪談胸像）。",
+                "fix": "更換為符合要求的實拍或高品質渲染素材：6 位專業人士在有自然光窗戶背景下的對話場景。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-090042-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/frame_15.jpg"
+            ],
+            "n": 15,
+            "ts": "2026-08-19T09:00:42",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ06",
+            "cid": "hand-HZ06",
+            "label": "手寫稿·全風格·Paper-craft 紙藝",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/gslide_PLOTIO2_HZ06_p1.png",
+              "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/gslide_PLOTIO2_HZ06_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ06/v20260819-090042-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 2,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前僅為一個靜態的 Logo 視覺設計圖，完全沒有出現要求的「滿版字幕層」、「極快閃剪」以及「2010→2026 快進」等動態元素。",
+                "fix": "需重新製作動畫或多幀分鏡，將核心價值關鍵字以金光特效與粒子效果進行快速切換堆疊，並加入時間軸的跳轉視覺。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面中出現了明顯的 AI 噪點與構圖混亂，且背景建築物細節模糊，未能展現出「凝聚變形」時的高級質感。",
+                "fix": "重新生成 Masterframe，要求去除背景雜訊，強化帆船與 Logo 組成過程中的光影對比，並確保遠處城市景觀的線條清晰。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面與分鏡稿描述完全不符，目前是摩天大樓建築群而非海面倒影。",
+                "fix": "重新生成場景：將城市建築更換為平靜的藍色海面，加入一束金色晨光斜射入水，並在畫面中央加入「百利好」Logo 及三行指定的定版字卡。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面內容與分鏡稿描述完全不符。目前是「重慶洪崖洞」的夜景實景，而非要求的「太空、地球、百利好 Logo 變形及速度感穿透」。",
+                "fix": "重新繪製或更換素材：需呈現宇宙空間中帶有新海誠風格雲層的藍色地球，並加入動態模糊與光暈效果以體現高速移動。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面與分鏡稿描述嚴重不符，目前是靜態的建築特寫而非動態穿雲俯衝，且場景為台北101而非維多利亞港。",
+                "fix": "重新生成符合「從太空俯衝穿過雲層」動態感的廣角鏡頭，並將背景更換為香港中港城與維多利亞港的晨光實景。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面內容與分鏡稿描述完全不符（目前是辦公室場景，而非維多利亞港帆船）。",
+                "fix": "重新生成符合要求的畫面：一艘印有「百利好 Plotio」標誌的白色帆船在維多利亞港破浪前行，伴隨強逆光下的金色水花與香港島天際線背景。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面與分鏡稿描述完全不符，目前是兩個人對話的近景特寫，而非要求的「帆船尾浪、拉升穿透、深圳金融中心」等宏大場景。",
+                "fix": "重新生成符合分鏡稿要求的廣角遠景：包含海上帆船金色尾浪、快速拉升過渡到霧氣繚繞的深圳金融區摩天大樓群，並加入冷藍與暖金交織的光影。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是「全球精英」的拼貼圖而非重慶夜景。",
+                "fix": "重新生成或替換為包含洪崖洞、解放碑及江面流光溢彩效果的重慶夜景橫移鏡頭。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面內容與分鏡稿描述完全不符，原圖為一艘在巨浪中航行的帆船（PLUTO），而非成都太古里街景。",
+                "fix": "重新生成符合要求的場景：穿梭於成都太古里巷弄、包含飛簷古建與現代建築對比、有暖色燈籠及金色光塵的推近鏡頭。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是書本、獎盃及照片的靜態插畫。",
+                "fix": "重新生成符合要求的實景攝影風格：仰角拍攝台北 101 大樓穿透雲層，並加入夕陽金光與耶穌光效果。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是「心形拼貼圖」而非「曼谷寺廟與長尾船的航拍景觀」。",
+                "fix": "重新生成符合要求的場景：高空俯瞰泰國曼谷河岸、金色寺廟群在夕陽下閃耀、有長尾船劃過水面並產生金光，色調需為暖橘色。"
+              },
+              {
+                "slide": 13,
+                "flag": "提供的圖片並非要求的「香港辦公室實景」與「交易員團隊」分鏡圖，而是一張包含產品概念圖（地球與盾牌）及設計流程說明（Visual Engineering Matrix）的平面設計稿。",
+                "fix": "請提供正確的第 13 幕分鏡圖，內容應包含描述中提到的辦公室場景、人物互動及光影效果。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是「雲層中透出的陽光」意象圖而非 16 位員工的快剪定鏡。",
+                "fix": "請更換為符合要求的 16 人快速切換（Fast Cut）系列人像特寫畫面。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面與分鏡稿描述完全不符（目前是大量帆船在海上的意象圖，而非 6 位主管的訪談胸像）。",
+                "fix": "更換為符合要求的實拍或高品質渲染素材：6 位專業人士在有自然光窗戶背景下的對話場景。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-085615-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/frame_15.jpg"
+            ],
+            "n": 15,
+            "ts": "2026-08-19T08:56:16",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ06",
+            "cid": "hand-HZ06",
+            "label": "手寫稿·全風格·Paper-craft 紙藝",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/gslide_PLOTIO2_HZ06_p1.png",
+              "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/gslide_PLOTIO2_HZ06_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ06/v20260819-085615-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ06B": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260819-090652-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ06B/v20260819-090652-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090652-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090652-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090652-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090652-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090652-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090652-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090652-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090652-nblm-i2/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-08-19T09:06:52",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ06B",
+            "cid": "hand-HZ06B",
+            "label": "手寫稿·全風格·Paper-craft 紙藝（尾8格 22-29）",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090652-nblm-i2/gslide_PLOTIO2_HZ06B_p1.png",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090652-nblm-i2/gslide_PLOTIO2_HZ06B_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ06B/v20260819-090652-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "場景與旁白內容完全不符（目前僅有抽象藝術圖，無任何具體情境或角色）。",
+                "fix": "請提供具體的「分鏡描述」文字，以便我判斷畫面是否符合劇情要求。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面內容與『分鏡稿描述』無對應關係（因提供資訊中缺少具體文字描述）。",
+                "fix": "請提供具體的『分鏡稿描述』文字，以便判斷視覺呈現是否符合預期。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面中人物眼鏡上的反光與背景的光線效果過於凌亂，且右側螢幕內容模糊不清。",
+                "fix": "簡化鏡片反射效果，並清晰處理背景螢幕的 UI 元素或內容。"
+              },
+              {
+                "slide": 8,
+                "flag": "場景與內容過於抽象且無具體分鏡描述，難以判斷是否符合特定劇本要求。",
+                "fix": "請提供對應的「分鏡稿描述」文字，以便核對畫面內容是否精準對接。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-090310-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-08-19T09:04:17",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ06B",
+            "cid": "hand-HZ06B",
+            "label": "手寫稿·全風格·Paper-craft 紙藝（尾8格 22-29）",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/gslide_PLOTIO2_HZ06B_p1.png",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/gslide_PLOTIO2_HZ06B_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/deck.pdf"
+          },
+          {
+            "v": "20260819-090310-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-08-19T09:03:13",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ06B",
+            "cid": "hand-HZ06B",
+            "label": "手寫稿·全風格·Paper-craft 紙藝（尾8格 22-29）",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/gslide_PLOTIO2_HZ06B_p1.png",
+              "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/gslide_PLOTIO2_HZ06B_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ06B/v20260819-090310-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ07B": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260819-092021-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-08-19T09:22:09",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ07B",
+            "cid": "hand-HZ07B",
+            "label": "手寫稿·全風格·Kawaii 可愛（尾8格 22-29）",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/gslide_PLOTIO2_HZ07B_p1.png",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/gslide_PLOTIO2_HZ07B_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面中的 UI 介面文字為無意義的亂碼，且部分圖表比例不對稱。",
+                "fix": "要求 AI 生成時加入「清晰、具備邏輯性的數據圖表」指令，並在後期製作中將虛構文字替換為實際的資訊內容。"
+              },
+              {
+                "slide": 2,
+                "flag": "場景與「分鏡稿描述」不符（因提供內容中並無具體文字描述，僅有圖片）。",
+                "fix": "請提供具體的文字分鏡描述，以便判斷畫面是否符合預期。"
+              },
+              {
+                "slide": 4,
+                "flag": "場景與「地球」主題過於抽象，光影特效過度誇張且雜訊較多。",
+                "fix": "簡化背景的發光線條，讓畫面更聚焦於地球本身，並減少不必要的粒子效果以提升視覺清晰度。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面中人物面孔與背景過度融合，且眼睛中的光效（Lens Flare）過於強烈，導致視覺重心分散。",
+                "fix": "減弱眼部閃光效果，並增加角色與背景之間的層次感，確保人物輪鏡廓清晰。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面中出現明顯的 AI 噪點及光暈過度擴散，且右側船隻與背景雲層融合處有不自然的虛影。",
+                "fix": "優化渲染引擎以減少雜訊，並重新繪製兩側帆船與天空交界處的邊緣線條。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面中帆船數量過多且分布雜亂，部分船隻比例不一。",
+                "fix": "減少背景中的小船數量，並統一所有帆船的比例與風格，確保視覺焦點集中在中心的大船。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-092021-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-08-19T09:20:22",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ07B",
+            "cid": "hand-HZ07B",
+            "label": "手寫稿·全風格·Kawaii 可愛（尾8格 22-29）",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/gslide_PLOTIO2_HZ07B_p1.png",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/gslide_PLOTIO2_HZ07B_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ07B/v20260819-092021-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面中的 UI 介面文字為無意義的亂碼，且部分圖表比例不對稱。",
+                "fix": "要求 AI 生成時加入「清晰、具備邏輯性的數據圖表」指令，並在後期製作中將虛構文字替換為實際的資訊內容。"
+              },
+              {
+                "slide": 2,
+                "flag": "場景與「分鏡稿描述」不符（因提供內容中並無具體文字描述，僅有圖片）。",
+                "fix": "請提供具體的文字分鏡描述，以便判斷畫面是否符合預期。"
+              },
+              {
+                "slide": 4,
+                "flag": "場景與「地球」主題過於抽象，光影特效過度誇張且雜訊較多。",
+                "fix": "簡化背景的發光線條，讓畫面更聚焦於地球本身，並減少不必要的粒子效果以提升視覺清晰度。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面中人物面孔與背景過度融合，且眼睛中的光效（Lens Flare）過於強烈，導致視覺重心分散。",
+                "fix": "減弱眼部閃光效果，並增加角色與背景之間的層次感，確保人物輪鏡廓清晰。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面中出現明顯的 AI 噪點及光暈過度擴散，且右側船隻與背景雲層融合處有不自然的虛影。",
+                "fix": "優化渲染引擎以減少雜訊，並重新繪製兩側帆船與天空交界處的邊緣線條。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面中帆船數量過多且分布雜亂，部分船隻比例不一。",
+                "fix": "減少背景中的小船數量，並統一所有帆船的比例與風格，確保視覺焦點集中在中心的大船。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-091806-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ07B/v20260819-091806-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ07B/v20260819-091806-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-091806-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-091806-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-091806-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-091806-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-091806-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-091806-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-091806-nblm-i1/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-08-19T09:18:07",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ07B",
+            "cid": "hand-HZ07B",
+            "label": "手寫稿·全風格·Kawaii 可愛（尾8格 22-29）",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ07B/v20260819-091806-nblm-i1/gslide_PLOTIO2_HZ07B_p1.png",
+              "assets/gen/PLOTIO2_HZ07B/v20260819-091806-nblm-i1/gslide_PLOTIO2_HZ07B_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ07B/v20260819-091806-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ07": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260819-092618-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_15.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_16.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_17.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_18.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_19.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_20.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_21.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_22.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_23.jpg"
+            ],
+            "n": 23,
+            "ts": "2026-08-19T21:46:31",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ07",
+            "cid": "hand-HZ07",
+            "label": "手寫稿·全風格·Kawaii 可愛",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/gslide_PLOTIO2_HZ07_p1.png",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/gslide_PLOTIO2_HZ07_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面與分鏡稿描述不符，海面並非『平靜如鏡』且沒有明顯的『慢速滑行』動態感。",
+                "fix": "建議重新生成或調整素材，強調海面的極致平靜質感，並強化晨曦在波浪上的細碎閃爍效果。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面缺乏要求的關鍵字文字層，僅有一個大型的抽象圖形（類似加密貨幣標誌）。",
+                "fix": "請加入「創造財富」、「創新視野」等具體關鍵字的動態閃現字幕，並將中心的大型圖形替換或融合進去。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前僅為一顆帶有光暈的地球，完全沒有出現「百利好 Logo」及要求的「關鍵字光粒凝聚變形」。",
+                "fix": "重新生成或修改畫面，將中心位置的地球替換為由金色光點匯聚而成的「百利好 Logo」，並保留周圍的閃爍金光與高光爆點效果。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前是寫實風格的城市全景圖，而非要求的「定版字卡」及「極簡光影」設計。",
+                "fix": "需重新製作：移除複雜的建築群與船隻，改為純淨的藍色海面與一道金色晨光；將文字內容以寬鬆間距、柔和淡入效果置於畫面中央。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是帆船在城市海景中航行，而非太空背景下的地球變形特效。",
+                "fix": "重新生成或修改場景：移除帆船與城市建築，改為高速穿梭的動態視角。將 Logo 處理成流動雲層與金邊高光的藍色地球，並加入強烈的速度光暈效果。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面風格為動漫/插畫風，與分鏡稿要求的「寫實攝影感（玻璃幕牆反射、通透天空）」不符。",
+                "fix": "將場景渲染改為寫實 3D 或實景攝影風格，並修正建築物比例及細節，使其符合現代香港城市地標特徵。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面與分鏡稿描述完全不符，目前是雲端上的神聖建築（類似塔或寺廟），而非維多利亞港的帆船。",
+                "fix": "重新生成符合要求的場景：一艘印有「百利好 Plotio」標誌的白色帆船在藍色海面上破浪前行，並加入強逆光下的金色水花與香港島天際線背景。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面與分鏡稿描述完全不符（目前是室內辦公室場景，而非城市晨霧、帆船尾浪或摩天大樓）。",
+                "fix": "重新生成符合「深圳金融中心」背景、帶有晨霧與金黃色光影的戶外都市全景。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是動漫風格的人物群像拼接圖而非重慶夜景。",
+                "fix": "重新生成符合要求的實景/寫實風格畫面：以深藍色為基底的重慶夜景，包含洪崖洞暖黃燈火、解放碑霓虹與江面流光溢彩的光帶。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面內容與分鏡稿描述完全不符，原圖為海上帆船與巨浪的幻想風格，而非成都太古里街景。",
+                "fix": "重新生成符合要求的場景：拍攝成都太古里巷弄，包含人流、飛簷古建、現代玻璃建築及黃昏暖色調光塵。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是獎盃與媒體圖標的合成圖而非台北 101 大樓。",
+                "fix": "重新生成或更換素材，必須符合「仰角上搖、台北 101 入雲、夕陽星芒及金色光柱」的場景描述。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是抽象的金融/科技數據圖表而非泰國曼谷風景。",
+                "fix": "重新生成符合要求的場景：高空俯瞰曼谷河岸、金色寺廟群、長尾船及橘紅色落日背景。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面與分鏡稿描述完全不符，目前是插畫風格的愛心拼貼圖而非辦公室實景。",
+                "fix": "重新生成符合要求的寫實風格場景：香港辦公室內專業團隊圍繞電腦螢幕討論，並加入窗外自然光與浮塵效果。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是三艘帆船在海上的風景畫。",
+                "fix": "請更換為 16 位不同地區、多元背景的員工半身定鏡特寫，並加入符合要求的辦公室虛化散景背景。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面與分鏡稿描述完全不符，目前是航海主題的插畫而非人物訪談。",
+                "fix": "重新生成符合要求的場景：6 位專業主管在有窗戶自然光的辦公室環境中進行胸像對話，並移除所有船隻、海洋及虛構標誌。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-092618-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/frame_15.jpg"
+            ],
+            "n": 15,
+            "ts": "2026-08-19T09:26:19",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ07",
+            "cid": "hand-HZ07",
+            "label": "手寫稿·全風格·Kawaii 可愛",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/gslide_PLOTIO2_HZ07_p1.png",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/gslide_PLOTIO2_HZ07_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ07/v20260819-092618-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面與分鏡稿描述不符，海面並非「平靜如鏡」，而是有明顯波浪且光斑分布較為雜亂。",
+                "fix": "調整水面質感，使其更平滑如鏡，並優化金黃色光點的分布，使其更符合『微小波峰折射』的細緻感。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面缺乏要求的關鍵字堆疊，僅出現一個模糊的 Logo 且無任何文字。",
+                "fix": "需加入「創造財富」、「創新視野」等核心價值詞彙作為閃現字幕，並強化金光與粒子特效。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面目前僅為地球與抽象光影，完全沒有出現「百利好 Logo」及相關文字元素。",
+                "fix": "需將中心球體或其周邊的金色光粒特效，透過動效處理成由散亂粒子凝聚而成的具體品牌 Logo 造型。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前是寫實風格的香港維港風景圖，而非包含特定文字、Logo 及要求的「平靜如鏡」海面。",
+                "fix": "需重新生成或修改畫面：移除複雜的城市建築與船隻，將背景簡化為極簡的藍色海面與晨光；在畫面中央加入百利好 Logo，並於下方位置排列三行指定的定版字卡。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是帆船在城市海灘航行，而非太空背景下的地球變形過程。",
+                "fix": "重新生成或修改場景：移除帆船與城市建築，改為高速穿梭的動態視角，將 Logo 轉化為帶有雲層和晨昏線的藍色地球，並加入太空冷藍調及速度光暈特效。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面風格為動漫/插畫風，與分鏡稿要求的「寫實攝影質感（玻璃幕牆反射、通透天空）」不符。",
+                "fix": "將渲染風格調整為寫實 3D 或電影級實景風格，並修正建築物比例及細節，使其符合現代香港城市地標特徵。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是雲端上的神聖建築而非維多利亞港的帆船。",
+                "fix": "重新生成或更換素材：需包含「百利好 Plotio」標誌、白色帆船在藍色海面破浪前行，並呈現強逆光下的金色水花與香港島天際線背景。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面內容與分鏡稿描述完全不符，原圖是室內辦公室場景而非城市晨霧、帆船尾浪或摩天大樓。",
+                "fix": "重新生成符合要求的空鏡/全景鏡頭：包含帆船金色尾浪、快速拉升穿透至深圳金融中心建築群的動態過度畫面。"
+              },
+              {
+                "slide": 9,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是動漫風格的人物群像拼貼圖而非重慶夜景。",
+                "fix": "重新生成或替換為包含洪崖洞、解放碑霓虹燈及江面倒影的寫實/動漫風夜景橫移鏡頭。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面內容與分鏡稿描述完全不符，原圖為大海中的帆船與巨浪。",
+                "fix": "重新生成符合要求的場景：成都太古里街景、穿梭於人流與古建間的巷弄、暖色燈籠與現代建築並置、帶有金色光塵與淺景深效果。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是獎盃與媒體圖標的合成圖而非台北 101。",
+                "fix": "重新生成或更換素材，需符合「仰望台北 101、流動雲層、夕陽星芒及金色光柱」的場景要求。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是抽象的金融/科技數據圖表，而非泰國曼谷寺廟與長尾船場景。",
+                "fix": "重新生成符合要求的實景空拍畫面：包含金色寺廟、河流、長尾船及橘紅色落日天空。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面與分鏡稿描述完全不符，提供的圖片是一張充滿夢幻色彩、包含心形拼貼照片和海邊風景的插畫，而非要求的「香港辦公室實景」及「交易員討論」場景。",
+                "fix": "請重新生成或提供符合要求的分鏡圖：需為寫實風格的辦公室環境，包含專業人士、電腦螢幕、自然光影效果及正確的旁白文字。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是三艘帆船在海上的藝術插畫。",
+                "fix": "請更換為 16 位不同地區、多元背景的員工半身定鏡特寫，並確保背景為虛化辦公室散景。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面與分鏡稿描述完全不符（目前是航海/幻想風格插畫，而非商務訪談場景）。",
+                "fix": "重新生成符合要求的實拍感或寫實風格影像：6位專業人士在有窗戶自然光的辦公室環境進行胸像對話。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-092045-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_15.jpg"
+            ],
+            "n": 15,
+            "ts": "2026-08-19T09:22:08",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ07",
+            "cid": "hand-HZ07",
+            "label": "手寫稿·全風格·Kawaii 可愛",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/gslide_PLOTIO2_HZ07_p1.png",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/gslide_PLOTIO2_HZ07_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/deck.pdf"
+          },
+          {
+            "v": "20260819-092045-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/frame_15.jpg"
+            ],
+            "n": 15,
+            "ts": "2026-08-19T09:20:48",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ07",
+            "cid": "hand-HZ07",
+            "label": "手寫稿·全風格·Kawaii 可愛",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/gslide_PLOTIO2_HZ07_p1.png",
+              "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/gslide_PLOTIO2_HZ07_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ07/v20260819-092045-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ08": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260819-094506-nblm-i2",
+            "sheet": "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_15.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_16.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_17.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_18.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_19.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_20.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/frame_21.jpg"
+            ],
+            "n": 21,
+            "ts": "2026-08-19T09:45:07",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ08",
+            "cid": "hand-HZ08",
+            "label": "手寫稿·全風格·Anime 動漫",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/gslide_PLOTIO2_HZ08_p1.png",
+              "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/gslide_PLOTIO2_HZ08_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ08/v20260819-094506-nblm-i2/deck.pdf",
+            "flags": [
+              {
+                "slide": 1,
+                "flag": "畫面與分鏡稿要求的「極大遠景（EWS）」及「平靜如鏡」的深藍色海面不符，目前的構圖過於強調雲層細節而非廣闊的海平面。",
+                "fix": "增加海面的佔比，減少近景雲朵的視覺壓迫感，並強化海面與天空交界處的平整度。"
+              },
+              {
+                "slide": 2,
+                "flag": "畫面未能呈現「滿版字幕層」及「關鍵字堆疊」，目前僅顯示一個抽象的金色圖形。",
+                "fix": "需重新生成或修改分鏡，將具體的文字內容（如「創造財富」、「創新視野」等）以金光特效與粒子效果融入海空背景中。"
+              },
+              {
+                "slide": 3,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前僅為一張城市風景插畫，並無「關鍵字光粒凝聚成 Logo」的動態轉場效果。",
+                "fix": "需重新製作 3D 動效或特效合成，將背景中的金色粒子進行 Morph 變形處理，最終定格於百利好 Logo。"
+              },
+              {
+                "slide": 4,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前是動態的帆船衝浪場景而非靜止倒影；且圖中出現了錯誤的「PLOTIO」字樣。",
+                "fix": "重新生成：移除帆船與動態浪花，改為平靜如鏡的海面與城市倒影；移除所有非要求的文字，並按要求加入三行特定內容的定版字卡。"
+              },
+              {
+                "slide": 5,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是城市建築群而非太空地球。",
+                "fix": "重新生成或修改場景，將都市建築更換為帶有新海誠風格雲層、金邊高光的藍色地球，並加入速度光暈效果。"
+              },
+              {
+                "slide": 6,
+                "flag": "畫面缺乏「從太空俯衝穿雲」的動態過程，目前僅為靜止的城市全景。",
+                "fix": "需增加多個分鏡或動態特效，加入雲層被撕裂的視覺動效及由遠及近的快速推近（Zoom-in）過度。"
+              },
+              {
+                "slide": 7,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是東方風格的街道景觀而非維多利亞港帆船。",
+                "fix": "重新生成符合要求的場景：一艘印有「百利好 Plotio」標誌的白色帆船在維多利亞港破浪前行，採用側追鏡頭，並加入強逆光下的金色水花與香港島天際線背景。"
+              },
+              {
+                "slide": 8,
+                "flag": "畫面與分鏡稿描述嚴重不符，缺少帆船、金色尾浪及動態穿透感。",
+                "fix": "重新生成或修改場景，加入帆船在海面上留下的金光尾跡，並強化摩天大樓在晨霧中被陽光勾勒的質感。"
+              },
+              {
+                "slide": 9,
+                "flag": "場景與要求的地理位置完全不符，目前是泰國風格的寺廟（如大城府或曼谷風格），而非重慶洪崖洞。",
+                "fix": "重新生成符合「重慶夜景」特徵的畫面，包含層疊式建築、明顯的中國風宮殿與現代霓虹燈光。"
+              },
+              {
+                "slide": 10,
+                "flag": "畫面與分鏡稿描述完全不符（場景為高科技辦公室，而非成都太古里街景）。",
+                "fix": "重新生成符合要求的場景：包含熙攘人流、飛簷古建、暖色燈籠及現代建築並置的成都太古里巷弄。"
+              },
+              {
+                "slide": 11,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是兩個人在室內對話的近景。",
+                "fix": "需重新生成或更換素材，將場景替換為仰望台北 101 大樓、有流動雲層及夕陽金色光柱的壯麗全景。"
+              },
+              {
+                "slide": 12,
+                "flag": "畫面與分鏡稿描述完全不符，目前是超現實的虛擬人物在發光體周圍漂浮，而非泰國曼谷河岸寺廟與長尾船場景。",
+                "fix": "重新生成符合要求的實景畫面：高空俯瞰曼谷河畔、金色寺廟群、夕陽下的橘紅色雲層及帶有金光尾波的長尾船。"
+              },
+              {
+                "slide": 13,
+                "flag": "畫面與分鏡稿描述完全不符，目前是航海風格的插畫而非香港辦公室實景。",
+                "fix": "請重新生成或更換素材：需為寫實風格、包含專業人士在辦公室討論交易策略、並有明顯窗外逆光及塵埃效果的場景。"
+              },
+              {
+                "slide": 14,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是「一本書在雲端飛舞」的插畫風格，而非 16 位員工的半身定鏡。",
+                "fix": "請重新生成或更換素材，必須符合要求：包含 16 位不同地區、多元背景的真實/寫實風格商務人士半身特寫，並確保場景為辦公室虛化散景。"
+              },
+              {
+                "slide": 15,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前圖片是獎盃陳列場景而非人物訪談。",
+                "fix": "重新生成符合要求的畫面：6 位專業人士（35-55歲）的胸像特寫、帶有手勢互動、背景為窗戶自然光與散景效果。"
+              },
+              {
+                "slide": 16,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是賽車場景配有乒乓球拍。",
+                "fix": "重新繪製：移除賽車、球拍及賽道；改為多個員工頭像如光點匯聚於中心，並加入金藍色調的擴散光效。"
+              },
+              {
+                "slide": 17,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是科技感/數據分析的虛擬空間，而非「百利好帆船」在海浪中破浪前行的場景。",
+                "fix": "重新生成符合要求的視覺：一艘巨大的帆船從深處逆光駛來，右側有巨大海浪沖向鏡頭導致全白轉場，並加入金色曙光。"
+              },
+              {
+                "slide": 18,
+                "flag": "畫面內容與分鏡稿描述嚴重不符，目前呈現的是心形排列的相片而非「古樸航海日誌」及「帆船甲板」場景。",
+                "fix": "重新生成：需包含一本帶有質感、手寫日期和里程碑照片的舊式航海日誌，並置於帆船甲板背景中，讓頁面在藍色天空下翻動飄升。"
+              },
+              {
+                "slide": 19,
+                "flag": "畫面內容與分鏡稿描述完全不符，目前是抽象的金色圓環與雲朵，而非「計數器」、「獎盃牆」或「媒體商標」。",
+                "fix": "重新生成符合要求的場景：深色背景下帶有金色光芒的數字計數器上升動畫，隨後切換至展示金屬質感獎盃及閃爍媒體 Logo 的牆面。"
+              },
+              {
+                "slide": 20,
+                "flag": "畫面與分鏡稿描述完全不符，目前僅為一張靜態的雲海/海洋逆光風景圖，完全沒有乒乓球賽事、汗珠細節或賽車場景。",
+                "fix": "重新生成符合要求的內容：第一幕需呈現強逆光下的乒乓球扣殺瞬間（含汗珠與Plotio Logo），第二幕切換至澳門格蘭披治賽車場的動態煙霧與尾燈光軌。"
+              },
+              {
+                "slide": 21,
+                "flag": "畫面與分鏡稿描述完全不符（場景為海洋帆船，而非金融博覽會現場）；且無任何文字特效。",
+                "fix": "重新生成符合要求的場景：泰國/馬來西亞金融博覽會實景、人頭攢動的展位、分析師與學員互動，並加入「舉辦多場講座」及「培訓眾多投資者」的大字體特效。"
+              }
+            ]
+          },
+          {
+            "v": "20260819-093907-nblm-i1",
+            "sheet": "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/board_sheet.png",
+            "frames": [
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_01.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_02.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_03.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_04.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_05.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_06.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_07.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_08.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_09.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_10.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_11.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_12.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_13.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_14.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_15.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_16.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_17.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_18.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_19.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_20.jpg",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/frame_21.jpg"
+            ],
+            "n": 21,
+            "ts": "2026-08-19T09:39:08",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ08",
+            "cid": "hand-HZ08",
+            "label": "手寫稿·全風格·Anime 動漫",
+            "gslide_pages": [
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/gslide_PLOTIO2_HZ08_p1.png",
+              "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/gslide_PLOTIO2_HZ08_p2.png"
+            ],
+            "deck_repo": "assets/gen/PLOTIO2_HZ08/v20260819-093907-nblm-i1/deck.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "updated": "2026-08-19T21:46:31"
+}

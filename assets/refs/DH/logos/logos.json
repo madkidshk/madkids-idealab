@@ -4,33 +4,35 @@
     {
       "slot": 1,
       "query": "民政及青年事務局 標誌",
-      "file": "",
-      "title": "(核實唔到官方標誌,可即場打字重搵)",
+      "file": "assets/refs/DH/logos/slot1.png",
+      "title": "The Dragon Foundation 龍傳基金– 專為培育全球華裔青年而設的「龍傳基金」，聯繫",
+      "w": 1889,
+      "h": 831,
       "enabled": true,
-      "verified": false,
-      "verified_org": "",
+      "verified": true,
+      "verified_org": "民政及青年事務局 Home and Youth Affairs Bureau",
       "source_domain": ""
     },
     {
       "slot": 2,
       "query": "青年發展委員會 標誌",
-      "file": "assets/refs/DH/logos/slot2.png",
-      "title": "Logo Design for YDC by RCGraphics | Design #289626",
-      "w": 2499,
-      "h": 1567,
-      "enabled": true,
-      "verified": true,
-      "verified_org": "青年發展委員會 (Youth Development Commission)",
-      "source_domain": ""
-    },
-    {
-      "slot": 3,
-      "query": "青年節@HK 標誌",
       "file": "",
       "title": "(核實唔到官方標誌,可即場打字重搵)",
       "enabled": true,
       "verified": false,
       "verified_org": "",
+      "source_domain": ""
+    },
+    {
+      "slot": 3,
+      "query": "青年節@HK 標誌",
+      "file": "assets/refs/DH/logos/slot3.png",
+      "title": "合作及支持機構– 社企民間高峰會",
+      "w": 800,
+      "h": 800,
+      "enabled": true,
+      "verified": true,
+      "verified_org": "青年節@HK",
       "source_domain": ""
     }
   ]
