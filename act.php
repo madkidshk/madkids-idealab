@@ -14,7 +14,17 @@ $a = isset($_GET['action']) ? $_GET['action'] : '';
 if (isset($_GET['push'])) {
   $allow = array('route','client','stage','po','engine','by','kind','target','cid','folder');
   $item = array('ts'=>time());
-  foreach ($allow as $k) { if (isset($_GET[$k])) $item[$k] = preg_replace('/[^A-Za-z0-9_\-]/','',$_GET[$k]); }
+  foreach ($allow as $k) {
+      if (isset($_GET[$k])) {
+          if ($k === 'folder') {
+              // ⚙️ 2026-08-31 批准修復：folder 欄放寬支援點 (.) 供下架 html 傳參，但嚴防路徑穿越 (..) 與斜線 (/) 注入
+              $val = preg_replace('/[^A-Za-z0-9_\-\.]/', '', $_GET[$k]);
+              $item[$k] = str_replace(array('..', '/', '\\'), '', $val);
+          } else {
+              $item[$k] = preg_replace('/[^A-Za-z0-9_\-]/', '', $_GET[$k]);
+          }
+      }
+  }
   if (empty($item['route'])) { echo json_encode(array('err'=>'no route')); exit; }
   $q = rd($qf) ?: array(); $q[] = $item; file_put_contents($qf, json_encode($q));
   echo json_encode(array('ok'=>true)); exit;
