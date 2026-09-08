@@ -17,12 +17,56 @@ h2{font-size:16px;font-weight:800;margin:26px 0 10px;border-left:4px solid #0A7D
 .tag{font-size:11px;font-weight:700;border-radius:999px;padding:2px 9px;background:#eef0f3;color:#717784}
 .gk{font-size:11px;font-weight:800;border-radius:999px;padding:2px 9px}
 .gk.hi{background:#fdeaea;color:#dc2626}.gk.med{background:#fff4e5;color:#b45309}.gk.ok{background:#e7f7ee;color:#15a34a}.gk.none{background:#eef0f3;color:#717784}
-.cap{white-space:pre-wrap;font-size:14.5px;color:#26303b;margin:9px 0;max-height:150px;overflow:hidden}
+.cap{white-space:pre-wrap;font-size:14.5px;color:#26303b;margin:9px 0}
+.po-body{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:9px 0;border:1px solid #eef0f3;border-radius:10px;overflow:hidden}
+.po-col{padding:11px 13px}.po-col+.po-col{border-left:1px solid #eef0f3;background:#fcfdfe}
+.col-lbl{font-size:11.5px;font-weight:800;color:#5a6b82;letter-spacing:.3px;text-transform:uppercase;margin-bottom:6px}
+.po-col .cap{margin:0}
+.po-col .vis{margin:0;padding-left:16px}.po-col .vis li{margin:4px 0;font-size:13.5px;color:#26303b}
+.vstrip{padding:12px 15px 14px;border-top:1px solid #eef0f3;background:#fcfdfe}
+.mtabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 0}
+.mtab{padding:7px 15px;border:1px solid #dcdfe6;border-bottom:0;border-radius:10px 10px 0 0;background:#f0f2f5;color:#48566a;font-weight:700;font-size:13.5px;cursor:pointer}
+.mtab.on{background:#fff;color:#0b1f3a;border-color:#c8cdd6}
+.mpane{display:none;border:1px solid #c8cdd6;border-radius:0 12px 12px 12px;background:#fff;padding:14px}
+.mpane.on{display:block}
+.calbox{margin-bottom:14px}
+.calbox img{width:100%;max-width:1100px;border:1px solid #e7e9ee;border-radius:12px;display:block;cursor:zoom-in}
+.calbox .lbl{font-size:12px;font-weight:800;color:#5a6b82;margin-bottom:7px;letter-spacing:.3px}
+.brief{margin:9px 0 0;padding:10px 13px;background:#fffdf5;border:1px solid #f0e6c8;border-radius:10px}
+.brief .col-lbl{margin-bottom:5px}
+.brief .txt{font-size:13.5px;color:#3b4757;white-space:pre-wrap}
+.gbody{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:9px 0 0;border:1px solid #eef0f3;border-radius:10px;overflow:hidden}
+.gcol{padding:11px 13px;min-width:0}.gcol+.gcol{border-left:1px solid #eef0f3;background:#fcfdfe}
+.gcol .rs{font-size:13px;color:#3b4757;white-space:pre-wrap;max-height:190px;overflow:auto}
+.prail{display:flex;gap:9px;overflow-x:auto;padding-bottom:6px}
+.pcell{flex:0 0 118px;background:#fff;border:1px solid #e7e9ee;border-radius:10px;padding:6px}
+.pcell img{width:100%;aspect-ratio:1;object-fit:contain;display:block;cursor:zoom-in;background:#fafbfc}
+.pcell .nm{font-size:11px;color:#5a6b82;margin-top:4px;line-height:1.35}
+.dimtxt{color:#9aa6b5;font-size:12.5px}
+@media(max-width:640px){.gbody{grid-template-columns:1fr}.gcol+.gcol{border-left:0;border-top:1px solid #eef0f3}}
+table.calt{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px}
+table.calt th{background:#f4f6f8;font-weight:700}
+table.calt td,table.calt th{border:1px solid #e7e9ee;padding:5px 8px;text-align:left;vertical-align:top}
+.vslbl{font-size:12px;font-weight:800;color:#5a6b82;margin-bottom:8px;letter-spacing:.3px}
+.vrail{display:flex;gap:10px;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x mandatory}
+.vrail::-webkit-scrollbar{height:7px}
+.vrail::-webkit-scrollbar-thumb{background:#d5d9e0;border-radius:4px}
+.vcell{flex:0 0 250px;scroll-snap-align:start;background:#fbfcfd;border:1px solid #e7e9ee;border-radius:12px;padding:7px;position:relative}
+.vcell img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:8px;display:block;cursor:zoom-in;background:#eef1f5}
+.vpick{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:#4f46e5;margin-bottom:6px;cursor:pointer;user-select:none}
+.vcell:has(input:checked){border-color:#4f46e5;background:#f5f4ff;box-shadow:0 0 0 2px #e4e1ff}
+#lb{position:fixed;inset:0;background:rgba(11,31,58,.88);display:none;align-items:center;justify-content:center;z-index:60;padding:22px;cursor:zoom-out}
+#lb.on{display:flex}
+#lb img{max-width:min(94vw,560px);max-height:92vh;border-radius:12px}
+@media(max-width:680px){.vcell{flex:0 0 190px}}
+.po-col .pil{display:inline-block;background:#fff4e5;color:#b45309;font-size:11.5px;font-weight:700;border-radius:999px;padding:1px 9px;margin-bottom:6px}
+.vis-empty{color:#9aa6b5;font-size:13px}
+@media(max-width:640px){.po-body{grid-template-columns:1fr}.po-col+.po-col{border-left:0;border-top:1px solid #eef0f3}}
 details{margin:7px 0}summary{cursor:pointer;font-size:13px;font-weight:700;color:#4f46e5}
 table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:6px}td,th{border:1px solid #eef0f3;padding:4px 7px;text-align:left;vertical-align:top}
 .prod{font-size:13px;color:#26303b}.prod li{margin:1px 0}
 .idea{background:#f0fbf4;border-color:#bfe9cf}
-.reel{display:inline-block;background:#111;color:#fff;text-decoration:none;font-size:12.5px;font-weight:700;border-radius:8px;padding:6px 11px;margin-top:6px}
+.videa{background:#0A7D3F;color:#fff;border-radius:9px;padding:9px 12px;margin:8px 0;font-size:13.5px;line-height:1.5}.vthru{color:#d8f0e2;font-weight:400;margin-top:5px;font-size:12.5px}.reel{display:inline-block;background:#111;color:#fff;text-decoration:none;font-size:12.5px;font-weight:700;border-radius:8px;padding:6px 11px;margin-top:6px}
 .st{font-size:12px;color:#717784;margin-top:6px}
 .gate{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:11px;padding-top:11px;border-top:1px dashed #e7e9ee}
 .act{font-size:12.5px;font-weight:700;border:0;border-radius:9px;padding:8px 13px;cursor:pointer}
@@ -37,100 +81,207 @@ footer{color:#717784;font-size:12px;border-top:1px solid #e7e9ee;margin-top:34px
 #pidbar.done>i{width:100%;animation:none;transition:width .4s}
 @keyframes pidcreep{to{width:92%}}</style></head><body><!-- generated-by: scripts/core/nlm-bridge/lab_ui_shell.py --><div class='wrap'>
 <div class='titlerow'><h1>📣 Pawllywood — Social Dashboard</h1><span class='hdrbtns'><a class='homebtn' href='.' title='總目錄'>🏠</a><button class='refbtn' onclick="location.href=location.pathname+'?t='+Date.now()+location.hash" title='重新載入'>🔄</button></span></div>
-<div class='sub'>自動更新 2026-08-14 17:59 HKT　·　PO 下面撳掣 CONFIRM creative+storyboard → 解鎖貼內部總 DECK（雲端，任何裝置）</div>
+<div class='sub'>自動更新 2026-09-07 22:16 HKT　·　PO 下面撳掣 CONFIRM creative+storyboard → 解鎖貼內部總 DECK（雲端，任何裝置）</div>
 <div class='bar'><a class='btn' href='https://docs.google.com/spreadsheets/d/1EAyg2NH6YBO-uA1VWBPXKAGsFfCjd-xt6A0EufYZjPQ/edit' target='_blank'>📊 開 Google Sheet 撳掣</a></div>
 <h2 style='border-left-color:#d97706'>📸 客戶相 → 產品識別（起點）</h2>
 <div class='card'><div style='display:flex;gap:8px;flex-wrap:wrap'><input id='pidfolder' placeholder='貼客戶相 Google Drive folder link…' style='flex:1;min-width:230px;font-size:14px;padding:9px 11px;border:1px solid #dcdfe6;border-radius:9px'><button class='act deck' onclick='pidGo(this)'>送出 ⏎</button></div><div id='pidbar'><i></i></div><div id='pidstat' class='st'></div><details style='margin-top:9px' open><summary>識別結果（4）</summary><div style='overflow-x:auto'><table id='pidtb'><tr><th>相</th><th>產品</th><th>品牌</th><th>香港叫法</th><th>惠康</th><th>台灣</th><th>淘寶/天貓</th><th>信心</th><th>備註</th></tr><tr><td>011338.JPEG</td><td><b>貓砂</b></td><td>富士貓</td><td></td><td style='color:#EE382F;font-weight:700'>?</td><td></td><td></td><td>低</td><td>⚠️ 自動綜合失敗，僅憑識別結果，請覆核各市場叫法</td></tr><tr><td>011619.JPEG</td><td><b>貓砂</b></td><td>富士姬</td><td>富士姬之淡雪 豆腐貓砂<br><a class=reel style='padding:2px 7px' href='https://www.hongkongmall.com/tc/product/1319068-%E5%AF%8C%E5%A3%AB%E5%A7%AC%E4%B9%8B%E6%B7%A1%E9%9B%AA+-+%E8%B1%86%E8%85%90%E8%B2%93%E7%A0%82+3.0%2B1.5+%E7%B2%97%E5%B9%BC%E7%B2%92%E6%B7%B7%E5%90%88%E5%A4%A9%E7%84%B6%E6%B7%A8%E7%99%BD%E8%B1%86%E4%B9%B3+%E7%B6%A0%E8%8C%B6%E5%91%B3+%2817.5L+%2B+0.5L%E5%A2%9E%E9%87%8F%E8%A3%9D%29+18L+x+3%E5%8C%85?srsltid=AfmBOorpynNWv6FTyrZ-YMI6nVKDRKQTyDL2TQZBnDIBrrEpje5hDdd4' target=_blank>連結</a></td><td style='color:#EE382F;font-weight:700'>冇</td><td>富士姬豆腐貓砂</td><td>富士姬豆腐砂</td><td>高</td><td>惠康冇。香港市場多數稱作「富士姬之淡雪 豆腐貓砂」，台灣和淘寶則多稱「富士姬豆腐貓砂」或「富士姬豆腐砂」。</td></tr><tr><td>011684.PNG</td><td><b>豆腐貓砂</b></td><td>富士一</td><td>富士一 豆腐貓砂3.0粗粒豆腐砂綠茶味6L<br><a class=reel style='padding:2px 7px' href='https://www.hktvmall.com/p/H9623001_S_6970750189659_6' target=_blank>連結</a></td><td style='color:#EE382F;font-weight:700'>冇</td><td>富士一豆腐礦物混合貓砂功能款原味6L</td><td>富士一天然極簡日常3.0 豆腐貓砂原味6L</td><td>高</td><td>台灣和淘寶的連結雖然是香港網站，但內容顯示了產品名稱，且在台灣和淘寶的搜索結果中未找到更直接的零售連結。惠康沒有此產品。</td></tr><tr><td>PHOTO-2026-08-14-12-27-38.jpg</td><td><b>豆腐貓砂</b></td><td>富士一</td><td></td><td style='color:#EE382F;font-weight:700'>?</td><td></td><td></td><td>低</td><td>⚠️ 自動綜合失敗，僅憑識別結果，請覆核各市場叫法</td></tr></table></div></details><div class='st'>客畀相做起點 → 識別產品 + 華文網（香港／惠康／台灣／淘寶）搵正確叫法。客戶相未必喺惠康網店有（offline 限定都搵到台/淘叫法）。📲 任何裝置（手機都得）貼 folder link 送出即入隊；主機識別緊，得閒返嚟睇結果即出。folder 要 share「有連結可看」。</div></div>
 <h2>💡 下月題材 BRAINSTORM</h2>
 <div class='card'>未有下月題材 —— 喺 Sheet 撳「💡 諗下月 IDEA」。</div>
-<h2>🎛️ 本月控制台</h2>
-<div class='card'><div class='st'>狀態：✅ 08-14 17:49 生成 3 帖 → 「PO1–PO3」｜🚩HIGH=3 MED=0</div><ul class='prod'><div class='st'>控制台未填主題。</div></div>
+<h2>🎛️ 本月控制台 · 月份 (YYYY-MM) →</h2>
+<div class='card'><div class='st'>狀態：最後生成 →</div><ul class='prod'><div class='st'>控制台未填主題。</div></div>
 <h2 style='border-left-color:#111'>🎬 REEL 模組 · 惠康 IG Reel（直度 9:16）</h2>
-<div class='card'><table><tr><th>PO</th><th>主題</th><th>Storyboard</th><th>Reel cut</th><th>狀態</th></tr><tr><td><b>PO1</b></td><td>豆腐貓砂點揀先啱主子</td><td>—</td><td><span class='st'>未做</span></td><td>draft</td></tr><tr><td><b>PO2</b></td><td>貓砂盆除臭清潔懶人包</td><td>—</td><td><span class='st'>未做</span></td><td>draft</td></tr><tr><td><b>PO3</b></td><td>主子開箱新貓砂反應</td><td>—</td><td><span class='st'>未做</span></td><td>draft</td></tr></table><div class='st' style='margin-top:9px'>做 storyboard／Reel 喺 Google Sheet 菜單撳（🎬砌片 storyboard → 🎞️做真產品 Reel）。真產品相 montage rough-cut，同事攞去執／換音樂／補真人鏡頭。<b>Reel 一定人手 confirm。</b></div></div>
-<h2>📣 本月帖（3）</h2>
-<div class='card'><div class='po-h'><span class='hook'>【豆腐貓砂點樣揀？兩大陣營話你知！】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk hi'>HIGH_RISK</span></div><div class='st'>PO1 · 豆腐貓砂點揀先啱主子 · 主打賣點</div><div class='cap'>**【豆腐貓砂點樣揀？兩大陣營話你知！】**
+<div class='card'><table><tr><th>PO</th><th>主題</th><th>Storyboard</th><th>Reel cut</th><th>狀態</th></tr><tr><td><b>PO1</b></td><td>【9/4】任何購物 +$28 送 日本製速乾清潔毛髮巾（Pawllywood Store 專屬）</td><td>—</td><td><span class='st'>未做</span></td><td>draft</td></tr><tr><td><b>PO2</b></td><td>【9/7】Royal Canin 皇家寵物糧 買滿 $399 即減 $30</td><td>—</td><td><span class='st'>未做</span></td><td>draft</td></tr><tr><td><b>PO3</b></td><td>【09-09】濕糧罐頭多品牌優惠 Hills 買12送2、Canagan $162/12罐、Kakato 12罐9折、Dog Cat Star $355/24罐</td><td>—</td><td><span class='st'>未做</span></td><td>draft</td></tr><tr><td><b>PO4</b></td><td>【09-11】Pet Tips 秋天寵物護理實用貼士</td><td>—</td><td><span class='st'>未做</span></td><td>draft</td></tr><tr><td><b>PO5</b></td><td>【09-14】Buddy Bites 狗乾糧 買2件即減 $20</td><td>—</td><td><span class='st'>未做</span></td><td>draft</td></tr><tr><td><b>PO6</b></td><td>【09-16】零食月 Sunrise 買3送1、AIM30 $58/3件、韓國凍乾 $30/2件</td><td>—</td><td><span class='st'>未做</span></td><td>draft</td></tr><tr><td><b>PO7</b></td><td>【09-18】Daily Smile 毛孩搞笑療癒瞬間</td><td>—</td><td><span class='st'>未做</span></td><td>draft</td></tr><tr><td><b>PO8</b></td><td>【9/22】富士系列豆腐貓砂 原箱 Case Deal 多件優惠</td><td>—</td><td><span class='st'>未做</span></td><td>draft</td></tr><tr><td><b>PO9</b></td><td>【9/24】Pet Tips 寵物日常照顧貼士</td><td>—</td><td><span class='st'>未做</span></td><td>draft</td></tr><tr><td><b>PO10</b></td><td>【9/28】Dog Cat Star Lickable 肉泥零食 第2件 40% off</td><td>—</td><td><span class='st'>未做</span></td><td>draft</td></tr><tr><td><b>PO11</b></td><td>【9/30】Daily Smile 毛孩溫馨日常</td><td>—</td><td><span class='st'>未做</span></td><td>draft</td></tr></table><div class='st' style='margin-top:9px'>做 storyboard／Reel 喺 Google Sheet 菜單撳（🎬砌片 storyboard → 🎞️做真產品 Reel）。真產品相 montage rough-cut，同事攞去執／換音樂／補真人鏡頭。<b>Reel 一定人手 confirm。</b></div></div>
+<div class='mtabs'><button class='mtab on' data-m='2026-09' onclick="selMonth('2026-09')">2026-09</button></div>
+<div class='mpane on' id='mp_2026-09'>
+<div class='calbox'><div class='lbl'>📅 客 Content Calendar · 2026-09（撳圖放大）</div><img src='assets/cal_pawllywood_2026-09.jpg' alt='calendar 2026-09' onclick='zoomImg(this.src)'></div>
+<table class='calt'><tr><th>日期</th><th>PO</th><th>Calendar 原文</th><th>產品明細</th></tr>
+<tr><td>9/1</td><td>PO1</td><td>Vitapet $388, freebie</td><td></td></tr>
+<tr><td>9/4</td><td>PO2</td><td>Any purchase +$28 wipes</td><td>Pawllywood Store・Own Platform：Any Purchase +$28 Redeem 速乾清潔毛髮巾（Made in Japan）</td></tr>
+<tr><td>9/30</td><td>PO12</td><td>Daily Smile</td><td></td></tr>
+</table>
+</div>
+<script>function selMonth(m){document.querySelectorAll('.mtab').forEach(b=>b.classList.toggle('on',b.dataset.m===m));document.querySelectorAll('.mpane').forEach(p=>p.classList.toggle('on',p.id==='mp_'+m));}</script>
+<h2>📣 本月帖（11）· 左 caption ／ 右 visual direction</h2>
+<div class='card'><div class='po-h'><span class='hook'>【9/4】任何購物 +$28 送 日本製速乾清潔毛髮巾（Pawllywood Store 專屬）</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk hi'>HIGH_RISK</span></div><div class='st'>PO1 · 【9/4】任何購物 +$28 送 日本製速乾清潔毛髮巾（Pawllywood Store 專屬） · 主打賣點</div><div class='brief'><div class='col-lbl'>📋 客 Calendar 原文</div><div class='txt'>Any purchase +$28 wipes
 
-各位貓奴主子！市面上咁多款豆腐貓砂，到底點樣揀先至最啱你家主子嘅心水？🤔 唔使抓晒頭，我哋今日就將兩款超人氣貓砂分門別類，等你可以跟返主子嘅日常習慣，一秒揀出命定神砂！👇
+產品明細：Pawllywood Store・Own Platform：Any Purchase +$28 Redeem 速乾清潔毛髮巾（Made in Japan）</div></div><div class='gbody'><div class='gcol'><div class='col-lbl'>🔬 Research</div><div class='dimtxt'>（未做 research）</div></div><div class='gcol'><div class='col-lbl'>🛒 產品 logo + 相</div><div class='dimtxt'>（未有產品相）</div></div></div><div class='po-body'><div class='po-col'><div class='col-lbl'>📣 Feed caption</div><div class='cap'>（offer 已由 Raymond 確認：任何購物 +$28 送 日本製速乾清潔毛髮巾（Pawllywood Store 專屬）。呢帖 caption 待你 confirm 後由 NBLM 生成，⛔ 唔再顯示舊 refusal 廢文。）</div></div><div class='po-col'><div class='col-lbl'>🎨 Visual direction</div><span class='pil'>Product Highlights</span><ol class='vis'><li>一隻濕漉漉嘅貴婦狗或比熊犬，主人用日本製速乾清潔毛髮巾輕柔地擦拭，毛巾明顯地包裹住狗狗，呈現即時吸水效果。</li><li>一隻短毛貓（如短毛家貓）洗完澡後，舒服地被毛巾包住，露出滿足嘅表情，毛巾上可見可愛嘅寵物腳印圖案。</li><li>多格拼貼，第一格係玩到污糟嘅狗狗，第二格係主人用毛巾幫佢清潔，第三格係乾淨清爽嘅狗狗，毛巾以粗體字標示重點。</li></ol></div></div><div class='vstrip'><div class='vslbl'>🖼️ 生成畫面（撳圖放大）</div><div class='vrail'><div class='vcell'><label class='vpick'><input type='checkbox' data-po='09-04' data-i='0'><span>揀第 1 個</span></label><img src='assets/gen/pawllywood_social/social_PO1_1_cc327e40ea.png' loading='lazy' alt='visual 1' onclick='zoomImg(this.src)'></div><div class='vcell'><label class='vpick'><input type='checkbox' data-po='09-04' data-i='1'><span>揀第 2 個</span></label><img src='assets/gen/pawllywood_social/social_PO1_2_f951f66d06.png' loading='lazy' alt='visual 2' onclick='zoomImg(this.src)'></div><div class='vcell'><label class='vpick'><input type='checkbox' data-po='09-04' data-i='2'><span>揀第 3 個</span></label><img src='assets/gen/pawllywood_social/social_PO1_3_14ee7f8b08.png' loading='lazy' alt='visual 3' onclick='zoomImg(this.src)'></div></div></div><div class='st'>🚩 HIGH_RISK
+⚠ [promo_tnc] 提到優惠（優惠, 換購）但條款細則唔齊（只見 冇）
+⚠ [redemption_tnc] 涉換購／印花（換購）但缺派發／換領日期
+→ 補返固定 T&amp;C：適用平台、單一發票折實價、數量有限售完即止、優惠期、只供參考、最終決定權
+→ 補返：每滿$X 1個笑印、yuu ID 綁定提示、🔸換購選項、印花派發日期＋換領日期</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(1,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(1,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(1,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
+<div class='card'><div class='po-h'><span class='hook'>【精準營養護航！皇家寵糧滿\$399即減\$30】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk med'>MED</span></div><div class='st'>PO2 · 【9/7】Royal Canin 皇家寵物糧 買滿 $399 即減 $30 · 主打賣點</div><div class='gbody'><div class='gcol'><div class='col-lbl'>🔬 Research</div><div class='dimtxt'>（未做 research）</div></div><div class='gcol'><div class='col-lbl'>🛒 產品 logo + 相</div><div class='dimtxt'>（未有產品相）</div></div></div><div class='po-body'><div class='po-col'><div class='col-lbl'>📣 Feed caption</div><div class='cap'>**【精準營養護航！皇家寵糧滿\$399即減\$30】**
 
-💚 **陣營一：極致呵護、健康監測型 ➡️ 富士姬之淡雪 豆腐貓砂**
-如果家中有個容易敏感、或者鍾意周圍肉緊舔砂嘅「大頭蝦」主子，呢款就啱晒喇！佢採用食品級豆腐渣製成，天然無害，就算主子唔小心舔食都唔使擔心！最正嘅係佢獨有嘅極微粉塵配方，可以有效避免刺激主子同奴才嘅呼吸道。而且高密度壓縮技術能迅速吸收排泄物並形成緊實團塊，有效除臭，直接沖馬桶都得！18L（17.5L + 0.5L增量裝）大容量，有天然淨白豆乳原味同綠茶味揀。奴才用淨白原色貓砂，仲可以及早觀察主子嘅尿液顏色變化，時時刻刻監測主子健康！
+各位寵主奴才！平日幫毛孩揀糧，最緊要當然係要切合佢哋獨特嘅生理需要啦！🐶🐱 我哋今日要同大家重磅推介深受全球寵主信任嘅專業品牌 —— **Royal Canin 皇家**！
 
-🍵 **陣營二：強效除臭、小資快捷型 ➡️ 富士一 豆腐貓砂3.0粗粒豆腐砂綠茶味6L**
-如果你間屋對氣味極度敏感，或者係平時好忙、想極速搞掂清潔嘅香港小家庭，咁 6L 輕量真空包裝嘅富士一粗粒豆腐貓砂就係你嘅完美伴侶！佢嘅綠茶成分遮味能力超強，能有效減少貓尿異味，等家居環境保持清爽茶香。而且佢吸水力強，遇到少量液體就會快速溶解凝結成結實塊狀，極易清理又不易被帶出貓砂盆。清貓砂嗰陣直接沖入馬桶，秒速搞掂，簡單直接！
+Royal Canin 透過深入研究寵物嘅生理特徵同營養需求，為毛孩提供真正精準嘅健康營養！佢哋所有產品均由法國總部嘅專業營養師團隊開發，在全球範圍內遵循統一嘅嚴格質量標準，將營養品質同產品安全置於核心，從原材料採購到產品交付都嚴格把控，畀毛孩食得最安心！最正嘅係佢哋提供多種度身訂做嘅寵物食品，由幼犬/幼貓糧、成犬/成貓糧到老年期，甚至約瑟爹利犬、英國短毛貓等品種專屬營養都一應俱全！
 
-🎉 提提大家！mark 實我哋嘅月曆，**8月17號** 將會推出 **富士一/富士姬 cat litter 多件優惠** 呀！咁抵，真係要即刻囤貨啦！🛒
+無論你需要照顧消化健康、皮膚和毛髮健康、腎臟健康、關節支持、過敏反應定毛球控制，甚至 SENSORY™ 濕糧系列同乾糧，皇家都能全方位滿足！好似香港室內貓普遍飲水不足，Royal Canin 泌尿系統健康配方就有助預防尿結石；小型成年犬需要體重管理時，可選用控制卡路里同營養嘅配方；而寵物需要牙齒護理時，乾糧顆粒嘅特殊設計仲有助減少牙菌斑同牙垢積聚添！按需要精準配搭，真係貼心又專業！❤️
 
-👉 搶購「富士姬之淡雪 豆腐貓砂」：https://www.hongkongmall.com/tc/product/1319068-%E5%AF%8C%E5%A3%AB%E5%A7%AC%E4%B9%8B%E6%B7%A1%E9%9B%AA+-+%E8%B1%86%E8%85%90%E8%B2%93%E7%A0%82+3.0%2B1.5+%E7%B2%97%E5%B9%BC%E7%B2%92%E6%B7%B7%E5%90%88%E5%A4%A9%E7%84%B6%E6%B7%B8%E7%99%BD%E8%B1%86%E4%B9%B3+%E7%B6%A0%E8%8C%B6%E5%91%B3+%2817.5L+%2B+0.5L%E5%A2%9E%E9%87%8F%E8%A3%9D%29+18L+x+3%E5%8C%85?srsltid=AfmBOop9hv4anCdO88AdhT2Cnes4cQWNmwtSq4UQq9ev6Xp4TDaPl0Uc
-👉 搶購「富士一 豆腐貓砂3.0粗粒豆腐砂綠茶味6L」：https://www.hktvmall.com/p/H9623001_S_6970750189659_6
+🎉 mark 實我哋嘅月曆！**9月7號** 重磅推出限定優惠 —— 購買 **Royal Canin 皇家** 寵物糧 **買滿 \$399 即減 \$30**！快啲襯住有優惠，幫家中毛孩入手最貼心嘅精準營養糧啦！🛒✨
+
+👉 即刻入手 Royal Canin 皇家系列：(deck未提)
 📲 惠康 APP 24小時送貨：(deck未提)
 💬 立即加入我哋 WhatsApp 頻道獲取最新優惠：(deck未提)
 
 *優惠條款及細則：
-多件優惠數量有限，售完即止。優惠期及適用平台詳情以官方公佈為準。產品及優惠只供參考。我哋保留此優惠之最終決定權。
+優惠期為9月7日。優惠數量有限，售完即止。適用平台及優惠詳情以官方公佈為準。產品及優惠資料只供參考。我哋保留此優惠之最終決定權。
 
-#Pawllywood #富士姬之淡雪 #富士一 #豆腐貓砂 #貓砂推薦 #香港貓奴 #惠康優惠 #除臭救星</div><div class='st'>🚩 HIGH_RISK
+#Pawllywood #RoyalCanin #皇家寵物糧 #精準健康營養 #滿額即減 #寵物糧優惠 #惠康優惠</div></div><div class='po-col'><div class='col-lbl'>🎨 Visual direction</div><span class='pil'>Product Highlights</span><ol class='vis'><li>一隻貴氣嘅狗狗（如貴婦狗）優雅地食緊Royal Canin，食碗周圍有幾粒零星嘅花瓣，營造高級感，產品包裝以粗體字體突出。</li><li>一隻貓貓（如波斯貓）喺陽光下享受Royal Canin，背景係柔和嘅光線，產品包裝以圓角設計，畫面溫暖。</li><li>Royal Canin嘅產品以多個不同口味嘅包裝排列，旁邊有一隻好奇嘅貓貓或狗狗，輕輕觸碰其中一個包裝，活潑有趣。</li></ol></div></div><div class='vstrip'><div class='vslbl'>🖼️ 生成畫面（撳圖放大）</div><div class='vrail'><div class='vcell'><label class='vpick'><input type='checkbox' data-po='09-07' data-i='0'><span>揀第 1 個</span></label><img src='assets/gen/pawllywood_social/social_PO2_1_beb3308f5b.png' loading='lazy' alt='visual 1' onclick='zoomImg(this.src)'></div><div class='vcell'><label class='vpick'><input type='checkbox' data-po='09-07' data-i='1'><span>揀第 2 個</span></label><img src='assets/gen/pawllywood_social/social_PO2_2_52b3784a11.png' loading='lazy' alt='visual 2' onclick='zoomImg(this.src)'></div><div class='vcell'><label class='vpick'><input type='checkbox' data-po='09-07' data-i='2'><span>揀第 3 個</span></label><img src='assets/gen/pawllywood_social/social_PO2_3_519c10f6d3.png' loading='lazy' alt='visual 3' onclick='zoomImg(this.src)'></div></div></div><div class='st'>🚩 MED
+⚠ [health_claim] 養生／功效暗示字眼（出客前核）：營養, 護理
+→ 如客戶介意，改成中性成分描述</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(2,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(2,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(2,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
+<div class='card'><div class='po-h'><span class='hook'>【主子罐罐星級盛宴｜四大品牌限時特惠】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk med'>MED</span></div><div class='st'>PO3 · 【09-09】濕糧罐頭多品牌優惠 Hills 買12送2、Canagan $162/12罐、Kakato 12罐9折、Dog Cat Star $355/24罐 · 主打賣點</div><div class='gbody'><div class='gcol'><div class='col-lbl'>🔬 Research</div><div class='dimtxt'>（未做 research）</div></div><div class='gcol'><div class='col-lbl'>🛒 產品 logo + 相</div><div class='dimtxt'>（未有產品相）</div></div></div><div class='po-body'><div class='po-col'><div class='col-lbl'>📣 Feed caption</div><div class='cap'>【主子罐罐星級盛宴｜四大品牌限時特惠】
+
+各位主人，放工返到屋企見到全萌巨星🐱興奮搖尾，係咪即刻好甜？🥰 貓星人每日最期待嘅溫馨時刻，莫過於開罐罐嘅一聲「啵」！Pawllywood 幫你準備好超狂限時特惠，等你可以跟返主子喜好，買齊四大星級濕糧！我哋知道全萌巨星對食物有要求，絕對值得擁有最好嘅美味！
+
+希爾思 Hill&#x27;s｜美國頂尖科學實證營養，針對特別健康需求提供專業配方，而家買12送2！原之選 Canagan｜無穀零添加，符合主子天然飲食天性，限時特價 \$162/12罐！卡格 Kakato｜採用 78% 高肉含量，無化學添加，有效提升食慾兼補水，12罐9折！汪喵星球 Dog Cat Star｜高品質濕糧幫貓星人日常補水，囤貨只需 \$355/24罐！快啲嚟掃貨為巨星送上頂級貢品啦！
+
+優惠期：9/9 - 15/9/2026
+門市地址：上水名都廣場1樓15-16舖
+網店：https://bit.ly/4w2EKLW
+
+進入yuu APP
+探索
+按「Pawllywood」
+
+優惠以單一發票折實價計算。貨品及贈品數量有限，售/送/換完即止。優惠受條款及細則約束。貨品圖片只供參考。
+-----------------------------------
+#Pawllywood #主子 #罐罐優惠 #全萌出動</div></div><div class='po-col'><div class='col-lbl'>🎨 Visual direction</div><div class='vis-empty'>（未有 visual — 跑 calendar pipeline 生成）</div></div></div><details><summary>🛒 片中真產品（1）</summary><ul class='prod'><li>濕糧罐頭多品牌優惠 Hills 買12送2、Canagan $162/12罐、Kakato 12罐9折、Dog Cat Star $355/24罐</li></ul></details><div class='st'>🚩 MED
+⚠ [health_claim] 養生／功效暗示字眼（出客前核）：天然, 營養
+→ 如客戶介意，改成中性成分描述</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(3,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(3,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(3,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
+<div class='card'><div class='po-h'><span class='hook'>【秋風起！點幫主子防燥換毛？】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk med'>MED</span></div><div class='st'>PO4 · 【09-11】Pet Tips 秋天寵物護理實用貼士 · 主打賣點</div><div class='gbody'><div class='gcol'><div class='col-lbl'>🔬 Research</div><div class='dimtxt'>（未做 research）</div></div><div class='gcol'><div class='col-lbl'>🛒 產品 logo + 相</div><div class='dimtxt'>（未有產品相）</div></div></div><div class='po-body'><div class='po-col'><div class='col-lbl'>📣 Feed caption</div><div class='cap'>【秋風起！點幫主子防燥換毛？】
+秋天乾巴巴，全萌巨星🐱係咪開始瘋狂換毛？加上秋燥容易令貓星人皮膚乾燥！Pawllywood 建議主人多啲幫主子刷毛帶走廢毛，減少吞毛球。另外記得幫毛孩補充足夠水分，用溫濕毛巾抹下肉球，等我哋一齊滋潤過秋天！帶返頭盔：只供參考，一切以主子心水為準。
+
+門市地址：上水名都廣場1樓15-16舖
+網店：https://bit.ly/4w2EKLW
+進入yuu APP
+探索
+按「Pawllywood」
+-----------------------------------
+#Pawllywood #主子秋天護理Tips</div></div><div class='po-col'><div class='col-lbl'>🎨 Visual direction</div><div class='vis-empty'>（未有 visual — 跑 calendar pipeline 生成）</div></div></div><details><summary>🛒 片中真產品（1）</summary><ul class='prod'><li>Pet Tips 秋天寵物護理實用貼士</li></ul></details><div class='st'>🚩 MED
+⚠ [health_claim] 養生／功效暗示字眼（出客前核）：護理
+→ 如客戶介意，改成中性成分描述</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(4,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(4,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(4,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
+<div class='card'><div class='po-h'><span class='hook'>【香脆滋味｜Buddy Bites 限時特惠】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk med'>MED</span></div><div class='st'>PO5 · 【09-14】Buddy Bites 狗乾糧 買2件即減 $20 · 主打賣點</div><div class='gbody'><div class='gcol'><div class='col-lbl'>🔬 Research</div><div class='dimtxt'>（未做 research）</div></div><div class='gcol'><div class='col-lbl'>🛒 產品 logo + 相</div><div class='dimtxt'>（未有產品相）</div></div></div><div class='po-body'><div class='po-col'><div class='col-lbl'>📣 Feed caption</div><div class='cap'>【香脆滋味｜Buddy Bites 限時特惠】
+
+各位毛爸毛媽，每當你打開乾糧袋，屋企隻全萌巨星🐶係咪即刻興奮搖尾？💖 Buddy Bites 狗乾糧精選天然食材，香脆可口又健康！而家嚟 Pawllywood 買 Buddy Bites 狗乾糧 2 件即減 \$20，快啲幫愛犬入貨，送上頂級貢品啦！
+
+優惠期：14/9 - 20/9/2026
+門市地址：上水名都廣場1樓15-16舖
+網店：https://bit.ly/4w2EKLW
+進入yuu APP
+探索
+按「Pawllywood」
+優惠以單一發票折實價計算。貨品及贈品數量有限，售/送/換完即止。優惠受條款及細則約束。貨品圖片只供參考。
+-----------------------------------
+#Pawllywood #BuddyBites #全萌出動</div></div><div class='po-col'><div class='col-lbl'>🎨 Visual direction</div><div class='vis-empty'>（未有 visual — 跑 calendar pipeline 生成）</div></div></div><details><summary>🛒 片中真產品（1）</summary><ul class='prod'><li>Buddy Bites 狗乾糧 買2件即減 $20</li></ul></details><div class='st'>🚩 MED
+⚠ [health_claim] 養生／功效暗示字眼（出客前核）：天然
+→ 如客戶介意，改成中性成分描述</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(5,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(5,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(5,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
+<div class='card'><div class='po-h'><span class='hook'>【全萌狂歡零食月｜星級零食特惠】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk med'>MED</span></div><div class='st'>PO6 · 【09-16】零食月 Sunrise 買3送1、AIM30 $58/3件、韓國凍乾 $30/2件 · 主打賣點</div><div class='gbody'><div class='gcol'><div class='col-lbl'>🔬 Research</div><div class='dimtxt'>（未做 research）</div></div><div class='gcol'><div class='col-lbl'>🛒 產品 logo + 相</div><div class='dimtxt'>（未有產品相）</div></div></div><div class='po-body'><div class='po-col'><div class='col-lbl'>📣 Feed caption</div><div class='cap'>【全萌狂歡零食月｜星級零食特惠】
+
+各位毛爸毛媽，放工返到屋企見到全萌巨星🐱興奮搖尾，係咪即刻好甜？🥰 當然要準備好美味點心孝敬主子！Pawllywood 驚喜推出限時「零食月」多品牌特惠，幫你一次過囤齊主子最愛，等毛孩天天開大餐！我哋特別挑選咗三大星級品牌，等主人輕鬆做個滿分主人！
+
+日本 Sunrise｜精選優質肉肉食材，口感軟綿且肉香十足，主子見到一秒飛奔，而家限時買3送1！
+AIM30｜添加特別健康氨基酸成分，日常美味獎勵之餘，輕鬆幫貓星人照顧腎臟健康，特價 \$58/3件！
+韓國凍乾｜採用 100% 低溫冷凍乾燥技術，保留肉肉天然營養，零添加好健康，限時特價 \$30/2件！
+快啲嚟入手為巨星送上頂級貢品啦！
+
+優惠期：16/9 - 22/9/2026
+門市地址：上水名都廣場1樓15-16舖
+網店：https://bit.ly/4w2EKLW
+
+進入yuu APP
+探索
+按「Pawllywood」
+
+優惠以單一發票折實價計算。貨品及贈品數量有限，售/送/換完即止。優惠受條款及細則約束。貨品圖片只供參考。
+-----------------------------------
+#Pawllywood #零食月 #全萌出動</div></div><div class='po-col'><div class='col-lbl'>🎨 Visual direction</div><div class='vis-empty'>（未有 visual — 跑 calendar pipeline 生成）</div></div></div><details><summary>🛒 片中真產品（1）</summary><ul class='prod'><li>零食月 Sunrise 買3送1、AIM30 $58/3件、韓國凍乾 $30/2件</li></ul></details><div class='st'>🚩 MED
+⚠ [health_claim] 養生／功效暗示字眼（出客前核）：天然, 營養
+→ 如客戶介意，改成中性成分描述</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(6,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(6,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(6,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
+<div class='card'><div class='po-h'><span class='hook'>【毛孩搞笑瞬間】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk ok'>OK</span></div><div class='st'>PO7 · 【09-18】Daily Smile 毛孩搞笑療癒瞬間 · 主打賣點</div><div class='gbody'><div class='gcol'><div class='col-lbl'>🔬 Research</div><div class='dimtxt'>（未做 research）</div></div><div class='gcol'><div class='col-lbl'>🛒 產品 logo + 相</div><div class='dimtxt'>（未有產品相）</div></div></div><div class='po-body'><div class='po-col'><div class='col-lbl'>📣 Feed caption</div><div class='cap'>【毛孩搞笑瞬間】各位主人放工見到全萌巨星🐱超崩壞睡姿，係咪即刻笑返？🥰 一齊 Stay Pawsitive 啦！
+-----------------------------------
+#Pawllywood #主子</div></div><div class='po-col'><div class='col-lbl'>🎨 Visual direction</div><div class='vis-empty'>（未有 visual — 跑 calendar pipeline 生成）</div></div></div><details><summary>🛒 片中真產品（1）</summary><ul class='prod'><li>Daily Smile 毛孩搞笑療癒瞬間</li></ul></details><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(7,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(7,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(7,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
+<div class='card'><div class='po-h'><span class='hook'>【原箱Case Deal！富士貓砂強效除臭】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk med'>MED</span></div><div class='st'>PO8 · 【9/22】富士系列豆腐貓砂 原箱 Case Deal 多件優惠 · 主打賣點</div><div class='gbody'><div class='gcol'><div class='col-lbl'>🔬 Research</div><div class='dimtxt'>（未做 research）</div></div><div class='gcol'><div class='col-lbl'>🛒 產品 logo + 相</div><div class='prail'><div class='pcell'><img src='assets/gen/pawllywood_products/09-22_富士系列豆腐貓砂_原箱_Case_Deal_多件優惠_0.png' onclick='zoomImg(this.src)' alt=''><div class='nm'>富士系列豆腐貓砂 原箱 Case Deal 多件優惠</div></div></div></div></div><div class='po-body'><div class='po-col'><div class='col-lbl'>📣 Feed caption</div><div class='cap'>**【原箱Case Deal！富士貓砂強效除臭】**
+
+各位貓奴奴才！日日幫主子鏟砂、換砂，貓砂真係屋企消耗得最快嘅必備品！📦 想屋企隨時保持清爽無尿味，同時又可以一次過囤夠貨、慳到最盡？我哋 festival 今日強烈推薦「富士系列」豆腐貓砂嘅原箱 Case Deal 多件優惠！一箱搬返屋企，隨時為貓砂盆做好補給，真係安心又劃算！
+
+「富士系列」豆腐貓砂一直係奴才界嘅口碑神物，主打天然環保同超強除臭效能！好似 **富士姬之淡雪 豆腐貓砂**，採用食品級豆腐渣製成，天然無害，配合獨有嘅極微粉塵配方同 1.5mm + 3.0mm 粗幼粒混合配方，踩落去腳感超級柔軟舒適，又唔會刺激主子同奴才嘅呼吸道！加上高密度壓縮技術，吸水超快並能形成緊實團塊，瞬間鎖住異味。18L (17.5L + 0.5L 增量裝) 原箱 3 包裝，極速凝結兼可直接沖廁，清理超無痛！淨白豆乳原色仲方便奴才觀察主子尿液顏色，提早留意健康狀況！🚽
+
+如果屋企對尿味極度敏感，**富士一 豆腐貓砂3.0粗粒豆腐砂綠茶味6L** 亦係絕佳選擇！天然綠茶成分遮味力一級棒，一秒將貓尿味變做清新茶香，遇少量液體即刻快速凝結，不易被帶出砂盆，真空包裝方便收納！🍵
+
+mark 實我哋嘅月曆！**9月22號** 重磅推出 **富士系列豆腐貓砂 原箱 Case Deal 多件優惠**，專頁更享低至 **\$150/6件** 優惠！大家快啲趁原箱 Case Deal 多件優惠幫主子大力囤貨啦！🛒✨
+
+👉 即刻搶購「富士姬之淡雪 豆腐貓砂」：https://www.hongkongmall.com/tc/product/1319068-%E5%AF%8C%E5%A3%AB%E5%A7%AC%E4%B9%8B%E6%B7%A1%E9%9B%AA+-+%E8%B1%86%E8%85%90%E8%B2%93%E7%A0%82+3.0%2B1.5+%E7%B2%97%E5%B9%BC%E7%B2%92%E6%B7%B7%E5%90%88%E5%A4%A9%E7%84%B6%E6%B7%A8%E7%99%BD%E8%B1%86%E4%B9%B3+%E7%B6%A0%E8%8C%B6%E5%91%B3+%2817.5L+%2B+0.5L%E5%A2%9E%E9%87%8F%E8%A3%9D%29+18L+x+3%E5%8C%85?srsltid=AfmBOop9hv4anCdO88AdhT2Cnes4cQWNmwtSq4UQq9ev6Xp4TDaPl0Uc
+👉 即刻搶購「富士一 豆腐貓砂3.0粗粒豆腐砂綠茶味6L」：https://www.hktvmall.com/p/H9623001_S_6970750189659_6
+
+📲 惠康 APP 24小時送貨：(deck未提)
+💬 立即加入我哋 WhatsApp 頻道獲取最新優惠：(deck未提)
+
+*優惠條款及細則：
+優惠期為9月22日。多件優惠及原箱優惠數量有限，售完即止。適用平台及優惠詳情以官方公佈為準。產品及優惠資料只供參考。我哋保留此優惠之最終決定權。
+
+#Pawllywood #富士貓砂 #富士姬之淡雪 #富士一 #豆腐貓砂 #CaseDeal #原箱優惠 #除臭貓砂</div></div><div class='po-col'><div class='col-lbl'>🎨 Visual direction</div><span class='pil'>Product Highlights</span><ol class='vis'><li>一隻貓貓（如暹羅貓）優雅地使用Fuji貓砂盤，貓砂盤以圓角設計，貓砂包裝置於旁邊，畫面整潔舒適。</li><li>多個Fuji貓砂包裝以堆疊方式陳列，旁邊有一隻好奇嘅貓貓，用鼻子輕輕嗅聞其中一包，營造活潑感。</li><li>一個簡潔嘅圓角背景，上面擺放住Fuji貓砂包裝，旁邊有一隻貓咪嘅卡通化剪影，整體視覺活潑可愛。</li></ol></div></div><div class='st'>🚩 MED
 ⚠ [health_claim] 養生／功效暗示字眼（出客前核）：除臭, 凝結, 天然, 食品級
-⚠ (AI) {&#x27;rule&#x27;: &#x27;pet_health_claim&#x27;, &#x27;quote&#x27;: &#x27;有效避免刺激主子同奴才嘅呼吸道&#x27;}
-⚠ (AI) {&#x27;rule&#x27;: &#x27;pet_health_claim&#x27;, &#x27;quote&#x27;: &#x27;時時刻刻監測主子健康！&#x27;}
-→ 如客戶介意，改成中性成分描述
-→ 將「有效避免刺激主子同奴才嘅呼吸道」改為客觀描述，例如「極微粉塵配方有助維持空氣潔淨」。
-→ 將「時時刻刻監測主子健康」改為客觀描述，例如「方便觀察主子尿液顏色變化」。</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(1,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(1,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(1,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
-<div class='card'><div class='po-h'><span class='hook'>【貓奴必學！貓砂盆除臭清潔懶人包】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk hi'>HIGH_RISK</span></div><div class='st'>PO2 · 貓砂盆除臭清潔懶人包 · 主打賣點</div><div class='cap'>**【貓奴必學！貓砂盆除臭清潔懶人包】**
+→ 如客戶介意，改成中性成分描述</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(8,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(8,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(8,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
+<div class='card'><div class='po-h'><span class='hook'>【實用照顧指南！Pawllywood寵物貼士大公開】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk med'>MED</span></div><div class='st'>PO9 · 【9/24】Pet Tips 寵物日常照顧貼士 · 主打賣點</div><div class='gbody'><div class='gcol'><div class='col-lbl'>🔬 Research</div><div class='dimtxt'>（未做 research）</div></div><div class='gcol'><div class='col-lbl'>🛒 產品 logo + 相</div><div class='prail'><div class='pcell'><img src='assets/gen/pawllywood_products/09-24_Pet_Tips_寵物日常照顧貼士_0.png' onclick='zoomImg(this.src)' alt=''><div class='nm'>Pet Tips 寵物日常照顧貼士</div></div></div></div></div><div class='po-body'><div class='po-col'><div class='col-lbl'>📣 Feed caption</div><div class='cap'>**【實用照顧指南！Pawllywood寵物貼士大公開】**
 
-哈囉各位貓奴！每日幫主子清理貓砂盆係咪好似打仗咁，次次開蓋都好似開毒氣彈？臭到暈之餘，仲要忍受漫天飛散嘅粉塵？🤢 想間屋無臭味，但又想極速偷懶？我哋今日就為大家整理咗個超實用嘅「除臭清潔懶人包」，教你用最輕鬆嘅方法維持貓砂盆乾淨清爽，徹底擺脫『生化危機』！
+哈囉各位新手寵主同資深奴才！養毛孩就像養細路，要照顧得心應手，定時學習實用嘅照顧知識真係不可或缺！我哋 Pawllywood 嘅「Pet Tips 寵物日常照顧貼士」專欄，主打賣點就係用最簡單、最貼地嘅實用知識，幫大家建構 100% 值得信任嘅養寵指南！我哋特別將日常照顧拆解成四大靈魂板塊，等大家一目了然，隨時升級做特級寵主！👇
 
-第一招，緊係要揀一隻吸水快、凝結強、零粉塵嘅神級貓砂！好似我哋大推嘅 **富士姬之淡雪 豆腐貓砂**，佢採用食品級豆腐渣製成，天然無害，加上極微粉塵配方，唔會刺激到主子同奴才嘅呼吸道，每次倒砂都乾乾淨淨。而且佢嘅高密度壓縮技術，可以超快速吸收排泄物並形成緊實團塊，瞬間鎖死異味！如果你偏好清新茶香，亦可以揀 **富士一 豆腐貓砂3.0粗粒豆腐砂綠茶味6L**，入面嘅天然綠茶成分遮味力一級棒，幫你將主子嘅尿味瞬間變做清新茶葉香，連吸一口氣都舒服過人！🍵
+🥩 **板塊一：【營養飲食篇】➡️ 精準擇糧與適度補水**
+毛孩嘅健康係食返嚟嘅！揀糧要以優質肉類同高蛋白質配方為主，好似 Orijen 貓狗糧（享 88 折優惠）就能提供豐富活力；而針對平時少飲水嘅貓星人，適當餵食 CIAO 肉泥（\$78/6件）利用高水分配方幫主子補充水分，照顧腸胃健康！
 
-第二招，就係要『極速清理、即沖即走』！呢兩款豆腐貓砂都極具環保概念，遇水即溶，每次清理完，奴才都可以直接將佢哋沖入馬桶，秒速送走排泄物，唔使再儲埋一大袋垃圾等倒，真係懶人最愛！🚽
+🐾 **板塊二：【互動社交篇】➡️ 讀懂語言避免踩雷**
+摸主子都有大學問！好似貓星人對「被服侍」嘅位置極度講究，想避免賞賜「貓貓拳」，一定要先睇我哋嘅摸貓入門教學，了解邊度摸得、邊度唔掂得，親密互動不踩雷！
 
-第三招，健康監測同步做！好似 **富士姬之淡雪 豆腐貓砂** 係天然淨白豆乳原色，奴才清理嘅時候可以順便觀察主子嘅尿液顏色變化，輕鬆監測主子嘅健康狀況，防患於未然！
+🌧️ **板塊三：【換季護理篇】➡️ 保持乾爽預防皮膚問題**
+香港天氣濕氣重又經常落雨，換季時一定要幫毛孩做好「抽濕」同衛生！配合吸水凝結力強嘅富士系列豆腐貓砂（低至 \$150/6件），保持貓砂盆乾淨清爽，就能減少毛孩患皮膚病嘅機會！
 
-想體驗超無痛嘅除臭清潔？記住 mark 實我哋嘅月曆！**8月17號** 將會推出 **富士一/富士姬 cat litter 多件優惠**！快啲襯住優惠，幫主子全方位升級如廁環境啦！🛒
+🛡️ **板塊四：【健康防護篇】➡️ 全方位日常保健**
+想毛孩每日都健康無憂，日常保健不可少！汪喵星球保健產品（享 9 折優惠）針對犬貓常見嘅腸胃、皮膚、口腔同心血管等需要調配，幫毛孩由內到外維持最佳狀態！
 
-👉 搶購「富士姬之淡雪 豆腐貓砂」：https://www.hongkongmall.com/tc/product/1319068-%E5%AF%8C%E5%A3%AB%E5%A7%AC%E4%B9%8B%E6%B7%A1%E9%9B%AA+-+%E8%B1%86%E8%85%90%E8%B2%93%E7%A0%82+3.0%2B1.5+%E7%B2%97%E5%B9%BC%E7%B2%92%E6%B7%B7%E5%90%88%E5%A4%A9%E7%84%B6%E6%B7%B8%E7%99%BD%E8%B1%86%E4%B9%B3+%E7%B6%A0%E8%8C%B6%E5%91%B3+%2817.5L+%2B+0.5L%E5%A2%9E%E9%87%8F%E8%A3%9D%29+18L+x+3%E5%8C%85?srsltid=AfmBOop9hv4anCdO88AdhT2Cnes4cQWNmwtSq4UQq9ev6Xp4TDaPl0Uc
-👉 搶購「富士一 豆腐貓砂3.0粗粒豆腐砂綠茶味6L」：https://www.hktvmall.com/p/H9623001_S_6970750189659_6
+🎉 mark 實我哋嘅月曆！**9月24號** 專屬「Pet Tips」最新實用指南正式登場！快啲跟住我哋嘅貼士，為家中毛孩打造最貼心嘅健康生活啦！🛒✨
+
+👉 了解更多 Pet Tips 實用貼士及優惠：
+• 摸貓入門教學：https://www.facebook.com/pawllywoodhk/posts/pfbid0Xt1234EBrYpQEDcApZnp795VoGXjiDSwdbK99SY6epVYkPR9E6jpdubHhWCagiN1l
+• 濕氣抽濕貼士：https://www.facebook.com/pawllywoodhk/posts/pfbid02W7tUD71eZKaZjHSmTz5TacSQqrh9jWxwwyA8StKTpqm3GtVFf1gQoL9nYt4ukVB2l
+• 汪喵星球保健產品9折：https://www.facebook.com/pawllywoodhk/posts/pfbid03wKfnEKd1ZA6f4dR2SWtYX6TjroTnUbncvsvJ8bXKWTL4N6AKcXHP4vQ8aGrXFG7l
+• Pawllywood 網店登陸 yuu APP：https://www.facebook.com/pawllywoodhk/posts/pfbid0vfZ1MYGx4C6WTw8ZKPpMzizA47zw8jH4LAFYzaMjxnpChmx1EfQS2BK5uTv5Q1vLl
+
 📲 惠康 APP 24小時送貨：(deck未提)
 💬 立即加入我哋 WhatsApp 頻道獲取最新優惠：(deck未提)
 
 *優惠條款及細則：
-多件優惠數量有限，售完即止。優惠期及適用平台詳情以官方公佈為準。產品及優惠只供參考。我哋保留此優惠之最終決定權。
+優惠數量有限，售完即止。優惠期及適用平台詳情以官方公佈為準。產品及優惠資料只供參考。我哋保留此優惠及專欄之最終決定權。
 
-#Pawllywood #貓砂盆除臭 #清潔懶人包 #富士姬之淡雪 #富士一 #豆腐貓砂 #貓奴日常 #除臭神物</div><div class='st'>🚩 HIGH_RISK
-⚠ [health_claim] 養生／功效暗示字眼（出客前核）：除臭, 凝結, 天然, 食品級
-⚠ (AI) {&#x27;rule&#x27;: &#x27;ip_copyright&#x27;, &#x27;quote&#x27;: &#x27;徹底擺脫『生化危機』！&#x27;}
-⚠ (AI) {&#x27;rule&#x27;: &#x27;pet_health_claim&#x27;, &#x27;quote&#x27;: &#x27;唔會刺激到主子同奴才嘅呼吸道&#x27;}
-⚠ (AI) {&#x27;rule&#x27;: &#x27;pet_health_claim&#x27;, &#x27;quote&#x27;: &#x27;輕鬆監測主子嘅健康狀況，防患於未然！&#x27;}
-→ 如客戶介意，改成中性成分描述
-→ 將「生化危機」改為非版權描述，例如「難聞氣味危機」。
-→ 將「唔會刺激到主子同奴才嘅呼吸道」改為客觀描述，例如「極微粉塵配方有助維持空氣潔淨」。
-→ 將「輕鬆監測主子嘅健康狀況，防患於未然」改為客觀描述，例如「方便觀察主子尿液顏色變化」。</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(2,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(2,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(2,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
-<div class='card'><div class='po-h'><span class='hook'>【主子開箱實測！貓砂定紙箱最好玩？】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk hi'>HIGH_RISK</span></div><div class='st'>PO3 · 主子開箱新貓砂反應 · 主打賣點</div><div class='cap'>**【主子開箱實測！貓砂定紙箱最好玩？】**
+#Pawllywood #PetTips #寵物日常照顧 #毛孩貼士 #寵物護理 #新手養寵 #惠康寵物</div></div><div class='po-col'><div class='col-lbl'>🎨 Visual direction</div><span class='pil'>Pet Tips</span><ol class='vis'><li>一個圓角資訊圖表，以簡潔嘅圖示同粗體文字，解釋一個季節性寵物護理小貼士，例如「夏天點樣幫毛孩防中暑？」。</li><li>多格漫畫形式，展示一個寵物健康檢查嘅步驟，例如「五個簡單步驟幫毛孩做居家健康檢查」，每格都有可愛嘅貓狗插圖。</li><li>一張溫馨嘅寵物同主人互動圖，主人示範一個簡單嘅寵物護理動作，旁邊配以圓角對話框，用粗體字寫上貼士。</li></ol></div></div><div class='st'>🚩 MED
+⚠ [health_claim] 養生／功效暗示字眼（出客前核）：凝結, 營養, 護理
+→ 如客戶介意，改成中性成分描述</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(9,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(9,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(9,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
+<div class='card'><div class='po-h'><span class='hook'>【9/28】Dog Cat Star Lickable 肉泥零食 第2件 40% off</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk hi'>HIGH_RISK</span></div><div class='st'>PO10 · 【9/28】Dog Cat Star Lickable 肉泥零食 第2件 40% off · 主打賣點</div><div class='gbody'><div class='gcol'><div class='col-lbl'>🔬 Research</div><div class='dimtxt'>（未做 research）</div></div><div class='gcol'><div class='col-lbl'>🛒 產品 logo + 相</div><div class='prail'><div class='pcell'><img src='assets/gen/pawllywood_products/09-28_Dog_Cat_Star_Lickable_肉泥零食_第_0.png' onclick='zoomImg(this.src)' alt=''><div class='nm'>Dog Cat Star Lickable 肉泥零食 第2件 40% off</div></div></div></div></div><div class='po-body'><div class='po-col'><div class='col-lbl'>📣 Feed caption</div><div class='cap'>你的 notebook 資料入面暫時**完全沒有**提及「9/28」、「Dog Cat Star Lickable 肉泥零食」或「第2件 40% off」嘅任何產品資料、SKU、賣點或活動連結。
 
-網購最興奮嘅時刻又嚟喇！每次快遞一到，最興奮嘅往往唔係奴才，而係屋企位主子！📦 
+在宣傳月曆（PHOTO 檔）中，**9 月 28 日** 該格為空白；而在既有 Notebook 資料中，關於 **汪喵星球 (Dog Cat Star)** 與 **肉泥** 嘅真實紀錄只有：
+- **汪喵星球 (Dog Cat Star)**：保健產品全線 9 折（9月10日；連結：https://www.facebook.com/pawllywoodhk/posts/pfbid03wKfnEKd1ZA6f4dR2SWtYX6TjroTnUbncvsvJ8bXKWTL4N6AKcXHP4vQ8aGrXFG7l）
+- **CIAO 肉泥**：\$78 / 6 件（9月12日；連結：https://www.facebook.com/pawllywoodhk/posts/pfbid02bfBeRMSbpSH1YvL3dTcqP2tcQgGi3CaiWLVdGbjJM8FQC5cXtdZtZLPeQyQjsxSbl）
 
-我哋今日就同大家一齊實測吓主子開箱新貓砂嘅真實反應！當奴才辛辛苦苦搬住箱 **富士姬之淡雪 豆腐貓砂** 返屋企，一放低，主子就已經極速飛奔過去霸住個紙箱，仲縮到好似一塊「貓餅」咁，完美示範「紙箱先係本體，入面裝咩根本唔重要」！😹 
+由於嚴格遵守「**只可以用 notebook 真實內容、絕對唔准作、唔准估**」嘅鐵規，我無法為未有記載於 notebook 的產品及優惠撰寫帖文。
 
-不過，當奴才一剪開包裝，真正嘅魔法就嚟喇！✨ 倒入貓砂盆嗰陣，竟然真係「零粉塵」！呢款富士姬貓砂獨有極微粉塵配方，主子湊埋去索都完全無打噴嚏，對呼吸道極之溫和。加上佢採用食品級豆腐渣製成，天然無害，就算好奇心爆棚嘅主子不小心舔食到，奴才都可以一百個放心！主子一踩入去，感受到極致柔軟舒適嘅腳感，即刻舒服到踩奶，簡直係五星級享受！🐾
+如果你有 Dog Cat Star Lickable 肉泥零食嘅真實賣點、規格或連結，可以好似之前咁提供畀我；或者需要我為你在網上進行研究（Web Research），搜尋惠康 / Pawllywood 關於汪喵星球肉泥零食嘅真實資料嗎？</div></div><div class='po-col'><div class='col-lbl'>🎨 Visual direction</div><span class='pil'>Product Highlights</span><ol class='vis'><li>一隻狗狗（如貴婦狗）開心咁舔食Dog Cat Star舔舔樂零食，零食以小碟盛載，包裝置於旁邊，畫面充滿幸福感。</li><li>兩包Dog Cat Star舔舔樂零食以活潑嘅方式展示，例如排成一個V字形，旁邊有一隻貓貓伸出爪子，輕輕觸碰其中一個包裝。</li><li>一個圓角嘅背景，上面擺放住Dog Cat Star舔舔樂零食包裝，旁邊有一隻狗狗嘅卡通化剪影，整體視覺活潑可愛。</li></ol></div></div><div class='st'>🚩 HIGH_RISK
+⚠ [promo_tnc] 提到優惠（優惠）但條款細則唔齊（只見 冇）
+→ 補返固定 T&amp;C：適用平台、單一發票折實價、數量有限售完即止、優惠期、只供參考、最終決定權</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(10,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(10,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(10,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
+<div class='card'><div class='po-h'><span class='hook'>【溫馨日常！毛孩無條件陪伴最療癒】</span><span class='tag'>Facebook</span><span class='tag'>NBLM</span><span class='gk ok'>OK</span></div><div class='st'>PO11 · 【9/30】Daily Smile 毛孩溫馨日常 · 主打賣點</div><div class='brief'><div class='col-lbl'>📋 客 Calendar 原文</div><div class='txt'>Daily Smile</div></div><div class='gbody'><div class='gcol'><div class='col-lbl'>🔬 Research</div><div class='dimtxt'>（未做 research）</div></div><div class='gcol'><div class='col-lbl'>🛒 產品 logo + 相</div><div class='dimtxt'>（未有產品相）</div></div></div><div class='po-body'><div class='po-col'><div class='col-lbl'>📣 Feed caption</div><div class='cap'>**【溫馨日常！毛孩無條件陪伴最療癒】**
 
-如果主子係綠茶控，開箱 **富士一 豆腐貓砂3.0粗粒豆腐砂綠茶味6L** 更加係驚喜！一開包裝就散發住天然清新嘅綠茶香氣，連主子都聞到好專注。佢吸水超強，遇到少量液體即時快速凝結結團，清理極之方便，而且可以直接沖入馬桶，簡直係奴才同主子嘅雙重福音！🚽
+各位毛爸毛媽！月尾喇喎！返完一日工或者攰到仆街嘅時候，返到屋企最暖心、最療癒嘅 moment，就係一開門毛孩極速飛奔過嚟迎接你，或者貼心咁縮喺你身邊討摸摸！毛孩用無條件嘅愛同陪伴，為我哋嘅日常注入滿滿嘅溫馨同幸福感！🥰❤️
 
-🎉 係咪睇到心癢癢？mark 實我哋嘅月曆，**8月17號** 將會推出 **富士一/富士姬 cat litter 多件優惠**！快啲襯住優惠幫主子囤貨，等佢哋可以盡情玩紙箱同享受頂級貓砂啦！🛒
+毛爸毛媽每日咁努力返工，都係想主子過更好、更精緻嘅生活！毛孩畀我哋 100% 嘅溫馨陪伴，我哋當然要用 100% 嘅極致寵愛回報佢哋！Pawllywood 主打嘅核心賣點，就係幫大家嚴選全球星級寵物品牌，由優質主糧（如 Orijen 貓狗糧享 88 折）、滋味零食（如 CIAO 肉泥 \$78/6件），到家居衛生好物（如富士系列豆腐貓砂低至 \$150/6件）一應俱全！
 
-👉 搶購「富士姬之淡雪 豆腐貓砂」：https://www.hongkongmall.com/tc/product/1319068-%E5%AF%8C%E5%A3%AB%E5%A7%AC%E4%B9%8B%E6%B7%A1%E9%9B%AA+-+%E8%B1%86%E8%85%90%E8%B2%93%E7%A0%82+3.0%2B1.5+%E7%B2%97%E5%B9%BC%E7%B2%92%E6%B7%B7%E5%90%88%E5%A4%A9%E7%84%B6%E6%B7%A8%E7%99%BD%E8%B1%86%E4%B9%B3+%E7%B6%A0%E8%8C%B6%E5%91%B3+%2817.5L+%2B+0.5L%E5%A2%9E%E9%87%8F%E8%A3%9D%29+18L+x+3%E5%8C%85?srsltid=AfmBOop9hv4anCdO88AdhT2Cnes4cQWNmwtSq4UQq9ev6Xp4TDaPl0Uc
-👉 搶購「富士一 豆腐貓砂3.0粗粒豆腐砂綠茶味6L」：https://www.hktvmall.com/p/H9623001_S_6970750189659_6
+最方便嘅係，Pawllywood 網店已經正式登陸 yuu APP！買滿 \$350 即享免運費直送你屋企門口，買重嘢糧同貓砂完全唔使自己搬！仲可以輕鬆賺取 yuu 分，買指定品牌仲享有 20X yuu 分添！9月30號月尾出糧，記得準時幫主子出「糧」同補給星級好物，同主子繼續享受無比溫馨嘅每一天啦！🛒✨
+
+👉 了解更多 Pawllywood 網店及優惠：https://www.facebook.com/pawllywoodhk/posts/pfbid0vfZ1MYGx4C6WTw8ZKPpMzizA47zw8jH4LAFYzaMjxnpChmx1EfQS2BK5uTv5Q1vLl
 📲 惠康 APP 24小時送貨：(deck未提)
 💬 立即加入我哋 WhatsApp 頻道獲取最新優惠：(deck未提)
 
 *優惠條款及細則：
-多件優惠數量有限，售完即止。優惠期及適用平台詳情以官方公佈為準。產品及優惠只供參考。我哋保留此優惠之最終決定權。
+優惠數量有限，售完即止。買滿\$350免運費及yuu積分獎賞受有關條款及細則約束。詳情以官方公佈為準。產品及優惠資料只供參考。我哋保留此專欄及活動之最終決定權。
 
-#Pawllywood #主子開箱 #富士姬之淡雪 #富士一 #豆腐貓砂 #貓餅日常 #貓奴必備 #綠茶貓砂</div><div class='st'>🚩 HIGH_RISK
-⚠ [health_claim] 養生／功效暗示字眼（出客前核）：凝結, 天然, 食品級
-⚠ (AI) {&#x27;rule&#x27;: &#x27;pet_health_claim&#x27;, &#x27;quote&#x27;: &#x27;對呼吸道極之溫和&#x27;}
-⚠ (AI) {&#x27;rule&#x27;: &#x27;pet_health_claim&#x27;, &#x27;quote&#x27;: &#x27;奴才都可以一百個放心！&#x27;}
-→ 如客戶介意，改成中性成分描述
-→ 將「對呼吸道極之溫和」改為客觀描述，例如「採用極微粉塵配方」。
-→ 將「奴才都可以一百個放心」改為客觀描述，例如「採用食品級豆腐渣製成」。</div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(3,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(3,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(3,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
+#Pawllywood #TheDailySmile #毛孩溫馨日常 #寵物陪伴 #極致寵愛 #yuuAPP #惠康寵物</div></div><div class='po-col'><div class='col-lbl'>🎨 Visual direction</div><span class='pil'>Daily Smile</span><ol class='vis'><li>一張貓貓或狗狗嘅睡姿特寫，睡得非常香甜，配上圓角嘅meme-style文字，例如「打工仔嘅夢想…」。</li><li>一隻貓貓或狗狗同主人玩耍嘅可愛瞬間，例如追逐玩具、互相依偎，以多格漫畫形式呈現，每格配上簡短溫馨文字。</li><li>一張溫馨又帶點傻氣嘅寵物同主人合照，寵物露出可愛嘅笑容，配上圓角嘅粗體字體，描述一個日常有趣時刻。</li></ol></div></div><div class='st'>狀態：draft</div><div class='gate'><button class='act cf' onclick='confirmCreative(11,this)'>① Confirm Creative</button><button class='act cf' onclick='confirmBoard(11,this)'>② Confirm Storyboard</button><button class='act deck' onclick='pasteDeck(11,this)' disabled title='先 CONFIRM creative + storyboard'>③ 📥 貼上 Master Slide</button><span class='cfby'>← 兩樣 ✅ 先解鎖貼 DECK</span></div></div>
 <footer>⚠️ AI 初稿，出客前 Raymond gatekeep（HIGH_RISK 必改）。每 PO 喺下面撳 ① Confirm Creative + ② Confirm Storyboard，兩樣 ✅ 先解鎖 ③ 貼上內部總 DECK。<br>⚠️ 撳掣經雲端入隊，任何裝置都得；主機處理緊，約 10 秒後更新。總 DECK 係內部，唔好畀客。</footer>
 <script>
 const ACT="act.php", CLIENT="pawllywood";
@@ -195,4 +346,6 @@ async function pidGo(btn){const raw=document.getElementById('pidfolder').value.t
  fi.addEventListener('input',()=>localStorage.setItem('pidfolder_pawllywood',fi.value));pidStatus();
  if(!pidPoll)pidPoll=setInterval(pidStatus,8000);}})();
 </script>
+<div id='lb' onclick="this.classList.remove('on')"><img id='lbimg' alt=''></div>
+<script>function zoomImg(s){document.getElementById('lbimg').src=s;document.getElementById('lb').classList.add('on')}</script>
 </div></body></html>

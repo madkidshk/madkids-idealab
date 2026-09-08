@@ -1,0 +1,37 @@
+{
+  "dept": "DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27",
+  "slots": [
+    {
+      "slot": 1,
+      "query": "民政及青年事務局 標誌",
+      "file": "assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/logos/slot1.png",
+      "title": "Home and Youth Affairs Bureau 民政及青年事務局招聘",
+      "w": 2000,
+      "h": 2000,
+      "enabled": true,
+      "verified": true,
+      "verified_org": "民政及青年事務局 (Home and Youth Affairs Bureau)",
+      "source_domain": ""
+    },
+    {
+      "slot": 2,
+      "query": "青年發展委員會 標誌",
+      "file": "",
+      "title": "(核實唔到官方標誌,可即場打字重搵)",
+      "enabled": true,
+      "verified": false,
+      "verified_org": "",
+      "source_domain": ""
+    },
+    {
+      "slot": 3,
+      "query": "青年節@HK 標誌",
+      "file": "",
+      "title": "(核實唔到官方標誌,可即場打字重搵)",
+      "enabled": true,
+      "verified": false,
+      "verified_org": "",
+      "source_domain": ""
+    }
+  ]
+}

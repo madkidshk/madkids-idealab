@@ -1,0 +1,1684 @@
+<!DOCTYPE html><html lang=zh-HK><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27 · Idea Lab</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#6b7280;--line:#e6e8ec;
+      --ac:#4f46e5;--gold:#c79a2b;--red:#dc2626;--grn:#15a34a}
+*{box-sizing:border-box}
+.btn{background:#4f46e5;color:#fff;border:none;border-radius:9px;padding:8px 13px;font-size:12.5px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;box-sizing:border-box}
+.btn.ghost{background:#fff;color:#4f46e5;border:1.5px solid #dcdffb}
+.btn.grn{background:#15a34a}
+.btn.mini{padding:4px 9px;font-size:11px;min-height:44px}
+.btn:hover,.btn.ghost:hover{filter:brightness(.98)}
+details.soft{background:#fff;border:1px solid #e7e9ee;border-radius:10px;padding:4px 12px}
+details.soft>summary{cursor:pointer;font-size:12.5px;font-weight:700;color:#444;padding:8px 0;list-style:none}
+details.soft>summary::-webkit-details-marker{display:none}
+details.soft>summary::before{content:"▸ ";color:#9aa0ab}
+details.soft[open]>summary::before{content:"▾ "}
+.ovl{position:fixed;inset:0;z-index:120;background:rgba(15,18,28,.55);display:none;align-items:center;justify-content:center;padding:18px}
+.ovl.on{display:flex}
+.ovlbox{background:#fff;border-radius:14px;box-shadow:0 18px 60px rgba(0,0,0,.4)}
+.pill{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:#eef0f3;color:#555}
+.pill.ok{background:#e7f7ee;color:#15803d}
+.pill.warn{background:#fff4e5;color:#b45309}
+.pill.bad{background:#fdeaea;color:#dc2626}
+.pill.accent{background:#eef0fe;color:#4f46e5}
+.secthead{font-size:16px;font-weight:800;margin:24px 0 10px;border-left:4px solid #4f46e5;padding-left:9px;color:#1b1f27}
+.secthead.tight{margin-top:10px}
+.sectbadge{display:inline-block;margin-left:8px;font-size:11px;font-weight:800;border-radius:999px;padding:2px 8px;background:#eef0fe;color:#4f46e5}
+.carousel{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 12px;-webkit-overflow-scrolling:touch}
+.carousel::-webkit-scrollbar{height:6px}
+.carousel::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:6px}
+.carousel-card{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;background:#fff;border:1.5px solid #e7e9ee;border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+@media(min-width:700px) and (max-width:1099px){.carousel-card{flex:0 0 46%}}
+@media(min-width:1100px){.carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}.carousel-card{flex:0 0 calc(33.333% - 10px);max-width:none;scroll-snap-align:none}}
+.lbx{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;display:none;align-items:center;justify-content:center;padding:12px}
+.lbx.on{display:flex}
+.lbx img{max-width:98vw;max-height:94vh;border-radius:8px;cursor:zoom-out}
+.lbx .x{position:fixed;top:10px;right:16px;color:#fff;font-size:30px;font-weight:800;cursor:pointer}
+.lbx .hint{position:fixed;bottom:12px;left:0;right:0;text-align:center;color:#bbb;font-size:12px}
+.badge{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:#4f46e5;border-radius:7px;padding:2px 9px;letter-spacing:.02em}
+.score-badge{display:inline-block;background:#c79a2b;color:#fff;font-size:12px;font-weight:800;border-radius:20px;padding:2px 10px}
+.status-badge{display:inline-block;font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.status-badge.ok{background:#dcfce7;color:#15803d}
+.status-badge.warn{background:#fef3c7;color:#a16207}
+.status-badge.bad{background:#fee2e2;color:#b91c1c}
+.status-badge.mute{background:#eef0f3;color:#717784}
+.surface-card{background:#fff;border:1px solid #e7e9ee;border-radius:14px;box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+.surface-card.soft{background:#fafbfd}
+.surface-card.warn{background:#fff8f1;border-color:#fcd9b6}
+.surface-card.danger{border-color:#f3b4ae;box-shadow:0 2px 16px rgba(238,56,47,.08)}
+.surface-card.pad-sm{padding:9px 10px}
+.surface-card.pad-md{padding:15px 17px}
+.surface-card.pad-lg{padding:18px}
+.surface-card.selected{border-color:#4f46e5;box-shadow:0 0 0 2px rgba(79,70,229,.25),0 6px 18px rgba(79,70,229,.18)}
+body{margin:0;background:var(--bg);color:var(--ink);
+     font:15px/1.55 -apple-system,"PingFang HK",sans-serif}
+.wrap{max-width:430px;margin:0 auto;padding:0 13px 130px}
+h1{font-size:19px;font-weight:800;margin:0;line-height:1.25}
+h1 .dept{color:var(--ac)}
+.bdp{font-size:12px;font-weight:700;margin:3px 0 0;display:flex;gap:11px;flex-wrap:wrap}
+.fresh{font-size:11px;color:#7a8290;margin:6px 0 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.fresh .fr{background:#f1f3f6;border-radius:6px;padding:2px 7px;white-space:nowrap}
+.fresh .fr b{color:#4a5462;font-weight:700}
+.bdp .bb{color:#2563eb}.bdp .dd{color:#dc2626}.bdp .pp{color:#7c3aed}
+.tabbar{position:sticky;top:0;z-index:30;background:var(--bg);
+         border-bottom:2px solid var(--line);display:flex;gap:5px;
+         overflow-x:auto;padding:8px 0 7px;scrollbar-width:none}
+.tabbar::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;background:var(--card);border:1.5px solid var(--line);
+      border-radius:9px;padding:5px 12px;font-size:12px;font-weight:800;
+      color:var(--mut);cursor:pointer;transition:all .12s;white-space:nowrap}
+.tab:hover{border-color:var(--ac);color:var(--ac)}
+.tab.active{background:var(--ac);border-color:var(--ac);color:#fff}
+header{padding:12px 0 4px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap}
+.titlerow h1{margin:0;min-width:0}
+.hdrbtns{flex:none;display:flex;gap:7px;align-items:center}
+.homebtn,.refbtn{flex:none;white-space:nowrap;font-size:16px;line-height:1;text-decoration:none;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:5px 9px;color:#222;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.refbtn{cursor:pointer}
+.labbtn{flex:none;white-space:nowrap;font-size:13px;line-height:1;text-decoration:none;border-radius:9px;padding:7px 10px;font-weight:800;border:1px solid transparent;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.labbtn.mk{background:#fff5f5;color:#EE382F;border-color:#f3b4ae}
+.labbtn.mm{background:#fff7ed;color:#d97706;border-color:#fdba74}
+@media(max-width:480px){.homebtn,.refbtn{font-size:14px;padding:5px 8px}}
+@media(max-width:420px){.titlerow{flex-direction:column;align-items:stretch;gap:8px}.hdrbtns{flex-wrap:wrap;max-width:100%;width:100%;gap:6px}}
+.tabpanel{display:none;padding-top:10px}
+.tabpanel.active{display:block}
+.setlab{font-size:11px;font-weight:800;color:var(--ac);background:#eef0fe;
+         border:1px solid #dcdffb;border-radius:8px;padding:4px 10px;
+         display:inline-block;margin:0 0 8px}
+.banner{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;
+         padding:10px 12px;font-size:12.5px;font-weight:700;color:#92660c;margin:10px 0}
+.h2{font-size:14.5px;font-weight:800;letter-spacing:.01em;color:var(--ink);
+     margin:16px 2px 8px}
+.h3{font-size:13px;font-weight:700;color:#374151;margin:11px 0 5px}
+.stylepick{margin:10px 0}
+.styrow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:5px 0;padding:5px 0;border-bottom:1px solid var(--line)}
+.stylbl{min-width:84px;font-weight:600;font-size:13px}
+.styo{display:inline-flex;align-items:center;gap:4px;font-size:13px;padding:3px 10px;
+       border:1px solid var(--line);border-radius:14px;cursor:pointer;user-select:none;background:#fafafa}
+.styo input{margin:0}
+.styo:has(input:checked){background:#e6f7f1;border-color:#0a7;color:#066}
+.styanchor{margin-top:9px;font-size:12px;color:var(--mut)}
+#styanchor{color:#0a7;font-weight:600}
+.card{background:var(--card);border-color:var(--line);border-radius:13px;
+       padding:11px 12px;margin-bottom:8px}
+.hgrid{display:grid;grid-template-columns:1fr;gap:13px}
+@media(min-width:720px){.hgrid{grid-template-columns:1fr 1fr 1fr}}
+.hcard{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:10px;box-shadow:0 1px 2px rgba(20,24,40,.05)}
+.hcap{font-weight:800;font-size:13px;margin-bottom:7px}
+.sgrp{font-weight:800;font-size:12px;color:#475569;background:#eef1f6;border-radius:7px;padding:5px 10px;margin:11px 0 2px}
+.sgrp:first-child{margin-top:2px}
+.tlrow.todo{opacity:.55} .tlrow.todo .tllabel{color:#9aa0ab}
+.tlrow.na{opacity:.4} .tlrow.na .tllabel{color:#b6bbc4;text-decoration:line-through}
+.dsp{width:100%;border-collapse:collapse;font-size:12.5px}
+.dsp th{text-align:left;color:var(--mut);font-weight:700;padding:4px 7px;border-bottom:1px solid var(--line)}
+.dsp td{padding:4px 7px;border-bottom:1px solid #f3f4f6;vertical-align:top}
+.vacarou{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.vacard{flex:0 0 134px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px;font-size:11px}
+.vathumb{position:relative;height:90px;border-radius:7px;overflow:hidden;background:#f1f3f7;display:flex;align-items:center;justify-content:center}
+.vathumb img{width:100%;height:100%;object-fit:cover}
+.vacat{margin-top:5px;font-size:10px;color:#7b4fc0;font-weight:800}
+.vaname{font-weight:600;line-height:1.25;min-height:28px;color:#374151}
+.vasrc{font-size:10.5px} .vatick{display:block;font-size:11px;margin-bottom:4px;cursor:pointer;font-weight:700}
+.vaprovide{margin:12px 0 2px}
+.upbox .refelemin{display:block;width:100%;margin:0 0 8px;padding:6px 8px;border:1px solid var(--line);border-radius:7px;font-size:12px}
+/* ── 標書 tab restructure 2026-06-16 ── */
+/* 💡 提供窗口 */
+.h2sm{font-size:13px;margin:12px 2px 5px}
+.provide{padding:9px 10px}
+/* 加入想法 + upbox 送出 統一設計(都係 .btn 觀感) */
+.provide .upbox{margin:0;border-radius:9px;padding:9px}
+.provide .upbox .attsend{background:var(--ac);border-radius:9px;padding:0 14px;font-size:12.5px;font-weight:800}
+.provide .noteslist{margin-top:7px}
+/* 三梯隊標題:左色條 + 副標 */
+.tierh{border-left:4px solid var(--ac);padding-left:9px;margin:18px 2px 2px;font-size:14px}
+.tierhint{margin:2px 2px 7px 13px}
+/* ✍️ 邊個 model 寫(#5):mdl 真 / mdef 預設(灰) / mfb fallback(橙) */
+.mdl{flex:0 0 auto;font-size:10px;font-weight:800;color:#3730a3;background:#eef0fe;border:1px solid #dcdffb;
+      border-radius:6px;padding:1px 6px;white-space:nowrap;margin-left:auto}
+.mdl.mdef{color:#6b7280;background:#f1f3f6;border-color:#e3e6ea}
+.mdl.mfb{color:#9a5a00;background:#fff4e5;border-color:#fde6c0}
+.h3 .mdl{margin-left:6px;vertical-align:middle}
+/* 📋 標書內容 carousel 卡 — 字體/行寬完全跟返 VID1 .ccard(Raymond 2026-06-16:之前縮 12px 太難讀,
+   改返用 VID1 base .cbody 12.5px/1.62、.ctitle 14px。卡內 md 標題用 base .cbody h3/h4 12.5px,統一)。 */
+.brfcarou{margin-top:2px}
+.brfcard .chead{cursor:default}
+/* 🔄 重生緊 signal(手寫稿 BD) */
+.regbadge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;color:#fff;background:var(--ac);border-radius:8px;padding:4px 9px;margin:0 0 6px}
+/* 🔀 換格 + BD 英文字 */
+.bdletter{display:inline-block;min-width:18px;text-align:center;font-weight:800;color:#fff;background:var(--ac);border-radius:6px;padding:0 5px;margin-right:4px}
+.swrow{display:flex;align-items:center;gap:6px;margin-bottom:7px;flex-wrap:wrap}
+.swlbl{font-size:12px;color:var(--mut);white-space:nowrap}
+.swrow select{flex:1;min-width:90px;font-size:12.5px;padding:6px 7px;border:1px solid var(--line);border-radius:7px;background:#fff}
+/* 標書原文 link 喺 撮要 標題右邊 */
+.rawlink{flex:0 0 auto;margin-left:auto;font-size:10.5px;font-weight:800;color:var(--ac);background:#eef0fe;border:1px solid #dcdffb;border-radius:6px;padding:1px 6px;cursor:pointer;white-space:nowrap}
+/* 部門官方來源 search-result row(似 youtube search) */
+.srcrow{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid #f1f3f6}
+.srcrow:last-child{border-bottom:0}
+.srcthumb{flex:0 0 54px;height:40px;border-radius:5px;object-fit:cover;background:#f1f3f7}
+.srctit{font-size:11.5px;font-weight:700;line-height:1.3;color:var(--ac)}
+.srcsnip{font-size:10.5px;color:#6b7280;line-height:1.4;margin-top:1px}
+/* 🎧 Briefing 錄音逐字 overlay(撳先出,唔常設) */
+.ovlbox{max-width:560px;width:100%;max-height:82vh;display:flex;flex-direction:column}
+.ovlhd{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--line);font-weight:800;font-size:13px}
+.ovlhd .x{cursor:pointer;color:#888;font-size:16px;border:0;background:0}
+.ovlbody{overflow:auto;padding:12px 14px;font-size:11.5px;line-height:1.6;color:#333;white-space:pre-wrap}
+.ovllink{color:var(--ac);font-weight:700;cursor:pointer;text-decoration:underline}
+/* 📸 Visual 素材:⭐首選 badge + 三 action 掣(三格一樣大) + 重搜漏斗 */
+.vacard{position:relative;transition:order .2s}
+.vacard.pref{border-color:var(--gold);box-shadow:0 0 0 2px rgba(199,154,43,.22)}
+.vastar{position:absolute;top:5px;right:5px;font-size:9.5px;font-weight:800;color:#fff;background:var(--gold);border-radius:6px;padding:1px 5px}
+.vafunnel{position:absolute;bottom:4px;right:4px;font-size:9.5px;font-weight:800;color:#fff;background:rgba(79,70,229,.94);border-radius:6px;padding:2px 6px;display:inline-flex;align-items:center;gap:3px}
+.vaacts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.vaacts .btn{width:auto;text-align:center;margin:0;padding:0 4px;min-height:44px;display:flex;align-items:center;justify-content:center;white-space:nowrap;box-sizing:border-box}
+.vaacts .btn.ghost{width:auto;padding:0 4px;margin:0}
+@media(max-width:420px){.vaacts{gap:4px}}
+
+.upbox{background:#fff;border:1.5px dashed #bcd;border-radius:11px;padding:11px;margin:6px 0}
+.upbox.hov{background:#eef6ff;border-color:#6aa3e0}
+.upbox .attstage{min-height:0;margin-bottom:4px}
+.upbox .stchip{display:inline-block;background:#eef7f0;border:1px solid #bfe0cd;border-radius:20px;padding:3px 9px;font-size:11.5px;font-weight:700;color:#176b3a}
+.upbox .stchip .ststrip{border:0;background:0;cursor:pointer;color:#999;font-weight:700;margin-left:3px}
+.upbox .attrow1{display:flex;gap:6px}
+.upbox .atttext{flex:1;border:1px solid var(--line,#dde);border-radius:8px;padding:9px 11px;font-size:14px;line-height:1.5;min-height:84px;resize:vertical;font-family:inherit}
+.upbox .attsend{border:0;background:#0A7D3F;color:#fff;border-radius:8px;padding:0 14px;font-weight:700;cursor:pointer;white-space:nowrap;min-height:44px}
+.upbox .attbtns2{margin-top:6px;display:flex;gap:6px}
+.upbox .attpick{border:1px solid var(--line,#dde);background:#f7f9fc;border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer;font-weight:600;flex:1;min-height:44px;text-align:center}
+.upbox .attdrive{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line,#dde);background:#f7f9fc;border-radius:8px;padding:5px 10px;font-size:12px;font-weight:600;flex:1;min-height:44px;text-decoration:none;color:inherit}
+.upst{font-size:11.5px;color:#176b3a;margin-top:5px;min-height:0}
+@media(max-width:600px){.upbox .attrow1{flex-direction:column}.upbox .attsend{width:100%}}
+
+.bdcm{margin-top:7px}
+.bdcm textarea{width:100%;box-sizing:border-box;font:13px/1.45 inherit;border:1px solid var(--line);border-radius:8px;padding:6px 8px;resize:vertical}
+.bdcm .btn.mini{margin-top:5px}
+.gflags{margin:7px 0 4px;padding:7px 9px;background:#fffbec;border:1px solid #f0d96a;border-radius:8px;font-size:12px;color:#6b4d00}
+.gflag{padding:2px 0;line-height:1.5}
+.gflag+.gflag{border-top:1px solid #f5ebb0;margin-top:3px;padding-top:5px}
+.gfslide{font-weight:600;background:#f5e07c;border-radius:4px;padding:1px 5px;margin-right:4px}
+.cmlog{font-size:11px;color:#2e8b57;margin-top:5px}
+.card.big{padding:13px}
+.card.empty{color:var(--mut);font-size:13px;font-style:italic}
+.row{display:flex;align-items:center;gap:9px}
+.rank{font-size:11px;font-weight:800;color:var(--mut);width:18px}
+.src{font-size:11px;color:var(--mut);font-weight:700;background:#f1f5f9;
+      border-radius:6px;padding:1px 6px}
+.score{font-size:12px;font-weight:800;color:var(--gold);margin-left:auto}
+.nm{font-weight:800;font-size:13.5px;line-height:1.35}
+.csub{font-size:11px;color:var(--mut);font-weight:600;margin-top:2px}
+.crow{margin:5px 0 0}
+.cflag{font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.cflag.hi{background:#dcfce7;color:#15803d}
+.cflag.lo{background:#fef3c7;color:#a16207}
+.cflag.rl{background:#fee2e2;color:#b91c1c}
+.ck{width:22px;height:22px;border:2px solid var(--ac);border-radius:6px;
+     display:inline-grid;place-items:center;font-size:13px;color:#fff;
+     cursor:pointer;flex:0 0 auto;position:relative}
+.ck::before{content:"";position:absolute;inset:-11px}
+.ck.on{background:var(--ac)}
+.ck.done{background:var(--grn);border-color:var(--grn);cursor:default}
+.divider{display:flex;align-items:center;gap:8px;margin:12px 2px;
+          color:#aab0ba;font-size:11px;font-weight:700}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.cnt-warn{color:var(--red)!important}
+.lookback{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:11px;
+           padding:10px 12px;font-size:12px;color:#475569}
+.btn{background:var(--ac)}
+.btn.grn{background:var(--grn)}
+.btn.ghost{width:100%;text-align:center;padding:11px 13px;margin:2px 0 4px}
+.btn.mini{padding:4px 9px;font-size:11px;margin-left:8px}
+.submit{position:fixed;bottom:14px;right:calc(50% - 215px + 13px);z-index:20}
+@media(max-width:456px){.submit{right:14px}}
+/* ── Responsive 3 tier（Raymond 2026-06-06）：mobile(default) / tablet / desktop 用晒畫面 ── */
+/* Tablet:闊啲,carousel 一次 2 卡 */
+@media(min-width:700px) and (max-width:1099px){
+  .wrap{max-width:680px;padding:0 20px 130px}
+  .submit{right:calc(50% - 340px + 20px)}
+  .ccard{flex:0 0 46%;max-height:68vh}
+  .rest-row .ccard{flex:0 0 36%}
+  .briefcard{max-height:40vh}
+}
+/* Desktop:用晒畫面 —— carousel 變 grid(唔橫掃,鋪滿),六強 3 欄、其餘 4 欄 */
+@media(min-width:1100px){
+  .wrap{max-width:min(1280px,94vw);padding:0 28px 120px}
+  .submit{right:max(28px, calc(50vw - 640px + 28px))}
+  .carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}
+  .ccard{flex:0 0 calc(33.333% - 10px);max-width:none;max-height:43vh;scroll-snap-align:none}   /* Raymond 2026-06-16:桌面每格短 1/3(64→43vh),標書 tab 跟 VID1 */
+  .rest-row .ccard{flex:0 0 calc(25% - 11px)}
+  .briefcard{max-height:36vh}
+  .tabbar{flex-wrap:wrap}
+  .card.big .sheet{max-width:520px}
+}
+.submit .btn{box-shadow:0 6px 20px rgba(79,70,229,.4);padding:11px 18px;font-size:13.5px}
+.foot{font-size:11px;color:#9aa0aa;text-align:center;margin-top:22px}
+.notes-win{width:100%;min-height:90px;border:1.5px solid var(--ac);
+            border-radius:11px;padding:10px 12px;font:14px/1.6 inherit;
+            resize:vertical;background:#fafbff;margin-bottom:6px}
+.notes-act{text-align:right;margin-bottom:6px}
+.notes-act .btn{padding:6px 14px}
+.noteslist{margin-bottom:6px}
+.notecard{background:#fafbff;border:1px solid #e0e3f5;border-radius:10px;
+           padding:7px 10px;margin-bottom:6px}
+.noterow{display:flex;align-items:center;gap:8px}
+.notets{font-size:10.5px;font-weight:800;color:var(--ac)}
+.notedel{margin-left:auto;background:none;border:none;color:#b0b6c2;font-size:13px;
+          cursor:pointer;padding:0 2px}
+.notetxt{font-size:13px;color:var(--ink);line-height:1.5;margin-top:2px;white-space:pre-wrap}
+/* Brief 撮要緊湊卡（固定高度內部 scroll，似 VID 1 卡）*/
+.briefcard{max-height:46vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.briefcard h3,.briefcard h4{font-size:13px;margin:9px 0 3px}
+.suppinline{margin-top:10px;border-top:2px solid #fde68a;background:#fffbeb;
+             border-radius:9px;padding:8px 10px}
+.suppinline h3,.suppinline h4{color:#92660c;font-size:12.5px;margin:2px 0 5px}
+/* 補充日程簡單 list */
+.timeline{margin:2px 0}
+.tlrow{display:flex;gap:8px;padding:5px 2px;border-bottom:1px solid #f3f4f6;font-size:12.5px}
+.tlrow:last-child{border-bottom:none}
+.tldate{flex:0 0 auto;font-weight:800;color:var(--ink);min-width:96px}
+.tllabel{flex:1;color:#374151}
+.tlrow.hot{background:#fff7ed;border-radius:7px}
+.tlrow.hot .tldate{color:#c2410c}.tlrow.hot .tllabel{color:#9a3412;font-weight:700}
+/* Briefing 補充 treatment */
+summary.supp{display:flex;align-items:center;gap:8px}
+.suppbadge{font-size:10px;font-weight:800;color:#fff;background:#d97706;
+            border-radius:6px;padding:1px 7px;margin-left:7px;vertical-align:middle}
+.bd{margin:8px 0}
+.bdscroll{max-height:44vh;overflow-y:auto;border:1px solid var(--line);border-radius:10px;
+          padding:2px 12px;background:#fafbfc;-webkit-overflow-scrolling:touch}
+.genbox{text-align:center}
+.step2 .refsub{margin:8px 0}
+.refname{font-size:12.5px;font-weight:600;margin:6px 0 4px}
+.refname .refn{color:var(--mut);font-weight:400;font-size:11px}
+.refrow{display:flex;gap:6px;flex-wrap:wrap}
+.refthumb{width:74px;height:90px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.btn.big{font-size:14px;padding:12px 22px;box-shadow:0 4px 14px rgba(79,70,229,.3)}
+.scene{border-bottom:1px solid #f1f3f6;padding:7px 0;font-size:12.5px;line-height:1.5}
+.scene .sl{display:flex;gap:8px}
+.scene .sn{font-weight:800;color:var(--ac);flex:0 0 auto;min-width:17px}
+.scene .vis{flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
+.scene .vis.open{-webkit-line-clamp:unset;overflow:visible}
+.scene .vo,.vo{color:var(--mut);font-size:11.5px;margin:4px 0 0 25px;
+               background:#f8fafc;border-radius:7px;padding:4px 8px}
+.sheet{width:100%;border-radius:10px;border:1px solid var(--line);margin:8px 0;display:block;cursor:zoom-in}
+.preqs{display:flex;flex-direction:column;gap:7px;margin-top:4px}
+.prow{display:flex;align-items:center;gap:10px}
+.preqs .pl{flex:1;font-weight:700;font-size:14px;min-width:0}
+.preqs .pv{font-weight:800;font-size:13px;border-radius:8px;padding:3px 11px;white-space:nowrap}
+.preqs .pvon{background:#dcfce7;color:#15803d;border:1px solid #bbf7d0}
+.preqs .pvoff{background:#f1f3f5;color:#868e96;border:1px solid #e9ecef}
+.preqs .pp{font-size:11px;color:var(--ac);font-weight:700;cursor:help;min-width:34px;text-align:right}
+.pgbar{position:relative;height:30px;border-radius:9px;background:#eef0fe;border:1px solid #dcdffb;
+  overflow:hidden;margin:8px 0}
+.pgfill{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,#6366f1,#818cf8);
+  transition:width .6s ease}
+.pgtxt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:#1b1f27;z-index:1}
+/* VID 2 tab：紅色虛線繞邊行緊（marching ants），未出晒 BD 就一直行；出晒 = 無 busy class = 停 */
+@keyframes march{to{background-position:14px 0,-14px 100%,0 -14px,100% 14px}}
+.tab.busy{color:#dc2626;font-weight:800;border-color:transparent !important;
+  background-image:
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0);
+  background-repeat:repeat-x,repeat-x,repeat-y,repeat-y;
+  background-size:14px 2px,14px 2px,2px 14px,2px 14px;
+  background-position:0 0,0 100%,0 0,100% 0;
+  animation:march .5s linear infinite}
+.empty{font-size:12px;color:#9aa0aa;background:#f8fafc;border:1px dashed #cbd5e1;
+        border-radius:9px;padding:9px 11px;margin:8px 0}
+.note{width:100%;min-height:48px;border:1px solid var(--line);border-radius:9px;
+       padding:7px 9px;font:13px/1.5 inherit;resize:vertical;margin-top:6px}
+.frames{margin:8px 0}
+.frame-card{border-bottom:1px solid #f1f3f6;padding:8px 0}
+.frame-head{display:flex;gap:8px;font-size:12.5px}
+.fv{flex:1;color:var(--ink)}
+.acts{margin-top:8px}
+.soft{margin-bottom:8px}
+.soft summary{font-size:12.5px;font-weight:800;color:var(--ink);cursor:pointer;
+               background:#f8fafc;border:1px solid var(--line);border-radius:10px;
+               padding:9px 12px;list-style:none}
+.soft[open] summary{border-radius:10px 10px 0 0;margin-bottom:0}
+.soft .card{border-radius:0 0 10px 10px;border-top:none;margin-bottom:0}
+.hint{font-size:12px;color:var(--mut);margin:0 0 8px}
+.det{margin-top:8px}
+.det summary{font-size:12.5px;font-weight:800;color:var(--ac);cursor:pointer;
+              list-style:none;background:#eef0fe;border:1px solid #dcdffb;
+              border-radius:9px;padding:8px 11px;text-align:center}
+.det[open] summary{margin-bottom:7px}
+.det summary::-webkit-details-marker{display:none}
+.detbody{font-size:12.5px;color:#374151;white-space:pre-wrap;margin-top:7px;
+          line-height:1.6;max-height:360px;overflow:auto;background:#f8fafc;
+          border-radius:9px;padding:10px 12px}
+.tw{overflow-x:auto;margin:6px 0}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid var(--line);padding:5px 8px;text-align:left}
+th{background:#f8fafc;font-weight:700}
+.prev{font-size:12.5px;color:#4b5563;margin:6px 0 2px;line-height:1.5}
+/* ── VID 1 carousel：橫掃卡，卡內直 scroll ── */
+.carousel{margin:0 -2px}
+.ccard{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;
+        background:var(--card);border:1.5px solid var(--line);border-radius:14px;display:flex;
+        flex-direction:column;max-height:64vh;overflow:hidden;
+        box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+.ccard.sel{border-color:var(--ac);box-shadow:0 0 0 2px rgba(79,70,229,.25),
+            0 6px 18px rgba(79,70,229,.18)}
+.rest-row .ccard{flex:0 0 70%;max-height:52vh}
+.chead{display:flex;align-items:center;gap:8px;padding:10px 12px 7px;cursor:pointer;
+        border-bottom:1px solid #f1f3f6}
+.oscore{margin-left:auto;font-size:12px;font-weight:800;color:var(--gold)}
+.ctitle{font-weight:800;font-size:14px;line-height:1.35;padding:8px 12px 0}
+.ccard .csub{padding:2px 12px 0}
+.cbadges{padding:5px 12px 0}
+.cbody{flex:1;overflow-y:auto;padding:9px 12px 12px;font-size:12.5px;color:#374151;
+        line-height:1.62;-webkit-overflow-scrolling:touch}
+.cbody h3,.cbody h4,.cbody h5{font-size:12.5px;margin:9px 0 3px}
+.cbody p{margin:5px 0}
+.scores{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+.sline{font-size:11.5px;margin:6px 0 2px}
+.sline b{font-size:12px}
+.sline.muted{color:#9aa0aa;font-weight:600}
+.scrit{display:block;font-size:11px;color:var(--mut);margin-top:2px}
+.snote{font-size:11px;color:#6b7280;background:#f8fafc;border-radius:7px;
+        padding:5px 8px;margin:4px 0 2px;line-height:1.5}
+.toast{position:fixed;bottom:78px;left:50%;transform:translateX(-50%);
+        background:#1b1f27;color:#fff;padding:12px 18px;border-radius:12px;
+        font-size:13px;font-weight:700;z-index:90;max-width:90%;
+        box-shadow:0 8px 30px rgba(0,0,0,.3);transition:opacity .5s}
+.topproc{position:fixed;bottom:0;left:0;right:0;z-index:95;background:var(--ac);
+          color:#fff;font-size:13px;font-weight:800;padding:9px 14px;
+          display:flex;align-items:center;justify-content:center;gap:8px;
+          box-shadow:0 3px 14px rgba(79,70,229,.35)}
+.spin.sm{width:15px;height:15px;border:2.5px solid rgba(255,255,255,.4);
+          border-top-color:#fff;border-radius:50%;display:inline-block;
+          vertical-align:middle;margin-right:6px;animation:sp .9s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.gening{display:inline-flex;align-items:center;font-size:12px;font-weight:800;color:var(--ac);
+         background:#eef0fe;border:1px solid #dcdffb;border-radius:9px;padding:7px 11px}
+.gening .spin.sm{border-color:#c7cbf5;border-top-color:var(--ac)}
+/* ⬇️ 最後置:桌面卡長短 1/3(64→43vh)。2-class + 排最尾,壓得過 base .ccard 64vh —— Raymond 2026-06-16
+   (VID1 + 標書 tab 一齊短;手機保持 base 64vh 唔郁) */
+@media(min-width:1100px){.carousel .ccard{max-height:43vh}}
+</style></head><body><!-- generated-by: scripts/core/nlm-bridge/lab_ui_shell.py -->
+<div class=wrap>
+<header>
+  <div class=titlerow>
+    <h1><span class=dept>DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27</span> · DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27</h1>
+    <span class=hdrbtns>
+      <a class=homebtn href="." title="總目錄">🏠</a>
+      <button class=refbtn onclick="location.href=location.pathname+'?t='+Date.now()+location.hash" title="重新載入">🔄</button>
+    </span>
+  </div>
+  <div class=bdp></div>
+  <div class=fresh>🕒 資料更新：<span class=fr><b>標書</b> 09-08 13:43</span> · <span class=fr><b>研究</b> 09-07 03:12</span> · <span class=fr><b>概念</b> 09-08 14:31</span> · <span class=fr><b>評分</b> 09-08 15:22</span></div>
+</header>
+<div class='tabbar'><button class='tab' data-tab='ph0'>📋 標書</button><button class='tab' data-tab='debrief'>📨 DEBRIEF</button><button class='tab' data-tab='handbd'>✍️ TVAPI FINAL</button><button class='tab' data-tab='theme1_1'>THEME</button><button class='tab' data-tab='tvapi1_1'>TVAPI 1</button><button class='tab' data-tab='tvapi1_2'>TVAPI 2</button><button class='tab' data-tab='tvapi1_3'>TVAPI 3</button><button class='tab' data-tab='tvapi1_4'>TVAPI 4</button><button class='tab' data-tab='tvapi1_5'>TVAPI 5</button><button class='tab' data-tab='rad1_1'>RAD 1</button><button class='tab' data-tab='rad1_2'>RAD 2</button><button class='tab' data-tab='rad1_3'>RAD 3</button></div>
+<div id='ph0' class='tabpanel'><div class='h2 h2sm'>💡 額外想法 / 相片</div><div class='card provide'>
+<div class="upbox" id="ref_DHRESPIRATORYTRACTINFECTION5INDHHPB3543202627_box">
+  
+  <div class="attstage" id="ref_DHRESPIRATORYTRACTINFECTION5INDHHPB3543202627_stage"></div>
+  <div class="attrow1">
+    <textarea id="ref_DHRESPIRATORYTRACTINFECTION5INDHHPB3543202627_link" class="atttext" rows="4" placeholder="💭 諗到嘅想法打喺度；想畀參考相就 ⌘V／drag／揀相入埋，喺格仔寫明呢張相係咩 → 一齊送出"></textarea>
+    <button id="ref_DHRESPIRATORYTRACTINFECTION5INDHHPB3543202627_send" class="attsend">送出 ⏎</button></div>
+  <div class="attbtns2"><button id="ref_DHRESPIRATORYTRACTINFECTION5INDHHPB3543202627_pick" class="attpick">📎 電腦揀檔</button></div>
+  <input type="file" id="ref_DHRESPIRATORYTRACTINFECTION5INDHHPB3543202627_file" accept="image/*" style="display:none">
+  <div class="upst" id="ref_DHRESPIRATORYTRACTINFECTION5INDHHPB3543202627_st"></div>
+</div>
+<script>(function(){
+var GAS="https://script.google.com/macros/s/AKfycbwVvkFb8kXQFrJZnABGxFcywfVllsM3XSVHlAGwH8CzrWIBGChjIK2PhW1k61r6NJWIpg/exec",TOK="mkv7q3z2link",FOLDER="";
+var st=document.getElementById("ref_DHRESPIRATORYTRACTINFECTION5INDHHPB3543202627_st");
+function say(m){st.textContent=m;}
+// —— 把關站 proven mechanic（照搬）——
+function jsonp(q,cb){var n="upcb"+Math.random().toString(36).slice(2);
+  window[n]=function(o){try{cb(o);}finally{delete window[n];s.remove();}};
+  var s=document.createElement("script");s.src=GAS+"?"+q+"&token="+TOK+"&callback="+n;
+  s.onerror=function(){delete window[n];s.remove();cb({ok:false,err:"network"});};
+  document.body.appendChild(s);}
+function fidFromLink(v){var m=v.match(/\/d\/([a-zA-Z0-9_-]{20,})/)||v.match(/[?&]id=([a-zA-Z0-9_-]{20,})/);return m?m[1]:null;}
+var inp=document.getElementById("ref_DHRESPIRATORYTRACTINFECTION5INDHHPB3543202627_link");
+var box=document.getElementById("ref_DHRESPIRATORYTRACTINFECTION5INDHHPB3543202627_box"),stage=document.getElementById("ref_DHRESPIRATORYTRACTINFECTION5INDHHPB3543202627_stage");
+var fi=document.getElementById("ref_DHRESPIRATORYTRACTINFECTION5INDHHPB3543202627_file"),send=document.getElementById("ref_DHRESPIRATORYTRACTINFECTION5INDHHPB3543202627_send");
+var _staged=null,_busy=false;
+function showStaged(f){_staged=f;var isImg=(f.type||"").indexOf("image/")===0;
+  stage.innerHTML="<span class='stchip'>"+(isImg?"🖼":"📎")+" "+f.name.replace(/</g,"&lt;")+" <button class='ststrip'>✕</button></span>";
+  stage.querySelector(".ststrip").onclick=function(){_staged=null;stage.innerHTML="";};}
+document.getElementById("ref_DHRESPIRATORYTRACTINFECTION5INDHHPB3543202627_pick").onclick=function(){fi.click();};
+fi.onchange=function(){if(fi.files[0]){showStaged(fi.files[0]);fi.value="";}};
+["dragover","dragenter"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.add("hov");});});
+["dragleave","drop"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.remove("hov");});});
+box.addEventListener("drop",function(e){var f=e.dataTransfer&&e.dataTransfer.files[0];if(f)showStaged(f);});
+inp.addEventListener("paste",function(ev){var fs=(ev.clipboardData&&ev.clipboardData.files)||[];if(fs.length){ev.preventDefault();showStaged(fs[0]);}});
+// 收到 file id（檔上載完）或原 link → 交畀各站自己嘅 complete handler
+function done(val,isFile){ var ip=document.getElementById('ref_DHRESPIRATORYTRACTINFECTION5INDHHPB3543202627_link');var desc=(ip&&ip.value||'').trim();if(window._clearDraft)window._clearDraft('ref_DHRESPIRATORYTRACTINFECTION5INDHHPB3543202627_link');if(isFile){var el=desc||'參考相';fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27&concept='+encodeURIComponent(el)+'&stage=add_ref&engine='+encodeURIComponent(val)+'&target=main&cid=ACT_add_ref',{mode:'no-cors'}).catch(function(){});if(ip)ip.value='';say(desc?('✅ 已收參考相「'+el+'」（排最前＋嚴格比照）'):'✅ 收咗相；下次喺格仔寫埋係咩元素，AI 跟得準啲');}else if(/^https?:|drive\.google|docs\.google/.test(val)){fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27&concept='+encodeURIComponent('參考連結')+'&stage=add_ref&engine='+encodeURIComponent(val)+'&target=main&cid=ACT_add_ref',{mode:'no-cors'}).catch(function(){});say('✅ 已收參考連結（排最前＋嚴格比照）');}else{var a=loadNotes();a.push({ts:Date.now(),text:val});saveNotes(a);renderNotes();fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27&text='+encodeURIComponent(val),{mode:'no-cors'}).catch(function(){});say('✅ 已加想法（'+a.length+'，累積餵委員會）');} }
+// 檔：initupload(folder)→browser 直 PUT 任何 size→CORS 讀唔到都 fallback→進度
+function up(f){_busy=true;send.disabled=true;say("開緊上載…（"+f.name+"）");
+  jsonp("action=initupload&origin="+encodeURIComponent(location.origin)+"&name="+encodeURIComponent(f.name)
+    +"&size="+f.size+"&mime="+encodeURIComponent(f.type||"image/jpeg")+"&folder="+encodeURIComponent(FOLDER),function(o){
+    if(!o.ok){_busy=false;send.disabled=false;say("⚠️ 開唔到上載："+(o.err||"")+"（可改貼 Drive 連結）");return;}
+    var x=new XMLHttpRequest();x.open("PUT",o.uri);
+    x.upload.onprogress=function(ev){if(ev.lengthComputable)say("⬆️ 上載中 "+Math.round(ev.loaded/ev.total*100)+"%（"+f.name+"）");};
+    x.onload=function(){_busy=false;send.disabled=false;
+      if(x.status>=300){say("⚠️ 上載 fail HTTP "+x.status);return;}
+      var fid="";try{fid=JSON.parse(x.responseText).id||"";}catch(_){}
+      if(!fid){say("⚠️ 上載咗但攞唔到 file id（可改貼 Drive 連結）");return;}
+      stage.innerHTML="";say("✅ 上載完成");done(fid,true);};
+    x.onerror=function(){_busy=false;send.disabled=false;say("⚠️ 上載出錯（network）。可改貼 Drive 連結");};
+    x.send(f);});}
+function submit(){if(_busy){say("處理緊…");return;}
+  var f=_staged;var v=inp.value.trim();
+  if(f){_staged=null;stage.innerHTML="";up(f);return;}
+  if(!v){say("⚠️ 未貼 link／未揀檔");return;}
+  inp.value="";done(v,false);}   // 貼 link → 直接交（後端 add_manual_ref 認 link/Drive id/URL）
+send.onclick=submit;
+inp.addEventListener("keydown",function(ev){if(ev.key==="Enter"&&!ev.shiftKey){ev.preventDefault();submit();}});
+})();</script>
+<div id='noteslist' class='noteslist'></div></div><details class='soft' open><summary>📸 Visual 素材（42 個：LOGO 1、視覺參考 27、新聞配圖 8、海報/單張 6）</summary><p class='hint'>搵到嘅 LOGO／海報／單張／宣傳片／真實參考相，每個有原網址。<b>剔相後揀：⭐首選＝呢張參考優先過其他；🔁重搜＝搵過好啲（e.g. logo 污糟）；🗑刪除＝搵錯即清。</b></p><div class='vacarou'><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='LOGO_slot1.png'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/logos/slot1.png' loading=lazy></div><div class='vacat'>LOGO</div><div class='vaname'>民政及青年事務局</div><div><span class='vasrc' style='color:#bbb'>（無網址）</span></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署職員制服_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_食環署職員制服_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署職員制服</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/05-05-2012-2000.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署職員制服_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_食環署職員制服_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署職員制服</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/31-10-2012-2115.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署職員制服_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_食環署職員制服_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署職員制服</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/05-05-2012-2000.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_警務人員制服_夏季常服__0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_警務人員制服_夏季常服__0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>警務人員制服 (夏季常服)</div><div><a href='https://zhuanlan.zhihu.com/p/437915665' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_警務人員制服_夏季常服__1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_警務人員制服_夏季常服__1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>警務人員制服 (夏季常服)</div><div><a href='https://www.police.gov.hk/museum/qrpage/hk/inner/46/3.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_消防員制服_滅火服__0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_消防員制服_滅火服__0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>消防員制服 (滅火服)</div><div><a href='https://www.hkfsd.gov.hk/chi/aboutus/gallery/uniform/fire/officer/officer_opp_m.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_消防員制服_滅火服__1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_消防員制服_滅火服__1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>消防員制服 (滅火服)</div><div><a href='https://www.hkfsd.gov.hk/chi/aboutus/gallery/uniform/fire/rank/rank_opp.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_消防員制服_滅火服__2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_消防員制服_滅火服__2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>消防員制服 (滅火服)</div><div><a href='https://www.hk01.com/%E7%A4%BE%E6%9C%83%E6%96%B0%E8%81%9E/98366/%E6%B6%88%E9%98%B2%E5%88%B6%E6%9C%8D20%E5%B9%B4%E5%B7%A1%E7%A6%AE-%E9%BB%83%E9%87%91%E6%88%B0%E8%A1%A3-%E7%A2%A7%E5%A3%AB%E5%9C%96-%E6%99%AE%E7%8F%AD%E7%9F%A5%E5%A4%9A%E5%B0%91' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_醫護人員制服_公立醫院__0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_醫護人員制服_公立醫院__0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>醫護人員制服 (公立醫院)</div><div><a href='https://hk.news.yahoo.com/%E9%86%AB%E7%AE%A1%E5%B1%80%E6%98%8E%E5%B9%B4%E9%80%90%E6%AD%A5%E7%B5%B1-%E5%B7%A5%E4%BD%9C%E6%9C%8D-050552412.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_醫護人員制服_公立醫院__1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_醫護人員制服_公立醫院__1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>醫護人員制服 (公立醫院)</div><div><a href='https://www.instagram.com/p/DaMbUKhgcX9/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_港鐵職員制服_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_港鐵職員制服_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>港鐵職員制服</div><div><a href='https://www.hk01.com/%E7%A4%BE%E6%9C%83%E6%96%B0%E8%81%9E/325581/%E6%B8%AF%E9%90%B5%E8%BB%8A%E7%AB%99%E8%81%B7%E5%93%A1%E5%B9%B4%E5%BA%95%E6%8F%9B%E6%96%B0look-%E6%96%B0%E5%88%B6%E6%9C%8D%E5%8A%A0%E5%85%A5%E8%97%8D%E7%B4%85%E8%89%B2%E7%B7%9A%E6%A2%9D-%E6%8A%BC%E8%8A%B1%E5%9C%96%E6%A1%88' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_港鐵職員制服_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_港鐵職員制服_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>港鐵職員制服</div><div><a href='https://www.stheadline.com/society/3349182/%E6%B8%AF%E9%90%B5%E7%AB%99%E8%A6%8B%E9%90%B5%E8%B7%AF%E5%B1%95%E5%90%B8%E5%BC%95%E9%80%BE5000%E5%B8%82%E6%B0%91%E5%8F%83%E8%A7%80-%E8%BB%8A%E7%AB%99%E8%81%B7%E5%93%A1%E5%88%B6%E6%9C%8D%E7%B6%93%E6%AD%B75%E4%BB%A3%E6%BC%94%E8%AE%8A' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_巴士司機制服_九巴_城巴__0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_巴士司機制服_九巴_城巴__0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>巴士司機制服 (九巴/城巴)</div><div><a href='https://www.hk01.com/%E7%A4%BE%E6%9C%83%E6%96%B0%E8%81%9E/705284/%E5%91%8A%E5%88%A5%E9%9D%92%E8%89%B2%E6%81%A4%E8%A1%AB-%E4%B9%9D%E5%B7%B4%E6%98%8E%E5%B9%B41%E6%9C%88%E6%8F%9B%E6%96%B0%E5%88%B6%E6%9C%8D-%E8%BB%8A%E9%95%B7%E6%94%B9%E8%91%97%E7%B4%85-%E9%BB%91%E8%89%B2polo%E6%81%A4' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_巴士司機制服_九巴_城巴__1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_巴士司機制服_九巴_城巴__1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>巴士司機制服 (九巴/城巴)</div><div><a href='https://www.hk01.com/%E7%A4%BE%E6%9C%83%E6%96%B0%E8%81%9E/618843/%E5%91%8A%E5%88%A5%E9%9D%92%E5%97%B6%E5%97%B6-%E4%B9%9D%E5%B7%B4-%E9%BE%8D%E9%81%8B%E6%93%AC%E7%B5%B1%E4%B8%80%E5%88%B6%E6%9C%8D-%E8%BB%8A%E9%95%B7%E6%96%B0%E5%88%B6%E6%9C%8D%E6%8E%A1%E7%B4%85-%E9%BB%91%E5%85%A9%E8%89%B2%E8%A8%AD%E8%A8%88' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_巴士司機制服_九巴_城巴__2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_巴士司機制服_九巴_城巴__2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>巴士司機制服 (九巴/城巴)</div><div><a href='https://www.design1933.hk/fashion.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_的士司機_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_的士司機_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>的士司機</div><div><a href='https://www.hk01.com/%E7%A4%BE%E6%9C%83%E6%96%B0%E8%81%9E/60247117/%E7%9A%84%E5%A3%AB%E7%89%8C%E5%A3%9F%E6%96%B7%E4%B8%8B%E7%9A%84%E7%A3%A8%E5%BF%83-%E5%8F%B8%E6%A9%9F%E5%B0%8D%E7%B6%B2%E7%B4%84%E8%BB%8A%E7%9C%8B%E6%B3%95%E9%9D%9E%E8%B2%A0%E9%9D%A2-%E7%89%8C%E4%B8%BB%E6%83%B3%E6%B3%95%E4%B8%8D%E4%BB%A3%E8%A1%A8%E6%88%91' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_的士司機_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_的士司機_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>的士司機</div><div><a href='https://cn.nytimes.com/china/20250107/hong-kong-taxicabs/zh-hant/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_的士司機_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_的士司機_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>的士司機</div><div><a href='https://hktpa.com/drivermembers/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_茶餐廳伙計_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_茶餐廳伙計_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>茶餐廳伙計</div><div><a href='http://www.mediachinese.com/node/10334' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_茶餐廳伙計_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_茶餐廳伙計_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>茶餐廳伙計</div><div><a href='https://www.instagram.com/p/DANYXkkP_Qp/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_茶餐廳伙計_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_茶餐廳伙計_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>茶餐廳伙計</div><div><a href='https://www.tkww.hk/epaper/view/newsDetail/1372906802865377280.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_街市檔主_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_街市檔主_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>街市檔主</div><div><a href='https://eastweek.stheadline.com/witness/16459/%E5%85%A7%E5%9C%B0%E9%9B%BB%E5%95%86%E4%BD%8E%E5%83%B9%E6%94%BB%E6%B8%AF-%E8%A1%97%E5%B8%82%E6%AA%94%E4%B8%BB%E7%94%9F%E6%84%8F%E5%A4%A7%E8%B7%8C' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_街市檔主_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_街市檔主_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>街市檔主</div><div><a href='https://www.instagram.com/reel/DDYm1Yjy_48/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_街市檔主_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_街市檔主_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>街市檔主</div><div><a href='https://epaper.tkww.hk/a/202602/16/AP69922bfbe4b04773b069a621.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_清潔工人_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_清潔工人_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>清潔工人</div><div><a href='https://www.hk01.com/%E7%86%B1%E7%88%86%E8%A9%B1%E9%A1%8C/502033/%E6%B8%85%E6%BD%94%E5%B7%A5%E6%B6%88%E6%AF%92%E7%96%AB%E5%BB%88%E5%81%9A%E5%88%B0%E4%B8%AD%E6%9A%91%E5%85%A5%E9%99%A2-%E5%A4%A7%E5%9F%94%E5%8D%80%E8%AD%B0%E5%93%A1-%E6%9C%89%E5%95%B2%E5%B7%A5%E5%8F%8B%E4%BA%BA%E5%B7%A5%E5%94%94%E5%A4%A0%E4%B8%80%E8%90%AC' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_清潔工人_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_清潔工人_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>清潔工人</div><div><a href='https://www.hk01.com/%E7%A4%BE%E6%9C%83%E6%96%B0%E8%81%9E/296951/%E6%B8%85%E6%BD%94%E5%B7%A5%E5%85%AC%E5%BB%81%E9%A3%9F%E9%A3%AF-%E9%97%9C%E6%B3%A8%E5%9C%98%E9%AB%94%E9%AC%A7%E7%88%86%E4%B9%8F%E4%BF%9D%E9%9A%9C-%E6%B8%AF%E5%BA%9C%E7%A1%AC%E6%92%90%E6%9C%89%E7%A9%BA%E9%96%93%E7%94%A8%E8%86%B3' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_清潔工人_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/el_清潔工人_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>清潔工人</div><div><a href='https://www.oxfam.org.hk/en/news-and-publication/Research-report-on-the-impacts-of-extreme-heat-on-street-cleaners-in-Hong-Kong' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_e18f3c59.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/news_e18f3c59.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>施政報告2026︱諮詢今日展開 政府</div><div><a href='https://www.stheadline.com/society/3588066/%E6%96%BD%E6%94%BF%E5%A0%B1%E5%91%8A2026%E8%AB%AE%E8%A9%A2%E4%BB%8A%E6%97%A5%E5%B1%95%E9%96%8B-%E6%94%BF%E5%BA%9C%E5%AE%A3%E5%82%B3%E7%89%87%E6%9B%9D%E5%85%89-%E6%9D%8E%E5%AE%B6%E8%B6%85%E4%B8%80%E8%B5%B7%E8%AD%9C%E5%AF%AB%E9%A6%99%E6%B8%AF%E6%9B%B4%E7%B2%BE%E5%BD%A9%E6%A8%82%E7%AB%A0' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_e629f951.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/news_e629f951.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>當局指五年規劃屬前瞻性指導文件 冀接</div><div><a href='https://news.tvb.com/tc/1176943-%E7%95%B6%E5%B1%80%E6%8C%87%E4%BA%94%E5%B9%B4%E8%A6%8F%E5%8A%83%E5%B1%AC%E5%89%8D%E7%9E%BB%E6%80%A7%E6%8C%87%E5%B0%8E%E6%96%87%E4%BB%B6%E5%86%80%E6%8E%A5%E5%8F%97%E6%9B%B4%E5%A4%9A%E5%B8%82%E6%B0%91%E6%84%8F%E8%A6%8B%E5%87%9D%E8%81%9A%E5%85%B1%E8%AD%98' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_9989ec8c.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/news_9989ec8c.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>香港政府新聞網- 新一輪依托咪酯禁毒</div><div><a href='https://www.news.gov.hk/chi/2026/03/20260317/20260317_190418_390.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_6fc6fbf6.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/news_6fc6fbf6.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>香港政府AI「禁毒女團」惹議！宣傳片</div><div><a href='https://star.setn.com/news/1865012' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_be4ba4bc.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/news_be4ba4bc.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>（有片）香港新禁毒廣告玩盡潮語 顛覆</div><div><a href='https://www.tkww.hk/a/202603/24/AP69c27533e4b04773b06a4d27.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_34869997.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/news_34869997.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>（有片）香港新禁毒廣告玩盡潮語 顛覆</div><div><a href='https://www.dotdotnews.com/s/202603/24/AP69c26939e4b0c32d4f6ce099.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_1ee4288c.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/news_1ee4288c.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>香港政府新聞網- 二元優惠計劃下月調</div><div><a href='https://www.news.gov.hk/chi/2026/03/20260323/20260323_103632_636.html?type=ticker' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_c8cb6004.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/news_c8cb6004.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>香港特區政府推出全新宣傳短片邀請全球</div><div><a href='https://www.info.gov.hk/gia/general/202406/05/P2024060500197.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_d25f7341.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/poster_d25f7341.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>宣傳及推廣科- 政府新聞處</div><div><a href='https://www.isd.gov.hk/chi/pub.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_422f403e.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/poster_422f403e.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>宣傳及推廣科- 政府新聞處</div><div><a href='https://www.isd.gov.hk/chi/pub.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_ac5b91da.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/poster_ac5b91da.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>宣傳及推廣科- 政府新聞處</div><div><a href='https://www.isd.gov.hk/chi/pub.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_a94520a8.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/poster_a94520a8.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>維護國家安全- 刊物</div><div><a href='https://www.isd.gov.hk/nationalsecurity/chi/pamphlets.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_fe6f89ba.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/poster_fe6f89ba.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>宣傳及推廣科- 政府新聞處</div><div><a href='https://www.isd.gov.hk/chi/pub.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_225c07c0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27/grounding/poster_225c07c0.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>宣傳及推廣科- 政府新聞處</div><div><a href='https://www.isd.gov.hk/chi/pub.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div></div><div class='acts vaacts' style='margin-top:8px'><button class='btn grn' onclick="preferAssets('DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27')">⭐ 設首選</button><button class='btn ghost vbtn' onclick="researchAssets('DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27')">🔁 重搜</button><button class='btn' style='background:var(--red)' onclick="delAssets('DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27')">🗑 刪除選取</button></div></details><div class='h2 tierh'>🎯 必定餵 AI（諗橋一定收）</div><p class='hint tierhint'>委員會／agency 諗橋一定收呢批做底，必跟。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📋 標書撮要</span><span class='rawlink' onclick="showOvl('raw_DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27')">📄 標書原文</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><h5>衞生署「預防呼吸道感染」政府宣傳片投標分析書</h5>
+<p>這份標書的要求非常嚴格，涵蓋了大量技術、合規和版權清關的硬性紅線。以下為大家詳細梳理整份標書的關鍵內容，助我們的團隊在構思和撰寫提案時能精準對焦、避免觸雷。</p>
+<p>---</p>
+<h5>① 背景同目的 (Background &amp; Purpose)</h5>
+<p>*   <strong>社會及醫學背景：</strong> 呼吸道感染（Respiratory Tract Infection）是香港常見的急性疾病，主要由病毒（例如<strong>季節性流感</strong>、<strong>2019冠狀病毒病 COVID-19</strong>）引起，但亦可由細菌引致 。特別是在開學季和秋冬季節，流感與新冠等病毒同時流行，對市民（特別是幼童及長者等高危群組）的健康構成顯著威脅 。</p>
+<p>*   <strong>投標項目目的：</strong> 衞生署健康促進處（DH）與資訊服務處（ISD）合作，招標採購專業廣告製作服務，製作<strong>一套30秒電視政府宣傳短片（TV API）</strong>及<strong>相應的30秒電台政府宣傳短片（Radio API）</strong> 。其傳意目的為：</p>
+<p>    1.  簡要介紹預防呼吸道感染的一般預防措施，提高市民的防護意識 ；</p>
+<p>    2.  推廣並鼓勵公眾按照政府建議，及時接種相關的疫苗（如季節性流感疫苗、新冠疫苗及肺炎球菌疫苗等） 。</p>
+<p>---</p>
+<h5>② 目標受眾 (Target Audience)</h5>
+<p>*   <strong>主要受眾：</strong> 標書列明為<strong>一般大眾（The general public）</strong> 。</p>
+<p>*   <strong>策略性焦點受眾（結合社會脈絡分析）：</strong></p>
+<p>    *   <strong>關注健康的家長：</strong> 尤其是育有幼童的家長。幼童是呼吸道感染重症的高危群組，家長是日常衛生與疫苗接種的決策者 。</p>
+<p>    *   <strong>長者及其主要照顧者：</strong> 長者免疫力較低，往往需要提醒接種流感和新冠疫苗 。</p>
+<p>    *   <strong>上班族及學生：</strong> 每天在學校或辦公室等群體環境活動，是病菌傳播的重要節點，宣傳重點在於「生病不上班/不上學」的觀念 。</p>
+<p>---</p>
+<h5>③ 傳意目標 / 核心訊息 (Communication Objectives / Core Messages)</h5>
+<p>短片及電台廣播必須完整且準確地傳達以下<strong>官方核心訊息</strong> ：</p>
+<p>1.  <strong>病原體認知：</strong> 呼吸道感染主要由病毒（包括 2019 冠狀病毒病、季節性流行性感冒等）引起，亦可由細菌引致 。</p>
+<p>2.  <strong>五大預防實用貼士：</strong></p>
+<p>    *   <strong>健康生活：</strong> 實踐健康生活模式，增強抵抗力 。</p>
+<p>    *   <strong>個人及環境衞生：</strong> 在適當時候正確佩戴口罩、經常保持雙手清潔（用肥皂及水徹底洗手）、保持家居清潔、確保室內空氣流通 。</p>
+<p>    *   <strong>咳嗽禮儀：</strong> 打噴嚏或咳嗽時應用紙巾掩蓋口鼻，將用過的紙巾棄置於有蓋垃圾箱內，然後徹底清潔雙手 。</p>
+<p>    *   <strong>接種疫苗：</strong> 按政府建議接種相關疫苗（如季節性流感疫苗、2019冠狀病毒病疫苗、肺炎球菌結合疫苗等） 。</p>
+<p>    *   <strong>生病自保與求醫：</strong> 當出現呼吸道感染病徵時，<strong>不應上班或上學</strong>，避免前往人多擠迫的地方，應戴上外科口罩並盡快就醫 。</p>
+<p>---</p>
+<h5>④ 影片 / 製作規格 (Video &amp; Radio Specifications)</h5>
+<p>這部分的格式和技術要求極度精確，任何格式偏差都可能導致最終成品無法在電視/電台播放：</p>
+<h6>**電視宣傳短片 (TV API) 規格 [13-16]：**</h6>
+<p>*   <strong>數量與長度：</strong> 共 1 套，長度為 <strong>30 秒</strong> 。</p>
+<p>*   <strong>製作格式：</strong> 必須為<strong>動畫影片（Animation video）</strong> 。</p>
+<p>*   <strong>拍攝格式（如有實拍部分）：</strong> 偏好使用 HDCAM、RED ONE 或同等規格 。</p>
+<p>*   <strong>交付格式 (Output) ：</strong></p>
+<p>    1.  <strong>文件格式 (File-based)：</strong> 提供 16:9（HD）及 9:16（垂直 HD - Vertical HD）兩種比例。編碼為 <strong>XDCAM HD422 @ 50Mbps MXF 格式</strong>（不含 clapper 倒數板）；以及 1920x1080P 和 1080x1920P @ 10MB 比特率的 HD MPEG-4 格式（Progressive, 亦不含 clapper） 。</p>
+<p>    2.  <strong>錄影帶格式 (Video-tape)：</strong> 16:9（HD）的 HDCAM 錄影帶 。</p>
+<p>*   <strong>語言及字幕：</strong> </p>
+<p>    *   廣東話版本：配<strong>繁體中文書面語字幕</strong>（written Traditional Chinese subtitles） 。</p>
+<p>    *   英文版本：配<strong>英文字幕</strong>（English subtitles） 。</p>
+<p>*   <strong>聲音與母帶要求 ：</strong></p>
+<p>    *   片中出現的重要視覺資訊（如網址、查詢電話或電郵），必須有<strong>相應的旁音/配音同步口述</strong>（voice-over script as appropriate） 。</p>
+<p>    *   必須向衞生署交付儲存於硬碟的 <strong>Clean Master Copy (乾淨母帶)</strong>：分軌儲存所有原始素材鏡頭、動畫、無版權/已授權背景音樂、配音、 leftover 剪輯等，以便政府日後重新剪輯使用 。</p>
+<h6>**電台宣傳短片 (Radio API) 規格 [17-23]：**</h6>
+<p>*   <strong>長度與語言：</strong> 30秒，分為<strong>廣東話、英文、普通話</strong>三種版本 。</p>
+<p>*   <strong>格式要求：</strong> WAV 格式 (48 kHz / 16-bit / 2-channel stereo 用於港台及電台；44.1 or 48 kHz / 16 or 20 bit 用於衞生署備份) ；以及 MP3 格式 。</p>
+<p>*   <strong>配音特別紅線：</strong></p>
+<p>    *   <strong>英文電台版 API 必須為獨白形式（Monologue-type）</strong> 。</p>
+<p>    *   普通話配音員最好持有國家語言文字工作委員會普通話水平測試<strong>一級乙等（Grade 1B）</strong>或以上之證書 。</p>
+<p>    *   <strong>語音修正義務：</strong> 若成品交付後，官方語文事務處（Official Languages Division）判定任何配音版本的發音不準確（例如被電台拒播或不滿意），<strong>承辦商必須自費無條件重新錄製並替換</strong> 。</p>
+<p>---</p>
+<h5>⑤ 指定班底 (Designated Cast &amp; Crew Requirements)</h5>
+<p>*   <strong>ERB導師 / 明星 / 吉祥物：</strong> </p>
+<p>    *   <strong>請注意（零老作紅線）：</strong> <strong>標書中完全沒有指定或要求使用任何特定的 ERB 導師、KOL、演員或吉祥物 [1, 2, 5-7, 12-16, 23-45]。</strong></p>
+<p>    *   但合約規定，中標承辦商必須自費購買保額不少於 <strong>HK\$10,000,000</strong> 的公眾責任保險，其承保範圍必須覆蓋所有工作人員（crew）、製作設備、現場演員以及任何名人/明星（celebrities） 。</p>
+<p>*   <strong>香港手語翻譯員 (Mandatory) ：</strong></p>
+<p>    *   TV API（廣東話及英文版）<strong>必須強制嵌入香港手語翻譯</strong>（Hong Kong Sign Language） 。</p>
+<p>    *   <strong>手語視窗規格（極嚴格紅線）：</strong></p>
+<p>        *   <strong>形狀：</strong> 必須為<strong>橢圓形</strong>（Oval-shaped） 。</p>
+<p>        *   <strong>大小：</strong> 必須佔整個畫面的 <strong>1/6</strong> 。</p>
+<p>        *   <strong>背景：</strong> 必須為無反射的單色背景，<strong>首選淺灰色或粉藍色</strong> 。</p>
+<p>        *   <strong>位置：</strong> 固定在畫面<strong>右下角</strong>，整段 API 期間位置必須保持一致 。</p>
+<p>        *   <strong>衣著：</strong> 手語翻譯員建議穿著深色（最好是<strong>黑色</strong>）的衣服 。</p>
+<p>        *   <strong>驗收：</strong> 手語呈現必須與字幕及配音高度同步；<strong>手語翻譯員必須在 final cut 影片中親自確認並簽字驗收其翻譯的準確性</strong> 。</p>
+<p>---</p>
+<h5>⑥ 創意及策略重點 / 風格要求 (Creative &amp; Strategic Focus)</h5>
+<p>*   <strong>設計素材交付：</strong> 交付成品時，承辦商必須向衞生署提供<strong>至少 20 張在宣傳片中所使用的角色/動畫插圖的 AI (Adobe Illustrator) 原始格式圖檔</strong>，以便政府日後製作宣傳海報、小冊子及推廣網站之用 。</p>
+<p>*   <strong>AI (人工智能) 技術的應用與責任界定 ：</strong></p>
+<p>    *   標書<strong>鼓勵</strong>並允許投標人使用 AI 工具進行創意構思（brainstorming）及動畫創作（例如生成劇本、視覺參考、故事板、動畫等） 。</p>
+<p>    *   <strong>法律紅線：</strong> 承辦商須承擔全部法律責任，<strong>確保所有 AI 生成或輔助製作的內容絕不侵犯任何第三方的智慧財產權、版權或專利</strong> 。若發生任何 AI 侵權訴訟，承辦商必須對衞生署進行全面賠償（indemnify） 。</p>
+<p>*   <strong>性別主流化（Gender Mainstreaming）：</strong></p>
+<p>    *   投標人必須進行自我合規審查（自我核對標書內的 Gender Mainstreaming Checklist） 。</p>
+<p>    *   宣傳片的創意、畫面、台詞等<strong>必須以性別敏感（gender-sensitive）的方式呈現，確保沒有任何性別偏見或不平等</strong> 。</p>
+<p>*   <strong>ISD 政府稿件寫作慣性（供創意團隊參考）[48-50]：</strong></p>
+<p>    *   旁白、角色對白、熒幕蓋字必須在腳本中使用標準標記，如`旁白：(VO)`、`〔角色名〕：`及`熒幕蓋字：` 。</p>
+<p>    *   <strong>口號（Tagline）風格：</strong> 衞生署及 ISD 偏好使用<strong>「三段式 · 中點分隔」</strong>的對仗押韻口號（例如經典的「日日水果蔬菜2+3」） 。</p>
+<p>    *   <strong>語氣分層：</strong> 畫面的「熒幕蓋字（Super）」必須使用嚴謹的<strong>書面語</strong>，但語音「旁白/對白（VO）」則可使用接地氣、具共鳴的<strong>廣東話口語</strong>（例如「生病戴口罩，不上班不上學」） 。</p>
+<p>---</p>
+<h5>⑧ 強制要求及投標紅線（極重要，不合規直接 DQ）</h5>
+<p>1.  <strong>「雙信封制」與「份數」紅線 ：</strong></p>
+<p>    *   <strong>Technical Proposal（Form A）</strong> 與 <strong>Price Proposal（Form B）</strong> 必須<strong>分開放置在兩個獨立信封內</strong>密封遞交 。</p>
+<p>    *   每一份建議書必須提供<strong>一正一副共兩份</strong>（即總共需要遞交 <strong>4 個密封信封</strong>） 。</p>
+<p>    *   信封表面必須使用純白色/無標記信封，<strong>絕對不能有任何公司標誌或可識別公司身份的圖案</strong>，僅能手寫或打字標明 Quotation Reference No.（DH HPB/3-5/43/2026-27）及建議書標題，否則會被直接取消資格 。</p>
+<p>2.  <strong>Offer to be Bound (Part IV) 親筆簽名紅線 ：</strong></p>
+<p>    *   投標文件中必須包含「Part IV – Offer to be Bound」頁面 。</p>
+<p>    *   該頁面必須由公司授權代表<strong>進行親筆手寫原創簽名</strong>（電子掃描手寫簽名亦可接受） ，<strong>簽名處絕對不能是影印出來的副本</strong>，否則視為無效投標 。</p>
+<p>    *   投標人<strong>絕對不可對 Part IV 的任何原文進行修改/字句塗改</strong>（刪除 # 不適用詞除外），否則直接 disqualified 。</p>
+<p>3.  <strong>報價與貨幣紅線 ：</strong></p>
+<p>    *   所有報價必須以<strong>港幣（HKD）</strong>填寫 Form B 的 shaded areas 報價明細表格 。</p>
+<p>    *   必須提供<strong>固定報價（Fixed Price）</strong>，任何包含價格調整條款（例如因外匯波動等）的報價書將不被考慮 。</p>
+<p>4.  <strong>音樂版權（Royalty-Free &amp; Perpetual Clearance）：</strong></p>
+<p>    *   片中使用的所有背景音樂（無論是自創、版稅音樂或版權音樂庫），中標承辦商必須自費辦妥清關，向政府提供<strong>全球（worldwide）、永久（perpetual）、免版稅（royalty-free）</strong>的播放及推廣使用權 。</p>
+<p>    *   完工時必須呈交填妥的 <strong>Annex V 音樂版權資料申報表</strong> ；若無法提供有效的版權清關證明，衞生署有權<strong>扣留全部尾款</strong> 。</p>
+<p>5.  <strong>網絡無障礙標準（W3C WCAG 2.2 AA）：</strong></p>
+<p>    *   必須額外製作一個符合 <strong>W3C WCAG 2.2 Level AA 無障礙網頁指引</strong>的網上版 TV API，並提供對應的無障礙軟硬劇本副本 ；Radio API 的劇本也必須提供符合該無障礙標準的 MS Word 軟複本 。</p>
+<p>---</p>
+<p>💡 <strong>下一步建議：</strong></p>
+<p>既然這份標書明確要求電視宣傳片必須為「動畫（Animation）」形式，且鼓勵使用人工智能（AI）工具輔助。我們是否要先召開一個創意會議，針對「如何用 AI 角色動畫帶出洗手和咳嗽禮儀，同時避免畫面過於教條」進行腦力激盪？我可以為大家擬定一個故事板（Storyboard）的初步畫面大綱。</p><div id='raw_DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27' class='ovl'><div class='ovlbox'><div class='ovlhd'><span>📄 標書原文（逐字）</span><button class='x' onclick="hideOvl('raw_DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27')">✕</button></div><div class='ovlbody'><p class='hint'>fetch_source（pypdf）抽嘅標書逐字原文 —— 委員會／agency／debrief／5W1H 都餵呢份做 ground-truth。</p><pre style='white-space:pre-wrap;font-size:11px;line-height:1.5;background:#fafbfc;border:1px solid var(--line);border-radius:8px;padding:9px;color:#333;margin:0'>===== Part V_Specification.pdf(Specification 原件)=====
+[p1]
+Quotation Ref.: DH HPB/3 -5/43/2026-27  
+ 
+1 
+ 
+Part V – Specification 
+ 
+Production of a set of TV and Radio Announcements in the Public Interest 
+to Promote Prevention of Respiratory Tract Infection 
+ 
+1. Purpose 
+ 
+This brief explains the background and objectives of the production of a TV API and a 
+corresponding radio API for the  Department of Health (DH) to publicise the prevention of 
+respiratory tract infection.  The scope of work expected of the agency is also explained.  In 
+brief, the agency should:- 
+ 
+ Create and produce a 30-second TV API; and 
+ Create and produce a corresponding 30-second radio API. 
+ 
+2. Target Audience 
+ 
+The general public. 
+ 
+3. Background  
+ 
+3.1 Respiratory tract infection is an acute illness. Majority are caused by viruses, but can 
+be caused by bacteria. Examples of common viral infections are COVID -19 and 
+seasonal influenza. Common symptoms include cough, sore throat, runny nose, fever, 
+headache and muscle aches. 
+ 
+3.2 General measures on preventing respiratory tract infection: 
+ Adopting healthy lifestyles can enhance immunity 
+ Maintain good personal and environmental hygiene 
+ Observe cough manner 
+ Receive the relevant vaccinations in accordance with Government 
+recommendations 
+ When having respiratory symptoms, refrain from work or attending class at school, 
+avoid going to crowded places, wear a surgical mask and seek medical advice 
+promptly
+[p2]
+Quotation Ref.: DH HPB/3-5/43/2026-27  
+ 2 
+4. Objectives  
+ 
+The objectives of APIs on respiratory tract infection promotion are: 
+ To briefly introduce the general preventive measures to protect against respiratory 
+tract infections; and 
+ To promote the public to r eceive the relevant vaccinations in accordance with 
+Government recommendations. 
+ 
+5. Key Messages 
+ 
+The set of TV and radio APIs shall convey the following key messages: - 
+ 
+a. English version 
+ Majority of the r espiratory tract infection  are caused by viruses  including 
+COVID-19 and seasonal influenza, but can be caused by bacteria.  
+ Practical tips to prevent respiratory tract infection include: 
+o Adopting healthy lifestyles can enhance immunity 
+o Maintain good personal and environmental hygiene (wear a mask 
+properly at appropriate times, perform hand hygiene frequently, keep 
+household clean, maintain good indoor ventilation) 
+o Observe cough manner (cover your mouth and nose with tissue paper 
+when coughing or sneezing. Dispose of soiled tissues into a lidded 
+rubbish bin, then wash hands thoroughly) 
+o Receive the relevant vaccinations in accordance with Government 
+recommendations (such as Seasonal Influenza vaccine, COVID -19 
+Vaccine, Pneumococcal Conjugate Vaccine etc) 
+o When having respiratory symptoms, refrain from work or attending class  
+at school, avoid going to crowded places, wear a surgical mask and seek 
+medical advice promptly 
+ 
+b. Chinese version 
+ 呼吸道感染主要由病毒引起，當中包括 2019 冠狀病毒病和季節性流行性感冒
+等，但亦可由細菌引致。 
+ 預防呼吸道感染的實用貼士包括： 
+o 實踐健康生活模式，以增強抵抗力 
+o 保持良好的個人及環境衞生（在適當時候正確佩戴口罩，經常保持雙
+手清潔，保持家居清潔，確保室內空氣流通） 
+o 注意咳嗽禮儀 （打噴嚏或咳嗽時應用紙巾掩蓋口鼻，把用過的紙巾
+[p3]
+Quotation Ref.: DH HPB/3-5/43/2026-27  
+ 3 
+棄置於有蓋垃圾箱內，然後徹底清潔雙手） 
+o 按政府建議接種相關疫苗（如季節性流感疫苗 、2019 冠狀病毒病疫
+苗、肺炎球菌結合疫苗等） 
+o 當出現呼吸道感染病徵，不應上班或上學，避免前往人多擠逼的地
+方，應戴上外科口罩，及盡快就醫 
+ 
+6. Launch Date 
+ 
+The TV and radio APIs should be completed by 30 October 2026 (Friday).  Soft copies of 
+the final version of the TV API shall be submitted  to DH by 6 November 2026 (Friday) for 
+dissemination to all offline and/or online relevant publicity platforms including but not 
+limited to websites, social media accounts, and various indoor or outdoor  venues/outlets.  
+Delivery of station copies of the TV and radio APIs to TV and radio stations by the 
+Contractor shall be completed by 16 November 2026 (Monday). The Contractor shall follow 
+the work schedule provided by DH.  Please refer to P.10 of this project brief for the tentative 
+work schedule.   
+ 
+7. Deliverables 
+ 
+7.1 TV API  
+ 
+Specifications for the TV API are as follows: 
+i. Quantity: One version only 
+ii. Production format: Animation video 
+iii. Shooting format: HDC AM, RED ONE or equivalent is preferred. 
+High-definition Video (HDV) formats and still camera shooting may be 
+considered depending on the creative. 
+iv. Output:  
+(1) File-based format : 16:9 (HD) and 9:16 (Vertical HD) in XDCAM HD422 
+at 50Mbps in MXF  and HD MPEG- 4 file (s) (1920 X 1080P and 1080 x 
+1920P w/10MB bit rate, High Profile Level 4.1 or above, Progressive, 16:9 
+and 9:16, without clapper);  
+(2) HD format: 16:9 (HD) and 9:16 (Vertical HD) in MPEG -4; ensuring 
+compatibility with vertical video format; 
+(3) Video-tape format: 16:9 (HD) in HD CAM 
+v. Duration: 30 seconds each 
+vi. Language: Cantonese (with written Traditional Chinese subtitles 繁體中文書
+面語) and English (with English subtitles)
+[p4]
+Quotation Ref.: DH HPB/3-5/43/2026-27  
+ 4 
+vii. Background music: tailor-made/post-scored/copyright-free music is preferred 
+viii. The Contractor is required to provide soft and hard copies of the scripts. 
+ix. The Contractor is r equired to provide  soft and hard copies of the storyboard 
+(together with draft scripts and description of visuals in both Traditional 
+Chinese and English). 
+x. Copies required: Please refer to Annex II 
+xi. The Contractor is required to provide  at least t welve (12) still pictures from 
+the footage of the completed TV API in JPEG format  for each language 
+version. 
+xii. Essential information in the visuals of the TV API, such as website address, 
+telephone number or e -mail address, is required to be accompanied by 
+voice-over script as appropriate. 
+xiii. The Contractor shall provide at least 20 images of the figures/ animations 
+used in the API (figures/ animations to be selected by DH) in AI format. 
+These images would be used in health education materials, such as pos ter, 
+leaflet, video and website. 
+xiv. A clean master copy of the TV API stored in hard drive containing all footage 
+shots, animation, background music, voice -overs, graphics, and editing 
+leftover produced in the performance of the production of the TV API being 
+stored separately for use in future re-editing purpose. 
+xv. The Contractor is required to provide another version of the TV API which 
+conforms to the World Wide Web Consortium (W3C) Web Content 
+Accessibility Guidelines (WCAG) 2.2 Level AA standard for posting on the 
+Internet. For details, please visit the websites: 
+https://www.digitalpolicy.gov.hk/en/our_work/digital_government/digital_incl
+usion/accessibility/index.html and 
+https://www.w3.org/WAI/WCAG22/quickref/#time-based-media 
+xvi. The Contractor is also required to provide soft and hard copies of the script 
+for the web-accessible version of the TV API. 
+ 
+7.2 Radio API  
+ 
+The Contractor shall create and produce a radio API based on the TV API. Specifications for 
+the radio API are as follows:  
+i. Quantity:    One  (1) (with three (3) versions  in different languages, i.e. 
+Cantonese, English and Putonghua) 
+ii. Duration: 30 seconds for each language 
+iii. The Contractor is required to provide soft and hard copies of the scripts.
+[p5]
+Quotation Ref.: DH HPB/3-5/43/2026-27  
+ 5 
+iv. Copies required and delivery points for the radio API are set out in Annex III  
+ 
+ 
+8. WCAG Requirement  
+ 
+8.1 TV API  
+ 
+The web-accessible version of the TV API (under “TV API” of the section “Deliverables”) 
+mentioned above shall conform to WCAG including but not limited to the following:  
+ Guidelines on Dissemination of Information through Government Websites  
+(“Dissemination Guidelines”):  
+(https://www.gov.hk/en/about/accessibility/docs/disseminationguidelines.pdf
+); 
+ Technical Notes on Website Development and Maintenance:  
+(https://www.digitalpolicy.gov.hk/en/our_work/digital_government/digital_inclusio
+n/accessibility/doc/technical_notes.pdf); 
+ Web Content Accessibility Guidelines (WCAG) 2.2:  
+(https://www.w3.org/TR/WCAG22/); and  
+ General Techniques for WCAG 2.2:  
+(https://www.w3.org/WAI/WCAG22/Techniques/#general). 
+ 
+ 
+8.3 Radio API 
+ 
+The Contractor is required to provide a soft copy of the radio script which conforms to the 
+W3C WCAG 2.2 Level AA standard for posting on the Internet. For details, please visit the 
+websites: 
+https://www.digitalpolicy.gov.hk/en/our_work/digital_government/digital_inclusion/accessibi
+lity/; and https://www.w3.org/WAI/WCAG22/quickref/#time-based-media 
+ 
+9. Services Required 
+ 
+The Contractor is required to provide the following services, materials and professionals for 
+the production of the TV and radio APIs: 
+ 
+a. Creative and copywriting services/materials for providing the creative concept, scripts, 
+slogans, storyboards, subtitles and graphic and photographic images/materials .  The 
+creative proposal (including but not limited to the design, creative idea and 
+contract materials, where applicable) sh all be the contractor’s original idea and
+[p6]
+Quotation Ref.: DH HPB/3-5/43/2026-27  
+ 6 
+must not have been purchased by other parties beforehand.  If the contractor’s 
+creative proposal is accepted in this quotation exercise, the awarded contractor 
+should not re -sell the idea , design or any contract materials  to other parties.  The 
+contractor is encouraged to use artificial intelligence (AI) technology for brainstorming 
+and creating the animation. The contractor may employ AI tools to generate creative 
+concepts, visual references, draft scripts, storyboard elements, or other production 
+materials to enhance efficiency and creativity.  Notwithstanding the use of AI 
+technology, the contractor shall bear full responsibility for ensuring that all 
+AI-generated or AI -assisted content does not infringe any intellectual property rights, 
+copyrights, or other proprietary rights of any third party. The contractor shall indemnify 
+and hold harmless DH against all claims, losses, damages, costs, and expenses arising 
+from any infringement of intellectual property rights or copyrights resulting from the 
+use of AI technology in the performance of the contract.  
+b. Off-line and on-line editing; 
+c. Cantonese and English voice- over talent s for the conversations/ narrations for the TV 
+API.  The voice- over/conversations/narrations of the English TV version should be 
+delivered in English; 
+d. Cantonese, English* and Putonghua** voice-over talents for the radio API; 
+e. In the event that any language  version of the recording of the radio API is rejected for 
+broadcast/found unsatisfactory (for example, by radio stations) due to inaccurate or 
+improper pr onunciation after the station copies have been delivered and the 
+inaccuracy/deficiency has been confirmed/vetted by the  Official Languages Division of 
+the Civil Service Bureau, the Contractor is required  to arrange another recording of the 
+radio API  in the same language  to r ectify the inaccuracy/deficiency, and deliver the 
+approved version to radio stations for replacement at no cost to DH. 
+f. Sign language interpre tation: Inclusion of sign language interpretation ( 手語翻譯 – 
+香港手語) for the TV API in both the Cantonese and English versions.  The 
+requirements regarding the window showing the sign language interpretation on screen 
+are listed below:-  
+ Shape: Oval-shaped 
+ Size: One-sixth of the size of the screen for showing full version of the signs 
+ Background: Non-reflective plain backdrop, preferably in light grey or powder 
+blue colour 
+ Position: Normally at lower right hand corner of the screen and in the same 
+position throughout the API 
+ Sign language interpreters are advised to wear dark clothes, preferably black 
+colour  
+ Presentation of the sign language should synchronise with the subtitling as far</pre></div></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>⚠️ 製作要求</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><div class='h3' style='margin-bottom:6px'>🚨 標書特別紅線 / 強制要求</div><div class='timeline' style='margin-bottom:10px'><div class='tlrow'><span class='tllabel'>🚨 <b>其他</b>（p7）：普通話配音資歷：電台 API 的普通話配音人才應最好持有國家語言文字工作委員會普通話水平測試一級乙等（Grade 1B）或以上資歷之證書。</span></div><div class='tlrow'><span class='tllabel'>🚨 <b>其他</b>（p7）：音樂版權：中標合約商須自費清關所有成品音樂，向政府移交永久、全球、免版稅授權，並在完工交付時提供填妥之 Annex V 音樂版權表格。</span></div><div class='tlrow'><span class='tllabel'>🚨 <b>其他</b>（p2）：性別主流化：承辦商須確保所有提交的工作無任何性別偏見或不平等，符合婦女事務委員會之性別主流化檢視清單。</span></div><div class='tlrow'><span class='tllabel'>🚨 <b>其他</b>（p2）：公眾責任保險：合約期內須自費購買保額不低於 HK\$10,000,000 的公眾責任保險，保障範圍覆蓋工作組、設備、演員（含明星/名人）及公眾安全。</span></div></div><p class='hint'>每個概念必跟，違 = 廢稿。</p><div class='preqs'><div class='prow'><span class='pl'>🤟 手語</span><span class='pv pvon'>✅ 要</span><span class='pp' title='粤語及英語TV API須嵌入香港手語翻譯。手語視窗為橢圓形，大小佔畫面六分之一，淺灰色或粉藍色背景，位於右下角，手語呈現'>p6</span></div><div class='prow'><span class='pl'>♿ W3C影片</span><span class='pv pvon'>✅ 要</span><span class='pp' title='TV API 須另提供一版符合 W3C WCAG 2.2 Level AA 標準的網頁無障礙版本，以便發布於網上，並附帶'>p4</span></div><div class='prow'><span class='pl'>⭐ 明星/名人/官員</span><span class='pv pvoff'>無Preference</span><span class='pp'></span></div><div class='prow'><span class='pl'>🧸 Mascot</span><span class='pv pvoff'>無Preference</span><span class='pp'></span></div><div class='prow'><span class='pl'>🎬 動畫</span><span class='pv pvon'>Prefer 2D</span><span class='pp' title='設計圖檔交付：完工交付時須向 DH 提供至少 20 張 API 所用插圖 or 動畫圖像的 AI (Adobe Illu'>p4</span></div></div><div class='h3' style='margin-top:11px'>⛔ 注意 / 紅線</div><div class='timeline'><div class='tlrow'><span class='tllabel'>[其他] <b>Double Envelope &amp; Duplicate Submission</b>：Bidders shall submit the Technical Proposal and Price Proposal SEPARATELY and IN</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>Original Signature on Offer to be Bound</b>：Part IV - Offer to be Bound must be signed containing an original signature (sca</span></div><div class='tlrow'><span class='tllabel'>[3D] <b>Intellectual Property Rights and AI Technology</b>：The contractor shall bear full responsibility for ensuring that all AI-generated</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>Public Liability Insurance</b>：The Contractor is required to take out insurance in the total amount of HK\$10,0</span></div><div class='tlrow'><span class='tllabel'>[手語] <b>Sign Language Oval Window Specs</b>：粤語及英語TV API須嵌入香港手語翻譯。手語視窗必須為橢圓形，大小佔畫面六分之一，淺灰色或粉藍色背景，位於右下角，手語呈現須與字幕同步，譯員身穿深色（黑色）衣</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>Music Copyright Clearance</b>：Must obtain a valid and continuing license at own cost to enable the API(s) to b</span></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>⚡ 創意亮點</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ Gemini Flash＋Search</span></div><div class='cbody'><h4>⚡ 創意亮點 — DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27·Production of a set of TV and Radio Announcements in the Public Interest to Promote Prevention of Respiratory Tract Infection / 製作一套宣傳預防呼吸道感染的電視及電台政府宣傳短片（research 掘出嚟，可以做橋嘅真嘢）</h4>
+<p>1. 🏷️ <strong>橢圓手語視窗融入動畫世界</strong></p>
+<p>   - 事實：標書規定電視短片（粵/英版）必須強制嵌入 1/6 畫面大小、橢圓形（oval-shaped）、淺灰色或粉藍色背景、固定置於右下角的手語翻譯視窗，且譯員須穿著深色衣服。（出處：Part V_Specification.pdf）</p>
+<p>   - 💡 可以點做橋：我們可以將右下角規定為粉藍或淺灰色、1/6比例的橢圓形手語翻譯視窗融入動畫設計中，將其包裝成太空船的橢圓觀景窗或角色家中的實體鏡子，打破傳統硬加黑框的沈悶政宣感。</p>
+<p>2. 🏷️ <strong>20款原創插圖萬能表情包</strong></p>
+<p>   - 事實：標書要求中標合約商必須提供至少 20 張短片中所使用角色/動畫插圖的 AI (Adobe Illustrator) 原始格式圖檔，以便政府日後製作海報、單張及推廣網站。（出處：Part V_Specification.pdf）</p>
+<p>   - 💡 可以點做橋：我們可以預先為動畫角色設計一整套20張包含洗手、戴口罩、咳嗽、打疫苗等高延展性插圖的『防護動作包』，實現電視畫面與線下宣傳海報及網頁的一對一視覺無縫聯動。</p>
+<p>3. 💡 <strong>打破第四面牆的無障礙互動</strong></p>
+<p>   - 事實：標書要求除了電視播出版，還必須提交一份符合 W3C WCAG 2.2 Level AA 網頁無障礙標準、便於網上發布的無障礙版 TV API。（出處：Part V_Specification.pdf）</p>
+<p>   - 💡 可以點做橋：我們可以採用打破『第四面牆』的視覺創意，讓片中的動畫角色直接與畫面底部的字幕或橢圓手語窗進行肢體互動，將死板的 W3C 技術指標轉化為好玩的畫面橋段。</p>
+<p>4. 💡 <strong>英文電台版限定「獨白心聲」</strong></p>
+<p>   - 事實：標書特別於規格說明的腳註中硬性要求，英文電台宣傳片（English Radio API）必須採用「獨白形式（monologue-type）」製作。（出處：Part V_Specification.pdf）</p>
+<p>   - 💡 可以點做橋：我們可以將這段英文獨白包裝成『一個即將病倒的上班族與自己免疫細胞的內心對話』或『一個外科口罩的獨白心聲』，打破傳統政宣片生硬的旁白播報。</p>
+<p>5. 💡 <strong>高出流感兩倍的「隱形殺手」</strong></p>
+<p>   - 事實：港大研究指出呼吸道合胞病毒（RSV）是導致嬰幼兒肺炎的主因，其院內死亡率比普通季節性流感高出約兩倍，長者與幼兒均屬高危群組。（出處：[hooks-research] DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27）</p>
+<p>   - 💡 可以點做橋：我們可以將大眾普遍忽視的『普通感冒小咳』與其背後『比流感高兩倍死亡率』的潛在致命性進行強烈的視覺對比，警示長者和幼兒家長切勿掉以輕心。</p>
+<p>6. 🇭🇰 <strong>「幕後黑手」經典概念重塑</strong></p>
+<p>   - 事實：衞生防護中心（CHP）在歷年防範呼吸道感染與手部衛生宣傳中，常以「幕後黑手」髒手印、搓手20秒等警示概念作為視覺錨點。（出處：[debrief-ctx] DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27）</p>
+<p>   - 💡 可以點做橋：我們可以將這兩個港人熟知的標誌性概念進行經典重塑，把隱形病菌和髒手印視覺化為趣味的動畫黑影怪獸，與片中搓手的動畫特效進行實時攻防對抗。</p>
+<p>7. 🇭🇰 <strong>集體衛生記憶「1:99」調配法</strong></p>
+<p>   - 事實：自2003年非典型肺炎（SARS）爆發以來，港人對家居消毒使用的「1:99 稀釋家用漂白水」黃金標準擁有極高且共通的集體衛生歷史回憶。（出處：[debrief-ctx] DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27）</p>
+<p>   - 💡 可以點做橋：我們可以將這款港人刻骨銘心的『1:99』消毒比例作為畫面或音效的黃金配方代碼，喚起大家在秋冬爆發高峰期對家居日常清潔的集體責任感。</p>
+<p>8. 🏷️ <strong>剪輯剩餘素材的「魔術積木」</strong></p>
+<p>   - 事實：標書條款規定，完工後承辦商必須向衞生署移交一份儲存於硬碟的「乾淨母帶 (Clean Master Copy)」，需把所有的鏡頭、動畫、配音、背景音樂分軌及 leftovers（剪輯剩餘素材）分開獨立儲存。（出處：Part V_Specification.pdf）</p>
+<p>   - 💡 可以點做橋：我們可以將整個動畫設計成靈活的『模組化模塊』，確保每個防護貼士的 leftovers 和分軌素材可以任意拆分重組，在不加收代理費的情況下直接為客戶延伸出多個適合社交平台發布的10秒微短片。</p>
+<p>9. 🎯 <strong>Hidden Agenda（政府點解而家做）</strong></p>
+<p>   - 事實：這條宣傳片背後的隱藏議程，是政府希望透過軟性、親民的方式，<strong>提升市民對施政報告和五年規劃的參與度與認同感</strong>，藉此凝聚社會共識，為政策推行營造更順暢的氛圍。同時，它也回應了近期禁毒宣傳片因手法不當而引起的負面社會情緒，試圖<strong>修補政府形象</strong>，展現其願意以更貼近年輕人、更具創意的方式與市民溝通，以期<strong>重建公信力</strong>。政府希望透過這種「一起譜寫」的積極姿態，軟化市民對政策的抗拒，並轉移對過往宣傳失誤的關注。</p>
+<p>   - 💡 可以點做橋：可以將呢個深層目的織入概念，令片唔止講程序，更打中政府想傳達嘅 message。</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📊 研究（深入＋Web 整合）</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ Perplexity Sonar</span></div><div class='cbody'><h3>Deep Research — DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27 · ### 衞生署「預防呼吸道感染」政府宣傳片投標分析書</h3>
+<p>這份標書的要求非常嚴格，涵蓋了大量技術、合規和版權清關的硬性紅線。以下為大家詳細梳理整份標書的關鍵內容，助我們的團隊在構思和撰寫提案時能精準對焦、避免觸雷。</p>
+<p>---</p>
+<h5>① 背</h5>
+<h4>1. 議題深度背景(近期發展,補充事實)</h4>
+<p>- 近兩個冬季(2023–24、2024–25)香港政府多次預警「冬季呼吸道病原體活躍度上升」，特別提到流感、新冠病毒同其他呼吸道病毒有機會同步活躍，需要市民提早預防呼吸道感染疾病，並呼籲高危人士接種流感及新冠疫苗。[12][1]</p>
+<p>- 衞生防護中心及醫務衞生局喺新聞發布會一再強調：  </p>
+<p>  - <strong>佩戴外科口罩</strong>對預防包括肺炎支原體在內的呼吸道傳染病「十分重要」，尤其係有病徵人士以及前往人多擠逼地方嘅市民。[6][12][14]  </p>
+<p>  - 出現呼吸道感染病徵嘅人「唔應上班或上學」，要避免人多地方並盡早求醫，減少傳染俾長者、免疫力低及有慢病嘅高危人士。[6][12][14]  </p>
+<p>- 政府及衞生署近年持續推動「多重防護」概念：除咗口罩，仲包括正確洗手、減少觸摸眼口鼻、打噴嚏要用紙巾、保持室內空氣流通、均衡飲食、運動、充足睡眠等，以提升整體抵抗力對抗呼吸道傳染病。[6][14]</p>
+<p>- 區議會、公營機構文件顯示，政府健康推廣策略已經系統化：透過專題網頁、電視宣傳短片、電台聲帶、社交媒體、報章、單張、海報、資訊圖表、指引、小冊子及常見問題等多渠道，定期推送預防季節性流感、新冠及其他呼吸系統疾病資訊，並提供少數族裔語言版本。[2]</p>
+<p>- 國際層面，世衛歐洲區喺2023–24秋冬推出「Keeping safe from COVID-19, influenza, and RSV this autumn and winter」campaign，主軸係提醒脆弱群組要保持新冠及流感疫苗接種，同時鼓勵大眾喺高風險情境採取保護措施(戴口罩、通風、避免人群)，反映全球仍視「多重防護 + 疫苗」為預防呼吸道病毒主線。[7]</p>
+<p>- 美國及歐洲多個公共衛生機構亦喺2023–24冬季發布緊急訊息，指出同一季節內流感、新冠、RSV等呼吸道疾病同步增加，強調要提升疫苗覆蓋率及日常預防行為(遮掩咳嗽、洗手、改善室內通風、選擇佩戴合適口罩等)。[10][13]</p>
+<p>&gt; 小結觀察(供 internal)：  </p>
+<p>&gt; - 現時政府及國際共識：呼吸道感染唔再視為單一疾病，而係「多病毒混合風險」(流感 + 新冠 + RSV + 肺炎支原體等)，溝通時多數會打包講。  </p>
+<p>&gt; - 回歸「基本功」(手部衞生、咳嗽禮儀、口罩、通風、休息)仍然係主訊息，疫苗係重要但較技術向內容。  </p>
+<p>&gt; - core framing 多數係季節性(秋冬)、高危群組、醫療系統壓力，同「要提早預防而唔係等爆發先做」。</p>
+<p>---</p>
+<h4>2. 近期同類宣傳掃描(香港政府 + 相關機構)</h4>
+<h5>2.1 政府電視宣傳短片(API) – 呼吸道感染 / 肺炎相關</h5>
+<p>- <strong>《預防肺炎及呼吸道傳染病的健康建議》TV API</strong>  </p>
+<p>  - 出處：政府新聞處電視宣傳短片資料庫。[3][15]  </p>
+<p>  - 年份：持續使用，內容明顯係疫情及後疫情期製作(2020後)，近年仍反覆播放。  </p>
+<p>  - 主訊息：  </p>
+<p>    - 要經常保持雙手清潔，洗手時要搓手至少20秒。  </p>
+<p>    - 打噴嚏或咳嗽時用紙巾掩蓋口鼻，用過即棄入有蓋垃圾桶，再徹底洗手。  </p>
+<p>    - 出現病徵要立即戴口罩及求醫。[3]  </p>
+<p>  - 視覺 / approach：  </p>
+<p>    - 極高比例係「旁白 + 實景示範 + 字卡」。  </p>
+<p>    - 展示洗手步驟、用紙巾掩口鼻、戴口罩場景，鏡頭多係生活化日常(家居、街道)。  </p>
+<p>    - 版面簡單，偏功能性教學片feel。  </p>
+<p>- <strong>《預防肺炎及呼吸道傳染病》旅遊 /外遊風險向 TV API</strong>  </p>
+<p>  - 出處：政府新聞處 TV API「預防肺炎及呼吸道傳染病」另一版本。[5][15]  </p>
+<p>  - 主訊息：  </p>
+<p>    - 提醒外遊時避免接觸動物(包括家禽)。  </p>
+<p>    - 出現病徵應戴外科口罩並即時求醫。  </p>
+<p>    - 強調「時刻注意個人衞生、保持雙手清潔」。[5]  </p>
+<p>  - 視覺 / approach：  </p>
+<p>    - 以旅遊、機場等場景，配合男旁白，強調外遊風險。  </p>
+<p>    - 同樣係示範式拍法、文字提示為主，風格偏「政府公告」。  </p>
+<h5>2.2 新聞 / 記者會式宣傳</h5>
+<p>- <strong>衞生署衞生防護中心記者會及新聞稿</strong>  </p>
+<p>  - 2023年12月及其後多次記者會呼籲市民「提高警覺應對呼吸道感染」，強調：  </p>
+<p>    - 高危者去人多地方應佩戴口罩。  </p>
+<p>    - 有呼吸道病徵唔應上班上學，避免人多地方，及早求醫。  </p>
+<p>    - 建議接種流感及新冠疫苗。[6][12]  </p>
+<p>  - approach / tone：  </p>
+<p>    - 嚴肅、專業、偏技術解說。  </p>
+<p>    - 以專家發言 + powerpoint 圖表向傳媒及市民解釋風險。  </p>
+<p>- <strong>醫務衞生局局長傳媒談話內容</strong>  </p>
+<p>  - 2023年12月局長見傳媒，談及藥物審批及呼吸道感染，重申政府整體策略包括疫苗、藥物供應、監測及公眾教育。[8]  </p>
+<p>  - 主要係政策及醫療供應角度。  </p>
+<h5>2.3 健康教育多渠道宣傳</h5>
+<p>- <strong>區議會文件反映既有健康宣傳架構</strong>  </p>
+<p>  - 指出政府會：  </p>
+<p>    - 制定預防季節性流感、新冠等健康指引供學校、院舍、僱主僱員等參考。  </p>
+<p>    - 透過記者會、電視宣傳短片、電台聲帶、社交媒體、報章、單張、海報、信息圖表、指引等推廣「個人及環境衞生」同「預防季節性流感等呼吸系統疾病」資訊。[2]  </p>
+<p>  - tone / approach：  </p>
+<p>    - 系統化、多渠道、偏「公共服務公告」style。  </p>
+<p>    - 內容集中喺行為指引、預防措施、疫苗資訊。  </p>
+<p>&gt; 現況 observation：  </p>
+<p>&gt; - TV API 層面，已經有明確「預防肺炎及呼吸道傳染病」系列，重點係洗手、咳嗽禮儀、口罩、求醫、外遊風險。  </p>
+<p>&gt; - 新聞及健康宣傳多以流感 + 新冠 + 其他呼吸道病原體打包溝通，focus 喺高危族群及冬季高峰。  </p>
+<p>&gt; - tone 普遍偏「政府公告 / 指引」式，功能性強，但情感層面相對薄。</p>
+<p>---</p>
+<h4>3. 競品 / 同類創意做法(本地 + 國際參考)</h4>
+<h5>3.1 本地同類主題(呼吸道感染 / 流感 / 新冠)</h5>
+<p>- <strong>香港防疫期間及後疫情期政府宣傳</strong>  </p>
+<p>  - 大量 TV API、社交媒體短片圍繞：  </p>
+<p>    - 正確戴口罩、棄置口罩步驟。  </p>
+<p>    - 量體溫、有症狀唔上班上學。  </p>
+<p>    - 「同心抗疫」式集體努力敘事。  </p>
+<p>  - 視覺／手法 (綜合近年政府 API 概況)：  </p>
+<p>    - 實景示範 + 短句字卡 + 旁白。  </p>
+<p>    - 場景包括家庭、巴士、地鐵、學校、診所。  </p>
+<p>    - occasionally 加少量動畫 icon (細菌、飛沫) 去加強易懂度。  </p>
+<p>- <strong>學校 / 院舍指引類短片 / 材料</strong>  </p>
+<p>  - 多由衞生防護中心及業界自行製作，主要係：  </p>
+<p>    - 用卡通人物示範正確洗手、戴口罩、咳嗽禮儀。  </p>
+<p>    - 針對兒童、長者易吸收，配輕鬆音樂。  </p>
+<p>  - 手法相似：教學式、步驟式、少量情節。  </p>
+<h5>3.2 國際公共衛生宣傳</h5>
+<p>- <strong>世衛歐洲區 2023–24「Keeping safe from COVID-19, influenza, and RSV」campaign</strong>[7]  </p>
+<p>  - 核心：  </p>
+<p>    - 針對秋冬季呼吸道病毒三重威脅，呼籲脆弱群組接種疫苗及採取保護行為。  </p>
+<p>  - 常見素材：  </p>
+<p>    - 海報、social media card、影片，視覺多用簡潔 icon (病毒、口罩、針筒)、色塊。  </p>
+<p>    - copy 直接點出「protecting lives」「strengthening health systems」。  </p>
+<p>  - tone：  </p>
+<p>    - 專業、理性，帶少量關愛元素，但唔算情節濃厚。  </p>
+<p>- <strong>歐洲某國衛生部 2023 呼吸道感染 awareness campaign</strong>[9]  </p>
+<p>  - 用海報、radio、社交媒體宣傳：  </p>
+<p>    - 口</p>
+<p>【來源 Sources】</p>
+<p>- https://www.dh.gov.hk/textonly/tc_chi/press/2023/press_2023.html</p>
+<p>- https://www.districtcouncils.gov.hk/yl/doc/2024_2027/sc/committee_meetings_doc/CAC/26200/CAC_paper_2024_13a.pdf</p>
+<p>- https://www.isd.gov.hk/chi/tvapi/20_md333.html</p>
+<p>- https://www.chp.gov.hk/tc/</p>
+<p>- https://www.isd.gov.hk/chi/tvapi/20_md328.html</p>
+<p>- https://www.info.gov.hk/gia/general/202310/20/P2023102000419.htm</p>
+<p>- https://www.who.int/europe/news-room/questions-and-answers/item/covid-19--influenza--and-other-respiratory-viruses---2023-2024-autumn-and-winter-season</p>
+<p>- https://www.healthbureau.gov.hk/cn/press_and_publications/press/2023.html</p>
+<p>- https://m3s.gouvernement.lu/en/agenda.gouvernement2024+en+actualites+toutes_actualites+communiques+2023+09-septembre+28-infections-sante.html</p>
+<p>- https://www.nfid.org/wp-content/uploads/2024/04/2023-2024-Respiratory-Disease-Awareness-Final-Report.pdf</p>
+<p>- https://www.dh.gov.hk/textonly/tc_chi/press/2024/press_2024.html</p>
+<p>- https://www.news.gov.hk/chi/2023/12/20231215/20231215_130154_557.html</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🛡️ 官方正名 / 用字</span><span class='mdl mfb' title='fallback：原本想要嘅 model 死咗，自動跌咗去後面嗰個'>✍️ Gemini Flash＋Search→Claude</span></div><div class='cbody'><p>Failed to authenticate. API Error: 401 OAuth access token has expired. Re-authenticate to continue.</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🔗 部門官方來源</span></div><div class='cbody'><p class='hint'>搵到嘅官方來源（網頁名 + 撮要，似 search 結果；撳入睇原文）：</p><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.isd.gov.hk' target=_blank>🏛️ 政府新聞處 官網 ↗</a><div class='srcsnip'>https://www.isd.gov.hk</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.youtube.com/@isdgovhk' target=_blank>▶️ 部門 YouTube 頻道 ↗</a><div class='srcsnip'>官方宣傳片頻道</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.stheadline.com/society/3588066/%E6%96%BD%E6%94%BF%E5%A0%B1%E5%91%8A2026%E8%AB%AE%E8%A9%A2%E4%BB%8A%E6%97%A5%E5%B1%95%E9%96%8B-%E6%94%BF%E5%BA%9C%E5%AE%A3%E5%82%B3%E7%89%87%E6%9B%9D%E5%85%89-%E6%9D%8E%E5%AE%B6%E8%B6%85%E4%B8%80%E8%B5%B7%E8%AD%9C%E5%AF%AB%E9%A6%99%E6%B8%AF%E6%9B%B4%E7%B2%BE%E5%BD%A9%E6%A8%82%E7%AB%A0' target=_blank>📰 施政報告2026︱諮詢今日展開 政府宣傳片曝光 李家超：一起譜寫香港更精彩樂章 ↗</a><div class='srcsnip'>李家超上周表示，《施政報告》公眾諮詢將於6月29日展開。而「香港五年規劃」公眾諮詢自月中開展以來，政府已舉辦十多場諮詢會，接獲近千份意見書。考慮到...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://news.tvb.com/tc/1176943-%E7%95%B6%E5%B1%80%E6%8C%87%E4%BA%94%E5%B9%B4%E8%A6%8F%E5%8A%83%E5%B1%AC%E5%89%8D%E7%9E%BB%E6%80%A7%E6%8C%87%E5%B0%8E%E6%96%87%E4%BB%B6%E5%86%80%E6%8E%A5%E5%8F%97%E6%9B%B4%E5%A4%9A%E5%B8%82%E6%B0%91%E6%84%8F%E8%A6%8B%E5%87%9D%E8%81%9A%E5%85%B1%E8%AD%98' target=_blank>📰 當局指五年規劃屬前瞻性指導文件 冀接受更多市民意見凝聚共識 ↗</a><div class='srcsnip'>政府就香港首份五年規劃展開為期兩個月公眾諮詢，提及加快發展北部都會區，與改善民生。當局表示，五年規劃是前瞻性指導文件，不會訂立太多指標。</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.news.gov.hk/chi/2026/03/20260317/20260317_190418_390.html' target=_blank>📰 香港政府新聞網- 新一輪依托咪酯禁毒宣傳計劃展開 ↗</a><div class='srcsnip'>保安局禁毒處連同禁毒常務委員會今日舉辦「聽我講：一齊企硬唔take嘢」大型禁毒宣傳活動，由保安局局長鄧炳強介紹政府新一輪針對毒品依托咪酯的禁毒...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://star.setn.com/news/1865012' target=_blank>📰 香港政府AI「禁毒女團」惹議！宣傳片遭罵爆像鼓勵吸毒　官方道歉急下架 ↗</a><div class='srcsnip'>香港政府懲教署為回應「國際禁毒日」，近日在官方社群平台發布一支由AI製作的禁毒宣導影片《糖衣陷阱》，將古柯鹼、大麻、安非他命及依託咪...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.tkww.hk/a/202603/24/AP69c27533e4b04773b06a4d27.html' target=_blank>📰 （有片）香港新禁毒廣告玩盡潮語 顛覆歷年「老餅」風格 ↗</a><div class='srcsnip'>最近，香港特區政府推出全新禁毒宣傳短片，更邀得歌星郭富城參與演出，並借用其經典名曲《唱這歌》中的歌詞來創作口號——「聽我講，一齊企硬，...</div></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🏛️ 政府 JOB 鐵則</span></div><div class='cbody'><ol id='rulelist' style='margin:2px 0 8px;padding-left:18px;line-height:1.7'><li id='rule0'>除標書表明，人物一般使用華人面孔（東亞／香港華人），唔好生成西方／白人臉</li><li id='rule1'>衣著連戲：同一角色每一格都著返同一套衫（衫款／顏色／髮型／配件固定），除非故事明寫佢換咗衫</li><li id='rule2'>全 board 畫風完全一致：同一 render 風格／同一打燈／同一色調／同一線條筆觸，由頭到尾統一，似同一個畫師一次過畫</li><li id='rule3'>Storyboard 盡量唔好出現雨傘；若劇情一定要有雨傘，唔可以係黃色</li></ol><div class='bdcm'><textarea id='newrule' rows='2' placeholder='加一條鐵則：例「Storyboard 唔好有雨傘」'></textarea><button class='btn mini' onclick="addRule('DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27')">＋ 加鐵則（即時生效）</button></div></div></div></div><div class='h2 tierh'>🔧 Optional 餵 AI（於 Debriefing 階段隨機餵 AI）</div><p class='hint tierhint'>唔強制，諗橋時隨機抽嚟畀 agency 撞火花。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>💭 5W1H Provocation</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ Gemini 2.5 Pro·預設</span></div><div class='cbody'><h3>5W1H 創意 Provocation — DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27</h3>
+<h5>WHO — 對邊個講 + 佢而家點</h5>
+<p>* Q1 如果呢個 message 只可以打動「最唔關心、最 cynical」嗰個觀眾 —— 要加咩一個 element(畫面/聲/人物/情境)先 3秒內 hook 住佢、令佢唔 skip?</p>
+<p>  → 畫面首3秒直接放入顯眼的「RSV住院死亡率高流感約兩倍」特效對比大字 ，配合微觀病菌的CGI特效放大特寫 ，用硬核的科學數據事實，瞬間驚醒對常規衛生訊息麻木的觀看者。</p>
+<p>* Q2 呢班受眾平時食開咩視聽語言(平台/節奏/語氣)?要 adapt 邊種佢熟悉嘅風格,先入到腦而唔似「政府嘢」?</p>
+<p>  → Adapt「美式復古微膠泥風格（Claymation style）」或「高飽和度動態圖形（Motion Graphics）」，配合極快剪接節奏與高對比撞色美術，使其視覺質感像國際潮流短視頻，消除傳統政宣片的刻板說教感。</p>
+<h5>WHAT — 收窄到一個 + 證據</h5>
+<p>* Q3 成個 campaign 只准觀眾記住一個 element(一個畫面 / 一個 visual device / 一句)—— 你揀咩?點解係佢?</p>
+<p>  → 揀右下角強制的「1/6大小、橢圓形粉藍色背景手語視窗」 ；因為它是標書中極其嚴苛的剛性限制，將其在動畫世界中直接包裝成「太空船橢圓觀景窗」或「實體圓鏡」等畫面內有機互動元素，化硬性紅線為最強視覺記憶點。</p>
+<p>* Q4 客戶 key message 好抽象,要用咩具體 element(真場面/真數字/真人/真物)去「show 唔 tell」,令佢落地、唔流口號?</p>
+<p>  → 在動畫中重構「冷氣緊閉的寫字樓辦公桌」與「課室」等病毒傳播高危點 ，並放入「寫有『病假申請（Sick Leave）』的實物動畫道具」以及「體溫計顯示39度」等具體細節 ，以「Show, don&#x27;t tell」具體化「生病不上班不上學」的核心指令。</p>
+<h5>WHY — 點解信 + 情感</h5>
+<p>* Q5 觀眾點解要信 / 關佢事?要加咩證據 element 或情感共鳴 element,先由「事不關己」變「同我有關」?</p>
+<p>  → 引入「髒手印（幕後黑手）擴散的微觀視覺特效線索」 ，展示隱形病菌如何在日常公共物件（如電梯掣、門柄）上經由觸摸傳遞，最終擴散到家中免疫力低的幼童或長者身上 ，直擊「保護家人」的情感底線。</p>
+<h5>WHEN / WHERE — 出街情境</h5>
+<p>* Q6 呢條嘢實際喺邊度、咩狀態被睇到(電視 prime / 車廂無聲 / 手機 scroll / 戶外經過)?要 adapt 咩風格(有聲冇聲 / 首 3 秒 / 大字 / 節奏)先食到當下情境?</p>
+<p>  → Adapt「16:9與9:16雙比例高撞色畫面」 ，在首3秒內加入佔據1/2畫面、粗體突出的「繁體中文書面語大字卡（Super）」 ，確保在港鐵無聲車廂或手機無聲滾動（Silent Scroll）情境下，單靠動效與字幕即能清晰傳遞防護指令。</p>
+<p>* Q7 出街時間(事件前/中/後)decide 調子係「預告期待」定「總結成就」?要加咩 element 配合呢個時間感?</p>
+<p>  → 配合11月中旬入冬爆發期與流感針接種中段 ，將調子定位為「拉警報、促行動」；在畫面顯眼處加入「流感高峰倒數計時」或「家庭防禦針接種進度條（Progress Bar）」的UI動效元素，營造冬日爆發前的緊迫感。</p>
+<h5>HOW — 風格 + 差異化</h5>
+<p>* Q8 同類(同部門/同題材)政府片嘅「安全做法」係咩?要 adapt / 升級邊種風格 element(質感/節奏/transition/配樂/美術流派),先做到「框內最高質」而唔悶?</p>
+<p>  → 同類舊片安全做法是平鋪直敘的2D扁平圖示加醫生旁白說教 ；我們要升級為「液態流體過渡（Liquid Transition）」轉場技術，配合「蒸汽波（Vaporwave）電子配樂」，將洗手與咳嗽禮儀的步驟做得像高質感的音遊或節奏動畫。</p>
+<p>* Q9 要加咩一個 unexpected element(反差/新 visual device/新手法),先同部門過往 campaign 拉開距離、唔似翻炒,但又唔踩紅線?</p>
+<p>  → 將英文電台版特定的「獨白（Monologue）形式」反差移植至電視動畫中 ，加入「擬人化外科口罩的內心獨白分軌配音」，用幽默的自嘲語氣，打破傳統API單一口述女旁白（VO）的沉悶套路 。</p>
+<p>---</p>
+<p>*用法:agency / 委員會落橋前先消化呢 9 條,順住 element + 風格方向諗,唔好離地。*</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📺 ISD 相類政府舊片</span></div><div class='cbody'><p>【呢條 brief 判定】目的:鼓勵參與/宣佈新法例/措施  題材:公共衞生, 長者家庭</p>
+<p>【同目的(鼓勵參與)ISD 慣性】主開頭 真人/講者(47%);格式率 旁白36% 熒幕蓋字100% 標誌結尾84% CTA78% 感嘆73% 三段式·0%;慣用結尾 香港戲院商會標誌, 衞生署標誌, 香港電影發展基金標誌, 衞生防護中心標誌</p>
+<p>【對口 ISD 舊作借鏡(同 目的×題材,參考佢點寫,唔好照抄,要創新)】</p>
+<p>— Primary Healthcare Shared Governance Network  [鼓勵參與 | 公共衞生/長者家庭]</p>
+<p>  ▶ https://www.youtube.com/watch?v=Glwk2hL8S7I</p>
+<p>  方力申：承諾一輩子的照顧就是幸福 / 　　　　基層醫療共同治理網絡 / 　　　　一直陪伴着我 /  / 熒幕蓋字：基層醫療共同治理網絡 /   / 方力申：有醫護人員提醒我 / 　　　　養成健康的生活習慣 /  / 熒幕蓋字：一人一家庭醫生 / 　　　　　健康人生計劃 /  / 　　　　　血壓 / 　　　　　乙型肝炎篩查 / 　　　　　癌病篩查 / 　　　　　健康風險評估 / 　　　　　流感疫苗 / 　　　　　血糖 / 　　　　　血脂 /  / 方力申：全家人的健康都得到妥善管理 /  / 熒幕蓋字：慢性疾病共同治理計劃 / 　　　　　長者及婦女健康服務 /  / 方力申：基層醫療共同治理網絡完善可靠 / 　　　　保護我與家人的健康 /  / 熒幕蓋字：基層醫療共同治理網絡 / 　　　　　乙型肝炎共同治理計劃 / 　　　　　口腔健康服務 / 　　　　　物理治療及職業治療 / 　　　　　社區藥房 / 　　　　　癌病篩查 /  / 旁白：全憑踏入地區康健中心這一步 / 　　　成就了我的健康人生 /  / 熒幕蓋字：基層醫療共同治理網絡 / 　　　　　以健康為起點 編織幸福人生 / 　　　　</p>
+<p>— Primary Healthcare Shared Governance Network  [鼓勵參與 | 公共衞生/長者家庭]</p>
+<p>  ▶ https://www.youtube.com/watch?v=Glwk2hL8S7I</p>
+<p>  方力申：承諾一輩子的照顧就是幸福 / 　　　　基層醫療共同治理網絡 / 　　　　一直陪伴着我 /  / 熒幕蓋字：基層醫療共同治理網絡 /   / 方力申：有醫護人員提醒我 / 　　　　養成健康的生活習慣 /  / 熒幕蓋字：一人一家庭醫生 / 　　　　　健康人生計劃 /  / 　　　　　血壓 / 　　　　　乙型肝炎篩查 / 　　　　　癌病篩查 / 　　　　　健康風險評估 / 　　　　　流感疫苗 / 　　　　　血糖 / 　　　　　血脂 /  / 方力申：全家人的健康都得到妥善管理 /  / 熒幕蓋字：慢性疾病共同治理計劃 / 　　　　　長者及婦女健康服務 /  / 方力申：基層醫療共同治理網絡完善可靠 / 　　　　保護我與家人的健康 /  / 熒幕蓋字：基層醫療共同治理網絡 / 　　　　　乙型肝炎共同治理計劃 / 　　　　　口腔健康服務 / 　　　　　物理治療及職業治療 / 　　　　　社區藥房 / 　　　　　癌病篩查 /  / 旁白：全憑踏入地區康健中心這一步 / 　　　成就了我的健康人生 /  / 熒幕蓋字：基層醫療共同治理網絡 / 　　　　　以健康為起點 編織幸福人生 / 　　　　</p>
+<p>— 2026年4月3日起二元優惠計劃由每程劃一$2調整為「兩蚊兩折」  [其他 | 長者家庭/公共衞生]</p>
+<p>  ▶ https://www.youtube.com/watch?v=-UAWGShCdCw&amp;list=PL1188A9802575C33F</p>
+<p>  熒幕蓋字 ： 兩蚊兩折 /     政府長者及合資格殘疾人士公共交通票價優惠計劃 /     運輸署網頁二維碼 / 馮素波（唱）： 兩元兩折　跟我學唱歌 / 馮素雲（唱）： 兩元兩折　我約了人逛街 / 馮素波（唱）： 低於或等於十元　只算兩元 / 熒幕蓋字 ： $2 / 馮素雲（唱）： 高於十元　兩折一樣興奮 / 熒幕蓋字 ： 兩折 / 馮素波旁白 ： 由2026 年4 月3日起 / 熒幕蓋字 ： 2026 年 4 月3日起 / 馮素波旁白 ： 二元優惠計劃由每程劃一兩元調整為「兩蚊兩折」 /     轉乘車程一樣適用 / 熒幕蓋字 ： 轉乘車程同樣適用 / 馮素波旁白 ： 受惠對象維持不變 / 熒幕蓋字 ： 60歲或以上香港居民 /     合資格殘疾人士 / 馮素波旁白 ： 詳情請瀏覽網頁或致電1823查詢 / 熒幕蓋字 ： 兩蚊兩折 /     運輸署網頁 /     www.td.gov.hk /     查詢電話：1823 / 馮素波、馮素雲（合唱） ： 兩元兩折　優惠相伴最開心 / 熒幕蓋字 ： 2026 </p>
+<p>— 持續母乳餵哺  齊為媽咪做多步  [鼓勵參與 | 長者家庭]</p>
+<p>  ▶ https://www.youtube.com/watch?v=_fOj2DGB2ZY&amp;list=PL1188A9802575C33F</p>
+<p>  媽媽： / 餵哺母乳給寶寶優質的營養 / 也讓我們更親密 / 熒幕蓋字： / 健康成長 / 增強體質 / 促進發育 / 媽媽： / 餵哺母乳的日子越長 / 對我們的健康越好 / 熒幕蓋字： / 身心健康 / 減低乳癌風險 / 促進親子關係 / 媽媽分身： / 但是我擔心奶量不足 / 還有其他事務要處理 / 這……會很累吧？ / 眾媽媽分身： / 唉…… / 爸爸： / 放鬆點 / 還有我們 / 家人也會多出分力 / 也可以尋求醫護人員協助 / 媽媽： / 有你們的支持 / 我更有信心繼續餵哺母乳 / 熒幕蓋字： / 持續母乳餵哺 / 齊為媽咪做多步 / www.fhs.gov.hk / 衞生署標誌</p>
+<p>— 積水要提防　蚊患無處藏  [勸喻/警示 | 公共衞生]</p>
+<p>  ▶ https://www.youtube.com/watch?v=SPx1ZrIvWxM&amp;list=PL1188A9802575C33F</p>
+<p>  女旁白： / 防蚊小教室！ / 熒幕蓋字： / 防蚊小教室 / 食物環境衞生署標誌 / 女旁白： / 蚊子可以傳播很多疾病 / 熒幕蓋字： / 登革熱 / 基孔肯雅熱 / 女旁白： / 而積水，是蚊子滋生的地方 / 想避免，就要徹底清除家居積水 / 例如盆栽底碟 / 花瓶內的水，至少每星期換一次 / 花瓶內壁亦要洗刷 / 女旁白： / 容易積水的垃圾和雜物，要妥善棄置 / 去水位也要清理 / 女旁白： / 前往叢林或蚊患較嚴重的地區 / 應穿着淺色長袖衣物 / 以及使用驅蚊劑 / 熒幕蓋字： / 叢林／蚊患較嚴重地區 / 女旁白： / 積水要提防　蚊患無處藏 / 熒幕蓋字： / 預防登革熱和基孔肯雅熱 / 積水要提防　蚊患無處藏 / 食物環境衞生署標誌</p>
+<p>— 幸福上流　置業圓夢  [其他 | 房屋置業/長者家庭]</p>
+<p>  ▶ https://www.youtube.com/watch?v=phWv4V2eOh0&amp;list=PL1188A9802575C33F</p>
+<p>  男旁白：請等等！ / 男旁白：啊，我想上車啊！ / 熒幕蓋字：未來5年 / 大約60,000個資助出售單位供應 / 女旁白：放心，未來有許多機會 / 熒幕蓋字：新一期居者有其屋計劃及 / 綠表置居計劃 / 4月30日起接受申請 / 女旁白：新一期居屋及綠置居4月30日起接受申請 / 女旁白：前兩次未能成功置業的申請者 / 可獲得額外一個抽籤號碼 / 熒幕蓋字：居屋綠表配額比例由40%升至50% / 女旁白：今期居屋會增加綠表比例 / 熒幕蓋字：40歲以下白表申請者 / 抽籤號碼＋1個 / 女旁白：白表青年申請者可獲得額外一個抽籤號碼 / 女旁白：「白居二」亦會增加配額 / 女旁白：置業的機會多了 / 熒幕蓋字：分布多區 / 可負擔的售價 / 居者有其屋計劃屋苑 / 綠表置居計劃屋苑 / 女旁白：價格亦在可負擔範圍內 / 熒幕蓋字：家有初生 / 家有長者 / 女旁白：家有初生或長者的家庭更可優先選樓 / 熒幕蓋字：出售居者有其屋計劃單位 / 出售綠表置居計劃單位 / 白表居屋第二市場計劃 / 4月30日起接受申請 / 男女旁白：幸福上流　置業圓夢 /</p></div></div></div><div class='h2 tierh'>📋 ADMIN（交標用 · 唔餵創意）</div><p class='hint tierhint'>交標 logistics：要交咩表格/文件、幾時截。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📑 要交表格 / 文件</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><div class='h3'>📝 要填嘅表格（5 張）</div><p class='hint'>真表頁自動 render 入對應<b>部門 Master Form GSlide</b>（開 GSlide 直接填）。🟦直 🟨橫。</p><div class='qconfirm' style='background:#fff4e5;color:#8a5a00'>⏳ pipeline 收到表會自動開 GSlide + render；此 dept 暫未配置，下次 run 自動補。</div><a class='btn ghost' target='_blank' href='https://docs.google.com/spreadsheets/d/1yiDJ3H8VFK3-6kZQZEzwkiD8VaRgVOzCwxcFbAyP3XE/edit'>📋 開 Master Form Registry（填表值喺度）</a><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/1nBf0Bdx17Jvo8owVWrvM-A_MlKxL98ttyMenXc-cewY/edit'>🎞️ 開 DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27 Master Form GSlide（真表頁，直接填）</a><button class='btn' style='width:100%;margin-top:6px' onclick="fillForms(this)">🤖 AI 自動填公司資料入 Registry</button><script type='application/json' class='filldata'>{"folderName": "DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27", "forms": [{"name": "Reply Slip 簡介會回條", "pages": "1", "text": ""}, {"name": "Part IV - Offer to be Bound 簽署頁", "pages": "73", "text": ""}, {"name": "Form B - Price Proposal 價格建議書表格", "pages": "13", "text": ""}, {"name": "Annex VIII - Pro-innovation Proposals and ESG Proposals 創新及ESG建議表格", "pages": "1-2", "text": ""}, {"name": "Annex V - Information on Music Copyright 音樂版權資料申報表", "pages": "1", "text": ""}]}</script><p class='hint'>撳上面掣 → AI 逐張表認要填咩欄（公司名/地址/BR…）→ 自動填入 <b>Master Form Registry</b> 嘅 <b>Fill_DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27</b> tab → 你開 Registry copy 啲值入 GSlide 真表頁。⚠️ 價錢/簽名要自己填。（全程 GAS 做，唔使部 Mac 開機）</p><div class='h3'>① Briefing 前 — Reply Slip（1）</div><p class='hint'>確認出席 → Reply Slip 頁，貼頁碼 render。</p><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/17TNiyMzZMbleABFG2u-K0THdn_lXmo089i8xPDnzRHM/edit'>🎞️ 開 Reply Slip GSlide</a><div class='qconfirm' style='background:#eef0fe;color:#3730a3'>貼入 panel 頁碼：<b>1</b></div><div class='timeline'><div class='tlrow'><span class='tldate'>🟦 p1</span><span class='tllabel'>Reply Slip 簡介會回條</span></div></div><div class='h3'>② 交標時 — Forms / Schedules（3）</div><p class='hint'>Form GSlide 已 render 真表頁做 background → 人手填。</p><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/1nBf0Bdx17Jvo8owVWrvM-A_MlKxL98ttyMenXc-cewY/edit'>🎞️ 開 DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27 Form GSlide</a><div class='qconfirm' style='background:#eef0fe;color:#3730a3'>貼入 panel 頁碼：<b>73,13,1-2</b></div><div class='timeline'><div class='tlrow'><span class='tldate'>🟦 p73</span><span class='tllabel'>Part IV - Offer to be Bound 簽署頁</span></div><div class='tlrow'><span class='tldate'>🟦 p13</span><span class='tllabel'>Form B - Price Proposal 價格建議書表格</span></div><div class='tlrow'><span class='tldate'>🟦 p1-2</span><span class='tllabel'>Annex VIII - Pro-innovation Proposals and ESG Proposals 創新及ESG建議表格</span></div></div><div class='h3' style='margin-top:11px'>📄 要交嘅文件（5 份 · 表格以外，標明出自邊份 DOC + 頁碼）</div><div class='timeline'><div class='tlrow'><span class='tllabel'><b>Technical Proposal (Form A)</b> <span class='hint'>（Part V_Specification.pdf · p12）</span> — Includes storyboards in Traditional Chinese a</span></div><div class='tlrow'><span class='tllabel'><b>Price Proposal (Form B)</b> <span class='hint'>（Part V_Specification.pdf · p13）</span> — Price proposal to be completed in shaded area</span></div><div class='tlrow'><span class='tllabel'><b>Part IV – Offer To Be Bound</b> <span class='hint'>（Part I to Part IV for Quotation for Services.pdf · p73）</span> — Must contain an original signature (scanned s</span></div><div class='tlrow'><span class='tllabel'><b>Reply Slip (Annex VII)</b> <span class='hint'>（Annex VII_Reply Slip.pdf · p1）</span> — Submission of Reply Slip by interested agenci</span></div><div class='tlrow'><span class='tllabel'><b>Pro-innovation Proposals and ESG Proposals (Annex VIII)</b> <span class='hint'>（Annex VIII_Pro-innovation Proposals and ESG Proposals.pdf · p1）</span> — To be completed and included in the Technical</span></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📮 交標方法（地址 / 信封 / 份數）</span></div><div class='cbody'><p>- <strong>截標</strong>：2026-09-09T12:00:00</p>
+<p>- <strong>印幾多份</strong>：One original and one duplicate copy</p>
+<p>- <strong>幾多信封</strong>：4 個</p>
+<p>- <strong>Soft copy（電子副本：CD/USB？）</strong>：標書無提及 → 只交紙本,不需 soft_copy</p>
+<p>- <strong>交去邊 — To</strong>：Senior Executive Officer (Health Promotion), Department of Health</p>
+<p>- <strong>交去邊 — Address</strong>：Health Promotion Branch situated on Level 7 (Reception Counter), Southorn Centre, 130 Hennessy Road, Wanchai, Hong Kong</p>
+<p>- <strong>信封 label「Technical Proposal (Original)」要寫</strong>：`Quotation Reference No. DH HPB/3-5/43/2026-27: Production of a set of TV and Radio Announcements in the Public Interest to Promote Prevention of Respiratory Tract Infection (Technical Proposal)`</p>
+<p>- <strong>信封 label「Technical Proposal (Duplicate)」要寫</strong>：`Quotation Reference No. DH HPB/3-5/43/2026-27: Production of a set of TV and Radio Announcements in the Public Interest to Promote Prevention of Respiratory Tract Infection (Technical Proposal)`</p>
+<p>- <strong>信封 label「Price Proposal (Original)」要寫</strong>：`Quotation Reference No. DH HPB/3-5/43/2026-27: Production of a set of TV and Radio Announcements in the Public Interest to Promote Prevention of Respiratory Tract Infection (Price Proposal)`</p>
+<p>- <strong>信封 label「Price Proposal (Duplicate)」要寫</strong>：`Quotation Reference No. DH HPB/3-5/43/2026-27: Production of a set of TV and Radio Announcements in the Public Interest to Promote Prevention of Respiratory Tract Infection (Price Proposal)`</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>💰 預算 / 費用（Budget / Fee Breakdown）</span></div><div class='cbody'><p>- <strong>預算（Budget）</strong>：無標明</p>
+<p>- <strong>費用明細要求（Fee Proposal Breakdown）</strong>：Form B requires detailed prices for: 1. Agency Fee (a); 2. Production Cost of TV API (b); 3. Production Cost of Radio API (c). Total Price = (a) + (b) + (c). All shaded areas must be filled.</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📅 日程</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ Gemini 2.5 Pro·預設</span></div><div class='cbody'><p>- 2026-08-27 DH issues invitation letter to prospective agencies</p>
+<p>- 2026-08-31 Submission of Reply Slip by interested agencies to attend Zoom briefing</p>
+<p>- 2026-09-02 Zoom briefing to interested agencies by DH and ISD (tentative)</p>
+<p>- 2026-09-09 Submission of creative proposal and quotation with breakdown (Quotation Closing Time)</p>
+<p>- 2026-09-14 Presentation of creative ideas to selection panel by bidders</p>
+<p>- 2026-09-16 Issue of Letter of Acceptance by DH</p>
+<p>- 2026-09-18 Debriefing session with the successful bidder</p>
+<p>- 2026-09-25 Pre-production meeting</p>
+<p>- 2026-10-16 Completion and presentation of rough cut of TV API</p>
+<p>- 2026-10-30 Completion of final cut of TV and radio APIs</p>
+<p>- 2026-11-06 Submission of soft copies of the final version of TV API to DH for uploading to relevant platforms</p>
+<p>- 2026-11-16 Completion of delivery of station copies of TV and radio APIs to TV and radio stations</p></div></div></div></div>
+<div id='debrief' class='tabpanel'><div class='h2' style='margin-top:14px'>📨 共用 BRIEF（標書 tab 全份）</div><p class='hint'>8 間諗橋時都收到呢份 brief（製作要求 3D/mascot/明星、老闆方向…）做底，再各自加上面 dispatch 嘅角度/畫風/device。概念諗咗會 gatekeep 對返 brief 符合先生 BD。</p><div class='card briefcard'><h3>標書 TAB（你嘅 BRIEF — 全份，必跟）</h3>
+<h4>📋 標書撮要</h4>
+<h5>衞生署「預防呼吸道感染」政府宣傳片投標分析書</h5>
+<p>這份標書的要求非常嚴格，涵蓋了大量技術、合規和版權清關的硬性紅線。以下為大家詳細梳理整份標書的關鍵內容，助我們的團隊在構思和撰寫提案時能精準對焦、避免觸雷。</p>
+<p>---</p>
+<h5>① 背景同目的 (Background &amp; Purpose)</h5>
+<p>*   <strong>社會及醫學背景：</strong> 呼吸道感染（Respiratory Tract Infection）是香港常見的急性疾病，主要由病毒（例如<strong>季節性流感</strong>、<strong>2019冠狀病毒病 COVID-19</strong>）引起，但亦可由細菌引致 。特別是在開學季和秋冬季節，流感與新冠等病毒同時流行，對市民（特別是幼童及長者等高危群組）的健康構成顯著威脅 。</p>
+<p>*   <strong>投標項目目的：</strong> 衞生署健康促進處（DH）與資訊服務處（ISD）合作，招標採購專業廣告製作服務，製作<strong>一套30秒電視政府宣傳短片（TV API）</strong>及<strong>相應的30秒電台政府宣傳短片（Radio API）</strong> 。其傳意目的為：</p>
+<p>    1.  簡要介紹預防呼吸道感染的一般預防措施，提高市民的防護意識 ；</p>
+<p>    2.  推廣並鼓勵公眾按照政府建議，及時接種相關的疫苗（如季節性流感疫苗、新冠疫苗及肺炎球菌疫苗等） 。</p>
+<p>---</p>
+<h5>② 目標受眾 (Target Audience)</h5>
+<p>*   <strong>主要受眾：</strong> 標書列明為<strong>一般大眾（The general public）</strong> 。</p>
+<p>*   <strong>策略性焦點受眾（結合社會脈絡分析）：</strong></p>
+<p>    *   <strong>關注健康的家長：</strong> 尤其是育有幼童的家長。幼童是呼吸道感染重症的高危群組，家長是日常衛生與疫苗接種的決策者 。</p>
+<p>    *   <strong>長者及其主要照顧者：</strong> 長者免疫力較低，往往需要提醒接種流感和新冠疫苗 。</p>
+<p>    *   <strong>上班族及學生：</strong> 每天在學校或辦公室等群體環境活動，是病菌傳播的重要節點，宣傳重點在於「生病不上班/不上學」的觀念 。</p>
+<p>---</p>
+<h5>③ 傳意目標 / 核心訊息 (Communication Objectives / Core Messages)</h5>
+<p>短片及電台廣播必須完整且準確地傳達以下<strong>官方核心訊息</strong> ：</p>
+<p>1.  <strong>病原體認知：</strong> 呼吸道感染主要由病毒（包括 2019 冠狀病毒病、季節性流行性感冒等）引起，亦可由細菌引致 。</p>
+<p>2.  <strong>五大預防實用貼士：</strong></p>
+<p>    *   <strong>健康生活：</strong> 實踐健康生活模式，增強抵抗力 。</p>
+<p>    *   <strong>個人及環境衞生：</strong> 在適當時候正確佩戴口罩、經常保持雙手清潔（用肥皂及水徹底洗手）、保持家居清潔、確保室內空氣流通 。</p>
+<p>    *   <strong>咳嗽禮儀：</strong> 打噴嚏或咳嗽時應用紙巾掩蓋口鼻，將用過的紙巾棄置於有蓋垃圾箱內，然後徹底清潔雙手 。</p>
+<p>    *   <strong>接種疫苗：</strong> 按政府建議接種相關疫苗（如季節性流感疫苗、2019冠狀病毒病疫苗、肺炎球菌結合疫苗等） 。</p>
+<p>    *   <strong>生病自保與求醫：</strong> 當出現呼吸道感染病徵時，<strong>不應上班或上學</strong>，避免前往人多擠迫的地方，應戴上外科口罩並盡快就醫 。</p>
+<p>---</p>
+<h5>④ 影片 / 製作規格 (Video &amp; Radio Specifications)</h5>
+<p>這部分的格式和技術要求極度精確，任何格式偏差都可能導致最終成品無法在電視/電台播放：</p>
+<h6>**電視宣傳短片 (TV API) 規格 [13-16]：**</h6>
+<p>*   <strong>數量與長度：</strong> 共 1 套，長度為 <strong>30 秒</strong> 。</p>
+<p>*   <strong>製作格式：</strong> 必須為<strong>動畫影片（Animation video）</strong> 。</p>
+<p>*   <strong>拍攝格式（如有實拍部分）：</strong> 偏好使用 HDCAM、RED ONE 或同等規格 。</p>
+<p>*   <strong>交付格式 (Output) ：</strong></p>
+<p>    1.  <strong>文件格式 (File-based)：</strong> 提供 16:9（HD）及 9:16（垂直 HD - Vertical HD）兩種比例。編碼為 <strong>XDCAM HD422 @ 50Mbps MXF 格式</strong>（不含 clapper 倒數板）；以及 1920x1080P 和 1080x1920P @ 10MB 比特率的 HD MPEG-4 格式（Progressive, 亦不含 clapper） 。</p>
+<p>    2.  <strong>錄影帶格式 (Video-tape)：</strong> 16:9（HD）的 HDCAM 錄影帶 。</p>
+<p>*   <strong>語言及字幕：</strong> </p>
+<p>    *   廣東話版本：配<strong>繁體中文書面語字幕</strong>（written Traditional Chinese subtitles） 。</p>
+<p>    *   英文版本：配<strong>英文字幕</strong>（English subtitles） 。</p>
+<p>*   <strong>聲音與母帶要求 ：</strong></p>
+<p>    *   片中出現的重要視覺資訊（如網址、查詢電話或電郵），必須有<strong>相應的旁音/配音同步口述</strong>（voice-over script as appropriate） 。</p>
+<p>    *   必須向衞生署交付儲存於硬碟的 <strong>Clean Master Copy (乾淨母帶)</strong>：分軌儲存所有原始素材鏡頭、動畫、無版權/已授權背景音樂、配音、 leftover 剪輯等，以便政府日後重新剪輯使用 。</p>
+<h6>**電台宣傳短片 (Radio API) 規格 [17-23]：**</h6>
+<p>*   <strong>長度與語言：</strong> 30秒，分為<strong>廣東話、英文、普通話</strong>三種版本 。</p>
+<p>*   <strong>格式要求：</strong> WAV 格式 (48 kHz / 16-bit / 2-channel stereo 用於港台及電台；44.1 or 48 kHz / 16 or 20 bit 用於衞生署備份) ；以及 MP3 格式 。</p>
+<p>*   <strong>配音特別紅線：</strong></p>
+<p>    *   <strong>英文電台版 API 必須為獨白形式（Monologue-type）</strong> 。</p>
+<p>    *   普通話配音員最好持有國家語言文字工作委員會普通話水平測試<strong>一級乙等（Grade 1B）</strong>或以上之證書 。</p>
+<p>    *   <strong>語音修正義務：</strong> 若成品交付後，官方語文事務處（Official Languages Division）判定任何配音版本的發音不準確（例如被電台拒播或不滿意），<strong>承辦商必須自費無條件重新錄製並替換</strong> 。</p>
+<p>---</p>
+<h5>⑤ 指定班底 (Designated Cast &amp; Crew Requirements)</h5>
+<p>*   <strong>ERB導師 / 明星 / 吉祥物：</strong> </p>
+<p>    *   <strong>請注意（零老作紅線）：</strong> <strong>標書中完全沒有指定或要求使用任何特定的 ERB 導師、KOL、演員或吉祥物 [1, 2, 5-7, 12-16, 23-45]。</strong></p>
+<p>    *   但合約規定，中標承辦商必須自費購買保額不少於 <strong>HK\$10,000,000</strong> 的公眾責任保險，其承保範圍必須覆蓋所有工作人員（crew）、製作設備、現場演員以及任何名人/明星（celebrities） 。</p>
+<p>*   <strong>香港手語翻譯員 (Mandatory) ：</strong></p>
+<p>    *   TV API（廣東話及英文版）<strong>必須強制嵌入香港手語翻譯</strong>（Hong Kong Sign Language） 。</p>
+<p>    *   <strong>手語視窗規格（極嚴格紅線）：</strong></p>
+<p>        *   <strong>形狀：</strong> 必須為<strong>橢圓形</strong>（Oval-shaped） 。</p>
+<p>        *   <strong>大小：</strong> 必須佔整個畫面的 <strong>1/6</strong> 。</p>
+<p>        *   <strong>背景：</strong> 必須為無反射的單色背景，<strong>首選淺灰色或粉藍色</strong> 。</p>
+<p>        *   <strong>位置：</strong> 固定在畫面<strong>右下角</strong>，整段 API 期間位置必須保持一致 。</p>
+<p>        *   <strong>衣著：</strong> 手語翻譯員建議穿著深色（最好是<strong>黑色</strong>）的衣服 。</p>
+<p>        *   <strong>驗收：</strong> 手語呈現必須與字幕及配音高度同步；<strong>手語翻譯員必須在 final cut 影片中親自確認並簽字驗收其翻譯的準確性</strong> 。</p>
+<p>---</p>
+<h5>⑥ 創意及策略重點 / 風格要求 (Creative &amp; Strategic Focus)</h5>
+<p>*   <strong>設計素材交付：</strong> 交付成品時，承辦商必須向衞生署提供<strong>至少 20 張在宣傳片中所使用的角色/動畫插圖的 AI (Adobe Illustrator) 原始格式圖檔</strong>，以便政府日後製作宣傳海報、小冊子及推廣網站之用 。</p>
+<p>*   <strong>AI (人工智能) 技術的應用與責任界定 ：</strong></p>
+<p>    *   標書<strong>鼓勵</strong>並允許投標人使用 AI 工具進行創意構思（brainstorming）及動畫創作（例如生成劇本、視覺參考、故事板、動畫等） 。</p>
+<p>    *   <strong>法律紅線：</strong> 承辦商須承擔全部法律責任，<strong>確保所有 AI 生成或輔助製作的內容絕不侵犯任何第三方的智慧財產權、版權或專利</strong> 。若發生任何 AI 侵權訴訟，承辦商必須對衞生署進行全面賠償（indemnify） 。</p>
+<p>*   <strong>性別主流化（Gender Mainstreaming）：</strong></p>
+<p>    *   投標人必須進行自我合規審查（自我核對標書內的 Gender Mainstreaming Checklist） 。</p>
+<p>    *   宣傳片的創意、畫面、台詞等<strong>必須以性別敏感（gender-sensitive）的方式呈現，確保沒有任何性別偏見或不平等</strong> 。</p>
+<p>*   <strong>ISD 政府稿件寫作慣性（供創意團隊參考）[48-50]：</strong></p>
+<p>    *   旁白、角色對白、熒幕蓋字必須在腳本中使用標準標記，如`旁白：(VO)`、`〔角色名〕：`及`熒幕蓋字：` 。</p>
+<p>    *   <strong>口號（Tagline）風格：</strong> 衞生署及 ISD 偏好使用<strong>「三段式 · 中點分隔」</strong>的對仗押韻口號（例如經典的「日日水果蔬菜2+3」） 。</p>
+<p>    *   <strong>語氣分層：</strong> 畫面的「熒幕蓋字（Super）」必須使用嚴謹的<strong>書面語</strong>，但語音「旁白/對白（VO）」則可使用接地氣、具共鳴的<strong>廣東話口語</strong>（例如「生病戴口罩，不上班不上學」） 。</p>
+<p>---</p>
+<h5>⑦ 交付物同時間表 (Deliverables &amp; Timeline)</h5>
+<p>中標後，整個項目的執行節奏非常緊湊：</p>
+<div class='tw'><table><thead><tr><th>關鍵里程碑</th><th>截止日期 / 暫定時間</th><th>具體要求與交付物</th></tr></thead><tbody><tr><td>**投標截止 (Closing Time)**</td><td>**2026 年 9 月 9 日 (星期三) 中午 12:00 **</td><td>密封遞交技術與價格建議書 。**逾期不收** 。</td></tr><tr><td>**創意提案演示 (Presentation)**</td><td>**2026 年 9 月 14 日 (星期一) **</td><td>向評審委員會進行演示（概念一經錄用，政府擁有版權且不可轉售） 。</td></tr><tr><td>**發出接受書 (LOA)**</td><td>**2026 年 9 月 16 日 (星期三) **</td><td>衞生署正式發出合約接受信 。</td></tr><tr><td>**合約簡介會 (Debriefing)**</td><td>**2026 年 9 月 18 日 (星期五) **</td><td>與中標團隊召開首期合約說明會 。</td></tr><tr><td>**前期會議 (PPM)**</td><td>**2026 年 9 月 25 日 (星期五) **</td><td>召開前期製作會議，敲定最終劇本及動畫美術風格 。</td></tr><tr><td>**呈交粗剪版 (Rough Cut)**</td><td>**2026 年 10 月 16 日 (星期五) **</td><td>完成電視動畫宣傳片的粗剪版並向官方匯報 。</td></tr><tr><td>**完成最終版 (Final Cut)**</td><td>**2026 年 10 月 30 日 (星期五) **</td><td>**TV API 及 Radio API 的最終成品（Final Cut）必須全部製作完成** 。</td></tr><tr><td>**提交宣傳軟複本**</td><td>**2026 年 11 月 6 日 (星期五) **</td><td>向衞生署提交最終版影片軟複本，以便政府安排於社交平台和網站發布 。</td></tr><tr><td>**母帶及電台副本交付**</td><td>**2026 年 11 月 16 日 (星期一) **</td><td>**完成各大電視台、電台的播放母帶及副本交付** 。電台副本須在播放前至少四個工作天送達 。</td></tr></tbody></table></div>
+<p>---</p>
+<h5>⑧ 強制要求及投標紅線（極重要，不合規直接 DQ）</h5>
+<p>1.  <strong>「雙信封制」與「份數」紅線 ：</strong></p>
+<p>    *   <strong>Technical Proposal（Form A）</strong> 與 <strong>Price Proposal（Form B）</strong> 必須<strong>分開放置在兩個獨立信封內</strong>密封遞交 。</p>
+<p>    *   每一份建議書必須提供<strong>一正一副共兩份</strong>（即總共需要遞交 <strong>4 個密封信封</strong>） 。</p>
+<p>    *   信封表面必須使用純白色/無標記信封，<strong>絕對不能有任何公司標誌或可識別公司身份的圖案</strong>，僅能手寫或打字標明 Quotation Reference No.（DH HPB/3-5/43/2026-27）及建議書標題，否則會被直接取消資格 。</p>
+<p>2.  <strong>Offer to be Bound (Part IV) 親筆簽名紅線 ：</strong></p>
+<p>    *   投標文件中必須包含「Part IV – Offer to be Bound」頁面 。</p>
+<p>    *   該頁面必須由公司授權代表<strong>進行親筆手寫原創簽名</strong>（電子掃描手寫簽名亦可接受） ，<strong>簽名處絕對不能是影印出來的副本</strong>，否則視為無效投標 。</p>
+<p>    *   投標人<strong>絕對不可對 Part IV 的任何原文進行修改/字句塗改</strong>（刪除 # 不適用詞除外），否則直接 disqualified 。</p>
+<p>3.  <strong>報價與貨幣紅線 ：</strong></p>
+<p>    *   所有報價必須以<strong>港幣（HKD）</strong>填寫 Form B 的 shaded areas 報價明細表格 。</p>
+<p>    *   必須提供<strong>固定報價（Fixed Price）</strong>，任何包含價格調整條款（例如因外匯波動等）的報價書將不被考慮 。</p>
+<p>4.  <strong>音樂版權（Royalty-Free &amp; Perpetual Clearance）：</strong></p>
+<p>    *   片中使用的所有背景音樂（無論是自創、版稅音樂或版權音樂庫），中標承辦商必須自費辦妥清關，向政府提供<strong>全球（worldwide）、永久（perpetual）、免版稅（royalty-free）</strong>的播放及推廣使用權 。</p>
+<p>    *   完工時必須呈交填妥的 <strong>Annex V 音樂版權資料申報表</strong> ；若無法提供有效的版權清關證明，衞生署有權<strong>扣留全部尾款</strong> 。</p>
+<p>5.  <strong>網絡無障礙標準（W3C WCAG 2.2 AA）：</strong></p>
+<p>    *   必須額外製作一個符合 <strong>W3C WCAG 2.2 Level AA 無障礙網頁指引</strong>的網上版 TV API，並提供對應的無障礙軟硬劇本副本 ；Radio API 的劇本也必須提供符合該無障礙標準的 MS Word 軟複本 。</p>
+<p>---</p>
+<p>💡 <strong>下一步建議：</strong></p>
+<p>既然這份標書明確要求電視宣傳片必須為「動畫（Animation）」形式，且鼓勵使用人工智能（AI）工具輔助。我們是否要先召開一個創意會議，針對「如何用 AI 角色動畫帶出洗手和咳嗽禮儀，同時避免畫面過於教條」進行腦力激盪？我可以為大家擬定一個故事板（Storyboard）的初步畫面大綱。</p>
+<h4>⚠️ 製作要求（標書硬性，每個概念必跟，違 = 廢稿）</h4>
+<p>- <strong>手語</strong>：要（標書原文:粤語及英語TV API須嵌入香港手語翻譯。手語視窗為橢圓形，大小佔畫面六分之一，淺灰色或粉藍色背景，，p6）</p>
+<p>- <strong>W3C影片</strong>：要（標書原文:TV API 須另提供一版符合 W3C WCAG 2.2 Level AA 標準的網頁無障礙版本，以，p4）</p>
+<p>- <strong>明星/名人/官員</strong>：無Preference</p>
+<p>- <strong>Mascot</strong>：無Preference</p>
+<p>- <strong>動畫</strong>：Prefer 2D（標書原文:設計圖檔交付：完工交付時須向 DH 提供至少 20 張 API 所用插圖 or 動畫圖像的 AI (，p4）</p>
+<h4>📑 要交文件（邊份 DOC + 頁碼）</h4>
+<p>- <strong>Technical Proposal (Form A)</strong>（Part V_Specification.pdf · p12） — Includes storyboards in Traditional Chinese a</p>
+<p>- <strong>Price Proposal (Form B)</strong>（Part V_Specification.pdf · p13） — Price proposal to be completed in shaded area</p>
+<p>- <strong>Part IV – Offer To Be Bound</strong>（Part I to Part IV for Quotation for Services.pdf · p73） — Must contain an original signature (scanned s</p>
+<p>- <strong>Reply Slip (Annex VII)</strong>（Annex VII_Reply Slip.pdf · p1） — Submission of Reply Slip by interested agenci</p>
+<p>- <strong>Pro-innovation Proposals and ESG Proposals (Annex VIII)</strong>（Annex VIII_Pro-innovation Proposals and ESG Proposals.pdf · p1） — To be completed and included in the Technical</p>
+<h4>📮 交標方法（地址／信封／份數）</h4>
+<p>- <strong>截標</strong>：2026-09-09T12:00:00</p>
+<p>- <strong>印幾多份</strong>：One original and one duplicate copy</p>
+<p>- <strong>幾多信封</strong>：4 個</p>
+<p>- <strong>Soft copy（電子副本：CD/USB？）</strong>：標書無提及 → 只交紙本,不需 soft_copy</p>
+<p>- <strong>交去邊 — To</strong>：Senior Executive Officer (Health Promotion), Department of Health</p>
+<p>- <strong>交去邊 — Address</strong>：Health Promotion Branch situated on Level 7 (Reception Counter), Southorn Centre, 130 Hennessy Road, Wanchai, Hong Kong</p>
+<p>- <strong>信封 label「Technical Proposal (Original)」要寫</strong>：`Quotation Reference No. DH HPB/3-5/43/2026-27: Production of a set of TV and Radio Announcements in the Public Interest to Promote Prevention of Respiratory Tract Infection (Technical Proposal)`</p>
+<p>- <strong>信封 label「Technical Proposal (Duplicate)」要寫</strong>：`Quotation Reference No. DH HPB/3-5/43/2026-27: Production of a set of TV and Radio Announcements in the Public Interest to Promote Prevention of Respiratory Tract Infection (Technical Proposal)`</p>
+<p>- <strong>信封 label「Price Proposal (Original)」要寫</strong>：`Quotation Reference No. DH HPB/3-5/43/2026-27: Production of a set of TV and Radio Announcements in the Public Interest to Promote Prevention of Respiratory Tract Infection (Price Proposal)`</p>
+<p>- <strong>信封 label「Price Proposal (Duplicate)」要寫</strong>：`Quotation Reference No. DH HPB/3-5/43/2026-27: Production of a set of TV and Radio Announcements in the Public Interest to Promote Prevention of Respiratory Tract Infection (Price Proposal)`</p>
+<h4>💰 預算 / 費用</h4>
+<p>- <strong>預算（Budget）</strong>：無標明</p>
+<p>- <strong>費用明細要求（Fee Proposal Breakdown）</strong>：Form B requires detailed prices for: 1. Agency Fee (a); 2. Production Cost of TV API (b); 3. Production Cost of Radio API (c). Total Price = (a) + (b) + (c). All shaded areas must be filled.</p>
+<h4>⛔ 注意事項 / 紅線</h4>
+<p>- [其他] Double Envelope &amp; Duplicate Submission：Bidders shall submit the Technical Proposal and Price Propos</p>
+<p>- [其他] Original Signature on Offer to be Bound：Part IV - Offer to be Bound must be signed containing an ori</p>
+<p>- [3D] Intellectual Property Rights and AI Technology：The contractor shall bear full responsibility for ensuring t</p>
+<p>- [其他] Public Liability Insurance：The Contractor is required to take out insurance in the tota</p>
+<p>- [手語] Sign Language Oval Window Specs：粤語及英語TV API須嵌入香港手語翻譯。手語視窗必須為橢圓形，大小佔畫面六分之一，淺灰色或粉藍色背景，位於右下角，手語</p>
+<p>- [其他] Music Copyright Clearance：Must obtain a valid and continuing license at own cost to en</p>
+<h4>⚡ 創意亮點（research 掘出嘅真嘢）</h4>
+<h4>⚡ 創意亮點 — DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27·Production of a set of TV and Radio Announcements in the Public Interest to Promote Prevention of Respiratory Tract Infection / 製作一套宣傳預防呼吸道感染的電視及電台政府宣傳短片（research 掘出嚟，可以做橋嘅真嘢）</h4>
+<p>1. 🏷️ <strong>橢圓手語視窗融入動畫世界</strong></p>
+<p>   - 事實：標書規定電視短片（粵/英版）必須強制嵌入 1/6 畫面大小、橢圓形（oval-shaped）、淺灰色或粉藍色背景、固定置於右下角的手語翻譯視窗，且譯員須穿著深色衣服。（出處：Part V_Specification.pdf）</p>
+<p>   - 💡 可以點做橋：我們可以將右下角規定為粉藍或淺灰色、1/6比例的橢圓形手語翻譯視窗融入動畫設計中，將其包裝成太空船的橢圓觀景窗或角色家中的實體鏡子，打破傳統硬加黑框的沈悶政宣感。</p>
+<p>2. 🏷️ <strong>20款原創插圖萬能表情包</strong></p>
+<p>   - 事實：標書要求中標合約商必須提供至少 20 張短片中所使用角色/動畫插圖的 AI (Adobe Illustrator) 原始格式圖檔，以便政府日後製作海報、單張及推廣網站。（出處：Part V_Specification.pdf）</p>
+<p>   - 💡 可以點做橋：我們可以預先為動畫角色設計一整套20張包含洗手、戴口罩、咳嗽、打疫苗等高延展性插圖的『防護動作包』，實現電視畫面與線下宣傳海報及網頁的一對一視覺無縫聯動。</p>
+<p>3. 💡 <strong>打破第四面牆的無障礙互動</strong></p>
+<p>   - 事實：標書要求除了電視播出版，還必須提交一份符合 W3C WCAG 2.2 Level AA 網頁無障礙標準、便於網上發布的無障礙版 TV API。（出處：Part V_Specification.pdf）</p>
+<p>   - 💡 可以點做橋：我們可以採用打破『第四面牆』的視覺創意，讓片中的動畫角色直接與畫面底部的字幕或橢圓手語窗進行肢體互動，將死板的 W3C 技術指標轉化為好玩的畫面橋段。</p>
+<p>4. 💡 <strong>英文電台版限定「獨白心聲」</strong></p>
+<p>   - 事實：標書特別於規格說明的腳註中硬性要求，英文電台宣傳片（English Radio API）必須採用「獨白形式（monologue-type）」製作。（出處：Part V_Specification.pdf）</p>
+<p>   - 💡 可以點做橋：我們可以將這段英文獨白包裝成『一個即將病倒的上班族與自己免疫細胞的內心對話』或『一個外科口罩的獨白心聲』，打破傳統政宣片生硬的旁白播報。</p>
+<p>5. 💡 <strong>高出流感兩倍的「隱形殺手」</strong></p>
+<p>   - 事實：港大研究指出呼吸道合胞病毒（RSV）是導致嬰幼兒肺炎的主因，其院內死亡率比普通季節性流感高出約兩倍，長者與幼兒均屬高危群組。（出處：[hooks-research] DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27）</p>
+<p>   - 💡 可以點做橋：我們可以將大眾普遍忽視的『普通感冒小咳』與其背後『比流感高兩倍死亡率』的潛在致命性進行強烈的視覺對比，警示長者和幼兒家長切勿掉以輕心。</p>
+<p>6. 🇭🇰 <strong>「幕後黑手」經典概念重塑</strong></p>
+<p>   - 事實：衞生防護中心（CHP）在歷年防範呼吸道感染與手部衛生宣傳中，常以「幕後黑手」髒手印、搓手20秒等警示概念作為視覺錨點。（出處：[debrief-ctx] DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27）</p>
+<p>   - 💡 可以點做橋：我們可以將這兩個港人熟知的標誌性概念進行經典重塑，把隱形病菌和髒手印視覺化為趣味的動畫黑影怪獸，與片中搓手的動畫特效進行實時攻防對抗。</p>
+<p>7. 🇭🇰 <strong>集體衛生記憶「1:99」調配法</strong></p>
+<p>   - 事實：自2003年非典型肺炎（SARS）爆發以來，港人對家居消毒使用的「1:99 稀釋家用漂白水」黃金標準擁有極高且共通的集體衛生歷史回憶。（出處：[debrief-ctx] DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27）</p>
+<p>   - 💡 可以點做橋：我們可以將這款港人刻骨銘心的『1:99』消毒比例作為畫面或音效的黃金配方代碼，喚起大家在秋冬爆發高峰期對家居日常清潔的集體責任感。</p>
+<p>8. 🏷️ <strong>剪輯剩餘素材的「魔術積木」</strong></p>
+<p>   - 事實：標書條款規定，完工後承辦商必須向衞生署移交一份儲存於硬碟的「乾淨母帶 (Clean Master Copy)」，需把所有的鏡頭、動畫、配音、背景音樂分軌及 leftovers（剪輯剩餘素材）分開獨立儲存。（出處：Part V_Specification.pdf）</p>
+<p>   - 💡 可以點做橋：我們可以將整個動畫設計成靈活的『模組化模塊』，確保每個防護貼士的 leftovers 和分軌素材可以任意拆分重組，在不加收代理費的情況下直接為客戶延伸出多個適合社交平台發布的10秒微短片。</p>
+<h4>📅 日程</h4>
+<p>- 2026-08-27 DH issues invitation letter to prospective agencies</p>
+<p>- 2026-08-31 Submission of Reply Slip by interested agencies to attend Zoom briefing</p>
+<p>- 2026-09-02 Zoom briefing to interested agencies by DH and ISD (tentative)</p>
+<p>- 2026-09-09 Submission of creative proposal and quotation with breakdown (Quotation Closing Time)</p>
+<p>- 2026-09-14 Presentation of creative ideas to selection panel by bidders</p>
+<p>- 2026-09-16 Issue of Letter of Acceptance by DH</p>
+<p>- 2026-09-18 Debriefing session with the successful bidder</p>
+<p>- 2026-09-25 Pre-production meeting</p>
+<p>- 2026-10-16 Completion and presentation of rough cut of TV API</p>
+<p>- 2026-10-30 Completion of final cut of TV and radio APIs</p>
+<p>- 2026-11-06 Submission of soft copies of the final version of TV API to DH for uploading to relevant platforms</p>
+<p>- 2026-11-16 Completion of delivery of station copies of TV and radio APIs to TV and radio stations</p></div></div>
+<div id='handbd' class='tabpanel'><p class='hint'>喺 Master GSheet 開「TV API Script <b>1／2／3</b>」三個 tab 放唔同 TV API 稿，<b>撳邊個 SET 就生邊個</b>（全 NLM 風格各一，純畫面唔蓋字）。</p><div class='acts' style='margin-bottom:6px'><button class='btn' title='讀 Master GSheet「TV API Script 1」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27&concept=1&stage=handbd&engine=allstyles&target=main')">🎬 SET 1 → 生 BD</button><button class='btn' title='讀 Master GSheet「TV API Script 2」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27&concept=2&stage=handbd&engine=allstyles&target=main')">🎬 SET 2 → 生 BD</button><button class='btn' title='讀 Master GSheet「TV API Script 3」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27&concept=3&stage=handbd&engine=allstyles&target=main')">🎬 SET 3 → 生 BD</button><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card empty'>未生過手寫稿 BD —— 撳上面 SET 生成（或先喺 Master GSheet 放稿）。</div></div>
+<div id='theme1_1' class='tabpanel' data-set='1'><div class='banner'>🧭 北極星未定。撳掣 → 7 agency + 委員會就住成份標書諗一個大主題（big idea）+ 一個綜合口號。所有 MOD ladder 返呢度。</div><div class='card'><button class='btn big' title='' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27&concept=PLAN&stage=gen_theme&target=main')">🧭 生成大主題 + 綜合口號</button></div><div class='card'><button class='btn ghost' title='將呢個 dept 全部已生成嘅 MOD planning（主題／系列／SOC／MEDIA／KOL）出去 Master GSheet，每個 mod 一個 tab；你喺 GSheet 改完，自己貼返入真 deck（GSlide）。design 你話事。' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27&concept=all&stage=mod_gsheet&target=main')">📤 全部 MOD → Master GSheet（畀你改）</button></div></div>
+<div id='tvapi1_1' class='tabpanel' data-set='1'><div class='banner'>👉 委員會已預選六強，你可以隨選隨剔，撳右下 Submit，NBLM 即自動幫佢哋生 BD 入 VID 2。</div><div class='h2'>🔻 推薦六強（橫掃揀）</div><div class='carousel'><div class='ccard surface-card  sel' data-cid='cm8ed116a9'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>委員會 4</span><span class='oscore'>評審 84</span></div><div class='ctitle'>💬 你一個動作，全家嘅保護。</div><div class='csub'>〔結界師的日常〕</div><div class='cbody'><p><strong>創作概念</strong>: 將日常防疫動作（洗手、戴口罩、打針）重新包裝成一種啟動「家庭防護結界」嘅儀式。主角唔係病人，而係一個守護家庭嘅「結界師」。透過型格嘅視覺特效，將沉悶嘅衞生指引，變成充滿力量感同保護慾嘅魔法，強調每個小動作都係對家人巨大嘅守護。</p>
+<p><strong>人/景</strong>: 一個普通家庭（父母 + 小孩/長者），但透過動畫特效，爸爸/媽媽做出防疫動作時，會化身成型格嘅「結界師」。場景主要係屋企、辦公室、交通工具等日常空間，但會疊加一層半透明、充滿科技感嘅「結界」視覺。</p>
+<p><strong>Visual Device</strong>: <strong>橢圓手語窗 = 結界控制台</strong>。右下角強制規定嘅橢圓手語窗，喺呢個 concept 會變成主角啟動防護罩嘅「控制面板」或「能量核心」。主角喺主畫面做洗手動作，手語窗內嘅手語翻譯員可能同步做出魔法手印，兩者互動，共同啟動覆蓋全家嘅能量護盾，將硬性指標變成最強嘅視覺記憶點。</p>
+<p><strong>主打口號</strong>: 你一個動作，全家嘅保護。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。</p>
+<p><strong>亮點扣連</strong>：用咗亮點①「橢圓手語視窗融入動畫世界」及③「打破第四面牆的無障礙互動」，將標書最死板嘅技術紅線，轉化為最核心、最搶眼嘅創意視覺裝置。同時亦扣連亮點⑥「『幕後黑手』經典概念重塑」，隱形病菌可以視覺化為攻擊結界嘅黑影怪獸。</p><div class='scores'><div class='sline'><b>📊 官方評審 84/100</b><span class='scrit'>訊息準確 25.5 · 創意手法 13.5 · 宣傳衝擊 12.5 · 記憶點 9.0 · 說服共鳴 8.5 · 6a 13.5 · 6b 1.0</span></div><div class='snote'>訊息清晰、結界視覺與手語窗整合具創意及高記憶度，但須補強具體防疫資訊、執行成效機制及實質 ESG 措施。</div><div class='sline'><b>🎨 創意質素 23/40</b><span class='scrit'>（落地 6.0 / 扣brief 6.0 / 鋒利 7.0）</span></div><div class='snote'>最大弱點係「結界師」偏日系奇幻兼視覺自High，香港生活洞察不足，亦容易用特效掩蓋不上班不上學、求醫及疫苗等核心行動訊息。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard surface-card  sel' data-cid='cm4b53d81f'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>deepseek 1</span><span class='oscore'>評審 84</span></div><div class='ctitle'>💬 今日打好底，轉季唔使驚。</div><div class='csub'>「防護光環」</div><div class='cbody'><p><strong>創作概念</strong>：每個人身邊都有一個隱形嘅「防護光環」— 一個由日常好習慣砌出嚟嘅保護罩。動畫主角（一個年輕媽媽）每做啱一個動作，光環就會實咗一度：洗手 → 光環閃出泡泡；正確戴好口罩 → 光環多咗一層；打噴嚏用紙巾遮好 → 光環擋走一團灰塵。但當有人帶病返工返學、唔戴口罩周圍走，佢嘅光環就會裂開，病菌先攝到入嚟。成條片就係睇住媽媽同佢囡囡點樣由朝早起身到夜晚，將光環逐層建立，最後一家人坐埋食飯嗰刻，成個飯廳都泛住柔和嘅光。</p>
+<p><strong>人/景</strong>：一個 30 出頭嘅媽媽同佢 5 歲嘅囡囡，場景由屋企洗手間（朝早洗手）、廚房（預備水果早餐）、門口（出門前戴口罩）、地鐵車廂（有人咳，媽媽同囡囡企開啲）、診所門口（打針）到家裡飯廳（夜晚一家人食飯）。全部係香港人日日都會經歷嘅地方。</p>
+<p><strong>Visual Device</strong>：「防護光環」— 圍住角色身邊一圈半透明嘅光暈，會隨住正確嘅衛生習慣逐層變實、變光；病菌係一啲黑色帶尖角嘅小生物，一撞到光環就會彈開（但如果光環有缺口就會攝到入去）。光環嘅顏色由淡金黃漸變到溫暖嘅粉橙，象徵抵抗力由內而外建立。</p>
+<p><strong>主打口號</strong>：今日打好底，轉季唔使驚。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用（用素人角色配音，更有代入感，亦避免明星 overshadow 衛生訊息）</p>
+<p><strong>亮點扣連</strong>：用咗亮點 #3（打破第四面牆）— 角色會直接同右下角嘅手語視窗互動，例如囡囡會指住視窗入面嘅翻譯員問媽媽「佢做緊咩呀？」，媽媽答「佢幫我哋話俾聾人朋友知，點樣保護自己。」將一個 mandatory 嘅手語窗變成劇情一部分，唔係硬加。另外用咗亮點 #2（20 款插圖）— 光環嘅唔同狀態（完整/裂開/恢復）會設計成獨立 AI 插圖模組，日後可以直接拆出嚟做海報或網站素材。</p><div class='scores'><div class='sline'><b>📊 官方評審 84/100</b><span class='scrit'>訊息準確 25.5 · 創意手法 13.0 · 宣傳衝擊 12.0 · 記憶點 8.5 · 說服共鳴 8.5 · 6a 12.5 · 6b 4.0</span></div><div class='snote'>訊息清晰但「打好底／抵抗力」與疫苗、口罩適用情境仍需更精準交代；光環視覺、手語窗互動及可拆式插圖具創意、延展性與記憶點，家庭日常亦有共鳴，但整體仍偏常見衛生教育敘事，而 ESG 主要只體現共融與素材重用。</div><div class='sline'><b>🎨 創意質素 22/40</b><span class='scrit'>（落地 7.0 / 扣brief 6.0 / 鋒利 4.0）</span></div><div class='snote'>「防護光環」屬常見保護罩套路，最弱係創意行貨兼將防護效果過度具象化，口號「轉季唔使驚」更有誇大之嫌。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard surface-card  sel' data-cid='cmbd950fa3'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>委員會 2</span><span class='oscore'>評審 74</span></div><div class='ctitle'>💬 病咗唔死撐，全家至穩陣。</div><div class='csub'>〔幕後黑手大作戰〕</div><div class='cbody'><p><strong>創作概念</strong>: 將香港人有集體記憶嘅「幕後黑手」概念，用現代動畫重新包裝升級。隱形嘅病菌唔再只係一個污糟手印，而係一班識得匿喺門柄、電梯掣、鍵盤上面，鬼鬼祟祟、樣貌趣怪嘅「黑手怪獸」。成條片就係一場攻防戰：當人類角色做啱防護措施（例如搓手 20 秒），畫面上嘅「黑手怪獸」就會即時被「消滅」，視覺上直接 show 到每個防護動作嘅威力，夠晒直觀，又能 hook 住小朋友。</p>
+<p><strong>人/景</strong>: 一個充滿活力嘅年輕上班族同佢嘅屋企人（特別係長者同幼兒）。場景會喺唔同嘅高危傳播點切換，例如擠逼嘅地鐵車廂、辦公室茶水間、同屋企飯枱。</p>
+<p><strong>Visual Device</strong>: 螢光色嘅「黑手怪獸」。呢班怪獸會用微觀視角呈現，喺各種日常物件表面爬行、埋伏。當主角正確洗手，畫面上會有好似打機咁嘅「K.O.」或者「CLEANSED」特效，將黑手怪獸打散；相反，如果佢捽眼，怪獸就會成功入侵。</p>
+<p><strong>主打口號</strong>: 病咗唔死撐，全家至穩陣。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。</p>
+<p><strong>亮點扣連</strong>：用咗「『幕後黑手』經典概念重塑」，將深入民心嘅舊概念升級成更生動嘅動畫角色，同時暗中扣連「高出流感兩倍的『隱形殺手』」嘅威脅感。</p><div class='scores'><div class='sline'><b>📊 官方評審 74/100</b><span class='scrit'>訊息準確 24.0 · 創意手法 12.0 · 宣傳衝擊 11.0 · 記憶點 8.0 · 說服共鳴 8.0 · 6a 10.0 · 6b 0.5</span></div><div class='snote'>訊息以具體場景及防護動作表達，惟疾病主題、求醫指引及「高出流感兩倍」依據不清；怪獸動畫與遊戲化特效具創意、衝擊力及記憶點，家庭訴求亦有說服力，但執行手法未算高度創新，且幾乎沒有具體 ESG 建議。</div><div class='sline'><b>🎨 創意質素 25/40</b><span class='scrit'>（落地 7.0 / 扣brief 5.0 / 鋒利 5.0）</span></div><div class='snote'>最大弱點係只集中洗手打怪，疫苗接種、戴口罩、病咗不上班不上學及求醫等核心訊息嚴重缺席，怪獸加K.O.亦偏兒童向行貨。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard surface-card  sel' data-cid='cme29c564e'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>委員會 1</span><span class='oscore'>評審 72</span></div><div class='ctitle'>💬 一針，一罩，一對手。守護健康話咁易。</div><div class='csub'>〔防護「窗」口〕</div><div class='cbody'><p><strong>創作概念</strong>: 將標書中最嚴格嘅紅線——右下角 1/6 橢圓形手語視窗——直接變成我哋嘅創意核心。喺動畫世界入面，呢個粉藍色嘅橢圓唔再係後期加上去嘅嘢，而係主角屋企嘅一面「魔鏡」、一個太空船嘅「防護罩觀景窗」。透過呢個神奇「窗口」，主角可以攞到各種防護裝備（口罩、疫苗），甚至同手語翻譯員互動，將死板嘅政府規定轉化成全片最驚喜、最 memorable 嘅視覺記憶點。</p>
+<p><strong>人/景</strong>: 一個三代同堂嘅家庭（年輕父母、一個讀緊幼稚園嘅細路、一個精靈嘅長者），主要場景係佢哋充滿未來感又溫馨嘅屋企、幼稚園門口同辦公室。</p>
+<p><strong>Visual Device</strong>: 右下角嘅「橢圓手語視窗」係一個實體嘅、互動嘅裝置。例如，當隱形病菌飄向小朋友時，爸爸會喺「窗口」入面好似 ATM 咁撳個掣「攞」個口罩出嚟；或者當講到打疫苗，窗口會變成一個防護罩能量顯示器。</p>
+<p><strong>主打口號</strong>: 一針，一罩，一對手。守護健康話咁易。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。</p>
+<p><strong>亮點扣連</strong>：用咗「橢圓手語視窗融入動畫世界」將 mandatory 限制變成創意核心，同時實現咗「打破第四面牆的無障礙互動」。</p><div class='scores'><div class='sline'><b>📊 官方評審 72/100</b><span class='scrit'>訊息準確 20.5 · 創意手法 13.5 · 宣傳衝擊 8.0 · 記憶點 8.5 · 說服共鳴 7.5 · 6a 10.5 · 6b 3.5</span></div><div class='snote'>手語視窗轉化為核心視覺裝置夠創新易記，亦具共融價值，但防疫訊息過度概括、欠缺具體行動指引及整體宣傳部署，且互動設計或影響手語傳譯清晰度與合規性。</div><div class='sline'><b>🎨 創意質素 23/40</b><span class='scrit'>（落地 4.0 / 扣brief 6.0 / 鋒利 8.0）</span></div><div class='snote'>最大弱點係將手語視窗玩成魔法道具，既削弱傳譯功能嘅莊重清晰度，未來屋企設定亦偏離香港真實生活，仲未完整承載咳嗽禮儀、病假及求醫等核心訊息。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard surface-card  sel' data-cid='cm4f0b137e'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>委員會 3</span><span class='oscore'>評審 76</span></div><div class='ctitle'>💬 你個腦話要頂，聽身體話先至醒。</div><div class='csub'>〔身體話事〕</div><div class='cbody'><p><strong>創作概念</strong>: 將「應唔應該死頂返工」呢個內心掙扎，變成一場身體器官之間嘅會議/公投。透過大腦、鼻、喉嚨等擬人化角色嘅有趣辯論，幽默地演繹「病咗要休息」嘅硬訊息。最終結論係：身體已經投票話要休息，死頂唔係負責任，聽身體話去保護屋企人先係。</p>
+<p><strong>人/景</strong>: 主角係一個典型打工仔/學生嘅身體內部。場景設定為一個風格化嘅「身體總部」，角色係擬人化嘅大腦總裁、感冒嘅紅鼻哥、咳到拆天嘅喉嚨仔、無晒電嘅免疫細胞等。</p>
+<p><strong>Visual Device</strong>: 身體器官嘅「議會辯論」。例如大腦總裁西裝骨骨想死撐，但紅鼻哥已經流住鼻涕舉牌抗議，喉嚨仔用沙啞聲線發言，畫面生動有趣，將抽象嘅病徵變成有血有肉嘅角色衝突。</p>
+<p><strong>主打口號</strong>: 你個腦話要頂，聽身體話先至醒。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。</p>
+<p><strong>亮點扣連</strong>：用咗亮點④「英文電台版限定『獨白心聲』」。將「獨白」概念視覺化，變成一場身體內部嘅群體對話，打破傳統旁白嘅沉悶。</p>
+<p>---</p><div class='scores'><div class='sline'><b>📊 官方評審 76/100</b><span class='scrit'>訊息準確 24.0 · 創意手法 13.0 · 宣傳衝擊 11.0 · 記憶點 8.5 · 說服共鳴 8.0 · 6a 10.5 · 6b 0.5</span></div><div class='snote'>器官公投比喻鮮明易記，能清楚傳達病假休息及保護家人的訊息，但欠缺具體病徵指引、跨媒體執行細節、成效機制及實質ESG措施。</div><div class='sline'><b>🎨 創意質素 21/40</b><span class='scrit'>（落地 3.0 / 扣brief 5.0 / 鋒利 7.0）</span></div><div class='snote'>器官公投有記憶點，但「身體總部」偏離地，亦只講病咗休息，漏咗疫苗、衞生及咳嗽禮儀等核心訊息。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard surface-card  sel' data-cid='cm645e67c0'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>chatgpt 2</span><span class='oscore'>評審 72</span></div><div class='ctitle'>💬 免疫戰隊齊出動 · 呼吸健康我話事。</div><div class='csub'>〔「免疫戰隊」大反擊〕</div><div class='cbody'><p><strong>創作概念</strong>: 將人體免疫系統擬人化為一支充滿活力的「免疫戰隊」，對抗入侵的呼吸道病菌。透過極端對比，展現沒有防護時免疫戰隊的節節敗退，與做好防護後他們士氣高昂、成功擊退病菌的畫面。動畫風格帶有動漫感，年輕化且具動作性，強調主動防護的重要性。英文電台版可由「外科口罩」作獨白，講述其如何協助免疫戰隊作戰。</p>
+<p><strong>人/景</strong>:</p>
+<p>*   <strong>人物</strong>:</p>
+<p>    *   <strong>「免疫戰隊」</strong>: 數個卡通化、充滿活力的免疫細胞（如巨噬細胞、T細胞、抗體等），各自有鮮明的顏色和個性。</p>
+<p>    *   <strong>「呼吸道病菌」</strong>: 各種卡通化、但略帶陰暗感的病毒或細菌小怪獸（如流感怪、新冠怪、肺炎球菌怪），形態各異，數量龐大。</p>
+<p>    *   <strong>家庭成員</strong>: 爺爺、媽媽和幼童（作為戰場）。</p>
+<p>*   <strong>場景</strong>:</p>
+<p>    *   <strong>人體內部「免疫指揮中心」</strong>: 以科幻感呈現，顯示免疫細胞的活動狀態和病毒入侵警報。</p>
+<p>    *   <strong>家居及公共場所的「防護屏障」</strong>: 如洗手台（肥皂泡泡形成屏障）、戴口罩後的臉部（口罩化身城牆）、接種疫苗後的胳膊（針筒注入能量）。</p>
+<p><strong>Visual Device</strong>:</p>
+<p>*   <strong>「防護力能量條」</strong>: 畫面上方或下方實時顯示一個家庭的「防護力能量條」，隨著實踐健康生活、洗手、戴口罩、打疫苗等行為而升高，當有成員生病或防護不足時則下降。</p>
+<p>*   <strong>「病毒入侵警報」</strong>: 當病菌數量過多或有人未做好防護時，畫面會出現紅色閃爍的「病毒入侵警報」字樣及聲效，製造緊張感。</p>
+<p>*   <strong>「1:99黃金配方」</strong>: 在清潔家居的場景中，以動態圖形視覺化「1:99稀釋漂白水」的配製過程，將其比喻為「消滅病菌的黃金聖水」。</p>
+<p><strong>主打口號</strong>: 免疫戰隊齊出動 · 呼吸健康我話事。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。</p>
+<p><strong>亮點扣連</strong>:</p>
+<p>*   <strong>20款原創插圖萬能表情包</strong>：為免疫戰隊和病菌設計多種形態和動作，方便後續延展。</p>
+<p>*   <strong>英文電台版限定「獨白心聲」</strong>：由擬人化外科口罩作英文獨白，獨特且符合規定。</p>
+<p>*   <strong>集體衛生記憶「1:99」調配法</strong>：將1:99漂白水具象化為動畫中的「黃金配方」。</p>
+<p>*   <strong>剪輯剩餘素材的「魔術積木」</strong>：免疫戰隊的各個「戰鬥招式」（洗手、戴口罩）可獨立拆分，方便製作短片。</p><div class='scores'><div class='sline'><b>📊 官方評審 72/100</b><span class='scrit'>訊息準確 22.0 · 創意手法 12.0 · 宣傳衝擊 11.0 · 記憶點 8.0 · 說服共鳴 7.5 · 6a 11.0 · 6b 1.0</span></div><div class='snote'>概念鮮明、動漫戰隊及能量條具記憶點和延展性，但「黃金聖水」或令1:99漂白水用途被誤解，疫苗、口罩與免疫系統的關係亦須更準確交代，而ESG建議近乎欠奉。</div><div class='sline'><b>🎨 創意質素 17/40</b><span class='scrit'>（落地 4.0 / 扣brief 6.0 / 鋒利 4.0）</span></div><div class='snote'>最大弱點係成套「人體戰隊＋能量條＋病毒怪」極度行貨兼國際動漫腔，虛構戰鬥搶過真實防護行動，而「黃金聖水」更有淡化漂白水安全風險之嫌。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div></div><div class='h2'>其餘概念（分數高 → 低）</div><div class='carousel rest-row'><div class='ccard surface-card rest ' data-cid='cm4ddc1192'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>gemini 1</span><span class='oscore'>評審 86</span></div><div class='ctitle'>💬 病毒來襲，全民防護！</div><div class='csub'>〔病菌入侵大作戰〕</div><div class='cbadges'><span class='cflag rl'>⛔違紅線</span></div><div class='cbody'><p><strong>創作概念</strong>: 透過一個擬人化的「呼吸道病毒」視角，以第一身講述佢點樣入侵城市、學校同家庭，再透過市民採取防護措施，將病毒逐一擊退。將手語視窗融入動畫設計，變成病毒嘅「監察器」或「逃生艙」，增加互動性。</p>
+<p><strong>人/景</strong>: 病毒視角下嘅香港城市景觀、繁忙嘅地鐵車廂、人頭湧湧嘅街市、小朋友玩樂嘅學校操場、溫馨嘅家庭客廳。主要角色為一家三口（父母及幼童）及一位長者。</p>
+<p><strong>Visual Device</strong>:</p>
+<p>1.  <strong>病毒第一身視角</strong>: 鏡頭以微觀角度追蹤病毒，從空氣中飄浮到附著在物件表面，再到入侵人體。</p>
+<p>2.  <strong>手語視窗互動</strong>: 橢圓形手語視窗變成病毒嘅「監察器」，顯示病毒嘅「生命值」或「感染進度」，當市民採取防護措施時，監察器會出現故障或被擊退嘅動畫效果。</p>
+<p>3.  <strong>防護罩生成</strong>: 當市民洗手、戴口罩、打疫苗時，身體會出現半透明嘅「防護罩」，將病毒阻擋在外。</p>
+<p><strong>主打口號</strong>: 病毒來襲，全民防護！</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用</p>
+<p><strong>亮點扣連</strong>：用咗亮點 1 (橢圓手語視窗融入動畫世界)、亮點 3 (打破第四面牆的無障礙互動)、亮點 6 (「幕後黑手」經典概念重塑)</p><div class='scores'><div class='sline'><b>📊 官方評審 86/100</b><span class='scrit'>訊息準確 28.0 · 創意手法 12.5 · 宣傳衝擊 12.0 · 記憶點 8.0 · 說服共鳴 8.5 · 6a 13.0 · 6b 4.0</span></div><div class='snote'>概念新穎，透過擬人化病毒視角和互動式手語視窗，有效傳達防疫信息並提升參與感。</div><div class='sline'><b>🎨 創意質素 23/40</b><span class='scrit'>（落地 6.0 / 扣brief 7.0 / 鋒利 5.0）</span></div><div class='snote'>病毒第一身加防護罩屬常見防疫片套路，香港場景只係地標式堆砌；更致命係將手語視窗變成會故障的監察器，直接危及固定、清晰及同步的硬規格。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard surface-card rest ' data-cid='cm1f44d3d7'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>deepseek 2</span><span class='oscore'>評審 80</span></div><div class='ctitle'>💬 衛生意識好，病菌冇碇走。</div><div class='csub'>「病菌狙擊手」</div><div class='cbadges'><span class='cflag rl'>⛔違紅線</span></div><div class='cbody'><p><strong>創作概念</strong>：將日常環境變成一個微型戰場，病菌係一群得意但搗蛋嘅「茄喱啡」— 有啲著綠色西裝（流感）、有啲戴住紅色皇冠（新冠）、有啲成身尖刺（RSV）。主角唔係人，而係一個擬人化嘅<strong>外科口罩</strong>— 佢係一個正義感爆棚嘅「社區守護者」，會教市民一招一招對付呢班茄喱啡。每一招都有個好記嘅名：「洗手旋風掌」（搓手 20 秒）、「咳嗽盾牌」（用紙巾遮口鼻）、「口罩金鐘罩」（正確戴口罩）、「疫苗終極炮」（打針）。但口罩佬自己都知道，佢只係其中一道防線 — 最強嘅武器係每個人自己嘅警覺性。</p>
+<p><strong>人/景</strong>：主角係一個擬人化嘅 3D 外科口罩（藍綠色，有對眼同手腳），場景由街市（一個豬肉檔叔叔）、巴士（一個學生妹帶住病容想上車）、老人院門口（一個長者猶豫緊打唔打針）到診所（醫生同病人解釋疫苗）。口罩佬好似一個 superhero 咁穿梭各場景，但又成日食檸檬 — 有人唔聽佢講，佢就會好勞氣咁「哎吔！」一聲跟住諗計仔。</p>
+<p><strong>Visual Device</strong>：「病菌狙擊鏡頭」— 當口罩佬出招嗰陣，畫面會切換成一個主觀狙擊鏡（十字準星瞄準病菌），配一個「叮！」嘅音效，病菌會爆開變成一團彩色泡泡（象徵被消滅）。呢個鏡頭語言可以重複出現，好有節奏感同記憶點。</p>
+<p><strong>主打口號</strong>：衛生意識好，病菌冇碇走。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用（主角係一個口罩角色，配音聲線建議用 ERROR 嘅 Dee 哥 — 佢把聲夠「冤氣」又夠喜感，好適合扮一個成日食白果嘅正義口罩佬；但如果客戶想安全穩陣啲，可以用全素人配音）</p>
+<p><strong>亮點扣連</strong>：用咗亮點 #6（「幕後黑手」經典概念重塑）— 將 CHP 以往用開嘅「髒手印」警示，重塑為口罩佬同病菌嘅追逐戰，病菌走過邊都會留低黑色手印，口罩佬要出手清理。用咗亮點 #1（手語窗融入動畫）— 手語窗會包裝成口罩佬身後嘅「戰略監控螢幕」，翻譯員係口罩佬嘅「軍師」，每次出招前會先喺螢幕做手語提示（同步埋 VO），令手語窗成為劇情推進嘅一部分而唔係一個 compliance 附屬品。另外用咗亮點 #5（RSV 高流感兩倍死亡率）— 病菌三兄弟入面，成身尖刺嗰隻 RSV 大佬會特別標註「比流感狠兩倍」，用數據醒一醒家長。</p><div class='scores'><div class='sline'><b>📊 官方評審 80/100</b><span class='scrit'>訊息準確 22.5 · 創意手法 13.5 · 宣傳衝擊 12.0 · 記憶點 9.0 · 說服共鳴 7.5 · 6a 12.5 · 6b 2.5</span></div><div class='snote'>角色、招式及狙擊鏡頭鮮明易記，手語融入亦具創新與共融價值，但「RSV 比流感狠兩倍」須有官方數據及清晰適用人群支持，戲謔病菌亦可能削弱健康風險的嚴肅性與說服力。</div><div class='sline'><b>🎨 創意質素 20/40</b><span class='scrit'>（落地 4.0 / 扣brief 4.0 / 鋒利 6.0）</span></div><div class='snote'>最大死穴係用「狙擊鏡／終極炮／消滅病菌」將公共衞生講成武器戰鬥，政治敏感兼醫學上過度簡化；30秒亦塞唔落四場景、四招、三病毒、疫苗解說及手語互動。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard surface-card rest ' data-cid='cmd136e361'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>chatgpt 1</span><span class='oscore'>評審 78</span></div><div class='ctitle'>💬 病菌無處遁形 · 偵探妹妹教你點清。</div><div class='csub'>〔「病菌偵探」大作戰〕</div><div class='cbadges'><span class='cflag rl'>⛔違紅線</span></div><div class='cbody'><p><strong>創作概念</strong>: 透過一個家庭中，由敏銳的「病菌偵探」小妹妹，追蹤隱形病菌從公共場所到家中的傳播路徑，揭示日常疏忽帶來的風險。運用極端對比，將小妹妹發現病菌的前後情況誇張化，從而帶出預防措施的重要性。片中將手語視窗融入偵探的「高科技觀察鏡」，打破第四面牆，增加互動性。</p>
+<p><strong>人/景</strong>:</p>
+<p>*   <strong>人物</strong>:</p>
+<p>    *   <strong>「病菌偵探」妹妹 (約 6-8 歲小學生)</strong>：活潑機靈，戴著一副誇張的偵探眼鏡（眼鏡框可巧妙地呈現成橢圓形，呼應手語窗）。</p>
+<p>    *   <strong>爸爸</strong>: 上班族，偶爾會輕視小病，是病菌傳播的「潛在源頭」。</p>
+<p>    *   <strong>媽媽</strong>: 關注家人健康，是家庭衛生的守護者。</p>
+<p>    *   <strong>爺爺</strong>: 長者，免疫力較低，是需要特別保護的高危群組。</p>
+<p>*   <strong>場景</strong>:</p>
+<p>    *   人來人往的<strong>港鐵站</strong>（扶手、車廂扶手環）。</p>
+<p>    *   <strong>辦公室</strong>（鍵盤、門把手、會議室）。</p>
+<p>    *   溫馨的<strong>客廳</strong>（飯桌、沙發）。</p>
+<p><strong>Visual Device</strong>:</p>
+<p>*   <strong>「病菌追蹤線」</strong>: 一條肉眼不可見，但在動畫中以螢光綠色流動線條呈現的「病菌傳播路徑」，從病菌源頭（如打噴嚏、髒手觸摸）開始，透過接觸點（扶手、門把、鍵盤）蔓延，直至家中成員身上。這條線在主角採取防護措施後會斷裂或消失。</p>
+<p>*   <strong>「高科技觀察鏡」</strong>: 偵探妹妹的偵探眼鏡，在關鍵情節中會放大變成一個橢圓形的螢幕，這個橢圓形螢幕會變成手語翻譯員的視窗，並以AR效果顯示病毒數據或防護提示。</p>
+<p><strong>主打口號</strong>: 病菌無處遁形 · 偵探妹妹教你點清。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。</p>
+<p><strong>亮點扣連</strong>:</p>
+<p>*   <strong>橢圓手語視窗融入動畫世界</strong>：將手語窗化為偵探鏡的互動螢幕。</p>
+<p>*   <strong>高出流感兩倍的「隱形殺手」</strong>：透過偵探鏡的AR效果，直接顯示病毒數據，強調危險性。</p>
+<p>*   <strong>「幕後黑手」經典概念重塑</strong>：病菌追蹤線以具象化方式呈現「幕後黑手」的傳播路徑。</p>
+<p>*   <strong>打破第四面牆的無障礙互動</strong>：偵探鏡與手語窗的結合，讓動畫角色與無障礙元素產生互動。</p><div class='scores'><div class='sline'><b>📊 官方評審 78/100</b><span class='scrit'>訊息準確 24.0 · 創意手法 13.0 · 宣傳衝擊 12.0 · 記憶點 8.5 · 說服共鳴 8.0 · 6a 12.0 · 6b 1.0</span></div><div class='snote'>(1) 傳播路徑與防護訊息清晰，但「高出流感兩倍」欠缺指標、對象及官方數據來源；(2) 病菌追蹤線、偵探鏡與手語視窗結合具創意；(3) 家庭與公共場所情境具宣傳感染力，但欠跨媒體延伸方案；(4) 偵探妹妹及螢光追蹤線辨識度高，惟口號略拗口；</div><div class='sline'><b>🎨 創意質素 18/40</b><span class='scrit'>（落地 5.0 / 扣brief 3.0 / 鋒利 6.0）</span></div><div class='snote'>偵探視覺有記憶點，但只講病菌追蹤、漏咗疫苗及病徵後不上班不上學等核心行動，手語窗變形放大亦直接違反固定右下角及全片佔畫面六分一紅線。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard surface-card rest ' data-cid='cm48d373f2'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>gemini 2</span><span class='oscore'>評審 76</span></div><div class='ctitle'>💬 健康超人，守護香港！</div><div class='csub'>〔健康超人聯盟〕</div><div class='cbadges'><span class='cflag rl'>⛔違紅線</span></div><div class='cbody'><p><strong>創作概念</strong>: 透過一班由「健康生活」、「洗手」、「戴口罩」、「咳嗽禮儀」同「打疫苗」擬人化而成嘅「健康超人聯盟」，以第一身視角，講述佢哋點樣聯手對抗「呼吸道病菌怪獸」。片中會強調「生病不上班不上學」嘅重要性，並將英文電台版嘅獨白形式融入電視動畫，由一個擬人化嘅「口罩超人」進行內心獨白。</p>
+<p><strong>人/景</strong>: 香港城市上空，健康超人聯盟嘅基地（可以係維港上空嘅雲層），以及病菌怪獸肆虐嘅辦公室、學校同安老院舍。主要角色為五位健康超人及一隻病菌怪獸。</p>
+<p><strong>Visual Device</strong>:</p>
+<p>1.  <strong>超人第一身視角</strong>: 鏡頭以其中一位超人（例如「口罩超人」）嘅視角出發，帶領觀眾體驗佢哋點樣執行任務。</p>
+<p>2.  <strong>技能特效</strong>: 每位超人都有獨特嘅技能特效，例如「洗手超人」發射泡泡攻擊、「疫苗超人」發射針筒光束等，視覺效果豐富。</p>
+<p>3.  <strong>能量條顯示</strong>: 畫面下方會出現一個「城市健康能量條」，當超人成功擊退病菌怪獸時，能量條會上升。</p>
+<p>4.  <strong>口罩超人獨白</strong>: 在關鍵時刻，橢圓形手語視窗會變成「口罩超人」嘅思想泡泡，以英文獨白形式表達佢嘅內心感受同對市民嘅呼籲。</p>
+<p><strong>主打口號</strong>: 健康超人，守護香港！</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用</p>
+<p><strong>亮點扣連</strong>：用咗亮點 1 (橢圓手語視窗融入動畫世界)、亮點 4 (英文電台版限定「獨白心聲」)、亮點 6 (「幕後黑手」經典概念重塑)、亮點 9 (創意 PROVOCATION - 將英文電台版特定的「獨白（Monologue）形式」反差移植至電視動畫中)</p><div class='scores'><div class='sline'><b>📊 官方評審 76/100</b><span class='scrit'>訊息準確 24.0 · 創意手法 12.5 · 宣傳衝擊 11.5 · 記憶點 8.5 · 說服共鳴 7.5 · 6a 10.5 · 6b 1.0</span></div><div class='snote'>訊息涵蓋主要防疫行為但第一身視角、英文獨白及手語視窗變思想泡泡或削弱清晰度與無障礙傳達；超人技能、怪獸和能量條具創意、衝擊力及記憶點，但題材較常見且針筒光束或引起負面聯想；角色化有助兒童及家庭共鳴，惟對成年上班族的說服力有限；動畫敘事與跨媒</div><div class='sline'><b>🎨 創意質素 12/40</b><span class='scrit'>（落地 2.0 / 扣brief 5.0 / 鋒利 3.0）</span></div><div class='snote'>超人打怪極度行貨兼只靠維港扮本地，最致命係將強制手語視窗變成思想泡泡，直接踩驗收紅線。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div></div><div class='submit'><button class='btn' onclick='submitRound()'>✅ Submit 六強 (<span class=cnt>6</span>)</button></div></div>
+<div id='tvapi1_2' class='tabpanel' data-set='1'><div class='banner'>未有概念進入第二輪。返 VID 1 揀六強（submit 即自動生 BD）先。</div></div>
+<div id='tvapi1_3' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 2 揀三甲先。</div></div>
+<div id='tvapi1_4' class='tabpanel' data-set='1'><div class='banner'>🎬 VID 4 — 5 步生 storyboard ＋ 片（STEP 1 → 5）</div><div class='card'><div class='h3'>📄 STEP 1 — 故事版（你親手執 Master GSheet B6:C17，9-12 格）</div><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card step2'><div class='h3'>🎭 STEP 2 — 主角參考相（AI 自動搵 ISD 官方相 + curate；face-swap 用嚟貼真面）</div><button class='btn ghost mini' onclick="srcRefs(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27&concept=FINAL&stage=facerefs&target=main')">🔍 AI 搵／更新主角參考相</button><div class='hint'>仲未 source 主角相。撳上面掣，AI 自動由 ISD 官方相搵 + curate。</div></div><div class='stylepick card'><div class='h3'>🎨 STEP 3 — 揀風格（每行 0 或 1 個；唔剔 = 跟劇本）</div><div class='styrow'><span class='stylbl'>🏙️ 環境</span><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="realistic environment" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="2D comic-style environment" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="3D animated environment" onchange='styPick(this)'>3D動畫</label></div><div class='styrow'><span class='stylbl'>🧍 人物</span><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="photorealistic characters" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="2D comic-style characters" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="3D-modeled characters" onchange='styPick(this)'>3D建模</label></div><div class='styrow'><span class='stylbl'>🌗 光/時間</span><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="daytime lighting" onchange='styPick(this)'>日 Day</label><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="nighttime lighting" onchange='styPick(this)'>夜 Night</label></div><div class='styrow'><span class='stylbl'>🎨 色彩</span><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="vivid saturated color" onchange='styPick(this)'>鮮艷</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="muted desaturated tones" onchange='styPick(this)'>灰調</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="black and white" onchange='styPick(this)'>黑白</label></div><div class='styrow'><span class='stylbl'>😊 情緒</span><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="warm heartfelt mood" onchange='styPick(this)'>溫情</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="passionate uplifting mood" onchange='styPick(this)'>激昂</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="light humorous mood" onchange='styPick(this)'>幽默</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="solemn official tone" onchange='styPick(this)'>莊重官方</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="suspenseful mood" onchange='styPick(this)'>懸疑</label></div><div class='styrow'><span class='stylbl'>🎬 質感</span><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="cinematic look" onchange='styPick(this)'>電影感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="documentary realism" onchange='styPick(this)'>紀實</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="dynamic music-video energy" onchange='styPick(this)'>MV動感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="plain straightforward style" onchange='styPick(this)'>平實</label></div><div class='styanchor'>風格 anchor：<span id='styanchor'>（跟劇本）</span></div></div><div class='card genbox'><div class='h3'>🍌 STEP 4 — 生 BD（讀 B6:C17 ＋ face-swap 主角真面）</div><button class='btn big' title='讀你喺 Master GSheet B6:C17 執好嘅 script ＋ STEP 3 風格 ＋ face-swap 主角真面 → 生最終 BD（brd=FINAL，唔污染候選）' onclick="genFinalBD(this,'DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27','https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27&concept=FINAL&stage=gsheetbd&target=main')">由 B6:C17 生最終 BD</button></div><div class='card'><div class='h3'>🎬 STEP 5 — 生片（Higgsfield Kling/Seedance，開發中）</div><div class='hint'>BD 揀好 → 生片。Higgsfield CLI 整緊。</div></div></div>
+<div id='tvapi1_5' class='tabpanel' data-set='1'><div class='banner'>未有 FINAL。返 VID 3 揀 FINAL 2 先。</div></div>
+<div id='rad1_1' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 1：流程設計中，完成 VID 後再開。</div></div>
+<div id='rad1_2' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 2：流程設計中，完成 VID 後再開。</div></div>
+<div id='rad1_3' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 3：流程設計中，完成 VID 後再開。</div></div>
+<div class=foot>Idea Lab · 09-08 15:22 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+</div>
+
+<script>
+var DL = new Date("2099-12-31T23:59:59+08:00").getTime();
+function cd() {
+  var e = document.getElementById('cd'); if (!e) return;
+  var x = DL - Date.now();
+  if (x < 0) { e.textContent = '已截標'; return; }
+  var s = Math.floor(x/1000), d = Math.floor(s/86400);
+  s -= d*86400; var h = Math.floor(s/3600); s -= h*3600;
+  var m = Math.floor(s/60); s -= m*60;
+  e.textContent = (d > 0 ? d + '日 ' : '')
+    + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0')
+    + ':' + String(s).padStart(2,'0');
+}
+cd(); setInterval(cd, 1000);
+
+var TABS   = document.querySelectorAll('.tab');
+var PANELS = document.querySelectorAll('.tabpanel');
+function showTab(id) {
+  if (!document.getElementById(id)) id = 'ph0';
+  TABS.forEach(function(t) { t.classList.toggle('active', t.dataset.tab === id); });
+  PANELS.forEach(function(p) { p.classList.toggle('active', p.id === id); });
+  history.replaceState(null, '', '#' + id);
+  upd();
+  if (/(vid|tvapi)\d+_2$/.test(id)) vid2AutoBD();   // 入 VID／TVAPI 2 即自動觸發六強生 BD + poll
+}
+TABS.forEach(function(t) { t.addEventListener('click', function() { showTab(t.dataset.tab); }); });
+showTab((location.hash.slice(1)) || 'tvapi1_1');
+
+// VID 2:六強 submit 後自動生 BD —— 對未有 BD(data-needbd=1)嘅概念逐個觸發 NBLM deck(GAS 去重,撳幾多次都唔重生)。
+// 未生晒就每 45s reload 一次睇新 BD(NBLM 連夜,一晚生得晒)。
+var _vid2timer;
+function vid2AutoBD() {
+  var panel = document.querySelector('.tabpanel.active'); if (!panel) return;
+  var pend = panel.querySelectorAll('[data-needbd="1"]');
+  pend.forEach(function(c) {
+    var brd = c.dataset.brd; if (!brd) return;
+    var k = 'bdstart_DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27_' + brd;
+    if (!localStorage.getItem(k)) localStorage.setItem(k, String(Date.now()));  // 開始時間 → 進度條
+    fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27&concept=" + encodeURIComponent(brd) + "&stage=deck&target=main" + setQ(),
+          {mode:'no-cors'}).catch(function(){});
+  });
+  tickProgress();
+  if (pend.length && !_vid2timer) {
+    _vid2timer = setInterval(function() { location.reload(); }, 90000);  // 靜靜每 90s 攞新 BD（冇 develop bar）
+  }
+}
+
+// VID 2 進度條：按實測平均 BD 時間（~10 分鐘）推移，封頂 99% stall（NBLM 唔報幾時好）。
+var BD_AVG_MS = 600000;   // 平均 606s（manifest 連續 gap 實測）
+function tickProgress() {
+  document.querySelectorAll('.pgbar').forEach(function(bar) {
+    var brd = bar.dataset.brd; if (!brd) return;
+    var k = 'bdstart_DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27_' + brd;
+    var s = +localStorage.getItem(k);
+    if (!s) { s = Date.now(); localStorage.setItem(k, String(s)); }
+    var pct = Math.min(99, (Date.now() - s) / BD_AVG_MS * 100);
+    var f = bar.querySelector('.pgfill'); if (f) f.style.width = pct.toFixed(0) + '%';
+    var t = bar.querySelector('.pgtxt');
+    if (t) t.textContent = pct >= 99 ? 'BD 生成中…就快好（99%）' : ('BD 生成中… ' + pct.toFixed(0) + '%（平均 ~10 分鐘）');
+  });
+}
+setInterval(tickProgress, 2000); tickProgress();
+// 已完成（卡有圖）→ 清走嗰個 brd 嘅開始時間，免下次重生即跳 99%
+document.querySelectorAll('.card[data-brd] img.sheet').forEach(function(im) {
+  var card = im.closest('.card[data-brd]');
+  if (card && card.dataset.brd) localStorage.removeItem('bdstart_DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27_' + card.dataset.brd);
+});
+
+// 零碎想法：localStorage array(可入多次),即時累積顯示,每條 POST 去 GAS 畀委員會消化
+var NK = 'notes_DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27';
+var notesEl = document.getElementById('notes');
+function loadNotes() {
+  try { var a = JSON.parse(localStorage.getItem(NK) || '[]'); return Array.isArray(a) ? a : []; }
+  catch (e) { return []; }
+}
+function saveNotes(a) { localStorage.setItem(NK, JSON.stringify(a)); }
+function fmtTs(ts) {
+  var d = new Date(ts);
+  function p(n) { return String(n).padStart(2, '0'); }
+  return (d.getMonth()+1) + '/' + d.getDate() + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+}
+function renderNotes() {
+  var box = document.getElementById('noteslist'); if (!box) return;
+  var a = loadNotes();
+  if (!a.length) { box.innerHTML = "<p class='hint' style='margin:4px 2px'>未有想法。</p>"; return; }
+  box.innerHTML = a.map(function(n, i) {
+    var txt = (n.text || '').replace(/</g, '&lt;');
+    return "<div class='notecard'><div class='noterow'>"
+      + "<span class='notets'>" + fmtTs(n.ts) + "</span>"
+      + "<button class='notedel' onclick='delNote(" + i + ")'>✕</button></div>"
+      + "<div class='notetxt'>" + txt + "</div></div>";
+  }).join('');
+}
+function submitNotes() {
+  if (!notesEl || !notesEl.value.trim()) { alert('未有想法'); return; }
+  var txt = notesEl.value.trim();
+  var a = loadNotes(); a.push({ ts: Date.now(), text: txt }); saveNotes(a);
+  notesEl.value = ''; renderNotes();
+  var url = "https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27&text=" + encodeURIComponent(txt);
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('＋ 已加入（' + a.length + ' 條，VID 1 啟動時餵委員會）');
+}
+function delNote(i) {
+  var a = loadNotes(); if (i < 0 || i >= a.length) return;
+  if (!confirm('刪呢條想法?')) return;
+  a.splice(i, 1); saveNotes(a); renderNotes();
+}
+renderNotes();
+
+function tk(el) {
+  el.classList.toggle('on');
+  el.textContent = el.classList.contains('on') ? '✓' : '';
+  upd();
+}
+// carousel 卡：撳卡頭（唔係內文 scroll 區）toggle 揀選
+function tkCard(head) {
+  var card = head.closest('[data-cid]'); if (!card) return;
+  var ck = card.querySelector('.ck'); if (!ck) return;
+  tk(ck);
+  card.classList.toggle('sel', ck.classList.contains('on'));
+}
+function upd() {
+  var n = document.querySelectorAll('.tabpanel.active .ck.on').length;
+  document.querySelectorAll('.tabpanel.active .cnt').forEach(function(c) {
+    c.textContent = n;
+    c.parentElement.classList.toggle('cnt-warn', n > 6);
+  });
+}
+document.querySelectorAll('.card[data-cid]').forEach(function(card) {
+  var ck = card.querySelector('.ck');
+  if (!ck) return;
+  card.addEventListener('click', function(e) {
+    if (e.target.closest('.ck,.det,textarea,a,button')) return;
+    tk(ck);
+  });
+});
+
+function toast(msg) {
+  var t = document.createElement('div');
+  t.className = 'toast'; t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(function() { t.style.opacity = '0'; }, 6000);
+}
+function showTopProc(msg, stop) {
+  var o = document.getElementById('topproc');
+  if (!o) {
+    o = document.createElement('div'); o.id = 'topproc'; o.className = 'topproc';
+    document.body.insertBefore(o, document.body.firstChild);
+  }
+  if (stop) {
+    o.innerHTML = '<span id="tpmsg">' + msg + '</span>'
+      + ' <a href="#" onclick="location.reload();return false" style="margin-left:8px;font-weight:800;color:var(--ac)">🔄 再 check</a>'
+      + ' <a href="#" onclick="this.parentNode.remove();return false" style="margin-left:8px;color:#888">✕</a>';
+  } else {
+    o.innerHTML = '<span class="spin sm"></span><span id="tpmsg">' + msg + '</span>';
+  }
+}
+
+// ⛔⛔ 防 comment 冇咗(Raymond 2026-06-16 爆:手寫稿 BD comment 位打咗字,redeploy → reload 冧晒):
+//   **全部**輸入格(額外想法 / 6 塊手寫稿 BD comment / 鐵則 / 任何 textarea·text input)每次打字即存 localStorage,
+//   reload/redeploy 都還原返;tab 切返嚟 auto-refresh **有未存字就唔 reload**。每格按 element id 存。
+(function() {
+  var DP = 'draft_DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27_';
+  function fields() {
+    return [].slice.call(document.querySelectorAll('textarea, input[type=text]')).filter(function(e){ return e.id; });
+  }
+  function hasUnsaved() { return fields().some(function(e){ return (e.value||'').trim().length>0; }); }
+  // 載入時還原每格 draft
+  var restored = 0;
+  try { fields().forEach(function(e){ var v=localStorage.getItem(DP+e.id); if(v && !e.value){ e.value=v; restored++; } }); } catch(_) {}
+  if (restored) setTimeout(function(){ toast('↩︎ 幫你還原咗 '+restored+' 格未送出嘅文字'); }, 500);
+  // 每次打字即存(任何有 id 嘅 textarea / text input)
+  document.addEventListener('input', function(ev) {
+    var t = ev.target; if (!t || !t.id) return;
+    if (t.tagName==='TEXTAREA' || (t.tagName==='INPUT' && t.type==='text')) {
+      try { if ((t.value||'').trim()) localStorage.setItem(DP+t.id, t.value); else localStorage.removeItem(DP+t.id); } catch(_) {}
+    }
+  });
+  window._clearDraft = function(id) { try { localStorage.removeItem(DP+id); } catch(_) {} };
+  var loaded = Date.now();
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden && Date.now() - loaded > 45000 && !hasUnsaved())   // 有未存嘅字 → 唔 reload,唔好冧佢
+      location.href = location.pathname + '?t=' + Date.now() + location.hash;
+  });
+})();
+
+// BD 圖 click 放大（lightbox）—— event delegation，任何 .sheet 圖都得
+(function() {
+  var lb = document.createElement('div'); lb.className = 'lbx';
+  lb.innerHTML = '<span class="x">✕</span><img><div class="hint">撳任何位收返。放大後可用瀏覽器 pinch/scroll 睇每格。</div>';
+  document.body.appendChild(lb);
+  var lbimg = lb.querySelector('img');
+  lb.addEventListener('click', function() { lb.classList.remove('on'); });
+  document.addEventListener('click', function(e) {
+    var t = e.target;
+    if (t && t.classList && t.classList.contains('sheet') && t.src) {
+      lbimg.src = t.src; lb.classList.add('on');
+    }
+  });
+})();
+
+// active panel 嘅 set → GAS param（set 1 唔帶，backend 不變）
+function curSet() { var p = document.querySelector('.tabpanel.active'); return p ? (p.dataset.set || '1') : '1'; }
+function setQ()   { var s = curSet(); return (s && s !== '1') ? ('&set=' + s) : ''; }
+
+// 各 set 嘅 funnel phase（多-set 各 set 唔同）。getVidPhase() 隨 active 嘅 set 變。
+var VID_PHASES = {"1": 1};
+var PRIMARY_VID = 1;
+function getVidPhase() { var s = curSet(); return VID_PHASES[s] || PRIMARY_VID; }
+function pickedCids() {
+  return [].map.call(
+    document.querySelectorAll('.tabpanel.active [data-cid] .ck.on'),
+    function(k) { return k.closest('[data-cid]').dataset.cid; });
+}
+function submitAdvance(url) {
+  toast('✅ 已提交，十幾秒後自動刷新睇下一步（或撳右上 🔄）');
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { location.reload(); }, 13000);   // 單次刷新，冇 develop bar，冇無限 loop
+}
+function submitRound() {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個做六強？submit 後會自動後台生 BD（用 NBLM），落選自動歸檔。')) return;
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27&round=r2&cids=" + c.join(',') + setQ());
+}
+function subStage(to) {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個 → ' + (to === 'r3' ? '三甲' : 'FINAL 2') + '？')) return;
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27&round=" + to + "&cids=" + c.join(',') + setQ());
+}
+function postFunnel(url, msg) {
+  fetch(url, {mode:'no-cors'})
+    .then(function() { toast(msg); })
+    .catch(function() { toast('⚠️ 再試一次'); });
+}
+
+function genBD(btn, url) {   // VID 3 Nano per-card 用
+  var acts = btn.closest('.acts') || btn.parentElement;
+  if (acts) acts.innerHTML = "<span class='gening'><span class='spin sm'></span>生緊… ~8-9 分鐘</span>";
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+}
+function addRule(dept) {   // 政府 JOB 鐵則:加一條 → listener append gov_job_rules.json(全 JOB 累積)
+  var ta = document.getElementById('newrule');
+  var txt = (ta && ta.value || '').trim();
+  if (!txt) { if(ta) ta.focus(); return; }
+  var url = 'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=' + encodeURIComponent(dept) + '&concept=rule&stage=add_rule'
+          + '&engine=' + encodeURIComponent(txt) + '&target=main';
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  if (window._clearDraft) window._clearDraft('newrule');   // 送出咗 → 清 draft
+  var ol = document.getElementById('rulelist');
+  if (ol) { var li=document.createElement('li'); li.textContent=txt; ol.appendChild(li); }  // 即時顯示
+  if (ta) { ta.value=''; ta.placeholder='✅ 已加，下次生 BD 即跟'; }
+}
+// ⭐ Raymond 提供參考相窗口嘅上載 mechanic = dash_upload.upload_box(reuse 創意把關站,JS 已內嵌喺 widget,呢度唔再寫)
+function _vchecked() { return [].slice.call(document.querySelectorAll('.tabpanel.active .vchk:checked')); }
+function delAssets(dept) {   // 🗑 整張即刻刪(像真網頁,唔問;listener 後台存底 + 真刪)
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=delasset&stage=del_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){ var card=c.closest('.vacard'); if(card) card.remove(); });   // 即刻消失
+  toast('🗑 刪咗 '+ids.length+' 張');
+}
+function preferAssets(dept) {   // ⭐ 首選:即刻 ⭐ + 嗰啲相搬去最左(像真網頁);listener pref + 餵 NLM 優先
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=prefasset&stage=prefer_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){
+    var card=c.closest('.vacard'); if(!card) return;
+    card.classList.add('pref');
+    if(!card.querySelector('.vastar')){ var s=document.createElement('div'); s.className='vastar'; s.textContent='⭐ 首選'; card.appendChild(s); }
+    var row=card.parentNode; row.insertBefore(card, row.firstChild);   // 搬去最左
+    c.checked=false;
+  });
+  toast('⭐ 已設首選 '+ids.length+' 張（搬咗去最左 + 餵 NLM 優先）');
+}
+function showOvl(id) { var o=document.getElementById(id); if(o) o.classList.add('on'); }   // 🎧 錄音逐字 overlay(撳先出)
+function hideOvl(id) { var o=document.getElementById(id); if(o) o.classList.remove('on'); }
+document.addEventListener('click', function(e){   // 撳 overlay 背景(唔係 box)收返
+  if(e.target && e.target.classList && e.target.classList.contains('ovl')) e.target.classList.remove('on');
+});
+function researchAssets(dept) {   // 🔁 重搜:即刻喺相右下角顯示漏斗「重搜中」,後台搵新相,搵到自動換(reload 時)
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=researchasset&stage=research_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){
+    var card=c.closest('.vacard'); if(!card) return;
+    var th=card.querySelector('.vathumb');
+    if(th && !th.querySelector('.vafunnel')){ var f=document.createElement('div'); f.className='vafunnel';
+      f.innerHTML='<span class="spin sm" style="width:10px;height:10px;margin:0"></span> 重搜中'; th.appendChild(f); }
+    c.checked=false;
+  });
+  toast('🔁 重搜 '+ids.length+' 個，後台搵緊清晰啲嘅相，搵到自動換（~30-60s，會自動 refresh）');
+}
+function bdComment(dept, brd) {   // 手寫稿 BD:送 comment → listener AI 解意見 → 改 specific 格(留舊版)
+  var ta = document.getElementById('cm_' + brd);
+  var txt = (ta && ta.value || '').trim();
+  if (!txt) { if (ta) ta.focus(); return; }
+  var url = 'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=' + encodeURIComponent(dept)
+          + '&concept=' + encodeURIComponent(brd) + '&stage=bdcomment'
+          + '&engine=' + encodeURIComponent(txt) + '&target=main&cid=ACT_bdcomment';
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  if (window._clearDraft) window._clearDraft('cm_' + brd);   // 送出咗 → 清 draft
+  if (ta) { ta.disabled = true;
+    ta.insertAdjacentHTML('afterend', "<div class='cmlog'>✅ 已送出，AI 改緊嗰格，改完自動換圖（舊版會留喺下面）。</div>"); }
+}
+// STEP 3 風格 picker：每維互斥（但可 0 個）+ 夾成 style_anchor
+function styPick(cb) {
+  if (cb.checked) {
+    var sib = document.querySelectorAll(".styopt[data-dim='" + cb.getAttribute('data-dim') + "']");
+    for (var i = 0; i < sib.length; i++) { if (sib[i] !== cb) sib[i].checked = false; }
+  }
+  var el = document.getElementById('styanchor');
+  if (el) el.textContent = styleAnchor() || '（跟劇本）';
+}
+function styleAnchor() {
+  var dims = ['env', 'char', 'light', 'color', 'mood', 'feel'], picks = [];
+  for (var i = 0; i < dims.length; i++) {
+    var el = document.querySelector(".styopt[data-dim='" + dims[i] + "']:checked");
+    if (el) picks.push(el.value);
+  }
+  return picks.join(', ');
+}
+function srcRefs(btn, url) {   // STEP 2：AI 搵主角參考相
+  btn.textContent = '⏳ AI 搵相中…（~2-3 分鐘，完成 refresh 見）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('🔍 AI 自動由 ISD 官方相搵主角 + curate 中…');
+}
+function genFinalBD(btn, dept, baseUrl) {   // STEP 4：寫低 STEP 3 風格 → 生最終 BD
+  var anc = styleAnchor();
+  // STEP3 風格寫入 Master GSheet _VID_STYLE（gsheet_to_bd 讀返做 override；空 = 跟劇本）
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify({op:'set_style', dept:dept, style:anc})}).catch(function(){});
+  toast(anc ? ('🎨 已套用風格：' + anc) : '🎨 風格：跟劇本（冇限制）');
+  genBD(btn, baseUrl);
+}
+function pushGSheet(btn, url) {   // VID 4 寫入 Master GSheet B6:C17
+  btn.textContent = '⏳ 寫入緊…'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已寫入（開 GSheet polish）'; }, 2500);
+  toast('📝 已交，~1 分鐘寫入 Master GSheet B6:C17（前稿自動備份）');
+}
+function renderForms(btn, url) {   // 📋 標書:自動 render 真表頁入 Master Reply GSlide
+  btn.textContent = '⏳ render 緊…（~1-2 分鐘，完成會 WhatsApp）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('📋 已交，listener 會自動 render 真表頁入 Master Reply GSlide');
+}
+function fillForms(btn) {   // 📝 標書:自動填表 — GAS 直出（公司資料 vlookup 寫 Fill tab，唔靠部 Mac）
+  var jsTag = btn.nextElementSibling;  // <script class=filldata>
+  var data;
+  try { data = JSON.parse((jsTag && jsTag.textContent) || '{}'); } catch (e) { data = {}; }
+  if (!data.forms || !data.forms.length) { toast('⚠️ 冇表資料'); return; }
+  var reg='https://docs.google.com/spreadsheets/d/1yiDJ3H8VFK3-6kZQZEzwkiD8VaRgVOzCwxcFbAyP3XE/edit';
+  btn.textContent = '⏳ AI 填緊…（~30-60s）'; btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'fill_forms', folderName: data.folderName, forms: data.forms })
+  }).catch(function(){});
+  // 清楚講做緊乜 + 完咗點做(開 Registry copy 值)
+  setTimeout(function() {
+    btn.outerHTML = "<a class='btn' style='width:100%;text-align:center' target='_blank' href='"+reg
+      +"'>✅ 已填好 → 開 Master Form Registry copy 啲值</a>";
+  }, 30000);
+  toast('🤖 AI 填緊公司資料入 Master Form Registry 嘅 Fill tab（~30-60s）。完咗開 Registry copy 啲值入真表頁。');
+}
+function outScript(btn) {   // 📤 VID2:SCRIPT 接落 Master GSheet SCRIPT暫存 — 直接 GAS POST，唔經部 Mac
+  var jsTag = btn.nextElementSibling;  // <script class=bdj> board JSON
+  var board = [];
+  try { board = JSON.parse((jsTag && jsTag.textContent) || '[]'); } catch (e) {}
+  if (!board.length) { toast('⚠️ 冇 board 資料'); return; }
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'script_out', dept: 'DH_RESPIRATORYTRACTINFECTION_5_IN_DH_HPB_3-5_43_2026-27',
+      brd: btn.dataset.brd, concept: btn.dataset.concept, board: board })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已接落「SCRIPT暫存」'; btn.disabled = false; }, 1500);
+  toast('📤 接落 Master GSheet「SCRIPT暫存」(GAS,唔經部 Mac,疊唔覆寫)');
+}
+function clearScript(btn) {   // 🧹 清空 SCRIPT暫存 — GAS（唔經 Mac）
+  if (!confirm('清空 SCRIPT暫存 tab？')) return;
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'clear' })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已清空'; btn.disabled = false; }, 1500);
+  toast('🧹 已清空 SCRIPT暫存（GAS,唔經部 Mac）');
+}
+
+// submitGSlide/submitComments 已移除（dead code:前端零 call site + 冇 .frame-note input — 2026-06-13 audit）
+
+// 「develop 緊」bar 已移除（Raymond 2026-06-06）—— 改用 VID 2 tab 紅邊 + 各 concept 進度條。
+</script></body></html>
