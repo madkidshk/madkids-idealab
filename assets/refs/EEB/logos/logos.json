@@ -1,0 +1,37 @@
+{
+  "dept": "EEB",
+  "slots": [
+    {
+      "slot": 1,
+      "query": "環境及生態局（食物科） 標誌",
+      "file": "assets/refs/EEB/logos/slot1.png",
+      "title": "主頁| 環境及生態局",
+      "w": 1763,
+      "h": 399,
+      "enabled": true,
+      "verified": true,
+      "verified_org": "中華人民共和國香港特別行政區政府 環境及生態局",
+      "source_domain": "eeb.gov.hk"
+    },
+    {
+      "slot": 2,
+      "query": "Environment and Ecology Bureau (Food Branch) logo site:eeb.gov.hk",
+      "file": "",
+      "title": "(核實唔到官方標誌,可即場打字重搵)",
+      "enabled": true,
+      "verified": false,
+      "verified_org": "",
+      "source_domain": "eeb.gov.hk"
+    },
+    {
+      "slot": 3,
+      "query": "降低食物中鹽和糖委員會 標誌 site:eeb.gov.hk",
+      "file": "",
+      "title": "(核實唔到官方標誌,可即場打字重搵)",
+      "enabled": true,
+      "verified": false,
+      "verified_org": "",
+      "source_domain": "eeb.gov.hk"
+    }
+  ]
+}
