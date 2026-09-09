@@ -1,0 +1,1701 @@
+<!DOCTYPE html><html lang=zh-HK><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>EEB · Idea Lab</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#6b7280;--line:#e6e8ec;
+      --ac:#4f46e5;--gold:#c79a2b;--red:#dc2626;--grn:#15a34a}
+*{box-sizing:border-box}
+.btn{background:#4f46e5;color:#fff;border:none;border-radius:9px;padding:8px 13px;font-size:12.5px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;box-sizing:border-box}
+.btn.ghost{background:#fff;color:#4f46e5;border:1.5px solid #dcdffb}
+.btn.grn{background:#15a34a}
+.btn.mini{padding:4px 9px;font-size:11px;min-height:44px}
+.btn:hover,.btn.ghost:hover{filter:brightness(.98)}
+details.soft{background:#fff;border:1px solid #e7e9ee;border-radius:10px;padding:4px 12px}
+details.soft>summary{cursor:pointer;font-size:12.5px;font-weight:700;color:#444;padding:8px 0;list-style:none}
+details.soft>summary::-webkit-details-marker{display:none}
+details.soft>summary::before{content:"▸ ";color:#9aa0ab}
+details.soft[open]>summary::before{content:"▾ "}
+.ovl{position:fixed;inset:0;z-index:120;background:rgba(15,18,28,.55);display:none;align-items:center;justify-content:center;padding:18px}
+.ovl.on{display:flex}
+.ovlbox{background:#fff;border-radius:14px;box-shadow:0 18px 60px rgba(0,0,0,.4)}
+.pill{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:#eef0f3;color:#555}
+.pill.ok{background:#e7f7ee;color:#15803d}
+.pill.warn{background:#fff4e5;color:#b45309}
+.pill.bad{background:#fdeaea;color:#dc2626}
+.pill.accent{background:#eef0fe;color:#4f46e5}
+.secthead{font-size:16px;font-weight:800;margin:24px 0 10px;border-left:4px solid #4f46e5;padding-left:9px;color:#1b1f27}
+.secthead.tight{margin-top:10px}
+.sectbadge{display:inline-block;margin-left:8px;font-size:11px;font-weight:800;border-radius:999px;padding:2px 8px;background:#eef0fe;color:#4f46e5}
+.carousel{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 12px;-webkit-overflow-scrolling:touch}
+.carousel::-webkit-scrollbar{height:6px}
+.carousel::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:6px}
+.carousel-card{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;background:#fff;border:1.5px solid #e7e9ee;border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+@media(min-width:700px) and (max-width:1099px){.carousel-card{flex:0 0 46%}}
+@media(min-width:1100px){.carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}.carousel-card{flex:0 0 calc(33.333% - 10px);max-width:none;scroll-snap-align:none}}
+.lbx{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;display:none;align-items:center;justify-content:center;padding:12px}
+.lbx.on{display:flex}
+.lbx img{max-width:98vw;max-height:94vh;border-radius:8px;cursor:zoom-out}
+.lbx .x{position:fixed;top:10px;right:16px;color:#fff;font-size:30px;font-weight:800;cursor:pointer}
+.lbx .hint{position:fixed;bottom:12px;left:0;right:0;text-align:center;color:#bbb;font-size:12px}
+.badge{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:#4f46e5;border-radius:7px;padding:2px 9px;letter-spacing:.02em}
+.score-badge{display:inline-block;background:#c79a2b;color:#fff;font-size:12px;font-weight:800;border-radius:20px;padding:2px 10px}
+.status-badge{display:inline-block;font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.status-badge.ok{background:#dcfce7;color:#15803d}
+.status-badge.warn{background:#fef3c7;color:#a16207}
+.status-badge.bad{background:#fee2e2;color:#b91c1c}
+.status-badge.mute{background:#eef0f3;color:#717784}
+.surface-card{background:#fff;border:1px solid #e7e9ee;border-radius:14px;box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+.surface-card.soft{background:#fafbfd}
+.surface-card.warn{background:#fff8f1;border-color:#fcd9b6}
+.surface-card.danger{border-color:#f3b4ae;box-shadow:0 2px 16px rgba(238,56,47,.08)}
+.surface-card.pad-sm{padding:9px 10px}
+.surface-card.pad-md{padding:15px 17px}
+.surface-card.pad-lg{padding:18px}
+.surface-card.selected{border-color:#4f46e5;box-shadow:0 0 0 2px rgba(79,70,229,.25),0 6px 18px rgba(79,70,229,.18)}
+body{margin:0;background:var(--bg);color:var(--ink);
+     font:15px/1.55 -apple-system,"PingFang HK",sans-serif}
+.wrap{max-width:430px;margin:0 auto;padding:0 13px 130px}
+h1{font-size:19px;font-weight:800;margin:0;line-height:1.25}
+h1 .dept{color:var(--ac)}
+.bdp{font-size:12px;font-weight:700;margin:3px 0 0;display:flex;gap:11px;flex-wrap:wrap}
+.fresh{font-size:11px;color:#7a8290;margin:6px 0 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.fresh .fr{background:#f1f3f6;border-radius:6px;padding:2px 7px;white-space:nowrap}
+.fresh .fr b{color:#4a5462;font-weight:700}
+.bdp .bb{color:#2563eb}.bdp .dd{color:#dc2626}.bdp .pp{color:#7c3aed}
+.tabbar{position:sticky;top:0;z-index:30;background:var(--bg);
+         border-bottom:2px solid var(--line);display:flex;gap:5px;
+         overflow-x:auto;padding:8px 0 7px;scrollbar-width:none}
+.tabbar::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;background:var(--card);border:1.5px solid var(--line);
+      border-radius:9px;padding:5px 12px;font-size:12px;font-weight:800;
+      color:var(--mut);cursor:pointer;transition:all .12s;white-space:nowrap}
+.tab:hover{border-color:var(--ac);color:var(--ac)}
+.tab.active{background:var(--ac);border-color:var(--ac);color:#fff}
+header{padding:12px 0 4px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap}
+.titlerow h1{margin:0;min-width:0}
+.hdrbtns{flex:none;display:flex;gap:7px;align-items:center}
+.homebtn,.refbtn{flex:none;white-space:nowrap;font-size:16px;line-height:1;text-decoration:none;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:5px 9px;color:#222;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.refbtn{cursor:pointer}
+.labbtn{flex:none;white-space:nowrap;font-size:13px;line-height:1;text-decoration:none;border-radius:9px;padding:7px 10px;font-weight:800;border:1px solid transparent;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.labbtn.mk{background:#fff5f5;color:#EE382F;border-color:#f3b4ae}
+.labbtn.mm{background:#fff7ed;color:#d97706;border-color:#fdba74}
+@media(max-width:480px){.homebtn,.refbtn{font-size:14px;padding:5px 8px}}
+@media(max-width:420px){.titlerow{flex-direction:column;align-items:stretch;gap:8px}.hdrbtns{flex-wrap:wrap;max-width:100%;width:100%;gap:6px}}
+.tabpanel{display:none;padding-top:10px}
+.tabpanel.active{display:block}
+.setlab{font-size:11px;font-weight:800;color:var(--ac);background:#eef0fe;
+         border:1px solid #dcdffb;border-radius:8px;padding:4px 10px;
+         display:inline-block;margin:0 0 8px}
+.banner{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;
+         padding:10px 12px;font-size:12.5px;font-weight:700;color:#92660c;margin:10px 0}
+.h2{font-size:14.5px;font-weight:800;letter-spacing:.01em;color:var(--ink);
+     margin:16px 2px 8px}
+.h3{font-size:13px;font-weight:700;color:#374151;margin:11px 0 5px}
+.stylepick{margin:10px 0}
+.styrow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:5px 0;padding:5px 0;border-bottom:1px solid var(--line)}
+.stylbl{min-width:84px;font-weight:600;font-size:13px}
+.styo{display:inline-flex;align-items:center;gap:4px;font-size:13px;padding:3px 10px;
+       border:1px solid var(--line);border-radius:14px;cursor:pointer;user-select:none;background:#fafafa}
+.styo input{margin:0}
+.styo:has(input:checked){background:#e6f7f1;border-color:#0a7;color:#066}
+.styanchor{margin-top:9px;font-size:12px;color:var(--mut)}
+#styanchor{color:#0a7;font-weight:600}
+.card{background:var(--card);border-color:var(--line);border-radius:13px;
+       padding:11px 12px;margin-bottom:8px}
+.hgrid{display:grid;grid-template-columns:1fr;gap:13px}
+@media(min-width:720px){.hgrid{grid-template-columns:1fr 1fr 1fr}}
+.hcard{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:10px;box-shadow:0 1px 2px rgba(20,24,40,.05)}
+.hcap{font-weight:800;font-size:13px;margin-bottom:7px}
+.sgrp{font-weight:800;font-size:12px;color:#475569;background:#eef1f6;border-radius:7px;padding:5px 10px;margin:11px 0 2px}
+.sgrp:first-child{margin-top:2px}
+.tlrow.todo{opacity:.55} .tlrow.todo .tllabel{color:#9aa0ab}
+.tlrow.na{opacity:.4} .tlrow.na .tllabel{color:#b6bbc4;text-decoration:line-through}
+.dsp{width:100%;border-collapse:collapse;font-size:12.5px}
+.dsp th{text-align:left;color:var(--mut);font-weight:700;padding:4px 7px;border-bottom:1px solid var(--line)}
+.dsp td{padding:4px 7px;border-bottom:1px solid #f3f4f6;vertical-align:top}
+.vacarou{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.vacard{flex:0 0 134px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px;font-size:11px}
+.vathumb{position:relative;height:90px;border-radius:7px;overflow:hidden;background:#f1f3f7;display:flex;align-items:center;justify-content:center}
+.vathumb img{width:100%;height:100%;object-fit:cover}
+.vacat{margin-top:5px;font-size:10px;color:#7b4fc0;font-weight:800}
+.vaname{font-weight:600;line-height:1.25;min-height:28px;color:#374151}
+.vasrc{font-size:10.5px} .vatick{display:block;font-size:11px;margin-bottom:4px;cursor:pointer;font-weight:700}
+.vaprovide{margin:12px 0 2px}
+.upbox .refelemin{display:block;width:100%;margin:0 0 8px;padding:6px 8px;border:1px solid var(--line);border-radius:7px;font-size:12px}
+/* ── 標書 tab restructure 2026-06-16 ── */
+/* 💡 提供窗口 */
+.h2sm{font-size:13px;margin:12px 2px 5px}
+.provide{padding:9px 10px}
+/* 加入想法 + upbox 送出 統一設計(都係 .btn 觀感) */
+.provide .upbox{margin:0;border-radius:9px;padding:9px}
+.provide .upbox .attsend{background:var(--ac);border-radius:9px;padding:0 14px;font-size:12.5px;font-weight:800}
+.provide .noteslist{margin-top:7px}
+/* 三梯隊標題:左色條 + 副標 */
+.tierh{border-left:4px solid var(--ac);padding-left:9px;margin:18px 2px 2px;font-size:14px}
+.tierhint{margin:2px 2px 7px 13px}
+/* ✍️ 邊個 model 寫(#5):mdl 真 / mdef 預設(灰) / mfb fallback(橙) */
+.mdl{flex:0 0 auto;font-size:10px;font-weight:800;color:#3730a3;background:#eef0fe;border:1px solid #dcdffb;
+      border-radius:6px;padding:1px 6px;white-space:nowrap;margin-left:auto}
+.mdl.mdef{color:#6b7280;background:#f1f3f6;border-color:#e3e6ea}
+.mdl.mfb{color:#9a5a00;background:#fff4e5;border-color:#fde6c0}
+.h3 .mdl{margin-left:6px;vertical-align:middle}
+/* 📋 標書內容 carousel 卡 — 字體/行寬完全跟返 VID1 .ccard(Raymond 2026-06-16:之前縮 12px 太難讀,
+   改返用 VID1 base .cbody 12.5px/1.62、.ctitle 14px。卡內 md 標題用 base .cbody h3/h4 12.5px,統一)。 */
+.brfcarou{margin-top:2px}
+.brfcard .chead{cursor:default}
+/* 🔄 重生緊 signal(手寫稿 BD) */
+.regbadge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;color:#fff;background:var(--ac);border-radius:8px;padding:4px 9px;margin:0 0 6px}
+/* 🔀 換格 + BD 英文字 */
+.bdletter{display:inline-block;min-width:18px;text-align:center;font-weight:800;color:#fff;background:var(--ac);border-radius:6px;padding:0 5px;margin-right:4px}
+.swrow{display:flex;align-items:center;gap:6px;margin-bottom:7px;flex-wrap:wrap}
+.swlbl{font-size:12px;color:var(--mut);white-space:nowrap}
+.swrow select{flex:1;min-width:90px;font-size:12.5px;padding:6px 7px;border:1px solid var(--line);border-radius:7px;background:#fff}
+/* 標書原文 link 喺 撮要 標題右邊 */
+.rawlink{flex:0 0 auto;margin-left:auto;font-size:10.5px;font-weight:800;color:var(--ac);background:#eef0fe;border:1px solid #dcdffb;border-radius:6px;padding:1px 6px;cursor:pointer;white-space:nowrap}
+/* 部門官方來源 search-result row(似 youtube search) */
+.srcrow{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid #f1f3f6}
+.srcrow:last-child{border-bottom:0}
+.srcthumb{flex:0 0 54px;height:40px;border-radius:5px;object-fit:cover;background:#f1f3f7}
+.srctit{font-size:11.5px;font-weight:700;line-height:1.3;color:var(--ac)}
+.srcsnip{font-size:10.5px;color:#6b7280;line-height:1.4;margin-top:1px}
+/* 🎧 Briefing 錄音逐字 overlay(撳先出,唔常設) */
+.ovlbox{max-width:560px;width:100%;max-height:82vh;display:flex;flex-direction:column}
+.ovlhd{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--line);font-weight:800;font-size:13px}
+.ovlhd .x{cursor:pointer;color:#888;font-size:16px;border:0;background:0}
+.ovlbody{overflow:auto;padding:12px 14px;font-size:11.5px;line-height:1.6;color:#333;white-space:pre-wrap}
+.ovllink{color:var(--ac);font-weight:700;cursor:pointer;text-decoration:underline}
+/* 📸 Visual 素材:⭐首選 badge + 三 action 掣(三格一樣大) + 重搜漏斗 */
+.vacard{position:relative;transition:order .2s}
+.vacard.pref{border-color:var(--gold);box-shadow:0 0 0 2px rgba(199,154,43,.22)}
+.vastar{position:absolute;top:5px;right:5px;font-size:9.5px;font-weight:800;color:#fff;background:var(--gold);border-radius:6px;padding:1px 5px}
+.vafunnel{position:absolute;bottom:4px;right:4px;font-size:9.5px;font-weight:800;color:#fff;background:rgba(79,70,229,.94);border-radius:6px;padding:2px 6px;display:inline-flex;align-items:center;gap:3px}
+.vaacts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.vaacts .btn{width:auto;text-align:center;margin:0;padding:0 4px;min-height:44px;display:flex;align-items:center;justify-content:center;white-space:nowrap;box-sizing:border-box}
+.vaacts .btn.ghost{width:auto;padding:0 4px;margin:0}
+@media(max-width:420px){.vaacts{gap:4px}}
+
+.upbox{background:#fff;border:1.5px dashed #bcd;border-radius:11px;padding:11px;margin:6px 0}
+.upbox.hov{background:#eef6ff;border-color:#6aa3e0}
+.upbox .attstage{min-height:0;margin-bottom:4px}
+.upbox .stchip{display:inline-block;background:#eef7f0;border:1px solid #bfe0cd;border-radius:20px;padding:3px 9px;font-size:11.5px;font-weight:700;color:#176b3a}
+.upbox .stchip .ststrip{border:0;background:0;cursor:pointer;color:#999;font-weight:700;margin-left:3px}
+.upbox .attrow1{display:flex;gap:6px}
+.upbox .atttext{flex:1;border:1px solid var(--line,#dde);border-radius:8px;padding:9px 11px;font-size:14px;line-height:1.5;min-height:84px;resize:vertical;font-family:inherit}
+.upbox .attsend{border:0;background:#0A7D3F;color:#fff;border-radius:8px;padding:0 14px;font-weight:700;cursor:pointer;white-space:nowrap;min-height:44px}
+.upbox .attbtns2{margin-top:6px;display:flex;gap:6px}
+.upbox .attpick{border:1px solid var(--line,#dde);background:#f7f9fc;border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer;font-weight:600;flex:1;min-height:44px;text-align:center}
+.upbox .attdrive{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line,#dde);background:#f7f9fc;border-radius:8px;padding:5px 10px;font-size:12px;font-weight:600;flex:1;min-height:44px;text-decoration:none;color:inherit}
+.upst{font-size:11.5px;color:#176b3a;margin-top:5px;min-height:0}
+@media(max-width:600px){.upbox .attrow1{flex-direction:column}.upbox .attsend{width:100%}}
+
+.bdcm{margin-top:7px}
+.bdcm textarea{width:100%;box-sizing:border-box;font:13px/1.45 inherit;border:1px solid var(--line);border-radius:8px;padding:6px 8px;resize:vertical}
+.bdcm .btn.mini{margin-top:5px}
+.gflags{margin:7px 0 4px;padding:7px 9px;background:#fffbec;border:1px solid #f0d96a;border-radius:8px;font-size:12px;color:#6b4d00}
+.gflag{padding:2px 0;line-height:1.5}
+.gflag+.gflag{border-top:1px solid #f5ebb0;margin-top:3px;padding-top:5px}
+.gfslide{font-weight:600;background:#f5e07c;border-radius:4px;padding:1px 5px;margin-right:4px}
+.cmlog{font-size:11px;color:#2e8b57;margin-top:5px}
+.card.big{padding:13px}
+.card.empty{color:var(--mut);font-size:13px;font-style:italic}
+.row{display:flex;align-items:center;gap:9px}
+.rank{font-size:11px;font-weight:800;color:var(--mut);width:18px}
+.src{font-size:11px;color:var(--mut);font-weight:700;background:#f1f5f9;
+      border-radius:6px;padding:1px 6px}
+.score{font-size:12px;font-weight:800;color:var(--gold);margin-left:auto}
+.nm{font-weight:800;font-size:13.5px;line-height:1.35}
+.csub{font-size:11px;color:var(--mut);font-weight:600;margin-top:2px}
+.crow{margin:5px 0 0}
+.cflag{font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.cflag.hi{background:#dcfce7;color:#15803d}
+.cflag.lo{background:#fef3c7;color:#a16207}
+.cflag.rl{background:#fee2e2;color:#b91c1c}
+.ck{width:22px;height:22px;border:2px solid var(--ac);border-radius:6px;
+     display:inline-grid;place-items:center;font-size:13px;color:#fff;
+     cursor:pointer;flex:0 0 auto;position:relative}
+.ck::before{content:"";position:absolute;inset:-11px}
+.ck.on{background:var(--ac)}
+.ck.done{background:var(--grn);border-color:var(--grn);cursor:default}
+.divider{display:flex;align-items:center;gap:8px;margin:12px 2px;
+          color:#aab0ba;font-size:11px;font-weight:700}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.cnt-warn{color:var(--red)!important}
+.lookback{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:11px;
+           padding:10px 12px;font-size:12px;color:#475569}
+.btn{background:var(--ac)}
+.btn.grn{background:var(--grn)}
+.btn.ghost{width:100%;text-align:center;padding:11px 13px;margin:2px 0 4px}
+.btn.mini{padding:4px 9px;font-size:11px;margin-left:8px}
+.submit{position:fixed;bottom:14px;right:calc(50% - 215px + 13px);z-index:20}
+@media(max-width:456px){.submit{right:14px}}
+/* ── Responsive 3 tier（Raymond 2026-06-06）：mobile(default) / tablet / desktop 用晒畫面 ── */
+/* Tablet:闊啲,carousel 一次 2 卡 */
+@media(min-width:700px) and (max-width:1099px){
+  .wrap{max-width:680px;padding:0 20px 130px}
+  .submit{right:calc(50% - 340px + 20px)}
+  .ccard{flex:0 0 46%;max-height:68vh}
+  .rest-row .ccard{flex:0 0 36%}
+  .briefcard{max-height:40vh}
+}
+/* Desktop:用晒畫面 —— carousel 變 grid(唔橫掃,鋪滿),六強 3 欄、其餘 4 欄 */
+@media(min-width:1100px){
+  .wrap{max-width:min(1280px,94vw);padding:0 28px 120px}
+  .submit{right:max(28px, calc(50vw - 640px + 28px))}
+  .carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}
+  .ccard{flex:0 0 calc(33.333% - 10px);max-width:none;max-height:43vh;scroll-snap-align:none}   /* Raymond 2026-06-16:桌面每格短 1/3(64→43vh),標書 tab 跟 VID1 */
+  .rest-row .ccard{flex:0 0 calc(25% - 11px)}
+  .briefcard{max-height:36vh}
+  .tabbar{flex-wrap:wrap}
+  .card.big .sheet{max-width:520px}
+}
+.submit .btn{box-shadow:0 6px 20px rgba(79,70,229,.4);padding:11px 18px;font-size:13.5px}
+.foot{font-size:11px;color:#9aa0aa;text-align:center;margin-top:22px}
+.notes-win{width:100%;min-height:90px;border:1.5px solid var(--ac);
+            border-radius:11px;padding:10px 12px;font:14px/1.6 inherit;
+            resize:vertical;background:#fafbff;margin-bottom:6px}
+.notes-act{text-align:right;margin-bottom:6px}
+.notes-act .btn{padding:6px 14px}
+.noteslist{margin-bottom:6px}
+.notecard{background:#fafbff;border:1px solid #e0e3f5;border-radius:10px;
+           padding:7px 10px;margin-bottom:6px}
+.noterow{display:flex;align-items:center;gap:8px}
+.notets{font-size:10.5px;font-weight:800;color:var(--ac)}
+.notedel{margin-left:auto;background:none;border:none;color:#b0b6c2;font-size:13px;
+          cursor:pointer;padding:0 2px}
+.notetxt{font-size:13px;color:var(--ink);line-height:1.5;margin-top:2px;white-space:pre-wrap}
+/* Brief 撮要緊湊卡（固定高度內部 scroll，似 VID 1 卡）*/
+.briefcard{max-height:46vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.briefcard h3,.briefcard h4{font-size:13px;margin:9px 0 3px}
+.suppinline{margin-top:10px;border-top:2px solid #fde68a;background:#fffbeb;
+             border-radius:9px;padding:8px 10px}
+.suppinline h3,.suppinline h4{color:#92660c;font-size:12.5px;margin:2px 0 5px}
+/* 補充日程簡單 list */
+.timeline{margin:2px 0}
+.tlrow{display:flex;gap:8px;padding:5px 2px;border-bottom:1px solid #f3f4f6;font-size:12.5px}
+.tlrow:last-child{border-bottom:none}
+.tldate{flex:0 0 auto;font-weight:800;color:var(--ink);min-width:96px}
+.tllabel{flex:1;color:#374151}
+.tlrow.hot{background:#fff7ed;border-radius:7px}
+.tlrow.hot .tldate{color:#c2410c}.tlrow.hot .tllabel{color:#9a3412;font-weight:700}
+/* Briefing 補充 treatment */
+summary.supp{display:flex;align-items:center;gap:8px}
+.suppbadge{font-size:10px;font-weight:800;color:#fff;background:#d97706;
+            border-radius:6px;padding:1px 7px;margin-left:7px;vertical-align:middle}
+.bd{margin:8px 0}
+.bdscroll{max-height:44vh;overflow-y:auto;border:1px solid var(--line);border-radius:10px;
+          padding:2px 12px;background:#fafbfc;-webkit-overflow-scrolling:touch}
+.genbox{text-align:center}
+.step2 .refsub{margin:8px 0}
+.refname{font-size:12.5px;font-weight:600;margin:6px 0 4px}
+.refname .refn{color:var(--mut);font-weight:400;font-size:11px}
+.refrow{display:flex;gap:6px;flex-wrap:wrap}
+.refthumb{width:74px;height:90px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.btn.big{font-size:14px;padding:12px 22px;box-shadow:0 4px 14px rgba(79,70,229,.3)}
+.scene{border-bottom:1px solid #f1f3f6;padding:7px 0;font-size:12.5px;line-height:1.5}
+.scene .sl{display:flex;gap:8px}
+.scene .sn{font-weight:800;color:var(--ac);flex:0 0 auto;min-width:17px}
+.scene .vis{flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
+.scene .vis.open{-webkit-line-clamp:unset;overflow:visible}
+.scene .vo,.vo{color:var(--mut);font-size:11.5px;margin:4px 0 0 25px;
+               background:#f8fafc;border-radius:7px;padding:4px 8px}
+.sheet{width:100%;border-radius:10px;border:1px solid var(--line);margin:8px 0;display:block;cursor:zoom-in}
+.preqs{display:flex;flex-direction:column;gap:7px;margin-top:4px}
+.prow{display:flex;align-items:center;gap:10px}
+.preqs .pl{flex:1;font-weight:700;font-size:14px;min-width:0}
+.preqs .pv{font-weight:800;font-size:13px;border-radius:8px;padding:3px 11px;white-space:nowrap}
+.preqs .pvon{background:#dcfce7;color:#15803d;border:1px solid #bbf7d0}
+.preqs .pvoff{background:#f1f3f5;color:#868e96;border:1px solid #e9ecef}
+.preqs .pp{font-size:11px;color:var(--ac);font-weight:700;cursor:help;min-width:34px;text-align:right}
+.pgbar{position:relative;height:30px;border-radius:9px;background:#eef0fe;border:1px solid #dcdffb;
+  overflow:hidden;margin:8px 0}
+.pgfill{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,#6366f1,#818cf8);
+  transition:width .6s ease}
+.pgtxt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:#1b1f27;z-index:1}
+/* VID 2 tab：紅色虛線繞邊行緊（marching ants），未出晒 BD 就一直行；出晒 = 無 busy class = 停 */
+@keyframes march{to{background-position:14px 0,-14px 100%,0 -14px,100% 14px}}
+.tab.busy{color:#dc2626;font-weight:800;border-color:transparent !important;
+  background-image:
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0);
+  background-repeat:repeat-x,repeat-x,repeat-y,repeat-y;
+  background-size:14px 2px,14px 2px,2px 14px,2px 14px;
+  background-position:0 0,0 100%,0 0,100% 0;
+  animation:march .5s linear infinite}
+.empty{font-size:12px;color:#9aa0aa;background:#f8fafc;border:1px dashed #cbd5e1;
+        border-radius:9px;padding:9px 11px;margin:8px 0}
+.note{width:100%;min-height:48px;border:1px solid var(--line);border-radius:9px;
+       padding:7px 9px;font:13px/1.5 inherit;resize:vertical;margin-top:6px}
+.frames{margin:8px 0}
+.frame-card{border-bottom:1px solid #f1f3f6;padding:8px 0}
+.frame-head{display:flex;gap:8px;font-size:12.5px}
+.fv{flex:1;color:var(--ink)}
+.acts{margin-top:8px}
+.soft{margin-bottom:8px}
+.soft summary{font-size:12.5px;font-weight:800;color:var(--ink);cursor:pointer;
+               background:#f8fafc;border:1px solid var(--line);border-radius:10px;
+               padding:9px 12px;list-style:none}
+.soft[open] summary{border-radius:10px 10px 0 0;margin-bottom:0}
+.soft .card{border-radius:0 0 10px 10px;border-top:none;margin-bottom:0}
+.hint{font-size:12px;color:var(--mut);margin:0 0 8px}
+.det{margin-top:8px}
+.det summary{font-size:12.5px;font-weight:800;color:var(--ac);cursor:pointer;
+              list-style:none;background:#eef0fe;border:1px solid #dcdffb;
+              border-radius:9px;padding:8px 11px;text-align:center}
+.det[open] summary{margin-bottom:7px}
+.det summary::-webkit-details-marker{display:none}
+.detbody{font-size:12.5px;color:#374151;white-space:pre-wrap;margin-top:7px;
+          line-height:1.6;max-height:360px;overflow:auto;background:#f8fafc;
+          border-radius:9px;padding:10px 12px}
+.tw{overflow-x:auto;margin:6px 0}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid var(--line);padding:5px 8px;text-align:left}
+th{background:#f8fafc;font-weight:700}
+.prev{font-size:12.5px;color:#4b5563;margin:6px 0 2px;line-height:1.5}
+/* ── VID 1 carousel：橫掃卡，卡內直 scroll ── */
+.carousel{margin:0 -2px}
+.ccard{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;
+        background:var(--card);border:1.5px solid var(--line);border-radius:14px;display:flex;
+        flex-direction:column;max-height:64vh;overflow:hidden;
+        box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+.ccard.sel{border-color:var(--ac);box-shadow:0 0 0 2px rgba(79,70,229,.25),
+            0 6px 18px rgba(79,70,229,.18)}
+.rest-row .ccard{flex:0 0 70%;max-height:52vh}
+.chead{display:flex;align-items:center;gap:8px;padding:10px 12px 7px;cursor:pointer;
+        border-bottom:1px solid #f1f3f6}
+.oscore{margin-left:auto;font-size:12px;font-weight:800;color:var(--gold)}
+.ctitle{font-weight:800;font-size:14px;line-height:1.35;padding:8px 12px 0}
+.ccard .csub{padding:2px 12px 0}
+.cbadges{padding:5px 12px 0}
+.cbody{flex:1;overflow-y:auto;padding:9px 12px 12px;font-size:12.5px;color:#374151;
+        line-height:1.62;-webkit-overflow-scrolling:touch}
+.cbody h3,.cbody h4,.cbody h5{font-size:12.5px;margin:9px 0 3px}
+.cbody p{margin:5px 0}
+.scores{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+.sline{font-size:11.5px;margin:6px 0 2px}
+.sline b{font-size:12px}
+.sline.muted{color:#9aa0aa;font-weight:600}
+.scrit{display:block;font-size:11px;color:var(--mut);margin-top:2px}
+.snote{font-size:11px;color:#6b7280;background:#f8fafc;border-radius:7px;
+        padding:5px 8px;margin:4px 0 2px;line-height:1.5}
+.toast{position:fixed;bottom:78px;left:50%;transform:translateX(-50%);
+        background:#1b1f27;color:#fff;padding:12px 18px;border-radius:12px;
+        font-size:13px;font-weight:700;z-index:90;max-width:90%;
+        box-shadow:0 8px 30px rgba(0,0,0,.3);transition:opacity .5s}
+.topproc{position:fixed;bottom:0;left:0;right:0;z-index:95;background:var(--ac);
+          color:#fff;font-size:13px;font-weight:800;padding:9px 14px;
+          display:flex;align-items:center;justify-content:center;gap:8px;
+          box-shadow:0 3px 14px rgba(79,70,229,.35)}
+.spin.sm{width:15px;height:15px;border:2.5px solid rgba(255,255,255,.4);
+          border-top-color:#fff;border-radius:50%;display:inline-block;
+          vertical-align:middle;margin-right:6px;animation:sp .9s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.gening{display:inline-flex;align-items:center;font-size:12px;font-weight:800;color:var(--ac);
+         background:#eef0fe;border:1px solid #dcdffb;border-radius:9px;padding:7px 11px}
+.gening .spin.sm{border-color:#c7cbf5;border-top-color:var(--ac)}
+/* ⬇️ 最後置:桌面卡長短 1/3(64→43vh)。2-class + 排最尾,壓得過 base .ccard 64vh —— Raymond 2026-06-16
+   (VID1 + 標書 tab 一齊短;手機保持 base 64vh 唔郁) */
+@media(min-width:1100px){.carousel .ccard{max-height:43vh}}
+</style></head><body><!-- generated-by: scripts/core/nlm-bridge/lab_ui_shell.py -->
+<div class=wrap>
+<header>
+  <div class=titlerow>
+    <h1><span class=dept>EEB</span> · EEB</h1>
+    <span class=hdrbtns>
+      <a class=homebtn href="." title="總目錄">🏠</a>
+      <button class=refbtn onclick="location.href=location.pathname+'?t='+Date.now()+location.hash" title="重新載入">🔄</button>
+    </span>
+  </div>
+  <div class=bdp><span class='dd'>D) 29/9 12:00 · 仲有 <b id='cd'>—</b></span></div>
+  <div class=fresh>🕒 資料更新：<span class=fr><b>標書</b> 09-09 09:13</span> · <span class=fr><b>研究</b> 09-09 09:24</span> · <span class=fr><b>概念</b> 09-09 13:37</span> · <span class=fr><b>評分</b> 09-09 17:26</span></div>
+</header>
+<div class='tabbar'><button class='tab' data-tab='ph0'>📋 標書</button><button class='tab' data-tab='debrief'>📨 DEBRIEF</button><button class='tab' data-tab='handbd'>✍️ TVAPI FINAL</button><button class='tab' data-tab='theme1_1'>THEME</button><button class='tab' data-tab='tvapi1_1'>TVAPI 1</button><button class='tab' data-tab='tvapi1_2'>TVAPI 2</button><button class='tab' data-tab='tvapi1_3'>TVAPI 3</button><button class='tab' data-tab='tvapi1_4'>TVAPI 4</button><button class='tab' data-tab='tvapi1_5'>TVAPI 5</button><button class='tab' data-tab='rad1_1'>RAD 1</button><button class='tab' data-tab='rad1_2'>RAD 2</button><button class='tab' data-tab='rad1_3'>RAD 3</button></div>
+<div id='ph0' class='tabpanel'><div class='h2 h2sm'>💡 額外想法 / 相片</div><div class='card provide'>
+<div class="upbox" id="ref_EEB_box">
+  
+  <div class="attstage" id="ref_EEB_stage"></div>
+  <div class="attrow1">
+    <textarea id="ref_EEB_link" class="atttext" rows="4" placeholder="💭 諗到嘅想法打喺度；想畀參考相就 ⌘V／drag／揀相入埋，喺格仔寫明呢張相係咩 → 一齊送出"></textarea>
+    <button id="ref_EEB_send" class="attsend">送出 ⏎</button></div>
+  <div class="attbtns2"><button id="ref_EEB_pick" class="attpick">📎 電腦揀檔</button></div>
+  <input type="file" id="ref_EEB_file" accept="image/*" style="display:none">
+  <div class="upst" id="ref_EEB_st"></div>
+</div>
+<script>(function(){
+var GAS="https://script.google.com/macros/s/AKfycbwVvkFb8kXQFrJZnABGxFcywfVllsM3XSVHlAGwH8CzrWIBGChjIK2PhW1k61r6NJWIpg/exec",TOK="mkv7q3z2link",FOLDER="";
+var st=document.getElementById("ref_EEB_st");
+function say(m){st.textContent=m;}
+// —— 把關站 proven mechanic（照搬）——
+function jsonp(q,cb){var n="upcb"+Math.random().toString(36).slice(2);
+  window[n]=function(o){try{cb(o);}finally{delete window[n];s.remove();}};
+  var s=document.createElement("script");s.src=GAS+"?"+q+"&token="+TOK+"&callback="+n;
+  s.onerror=function(){delete window[n];s.remove();cb({ok:false,err:"network"});};
+  document.body.appendChild(s);}
+function fidFromLink(v){var m=v.match(/\/d\/([a-zA-Z0-9_-]{20,})/)||v.match(/[?&]id=([a-zA-Z0-9_-]{20,})/);return m?m[1]:null;}
+var inp=document.getElementById("ref_EEB_link");
+var box=document.getElementById("ref_EEB_box"),stage=document.getElementById("ref_EEB_stage");
+var fi=document.getElementById("ref_EEB_file"),send=document.getElementById("ref_EEB_send");
+var _staged=null,_busy=false;
+function showStaged(f){_staged=f;var isImg=(f.type||"").indexOf("image/")===0;
+  stage.innerHTML="<span class='stchip'>"+(isImg?"🖼":"📎")+" "+f.name.replace(/</g,"&lt;")+" <button class='ststrip'>✕</button></span>";
+  stage.querySelector(".ststrip").onclick=function(){_staged=null;stage.innerHTML="";};}
+document.getElementById("ref_EEB_pick").onclick=function(){fi.click();};
+fi.onchange=function(){if(fi.files[0]){showStaged(fi.files[0]);fi.value="";}};
+["dragover","dragenter"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.add("hov");});});
+["dragleave","drop"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.remove("hov");});});
+box.addEventListener("drop",function(e){var f=e.dataTransfer&&e.dataTransfer.files[0];if(f)showStaged(f);});
+inp.addEventListener("paste",function(ev){var fs=(ev.clipboardData&&ev.clipboardData.files)||[];if(fs.length){ev.preventDefault();showStaged(fs[0]);}});
+// 收到 file id（檔上載完）或原 link → 交畀各站自己嘅 complete handler
+function done(val,isFile){ var ip=document.getElementById('ref_EEB_link');var desc=(ip&&ip.value||'').trim();if(window._clearDraft)window._clearDraft('ref_EEB_link');if(isFile){var el=desc||'參考相';fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=EEB&concept='+encodeURIComponent(el)+'&stage=add_ref&engine='+encodeURIComponent(val)+'&target=main&cid=ACT_add_ref',{mode:'no-cors'}).catch(function(){});if(ip)ip.value='';say(desc?('✅ 已收參考相「'+el+'」（排最前＋嚴格比照）'):'✅ 收咗相；下次喺格仔寫埋係咩元素，AI 跟得準啲');}else if(/^https?:|drive\.google|docs\.google/.test(val)){fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=EEB&concept='+encodeURIComponent('參考連結')+'&stage=add_ref&engine='+encodeURIComponent(val)+'&target=main&cid=ACT_add_ref',{mode:'no-cors'}).catch(function(){});say('✅ 已收參考連結（排最前＋嚴格比照）');}else{var a=loadNotes();a.push({ts:Date.now(),text:val});saveNotes(a);renderNotes();fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=EEB&text='+encodeURIComponent(val),{mode:'no-cors'}).catch(function(){});say('✅ 已加想法（'+a.length+'，累積餵委員會）');} }
+// 檔：initupload(folder)→browser 直 PUT 任何 size→CORS 讀唔到都 fallback→進度
+function up(f){_busy=true;send.disabled=true;say("開緊上載…（"+f.name+"）");
+  jsonp("action=initupload&origin="+encodeURIComponent(location.origin)+"&name="+encodeURIComponent(f.name)
+    +"&size="+f.size+"&mime="+encodeURIComponent(f.type||"image/jpeg")+"&folder="+encodeURIComponent(FOLDER),function(o){
+    if(!o.ok){_busy=false;send.disabled=false;say("⚠️ 開唔到上載："+(o.err||"")+"（可改貼 Drive 連結）");return;}
+    var x=new XMLHttpRequest();x.open("PUT",o.uri);
+    x.upload.onprogress=function(ev){if(ev.lengthComputable)say("⬆️ 上載中 "+Math.round(ev.loaded/ev.total*100)+"%（"+f.name+"）");};
+    x.onload=function(){_busy=false;send.disabled=false;
+      if(x.status>=300){say("⚠️ 上載 fail HTTP "+x.status);return;}
+      var fid="";try{fid=JSON.parse(x.responseText).id||"";}catch(_){}
+      if(!fid){say("⚠️ 上載咗但攞唔到 file id（可改貼 Drive 連結）");return;}
+      stage.innerHTML="";say("✅ 上載完成");done(fid,true);};
+    x.onerror=function(){_busy=false;send.disabled=false;say("⚠️ 上載出錯（network）。可改貼 Drive 連結");};
+    x.send(f);});}
+function submit(){if(_busy){say("處理緊…");return;}
+  var f=_staged;var v=inp.value.trim();
+  if(f){_staged=null;stage.innerHTML="";up(f);return;}
+  if(!v){say("⚠️ 未貼 link／未揀檔");return;}
+  inp.value="";done(v,false);}   // 貼 link → 直接交（後端 add_manual_ref 認 link/Drive id/URL）
+send.onclick=submit;
+inp.addEventListener("keydown",function(ev){if(ev.key==="Enter"&&!ev.shiftKey){ev.preventDefault();submit();}});
+})();</script>
+<div id='noteslist' class='noteslist'></div></div><details class='soft' open><summary>📸 Visual 素材（49 個：LOGO 1、視覺參考 28、新聞配圖 8、海報/單張 6、宣傳片 6）</summary><p class='hint'>搵到嘅 LOGO／海報／單張／宣傳片／真實參考相，每個有原網址。<b>剔相後揀：⭐首選＝呢張參考優先過其他；🔁重搜＝搵過好啲（e.g. logo 污糟）；🗑刪除＝搵錯即清。</b></p><div class='vacarou'><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='LOGO_slot1.png'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/logos/slot1.png' loading=lazy></div><div class='vacat'>LOGO</div><div class='vaname'>環境及生態局（食物科）</div><div><span class='vasrc' style='color:#bbb'>（無網址）</span></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署職員制服_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_食環署職員制服_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署職員制服</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/05-05-2012-2000.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署職員制服_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_食環署職員制服_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署職員制服</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/31-10-2012-2115.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署職員制服_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_食環署職員制服_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署職員制服</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/05-05-2012-2000.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_警務人員制服_夏季常服__0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_警務人員制服_夏季常服__0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>警務人員制服 (夏季常服)</div><div><a href='https://zhuanlan.zhihu.com/p/437915665' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_警務人員制服_夏季常服__1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_警務人員制服_夏季常服__1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>警務人員制服 (夏季常服)</div><div><a href='https://www.police.gov.hk/museum/qrpage/hk/inner/46/3.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_消防員制服_滅火服__0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_消防員制服_滅火服__0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>消防員制服 (滅火服)</div><div><a href='https://www.hkfsd.gov.hk/chi/aboutus/gallery/uniform/fire/officer/officer_opp_m.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_消防員制服_滅火服__1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_消防員制服_滅火服__1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>消防員制服 (滅火服)</div><div><a href='https://www.hk01.com/%E7%A4%BE%E6%9C%83%E6%96%B0%E8%81%9E/98366/%E6%B6%88%E9%98%B2%E5%88%B6%E6%9C%8D20%E5%B9%B4%E5%B7%A1%E7%A6%AE-%E9%BB%83%E9%87%91%E6%88%B0%E8%A1%A3-%E7%A2%A7%E5%A3%AB%E5%9C%96-%E6%99%AE%E7%8F%AD%E7%9F%A5%E5%A4%9A%E5%B0%91' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_消防員制服_滅火服__2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_消防員制服_滅火服__2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>消防員制服 (滅火服)</div><div><a href='https://news.hket.com/article/1450638/%E8%A7%A3%E6%A7%8B%E3%80%8C%E9%BB%83%E9%87%91%E6%88%B0%E8%A1%A3%E3%80%8D%20%20%20%E6%B6%88%E9%98%B2%E5%93%A1%E6%BB%85%E7%81%AB%E8%A3%9D%E5%82%99%E5%A4%A7%E6%AA%A2%E9%96%B1' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_醫護人員制服_公立醫院__0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_醫護人員制服_公立醫院__0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>醫護人員制服 (公立醫院)</div><div><a href='https://hk.news.yahoo.com/%E9%86%AB%E7%AE%A1%E5%B1%80%E6%98%8E%E5%B9%B4%E9%80%90%E6%AD%A5%E7%B5%B1-%E5%B7%A5%E4%BD%9C%E6%9C%8D-050552412.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_醫護人員制服_公立醫院__1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_醫護人員制服_公立醫院__1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>醫護人員制服 (公立醫院)</div><div><a href='https://www.instagram.com/p/DaMbUKhgcX9/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_醫護人員制服_公立醫院__2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_醫護人員制服_公立醫院__2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>醫護人員制服 (公立醫院)</div><div><a href='https://www.igift.hk/%E5%85%AC%E7%AB%8B%E9%86%AB%E9%99%A2%E5%88%B6%E6%9C%8D%E9%A1%8F%E8%89%B2.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_港鐵職員制服_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_港鐵職員制服_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>港鐵職員制服</div><div><a href='https://www.hk01.com/%E7%A4%BE%E6%9C%83%E6%96%B0%E8%81%9E/325581/%E6%B8%AF%E9%90%B5%E8%BB%8A%E7%AB%99%E8%81%B7%E5%93%A1%E5%B9%B4%E5%BA%95%E6%8F%9B%E6%96%B0look-%E6%96%B0%E5%88%B6%E6%9C%8D%E5%8A%A0%E5%85%A5%E8%97%8D%E7%B4%85%E8%89%B2%E7%B7%9A%E6%A2%9D-%E6%8A%BC%E8%8A%B1%E5%9C%96%E6%A1%88' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_港鐵職員制服_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_港鐵職員制服_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>港鐵職員制服</div><div><a href='https://www.stheadline.com/society/3349182/%E6%B8%AF%E9%90%B5%E7%AB%99%E8%A6%8B%E9%90%B5%E8%B7%AF%E5%B1%95%E5%90%B8%E5%BC%95%E9%80%BE5000%E5%B8%82%E6%B0%91%E5%8F%83%E8%A7%80-%E8%BB%8A%E7%AB%99%E8%81%B7%E5%93%A1%E5%88%B6%E6%9C%8D%E7%B6%93%E6%AD%B75%E4%BB%A3%E6%BC%94%E8%AE%8A' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_巴士司機制服_九巴_城巴__0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_巴士司機制服_九巴_城巴__0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>巴士司機制服 (九巴/城巴)</div><div><a href='https://www.hk01.com/%E7%A4%BE%E6%9C%83%E6%96%B0%E8%81%9E/705284/%E5%91%8A%E5%88%A5%E9%9D%92%E8%89%B2%E6%81%A4%E8%A1%AB-%E4%B9%9D%E5%B7%B4%E6%98%8E%E5%B9%B41%E6%9C%88%E6%8F%9B%E6%96%B0%E5%88%B6%E6%9C%8D-%E8%BB%8A%E9%95%B7%E6%94%B9%E8%91%97%E7%B4%85-%E9%BB%91%E8%89%B2polo%E6%81%A4' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_巴士司機制服_九巴_城巴__1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_巴士司機制服_九巴_城巴__1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>巴士司機制服 (九巴/城巴)</div><div><a href='https://www.hk01.com/%E7%A4%BE%E6%9C%83%E6%96%B0%E8%81%9E/618843/%E5%91%8A%E5%88%A5%E9%9D%92%E5%97%B6%E5%97%B6-%E4%B9%9D%E5%B7%B4-%E9%BE%8D%E9%81%8B%E6%93%AC%E7%B5%B1%E4%B8%80%E5%88%B6%E6%9C%8D-%E8%BB%8A%E9%95%B7%E6%96%B0%E5%88%B6%E6%9C%8D%E6%8E%A1%E7%B4%85-%E9%BB%91%E5%85%A9%E8%89%B2%E8%A8%AD%E8%A8%88' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_巴士司機制服_九巴_城巴__2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_巴士司機制服_九巴_城巴__2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>巴士司機制服 (九巴/城巴)</div><div><a href='https://orientaldaily.on.cc/cnt/news/20130624/mobile/odn-20130624-0624_00176_014.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_的士司機_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_的士司機_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>的士司機</div><div><a href='https://www.hk01.com/%E7%A4%BE%E6%9C%83%E6%96%B0%E8%81%9E/60247117/%E7%9A%84%E5%A3%AB%E7%89%8C%E5%A3%9F%E6%96%B7%E4%B8%8B%E7%9A%84%E7%A3%A8%E5%BF%83-%E5%8F%B8%E6%A9%9F%E5%B0%8D%E7%B6%B2%E7%B4%84%E8%BB%8A%E7%9C%8B%E6%B3%95%E9%9D%9E%E8%B2%A0%E9%9D%A2-%E7%89%8C%E4%B8%BB%E6%83%B3%E6%B3%95%E4%B8%8D%E4%BB%A3%E8%A1%A8%E6%88%91' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_的士司機_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_的士司機_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>的士司機</div><div><a href='https://cn.nytimes.com/china/20250107/hong-kong-taxicabs/zh-hant/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_的士司機_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_的士司機_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>的士司機</div><div><a href='https://hktpa.com/drivermembers/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_茶餐廳伙計_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_茶餐廳伙計_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>茶餐廳伙計</div><div><a href='http://www.mediachinese.com/node/10334' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_茶餐廳伙計_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_茶餐廳伙計_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>茶餐廳伙計</div><div><a href='https://www.instagram.com/p/DANYXkkP_Qp/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_茶餐廳伙計_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_茶餐廳伙計_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>茶餐廳伙計</div><div><a href='https://www.tkww.hk/epaper/view/newsDetail/1372906802865377280.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_街市檔主_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_街市檔主_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>街市檔主</div><div><a href='https://eastweek.stheadline.com/witness/16459/%E5%85%A7%E5%9C%B0%E9%9B%BB%E5%95%86%E4%BD%8E%E5%83%B9%E6%94%BB%E6%B8%AF-%E8%A1%97%E5%B8%82%E6%AA%94%E4%B8%BB%E7%94%9F%E6%84%8F%E5%A4%A7%E8%B7%8C' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_街市檔主_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_街市檔主_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>街市檔主</div><div><a href='https://www.instagram.com/reel/DDYm1Yjy_48/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_街市檔主_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_街市檔主_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>街市檔主</div><div><a href='https://freshmarketbook.linkreit.com/zh-HK/design-and-renovation/markets-redefined' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_清潔工人_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_清潔工人_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>清潔工人</div><div><a href='https://www.hk01.com/%E7%86%B1%E7%88%86%E8%A9%B1%E9%A1%8C/502033/%E6%B8%85%E6%BD%94%E5%B7%A5%E6%B6%88%E6%AF%92%E7%96%AB%E5%BB%88%E5%81%9A%E5%88%B0%E4%B8%AD%E6%9A%91%E5%85%A5%E9%99%A2-%E5%A4%A7%E5%9F%94%E5%8D%80%E8%AD%B0%E5%93%A1-%E6%9C%89%E5%95%B2%E5%B7%A5%E5%8F%8B%E4%BA%BA%E5%B7%A5%E5%94%94%E5%A4%A0%E4%B8%80%E8%90%AC' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_清潔工人_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_清潔工人_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>清潔工人</div><div><a href='https://www.oxfam.org.hk/en/news-and-publication/Research-report-on-the-impacts-of-extreme-heat-on-street-cleaners-in-Hong-Kong' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_清潔工人_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/el_清潔工人_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>清潔工人</div><div><a href='https://www.hk01.com/%E7%A4%BE%E6%9C%83%E6%96%B0%E8%81%9E/296951/%E6%B8%85%E6%BD%94%E5%B7%A5%E5%85%AC%E5%BB%81%E9%A3%9F%E9%A3%AF-%E9%97%9C%E6%B3%A8%E5%9C%98%E9%AB%94%E9%AC%A7%E7%88%86%E4%B9%8F%E4%BF%9D%E9%9A%9C-%E6%B8%AF%E5%BA%9C%E7%A1%AC%E6%92%90%E6%9C%89%E7%A9%BA%E9%96%93%E7%94%A8%E8%86%B3' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_812d72a4.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/news_812d72a4.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>香港有咩特色？旅發局推環球宣傳 16</div><div><a href='https://news.tvb.com/tc/1183701-%E9%A6%99%E6%B8%AF%E6%9C%89%E5%92%A9%E7%89%B9%E8%89%B2%E6%97%85%E7%99%BC%E5%B1%80%E6%8E%A8%E7%92%B0%E7%90%83%E5%AE%A3%E5%82%B316%E8%89%B2%E8%AA%AA%E9%A6%99%E6%B8%AF%E6%95%85%E4%BA%8B%E5%8D%B3%E7%9D%87%E5%8F%AA%E5%9C%A8%E9%A6%99%E6%B8%AF%E5%AE%A3%E5%82%B3%E7%89%87%E5%85%A8%E9%9B%86' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_e18f3c59.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/news_e18f3c59.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>施政報告2026︱諮詢今日展開 政府</div><div><a href='https://www.stheadline.com/society/3588066/%E6%96%BD%E6%94%BF%E5%A0%B1%E5%91%8A2026%E8%AB%AE%E8%A9%A2%E4%BB%8A%E6%97%A5%E5%B1%95%E9%96%8B-%E6%94%BF%E5%BA%9C%E5%AE%A3%E5%82%B3%E7%89%87%E6%9B%9D%E5%85%89-%E6%9D%8E%E5%AE%B6%E8%B6%85%E4%B8%80%E8%B5%B7%E8%AD%9C%E5%AF%AB%E9%A6%99%E6%B8%AF%E6%9B%B4%E7%B2%BE%E5%BD%A9%E6%A8%82%E7%AB%A0' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_9989ec8c.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/news_9989ec8c.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>香港政府新聞網- 新一輪依托咪酯禁毒</div><div><a href='https://www.news.gov.hk/chi/2026/03/20260317/20260317_190418_390.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_be4ba4bc.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/news_be4ba4bc.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>（有片）香港新禁毒廣告玩盡潮語 顛覆</div><div><a href='https://www.tkww.hk/a/202603/24/AP69c27533e4b04773b06a4d27.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_c8cb6004.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/news_c8cb6004.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>香港特區政府推出全新宣傳短片邀請全球</div><div><a href='https://www.info.gov.hk/gia/general/202406/05/P2024060500197.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_6fc6fbf6.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/news_6fc6fbf6.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>香港政府AI「禁毒女團」惹議！宣傳片</div><div><a href='https://star.setn.com/news/1865012' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_f5215685.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/news_f5215685.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>最血腥政府宣傳片 主角山邊睇電視 死</div><div><a href='https://www.hk01.com/%E5%8D%B3%E6%99%82%E5%A8%9B%E6%A8%82/186548/%E6%9C%80%E8%A1%80%E8%85%A5%E6%94%BF%E5%BA%9C%E5%AE%A3%E5%82%B3%E7%89%87-%E4%B8%BB%E8%A7%92%E5%B1%B1%E9%82%8A%E7%9D%87%E9%9B%BB%E8%A6%96-%E6%AD%BB%E6%B3%95%E6%84%88%E7%9D%87%E6%84%88%E8%A9%AD%E7%95%B0' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_471d49bf.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/news_471d49bf.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>李家超展示 AI 宣傳片 預告新一年</div><div><a href='https://unwire.hk/2025/09/15/john-lee-ai-policy-address-2025/life-tech/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_d25f7341.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/poster_d25f7341.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>宣傳及推廣科- 政府新聞處</div><div><a href='https://www.isd.gov.hk/chi/pub.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_422f403e.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/poster_422f403e.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>宣傳及推廣科- 政府新聞處</div><div><a href='https://www.isd.gov.hk/chi/pub.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_ac5b91da.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/poster_ac5b91da.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>宣傳及推廣科- 政府新聞處</div><div><a href='https://www.isd.gov.hk/chi/pub.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_a94520a8.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/poster_a94520a8.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>維護國家安全- 刊物</div><div><a href='https://www.isd.gov.hk/nationalsecurity/chi/pamphlets.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_fe6f89ba.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/poster_fe6f89ba.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>宣傳及推廣科- 政府新聞處</div><div><a href='https://www.isd.gov.hk/chi/pub.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_225c07c0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/EEB/grounding/poster_225c07c0.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>宣傳及推廣科- 政府新聞處</div><div><a href='https://www.isd.gov.hk/chi/pub.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_45807985'> 剔</label><div class='vathumb'><div style='font-size:30px;text-align:center;padding:24px'>🎬</div></div><div class='vacat'>宣傳片</div><div class='vaname'>ISD, Hong Kong SAR</div><div><a href='https://www.youtube.com/user/isdgovhk' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_19891185'> 剔</label><div class='vathumb'><div style='font-size:30px;text-align:center;padding:24px'>🎬</div></div><div class='vacat'>宣傳片</div><div class='vaname'>ISD, Hong Kong SAR</div><div><a href='https://www.youtube.com/isdgovhk' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_518973'> 剔</label><div class='vathumb'><div style='font-size:30px;text-align:center;padding:24px'>🎬</div></div><div class='vacat'>宣傳片</div><div class='vaname'>ISD, Hong Kong SAR</div><div><a href='https://www.youtube.com/@isdgovhk' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_755415'> 剔</label><div class='vathumb'><div style='font-size:30px;text-align:center;padding:24px'>🎬</div></div><div class='vacat'>宣傳片</div><div class='vaname'>GovHKvideochannel</div><div><a href='https://www.youtube.com/govhkvideochannel' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_91743786'> 剔</label><div class='vathumb'><div style='font-size:30px;text-align:center;padding:24px'>🎬</div></div><div class='vacat'>宣傳片</div><div class='vaname'>香港特區政府新聞處</div><div><a href='https://www.youtube.com/channel/UCVdt-K3UythSHVYLyP6K8lQ' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_54656409'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiGUQ5LUOwJSHjYEJYIx49m0pykIlGZ85Vzza9-sl5HnS_GzFlHZnjsw&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>【16名特區青年公務人員九月起陸續啟</div><div><a href='https://www.youtube.com/watch?v=83pcwoQyiFs' target=_blank class='vasrc'>原網址 ↗</a></div></div></div><div class='acts vaacts' style='margin-top:8px'><button class='btn grn' onclick="preferAssets('EEB')">⭐ 設首選</button><button class='btn ghost vbtn' onclick="researchAssets('EEB')">🔁 重搜</button><button class='btn' style='background:var(--red)' onclick="delAssets('EEB')">🗑 刪除選取</button></div></details><div class='h2 tierh'>🎯 必定餵 AI（諗橋一定收）</div><p class='hint tierhint'>委員會／agency 諗橋一定收呢批做底，必跟。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📋 標書撮要</span><span class='rawlink' onclick="showOvl('raw_EEB')">📄 標書原文</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><p>這份招標文件（標書編號：`T/2026-009/F/S`）由環境及生態局（食物科）EEB(FB) 發出，旨在為降低食物中鹽和糖委員會（CRSS）採購電視及電台宣傳短片／聲帶（APIs）及相關影片製作服務 [1-3]。</p>
+<p>以下為根據標書內容整理的詳細投標分析及項目規格：</p>
+<p>---</p>
+<h5>① 背景同目的 (Background &amp; Objectives)</h5>
+<p>* <strong>背景</strong>：CRSS 自 2015 年成立以來，一直致力引遞及協調社區減鹽減糖宣傳工作 。局方在政府新聞處（ISD）協助下，推行首個以「少鹽少糖飲食習慣」為主題的電視及電台宣傳短片／聲帶（APIs）。</p>
+<p>* <strong>目的</strong>：</p>
+<p>  1. 提高公眾對 CRSS 及少鹽少糖宣傳活動（包括旗下各項重點計劃）的認識 。</p>
+<p>  2. 引發積極行為改變，並促進全港不同年齡層建立可持續的少鹽少糖健康飲食習慣，作為預防非傳染病及促進公眾健康的基石 。</p>
+<p>* <strong>出處</strong>：*Invitation Letter_API.pdf* [p.1]；*Quotation Document_API.pdf* Part III [p.85-86]。</p>
+<p>---</p>
+<h5>② 目標受眾 (Target Audience)</h5>
+<p>* <strong>標語（Slogan）及電視／電台 APIs</strong>：全港廣大公眾市民，涵蓋社區內所有年齡層及板塊 。</p>
+<p>* <strong>專題影片及改編短片</strong>：各項特定措施的標的受眾（例如餐廳、茶飲店、食品製造商等）。</p>
+<p>* <strong>出處</strong>：*Quotation Document_API.pdf* Part III [p.85]。</p>
+<p>---</p>
+<h5>③ 傳意目標 / 核心訊息 (Communication Objectives &amp; Key Messages)</h5>
+<p>1. <strong>少鹽少糖依然美味</strong>：採納少鹽少糖（LSS）飲食是一項容易達成的健康習慣，而且絕不需要犧牲享用美味食物和飲料的樂趣 。</p>
+<p>2. <strong>隨時隨地皆可做到</strong>：無論係外出用餐（dining out）、叫外賣（ordering delivery food）或喺屋企煮食（cooking at home），每個人都可以做到少鹽少糖飲食 。</p>
+<p>3. <strong>吉祥物登場</strong>：必須於 APIs 中展現重塑／煥然一新的少鹽少糖吉祥物（「鹽少」及「糖小姐」），以最大化宣傳效果（吉祥物資料由政府提供）。</p>
+<p>4. <strong>展現核心計劃</strong>：API 須簡短展示 CRSS 旗下核心計劃（例如透過 QR code 或其他適當展示方式），包括 [7-9]：</p>
+<p>   * 少鹽少糖食肆計劃 (Less-Salt-and-Sugar Restaurants Scheme) </p>
+<p>   * 無糖星期五 (Less Sugar Friday campaign) </p>
+<p>   * 預包裝食品「鹽／糖」標籤計劃 (&quot;Salt / Sugar&quot; Label Scheme for Prepackaged Food Products) </p>
+<p>5. <strong>長期標語</strong>：建議一個適合 CRSS 及 LSS 運動長期使用的雙語響亮標語（impactful slogan, bilingual）。</p>
+<p>* <strong>出處</strong>：*Quotation Document_API.pdf* Part III [p.85-87]。</p>
+<p>---</p>
+<h5>④ 影片及製作規格 (Production Specifications)</h5>
+<p>* <strong>集數與長度</strong>：</p>
+<p>  * <strong>TV API</strong>：1 條，長度 30 秒 。</p>
+<p>  * <strong>Radio API</strong>：1 條，長度 30 秒 。</p>
+<p>  * <strong>專題影片 (Two-minute video)</strong>：1 條，長度 2 分鐘（介紹 CRSS 各項重點措施）。</p>
+<p>  * <strong>精華短片 (Short videos)</strong>：3 條，每條長約 10–15 秒（改編自 2 分鐘影片，重點展示個別措施）。</p>
+<p>* <strong>語言、字幕與配音</strong>：</p>
+<p>  * <strong>TV API</strong>：粵語（配繁體中文書面語字幕）及英文（配英文字幕）；須提供廣東話及英文旁白配音員 。</p>
+<p>  * <strong>Radio API</strong>：粵語、英文（獨白形式 monologue-type）及普通話 ；普通話配音員建議達到國家語言文字工作委員會普通話水平測試「一級乙等」或以上資歷 。</p>
+<p>  * <strong>2分鐘影片及3條精華短片</strong>：粵語（配繁體中文書面語字幕）及英文（配英文字幕）。</p>
+<p>* <strong>拍攝與輸出技術規格</strong>：</p>
+<p>  * <strong>TV API 拍攝格式</strong>：首選 HDCAM, RED ONE 或同等格式；視乎創意概念亦可考慮 HDV 或單眼相機拍攝 。</p>
+<p>  * <strong>TV API 輸出格式</strong>：16:9 (HD) XDCAM HD422 at 50Mbps in MXF 及 HDCAM 。</p>
+<p>  * <strong>Radio API 音訊格式</strong>：商業電台／新城電台為 MP3，香港電台為 WAV (48kHz/16bit) [22-24]。</p>
+<p>  * <strong>網絡無障礙版本</strong>：TV API 須額外提供符合 W3C Web Content Accessibility Guidelines (WCAG) 2.2 Level AA 標準的網絡版本 。</p>
+<p>* <strong>出處</strong>：*Quotation Document_API.pdf* Part III &amp; Annex 4, 5, 6 [p.85, 87-89, 123, 127, 130]。</p>
+<p>---</p>
+<h5>⑤ 指定班底及陣容要求 (Designated Crew / Talent / Mascot Requirements)</h5>
+<p>* <strong>ERB 導師／學員</strong>：標書全文<strong>未有提及</strong> ERB 導師或學員之相關要求 [3-16, 18, 26-36]。</p>
+<p>* <strong>KOL／名人／明星 (Celebrity Involvement)</strong>：</p>
+<p>  * 標書<strong>建議</strong>邀請適當的名人／明星參與拍攝，以增加宣傳吸引力 。</p>
+<p>  * 承辦商須負責聯絡及邀請名人，並釐清及取得表演者權利（performers&#x27; rights），確保作品可在全球、任何媒體（電視、電台、網絡、公共交通多媒體、展覽等）播放及非牟利發行 。</p>
+<p>  * 承辦商須承擔名人發型、化妝、服裝、道具及交通等費用，並於建議書中說明名人的授權期（Royalty period，標書建議最少 2 至 3 年）[31-33]。</p>
+<p>* <strong>吉祥物 (Mascots)</strong>：</p>
+<p>  * 必須加入重塑／煥然一新的少鹽少糖吉祥物（「鹽少」及「糖小姐」）。</p>
+<p>  * 政府會向承辦商提供吉祥物之相關資料 。</p>
+<p>* <strong>專業製作團隊 (Production Team)</strong>：</p>
+<p>  * 承辦商須部署具經驗及資歷的專業團隊，於香港設有辦公室，並提供全套外景及室內拍攝人手、器材及交通 。</p>
+<p>* <strong>出處</strong>：*Quotation Document_API.pdf* Part III [p.86, 89-90]。</p>
+<p>---</p>
+<h5>⑥ 創意及策略重點 / 風格要求 (Creative &amp; Strategy Focus &amp; Style)</h5>
+<p>* <strong>核心風格</strong>：訊息傳達須非常清晰、準確、簡明（clear, accurate, concise），同時具備高度吸引力、衝擊力、記憶點與說服力（impact, recall, resonance）[40-43]。</p>
+<p>* <strong>策略重點</strong>：</p>
+<p>  * 傳遞「少鹽少糖依然美味」、「人人隨時隨地做到（堂食、外賣、自煮）」的積極健康態度 。</p>
+<p>  * 創作適合長期使用的雙語響亮標語 。</p>
+<p>  * 將吉祥物「鹽少」與「糖小姐」無縫融入劇情，增添親和力與記憶點 。</p>
+<p>  * 巧妙植入 QR code，引導觀眾深入了解 CRSS 三大核心計劃（食肆計劃、無糖星期五、標籤計劃）[7-9]。</p>
+<p>  * 鼓勵提出創新建議（Pro-innovation Proposals，如科技／高效製作手法，佔 15 分）及 ESG 建議（如環保、無障礙、社會責任等，佔 5 分）[44-46]。</p>
+<p>* <strong>出處</strong>：*Quotation Document_API.pdf* Part III &amp; Annex 1 [p.85-87, 108, 113-115]。</p>
+<p>---</p>
+<h5>⑧ 強制要求與紅線 (Mandatory Requirements &amp; Red Lines)</h5>
+<p>1. <strong>預算上限紅線 (Budget Cap)</strong>：</p>
+<p>   * 估算預算介乎 <strong>HK\$1,000,000 至 HK\$1,300,000</strong> 。</p>
+<p>   * <strong>⛔ 超過 HK\$1,300,000 的報價將直接不獲考慮（Disqualified / Not considered）</strong> 。</p>
+<p>2. <strong>雙信封制與遞交方式 (Submission Red Lines)</strong>：</p>
+<p>   * 必須採用雙信封制：技術建議書（Technical Proposal，一式兩份）與費用建議書（Fee Proposal，一式兩份）須分別密封於獨立信封內 。</p>
+<p>   * 外信封不可印有／顯示投標公司名稱 。</p>
+<p>   * <strong>⛔ 不接受電子副本遞交</strong>：標書未提及 soft copy 遞交，只接受紙本 。必須於 2026-09-29 中午 12:00 前親身投遞至添馬添美道 2 號政府總部東翼 2 樓 EEB(FB) 指定報價箱 。逾期或未投遞至指定箱者不獲受理 。</p>
+<p>3. <strong>原創性與全球永久版權 (IP Red Lines)</strong>：</p>
+<p>   * 創意概念及素材必須為原創，不得轉售或曾被其他機構購買 。</p>
+<p>   * 完成品、劇本、素材及拍攝片段之全球及永久版權（Worldwide and perpetual copyright）均歸香港特區政府所有 。</p>
+<p>   * 承辦商須自行負擔音樂版權（CASH、IFPI、HKRIA）及播放授權費用 。</p>
+<p>4. <strong>配音品質與免費重錄條款 (VO Pronunciation Penalty)</strong>：</p>
+<p>   * 普通話配音員建議具備國家語委普通話水平測試「一級乙等」或以上資歷 。</p>
+<p>   * 若電台因發音不準確或不當而拒播，承辦商必須<strong>免費安排重新錄音並更換派台版本</strong> 。</p>
+<p>5. <strong>評分機制 (Marking Scheme)</strong>：</p>
+<p>   * 評審比重為 <strong>技術 70%：價格 30%</strong> 。</p>
+<p>   * 技術分 100 分中，20 分預留予創新建議（15 分 Pro-innovation + 5 分 ESG Proposals）。</p>
+<p>* <strong>出處</strong>：*Invitation Letter_API.pdf* [p.1-2]；*Quotation Document_API.pdf* [p.2, 15-16, 89-91, 107, 120]。</p>
+<p>---</p>
+<p>💡 想要我幫你針對呢個標書撰寫 <strong>Technical Proposal (Part IV Schedule 1)</strong> 嘅架構草稿，定係幫你準備 Presentation Slide 嘅重點分頁？</p><div id='raw_EEB' class='ovl'><div class='ovlbox'><div class='ovlhd'><span>📄 標書原文（逐字）</span><button class='x' onclick="hideOvl('raw_EEB')">✕</button></div><div class='ovlbody'><p class='hint'>fetch_source（pypdf）抽嘅標書逐字原文 —— 委員會／agency／debrief／5W1H 都餵呢份做 ground-truth。</p><pre style='white-space:pre-wrap;font-size:11px;line-height:1.5;background:#fafbfc;border:1px solid var(--line);border-radius:8px;padding:9px;color:#333;margin:0'>===== Quotation Document_API.pdf(Specification 原件)=====
+[p85]
+Restricted (Contract) 
+ 
+Quotation Exercise for Provision of Service for Production of a TV and Radio Announcements in the Public Interest for Less-Salt-and-Sugar 
+Dietary Habit Campaign                                                                        
+Page 85 of 144 
+PART III 
+PROJECT BRIEF 
+ 
+Purpose 
+ 
+This brief explains the background and objectives of the production of a TV 
+API and a corresponding radio API for the Environment and Ecology Bureau 
+(Food Branch) (EEB(FB)) for the Committee on Reduction of Salt and Sugar in 
+Food (CRSS) to promote a less -salt-and-sugar (LSS) dietary habit among the 
+Hong Kong public.  The scope of work expected of the contractor is also 
+explained.  In brief, quotationers are invited to – 
+ 
+ propose an impactful slogan, bilingual, for the CRSS and the LSS 
+campaign for us on a long-term basis; 
+ create and produce a 30-second TV API; 
+ create and produce a corresponding 30-second radio API; and  
+ create, produce and adopt 
+(i) one two-minute video featuring all the key initiatives of CRSS; and 
+(ii) three short videos repurposing the two-minute video in (i) for 
+highlighting individual initiatives 
+for other uses of EEB across designated advertising platforms to be 
+assigned by EEB. 
+ 
+ 
+Target Audience 
+ 
+ General public / all age groups and segments across the community in 
+Hong Kong  for the slogan and APIs, and the videos for targets of the 
+respective initiatives (such as restaurants, tea shops, food manufacturers). 
+ 
+ 
+Background 
+ 
+Since its establishment in 2015, CRSS has been dedicated to steering  and
+[p86]
+Restricted (Contract) 
+ 
+Quotation Exercise for Provision of Service for Production of a TV and Radio Announcements in the Public Interest for Less-Salt-and-Sugar 
+Dietary Habit Campaign                                                                        
+Page 86 of 144 
+coordinating publicity work on reducing salt and sugar intake in the community.  
+CRSS intends to launch its first-ever TV and radio APIs to further raise public 
+awareness of the importance of salt and sugar reduction.  The APIs will 
+reinforce essential health messages, inspire positive behavioural change, and 
+encourage sustainable LSS lifestyles among individuals of all age groups across 
+the territory. 
+ 
+CRSS works closely with partner bureaux and departments, including the 
+Health Bureau, Education Bureau, Centre for Food Safety under the Food and 
+Environmental Hygiene Department and Department of Health, to promote LSS 
+dietary habits as a cornerstone of preventing non-communicable diseases and 
+promoting public health.   
+ 
+Objectives 
+ 
+ To enhance awareness of the CRSS and the LSS campaign including its 
+various initiatives. 
+ To induce positive behavioural change and sustain healthy dietary habits 
+across all age groups. 
+ 
+ 
+Key Messages 
+ 
+1. Adopting a n LSS diet is an easily achievable healthy habit that does not 
+sacrifice the enjoyment of delicious food and drinks. 
+2. Such a healthy diet is achievable by everyone, regardless of whether they 
+are dining out, ordering delivery food or cooking at home. 
+3. To maximise the impact of its core messaging across all upcoming 
+initiatives and projects, including the  LSS mascots ( 鹽少 and 糖小姐) 
+being revitalised.  The se refreshed characters, which will be provided to 
+the contractor, should be featured in the APIs. 
+4. The APIs should briefly showcase the key campaigns of CRSS (e.g. by way 
+of QR code or other presentation method as appropriate), namely – 
+(a) Less-Salt-and-Sugar Restaurants Scheme  
+(https://www.eeb.gov.hk/food/en/committees/crss/restaurants.html)
+[p87]
+Restricted (Contract) 
+ 
+Quotation Exercise for Provision of Service for Production of a TV and Radio Announcements in the Public Interest for Less-Salt-and-Sugar 
+Dietary Habit Campaign                                                                        
+Page 87 of 144 
+(b) Less Sugar Friday campaign  
+(https://www.eeb.gov.hk/food/en/committees/crss/less_sugar_friday.h
+tml)    
+(c) “Salt / Sugar” Label Scheme for Prepackaged Food Products  
+(https://www.cfs.gov.hk/english/programme/programme_rdss/progra
+mme_Salt_Sugar_Label_Scheme.html)  
+5. To facilitate the understanding of the LSS -related work of EEB (FB) and 
+CRSS, quotationers may visit the following pages for reference – 
+(a) https://www.eeb.gov.hk/food/en/our_work/rssf.html 
+(b) https://www.facebook.com/HongKongsActiononSaltandSugarsReducti
+on 
+(c) https://www.instagram.com/hkassr/ 
+(d) www.youtube.com/@降低食物中鹽和糖 
+ 
+ 
+Launch Date 
+ 
+The TV and radio APIs should be completed within Q4 2026 and delivered to 
+TV and radio stations during  the same period, subject to EEB(FB)’s discretion. 
+The two-minute video and the three short videos should also be completed a nd 
+delivered to EEB within Q4 2026, via the method specified by EEB. 
+ 
+ 
+Deliverables 
+ 
+1. TV API 
+ 
+(a) One version only 
+(b) Shooting format: HDCAM, RED ONE or equivalent is preferred. 
+High-definition Video (HDV) formats and still camera shooting may be 
+considered depending on the creative 
+(c) Output: (1) File-based format: 16:9 (HD) in XDCAM HD422 at 50Mbps in 
+MXF; (2) Video-tape format: 16:9 (HD) in HD CAM 
+(d) Duration: 30 seconds each 
+(e) Language: Cantonese (with written Traditional Chinese subtitles 繁體中文
+[p88]
+Restricted (Contract) 
+ 
+Quotation Exercise for Provision of Service for Production of a TV and Radio Announcements in the Public Interest for Less-Salt-and-Sugar 
+Dietary Habit Campaign                                                                        
+Page 88 of 144 
+書面語) and English (with English subtitles) 
+(f) Background music: tailor-made / post-scored music is preferred 
+(g) Soft and hard copies of the scripts 
+(h) Soft and hard copies of the storyboard (together with draft scripts and 
+description of visuals in both Chinese and English) 
+(i) Copies required: Please refer to Annex II 
+(j) Twelve still pictures from the footage of the completed TV API all shown 
+in a single image in JPEG format for each language version 
+(k) Essential information in the visuals of the TV API, such as website address, 
+telephone number or e -mail address, is required to be accompanied by 
+voice-over script as appropriate 
+ 
+The contractor is required to provide another version of the TV API which 
+conforms to the World Wide Web Consortium (W3C) Web Content 
+Accessibility Guidelines (WCAG) 2.2 Level AA standard for posting on the 
+Internet. For details, please visit the websites: http://www.webforall.gov.hk and 
+https://www.w3.org/WAI/WCAG22/quickref/#time-based-media  
+ 
+ 
+2.  Radio API 
+ 
+(a) One version only 
+(b) Duration: 30 seconds each 
+(c) Language: Cantonese, English and Putonghua 
+(d) Soft and hard copies of the scripts 
+(e) Copies required: Please refer to Annex III 
+ 
+ 
+3. One two-minute video and three short videos 
+ 
+(a) One two -minute video and three different short videos repurposing the 
+two-minute video,  with designated specifications to be provided by the 
+EEB 
+(b) Duration: two minute (for the two -minute video) and approximately 10 -15 
+seconds (for the three different short videos) respectively 
+(c) Language: Cantonese (with written Traditional Chinese subtitles 繁體中文
+書面語) and English (with English subtitles)
+[p89]
+Restricted (Contract) 
+ 
+Quotation Exercise for Provision of Service for Production of a TV and Radio Announcements in the Public Interest for Less-Salt-and-Sugar 
+Dietary Habit Campaign                                                                        
+Page 89 of 144 
+(d) Soft and hard copies of the scripts 
+ 
+ 
+Services Required 
+ 
+The contractor is required to provide the following services, materials and 
+professionals for the production of the TV and radio APIs – 
+ 
+(a) Creative and cop ywriting services  / materials for providing the creative 
+concept, scripts, slogans, storyboards, subtitles and graphic and 
+photographic images / materials .  The creative services / materials 
+should be the contractor’s original idea and must not have been 
+purchased by other parties beforehand.  If the contractor’s creative 
+services / materials are accepted in this quotation exercise, the 
+awarded contractor should not re-sell the idea to other parties. 
+(b) Full crew and equipment for location shooting both outdoor and indoor in 
+Hong Kong (including transportation); 
+(c) Off-line and on-line editing; 
+(d) Cantonese and English voice -over talents for the conversations/narrations 
+for the TV API.  The voice -over / conversations / narrations of the 
+English TV version should be delivered in English as far as possible; 
+(e) Cantonese, English* and Putonghua** voice-over talents for the radio API; 
+(f) In the event that any language version of the recording of the radio API is 
+rejected for broadcast / found unsatisfactory (for example, by radio stations) 
+due to inaccurate or improper pronunciation after the station copies have 
+been delivered and the inaccuracy / deficiency has been confirmed / vetted 
+by the Official Languages Division of the Civil Service Bureau, the 
+Contractor is required to arrange another recording of the same language 
+radio API to rectify the inaccuracy  / deficiency, and deliver the approved 
+version to radio stations for replacement at no cost to EEB(FB) and CRSS. 
+(g) The Contractor should be responsible for musical arrangement of the APIs 
+(tailor-made/post-scored music is preferred), clearance of all copyright 
+issues and obtain necessary licences at its own cost and expense for 
+broadcasting anywhere within and outside Hong Kong, any occasion and 
+any usage using any media, including, but not limited to, radio channels, 
+TV , video walls, the Internet and multi -media advertisements on public 
+transport, and at seminars, exhibitions and other public functions  /
+[p90]
+Restricted (Contract) 
+ 
+Quotation Exercise for Provision of Service for Production of a TV and Radio Announcements in the Public Interest for Less-Salt-and-Sugar 
+Dietary Habit Campaign                                                                        
+Page 90 of 144 
+activities, and for production of VCDs/DVDs/CD -ROMs and other 
+publicity materials by the Government for non-profit making purposes; 
+(h) Worldwide and perpetual copyright of the APIs, VCDs/DVDs/CD -ROMs 
+and other publicity materials produced shall belong to the Government; 
+(i) Audio recording and sound mixing; 
+(j) All post-production services; 
+(k) Subtitles in written Traditional Chinese subtitles 繁體中文書面語 for the 
+Cantonese version and in English for the English version for the TV API; 
+(l) Delivery of the TV and radio APIs to local TV and radio stations, i.e. TVB, 
+i-CABLE HOY TV , PCCW Media (Now TV), HKTVE (Viu TV), 
+RTHK(TV), RTHK(Radio), Metro Broadcast and Commercial Radio under 
+the instruction of the ISD.  The contractor is also responsible for any 
+station copy fees charged by the aforesaid TV stations. 
+ 
+* A monologue-type of API is required for the English radio API 
+** Voice-over talents for Putonghua recording should preferably have 
+attained at least Grade 1B ( 一級乙等) in the Putonghua Shuiping Ceshi ( 國
+家語言文字工作委員會普通話水平測試) 
+ 
+(m) Celebrity involvement 
+The involvement of appropriate  celebrity/celebrities in the API s should 
+have public appeal to API of this nature and is recommended.  The 
+contractor should be responsible for lining up of well-known celebrities 
+and talents and clearance of performers’ rights to enable the API to be 
+broadcast anywhere within and outside Hong Kong, any occasion and any 
+usage using any media, including, but not limited to, radio channels, TV , 
+video walls, the Internet and multi -media advertisements on public 
+transport, and at seminars, exhibitions and other public functions/activities, 
+and for production of VCDs/DVDs/CD -ROMs and other publicity 
+materials by the Government for non -profit making purpose; handling 
+arrangements for filming and audio recording for celebrities and talents 
+and absorbing under this project the hair -styling, make -up, costume, 
+equipment/props and transportation/traveling fees incurred, the level of 
+such fees should be negotiated between the contractor and the celebrities  
+and talents. If celebrity/celebrities will be involved in the API, the 
+contractor is requested to provide the royalty period in the creative 
+proposal and quotation.  The royalty period for the celebrity/celebrities is
+[p91]
+Restricted (Contract) 
+ 
+Quotation Exercise for Provision of Service for Production of a TV and Radio Announcements in the Public Interest for Less-Salt-and-Sugar 
+Dietary Habit Campaign                                                                        
+Page 91 of 144 
+recommended to be a minimum of two to three years. 
+ 
+ 
+Supervision 
+ 
+The contractor will be supervised by EEB( FB).  In the course of production, 
+the contractor should cooperate with EEB( FB), and shall comply with all 
+reasonable instructions of EEB(FB).  EEB(FB) reserves the right to amend the 
+storyboards, scripts, slogans, subtitles and rough cuts if necessary. 
+ 
+ 
+Budget 
+ 
+Our estimate for the cost , inclusive of contractor fee, for the production of the 
+TV API, Radio API, one two -minute video and three short videos  is between 
+HK$1,000,000 and HK$ 1,300,000.  Quotations exceeding HK$1,300,000 will 
+not be considered.  Payment will be made upon satisfactory completion of the 
+required services and delivery of all deliverables and submission of the fully 
+completed “Information on Music Copyright Form” and receipt by Government 
+of the contractor’s original invoice. 
+ 
+ 
+Working Schedule 
+ 
+The tentative working schedule and deadlines are as follows – 
+ 
+Date Tasks 
+8 September 2026 Issue invitation letter to quotationers 
+ 
+11 September 2026 
+by 1800 hours 
+Submission of Reply Slip by quotationers 
+(tentative) 
+15 September 2026 
+at 1000 hours  
+Briefing to interested quotationers by EEB(FB)</pre></div></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>⚠️ 製作要求</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><div class='h3' style='margin-bottom:6px'>🚨 標書特別紅線 / 強制要求</div><div class='timeline' style='margin-bottom:10px'><div class='tlrow'><span class='tllabel'>🚨 <b>其他</b>（p88）：配音（廣東話、英文及普通話，普通話建議一級乙等）；字幕（TV API 繁體中文書面語及英文）；專屬或後期配樂</span></div></div><p class='hint'>每個概念必跟，違 = 廢稿。</p><div class='preqs'><div class='prow'><span class='pl'>🤟 手語</span><span class='pv pvoff'>❌ 唔使</span><span class='pp'></span></div><div class='prow'><span class='pl'>♿ W3C影片</span><span class='pv pvon'>✅ 要</span><span class='pp' title='TV API 須提供符合 W3C Web Content Accessibility Guidelines (WCAG)'>p88</span></div><div class='prow'><span class='pl'>⭐ 明星/名人/官員</span><span class='pv pvoff'>無Preference</span><span class='pp' title='建議邀請適當名人參與，須負責聯絡及全球/永久版權釐清，授權期建議最少 2-3 年'>p90</span></div><div class='prow'><span class='pl'>🧸 Mascot</span><span class='pv pvon'>Preferred</span><span class='pp' title='須加入重塑後的少鹽少糖吉祥物（「鹽少」及「糖小姐」），政府會提供資料'>p86</span></div><div class='prow'><span class='pl'>🎬 動畫</span><span class='pv pvoff'>無Preference</span><span class='pp'></span></div></div><div class='h3' style='margin-top:11px'>⛔ 注意 / 紅線</div><div class='timeline'><div class='tlrow'><span class='tllabel'>[無障礙] <b>無障礙網頁標準</b>：TV API 須提供符合 W3C Web Content Accessibility Guidelines (WCAG) 2.2 Level AA 標準之網絡版</span></div><div class='tlrow'><span class='tllabel'>[mascot] <b>吉祥物登場</b>：須加入重塑後的少鹽少糖吉祥物（「鹽少」及「糖小姐」），政府會提供吉祥物資料</span></div><div class='tlrow'><span class='tllabel'>[明星] <b>明星/名人參與及授權期</b>：建議邀請適當名人參與，須負責聯絡、全球及永久版權釐清，授權期建議最少 2 至 3 年，相關費用由承辦商承擔</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>電台發音及發音不合格重錄</b>：普通話配音員建議達國家語言文字工作委員會普通話水平測試一級乙等；如被電台拒播或發音不正確，須免費重新安排錄音</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>音樂版權及申報</b>：須填妥 Information on Music Copyright 表格，並負責向 CASH、IFPI、HKRIA 等支付公開播放版權費用</span></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>⚡ 創意亮點</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ Gemini 3.1 Pro·預設</span></div><div class='cbody'><p>1. 🎯 <strong>Hidden Agenda（政府點解而家做）</strong></p>
+<p>   - 事實：這條宣傳片背後的隱藏議程，很可能是政府希望在國際社會上重塑香港的正面形象，以回應近年因政治事件和疫情而受損的聲譽，並吸引人才和旅客回流。透過強調「只在香港」的獨特體驗和「亞洲國際都會」的定位，政府試圖軟性地帶出香港的活力和多元，同時也回應市民對香港未來發展的期望，為施政報告和五年規劃營造積極的社會氛圍。此外，宣傳片也可能間接回應了市民對政府宣傳手法「老餅」的批評，嘗試以更年輕、更具創意的方式與公眾溝通，例如禁毒宣傳片中運用潮語和明星效應，甚至嘗試AI技術，儘管後者有時會引起爭議。</p>
+<p>   - 💡 可以點做橋：可以將呢個深層目的織入概念，令片唔止講程序，更打中政府想傳達嘅 message。</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📊 研究（深入＋Web 整合）</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ gemini-2.5-flash</span></div><div class='cbody'><p>好的，這是一份整合後的乾淨研究報告，已去重並保留所有獨有事實，分段清晰，並以繁體中文輸出。</p>
+<p>---</p>
+<h4>香港政府環境及生態局（食物科）減鹽減糖宣傳片網上研究報告</h4>
+<p><strong>標書編號：</strong> `T/2026-009/F/S`</p>
+<p><strong>發出部門：</strong> 環境及生態局（食物科）EEB(FB)</p>
+<p><strong>採購目的：</strong> 為降低食物中鹽和糖委員會（CRSS）採購電視及電台宣傳短片／聲帶（APIs）及相關影片製作服務。</p>
+<p>---</p>
+<h5>1. 議題背景</h5>
+<p>*   <strong>政策演進：</strong> 減鹽減糖已由「政策宣示」走向「餐廳＋預先包裝食品＋全民生活」的實務階段。</p>
+<p>*   <strong>餐廳計劃：</strong> 「少鹽少糖餐廳計劃」自2019年推出，參與餐廳、快餐店、茶飲店已增至「逾1,000間」，形成具規模的「健康選項生態」。</p>
+<p>*   <strong>預先包裝食品：</strong> 「鹽／糖」標籤計劃已在預先包裝食品層面推行，鼓勵食品商自願標示較少鹽／糖的產品，並配合超市貨架及網購平台展示。</p>
+<p>*   <strong>防控非傳染病(NCD)：</strong> 政府近年強化減鹽減糖作為防控心血管病、糖尿病、腎病等非傳染病的核心策略之一。</p>
+<p>*   <strong>香港攝取量：</strong> 香港人鈉攝取量長期高於世衛建議；糖攝取量尤其來自飲品及加工食品。</p>
+<p>*   <strong>政府措施：</strong> 包括公營醫療系統推健康飲食教育；學校及機構食堂推「3少」（少油、鹽、糖）菜式；透過CRSS協調部門宣傳。</p>
+<p>*   <strong>宣傳轉向：</strong> 宣傳層面已由初期的「技術健康訊息」（解釋健康風險、標籤閱讀、建議攝取量）過渡到近3-5年的「生活化＋餐飲實務」（教市民「外出食飯點樣叫少鹽少糖」、示範餐廳／茶飲店做低鹽低糖菜式、與網上食店平台合作展示「少鹽少糖選項」）。</p>
+<p>*   <strong>傳播渠道：</strong> 已由傳統媒體擴展至社交平台（Facebook, Instagram, YouTube）、KOL及餐飲平台合作。「Hong Kong’s Action on Salt and Sugar Reduction」定期發放短片、圖文、食譜示範，並與餐廳、營養師或KOL合作。</p>
+<p>*   <strong>外展活動：</strong> 包括商場或街頭巡迴展覽、烹飪示範、工作坊等，以「活動＋媒體」整合推動減鹽減糖。</p>
+<p>---</p>
+<h5>2. 關鍵事實數據</h5>
+<p>*   <strong>少鹽少糖餐廳數量：</strong> 逾1,000間（自2019年推出至今）。</p>
+<p>*   <strong>鈉攝取量：</strong> 香港人鈉攝取量長期高於世衛建議。</p>
+<p>*   <strong>糖攝取量來源：</strong> 主要來自飲品及加工食品。</p>
+<p>---</p>
+<h5>3. 相關官員單位</h5>
+<p>*   <strong>環境及生態局（食物科）EEB(FB)：</strong> 招標文件發出部門。</p>
+<p>*   <strong>降低食物中鹽和糖委員會（CRSS）：</strong> 宣傳活動的採購方，負責協調部門宣傳。</p>
+<p>*   <strong>食物安全中心 (CFS)：</strong> 負責推動「鹽／糖」標籤計劃。</p>
+<p>*   <strong>衞生署：</strong> 負責「有營食肆 EatSmart@restaurant.hk」及「3少」相關宣傳，並推動健康飲食教育。</p>
+<p>---</p>
+<h5>4. 受眾 Sentiment</h5>
+<p>*   <strong>對「教訓式」官片的反感：</strong> 醫生／營養師白袍出鏡「正襟危坐講解」的標準格式，容易被香港觀眾視為「教訓式」官片。</p>
+<p>*   <strong>對「濫用象徵」的疲勞：</strong> 「鹽樽／糖罐」直觀象徵（如桌上大量鹽撒出／糖倒滿杯、方糖堆成山）已非常普及於本地及國際健康飲食／糖飲品宣傳，缺乏新鮮感。</p>
+<p>*   <strong>對「三代同堂家庭」情節的預期：</strong> 「三代同堂家庭晚餐＋長者健康警示」的套路（如爺爺／爸爸突然不適、醫生建議少鹽少糖）已是常見情節，缺乏新意。</p>
+<p>---</p>
+<h5>5. 近期宣傳與競品</h5>
+<h6>5.1 香港政府及相關機構宣傳</h6>
+<p>*   <strong>「Hong Kong’s Action on Salt and Sugar Reduction」(CRSS / EEB / CFS 系列宣傳)</strong></p>
+<p>    *   <strong>形式：</strong> 網上短片、社交媒體貼文、廚師示範、營養師訪談；曾利用電視及電台節目、贊助健康飲食內容。</p>
+<p>    *   <strong>調性：</strong> 正規、偏理性健康教育；用卡通圖像、資訊圖表解釋健康風險。</p>
+<p>    *   <strong>內容重點：</strong> 提醒留意醬料、加工食品中的「隱藏鹽／糖」；教市民如何在餐廳要求少鹽少糖。</p>
+<p>*   <strong>少鹽少糖餐廳計劃 (Less-Salt-and-Sugar Restaurants Scheme)</strong></p>
+<p>    *   <strong>對外宣傳：</strong> 官網清單＋與OpenRice合作的「減鹽減糖餐廳」主題頁；媒體報導及社交平台 spotlight 個別參與餐廳。</p>
+<p>    *   <strong>常見 approach：</strong> 用餐廳老闆/廚師/侍應訪問形式，講述菜式改良及客人反應；展示「貼紙／標誌」貼在門口或餐牌上的視覺。</p>
+<p>    *   <strong>Tone：</strong> 正面、生活化，但仍偏向「健康倡議＋政策性」；視覺上以餐廳場景、食物 close-up 為主。</p>
+<p>*   <strong>「鹽／糖」標籤計劃 (Salt / Sugar Label Scheme for Prepackaged Food Products)</strong></p>
+<p>    *   <strong>宣傳：</strong> 官網、食品安全通訊、商界宣傳物料，向食品商推動自願參加；教消費者認得標籤及理解其意思。</p>
+<p>    *   <strong>視覺：</strong> 標準化 icon／label 設計，配合貨架／包裝視覺。</p>
+<p>    *   <strong>Tone：</strong> 信息主導、偏 technical，少情緒故事。</p>
+<p>*   <strong>「少糖星期五」(Less Sugar Friday) 活動</strong></p>
+<p>    *   <strong>推行形式：</strong> 以「指定日子減少糖攝取」概念，配合線上宣傳、活動。</p>
+<p>    *   <strong>常見內容：</strong> 提醒市民在星期五選擇少糖飲品／甜品；可能搭配社交媒體 hashtag 或打卡活動。</p>
+<p>    *   <strong>Tone：</strong> 比一般健康宣傳較輕鬆，帶少少「生活儀式感」。</p>
+<p>*   <strong>衞生署「有營食肆 EatSmart@restaurant.hk」及「3 少」（少油、鹽、糖）相關宣傳</strong></p>
+<p>    *   <strong>形式：</strong> TV / online short clips、海報、餐廳貼紙、社交媒體。</p>
+<p>    *   <strong>常見 approach：</strong> 以家庭／上班族／長者作主角，展示「揀有營菜式」情境；用醫生／營養師出鏡講解影響。</p>
+<p>    *   <strong>Tone：</strong> 認真、少量幽默，偏「政策＋健康教育」。</p>
+<p>*   <strong>「健康生活」、「防控糖尿病／心血管疾病」等 API / 宣傳</strong></p>
+<p>    *   <strong>內容：</strong> 強調少鹽少糖作為其中一個健康生活元素，配合運動、不吸煙等。</p>
+<p>    *   <strong>視覺：</strong> 醫院場景、家庭吃飯場景、跑步等「標準健康影像」。</p>
+<h6>5.2 國際競品 / 同類創意做法</h6>
+<p>*   <strong>英國 / 歐洲 (Dept of Health / NHS / Public Health England)</strong></p>
+<p>    *   <strong>針對議題：</strong> 減鹽減糖、肥胖、糖稅。</p>
+<p>    *   <strong>常見 approach：</strong> 用「視覺化糖量」（如一杯汽水倒出多粒方糖）；用「未來健康後果」（孩子現時飲食 vs 長大後健康問題）。</p>
+<p>    *   <strong>Tone：</strong> 部分曾使用 shock tactic（黑暗背景＋器官損壞圖像）；近年轉趨生活化，強調「easy swaps」(換飲品、換零食)。</p>
+<p>*   <strong>新加坡 / 亞太 (新加坡健康促進局)</strong></p>
+<p>    *   <strong>針對議題：</strong> 少糖飲品、飲品分級、餐飲健康選擇。</p>
+<p>    *   <strong>常見做法：</strong> 強調「飲品 label 顏色」讓你簡單選擇；用 office workers / young adults 作主角。</p>
+<p>    *   <strong>Tone：</strong> 機智幽默＋強烈 call to action，推「選健康不難」。</p>
+<p>*   <strong>WHO 及國際 NGO 線上 Campaign</strong></p>
+<p>    *   <strong>內容：</strong> 教市民計算每日鹽／糖攝取；提醒預防高血壓、糖尿病。</p>
+<p>    *   <strong>視覺：</strong> 極簡插畫、資訊圖表、動畫 short clips。</p>
+<p>    *   <strong>調性：</strong> 非常「數據＋事實」導向，情緒較少。</p>
+<p>---</p>
+<h5>6. 香港角色</h5>
+<p>*   <strong>政府部門協調：</strong> 環境及生態局（食物科）透過降低食物中鹽和糖委員會（CRSS）協調各部門推動減鹽減糖宣傳。</p>
+<p>*   <strong>跨平台推廣：</strong> 利用傳統媒體、社交平台、KOL及餐飲平台合作，推動減鹽減糖訊息。</p>
+<p>*   <strong>政策與實踐結合：</strong> 將減鹽減糖從政策宣示落實到餐廳、預先包裝食品及全民生活層面。</p>
+<p>---</p>
+<p><strong>【來源 Sources】</strong></p>
+<p>*   https://www.eeb.gov.hk/food/en/our_work/rssf.html</p>
+<p>*   https://www.eeb.gov.hk/food/download/committees/crss/lss_restaurants_scheme_en.pdf</p>
+<p>*   https://www.eeb.gov.hk/food/en/committees/crss/restaurants.html</p>
+<p>*   https://www.eeb.gov.hk/food/en/press_and_publications/otherinfo/220500_ssr/action.html</p>
+<p>*   https://www.legco.gov.hk/research-publications/english/essentials-2022ise03-measures-to-reduce-dietary-sodium-and-sugar.htm</p>
+<p>*   https://www.csb.gov.hk/hkgcsb/csn/csn105/105e/health_1.html</p>
+<p>*   https://www.info.gov.hk/gia/general/201902/23/P2019022200291p.htm</p>
+<p>*   https://www.cfs.gov.hk/english/programme/programme_rdss/programme_rdss.html</p>
+<p>*   https://www.chp.gov.hk/files/pdf/saptowards2025_fullreport_target4_en.pdf</p>
+<p>*   https://www.legco.gov.hk/yr14-15/english/panels/fseh/papers/fseh20150414cb2-1182-7-e.pdf</p>
+<p>*   https://www.districtcouncils.gov.hk/south/doc/2016_2019/en/committee_meetings_doc/CATC/11881/CATC_2017_08_AOB_EN_Ref_3.pdf</p>
+<p>*   https://www.legco.gov.hk/yr19-20/english/panels/fseh/papers/fseh20200512cb2-922-4-e.pdf</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🛡️ 官方正名 / 用字</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ Gemini Flash＋Search</span></div><div class='cbody'><p>以下是根據您提供的招標書內容，為廣告創作團隊準備的「官方用語對照表」：</p>
+<p>---</p>
+<h5>官方用語對照表</h5>
+<h6>1. 部門 / 辦事處</h6>
+<p>*   <strong>環境及生態局 (食物科)</strong></p>
+<p>    *   官方英文全名：Environment and Ecology Bureau (Food Branch) (EEB(FB))</p>
+<p>    *   官方網址：[https://www.eeb.gov.hk/food/tc/index.html](https://www.eeb.gov.hk/food/tc/index.html)</p>
+<p>*   <strong>降低食物中鹽和糖委員會</strong></p>
+<p>    *   官方英文全名：Committee on Reduction of Salt and Sugar in Food (CRSS)</p>
+<p>    *   官方網址：[https://www.eeb.gov.hk/food/tc/committees/crss/index.html](https://www.eeb.gov.hk/food/tc/committees/crss/index.html)</p>
+<p>*   <strong>食物環境衞生署</strong></p>
+<p>    *   官方英文全名：Food and Environmental Hygiene Department</p>
+<p>    *   官方網址：[https://www.fehd.gov.hk/tc_chi/index.html](https://www.fehd.gov.hk/tc_chi/index.html)</p>
+<p>*   <strong>食物安全中心</strong></p>
+<p>    *   官方英文全名：Centre for Food Safety (CFS)</p>
+<p>    *   官方網址：[https://www.cfs.gov.hk/tc_chi/index.html](https://www.cfs.gov.hk/tc_chi/index.html)</p>
+<p>*   <strong>衞生署</strong></p>
+<p>    *   官方英文全名：Department of Health</p>
+<p>    *   官方網址：[https://www.dh.gov.hk/tc_chi/index.html](https://www.dh.gov.hk/tc_chi/index.html)</p>
+<p>*   <strong>醫務衞生局</strong></p>
+<p>    *   官方英文全名：Health Bureau</p>
+<p>    *   官方網址：[https://www.healthb.gov.hk/tc/index.html](https://www.healthb.gov.hk/tc/index.html)</p>
+<p>*   <strong>教育局</strong></p>
+<p>    *   官方英文全名：Education Bureau</p>
+<p>    *   官方網址：[https://www.edb.gov.hk/tc/index.html](https://www.edb.gov.hk/tc/index.html)</p>
+<h6>2. 計劃 / 政策 / 程序</h6>
+<p>*   <strong>「少鹽少糖」飲食習慣運動</strong></p>
+<p>    *   官方英文名稱：Less-Salt-and-Sugar (LSS) Dietary Habit Campaign</p>
+<p>*   <strong>少鹽少糖餐廳計劃</strong></p>
+<p>    *   官方英文名稱：Less-Salt-and-Sugar Restaurants Scheme</p>
+<p>    *   官方網址：[https://www.eeb.gov.hk/food/tc/committees/crss/restaurants.html](https://www.eeb.gov.hk/food/tc/committees/crss/restaurants.html)</p>
+<p>*   <strong>少糖星期五運動</strong></p>
+<p>    *   官方英文名稱：Less Sugar Friday campaign</p>
+<p>    *   官方網址：[https://www.eeb.gov.hk/food/tc/committees/crss/less_sugar_friday.html](https://www.eeb.gov.hk/food/tc/committees/crss/less_sugar_friday.html)</p>
+<p>*   <strong>預先包裝食物「鹽/糖」標籤計劃</strong></p>
+<p>    *   官方英文名稱：「Salt / Sugar」Label Scheme for Prepackaged Food Products</p>
+<p>    *   官方網址：[https://www.cfs.gov.hk/tc_chi/programme/programme_rdss/programme_Salt_Sugar_Label_Scheme.html](https://www.cfs.gov.hk/tc_chi/programme/programme_rdss/programme_Salt_Sugar_Label_Scheme.html)</p>
+<p>*   <strong>非傳染病</strong></p>
+<p>    *   官方英文名稱：Non-communicable diseases</p>
+<h6>3. 專有名詞 / 技術詞</h6>
+<p>*   <strong>電視宣傳短片</strong></p>
+<p>    *   官方英文名稱：TV Announcement in the Public Interest (TV API)</p>
+<p>*   <strong>電台宣傳聲帶</strong></p>
+<p>    *   官方英文名稱：Radio Announcement in the Public Interest (Radio API)</p>
+<p>*   <strong>宣傳標語</strong></p>
+<p>    *   官方英文名稱：Slogan</p>
+<p>*   <strong>吉祥物</strong></p>
+<p>    *   官方英文名稱：Mascots</p>
+<p>    *   中文名稱：鹽少、糖小姐</p>
+<p>*   <strong>二維碼</strong></p>
+<p>    *   官方英文名稱：QR code</p>
+<p>*   <strong>高清影片</strong></p>
+<p>    *   官方英文名稱：High-definition Video (HDV)</p>
+<p>*   <strong>繁體中文書面語</strong></p>
+<p>    *   官方英文名稱：Traditional Chinese subtitles</p>
+<h6>4. 常見會錯譯 / 易混淆的地方</h6>
+<p>*   <strong>「少鹽少糖」</strong></p>
+<p>    *   正確英文寫法：Less-Salt-and-Sugar (LSS)</p>
+<p>    *   避免使用 &quot;low salt low sugar&quot; 或 &quot;reduced salt reduced sugar&quot;，官方文件統一使用 &quot;Less-Salt-and-Sugar&quot;。</p>
+<p>*   <strong>「委員會」</strong></p>
+<p>    *   正確英文寫法：Committee</p>
+<p>    *   避免使用 &quot;Council&quot; 或 &quot;Board&quot;，特指「降低食物中鹽和糖委員會」時應使用 &quot;Committee&quot;。</p>
+<p>*   <strong>「運動」/「計劃」</strong></p>
+<p>    *   「少鹽少糖飲食習慣運動」應使用 &quot;Campaign&quot;。</p>
+<p>    *   「少鹽少糖餐廳計劃」應使用 &quot;Scheme&quot;。</p>
+<p>    *   「少糖星期五運動」應使用 &quot;campaign&quot;。</p>
+<p>    *   「預先包裝食物『鹽/糖』標籤計劃」應使用 &quot;Scheme&quot;。</p>
+<p>    *   需根據具體語境和官方名稱來區分使用 &quot;Campaign&quot; 和 &quot;Scheme&quot;。</p>
+<p>*   <strong>「宣傳片」</strong></p>
+<p>    *   在政府語境中，通常指 &quot;Announcement in the Public Interest (API)&quot;，而非一般的 &quot;promotional video&quot; 或 &quot;advertisement&quot;。</p>
+<p>---</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🔗 部門官方來源</span></div><div class='cbody'><p class='hint'>搵到嘅官方來源（網頁名 + 撮要，似 search 結果；撳入睇原文）：</p><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.isd.gov.hk' target=_blank>🏛️ 政府新聞處 官網 ↗</a><div class='srcsnip'>https://www.isd.gov.hk</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.youtube.com/channel/UCVdt-K3UythSHVYLyP6K8lQ' target=_blank>▶️ 部門 YouTube 頻道 ↗</a><div class='srcsnip'>官方宣傳片頻道</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.youtube.com/user/isdgovhk' target=_blank>📺 ISD, Hong Kong SAR Government 香港特區政府新聞處 ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.youtube.com/isdgovhk' target=_blank>📺 ISD, Hong Kong SAR Government 香港特區政府新聞處 ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.youtube.com/@isdgovhk' target=_blank>📺 ISD, Hong Kong SAR Government 香港特區政府新聞處 ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.youtube.com/govhkvideochannel' target=_blank>📺 GovHKvideochannel ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://news.tvb.com/tc/1183701-%E9%A6%99%E6%B8%AF%E6%9C%89%E5%92%A9%E7%89%B9%E8%89%B2%E6%97%85%E7%99%BC%E5%B1%80%E6%8E%A8%E7%92%B0%E7%90%83%E5%AE%A3%E5%82%B316%E8%89%B2%E8%AA%AA%E9%A6%99%E6%B8%AF%E6%95%85%E4%BA%8B%E5%8D%B3%E7%9D%87%E5%8F%AA%E5%9C%A8%E9%A6%99%E6%B8%AF%E5%AE%A3%E5%82%B3%E7%89%87%E5%85%A8%E9%9B%86' target=_blank>📰 香港有咩特色？旅發局推環球宣傳 16色說香港故事｜即睇「只在香港」宣傳片全集 ↗</a><div class='srcsnip'>香港旅遊發展局推出全新環球宣傳活動「只在香港」（Only in Hong Kong），以「亞洲國際都會」作為定位，邀請全球旅客不只單純觀光「認識」香港，...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.stheadline.com/society/3588066/%E6%96%BD%E6%94%BF%E5%A0%B1%E5%91%8A2026%E8%AB%AE%E8%A9%A2%E4%BB%8A%E6%97%A5%E5%B1%95%E9%96%8B-%E6%94%BF%E5%BA%9C%E5%AE%A3%E5%82%B3%E7%89%87%E6%9B%9D%E5%85%89-%E6%9D%8E%E5%AE%B6%E8%B6%85%E4%B8%80%E8%B5%B7%E8%AD%9C%E5%AF%AB%E9%A6%99%E6%B8%AF%E6%9B%B4%E7%B2%BE%E5%BD%A9%E6%A8%82%E7%AB%A0' target=_blank>📰 施政報告2026︱諮詢今日展開 政府宣傳片曝光 李家超：一起譜寫香港更精彩樂章 ↗</a><div class='srcsnip'>李家超上周表示，《施政報告》公眾諮詢將於6月29日展開。而「香港五年規劃」公眾諮詢自月中開展以來，政府已舉辦十多場諮詢會，接獲近千份意見書。考慮到...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.news.gov.hk/chi/2026/03/20260317/20260317_190418_390.html' target=_blank>📰 香港政府新聞網- 新一輪依托咪酯禁毒宣傳計劃展開 ↗</a><div class='srcsnip'>保安局禁毒處連同禁毒常務委員會今日舉辦「聽我講：一齊企硬唔take嘢」大型禁毒宣傳活動，由保安局局長鄧炳強介紹政府新一輪針對毒品依托咪酯的禁毒...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.tkww.hk/a/202603/24/AP69c27533e4b04773b06a4d27.html' target=_blank>📰 （有片）香港新禁毒廣告玩盡潮語 顛覆歷年「老餅」風格 ↗</a><div class='srcsnip'>最近，香港特區政府推出全新禁毒宣傳短片，更邀得歌星郭富城參與演出，並借用其經典名曲《唱這歌》中的歌詞來創作口號——「聽我講，一齊企硬，...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.info.gov.hk/gia/general/202406/05/P2024060500197.htm' target=_blank>📰 香港特區政府推出全新宣傳短片邀請全球人才落戶香港（附圖／短片） ↗</a><div class='srcsnip'>香港特別行政區政府今日（六月五日）推出全新一輯政府. 網上廣播. 「邀請全球...</div></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🏛️ 政府 JOB 鐵則</span></div><div class='cbody'><ol id='rulelist' style='margin:2px 0 8px;padding-left:18px;line-height:1.7'><li id='rule0'>除標書表明，人物一般使用華人面孔（東亞／香港華人），唔好生成西方／白人臉</li><li id='rule1'>衣著連戲：同一角色每一格都著返同一套衫（衫款／顏色／髮型／配件固定），除非故事明寫佢換咗衫</li><li id='rule2'>全 board 畫風完全一致：同一 render 風格／同一打燈／同一色調／同一線條筆觸，由頭到尾統一，似同一個畫師一次過畫</li><li id='rule3'>Storyboard 盡量唔好出現雨傘；若劇情一定要有雨傘，唔可以係黃色</li></ol><div class='bdcm'><textarea id='newrule' rows='2' placeholder='加一條鐵則：例「Storyboard 唔好有雨傘」'></textarea><button class='btn mini' onclick="addRule('EEB')">＋ 加鐵則（即時生效）</button></div></div></div></div><div class='h2 tierh'>🔧 Optional 餵 AI（於 Debriefing 階段隨機餵 AI）</div><p class='hint tierhint'>唔強制，諗橋時隨機抽嚟畀 agency 撞火花。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>💭 5W1H Provocation</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ Gemini 2.5 Pro·預設</span></div><div class='cbody'><h3>5W1H 創意 Provocation — EEB</h3>
+<h5>WHO — 對邊個講 + 佢而家點</h5>
+<p>- Q1 如果呢個 message 只可以打動「最唔關心、最 cynical」嗰個觀眾 —— 要加咩一個 element(畫面/聲/人物/情境)先 3 秒內 hook 住佢、令佢唔 skip?</p>
+<p>→ 加入極具食慾感嘅「日常熱氣騰騰美食特寫」（如茶餐廳爆汁堂食或外賣鑊氣），配合 1 秒極速剪接與臨場 ASMR 咀嚼/鑊氣音效。首 3 秒以視覺與聽覺直接衝擊，瞬間打破觀眾對「少鹽少糖 = 枯燥清淡」嘅預設偏見。</p>
+<p>- Q2 呢班受眾平時食開咩視聽語言(平台/節奏/語氣)?要 adapt 邊種佢熟悉嘅風格,先入到腦而唔似「政府嘢」?</p>
+<p>→ 受眾日常習慣 Social Media 短影音（如 Reel / TikTok）嘅快節奏視聽語言（前 3 秒爆點、高頻剪接、滿版視覺標籤）。要 adapt 廣受大眾歡迎嘅「美食開箱 / 飲食 Vlog」紀實質感與第一人稱視角，配合廣東話口語旁白，甩掉傳統政府宣傳片嘅說教感。</p>
+<h5>WHAT — 收窄到一個 + 證據</h5>
+<p>- Q3 成個 campaign 只准觀眾記住一個 element(一個畫面 / 一個 visual device / 一句)—— 你揀咩?點解係佢?</p>
+<p>→ 揀重塑後嘅官方吉祥物「鹽少」與「糖小姐」視覺符號。因為吉祥物係標書指定必出嘅核心資產（Mandatory asset），最容易轉化為跨平台、跨年齡層嘅具體視覺標籤，並能順暢連結「少鹽少糖餐廳計劃」等核心政策。</p>
+<p>- Q4 客戶 key message 好抽象,要用咩具體 element(真場面/真數字/真人/真物)去「show 唔 tell」,令佢落地、唔流口號?</p>
+<p>→ 用「堂食（dining out）、外賣（delivery）、自煮（home cooking）三大真實生活情境」嘅實景鏡頭，搭配「少鹽少糖標籤」或「食肆二維碼 QR code」實物視覺元素，直觀證明少鹽少糖隨手可得且美味不減。</p>
+<h5>WHY — 點解信 + 情感</h5>
+<p>- Q5 觀眾點解要信 / 關佢事?要加咩證據 element 或情感共鳴 element,先由「事不關己」變「同我有關」?</p>
+<p>→ 加入「全港平民日常最常食嘅餐點（如外賣飯盒、茶飲少糖選擇）」情感共鳴元素，配合食客享用美食時真實滿足嘅表情特寫，將「政府健康政策」切實連結到觀眾「每日每一餐嘅切身美味體驗」。</p>
+<h5>WHEN / WHERE — 出街情境</h5>
+<p>- Q6 呢條嘢實際喺邊度、咩狀態被睇到(電視 prime / 車廂無聲 / 手機 scroll / 戶外經過)?要 adapt 咩風格(有聲冇聲 / 首 3 秒 / 大字 / 節奏)先食到當下情境?</p>
+<p>→ 條片會喺電視 Prime Time、公共交通車廂及手機 Social 多渠道播放，必須 adapt 「無聲勝有聲」嘅雙語動態大字 Super 視覺風格。首 3 秒以高對比配色與醒目字體呈現，確保車廂靜音或手機 scroll 時無聲亦能精準傳達訊息。</p>
+<p>- Q7 出街時間(事件前/中/後)decide 調子係「預告期待」定「總結成就」?要加咩 element 配合呢個時間感?</p>
+<p>→ 出街時間為 2026 年第四季（Q4 2026），調子屬於引發全民生活新習慣嘅「行動起跑期」。要加入「全城參與 / 無糖星期五」嘅節奏感元素，配合亮麗明快嘅調色與音效，營造「隨時隨地，由今日起輕鬆加入」嘅行動力。</p>
+<h5>HOW — 風格 + 差異化</h5>
+<p>- Q8 同類(同部門/同題材)政府片嘅「安全做法」係咩?要 adapt / 升級邊種風格 element(質感/節奏/transition/配樂/美術流派),先做到「框內最高質」而唔悶?</p>
+<p>→ 同類政府片嘅安全做法係「枯燥圖表 + 權威旁白」。要升級為「動態電影級調色（Cinematic color grading）+ 電池級動態字體（Dynamic kinetic typography）+ 專屬輕快電音/現場音效（Tailor-made music）」，讓 30 秒 TV API 達到商業廣告品質。</p>
+<p>- Q9 要加咩一個 unexpected element(反差/新 visual device/新手法),先同部門過往 campaign 拉開距離、唔似翻炒,但又唔踩紅線?</p>
+<p>→ 加入「真人實景與 2D/3D 重塑吉祥物（鹽少、糖小姐）跨次元互動」嘅視覺對比元素（Unexpected visual device），打破過往政宣片單一真人或單一動畫格式，既拉開與過往舊 campaign 距離，又完全符合標書對吉祥物與高傳意力嘅要求。</p>
+<p>---</p>
+<p>*用法:agency / 委員會落橋前先消化呢 9 條,順住 element + 風格方向諗,唔好離地。*</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📺 ISD 相類政府舊片</span></div><div class='cbody'><p>【呢條 brief 判定】目的:其他  題材:未定</p>
+<p>【同目的(其他)ISD 慣性】主開頭 真人/講者(58%);格式率 旁白72% 熒幕蓋字96% 標誌結尾96% CTA55% 感嘆68% 三段式·0%;慣用結尾 社會福利署標誌, 衞生防護中心標誌, 衞生署標誌, 「簡約公屋」網頁二維碼</p>
+<p>【對口 ISD 舊作借鏡(同 目的×題材,參考佢點寫,唔好照抄,要創新)】</p>
+<p>— 幸福上流　置業圓夢  [其他 | 房屋置業/長者家庭]</p>
+<p>  ▶ https://www.youtube.com/watch?v=phWv4V2eOh0&amp;list=PL1188A9802575C33F</p>
+<p>  男旁白：請等等！ / 男旁白：啊，我想上車啊！ / 熒幕蓋字：未來5年 / 大約60,000個資助出售單位供應 / 女旁白：放心，未來有許多機會 / 熒幕蓋字：新一期居者有其屋計劃及 / 綠表置居計劃 / 4月30日起接受申請 / 女旁白：新一期居屋及綠置居4月30日起接受申請 / 女旁白：前兩次未能成功置業的申請者 / 可獲得額外一個抽籤號碼 / 熒幕蓋字：居屋綠表配額比例由40%升至50% / 女旁白：今期居屋會增加綠表比例 / 熒幕蓋字：40歲以下白表申請者 / 抽籤號碼＋1個 / 女旁白：白表青年申請者可獲得額外一個抽籤號碼 / 女旁白：「白居二」亦會增加配額 / 女旁白：置業的機會多了 / 熒幕蓋字：分布多區 / 可負擔的售價 / 居者有其屋計劃屋苑 / 綠表置居計劃屋苑 / 女旁白：價格亦在可負擔範圍內 / 熒幕蓋字：家有初生 / 家有長者 / 女旁白：家有初生或長者的家庭更可優先選樓 / 熒幕蓋字：出售居者有其屋計劃單位 / 出售綠表置居計劃單位 / 白表居屋第二市場計劃 / 4月30日起接受申請 / 男女旁白：幸福上流　置業圓夢 / </p>
+<p>— 選擇註冊中成藥  認住HKC  [其他 | 環保/節能]</p>
+<p>  ▶ https://www.youtube.com/watch?v=X9zWre8b7ts&amp;list=PL1188A9802575C33F</p>
+<p>  消費者： / 這麼多款式，怎樣選？ / 藥樽們： / 購買我吧 / 紫色藥樽： / 選擇我吧 / 綠色藥樽： / 我比較好呢 / 粉紅色藥樽： / 我便宜一點呢！ / 藍色藥樽： / 選中成藥 / 當然要選擇我這些已註冊的中成藥HKC / 熒幕蓋字： / HKC 註冊中成藥 / 藍色藥樽： / 我的包裝上印有「中成藥註冊編號」 / 即HKC開頭加五位數字 / 熒幕蓋字： / 中成藥註冊編號 HKC-XXXXX / 熒幕蓋字： / 安全　品質　成效 / 藍色藥樽： / 所有香港合法銷售的註冊中成藥 / 都已經符合安全、品質及成效的註冊要求 / 熒幕蓋字： / cmchk.org.hk / 衞生署標誌 / 藍色藥樽： / 可以上cmchk.org.hk查看註冊中成藥名單</p>
+<p>— Hong Kong&#x27;s iconic cultural and arts venues  [其他 | 盛事旅遊]</p>
+<p>  ▶ https://www.youtube.com/watch?v=5I3eUgnX5eM&amp;list=PL1188A9802575C33F</p>
+<p>  旁白：文化藝術 / 　　　展現香港多元魅力 / 熒幕蓋字：當下──香港藝術展 / 旁白：特區政府以文化藝術的「軟實力」 / 　　　結合設施建設的「硬實力」 / 　　　推動文化藝術產業發展並吸引旅客 / 熒幕蓋字：天馬凌雲——故宮博物院藏繪畫珍品 / 旁白：香港的文化藝術場地各具特色 / 　　　融入傳統與現代優點 / 　　　配合先進科技 / 　　　致力將香港打造成為更具活力 / 熒幕蓋字：油街焦點—左旋們浴場 / 旁白：更富創意的國際文化都會 / 熒幕蓋字：2026年巴塞爾藝術展香港展會 / 旁白：香港—國際文化都會 / 熒幕蓋字：中華人民共和國香港特別行政區區徽</p>
+<p>— 水果蔬菜 2+3　輕鬆融入每一餐  [其他 | 公共衞生]</p>
+<p>  ▶ https://www.youtube.com/watch?v=_iNDAroBSLc&amp;list=PL1188A9802575C33F</p>
+<p>  熒幕蓋字： 日日2+3 / 女旁白（唱）： 水果兩份 / 熒幕蓋字： 水果2份 /    「1份水果」約等於： /    2個小型水果 /    1個中型水果 /    半碗水果塊 / 女旁白（唱）： 蔬菜三份 / 熒幕蓋字： 蔬菜3份 /    「1份蔬菜」約等於： /    1碗未經烹調葉菜 /    半碗煮熟的蔬菜 /    ¾杯純蔬菜汁 /    *部分含澱粉質根莖類及醃製類蔬菜除外 / 女旁白（唱）： 天天來為健康加分 / 熒幕蓋字： 提供不同營養 /    維生素C /    鉀 /    葉酸 /    膳食纖維 / 女旁白（唱）： 多款多色 /     好吃有益 / 熒幕蓋字： 有助預防疾病 / 男旁白： 進食足夠蔬果 /    可以預防肥胖和減低患上慢性疾病的風險 / 熒幕蓋字： 心臟病 /    中風 /    肥胖 /    糖尿病 /    某些癌症（如大腸癌） / 女旁白（唱）： 早餐 / 熒幕蓋字： 早餐 / 女旁白（唱）： 午餐 / 熒幕蓋字： 午餐 / 女旁白（唱）： 還有晚餐 / 熒幕蓋字： 晚餐 / 星級有營食肆標誌 / 女旁白（唱）： </p>
+<p>— 2026年4月3日起二元優惠計劃由每程劃一$2調整為「兩蚊兩折」  [其他 | 長者家庭/公共衞生]</p>
+<p>  ▶ https://www.youtube.com/watch?v=-UAWGShCdCw&amp;list=PL1188A9802575C33F</p>
+<p>  熒幕蓋字 ： 兩蚊兩折 /     政府長者及合資格殘疾人士公共交通票價優惠計劃 /     運輸署網頁二維碼 / 馮素波（唱）： 兩元兩折　跟我學唱歌 / 馮素雲（唱）： 兩元兩折　我約了人逛街 / 馮素波（唱）： 低於或等於十元　只算兩元 / 熒幕蓋字 ： $2 / 馮素雲（唱）： 高於十元　兩折一樣興奮 / 熒幕蓋字 ： 兩折 / 馮素波旁白 ： 由2026 年4 月3日起 / 熒幕蓋字 ： 2026 年 4 月3日起 / 馮素波旁白 ： 二元優惠計劃由每程劃一兩元調整為「兩蚊兩折」 /     轉乘車程一樣適用 / 熒幕蓋字 ： 轉乘車程同樣適用 / 馮素波旁白 ： 受惠對象維持不變 / 熒幕蓋字 ： 60歲或以上香港居民 /     合資格殘疾人士 / 馮素波旁白 ： 詳情請瀏覽網頁或致電1823查詢 / 熒幕蓋字 ： 兩蚊兩折 /     運輸署網頁 /     www.td.gov.hk /     查詢電話：1823 / 馮素波、馮素雲（合唱） ： 兩元兩折　優惠相伴最開心 / 熒幕蓋字 ： 2026 </p>
+<p>— Application for Phase 3 of Simple Public Housing  [其他 | 房屋置業]</p>
+<p>  ▶ https://www.youtube.com/watch?v=BtU7TWHUSYI&amp;list=PL1188A9802575C33F</p>
+<p>  女旁白：「簡約公屋」首四個項目已經全面供住戶入住 / 女旁白：每個月租金只是約八百至三千多元不等 / 住戶的居住環境和生活質素大有改善！ / 女旁白：第三期申請包括位於啟德 / 熒幕蓋字：啟德世運道簡約公屋中英標誌 / 啟德世運道 / 女旁白：柴灣及屯門的四個項目 / 於今年第二季開始供住戶入住 / 熒幕蓋字：柴灣常安街簡約公屋中英標誌 / 柴灣常安街 / 熒幕蓋字：屯門欣寶路簡約公屋中英標誌 / 屯門欣寶路 / 女旁白：現已接受申請 / 熒幕蓋字：屯門青發街簡約公屋中英標誌 / 屯門青發街 / 女旁白：有迫切住屋需要便立即申請吧！ / 熒幕蓋字：「簡約公屋」第三期申請 / 啟德世運道 / 柴灣常安街 / 屯門欣寶路 / 屯門青發街 / 熒幕蓋字：「簡約公屋」第三期申請 / 啟德世運道 / 柴灣常安街 / 屯門欣寶路 / 屯門青發街 / 現已接受申請 / 「簡約公屋」標誌 / 「簡約公屋」網頁二維碼 / 房屋局標誌</p></div></div></div><div class='h2 tierh'>📋 ADMIN（交標用 · 唔餵創意）</div><p class='hint tierhint'>交標 logistics：要交咩表格/文件、幾時截。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📑 要交表格 / 文件</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><div class='h3'>📝 要填嘅表格（19 張）</div><p class='hint'>真表頁自動 render 入對應<b>部門 Master Form GSlide</b>（開 GSlide 直接填）。🟦直 🟨橫。</p><div class='qconfirm' style='background:#fff4e5;color:#8a5a00'>⏳ pipeline 收到表會自動開 GSlide + render；此 dept 暫未配置，下次 run 自動補。</div><a class='btn ghost' target='_blank' href='https://docs.google.com/spreadsheets/d/1yiDJ3H8VFK3-6kZQZEzwkiD8VaRgVOzCwxcFbAyP3XE/edit'>📋 開 Master Form Registry（填表值喺度）</a><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/1nBf0Bdx17Jvo8owVWrvM-A_MlKxL98ttyMenXc-cewY/edit'>🎞️ 開 EEB Master Form GSlide（真表頁，直接填）</a><button class='btn' style='width:100%;margin-top:6px' onclick="fillForms(this)">🤖 AI 自動填公司資料入 Registry</button><script type='application/json' class='filldata'>{"folderName": "EEB", "forms": [{"name": "Reply Slip 簡介會回條", "pages": "1", "text": ""}, {"name": "Part IV Schedule 1 – Service Proposal", "pages": "93", "text": ""}, {"name": "Part IV Schedule 2 – Fee Proposal", "pages": "94-95", "text": ""}, {"name": "Part IV Schedule 3 – Information Schedule", "pages": "96-101", "text": ""}, {"name": "Part IV Schedule 4 – Non-collusive Quotationing Certificate", "pages": "102-104", "text": ""}, {"name": "Part IV Schedule 5 – Pro-innovation Proposals and ESG Proposals", "pages": "105-106", "text": ""}, {"name": "Part IV Annex 2 – Information on Music Copyright", "pages": "118-119", "text": ""}, {"name": "Part IV Annex 3 – Statement on Copyright, Confidentiality Indemnity, Insurance and Gender Mainstreaming for Quotationers", "pages": "120-122", "text": ""}, {"name": "Part V Offer to be Bound", "pages": "132", "text": ""}, {"name": "Appendix A to Terms of Quotation – Contact Details", "pages": "133-135", "text": ""}, {"name": "Appendix B to Terms of Quotation – Pro Forma Sub-contractor’s Undertaking", "pages": "136-141", "text": ""}, {"name": "Acknowledgement Receipt 確認回條", "pages": "1", "text": ""}, {"name": "Part IV Schedule 1 – Service Proposal", "pages": "95-96", "text": ""}, {"name": "Part IV Schedule 2 – Fee Proposal", "pages": "97", "text": ""}, {"name": "Part IV Schedule 3 – Information Schedule", "pages": "98-100", "text": ""}, {"name": "Part IV Annex 2 – Information on Music Copyright", "pages": "112", "text": ""}, {"name": "Part IV Annex 3 – Non-collusive Quotationing Certificate", "pages": "113-115", "text": ""}, {"name": "Part V Offer to be Bound", "pages": "116", "text": ""}, {"name": "Appendix to Terms of Quotation – Contact Details", "pages": "117-119", "text": ""}]}</script><p class='hint'>撳上面掣 → AI 逐張表認要填咩欄（公司名/地址/BR…）→ 自動填入 <b>Master Form Registry</b> 嘅 <b>Fill_EEB</b> tab → 你開 Registry copy 啲值入 GSlide 真表頁。⚠️ 價錢/簽名要自己填。（全程 GAS 做，唔使部 Mac 開機）</p><div class='h3'>① Briefing 前 — Reply Slip（2）</div><p class='hint'>確認出席 → Reply Slip 頁，貼頁碼 render。</p><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/17TNiyMzZMbleABFG2u-K0THdn_lXmo089i8xPDnzRHM/edit'>🎞️ 開 Reply Slip GSlide</a><div class='qconfirm' style='background:#eef0fe;color:#3730a3'>貼入 panel 頁碼：<b>1,1</b></div><div class='timeline'><div class='tlrow'><span class='tldate'>🟦 p1</span><span class='tllabel'>Reply Slip 簡介會回條</span></div><div class='tlrow'><span class='tldate'>🟦 p1</span><span class='tllabel'>Acknowledgement Receipt 確認回條</span></div></div><div class='h3'>② 交標時 — Forms / Schedules（17）</div><p class='hint'>Form GSlide 已 render 真表頁做 background → 人手填。</p><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/1nBf0Bdx17Jvo8owVWrvM-A_MlKxL98ttyMenXc-cewY/edit'>🎞️ 開 EEB Form GSlide</a><div class='qconfirm' style='background:#eef0fe;color:#3730a3'>貼入 panel 頁碼：<b>93,94-95,96-101,102-104,105-106,118-119,120-122,132,133-135,136-141,95-96,97,98-100,112,113-115,116,117-119</b></div><div class='timeline'><div class='tlrow'><span class='tldate'>🟦 p93</span><span class='tllabel'>Part IV Schedule 1 – Service Proposal</span></div><div class='tlrow'><span class='tldate'>🟦 p94-95</span><span class='tllabel'>Part IV Schedule 2 – Fee Proposal</span></div><div class='tlrow'><span class='tldate'>🟦 p96-101</span><span class='tllabel'>Part IV Schedule 3 – Information Schedule</span></div><div class='tlrow'><span class='tldate'>🟦 p102-104</span><span class='tllabel'>Part IV Schedule 4 – Non-collusive Quotationing Certificate</span></div><div class='tlrow'><span class='tldate'>🟦 p105-106</span><span class='tllabel'>Part IV Schedule 5 – Pro-innovation Proposals and ESG Proposals</span></div><div class='tlrow'><span class='tldate'>🟦 p118-119</span><span class='tllabel'>Part IV Annex 2 – Information on Music Copyright</span></div><div class='tlrow'><span class='tldate'>🟦 p120-122</span><span class='tllabel'>Part IV Annex 3 – Statement on Copyright, Confidentiality Indemnity, Insurance and Gender Mainstreaming for Quotationers</span></div><div class='tlrow'><span class='tldate'>🟦 p132</span><span class='tllabel'>Part V Offer to be Bound</span></div><div class='tlrow'><span class='tldate'>🟦 p133-135</span><span class='tllabel'>Appendix A to Terms of Quotation – Contact Details</span></div><div class='tlrow'><span class='tldate'>🟦 p136-141</span><span class='tllabel'>Appendix B to Terms of Quotation – Pro Forma Sub-contractor’s Undertaking</span></div><div class='tlrow'><span class='tldate'>🟦 p95-96</span><span class='tllabel'>Part IV Schedule 1 – Service Proposal</span></div><div class='tlrow'><span class='tldate'>🟦 p97</span><span class='tllabel'>Part IV Schedule 2 – Fee Proposal</span></div><div class='tlrow'><span class='tldate'>🟦 p98-100</span><span class='tllabel'>Part IV Schedule 3 – Information Schedule</span></div><div class='tlrow'><span class='tldate'>🟦 p112</span><span class='tllabel'>Part IV Annex 2 – Information on Music Copyright</span></div><div class='tlrow'><span class='tldate'>🟦 p113-115</span><span class='tllabel'>Part IV Annex 3 – Non-collusive Quotationing Certificate</span></div><div class='tlrow'><span class='tldate'>🟦 p116</span><span class='tllabel'>Part V Offer to be Bound</span></div><div class='tlrow'><span class='tldate'>🟦 p117-119</span><span class='tllabel'>Appendix to Terms of Quotation – Contact Details</span></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📮 交標方法（地址 / 信封 / 份數）</span></div><div class='cbody'><p>- <strong>截標</strong>：2026-09-29 12:00</p>
+<p>- <strong>印幾多份</strong>：Service Proposal (two copies), Fee Proposal (two copies), Information Schedule (one copy), Non-collusive Quotationing Certificate (one copy), Pro-innovation Proposals and ESG Proposals (one copy), Annex 2 (one copy), Annex 3 (one copy), Offer to be Bound (one copy), Appendix A (one copy), Appendix B (if applicable)</p>
+<p>- <strong>幾多信封</strong>：3 個</p>
+<p>- <strong>Soft copy（電子副本：CD/USB？）</strong>：標書無提及 → 只交紙本,不需 soft_copy</p>
+<p>- <strong>交去邊 — To</strong>：Secretary for Environment and Ecology (Attn: Chairman, Quotation Opening Team)</p>
+<p>- <strong>交去邊 — Address</strong>：Environment and Ecology Bureau (EEB) (Food Branch) Quotation Box (the Specified Quotation Box) located at the entrance on 2/F, East Wing, Central Government Offices (CGO), 2 Tim Mei Avenue, Tamar, Hong Kong</p>
+<p>- <strong>信封 label「Technical Proposal」要寫</strong>：`Technical Proposal`</p>
+<p>- <strong>信封 label「Fee Proposal」要寫</strong>：`Fee Proposal`</p>
+<p>- <strong>信封 label「Outer Envelope」要寫</strong>：`Quotation Exercise for Provision of Service for Production of a TV and Radio Announcements in the Public Interest for Less-Salt-and-Sugar Dietary Habit Campaign`（The sealed envelope should be addressed to the Secretary for Environment and Ecology (Attn: Chairman, Quotation Opening Team). Please do not show the Quotationer’s name on the envelope.）</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🗓️ 簡報 / 評審 / 截標 Logistics（時間・地點・Zoom）</span></div><div class='cbody'><div class='h3'>⏰ 截標 Deadline</div><div class='tlrow'>🗓️ 29/9 12:00</div><p class='hint'>更新：2026-09-08T16:08:36</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>💰 預算 / 費用（Budget / Fee Breakdown）</span></div><div class='cbody'><p>- <strong>預算（Budget）</strong>：HK\$1,000,000 ~ HK\$1,300,000</p>
+<p>- <strong>費用明細要求（Fee Proposal Breakdown）</strong>：Submission of creative proposal and quotation with breakdown in duplicate</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📅 日程</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ Gemini 2.5 Pro·預設</span></div><div class='cbody'><p>- 2026-09-08 Issue invitation letter to quotationers</p>
+<p>- 2026-09-11 Submission of Reply Slip by quotationers</p>
+<p>- 2026-09-15 Briefing to interested quotationers by EEB(FB)</p>
+<p>- 2026-09-29 Submission of creative proposal and quotation (Quotation Closing Date)</p>
+<p>- 2026-10-08 Presentation of creative ideas to selection panel by bidders</p>
+<p>- 2026-10-14 Debriefing session with the successful bidder</p>
+<p>- 2026-10-30 Pre-production meeting</p>
+<p>- 2026-11-23 Completion of rough cut of TV API</p>
+<p>- 2026-12-07 Completion of final cut of TV and radio APIs</p>
+<p>- 2026-12-14 Completion of two-minute video and three short videos</p>
+<p>- 2026-12-21 Delivery of station copies of TV and radio APIs</p></div></div></div></div>
+<div id='debrief' class='tabpanel'><div class='h2' style='margin-top:14px'>📨 共用 BRIEF（標書 tab 全份）</div><p class='hint'>8 間諗橋時都收到呢份 brief（製作要求 3D/mascot/明星、老闆方向…）做底，再各自加上面 dispatch 嘅角度/畫風/device。概念諗咗會 gatekeep 對返 brief 符合先生 BD。</p><div class='card briefcard'><h3>標書 TAB（你嘅 BRIEF — 全份，必跟）</h3>
+<h4>📋 標書撮要</h4>
+<p>這份招標文件（標書編號：`T/2026-009/F/S`）由環境及生態局（食物科）EEB(FB) 發出，旨在為降低食物中鹽和糖委員會（CRSS）採購電視及電台宣傳短片／聲帶（APIs）及相關影片製作服務 [1-3]。</p>
+<p>以下為根據標書內容整理的詳細投標分析及項目規格：</p>
+<p>---</p>
+<h5>① 背景同目的 (Background &amp; Objectives)</h5>
+<p>* <strong>背景</strong>：CRSS 自 2015 年成立以來，一直致力引遞及協調社區減鹽減糖宣傳工作 。局方在政府新聞處（ISD）協助下，推行首個以「少鹽少糖飲食習慣」為主題的電視及電台宣傳短片／聲帶（APIs）。</p>
+<p>* <strong>目的</strong>：</p>
+<p>  1. 提高公眾對 CRSS 及少鹽少糖宣傳活動（包括旗下各項重點計劃）的認識 。</p>
+<p>  2. 引發積極行為改變，並促進全港不同年齡層建立可持續的少鹽少糖健康飲食習慣，作為預防非傳染病及促進公眾健康的基石 。</p>
+<p>* <strong>出處</strong>：*Invitation Letter_API.pdf* [p.1]；*Quotation Document_API.pdf* Part III [p.85-86]。</p>
+<p>---</p>
+<h5>② 目標受眾 (Target Audience)</h5>
+<p>* <strong>標語（Slogan）及電視／電台 APIs</strong>：全港廣大公眾市民，涵蓋社區內所有年齡層及板塊 。</p>
+<p>* <strong>專題影片及改編短片</strong>：各項特定措施的標的受眾（例如餐廳、茶飲店、食品製造商等）。</p>
+<p>* <strong>出處</strong>：*Quotation Document_API.pdf* Part III [p.85]。</p>
+<p>---</p>
+<h5>③ 傳意目標 / 核心訊息 (Communication Objectives &amp; Key Messages)</h5>
+<p>1. <strong>少鹽少糖依然美味</strong>：採納少鹽少糖（LSS）飲食是一項容易達成的健康習慣，而且絕不需要犧牲享用美味食物和飲料的樂趣 。</p>
+<p>2. <strong>隨時隨地皆可做到</strong>：無論係外出用餐（dining out）、叫外賣（ordering delivery food）或喺屋企煮食（cooking at home），每個人都可以做到少鹽少糖飲食 。</p>
+<p>3. <strong>吉祥物登場</strong>：必須於 APIs 中展現重塑／煥然一新的少鹽少糖吉祥物（「鹽少」及「糖小姐」），以最大化宣傳效果（吉祥物資料由政府提供）。</p>
+<p>4. <strong>展現核心計劃</strong>：API 須簡短展示 CRSS 旗下核心計劃（例如透過 QR code 或其他適當展示方式），包括 [7-9]：</p>
+<p>   * 少鹽少糖食肆計劃 (Less-Salt-and-Sugar Restaurants Scheme) </p>
+<p>   * 無糖星期五 (Less Sugar Friday campaign) </p>
+<p>   * 預包裝食品「鹽／糖」標籤計劃 (&quot;Salt / Sugar&quot; Label Scheme for Prepackaged Food Products) </p>
+<p>5. <strong>長期標語</strong>：建議一個適合 CRSS 及 LSS 運動長期使用的雙語響亮標語（impactful slogan, bilingual）。</p>
+<p>* <strong>出處</strong>：*Quotation Document_API.pdf* Part III [p.85-87]。</p>
+<p>---</p>
+<h5>④ 影片及製作規格 (Production Specifications)</h5>
+<p>* <strong>集數與長度</strong>：</p>
+<p>  * <strong>TV API</strong>：1 條，長度 30 秒 。</p>
+<p>  * <strong>Radio API</strong>：1 條，長度 30 秒 。</p>
+<p>  * <strong>專題影片 (Two-minute video)</strong>：1 條，長度 2 分鐘（介紹 CRSS 各項重點措施）。</p>
+<p>  * <strong>精華短片 (Short videos)</strong>：3 條，每條長約 10–15 秒（改編自 2 分鐘影片，重點展示個別措施）。</p>
+<p>* <strong>語言、字幕與配音</strong>：</p>
+<p>  * <strong>TV API</strong>：粵語（配繁體中文書面語字幕）及英文（配英文字幕）；須提供廣東話及英文旁白配音員 。</p>
+<p>  * <strong>Radio API</strong>：粵語、英文（獨白形式 monologue-type）及普通話 ；普通話配音員建議達到國家語言文字工作委員會普通話水平測試「一級乙等」或以上資歷 。</p>
+<p>  * <strong>2分鐘影片及3條精華短片</strong>：粵語（配繁體中文書面語字幕）及英文（配英文字幕）。</p>
+<p>* <strong>拍攝與輸出技術規格</strong>：</p>
+<p>  * <strong>TV API 拍攝格式</strong>：首選 HDCAM, RED ONE 或同等格式；視乎創意概念亦可考慮 HDV 或單眼相機拍攝 。</p>
+<p>  * <strong>TV API 輸出格式</strong>：16:9 (HD) XDCAM HD422 at 50Mbps in MXF 及 HDCAM 。</p>
+<p>  * <strong>Radio API 音訊格式</strong>：商業電台／新城電台為 MP3，香港電台為 WAV (48kHz/16bit) [22-24]。</p>
+<p>  * <strong>網絡無障礙版本</strong>：TV API 須額外提供符合 W3C Web Content Accessibility Guidelines (WCAG) 2.2 Level AA 標準的網絡版本 。</p>
+<p>* <strong>出處</strong>：*Quotation Document_API.pdf* Part III &amp; Annex 4, 5, 6 [p.85, 87-89, 123, 127, 130]。</p>
+<p>---</p>
+<h5>⑤ 指定班底及陣容要求 (Designated Crew / Talent / Mascot Requirements)</h5>
+<p>* <strong>ERB 導師／學員</strong>：標書全文<strong>未有提及</strong> ERB 導師或學員之相關要求 [3-16, 18, 26-36]。</p>
+<p>* <strong>KOL／名人／明星 (Celebrity Involvement)</strong>：</p>
+<p>  * 標書<strong>建議</strong>邀請適當的名人／明星參與拍攝，以增加宣傳吸引力 。</p>
+<p>  * 承辦商須負責聯絡及邀請名人，並釐清及取得表演者權利（performers&#x27; rights），確保作品可在全球、任何媒體（電視、電台、網絡、公共交通多媒體、展覽等）播放及非牟利發行 。</p>
+<p>  * 承辦商須承擔名人發型、化妝、服裝、道具及交通等費用，並於建議書中說明名人的授權期（Royalty period，標書建議最少 2 至 3 年）[31-33]。</p>
+<p>* <strong>吉祥物 (Mascots)</strong>：</p>
+<p>  * 必須加入重塑／煥然一新的少鹽少糖吉祥物（「鹽少」及「糖小姐」）。</p>
+<p>  * 政府會向承辦商提供吉祥物之相關資料 。</p>
+<p>* <strong>專業製作團隊 (Production Team)</strong>：</p>
+<p>  * 承辦商須部署具經驗及資歷的專業團隊，於香港設有辦公室，並提供全套外景及室內拍攝人手、器材及交通 。</p>
+<p>* <strong>出處</strong>：*Quotation Document_API.pdf* Part III [p.86, 89-90]。</p>
+<p>---</p>
+<h5>⑥ 創意及策略重點 / 風格要求 (Creative &amp; Strategy Focus &amp; Style)</h5>
+<p>* <strong>核心風格</strong>：訊息傳達須非常清晰、準確、簡明（clear, accurate, concise），同時具備高度吸引力、衝擊力、記憶點與說服力（impact, recall, resonance）[40-43]。</p>
+<p>* <strong>策略重點</strong>：</p>
+<p>  * 傳遞「少鹽少糖依然美味」、「人人隨時隨地做到（堂食、外賣、自煮）」的積極健康態度 。</p>
+<p>  * 創作適合長期使用的雙語響亮標語 。</p>
+<p>  * 將吉祥物「鹽少」與「糖小姐」無縫融入劇情，增添親和力與記憶點 。</p>
+<p>  * 巧妙植入 QR code，引導觀眾深入了解 CRSS 三大核心計劃（食肆計劃、無糖星期五、標籤計劃）[7-9]。</p>
+<p>  * 鼓勵提出創新建議（Pro-innovation Proposals，如科技／高效製作手法，佔 15 分）及 ESG 建議（如環保、無障礙、社會責任等，佔 5 分）[44-46]。</p>
+<p>* <strong>出處</strong>：*Quotation Document_API.pdf* Part III &amp; Annex 1 [p.85-87, 108, 113-115]。</p>
+<p>---</p>
+<h5>⑦ 交付物同時間表 (Deliverables &amp; Timeline)</h5>
+<p>* <strong>交付物清單</strong>：</p>
+<p>  1. 雙語宣傳標語（Slogan）。</p>
+<p>  2. 30秒 TV API（廣東話及英文版）。</p>
+<p>  3. 30秒 Radio API（廣東話、英文及普通話版）。</p>
+<p>  4. 2分鐘專題影片及 3 條精華短片 。</p>
+<p>  5. 符合 WCAG 2.2 Level AA 的 TV API 網絡無障礙版本 。</p>
+<p>  6. 劇本、故事板（Storyboard）、12張劇照 JPEG、Cue sheet 及各電台／電視台所需之派台光碟／檔案 。</p>
+<p>* <strong>重要時間表里程碑 (Working Schedule)</strong> [34-36]：</p>
+<p>  * <strong>2026-09-08</strong>：發出投標邀請信 。</p>
+<p>  * <strong>2026-09-11 18:00 前</strong>：遞交 Reply Slip 確認出席簡介會 。</p>
+<p>  * <strong>2026-09-15 10:00</strong>：舉行簡介會（地點：政府總部東翼 17 樓 1715 室）。</p>
+<p>  * <strong>2026-09-29 中午 12:00</strong>：截標（親身投遞至 CGO 東翼 2 樓 EEB(FB) 指定報價箱）。</p>
+<p>  * <strong>2026-10-08</strong>：向評審小組進行創意 Presentation 。</p>
+<p>  * <strong>2026-10-14</strong>：與中標者進行 Debriefing session 。</p>
+<p>  * <strong>2026-10-30</strong>：Pre-production meeting (拍前會議) 。</p>
+<p>  * <strong>2026-11-23</strong>：完成 TV API 粗剪（Rough cut）。</p>
+<p>  * <strong>2026-12-07</strong>：完成 TV API 及 Radio API 定剪（Final cut）。</p>
+<p>  * <strong>2026-12-14</strong>：完成 2 分鐘影片及 3 條精華短片 。</p>
+<p>  * <strong>2026-12-21</strong>：交付 TV API 及 Radio API 派台副本（Station copies）至各大電視台及電台 。</p>
+<p>* <strong>出處</strong>：*Invitation Letter_API.pdf* [p.1-2]；*Quotation Document_API.pdf* Part III [p.91-92]；*Reply Slip_API.pdf* [p.1]。</p>
+<p>---</p>
+<h5>⑧ 強制要求與紅線 (Mandatory Requirements &amp; Red Lines)</h5>
+<p>1. <strong>預算上限紅線 (Budget Cap)</strong>：</p>
+<p>   * 估算預算介乎 <strong>HK\$1,000,000 至 HK\$1,300,000</strong> 。</p>
+<p>   * <strong>⛔ 超過 HK\$1,300,000 的報價將直接不獲考慮（Disqualified / Not considered）</strong> 。</p>
+<p>2. <strong>雙信封制與遞交方式 (Submission Red Lines)</strong>：</p>
+<p>   * 必須採用雙信封制：技術建議書（Technical Proposal，一式兩份）與費用建議書（Fee Proposal，一式兩份）須分別密封於獨立信封內 。</p>
+<p>   * 外信封不可印有／顯示投標公司名稱 。</p>
+<p>   * <strong>⛔ 不接受電子副本遞交</strong>：標書未提及 soft copy 遞交，只接受紙本 。必須於 2026-09-29 中午 12:00 前親身投遞至添馬添美道 2 號政府總部東翼 2 樓 EEB(FB) 指定報價箱 。逾期或未投遞至指定箱者不獲受理 。</p>
+<p>3. <strong>原創性與全球永久版權 (IP Red Lines)</strong>：</p>
+<p>   * 創意概念及素材必須為原創，不得轉售或曾被其他機構購買 。</p>
+<p>   * 完成品、劇本、素材及拍攝片段之全球及永久版權（Worldwide and perpetual copyright）均歸香港特區政府所有 。</p>
+<p>   * 承辦商須自行負擔音樂版權（CASH、IFPI、HKRIA）及播放授權費用 。</p>
+<p>4. <strong>配音品質與免費重錄條款 (VO Pronunciation Penalty)</strong>：</p>
+<p>   * 普通話配音員建議具備國家語委普通話水平測試「一級乙等」或以上資歷 。</p>
+<p>   * 若電台因發音不準確或不當而拒播，承辦商必須<strong>免費安排重新錄音並更換派台版本</strong> 。</p>
+<p>5. <strong>評分機制 (Marking Scheme)</strong>：</p>
+<p>   * 評審比重為 <strong>技術 70%：價格 30%</strong> 。</p>
+<p>   * 技術分 100 分中，20 分預留予創新建議（15 分 Pro-innovation + 5 分 ESG Proposals）。</p>
+<p>* <strong>出處</strong>：*Invitation Letter_API.pdf* [p.1-2]；*Quotation Document_API.pdf* [p.2, 15-16, 89-91, 107, 120]。</p>
+<p>---</p>
+<p>💡 想要我幫你針對呢個標書撰寫 <strong>Technical Proposal (Part IV Schedule 1)</strong> 嘅架構草稿，定係幫你準備 Presentation Slide 嘅重點分頁？</p>
+<h4>⚠️ 製作要求（標書硬性，每個概念必跟，違 = 廢稿）</h4>
+<p>- <strong>手語</strong>：唔使（標書原文:標書未有提及手語要求，p）</p>
+<p>- <strong>W3C影片</strong>：要（標書原文:TV API 須提供符合 W3C Web Content Accessibility Guideli，p88）</p>
+<p>- <strong>明星/名人/官員</strong>：無Preference（標書原文:建議邀請適當名人參與，須負責聯絡及全球/永久版權釐清，授權期建議最少 2-3 年，p90）</p>
+<p>- <strong>Mascot</strong>：Preferred（標書原文:須加入重塑後的少鹽少糖吉祥物（「鹽少」及「糖小姐」），政府會提供資料，p86）</p>
+<p>- <strong>動畫</strong>：無Preference（標書原文:標書未有明確指定 2D 動畫 / 標書未有明確指定 3D 動畫，p）</p>
+<h4>📑 要交文件（邊份 DOC + 頁碼）</h4>
+<p>- <strong>Part IV Schedule 1 – Service Proposal</strong>（Quotation Document_API.pdf · p15） — 一式兩份 (two copies)，需放在 Technical Proposal 信封</p>
+<p>- <strong>Part IV Schedule 2 – Fee Proposal</strong>（Quotation Document_API.pdf · p15） — 一式兩份 (two copies)，需獨立放在 Fee Proposal 信封</p>
+<p>- <strong>Part IV Schedule 3 – Information Schedule</strong>（Quotation Document_API.pdf · p15） — 一份 (one copy)</p>
+<p>- <strong>Part IV Schedule 4 – Non-collusive Quotationing Certificate</strong>（Quotation Document_API.pdf · p15） — 一份 (one copy)</p>
+<p>- <strong>Part IV Schedule 5 – Pro-innovation Proposals and ESG Proposals</strong>（Quotation Document_API.pdf · p15） — 一份 (one copy)</p>
+<p>- <strong>Part IV Annex 2 – Information on Music Copyright</strong>（Quotation Document_API.pdf · p15） — 一份 (one copy)</p>
+<p>- <strong>Part IV Annex 3 – Statement on Copyright, Confidentiality Indemnity, Insurance and Gender Mainstreaming for Quotationers</strong>（Quotation Document_API.pdf · p15） — 一份 (one copy)</p>
+<p>- <strong>Part V Offer to be Bound</strong>（Quotation Document_API.pdf · p16） — 一份 (one copy)，須妥善簽署</p>
+<p>- <strong>Appendix A to Terms of Quotation – Contact Details</strong>（Quotation Document_API.pdf · p16） — 一份 (one copy)，需完成 Part B</p>
+<p>- <strong>Appendix B to Terms of Quotation – Pro Forma Sub-contractor’s Undertaking</strong>（Quotation Document_API.pdf · p16） — 一份 (one copy)，如適用</p>
+<p>- <strong>Reply Slip</strong>（Reply Slip_API.pdf · p1） — 須於 2026-09-11 18:00 前電郵交回</p>
+<h4>📮 交標方法（地址／信封／份數）</h4>
+<p>- <strong>截標</strong>：2026-09-29 12:00</p>
+<p>- <strong>印幾多份</strong>：Service Proposal (two copies), Fee Proposal (two copies), Information Schedule (one copy), Non-collusive Quotationing Certificate (one copy), Pro-innovation Proposals and ESG Proposals (one copy), Annex 2 (one copy), Annex 3 (one copy), Offer to be Bound (one copy), Appendix A (one copy), Appendix B (if applicable)</p>
+<p>- <strong>幾多信封</strong>：3 個</p>
+<p>- <strong>Soft copy（電子副本：CD/USB？）</strong>：標書無提及 → 只交紙本,不需 soft_copy</p>
+<p>- <strong>交去邊 — To</strong>：Secretary for Environment and Ecology (Attn: Chairman, Quotation Opening Team)</p>
+<p>- <strong>交去邊 — Address</strong>：Environment and Ecology Bureau (EEB) (Food Branch) Quotation Box (the Specified Quotation Box) located at the entrance on 2/F, East Wing, Central Government Offices (CGO), 2 Tim Mei Avenue, Tamar, Hong Kong</p>
+<p>- <strong>信封 label「Technical Proposal」要寫</strong>：`Technical Proposal`</p>
+<p>- <strong>信封 label「Fee Proposal」要寫</strong>：`Fee Proposal`</p>
+<p>- <strong>信封 label「Outer Envelope」要寫</strong>：`Quotation Exercise for Provision of Service for Production of a TV and Radio Announcements in the Public Interest for Less-Salt-and-Sugar Dietary Habit Campaign`（The sealed envelope should be addressed to the Secretary for Environment and Ecology (Attn: Chairman, Quotation Opening Team). Please do not show the Quotationer’s name on the envelope.）</p>
+<h4>💰 預算 / 費用</h4>
+<p>- <strong>預算（Budget）</strong>：HK\$1,000,000 ~ HK\$1,300,000</p>
+<p>- <strong>費用明細要求（Fee Proposal Breakdown）</strong>：Submission of creative proposal and quotation with breakdown in duplicate</p>
+<h4>⛔ 注意事項 / 紅線</h4>
+<p>- [無障礙] 無障礙網頁標準：TV API 須提供符合 W3C Web Content Accessibility Guidelines (WCAG)</p>
+<p>- [mascot] 吉祥物登場：須加入重塑後的少鹽少糖吉祥物（「鹽少」及「糖小姐」），政府會提供吉祥物資料</p>
+<p>- [明星] 明星/名人參與及授權期：建議邀請適當名人參與，須負責聯絡、全球及永久版權釐清，授權期建議最少 2 至 3 年，相關費用由承辦商承擔</p>
+<p>- [其他] 電台發音及發音不合格重錄：普通話配音員建議達國家語言文字工作委員會普通話水平測試一級乙等；如被電台拒播或發音不正確，須免費重新安排錄音</p>
+<p>- [其他] 音樂版權及申報：須填妥 Information on Music Copyright 表格，並負責向 CASH、IFPI、HKRIA 等</p>
+<h4>📅 日程</h4>
+<p>- 2026-09-08 Issue invitation letter to quotationers</p>
+<p>- 2026-09-11 Submission of Reply Slip by quotationers</p>
+<p>- 2026-09-15 Briefing to interested quotationers by EEB(FB)</p>
+<p>- 2026-09-29 Submission of creative proposal and quotation (Quotation Closing Date)</p>
+<p>- 2026-10-08 Presentation of creative ideas to selection panel by bidders</p>
+<p>- 2026-10-14 Debriefing session with the successful bidder</p>
+<p>- 2026-10-30 Pre-production meeting</p>
+<p>- 2026-11-23 Completion of rough cut of TV API</p>
+<p>- 2026-12-07 Completion of final cut of TV and radio APIs</p>
+<p>- 2026-12-14 Completion of two-minute video and three short videos</p>
+<p>- 2026-12-21 Delivery of station copies of TV and radio APIs</p></div></div>
+<div id='handbd' class='tabpanel'><p class='hint'>喺 Master GSheet 開「TV API Script <b>1／2／3</b>」三個 tab 放唔同 TV API 稿，<b>撳邊個 SET 就生邊個</b>（全 NLM 風格各一，純畫面唔蓋字）。</p><div class='acts' style='margin-bottom:6px'><button class='btn' title='讀 Master GSheet「TV API Script 1」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=EEB&concept=1&stage=handbd&engine=allstyles&target=main')">🎬 SET 1 → 生 BD</button><button class='btn' title='讀 Master GSheet「TV API Script 2」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=EEB&concept=2&stage=handbd&engine=allstyles&target=main')">🎬 SET 2 → 生 BD</button><button class='btn' title='讀 Master GSheet「TV API Script 3」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=EEB&concept=3&stage=handbd&engine=allstyles&target=main')">🎬 SET 3 → 生 BD</button><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card empty'>未生過手寫稿 BD —— 撳上面 SET 生成（或先喺 Master GSheet 放稿）。</div></div>
+<div id='theme1_1' class='tabpanel' data-set='1'><div class='banner'>🧭 北極星未定。撳掣 → 7 agency + 委員會就住成份標書諗一個大主題（big idea）+ 一個綜合口號。所有 MOD ladder 返呢度。</div><div class='card'><button class='btn big' title='' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=EEB&concept=PLAN&stage=gen_theme&target=main')">🧭 生成大主題 + 綜合口號</button></div><div class='card'><button class='btn ghost' title='將呢個 dept 全部已生成嘅 MOD planning（主題／系列／SOC／MEDIA／KOL）出去 Master GSheet，每個 mod 一個 tab；你喺 GSheet 改完，自己貼返入真 deck（GSlide）。design 你話事。' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=EEB&concept=all&stage=mod_gsheet&target=main')">📤 全部 MOD → Master GSheet（畀你改）</button></div></div>
+<div id='tvapi1_1' class='tabpanel' data-set='1'><div class='banner'>👉 委員會已預選六強，你可以隨選隨剔，撳右下 Submit，NBLM 即自動幫佢哋生 BD 入 VID 2。</div><div class='h2'>🔻 推薦六強（橫掃揀）</div><div class='carousel'><div class='ccard surface-card  sel' data-cid='cm34c9d7da'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>委員會 2</span><span class='oscore'>評審 88</span></div><div class='ctitle'>💬 少啲，先至係最好味。</div><div class='csub'>〔美味魔法師〕</div><div class='cbody'><p><strong>創作概念</strong>: 將吉祥物「鹽少」同「糖小姐」由說教角色，徹底重塑成活潑嘅「美味魔法師」。佢哋唔會出聲講道理，而係喺現實場景中，以跨次元（真人+3D動畫）互動形式，俏皮咁幫市民「施法」，輕輕一揮魔法棒就將過多嘅鹽糖變走，瞬間令食物變得更誘人、更色香味俱全，突顯少鹽少糖唔係「減少」，而係「提升」食物嘅本質。</p>
+<p><strong>人/景</strong>: 一個普通家庭（年輕父母+小孩）嘅一日。場景包括：家庭廚房（自煮）、戶外公園野餐（外賣）、家庭式餐廳（堂食）。</p>
+<p><strong>Visual Device</strong>: 「魔法粒子特效」。每當「鹽少」或「糖小姐」出場施法，佢哋嘅魔法棒會揮出由鹽粒或糖粒組成嘅閃亮粒子，呢啲粒子會「抽走」畫面中象徵過量調味嘅灰色煙霧，然後食物本身會瞬間變得色彩更鮮豔、更 a bit a bit glowing，視覺上變得「更好味」。</p>
+<p><strong>主打口號</strong>: 少啲，先至係最好味。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用（主角係吉祥物同素人家庭，更能突顯普遍性）。</p><div class='scores'><div class='sline'><b>📊 官方評審 88/100</b><span class='scrit'>訊息準確 28.0 · 創意手法 13.0 · 宣傳衝擊 12.0 · 記憶點 8.0 · 說服共鳴 9.0 · 6a 14.0 · 6b 4.0</span></div><div class='snote'>此概念透過生動的跨次元互動和視覺特效，成功將少鹽少糖的訊息轉化為提升食物本質的正面體驗，具備高度創意和潛在的宣傳影響力。</div><div class='sline'><b>🎨 創意質素 32/40</b><span class='scrit'>（落地 7.0 / 扣brief 9.0 / 鋒利 8.0）</span></div><div class='snote'>創意概念「美味魔法師」成功將吉祥物轉化為具吸引力的「魔法師」，透過跨次元互動和視覺特效，巧妙地傳達「少鹽少糖」能提升食物美味度的訊息，但「魔法粒子特效」的具體呈現方式需更貼近香港市民的日常飲食習慣，以增強在地共鳴。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard surface-card  sel' data-cid='cm467ba4f3'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>委員會 4</span><span class='oscore'>評審 88</span></div><div class='ctitle'>💬 識食，梗係揀「少」啲。</div><div class='csub'>〔開餐尋寶圖〕</div><div class='cbody'><p><strong>創作概念</strong>: 將搵健康選擇嘅過程，包裝成一個輕鬆好玩嘅城市尋寶遊戲。吉祥物「鹽少」同「糖小姐」由 2D 世界跳入現實，化身成主角身邊嘅精靈嚮導，帶領佢喺超市貨架、餐廳餐牌之間，用手機「嘟」一下 QR code 或者認住標籤，輕鬆「解鎖」一個又一個美味又健康嘅寶藏。將政府三個核心計劃（餐廳、標籤、星期五）自然地串連成一個尋寶任務。</p>
+<p><strong>人/景</strong>: 一個普通市民（主角），穿梭喺超市、便利店、茶飲店同埋食肆林立嘅街道。</p>
+<p><strong>Visual Device</strong>: <strong>AR 擴增實境視覺</strong>。當主角用手機鏡頭對準貨品或餐廳 QR code 時，畫面會疊加好玩嘅 AR 視覺效果：吉祥物會跳出嚟畀 like、有標籤嘅產品會發光、參與計劃嘅餐廳會喺地圖上標示成「寶藏點」。強調搵健康選擇就好似玩 game 咁簡單有趣。</p>
+<p><strong>主打口號</strong>: 識食，梗係揀「少」啲。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。</p><div class='scores'><div class='sline'><b>📊 官方評審 88/100</b><span class='scrit'>訊息準確 28.0 · 創意手法 13.0 · 宣傳衝擊 12.0 · 記憶點 8.0 · 說服共鳴 9.0 · 6a 14.0 · 6b 4.0</span></div><div class='snote'>概念新穎，將健康飲食融入 AR 尋寶遊戲，具吸引力，但需確保 AR 技術的普及性和易用性，並加強 ESG 方面的連結。</div><div class='sline'><b>🎨 創意質素 32/40</b><span class='scrit'>（落地 7.0 / 扣brief 9.0 / 鋒利 8.0）</span></div><div class='snote'>AR 擴增實境視覺雖具創意，但與「真人真場景」的 grounded 要求有一定距離，是此概念最弱的一環。 | AR 擴增實境視覺雖然有創意，但可能過於離地，未能完全貼合「真實活動真人物真場景」的要求。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard surface-card  sel' data-cid='cmfbebc34a'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>委員會 1</span><span class='oscore'>評審 87</span></div><div class='ctitle'>💬 識食，梗係食真味。</div><div class='csub'>〔識食密碼〕</div><div class='cbody'><p><strong>創作概念</strong>: 將「少鹽少糖」包裝成一個識食之人先知嘅「秘密 Code」。識得喺餐牌、外賣 App、超市貨架上面搵到呢個「密碼」，就代表你係真正懂得享受食物原味嘅食家。條片會用明快節奏，展現主角喺唔同場景好型咁「解鎖」美食，將政府計劃（餐廳/星期五/標籤）變成搵食地圖上嘅彩蛋。</p>
+<p><strong>人/景</strong>: 一個有品味嘅年輕上班族（男女皆可）。場景包括：有格調嘅茶餐廳、充滿活力嘅辦公室（叫外賣）、設計簡潔嘅現代超市。</p>
+<p><strong>Visual Device</strong>: 「解鎖動畫」。每當主角成功點到少鹽少糖選項（例如同侍應講暗號、喺 App 㩒掣、拎起有標籤嘅產品），對應嘅食物或標籤就會發出柔和嘅光效，伴隨一個清脆嘅「click」聲同解鎖 icon 動畫，視覺化「成功解鎖真味」嘅滿足感。</p>
+<p><strong>主打口號</strong>: 識食，梗係食真味。</p>
+<p><strong>Proposed 明星/名人</strong>: 柯煒林 (Will Or)。形象年輕、有品味，帶點文青氣質，符合「識食 insider」嘅感覺，有親和力但唔會太 over。</p><div class='scores'><div class='sline'><b>📊 官方評審 87/100</b><span class='scrit'>訊息準確 28.0 · 創意手法 13.0 · 宣傳衝擊 12.0 · 記憶點 8.0 · 說服共鳴 9.0 · 6a 13.0 · 6b 4.0</span></div><div class='snote'>訊息清晰且具吸引力，創意手法新穎，但需加強推廣活動的預期影響力及公眾記憶度。</div><div class='sline'><b>🎨 創意質素 30/40</b><span class='scrit'>（落地 7.0 / 扣brief 8.5 / 鋒利 7.0）</span></div><div class='snote'>創意概念不錯，但「解鎖動畫」視覺化手法略嫌不夠貼地，可考慮更生活化的呈現方式。 | 「識食密碼」概念新穎，成功將健康飲食與「識食」掛鉤，但「解鎖動畫」的視覺化處理需更貼近香港市民的日常習慣，避免過於科技感而顯得離地。</div><div class='sline muted'>🎬 視覺評分：BD 生成後先有（Pass 2）</div></div></div></div><div class='ccard surface-card  sel' data-cid='cm27830063'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>deepseek 2</span></div><div class='ctitle'>💬 好食嘅秘密，唔係鹽同糖。</div><div class='csub'>「味道大考」——鹽少糖小姐嘅全民盲測</div><div class='cbody'><p><strong>創作概念</strong>：概念核心係將「少鹽少糖依然美味」變成一個<strong>有遊戲感嘅考驗</strong>——由吉祥物「鹽少」同「糖小姐」做主持，喺香港唔同角落（街市、公園、辦公室、茶餐廳）開設「流動盲測站」，隨機捉住路人要佢哋矇眼試食兩碟一樣嘅餸：一碟正常調味、一碟少鹽少糖版。每次測試結果都一樣——路人除咗眼罩之後發現「好食嗰碟原來係少鹽少糖版」嘅驚訝表情，就係全片最強嘅 social proof。吉祥物喺旁邊做評判，拎住「鹽」「糖」形狀嘅打分牌，搞笑互動。扣政府訊息：盲測站旁邊有大型 QR code  banner 展示三個計劃；而「少糖星期五」就由糖小姐特別主持一個「甜品盲測」環節——少糖版甜品 VS 正常版，結果一樣難分高下。</p>
+<p><strong>人/景</strong>：街市熟食中心（一班買完餸嘅師奶、阿伯被捉住試食）；中環海旁草地（午飯時間嘅 OL 同金融才俊）；茶餐廳（地盤工人、年輕人）。全部 outdoor 自然光拍攝，真實反應鏡頭（unscripted reactions）為主。</p>
+<p><strong>Visual Device</strong>：<strong>「矇眼試食 + 除眼罩一刻」</strong>——一個自帶敘事張力嘅動作：矇眼令觀眾同測試者一樣「未知答案」，除眼罩一刻嘅表情反差（先疑惑後驚喜）就係全片 hook。呢個 device 可以重複用喺唔同場景、唔同食物、唔同人身上，每次 reaction 都唔同，天然適合剪 3 條 15 秒精華短片（每條專攻一個計劃）。而且「盲測」本身有新聞性，容易吸引媒體報導同社交媒體二次傳播。</p>
+<p><strong>主打口號</strong>：好食嘅秘密，唔係鹽同糖。</p>
+<p><strong>Proposed 明星/名人</strong>：<strong>林盛斌（Bob）</strong>——本身形象「為食」又親民，由佢做「盲測站站長」帶住吉祥物四圍走，話服力強（一個咁為食嘅人都話少鹽少糖好食，觀眾先信）；而且 Bob 嘅喜感同吉祥物互動會自然生動，唔會似硬sell。授權期 2 年，屬合理 budget 範圍。</p><div class='scores'><div class='sline'><b>🎨 創意質素 34/40</b><span class='scrit'>（落地 8.0 / 扣brief 9.0 / 鋒利 8.5）</span></div><div class='snote'>「味道大考」概念以盲測形式將「少鹽少糖依然美味」的訊息具象化，透過真實人物的驚喜反應和吉祥物互動，成功營造出具備趣味性、記憶點和說服力的宣傳效果，貼合客戶期望，但需注意盲測站的場景設計和人物選擇能更貼近不同社群的日常。 | 「味道大考」概念以遊戲化盲測形式，巧妙地將「少鹽少糖依然美味」的核心訊息融入香港真實生活場景，並透過林盛斌的親民形象與吉祥物互動，成功營造出具記憶點且具說服力的宣傳效果，唯一可優化之處是吉祥物在真實場景中的融入感可再加強。</div></div></div></div><div class='ccard surface-card  sel' data-cid='cm3a51e0cd'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>委員會 3</span></div><div class='ctitle'>💬 少啲，先係最好味。</div><div class='csub'>〔感官反轉〕</div><div class='cbody'><p><strong>創作概念</strong>: 用極致嘅 Food Porn 美學，先勾起觀眾最原始嘅食慾，等大家以為係「邪惡美食」推介。喺食客最滿足嘅一刻，先至反轉揭曉：呢啲令人垂涎嘅美食，全部都係「少鹽少糖」嘅選擇。核心係要證明「極致美味」同「健康」並唔對立，而係可以完美並存。</p>
+<p><strong>人/景</strong>: 香港後生仔、OL、小家庭，喺茶餐廳、快餐店、food court 等日常用餐場景。</p>
+<p><strong>Visual Device</strong>: <strong>ASMR 食慾特寫</strong>。用微距鏡頭捕捉食物最誘人嘅瞬間：流心蛋黃爆開、燒肉脆皮嘅「咔嚓」聲、凍飲冰塊碰撞嘅清脆聲。成條片充滿呢啲感官衝擊，最後先拉闊鏡頭，見到餐廳門口張「少鹽少糖」貼紙。</p>
+<p><strong>主打口號</strong>: 少啲，先係最好味。</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用。</p><div class='scores'><div class='sline'><b>🎨 創意質素 32/40</b><span class='scrit'>（落地 8.0 / 扣brief 9.0 / 鋒利 7.0）</span></div><div class='snote'>「感官反轉」概念成功以極致的Food Porn美學顛覆了「少鹽少糖等於無味」的刻板印象，但吉祥物「鹽少」及「糖小姐」的融入方式有待加強，以提升其作為必出資產的影響力。 | 概念極具潛力，但「感官反轉」的執行細節需更貼地，避免流於單純的視覺堆砌。</div></div></div></div><div class='ccard surface-card  sel' data-cid='cm28e57561'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>deepseek 1</span></div><div class='ctitle'>💬 少一味，多一啖。你話事。</div><div class='csub'>「調味七合一」</div><div class='cbody'><p><strong>創作概念</strong>：成條片由「一個動作」貫穿——主角（一個普通香港家庭）每次準備食飯前，都會將枱上嘅鹽樽、糖罐「啪」一聲反轉蓋住，然後由「鹽少」同「糖小姐」兩個吉祥物跳出嚟，喺食物上面施展「魔法」——其實係將食物嘅原味放大、令佢睇落更香更吸引。每當有人想落調味料嘅一刻，兩個吉祥物就會好調皮咁攔住，用「你試吓先啦！」嘅眼神鼓勵你先食一啖原味。場景由屋企飯枱 → 茶餐廳 → 外賣 app 落單畫面快速切換，每次都係同一個「反轉鹽樽糖罐」嘅動作，形成強烈視覺記憶。扣政府訊息：三個場景正正對應「自煮、堂食、外賣」三個關鍵訊息，而每次反轉調味料之後，畫面角落會閃出對應計劃嘅 QR code（屋企=標籤計劃、茶餐廳=少鹽少糖餐廳計劃、外賣 app=少糖星期五）。</p>
+<p><strong>人/景</strong>：一個後生媽媽同佢讀小學嘅仔（屋企飯枱，餸菜豐富）；一個地盤工人（茶餐廳，碟頭飯熱辣辣）；一個 OL（辦公室，手機外賣 app 準備落單）。全部係真實香港人面孔，唔係模特兒式靚人。</p>
+<p><strong>Visual Device</strong>：<strong>「反轉鹽樽糖罐」</strong>——一個簡單、可重複、人人都識嘅動作（反轉=唔用），每次出現都有「啪」一聲清脆音效，配合吉祥物現身。呢個動作夠簡單，可以延伸做海報主視覺（一個反轉嘅鹽樽，瓶蓋變成笑臉）、可以做 social media challenge（#反轉一味）、可以喺 2 分鐘專題片入面不斷變奏。</p>
+<p><strong>主打口號</strong>：少一味，多一啖。你話事。</p>
+<p><strong>Proposed 明星/名人</strong>：不適用（用素人真實感更強，而且可以將成個 budget 集中喺製作質素同吉祥物 animation 度，避免明星授權期費用蠶食製作費）。</p><div class='scores'><div class='sline'><b>🎨 創意質素 32/40</b><span class='scrit'>（落地 8.0 / 扣brief 9.0 / 鋒利 7.0）</span></div><div class='snote'>概念具體且貼合受眾痛點，但吉祥物「魔法」的呈現方式需更貼近現實，避免過於卡通化。</div></div></div></div></div><div class='h2'>其餘概念（分數高 → 低）</div><div class='carousel rest-row'><div class='ccard surface-card rest ' data-cid='cm4453a4ff'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>gemini 1</span></div><div class='ctitle'>💬 鹽少糖小姐帶路，好味健康無難度！</div><div class='csub'>〔味覺導航：鹽少糖小姐帶你尋味〕</div><div class='cbody'><p><strong>創作概念</strong>: 透過「鹽少」同「糖小姐」呢對活潑嘅吉祥物，以第一身視角帶領觀眾穿梭香港地道美食場景，揭示少鹽少糖嘅美食一樣咁吸引。佢哋會用輕鬆幽默嘅方式，展示點樣喺唔同飲食情境（堂食、外賣、自煮）中輕鬆實踐少鹽少糖，打破「健康等於無味」嘅迷思，強調美味與健康可以並存。</p>
+<p><strong>人/景</strong>: 一對年輕情侶（代表目標受眾），喺茶餐廳食早餐、喺辦公室叫外賣、喺屋企煮飯。鹽少同糖小姐會以2D/3D動畫形式，穿梭於現實場景中，同情侶互動。</p>
+<p><strong>Visual Device</strong>: 「鹽少」同「糖小姐」以半透明或卡通化嘅形象，喺畫面中「跳出」或「飄浮」喺食物旁邊，用有趣嘅動作或表情，引導觀眾留意食物中少鹽少糖嘅選擇。例如，鹽少會輕輕撥走碟上多餘嘅鹽粒，糖小姐會將飲品中嘅糖份變成閃爍嘅星光，象徵減少。</p>
+<p><strong>主打口號</strong>: 鹽少糖小姐帶路，好味健康無難度！</p>
+<p><strong>Proposed 明星/名人</strong>: 不適用 (以吉祥物為核心，節省明星費用並強化吉祥物形象)</p><div class='scores'><div class='sline'><b>🎨 創意質素 29/40</b><span class='scrit'>（落地 7.0 / 扣brief 8.0 / 鋒利 6.0）</span></div><div class='snote'>吉祥物與真人互動的創意不錯，但「半透明或卡通化形象」的視覺呈現方式，可能在真實感上略有不足，且「鹽少輕輕撥走鹽粒」的具體動作，需要更細膩的設計才能避免顯得刻意。</div></div></div></div><div class='ccard surface-card rest ' data-cid='cm8422647a'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>chatgpt 1</span></div><div class='ctitle'>💬 少鹽少糖，重新發現真滋味。</div><div class='csub'>〔味蕾時光機：從「味」失到「味」回〕</div><div class='cbody'><p><strong>創作概念</strong>:</p>
+<p>利用「極端對比」手法，開頭呈現一個味覺被過量鹽糖「綁架」的舊日世界，食物雖重味，卻帶來身體的沉重負擔，畫面灰暗、節奏緩慢。然後透過吉祥物「鹽少」和「糖小姐」的引導，一瞬間切換到充滿色彩、生機勃勃的「少鹽少糖新世界」，展示即使減少鹽糖，食物依然色香味俱全，人們吃得更健康、更快樂。這個極端前後對比，強調少鹽少糖不是犧牲，而是重獲真正美味與健康。</p>
+<p><strong>人/景</strong>:</p>
+<p>- <strong>Before</strong>: 畫面出現一個因為長期攝取過多鹽糖而感到疲憊、精神不振的上班族，邊吃著外賣快餐，邊看著手機上的健康資訊，眼神中流露出無奈。旁邊的餐點特寫，雖然醬汁濃郁，但整體色調偏暗，營造沉重感。</p>
+<p>- <strong>After</strong>: 上班族在「鹽少」和「糖小姐」的引導下，嘗試少鹽少糖餐廳的菜式，或在家中用減鹽醬料煮食，又或者在茶飲店點選「無糖星期五」的飲品。畫面明亮，色彩鮮豔，主角笑容滿面，享受美食的同時，身心充滿活力。場景涵蓋茶餐廳、辦公室、超市貨架、居家廚房等香港常見場景。</p>
+<p><strong>Visual Device</strong>:</p>
+<p>一道「味蕾時光機」的特效光束，從天而降照在主角身上。光束經過處，畫面瞬間由灰暗、沉重的「味覺失衡」狀態，轉變為色彩鮮豔、充滿活力的「少鹽少糖新生活」。吉祥物「鹽少」和「糖小姐」會俏皮地「穿越」入鏡，用它們的魔法棒或糖果/鹽罐，輕輕點擊食物或餐牌，即可將普通食物「變身」為少鹽少糖版本，並彈出 QR code 指引觀眾掃描。</p>
+<p><strong>主打口號</strong>: 少鹽少糖，重新發現真滋味。</p>
+<p><strong>Proposed 明星/名人</strong>:</p>
+<p>- <strong>提案名人</strong>: 黃淑儀 (Gigi姐)</p>
+<p>- <strong>點解</strong>: Gigi姐在香港市民心中有「煮得之人」的形象，她對食材的講究及對健康飲食的推廣，能有效說服公眾「少鹽少糖一樣美味」。她的親和力與廣大媽媽及家庭主婦受眾高度吻合，能帶出「在家自煮少鹽少糖」的實用性。同時，她近年也多參與健康生活節目，能輕易融入「健康飲食」的主題。授權期建議 2-3 年。</p><div class='scores'><div class='sline'><b>🎨 創意質素 28/40</b><span class='scrit'>（落地 7.0 / 扣brief 8.0 / 鋒利 6.0）</span></div><div class='snote'>概念核心「味蕾時光機」的對比手法有記憶點，但「極端對比」的呈現方式略嫌誇張，未能完全貼近香港市民對「少鹽少糖」的實際疑慮，應更聚焦於「容易做到」的層面。 | 概念雖有亮點，但「味蕾時光機」特效略顯離地，且名人選擇可更貼近年輕一代。</div></div></div></div><div class='ccard surface-card rest ' data-cid='cm55c1e22f'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>chatgpt 2</span></div><div class='ctitle'>💬 少鹽少糖，味覺新體驗，無限美味無限可能！</div><div class='csub'>〔舌尖上的極限挑戰：從「無味」到「無限」〕</div><div class='cbody'><p><strong>創作概念</strong>:</p>
+<p>利用「極端對比」作為核心，以一個極端誇張的「無味世界」開場：人們吃著的食物，因為對少鹽少糖的誤解而變得淡而無味，表情索然無味，甚至誇張地表現出「味覺喪失」的沮喪。突然，吉祥物「鹽少」和「糖小姐」現身，透過展示少鹽少糖食肆計劃、無糖星期五及標籤計劃的實際成果，證明少鹽少糖不僅不無味，反而能開啟更豐富、更健康的味覺新體驗，讓「味覺」由「限制」轉化為「無限可能性」。</p>
+<p><strong>人/景</strong>:</p>
+<p>- <strong>Before</strong>: 一家人圍著餐桌，餐點擺滿，但每個人都面無表情地咀嚼，食物特寫也顯得索然無味。例如：一個小孩在茶飲店拿到一杯「無糖」的飲品，卻露出厭惡的表情。一個上班族打開外賣飯盒，卻因為擔心健康而不敢加醬，吃得意興闌珊。畫面色調偏冷，節奏沉悶。</p>
+<p>- <strong>After</strong>: 「鹽少」和「糖小姐」以活潑的 2D/3D 動畫形式現身，穿梭於不同場景，向觀眾展示如何輕鬆實踐少鹽少糖。例如，它們在「少鹽少糖餐廳」的餐牌上點亮推薦菜式；在超市貨架上指出「鹽／糖」標籤產品；在辦公室點擊手機App，顯示「無糖星期五」的推廣資訊。主角們品嚐後，眼神亮起，露出驚喜滿足的笑容。畫面色彩繽紛，節奏明快。</p>
+<p><strong>Visual Device</strong>:</p>
+<p>使用「味覺濾鏡」的視覺裝置。當主角身處「無味」情境時，整個畫面會呈現一層灰白或褪色的濾鏡效果，人物表情呆滯，食物缺乏誘惑力。當「鹽少」和「糖小姐」出現，並帶出 CRSS 的各項計劃時，濾鏡會被瞬間「撕開」或「褪去」，畫面回復鮮豔色彩，食物變得垂涎欲滴，人物表情也隨之生動起來。吉祥物會實時互動，例如「鹽少」會從食物中抽取多餘的鹽分，而「糖小姐」會將飲品上的糖塊變成星星。</p>
+<p><strong>主打口號</strong>: 少鹽少糖，味覺新體驗，無限美味無限可能！</p>
+<p><strong>Proposed 明星/名人</strong>:</p>
+<p>- <strong>提案名人</strong>: 肥媽 (Maria Cordero)</p>
+<p>- <strong>點解</strong>: 肥媽以其熱情開朗的性格和對煮食的熱愛而聞名，她能將煮食的樂趣與健康生活結合，打破公眾對「少鹽少糖無味」的固有印象。她的感染力強，能鼓勵不同年齡層的觀眾嘗試新口味，特別是家庭主婦和長者。她本身也是一個「食家」，由她來證明少鹽少糖的美味，更具說服力。授權期建議 2-3 年。</p><div class='scores'><div class='sline'><b>🎨 創意質素 28/40</b><span class='scrit'>（落地 6.0 / 扣brief 8.0 / 鋒利 7.0）</span></div><div class='snote'>概念有記憶點，但「味覺濾鏡」的視覺裝置略顯誇張，未能完全貼合「真實活動真人物真場景」的要求。</div></div></div></div><div class='ccard surface-card rest ' data-cid='cme9770d8b'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>gemini 2</span></div><div class='ctitle'>💬 舌尖地圖任你行，少鹽少糖好滋味！</div><div class='csub'>〔舌尖上的健康地圖〕</div><div class='cbody'><p><strong>創作概念</strong>: 以一個「美食地圖」嘅概念，透過第一身視角，將香港嘅飲食文化同少鹽少糖飲食習慣無縫結合。鏡頭會跟隨一隻手，從手機App上點選「少鹽少糖」選項，到餐廳門口貼有「少鹽少糖餐廳計劃」標誌，再到超市貨架上嘅「鹽/糖」標籤，最後回到家中輕鬆烹調。強調少鹽少糖係一個隨時隨地、唾手可得嘅選擇，並透過視覺化嘅方式呈現 CRSS 嘅各項核心計劃。</p>
+<p><strong>人/景</strong>: 一隻手（第一身視角），穿梭於香港嘅街頭、茶餐廳、外賣店、超市、屋企廚房。畫面會特寫食物、手機App介面、餐廳標誌、預包裝食品標籤等。</p>
+<p><strong>Visual Device</strong>: 運用動態圖形（Motion Graphics）將「少鹽少糖餐廳計劃」嘅標誌、預包裝食品嘅「鹽/糖」標籤、以及手機App上嘅「少鹽少糖」選項，以鮮明嘅視覺效果呈現，如同一個「健康地圖」嘅指示符號，引導觀眾發現身邊嘅少鹽少糖選擇。QR code 會以互動式嘅方式出現，例如掃描後會「彈出」吉祥物動畫。</p>
+<p><strong>主打口號</strong>: 舌尖地圖任你行，少鹽少糖好滋味！</p>
+<p><strong>Proposed 明星/名人</strong>: 陳豪 (形象健康、愛煮食、顧家，能有效連結「美味」與「健康」的訊息，並帶出「自煮」情境的說服力。)</p><div class='scores'><div class='sline'><b>🎨 創意質素 28/40</b><span class='scrit'>（落地 7.0 / 扣brief 8.0 / 鋒利 6.0）</span></div><div class='snote'>概念具備一定在地元素和貼合客戶需求，但「美食地圖」的視覺呈現方式稍嫌平面，未能完全突破「行貨」感。</div></div></div></div></div><div class='submit'><button class='btn' onclick='submitRound()'>✅ Submit 六強 (<span class=cnt>6</span>)</button></div></div>
+<div id='tvapi1_2' class='tabpanel' data-set='1'><div class='banner'>未有概念進入第二輪。返 VID 1 揀六強（submit 即自動生 BD）先。</div></div>
+<div id='tvapi1_3' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 2 揀三甲先。</div></div>
+<div id='tvapi1_4' class='tabpanel' data-set='1'><div class='banner'>🎬 VID 4 — 5 步生 storyboard ＋ 片（STEP 1 → 5）</div><div class='card'><div class='h3'>📄 STEP 1 — 故事版（你親手執 Master GSheet B6:C17，9-12 格）</div><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card step2'><div class='h3'>🎭 STEP 2 — 主角參考相（AI 自動搵 ISD 官方相 + curate；face-swap 用嚟貼真面）</div><button class='btn ghost mini' onclick="srcRefs(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=EEB&concept=FINAL&stage=facerefs&target=main')">🔍 AI 搵／更新主角參考相</button><div class='hint'>仲未 source 主角相。撳上面掣，AI 自動由 ISD 官方相搵 + curate。</div></div><div class='stylepick card'><div class='h3'>🎨 STEP 3 — 揀風格（每行 0 或 1 個；唔剔 = 跟劇本）</div><div class='styrow'><span class='stylbl'>🏙️ 環境</span><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="realistic environment" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="2D comic-style environment" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="3D animated environment" onchange='styPick(this)'>3D動畫</label></div><div class='styrow'><span class='stylbl'>🧍 人物</span><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="photorealistic characters" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="2D comic-style characters" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="3D-modeled characters" onchange='styPick(this)'>3D建模</label></div><div class='styrow'><span class='stylbl'>🌗 光/時間</span><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="daytime lighting" onchange='styPick(this)'>日 Day</label><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="nighttime lighting" onchange='styPick(this)'>夜 Night</label></div><div class='styrow'><span class='stylbl'>🎨 色彩</span><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="vivid saturated color" onchange='styPick(this)'>鮮艷</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="muted desaturated tones" onchange='styPick(this)'>灰調</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="black and white" onchange='styPick(this)'>黑白</label></div><div class='styrow'><span class='stylbl'>😊 情緒</span><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="warm heartfelt mood" onchange='styPick(this)'>溫情</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="passionate uplifting mood" onchange='styPick(this)'>激昂</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="light humorous mood" onchange='styPick(this)'>幽默</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="solemn official tone" onchange='styPick(this)'>莊重官方</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="suspenseful mood" onchange='styPick(this)'>懸疑</label></div><div class='styrow'><span class='stylbl'>🎬 質感</span><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="cinematic look" onchange='styPick(this)'>電影感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="documentary realism" onchange='styPick(this)'>紀實</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="dynamic music-video energy" onchange='styPick(this)'>MV動感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="plain straightforward style" onchange='styPick(this)'>平實</label></div><div class='styanchor'>風格 anchor：<span id='styanchor'>（跟劇本）</span></div></div><div class='card genbox'><div class='h3'>🍌 STEP 4 — 生 BD（讀 B6:C17 ＋ face-swap 主角真面）</div><button class='btn big' title='讀你喺 Master GSheet B6:C17 執好嘅 script ＋ STEP 3 風格 ＋ face-swap 主角真面 → 生最終 BD（brd=FINAL，唔污染候選）' onclick="genFinalBD(this,'EEB','https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=EEB&concept=FINAL&stage=gsheetbd&target=main')">由 B6:C17 生最終 BD</button></div><div class='card'><div class='h3'>🎬 STEP 5 — 生片（Higgsfield Kling/Seedance，開發中）</div><div class='hint'>BD 揀好 → 生片。Higgsfield CLI 整緊。</div></div></div>
+<div id='tvapi1_5' class='tabpanel' data-set='1'><div class='banner'>未有 FINAL。返 VID 3 揀 FINAL 2 先。</div></div>
+<div id='rad1_1' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 1：流程設計中，完成 VID 後再開。</div></div>
+<div id='rad1_2' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 2：流程設計中，完成 VID 後再開。</div></div>
+<div id='rad1_3' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 3：流程設計中，完成 VID 後再開。</div></div>
+<div class=foot>Idea Lab · 09-09 17:26 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+</div>
+
+<script>
+var DL = new Date("2026-09-29T12:00:00+08:00").getTime();
+function cd() {
+  var e = document.getElementById('cd'); if (!e) return;
+  var x = DL - Date.now();
+  if (x < 0) { e.textContent = '已截標'; return; }
+  var s = Math.floor(x/1000), d = Math.floor(s/86400);
+  s -= d*86400; var h = Math.floor(s/3600); s -= h*3600;
+  var m = Math.floor(s/60); s -= m*60;
+  e.textContent = (d > 0 ? d + '日 ' : '')
+    + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0')
+    + ':' + String(s).padStart(2,'0');
+}
+cd(); setInterval(cd, 1000);
+
+var TABS   = document.querySelectorAll('.tab');
+var PANELS = document.querySelectorAll('.tabpanel');
+function showTab(id) {
+  if (!document.getElementById(id)) id = 'ph0';
+  TABS.forEach(function(t) { t.classList.toggle('active', t.dataset.tab === id); });
+  PANELS.forEach(function(p) { p.classList.toggle('active', p.id === id); });
+  history.replaceState(null, '', '#' + id);
+  upd();
+  if (/(vid|tvapi)\d+_2$/.test(id)) vid2AutoBD();   // 入 VID／TVAPI 2 即自動觸發六強生 BD + poll
+}
+TABS.forEach(function(t) { t.addEventListener('click', function() { showTab(t.dataset.tab); }); });
+showTab((location.hash.slice(1)) || 'tvapi1_1');
+
+// VID 2:六強 submit 後自動生 BD —— 對未有 BD(data-needbd=1)嘅概念逐個觸發 NBLM deck(GAS 去重,撳幾多次都唔重生)。
+// 未生晒就每 45s reload 一次睇新 BD(NBLM 連夜,一晚生得晒)。
+var _vid2timer;
+function vid2AutoBD() {
+  var panel = document.querySelector('.tabpanel.active'); if (!panel) return;
+  var pend = panel.querySelectorAll('[data-needbd="1"]');
+  pend.forEach(function(c) {
+    var brd = c.dataset.brd; if (!brd) return;
+    var k = 'bdstart_EEB_' + brd;
+    if (!localStorage.getItem(k)) localStorage.setItem(k, String(Date.now()));  // 開始時間 → 進度條
+    fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=EEB&concept=" + encodeURIComponent(brd) + "&stage=deck&target=main" + setQ(),
+          {mode:'no-cors'}).catch(function(){});
+  });
+  tickProgress();
+  if (pend.length && !_vid2timer) {
+    _vid2timer = setInterval(function() { location.reload(); }, 90000);  // 靜靜每 90s 攞新 BD（冇 develop bar）
+  }
+}
+
+// VID 2 進度條：按實測平均 BD 時間（~10 分鐘）推移，封頂 99% stall（NBLM 唔報幾時好）。
+var BD_AVG_MS = 600000;   // 平均 606s（manifest 連續 gap 實測）
+function tickProgress() {
+  document.querySelectorAll('.pgbar').forEach(function(bar) {
+    var brd = bar.dataset.brd; if (!brd) return;
+    var k = 'bdstart_EEB_' + brd;
+    var s = +localStorage.getItem(k);
+    if (!s) { s = Date.now(); localStorage.setItem(k, String(s)); }
+    var pct = Math.min(99, (Date.now() - s) / BD_AVG_MS * 100);
+    var f = bar.querySelector('.pgfill'); if (f) f.style.width = pct.toFixed(0) + '%';
+    var t = bar.querySelector('.pgtxt');
+    if (t) t.textContent = pct >= 99 ? 'BD 生成中…就快好（99%）' : ('BD 生成中… ' + pct.toFixed(0) + '%（平均 ~10 分鐘）');
+  });
+}
+setInterval(tickProgress, 2000); tickProgress();
+// 已完成（卡有圖）→ 清走嗰個 brd 嘅開始時間，免下次重生即跳 99%
+document.querySelectorAll('.card[data-brd] img.sheet').forEach(function(im) {
+  var card = im.closest('.card[data-brd]');
+  if (card && card.dataset.brd) localStorage.removeItem('bdstart_EEB_' + card.dataset.brd);
+});
+
+// 零碎想法：localStorage array(可入多次),即時累積顯示,每條 POST 去 GAS 畀委員會消化
+var NK = 'notes_EEB';
+var notesEl = document.getElementById('notes');
+function loadNotes() {
+  try { var a = JSON.parse(localStorage.getItem(NK) || '[]'); return Array.isArray(a) ? a : []; }
+  catch (e) { return []; }
+}
+function saveNotes(a) { localStorage.setItem(NK, JSON.stringify(a)); }
+function fmtTs(ts) {
+  var d = new Date(ts);
+  function p(n) { return String(n).padStart(2, '0'); }
+  return (d.getMonth()+1) + '/' + d.getDate() + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+}
+function renderNotes() {
+  var box = document.getElementById('noteslist'); if (!box) return;
+  var a = loadNotes();
+  if (!a.length) { box.innerHTML = "<p class='hint' style='margin:4px 2px'>未有想法。</p>"; return; }
+  box.innerHTML = a.map(function(n, i) {
+    var txt = (n.text || '').replace(/</g, '&lt;');
+    return "<div class='notecard'><div class='noterow'>"
+      + "<span class='notets'>" + fmtTs(n.ts) + "</span>"
+      + "<button class='notedel' onclick='delNote(" + i + ")'>✕</button></div>"
+      + "<div class='notetxt'>" + txt + "</div></div>";
+  }).join('');
+}
+function submitNotes() {
+  if (!notesEl || !notesEl.value.trim()) { alert('未有想法'); return; }
+  var txt = notesEl.value.trim();
+  var a = loadNotes(); a.push({ ts: Date.now(), text: txt }); saveNotes(a);
+  notesEl.value = ''; renderNotes();
+  var url = "https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=EEB&text=" + encodeURIComponent(txt);
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('＋ 已加入（' + a.length + ' 條，VID 1 啟動時餵委員會）');
+}
+function delNote(i) {
+  var a = loadNotes(); if (i < 0 || i >= a.length) return;
+  if (!confirm('刪呢條想法?')) return;
+  a.splice(i, 1); saveNotes(a); renderNotes();
+}
+renderNotes();
+
+function tk(el) {
+  el.classList.toggle('on');
+  el.textContent = el.classList.contains('on') ? '✓' : '';
+  upd();
+}
+// carousel 卡：撳卡頭（唔係內文 scroll 區）toggle 揀選
+function tkCard(head) {
+  var card = head.closest('[data-cid]'); if (!card) return;
+  var ck = card.querySelector('.ck'); if (!ck) return;
+  tk(ck);
+  card.classList.toggle('sel', ck.classList.contains('on'));
+}
+function upd() {
+  var n = document.querySelectorAll('.tabpanel.active .ck.on').length;
+  document.querySelectorAll('.tabpanel.active .cnt').forEach(function(c) {
+    c.textContent = n;
+    c.parentElement.classList.toggle('cnt-warn', n > 6);
+  });
+}
+document.querySelectorAll('.card[data-cid]').forEach(function(card) {
+  var ck = card.querySelector('.ck');
+  if (!ck) return;
+  card.addEventListener('click', function(e) {
+    if (e.target.closest('.ck,.det,textarea,a,button')) return;
+    tk(ck);
+  });
+});
+
+function toast(msg) {
+  var t = document.createElement('div');
+  t.className = 'toast'; t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(function() { t.style.opacity = '0'; }, 6000);
+}
+function showTopProc(msg, stop) {
+  var o = document.getElementById('topproc');
+  if (!o) {
+    o = document.createElement('div'); o.id = 'topproc'; o.className = 'topproc';
+    document.body.insertBefore(o, document.body.firstChild);
+  }
+  if (stop) {
+    o.innerHTML = '<span id="tpmsg">' + msg + '</span>'
+      + ' <a href="#" onclick="location.reload();return false" style="margin-left:8px;font-weight:800;color:var(--ac)">🔄 再 check</a>'
+      + ' <a href="#" onclick="this.parentNode.remove();return false" style="margin-left:8px;color:#888">✕</a>';
+  } else {
+    o.innerHTML = '<span class="spin sm"></span><span id="tpmsg">' + msg + '</span>';
+  }
+}
+
+// ⛔⛔ 防 comment 冇咗(Raymond 2026-06-16 爆:手寫稿 BD comment 位打咗字,redeploy → reload 冧晒):
+//   **全部**輸入格(額外想法 / 6 塊手寫稿 BD comment / 鐵則 / 任何 textarea·text input)每次打字即存 localStorage,
+//   reload/redeploy 都還原返;tab 切返嚟 auto-refresh **有未存字就唔 reload**。每格按 element id 存。
+(function() {
+  var DP = 'draft_EEB_';
+  function fields() {
+    return [].slice.call(document.querySelectorAll('textarea, input[type=text]')).filter(function(e){ return e.id; });
+  }
+  function hasUnsaved() { return fields().some(function(e){ return (e.value||'').trim().length>0; }); }
+  // 載入時還原每格 draft
+  var restored = 0;
+  try { fields().forEach(function(e){ var v=localStorage.getItem(DP+e.id); if(v && !e.value){ e.value=v; restored++; } }); } catch(_) {}
+  if (restored) setTimeout(function(){ toast('↩︎ 幫你還原咗 '+restored+' 格未送出嘅文字'); }, 500);
+  // 每次打字即存(任何有 id 嘅 textarea / text input)
+  document.addEventListener('input', function(ev) {
+    var t = ev.target; if (!t || !t.id) return;
+    if (t.tagName==='TEXTAREA' || (t.tagName==='INPUT' && t.type==='text')) {
+      try { if ((t.value||'').trim()) localStorage.setItem(DP+t.id, t.value); else localStorage.removeItem(DP+t.id); } catch(_) {}
+    }
+  });
+  window._clearDraft = function(id) { try { localStorage.removeItem(DP+id); } catch(_) {} };
+  var loaded = Date.now();
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden && Date.now() - loaded > 45000 && !hasUnsaved())   // 有未存嘅字 → 唔 reload,唔好冧佢
+      location.href = location.pathname + '?t=' + Date.now() + location.hash;
+  });
+})();
+
+// BD 圖 click 放大（lightbox）—— event delegation，任何 .sheet 圖都得
+(function() {
+  var lb = document.createElement('div'); lb.className = 'lbx';
+  lb.innerHTML = '<span class="x">✕</span><img><div class="hint">撳任何位收返。放大後可用瀏覽器 pinch/scroll 睇每格。</div>';
+  document.body.appendChild(lb);
+  var lbimg = lb.querySelector('img');
+  lb.addEventListener('click', function() { lb.classList.remove('on'); });
+  document.addEventListener('click', function(e) {
+    var t = e.target;
+    if (t && t.classList && t.classList.contains('sheet') && t.src) {
+      lbimg.src = t.src; lb.classList.add('on');
+    }
+  });
+})();
+
+// active panel 嘅 set → GAS param（set 1 唔帶，backend 不變）
+function curSet() { var p = document.querySelector('.tabpanel.active'); return p ? (p.dataset.set || '1') : '1'; }
+function setQ()   { var s = curSet(); return (s && s !== '1') ? ('&set=' + s) : ''; }
+
+// 各 set 嘅 funnel phase（多-set 各 set 唔同）。getVidPhase() 隨 active 嘅 set 變。
+var VID_PHASES = {"1": 1};
+var PRIMARY_VID = 1;
+function getVidPhase() { var s = curSet(); return VID_PHASES[s] || PRIMARY_VID; }
+function pickedCids() {
+  return [].map.call(
+    document.querySelectorAll('.tabpanel.active [data-cid] .ck.on'),
+    function(k) { return k.closest('[data-cid]').dataset.cid; });
+}
+function submitAdvance(url) {
+  toast('✅ 已提交，十幾秒後自動刷新睇下一步（或撳右上 🔄）');
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { location.reload(); }, 13000);   // 單次刷新，冇 develop bar，冇無限 loop
+}
+function submitRound() {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個做六強？submit 後會自動後台生 BD（用 NBLM），落選自動歸檔。')) return;
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=EEB&round=r2&cids=" + c.join(',') + setQ());
+}
+function subStage(to) {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個 → ' + (to === 'r3' ? '三甲' : 'FINAL 2') + '？')) return;
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=EEB&round=" + to + "&cids=" + c.join(',') + setQ());
+}
+function postFunnel(url, msg) {
+  fetch(url, {mode:'no-cors'})
+    .then(function() { toast(msg); })
+    .catch(function() { toast('⚠️ 再試一次'); });
+}
+
+function genBD(btn, url) {   // VID 3 Nano per-card 用
+  var acts = btn.closest('.acts') || btn.parentElement;
+  if (acts) acts.innerHTML = "<span class='gening'><span class='spin sm'></span>生緊… ~8-9 分鐘</span>";
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+}
+function addRule(dept) {   // 政府 JOB 鐵則:加一條 → listener append gov_job_rules.json(全 JOB 累積)
+  var ta = document.getElementById('newrule');
+  var txt = (ta && ta.value || '').trim();
+  if (!txt) { if(ta) ta.focus(); return; }
+  var url = 'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=' + encodeURIComponent(dept) + '&concept=rule&stage=add_rule'
+          + '&engine=' + encodeURIComponent(txt) + '&target=main';
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  if (window._clearDraft) window._clearDraft('newrule');   // 送出咗 → 清 draft
+  var ol = document.getElementById('rulelist');
+  if (ol) { var li=document.createElement('li'); li.textContent=txt; ol.appendChild(li); }  // 即時顯示
+  if (ta) { ta.value=''; ta.placeholder='✅ 已加，下次生 BD 即跟'; }
+}
+// ⭐ Raymond 提供參考相窗口嘅上載 mechanic = dash_upload.upload_box(reuse 創意把關站,JS 已內嵌喺 widget,呢度唔再寫)
+function _vchecked() { return [].slice.call(document.querySelectorAll('.tabpanel.active .vchk:checked')); }
+function delAssets(dept) {   // 🗑 整張即刻刪(像真網頁,唔問;listener 後台存底 + 真刪)
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=delasset&stage=del_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){ var card=c.closest('.vacard'); if(card) card.remove(); });   // 即刻消失
+  toast('🗑 刪咗 '+ids.length+' 張');
+}
+function preferAssets(dept) {   // ⭐ 首選:即刻 ⭐ + 嗰啲相搬去最左(像真網頁);listener pref + 餵 NLM 優先
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=prefasset&stage=prefer_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){
+    var card=c.closest('.vacard'); if(!card) return;
+    card.classList.add('pref');
+    if(!card.querySelector('.vastar')){ var s=document.createElement('div'); s.className='vastar'; s.textContent='⭐ 首選'; card.appendChild(s); }
+    var row=card.parentNode; row.insertBefore(card, row.firstChild);   // 搬去最左
+    c.checked=false;
+  });
+  toast('⭐ 已設首選 '+ids.length+' 張（搬咗去最左 + 餵 NLM 優先）');
+}
+function showOvl(id) { var o=document.getElementById(id); if(o) o.classList.add('on'); }   // 🎧 錄音逐字 overlay(撳先出)
+function hideOvl(id) { var o=document.getElementById(id); if(o) o.classList.remove('on'); }
+document.addEventListener('click', function(e){   // 撳 overlay 背景(唔係 box)收返
+  if(e.target && e.target.classList && e.target.classList.contains('ovl')) e.target.classList.remove('on');
+});
+function researchAssets(dept) {   // 🔁 重搜:即刻喺相右下角顯示漏斗「重搜中」,後台搵新相,搵到自動換(reload 時)
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=researchasset&stage=research_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){
+    var card=c.closest('.vacard'); if(!card) return;
+    var th=card.querySelector('.vathumb');
+    if(th && !th.querySelector('.vafunnel')){ var f=document.createElement('div'); f.className='vafunnel';
+      f.innerHTML='<span class="spin sm" style="width:10px;height:10px;margin:0"></span> 重搜中'; th.appendChild(f); }
+    c.checked=false;
+  });
+  toast('🔁 重搜 '+ids.length+' 個，後台搵緊清晰啲嘅相，搵到自動換（~30-60s，會自動 refresh）');
+}
+function bdComment(dept, brd) {   // 手寫稿 BD:送 comment → listener AI 解意見 → 改 specific 格(留舊版)
+  var ta = document.getElementById('cm_' + brd);
+  var txt = (ta && ta.value || '').trim();
+  if (!txt) { if (ta) ta.focus(); return; }
+  var url = 'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=' + encodeURIComponent(dept)
+          + '&concept=' + encodeURIComponent(brd) + '&stage=bdcomment'
+          + '&engine=' + encodeURIComponent(txt) + '&target=main&cid=ACT_bdcomment';
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  if (window._clearDraft) window._clearDraft('cm_' + brd);   // 送出咗 → 清 draft
+  if (ta) { ta.disabled = true;
+    ta.insertAdjacentHTML('afterend', "<div class='cmlog'>✅ 已送出，AI 改緊嗰格，改完自動換圖（舊版會留喺下面）。</div>"); }
+}
+// STEP 3 風格 picker：每維互斥（但可 0 個）+ 夾成 style_anchor
+function styPick(cb) {
+  if (cb.checked) {
+    var sib = document.querySelectorAll(".styopt[data-dim='" + cb.getAttribute('data-dim') + "']");
+    for (var i = 0; i < sib.length; i++) { if (sib[i] !== cb) sib[i].checked = false; }
+  }
+  var el = document.getElementById('styanchor');
+  if (el) el.textContent = styleAnchor() || '（跟劇本）';
+}
+function styleAnchor() {
+  var dims = ['env', 'char', 'light', 'color', 'mood', 'feel'], picks = [];
+  for (var i = 0; i < dims.length; i++) {
+    var el = document.querySelector(".styopt[data-dim='" + dims[i] + "']:checked");
+    if (el) picks.push(el.value);
+  }
+  return picks.join(', ');
+}
+function srcRefs(btn, url) {   // STEP 2：AI 搵主角參考相
+  btn.textContent = '⏳ AI 搵相中…（~2-3 分鐘，完成 refresh 見）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('🔍 AI 自動由 ISD 官方相搵主角 + curate 中…');
+}
+function genFinalBD(btn, dept, baseUrl) {   // STEP 4：寫低 STEP 3 風格 → 生最終 BD
+  var anc = styleAnchor();
+  // STEP3 風格寫入 Master GSheet _VID_STYLE（gsheet_to_bd 讀返做 override；空 = 跟劇本）
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify({op:'set_style', dept:dept, style:anc})}).catch(function(){});
+  toast(anc ? ('🎨 已套用風格：' + anc) : '🎨 風格：跟劇本（冇限制）');
+  genBD(btn, baseUrl);
+}
+function pushGSheet(btn, url) {   // VID 4 寫入 Master GSheet B6:C17
+  btn.textContent = '⏳ 寫入緊…'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已寫入（開 GSheet polish）'; }, 2500);
+  toast('📝 已交，~1 分鐘寫入 Master GSheet B6:C17（前稿自動備份）');
+}
+function renderForms(btn, url) {   // 📋 標書:自動 render 真表頁入 Master Reply GSlide
+  btn.textContent = '⏳ render 緊…（~1-2 分鐘，完成會 WhatsApp）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('📋 已交，listener 會自動 render 真表頁入 Master Reply GSlide');
+}
+function fillForms(btn) {   // 📝 標書:自動填表 — GAS 直出（公司資料 vlookup 寫 Fill tab，唔靠部 Mac）
+  var jsTag = btn.nextElementSibling;  // <script class=filldata>
+  var data;
+  try { data = JSON.parse((jsTag && jsTag.textContent) || '{}'); } catch (e) { data = {}; }
+  if (!data.forms || !data.forms.length) { toast('⚠️ 冇表資料'); return; }
+  var reg='https://docs.google.com/spreadsheets/d/1yiDJ3H8VFK3-6kZQZEzwkiD8VaRgVOzCwxcFbAyP3XE/edit';
+  btn.textContent = '⏳ AI 填緊…（~30-60s）'; btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'fill_forms', folderName: data.folderName, forms: data.forms })
+  }).catch(function(){});
+  // 清楚講做緊乜 + 完咗點做(開 Registry copy 值)
+  setTimeout(function() {
+    btn.outerHTML = "<a class='btn' style='width:100%;text-align:center' target='_blank' href='"+reg
+      +"'>✅ 已填好 → 開 Master Form Registry copy 啲值</a>";
+  }, 30000);
+  toast('🤖 AI 填緊公司資料入 Master Form Registry 嘅 Fill tab（~30-60s）。完咗開 Registry copy 啲值入真表頁。');
+}
+function outScript(btn) {   // 📤 VID2:SCRIPT 接落 Master GSheet SCRIPT暫存 — 直接 GAS POST，唔經部 Mac
+  var jsTag = btn.nextElementSibling;  // <script class=bdj> board JSON
+  var board = [];
+  try { board = JSON.parse((jsTag && jsTag.textContent) || '[]'); } catch (e) {}
+  if (!board.length) { toast('⚠️ 冇 board 資料'); return; }
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'script_out', dept: 'EEB',
+      brd: btn.dataset.brd, concept: btn.dataset.concept, board: board })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已接落「SCRIPT暫存」'; btn.disabled = false; }, 1500);
+  toast('📤 接落 Master GSheet「SCRIPT暫存」(GAS,唔經部 Mac,疊唔覆寫)');
+}
+function clearScript(btn) {   // 🧹 清空 SCRIPT暫存 — GAS（唔經 Mac）
+  if (!confirm('清空 SCRIPT暫存 tab？')) return;
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'clear' })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已清空'; btn.disabled = false; }, 1500);
+  toast('🧹 已清空 SCRIPT暫存（GAS,唔經部 Mac）');
+}
+
+// submitGSlide/submitComments 已移除（dead code:前端零 call site + 冇 .frame-note input — 2026-06-13 audit）
+
+// 「develop 緊」bar 已移除（Raymond 2026-06-06）—— 改用 VID 2 tab 紅邊 + 各 concept 進度條。
+</script></body></html>
