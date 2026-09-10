@@ -1,0 +1,39 @@
+{
+  "dept": "EEB_T_2026-009_F_S",
+  "slots": [
+    {
+      "slot": 1,
+      "query": "民政及青年事務局 標誌",
+      "file": "assets/refs/EEB_T_2026-009_F_S/logos/slot1.png",
+      "title": "Home and Youth Affairs Bureau 民政及青年事務局招聘",
+      "w": 2000,
+      "h": 2000,
+      "enabled": true,
+      "verified": true,
+      "verified_org": "民政及青年事務局 Home and Youth Affairs Bureau",
+      "source_domain": ""
+    },
+    {
+      "slot": 2,
+      "query": "青年發展委員會 標誌",
+      "file": "assets/refs/EEB_T_2026-009_F_S/logos/slot2.png",
+      "title": "青年發展委員會舉行第十四次會議聽取各項青年發展措施- 港聞- 點新聞",
+      "w": 1042,
+      "h": 586,
+      "enabled": true,
+      "verified": true,
+      "verified_org": "青年發展委員會 Youth Development Commission",
+      "source_domain": ""
+    },
+    {
+      "slot": 3,
+      "query": "青年節@HK 標誌",
+      "file": "",
+      "title": "(核實唔到官方標誌,可即場打字重搵)",
+      "enabled": true,
+      "verified": false,
+      "verified_org": "",
+      "source_domain": ""
+    }
+  ]
+}
