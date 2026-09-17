@@ -1,0 +1,41 @@
+{
+  "dept": "FAMPLAN",
+  "slots": [
+    {
+      "slot": 1,
+      "query": "香港家庭計劃指導會 標誌",
+      "file": "assets/refs/FAMPLAN/logos/slot1.png",
+      "title": "Organization Profile - The Family Planning Associa",
+      "w": 901,
+      "h": 495,
+      "enabled": true,
+      "verified": true,
+      "verified_org": "香港家庭計劃指導會",
+      "source_domain": ""
+    },
+    {
+      "slot": 2,
+      "query": "The Family Planning Association of Hong Kong logo",
+      "file": "assets/refs/FAMPLAN/logos/slot2.png",
+      "title": "FPAHK 60th Anniversary offers $60 Pap test to wome",
+      "w": 869,
+      "h": 589,
+      "enabled": true,
+      "verified": true,
+      "verified_org": "The Family Planning Association of Hong Kong",
+      "source_domain": ""
+    },
+    {
+      "slot": 3,
+      "query": "衞生署 標誌",
+      "file": "assets/refs/FAMPLAN/logos/slot3.png",
+      "title": "衛生署至今抽驗2100支流感疫苗均未發現懸浮物",
+      "w": 800,
+      "h": 467,
+      "enabled": true,
+      "verified": true,
+      "verified_org": "衞生署",
+      "source_domain": ""
+    }
+  ]
+}

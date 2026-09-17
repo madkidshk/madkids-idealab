@@ -1,0 +1,37 @@
+{
+  "dept": "SWD",
+  "slots": [
+    {
+      "slot": 1,
+      "query": "社會福利署 標誌",
+      "file": "assets/refs/SWD/logos/slot1.png",
+      "title": "Social Welfare 社會福利署logo - 三寶五金機械有限公司",
+      "w": 2560,
+      "h": 709,
+      "enabled": true,
+      "verified": true,
+      "verified_org": "社會福利署 Social Welfare Department",
+      "source_domain": ""
+    },
+    {
+      "slot": 2,
+      "query": "Social Welfare Department logo",
+      "file": "",
+      "title": "(核實唔到官方標誌,可即場打字重搵)",
+      "enabled": true,
+      "verified": false,
+      "verified_org": "",
+      "source_domain": ""
+    },
+    {
+      "slot": 3,
+      "query": "「地區服務及關愛隊伍——支援長者及照顧者計劃」及「在校課後託管服務計劃」 標誌",
+      "file": "",
+      "title": "(核實唔到官方標誌,可即場打字重搵)",
+      "enabled": true,
+      "verified": false,
+      "verified_org": "",
+      "source_domain": ""
+    }
+  ]
+}
