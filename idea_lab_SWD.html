@@ -1,0 +1,1418 @@
+<!DOCTYPE html><html lang=zh-HK><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>SWD · Idea Lab</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#6b7280;--line:#e6e8ec;
+      --ac:#4f46e5;--gold:#c79a2b;--red:#dc2626;--grn:#15a34a}
+*{box-sizing:border-box}
+.btn{background:#4f46e5;color:#fff;border:none;border-radius:9px;padding:8px 13px;font-size:12.5px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;box-sizing:border-box}
+.btn.ghost{background:#fff;color:#4f46e5;border:1.5px solid #dcdffb}
+.btn.grn{background:#15a34a}
+.btn.mini{padding:4px 9px;font-size:11px;min-height:44px}
+.btn:hover,.btn.ghost:hover{filter:brightness(.98)}
+details.soft{background:#fff;border:1px solid #e7e9ee;border-radius:10px;padding:4px 12px}
+details.soft>summary{cursor:pointer;font-size:12.5px;font-weight:700;color:#444;padding:8px 0;list-style:none}
+details.soft>summary::-webkit-details-marker{display:none}
+details.soft>summary::before{content:"▸ ";color:#9aa0ab}
+details.soft[open]>summary::before{content:"▾ "}
+.ovl{position:fixed;inset:0;z-index:120;background:rgba(15,18,28,.55);display:none;align-items:center;justify-content:center;padding:18px}
+.ovl.on{display:flex}
+.ovlbox{background:#fff;border-radius:14px;box-shadow:0 18px 60px rgba(0,0,0,.4)}
+.pill{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:#eef0f3;color:#555}
+.pill.ok{background:#e7f7ee;color:#15803d}
+.pill.warn{background:#fff4e5;color:#b45309}
+.pill.bad{background:#fdeaea;color:#dc2626}
+.pill.accent{background:#eef0fe;color:#4f46e5}
+.secthead{font-size:16px;font-weight:800;margin:24px 0 10px;border-left:4px solid #4f46e5;padding-left:9px;color:#1b1f27}
+.secthead.tight{margin-top:10px}
+.sectbadge{display:inline-block;margin-left:8px;font-size:11px;font-weight:800;border-radius:999px;padding:2px 8px;background:#eef0fe;color:#4f46e5}
+.carousel{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 12px;-webkit-overflow-scrolling:touch}
+.carousel::-webkit-scrollbar{height:6px}
+.carousel::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:6px}
+.carousel-card{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;background:#fff;border:1.5px solid #e7e9ee;border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+@media(min-width:700px) and (max-width:1099px){.carousel-card{flex:0 0 46%}}
+@media(min-width:1100px){.carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}.carousel-card{flex:0 0 calc(33.333% - 10px);max-width:none;scroll-snap-align:none}}
+.lbx{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;display:none;align-items:center;justify-content:center;padding:12px}
+.lbx.on{display:flex}
+.lbx img{max-width:98vw;max-height:94vh;border-radius:8px;cursor:zoom-out}
+.lbx .x{position:fixed;top:10px;right:16px;color:#fff;font-size:30px;font-weight:800;cursor:pointer}
+.lbx .hint{position:fixed;bottom:12px;left:0;right:0;text-align:center;color:#bbb;font-size:12px}
+.badge{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:#4f46e5;border-radius:7px;padding:2px 9px;letter-spacing:.02em}
+.score-badge{display:inline-block;background:#c79a2b;color:#fff;font-size:12px;font-weight:800;border-radius:20px;padding:2px 10px}
+.status-badge{display:inline-block;font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.status-badge.ok{background:#dcfce7;color:#15803d}
+.status-badge.warn{background:#fef3c7;color:#a16207}
+.status-badge.bad{background:#fee2e2;color:#b91c1c}
+.status-badge.mute{background:#eef0f3;color:#717784}
+.surface-card{background:#fff;border:1px solid #e7e9ee;border-radius:14px;box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+.surface-card.soft{background:#fafbfd}
+.surface-card.warn{background:#fff8f1;border-color:#fcd9b6}
+.surface-card.danger{border-color:#f3b4ae;box-shadow:0 2px 16px rgba(238,56,47,.08)}
+.surface-card.pad-sm{padding:9px 10px}
+.surface-card.pad-md{padding:15px 17px}
+.surface-card.pad-lg{padding:18px}
+.surface-card.selected{border-color:#4f46e5;box-shadow:0 0 0 2px rgba(79,70,229,.25),0 6px 18px rgba(79,70,229,.18)}
+body{margin:0;background:var(--bg);color:var(--ink);
+     font:15px/1.55 -apple-system,"PingFang HK",sans-serif}
+.wrap{max-width:430px;margin:0 auto;padding:0 13px 130px}
+h1{font-size:19px;font-weight:800;margin:0;line-height:1.25}
+h1 .dept{color:var(--ac)}
+.bdp{font-size:12px;font-weight:700;margin:3px 0 0;display:flex;gap:11px;flex-wrap:wrap}
+.fresh{font-size:11px;color:#7a8290;margin:6px 0 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.fresh .fr{background:#f1f3f6;border-radius:6px;padding:2px 7px;white-space:nowrap}
+.fresh .fr b{color:#4a5462;font-weight:700}
+.bdp .bb{color:#2563eb}.bdp .dd{color:#dc2626}.bdp .pp{color:#7c3aed}
+.tabbar{position:sticky;top:0;z-index:30;background:var(--bg);
+         border-bottom:2px solid var(--line);display:flex;gap:5px;
+         overflow-x:auto;padding:8px 0 7px;scrollbar-width:none}
+.tabbar::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;background:var(--card);border:1.5px solid var(--line);
+      border-radius:9px;padding:5px 12px;font-size:12px;font-weight:800;
+      color:var(--mut);cursor:pointer;transition:all .12s;white-space:nowrap}
+.tab:hover{border-color:var(--ac);color:var(--ac)}
+.tab.active{background:var(--ac);border-color:var(--ac);color:#fff}
+header{padding:12px 0 4px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap}
+.titlerow h1{margin:0;min-width:0}
+.hdrbtns{flex:none;display:flex;gap:7px;align-items:center}
+.homebtn,.refbtn{flex:none;white-space:nowrap;font-size:16px;line-height:1;text-decoration:none;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:5px 9px;color:#222;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.refbtn{cursor:pointer}
+.labbtn{flex:none;white-space:nowrap;font-size:13px;line-height:1;text-decoration:none;border-radius:9px;padding:7px 10px;font-weight:800;border:1px solid transparent;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.labbtn.mk{background:#fff5f5;color:#EE382F;border-color:#f3b4ae}
+.labbtn.mm{background:#fff7ed;color:#d97706;border-color:#fdba74}
+@media(max-width:480px){.homebtn,.refbtn{font-size:14px;padding:5px 8px}}
+@media(max-width:420px){.titlerow{flex-direction:column;align-items:stretch;gap:8px}.hdrbtns{flex-wrap:wrap;max-width:100%;width:100%;gap:6px}}
+.tabpanel{display:none;padding-top:10px}
+.tabpanel.active{display:block}
+.setlab{font-size:11px;font-weight:800;color:var(--ac);background:#eef0fe;
+         border:1px solid #dcdffb;border-radius:8px;padding:4px 10px;
+         display:inline-block;margin:0 0 8px}
+.banner{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;
+         padding:10px 12px;font-size:12.5px;font-weight:700;color:#92660c;margin:10px 0}
+.h2{font-size:14.5px;font-weight:800;letter-spacing:.01em;color:var(--ink);
+     margin:16px 2px 8px}
+.h3{font-size:13px;font-weight:700;color:#374151;margin:11px 0 5px}
+.stylepick{margin:10px 0}
+.styrow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:5px 0;padding:5px 0;border-bottom:1px solid var(--line)}
+.stylbl{min-width:84px;font-weight:600;font-size:13px}
+.styo{display:inline-flex;align-items:center;gap:4px;font-size:13px;padding:3px 10px;
+       border:1px solid var(--line);border-radius:14px;cursor:pointer;user-select:none;background:#fafafa}
+.styo input{margin:0}
+.styo:has(input:checked){background:#e6f7f1;border-color:#0a7;color:#066}
+.styanchor{margin-top:9px;font-size:12px;color:var(--mut)}
+#styanchor{color:#0a7;font-weight:600}
+.card{background:var(--card);border-color:var(--line);border-radius:13px;
+       padding:11px 12px;margin-bottom:8px}
+.hgrid{display:grid;grid-template-columns:1fr;gap:13px}
+@media(min-width:720px){.hgrid{grid-template-columns:1fr 1fr 1fr}}
+.hcard{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:10px;box-shadow:0 1px 2px rgba(20,24,40,.05)}
+.hcap{font-weight:800;font-size:13px;margin-bottom:7px}
+.sgrp{font-weight:800;font-size:12px;color:#475569;background:#eef1f6;border-radius:7px;padding:5px 10px;margin:11px 0 2px}
+.sgrp:first-child{margin-top:2px}
+.tlrow.todo{opacity:.55} .tlrow.todo .tllabel{color:#9aa0ab}
+.tlrow.na{opacity:.4} .tlrow.na .tllabel{color:#b6bbc4;text-decoration:line-through}
+.dsp{width:100%;border-collapse:collapse;font-size:12.5px}
+.dsp th{text-align:left;color:var(--mut);font-weight:700;padding:4px 7px;border-bottom:1px solid var(--line)}
+.dsp td{padding:4px 7px;border-bottom:1px solid #f3f4f6;vertical-align:top}
+.vacarou{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.vacard{flex:0 0 134px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px;font-size:11px}
+.vathumb{position:relative;height:90px;border-radius:7px;overflow:hidden;background:#f1f3f7;display:flex;align-items:center;justify-content:center}
+.vathumb img{width:100%;height:100%;object-fit:cover}
+.vacat{margin-top:5px;font-size:10px;color:#7b4fc0;font-weight:800}
+.vaname{font-weight:600;line-height:1.25;min-height:28px;color:#374151}
+.vasrc{font-size:10.5px} .vatick{display:block;font-size:11px;margin-bottom:4px;cursor:pointer;font-weight:700}
+.vaprovide{margin:12px 0 2px}
+.upbox .refelemin{display:block;width:100%;margin:0 0 8px;padding:6px 8px;border:1px solid var(--line);border-radius:7px;font-size:12px}
+/* ── 標書 tab restructure 2026-06-16 ── */
+/* 💡 提供窗口 */
+.h2sm{font-size:13px;margin:12px 2px 5px}
+.provide{padding:9px 10px}
+/* 加入想法 + upbox 送出 統一設計(都係 .btn 觀感) */
+.provide .upbox{margin:0;border-radius:9px;padding:9px}
+.provide .upbox .attsend{background:var(--ac);border-radius:9px;padding:0 14px;font-size:12.5px;font-weight:800}
+.provide .noteslist{margin-top:7px}
+/* 三梯隊標題:左色條 + 副標 */
+.tierh{border-left:4px solid var(--ac);padding-left:9px;margin:18px 2px 2px;font-size:14px}
+.tierhint{margin:2px 2px 7px 13px}
+/* ✍️ 邊個 model 寫(#5):mdl 真 / mdef 預設(灰) / mfb fallback(橙) */
+.mdl{flex:0 0 auto;font-size:10px;font-weight:800;color:#3730a3;background:#eef0fe;border:1px solid #dcdffb;
+      border-radius:6px;padding:1px 6px;white-space:nowrap;margin-left:auto}
+.mdl.mdef{color:#6b7280;background:#f1f3f6;border-color:#e3e6ea}
+.mdl.mfb{color:#9a5a00;background:#fff4e5;border-color:#fde6c0}
+.h3 .mdl{margin-left:6px;vertical-align:middle}
+/* 📋 標書內容 carousel 卡 — 字體/行寬完全跟返 VID1 .ccard(Raymond 2026-06-16:之前縮 12px 太難讀,
+   改返用 VID1 base .cbody 12.5px/1.62、.ctitle 14px。卡內 md 標題用 base .cbody h3/h4 12.5px,統一)。 */
+.brfcarou{margin-top:2px}
+.brfcard .chead{cursor:default}
+/* 🔄 重生緊 signal(手寫稿 BD) */
+.regbadge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;color:#fff;background:var(--ac);border-radius:8px;padding:4px 9px;margin:0 0 6px}
+/* 🔀 換格 + BD 英文字 */
+.bdletter{display:inline-block;min-width:18px;text-align:center;font-weight:800;color:#fff;background:var(--ac);border-radius:6px;padding:0 5px;margin-right:4px}
+.swrow{display:flex;align-items:center;gap:6px;margin-bottom:7px;flex-wrap:wrap}
+.swlbl{font-size:12px;color:var(--mut);white-space:nowrap}
+.swrow select{flex:1;min-width:90px;font-size:12.5px;padding:6px 7px;border:1px solid var(--line);border-radius:7px;background:#fff}
+/* 標書原文 link 喺 撮要 標題右邊 */
+.rawlink{flex:0 0 auto;margin-left:auto;font-size:10.5px;font-weight:800;color:var(--ac);background:#eef0fe;border:1px solid #dcdffb;border-radius:6px;padding:1px 6px;cursor:pointer;white-space:nowrap}
+/* 部門官方來源 search-result row(似 youtube search) */
+.srcrow{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid #f1f3f6}
+.srcrow:last-child{border-bottom:0}
+.srcthumb{flex:0 0 54px;height:40px;border-radius:5px;object-fit:cover;background:#f1f3f7}
+.srctit{font-size:11.5px;font-weight:700;line-height:1.3;color:var(--ac)}
+.srcsnip{font-size:10.5px;color:#6b7280;line-height:1.4;margin-top:1px}
+/* 🎧 Briefing 錄音逐字 overlay(撳先出,唔常設) */
+.ovlbox{max-width:560px;width:100%;max-height:82vh;display:flex;flex-direction:column}
+.ovlhd{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--line);font-weight:800;font-size:13px}
+.ovlhd .x{cursor:pointer;color:#888;font-size:16px;border:0;background:0}
+.ovlbody{overflow:auto;padding:12px 14px;font-size:11.5px;line-height:1.6;color:#333;white-space:pre-wrap}
+.ovllink{color:var(--ac);font-weight:700;cursor:pointer;text-decoration:underline}
+/* 📸 Visual 素材:⭐首選 badge + 三 action 掣(三格一樣大) + 重搜漏斗 */
+.vacard{position:relative;transition:order .2s}
+.vacard.pref{border-color:var(--gold);box-shadow:0 0 0 2px rgba(199,154,43,.22)}
+.vastar{position:absolute;top:5px;right:5px;font-size:9.5px;font-weight:800;color:#fff;background:var(--gold);border-radius:6px;padding:1px 5px}
+.vafunnel{position:absolute;bottom:4px;right:4px;font-size:9.5px;font-weight:800;color:#fff;background:rgba(79,70,229,.94);border-radius:6px;padding:2px 6px;display:inline-flex;align-items:center;gap:3px}
+.vaacts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.vaacts .btn{width:auto;text-align:center;margin:0;padding:0 4px;min-height:44px;display:flex;align-items:center;justify-content:center;white-space:nowrap;box-sizing:border-box}
+.vaacts .btn.ghost{width:auto;padding:0 4px;margin:0}
+@media(max-width:420px){.vaacts{gap:4px}}
+
+.upbox{background:#fff;border:1.5px dashed #bcd;border-radius:11px;padding:11px;margin:6px 0}
+.upbox.hov{background:#eef6ff;border-color:#6aa3e0}
+.upbox .attstage{min-height:0;margin-bottom:4px}
+.upbox .stchip{display:inline-block;background:#eef7f0;border:1px solid #bfe0cd;border-radius:20px;padding:3px 9px;font-size:11.5px;font-weight:700;color:#176b3a}
+.upbox .stchip .ststrip{border:0;background:0;cursor:pointer;color:#999;font-weight:700;margin-left:3px}
+.upbox .attrow1{display:flex;gap:6px}
+.upbox .atttext{flex:1;border:1px solid var(--line,#dde);border-radius:8px;padding:9px 11px;font-size:14px;line-height:1.5;min-height:84px;resize:vertical;font-family:inherit}
+.upbox .attsend{border:0;background:#0A7D3F;color:#fff;border-radius:8px;padding:0 14px;font-weight:700;cursor:pointer;white-space:nowrap;min-height:44px}
+.upbox .attbtns2{margin-top:6px;display:flex;gap:6px}
+.upbox .attpick{border:1px solid var(--line,#dde);background:#f7f9fc;border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer;font-weight:600;flex:1;min-height:44px;text-align:center}
+.upbox .attdrive{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line,#dde);background:#f7f9fc;border-radius:8px;padding:5px 10px;font-size:12px;font-weight:600;flex:1;min-height:44px;text-decoration:none;color:inherit}
+.upst{font-size:11.5px;color:#176b3a;margin-top:5px;min-height:0}
+@media(max-width:600px){.upbox .attrow1{flex-direction:column}.upbox .attsend{width:100%}}
+
+.bdcm{margin-top:7px}
+.bdcm textarea{width:100%;box-sizing:border-box;font:13px/1.45 inherit;border:1px solid var(--line);border-radius:8px;padding:6px 8px;resize:vertical}
+.bdcm .btn.mini{margin-top:5px}
+.gflags{margin:7px 0 4px;padding:7px 9px;background:#fffbec;border:1px solid #f0d96a;border-radius:8px;font-size:12px;color:#6b4d00}
+.gflag{padding:2px 0;line-height:1.5}
+.gflag+.gflag{border-top:1px solid #f5ebb0;margin-top:3px;padding-top:5px}
+.gfslide{font-weight:600;background:#f5e07c;border-radius:4px;padding:1px 5px;margin-right:4px}
+.cmlog{font-size:11px;color:#2e8b57;margin-top:5px}
+.card.big{padding:13px}
+.card.empty{color:var(--mut);font-size:13px;font-style:italic}
+.row{display:flex;align-items:center;gap:9px}
+.rank{font-size:11px;font-weight:800;color:var(--mut);width:18px}
+.src{font-size:11px;color:var(--mut);font-weight:700;background:#f1f5f9;
+      border-radius:6px;padding:1px 6px}
+.score{font-size:12px;font-weight:800;color:var(--gold);margin-left:auto}
+.nm{font-weight:800;font-size:13.5px;line-height:1.35}
+.csub{font-size:11px;color:var(--mut);font-weight:600;margin-top:2px}
+.crow{margin:5px 0 0}
+.cflag{font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.cflag.hi{background:#dcfce7;color:#15803d}
+.cflag.lo{background:#fef3c7;color:#a16207}
+.cflag.rl{background:#fee2e2;color:#b91c1c}
+.ck{width:22px;height:22px;border:2px solid var(--ac);border-radius:6px;
+     display:inline-grid;place-items:center;font-size:13px;color:#fff;
+     cursor:pointer;flex:0 0 auto;position:relative}
+.ck::before{content:"";position:absolute;inset:-11px}
+.ck.on{background:var(--ac)}
+.ck.done{background:var(--grn);border-color:var(--grn);cursor:default}
+.divider{display:flex;align-items:center;gap:8px;margin:12px 2px;
+          color:#aab0ba;font-size:11px;font-weight:700}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.cnt-warn{color:var(--red)!important}
+.lookback{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:11px;
+           padding:10px 12px;font-size:12px;color:#475569}
+.btn{background:var(--ac)}
+.btn.grn{background:var(--grn)}
+.btn.ghost{width:100%;text-align:center;padding:11px 13px;margin:2px 0 4px}
+.btn.mini{padding:4px 9px;font-size:11px;margin-left:8px}
+.submit{position:fixed;bottom:14px;right:calc(50% - 215px + 13px);z-index:20}
+@media(max-width:456px){.submit{right:14px}}
+/* ── Responsive 3 tier（Raymond 2026-06-06）：mobile(default) / tablet / desktop 用晒畫面 ── */
+/* Tablet:闊啲,carousel 一次 2 卡 */
+@media(min-width:700px) and (max-width:1099px){
+  .wrap{max-width:680px;padding:0 20px 130px}
+  .submit{right:calc(50% - 340px + 20px)}
+  .ccard{flex:0 0 46%;max-height:68vh}
+  .rest-row .ccard{flex:0 0 36%}
+  .briefcard{max-height:40vh}
+}
+/* Desktop:用晒畫面 —— carousel 變 grid(唔橫掃,鋪滿),六強 3 欄、其餘 4 欄 */
+@media(min-width:1100px){
+  .wrap{max-width:min(1280px,94vw);padding:0 28px 120px}
+  .submit{right:max(28px, calc(50vw - 640px + 28px))}
+  .carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}
+  .ccard{flex:0 0 calc(33.333% - 10px);max-width:none;max-height:43vh;scroll-snap-align:none}   /* Raymond 2026-06-16:桌面每格短 1/3(64→43vh),標書 tab 跟 VID1 */
+  .rest-row .ccard{flex:0 0 calc(25% - 11px)}
+  .briefcard{max-height:36vh}
+  .tabbar{flex-wrap:wrap}
+  .card.big .sheet{max-width:520px}
+}
+.submit .btn{box-shadow:0 6px 20px rgba(79,70,229,.4);padding:11px 18px;font-size:13.5px}
+.foot{font-size:11px;color:#9aa0aa;text-align:center;margin-top:22px}
+.notes-win{width:100%;min-height:90px;border:1.5px solid var(--ac);
+            border-radius:11px;padding:10px 12px;font:14px/1.6 inherit;
+            resize:vertical;background:#fafbff;margin-bottom:6px}
+.notes-act{text-align:right;margin-bottom:6px}
+.notes-act .btn{padding:6px 14px}
+.noteslist{margin-bottom:6px}
+.notecard{background:#fafbff;border:1px solid #e0e3f5;border-radius:10px;
+           padding:7px 10px;margin-bottom:6px}
+.noterow{display:flex;align-items:center;gap:8px}
+.notets{font-size:10.5px;font-weight:800;color:var(--ac)}
+.notedel{margin-left:auto;background:none;border:none;color:#b0b6c2;font-size:13px;
+          cursor:pointer;padding:0 2px}
+.notetxt{font-size:13px;color:var(--ink);line-height:1.5;margin-top:2px;white-space:pre-wrap}
+/* Brief 撮要緊湊卡（固定高度內部 scroll，似 VID 1 卡）*/
+.briefcard{max-height:46vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.briefcard h3,.briefcard h4{font-size:13px;margin:9px 0 3px}
+.suppinline{margin-top:10px;border-top:2px solid #fde68a;background:#fffbeb;
+             border-radius:9px;padding:8px 10px}
+.suppinline h3,.suppinline h4{color:#92660c;font-size:12.5px;margin:2px 0 5px}
+/* 補充日程簡單 list */
+.timeline{margin:2px 0}
+.tlrow{display:flex;gap:8px;padding:5px 2px;border-bottom:1px solid #f3f4f6;font-size:12.5px}
+.tlrow:last-child{border-bottom:none}
+.tldate{flex:0 0 auto;font-weight:800;color:var(--ink);min-width:96px}
+.tllabel{flex:1;color:#374151}
+.tlrow.hot{background:#fff7ed;border-radius:7px}
+.tlrow.hot .tldate{color:#c2410c}.tlrow.hot .tllabel{color:#9a3412;font-weight:700}
+/* Briefing 補充 treatment */
+summary.supp{display:flex;align-items:center;gap:8px}
+.suppbadge{font-size:10px;font-weight:800;color:#fff;background:#d97706;
+            border-radius:6px;padding:1px 7px;margin-left:7px;vertical-align:middle}
+.bd{margin:8px 0}
+.bdscroll{max-height:44vh;overflow-y:auto;border:1px solid var(--line);border-radius:10px;
+          padding:2px 12px;background:#fafbfc;-webkit-overflow-scrolling:touch}
+.genbox{text-align:center}
+.step2 .refsub{margin:8px 0}
+.refname{font-size:12.5px;font-weight:600;margin:6px 0 4px}
+.refname .refn{color:var(--mut);font-weight:400;font-size:11px}
+.refrow{display:flex;gap:6px;flex-wrap:wrap}
+.refthumb{width:74px;height:90px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.btn.big{font-size:14px;padding:12px 22px;box-shadow:0 4px 14px rgba(79,70,229,.3)}
+.scene{border-bottom:1px solid #f1f3f6;padding:7px 0;font-size:12.5px;line-height:1.5}
+.scene .sl{display:flex;gap:8px}
+.scene .sn{font-weight:800;color:var(--ac);flex:0 0 auto;min-width:17px}
+.scene .vis{flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
+.scene .vis.open{-webkit-line-clamp:unset;overflow:visible}
+.scene .vo,.vo{color:var(--mut);font-size:11.5px;margin:4px 0 0 25px;
+               background:#f8fafc;border-radius:7px;padding:4px 8px}
+.sheet{width:100%;border-radius:10px;border:1px solid var(--line);margin:8px 0;display:block;cursor:zoom-in}
+.preqs{display:flex;flex-direction:column;gap:7px;margin-top:4px}
+.prow{display:flex;align-items:center;gap:10px}
+.preqs .pl{flex:1;font-weight:700;font-size:14px;min-width:0}
+.preqs .pv{font-weight:800;font-size:13px;border-radius:8px;padding:3px 11px;white-space:nowrap}
+.preqs .pvon{background:#dcfce7;color:#15803d;border:1px solid #bbf7d0}
+.preqs .pvoff{background:#f1f3f5;color:#868e96;border:1px solid #e9ecef}
+.preqs .pp{font-size:11px;color:var(--ac);font-weight:700;cursor:help;min-width:34px;text-align:right}
+.pgbar{position:relative;height:30px;border-radius:9px;background:#eef0fe;border:1px solid #dcdffb;
+  overflow:hidden;margin:8px 0}
+.pgfill{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,#6366f1,#818cf8);
+  transition:width .6s ease}
+.pgtxt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:#1b1f27;z-index:1}
+/* VID 2 tab：紅色虛線繞邊行緊（marching ants），未出晒 BD 就一直行；出晒 = 無 busy class = 停 */
+@keyframes march{to{background-position:14px 0,-14px 100%,0 -14px,100% 14px}}
+.tab.busy{color:#dc2626;font-weight:800;border-color:transparent !important;
+  background-image:
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0);
+  background-repeat:repeat-x,repeat-x,repeat-y,repeat-y;
+  background-size:14px 2px,14px 2px,2px 14px,2px 14px;
+  background-position:0 0,0 100%,0 0,100% 0;
+  animation:march .5s linear infinite}
+.empty{font-size:12px;color:#9aa0aa;background:#f8fafc;border:1px dashed #cbd5e1;
+        border-radius:9px;padding:9px 11px;margin:8px 0}
+.note{width:100%;min-height:48px;border:1px solid var(--line);border-radius:9px;
+       padding:7px 9px;font:13px/1.5 inherit;resize:vertical;margin-top:6px}
+.frames{margin:8px 0}
+.frame-card{border-bottom:1px solid #f1f3f6;padding:8px 0}
+.frame-head{display:flex;gap:8px;font-size:12.5px}
+.fv{flex:1;color:var(--ink)}
+.acts{margin-top:8px}
+.soft{margin-bottom:8px}
+.soft summary{font-size:12.5px;font-weight:800;color:var(--ink);cursor:pointer;
+               background:#f8fafc;border:1px solid var(--line);border-radius:10px;
+               padding:9px 12px;list-style:none}
+.soft[open] summary{border-radius:10px 10px 0 0;margin-bottom:0}
+.soft .card{border-radius:0 0 10px 10px;border-top:none;margin-bottom:0}
+.hint{font-size:12px;color:var(--mut);margin:0 0 8px}
+.det{margin-top:8px}
+.det summary{font-size:12.5px;font-weight:800;color:var(--ac);cursor:pointer;
+              list-style:none;background:#eef0fe;border:1px solid #dcdffb;
+              border-radius:9px;padding:8px 11px;text-align:center}
+.det[open] summary{margin-bottom:7px}
+.det summary::-webkit-details-marker{display:none}
+.detbody{font-size:12.5px;color:#374151;white-space:pre-wrap;margin-top:7px;
+          line-height:1.6;max-height:360px;overflow:auto;background:#f8fafc;
+          border-radius:9px;padding:10px 12px}
+.tw{overflow-x:auto;margin:6px 0}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid var(--line);padding:5px 8px;text-align:left}
+th{background:#f8fafc;font-weight:700}
+.prev{font-size:12.5px;color:#4b5563;margin:6px 0 2px;line-height:1.5}
+/* ── VID 1 carousel：橫掃卡，卡內直 scroll ── */
+.carousel{margin:0 -2px}
+.ccard{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;
+        background:var(--card);border:1.5px solid var(--line);border-radius:14px;display:flex;
+        flex-direction:column;max-height:64vh;overflow:hidden;
+        box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+.ccard.sel{border-color:var(--ac);box-shadow:0 0 0 2px rgba(79,70,229,.25),
+            0 6px 18px rgba(79,70,229,.18)}
+.rest-row .ccard{flex:0 0 70%;max-height:52vh}
+.chead{display:flex;align-items:center;gap:8px;padding:10px 12px 7px;cursor:pointer;
+        border-bottom:1px solid #f1f3f6}
+.oscore{margin-left:auto;font-size:12px;font-weight:800;color:var(--gold)}
+.ctitle{font-weight:800;font-size:14px;line-height:1.35;padding:8px 12px 0}
+.ccard .csub{padding:2px 12px 0}
+.cbadges{padding:5px 12px 0}
+.cbody{flex:1;overflow-y:auto;padding:9px 12px 12px;font-size:12.5px;color:#374151;
+        line-height:1.62;-webkit-overflow-scrolling:touch}
+.cbody h3,.cbody h4,.cbody h5{font-size:12.5px;margin:9px 0 3px}
+.cbody p{margin:5px 0}
+.scores{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+.sline{font-size:11.5px;margin:6px 0 2px}
+.sline b{font-size:12px}
+.sline.muted{color:#9aa0aa;font-weight:600}
+.scrit{display:block;font-size:11px;color:var(--mut);margin-top:2px}
+.snote{font-size:11px;color:#6b7280;background:#f8fafc;border-radius:7px;
+        padding:5px 8px;margin:4px 0 2px;line-height:1.5}
+.toast{position:fixed;bottom:78px;left:50%;transform:translateX(-50%);
+        background:#1b1f27;color:#fff;padding:12px 18px;border-radius:12px;
+        font-size:13px;font-weight:700;z-index:90;max-width:90%;
+        box-shadow:0 8px 30px rgba(0,0,0,.3);transition:opacity .5s}
+.topproc{position:fixed;bottom:0;left:0;right:0;z-index:95;background:var(--ac);
+          color:#fff;font-size:13px;font-weight:800;padding:9px 14px;
+          display:flex;align-items:center;justify-content:center;gap:8px;
+          box-shadow:0 3px 14px rgba(79,70,229,.35)}
+.spin.sm{width:15px;height:15px;border:2.5px solid rgba(255,255,255,.4);
+          border-top-color:#fff;border-radius:50%;display:inline-block;
+          vertical-align:middle;margin-right:6px;animation:sp .9s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.gening{display:inline-flex;align-items:center;font-size:12px;font-weight:800;color:var(--ac);
+         background:#eef0fe;border:1px solid #dcdffb;border-radius:9px;padding:7px 11px}
+.gening .spin.sm{border-color:#c7cbf5;border-top-color:var(--ac)}
+/* ⬇️ 最後置:桌面卡長短 1/3(64→43vh)。2-class + 排最尾,壓得過 base .ccard 64vh —— Raymond 2026-06-16
+   (VID1 + 標書 tab 一齊短;手機保持 base 64vh 唔郁) */
+@media(min-width:1100px){.carousel .ccard{max-height:43vh}}
+</style></head><body><!-- generated-by: scripts/core/nlm-bridge/lab_ui_shell.py -->
+<div class=wrap>
+<header>
+  <div class=titlerow>
+    <h1><span class=dept>SWD</span> · Provision of Service for the Production of a set of TV Announcements in the Public Interest for &quot;District Services and Community Care Teams - Scheme on Supporting Elderly and Carers&quot; and &quot;School-based After School Care Service Scheme&quot; / 為「地區服務及關愛隊—支援長者及照顧者計劃」及「在校課後託管服務計劃」製作一套電視宣傳短片</h1>
+    <span class=hdrbtns>
+      <a class=homebtn href="." title="總目錄">🏠</a>
+      <button class=refbtn onclick="location.href=location.pathname+'?t='+Date.now()+location.hash" title="重新載入">🔄</button>
+    </span>
+  </div>
+  <div class=bdp><span class='bb'>B) 15/9</span><span class='dd'>D) 24/9 11:00 · 仲有 <b id='cd'>—</b></span><span class='pp'>P) 30/9</span></div>
+  <div class=fresh>🕒 資料更新：<span class=fr><b>標書</b> 09-17 11:19</span> · <span class=fr><b>研究</b> 09-17 22:40</span> · <span class=fr><b>概念</b> 09-18 19:20</span> · <span class=fr><b>評分</b> —</span></div>
+</header>
+<div class='tabbar'><button class='tab' data-tab='ph0'>📋 標書</button><button class='tab' data-tab='debrief'>📨 DEBRIEF</button><button class='tab' data-tab='handbd'>✍️ TVAPI FINAL</button><button class='tab' data-tab='theme1_1'>THEME</button><button class='tab' data-tab='tvapi1_1'>TVAPI 1</button><button class='tab' data-tab='tvapi1_2'>TVAPI 2</button><button class='tab' data-tab='tvapi1_3'>TVAPI 3</button><button class='tab' data-tab='tvapi1_4'>TVAPI 4</button><button class='tab' data-tab='tvapi1_5'>TVAPI 5</button></div>
+<div id='ph0' class='tabpanel'><div class='h2 h2sm'>💡 額外想法 / 相片</div><div class='card provide'>
+<div class="upbox" id="ref_SWD_box">
+  
+  <div class="attstage" id="ref_SWD_stage"></div>
+  <div class="attrow1">
+    <textarea id="ref_SWD_link" class="atttext" rows="4" placeholder="💭 諗到嘅想法打喺度；想畀參考相就 ⌘V／drag／揀相入埋，喺格仔寫明呢張相係咩 → 一齊送出"></textarea>
+    <button id="ref_SWD_send" class="attsend">送出 ⏎</button></div>
+  <div class="attbtns2"><button id="ref_SWD_pick" class="attpick">📎 電腦揀檔</button></div>
+  <input type="file" id="ref_SWD_file" accept="image/*" style="display:none">
+  <div class="upst" id="ref_SWD_st"></div>
+</div>
+<script>(function(){
+var GAS="https://script.google.com/macros/s/AKfycbwVvkFb8kXQFrJZnABGxFcywfVllsM3XSVHlAGwH8CzrWIBGChjIK2PhW1k61r6NJWIpg/exec",TOK="mkv7q3z2link",FOLDER="";
+var st=document.getElementById("ref_SWD_st");
+function say(m){st.textContent=m;}
+// —— 把關站 proven mechanic（照搬）——
+function jsonp(q,cb){var n="upcb"+Math.random().toString(36).slice(2);
+  window[n]=function(o){try{cb(o);}finally{delete window[n];s.remove();}};
+  var s=document.createElement("script");s.src=GAS+"?"+q+"&token="+TOK+"&callback="+n;
+  s.onerror=function(){delete window[n];s.remove();cb({ok:false,err:"network"});};
+  document.body.appendChild(s);}
+function fidFromLink(v){var m=v.match(/\/d\/([a-zA-Z0-9_-]{20,})/)||v.match(/[?&]id=([a-zA-Z0-9_-]{20,})/);return m?m[1]:null;}
+var inp=document.getElementById("ref_SWD_link");
+var box=document.getElementById("ref_SWD_box"),stage=document.getElementById("ref_SWD_stage");
+var fi=document.getElementById("ref_SWD_file"),send=document.getElementById("ref_SWD_send");
+var _staged=null,_busy=false;
+function showStaged(f){_staged=f;var isImg=(f.type||"").indexOf("image/")===0;
+  stage.innerHTML="<span class='stchip'>"+(isImg?"🖼":"📎")+" "+f.name.replace(/</g,"&lt;")+" <button class='ststrip'>✕</button></span>";
+  stage.querySelector(".ststrip").onclick=function(){_staged=null;stage.innerHTML="";};}
+document.getElementById("ref_SWD_pick").onclick=function(){fi.click();};
+fi.onchange=function(){if(fi.files[0]){showStaged(fi.files[0]);fi.value="";}};
+["dragover","dragenter"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.add("hov");});});
+["dragleave","drop"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.remove("hov");});});
+box.addEventListener("drop",function(e){var f=e.dataTransfer&&e.dataTransfer.files[0];if(f)showStaged(f);});
+inp.addEventListener("paste",function(ev){var fs=(ev.clipboardData&&ev.clipboardData.files)||[];if(fs.length){ev.preventDefault();showStaged(fs[0]);}});
+// 收到 file id（檔上載完）或原 link → 交畀各站自己嘅 complete handler
+function done(val,isFile){ var ip=document.getElementById('ref_SWD_link');var desc=(ip&&ip.value||'').trim();if(window._clearDraft)window._clearDraft('ref_SWD_link');if(isFile){var el=desc||'參考相';fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=SWD&concept='+encodeURIComponent(el)+'&stage=add_ref&engine='+encodeURIComponent(val)+'&target=main&cid=ACT_add_ref',{mode:'no-cors'}).catch(function(){});if(ip)ip.value='';say(desc?('✅ 已收參考相「'+el+'」（排最前＋嚴格比照）'):'✅ 收咗相；下次喺格仔寫埋係咩元素，AI 跟得準啲');}else if(/^https?:|drive\.google|docs\.google/.test(val)){fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=SWD&concept='+encodeURIComponent('參考連結')+'&stage=add_ref&engine='+encodeURIComponent(val)+'&target=main&cid=ACT_add_ref',{mode:'no-cors'}).catch(function(){});say('✅ 已收參考連結（排最前＋嚴格比照）');}else{var a=loadNotes();a.push({ts:Date.now(),text:val});saveNotes(a);renderNotes();fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=SWD&text='+encodeURIComponent(val),{mode:'no-cors'}).catch(function(){});say('✅ 已加想法（'+a.length+'，累積餵委員會）');} }
+// 檔：initupload(folder)→browser 直 PUT 任何 size→CORS 讀唔到都 fallback→進度
+function up(f){_busy=true;send.disabled=true;say("開緊上載…（"+f.name+"）");
+  jsonp("action=initupload&origin="+encodeURIComponent(location.origin)+"&name="+encodeURIComponent(f.name)
+    +"&size="+f.size+"&mime="+encodeURIComponent(f.type||"image/jpeg")+"&folder="+encodeURIComponent(FOLDER),function(o){
+    if(!o.ok){_busy=false;send.disabled=false;say("⚠️ 開唔到上載："+(o.err||"")+"（可改貼 Drive 連結）");return;}
+    var x=new XMLHttpRequest();x.open("PUT",o.uri);
+    x.upload.onprogress=function(ev){if(ev.lengthComputable)say("⬆️ 上載中 "+Math.round(ev.loaded/ev.total*100)+"%（"+f.name+"）");};
+    x.onload=function(){_busy=false;send.disabled=false;
+      if(x.status>=300){say("⚠️ 上載 fail HTTP "+x.status);return;}
+      var fid="";try{fid=JSON.parse(x.responseText).id||"";}catch(_){}
+      if(!fid){say("⚠️ 上載咗但攞唔到 file id（可改貼 Drive 連結）");return;}
+      stage.innerHTML="";say("✅ 上載完成");done(fid,true);};
+    x.onerror=function(){_busy=false;send.disabled=false;say("⚠️ 上載出錯（network）。可改貼 Drive 連結");};
+    x.send(f);});}
+function submit(){if(_busy){say("處理緊…");return;}
+  var f=_staged;var v=inp.value.trim();
+  if(f){_staged=null;stage.innerHTML="";up(f);return;}
+  if(!v){say("⚠️ 未貼 link／未揀檔");return;}
+  inp.value="";done(v,false);}   // 貼 link → 直接交（後端 add_manual_ref 認 link/Drive id/URL）
+send.onclick=submit;
+inp.addEventListener("keydown",function(ev){if(ev.key==="Enter"&&!ev.shiftKey){ev.preventDefault();submit();}});
+})();</script>
+<div id='noteslist' class='noteslist'></div></div><details class='soft' open><summary>📸 Visual 素材（41 個：LOGO 1、視覺參考 27、新聞配圖 8、宣傳片 5）</summary><p class='hint'>搵到嘅 LOGO／海報／單張／宣傳片／真實參考相，每個有原網址。<b>剔相後揀：⭐首選＝呢張參考優先過其他；🔁重搜＝搵過好啲（e.g. logo 污糟）；🗑刪除＝搵錯即清。</b></p><div class='vacarou'><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='LOGO_slot1.png'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/logos/slot1.png' loading=lazy></div><div class='vacat'>LOGO</div><div class='vaname'>社會福利署</div><div><span class='vasrc' style='color:#bbb'>（無網址）</span></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_地區服務及關愛隊隊員制服_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_地區服務及關愛隊隊員制服_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>地區服務及關愛隊隊員制服</div><div><a href='https://hkcd.com/content_app/2023-05/05/content_1398746.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_地區服務及關愛隊隊員制服_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_地區服務及關愛隊隊員制服_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>地區服務及關愛隊隊員制服</div><div><a href='https://www.news.gov.hk/chi/2023/06/20230623/20230623_111739_846.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_地區服務及關愛隊隊員制服_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_地區服務及關愛隊隊員制服_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>地區服務及關愛隊隊員制服</div><div><a href='https://huacheng.gz-cmc.com/pages/2023/06/25/3faa67cbe7c2470fa5cfe5e7099b0858.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_地區服務及關愛隊標誌_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_地區服務及關愛隊標誌_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>地區服務及關愛隊標誌</div><div><a href='https://www.had.gov.hk/tc/public_services/district_services_community_care_teams/index.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_地區服務及關愛隊標誌_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_地區服務及關愛隊標誌_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>地區服務及關愛隊標誌</div><div><a href='https://www.info.gov.hk/gia/general/202503/31/P2025033100269.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_長者家居環境_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_長者家居環境_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>長者家居環境</div><div><a href='https://www.tkww.hk/a/202110/11/AP616398d5e4b0fc535365a38a.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_長者家居環境_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_長者家居環境_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>長者家居環境</div><div><a href='https://www.tkww.hk/a/202306/08/AP6481814be4b068c215a51d5d.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_長者家居環境_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_長者家居環境_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>長者家居環境</div><div><a href='https://chinaworker.info/zh-hant/2017/11/30/16458/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_照顧者日常用品_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_照顧者日常用品_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>照顧者日常用品</div><div><a href='https://www.edenhome.hk/categories/carer-products?srsltid=AU7gw4WbONWeW9LuGZ478bgcyvKFWQaciGnaToAXDt0pQfbxe0meg1cs' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_照顧者日常用品_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_照顧者日常用品_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>照顧者日常用品</div><div><a href='https://656carer.com/archive/%E9%95%B7%E8%80%85%E8%BC%94%E5%85%B7%E9%95%B7%E8%80%85%E8%BC%94%E5%8A%A9%E8%A1%8C%E5%8B%95%E5%99%A8%E6%9D%90%E5%8F%8A%E7%94%A8%E5%93%81%E7%A7%9F%E5%80%9F/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_照顧者日常用品_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_照顧者日常用品_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>照顧者日常用品</div><div><a href='https://www.edenhome.hk/categories/carer-products?srsltid=AU7gw4WcARoydQNx8HBFEpagAlkd1O536hePVVUUVR3LTJUzUlUAH1nm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港小學校園外觀_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_香港小學校園外觀_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港小學校園外觀</div><div><a href='https://www.canossahk.edu.hk/%E6%A0%A1%E5%9C%92%E7%92%B0%E5%A2%83' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港小學校園外觀_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_香港小學校園外觀_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港小學校園外觀</div><div><a href='https://www.stheadline.com/ohpama/77380/%E5%AD%B8%E6%A0%A1%E5%B7%A1%E7%A6%AE%E9%A6%99%E6%B8%AF%E5%AD%B8%E7%94%9F%E8%BC%94%E5%8A%A9%E6%9C%83%E5%B0%8F%E5%AD%B8-%E6%A0%A1%E5%9C%92%E5%A4%A7%E7%BF%BB%E6%96%B0-%E8%88%88%E5%BB%BA%E5%BB%B6%E5%B1%95%E5%AD%B8%E7%BF%92%E5%8D%80-%E8%B1%90%E5%AF%8C%E5%AD%B8%E7%94%9F%E5%AD%B8%E7%BF%92%E9%AB%94%E9%A9%97' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港小學校園外觀_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_香港小學校園外觀_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港小學校園外觀</div><div><a href='https://ckcps.edu.hk/tc/%E5%AD%B8%E6%A0%A1%E7%92%B0%E5%A2%83' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港小學課室內部_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_香港小學課室內部_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港小學課室內部</div><div><a href='https://www.skwtts.edu.hk/site/view?name=%E5%AD%B8%E6%A0%A1%E8%A8%AD%E5%82%99' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港小學課室內部_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_香港小學課室內部_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港小學課室內部</div><div><a href='https://www.aluhouse.com/latest-news/278.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港小學課室內部_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_香港小學課室內部_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港小學課室內部</div><div><a href='https://www.skwtts.edu.hk/site/view?name=%E5%AD%B8%E6%A0%A1%E8%A8%AD%E5%82%99' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_小學生校服_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_小學生校服_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>小學生校服</div><div><a href='https://www.plkheps.edu.hk/zh_tw/site/view?name=%E6%A0%A1%E6%9C%8D%E6%A8%A3%E5%BC%8F' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_小學生校服_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_小學生校服_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>小學生校服</div><div><a href='https://www.tycy.edu.hk/%E6%A0%A1%E6%9C%8D' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_小學生校服_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_小學生校服_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>小學生校服</div><div><a href='https://zh.wikipedia.org/zh-tw/%E9%A6%99%E6%B8%AF%E6%A0%A1%E6%9C%8D' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_社工制服_識別證_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_社工制服_識別證_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>社工制服/識別證</div><div><a href='https://www.instagram.com/p/C7wZF5etR9S/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_社署宣傳海報_單張_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_社署宣傳海報_單張_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>社署宣傳海報/單張</div><div><a href='https://www.swd.gov.hk/tc/pubsvc/elderly/cat_careersupp/carersuppo/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_社署宣傳海報_單張_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_社署宣傳海報_單張_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>社署宣傳海報/單張</div><div><a href='https://www.swd.gov.hk/sc/pubsvc/elderly/cat_careersupp/carersuppo/index.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_社署宣傳海報_單張_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_社署宣傳海報_單張_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>社署宣傳海報/單張</div><div><a href='https://www.swd.gov.hk/vs/index_c.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_社區中心外觀_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_社區中心外觀_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>社區中心外觀</div><div><a href='https://zh.wikipedia.org/zh-tw/%E9%A6%99%E6%B8%AF%E7%A4%BE%E5%8D%80%E6%9C%83%E5%A0%82' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_社區中心外觀_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_社區中心外觀_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>社區中心外觀</div><div><a href='https://news.rthk.hk/rthk/ch/component/k2/1835515-20251210.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_社區中心外觀_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/el_社區中心外觀_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>社區中心外觀</div><div><a href='https://www.freeguider.com/hk/venues/Western-district-community-centre---disable-service' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_ff9c83ad.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/news_ff9c83ad.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>香港政府新聞網- 香港精準扶貧成果報</div><div><a href='https://www.news.gov.hk/chi/2026/06/20260618/20260618_172223_093.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_4d062b81.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/news_4d062b81.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>香港精準扶貧成果報告勾劃扶弱工作未來</div><div><a href='http://hkcna.hk/docDetail.jsp?id=101349426&amp;channel=4371' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_4897c319.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/news_4897c319.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>精準扶貧報告出爐 逾七成受惠者感滿意</div><div><a href='https://www.stheadline.com/society/3584566/%E7%B2%BE%E6%BA%96%E6%89%B6%E8%B2%A7%E5%A0%B1%E5%91%8A%E5%87%BA%E7%88%90-%E9%80%BE%E4%B8%83%E6%88%90%E5%8F%97%E6%83%A0%E8%80%85%E6%84%9F%E6%BB%BF%E6%84%8F-%E6%B6%88%E6%81%AF%E4%BA%BA%E5%A3%AB%E6%9C%AA%E4%BE%86%E4%B8%8D%E5%86%8D%E5%AE%9A%E7%BE%A9%E8%B2%A7%E7%AA%AE%E5%85%8D%E6%A8%99%E7%B1%A4%E6%9C%89%E9%9C%80%E8%A6%81%E4%BA%BA%E5%A3%AB' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_b9df3dce.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/news_b9df3dce.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>精準扶貧報告出爐 逾七成受惠者感滿意</div><div><a href='https://www.singtao.ca/7539582/2026-06-18/news-%E7%B2%BE%E6%BA%96%E6%89%B6%E8%B2%A7%E5%A0%B1%E5%91%8A%E5%87%BA%E7%88%90+%E9%80%BE%E4%B8%83%E6%88%90%E5%8F%97%E6%83%A0%E8%80%85%E6%84%9F%E6%BB%BF%E6%84%8F+%E6%B6%88%E6%81%AF%E4%BA%BA%E5%A3%AB%EF%BC%9A%E6%9C%AA%E4%BE%86%E4%B8%8D%E5%86%8D%E5%AE%9A%E7%BE%A9%E3%80%8C%E8%B2%A7%E7%AA%AE%E3%80%8D%E5%85%8D%E6%A8%99%E7%B1%A4%E6%9C%89%E9%9C%80%E8%A6%81%E4%BA%BA%E5%A3%AB/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_83003fe5.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/news_83003fe5.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>地區治理領導委員會召開第七次會議（附</div><div><a href='https://www.info.gov.hk/gia/general/202607/27/P2026072700542.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_7973a806.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/news_7973a806.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>施政報告2025｜續精準扶貧增設社區</div><div><a href='https://news.tvb.com/tc/795390-%E6%96%BD%E6%94%BF%E5%A0%B1%E5%91%8A2025%E7%BA%8C%E7%B2%BE%E6%BA%96%E6%89%B6%E8%B2%A7%E5%A2%9E%E8%A8%AD%E7%A4%BE%E5%8D%80%E5%AE%A2%E5%BB%B3%E5%8A%A0%E5%BC%B7%E5%AE%89%E8%80%81%E9%99%A2%E8%88%8D%E7%85%A7%E9%A1%A7%E6%9C%8D%E5%8B%99' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_922c6307.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/news_922c6307.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>施政報告2025｜向兒童發展基金注資</div><div><a href='https://news.rthk.hk/rthk/ch/component/k2/1823203-20250917.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_022f398f.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/SWD/grounding/news_022f398f.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>協力政府服務社區 改革創新推動發展 </div><div><a href='https://bau.com.hk/web/article/1417933568205193216/web/content_1417933568205193216.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_75044422'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJwOy-pmAmzGfMA8i75jJzSes_k8hhxHMFkjRTmerG7NODHEyKSpCnYg&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>社署委託關愛隊探訪高風險長者和照顧者</div><div><a href='https://www.youtube.com/watch?v=4f54s6GnZwo' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_27940687'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUHrZPRVUnslwtNHrE9ptOTjseowkazTTac1nB-tTCq1Hh_yRpX7yICA&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>支援照顧者稍息再前行</div><div><a href='https://www.youtube.com/watch?v=Lm1gKOPHUO8' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_50882269'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScphNqqeYqJtUNT_Wp-CkGyn-wI3TyqwftH3j2vMzDgUemZ9mtNu0dvw&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>「齊撐照顧者行動」回顧短片</div><div><a href='https://www.youtube.com/watch?v=bjvmh7eu5Wk' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_50002639'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcFuAkFiGx8kLQ073juYkJOaCSG_qgGEmZlt69NaSAc08rOa5I-Rhnwg&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>YouTube</div><div><a href='https://www.youtube.com/watch?v=2a9qoFrlOJc' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_20983662'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP0abRgCGhyMvK6MEjdbJ0Sb9LuMeTb18ieIh_6ystYYiPYcjTZclJPg&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>【關愛隊服務— 從心出發走遍社區：及</div><div><a href='https://www.youtube.com/watch?v=yCI6fAGa-LQ' target=_blank class='vasrc'>原網址 ↗</a></div></div></div><div class='acts vaacts' style='margin-top:8px'><button class='btn grn' onclick="preferAssets('SWD')">⭐ 設首選</button><button class='btn ghost vbtn' onclick="researchAssets('SWD')">🔁 重搜</button><button class='btn' style='background:var(--red)' onclick="delAssets('SWD')">🗑 刪除選取</button></div></details><div class='h2 tierh'>🎯 必定餵 AI（諗橋一定收）</div><p class='hint tierhint'>委員會／agency 諗橋一定收呢批做底，必跟。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📋 標書撮要</span><span class='rawlink' onclick="showOvl('raw_SWD')">📄 標書原文</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><h5>① 背景同目的</h5>
+<p>* <strong>招標部門與項目名稱</strong>：社會福利署（SWD）發起「為『地區服務及關愛隊—支援長者及照顧者計劃』及『在校課後託管服務計劃』製作一套電視宣傳短片」採購案（報價單編號：`SWD/Q017/2026`）[第 1, 51 頁]。</p>
+<p>* <strong>政策背景與計劃進展</strong>：</p>
+<p>  1. <strong>精準扶貧策略</strong>：因應 2022 年《施政報告》策略，扶貧委員會識別出三個目標群組（劏房戶、單親家庭及全長者戶）[第 51 頁]。</p>
+<p>  2. <strong>地區服務及關愛隊—支援長者及照顧者計劃（SEC Scheme）</strong>：2024 年 3 月於荃灣及南區試行，2025 年 4 月擴展至全港 18 區；2025 年《施政報告》宣布自 2026 年 4 月起再推行三年，目標接觸至少 60,000 個有需要住戶 [第 51 頁]。截至 2026 年 6 月底，455 隊關愛隊已探訪或接觸超過 121,000 個住戶，提出逾 15,000 宗福利轉介，並協助安裝逾 4,100 個平安鐘 [第 51–52 頁]。「照顧者支援數據平台」已整合房署數據並於 2026 年 3 月擴展至「三無大廈」社區外展探訪 [第 52 頁]。</p>
+<p>  3. <strong>在校課後託管服務計劃（SBA Scheme）</strong>：2023/24 學年由關愛基金資助推出，為小學生提供課後照顧及學習支援，減輕家長照顧壓力並支援其投入職場 [第 52 頁]。截至 2026 年 6 月已有 207 間小學參與、提供逾 10,600 個名額 [第 52 頁]。研究評估證實績效超越 KPI，政府建議 2026/27 學年起推展至全港所有公營小學均可申請參與，且不設名額上限 [第 52 頁]。</p>
+<p>* <strong>項目目的</strong>：社署採購製作服務，製作一套 30 秒電視宣傳短片（TV API），向公眾展示上述兩項計劃的成功推行成果與社區效益 [第 51, 52 頁]。</p>
+<p>---</p>
+<h5>② 目標受眾</h5>
+<p>* <strong>目標受眾</strong>：全港公眾市民（The general public）[第 51 頁]。</p>
+<p>---</p>
+<h5>③ 傳意目標 / 核心訊息</h5>
+<p>* <strong>整體傳意目標</strong>：展現 SEC Scheme 與 SBA Scheme 兩項計劃的成功實施成果 [第 52 頁]。</p>
+<p>* <strong>核心訊息（Key Messages）</strong> [第 52–53 頁]：</p>
+<p>  1. <strong>SEC Scheme（支援長者及照顧者計劃）</strong>：</p>
+<p>     * 突出關愛隊主動外展探訪獨居/雙老長者戶及長者/殘疾人士照顧者，適時轉介福利服務及協助申請緊急警報系統（平安鐘）[第 52–53 頁]。</p>
+<p>     * 突出照顧者支援數據平台擴展至房委會資助房屋及「三無大廈」，展示其對社區帶來的正面影響 [第 53 頁]。</p>
+<p>  2. <strong>SBA Scheme（在校課後託管服務計劃）</strong>：</p>
+<p>     * 突出課後對有需要學童的照顧與強化學習支援，讓家長能安心投入職場、改善生計，同時舒緩育兒與照顧壓力 [第 53 頁]。</p>
+<p>     * 宣傳 2026/27 學年起全港所有公營小學均可申請參與 SBA Scheme，且服務名額不設上限 [第 53 頁]。</p>
+<p>---</p>
+<h5>④ 影片 / 製作規格</h5>
+<p>* <strong>集數與版本</strong>：1 套（1 set），1 個單一版本（One version only）[第 51, 52 頁]。</p>
+<p>* <strong>每集長度</strong>：<strong>30 秒</strong>（30 seconds）[第 51, 53 頁]。</p>
+<p>  * <strong>內容時間比例</strong>：SEC Scheme 約 15 秒，SBA Scheme 約 15 秒 [第 56 頁]。</p>
+<p>* <strong>語言及字幕</strong>：</p>
+<p>  * <strong>廣東話版本</strong>：配粵語旁白/配音，並附繁體中文書面語字幕 [第 53, 55 頁]。</p>
+<p>  * <strong>英語版本</strong>：配英語旁白/配音（英語發音），並附英文字幕 [第 53, 55 頁]。</p>
+<p>* <strong>配音 / 旁白</strong>：承辦商須為廣東話及英語旁白/配音員各提供 <strong>3 至 5 名候選人</strong>供社署挑選 [第 54 頁]。</p>
+<p>* <strong>拍攝及交付輸出規格</strong>：</p>
+<p>  * <strong>拍攝格式</strong>：採用 HDCAM、RED ONE 或同等規格。HDV 格式或靜態相機拍攝可視乎創意考量，需經社署確認 [第 53, 56 頁]。</p>
+<p>  * <strong>廣播電視母帶格式</strong>：16:9 HD，XDCAM HD422 at 50Mbps MXF 格式（無片頭/clapper，時間碼由 `00:00:00:00` 開始）[第 52, 56, 58 頁]。</p>
+<p>  * <strong>網絡/多媒體格式</strong>：Full HD (1920x1080) MPEG-4 格式及 WMV 格式，供社署/政府網站及社交媒體發布 [第 52–53, 57 頁]。</p>
+<p>  * <strong>無障礙網絡播放版本</strong>：須額外提供另一個符合 <strong>W3C WCAG 2.2 Level AA</strong> 標準的版本，以供發布於網際網絡 [第 54 頁]。</p>
+<p>* <strong>手語翻譯（Sign Language Interpretation）強制規格</strong> [第 53–54 頁]：</p>
+<p>  * 廣東話及英語版本均須包含香港手語翻譯（Hong Kong Sign Language），譯員由承辦商聘用並承擔費用，譯員需穿深色衣服 [第 53–54 頁]。</p>
+<p>  * <strong>手語視窗規格</strong>：橢圓形（Oval-shaped）、佔螢幕 <strong>1/6 大小</strong>（或社署接受的大小）、位於螢幕右下角、淺灰或粉藍色非反光背景，且手語表達須盡可能與字幕同步 [第 54 頁]。</p>
+<p>---</p>
+<h5>⑤ 指定班底</h5>
+<p>* <strong>ERB 導師</strong>：標書全文<strong>完全沒有提及</strong> ERB 導師要求 [第 1–83 頁]。</p>
+<p>* <strong>KOL / 明星</strong>：標書全文<strong>完全沒有提及</strong>指定 KOL 或明星演出要求 [第 1–83 頁]。</p>
+<p>* <strong>吉祥物（Mascot）</strong>：標書全文<strong>完全沒有提及</strong>吉祥物（Mascot）要求 [第 1–83 頁]。</p>
+<p>* <strong>實際班底與專業人員要求</strong>：</p>
+<p>  1. <strong>影片素材（Video Footage）</strong>：部分影片片段將由社署提供（Video footage will be provided by SWD），承辦商主要透過剪輯及圖形特效（graphic effects）突出核心訊息 [第 54 頁]。</p>
+<p>  2. <strong>旁白/配音員（Voice-over talents）</strong>：承辦商須為粵語及英語配音員各提供 <strong>3 至 5 名候選人</strong>供社署選角 [第 54 頁]。</p>
+<p>  3. <strong>手語翻譯員（Sign Language Interpreter）</strong>：承辦商須聘用全港通用之香港手語翻譯員，譯員須檢查並確認最終剪輯版本的手語表達準確無誤 [第 53–54 頁]。</p>
+<p>  4. <strong>監督團隊（Supervisory Staff）</strong>：獲標承辦商須於合約獲批後 <strong>7 個工作天內提交監督計劃（Supervision plan）</strong>，說明監督人員的職銜、專業資格、人員簡報及培訓等機制 [第 55 頁]。</p>
+<p>---</p>
+<h5>⑥ 創意及策略重點 / 風格要求</h5>
+<p>* <strong>素材整合與視覺效果</strong>：善用社署提供的影片片段，結合剪輯與圖形特效（graphic effects）強化核心訊息。畫面中出現網址、電話、電郵等關鍵資訊時，需配合合適旁白聲軌 [第 53, 54 頁]。</p>
+<p>* <strong>原創性與版權</strong>：提交之創意概念、劇本、口號（Slogan）、分鏡腳本（Storyboard，含中英文畫面描述及對白）等必須為投標者原創，不得轉售或曾被第三方購買 [第 51, 53 頁]。</p>
+<p>* <strong>音樂與配樂</strong>：優先採用量身訂造/後期配樂（tailor-made / post-scored music preferred）。承辦商須完全負擔音樂版權及許可費用（包含向 CASH、IFPI、HKRIA 等支付公開播映權費用），並於製作完成後填交《Information on Music Copyright》（Annex 2）[第 53, 54, 58 頁]。</p>
+<p>* <strong>性別主流化（Gender Mainstreaming）</strong>：宣傳內容呈現必須具備性別敏感度（gender-sensitive manner），確保無性別偏見或不平等（須填寫 Schedule 5）[第 52, 70 頁]。</p>
+<p>* <strong>評分準則（Marking Scheme，技術比重 70%）</strong> [第 73 頁]：</p>
+<p>  1. <strong>訊息準確性及清晰度（30%）</strong>：創意概念需極清晰、準確、精煉傳達訊息 [第 73, 74–75 頁]。</p>
+<p>  2. <strong>訊息傳達之創意（15%）</strong>：宣傳短片呈現手法需具備高度創意 [第 73, 75–76 頁]。</p>
+<p>  3. <strong>宣傳活動影響力（15%）</strong>：能引發廣泛社區關注與認知 [第 73, 76 頁]。</p>
+<p>  4. <strong>記憶度（Recall 10%）</strong>：能讓受眾輕鬆記住訊息 [第 73, 76–77 頁]。</p>
+<p>  5. <strong>共鳴感/說服力（Resonance 10%）</strong>：能說服公眾並產生共鳴 [第 73, 77 頁]。</p>
+<p>  6. <strong>創新建議（Innovative Suggestions 20%）</strong>：</p>
+<p>     * <strong>促進創新建議（Pro-innovation Proposals，15%）</strong>：採用新技術/新工具/新流程提升製作效率、質素或宣傳傳播效果（提 4 個以上有效方案拿滿分 15 分）[第 73, 77–78, 80 頁]。</p>
+<p>     * <strong>ESG 建議（5%）</strong>：提升環境保護（E）、社會責任（S，如聘用殘疾/復康人士）或公司管治（G）的措施（提 4 個以上有效方案拿滿分 5 分）[第 73, 78, 81 頁]。</p>
+<p>---</p>
+<h5>⑧ 任何強制要求或紅線</h5>
+<p>1. <strong>雙信封制（Two-Envelope Approach）與絕密紅線</strong>：</p>
+<p>   * 標書必須分為「技術建議書（Envelope No. 1）」及「價格建議書（Envelope No. 2）」，分別放入兩個<strong>獨立密封純白信封</strong>內遞交，各一式兩份（DUPLICATE）[第 1, 2, 10, 16 頁]。</p>
+<p>   * ⛔ <strong>絕密紅線</strong>：<strong>技術建議書內絕對不可包含任何價格資料</strong>（WITHOUT any price information），否則將被直接取消資格 [第 2, 16 頁]。</p>
+<p>2. <strong>遞交方式紅線</strong>：</p>
+<p>   * 必須於 2026 年 9 月 24 日上午 11:00 前<strong>專人親身投入</strong>香港灣仔皇后大道東213號胡忠大廈23樓2353室社會福利署物料供應分組報價箱內 [第 1, 2, 10, 16 頁]。</p>
+<p>   * ⛔ <strong>嚴禁</strong>以電郵、傳真、郵遞方式遞交，逾期遞交一律不予考慮 [第 1, 2, 10, 16 頁]。</p>
+<p>3. <strong>信封標籤與匿名要求</strong>：</p>
+<p>   * 信封外部不得有任何可識別投標公司身份的名稱或標記，並須準確註明收件人「Chairman, SWD Quotation Opening Team」、報價單編號 `SWD/Q017/2026`、項目名稱及截標日期 [第 1, 2, 10 頁]。</p>
+<p>4. <strong>表格與簽署紅線</strong>：</p>
+<p>   * 必須按時填妥並由授權人士原筆簽署 `Schedule 3 - Offer to be Bound` [第 16, 18, 26, 66 頁]。如缺少原筆簽署（Original signature）或遺漏 Schedule 3，將直接被<strong>取消資格（Disqualified）</strong>，且政府<strong>不會</strong>給予補交或澄清機會 [第 26, 66 頁]。</p>
+<p>5. <strong>知識產權與版權歸屬</strong>：</p>
+<p>   * 所有製作素材、影片成品及知識產權一經建立，完全獨家歸香港特別行政區政府所有 [第 54, 69 頁]。</p>
+<p>   * 承辦商須全權負責音樂及第三方素材的全球、永久、跨媒體播映版權許可與費用 [第 54, 69 頁]。</p>
+<p>6. <strong>國家安全與反串謀條款</strong>：</p>
+<p>   * 必須簽署遞交 Schedule 4 反串謀投標確認書（Non-collusive Quotation Certificate）[第 15, 25–26, 67–68 頁]。</p>
+<p>   * <strong>國家安全條款</strong>：若投標者從事危害國家安全的行為，政府有權直接取消資格或終止合約 [第 25, 35 頁]。</p>
+<p>7. <strong>創新建議違約賠償（Liquidated Damages）</strong>：</p>
+<p>   * 獲採納的創新建議（Accepted Pro-innovation / ESG Proposals）將成為合約強制條款。若獲標後未能執行，政府將按合約公式扣減合約費用或進行索償 [第 42–44 頁]。</p>
+<p>💡 如果貴公司需要進一步進行創意 Concept 發展、分鏡腳本 Shot Planning 或者提案簡報（Presentation）準備，隨時告訴我！</p><div id='raw_SWD' class='ovl'><div class='ovlbox'><div class='ovlhd'><span>📄 標書原文（逐字）</span><button class='x' onclick="hideOvl('raw_SWD')">✕</button></div><div class='ovlbody'><p class='hint'>fetch_source（pypdf）抽嘅標書逐字原文 —— 委員會／agency／debrief／5W1H 都餵呢份做 ground-truth。　·　<a href='https://drive.google.com/drive/folders/1nNVIevwQB_kMtsqxGVagtH6_8rLqsYop' target='_blank' style='font-weight:700;color:var(--ac)'>📄 開原始檔 ↗</a></p><pre style='white-space:pre-wrap;font-size:11px;line-height:1.5;background:#fafbfc;border:1px solid var(--line);border-radius:8px;padding:9px;color:#333;margin:0'>===== email__Restricted_ Provision of Serv_20260910_150819.pdf(全文；未分到 Specification 段)=====
+*Restricted: Provision of Service for the Production of a set
+of TV Announcements in the Public Interest for “District
+Services and Community Care Teams – Scheme on
+Supporting Elderly and Carers” and “School-based After
+School Care Service Scheme
+From: &quot;LEUNG Pui Yuen/SWD&quot; &lt;pui_yuen_leung@swd.gov.hk&gt;
+Date: Thu Sep 10 2026 15:08:19 GMT+0800 (香港標準時)
+Dear Sir/Madam,
+We would like to invite your company to submit a quotation for the 
+provision of services in accordance with the enclosed Quotation 
+Documents.
+Description
+Provision of Service for the Production of a set of TV Announcements in 
+the Public Interest for “District Services and Community Care Teams – 
+Scheme on Supporting Elderly and Carers” and “School-based After School 
+Care Service Scheme
+Quotation Issue Date
+10 September 2026
+Quotation Closing Date and Time
+24 September 2026 at 11:00 am (Hong Kong time)
+Please submit your quotation, including Technical Proposal (in 
+DUPLICATE) and Price Proposal (in DUPLICATE) in two (2) separate sealed 
+plain envelopes marked with “Technical Proposal” and “Price Proposal” 
+respectively, bearing quotation reference and quotation closing date 
+(but not bearing any indication which may relate the quotation to the 
+Bidder).  The envelopes must be for the attention of the Chairman, SWD 
+Quotation Opening Team and deposited by hand into the Social Welfare 
+Department Supplies Unit Quotation Box situated at Room 2353, 23/F., Wu 
+Chung House, 213 Queen’s Road East, Wan Chai, Hong Kong before the 
+Quotation Closing Time specified above, failing which will render the 
+quotation not being considered further.  Late quotations including 
+quotations posted or despatched prior to, but received after, the 
+Quotation Closing Time, or quotations submitted by e-mail, facsimile or 
+post will not be considered further.
+You are also invited to attend, by completing and returning the 
+registration form via email or fax by 14.9.2026 at 1pm at Appendix A, 
+an online briefing session to be conducted in Cantonese.  No 
+alternative session will be arranged.  All Bidders are strongly 
+recommended to attend the online briefing session in order to have a 
+
+better understanding on the expectation and requirements of this 
+invitation before submitting technical and price proposals.  Details of 
+the online briefing session are as follows:
+Online briefing session (by zoom)
+Date:
+15 September 2026
+Time:
+3:00pm
+Regards,
+LEUNG Pui-yuen
+A(RM)9
+Tel: 3468 2625
+[See attachment &quot;Invitation to Quotation [ SWD-Q017-2026].pdf&quot;]</pre></div></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>⚠️ 製作要求</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><p class='hint'>每個概念必跟，違 = 廢稿。</p><div class='preqs'><div class='prow'><span class='pl'>🤟 手語</span><span class='pv pvon'>✅ 要</span><span class='pp' title='必須包含香港手語翻譯（粵語及英語版本）。手語視窗為橢圓形，佔螢幕1/6大小，位於右下角，淺灰/粉藍背景，譯員需穿深色衣服'>p53</span></div><div class='prow'><span class='pl'>♿ W3C影片</span><span class='pv pvon'>✅ 要</span><span class='pp' title='必須提供符合 W3C WCAG 2.2 Level AA 標準的網絡播放版本。'>p53</span></div><div class='prow'><span class='pl'>⭐ 明星/名人/官員</span><span class='pv pvoff'>無Preference</span><span class='pp'></span></div><div class='prow'><span class='pl'>🧸 Mascot</span><span class='pv pvoff'>無Preference</span><span class='pp'></span></div><div class='prow'><span class='pl'>🎬 動畫</span><span class='pv pvoff'>無Preference</span><span class='pp'></span></div></div><div class='h3' style='margin-top:11px'>⛔ 注意 / 紅線</div><div class='timeline'><div class='tlrow'><span class='tllabel'>[手語] <b>手語翻譯 (Sign Language Interpretation)</b>：必須包含香港手語翻譯（粵語及英語版本）。手語視窗為橢圓形，佔螢幕1/6大小，位於右下角，淺灰或粉藍色非反光背景，手語譯員需穿深色衣服，並盡量與字幕同步。</span></div><div class='tlrow'><span class='tllabel'>[無障礙] <b>無障礙標準 (W3C WCAG 2.2 AA)</b>：需提供另一個符合 World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (W</span></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>⚡ 創意亮點</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ Gemini Flash＋Search</span></div><div class='cbody'><h4>⚡ 創意亮點 — SWD·Provision of Service for the Production of a set of TV Announcements in the Public Interest for &quot;District Services and Community Care Teams - Scheme on Supporting Elderly and Carers&quot; and &quot;School-based After School Care Service Scheme&quot; / 為「地區服務及關愛隊—支援長者及照顧者計劃」及「在校課後託管服務計劃」製作一套電視宣傳短片（research 掘出嚟，可以做橋嘅真嘢）</h4>
+<p>1. 🏷️ <strong>關愛隊專屬識別背心</strong></p>
+<p>   - 事實：關愛隊視覺以小隊制服背心為主，同一小區內樣式一致，正背面清晰印有地區及小區名稱，隊員配戴工作證上門探訪。（出處：[hooks-research] SWD）</p>
+<p>   - 💡 可以點做橋：以背心名牌及親切敲門動作為視覺符號，展現專人上門關懷的信任感與鄰里情。</p>
+<p>2. 🏷️ <strong>室內緊急召援系統（平安鐘）</strong></p>
+<p>   - 事實：SEC計劃資助高風險獨老及雙老家庭安裝俗稱「平安鐘」的室內緊急召援系統，截至2026年6月底已協助超過4,100戶安裝。（出處：Invitation to Quotation [SWD-Q017-2026] &amp; [hooks-research] SWD）</p>
+<p>   - 💡 可以點做橋：將「按掣求救」的平安鐘實物動作轉化為全城防護網的具象保障符號。</p>
+<p>3. 💡 <strong>數據平台精準主動敲門</strong></p>
+<p>   - 事實：照顧者支援數據平台跨部門整合房委會與社署數據，並於2026年3月伸延至「三無大廈」，由被動等候求助轉為主動上門識別高風險戶。（出處：Invitation to Quotation [SWD-Q017-2026] &amp; [hooks-research] SWD）</p>
+<p>   - 💡 可以點做橋：以主動敲門探訪三無大廈舊樓的真實鏡頭，突出政府精準扶貧主動出擊的政策轉變。</p>
+<p>4. 🏷️ <strong>熟悉的校園託管環境</strong></p>
+<p>   - 事實：SBA計劃讓小學生放學後（15:00-19:00）留在熟悉的校園課室，進行不多於8人一組的功課輔導及活動，截至2026年6月已有207間小學參與。（出處：Invitation to Quotation [SWD-Q017-2026] &amp; [hooks-research] SWD）</p>
+<p>   - 💡 可以點做橋：以「留在自己學校做完功課」的熟悉安全感，對比家長安心工作放工接送的溫馨場面。</p>
+<p>5. 🇭🇰 <strong>照顧者「抖抖氣」切身痛點</strong></p>
+<p>   - 事實：社署照顧者宣傳線既有標誌「齊撐照顧者行動」以「抖抖氣 打打氣」及專線182 183為核心，深植基層照顧者心水。（出處：[hooks-research] SWD &amp; 官方來源 正名）</p>
+<p>   - 💡 可以點做橋：切入照顧者身心俱疲需要喘息的痛點，將社區支援連結至「讓人適時抖抖氣」的情感共鳴。</p>
+<p>6. 🇭🇰 <strong>「做完功課先有得玩」家長金句</strong></p>
+<p>   - 事實：SBA在校託管強調高質功課輔導，形成「在校完成功課、回家共享天倫」的口碑，紓緩雙職及單親家長輔導功課的巨大壓力。（出處：[hooks-research] SWD）</p>
+<p>   - 💡 可以點做橋：以小朋友在校完成功課後的輕鬆笑容，直擊雙職家長下班免受功課折磨的踏實幸福感。</p>
+<p>7. 💡 <strong>30秒片雙計劃黃金對分</strong></p>
+<p>   - 事實：標書規定本單需製作一條30秒TV API，精準平分長者及照顧者計劃（約15秒）與在校課後託管計劃（約15秒）。（出處：Invitation to Quotation [SWD-Q017-2026] Service Specifications Annex 1）</p>
+<p>   - 💡 可以點做橋：運用雙線平行剪接，將上門護老與在校託管兩幅安居樂業畫面完美交織。</p>
+<p>8. 🏷️ <strong>橢圓形手語翻譯視窗規範</strong></p>
+<p>   - 事實：標書嚴格規定畫面右下角須設佔螢幕1/6大小的橢圓形手語視窗，背景為淺灰或粉藍色，譯員穿深色衣服。（出處：Invitation to Quotation [SWD-Q017-2026] Service Specifications Clause 6(l)）</p>
+<p>   - 💡 可以點做橋：以標準無障礙手語視窗配合繁體中文/英文雙語字幕，展示官方訊息的全民包容度。</p>
+<p>9. 🎯 <strong>Hidden Agenda（政府點解而家做）</strong></p>
+<p>   - 事實：這條宣傳片背後的隱藏議程，是政府希望透過「地區服務及關愛隊」和「在校課後託管服務」等具體措施，軟性地回應社會對扶貧和支援弱勢社群的訴求，並藉此提升市民對政府「精準扶貧」政策的認同感和信任。政府正值發表《香港精準扶貧成果報告》之際，希望透過這些貼地的服務，展示其扶貧工作並非空談，而是能實質改善市民生活，同時也為未來不再定義「貧窮」的政策鋪路，避免標籤化，以爭取更廣泛的社會支持。</p>
+<p>   - 💡 可以點做橋：可以將呢個深層目的織入概念，令片唔止講程序，更打中政府想傳達嘅 message。</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📊 研究（深入＋Web 整合）</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ Perplexity Sonar</span></div><div class='cbody'><h3>Deep Research — SWD · Provision of Service for the Production of a set of TV Announcements in the Public Interest for &quot;District Services and Community Care Teams - Scheme on Supporting Elderly and Carers&quot; and &quot;School-based After School Care Service Scheme&quot; / 為「地區服務及關愛隊—支援長者及照顧者計劃」及「在校課後託管服務計劃」製作一套電視宣傳短片</h3>
+<h4>1. 議題深度背景(近期發展,補充事實)</h4>
+<p>- <strong>「支援長者及照顧者計劃」已由試點變成全港性措施</strong>：SWD 於 <strong>2024 年 3 月</strong>先在荃灣及南區試行，並在 <strong>2025 年 4 月</strong>擴展至 <strong>全港 18 區</strong>，重點係透過關愛隊上門或接觸識別獨老、雙老、長者照顧者及殘疾人士照顧者，再轉介服務單位跟進。[3][4][7][13]</p>
+<p>- <strong>政府近年明顯加大「照顧者支援」政策化與熱線化</strong>：包括 <strong>182 183 照顧者支援專線</strong>、照顧者資訊平台等配套，整體訊息已由「關心長者」轉向「找出有需要嘅照顧者並接通服務」。[4][6][13]</p>
+<p>- <strong>「在校課後託管服務計劃」屬於家庭支援與勞動參與政策交叉點</strong>：這類服務近年常被放入「支援有子女家庭、減輕照顧壓力、幫助家長安心工作」的政策敘事中；在公共傳播上，通常同時面向家長、學校及社區支援網絡，而唔單止係學生福利。[一般政策脈絡推論，基於此類服務定位]</p>
+<p>- <strong>社區層面的「接觸式宣傳」已成主流</strong>：政府新聞稿提到，推動關愛隊服務時已經強調 <strong>家訪、街站、地區活動</strong> 去建立信任，而唔係純靠媒體廣告。[2][3]</p>
+<p>- <strong>照顧者議題已經由「隱形」變成「高可見」</strong>：SWD 已推出為期三年的 <strong>Care the Carers Campaign</strong>，而且配套包括 TV / radio APIs、巴士及其他宣傳物料，反映政府近兩年一直持續灌輸「照顧者需要被看見」呢個大命題。[6][11][14]</p>
+<h4>2. 近期同類宣傳掃描(香港政府 + 相關機構)</h4>
+<p>- <strong>SWD「Care the Carers Campaign」(2023–24 起，三年期)</strong>：官方列明係為提升公眾對照顧者需要嘅認識、促進社區互助及建立 carer-friendly environment；形式包括 <strong>TV / radio APIs、宣傳物料、簽名活動、公共交通廣告</strong> 等，屬於近年最直接相關嘅本地政府宣傳框架。[6][11]</p>
+<p>- <strong>SWD「Care the Carers Campaign」TV API</strong>：官方 API 文案直接叫社會各界幫手支持照顧者、減輕負擔，並明確帶出 <strong>182 183</strong> 熱線；訊息路徑偏向「社區協助」與「求助入口」，屬典型政府公共服務宣傳格式。[14]</p>
+<p>- <strong>「支援長者及照顧者計劃」擴展消息</strong>：政府於 2025 年 3 月公佈全港擴展時，訊息重點係「由試點成功擴展至 18 區」及「關愛隊識別有需要人士再轉介」；新聞稿採用較政策化、行政化口吻，強調覆蓋面與執行機制多於情感敘事。[4][10][13]</p>
+<p>- <strong>SWD 早前曾做「正面長者形象」兩套 API</strong>：LegCo 文件提到，SWD 曾製作兩套電視及電台 API，分別推廣 <strong>長者正面形象</strong> 同 <strong>鼓勵家人及年輕一代關心長者</strong>，而且播放期長達數年，顯示此題材已被長期、重複地 publicise。[12]</p>
+<p>- <strong>關愛隊相關宣傳通常走「地區／接觸式」路線</strong>：政府新聞稿提及關愛隊在社區內做家訪、街站同活動，藉面對面接觸建立信任；即係話，近期同類宣傳並唔係單靠片，而係「片 + 地區 outreach + 熱線」一體化。[2][3][13]</p>
+<p>- <strong>相關機構的資源頁亦顯示宣傳已常態化</strong>：SWD 網頁將照顧者支援、資訊平台、熱線及 API 集中呈現，反映呢個題材已由一次性宣傳變成長期服務導流。[6]</p>
+<h4>3. 競品 / 同類創意做法(本地 + 國際參考)</h4>
+<p>- <strong>本地公營宣傳普遍採「問題—支援—出口」結構</strong>：常見做法係先講「有需要人士／照顧者承受壓力」，再交代政府或社區有支援，最後落到熱線、網站、服務單位；呢種做法資訊清晰，但容易同質化。[6][14]</p>
+<p>- <strong>本地政府 API 常用「呼籲式旁白 + 簡單場景」</strong>：照顧者相關 API 例子顯示，文案會直接講 support、take a break、show your support，重點係快速傳達服務入口，而唔係建立複雜角色故事。[14]</p>
+<p>- <strong>本地公共服務傳播傾向「可信、平實、行政可讀」</strong>：以 SWD / 政府新聞稿與 API 為主，tone 多數係中性、照顧性、解說性；優點係可信，但視覺及情緒記憶點通常較弱。[2][4][6]</p>
+<p>- <strong>國際上類似題材常見做法係「將照顧壓力視覺化」</strong>：公共部門做 eldercare / carer support 時，常用日常壓力、時間碎片、疲憊狀態去具體化抽象負擔；呢類做法可提升理解，但如果處理得太直白，亦容易落入煽情。[一般國際公共宣傳慣例推論]</p>
+<p>- <strong>國際上對 after-school care 類宣傳多數聚焦「安心、時間、接送、工作配合」</strong>：即係家長如何兼顧工作與照顧，學校或社區如何補位；這個題材普遍唔會做成高戲劇性，而係功能導向同日常化。[一般國際公共服務傳播慣例推論]</p>
+<h4>4. 已經做到濫嘅 approach / trope(要避開)</h4>
+<p>- <strong>「老人家坐喺屋企等人關心」式單一畫面</strong>：長者一出場就係獨居、望窗、食藥、等電話，訊息太直白，已非常常見。</p>
+<p>- <strong>「照顧者喊爆 / 崩潰」式重災難敘事</strong>：只用疲累、壓力、黑眼圈去代表照顧者，容易變成單一情緒消費，亦未必反映服務真正介入方式。</p>
+<p>- <strong>「政府人員上門送暖」一筆帶過</strong>：如果只係拍訪員、關愛隊、社工上門握手、遞卡、點頭，畫面可讀但記憶度低，而且已屬公共服務宣傳慣例。</p>
+<p>- <strong>「熱線號碼 + 一句呼籲」過度功能化</strong>：只係把 182 183 或服務名重複幾次，容易變成資訊公告，唔似一套需要說服力的 API。</p>
+<p>- <strong>「學校 + 小朋友 + 放學後功課班」過於溫馨化</strong>：如果只拍笑面、書包、功課、老師陪讀，容易落入泛教育/兒童服務廣告套路，未必凸顯「託管」作為家庭支援基建的價值。</p>
+<p>- <strong>「大合照式社區和諧」</strong>：一班人企喺度笑、握手、舉牌，常見但空泛，對目標受眾唔夠具體。</p>
+<h4>5. 差異化空白(機會,唔係 idea)</h4>
+<p>- <strong>「接觸鏈」而唔係「單一英雄」的敘事空白</strong>：現有本地宣傳多數只講服務存在，但較少清楚呈現「識別—接觸—轉介—跟進」呢條完整社區支援鏈條；呢個係資訊理解層面嘅空白。[3][4][13]</p>
+<p>- <strong>「照顧者其實係網絡角色」的表達仍然不足</strong>：好多宣傳只把照顧者描繪成受壓個體，但較少講佢其實同家人、鄰里、社區、學校、服務單位之間有互相支撐關係。[6][14]</p>
+<p>- <strong>「非典型照顧者」曝光不足</strong>：例如同時照顧長者與子女、外傭配合下嘅家庭照顧安排、祖父母照顧孫輩等複合型照顧情境，近年公共宣傳相對少見，未被充分講述。[一般觀察推論]</p>
+<p>- <strong>「求助唔等於失敗」的心理門檻仍高</strong>：現時大量宣傳重點放在渠道與資源，但對「點樣降低求助羞恥感／自責感」著墨唔算多；這係訊息空白多於媒體空白。[6][14]</p>
+<p>- <strong>「課後託管」較少被當成家庭減壓與工作支援工具講</strong>：現有教育/兒童服務宣傳常偏向照顧小朋友本身，但對家長時間管理、在職父母壓力、單親或雙職家庭實際需要，傳播上未必講得夠完整。[一般政策脈絡推論]</p>
+<p>- <strong>「地區差異」可見度不足</strong>：關愛隊計劃本身係 district-based，但宣傳常以全港一致口徑呈現，較少讓人感到不同區、不同家庭情境、不同接觸路徑有差異；呢個係策略空白多於內容空白。[3][4][13]</p>
+<p>如果你想，我可以下一步再幫你整理成 <strong>「可直接放入簡報嘅 1 頁 insight board」</strong>，或者加做 <strong>「近 2-3 年真實案例清單（按年份／機構／手法分類）」</strong>。</p>
+<p>【來源 Sources】</p>
+<p>- https://www.isd.gov.hk/eng/api_more.htm</p>
+<p>- https://www.news.gov.hk/eng/2024/07/20240719/20240719_161059_525.html</p>
+<p>- https://www.swd.gov.hk/en/pubsvc/district/ssp/ssp-dcct/</p>
+<p>- https://www.info.gov.hk/gia/general/202503/31/P2025033100272.htm</p>
+<p>- https://www.info.gov.hk/gia/general/202602/04/P2026020400312.htm</p>
+<p>- https://www.swd.gov.hk/en/pubsvc/elderly/cat_careersupp/carersuppo/index.html</p>
+<p>- https://www.legco.gov.hk/yr2026/english/panels/ws/papers/ws20260608cb1-570-5-e.pdf</p>
+<p>- https://www.legco.gov.hk/yr2025/english/panels/ws/papers/ws20250317cb1-1103-1-e.pdf</p>
+<p>- https://www.elderly.gov.hk/english/education_and_media_resources/files/ham/book_visiting_health_teams.pdf</p>
+<p>- https://www.thestandard.com.hk/news/article/231204/Elderly-and-carers-support-scheme-to-expand-across-HK-starting-Tue</p>
+<p>- https://www.legco.gov.hk/yr2024/english/panels/ws/ws_pcp/papers/ws_pcp20240312cb2-706-1-e.pdf</p>
+<p>- https://www.legco.gov.hk/yr2023/english/hc/sub_com/hs52/papers/hs5220241202cb2-1524-3-e.pdf</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🛡️ 官方正名 / 用字</span><span class='mdl mfb' title='fallback：原本想要嘅 model 死咗，自動跌咗去後面嗰個'>✍️ Gemini Flash＋Search→Claude</span></div><div class='cbody'><p>Failed to authenticate. API Error: 401 OAuth access token has expired. Re-authenticate to continue.</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🔗 部門官方來源</span></div><div class='cbody'><p class='hint'>搵到嘅官方來源（網頁名 + 撮要，似 search 結果；撳入睇原文）：</p><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.swd.gov.hk' target=_blank>🏛️ 社會福利署 官網 ↗</a><div class='srcsnip'>https://www.swd.gov.hk</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.youtube.com/@SocialWelfareDepartment/videos' target=_blank>▶️ 部門 YouTube 頻道 ↗</a><div class='srcsnip'>官方宣傳片頻道</div></div></div><div class='srcrow'><img class='srcthumb' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJwOy-pmAmzGfMA8i75jJzSes_k8hhxHMFkjRTmerG7NODHEyKSpCnYg&amp;s' loading=lazy><div style='flex:1'><a class='srctit' href='https://www.youtube.com/watch?v=4f54s6GnZwo' target=_blank>📺 社署委託關愛隊探訪高風險長者和照顧者轉介福利服務冀打破 ... ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><img class='srcthumb' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUHrZPRVUnslwtNHrE9ptOTjseowkazTTac1nB-tTCq1Hh_yRpX7yICA&amp;s' loading=lazy><div style='flex:1'><a class='srctit' href='https://www.youtube.com/watch?v=Lm1gKOPHUO8' target=_blank>📺 支援照顧者稍息再前行 ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><img class='srcthumb' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScphNqqeYqJtUNT_Wp-CkGyn-wI3TyqwftH3j2vMzDgUemZ9mtNu0dvw&amp;s' loading=lazy><div style='flex:1'><a class='srctit' href='https://www.youtube.com/watch?v=bjvmh7eu5Wk' target=_blank>📺 「齊撐照顧者行動」回顧短片 ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><img class='srcthumb' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcFuAkFiGx8kLQ073juYkJOaCSG_qgGEmZlt69NaSAc08rOa5I-Rhnwg&amp;s' loading=lazy><div style='flex:1'><a class='srctit' href='https://www.youtube.com/watch?v=2a9qoFrlOJc' target=_blank>📺 YouTube ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.news.gov.hk/chi/2026/06/20260618/20260618_172223_093.html' target=_blank>📰 香港政府新聞網- 香港精準扶貧成果報告發表 ↗</a><div class='srcsnip'>可按這裏收看整個記者會的手語翻譯短片。） 扶貧委員會今日發表《香港精準扶貧成果報告》，敍述政府政策如何扶貧、脫貧和防貧，又闡述政府精準扶貧...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='http://hkcna.hk/docDetail.jsp?id=101349426&amp;channel=4371' target=_blank>📰 香港精準扶貧成果報告勾劃扶弱工作未來策略 ↗</a><div class='srcsnip'>香港新聞網6月18日電 扶貧委員會今日發表《香港精準扶貧成果報告》，敍述政府政策如何扶貧、脫貧和防貧，又闡述政府精準扶貧措施的內容和成效，同時勾...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.stheadline.com/society/3584566/%E7%B2%BE%E6%BA%96%E6%89%B6%E8%B2%A7%E5%A0%B1%E5%91%8A%E5%87%BA%E7%88%90-%E9%80%BE%E4%B8%83%E6%88%90%E5%8F%97%E6%83%A0%E8%80%85%E6%84%9F%E6%BB%BF%E6%84%8F-%E6%B6%88%E6%81%AF%E4%BA%BA%E5%A3%AB%E6%9C%AA%E4%BE%86%E4%B8%8D%E5%86%8D%E5%AE%9A%E7%BE%A9%E8%B2%A7%E7%AA%AE%E5%85%8D%E6%A8%99%E7%B1%A4%E6%9C%89%E9%9C%80%E8%A6%81%E4%BA%BA%E5%A3%AB' target=_blank>📰 精準扶貧報告出爐 逾七成受惠者感滿意 消息人士：未來不再定義「貧窮」免標籤有需要人士 ↗</a><div class='srcsnip'>政府扶貧委員會今日（18日）發表《香港精準扶貧成果報告》，扶貧委員會主席、政務司司長陳國基在發布會表示，《報告》總括政府過去工作成果，...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.singtao.ca/7539582/2026-06-18/news-%E7%B2%BE%E6%BA%96%E6%89%B6%E8%B2%A7%E5%A0%B1%E5%91%8A%E5%87%BA%E7%88%90+%E9%80%BE%E4%B8%83%E6%88%90%E5%8F%97%E6%83%A0%E8%80%85%E6%84%9F%E6%BB%BF%E6%84%8F+%E6%B6%88%E6%81%AF%E4%BA%BA%E5%A3%AB%EF%BC%9A%E6%9C%AA%E4%BE%86%E4%B8%8D%E5%86%8D%E5%AE%9A%E7%BE%A9%E3%80%8C%E8%B2%A7%E7%AA%AE%E3%80%8D%E5%85%8D%E6%A8%99%E7%B1%A4%E6%9C%89%E9%9C%80%E8%A6%81%E4%BA%BA%E5%A3%AB/' target=_blank>📰 精準扶貧報告出爐 逾七成受惠者感滿意 消息人士：未來不再定義「貧窮」免標籤有需要人士 ↗</a><div class='srcsnip'>政府扶貧委員會今日（18日）發表《香港精準扶貧成果報告》，全面回顧及總結本屆政府在「精準扶貧」工作上的核心目標、策略與階段性成效，並分析教育、...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.info.gov.hk/gia/general/202607/27/P2026072700542.htm' target=_blank>📰 地區治理領導委員會召開第七次會議（附圖） ↗</a><div class='srcsnip'>政務司司長陳國基今日（七月二十七日）主持地區治理領導委員會第七次會議，督導和指示各決策局及部門就地區關注的議題制訂應對策略方針，並跟進於首六...</div></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🏛️ 政府 JOB 鐵則</span></div><div class='cbody'><ol id='rulelist' style='margin:2px 0 8px;padding-left:18px;line-height:1.7'><li id='rule0'>除標書表明，人物一般使用華人面孔（東亞／香港華人），唔好生成西方／白人臉</li><li id='rule1'>衣著連戲：同一角色每一格都著返同一套衫（衫款／顏色／髮型／配件固定），除非故事明寫佢換咗衫</li><li id='rule2'>全 board 畫風完全一致：同一 render 風格／同一打燈／同一色調／同一線條筆觸，由頭到尾統一，似同一個畫師一次過畫</li><li id='rule3'>Storyboard 盡量唔好出現雨傘；若劇情一定要有雨傘，唔可以係黃色</li></ol><div class='bdcm'><textarea id='newrule' rows='2' placeholder='加一條鐵則：例「Storyboard 唔好有雨傘」'></textarea><button class='btn mini' onclick="addRule('SWD')">＋ 加鐵則（即時生效）</button></div></div></div></div><div class='h2 tierh'>🔧 Optional 餵 AI（於 Debriefing 階段隨機餵 AI）</div><p class='hint tierhint'>唔強制，諗橋時隨機抽嚟畀 agency 撞火花。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>💭 5W1H Provocation</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ Gemini 2.5 Pro·預設</span></div><div class='cbody'><h3>5W1H 創意 Provocation — SWD</h3>
+<h5>WHO — 對邊個講 + 佢而家點</h5>
+<p>- Q1 如果呢個 message 只可以打動「最唔關心、最 cynical」嗰個觀眾——要加咩一個 element（畫面／聲／人物／情境）先 3 秒內 hook 住佢、令佢唔 skip？</p>
+<p>→ 加一個超近鏡嘅真實物料特寫 element：例如唐樓「三無大廈」門口鐵閘被敲響、伴隨「平安鐘」緊急按鍵音效，或者小學課室放學後打鐘聲與功課簿翻頁聲，瞬間以極具生活真實感嘅聽覺同視覺符號 hook 住觀眾。</p>
+<p>- Q2 呢班受眾平時食開咩視聽語言（平台／節奏／語氣）？要 adapt 邊種佢熟悉嘅風格，先入到腦而唔似「政府嘢」？</p>
+<p>→ Adapt 社交媒體短影片嘅「紀實街訪／觀察者視角（fly-on-the-wall documentary tone）」風格，採用快速無縫切換（match cut）與真實現場環境音（ambient sound），搭配廣東話親切對白同高對比度實景調色，擺脫傳統政府宣傳片嘅說教感。</p>
+<h5>WHAT — 收窄到一個 + 證據</h5>
+<p>- Q3 成個 campaign 只准觀眾記住一個 element（一個畫面／一個 visual device／一句）——你揀咩？點解係佢？</p>
+<p>→ 揀「關愛隊專屬識別背心敲門探訪」與「小學生喺熟悉課室完成功課笑臉」嘅 split-screen 或對稱畫面（visual device）。因為呢個雙重視覺符號精準對應 30 秒短片各占 15 秒嘅 SEC 與 SBA 雙計劃，直觀展現社署「上門主動護老」同「在校安心託管」嘅精準扶貧政策落地。</p>
+<p>- Q4 客戶 key message 好抽象，要用咩具體 element（真場面／真數字／真人／真物）去「show 唔 tell」，令佢落地、唔流口號？</p>
+<p>→ 使用「室內緊急召援系統（平安鐘）主機同遙控掣」、「三無大廈舊樓門牌」同「小學課室 1 對 8 功課輔導桌面」等真物與真場面 element，配合大字 Super 顯示「207 間小學」、「逾 10,600 個名額」及「182 183 熱線」真數字，用實物與數據硬事實傳達政策成效。</p>
+<h5>WHY — 點解信 + 情感</h5>
+<p>- Q5 觀眾點解要信／關佢事？要加咩證據 element 或情感共鳴 element，先由「事不關己」變「同我有關」？</p>
+<p>→ 加「雙職／單親家長放工準時接送天倫笑臉」與「長者照顧者獲得喘息（抖抖氣）嘅放鬆神情」等情感共鳴 element，配合政務司司長陳國基及政務司副司長卓永興公開倡導嘅「跨代共融」同「主動關懷」政策證據，將巨觀政策轉化為基層家庭切身嘅生活安全感。</p>
+<h5>WHEN / WHERE — 出街情境</h5>
+<p>- Q6 呢條嘢實際喺邊度、咩狀態被睇到（電視 prime／車廂無聲／手機 scroll／戶外經過）？要 adapt 咩風格（有聲冇聲／首 3 秒／大字／節奏）先食到當下情境？</p>
+<p>→ Adapt「高對比度清晰大字 Super + 雙語繁簡英文字幕」與「右下角 1/6 橢圓形手語視窗」嘅無障礙風格，首 3 秒即出現標誌性實景特寫，確保車廂無聲或社交平台靜音 scroll 情況下，觀眾單憑文字與動態圖像亦能秒懂訊息。</p>
+<p>- Q7 出街時間（事件前／中／後）decide 調子係「預告期待」定「總結成就」？要加咩 element 配合呢個時間感？</p>
+<p>→ 本片調子屬於「總結現階段成果並宣布擴展期待」，需加入「2026/27 學年全港公營小學均可申請、名額不設上限」及「SEC 計劃持續推進 Reach Out 至少 6 萬戶」嘅政策時間軸字幕 element，營造全城共撐、持續深化嘅踏實前瞻感。</p>
+<h5>HOW — 風格 + 差異化</h5>
+<p>- Q8 同類（同部門／同題材）政府片嘅「安全做法」係咩？要 adapt／升級邊種風格 element（質感／節奏／transition／配樂／美術流派），先做到「框內最高質」而唔悶？</p>
+<p>→ 傳統做法係平鋪直敘嘅旁白介紹，應升級為「訂製動態原音配樂（tailor-made post-scored music）」與「極速雙線平行剪接（parallel montage）」，配合電影級色調（cinematic color grading），喺 30 秒內流暢交織護老同託管兩條線，提高視覺同聽覺質感。</p>
+<p>- Q9 要加咩一個 unexpected element（反差／新 visual device／新手法），先同部門過往 campaign 拉開距離、唔似翻炒，但又唔踩紅線？</p>
+<p>→ 加入「照顧者支援數據平台（Data Platform）」嘅動態數據圖層（data visualization overlay）作為新 visual device，以科技感微特效呈現房委會與社署數據跨部門整合、主動敲門識別高風險戶嘅轉變，打破過往被動求助嘅陳舊印象，同時恪守政治與合規紅線。</p>
+<p>---</p>
+<p>*用法：agency／委員會落橋前先消化呢 9 條，順住 element＋風格方向諗，唔好離地。*</p>
+<p>---</p>
+<p>💡 <strong>Next Steps</strong>: 如需進一步將呢 9 條 Provocation 轉化為具體嘅電視宣傳短片（TV API）劇本（Scripts）、分鏡（Storyboards）或提案內容，我可以為你協助生成相應嘅簡報或標準標書文本。</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📺 ISD 相類政府舊片</span></div><div class='cbody'><p>【呢條 brief 判定】目的:形象/成就(propaganda)/宣佈新法例/措施  題材:長者家庭, 房屋置業</p>
+<p>【同目的(形象/成就(propaganda))ISD 慣性】主開頭 真人/講者(34%);格式率 旁白87% 熒幕蓋字98% 標誌結尾94% CTA58% 感嘆17% 三段式·7%;慣用結尾 盛事傳城, 香港電台「盛事傳城」網頁二維碼, 網頁二維碼, policyaddress.gov.hk</p>
+<p>【對口 ISD 舊作借鏡(同 目的×題材,參考佢點寫,唔好照抄,要創新)】</p>
+<p>— 幸福上流　置業圓夢  [其他 | 房屋置業/長者家庭]</p>
+<p>  ▶ https://www.youtube.com/watch?v=phWv4V2eOh0&amp;list=PL1188A9802575C33F</p>
+<p>  男旁白：請等等！ / 男旁白：啊，我想上車啊！ / 熒幕蓋字：未來5年 / 大約60,000個資助出售單位供應 / 女旁白：放心，未來有許多機會 / 熒幕蓋字：新一期居者有其屋計劃及 / 綠表置居計劃 / 4月30日起接受申請 / 女旁白：新一期居屋及綠置居4月30日起接受申請 / 女旁白：前兩次未能成功置業的申請者 / 可獲得額外一個抽籤號碼 / 熒幕蓋字：居屋綠表配額比例由40%升至50% / 女旁白：今期居屋會增加綠表比例 / 熒幕蓋字：40歲以下白表申請者 / 抽籤號碼＋1個 / 女旁白：白表青年申請者可獲得額外一個抽籤號碼 / 女旁白：「白居二」亦會增加配額 / 女旁白：置業的機會多了 / 熒幕蓋字：分布多區 / 可負擔的售價 / 居者有其屋計劃屋苑 / 綠表置居計劃屋苑 / 女旁白：價格亦在可負擔範圍內 / 熒幕蓋字：家有初生 / 家有長者 / 女旁白：家有初生或長者的家庭更可優先選樓 / 熒幕蓋字：出售居者有其屋計劃單位 / 出售綠表置居計劃單位 / 白表居屋第二市場計劃 / 4月30日起接受申請 / 男女旁白：幸福上流　置業圓夢 / </p>
+<p>— 2025 Legislative Council Election (Voting Procedure)  [形象/成就(propaganda) | 選舉/長者家庭]</p>
+<p>  ▶ https://www.youtube.com/watch?v=S-SUh0YAd80&amp;list=PL1188A9802575C33F</p>
+<p>  紅小寶：立法會換屆選舉於12月7日舉行 / 熒幕蓋字：2025 / 立法會換屆選舉 / 投票日 12月7日 / 藍小寶：選民須按投票通知卡或經「智方便」得到的資訊 / 到指定投票站 / 熒幕蓋字：投票通知卡 / 智方便 / voterinfo.gov.hk / 藍小寶：出示身份證 / 經核實身分獲發選票 / 白爺爺：有需要人士可使用特別隊伍 / 熒幕蓋字：特別隊伍 / 年滿70歲長者 / 孕婦 / 殘疾人士 / 藍小寶：地方選區選民，在選票蓋上一個剔號 / 熒幕蓋字：地方選區 / 投選1名候選人 / 紅小寶：功能界別選民，用黑色筆填滿選票上的橢圓形 / 熒幕蓋字：功能界別 / 投選1名或多名候選人 / 白爺爺：將選票已填劃的一面向下 / 無須對摺，按指示放入指定投票箱 / 票箱家族：投入選舉，共創未來！ / 熒幕蓋字：2025立法會換屆選舉 / 12月7日 / www.elections.gov.hk / 查詢：2891 1001 / 網頁二維碼</p>
+<p>— 行政長官2025年施政報告  [形象/成就(propaganda) | 人才就業/房屋置業]</p>
+<p>  ▶ https://www.youtube.com/watch?v=N6w6CyXRxpU&amp;list=PL1188A9802575C33F</p>
+<p>  女旁白：行政長官發表了新一份施政報告 / 深化改革 / 全面提速香港發展！ / 熒幕蓋字：2025年施政報告 / 行政長官：我會通過產業發展和革新 / 創造更多優質就業機會 / 熒幕蓋字：傳統及新興產業發展 / 女旁白：傳統和新興產業同時推進 / 開拓更多新市場 / 鞏固香港國際中心地位 / 熒幕蓋字：金融  航運  貿易 / 行政長官：我會拆牆鬆綁 / 加快發展北部都會區 / 熒幕蓋字：北部都會區 / 女旁白：教育、科技、人才一體化發展 / 熒幕蓋字：教育  科技  人才 / 女旁白：文化、體育、旅遊，共展香港獨有魅力 / 行政長官：我會加大力度改善民生 / 熒幕蓋字：積極改善民生 / 公屋 / 簡約公屋 / 女旁白：增加房屋供應 / 豐富置業階梯 / 熒幕蓋字：中醫醫院 / 女旁白：改善公營醫療服務 / 加強基層醫療 / 扶老助弱 / 大力培育本地人才 / 為青年人創造更廣闊的發展空間 / 行政長官：香港享有國家和國際機遇的疊加優勢 / 我們會落實施政報告的理念 / 深化改革　心繫民生 / 發揮優勢　同創未來 / 熒幕蓋字：香港特別行政區區徽 / 行政長官2</p>
+<p>— 現屆香港特別行政區政府上任三周年工作  [形象/成就(propaganda) | 人才就業/房屋置業]</p>
+<p>  ▶ https://www.youtube.com/watch?v=nE0UQnNQy7w&amp;list=PL1188A9802575C33F</p>
+<p>  女旁白： / 本屆政府以結果為目標 / 在國家支持下 / 拼經濟、謀發展、惠民生 / 熒幕蓋字： / 團結社會　改善民生 / 女旁白： / 政府迎難而上做實事 / 房屋 / 熒幕蓋字： / 提供簡約公屋 / 增加公屋供應　輪候縮短至5.3年 / 女旁白： / 勞工和醫療政策為市民帶來更理想的生活 / 熒幕蓋字： / 落實取消強積金「對沖」 / 中醫醫院今年啟用 / 國際高端人才集聚高地 / 女旁白： / 政府銳意「搶人才」 / 推廣「留學香港」品牌 / 熒幕蓋字： / 五間大學躋身全球百大 / 女旁白： / 打造國際高端人才集聚高地 / 熒幕蓋字： / 《青年發展藍圖》 / 推進創科發展動力 / 女旁白： / 支持本地創科 / 熒幕蓋字： / 全球領先生物科技集資中心 / 女旁白： / 河套香港園區、新田科技城 / 熒幕蓋字： / 河套香港園區　新田科技城 / 女旁白： / 推進香港國際創科中心發展 / 熒幕蓋字： / 國際金融、航運、貿易中心 / 女旁白： / 香港穩居全球第三金融中心地位 / 熒幕蓋字： / 全球第三金融中心 / 全球四大新股市場之一 / 女旁白： / 機場貨運、國際航運名列前茅 / 熒幕蓋字</p>
+<p>— 2025年施政報告公眾諮詢  [形象/成就(propaganda) | 房屋置業]</p>
+<p>  ▶ https://www.youtube.com/watch?v=j_bN77jCdDU&amp;list=PL1188A9802575C33F</p>
+<p>  行政長官： 改革求變，是香港發展的大方向。 / 女大學生： 我想要更廣闊的發展空間！ / 熒幕蓋字： 教育樞紐　助力多元發展 / 河套香港園區 / 男創科人員： 更大的創科發展潛力！ / 熒幕蓋字： 發展新質生產力 / 社區太太： 更好的生活環境！ / 熒幕蓋字： 惠民生　添幸福 / 男簡約公屋住戶： 徹底地改善了生活！ / 熒幕蓋字： 現簡約公屋居民 / 行政長官 ： 我們會進一步鞏固香港競爭力，發展經濟，改善民生，帶領社會改革創新。我會在九月公布第四份施政報告，期望收到你的意見，一起努力建設更美好的香港。 / 熒幕蓋字： 香港特別行政區區徽 / 2025年施政報告公眾諮詢 / policyaddress.gov.hk / 熱線：2432 1899</p>
+<p>— 行政長官2025年施政報告  [形象/成就(propaganda) | 人才就業/房屋置業]</p>
+<p>  ▶ https://www.youtube.com/watch?v=N6w6CyXRxpU&amp;list=PL1188A9802575C33F</p>
+<p>  女旁白：行政長官發表了新一份施政報告 / 深化改革 / 全面提速香港發展！ / 熒幕蓋字：2025年施政報告 / 行政長官：我會通過產業發展和革新 / 創造更多優質就業機會 / 熒幕蓋字：傳統及新興產業發展 / 女旁白：傳統和新興產業同時推進 / 開拓更多新市場 / 鞏固香港國際中心地位 / 熒幕蓋字：金融  航運  貿易 / 行政長官：我會拆牆鬆綁 / 加快發展北部都會區 / 熒幕蓋字：北部都會區 / 女旁白：教育、科技、人才一體化發展 / 熒幕蓋字：教育  科技  人才 / 女旁白：文化、體育、旅遊，共展香港獨有魅力 / 行政長官：我會加大力度改善民生 / 熒幕蓋字：積極改善民生 / 公屋 / 簡約公屋 / 女旁白：增加房屋供應 / 豐富置業階梯 / 熒幕蓋字：中醫醫院 / 女旁白：改善公營醫療服務 / 加強基層醫療 / 扶老助弱 / 大力培育本地人才 / 為青年人創造更廣闊的發展空間 / 行政長官：香港享有國家和國際機遇的疊加優勢 / 我們會落實施政報告的理念 / 深化改革　心繫民生 / 發揮優勢　同創未來 / 熒幕蓋字：香港特別行政區區徽 / 行政長官2</p></div></div></div><div class='h2 tierh'>📋 ADMIN（交標用 · 唔餵創意）</div><p class='hint tierhint'>交標 logistics：要交咩表格/文件、幾時截。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📑 要交表格 / 文件</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><div class='h3'>📝 要填嘅表格（7 張）</div><p class='hint'>真表頁自動 render 入對應<b>部門 Master Form GSlide</b>（開 GSlide 直接填）。🟦直 🟨橫。</p><div class='qconfirm' style='background:#fff4e5;color:#8a5a00'>⏳ pipeline 收到表會自動開 GSlide + render；此 dept 暫未配置，下次 run 自動補。</div><a class='btn ghost' target='_blank' href='https://docs.google.com/spreadsheets/d/1yiDJ3H8VFK3-6kZQZEzwkiD8VaRgVOzCwxcFbAyP3XE/edit'>📋 開 Master Form Registry（填表值喺度）</a><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/1nBf0Bdx17Jvo8owVWrvM-A_MlKxL98ttyMenXc-cewY/edit'>🎞️ 開 SWD Master Form GSlide（真表頁，直接填）</a><button class='btn' style='width:100%;margin-top:6px' onclick="fillForms(this)">🤖 AI 自動填公司資料入 Registry</button><script type='application/json' class='filldata'>{"folderName": "SWD_ElderlyCarersAfterSchoolCare", "forms": [{"name": "Appendix A - REGISTRATION FORM Briefing Session for Invitation to Quotation", "pages": "72", "text": ""}, {"name": "Schedule 1 - Price Schedule", "pages": "64", "text": ""}, {"name": "Schedule 2 - Schedule of Compliance", "pages": "65", "text": ""}, {"name": "Schedule 3 - Offer to be Bound", "pages": "66", "text": ""}, {"name": "Schedule 4 - Non-collusive Quotation Certificate", "pages": "67-68", "text": ""}, {"name": "Schedule 5 - Statement from Bidders on Copyright, Confidentiality, Indemnity and Gender Mainstreaming for Bidder", "pages": "69-70", "text": ""}, {"name": "Schedule 6 - Schedule of Innovative Suggestions", "pages": "71", "text": ""}]}</script><p class='hint'>撳上面掣 → AI 逐張表認要填咩欄（公司名/地址/BR…）→ 自動填入 <b>Master Form Registry</b> 嘅 <b>Fill_SWD_ElderlyCarersAfterSchoolCare</b> tab → 你開 Registry copy 啲值入 GSlide 真表頁。⚠️ 價錢/簽名要自己填。（全程 GAS 做，唔使部 Mac 開機）</p><div class='h3'>① Briefing 前 — Reply Slip（1）</div><p class='hint'>確認出席 → Reply Slip 頁，貼頁碼 render。</p><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/17TNiyMzZMbleABFG2u-K0THdn_lXmo089i8xPDnzRHM/edit'>🎞️ 開 Reply Slip GSlide</a><div class='qconfirm' style='background:#eef0fe;color:#3730a3'>貼入 panel 頁碼：<b>72</b></div><div class='timeline'><div class='tlrow'><span class='tldate'>🟦 p72</span><span class='tllabel'>Appendix A - REGISTRATION FORM Briefing Session for Invitation to Quotation</span></div></div><div class='h3'>② 交標時 — Forms / Schedules（6）</div><p class='hint'>Form GSlide 已 render 真表頁做 background → 人手填。</p><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/1nBf0Bdx17Jvo8owVWrvM-A_MlKxL98ttyMenXc-cewY/edit'>🎞️ 開 SWD Form GSlide</a><div class='qconfirm' style='background:#eef0fe;color:#3730a3'>貼入 panel 頁碼：<b>64,65,66,67-68,69-70,71</b></div><div class='timeline'><div class='tlrow'><span class='tldate'>🟦 p64</span><span class='tllabel'>Schedule 1 - Price Schedule</span></div><div class='tlrow'><span class='tldate'>🟦 p65</span><span class='tllabel'>Schedule 2 - Schedule of Compliance</span></div><div class='tlrow'><span class='tldate'>🟦 p66</span><span class='tllabel'>Schedule 3 - Offer to be Bound</span></div><div class='tlrow'><span class='tldate'>🟦 p67-68</span><span class='tllabel'>Schedule 4 - Non-collusive Quotation Certificate</span></div><div class='tlrow'><span class='tldate'>🟦 p69-70</span><span class='tllabel'>Schedule 5 - Statement from Bidders on Copyright, Confidentiality, Indemnity and Gender Mainstreaming for Bidder</span></div><div class='tlrow'><span class='tldate'>🟦 p71</span><span class='tllabel'>Schedule 6 - Schedule of Innovative Suggestions</span></div></div><div class='h3' style='margin-top:11px'>📄 要交嘅文件（2 份 · 表格以外，標明出自邊份 DOC + 頁碼）</div><div class='timeline'><div class='tlrow'><span class='tllabel'><b>Technical Proposal (including Creative Concept, Scripts, Slogans, Storyboards, Subtitles, Graphic/Photographic images, Schedule 2, Schedule 3, Schedule 4, Schedule 5, Schedule 6, BRC copy and supporting technical documents in DUPLICATE)</b> <span class='hint'>（Invitation to Quotation [ SWD-Q017-2026].pdf · p2）</span> — Must NOT contain any price information</span></div><div class='tlrow'><span class='tllabel'><b>Price Proposal (containing Schedule 1 Price Schedule and price information in DUPLICATE)</b> <span class='hint'>（Invitation to Quotation [ SWD-Q017-2026].pdf · p2）</span> — Must be sealed in a separate plain envelope</span></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📮 交標方法（地址 / 信封 / 份數）</span></div><div class='cbody'><p>- <strong>截標</strong>：2026-09-24 11:00</p>
+<p>- <strong>印幾多份</strong>：Technical Proposal in DUPLICATE; Price Proposal in DUPLICATE</p>
+<p>- <strong>幾多信封</strong>：2 個</p>
+<p>- <strong>Soft copy（電子副本：CD/USB？）</strong>：標書無提及 → 只交紙本,不需 soft_copy</p>
+<p>- <strong>交去邊 — To</strong>：Chairman, SWD Quotation Opening Team</p>
+<p>- <strong>交去邊 — Address</strong>：Room 2353, 23/F., Wu Chung House, 213 Queen&#x27;s Road East, Wan Chai, Hong Kong</p>
+<p>- <strong>信封 label「Envelope No. 1 (Technical Proposal)」要寫</strong>：`Addressed to &quot;Chairman, SWD Quotation Opening Team&quot;; Marked with &quot;Technical Proposal&quot;, &quot;Quotation Reference No.: SWD/Q017/2026 Provision of Service for the Production of a set of TV Announcements in the Public Interest for &quot;District Services and Community Care Teams - Scheme on Supporting Elderly and Carers&quot; and &quot;School-based After School Care Service Scheme&quot;, Quotation Closing Date: 24 September 2026&quot;`</p>
+<p>- <strong>信封 label「Envelope No. 2 (Price Proposal)」要寫</strong>：`Addressed to &quot;Chairman, SWD Quotation Opening Team&quot;; Marked with &quot;Price Proposal&quot;, &quot;Quotation Reference: SWD/Q017/2026 Provision of Service for the Production of a set of TV Announcements in the Public Interest for &quot;District Services and Community Care Teams - Scheme on Supporting Elderly and Carers&quot; and &quot;School-based After School Care Service Scheme&quot;, Quotation Closing Date: 24 September 2026&quot;`</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🗓️ 簡報 / 評審 / 截標 Logistics（時間・地點・Zoom）</span></div><div class='cbody'><div class='h3'>📢 簡報會 Briefing</div><div class='tlrow'>🗓️ 15/9 · 📍 zoom</div><p class='hint'>更新：2026-09-16T10:49:26</p><div class='h3'>⏰ 截標 Deadline</div><div class='tlrow'>🗓️ 24/9 11:00 · 📍 online · 📂 印 Technical Proposal (2 copies), Price Proposal (2 copies) 份</div><p class='hint'>更新：2026-09-12T10:57:24</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>💰 預算 / 費用（Budget / Fee Breakdown）</span></div><div class='cbody'><p>- <strong>預算（Budget）</strong>：無標明</p>
+<p>- <strong>費用明細要求（Fee Proposal Breakdown）</strong>：無要求</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📅 日程</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ Gemini 2.5 Pro·預設</span></div><div class='cbody'><p>- 2026-09-10 Quotation Issue Date (發出報價邀請日期)</p>
+<p>- 2026-09-14 Deadline for Submission of Reply Slip for Briefing Session (簡介會報名表遞交截止時間)</p>
+<p>- 2026-09-15 Online Briefing Session by Zoom (線上簡介會)</p>
+<p>- 2026-09-24 Quotation Closing Date &amp; Time (截標時間)</p>
+<p>- 2026-09-30 Presentation of Technical Proposal to the Assessment Panel (技術建議書簡報會)</p>
+<p>- 2026-10-14 Debriefing Session with the Contractor (與獲標承辦商進行簡報會)</p>
+<p>- 2026-10-30 Pre-production Meeting (籌備製作會議)</p>
+<p>- 2026-11-13 Rough-cut Presentation of TV APIs (初剪版本演示)</p>
+<p>- 2026-11-27 Submission of Final Cut of TV APIs (完成及遞交最終剪輯版本)</p>
+<p>- 2026-12-04 Delivery of Station Copies of TV APIs to TV Stations (遞交電視台母帶)</p></div></div></div></div>
+<div id='debrief' class='tabpanel'><div class='h2' style='margin-top:14px'>📨 共用 BRIEF（標書 tab 全份）</div><p class='hint'>8 間諗橋時都收到呢份 brief（製作要求 3D/mascot/明星、老闆方向…）做底，再各自加上面 dispatch 嘅角度/畫風/device。概念諗咗會 gatekeep 對返 brief 符合先生 BD。</p><div class='card briefcard'><h3>標書 TAB（你嘅 BRIEF — 全份，必跟）</h3>
+<h4>📋 標書撮要</h4>
+<h5>① 背景同目的</h5>
+<p>* <strong>招標部門與項目名稱</strong>：社會福利署（SWD）發起「為『地區服務及關愛隊—支援長者及照顧者計劃』及『在校課後託管服務計劃』製作一套電視宣傳短片」採購案（報價單編號：`SWD/Q017/2026`）[第 1, 51 頁]。</p>
+<p>* <strong>政策背景與計劃進展</strong>：</p>
+<p>  1. <strong>精準扶貧策略</strong>：因應 2022 年《施政報告》策略，扶貧委員會識別出三個目標群組（劏房戶、單親家庭及全長者戶）[第 51 頁]。</p>
+<p>  2. <strong>地區服務及關愛隊—支援長者及照顧者計劃（SEC Scheme）</strong>：2024 年 3 月於荃灣及南區試行，2025 年 4 月擴展至全港 18 區；2025 年《施政報告》宣布自 2026 年 4 月起再推行三年，目標接觸至少 60,000 個有需要住戶 [第 51 頁]。截至 2026 年 6 月底，455 隊關愛隊已探訪或接觸超過 121,000 個住戶，提出逾 15,000 宗福利轉介，並協助安裝逾 4,100 個平安鐘 [第 51–52 頁]。「照顧者支援數據平台」已整合房署數據並於 2026 年 3 月擴展至「三無大廈」社區外展探訪 [第 52 頁]。</p>
+<p>  3. <strong>在校課後託管服務計劃（SBA Scheme）</strong>：2023/24 學年由關愛基金資助推出，為小學生提供課後照顧及學習支援，減輕家長照顧壓力並支援其投入職場 [第 52 頁]。截至 2026 年 6 月已有 207 間小學參與、提供逾 10,600 個名額 [第 52 頁]。研究評估證實績效超越 KPI，政府建議 2026/27 學年起推展至全港所有公營小學均可申請參與，且不設名額上限 [第 52 頁]。</p>
+<p>* <strong>項目目的</strong>：社署採購製作服務，製作一套 30 秒電視宣傳短片（TV API），向公眾展示上述兩項計劃的成功推行成果與社區效益 [第 51, 52 頁]。</p>
+<p>---</p>
+<h5>② 目標受眾</h5>
+<p>* <strong>目標受眾</strong>：全港公眾市民（The general public）[第 51 頁]。</p>
+<p>---</p>
+<h5>③ 傳意目標 / 核心訊息</h5>
+<p>* <strong>整體傳意目標</strong>：展現 SEC Scheme 與 SBA Scheme 兩項計劃的成功實施成果 [第 52 頁]。</p>
+<p>* <strong>核心訊息（Key Messages）</strong> [第 52–53 頁]：</p>
+<p>  1. <strong>SEC Scheme（支援長者及照顧者計劃）</strong>：</p>
+<p>     * 突出關愛隊主動外展探訪獨居/雙老長者戶及長者/殘疾人士照顧者，適時轉介福利服務及協助申請緊急警報系統（平安鐘）[第 52–53 頁]。</p>
+<p>     * 突出照顧者支援數據平台擴展至房委會資助房屋及「三無大廈」，展示其對社區帶來的正面影響 [第 53 頁]。</p>
+<p>  2. <strong>SBA Scheme（在校課後託管服務計劃）</strong>：</p>
+<p>     * 突出課後對有需要學童的照顧與強化學習支援，讓家長能安心投入職場、改善生計，同時舒緩育兒與照顧壓力 [第 53 頁]。</p>
+<p>     * 宣傳 2026/27 學年起全港所有公營小學均可申請參與 SBA Scheme，且服務名額不設上限 [第 53 頁]。</p>
+<p>---</p>
+<h5>④ 影片 / 製作規格</h5>
+<p>* <strong>集數與版本</strong>：1 套（1 set），1 個單一版本（One version only）[第 51, 52 頁]。</p>
+<p>* <strong>每集長度</strong>：<strong>30 秒</strong>（30 seconds）[第 51, 53 頁]。</p>
+<p>  * <strong>內容時間比例</strong>：SEC Scheme 約 15 秒，SBA Scheme 約 15 秒 [第 56 頁]。</p>
+<p>* <strong>語言及字幕</strong>：</p>
+<p>  * <strong>廣東話版本</strong>：配粵語旁白/配音，並附繁體中文書面語字幕 [第 53, 55 頁]。</p>
+<p>  * <strong>英語版本</strong>：配英語旁白/配音（英語發音），並附英文字幕 [第 53, 55 頁]。</p>
+<p>* <strong>配音 / 旁白</strong>：承辦商須為廣東話及英語旁白/配音員各提供 <strong>3 至 5 名候選人</strong>供社署挑選 [第 54 頁]。</p>
+<p>* <strong>拍攝及交付輸出規格</strong>：</p>
+<p>  * <strong>拍攝格式</strong>：採用 HDCAM、RED ONE 或同等規格。HDV 格式或靜態相機拍攝可視乎創意考量，需經社署確認 [第 53, 56 頁]。</p>
+<p>  * <strong>廣播電視母帶格式</strong>：16:9 HD，XDCAM HD422 at 50Mbps MXF 格式（無片頭/clapper，時間碼由 `00:00:00:00` 開始）[第 52, 56, 58 頁]。</p>
+<p>  * <strong>網絡/多媒體格式</strong>：Full HD (1920x1080) MPEG-4 格式及 WMV 格式，供社署/政府網站及社交媒體發布 [第 52–53, 57 頁]。</p>
+<p>  * <strong>無障礙網絡播放版本</strong>：須額外提供另一個符合 <strong>W3C WCAG 2.2 Level AA</strong> 標準的版本，以供發布於網際網絡 [第 54 頁]。</p>
+<p>* <strong>手語翻譯（Sign Language Interpretation）強制規格</strong> [第 53–54 頁]：</p>
+<p>  * 廣東話及英語版本均須包含香港手語翻譯（Hong Kong Sign Language），譯員由承辦商聘用並承擔費用，譯員需穿深色衣服 [第 53–54 頁]。</p>
+<p>  * <strong>手語視窗規格</strong>：橢圓形（Oval-shaped）、佔螢幕 <strong>1/6 大小</strong>（或社署接受的大小）、位於螢幕右下角、淺灰或粉藍色非反光背景，且手語表達須盡可能與字幕同步 [第 54 頁]。</p>
+<p>---</p>
+<h5>⑤ 指定班底</h5>
+<p>* <strong>ERB 導師</strong>：標書全文<strong>完全沒有提及</strong> ERB 導師要求 [第 1–83 頁]。</p>
+<p>* <strong>KOL / 明星</strong>：標書全文<strong>完全沒有提及</strong>指定 KOL 或明星演出要求 [第 1–83 頁]。</p>
+<p>* <strong>吉祥物（Mascot）</strong>：標書全文<strong>完全沒有提及</strong>吉祥物（Mascot）要求 [第 1–83 頁]。</p>
+<p>* <strong>實際班底與專業人員要求</strong>：</p>
+<p>  1. <strong>影片素材（Video Footage）</strong>：部分影片片段將由社署提供（Video footage will be provided by SWD），承辦商主要透過剪輯及圖形特效（graphic effects）突出核心訊息 [第 54 頁]。</p>
+<p>  2. <strong>旁白/配音員（Voice-over talents）</strong>：承辦商須為粵語及英語配音員各提供 <strong>3 至 5 名候選人</strong>供社署選角 [第 54 頁]。</p>
+<p>  3. <strong>手語翻譯員（Sign Language Interpreter）</strong>：承辦商須聘用全港通用之香港手語翻譯員，譯員須檢查並確認最終剪輯版本的手語表達準確無誤 [第 53–54 頁]。</p>
+<p>  4. <strong>監督團隊（Supervisory Staff）</strong>：獲標承辦商須於合約獲批後 <strong>7 個工作天內提交監督計劃（Supervision plan）</strong>，說明監督人員的職銜、專業資格、人員簡報及培訓等機制 [第 55 頁]。</p>
+<p>---</p>
+<h5>⑥ 創意及策略重點 / 風格要求</h5>
+<p>* <strong>素材整合與視覺效果</strong>：善用社署提供的影片片段，結合剪輯與圖形特效（graphic effects）強化核心訊息。畫面中出現網址、電話、電郵等關鍵資訊時，需配合合適旁白聲軌 [第 53, 54 頁]。</p>
+<p>* <strong>原創性與版權</strong>：提交之創意概念、劇本、口號（Slogan）、分鏡腳本（Storyboard，含中英文畫面描述及對白）等必須為投標者原創，不得轉售或曾被第三方購買 [第 51, 53 頁]。</p>
+<p>* <strong>音樂與配樂</strong>：優先採用量身訂造/後期配樂（tailor-made / post-scored music preferred）。承辦商須完全負擔音樂版權及許可費用（包含向 CASH、IFPI、HKRIA 等支付公開播映權費用），並於製作完成後填交《Information on Music Copyright》（Annex 2）[第 53, 54, 58 頁]。</p>
+<p>* <strong>性別主流化（Gender Mainstreaming）</strong>：宣傳內容呈現必須具備性別敏感度（gender-sensitive manner），確保無性別偏見或不平等（須填寫 Schedule 5）[第 52, 70 頁]。</p>
+<p>* <strong>評分準則（Marking Scheme，技術比重 70%）</strong> [第 73 頁]：</p>
+<p>  1. <strong>訊息準確性及清晰度（30%）</strong>：創意概念需極清晰、準確、精煉傳達訊息 [第 73, 74–75 頁]。</p>
+<p>  2. <strong>訊息傳達之創意（15%）</strong>：宣傳短片呈現手法需具備高度創意 [第 73, 75–76 頁]。</p>
+<p>  3. <strong>宣傳活動影響力（15%）</strong>：能引發廣泛社區關注與認知 [第 73, 76 頁]。</p>
+<p>  4. <strong>記憶度（Recall 10%）</strong>：能讓受眾輕鬆記住訊息 [第 73, 76–77 頁]。</p>
+<p>  5. <strong>共鳴感/說服力（Resonance 10%）</strong>：能說服公眾並產生共鳴 [第 73, 77 頁]。</p>
+<p>  6. <strong>創新建議（Innovative Suggestions 20%）</strong>：</p>
+<p>     * <strong>促進創新建議（Pro-innovation Proposals，15%）</strong>：採用新技術/新工具/新流程提升製作效率、質素或宣傳傳播效果（提 4 個以上有效方案拿滿分 15 分）[第 73, 77–78, 80 頁]。</p>
+<p>     * <strong>ESG 建議（5%）</strong>：提升環境保護（E）、社會責任（S，如聘用殘疾/復康人士）或公司管治（G）的措施（提 4 個以上有效方案拿滿分 5 分）[第 73, 78, 81 頁]。</p>
+<p>---</p>
+<h5>⑦ 交付物同時間表</h5>
+<h6>**交付物清單（Deliverables）** [第 52–54, 56–58 頁]：</h6>
+<p>1. 30 秒 TV API 短片 1 套（包含廣東話及英文兩個語言版本）[第 52 頁]。</p>
+<p>2. 廣播級數位母帶：16:9 HD XDCAM HD422 at 50Mbps MXF、MPEG-4（MP4）、WMV 格式檔案 [第 52, 56–57 頁]。</p>
+<p>3. 符合 W3C WCAG 2.2 Level AA 標準的網絡無障礙播放版本 [第 54 頁]。</p>
+<p>4. 短片劇照：每個語言版本各 <strong>12 張</strong> JPEG 格式靜態圖片 [第 53, 57 頁]。</p>
+<p>5. 劇本及分鏡腳本（Storyboard）軟硬複本（含中英文畫面描述及對白/字幕）[第 53 頁]。</p>
+<p>6. 遞交至各電視台（TVB、i-CABLE HOY TV、Now TV/ViuTV、RTHK TV）指定格式檔案及 Cue Sheet [第 56–57 頁]。</p>
+<p>7. 遞交予政府新聞處（ISD）及社署（SWD）之存檔格式母帶（含 1 盒 HDCAM、1 張 DVD、MPEG-4 及 WMV 檔案）[第 57 頁]。</p>
+<p>8. 填妥之音樂版權資料表（Annex 2）[第 54, 58 頁]。</p>
+<h6>**重要時間表（Timeline &amp; Milestones）** [第 1, 3, 55, 72 頁]：</h6>
+<p>* <strong>2026-09-10</strong>：發出報價邀請日期 [第 1 頁]。</p>
+<p>* <strong>2026-09-14 13:00</strong>：線上簡介會報名表（Appendix A）遞交截止時間 [第 55, 72 頁]。</p>
+<p>* <strong>2026-09-15 15:00</strong>：線上簡介會（Zoom meeting，廣東話進行）[第 3, 55, 72 頁]。</p>
+<p>* <strong>2026-09-24 11:00</strong>：<strong>截標時間（Quotation Closing Date &amp; Time）</strong> [第 1, 2, 55, 72 頁]。</p>
+<p>* <strong>2026-09-30</strong>：技術建議書簡報會（Presentation of Technical Proposal to Assessment Panel）[第 55 頁]。</p>
+<p>* <strong>2026-10-14</strong>：與獲標承辦商進行簡報會（Debriefing Session）[第 55 頁]。</p>
+<p>* <strong>2026-10-30</strong>：籌備製作會議（Pre-production Meeting）[第 55 頁]。</p>
+<p>* <strong>2026-11-13</strong>：初剪版本演示（Rough-cut Presentation）[第 55 頁]。</p>
+<p>* <strong>2026-11-27</strong>：完成並遞交最終剪輯版本（Submission of Final Cut）[第 52, 55 頁]。</p>
+<p>* <strong>2026-12-04</strong>：遞交電視台母帶（Delivery of Station Copies；至少於首播前 4 個工作天遞交）[第 52, 55, 57 頁]。</p>
+<p>---</p>
+<h5>⑧ 任何強制要求或紅線</h5>
+<p>1. <strong>雙信封制（Two-Envelope Approach）與絕密紅線</strong>：</p>
+<p>   * 標書必須分為「技術建議書（Envelope No. 1）」及「價格建議書（Envelope No. 2）」，分別放入兩個<strong>獨立密封純白信封</strong>內遞交，各一式兩份（DUPLICATE）[第 1, 2, 10, 16 頁]。</p>
+<p>   * ⛔ <strong>絕密紅線</strong>：<strong>技術建議書內絕對不可包含任何價格資料</strong>（WITHOUT any price information），否則將被直接取消資格 [第 2, 16 頁]。</p>
+<p>2. <strong>遞交方式紅線</strong>：</p>
+<p>   * 必須於 2026 年 9 月 24 日上午 11:00 前<strong>專人親身投入</strong>香港灣仔皇后大道東213號胡忠大廈23樓2353室社會福利署物料供應分組報價箱內 [第 1, 2, 10, 16 頁]。</p>
+<p>   * ⛔ <strong>嚴禁</strong>以電郵、傳真、郵遞方式遞交，逾期遞交一律不予考慮 [第 1, 2, 10, 16 頁]。</p>
+<p>3. <strong>信封標籤與匿名要求</strong>：</p>
+<p>   * 信封外部不得有任何可識別投標公司身份的名稱或標記，並須準確註明收件人「Chairman, SWD Quotation Opening Team」、報價單編號 `SWD/Q017/2026`、項目名稱及截標日期 [第 1, 2, 10 頁]。</p>
+<p>4. <strong>表格與簽署紅線</strong>：</p>
+<p>   * 必須按時填妥並由授權人士原筆簽署 `Schedule 3 - Offer to be Bound` [第 16, 18, 26, 66 頁]。如缺少原筆簽署（Original signature）或遺漏 Schedule 3，將直接被<strong>取消資格（Disqualified）</strong>，且政府<strong>不會</strong>給予補交或澄清機會 [第 26, 66 頁]。</p>
+<p>5. <strong>知識產權與版權歸屬</strong>：</p>
+<p>   * 所有製作素材、影片成品及知識產權一經建立，完全獨家歸香港特別行政區政府所有 [第 54, 69 頁]。</p>
+<p>   * 承辦商須全權負責音樂及第三方素材的全球、永久、跨媒體播映版權許可與費用 [第 54, 69 頁]。</p>
+<p>6. <strong>國家安全與反串謀條款</strong>：</p>
+<p>   * 必須簽署遞交 Schedule 4 反串謀投標確認書（Non-collusive Quotation Certificate）[第 15, 25–26, 67–68 頁]。</p>
+<p>   * <strong>國家安全條款</strong>：若投標者從事危害國家安全的行為，政府有權直接取消資格或終止合約 [第 25, 35 頁]。</p>
+<p>7. <strong>創新建議違約賠償（Liquidated Damages）</strong>：</p>
+<p>   * 獲採納的創新建議（Accepted Pro-innovation / ESG Proposals）將成為合約強制條款。若獲標後未能執行，政府將按合約公式扣減合約費用或進行索償 [第 42–44 頁]。</p>
+<p>💡 如果貴公司需要進一步進行創意 Concept 發展、分鏡腳本 Shot Planning 或者提案簡報（Presentation）準備，隨時告訴我！</p>
+<h4>⚠️ 製作要求（標書硬性，每個概念必跟，違 = 廢稿）</h4>
+<p>- <strong>手語</strong>：要（標書原文:必須包含香港手語翻譯（粵語及英語版本）。手語視窗為橢圓形，佔螢幕1/6大小，位於右下角，淺灰/粉藍背，p53）</p>
+<p>- <strong>W3C影片</strong>：要（標書原文:必須提供符合 W3C WCAG 2.2 Level AA 標準的網絡播放版本。，p53）</p>
+<p>- <strong>明星/名人/官員</strong>：無Preference（標書原文:標書未提及明星/知名人士演出要求。，p）</p>
+<p>- <strong>Mascot</strong>：無Preference（標書原文:標書未提及吉祥物/Mascot要求。，p）</p>
+<p>- <strong>動畫</strong>：無Preference（標書原文:標書未明確指定2D動畫要求。 / 標書未明確指定3D動畫要求。，p）</p>
+<h4>📑 要交文件（邊份 DOC + 頁碼）</h4>
+<p>- <strong>Technical Proposal (including Creative Concept, Scripts, Slogans, Storyboards, Subtitles, Graphic/Photographic images, Schedule 2, Schedule 3, Schedule 4, Schedule 5, Schedule 6, BRC copy and supporting technical documents in DUPLICATE)</strong>（Invitation to Quotation [ SWD-Q017-2026].pdf · p2） — Must NOT contain any price information</p>
+<p>- <strong>Price Proposal (containing Schedule 1 Price Schedule and price information in DUPLICATE)</strong>（Invitation to Quotation [ SWD-Q017-2026].pdf · p2） — Must be sealed in a separate plain envelope</p>
+<h4>📮 交標方法（地址／信封／份數）</h4>
+<p>- <strong>截標</strong>：2026-09-24 11:00</p>
+<p>- <strong>印幾多份</strong>：Technical Proposal in DUPLICATE; Price Proposal in DUPLICATE</p>
+<p>- <strong>幾多信封</strong>：2 個</p>
+<p>- <strong>Soft copy（電子副本：CD/USB？）</strong>：標書無提及 → 只交紙本,不需 soft_copy</p>
+<p>- <strong>交去邊 — To</strong>：Chairman, SWD Quotation Opening Team</p>
+<p>- <strong>交去邊 — Address</strong>：Room 2353, 23/F., Wu Chung House, 213 Queen&#x27;s Road East, Wan Chai, Hong Kong</p>
+<p>- <strong>信封 label「Envelope No. 1 (Technical Proposal)」要寫</strong>：`Addressed to &quot;Chairman, SWD Quotation Opening Team&quot;; Marked with &quot;Technical Proposal&quot;, &quot;Quotation Reference No.: SWD/Q017/2026 Provision of Service for the Production of a set of TV Announcements in the Public Interest for &quot;District Services and Community Care Teams - Scheme on Supporting Elderly and Carers&quot; and &quot;School-based After School Care Service Scheme&quot;, Quotation Closing Date: 24 September 2026&quot;`</p>
+<p>- <strong>信封 label「Envelope No. 2 (Price Proposal)」要寫</strong>：`Addressed to &quot;Chairman, SWD Quotation Opening Team&quot;; Marked with &quot;Price Proposal&quot;, &quot;Quotation Reference: SWD/Q017/2026 Provision of Service for the Production of a set of TV Announcements in the Public Interest for &quot;District Services and Community Care Teams - Scheme on Supporting Elderly and Carers&quot; and &quot;School-based After School Care Service Scheme&quot;, Quotation Closing Date: 24 September 2026&quot;`</p>
+<h4>💰 預算 / 費用</h4>
+<p>- <strong>預算（Budget）</strong>：無標明</p>
+<p>- <strong>費用明細要求（Fee Proposal Breakdown）</strong>：無要求</p>
+<h4>⛔ 注意事項 / 紅線</h4>
+<p>- [手語] 手語翻譯 (Sign Language Interpretation)：必須包含香港手語翻譯（粵語及英語版本）。手語視窗為橢圓形，佔螢幕1/6大小，位於右下角，淺灰或粉藍色非反光背景，手語譯員</p>
+<p>- [無障礙] 無障礙標準 (W3C WCAG 2.2 AA)：需提供另一個符合 World Wide Web Consortium (W3C) Web Content Accessi</p>
+<h4>⚡ 創意亮點（research 掘出嘅真嘢）</h4>
+<h4>⚡ 創意亮點 — SWD·Provision of Service for the Production of a set of TV Announcements in the Public Interest for &quot;District Services and Community Care Teams - Scheme on Supporting Elderly and Carers&quot; and &quot;School-based After School Care Service Scheme&quot; / 為「地區服務及關愛隊—支援長者及照顧者計劃」及「在校課後託管服務計劃」製作一套電視宣傳短片（research 掘出嚟，可以做橋嘅真嘢）</h4>
+<p>1. 🏷️ <strong>關愛隊專屬識別背心</strong></p>
+<p>   - 事實：關愛隊視覺以小隊制服背心為主，同一小區內樣式一致，正背面清晰印有地區及小區名稱，隊員配戴工作證上門探訪。（出處：[hooks-research] SWD）</p>
+<p>   - 💡 可以點做橋：以背心名牌及親切敲門動作為視覺符號，展現專人上門關懷的信任感與鄰里情。</p>
+<p>2. 🏷️ <strong>室內緊急召援系統（平安鐘）</strong></p>
+<p>   - 事實：SEC計劃資助高風險獨老及雙老家庭安裝俗稱「平安鐘」的室內緊急召援系統，截至2026年6月底已協助超過4,100戶安裝。（出處：Invitation to Quotation [SWD-Q017-2026] &amp; [hooks-research] SWD）</p>
+<p>   - 💡 可以點做橋：將「按掣求救」的平安鐘實物動作轉化為全城防護網的具象保障符號。</p>
+<p>3. 💡 <strong>數據平台精準主動敲門</strong></p>
+<p>   - 事實：照顧者支援數據平台跨部門整合房委會與社署數據，並於2026年3月伸延至「三無大廈」，由被動等候求助轉為主動上門識別高風險戶。（出處：Invitation to Quotation [SWD-Q017-2026] &amp; [hooks-research] SWD）</p>
+<p>   - 💡 可以點做橋：以主動敲門探訪三無大廈舊樓的真實鏡頭，突出政府精準扶貧主動出擊的政策轉變。</p>
+<p>4. 🏷️ <strong>熟悉的校園託管環境</strong></p>
+<p>   - 事實：SBA計劃讓小學生放學後（15:00-19:00）留在熟悉的校園課室，進行不多於8人一組的功課輔導及活動，截至2026年6月已有207間小學參與。（出處：Invitation to Quotation [SWD-Q017-2026] &amp; [hooks-research] SWD）</p>
+<p>   - 💡 可以點做橋：以「留在自己學校做完功課」的熟悉安全感，對比家長安心工作放工接送的溫馨場面。</p>
+<p>5. 🇭🇰 <strong>照顧者「抖抖氣」切身痛點</strong></p>
+<p>   - 事實：社署照顧者宣傳線既有標誌「齊撐照顧者行動」以「抖抖氣 打打氣」及專線182 183為核心，深植基層照顧者心水。（出處：[hooks-research] SWD &amp; 官方來源 正名）</p>
+<p>   - 💡 可以點做橋：切入照顧者身心俱疲需要喘息的痛點，將社區支援連結至「讓人適時抖抖氣」的情感共鳴。</p>
+<p>6. 🇭🇰 <strong>「做完功課先有得玩」家長金句</strong></p>
+<p>   - 事實：SBA在校託管強調高質功課輔導，形成「在校完成功課、回家共享天倫」的口碑，紓緩雙職及單親家長輔導功課的巨大壓力。（出處：[hooks-research] SWD）</p>
+<p>   - 💡 可以點做橋：以小朋友在校完成功課後的輕鬆笑容，直擊雙職家長下班免受功課折磨的踏實幸福感。</p>
+<p>7. 💡 <strong>30秒片雙計劃黃金對分</strong></p>
+<p>   - 事實：標書規定本單需製作一條30秒TV API，精準平分長者及照顧者計劃（約15秒）與在校課後託管計劃（約15秒）。（出處：Invitation to Quotation [SWD-Q017-2026] Service Specifications Annex 1）</p>
+<p>   - 💡 可以點做橋：運用雙線平行剪接，將上門護老與在校託管兩幅安居樂業畫面完美交織。</p>
+<p>8. 🏷️ <strong>橢圓形手語翻譯視窗規範</strong></p>
+<p>   - 事實：標書嚴格規定畫面右下角須設佔螢幕1/6大小的橢圓形手語視窗，背景為淺灰或粉藍色，譯員穿深色衣服。（出處：Invitation to Quotation [SWD-Q017-2026] Service Specifications Clause 6(l)）</p>
+<p>   - 💡 可以點做橋：以標準無障礙手語視窗配合繁體中文/英文雙語字幕，展示官方訊息的全民包容度。</p>
+<h4>📅 日程</h4>
+<p>- 2026-09-10 Quotation Issue Date (發出報價邀請日期)</p>
+<p>- 2026-09-14 Deadline for Submission of Reply Slip for Briefing Session (簡介會報名表遞交截止時間)</p>
+<p>- 2026-09-15 Online Briefing Session by Zoom (線上簡介會)</p>
+<p>- 2026-09-24 Quotation Closing Date &amp; Time (截標時間)</p>
+<p>- 2026-09-30 Presentation of Technical Proposal to the Assessment Panel (技術建議書簡報會)</p>
+<p>- 2026-10-14 Debriefing Session with the Contractor (與獲標承辦商進行簡報會)</p>
+<p>- 2026-10-30 Pre-production Meeting (籌備製作會議)</p>
+<p>- 2026-11-13 Rough-cut Presentation of TV APIs (初剪版本演示)</p>
+<p>- 2026-11-27 Submission of Final Cut of TV APIs (完成及遞交最終剪輯版本)</p>
+<p>- 2026-12-04 Delivery of Station Copies of TV APIs to TV Stations (遞交電視台母帶)</p></div></div>
+<div id='handbd' class='tabpanel'><p class='hint'>喺 Master GSheet 開「TV API Script <b>1／2／3</b>」三個 tab 放唔同 TV API 稿，<b>撳邊個 SET 就生邊個</b>（全 NLM 風格各一，純畫面唔蓋字）。</p><div class='acts' style='margin-bottom:6px'><button class='btn' title='讀 Master GSheet「TV API Script 1」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=SWD&concept=1&stage=handbd&engine=allstyles&target=main')">🎬 SET 1 → 生 BD</button><button class='btn' title='讀 Master GSheet「TV API Script 2」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=SWD&concept=2&stage=handbd&engine=allstyles&target=main')">🎬 SET 2 → 生 BD</button><button class='btn' title='讀 Master GSheet「TV API Script 3」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=SWD&concept=3&stage=handbd&engine=allstyles&target=main')">🎬 SET 3 → 生 BD</button><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card empty'>未生過手寫稿 BD —— 撳上面 SET 生成（或先喺 Master GSheet 放稿）。</div></div>
+<div id='theme1_1' class='tabpanel' data-set='1'><div class='banner'>🧭 北極星未定。撳掣 → 7 agency + 委員會就住成份標書諗一個大主題（big idea）+ 一個綜合口號。所有 MOD ladder 返呢度。</div><div class='card'><button class='btn big' title='' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=SWD&concept=PLAN&stage=gen_theme&target=main')">🧭 生成大主題 + 綜合口號</button></div><div class='card'><button class='btn ghost' title='將呢個 dept 全部已生成嘅 MOD planning（主題／系列／SOC／MEDIA／KOL）出去 Master GSheet，每個 mod 一個 tab；你喺 GSheet 改完，自己貼返入真 deck（GSlide）。design 你話事。' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=SWD&concept=all&stage=mod_gsheet&target=main')">📤 全部 MOD → Master GSheet（畀你改）</button></div></div>
+<div id='tvapi1_1' class='tabpanel' data-set='1'><div class='banner'>👉 委員會已預選六強，你可以隨選隨剔，撳右下 Submit，NBLM 即自動幫佢哋生 BD 入 VID 2。</div><div class='h2'>🔻 推薦六強（橫掃揀）</div><div class='carousel'><div class='ccard surface-card  sel' data-cid='nbd2eca66a'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>方向 1</span></div><div class='ctitle'>雙線平行 · 敲門與校門</div><div class='cbody'><p>Big idea：一扇敲開的門，一份安心的託付。以敲響舊樓門牌與推開託管課室門平行對稱，貫穿兩大計劃。</p>
+<p>點解：雙線平行蒙太奇精準平分護老與託管，直觀呈現政府精準扶貧成效。</p>
+<p>Key message：關愛隊外展探訪支援長者及資助安裝平安鐘；在校課後託管涵蓋全港公營小學，不設名額上限。</p>
+<p>視覺裝置：「敲門」與「開課室門」動作 Match Cut</p>
+<p>班底：關愛隊隊員、獨居長者、雙職媽媽、小學生</p>
+<p>調子：踏實、溫暖、紀實節奏感</p>
+<p>片長：30 秒 · 10 格</p>
+<p>1. 【畫面】關愛隊員敲響三無大廈舊樓門牌，長者開門迎迓。　【旁白】關愛隊主動走入社區，　【字幕】地區服務及關愛隊 — 支援長者及照顧者計劃</p>
+<p>2. 【畫面】隊員為長者檢查室內環境，遞上關懷禮包。　【旁白】探訪獨居同雙老長者。　【字幕】關愛外展探訪｜主動關懷</p>
+<p>3. 【畫面】隊員耐心地為長者安裝平安鐘主機同遙控掣。　【旁白】轉介服務，資助安裝平安鐘，　【字幕】資助安裝平安鐘｜已協助逾 4,100 戶</p>
+<p>4. 【畫面】平板電腦顯示數據平台，隊員辦理轉介手續。　【旁白】數據平台主動識別高風險戶，　【字幕】照顧者支援數據平台｜覆蓋公屋及三無大廈</p>
+<p>5. 【畫面】長者按動平安鐘，露出安心放鬆嘅笑容。　【旁白】讓照顧者適時抖抖氣。　【字幕】全城齊撐照顧者｜熱線 182 183</p>
+<p>6. 【畫面】Match Cut：媽媽推開學校課室門，兒子正安心做功課。　【旁白】另一邊，喺熟悉的校園，　【字幕】在校課後託管服務計劃｜熟悉的校園環境</p>
+<p>7. 【畫面】導師一對八指導學生功課，旁邊同學認真閱讀。　【旁白】在校託管提供高質功輔，　【字幕】高質功課輔導｜學習與社交支援</p>
+<p>8. 【畫面】放學黃昏，媽媽喺校門歡接做完功課嘅兒子。　【旁白】減輕家長照顧同管教壓力，　【字幕】減輕照顧壓力｜支援家長就業</p>
+<p>9. 【畫面】母子手牽手溫馨回家，媽媽神情踏實輕鬆。　【旁白】等家長安心工作，改善生活。　【字幕】全港公營小學均可申請｜名額不設上限</p>
+<p>10. 【畫面】尾鏡：社署標誌、右下角 1/6 橢圓形手語視窗、熱線及 QR code。　【旁白】齊心支援長者同家庭！　【字幕】社會福利署｜支援照顧者專線 182 183｜www.swd.gov.hk</p></div></div><div class='ccard surface-card  sel' data-cid='nb232546a4'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>方向 2</span></div><div class='ctitle'>實態數據 · 實物安心網</div><div class='cbody'><p>Big idea：看得見的硬數據，觸得到的溫暖。以平安鐘按鈕、數據平台及功輔桌面等具體實物硬事實說話。</p>
+<p>點解：用真實數據與實物建立權威說服力與全民信任感。</p>
+<p>Key message：數據平台精準覆蓋公屋及三無大廈；在校託管減輕家長壓力促進天倫。</p>
+<p>視覺裝置：平安鐘實物特寫 + 數據圖層（Data Visualization Overlay）</p>
+<p>班底：關愛隊義工、舊樓長者、小學導師、單親爸爸與女兒</p>
+<p>調子：專業、精準、具說服力</p>
+<p>片長：30 秒 · 10 格</p>
+<p>1. 【畫面】客廳「平安鐘」主機與紅色求救按鈕特寫，隊員遞上暖水。　【旁白】關愛隊全港外展探訪，　【字幕】地區服務及關愛隊 — 支援長者及照顧者計劃</p>
+<p>2. 【畫面】隊員陪長者聊天，並檢查室內警報裝備。　【旁白】貼心關懷長者同照顧者。　【字幕】關愛外展探訪｜主動關懷</p>
+<p>3. 【畫面】平板顯示照顧者支援數據平台動線圖，隊員走入三無大廈。　【旁白】數據平台主動識別高風險戶，　【字幕】照顧者支援數據平台｜覆蓋公屋及三無大廈</p>
+<p>4. 【畫面】隊員為長者辦理手續，資助安裝平安鐘。　【旁白】轉介服務同資助安裝平安鐘。　【字幕】已協助逾 4,100 戶資助安裝平安鐘</p>
+<p>5. 【畫面】長者微笑着按動遙控掣，畫面亮起防護網特效。　【旁白】主動織緊社區防護網。　【字幕】主動識別｜早期支援</p>
+<p>6. 【畫面】鏡頭轉至小學課室，特寫桌上蓋有「完成」印章嘅功課簿。　【旁白】在校課後託管服務計劃，　【字幕】在校課後託管服務計劃｜熟悉的校園環境</p>
+<p>7. 【畫面】小女孩與導師高興舉起功課簿，導師一對八指導。　【旁白】提供高質功課輔導同學習支援。　【字幕】1:8 師生比例｜高質功課輔導</p>
+<p>8. 【畫面】放學後課室內同學愉快進行益智桌遊活動。　【旁白】讓小朋友喺熟悉校園學習成長。　【字幕】全港 207 間小學參與｜逾 10,600 名額</p>
+<p>9. 【畫面】單親爸爸喺校門接女兒，父女高興討論晚餐，笑容燦爛。　【旁白】減輕照顧壓力，名額不設上限！　【字幕】全港公營小學均可申請｜名額不設上限</p>
+<p>10. 【畫面】尾鏡：社署 Logo，右下角 1/6 橢圓形手語視窗及熱線。　【旁白】詳情請聯絡社會福利署。　【字幕】社會福利署｜照顧者專線 182 183｜www.swd.gov.hk</p></div></div><div class='ccard surface-card  sel' data-cid='nbc295c301'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>方向 3</span></div><div class='ctitle'>時間的對比 · 喘息與天倫</div><div class='cbody'><p>Big idea：從身心俱疲到優雅喘息，從功課拉鋸到溫馨晚餐。以時間軸的舒緩變化，呈現兩大計劃帶來的身心解放。</p>
+<p>點解：緊扣社署「抖抖氣打打氣」情感共鳴點與「做完功課先有得玩」家長金句。</p>
+<p>Key message：關愛隊探訪讓照顧者獲得喘息；在校託管讓學生完成功課、家長安心工作。</p>
+<p>視覺裝置：時鐘指針轉動與照顧者神情由焦慮轉為舒緩放鬆嘅表情對比</p>
+<p>班底：照顧老母的女兒、關愛隊隊員、雙職媽媽與小學兒子</p>
+<p>調子：情感共鳴、溫馨、舒緩</p>
+<p>片長：30 秒 · 10 格</p>
+<p>1. 【畫面】時鐘顯示下午 2:00。客廳裡女兒照顧患病老母顯得疲憊。　【旁白】照顧家人感到身心俱疲？　【字幕】地區服務及關愛隊 — 支援長者及照顧者計劃</p>
+<p>2. 【畫面】門鈴響起，身穿背心嘅關愛隊員帶上微笑到訪。　【旁白】關愛隊主動嚟到你身邊。　【字幕】關愛隊外展探訪｜主動關懷</p>
+<p>3. 【畫面】隊員陪老太太聊天，並幫忙辦理平安鐘申請。　【旁白】探訪長者，資助安裝平安鐘，　【字幕】轉介資助安裝平安鐘｜護老者支援</p>
+<p>4. 【畫面】女兒喺陽台喝茶放鬆，神情舒緩。　【旁白】讓照顧者可以適時抖抖氣。　【字幕】抖抖氣 打打氣｜齊撐照顧者行動</p>
+<p>5. 【畫面】時鐘顯示下午 4:30。小學課室內，兒子喺學校安心做功課。　【旁白】放學後留喺學校託管，　【字幕】在校課後託管服務計劃｜放學後 15:00 - 19:00</p>
+<p>6. 【畫面】導師耐心地解說數學題，學生隨後參加體育活動。　【旁白】有專人輔導功課同學習支援。　【字幕】高質功課輔導｜多元興趣活動</p>
+<p>7. 【畫面】雙職媽媽喺工場安心工作，不用焦急接送。　【旁白】家長唔使再為功課傷腦筋，　【字幕】支援家長就業｜減輕管教壓力</p>
+<p>8. 【畫面】時鐘顯示晚上 7:00。一家人在飯桌上開心食晚餐。　【旁白】喺學校做完功課，回家共享天倫。　【字幕】在校完成功課｜回家共享天倫</p>
+<p>9. 【畫面】兒子展示全對嘅功課簿，媽媽笑臉盈盈。　【旁白】全港公營小學適用，名額不設上限！　【字幕】全港公營小學均可申請｜名額不設上限</p>
+<p>10. 【畫面】尾鏡：右下角橢圓形手語視窗同步，社署標誌 + 專線 182 183。　【旁白】全城齊撐照顧者！　【字幕】社會福利署｜支援照顧者專線 182 183｜carers.hk</p></div></div><div class='ccard surface-card  sel' data-cid='nb2f269a7d'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>方向 4</span></div><div class='ctitle'>主動敲門 · 社區防護網</div><div class='cbody'><p>Big idea：唔再被動等求助，關愛主動叩門來。以關愛隊身穿專屬背心走入三無大廈主動探訪開場。</p>
+<p>點解：突顯精準扶貧由被動轉為主動嘅政策思維轉變，樹立親切可信形象。</p>
+<p>Key message：數據平台整合跨部門數據，主動識別三無大廈高風險長者；在校託管全港推行。</p>
+<p>視覺裝置：關愛隊專屬識別背心 + 舊樓走廊探訪動線</p>
+<p>班底：關愛隊隊員、三無大廈高齡長者、校園託管導師、基層家長</p>
+<p>調子：親切、主動、安心</p>
+<p>片長：30 秒 · 10 格</p>
+<p>1. 【畫面】主觀鏡頭：關愛隊員穿著印有小區名稱嘅背心走上唐樓樓梯。　【旁白】關愛隊主動出擊，　【字幕】地區服務及關愛隊 — 支援長者及照顧者計劃</p>
+<p>2. 【畫面】隊員敲響三無大廈獨居長者家門，長者開門微笑。　【旁白】走入社區同三無大廈，　【字幕】三無大廈主動探訪｜精準扶貧</p>
+<p>3. 【畫面】隊員喺長者家中協助安裝平安鐘並試示範按鈕。　【旁白】探訪長者，資助安裝平安鐘。　【字幕】資助安裝平安鐘｜關愛外展</p>
+<p>4. 【畫面】平板電腦呈現照顧者支援數據平台介面。　【旁白】數據平台主動識別高風險戶，　【字幕】照顧者支援數據平台｜跨部門數據整合</p>
+<p>5. 【畫面】長者握著隊員嘅手表示感謝，畫面亮起保護網效果。　【旁白】轉介適切服務，織緊防護網。　【字幕】早期識別｜及時支援</p>
+<p>6. 【畫面】畫面轉至陽光充沛嘅小學課室，學生安心做功課。　【旁白】關愛延伸至校園，　【字幕】在校課後託管服務計劃｜熟悉的校園環境</p>
+<p>7. 【畫面】導師指導學生進行團體益智遊戲與功輔。　【旁白】在校課後託管提供功課輔導。　【字幕】安全熟悉環境｜學習與社交支援</p>
+<p>8. 【畫面】單親媽媽喺工場安心工作，下班前往學校。　【旁白】讓家長安心就業，改善生活。　【字幕】釋放勞動力｜改善家庭生活</p>
+<p>9. 【畫面】媽媽喺校門接到開心的孩子，兩人歡笑離去。　【旁白】全港公營小學申請，不設名額上限。　【字幕】全港公營小學均可申請｜名額不設上限</p>
+<p>10. 【畫面】官方結尾：右下角 1/6 橢圓形粉藍底手語視窗，社署標誌 + 二維碼。　【旁白】主動關懷，共建關愛社區！　【字幕】社會福利署｜www.swd.gov.hk｜查詢熱線 2343 2255</p></div></div><div class='ccard surface-card  sel' data-cid='nb975d40cb'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>方向 5</span></div><div class='ctitle'>世代共融 · 兩代無憂</div><div class='cbody'><p>Big idea：老有所扶，幼有所託。以跨代視角呈現祖父母輩與孫兒輩同時喺社區獲得適切照顧與學習支援。</p>
+<p>點解：響應政務司司長與副司長倡導嘅「跨代共融」政策願景，展現政府全方位照顧老幼。</p>
+<p>Key message：社署多管齊下支援長者及照顧者；在校課後託管提供安全環境，促進跨代和諧。</p>
+<p>視覺裝置：爺爺家中的平安鐘與小孫女課室裡的功輔桌面雙線畫面呼應</p>
+<p>班底：獨居爺爺、關愛隊義工、小學女生、雙職媽媽</p>
+<p>調子：歡樂、包容、充滿希望</p>
+<p>片長：30 秒 · 10 格</p>
+<p>1. 【畫面】畫面分屏：左邊爺爺家門被隊員敲響；右邊孫女推開課室門。　【旁白】老有所扶，幼有所託！　【字幕】精準扶貧｜老有所扶 幼有所託</p>
+<p>2. 【畫面】左邊：關愛隊員親切探訪獨居爺爺，遞上關懷禮包。　【旁白】關愛隊主動探訪長者，　【字幕】地區服務及關愛隊 — 支援長者及照顧者計劃</p>
+<p>3. 【畫面】隊員耐心地幫爺爺檢查平安鐘，辦理護老者支援轉介。　【旁白】轉介服務同資助安裝平安鐘。　【字幕】資助安裝平安鐘｜護老者支援</p>
+<p>4. 【畫面】爺爺開心豎起大拇指，數據平台擴展至三無大廈。　【旁白】數據平台主動覆蓋三無大廈。　【字幕】照顧者支援數據平台｜覆蓋公屋及三無大廈</p>
+<p>5. 【畫面】右邊：小孫女喺校園課室裡，導師一對八指導功課。　【旁白】在校課後託管服務，　【字幕】在校課後託管服務計劃｜高質功課輔導</p>
+<p>6. 【畫面】孫女和小夥伴歡樂進行躲避盤體育運動。　【旁白】喺熟悉的校園提供學習支援。　【字幕】熟悉校園環境｜多元興趣活動</p>
+<p>7. 【畫面】媽媽下班接回孫女，兩人歡聲笑語步出校門。　【旁白】減輕照顧壓力，支援家長就業。　【字幕】減輕照顧壓力｜支援家長就業</p>
+<p>8. 【畫面】一家三代喺公園會合，爺爺按著平安鐘遙控器，孫女展示功課簿。　【旁白】促進跨代共融，兩代無憂。　【字幕】促進跨代共融｜回家共享天倫</p>
+<p>9. 【畫面】跨代歡聲笑語，大字 Super 呈現新學年不設名額上限。　【旁白】全港公營小學適用，名額不設上限。　【字幕】全港公營小學均可申請｜名額不設上限</p>
+<p>10. 【畫面】結尾：社署標誌、右下角 1/6 橢圓形手語翻譯視窗及熱線。　【旁白】攜手建立互相關懷嘅香港！　【字幕】社會福利署｜支援照顧者專線 182 183｜www.swd.gov.hk</p></div></div><div class='ccard surface-card  sel' data-cid='nb6d4263c4'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>方向 6</span></div><div class='ctitle'>微紀錄片 · 身邊的改變</div><div class='cbody'><p>Big idea：真實現場，貼地聲音。採用 Fly-on-the-wall 紀實鏡頭，捕捉關愛隊探訪舊樓與小學生喺校歡笑嘅真實瞬間。</p>
+<p>點解：借鏡社交媒體短影片紀實風格，擺脫傳統「政府片」說教感，提升觀看留存率。</p>
+<p>Key message：關愛隊已探訪逾12萬戶並資助安裝平安鐘；在校託管不設名額上限。</p>
+<p>視覺裝置：手持紀實鏡頭 + 現場自然環境音與大字 Super 分層</p>
+<p>班底：真實感關愛隊員、舊樓長者、小學師生、放工接送嘅家長</p>
+<p>調子：貼地、真實、自然</p>
+<p>片長：30 秒 · 10 格</p>
+<p>1. 【畫面】紀實手持鏡頭：關愛隊員走過舊區街道，敲開婆婆家門。　【旁白】真實嘅關懷，每日喺社區發生。　【字幕】地區服務及關愛隊 — 支援長者及照顧者計劃</p>
+<p>2. 【畫面】隊員幫婆婆喺牆上固定平安鐘主機，並填寫轉介表格。　【旁白】關愛隊外展探訪有需要長者，　【字幕】關愛外展探訪｜已接觸逾 121,000 戶</p>
+<p>3. 【畫面】婆婆眼含感激拉著隊員嘅手，隊員送上暖心問候。　【旁白】轉介服務同資助安裝平安鐘。　【字幕】已協助逾 4,100 戶資助安裝平安鐘</p>
+<p>4. 【畫面】數據平台介面字幕疊加，展現精準識別高風險戶。　【旁白】數據平台精準覆蓋三無大廈。　【字幕】照顧者支援數據平台｜覆蓋公屋及三無大廈</p>
+<p>5. 【畫面】放學鐘聲響起，學生們歡快地走入在校託管課室。　【旁白】放學後嘅校園，　【字幕】在校課後託管服務計劃｜安全熟悉校園</p>
+<p>6. 【畫面】課室環境寬暢，導師耐心地向學生解說數學題。　【旁白】成為小朋友安心學習嘅天地。　【字幕】全港 207 間小學參與｜逾 10,600 名額</p>
+<p>7. 【畫面】紀實訪問感鏡頭：單親媽媽喺學校門口受訪笑著說話。　【旁白】提供高質功輔，減輕家長壓力。　【字幕】高質功課輔導｜減輕管教壓力</p>
+<p>8. 【畫面】媽媽接過孩子嘅書包，兩人輕鬆踏上回家路。　【旁白】喺學校做完功課，家長更安心。　【字幕】在校完成功課｜家長安心就業</p>
+<p>9. 【畫面】畫面大字 Super 顯示全港公營小學適用、名額不設上限。　【旁白】全港公營小學適用，名額不設上限。　【字幕】全港公營小學均可申請｜名額不設上限</p>
+<p>10. 【畫面】結尾：右下角橢圓形手語視窗同步，社署標誌 + 政府區徽。　【旁白】精準扶貧，惠及全民！　【字幕】香港特別行政區政府 社會福利署｜www.swd.gov.hk</p></div></div></div><div class='submit'><button class='btn' onclick='submitRound()'>✅ Submit 六強 (<span class=cnt>6</span>)</button></div></div>
+<div id='tvapi1_2' class='tabpanel' data-set='1'><div class='banner'>未有概念進入第二輪。返 VID 1 揀六強（submit 即自動生 BD）先。</div></div>
+<div id='tvapi1_3' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 2 揀三甲先。</div></div>
+<div id='tvapi1_4' class='tabpanel' data-set='1'><div class='banner'>🎬 VID 4 — 5 步生 storyboard ＋ 片（STEP 1 → 5）</div><div class='card'><div class='h3'>📄 STEP 1 — 故事版（你親手執 Master GSheet B6:C17，9-12 格）</div><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card step2'><div class='h3'>🎭 STEP 2 — 主角參考相（AI 自動搵 ISD 官方相 + curate；face-swap 用嚟貼真面）</div><button class='btn ghost mini' onclick="srcRefs(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=SWD&concept=FINAL&stage=facerefs&target=main')">🔍 AI 搵／更新主角參考相</button><div class='hint'>仲未 source 主角相。撳上面掣，AI 自動由 ISD 官方相搵 + curate。</div></div><div class='stylepick card'><div class='h3'>🎨 STEP 3 — 揀風格（每行 0 或 1 個；唔剔 = 跟劇本）</div><div class='styrow'><span class='stylbl'>🏙️ 環境</span><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="realistic environment" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="2D comic-style environment" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="3D animated environment" onchange='styPick(this)'>3D動畫</label></div><div class='styrow'><span class='stylbl'>🧍 人物</span><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="photorealistic characters" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="2D comic-style characters" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="3D-modeled characters" onchange='styPick(this)'>3D建模</label></div><div class='styrow'><span class='stylbl'>🌗 光/時間</span><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="daytime lighting" onchange='styPick(this)'>日 Day</label><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="nighttime lighting" onchange='styPick(this)'>夜 Night</label></div><div class='styrow'><span class='stylbl'>🎨 色彩</span><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="vivid saturated color" onchange='styPick(this)'>鮮艷</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="muted desaturated tones" onchange='styPick(this)'>灰調</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="black and white" onchange='styPick(this)'>黑白</label></div><div class='styrow'><span class='stylbl'>😊 情緒</span><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="warm heartfelt mood" onchange='styPick(this)'>溫情</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="passionate uplifting mood" onchange='styPick(this)'>激昂</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="light humorous mood" onchange='styPick(this)'>幽默</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="solemn official tone" onchange='styPick(this)'>莊重官方</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="suspenseful mood" onchange='styPick(this)'>懸疑</label></div><div class='styrow'><span class='stylbl'>🎬 質感</span><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="cinematic look" onchange='styPick(this)'>電影感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="documentary realism" onchange='styPick(this)'>紀實</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="dynamic music-video energy" onchange='styPick(this)'>MV動感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="plain straightforward style" onchange='styPick(this)'>平實</label></div><div class='styanchor'>風格 anchor：<span id='styanchor'>（跟劇本）</span></div></div><div class='card genbox'><div class='h3'>🍌 STEP 4 — 生 BD（讀 B6:C17 ＋ face-swap 主角真面）</div><button class='btn big' title='讀你喺 Master GSheet B6:C17 執好嘅 script ＋ STEP 3 風格 ＋ face-swap 主角真面 → 生最終 BD（brd=FINAL，唔污染候選）' onclick="genFinalBD(this,'SWD','https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=SWD&concept=FINAL&stage=gsheetbd&target=main')">由 B6:C17 生最終 BD</button></div><div class='card'><div class='h3'>🎬 STEP 5 — 生片（Higgsfield Kling/Seedance，開發中）</div><div class='hint'>BD 揀好 → 生片。Higgsfield CLI 整緊。</div></div></div>
+<div id='tvapi1_5' class='tabpanel' data-set='1'><div class='banner'>未有 FINAL。返 VID 3 揀 FINAL 2 先。</div></div>
+<div class=foot>Idea Lab · 09-18 19:20 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+</div>
+
+<script>
+var DL = new Date("2026-09-24T11:00:00+08:00").getTime();
+function cd() {
+  var e = document.getElementById('cd'); if (!e) return;
+  var x = DL - Date.now();
+  if (x < 0) { e.textContent = '已截標'; return; }
+  var s = Math.floor(x/1000), d = Math.floor(s/86400);
+  s -= d*86400; var h = Math.floor(s/3600); s -= h*3600;
+  var m = Math.floor(s/60); s -= m*60;
+  e.textContent = (d > 0 ? d + '日 ' : '')
+    + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0')
+    + ':' + String(s).padStart(2,'0');
+}
+cd(); setInterval(cd, 1000);
+
+var TABS   = document.querySelectorAll('.tab');
+var PANELS = document.querySelectorAll('.tabpanel');
+function showTab(id) {
+  if (!document.getElementById(id)) id = 'ph0';
+  TABS.forEach(function(t) { t.classList.toggle('active', t.dataset.tab === id); });
+  PANELS.forEach(function(p) { p.classList.toggle('active', p.id === id); });
+  history.replaceState(null, '', '#' + id);
+  upd();
+  if (/(vid|tvapi)\d+_2$/.test(id)) vid2AutoBD();   // 入 VID／TVAPI 2 即自動觸發六強生 BD + poll
+}
+TABS.forEach(function(t) { t.addEventListener('click', function() { showTab(t.dataset.tab); }); });
+showTab((location.hash.slice(1)) || 'tvapi1_1');
+
+// VID 2:六強 submit 後自動生 BD —— 對未有 BD(data-needbd=1)嘅概念逐個觸發 NBLM deck(GAS 去重,撳幾多次都唔重生)。
+// 未生晒就每 45s reload 一次睇新 BD(NBLM 連夜,一晚生得晒)。
+var _vid2timer;
+function vid2AutoBD() {
+  var panel = document.querySelector('.tabpanel.active'); if (!panel) return;
+  var pend = panel.querySelectorAll('[data-needbd="1"]');
+  pend.forEach(function(c) {
+    var brd = c.dataset.brd; if (!brd) return;
+    var k = 'bdstart_SWD_' + brd;
+    if (!localStorage.getItem(k)) localStorage.setItem(k, String(Date.now()));  // 開始時間 → 進度條
+    fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=SWD&concept=" + encodeURIComponent(brd) + "&stage=deck&target=main" + setQ(),
+          {mode:'no-cors'}).catch(function(){});
+  });
+  tickProgress();
+  if (pend.length && !_vid2timer) {
+    _vid2timer = setInterval(function() { location.reload(); }, 90000);  // 靜靜每 90s 攞新 BD（冇 develop bar）
+  }
+}
+
+// VID 2 進度條：按實測平均 BD 時間（~10 分鐘）推移，封頂 99% stall（NBLM 唔報幾時好）。
+var BD_AVG_MS = 600000;   // 平均 606s（manifest 連續 gap 實測）
+function tickProgress() {
+  document.querySelectorAll('.pgbar').forEach(function(bar) {
+    var brd = bar.dataset.brd; if (!brd) return;
+    var k = 'bdstart_SWD_' + brd;
+    var s = +localStorage.getItem(k);
+    if (!s) { s = Date.now(); localStorage.setItem(k, String(s)); }
+    var pct = Math.min(99, (Date.now() - s) / BD_AVG_MS * 100);
+    var f = bar.querySelector('.pgfill'); if (f) f.style.width = pct.toFixed(0) + '%';
+    var t = bar.querySelector('.pgtxt');
+    if (t) t.textContent = pct >= 99 ? 'BD 生成中…就快好（99%）' : ('BD 生成中… ' + pct.toFixed(0) + '%（平均 ~10 分鐘）');
+  });
+}
+setInterval(tickProgress, 2000); tickProgress();
+// 已完成（卡有圖）→ 清走嗰個 brd 嘅開始時間，免下次重生即跳 99%
+document.querySelectorAll('.card[data-brd] img.sheet').forEach(function(im) {
+  var card = im.closest('.card[data-brd]');
+  if (card && card.dataset.brd) localStorage.removeItem('bdstart_SWD_' + card.dataset.brd);
+});
+
+// 零碎想法：localStorage array(可入多次),即時累積顯示,每條 POST 去 GAS 畀委員會消化
+var NK = 'notes_SWD';
+var notesEl = document.getElementById('notes');
+function loadNotes() {
+  try { var a = JSON.parse(localStorage.getItem(NK) || '[]'); return Array.isArray(a) ? a : []; }
+  catch (e) { return []; }
+}
+function saveNotes(a) { localStorage.setItem(NK, JSON.stringify(a)); }
+function fmtTs(ts) {
+  var d = new Date(ts);
+  function p(n) { return String(n).padStart(2, '0'); }
+  return (d.getMonth()+1) + '/' + d.getDate() + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+}
+function renderNotes() {
+  var box = document.getElementById('noteslist'); if (!box) return;
+  var a = loadNotes();
+  if (!a.length) { box.innerHTML = "<p class='hint' style='margin:4px 2px'>未有想法。</p>"; return; }
+  box.innerHTML = a.map(function(n, i) {
+    var txt = (n.text || '').replace(/</g, '&lt;');
+    return "<div class='notecard'><div class='noterow'>"
+      + "<span class='notets'>" + fmtTs(n.ts) + "</span>"
+      + "<button class='notedel' onclick='delNote(" + i + ")'>✕</button></div>"
+      + "<div class='notetxt'>" + txt + "</div></div>";
+  }).join('');
+}
+function submitNotes() {
+  if (!notesEl || !notesEl.value.trim()) { alert('未有想法'); return; }
+  var txt = notesEl.value.trim();
+  var a = loadNotes(); a.push({ ts: Date.now(), text: txt }); saveNotes(a);
+  notesEl.value = ''; renderNotes();
+  var url = "https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=SWD&text=" + encodeURIComponent(txt);
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('＋ 已加入（' + a.length + ' 條，VID 1 啟動時餵委員會）');
+}
+function delNote(i) {
+  var a = loadNotes(); if (i < 0 || i >= a.length) return;
+  if (!confirm('刪呢條想法?')) return;
+  a.splice(i, 1); saveNotes(a); renderNotes();
+}
+renderNotes();
+
+function tk(el) {
+  el.classList.toggle('on');
+  el.textContent = el.classList.contains('on') ? '✓' : '';
+  upd();
+}
+// carousel 卡：撳卡頭（唔係內文 scroll 區）toggle 揀選
+function tkCard(head) {
+  var card = head.closest('[data-cid]'); if (!card) return;
+  var ck = card.querySelector('.ck'); if (!ck) return;
+  tk(ck);
+  card.classList.toggle('sel', ck.classList.contains('on'));
+}
+function upd() {
+  var n = document.querySelectorAll('.tabpanel.active .ck.on').length;
+  document.querySelectorAll('.tabpanel.active .cnt').forEach(function(c) {
+    c.textContent = n;
+    c.parentElement.classList.toggle('cnt-warn', n > 6);
+  });
+}
+document.querySelectorAll('.card[data-cid]').forEach(function(card) {
+  var ck = card.querySelector('.ck');
+  if (!ck) return;
+  card.addEventListener('click', function(e) {
+    if (e.target.closest('.ck,.det,textarea,a,button')) return;
+    tk(ck);
+  });
+});
+
+function toast(msg) {
+  var t = document.createElement('div');
+  t.className = 'toast'; t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(function() { t.style.opacity = '0'; }, 6000);
+}
+function showTopProc(msg, stop) {
+  var o = document.getElementById('topproc');
+  if (!o) {
+    o = document.createElement('div'); o.id = 'topproc'; o.className = 'topproc';
+    document.body.insertBefore(o, document.body.firstChild);
+  }
+  if (stop) {
+    o.innerHTML = '<span id="tpmsg">' + msg + '</span>'
+      + ' <a href="#" onclick="location.reload();return false" style="margin-left:8px;font-weight:800;color:var(--ac)">🔄 再 check</a>'
+      + ' <a href="#" onclick="this.parentNode.remove();return false" style="margin-left:8px;color:#888">✕</a>';
+  } else {
+    o.innerHTML = '<span class="spin sm"></span><span id="tpmsg">' + msg + '</span>';
+  }
+}
+
+// ⛔⛔ 防 comment 冇咗(Raymond 2026-06-16 爆:手寫稿 BD comment 位打咗字,redeploy → reload 冧晒):
+//   **全部**輸入格(額外想法 / 6 塊手寫稿 BD comment / 鐵則 / 任何 textarea·text input)每次打字即存 localStorage,
+//   reload/redeploy 都還原返;tab 切返嚟 auto-refresh **有未存字就唔 reload**。每格按 element id 存。
+(function() {
+  var DP = 'draft_SWD_';
+  function fields() {
+    return [].slice.call(document.querySelectorAll('textarea, input[type=text]')).filter(function(e){ return e.id; });
+  }
+  function hasUnsaved() { return fields().some(function(e){ return (e.value||'').trim().length>0; }); }
+  // 載入時還原每格 draft
+  var restored = 0;
+  try { fields().forEach(function(e){ var v=localStorage.getItem(DP+e.id); if(v && !e.value){ e.value=v; restored++; } }); } catch(_) {}
+  if (restored) setTimeout(function(){ toast('↩︎ 幫你還原咗 '+restored+' 格未送出嘅文字'); }, 500);
+  // 每次打字即存(任何有 id 嘅 textarea / text input)
+  document.addEventListener('input', function(ev) {
+    var t = ev.target; if (!t || !t.id) return;
+    if (t.tagName==='TEXTAREA' || (t.tagName==='INPUT' && t.type==='text')) {
+      try { if ((t.value||'').trim()) localStorage.setItem(DP+t.id, t.value); else localStorage.removeItem(DP+t.id); } catch(_) {}
+    }
+  });
+  window._clearDraft = function(id) { try { localStorage.removeItem(DP+id); } catch(_) {} };
+  var loaded = Date.now();
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden && Date.now() - loaded > 45000 && !hasUnsaved())   // 有未存嘅字 → 唔 reload,唔好冧佢
+      location.href = location.pathname + '?t=' + Date.now() + location.hash;
+  });
+})();
+
+// BD 圖 click 放大（lightbox）—— event delegation，任何 .sheet 圖都得
+(function() {
+  var lb = document.createElement('div'); lb.className = 'lbx';
+  lb.innerHTML = '<span class="x">✕</span><img><div class="hint">撳任何位收返。放大後可用瀏覽器 pinch/scroll 睇每格。</div>';
+  document.body.appendChild(lb);
+  var lbimg = lb.querySelector('img');
+  lb.addEventListener('click', function() { lb.classList.remove('on'); });
+  document.addEventListener('click', function(e) {
+    var t = e.target;
+    if (t && t.classList && t.classList.contains('sheet') && t.src) {
+      lbimg.src = t.src; lb.classList.add('on');
+    }
+  });
+})();
+
+// active panel 嘅 set → GAS param（set 1 唔帶，backend 不變）
+function curSet() { var p = document.querySelector('.tabpanel.active'); return p ? (p.dataset.set || '1') : '1'; }
+function setQ()   { var s = curSet(); return (s && s !== '1') ? ('&set=' + s) : ''; }
+
+// 各 set 嘅 funnel phase（多-set 各 set 唔同）。getVidPhase() 隨 active 嘅 set 變。
+var VID_PHASES = {"1": 1};
+var PRIMARY_VID = 1;
+function getVidPhase() { var s = curSet(); return VID_PHASES[s] || PRIMARY_VID; }
+function pickedCids() {
+  return [].map.call(
+    document.querySelectorAll('.tabpanel.active [data-cid] .ck.on'),
+    function(k) { return k.closest('[data-cid]').dataset.cid; });
+}
+function submitAdvance(url) {
+  toast('✅ 已提交，十幾秒後自動刷新睇下一步（或撳右上 🔄）');
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { location.reload(); }, 13000);   // 單次刷新，冇 develop bar，冇無限 loop
+}
+function submitRound() {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個做六強？submit 後會自動後台生 BD（用 NBLM），落選自動歸檔。')) return;
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=SWD&round=r2&cids=" + c.join(',') + setQ());
+}
+function subStage(to) {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個 → ' + (to === 'r3' ? '三甲' : 'FINAL 2') + '？')) return;
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=SWD&round=" + to + "&cids=" + c.join(',') + setQ());
+}
+function postFunnel(url, msg) {
+  fetch(url, {mode:'no-cors'})
+    .then(function() { toast(msg); })
+    .catch(function() { toast('⚠️ 再試一次'); });
+}
+
+function genBD(btn, url) {   // VID 3 Nano per-card 用
+  var acts = btn.closest('.acts') || btn.parentElement;
+  if (acts) acts.innerHTML = "<span class='gening'><span class='spin sm'></span>生緊… ~8-9 分鐘</span>";
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+}
+function addRule(dept) {   // 政府 JOB 鐵則:加一條 → listener append gov_job_rules.json(全 JOB 累積)
+  var ta = document.getElementById('newrule');
+  var txt = (ta && ta.value || '').trim();
+  if (!txt) { if(ta) ta.focus(); return; }
+  var url = 'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=' + encodeURIComponent(dept) + '&concept=rule&stage=add_rule'
+          + '&engine=' + encodeURIComponent(txt) + '&target=main';
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  if (window._clearDraft) window._clearDraft('newrule');   // 送出咗 → 清 draft
+  var ol = document.getElementById('rulelist');
+  if (ol) { var li=document.createElement('li'); li.textContent=txt; ol.appendChild(li); }  // 即時顯示
+  if (ta) { ta.value=''; ta.placeholder='✅ 已加，下次生 BD 即跟'; }
+}
+// ⭐ Raymond 提供參考相窗口嘅上載 mechanic = dash_upload.upload_box(reuse 創意把關站,JS 已內嵌喺 widget,呢度唔再寫)
+function _vchecked() { return [].slice.call(document.querySelectorAll('.tabpanel.active .vchk:checked')); }
+function delAssets(dept) {   // 🗑 整張即刻刪(像真網頁,唔問;listener 後台存底 + 真刪)
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=delasset&stage=del_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){ var card=c.closest('.vacard'); if(card) card.remove(); });   // 即刻消失
+  toast('🗑 刪咗 '+ids.length+' 張');
+}
+function preferAssets(dept) {   // ⭐ 首選:即刻 ⭐ + 嗰啲相搬去最左(像真網頁);listener pref + 餵 NLM 優先
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=prefasset&stage=prefer_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){
+    var card=c.closest('.vacard'); if(!card) return;
+    card.classList.add('pref');
+    if(!card.querySelector('.vastar')){ var s=document.createElement('div'); s.className='vastar'; s.textContent='⭐ 首選'; card.appendChild(s); }
+    var row=card.parentNode; row.insertBefore(card, row.firstChild);   // 搬去最左
+    c.checked=false;
+  });
+  toast('⭐ 已設首選 '+ids.length+' 張（搬咗去最左 + 餵 NLM 優先）');
+}
+function showOvl(id) { var o=document.getElementById(id); if(o) o.classList.add('on'); }   // 🎧 錄音逐字 overlay(撳先出)
+function hideOvl(id) { var o=document.getElementById(id); if(o) o.classList.remove('on'); }
+document.addEventListener('click', function(e){   // 撳 overlay 背景(唔係 box)收返
+  if(e.target && e.target.classList && e.target.classList.contains('ovl')) e.target.classList.remove('on');
+});
+function researchAssets(dept) {   // 🔁 重搜:即刻喺相右下角顯示漏斗「重搜中」,後台搵新相,搵到自動換(reload 時)
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=researchasset&stage=research_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){
+    var card=c.closest('.vacard'); if(!card) return;
+    var th=card.querySelector('.vathumb');
+    if(th && !th.querySelector('.vafunnel')){ var f=document.createElement('div'); f.className='vafunnel';
+      f.innerHTML='<span class="spin sm" style="width:10px;height:10px;margin:0"></span> 重搜中'; th.appendChild(f); }
+    c.checked=false;
+  });
+  toast('🔁 重搜 '+ids.length+' 個，後台搵緊清晰啲嘅相，搵到自動換（~30-60s，會自動 refresh）');
+}
+function bdComment(dept, brd) {   // 手寫稿 BD:送 comment → listener AI 解意見 → 改 specific 格(留舊版)
+  var ta = document.getElementById('cm_' + brd);
+  var txt = (ta && ta.value || '').trim();
+  if (!txt) { if (ta) ta.focus(); return; }
+  var url = 'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=' + encodeURIComponent(dept)
+          + '&concept=' + encodeURIComponent(brd) + '&stage=bdcomment'
+          + '&engine=' + encodeURIComponent(txt) + '&target=main&cid=ACT_bdcomment';
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  if (window._clearDraft) window._clearDraft('cm_' + brd);   // 送出咗 → 清 draft
+  if (ta) { ta.disabled = true;
+    ta.insertAdjacentHTML('afterend', "<div class='cmlog'>✅ 已送出，AI 改緊嗰格，改完自動換圖（舊版會留喺下面）。</div>"); }
+}
+// STEP 3 風格 picker：每維互斥（但可 0 個）+ 夾成 style_anchor
+function styPick(cb) {
+  if (cb.checked) {
+    var sib = document.querySelectorAll(".styopt[data-dim='" + cb.getAttribute('data-dim') + "']");
+    for (var i = 0; i < sib.length; i++) { if (sib[i] !== cb) sib[i].checked = false; }
+  }
+  var el = document.getElementById('styanchor');
+  if (el) el.textContent = styleAnchor() || '（跟劇本）';
+}
+function styleAnchor() {
+  var dims = ['env', 'char', 'light', 'color', 'mood', 'feel'], picks = [];
+  for (var i = 0; i < dims.length; i++) {
+    var el = document.querySelector(".styopt[data-dim='" + dims[i] + "']:checked");
+    if (el) picks.push(el.value);
+  }
+  return picks.join(', ');
+}
+function srcRefs(btn, url) {   // STEP 2：AI 搵主角參考相
+  btn.textContent = '⏳ AI 搵相中…（~2-3 分鐘，完成 refresh 見）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('🔍 AI 自動由 ISD 官方相搵主角 + curate 中…');
+}
+function genFinalBD(btn, dept, baseUrl) {   // STEP 4：寫低 STEP 3 風格 → 生最終 BD
+  var anc = styleAnchor();
+  // STEP3 風格寫入 Master GSheet _VID_STYLE（gsheet_to_bd 讀返做 override；空 = 跟劇本）
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify({op:'set_style', dept:dept, style:anc})}).catch(function(){});
+  toast(anc ? ('🎨 已套用風格：' + anc) : '🎨 風格：跟劇本（冇限制）');
+  genBD(btn, baseUrl);
+}
+function pushGSheet(btn, url) {   // VID 4 寫入 Master GSheet B6:C17
+  btn.textContent = '⏳ 寫入緊…'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已寫入（開 GSheet polish）'; }, 2500);
+  toast('📝 已交，~1 分鐘寫入 Master GSheet B6:C17（前稿自動備份）');
+}
+function renderForms(btn, url) {   // 📋 標書:自動 render 真表頁入 Master Reply GSlide
+  btn.textContent = '⏳ render 緊…（~1-2 分鐘，完成會 WhatsApp）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('📋 已交，listener 會自動 render 真表頁入 Master Reply GSlide');
+}
+function fillForms(btn) {   // 📝 標書:自動填表 — GAS 直出（公司資料 vlookup 寫 Fill tab，唔靠部 Mac）
+  var jsTag = btn.nextElementSibling;  // <script class=filldata>
+  var data;
+  try { data = JSON.parse((jsTag && jsTag.textContent) || '{}'); } catch (e) { data = {}; }
+  if (!data.forms || !data.forms.length) { toast('⚠️ 冇表資料'); return; }
+  var reg='https://docs.google.com/spreadsheets/d/1yiDJ3H8VFK3-6kZQZEzwkiD8VaRgVOzCwxcFbAyP3XE/edit';
+  btn.textContent = '⏳ AI 填緊…（~30-60s）'; btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'fill_forms', folderName: data.folderName, forms: data.forms })
+  }).catch(function(){});
+  // 清楚講做緊乜 + 完咗點做(開 Registry copy 值)
+  setTimeout(function() {
+    btn.outerHTML = "<a class='btn' style='width:100%;text-align:center' target='_blank' href='"+reg
+      +"'>✅ 已填好 → 開 Master Form Registry copy 啲值</a>";
+  }, 30000);
+  toast('🤖 AI 填緊公司資料入 Master Form Registry 嘅 Fill tab（~30-60s）。完咗開 Registry copy 啲值入真表頁。');
+}
+function outScript(btn) {   // 📤 VID2:SCRIPT 接落 Master GSheet SCRIPT暫存 — 直接 GAS POST，唔經部 Mac
+  var jsTag = btn.nextElementSibling;  // <script class=bdj> board JSON
+  var board = [];
+  try { board = JSON.parse((jsTag && jsTag.textContent) || '[]'); } catch (e) {}
+  if (!board.length) { toast('⚠️ 冇 board 資料'); return; }
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'script_out', dept: 'SWD',
+      brd: btn.dataset.brd, concept: btn.dataset.concept, board: board })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已接落「SCRIPT暫存」'; btn.disabled = false; }, 1500);
+  toast('📤 接落 Master GSheet「SCRIPT暫存」(GAS,唔經部 Mac,疊唔覆寫)');
+}
+function clearScript(btn) {   // 🧹 清空 SCRIPT暫存 — GAS（唔經 Mac）
+  if (!confirm('清空 SCRIPT暫存 tab？')) return;
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'clear' })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已清空'; btn.disabled = false; }, 1500);
+  toast('🧹 已清空 SCRIPT暫存（GAS,唔經部 Mac）');
+}
+
+// submitGSlide/submitComments 已移除（dead code:前端零 call site + 冇 .frame-note input — 2026-06-13 audit）
+
+// 「develop 緊」bar 已移除（Raymond 2026-06-06）—— 改用 VID 2 tab 紅邊 + 各 concept 進度條。
+</script></body></html>
