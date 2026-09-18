@@ -1,0 +1,40 @@
+{
+  "dept": "HB",
+  "slots": [
+    {
+      "slot": 1,
+      "query": "房屋局 標誌",
+      "file": "assets/refs/HB/logos/slot1.png",
+      "title": "房屋局- 關於我們- 組織架構",
+      "w": 485,
+      "h": 109,
+      "enabled": true,
+      "verified": true,
+      "verified_org": "中華人民共和國香港特別行政區政府 房屋局",
+      "source_domain": "hb.gov.hk",
+      "lowres": true
+    },
+    {
+      "slot": 2,
+      "query": "Housing Bureau logo site:hb.gov.hk",
+      "file": "",
+      "title": "(核實唔到官方標誌,可即場打字重搵)",
+      "enabled": true,
+      "verified": false,
+      "verified_org": "",
+      "source_domain": "hb.gov.hk"
+    },
+    {
+      "slot": 3,
+      "query": "政府新聞處 標誌",
+      "file": "assets/refs/HB/logos/slot3.png",
+      "title": "政府新聞處部分電郵及對外系統異常",
+      "w": 1082,
+      "h": 608,
+      "enabled": true,
+      "verified": true,
+      "verified_org": "政府新聞處 Information Services",
+      "source_domain": "hb.gov.hk"
+    }
+  ]
+}
