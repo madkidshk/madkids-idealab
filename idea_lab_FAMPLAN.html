@@ -1,0 +1,1639 @@
+<!DOCTYPE html><html lang=zh-HK><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>FAMPLAN · Idea Lab</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#6b7280;--line:#e6e8ec;
+      --ac:#4f46e5;--gold:#c79a2b;--red:#dc2626;--grn:#15a34a}
+*{box-sizing:border-box}
+.btn{background:#4f46e5;color:#fff;border:none;border-radius:9px;padding:8px 13px;font-size:12.5px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;box-sizing:border-box}
+.btn.ghost{background:#fff;color:#4f46e5;border:1.5px solid #dcdffb}
+.btn.grn{background:#15a34a}
+.btn.mini{padding:4px 9px;font-size:11px;min-height:44px}
+.btn:hover,.btn.ghost:hover{filter:brightness(.98)}
+details.soft{background:#fff;border:1px solid #e7e9ee;border-radius:10px;padding:4px 12px}
+details.soft>summary{cursor:pointer;font-size:12.5px;font-weight:700;color:#444;padding:8px 0;list-style:none}
+details.soft>summary::-webkit-details-marker{display:none}
+details.soft>summary::before{content:"▸ ";color:#9aa0ab}
+details.soft[open]>summary::before{content:"▾ "}
+.ovl{position:fixed;inset:0;z-index:120;background:rgba(15,18,28,.55);display:none;align-items:center;justify-content:center;padding:18px}
+.ovl.on{display:flex}
+.ovlbox{background:#fff;border-radius:14px;box-shadow:0 18px 60px rgba(0,0,0,.4)}
+.pill{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:#eef0f3;color:#555}
+.pill.ok{background:#e7f7ee;color:#15803d}
+.pill.warn{background:#fff4e5;color:#b45309}
+.pill.bad{background:#fdeaea;color:#dc2626}
+.pill.accent{background:#eef0fe;color:#4f46e5}
+.secthead{font-size:16px;font-weight:800;margin:24px 0 10px;border-left:4px solid #4f46e5;padding-left:9px;color:#1b1f27}
+.secthead.tight{margin-top:10px}
+.sectbadge{display:inline-block;margin-left:8px;font-size:11px;font-weight:800;border-radius:999px;padding:2px 8px;background:#eef0fe;color:#4f46e5}
+.carousel{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 12px;-webkit-overflow-scrolling:touch}
+.carousel::-webkit-scrollbar{height:6px}
+.carousel::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:6px}
+.carousel-card{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;background:#fff;border:1.5px solid #e7e9ee;border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+@media(min-width:700px) and (max-width:1099px){.carousel-card{flex:0 0 46%}}
+@media(min-width:1100px){.carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}.carousel-card{flex:0 0 calc(33.333% - 10px);max-width:none;scroll-snap-align:none}}
+.lbx{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;display:none;align-items:center;justify-content:center;padding:12px}
+.lbx.on{display:flex}
+.lbx img{max-width:98vw;max-height:94vh;border-radius:8px;cursor:zoom-out}
+.lbx .x{position:fixed;top:10px;right:16px;color:#fff;font-size:30px;font-weight:800;cursor:pointer}
+.lbx .hint{position:fixed;bottom:12px;left:0;right:0;text-align:center;color:#bbb;font-size:12px}
+.badge{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:#4f46e5;border-radius:7px;padding:2px 9px;letter-spacing:.02em}
+.score-badge{display:inline-block;background:#c79a2b;color:#fff;font-size:12px;font-weight:800;border-radius:20px;padding:2px 10px}
+.status-badge{display:inline-block;font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.status-badge.ok{background:#dcfce7;color:#15803d}
+.status-badge.warn{background:#fef3c7;color:#a16207}
+.status-badge.bad{background:#fee2e2;color:#b91c1c}
+.status-badge.mute{background:#eef0f3;color:#717784}
+.surface-card{background:#fff;border:1px solid #e7e9ee;border-radius:14px;box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+.surface-card.soft{background:#fafbfd}
+.surface-card.warn{background:#fff8f1;border-color:#fcd9b6}
+.surface-card.danger{border-color:#f3b4ae;box-shadow:0 2px 16px rgba(238,56,47,.08)}
+.surface-card.pad-sm{padding:9px 10px}
+.surface-card.pad-md{padding:15px 17px}
+.surface-card.pad-lg{padding:18px}
+.surface-card.selected{border-color:#4f46e5;box-shadow:0 0 0 2px rgba(79,70,229,.25),0 6px 18px rgba(79,70,229,.18)}
+body{margin:0;background:var(--bg);color:var(--ink);
+     font:15px/1.55 -apple-system,"PingFang HK",sans-serif}
+.wrap{max-width:430px;margin:0 auto;padding:0 13px 130px}
+h1{font-size:19px;font-weight:800;margin:0;line-height:1.25}
+h1 .dept{color:var(--ac)}
+.bdp{font-size:12px;font-weight:700;margin:3px 0 0;display:flex;gap:11px;flex-wrap:wrap}
+.fresh{font-size:11px;color:#7a8290;margin:6px 0 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.fresh .fr{background:#f1f3f6;border-radius:6px;padding:2px 7px;white-space:nowrap}
+.fresh .fr b{color:#4a5462;font-weight:700}
+.bdp .bb{color:#2563eb}.bdp .dd{color:#dc2626}.bdp .pp{color:#7c3aed}
+.tabbar{position:sticky;top:0;z-index:30;background:var(--bg);
+         border-bottom:2px solid var(--line);display:flex;gap:5px;
+         overflow-x:auto;padding:8px 0 7px;scrollbar-width:none}
+.tabbar::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;background:var(--card);border:1.5px solid var(--line);
+      border-radius:9px;padding:5px 12px;font-size:12px;font-weight:800;
+      color:var(--mut);cursor:pointer;transition:all .12s;white-space:nowrap}
+.tab:hover{border-color:var(--ac);color:var(--ac)}
+.tab.active{background:var(--ac);border-color:var(--ac);color:#fff}
+header{padding:12px 0 4px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap}
+.titlerow h1{margin:0;min-width:0}
+.hdrbtns{flex:none;display:flex;gap:7px;align-items:center}
+.homebtn,.refbtn{flex:none;white-space:nowrap;font-size:16px;line-height:1;text-decoration:none;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:5px 9px;color:#222;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.refbtn{cursor:pointer}
+.labbtn{flex:none;white-space:nowrap;font-size:13px;line-height:1;text-decoration:none;border-radius:9px;padding:7px 10px;font-weight:800;border:1px solid transparent;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.labbtn.mk{background:#fff5f5;color:#EE382F;border-color:#f3b4ae}
+.labbtn.mm{background:#fff7ed;color:#d97706;border-color:#fdba74}
+@media(max-width:480px){.homebtn,.refbtn{font-size:14px;padding:5px 8px}}
+@media(max-width:420px){.titlerow{flex-direction:column;align-items:stretch;gap:8px}.hdrbtns{flex-wrap:wrap;max-width:100%;width:100%;gap:6px}}
+.tabpanel{display:none;padding-top:10px}
+.tabpanel.active{display:block}
+.setlab{font-size:11px;font-weight:800;color:var(--ac);background:#eef0fe;
+         border:1px solid #dcdffb;border-radius:8px;padding:4px 10px;
+         display:inline-block;margin:0 0 8px}
+.banner{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;
+         padding:10px 12px;font-size:12.5px;font-weight:700;color:#92660c;margin:10px 0}
+.h2{font-size:14.5px;font-weight:800;letter-spacing:.01em;color:var(--ink);
+     margin:16px 2px 8px}
+.h3{font-size:13px;font-weight:700;color:#374151;margin:11px 0 5px}
+.stylepick{margin:10px 0}
+.styrow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:5px 0;padding:5px 0;border-bottom:1px solid var(--line)}
+.stylbl{min-width:84px;font-weight:600;font-size:13px}
+.styo{display:inline-flex;align-items:center;gap:4px;font-size:13px;padding:3px 10px;
+       border:1px solid var(--line);border-radius:14px;cursor:pointer;user-select:none;background:#fafafa}
+.styo input{margin:0}
+.styo:has(input:checked){background:#e6f7f1;border-color:#0a7;color:#066}
+.styanchor{margin-top:9px;font-size:12px;color:var(--mut)}
+#styanchor{color:#0a7;font-weight:600}
+.card{background:var(--card);border-color:var(--line);border-radius:13px;
+       padding:11px 12px;margin-bottom:8px}
+.hgrid{display:grid;grid-template-columns:1fr;gap:13px}
+@media(min-width:720px){.hgrid{grid-template-columns:1fr 1fr 1fr}}
+.hcard{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:10px;box-shadow:0 1px 2px rgba(20,24,40,.05)}
+.hcap{font-weight:800;font-size:13px;margin-bottom:7px}
+.sgrp{font-weight:800;font-size:12px;color:#475569;background:#eef1f6;border-radius:7px;padding:5px 10px;margin:11px 0 2px}
+.sgrp:first-child{margin-top:2px}
+.tlrow.todo{opacity:.55} .tlrow.todo .tllabel{color:#9aa0ab}
+.tlrow.na{opacity:.4} .tlrow.na .tllabel{color:#b6bbc4;text-decoration:line-through}
+.dsp{width:100%;border-collapse:collapse;font-size:12.5px}
+.dsp th{text-align:left;color:var(--mut);font-weight:700;padding:4px 7px;border-bottom:1px solid var(--line)}
+.dsp td{padding:4px 7px;border-bottom:1px solid #f3f4f6;vertical-align:top}
+.vacarou{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.vacard{flex:0 0 134px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px;font-size:11px}
+.vathumb{position:relative;height:90px;border-radius:7px;overflow:hidden;background:#f1f3f7;display:flex;align-items:center;justify-content:center}
+.vathumb img{width:100%;height:100%;object-fit:cover}
+.vacat{margin-top:5px;font-size:10px;color:#7b4fc0;font-weight:800}
+.vaname{font-weight:600;line-height:1.25;min-height:28px;color:#374151}
+.vasrc{font-size:10.5px} .vatick{display:block;font-size:11px;margin-bottom:4px;cursor:pointer;font-weight:700}
+.vaprovide{margin:12px 0 2px}
+.upbox .refelemin{display:block;width:100%;margin:0 0 8px;padding:6px 8px;border:1px solid var(--line);border-radius:7px;font-size:12px}
+/* ── 標書 tab restructure 2026-06-16 ── */
+/* 💡 提供窗口 */
+.h2sm{font-size:13px;margin:12px 2px 5px}
+.provide{padding:9px 10px}
+/* 加入想法 + upbox 送出 統一設計(都係 .btn 觀感) */
+.provide .upbox{margin:0;border-radius:9px;padding:9px}
+.provide .upbox .attsend{background:var(--ac);border-radius:9px;padding:0 14px;font-size:12.5px;font-weight:800}
+.provide .noteslist{margin-top:7px}
+/* 三梯隊標題:左色條 + 副標 */
+.tierh{border-left:4px solid var(--ac);padding-left:9px;margin:18px 2px 2px;font-size:14px}
+.tierhint{margin:2px 2px 7px 13px}
+/* ✍️ 邊個 model 寫(#5):mdl 真 / mdef 預設(灰) / mfb fallback(橙) */
+.mdl{flex:0 0 auto;font-size:10px;font-weight:800;color:#3730a3;background:#eef0fe;border:1px solid #dcdffb;
+      border-radius:6px;padding:1px 6px;white-space:nowrap;margin-left:auto}
+.mdl.mdef{color:#6b7280;background:#f1f3f6;border-color:#e3e6ea}
+.mdl.mfb{color:#9a5a00;background:#fff4e5;border-color:#fde6c0}
+.h3 .mdl{margin-left:6px;vertical-align:middle}
+/* 📋 標書內容 carousel 卡 — 字體/行寬完全跟返 VID1 .ccard(Raymond 2026-06-16:之前縮 12px 太難讀,
+   改返用 VID1 base .cbody 12.5px/1.62、.ctitle 14px。卡內 md 標題用 base .cbody h3/h4 12.5px,統一)。 */
+.brfcarou{margin-top:2px}
+.brfcard .chead{cursor:default}
+/* 🔄 重生緊 signal(手寫稿 BD) */
+.regbadge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;color:#fff;background:var(--ac);border-radius:8px;padding:4px 9px;margin:0 0 6px}
+/* 🔀 換格 + BD 英文字 */
+.bdletter{display:inline-block;min-width:18px;text-align:center;font-weight:800;color:#fff;background:var(--ac);border-radius:6px;padding:0 5px;margin-right:4px}
+.swrow{display:flex;align-items:center;gap:6px;margin-bottom:7px;flex-wrap:wrap}
+.swlbl{font-size:12px;color:var(--mut);white-space:nowrap}
+.swrow select{flex:1;min-width:90px;font-size:12.5px;padding:6px 7px;border:1px solid var(--line);border-radius:7px;background:#fff}
+/* 標書原文 link 喺 撮要 標題右邊 */
+.rawlink{flex:0 0 auto;margin-left:auto;font-size:10.5px;font-weight:800;color:var(--ac);background:#eef0fe;border:1px solid #dcdffb;border-radius:6px;padding:1px 6px;cursor:pointer;white-space:nowrap}
+/* 部門官方來源 search-result row(似 youtube search) */
+.srcrow{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid #f1f3f6}
+.srcrow:last-child{border-bottom:0}
+.srcthumb{flex:0 0 54px;height:40px;border-radius:5px;object-fit:cover;background:#f1f3f7}
+.srctit{font-size:11.5px;font-weight:700;line-height:1.3;color:var(--ac)}
+.srcsnip{font-size:10.5px;color:#6b7280;line-height:1.4;margin-top:1px}
+/* 🎧 Briefing 錄音逐字 overlay(撳先出,唔常設) */
+.ovlbox{max-width:560px;width:100%;max-height:82vh;display:flex;flex-direction:column}
+.ovlhd{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--line);font-weight:800;font-size:13px}
+.ovlhd .x{cursor:pointer;color:#888;font-size:16px;border:0;background:0}
+.ovlbody{overflow:auto;padding:12px 14px;font-size:11.5px;line-height:1.6;color:#333;white-space:pre-wrap}
+.ovllink{color:var(--ac);font-weight:700;cursor:pointer;text-decoration:underline}
+/* 📸 Visual 素材:⭐首選 badge + 三 action 掣(三格一樣大) + 重搜漏斗 */
+.vacard{position:relative;transition:order .2s}
+.vacard.pref{border-color:var(--gold);box-shadow:0 0 0 2px rgba(199,154,43,.22)}
+.vastar{position:absolute;top:5px;right:5px;font-size:9.5px;font-weight:800;color:#fff;background:var(--gold);border-radius:6px;padding:1px 5px}
+.vafunnel{position:absolute;bottom:4px;right:4px;font-size:9.5px;font-weight:800;color:#fff;background:rgba(79,70,229,.94);border-radius:6px;padding:2px 6px;display:inline-flex;align-items:center;gap:3px}
+.vaacts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.vaacts .btn{width:auto;text-align:center;margin:0;padding:0 4px;min-height:44px;display:flex;align-items:center;justify-content:center;white-space:nowrap;box-sizing:border-box}
+.vaacts .btn.ghost{width:auto;padding:0 4px;margin:0}
+@media(max-width:420px){.vaacts{gap:4px}}
+
+.upbox{background:#fff;border:1.5px dashed #bcd;border-radius:11px;padding:11px;margin:6px 0}
+.upbox.hov{background:#eef6ff;border-color:#6aa3e0}
+.upbox .attstage{min-height:0;margin-bottom:4px}
+.upbox .stchip{display:inline-block;background:#eef7f0;border:1px solid #bfe0cd;border-radius:20px;padding:3px 9px;font-size:11.5px;font-weight:700;color:#176b3a}
+.upbox .stchip .ststrip{border:0;background:0;cursor:pointer;color:#999;font-weight:700;margin-left:3px}
+.upbox .attrow1{display:flex;gap:6px}
+.upbox .atttext{flex:1;border:1px solid var(--line,#dde);border-radius:8px;padding:9px 11px;font-size:14px;line-height:1.5;min-height:84px;resize:vertical;font-family:inherit}
+.upbox .attsend{border:0;background:#0A7D3F;color:#fff;border-radius:8px;padding:0 14px;font-weight:700;cursor:pointer;white-space:nowrap;min-height:44px}
+.upbox .attbtns2{margin-top:6px;display:flex;gap:6px}
+.upbox .attpick{border:1px solid var(--line,#dde);background:#f7f9fc;border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer;font-weight:600;flex:1;min-height:44px;text-align:center}
+.upbox .attdrive{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line,#dde);background:#f7f9fc;border-radius:8px;padding:5px 10px;font-size:12px;font-weight:600;flex:1;min-height:44px;text-decoration:none;color:inherit}
+.upst{font-size:11.5px;color:#176b3a;margin-top:5px;min-height:0}
+@media(max-width:600px){.upbox .attrow1{flex-direction:column}.upbox .attsend{width:100%}}
+
+.bdcm{margin-top:7px}
+.bdcm textarea{width:100%;box-sizing:border-box;font:13px/1.45 inherit;border:1px solid var(--line);border-radius:8px;padding:6px 8px;resize:vertical}
+.bdcm .btn.mini{margin-top:5px}
+.gflags{margin:7px 0 4px;padding:7px 9px;background:#fffbec;border:1px solid #f0d96a;border-radius:8px;font-size:12px;color:#6b4d00}
+.gflag{padding:2px 0;line-height:1.5}
+.gflag+.gflag{border-top:1px solid #f5ebb0;margin-top:3px;padding-top:5px}
+.gfslide{font-weight:600;background:#f5e07c;border-radius:4px;padding:1px 5px;margin-right:4px}
+.cmlog{font-size:11px;color:#2e8b57;margin-top:5px}
+.card.big{padding:13px}
+.card.empty{color:var(--mut);font-size:13px;font-style:italic}
+.row{display:flex;align-items:center;gap:9px}
+.rank{font-size:11px;font-weight:800;color:var(--mut);width:18px}
+.src{font-size:11px;color:var(--mut);font-weight:700;background:#f1f5f9;
+      border-radius:6px;padding:1px 6px}
+.score{font-size:12px;font-weight:800;color:var(--gold);margin-left:auto}
+.nm{font-weight:800;font-size:13.5px;line-height:1.35}
+.csub{font-size:11px;color:var(--mut);font-weight:600;margin-top:2px}
+.crow{margin:5px 0 0}
+.cflag{font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.cflag.hi{background:#dcfce7;color:#15803d}
+.cflag.lo{background:#fef3c7;color:#a16207}
+.cflag.rl{background:#fee2e2;color:#b91c1c}
+.ck{width:22px;height:22px;border:2px solid var(--ac);border-radius:6px;
+     display:inline-grid;place-items:center;font-size:13px;color:#fff;
+     cursor:pointer;flex:0 0 auto;position:relative}
+.ck::before{content:"";position:absolute;inset:-11px}
+.ck.on{background:var(--ac)}
+.ck.done{background:var(--grn);border-color:var(--grn);cursor:default}
+.divider{display:flex;align-items:center;gap:8px;margin:12px 2px;
+          color:#aab0ba;font-size:11px;font-weight:700}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.cnt-warn{color:var(--red)!important}
+.lookback{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:11px;
+           padding:10px 12px;font-size:12px;color:#475569}
+.btn{background:var(--ac)}
+.btn.grn{background:var(--grn)}
+.btn.ghost{width:100%;text-align:center;padding:11px 13px;margin:2px 0 4px}
+.btn.mini{padding:4px 9px;font-size:11px;margin-left:8px}
+.submit{position:fixed;bottom:14px;right:calc(50% - 215px + 13px);z-index:20}
+@media(max-width:456px){.submit{right:14px}}
+/* ── Responsive 3 tier（Raymond 2026-06-06）：mobile(default) / tablet / desktop 用晒畫面 ── */
+/* Tablet:闊啲,carousel 一次 2 卡 */
+@media(min-width:700px) and (max-width:1099px){
+  .wrap{max-width:680px;padding:0 20px 130px}
+  .submit{right:calc(50% - 340px + 20px)}
+  .ccard{flex:0 0 46%;max-height:68vh}
+  .rest-row .ccard{flex:0 0 36%}
+  .briefcard{max-height:40vh}
+}
+/* Desktop:用晒畫面 —— carousel 變 grid(唔橫掃,鋪滿),六強 3 欄、其餘 4 欄 */
+@media(min-width:1100px){
+  .wrap{max-width:min(1280px,94vw);padding:0 28px 120px}
+  .submit{right:max(28px, calc(50vw - 640px + 28px))}
+  .carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}
+  .ccard{flex:0 0 calc(33.333% - 10px);max-width:none;max-height:43vh;scroll-snap-align:none}   /* Raymond 2026-06-16:桌面每格短 1/3(64→43vh),標書 tab 跟 VID1 */
+  .rest-row .ccard{flex:0 0 calc(25% - 11px)}
+  .briefcard{max-height:36vh}
+  .tabbar{flex-wrap:wrap}
+  .card.big .sheet{max-width:520px}
+}
+.submit .btn{box-shadow:0 6px 20px rgba(79,70,229,.4);padding:11px 18px;font-size:13.5px}
+.foot{font-size:11px;color:#9aa0aa;text-align:center;margin-top:22px}
+.notes-win{width:100%;min-height:90px;border:1.5px solid var(--ac);
+            border-radius:11px;padding:10px 12px;font:14px/1.6 inherit;
+            resize:vertical;background:#fafbff;margin-bottom:6px}
+.notes-act{text-align:right;margin-bottom:6px}
+.notes-act .btn{padding:6px 14px}
+.noteslist{margin-bottom:6px}
+.notecard{background:#fafbff;border:1px solid #e0e3f5;border-radius:10px;
+           padding:7px 10px;margin-bottom:6px}
+.noterow{display:flex;align-items:center;gap:8px}
+.notets{font-size:10.5px;font-weight:800;color:var(--ac)}
+.notedel{margin-left:auto;background:none;border:none;color:#b0b6c2;font-size:13px;
+          cursor:pointer;padding:0 2px}
+.notetxt{font-size:13px;color:var(--ink);line-height:1.5;margin-top:2px;white-space:pre-wrap}
+/* Brief 撮要緊湊卡（固定高度內部 scroll，似 VID 1 卡）*/
+.briefcard{max-height:46vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.briefcard h3,.briefcard h4{font-size:13px;margin:9px 0 3px}
+.suppinline{margin-top:10px;border-top:2px solid #fde68a;background:#fffbeb;
+             border-radius:9px;padding:8px 10px}
+.suppinline h3,.suppinline h4{color:#92660c;font-size:12.5px;margin:2px 0 5px}
+/* 補充日程簡單 list */
+.timeline{margin:2px 0}
+.tlrow{display:flex;gap:8px;padding:5px 2px;border-bottom:1px solid #f3f4f6;font-size:12.5px}
+.tlrow:last-child{border-bottom:none}
+.tldate{flex:0 0 auto;font-weight:800;color:var(--ink);min-width:96px}
+.tllabel{flex:1;color:#374151}
+.tlrow.hot{background:#fff7ed;border-radius:7px}
+.tlrow.hot .tldate{color:#c2410c}.tlrow.hot .tllabel{color:#9a3412;font-weight:700}
+/* Briefing 補充 treatment */
+summary.supp{display:flex;align-items:center;gap:8px}
+.suppbadge{font-size:10px;font-weight:800;color:#fff;background:#d97706;
+            border-radius:6px;padding:1px 7px;margin-left:7px;vertical-align:middle}
+.bd{margin:8px 0}
+.bdscroll{max-height:44vh;overflow-y:auto;border:1px solid var(--line);border-radius:10px;
+          padding:2px 12px;background:#fafbfc;-webkit-overflow-scrolling:touch}
+.genbox{text-align:center}
+.step2 .refsub{margin:8px 0}
+.refname{font-size:12.5px;font-weight:600;margin:6px 0 4px}
+.refname .refn{color:var(--mut);font-weight:400;font-size:11px}
+.refrow{display:flex;gap:6px;flex-wrap:wrap}
+.refthumb{width:74px;height:90px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.btn.big{font-size:14px;padding:12px 22px;box-shadow:0 4px 14px rgba(79,70,229,.3)}
+.scene{border-bottom:1px solid #f1f3f6;padding:7px 0;font-size:12.5px;line-height:1.5}
+.scene .sl{display:flex;gap:8px}
+.scene .sn{font-weight:800;color:var(--ac);flex:0 0 auto;min-width:17px}
+.scene .vis{flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
+.scene .vis.open{-webkit-line-clamp:unset;overflow:visible}
+.scene .vo,.vo{color:var(--mut);font-size:11.5px;margin:4px 0 0 25px;
+               background:#f8fafc;border-radius:7px;padding:4px 8px}
+.sheet{width:100%;border-radius:10px;border:1px solid var(--line);margin:8px 0;display:block;cursor:zoom-in}
+.preqs{display:flex;flex-direction:column;gap:7px;margin-top:4px}
+.prow{display:flex;align-items:center;gap:10px}
+.preqs .pl{flex:1;font-weight:700;font-size:14px;min-width:0}
+.preqs .pv{font-weight:800;font-size:13px;border-radius:8px;padding:3px 11px;white-space:nowrap}
+.preqs .pvon{background:#dcfce7;color:#15803d;border:1px solid #bbf7d0}
+.preqs .pvoff{background:#f1f3f5;color:#868e96;border:1px solid #e9ecef}
+.preqs .pp{font-size:11px;color:var(--ac);font-weight:700;cursor:help;min-width:34px;text-align:right}
+.pgbar{position:relative;height:30px;border-radius:9px;background:#eef0fe;border:1px solid #dcdffb;
+  overflow:hidden;margin:8px 0}
+.pgfill{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,#6366f1,#818cf8);
+  transition:width .6s ease}
+.pgtxt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:#1b1f27;z-index:1}
+/* VID 2 tab：紅色虛線繞邊行緊（marching ants），未出晒 BD 就一直行；出晒 = 無 busy class = 停 */
+@keyframes march{to{background-position:14px 0,-14px 100%,0 -14px,100% 14px}}
+.tab.busy{color:#dc2626;font-weight:800;border-color:transparent !important;
+  background-image:
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0);
+  background-repeat:repeat-x,repeat-x,repeat-y,repeat-y;
+  background-size:14px 2px,14px 2px,2px 14px,2px 14px;
+  background-position:0 0,0 100%,0 0,100% 0;
+  animation:march .5s linear infinite}
+.empty{font-size:12px;color:#9aa0aa;background:#f8fafc;border:1px dashed #cbd5e1;
+        border-radius:9px;padding:9px 11px;margin:8px 0}
+.note{width:100%;min-height:48px;border:1px solid var(--line);border-radius:9px;
+       padding:7px 9px;font:13px/1.5 inherit;resize:vertical;margin-top:6px}
+.frames{margin:8px 0}
+.frame-card{border-bottom:1px solid #f1f3f6;padding:8px 0}
+.frame-head{display:flex;gap:8px;font-size:12.5px}
+.fv{flex:1;color:var(--ink)}
+.acts{margin-top:8px}
+.soft{margin-bottom:8px}
+.soft summary{font-size:12.5px;font-weight:800;color:var(--ink);cursor:pointer;
+               background:#f8fafc;border:1px solid var(--line);border-radius:10px;
+               padding:9px 12px;list-style:none}
+.soft[open] summary{border-radius:10px 10px 0 0;margin-bottom:0}
+.soft .card{border-radius:0 0 10px 10px;border-top:none;margin-bottom:0}
+.hint{font-size:12px;color:var(--mut);margin:0 0 8px}
+.det{margin-top:8px}
+.det summary{font-size:12.5px;font-weight:800;color:var(--ac);cursor:pointer;
+              list-style:none;background:#eef0fe;border:1px solid #dcdffb;
+              border-radius:9px;padding:8px 11px;text-align:center}
+.det[open] summary{margin-bottom:7px}
+.det summary::-webkit-details-marker{display:none}
+.detbody{font-size:12.5px;color:#374151;white-space:pre-wrap;margin-top:7px;
+          line-height:1.6;max-height:360px;overflow:auto;background:#f8fafc;
+          border-radius:9px;padding:10px 12px}
+.tw{overflow-x:auto;margin:6px 0}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid var(--line);padding:5px 8px;text-align:left}
+th{background:#f8fafc;font-weight:700}
+.prev{font-size:12.5px;color:#4b5563;margin:6px 0 2px;line-height:1.5}
+/* ── VID 1 carousel：橫掃卡，卡內直 scroll ── */
+.carousel{margin:0 -2px}
+.ccard{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;
+        background:var(--card);border:1.5px solid var(--line);border-radius:14px;display:flex;
+        flex-direction:column;max-height:64vh;overflow:hidden;
+        box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+.ccard.sel{border-color:var(--ac);box-shadow:0 0 0 2px rgba(79,70,229,.25),
+            0 6px 18px rgba(79,70,229,.18)}
+.rest-row .ccard{flex:0 0 70%;max-height:52vh}
+.chead{display:flex;align-items:center;gap:8px;padding:10px 12px 7px;cursor:pointer;
+        border-bottom:1px solid #f1f3f6}
+.oscore{margin-left:auto;font-size:12px;font-weight:800;color:var(--gold)}
+.ctitle{font-weight:800;font-size:14px;line-height:1.35;padding:8px 12px 0}
+.ccard .csub{padding:2px 12px 0}
+.cbadges{padding:5px 12px 0}
+.cbody{flex:1;overflow-y:auto;padding:9px 12px 12px;font-size:12.5px;color:#374151;
+        line-height:1.62;-webkit-overflow-scrolling:touch}
+.cbody h3,.cbody h4,.cbody h5{font-size:12.5px;margin:9px 0 3px}
+.cbody p{margin:5px 0}
+.scores{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+.sline{font-size:11.5px;margin:6px 0 2px}
+.sline b{font-size:12px}
+.sline.muted{color:#9aa0aa;font-weight:600}
+.scrit{display:block;font-size:11px;color:var(--mut);margin-top:2px}
+.snote{font-size:11px;color:#6b7280;background:#f8fafc;border-radius:7px;
+        padding:5px 8px;margin:4px 0 2px;line-height:1.5}
+.toast{position:fixed;bottom:78px;left:50%;transform:translateX(-50%);
+        background:#1b1f27;color:#fff;padding:12px 18px;border-radius:12px;
+        font-size:13px;font-weight:700;z-index:90;max-width:90%;
+        box-shadow:0 8px 30px rgba(0,0,0,.3);transition:opacity .5s}
+.topproc{position:fixed;bottom:0;left:0;right:0;z-index:95;background:var(--ac);
+          color:#fff;font-size:13px;font-weight:800;padding:9px 14px;
+          display:flex;align-items:center;justify-content:center;gap:8px;
+          box-shadow:0 3px 14px rgba(79,70,229,.35)}
+.spin.sm{width:15px;height:15px;border:2.5px solid rgba(255,255,255,.4);
+          border-top-color:#fff;border-radius:50%;display:inline-block;
+          vertical-align:middle;margin-right:6px;animation:sp .9s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.gening{display:inline-flex;align-items:center;font-size:12px;font-weight:800;color:var(--ac);
+         background:#eef0fe;border:1px solid #dcdffb;border-radius:9px;padding:7px 11px}
+.gening .spin.sm{border-color:#c7cbf5;border-top-color:var(--ac)}
+/* ⬇️ 最後置:桌面卡長短 1/3(64→43vh)。2-class + 排最尾,壓得過 base .ccard 64vh —— Raymond 2026-06-16
+   (VID1 + 標書 tab 一齊短;手機保持 base 64vh 唔郁) */
+@media(min-width:1100px){.carousel .ccard{max-height:43vh}}
+</style></head><body><!-- generated-by: scripts/core/nlm-bridge/lab_ui_shell.py -->
+<div class=wrap>
+<header>
+  <div class=titlerow>
+    <h1><span class=dept>FAMPLAN</span> · New Marketing Campaign to Promote Childbearing</h1>
+    <span class=hdrbtns>
+      <a class=homebtn href="." title="總目錄">🏠</a>
+      <button class=refbtn onclick="location.href=location.pathname+'?t='+Date.now()+location.hash" title="重新載入">🔄</button>
+    </span>
+  </div>
+  <div class=bdp><span class='bb'>B) 4/9</span><span class='dd'>D) 4/9 · 仲有 <b id='cd'>—</b></span><span class='pp'>P) 2/10</span></div>
+  <div class=fresh>🕒 資料更新：<span class=fr><b>標書</b> 09-18 17:21</span> · <span class=fr><b>研究</b> 09-18 19:20</span> · <span class=fr><b>概念</b> 09-18 19:25</span> · <span class=fr><b>評分</b> —</span></div>
+</header>
+<div class='tabbar'><button class='tab' data-tab='ph0'>📋 標書</button><button class='tab' data-tab='debrief'>📨 DEBRIEF</button><button class='tab' data-tab='handbd'>✍️ TVAPI FINAL</button><button class='tab' data-tab='theme1_1'>THEME</button><button class='tab' data-tab='tvapi1_1'>TVAPI 1</button><button class='tab' data-tab='tvapi1_2'>TVAPI 2</button><button class='tab' data-tab='tvapi1_3'>TVAPI 3</button><button class='tab' data-tab='tvapi1_4'>TVAPI 4</button><button class='tab' data-tab='tvapi1_5'>TVAPI 5</button><button class='tab' data-tab='kv1_1'>KV 1</button><button class='tab' data-tab='kv1_2'>KV 2</button><button class='tab' data-tab='kv1_3'>KV 3</button><button class='tab' data-tab='rad1_1'>RAD 1</button><button class='tab' data-tab='rad1_2'>RAD 2</button><button class='tab' data-tab='rad1_3'>RAD 3</button><button class='tab' data-tab='soc1_1'>內容支柱 Pillars</button><button class='tab' data-tab='soc1_2'>Posts</button><button class='tab' data-tab='soc1_3'>FINAL</button></div>
+<div id='ph0' class='tabpanel'><div class='h2 h2sm'>💡 額外想法 / 相片</div><div class='card provide'>
+<div class="upbox" id="ref_FAMPLAN_box">
+  
+  <div class="attstage" id="ref_FAMPLAN_stage"></div>
+  <div class="attrow1">
+    <textarea id="ref_FAMPLAN_link" class="atttext" rows="4" placeholder="💭 諗到嘅想法打喺度；想畀參考相就 ⌘V／drag／揀相入埋，喺格仔寫明呢張相係咩 → 一齊送出"></textarea>
+    <button id="ref_FAMPLAN_send" class="attsend">送出 ⏎</button></div>
+  <div class="attbtns2"><button id="ref_FAMPLAN_pick" class="attpick">📎 電腦揀檔</button></div>
+  <input type="file" id="ref_FAMPLAN_file" accept="image/*" style="display:none">
+  <div class="upst" id="ref_FAMPLAN_st"></div>
+</div>
+<script>(function(){
+var GAS="https://script.google.com/macros/s/AKfycbwVvkFb8kXQFrJZnABGxFcywfVllsM3XSVHlAGwH8CzrWIBGChjIK2PhW1k61r6NJWIpg/exec",TOK="mkv7q3z2link",FOLDER="";
+var st=document.getElementById("ref_FAMPLAN_st");
+function say(m){st.textContent=m;}
+// —— 把關站 proven mechanic（照搬）——
+function jsonp(q,cb){var n="upcb"+Math.random().toString(36).slice(2);
+  window[n]=function(o){try{cb(o);}finally{delete window[n];s.remove();}};
+  var s=document.createElement("script");s.src=GAS+"?"+q+"&token="+TOK+"&callback="+n;
+  s.onerror=function(){delete window[n];s.remove();cb({ok:false,err:"network"});};
+  document.body.appendChild(s);}
+function fidFromLink(v){var m=v.match(/\/d\/([a-zA-Z0-9_-]{20,})/)||v.match(/[?&]id=([a-zA-Z0-9_-]{20,})/);return m?m[1]:null;}
+var inp=document.getElementById("ref_FAMPLAN_link");
+var box=document.getElementById("ref_FAMPLAN_box"),stage=document.getElementById("ref_FAMPLAN_stage");
+var fi=document.getElementById("ref_FAMPLAN_file"),send=document.getElementById("ref_FAMPLAN_send");
+var _staged=null,_busy=false;
+function showStaged(f){_staged=f;var isImg=(f.type||"").indexOf("image/")===0;
+  stage.innerHTML="<span class='stchip'>"+(isImg?"🖼":"📎")+" "+f.name.replace(/</g,"&lt;")+" <button class='ststrip'>✕</button></span>";
+  stage.querySelector(".ststrip").onclick=function(){_staged=null;stage.innerHTML="";};}
+document.getElementById("ref_FAMPLAN_pick").onclick=function(){fi.click();};
+fi.onchange=function(){if(fi.files[0]){showStaged(fi.files[0]);fi.value="";}};
+["dragover","dragenter"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.add("hov");});});
+["dragleave","drop"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.remove("hov");});});
+box.addEventListener("drop",function(e){var f=e.dataTransfer&&e.dataTransfer.files[0];if(f)showStaged(f);});
+inp.addEventListener("paste",function(ev){var fs=(ev.clipboardData&&ev.clipboardData.files)||[];if(fs.length){ev.preventDefault();showStaged(fs[0]);}});
+// 收到 file id（檔上載完）或原 link → 交畀各站自己嘅 complete handler
+function done(val,isFile){ var ip=document.getElementById('ref_FAMPLAN_link');var desc=(ip&&ip.value||'').trim();if(window._clearDraft)window._clearDraft('ref_FAMPLAN_link');if(isFile){var el=desc||'參考相';fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FAMPLAN&concept='+encodeURIComponent(el)+'&stage=add_ref&engine='+encodeURIComponent(val)+'&target=main&cid=ACT_add_ref',{mode:'no-cors'}).catch(function(){});if(ip)ip.value='';say(desc?('✅ 已收參考相「'+el+'」（排最前＋嚴格比照）'):'✅ 收咗相；下次喺格仔寫埋係咩元素，AI 跟得準啲');}else if(/^https?:|drive\.google|docs\.google/.test(val)){fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FAMPLAN&concept='+encodeURIComponent('參考連結')+'&stage=add_ref&engine='+encodeURIComponent(val)+'&target=main&cid=ACT_add_ref',{mode:'no-cors'}).catch(function(){});say('✅ 已收參考連結（排最前＋嚴格比照）');}else{var a=loadNotes();a.push({ts:Date.now(),text:val});saveNotes(a);renderNotes();fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=FAMPLAN&text='+encodeURIComponent(val),{mode:'no-cors'}).catch(function(){});say('✅ 已加想法（'+a.length+'，累積餵委員會）');} }
+// 檔：initupload(folder)→browser 直 PUT 任何 size→CORS 讀唔到都 fallback→進度
+function up(f){_busy=true;send.disabled=true;say("開緊上載…（"+f.name+"）");
+  jsonp("action=initupload&origin="+encodeURIComponent(location.origin)+"&name="+encodeURIComponent(f.name)
+    +"&size="+f.size+"&mime="+encodeURIComponent(f.type||"image/jpeg")+"&folder="+encodeURIComponent(FOLDER),function(o){
+    if(!o.ok){_busy=false;send.disabled=false;say("⚠️ 開唔到上載："+(o.err||"")+"（可改貼 Drive 連結）");return;}
+    var x=new XMLHttpRequest();x.open("PUT",o.uri);
+    x.upload.onprogress=function(ev){if(ev.lengthComputable)say("⬆️ 上載中 "+Math.round(ev.loaded/ev.total*100)+"%（"+f.name+"）");};
+    x.onload=function(){_busy=false;send.disabled=false;
+      if(x.status>=300){say("⚠️ 上載 fail HTTP "+x.status);return;}
+      var fid="";try{fid=JSON.parse(x.responseText).id||"";}catch(_){}
+      if(!fid){say("⚠️ 上載咗但攞唔到 file id（可改貼 Drive 連結）");return;}
+      stage.innerHTML="";say("✅ 上載完成");done(fid,true);};
+    x.onerror=function(){_busy=false;send.disabled=false;say("⚠️ 上載出錯（network）。可改貼 Drive 連結");};
+    x.send(f);});}
+function submit(){if(_busy){say("處理緊…");return;}
+  var f=_staged;var v=inp.value.trim();
+  if(f){_staged=null;stage.innerHTML="";up(f);return;}
+  if(!v){say("⚠️ 未貼 link／未揀檔");return;}
+  inp.value="";done(v,false);}   // 貼 link → 直接交（後端 add_manual_ref 認 link/Drive id/URL）
+send.onclick=submit;
+inp.addEventListener("keydown",function(ev){if(ev.key==="Enter"&&!ev.shiftKey){ev.preventDefault();submit();}});
+})();</script>
+<div id='noteslist' class='noteslist'></div></div><details class='soft' open><summary>📸 Visual 素材（45 個：LOGO 3、視覺參考 23、新聞配圖 8、海報/單張 6、宣傳片 5）</summary><p class='hint'>搵到嘅 LOGO／海報／單張／宣傳片／真實參考相，每個有原網址。<b>剔相後揀：⭐首選＝呢張參考優先過其他；🔁重搜＝搵過好啲（e.g. logo 污糟）；🗑刪除＝搵錯即清。</b></p><div class='vacarou'><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='LOGO_slot1.png'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/logos/slot1.png' loading=lazy></div><div class='vacat'>LOGO</div><div class='vaname'>香港家庭計劃指導會</div><div><span class='vasrc' style='color:#bbb'>（無網址）</span></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='LOGO_slot2.png'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/logos/slot2.png' loading=lazy></div><div class='vacat'>LOGO</div><div class='vaname'>The Family Plannin</div><div><span class='vasrc' style='color:#bbb'>（無網址）</span></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='LOGO_slot3.png'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/logos/slot3.png' loading=lazy></div><div class='vacat'>LOGO</div><div class='vaname'>衞生署</div><div><span class='vasrc' style='color:#bbb'>（無網址）</span></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港家庭的典型客廳佈置_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港家庭的典型客廳佈置_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港家庭的典型客廳佈置</div><div><a href='https://www.acdesign.com.hk/works/2506/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港家庭的典型客廳佈置_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港家庭的典型客廳佈置_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港家庭的典型客廳佈置</div><div><a href='https://www.businesstimes.com.hk/articles/140663/%E7%A7%81%E6%A8%93%E8%A3%9D%E4%BF%AE%E5%80%8B%E6%A1%88-%E8%A3%9D%E4%BF%AE%E8%A8%AD%E8%A8%88-grandmontara%E5%85%A9%E6%88%BF%E9%80%A3%E5%84%B2%E7%89%A9%E5%AE%A4%E5%96%AE%E4%BD%8D-%E8%A3%9D%E4%BF%AE/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港家庭的典型客廳佈置_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港家庭的典型客廳佈置_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港家庭的典型客廳佈置</div><div><a href='https://www.acdesign.com.hk/works/2506/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港公園或遊樂場的兒童玩樂設施_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港公園或遊樂場的兒童玩樂設施_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港公園或遊樂場的兒童玩樂設施</div><div><a href='https://hkp.lcsd.gov.hk/tc/facilities/children-playground' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港公園或遊樂場的兒童玩樂設施_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港公園或遊樂場的兒童玩樂設施_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港公園或遊樂場的兒童玩樂設施</div><div><a href='https://www.parentsdaily.com.hk/all/2430' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港街頭推嬰兒車的父母_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港街頭推嬰兒車的父母_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港街頭推嬰兒車的父母</div><div><a href='https://eastweek.stheadline.com/witness/6493/%E6%B8%AF%E9%90%B5%E5%A5%87%E8%81%9EBB%E9%81%AD%E7%8D%A8%E7%95%99%E8%BB%8A%E5%BB%82-%E5%B9%B8%E9%81%87%E6%9A%96%E7%94%B7%E4%B9%98%E5%AE%A2-%E7%B6%B2%E6%B0%91%E6%BF%80%E8%AE%9A%E9%90%B5%E6%BC%A2%E6%9F%94%E6%83%85' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港街頭推嬰兒車的父母_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港街頭推嬰兒車的父母_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港街頭推嬰兒車的父母</div><div><a href='https://www.hk01.com/%E7%86%B1%E7%88%86%E8%A9%B1%E9%A1%8C/60231685/%E7%94%9F%E4%BB%94%E8%A6%81%E8%80%83%E7%89%8C-%E6%B8%AF%E9%90%B5%E5%AA%BD%E5%AA%BDbb%E8%BB%8A%E6%B3%8A%E8%BF%91%E8%BB%8A%E9%96%80-1%E7%95%AB%E9%9D%A2%E6%B8%AF%E7%94%B7%E9%AC%A7%E5%8D%B1%E9%9A%AA%E5%85%AC%E5%AF%A9%E5%8F%8D%E6%83%B9%E8%AD%B0' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港公立醫院產科病房內部_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港公立醫院產科病房內部_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港公立醫院產科病房內部</div><div><a href='https://www.hk01.com/%E7%A4%BE%E6%9C%83%E6%96%B0%E8%81%9E/163305/%E6%B8%AF%E6%80%A1%E9%86%AB%E9%99%A2%E5%A9%A6%E7%94%A2%E7%A7%91%E5%95%9F%E7%94%A8%E8%A8%AD16%E5%BC%B5%E7%97%85%E5%BA%8A-%E7%89%B9%E8%A8%AD%E5%88%9D%E7%94%9F%E5%AC%B0%E5%85%92%E6%B7%B1%E5%88%87%E6%B2%BB%E7%99%82%E9%83%A8' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港公立醫院產科病房內部_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港公立醫院產科病房內部_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港公立醫院產科病房內部</div><div><a href='https://www.nownews.com/news/2395332?srsltid=AU7gw4WpYiKhgxShCo4j90NktlGu6vx48-c4aeQnm13c6dKWZBfdnUv1' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港公立醫院產科病房內部_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港公立醫院產科病房內部_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港公立醫院產科病房內部</div><div><a href='https://www.cuhkmc.hk/tc/medical-centres-allied-health/labour-and-delivery-centre' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港母嬰健康院外觀或內部登記處_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港母嬰健康院外觀或內部登記處_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港母嬰健康院外觀或內部登記處</div><div><a href='https://bau.com.hk/web/article/1464237662812082176/web/content_1464237662812082176.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港母嬰健康院外觀或內部登記處_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港母嬰健康院外觀或內部登記處_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港母嬰健康院外觀或內部登記處</div><div><a href='https://fpf.ccidahk.gov.hk/tc/location/detail.php?id=1953' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港母嬰健康院外觀或內部登記處_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港母嬰健康院外觀或內部登記處_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港母嬰健康院外觀或內部登記處</div><div><a href='https://www.ohpama.com/707053/%E6%96%B0%E6%89%8B%E7%88%B6%E6%AF%8D/%E6%87%B7%E5%AD%95%E6%9C%9F%E9%96%93/%E6%AF%8D%E5%AC%B0%E5%81%A5%E5%BA%B7%E9%99%A2/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港公共交通工具上的親子互動_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港公共交通工具上的親子互動_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港公共交通工具上的親子互動</div><div><a href='https://www.eugenebaby.com/articleList/%E8%A6%AA%E5%AD%90%E7%8E%A9%E6%A8%82/%E8%A6%AA%E5%AD%90%E5%A5%BD%E5%8E%BB%E8%99%95-%E6%B8%AF%E9%90%B545%E5%91%A8%E5%B9%B4%E5%98%89%E5%B9%B4%E8%8F%AF-5%E5%A4%A7%E4%B8%BB%E9%A1%8C%E5%9C%92%E5%8D%80-%E6%A8%A1%E6%93%AC%E9%A7%95%E9%A7%9B%E5%AE%A4-%E9%90%B5%E8%B7%AF%E5%85%85%E6%B0%A3%E6%BB%91%E6%A2%AF-%E5%B7%A8%E5%9E%8B%E8%BF%B7%E5%AE%AE-%E5%85%8D%E8%B2%BB%E5%85%A5%E5%A0%B4' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港公共交通工具上的親子互動_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港公共交通工具上的親子互動_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港公共交通工具上的親子互動</div><div><a href='https://www.instagram.com/reel/DZaK1ipSX1Z/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港公共交通工具上的親子互動_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港公共交通工具上的親子互動_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港公共交通工具上的親子互動</div><div><a href='https://www.instagram.com/reel/DZaK1ipSX1Z/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港家庭在茶餐廳或酒樓用餐情景_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港家庭在茶餐廳或酒樓用餐情景_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港家庭在茶餐廳或酒樓用餐情景</div><div><a href='https://ufood.com.hk/restaurant/news/detail/20056688/%E9%80%BE-%E9%96%93%E9%A6%99%E6%B8%AF%E6%87%B7%E8%88%8A%E8%80%81%E5%AD%97%E8%99%9F%E9%A4%90%E5%BB%B3-%E7%99%BE%E5%B9%B4%E9%BB%9E%E5%BF%83%E8%BB%8A%E9%85%92%E6%A8%93-%E7%B1%B3%E8%8A%9D%E8%93%AE%E5%B0%8F%E9%A3%9F-%E6%B8%AF%E5%BC%8F%E8%A5%BF%E9%A4%90' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港家庭在茶餐廳或酒樓用餐情景_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港家庭在茶餐廳或酒樓用餐情景_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港家庭在茶餐廳或酒樓用餐情景</div><div><a href='https://www.ourchinastory.com/zh/14609/%E9%A6%99%E6%B8%AF%E8%8C%B6%E9%A4%90%E5%BB%B3%EF%BD%9C%E6%97%A9%E6%9C%9F%E5%8D%A1%E4%BD%8D%E6%98%AF%E7%9B%B8%E7%9D%87%E5%8B%9D%E5%9C%B0%EF%BC%9F%E6%B0%B4%E4%B8%8A%E4%BA%BA%E7%B5%90%E5%A9%9A%E5%9C%A8%E8%8C%B6%E9%A4%90%E5%BB%B3%E6%93%BA%E9%85%92%EF%BC%9F' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港家庭在茶餐廳或酒樓用餐情景_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港家庭在茶餐廳或酒樓用餐情景_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港家庭在茶餐廳或酒樓用餐情景</div><div><a href='https://www.harpersbazaar.com/tw/culture/lifestyle/g24204683/hongkong-5-restaurants/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港屋邨或私人屋苑的兒童遊樂區_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港屋邨或私人屋苑的兒童遊樂區_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港屋邨或私人屋苑的兒童遊樂區</div><div><a href='https://www.hk01.com/18%E5%8D%80%E6%96%B0%E8%81%9E/277157/%E6%98%94%E6%97%A5%E9%A6%99%E6%B8%AF-%E5%A4%9A%E5%9C%96-%E7%B8%BD%E6%9C%89%E4%B8%80%E5%80%8B%E4%BD%A0%E7%8E%A9%E9%81%8E-60%E5%B9%B4%E5%B1%8B%E9%82%A8-%E7%8E%A9%E5%85%B7-%E8%AE%8A%E5%8C%96%E5%8F%B2' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港屋邨或私人屋苑的兒童遊樂區_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港屋邨或私人屋苑的兒童遊樂區_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港屋邨或私人屋苑的兒童遊樂區</div><div><a href='https://hk.centanet.com/info/property-news/%E7%BD%AE%E6%A5%ADQA/%E5%AE%B6%E5%B1%85%E7%94%9F%E6%B4%BB/%E7%9B%A4%E9%BB%9E%E9%A6%99%E6%B8%AF%E7%A7%81%E4%BA%BA%E5%B1%8B%E8%8B%915%E5%A4%A7%E6%9C%83%E6%89%80%E7%89%B9%E8%89%B2%E5%85%92%E7%AB%A5%E8%A8%AD%E6%96%BD/179388' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港屋邨或私人屋苑的兒童遊樂區_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港屋邨或私人屋苑的兒童遊樂區_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港屋邨或私人屋苑的兒童遊樂區</div><div><a href='https://www.hk01.com/%E7%A4%BE%E5%8D%80%E5%B0%88%E9%A1%8C/162421/%E9%A6%99%E6%B8%AF%E5%BB%BA%E5%85%92%E7%AB%A5%E9%81%8A%E6%A8%82%E5%A0%B4%E8%A8%AD%E6%96%BD%E6%BA%90%E6%96%BC%E8%A1%97%E7%AB%A5%E6%B3%9B%E6%BF%AB-%E9%A6%96%E5%80%8B%E9%81%8A%E6%A8%82%E5%A0%B4%E7%AB%9F%E8%AE%8A%E6%88%90%E7%B4%85%E7%87%88%E5%8D%80' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港家長為子女準備書包或功課的場景_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/el_香港家長為子女準備書包或功課的場景_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港家長為子女準備書包或功課的場景</div><div><a href='https://www.instagram.com/p/Dc0jBWDiFK_/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_01af2548.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/news_01af2548.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>香港政府新聞網- 加推十一項組合拳措</div><div><a href='https://www.news.gov.hk/chi/2026/09/20260916/20260916_100217_197.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_23e41670.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/news_23e41670.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>有片｜【施政報告2026】推11項措</div><div><a href='https://www.hkcd.com.hk/content_app/2026-09/16/content_8775239.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_fd1b88b1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/news_fd1b88b1.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>施政報告2026丨推11項措施鼓勵生</div><div><a href='https://m.hkej.com/landing/mobarticle2/id/4515096' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_7578d04d.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/news_7578d04d.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>施政報告2026 | 香港推11項“</div><div><a href='https://hkcna.hk/h5/docDetail.jsp?id=101423071&amp;channel=2803' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_4746fe6d.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/news_4746fe6d.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>香港首份「五年規劃」：強調非計劃經濟</div><div><a href='https://theinitium.com/20260916-whatsnew-hongkong-2026-policy-address-five-year-plan/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_0051fb1d.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/news_0051fb1d.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>施政報告2026｜催生11招一覽 延</div><div><a href='https://www.hk01.com/%E7%A4%BE%E6%9C%83%E6%96%B0%E8%81%9E/60390380/%E9%A6%99%E6%B8%AF%E6%96%BD%E6%94%BF%E5%A0%B1%E5%91%8A2026-%E9%BC%93%E5%8B%B5%E7%94%9F%E8%82%B211%E6%8B%9B%E4%B8%80%E6%96%87%E7%9C%8B%E6%B8%85-%E6%96%B0%E7%94%9F%E5%AC%B0%E7%8D%8E%E5%8B%B5%E9%87%91-%E5%8A%A0%E7%A2%BC' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_8bda7f97.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/news_8bda7f97.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>施政報告｜推11鼓勵生育措施　新生嬰</div><div><a href='https://www.881903.com/news/amp/legco/2650268' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_20be0061.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/news_20be0061.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>加推十一項組合拳措施鼓勵生育</div><div><a href='https://www.tkww.hk/a/202609/16/AP6aaaa21de4b05bea53177652.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_d8b7fe76.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/poster_d8b7fe76.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>海報- 香港家庭計劃指導會</div><div><a href='https://www.famplan.org.hk/zh/resources/publicity-and-promotion/posters' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_41e88a60.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/poster_41e88a60.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>回顧香港家庭生育計劃兩個夠晒數？生定</div><div><a href='https://www.ourchinastory.com/zh/6660' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_fa091b50.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/poster_fa091b50.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>港婦生育率急跌家計會新廣告鼓勵生夠四</div><div><a href='https://hk.on.cc/hk/bkn/cnt/news/20150709/bkn-20150709160144146-0709_00822_001.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_7f99e2c4.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/poster_7f99e2c4.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>施政報告｜11項「生育組合拳」出爐！</div><div><a href='https://www.tkww.hk/a/202609/16/AP6aaa2829e4b05bea531768d6.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_095b3749.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/poster_095b3749.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>施政報告鼓勵生育】 新一份《施政報告</div><div><a href='https://www.instagram.com/p/DdVhu95CWSi/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='POSTER_poster_4851dade.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FAMPLAN/grounding/poster_4851dade.jpg' loading=lazy></div><div class='vacat'>海報/單張</div><div class='vaname'>海報- 香港家庭計劃指導會</div><div><a href='https://www.famplan.org.hk/zh/resources/publicity-and-promotion/posters' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_60432066'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxizDh6yi3clRcaydd1Vu2Lz67CqPLuJv0SkdZ_XJao7fOoiCqSyHxCg&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>《計劃生育》宣教片</div><div><a href='https://www.youtube.com/watch?v=u6fZJXOlGwI' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_450590'> 剔</label><div class='vathumb'><img src='https://i.ytimg.com/vi/xPARmh5ej7k/mqdefault.jpg?sqp=-oaymwEFCJQBEFM&amp;rs=AMzJL3lcHbwe9jzN1juwC4uzIdG9xAdQ0Q' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>家計會2015 生隊籃球隊廣告[HD</div><div><a href='https://www.youtube.com/watch?v=xPARmh5ej7k' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_1197503'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1OfES3ToJBb6bx-Jq8hbE-Av0RjUmzOVHiAI90pQIm9oO0g-dElHO8Q&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>30多年前的“计划生育宣传片”，简直</div><div><a href='https://www.youtube.com/watch?v=7lVJKT5t1Gc' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_88596859'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAMSTRHDFuhAsw05ONuvRJe7OAgEzhdy42sf-l6KlIcHesujAXQZxsyQ&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>YouTube</div><div><a href='https://www.youtube.com/watch?v=YGFZHbh0jD0' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_42544807'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRg2iub7OzczlTUEHZYn6ep0COMvDjZHjR78psVdsQpLRKv1M3ia3-Jw&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>2003 生育指導服務</div><div><a href='https://www.youtube.com/watch?v=2JbHgEnE63s' target=_blank class='vasrc'>原網址 ↗</a></div></div></div><div class='acts vaacts' style='margin-top:8px'><button class='btn grn' onclick="preferAssets('FAMPLAN')">⭐ 設首選</button><button class='btn ghost vbtn' onclick="researchAssets('FAMPLAN')">🔁 重搜</button><button class='btn' style='background:var(--red)' onclick="delAssets('FAMPLAN')">🗑 刪除選取</button></div></details><div class='h2 tierh'>🎯 必定餵 AI（諗橋一定收）</div><p class='hint tierhint'>委員會／agency 諗橋一定收呢批做底，必跟。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📋 標書撮要</span><span class='rawlink' onclick="showOvl('raw_FAMPLAN')">📄 標書原文</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><h5>1. 背景同目的</h5>
+<p>* <strong>背景</strong>：香港正面臨生育率持續下降及人口老齡化的顯著人口結構轉變。雖然 2024 年受「龍年效應」及政府推出的 20,000 港元新生嬰兒獎勵金帶動，出生人數微升 10.5% 至 36,700 人，但該數字仍為 1961 年以來的低位之一（p.4–5）。香港家庭計劃指導會（FPAHK）目前播放之電視宣傳短片（API）標語為「How Many is Enough?/幾個至夠數」，為配合香港特區政府鼓勵生育的政策，家計會提出全新宣傳企劃，包括製作全新的電視及電台 API（p.5）。</p>
+<p>* <strong>目的</strong>：</p>
+<p>  1. 鼓勵猶豫不決或猶豫未定的個人及夫婦對為人父母和家庭生活建立更正面的看法（p.5）。</p>
+<p>  2. 推動有意生育（更多）子女的夫婦及早規劃，並做出明智、自信的建構家庭決定（p.5）。</p>
+<p>  3. 啟發憧憬建立家庭的年輕夫婦將生育視為富有意義且充滿成就感的人生旅程（p.5）。</p>
+<h5>2. 目標受眾</h5>
+<p>* <strong>主要受眾（Primary Target）</strong>：25–39 歲已婚或感情穩定的夫婦，且有意生育或對生育（更多）子女猶豫不決者（p.4）。</p>
+<p>* <strong>次要受眾（Secondary Target）</strong>：</p>
+<p>  * 20–24 歲憧憬建立家庭的年輕成年人（p.4）。</p>
+<p>  * 對家庭觀念具影響力的父母／祖父母（p.5）。</p>
+<h5>3. 傳意目標／核心訊息</h5>
+<p>宣傳策略分為三個推進層次（p.5–6）：</p>
+<p>1. <strong>認知（Awareness）</strong>：將為人父母呈現為充滿喜悅、富有意義及愛的象徵；鼓勵夫婦及早規劃生育（p.5）。</p>
+<p>2. <strong>互動（Engagement）</strong>：重塑對生育的觀念並破除常見誤解（p.6）：</p>
+<p>   * *「責任太大」*：強調人生苦甜參半，為人父母雖需付出與犧牲，但亦帶來深遠的回報與意義。</p>
+<p>   * *「高齡仍可受孕」*：教育公眾 35 歲後受孕成功率下降，以及流產與孕期併發症風險增加之事實。</p>
+<p>   * *「育兒等於母職」*：強化育兒為夫婦共同責任，鼓勵丈夫積極參與。</p>
+<p>   * *「養大一個小朋友要六百萬」*：以合理的財務規劃及忽視之家庭資源回應。</p>
+<p>3. <strong>行動（Conversion）</strong>：鼓勵夫婦在懷孕前尋求醫療諮詢，以優化健康狀況（p.6）。提供相關資源包括：婚前檢查、PREPARE 婚前輔導及婚前準備小組、孕前檢查、政府資助孕前健康服務、早孕檢查、不育服務、男性健康服務及性治療等（p.6）。</p>
+<h5>4. 影片／製作規格</h5>
+<p>* <strong>電視 API（TV API）</strong>：</p>
+<p>  * <strong>集數與版本</strong>：1 版本（p.7, p.23）。</p>
+<p>  * <strong>長度</strong>：每首 30 秒（p.7, p.23）。</p>
+<p>  * <strong>拍攝規格</strong>：首選 HDCAM、RED ONE 或同等格式；可視乎創意採用高解像度影片（HDV）或單反相機拍攝（p.7, p.23）。</p>
+<p>  * <strong>輸出格式</strong>：檔案格式 16:9 (HD) XDCAM HD422 at 50Mbps in MXF，以及 HDCAM 磁帶格式（p.7, p.23）。</p>
+<p>  * <strong>語言與字幕</strong>：廣東話版（配繁體中文書面語字幕）及英文版（配英文字幕）（p.7, p.23）。</p>
+<p>  * <strong>配音</strong>：廣東話及英文旁白／對話配音員（英文版需盡量以英文表達）（p.12）。</p>
+<p>  * <strong>音樂</strong>：首選尾期配樂／量身訂造音樂（tailor-made/post-scored music）（p.7, p.13）。</p>
+<p>  * <strong>特別規格（網絡無障礙標準）</strong>：必須另行提供一份符合萬維網聯盟（W3C）《無障礙網頁內容指引》（WCAG）2.2 AA 級標準之網絡版 TV API（p.7–8, p.11）。另需提供 12 張劇照（JPEG）及可編輯源檔（p.7–8）。</p>
+<p>* <strong>電台 API（Radio API）</strong>：</p>
+<p>  * <strong>集數與版本</strong>：1 版本（p.8, p.26）。</p>
+<p>  * <strong>長度</strong>：每首 30 秒（p.8, p.26）。</p>
+<p>  * <strong>語言與格式</strong>：廣東話、英文（需為獨白式 Monologue）、普通話（配音員宜取得國家語委普通話水平測試一級乙等或以上）（p.8, p.12, p.26）。另需提供符合 WCAG 2.2 AA 標準之電台文稿軟複本（p.11）。</p>
+<h5>5. 指定班底</h5>
+<p>* <strong>名人／明星／Talents 要求</strong>：若宣傳企劃或 API 邀請名人、明星或 Talents 參演，承包商需負責聯繫並處理其演出權利（Performers&#x27; rights clearance），確保 API 可在香港及海外任何媒體（電視、電台、網絡、公共交通等）無期限播放及非營利使用；並需在項目預算內承擔其髮型、化妝、服裝、道具及交通費用（p.13–14）。</p>
+<p>* <strong>專業團隊</strong>：承包商需提供完整的專業團隊及設備，包括拍攝團隊（戶外及室內）、離線/在線剪接、廣東話/英文/普通話專業配音員、音樂創作及音效工程等（p.12–13）。</p>
+<h5>6. 創意及策略重點／風格要求</h5>
+<p>* <strong>原創性</strong>：技術建議書必須為承包商之原創創意，不得將曾售予其他機構之創意轉售或重複使用（p.12）。</p>
+<p>* <strong>整體風格與策略</strong>：企劃主調需呈現父母之喜悅、意義與愛，以正面、具說服力且具衝擊力之方式傳播，有效突破公眾誤解（p.5–6, p.45–49）。</p>
+<p>* <strong>全盤宣傳企劃（Marketing Campaign）</strong>：</p>
+<p>  * <strong>宣傳網站（Campaign Website）</strong>：採用 WordPress 開發（最多 90 頁，雙語，符合 WCAG 2.2 AA），提供 12 個月託管維護及 5 個月缺陷責任保養期（p.10, p.28–34）。</p>
+<p>  * <strong>社交媒體（Social Media）</strong>：最少 10 個原創 FB/IG 帖文/Reels/動態，包括最少 1 個發布 API 之影片帖文及最少 4 個解答公眾誤解之短片/Reels（p.10–11）。</p>
+<p>  * <strong>媒體買位策略（Media Buying）</strong>：執行整合媒體買位（預算上限 HK\$200,000 含佣金），保證 API 社交媒體帖文達到最少 150,000 獨立用戶之付費覆蓋率（Paid Reach），以及 YouTube 影片廣告最少 20,000 次觀看數（p.11, p.18）。</p>
+<p>* <strong>版權要求</strong>：API 及所有衍生製作物（包括分鏡腳本、文稿、設計、圖像、相片等）之全球及永久版權均完全歸家計會所有（p.3, p.13, p.14, p.15）。</p>
+<h5>8. 任何強制要求或紅線</h5>
+<p>* <strong>預算上限紅線</strong>：本項目總預算上限為港幣 \$1,350,000，高於 HK\$1,350,000 之標書一律不予考慮（p.2, p.18）。</p>
+<p>* <strong>遞交方式及雙封套制度（Two-Envelope System）</strong>：</p>
+<p>  * 技術建議書（Technical Proposal，連同 Annex 7、Annex 10 及創作樣板）與費用建議書（Fee Proposal，連同 Annex 8、Annex 11 及費用明細）必須分別密封於兩個獨立信封內（每封需附正本及副本共 2 份），信封表面需清楚註明「Technical Proposal」或「Fee Proposal」及標書編號（p.2, p.58）。</p>
+<p>  * <strong>信封表面絕對不可印有或寫有任何與投標公司相關之名稱或識別資料，否則取消資格</strong>（p.2, p.3, p.58）。</p>
+<p>  * 不接受電郵或傳真遞交；逾期遞交不予考慮（p.3）。</p>
+<p>* <strong>必要簽署文件</strong>：必須於截標前遞交由授權人簽署之 Statement of Compliance and Offer to be Bound（Annex 7），否則標書將不獲考慮（p.2, p.42, p.45）。</p>
+<p>* <strong>網絡無障礙強制標準（WCAG 2.2 AA）</strong>：所有數碼檔案（包括網絡版 TV API、電台文稿、網站、海報/小冊子數碼檔、網頁 Banner 及網上相片等），必須嚴格符合政府無障礙網頁要求（W3C WCAG 2.2 Level AA）（p.7, p.8, p.9, p.10, p.11, p.28）。</p>
+<p>* <strong>國家安全維護條款</strong>：發標方保留因投標者從事或被合理相信從事危害國家安全之行為而取消其投標資格之權利（p.2 / Terms of Tender p.2, p.9）。</p><div id='raw_FAMPLAN' class='ovl'><div class='ovlbox'><div class='ovlhd'><span>📄 標書原文（逐字）</span><button class='x' onclick="hideOvl('raw_FAMPLAN')">✕</button></div><div class='ovlbody'><p class='hint'>fetch_source（pypdf）抽嘅標書逐字原文 —— 委員會／agency／debrief／5W1H 都餵呢份做 ground-truth。　·　<a href='https://drive.google.com/drive/folders/1lfr9MSLC2DhTvjpuaYA1Ebh7Oxaul6Xy' target='_blank' style='font-weight:700;color:var(--ac)'>📄 開原始檔 ↗</a></p><pre style='white-space:pre-wrap;font-size:11px;line-height:1.5;background:#fafbfc;border:1px solid var(--line);border-radius:8px;padding:9px;color:#333;margin:0'>===== tender document(Specification 原件)=====
+[p4]
+The Family Planning Association of Hong Kong 
+Project Brief 
+Tenders invited for provision of services required for the production of 
+A New Marketing Campaign to Promote Childbearing 
+PIII‘EOSE 
+This brief explains the background and objectives for the production of a marketing campaign for 
+The Family Planning Association of Hong Kong (hereafter referred as ‘FPAHK’), to promote 
+childbearing in Hong Kong﹒ The scope of work expected of the contractor is also explained﹒ In brief 
+contractors are invited to plan and implement a marketing campaign, including the following 
+deliverables: 
+Create and produce one 30-second TV API with two language versions (one in Cantonese with 
+Traditional Chinese subtitles, and the other in English with English subtitles); 
+Create and produce a corresponding 30-second radio API with three language versions 
+(Cantonese， English and Putonghua); 
+Design of one key visual, and copywriting of slogan with two language versions (Traditional 
+Chinese and English); 
+Design, copywriting, and printing of one set of bilingual posters (Traditional Chinese and 
+English); 
+Design, copywriting, and printing for one set of pamphlets with two language versions 
+(Traditional Chinese and English); 
+Ideate, design, and produce a marketing campaign, including a campaign website, social media 
+posts / reels, and other suitable materials to achieve the objectives﹕ 
+Media planning， media buying, ongoing optimisation, and reporting, including the production of 
+banner or video ads required for placement; 
+Adaptthe poster design into web banners﹕ and 
+Photography service. 
+Target Audience 
+1. 
+2. 
+Primary Target: 
+。 Miarried or steady couples aged 25-39, who intend to have (more) children or are indecisive 
+Secondary Target: 
+4/58
+[p5]
+* Young adults aged 20-24, aspiring to form families 
+= Parents / Grandparents who have influence over family values 
+Background 
+Hong Kong is experiencing a significant demographic shift characterised by declining fertility Tates 
+and an aging population. Even though there is a slight 10.5% increase to 36,700 births in 2024, partly 
+attributed to the “Year of the Dragon” effect and the HK$20,000 cash handout for newborns 
+introduced in October 2023, this figure is still one of the lowest since 1961﹒ 
+FPAHK currently airs a TV API on local television channels. Featuring the slogan “How Many is 
+Enough? / 幾 個 至 夠 數 it urges couples to plan and prepare for pregnancy early to achieve their 
+ideal family size. Since 2015, the API has aired on public and commercial TV channels during 
+government-allocated slots. To align with the Hong Kong SAR Government’s policy on encouraging 
+childbearing, FPAHK proposes a new marketing campaign, including the production ofrefreshed TV 
+and radio APIs. 
+Ob i ectives 
+= 10 encourage undecided or hesitant individuals and couples to develop a more positive perception 
+ofparenthood and family life 
+˙ To motivate those intending to have (more﹚ children to plan ahead and make informed， confident 
+family formation decisions 
+= To inspire young couples aspiring to build a family to embrace childbearing as a meaningful and 
+fulfilling life journey 
+Promotion Strategy and Key Messages 
+一 一 一 一 一 ﹒ ﹁ 。 7 ] 
+貫 Awareness Engagement Conversion 長 
+e S | G | 
+1. Awareness 
+What Inspire positive attitudes toward family formation and childbearing 
+﹚ hitps://public.tableau.com/app/profile/population.prod/vizZPOPN_TC_PROD/PopulationDashboard 
+5/58
+[p6]
+Key Message Present parenthood as joyful, meaningful and a symbol of love 
+Encourage couples to plan early for childbearing 
+將 為 人 父 母 命 現 為 充 滿 喜 悅 、 富 有 意 義 ， 亦 是 愛 的 象 徵 
+鼓 勵 夫 婦 及 早 規 劃 生 華 
+Channel APIs (TV and radio), videos / banner ads, posters 
+﹒ Engagement 
+What Drive discussion on childbearing and encourage family planning 
+Key Message Reframe perceptions and debunk common misconceptions about 
+childbearing 
+Key Misconception to Address: 
+- “Too much responsibility”: Emphasise that life is bittersweet ﹣ while 
+parenthood involves sacrifices, it also brings profound rewards and 
+meaning 
+- “Women can conceive at older ages”: Educate on declining success 
+rates after age 35, plus increased risks of miscarriage and pregnancy 
+complications 
+- “Parenthood equals motherhood”: Reinforce parenting as a shared 
+couple’s responsibility encouraging husbands to take active roles 
+- “Raising g child costs six million”: Counter with well-managed 
+financial planning and overlooked family resources 
+Channels Website, social media, pamphlets, ads 
+Conversion 
+What Encourage couples to seek medical advice before pregnancy to optimise 
+their health, thereby protecting and enhancing the health of both mothers 
+and babies 
+Key Message Provide resources to facilitate family planning and childbearing: 
+Pre-marital Check-up 
+PREPARE Couple Relationship Assessment &amp; Pre-Marriage Preparation 
+Group 
+Pre-pregnancy Check-up 
+Pre-pregnancy Health Service (Government-funded) 
+6/58
+[p7]
+﹣ Early Pregnancy Assessment 
+﹣ Subfertility Service 
+﹣ Men’s Health Service 
+﹣ Sex Therapy 
+Channels Website, social media, pamphlets, ads 
+Launch Date 
+The TV and radio APIs should be completed by 15 January 2027 (Friday) and delivered to TV and 
+radio stations for launching on or before 15 February 2027 (Monda 
+Marketing campaign as well as media buy and placement should be completed by 31 March 2027 
+(Wednesday). 
+Deliverables 
+1. TVAPI 
+i， One version only 
+ii. Shooting format: HDCAM RED ONE or equivalent is preferred﹒ High-definition Video 
+(HDV﹚ formats and still camera shooting may be considered depending on the creative﹒ 
+iii. Output﹕ 
+(a) File﹣based format: 16:9 (HD) in XDCAM HD422 at 50Mbpsin MXF; and 
+(b﹚ Video-tape format: 16:9 (HD) in HD CAM 
+iv.  Duration: 30 seconds each 
+v. Language: 
+(a) Cantonese (with written Traditional Chinese subtitles 繁 體 中 文 書 面 語 ﹚ and 
+(b﹚ English (with English subtitles) 
+vi. Background music: tailor-made / post﹣scored music is preferred 
+vil. Soft and hard copies of the scripts 
+viii.  Soft and hard copies of the storyboard (together with draft scripts and description ofvisuals 
+in both Chinese and English) 
+ix. Copies required: Please refer to Annex 1 
+x. Twelve still pictures from the footage of the completed TV API in JPEG format for each 
+language version 
+xi. Essential information in the visuals of the TV API, such as website address, telephone 
+number or e-mail address, is required to be accompanied by voice-over script as 
+appropriate 
+xii. Contractor is required to provide another version of the TV API which conforms to the 
+7/58
+[p8]
+xiii. 
+World Wide Web Consortium (W3C) Web Content Accessibility Guidelines (WCAG) 2.2 
+Level AA standard for posting on the Internet. For details, please visit the websites: 
+http://www.webforall.gov.hk and https:/www.w3.org/ WAVWCAG22/quickref/#timebased 
+-media 
+Editable source files of the final cut of the TV API 
+2. Radio API 
+i 
+ii. 
+迫 ﹒ 
+vi. 
+One version only 
+Duration: 30 seconds each 
+Language: 
+(a) Cantonese; 
+(b) English; and 
+(C﹚ Putonghua 
+Soft and hard copies ofthe scripts 
+Copies required: Please refer to Annex 2 
+Editable source files ofthe final cut ofthe radio API 
+3. Design and Copywriting of Key Visual and Slogan 
+1. 
+北 
+迪 ﹒ 
+iv. 
+vi. 
+Vii. 
+Viii. 
+One key visual 
+Language of slogan 
+(a) Traditional Chinese; and 
+(b﹚ English 
+Presentation of key visual with slogan in three versions: Traditional Chinese, English and 
+bilingual 
+Application of the design to all materials of the campaign 
+Design, copywriting and artwork production services as well as all photography work 
+Professionally prepare high quality colour output mockup of the key visual with slogans 
+with printing on recycled paper for approval by FPAHK. Check the colour proofs and do 
+the proof-reading for FPAHK 
+Output files and editable source file of the final artwork designs in Al, JPEG, PNG and 
+PDF formats or other formats to be specified by FPAHK saved on USB or other suitable 
+tools with printouts attached 
+Electronic output files and editable source files of all required formats of the key visual 
+with slogans ready for uploading onto FPAHK﹁s website and for printing. The files 
+produced shall be in compliance with the Government’s policy on web accessibility (i.e. 
+conforming to the W3C WCAG 2.2 Level AA standard) 
+4. Design, Printing and Delivery of Posters 
+8/58
+[p9]
+l4 
+vii. 
+viii. 
+ix. 
+X 
+xii. 
+One version only 
+Language: Bilingual with Traditional Chinese and English 
+Colour: 4C + 0C (full colour) 
+Size ofhard copies﹕ Vertical A2 (420 mm x 594 mm) and Vertical A3 (297 mm x 420 mm) 
+or to be specified by FPAHK 
+Requirement for digital copies: 4961 pixels (width) x 7016 pixels (height) or specified by 
+FPAHK 
+Paper: 170g Art Matt Paper 
+Quantity: A2 — 1,000 and A3 — 50 
+Design, copywriting and artwork production services as well as all photography work 
+Professionally prepare high quality colour output mockup of the poster with printing on 
+recycled paper for approval by FPAHK. Check the colour proofs and do the proof-reading 
+for FPAHK 
+Output files and editable source files of the final artwork designs in AL JPEG, PNG and 
+PDF formats or other formats to be specified by FPAHK saved on USB or other suitable 
+tools with printouts attached 
+Electronic output files and editable source files of all required formats of the poster ready 
+for uploading onto FPAHK’s website and for printing. The files produced shall be in 
+compliance with the Government’s policy on web accessibility (i.e. conforming to the 
+W3C WCAG 2.2 Level AA standard) 
+Printing and delivery of posters to FPAHK Wan Chai Headquarters and up to 1,000 
+locations via mail, including postage 
+Design, Printing and Delivery of Pamphlets 
+1 
+虹 
+H 
+Vi 
+vii. 
+vjii 
+One version only 
+Language﹕ 
+(a) Traditional Chinese﹕ and 
+(b﹚ English 
+Size of hard copies﹕ die﹣cul roll fold long pamphlets of at least three pages with each page 
+within the dimension of 99 mm x 210 mm 
+Colour: 4C + 4C (full colour) 
+Requirement for digital copies: 3508 pixels (width) x 2480 pixels (height) 
+Paper: 128g Art Matt Paper 
+Quantity: Traditional Chinese: 13,000; English: 7,000 
+Design, copywriting and artwork production services as well as all photography work 
+Professionally prepare high quality colour output mockup of the pamphlets with printing on 
+recycled paper for approval by FPAHK. Check the colour proofs and do the proof-reading 
+for FPAHK 
+9/58
+[p10]
+Xi. 
+xii. 
+Output files and editable source files of the final artwork designs in AL JPEG, PNG and 
+PDF formats or other formats to be specified by FPAHK saved on U8B or other suitable 
+tools with printout attached 
+Electronic output Bles and editable source files of all required formats of the pamphlets 
+Teady for uploading onto FPAHK’s website and for printing. The files produced shall be in 
+compliance with the Government’s policy on web accessibility (i.e. conforming to the 
+W3C WCAG 2.2 Level AA standard﹚ 
+Printing and delivery of pamphlets to FPAHK Wan Chai Headquarters and up to 1,000 
+locations via mail including postage 
+Design of Web Banner 
+1. One version only 
+ii. Language: 
+(a) Traditional Chinese; and 
+(b﹚ English 
+iii. Dimension: banner ﹣ 890 pixels (width) x 450 pixels (height), and adaptation to not more 
+than 10 sizes as specified by FPAHK at a later stage 
+iv- C﹙﹞]﹙﹞ˋ】r﹕ RGB 
+v. Design, copywriting and artwork production services as well as all photography work 
+vi. Output files and editable source files of the final artwork designs in AL JPEG PNG and 
+PDF fomats or other formats to be specified by FPAHK saved on a USB or other suitable 
+tools with printout attached 
+vji， Electronic output files and editable source fles of all required formats of the banners ready 
+for uploading onto FPAHK﹁s website and for printing. The files produced shall be in 
+compliance with the Government’s policy on web accessibility (i.e. conforming to the 
+W3C WCAG 2.2 Level AA standard﹚ 
+Marketing Campaign 
+To develop a marketing campaign to drive engagement and conversion; the campaign would 
+cover the following items: 
+年 
+Campaign Website (please refer to Annex 3 for specifications) 
+(3﹚ Campaign website development 
+(b﹚ hosting services 
+Social Media Posts 
+(8﹚ A minimum of 10 original social media posts / stories / reels, including but not limited 
+10 the following core assets, designed to convey campaign messages to the public in an 
+engaging, high﹣impact manner: 
+10/58</pre></div></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>⚠️ 製作要求</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><div class='h3' style='margin-bottom:6px'>🚨 標書特別紅線 / 強制要求</div><div class='timeline' style='margin-bottom:10px'><div class='tlrow'><span class='tllabel'>🚨 <b>其他</b>（p7）：TV API 拍攝格式首選 HDCAM 或 RED ONE；電台普通話配音員首選達國家普通話水平測試一級乙等（Grade 1B）；需於電視台及電台播放前至少 4 個工作天交付車站副本。</span></div></div><p class='hint'>每個概念必跟，違 = 廢稿。</p><div class='preqs'><div class='prow'><span class='pl'>🤟 手語</span><span class='pv pvoff'>❌ 唔使</span><span class='pp'></span></div><div class='prow'><span class='pl'>♿ W3C影片</span><span class='pv pvon'>✅ 要</span><span class='pp' title='電視 API 網路版、電台文稿、網站、海報、單張、網頁 Banner 及相片均須符合 W3C WCAG 2.2 Leve'>p7</span></div><div class='prow'><span class='pl'>⭐ 明星/名人/官員</span><span class='pv pvoff'>無Preference</span><span class='pp' title='標書未強制要求使用明星。如方案包含明星/Celebrities/Talents，承辦商需負責聯繫、清除演出者權利（全球及'>p13</span></div><div class='prow'><span class='pl'>🧸 Mascot</span><span class='pv pvoff'>無Preference</span><span class='pp'></span></div><div class='prow'><span class='pl'>🎬 動畫</span><span class='pv pvoff'>無Preference</span><span class='pp' title='社交媒體帖文及廣告可包含短動畫/Motion Graphics，但未強制規定必須採用 2D 動畫。 / 標書無提及 3D'>p10</span></div></div><div class='h3' style='margin-top:11px'>⛔ 注意 / 紅線</div><div class='timeline'><div class='tlrow'><span class='tllabel'>[無障礙] <b>網絡無障礙標準 (WCAG 2.2 AA)</b>：電視 API 網絡版、網站、海報、單張、網頁 Banner 及相片等所有數碼檔案，必須符合 W3C WCAG 2.2 Level AA 無障礙標準；電台文稿及相</span></div><div class='tlrow'><span class='tllabel'>[明星] <b>明星及演出者權利清除 (Celebrity / Talent Involvement)</b>：若方案包含明星或演出者參與，承辦商需負責聯繫、清除全球及永久演出者權利，並承擔髮型、化妝、服裝、道具及交通等費用。</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>預算上限紅線 (Maximum Budget Limit)</b>：項目預算上限為港幣 \$1,350,000 元，高於 \$1,350,000 的投標將不獲考慮。</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>雙封套遞交及信封匿名規範 (Two-Envelope Submission &amp; Anonymity)</b>：Technical Proposal 與 Fee Proposal 必須分別密封於兩個獨立信封內（各一式兩份），信封表面絕對不可顯示投標公司任何資料或標誌，否則</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>嚴格完成及交付時間 (Strict Completion &amp; Delivery Schedule)</b>：電視及電台 API 需於 2027 年 1 月 15 日前完成，並於 2027 年 2 月 15 日前交付電視台/電台；整體宣傳企劃及媒體投放需於 2027 年</span></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>⚡ 創意亮點</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ Gemini Flash＋Search</span></div><div class='cbody'><h4>⚡ 創意亮點 — FAMPLAN·New Marketing Campaign to Promote Childbearing (香港家庭計劃指導會全新鼓勵生育宣傳企劃)（research 掘出嚟，可以做橋嘅真嘢）</h4>
+<p>1. 🇭🇰 <strong>「幾個至夠數」經典 IP 反轉</strong></p>
+<p>   - 事實：家計會 1975 年黃霑作詞的「兩個就夠晒數」及 2015 年「幾個至夠數？理想家庭心中有數」API 具極高國民度，經典口號與畫面深植香港人集體回憶。（出處：[hooks-research] FAMPLAN）</p>
+<p>   - 💡 可以點做橋：可以借用或翻轉家計會經典「心中有數」概念，以現代視角重新定義新世代的家庭規劃與生育選擇。</p>
+<p>2. 💡 <strong>破除「養大一個要六百萬」迷思</strong></p>
+<p>   - 事實：標書指定將反駁「養大一個要六百萬」列為四大育兒誤解之一；該數字源自商業銀行廣告與社會誇大印象，忽視了合理的財務規劃與家庭資源。（出處：tender document）</p>
+<p>   - 💡 可以點做橋：可以用溫暖貼地的真實預算與家庭支援視角，正面打破育兒昂貴的經濟焦慮，引導夫婦建立理財信心。</p>
+<p>3. 💡 <strong>35歲黃金生育期與醫學事實</strong></p>
+<p>   - 事實：標書強調 35 歲後女性受孕成功率顯著下降且流產風險增加；同時 2024 年受龍年效應及 2 萬元津貼帶動，出生人數回升 10.5% 至 36,700 人。（出處：tender document）</p>
+<p>   - 💡 可以點做橋：可以用理性而溫馨的醫學數據與時機提醒，動員有意生育的夫婦「及早規劃，勝於等待」。</p>
+<p>4. 🇭🇰 <strong>翻轉「育兒即母職」性別偏見</strong></p>
+<p>   - 事實：標書要求破除「Parenthood equals motherhood」的舊觀念，強調育兒是夫婦共同責任，並特別鼓勵丈夫積極參與。（出處：tender document）</p>
+<p>   - 💡 可以點做橋：可以聚焦現代夫婦神隊友關係與父親參與的日常點滴，展現雙方共同承擔、共享喜悅的親密陪伴。</p>
+<p>5. 🏷️ <strong>家計會社媒角色「阿得與阿家」</strong></p>
+<p>   - 事實：家計會官方 Facebook 及 IG 擁有長年深耕年輕族群的插畫角色「阿得與阿家」（Tak &amp; Kar），專門解構親密關係、備孕與性健康話題。（出處：[hooks-research] FAMPLAN）</p>
+<p>   - 💡 可以點做橋：可以將「阿得與阿家」延伸至社交媒體短片與互動內容，無縫拉近與 20–24 歲及 25–39 歲年輕受眾的距離。</p>
+<p>6. 👤 <strong>醫療體系與前置檢查資源</strong></p>
+<p>   - 事實：本項目由家計會主辦並由衞生署及政府新聞處監督，提供婚前檢查、孕前檢查、早孕檢查及不育服務等全方位醫療支援。（出處：tender document）</p>
+<p>   - 💡 可以點做橋：可以透過專業醫療團隊與完善檢查服務的權威背書，將夫婦的猶豫觀望轉化為預約檢查的具體行動。</p>
+<p>7. 🎯 <strong>Hidden Agenda（政府點解而家做）</strong></p>
+<p>   - 事實：這條宣傳片背後的隱藏議程，是政府試圖透過軟性宣傳，回應社會對生育率持續低迷的憂慮，並為施政報告中一系列鼓勵生育的「組合拳」措施營造正面輿論氛圍。政府希望藉此扭轉過去不干預生育政策的形象，展現其積極解決人口結構問題的決心，同時也可能間接回應了社會對香港未來勞動力短缺和人口老化問題的擔憂。</p>
+<p>   - 💡 可以點做橋：可以將呢個深層目的織入概念，令片唔止講程序，更打中政府想傳達嘅 message。</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📊 研究（深入＋Web 整合）</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ gemini-2.5-flash</span></div><div class='cbody'><p>好的，這是一份整合後的乾淨研究報告，已去重、保留獨有事實、分段清晰、具體有數有名，並以繁體中文輸出：</p>
+<p>---</p>
+<p><strong>香港政府部門宣傳片題材研究：鼓勵生育</strong></p>
+<p>---</p>
+<h5>1. 議題背景</h5>
+<p>*   <strong>香港生育率現況與政策壓力：</strong></p>
+<p>    *   2024 年香港總和生育率約 <strong>0.84</strong>，屬全球最低水平之一。</p>
+<p>    *   政府在立法會文件中明言「低生育率已影響人口結構及長遠競爭力」，需多管齊下鼓勵生育。</p>
+<p>    *   自 2023 年《施政報告》後，政府多次在立法會答問（如 LCQ16、LCQ1、LCQ22）重申「鼓勵生育」已成為人口政策核心。</p>
+<p>*   <strong>新生嬰兒獎勵金及相關配套：</strong></p>
+<p>    *   「新生嬰兒獎勵金 Newborn Baby Bonus」：由 2023 年 10 月 25 日起，合資格父母每名在香港出生嬰兒可獲 <strong>$20,000 一次性現金獎勵</strong>，為期三年至 2026 年 10 月 24 日。</p>
+<p>    *   截至 2026 年中，政府已派發約 <strong>14.4 億港元</strong>獎勵金。</p>
+<p>    *   同時提高稅務「子女免稅額」、提高住屋利息／租金扣稅上限予首名子女家庭，並為有新生嬰兒家庭提供公屋／居屋優先配額及揀樓優先等。</p>
+<p>*   <strong>家計會敘事轉向：</strong></p>
+<p>    *   家計會於 1970 年代以「<strong>兩個夠哂數</strong>」等宣傳推廣小家庭。</p>
+<p>    *   2015 年推出「<strong>幾個至夠數 / How Many is Enough?</strong>」TV API，已由過去鼓勵少生轉為「鼓勵提早規劃，達致理想家庭規模」，以正向規劃取代單一「節制生育」訊息。</p>
+<p>    *   目前新宣傳需在此基礎上，由「計劃幾多個」再走向「鼓勵生」，同時回應政府政策及社會對育兒壓力的真實憂慮，處於「敘事轉型期」。</p>
+<h5>2. 關鍵事實數據</h5>
+<p>*   <strong>生育率：</strong> 2024 年香港總和生育率約 <strong>0.84</strong>。</p>
+<p>*   <strong>新生嬰兒獎勵金：</strong> 每名嬰兒 <strong>$20,000</strong>，為期三年（2023 年 10 月 25 日至 2026 年 10 月 24 日）。</p>
+<p>*   <strong>獎勵金派發總額：</strong> 截至 2026 年中，已派發約 <strong>14.4 億港元</strong>。</p>
+<p>*   <strong>立法會答問：</strong> LCQ16、LCQ1、LCQ22 等文件多次提及鼓勵生育政策。</p>
+<h5>3. 相關官員單位</h5>
+<p>*   <strong>政府部門：</strong> 負責制定及推行鼓勵生育政策，包括財政誘因、房屋優先、托兒支援、稅務寬減等。</p>
+<p>*   <strong>勞工及福利局：</strong> 負責「家庭友善僱主計劃 (FFEP)」，推廣家庭友善工作間。</p>
+<p>*   <strong>家計會 (The Family Planning Association of Hong Kong)：</strong> 曾是香港家計規劃的權威聲音，現正經歷從「少生」到「鼓勵生」的敘事轉向。</p>
+<h5>4. 受眾 Sentiment</h5>
+<p>*   儘管政府推出「新生嬰兒獎勵金」等政策，2024 年生育率仍僅 0.841，顯示「金錢誘因 + 宣傳」仍未足以扭轉生育意願。</p>
+<p>*   媒體上常見的 framing 是「政府出錢鼓勵生仔」和「baby bonus 效果有限」，政策成為 public debate 的焦點。</p>
+<p>*   受眾普遍認為在香港高壓、低生育的環境下，過度理想化「完美家庭」的宣傳會顯得不切實際。</p>
+<h5>5. 近期宣傳與競品</h5>
+<p>*   <strong>政府層面：政策宣傳為主</strong></p>
+<p>    *   政府近兩三年主力講「鼓勵生育」時，多數是政策宣傳，而非直接的「情感式生育 API」。</p>
+<p>    *   宣傳內容多圍繞「新生嬰兒獎勵金」、「新生嬰兒家庭揀樓優先 / 公屋分配優先 (Families with Newborns Flat Selection Priority Scheme / Allocation Priority Scheme)」、托兒服務擴展、稅務寬免等。</p>
+<p>    *   這類宣傳多以新聞稿、政策解說片、官員訪問形式出現，而非高情感 API。</p>
+<p>*   <strong>勞工及福利局 / 有關委員會：家庭友善工作間</strong></p>
+<p>    *   2023-24 年起，政府在「家庭友善僱主計劃 (FFEP)」下推出「Family-friendly Workplace」短片系列。</p>
+<p>    *   影片由僱主與僱員分享彈性工時、產假、育兒支援等，主調是「工作與家庭可兼得」。</p>
+<p>    *   調性偏向紀實 + testimonial，以減輕育兒與工作壓力作為鼓勵生育的間接路徑。</p>
+<p>*   <strong>家計會既有 API：「幾個至夠數」(2015 年起沿用至今)</strong></p>
+<p>    *   呼籲「想有幾多，就及早計劃」，強調了解生育年齡限制、夫婦共同討論理想家庭規模、鼓勵提早行動。</p>
+<p>    *   影片風格：真人演出 + 旁白 + 結尾 logo + hotline／網址，敘事以情感家庭畫面 + factual reminder 為主。</p>
+<p>    *   此 API 自 2015 年起持續在公共及商營電視頻道播出。</p>
+<p>*   <strong>總結：本地明言「鼓勵生育」的廣告欠奉</strong></p>
+<p>    *   明確、感性地鼓勵「多生小孩」的電視 API 幾乎欠奉。</p>
+<p>    *   政府宣傳重心放在政策工具 (bonus / housing / childcare)；家計會仍以 2015 API 延播。</p>
+<p>    *   既有視覺和語言多停留在「計劃生育 / 家庭友善職場」，未見大規模情感敘事 campaign 去重新定義「生育」本身的意義。</p>
+<p>*   <strong>競品 / 同類創意做法 (國際參考)</strong></p>
+<p>    *   <strong>國際政府 / 城市級生育 promotion：</strong></p>
+<p>        *   常見手法包括：經濟誘因 (補貼、房屋、托兒支援)、國家延續 / 愛國角度、生活方式 / 育兒樂趣角度、工作與生活平衡角度。</p>
+<p>        *   整體趨勢是「硬政策 + 軟情感」並行，情感片多講「孩子帶來的意義」，政策宣傳片則講「政府會托住你」。</p>
+<p>    *   <strong>健康 / 生殖品牌廣告例子：Natalist (美國)</strong></p>
+<p>        *   美國生殖健康品牌 Natalist 在 2022–2024 年推出 campaign，長片「Always in Awe」以女性整個生育旅程為主題，包括準備懷孕、IVF 針劑、孕婦身體變化等，強調「對女性生殖旅程心存敬畏」。</p>
+<p>        *   影片調性：真實、不粉飾、生育路上的高低起伏，同時頌揚女性的堅韌，與傳統「幸福家庭」視覺有明顯距離。</p>
+<h5>6. 香港角色</h5>
+<p>*   香港作為全球生育率最低的地區之一，面臨人口結構及長遠競爭力的挑戰。</p>
+<p>*   政府正積極透過多管齊下的政策措施（財政、房屋、托兒、稅務）鼓勵生育。</p>
+<p>*   家計會的角色正從過去的「少生」轉向「鼓勵規劃，達致理想家庭規模」，並需進一步配合政府政策，走向「鼓勵生」。</p>
+<p>*   目前的宣傳重點在於政策工具的解說，缺乏直接、感性的情感式生育宣傳，這為新的宣傳片提供了差異化的空間。</p>
+<p>---</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🛡️ 官方正名 / 用字</span><span class='mdl mfb' title='fallback：原本想要嘅 model 死咗，自動跌咗去後面嗰個'>✍️ Gemini Flash＋Search→Claude</span></div><div class='cbody'><p>Failed to authenticate. API Error: 401 OAuth access token has expired. Re-authenticate to continue.</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🔗 部門官方來源</span></div><div class='cbody'><p class='hint'>搵到嘅官方來源（網頁名 + 撮要，似 search 結果；撳入睇原文）：</p><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.youtube.com/user/TheFPAHK/playlists' target=_blank>▶️ 部門 YouTube 頻道 ↗</a><div class='srcsnip'>官方宣傳片頻道</div></div></div><div class='srcrow'><img class='srcthumb' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxizDh6yi3clRcaydd1Vu2Lz67CqPLuJv0SkdZ_XJao7fOoiCqSyHxCg&amp;s' loading=lazy><div style='flex:1'><a class='srctit' href='https://www.youtube.com/watch?v=u6fZJXOlGwI' target=_blank>📺 《計劃生育》宣教片 ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><img class='srcthumb' src='https://i.ytimg.com/vi/xPARmh5ej7k/mqdefault.jpg?sqp=-oaymwEFCJQBEFM&amp;rs=AMzJL3lcHbwe9jzN1juwC4uzIdG9xAdQ0Q' loading=lazy><div style='flex:1'><a class='srctit' href='https://www.youtube.com/watch?v=xPARmh5ej7k' target=_blank>📺 家計會2015 生隊籃球隊廣告[HD] ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><img class='srcthumb' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1OfES3ToJBb6bx-Jq8hbE-Av0RjUmzOVHiAI90pQIm9oO0g-dElHO8Q&amp;s' loading=lazy><div style='flex:1'><a class='srctit' href='https://www.youtube.com/watch?v=7lVJKT5t1Gc' target=_blank>📺 30多年前的“计划生育宣传片”，简直神预言，看完就想绝育！ ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><img class='srcthumb' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAMSTRHDFuhAsw05ONuvRJe7OAgEzhdy42sf-l6KlIcHesujAXQZxsyQ&amp;s' loading=lazy><div style='flex:1'><a class='srctit' href='https://www.youtube.com/watch?v=YGFZHbh0jD0' target=_blank>📺 YouTube ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.news.gov.hk/chi/2026/09/20260916/20260916_100217_197.html' target=_blank>📰 香港政府新聞網- 加推十一項組合拳措施鼓勵生育 ↗</a><div class='srcsnip'>可按這裏收看行政長官發表香港特區第一個五年規劃和施政報告整段附有手語翻譯的影片。） 本屆政府致力鼓勵生育，為進一步推動生育友善環境，新一份...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.hkcd.com.hk/content_app/2026-09/16/content_8775239.html' target=_blank>📰 有片｜【施政報告2026】推11項措施鼓勵生育：新生兒續獎2萬元 第二胎起獎3萬元 ↗</a><div class='srcsnip'>行政長官李家超今日（16日）發表2026年施政報告，加推11項組合拳措施鼓勵生育，包括延續2萬元新生嬰兒獎勵金計劃，第二胎起獎3萬元，還有一系列提高...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://m.hkej.com/landing/mobarticle2/id/4515096' target=_blank>📰 施政報告2026丨推11項措施鼓勵生育 首胎續派2萬 第二胎加碼至3萬 ↗</a><div class='srcsnip'>行政長官李家超發表新一份《施政報告》，表示本屆政府改變過去不干預政策，轉為鼓勵生育，營造生育友善環境，並推出多項「組合拳」措施鼓勵生育，協助家庭照顧子女成長...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://hkcna.hk/h5/docDetail.jsp?id=101423071&amp;channel=2803' target=_blank>📰 施政報告2026 | 香港推11項“組合拳”鼓勵生育 ↗</a><div class='srcsnip'>香港新聞網9月16日電香港特區行政長官李家超今日（16日）發表香港首份五年規劃，並發表新一份施政報告。李家超於新一份施政報告推11項“組合拳”措施...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://theinitium.com/20260916-whatsnew-hongkong-2026-policy-address-five-year-plan/' target=_blank>📰 香港首份「五年規劃」：強調非計劃經濟，連同施政報告2026聚焦北都融入國家｜Whatsnew ↗</a><div class='srcsnip'>特首李家超先宣讀五年規劃，及後扼要地讀出《施政報告》，有別於以往作法。</div></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🏛️ 政府 JOB 鐵則</span></div><div class='cbody'><ol id='rulelist' style='margin:2px 0 8px;padding-left:18px;line-height:1.7'><li id='rule0'>除標書表明，人物一般使用華人面孔（東亞／香港華人），唔好生成西方／白人臉</li><li id='rule1'>衣著連戲：同一角色每一格都著返同一套衫（衫款／顏色／髮型／配件固定），除非故事明寫佢換咗衫</li><li id='rule2'>全 board 畫風完全一致：同一 render 風格／同一打燈／同一色調／同一線條筆觸，由頭到尾統一，似同一個畫師一次過畫</li><li id='rule3'>Storyboard 盡量唔好出現雨傘；若劇情一定要有雨傘，唔可以係黃色</li></ol><div class='bdcm'><textarea id='newrule' rows='2' placeholder='加一條鐵則：例「Storyboard 唔好有雨傘」'></textarea><button class='btn mini' onclick="addRule('FAMPLAN')">＋ 加鐵則（即時生效）</button></div></div></div></div><div class='h2 tierh'>🔧 Optional 餵 AI（於 Debriefing 階段隨機餵 AI）</div><p class='hint tierhint'>唔強制，諗橋時隨機抽嚟畀 agency 撞火花。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>💭 5W1H Provocation</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ Gemini 2.5 Pro·預設</span></div><div class='cbody'><h3>5W1H 創意 Provocation — FAMPLAN</h3>
+<h5>1. Who（誰是核心角色與目標受眾？）</h5>
+<p>* <strong>發標與監管機構</strong>：主辦單位為香港家庭計劃指導會（FPAHK / FAMPLAN），並由衞生署（DH）及政府新聞處（ISD）共同監管與執行三方審批。</p>
+<p>* <strong>主要受眾（Primary Target）</strong>：25–39 歲已婚或感情穩定的夫婦，包括已有計劃生育或對生育（更多）子女感到猶豫不決者。</p>
+<p>* <strong>次要受眾（Secondary Target）</strong>：</p>
+<p>  * 20–24 歲憧憬建立家庭的年輕成年人。</p>
+<p>  * 對家庭觀念與生育決策具影響力的長輩（父母及祖父母）。</p>
+<h5>2. What（核心任務與完整交付物清單是什麼？）</h5>
+<p>* <strong>核心任務</strong>：策劃並執行全新推廣生育的整合行銷企劃（New Marketing Campaign to Promote Childbearing）。</p>
+<p>* <strong>完整 Deliverables 清單</strong>：</p>
+<p>  * <strong>TV API</strong>：1 條 30 秒短片（粵語配繁體中文書面語字幕、英語配英文字幕），另須提供符合 W3C WCAG 2.2 Level AA 無障礙標準之網絡版及 12 張劇照（JPEG）。</p>
+<p>  * <strong>Radio API</strong>：1 條 30 秒音頻（粵語、英語 Monologue 單白形式、普通話配音優先考慮國家語委 1B 級或以上），連同符合 WCAG 2.2 AA 之電台文稿軟複本。</p>
+<p>  * <strong>Key Visual &amp; Slogan</strong>：1 款 Key Visual 及雙語 Slogan，呈獻繁中、英文及雙語 3 個版面設計。</p>
+<p>  * <strong>印刷宣傳品</strong>：直式 A2 海報 1,000 張、A3 海報 50 張；長條死切折頁小冊子 20,000 本（繁中 13,000 本 / 英文 7,000 本），包含郵寄派發至家計會總部及最多 1,000 個指定地點。</p>
+<p>  * <strong>Web Banner</strong>：890x450px 及衍生最多 10 種指定尺寸。</p>
+<p>  * <strong>活動網站</strong>：建構 WordPress 響應式網站（最多 90 頁，含 CMS、SEO/GEO、WCAG 2.2 AA 驗證報告、12 個月託管維護及 5 個月缺陷責任保養期 DLP）。</p>
+<p>  * <strong>社交媒體</strong>：Facebook 及 Instagram 平台最少 10 個原創帖文/Reels（必須包含 1 條 API 發布影片及最少 4 條澄清生育誤區短片）。</p>
+<p>  * <strong>媒體買位</strong>：全盤媒體投放策略與執行（Net cost HK\$200,000 含佣金），保證 API 帖文 Paid Reach ≥ 150,000 及 YouTube 廣告觀看數 ≥ 20,000。</p>
+<h5>3. When（關鍵時間節點與製作時程為何？）</h5>
+<p>* <strong>2026年9月4日 17:00</strong>：遞交 Annex 12 Reply Slip（簡介會出席回條）截止。</p>
+<p>* <strong>2026年9月8日 16:00</strong>：Zoom 網上簡介會。</p>
+<p>* <strong>2026年9月28日 12:00（正午）</strong>：截標死線（投標文件須投入灣仔修頓中心 10 樓投標箱）。</p>
+<p>* <strong>2026年10月2日及10月5日</strong>：向評審委員會進行技術建議書 Presentation。</p>
+<p>* <strong>2026年10月16日</strong>：發出中標通知書（Letter of Acceptance）。</p>
+<p>* <strong>2027年1月15日</strong>：TV 及 Radio API 完成 Final Cut。</p>
+<p>* <strong>2027年2月15日前</strong>：TV 及 Radio API 交付電視台/電台正式首播。</p>
+<p>* <strong>2027年3月31日前</strong>：整體宣傳企劃（Marketing Campaign）及媒體投放完成。</p>
+<h5>4. Where（宣傳陣地與線點觸達場景在何處？）</h5>
+<p>* <strong>線上廣播與電視</strong>：本地免費及收費電視台（TVB、iCABLE HOY TV、Now TV / ViuTV、RTHK TV）、電台（RTHK、商業電台、新城電台）。</p>
+<p>* <strong>數碼陣地</strong>：WordPress 活動網站（預設子網域如 fertility.famplan.org.hk）、Facebook、Instagram、YouTube、Google Ads 及 Meta 廣告平台。</p>
+<p>* <strong>實體線下陣地</strong>：家計會灣仔總部及全港最多 1,000 個指定實體郵寄派發點（診所、社區中心及合作機構等）。</p>
+<h5>5. Why（背景痛點與三層溝通戰略目標是什麼？）</h5>
+<p>* <strong>背景痛點</strong>：香港正面臨嚴峻的人口結構轉變與低生育率危機（2024 年出生人數僅約 36,700 人）。宣傳須配合特區政府鼓勵生育政策，更新家計會過往「幾個至夠數」的溝通角度。</p>
+<p>* <strong>三層溝通戰略（Awareness → Engagement → Conversion）</strong>：</p>
+<p>  * <strong>Awareness（認知）</strong>：將為人父母呈現為充滿喜悅、富有意義及愛的象徵，鼓勵夫婦及早規劃生育。</p>
+<p>  * <strong>Engagement（互動）</strong>：正面擊破四大常見社會誤區：</p>
+<p>    1. *「責任過重」*：強調人生苦甜參半（bittersweet），付出背後帶來深遠回報與生命意義。</p>
+<p>    2. *「高齡懷孕」*：教育公眾 35 歲後受孕率下降及流產併發風險上升之醫學事實。</p>
+<p>    3. *「育兒等於母職」*：強調育兒為夫婦共同責任，鼓勵丈夫積極參與。</p>
+<p>    4. *「養大一個要六百萬」*：以合理財務規劃及忽視之家庭資源回應經濟焦慮。</p>
+<p>  * <strong>Conversion（行動）</strong>：動員夫婦在懷孕前尋求醫療諮詢（如婚前/孕前檢查、PREPARE 輔導、不育服務、男性健康服務等）。</p>
+<h5>6. How（預算上限與雙封套評核機制如何運作？）</h5>
+<p>* <strong>預算上限紅線</strong>：總預算上限為<strong>港幣 \$1,350,000</strong>（上限紅線，高於此金額一律不予考慮），採整體評估（Overall Basis）。</p>
+<p>  * *預算細項上限*：API 製作 max \$700,000；Marketing Campaign max \$350,000；KV/印刷品/Banner/廣告製作 max \$100,000；媒體買位（含佣金） max \$200,000。</p>
+<p>* <strong>雙封套評核機制（Two-Envelope System）</strong>：</p>
+<p>  * Technical Proposal（佔 80%）與 Fee Proposal（佔 20%）須分別以獨立無標記信封密封遞交。</p>
+<p>  * Technical 評分比重：Accuracy &amp; Clarity of Message (30%)、Creativity (15%)、Impact (15%)、Recall (10%)、Resonance / Ability to Convince (10%)、Pro-innovation Proposals (15%)、ESG Proposals (5%)。</p>
+<h5>7. Creative Provocation 1 — 品牌傳承與訊息破局（如何翻轉經典並打破四大誤區？）</h5>
+<p>* <strong>品牌資產翻轉</strong>：家計會過往「兩個就夠晒數」（1975）及「幾個至夠數？心中有數！」（2015）深植香港人集體回憶。全新企劃切忌採用「政府指令式逼生」口吻，而應承傳家計會「計劃」基因，將焦點由「數量控制」轉化為「及早自信規劃家庭」。</p>
+<p>* <strong>四大迷思具體破局</strong>：透過貼地日常情境，認同育兒的「bittersweet」真實感受，同時展現神隊友丈夫的共同承擔與合理理財規劃，以情感與理智並重的方式創造高 Recall（記憶點）與 Resonance（共鳴）。</p>
+<h5>8. Creative Provocation 2 — 全盤整合行銷與數碼傳播（如何實現 API 到全網轉化？）</h5>
+<p>* <strong>跨平台內容矩陣</strong>：以 30 秒 TV API 為核心火種，串聯 FB/IG 最少 10 個帖文/Reels（其中 4 條專門解構四大誤區）、WordPress 活動網站（嵌入導向家計會既有線上預約之服務連結）、海報及 20,000 本折頁小冊子。</p>
+<p>* <strong>媒體買位精準投放</strong>：運用 HK\$200,000 媒體預算，靈活組合 Meta Boosting、YouTube Video Ads 及 KOL 合作，嚴格確保達成 Paid Reach ≥ 150,000 及 YouTube Views ≥ 20,000 的 KPI 保證指標。</p>
+<h5>9. Creative Provocation 3 — 合規紅線與風險管控（如何確保通過三方審批與無障礙標準？）</h5>
+<p>* <strong>信封表面零識別紅線</strong>：Technical Proposal 與 Fee Proposal 信封表面絕對不可印有或寫有公司名稱或任何識別資料，否則即時取消資格。</p>
+<p>* <strong>三方審批關卡</strong>：所有 Storyboards、Scripts 及 Rough Cuts 必須同時獲得家計會（FPAHK）、衞生署（DH）及政府新聞處（ISD）審批，時間表須嚴格緊扣 2027 年 1 月 15 日 API Final Cut 死線。</p>
+<p>* <strong>技術與強制規範</strong>：網絡版 TV API、電台文稿、活動網站及所有上載數碼檔案必須 100% 符合 W3C WCAG 2.2 Level AA 無障礙標準；英文電台 API 指定採用單白（Monologue）形式；普通話配音優先考慮 1B 級或以上；完全符合維護國家安全合規要求。</p>
+<p>---</p>
+<p>💡 <strong>想繼續深化呢單標書？</strong> 我可以幫你根據《標書頁 RULEBOOK》§10 撰寫完整嘅 Technical Proposal 創意提案方向，或者輸出 Table 格式嘅 Fee Proposal 費用明細草稿，需要邊樣？</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📺 ISD 相類政府舊片</span></div><div class='cbody'><p>【呢條 brief 判定】目的:鼓勵參與/宣佈新法例/措施  題材:國安國教</p>
+<p>【同目的(鼓勵參與)ISD 慣性】主開頭 真人/講者(39%);格式率 旁白47% 熒幕蓋字100% 標誌結尾86% CTA65% 感嘆60% 三段式·0%;慣用結尾 以健康為起點 編織幸福人生, 基層醫療署標誌, 香港戲院商會標誌, 衞生署標誌</p>
+<p>【對口 ISD 舊作借鏡(同 目的×題材,參考佢點寫,唔好照抄,要創新)】</p>
+<p>— 國家安全教育2026  [鼓勵參與 | 國安國教]</p>
+<p>  ▶ https://www.youtube.com/watch?v=Lq2nz9omN0U&amp;list=PL1188A9802575C33F</p>
+<p>  旁白：每個人都希望生活在一個安定的社會 / 國家安全是社會繁榮穩定的重要基石 / 堅持和完善行政主導 / 統籌發展和安全 / 落實愛國者治港 / 構建和諧美好生活 / 國安才能港安 / 國安才能家安 / 維護國家安全人人有責 / 我們一起參與 / 熒幕蓋字：國安才能港安 / 國安才能家安 / nsed.gov.hk / 網頁二維碼</p>
+<p>— 投入選舉　共創未來（投票日）  [宣佈新法例/措施 | 選舉/國安國教]</p>
+<p>  ▶ https://www.youtube.com/watch?v=GMif3TzLpzg&amp;list=PL1188A9802575C33F</p>
+<p>  行政長官：新一屆立法會換屆選舉於12月7日舉行 / 所有選民都應積極履行公民責任 / 投票選出有能力、有抱負的愛國愛港議員 / 為香港發展和民生努力打拼 / 熒幕蓋字：李家超　行政長官 / 政務司司長：過去四年，特區實現良政善治 / 立法會高效高質量議政 / 熒幕蓋字：陳國基　政務司司長 / 財政司司長：要延續現屆立法會所展現的良好勢態 / 熒幕蓋字：陳茂波　財政司司長 / 律政司司長：全社會都要凝聚力量，共同參與 / 熒幕蓋字：林定國資深大律師　律政司司長 / 全體官員：12．7立法會選舉齊投票，共創美好未來 / 熒幕蓋字：2025年立法會換屆選舉 / 投入選舉　共創未來 / 12月7日 / elections.gov.hk / 2891 1001 / 網站二維碼</p>
+<p>— 二〇二五年立法會換屆選舉 — 投票日（白爺爺）  [宣佈新法例/措施 | 選舉/國安國教]</p>
+<p>  ▶ https://www.youtube.com/watch?v=QlMJm3EwTs4&amp;list=PL1188A9802575C33F</p>
+<p>  旁白：為幸福 / 必須要全情投入、積極參與社會 / 未來才可以更豐盛多彩！ / 想香港更和諧穩定，老有所依 / 就要投票，選出你心目中的理想議員！ / 十二月七日是立法會換屆選舉 / 記得投下你寶貴一票 / 選出新一屆愛國愛港 / 有擔當、做實事的立法會議員 / 為香港，為大家同謀發展！ / 投入選舉，共創未來！ / 熒幕蓋字：2025年立法會換屆選舉 / 投入選舉  共創未來 / 12月7日 / 網站二維碼 / www.elections.gov.hk / 查詢：2891 1001</p>
+<p>— 二〇二五年立法會換屆選舉 — 投票日（藍小寶）  [宣佈新法例/措施 | 選舉/國安國教]</p>
+<p>  ▶ https://www.youtube.com/watch?v=8F73PficacA&amp;list=PL1188A9802575C33F</p>
+<p>  旁白：為願景 / 必須要鼓足熱誠幹勁 / 未來才可以擁抱無限機會！ / 想香港更創新進步，適合你事業及家庭發展 / 就要投票，選出你心目中的理想議員！ / 十二月七日是立法會換屆選舉 / 記得投下你寶貴一票 / 選出新一屆愛國愛港 / 有擔當、做實事的立法會議員 / 為香港，為大家同謀發展！ / 投入選舉，共創未來！ / 熒幕蓋字：2025年立法會換屆選舉 / 投入選舉　共創未來 / 12月7日 / 網站二維碼 / www.elections.gov.hk / 查詢：2891 1001</p>
+<p>— 2025 Legislative Council Election — Polling Day (Red Treasure)  [宣佈新法例/措施 | 選舉/國安國教]</p>
+<p>  ▶ https://www.youtube.com/watch?v=iAh6n7fvdSM&amp;list=PL1188A9802575C33F</p>
+<p>  旁白：為夢想 / 必須要迸發青春活力 / 未來才可以創出無限可能！ / 想香港更適合你發揮所長 / 就要投票，選出你心目中的理想議員！ / 十二月七日是立法會換屆選舉 / 記得投下你寶貴一票 / 選出新一屆愛國愛港 / 有擔當、做實事的立法會議員 / 為香港，為大家同謀發展！ / 投入選舉，共創未來！ / 熒幕蓋字：2025年立法會換屆選舉 / 投入選舉　共創未來 / 12月7日 / 網站二維碼 / www.elections.gov.hk / 查詢：2891 1001</p>
+<p>— 投入選舉　共創未來（提名期）  [宣佈新法例/措施 | 選舉/國安國教]</p>
+<p>  ▶ https://www.youtube.com/watch?v=tnagThb1ifM&amp;list=PL1188A9802575C33F</p>
+<p>  行政長官：新一屆立法會對推動香港發展至關重要 / 我期待與新一屆立法會議員衷誠合作 / 團結做實事 / 熒幕蓋字：李家超　行政長官 / 香港發展 / 衷誠合作 / 團結 / 政務司司長：立法會換屆選舉將於12月7日舉行 / 熒幕蓋字：陳國基　政務司司長 / 立法會換屆選舉 / 12月7日 / 財政司司長：如果你熱愛香港 / 想一展愛國愛港抱負、服務公眾 / 熒幕蓋字：陳茂波　財政司司長 / 愛國愛港 / 服務公眾 / 律政司司長：記得在10月24日至11月6日提名期內報名參選 / 熒幕蓋字：林定國資深大律師　律政司司長 / 提名期　10月24日至11月6日 / 報名參選 / 行政長官：和我們一起，共同為巿民做實事 / 熒幕蓋字：為巿民做實事 / 熒幕蓋字：2025年立法會換屆選舉 / 投入選舉　共創未來 / 提名期：10月24日至11月6日 / elections.gov.hk / 2891 1001 / 網站二維碼</p></div></div></div><div class='h2 tierh'>📋 ADMIN（交標用 · 唔餵創意）</div><p class='hint tierhint'>交標 logistics：要交咩表格/文件、幾時截。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📑 要交表格 / 文件</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><div class='h3'>📝 要填嘅表格（4 張）</div><p class='hint'>真表頁自動 render 入對應<b>部門 Master Form GSlide</b>（開 GSlide 直接填）。🟦直 🟨橫。</p><div class='qconfirm' style='background:#fff4e5;color:#8a5a00'>⏳ pipeline 收到表會自動開 GSlide + render；此 dept 暫未配置，下次 run 自動補。</div><a class='btn ghost' target='_blank' href='https://docs.google.com/spreadsheets/d/1yiDJ3H8VFK3-6kZQZEzwkiD8VaRgVOzCwxcFbAyP3XE/edit'>📋 開 Master Form Registry（填表值喺度）</a><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/1nBf0Bdx17Jvo8owVWrvM-A_MlKxL98ttyMenXc-cewY/edit'>🎞️ 開 FAMPLAN Master Form GSlide（真表頁，直接填）</a><button class='btn' style='width:100%;margin-top:6px' onclick="fillForms(this)">🤖 AI 自動填公司資料入 Registry</button><script type='application/json' class='filldata'>{"folderName": "FAMPLAN_New Marketing Campaign Childbe", "forms": [{"name": "Annex 7 - Statement of Compliance and Offer to be Bound", "pages": "42", "text": ""}, {"name": "Annex 8 - Fee Proposal", "pages": "43-44", "text": ""}, {"name": "Annex 10 - Schedule of Pro-innovation Proposals and ESG Proposals", "pages": "55", "text": ""}, {"name": "Annex 11 - Consent to Disclosure", "pages": "56", "text": ""}]}</script><p class='hint'>撳上面掣 → AI 逐張表認要填咩欄（公司名/地址/BR…）→ 自動填入 <b>Master Form Registry</b> 嘅 <b>Fill_FAMPLAN_New Marketing Campaign Childbe</b> tab → 你開 Registry copy 啲值入 GSlide 真表頁。⚠️ 價錢/簽名要自己填。（全程 GAS 做，唔使部 Mac 開機）</p><div class='h3'>② 交標時 — Forms / Schedules（4）</div><p class='hint'>Form GSlide 已 render 真表頁做 background → 人手填。</p><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/1nBf0Bdx17Jvo8owVWrvM-A_MlKxL98ttyMenXc-cewY/edit'>🎞️ 開 FAMPLAN Form GSlide</a><div class='qconfirm' style='background:#eef0fe;color:#3730a3'>貼入 panel 頁碼：<b>42,43-44,55,56</b></div><div class='timeline'><div class='tlrow'><span class='tldate'>🟦 p42</span><span class='tllabel'>Annex 7 - Statement of Compliance and Offer to be Bound</span></div><div class='tlrow'><span class='tldate'>🟦 p43-44</span><span class='tllabel'>Annex 8 - Fee Proposal</span></div><div class='tlrow'><span class='tldate'>🟦 p55</span><span class='tllabel'>Annex 10 - Schedule of Pro-innovation Proposals and ESG Proposals</span></div><div class='tlrow'><span class='tldate'>🟦 p56</span><span class='tllabel'>Annex 11 - Consent to Disclosure</span></div></div><div class='h3' style='margin-top:11px'>📄 要交嘅文件（2 份 · 表格以外，標明出自邊份 DOC + 頁碼）</div><div class='timeline'><div class='tlrow'><span class='tllabel'><b>Technical Proposal</b> <span class='hint'>（tender document · p2）</span> — 包含故事板軟硬複本（含中英腳本及畫面描述、標明拍攝格式）、電台廣東話/英文/普通話文稿 W</span></div><div class='tlrow'><span class='tllabel'><b>Annex 12 - Reply Slip</b> <span class='hint'>（tender document · p1）</span> — 回覆是否出席 2026-09-08 的線上簡介會，需於 2026-09-04 17:00 </span></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📮 交標方法（地址 / 信封 / 份數）</span></div><div class='cbody'><p>- <strong>截標</strong>：2026-09-28 12:00</p>
+<p>- <strong>印幾多份</strong>：Two duplicate copies (one original and one copy) for each proposal sealed in separate envelopes</p>
+<p>- <strong>幾多信封</strong>：2 個</p>
+<p>- <strong>Soft copy（電子副本：CD/USB？）</strong>：標書無提及 → 只交紙本,不需 soft_copy</p>
+<p>- <strong>交去邊 — To</strong>：Chairman of Tender Opening Committee, The Family Planning Association of Hong Kong</p>
+<p>- <strong>交去邊 — Address</strong>：Tender Box at the entrance of 10/F, Southorn Centre, 130 Hennessy Road, Wan Chai, Hong Kong</p>
+<p>- <strong>信封 label「Technical Proposal」要寫</strong>：`Tender: New Marketing Campaign to Promote Childbearing`（Enclosed in a plain and sealed envelope clearly marked &#x27;Technical Proposal&#x27;. Must contain TWO DUPLICATE COPIES of Technical Proposal, Statement of Compliance and Offer to be Bound (Annex 7), and Schedule of Pro-innovation Proposals and ESG Proposals (Annex 10). NO PRICE included. Please do NOT give any indication on the envelope surface/cover which may relate to the proposals of your company.）</p>
+<p>- <strong>信封 label「Fee Proposal」要寫</strong>：`Tender: New Marketing Campaign to Promote Childbearing`（Enclosed in a plain and sealed envelope clearly marked &#x27;Fee Proposal&#x27;. Must contain TWO DUPLICATE COPIES of Fee Proposal (Annex 8 with price information at Parts A &amp; B and detailed cost breakdown) and Consent to Disclosure (Annex 11). Please do NOT give any indication on the envelope surface/cover which may relate to the proposals of your company.）</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>💰 預算 / 費用（Budget / Fee Breakdown）</span></div><div class='cbody'><p>- <strong>預算（Budget）</strong>：HK\$1,350,000</p>
+<p>- <strong>費用明細要求（Fee Proposal Breakdown）</strong>：有要求 (須填寫 Annex 8 Part A 各分項費用、Part B 付款時間表，並附上詳細成本分項 cost breakdown)</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📅 日程</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ Gemini 2.5 Pro·預設</span></div><div class='cbody'><p>- 2026-08-29 Invitation to Contractors</p>
+<p>- 2026-09-04 Submission of Acknowledgement / Reply Slip</p>
+<p>- 2026-09-08 Briefing to interested Contractors by FPAHK</p>
+<p>- 2026-09-28 Submission of Technical Proposal and Fee Proposal (Tender closing date)</p>
+<p>- 2026-10-02 Presentation of Technical Proposal to Selection Panel (Day 1)</p>
+<p>- 2026-10-05 Presentation of Technical Proposal to Selection Panel (Day 2)</p>
+<p>- 2026-10-16 Issuance of the Letter of Acceptance to the successful bidder</p>
+<p>- 2026-10-21 Debriefing session and Project kick-off meeting</p>
+<p>- 2026-10-30 Confirmation of storyboards, scripts, KV, poster &amp; pamphlet layouts</p>
+<p>- 2026-11-13 Approval on storyboards and scripts from DH and ISD</p>
+<p>- 2026-11-17 Pre-production meeting with the contractor</p>
+<p>- 2026-11-27 Finalise KV, poster &amp; pamphlets in all languages</p>
+<p>- 2026-12-14 Completion and presentation of rough cut of TV and radio APIs</p>
+<p>- 2026-12-28 Approval on rough cut of TV and radio APIs from DH and ISD</p>
+<p>- 2026-12-31 Launch of campaign website phase 1</p></div></div></div></div>
+<div id='debrief' class='tabpanel'><div class='h2' style='margin-top:14px'>📨 共用 BRIEF（標書 tab 全份）</div><p class='hint'>8 間諗橋時都收到呢份 brief（製作要求 3D/mascot/明星、老闆方向…）做底，再各自加上面 dispatch 嘅角度/畫風/device。概念諗咗會 gatekeep 對返 brief 符合先生 BD。</p><div class='card briefcard'><h3>標書 TAB（你嘅 BRIEF — 全份，必跟）</h3>
+<h4>📋 標書撮要</h4>
+<h5>1. 背景同目的</h5>
+<p>* <strong>背景</strong>：香港正面臨生育率持續下降及人口老齡化的顯著人口結構轉變。雖然 2024 年受「龍年效應」及政府推出的 20,000 港元新生嬰兒獎勵金帶動，出生人數微升 10.5% 至 36,700 人，但該數字仍為 1961 年以來的低位之一（p.4–5）。香港家庭計劃指導會（FPAHK）目前播放之電視宣傳短片（API）標語為「How Many is Enough?/幾個至夠數」，為配合香港特區政府鼓勵生育的政策，家計會提出全新宣傳企劃，包括製作全新的電視及電台 API（p.5）。</p>
+<p>* <strong>目的</strong>：</p>
+<p>  1. 鼓勵猶豫不決或猶豫未定的個人及夫婦對為人父母和家庭生活建立更正面的看法（p.5）。</p>
+<p>  2. 推動有意生育（更多）子女的夫婦及早規劃，並做出明智、自信的建構家庭決定（p.5）。</p>
+<p>  3. 啟發憧憬建立家庭的年輕夫婦將生育視為富有意義且充滿成就感的人生旅程（p.5）。</p>
+<h5>2. 目標受眾</h5>
+<p>* <strong>主要受眾（Primary Target）</strong>：25–39 歲已婚或感情穩定的夫婦，且有意生育或對生育（更多）子女猶豫不決者（p.4）。</p>
+<p>* <strong>次要受眾（Secondary Target）</strong>：</p>
+<p>  * 20–24 歲憧憬建立家庭的年輕成年人（p.4）。</p>
+<p>  * 對家庭觀念具影響力的父母／祖父母（p.5）。</p>
+<h5>3. 傳意目標／核心訊息</h5>
+<p>宣傳策略分為三個推進層次（p.5–6）：</p>
+<p>1. <strong>認知（Awareness）</strong>：將為人父母呈現為充滿喜悅、富有意義及愛的象徵；鼓勵夫婦及早規劃生育（p.5）。</p>
+<p>2. <strong>互動（Engagement）</strong>：重塑對生育的觀念並破除常見誤解（p.6）：</p>
+<p>   * *「責任太大」*：強調人生苦甜參半，為人父母雖需付出與犧牲，但亦帶來深遠的回報與意義。</p>
+<p>   * *「高齡仍可受孕」*：教育公眾 35 歲後受孕成功率下降，以及流產與孕期併發症風險增加之事實。</p>
+<p>   * *「育兒等於母職」*：強化育兒為夫婦共同責任，鼓勵丈夫積極參與。</p>
+<p>   * *「養大一個小朋友要六百萬」*：以合理的財務規劃及忽視之家庭資源回應。</p>
+<p>3. <strong>行動（Conversion）</strong>：鼓勵夫婦在懷孕前尋求醫療諮詢，以優化健康狀況（p.6）。提供相關資源包括：婚前檢查、PREPARE 婚前輔導及婚前準備小組、孕前檢查、政府資助孕前健康服務、早孕檢查、不育服務、男性健康服務及性治療等（p.6）。</p>
+<h5>4. 影片／製作規格</h5>
+<p>* <strong>電視 API（TV API）</strong>：</p>
+<p>  * <strong>集數與版本</strong>：1 版本（p.7, p.23）。</p>
+<p>  * <strong>長度</strong>：每首 30 秒（p.7, p.23）。</p>
+<p>  * <strong>拍攝規格</strong>：首選 HDCAM、RED ONE 或同等格式；可視乎創意採用高解像度影片（HDV）或單反相機拍攝（p.7, p.23）。</p>
+<p>  * <strong>輸出格式</strong>：檔案格式 16:9 (HD) XDCAM HD422 at 50Mbps in MXF，以及 HDCAM 磁帶格式（p.7, p.23）。</p>
+<p>  * <strong>語言與字幕</strong>：廣東話版（配繁體中文書面語字幕）及英文版（配英文字幕）（p.7, p.23）。</p>
+<p>  * <strong>配音</strong>：廣東話及英文旁白／對話配音員（英文版需盡量以英文表達）（p.12）。</p>
+<p>  * <strong>音樂</strong>：首選尾期配樂／量身訂造音樂（tailor-made/post-scored music）（p.7, p.13）。</p>
+<p>  * <strong>特別規格（網絡無障礙標準）</strong>：必須另行提供一份符合萬維網聯盟（W3C）《無障礙網頁內容指引》（WCAG）2.2 AA 級標準之網絡版 TV API（p.7–8, p.11）。另需提供 12 張劇照（JPEG）及可編輯源檔（p.7–8）。</p>
+<p>* <strong>電台 API（Radio API）</strong>：</p>
+<p>  * <strong>集數與版本</strong>：1 版本（p.8, p.26）。</p>
+<p>  * <strong>長度</strong>：每首 30 秒（p.8, p.26）。</p>
+<p>  * <strong>語言與格式</strong>：廣東話、英文（需為獨白式 Monologue）、普通話（配音員宜取得國家語委普通話水平測試一級乙等或以上）（p.8, p.12, p.26）。另需提供符合 WCAG 2.2 AA 標準之電台文稿軟複本（p.11）。</p>
+<h5>5. 指定班底</h5>
+<p>* <strong>名人／明星／Talents 要求</strong>：若宣傳企劃或 API 邀請名人、明星或 Talents 參演，承包商需負責聯繫並處理其演出權利（Performers&#x27; rights clearance），確保 API 可在香港及海外任何媒體（電視、電台、網絡、公共交通等）無期限播放及非營利使用；並需在項目預算內承擔其髮型、化妝、服裝、道具及交通費用（p.13–14）。</p>
+<p>* <strong>專業團隊</strong>：承包商需提供完整的專業團隊及設備，包括拍攝團隊（戶外及室內）、離線/在線剪接、廣東話/英文/普通話專業配音員、音樂創作及音效工程等（p.12–13）。</p>
+<h5>6. 創意及策略重點／風格要求</h5>
+<p>* <strong>原創性</strong>：技術建議書必須為承包商之原創創意，不得將曾售予其他機構之創意轉售或重複使用（p.12）。</p>
+<p>* <strong>整體風格與策略</strong>：企劃主調需呈現父母之喜悅、意義與愛，以正面、具說服力且具衝擊力之方式傳播，有效突破公眾誤解（p.5–6, p.45–49）。</p>
+<p>* <strong>全盤宣傳企劃（Marketing Campaign）</strong>：</p>
+<p>  * <strong>宣傳網站（Campaign Website）</strong>：採用 WordPress 開發（最多 90 頁，雙語，符合 WCAG 2.2 AA），提供 12 個月託管維護及 5 個月缺陷責任保養期（p.10, p.28–34）。</p>
+<p>  * <strong>社交媒體（Social Media）</strong>：最少 10 個原創 FB/IG 帖文/Reels/動態，包括最少 1 個發布 API 之影片帖文及最少 4 個解答公眾誤解之短片/Reels（p.10–11）。</p>
+<p>  * <strong>媒體買位策略（Media Buying）</strong>：執行整合媒體買位（預算上限 HK\$200,000 含佣金），保證 API 社交媒體帖文達到最少 150,000 獨立用戶之付費覆蓋率（Paid Reach），以及 YouTube 影片廣告最少 20,000 次觀看數（p.11, p.18）。</p>
+<p>* <strong>版權要求</strong>：API 及所有衍生製作物（包括分鏡腳本、文稿、設計、圖像、相片等）之全球及永久版權均完全歸家計會所有（p.3, p.13, p.14, p.15）。</p>
+<h5>7. 交付物同時間表</h5>
+<p>* <strong>交付物（Deliverables）</strong>：</p>
+<p>  1. 30 秒電視 API（廣東話配繁中字幕、英文配英文字幕，連同符合 WCAG 2.2 AA 之網絡版）（p.7）。</p>
+<p>  2. 30 秒電台 API（廣東話、英文、普通話）（p.8）。</p>
+<p>  3. Key Visual 及 Slogan 設計（繁中、英文及雙語版本）（p.8）。</p>
+<p>  4. 海報（雙語，A2 尺寸 1,000 張，A3 尺寸 50 張，印刷並郵寄至最多 1,000 個指定地點）（p.8–9）。</p>
+<p>  5. 小冊子（繁中 13,000 本，英文 7,000 本，折頁死切，印刷並郵寄至最多 1,000 個指定地點）（p.9–10）。</p>
+<p>  6. Web Banner 設計（890x450px 及衍生最多 10 種尺寸）（p.10）。</p>
+<p>  7. 宣傳網站（WordPress，最多 90 頁，含 CMS，提供 12 個月託管及維護）（p.10, p.28–34）。</p>
+<p>  8. 社交媒體帖文（FB/IG 最少 10 個，包含短片/Reels/圖卡/互動遊戲等）（p.10–11）。</p>
+<p>  9. 媒體投放及廣告製作（包含媒體買位、投放優化及效益報告）（p.11）。</p>
+<p>* <strong>時間表（Working Schedule）</strong>：</p>
+<p>  * <strong>2026年9月4日 17:00 前</strong>：遞交 Reply Slip（簡介會出席回條，p.2, p.19, p.57）。</p>
+<p>  * <strong>2026年9月8日 16:00</strong>：Zoom 網上簡介會（p.2, p.19）。</p>
+<p>  * <strong>2026年9月28日 中午 12:00 前</strong>：截標（將標書投入灣仔修頓中心 10 樓標箱，p.1, p.2, p.19）。</p>
+<p>  * <strong>2026年10月2日及5日</strong>：向評審委員會進行技術建議書 Presentation（p.19）。</p>
+<p>  * <strong>2026年10月16日</strong>：發出中標通知書（Letter of Acceptance）（p.19）。</p>
+<p>  * <strong>2027年1月15日</strong>：電視及電台 API 完成 Final Cut（p.2, p.21）。</p>
+<p>  * <strong>2027年2月15日前</strong>：電視及電台 API 交付電視台/電台並正式首播（p.2, p.21）。</p>
+<p>  * <strong>2027年3月31日前</strong>：整體宣傳企劃（Marketing Campaign）及媒體投放完成（p.2, p.21）。</p>
+<h5>8. 任何強制要求或紅線</h5>
+<p>* <strong>預算上限紅線</strong>：本項目總預算上限為港幣 \$1,350,000，高於 HK\$1,350,000 之標書一律不予考慮（p.2, p.18）。</p>
+<p>* <strong>遞交方式及雙封套制度（Two-Envelope System）</strong>：</p>
+<p>  * 技術建議書（Technical Proposal，連同 Annex 7、Annex 10 及創作樣板）與費用建議書（Fee Proposal，連同 Annex 8、Annex 11 及費用明細）必須分別密封於兩個獨立信封內（每封需附正本及副本共 2 份），信封表面需清楚註明「Technical Proposal」或「Fee Proposal」及標書編號（p.2, p.58）。</p>
+<p>  * <strong>信封表面絕對不可印有或寫有任何與投標公司相關之名稱或識別資料，否則取消資格</strong>（p.2, p.3, p.58）。</p>
+<p>  * 不接受電郵或傳真遞交；逾期遞交不予考慮（p.3）。</p>
+<p>* <strong>必要簽署文件</strong>：必須於截標前遞交由授權人簽署之 Statement of Compliance and Offer to be Bound（Annex 7），否則標書將不獲考慮（p.2, p.42, p.45）。</p>
+<p>* <strong>網絡無障礙強制標準（WCAG 2.2 AA）</strong>：所有數碼檔案（包括網絡版 TV API、電台文稿、網站、海報/小冊子數碼檔、網頁 Banner 及網上相片等），必須嚴格符合政府無障礙網頁要求（W3C WCAG 2.2 Level AA）（p.7, p.8, p.9, p.10, p.11, p.28）。</p>
+<p>* <strong>國家安全維護條款</strong>：發標方保留因投標者從事或被合理相信從事危害國家安全之行為而取消其投標資格之權利（p.2 / Terms of Tender p.2, p.9）。</p>
+<h4>⚠️ 製作要求（標書硬性，每個概念必跟，違 = 廢稿）</h4>
+<p>- <strong>手語</strong>：唔使（標書原文:標書無提及手語要求。，p）</p>
+<p>- <strong>W3C影片</strong>：要（標書原文:電視 API 網路版、電台文稿、網站、海報、單張、網頁 Banner 及相片均須符合 W3C WCA，p7）</p>
+<p>- <strong>明星/名人/官員</strong>：無Preference（標書原文:標書未強制要求使用明星。如方案包含明星/Celebrities/Talents，承辦商需負責聯繫、清，p13）</p>
+<p>- <strong>Mascot</strong>：無Preference（標書原文:標書無提及吉祥物要求。，p）</p>
+<p>- <strong>動畫</strong>：無Preference（標書原文:社交媒體帖文及廣告可包含短動畫/Motion Graphics，但未強制規定必須採用 2D 動畫。 ，p10）</p>
+<h4>📑 要交文件（邊份 DOC + 頁碼）</h4>
+<p>- <strong>Technical Proposal</strong>（tender document · p2） — 包含故事板軟硬複本（含中英腳本及畫面描述、標明拍攝格式）、電台廣東話/英文/普通話文稿 W</p>
+<p>- <strong>Annex 7 - Statement of Compliance and Offer to be Bound</strong>（tender document · p2） — 必須填妥並簽署，與 Technical Proposal 一齊封於「Technical P</p>
+<p>- <strong>Annex 10 - Schedule of Pro-innovation Proposals and ESG Proposals</strong>（tender document · p2） — 填寫創新提案及 ESG 建議詳情，與 Technical Proposal 一齊封於「Te</p>
+<p>- <strong>Annex 8 - Fee Proposal</strong>（tender document · p2） — 包含 Part A 合約價格及 Part B 付款時間表，必須附上詳細費用分項 break</p>
+<p>- <strong>Annex 11 - Consent to Disclosure</strong>（tender document · p2） — 必須填妥並簽署，與 Fee Proposal 一齊封於「Fee Proposal」信封內遞</p>
+<p>- <strong>Annex 12 - Reply Slip</strong>（tender document · p1） — 回覆是否出席 2026-09-08 的線上簡介會，需於 2026-09-04 17:00 </p>
+<h4>📮 交標方法（地址／信封／份數）</h4>
+<p>- <strong>截標</strong>：2026-09-28 12:00</p>
+<p>- <strong>印幾多份</strong>：Two duplicate copies (one original and one copy) for each proposal sealed in separate envelopes</p>
+<p>- <strong>幾多信封</strong>：2 個</p>
+<p>- <strong>Soft copy（電子副本：CD/USB？）</strong>：標書無提及 → 只交紙本,不需 soft_copy</p>
+<p>- <strong>交去邊 — To</strong>：Chairman of Tender Opening Committee, The Family Planning Association of Hong Kong</p>
+<p>- <strong>交去邊 — Address</strong>：Tender Box at the entrance of 10/F, Southorn Centre, 130 Hennessy Road, Wan Chai, Hong Kong</p>
+<p>- <strong>信封 label「Technical Proposal」要寫</strong>：`Tender: New Marketing Campaign to Promote Childbearing`（Enclosed in a plain and sealed envelope clearly marked &#x27;Technical Proposal&#x27;. Must contain TWO DUPLICATE COPIES of Technical Proposal, Statement of Compliance and Offer to be Bound (Annex 7), and Schedule of Pro-innovation Proposals and ESG Proposals (Annex 10). NO PRICE included. Please do NOT give any indication on the envelope surface/cover which may relate to the proposals of your company.）</p>
+<p>- <strong>信封 label「Fee Proposal」要寫</strong>：`Tender: New Marketing Campaign to Promote Childbearing`（Enclosed in a plain and sealed envelope clearly marked &#x27;Fee Proposal&#x27;. Must contain TWO DUPLICATE COPIES of Fee Proposal (Annex 8 with price information at Parts A &amp; B and detailed cost breakdown) and Consent to Disclosure (Annex 11). Please do NOT give any indication on the envelope surface/cover which may relate to the proposals of your company.）</p>
+<h4>💰 預算 / 費用</h4>
+<p>- <strong>預算（Budget）</strong>：HK\$1,350,000</p>
+<p>- <strong>費用明細要求（Fee Proposal Breakdown）</strong>：有要求 (須填寫 Annex 8 Part A 各分項費用、Part B 付款時間表，並附上詳細成本分項 cost breakdown)</p>
+<h4>⛔ 注意事項 / 紅線</h4>
+<p>- [無障礙] 網絡無障礙標準 (WCAG 2.2 AA)：電視 API 網絡版、網站、海報、單張、網頁 Banner 及相片等所有數碼檔案，必須符合 W3C WCAG 2.2 L</p>
+<p>- [明星] 明星及演出者權利清除 (Celebrity / Talent Involvement)：若方案包含明星或演出者參與，承辦商需負責聯繫、清除全球及永久演出者權利，並承擔髮型、化妝、服裝、道具及交通等費用。</p>
+<p>- [其他] 預算上限紅線 (Maximum Budget Limit)：項目預算上限為港幣 \$1,350,000 元，高於 \$1,350,000 的投標將不獲考慮。</p>
+<p>- [其他] 雙封套遞交及信封匿名規範 (Two-Envelope Submission &amp; Anonymity)：Technical Proposal 與 Fee Proposal 必須分別密封於兩個獨立信封內（各一式兩份），信封表面</p>
+<p>- [其他] 嚴格完成及交付時間 (Strict Completion &amp; Delivery Schedule)：電視及電台 API 需於 2027 年 1 月 15 日前完成，並於 2027 年 2 月 15 日前交付電視台/電台；</p>
+<h4>⚡ 創意亮點（research 掘出嘅真嘢）</h4>
+<h4>⚡ 創意亮點 — FAMPLAN·New Marketing Campaign to Promote Childbearing (香港家庭計劃指導會全新鼓勵生育宣傳企劃)（research 掘出嚟，可以做橋嘅真嘢）</h4>
+<p>1. 🇭🇰 <strong>「幾個至夠數」經典 IP 反轉</strong></p>
+<p>   - 事實：家計會 1975 年黃霑作詞的「兩個就夠晒數」及 2015 年「幾個至夠數？理想家庭心中有數」API 具極高國民度，經典口號與畫面深植香港人集體回憶。（出處：[hooks-research] FAMPLAN）</p>
+<p>   - 💡 可以點做橋：可以借用或翻轉家計會經典「心中有數」概念，以現代視角重新定義新世代的家庭規劃與生育選擇。</p>
+<p>2. 💡 <strong>破除「養大一個要六百萬」迷思</strong></p>
+<p>   - 事實：標書指定將反駁「養大一個要六百萬」列為四大育兒誤解之一；該數字源自商業銀行廣告與社會誇大印象，忽視了合理的財務規劃與家庭資源。（出處：tender document）</p>
+<p>   - 💡 可以點做橋：可以用溫暖貼地的真實預算與家庭支援視角，正面打破育兒昂貴的經濟焦慮，引導夫婦建立理財信心。</p>
+<p>3. 💡 <strong>35歲黃金生育期與醫學事實</strong></p>
+<p>   - 事實：標書強調 35 歲後女性受孕成功率顯著下降且流產風險增加；同時 2024 年受龍年效應及 2 萬元津貼帶動，出生人數回升 10.5% 至 36,700 人。（出處：tender document）</p>
+<p>   - 💡 可以點做橋：可以用理性而溫馨的醫學數據與時機提醒，動員有意生育的夫婦「及早規劃，勝於等待」。</p>
+<p>4. 🇭🇰 <strong>翻轉「育兒即母職」性別偏見</strong></p>
+<p>   - 事實：標書要求破除「Parenthood equals motherhood」的舊觀念，強調育兒是夫婦共同責任，並特別鼓勵丈夫積極參與。（出處：tender document）</p>
+<p>   - 💡 可以點做橋：可以聚焦現代夫婦神隊友關係與父親參與的日常點滴，展現雙方共同承擔、共享喜悅的親密陪伴。</p>
+<p>5. 🏷️ <strong>家計會社媒角色「阿得與阿家」</strong></p>
+<p>   - 事實：家計會官方 Facebook 及 IG 擁有長年深耕年輕族群的插畫角色「阿得與阿家」（Tak &amp; Kar），專門解構親密關係、備孕與性健康話題。（出處：[hooks-research] FAMPLAN）</p>
+<p>   - 💡 可以點做橋：可以將「阿得與阿家」延伸至社交媒體短片與互動內容，無縫拉近與 20–24 歲及 25–39 歲年輕受眾的距離。</p>
+<p>6. 👤 <strong>醫療體系與前置檢查資源</strong></p>
+<p>   - 事實：本項目由家計會主辦並由衞生署及政府新聞處監督，提供婚前檢查、孕前檢查、早孕檢查及不育服務等全方位醫療支援。（出處：tender document）</p>
+<p>   - 💡 可以點做橋：可以透過專業醫療團隊與完善檢查服務的權威背書，將夫婦的猶豫觀望轉化為預約檢查的具體行動。</p>
+<h4>📅 日程</h4>
+<p>- 2026-08-29 Invitation to Contractors</p>
+<p>- 2026-09-04 Submission of Acknowledgement / Reply Slip</p>
+<p>- 2026-09-08 Briefing to interested Contractors by FPAHK</p>
+<p>- 2026-09-28 Submission of Technical Proposal and Fee Proposal (Tender closing date)</p>
+<p>- 2026-10-02 Presentation of Technical Proposal to Selection Panel (Day 1)</p>
+<p>- 2026-10-05 Presentation of Technical Proposal to Selection Panel (Day 2)</p>
+<p>- 2026-10-16 Issuance of the Letter of Acceptance to the successful bidder</p>
+<p>- 2026-10-21 Debriefing session and Project kick-off meeting</p>
+<p>- 2026-10-30 Confirmation of storyboards, scripts, KV, poster &amp; pamphlet layouts</p>
+<p>- 2026-11-13 Approval on storyboards and scripts from DH and ISD</p>
+<p>- 2026-11-17 Pre-production meeting with the contractor</p>
+<p>- 2026-11-27 Finalise KV, poster &amp; pamphlets in all languages</p>
+<p>- 2026-12-14 Completion and presentation of rough cut of TV and radio APIs</p>
+<p>- 2026-12-28 Approval on rough cut of TV and radio APIs from DH and ISD</p>
+<p>- 2026-12-31 Launch of campaign website phase 1</p></div></div>
+<div id='handbd' class='tabpanel'><p class='hint'>喺 Master GSheet 開「TV API Script <b>1／2／3</b>」三個 tab 放唔同 TV API 稿，<b>撳邊個 SET 就生邊個</b>（全 NLM 風格各一，純畫面唔蓋字）。</p><div class='acts' style='margin-bottom:6px'><button class='btn' title='讀 Master GSheet「TV API Script 1」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FAMPLAN&concept=1&stage=handbd&engine=allstyles&target=main')">🎬 SET 1 → 生 BD</button><button class='btn' title='讀 Master GSheet「TV API Script 2」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FAMPLAN&concept=2&stage=handbd&engine=allstyles&target=main')">🎬 SET 2 → 生 BD</button><button class='btn' title='讀 Master GSheet「TV API Script 3」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FAMPLAN&concept=3&stage=handbd&engine=allstyles&target=main')">🎬 SET 3 → 生 BD</button><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card empty'>未生過手寫稿 BD —— 撳上面 SET 生成（或先喺 Master GSheet 放稿）。</div></div>
+<div id='theme1_1' class='tabpanel' data-set='1'><div class='banner'>🧭 北極星未定。撳掣 → 7 agency + 委員會就住成份標書諗一個大主題（big idea）+ 一個綜合口號。所有 MOD ladder 返呢度。</div><div class='card'><button class='btn big' title='' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FAMPLAN&concept=PLAN&stage=gen_theme&target=main')">🧭 生成大主題 + 綜合口號</button></div><div class='card'><button class='btn ghost' title='將呢個 dept 全部已生成嘅 MOD planning（主題／系列／SOC／MEDIA／KOL）出去 Master GSheet，每個 mod 一個 tab；你喺 GSheet 改完，自己貼返入真 deck（GSlide）。design 你話事。' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FAMPLAN&concept=all&stage=mod_gsheet&target=main')">📤 全部 MOD → Master GSheet（畀你改）</button></div></div>
+<div id='tvapi1_1' class='tabpanel' data-set='1'><div class='banner'>👉 委員會已預選六強，你可以隨選隨剔，撳右下 Submit，NBLM 即自動幫佢哋生 BD 入 VID 2。</div><div class='h2'>🔻 推薦六強（橫掃揀）</div><div class='carousel'><div class='ccard surface-card  sel' data-cid='nbac10582e'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>方向 1</span></div><div class='ctitle'>「心中的數字」翻轉經典篇</div><div class='cbody'><p>Big idea：致敬家計會「幾個至夠數」經典，將焦點由爭論數字轉化為「及早規劃，幸福心中有數」。</p>
+<p>點解：對應 Debrief 第 1 點承傳家計會品牌資產與歷史，破除社會對生育數目的集體焦慮。</p>
+<p>Key message：將為人父母呈現為充滿喜悅與愛的象徵，鼓勵夫婦及早規劃，讓家庭生活自信心中有數。</p>
+<p>視覺裝置：黑白划艇經典廣告質感轉換至彩色現代溫馨客廳，視覺時空跨越對比。</p>
+<p>班底：25-39歲現代年輕夫婦與幼兒（素人演員）。</p>
+<p>調子：溫馨懷舊、輕快啟發。</p>
+<p>片長：30 秒 · 11 格</p>
+<p>1. 【畫面】復古質感黑白畫面，黑白划艇上的小家庭，電視機播放著昔日家計會經典廣告。　【旁白】幾多個至夠數？以前嘅答案……</p>
+<p>2. 【畫面】畫面由黑白電視漸變彩色，鏡頭拉開至2026年溫馨現代客廳。　【旁白】今日，由你同我決定。</p>
+<p>3. 【畫面】丈夫溫柔接過抱起剛醒來的寶寶，太太在旁燦爛微笑。　【旁白】為人父母，係充滿喜悅同愛嘅禮物。　【字幕】為人父母 喜悅與愛</p>
+<p>4. 【畫面】夫婦二人坐在沙發上，打開家計會網站互相討論備孕計劃。　【旁白】最重要係及早規劃。　【字幕】及早規劃家庭</p>
+<p>5. 【畫面】特寫夫婦握手，眼神充滿堅定與期待。　【旁白】做好準備，破除育兒迷思。</p>
+<p>6. 【畫面】畫面切換至丈夫主動分擔家務與沖奶，太太安心休息。　【旁白】夫婦攜手，育兒唔單止係母職。　【字幕】育兒係夫婦共同責任</p>
+<p>7. 【畫面】夫婦帶著孩子在公園大草地上奔跑，陽光撒落，笑容滿面。　【旁白】付出雖辛苦，換嚟深遠陪伴。　【字幕】深遠回報與生命意義</p>
+<p>8. 【畫面】特寫家計會診所環境，護士親切為夫婦講解孕前檢查。　【旁白】懷孕前尋求專業諮詢。　【字幕】預約孕前健康檢查</p>
+<p>9. 【畫面】全家三口在溫暖光線下緊緊擁抱，畫面定格在幸福笑容。　【旁白】幸福自然心中有數！　【字幕】及早規劃 心中有數</p>
+<p>10. 【畫面】畫面轉為家計會官方藍白品牌背景，出現網站二維碼及電話。　【旁白】香港家庭計劃指導會。　【字幕】香港家庭計劃指導會 FPAHK</p>
+<p>11. 【畫面】畫面蓋上衛生署及政府新聞處標誌，展示活動網址及查詢熱線。　【字幕】fertility.famplan.org.hk | 查詢 2575 4477</p></div></div><div class='ccard surface-card  sel' data-cid='nb09696e86'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>方向 2</span></div><div class='ctitle'>「神隊友接棒」父職共同承擔篇</div><div class='cbody'><p>Big idea：聚焦「育兒不單是母職」，展現丈夫主動接棒、夫婦攜手經歷苦樂參半的暖心日常。</p>
+<p>點解：對應 Debrief 第 5 點破除「育兒等於母職」的性別偏見與「責任過重」誤區。</p>
+<p>Key message：育兒是夫婦共同承擔的旅程，主動分擔能將責任轉化為無價喜悅，及早規劃更安心。</p>
+<p>視覺裝置：畫面左右雙分割或前後流暢接棒切換（太太疲累時，丈夫接手沖奶包尿片）。</p>
+<p>班底：28-35歲年輕夫婦（素人演員）。</p>
+<p>調子：貼地真實、感人溫馨。</p>
+<p>片長：30 秒 · 11 格</p>
+<p>1. 【畫面】深夜客廳，太太打著呵欠準備起床，身旁丈夫已經搶先起身。　【旁白】育兒，從來唔係一個人嘅獨奏。</p>
+<p>2. 【畫面】特寫丈夫熟練地沖奶粉、換尿片，眼神滿是溫柔。　【旁白】神隊友接棒，苦甜一齊分擔。　【字幕】育兒係夫婦共同責任</p>
+<p>3. 【畫面】清晨日光照入，夫婦二人一齊為寶寶穿小衣服，相視而笑。　【旁白】為人父母，回報更勝付出。　【字幕】Bittersweet 苦樂參半</p>
+<p>4. 【畫面】丈夫拿著家用預算表，與太太輕鬆討論育兒理財。　【旁白】妥善理財，唔怕天價迷思。　【字幕】妥善理財規劃</p>
+<p>5. 【畫面】夫婦二人手牽手走入家計會服務中心。　【旁白】建立理想家庭，及早做好準備。</p>
+<p>6. 【畫面】醫生為夫婦進行孕前健康評估，講解35歲黃金生育期知識。　【旁白】孕前檢查，俾彼此一份自信。　【字幕】孕前檢查與諮詢</p>
+<p>7. 【畫面】畫面切至戶外，丈夫背著寶寶，太太在旁邊歡樂拍照。　【旁白】將生育視為充滿喜悅嘅旅程。</p>
+<p>8. 【畫面】寶寶手仔緊緊握住爸爸的食指，溫馨大特寫。　【旁白】每一次陪伴，都係愛嘅結晶。</p>
+<p>9. 【畫面】夫婦二人對著鏡頭擁抱，露出幸福笑容。　【旁白】同心同路，及早規劃家庭！　【字幕】及早規劃 攜手建家</p>
+<p>10. 【畫面】家計會藍白標誌結尾，顯示二維碼及服務電話。　【旁白】香港家庭計劃指導會。　【字幕】香港家庭計劃指導會 FPAHK</p>
+<p>11. 【畫面】螢幕蓋字顯示活動網址、衛生署及政府新聞處標誌。　【字幕】fertility.famplan.org.hk | 查詢 2575 4477</p></div></div><div class='ccard surface-card  sel' data-cid='nb3e6672f4'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>方向 3</span></div><div class='ctitle'>「算得出的幸福」理財與資源篇</div><div class='cbody'><p>Big idea：撕掉「六百萬養大一個」的誇大帳單，以真實理財規劃與家庭資源重塑育兒信心。</p>
+<p>點解：對應 Debrief 第 5 點破除「養大一個要六百萬」的經濟焦慮誤區。</p>
+<p>Key message：育兒不在乎天價數字，妥善理財與善用社會資源，能讓為人父母充滿喜悅與自信。</p>
+<p>視覺裝置：計算機上的昂貴數字特寫，被一雙手輕輕合上，換成溫暖的家庭照片與存摺理財規劃。</p>
+<p>班底：28-35歲備孕夫婦（素人演員）。</p>
+<p>調子：理性安心、積極正面。</p>
+<p>片長：30 秒 · 11 格</p>
+<p>1. 【畫面】特寫手機新聞顯示「養大一個要六百萬」，年輕夫婦眉頭微皺。　【旁白】養大一個小朋友要幾百萬？　【字幕】破除天價育兒迷思</p>
+<p>2. 【畫面】太太按熄手機，丈夫拿出溫馨的家庭理財小本子。　【旁白】育兒，唔係天價數字遊戲。</p>
+<p>3. 【畫面】夫婦坐在桌前，計算機上顯示出合理貼地的每月備孕與育兒預算。　【旁白】合理理財加家庭支援，好安心。　【字幕】合理理財 善用資源</p>
+<p>4. 【畫面】畫面切換至夫婦陪同長輩在公園散步，長輩笑著點頭支持。　【旁白】親情陪伴，比昂貴物品更有價值。</p>
+<p>5. 【畫面】夫婦在電腦前瀏覽家計會網站的孕前健康服務頁面。　【旁白】及早規劃，擁抱父母嘅喜悅。</p>
+<p>6. 【畫面】家計會醫護人員為夫婦提供PREPARE婚前/孕前關係輔導。　【旁白】專業醫療諮詢，幫你做好準備。　【字幕】預約孕前健康檢查</p>
+<p>7. 【畫面】丈夫在廚房煮營養餐，太太摸著微隆的肚子，畫面極具溫情。　【旁白】破除誤區，攜手迎接新生命。</p>
+<p>8. 【畫面】夫婦二人帶著笑容在陽台上看著夕陽，氣氛平靜而充實。　【旁白】為人父母，係充實意義嘅旅程。</p>
+<p>9. 【畫面】畫面定格在夫婦牽手的特寫，傳遞堅定信念。　【旁白】用信心同愛，規劃下一代！　【字幕】明智決策 自信建家</p>
+<p>10. 【畫面】品牌結尾，顯示家計會標誌、查詢熱線及網站。　【旁白】香港家庭計劃指導會。　【字幕】香港家庭計劃指導會 FPAHK</p>
+<p>11. 【畫面】展示活動網址及相關政府機關標誌。　【字幕】fertility.famplan.org.hk | 查詢 2575 4477</p></div></div><div class='ccard surface-card  sel' data-cid='nb3a2f5d6c'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>方向 4</span></div><div class='ctitle'>「時光不等待」黃金生育期醫學篇</div><div class='cbody'><p>Big idea：以光影時鐘提醒 35 歲黃金生育期醫學事實，引導「及早規劃，勝於等待觀望」。</p>
+<p>點解：對應 Debrief 第 5 點破除「高齡仍可受孕」誤區並推動 Conversion（預約孕前檢查）。</p>
+<p>Key message：35歲後受孕率下降，及早尋求家計會孕前檢查，給未來最自信無悔的準備。</p>
+<p>視覺裝置：牆上光影移動（代表時光流逝），配合月曆翻頁，由猶豫觀望轉為果斷行動。</p>
+<p>班底：30-35歲職業夫婦（素人演員）。</p>
+<p>調子：專業權威、溫柔提醒。</p>
+<p>片長：30 秒 · 11 格</p>
+<p>1. 【畫面】辦公室光影移動，32歲的太太看著桌上的月曆，若有所思。　【旁白】總覺得生育仲有好多時間？</p>
+<p>2. 【畫面】特寫月曆上標註的 35 歲，畫面轉為家計會專業醫學圖表。　【旁白】35歲後受孕率會逐步下降。　【字幕】35歲黃金生育期</p>
+<p>3. 【畫面】丈夫走過來遞上一杯熱茶，輕聲鼓勵太太。　【旁白】及早規劃先係關鍵。</p>
+<p>4. 【畫面】夫婦二人坐在客廳，認真討論建立家庭的時間表。　【旁白】為人父母，係充滿喜悅嘅旅程。　【字幕】及早規劃家庭</p>
+<p>5. 【畫面】夫婦來到家計會診所，接受詳細的孕前健康檢查。　【旁白】孕前檢查，了解身體狀況。　【字幕】孕前健康檢查服務</p>
+<p>6. 【畫面】醫生親切講解報告，夫婦二人露出釋懷與自信的笑容。　【旁白】破除迷思，做出明智決定。</p>
+<p>7. 【畫面】夫婦攜手走出診所，陽光照耀在兩人臉上。　【旁白】夫婦攜手，共同承擔育兒責任。</p>
+<p>8. 【畫面】畫面切至未來想像：夫婦與幼兒在海邊踩水，歡聲笑語。　【旁白】提前準備，收穫深遠回報。</p>
+<p>9. 【畫面】太太與丈夫緊緊相擁，眼神充滿對未來的憧憬。　【旁白】把握時機，即刻開始規劃！　【字幕】及早行動 迎接收穫</p>
+<p>10. 【畫面】出現家計會標誌、二維碼及預約電話。　【旁白】香港家庭計劃指導會。　【字幕】香港家庭計劃指導會 FPAHK</p>
+<p>11. 【畫面】畫面蓋上活動網址、衛生署及政府新聞處標誌。　【字幕】fertility.famplan.org.hk | 查詢 2575 4477</p></div></div><div class='ccard surface-card  sel' data-cid='nb49b02d8e'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>方向 5</span></div><div class='ctitle'>「甘苦交響曲」Bittersweet旅程篇</div><div class='cbody'><p>Big idea：直面育兒的付出與汗水，展現「苦樂參半」背後換來的深遠回報與生命喜悅。</p>
+<p>點解：對應 Debrief 第 5 點破除「責任過重」誤區，以情感共鳴感染猶豫不決的夫婦。</p>
+<p>Key message：育兒雖有辛苦與犧牲，但獲得的愛、美好回憶與生命意義超越一切責任。</p>
+<p>視覺裝置：快慢蒙太奇（深夜熊貓眼 vs 寶寶第一次叫「爸爸媽媽」的震撼感動快慢交替）。</p>
+<p>班底：25-35歲新手夫婦（素人演員）。</p>
+<p>調子：真摯動人、傳統情感。</p>
+<p>片長：30 秒 · 11 格</p>
+<p>1. 【畫面】特寫深夜 3 點，新手爸爸頂著熊貓眼抱著哭鬧的寶寶，一臉疲態。　【旁白】為人父母，需要付出與責任。</p>
+<p>2. 【畫面】突然寶寶停止哭泣，對著爸爸綻露出第一個甜美笑容。　【旁白】但寶寶微笑，融化所有辛苦。　【字幕】苦樂參半 意義深遠</p>
+<p>3. 【畫面】太太接過寶寶，夫婦二人靠在一起，眼中泛著幸福的淚光。　【旁白】苦樂參半，付出換嚟喜悅。</p>
+<p>4. 【畫面】畫面轉至客廳，夫婦共同收拾玩具，丈夫主動接手照顧。　【旁白】育兒唔係一個人，有隊友同行。　【字幕】育兒係夫婦共同責任</p>
+<p>5. 【畫面】特寫家計會網站畫面，顯示各項備孕與支援服務。　【旁白】及早規劃，減輕心理負擔。</p>
+<p>6. 【畫面】夫婦前往家計會進行孕前檢查及輔導。　【旁白】專業健康諮詢，踏出第一步。　【字幕】孕前健康檢查</p>
+<p>7. 【畫面】夫婦帶孩子在公園野餐，孩子將小草莓餵給爸爸吃。　【旁白】成長記憶，係最珍貴財富。</p>
+<p>8. 【畫面】特寫三隻手（爸、媽、BB）疊在一起，陽光灑落。　【旁白】將生育視為充滿意義嘅旅程。</p>
+<p>9. 【畫面】夫婦對著鏡頭微笑，身後是溫馨燦爛的家庭背景。　【旁白】擁抱喜悅，及早規劃家庭！　【字幕】擁抱喜悅 及早規劃</p>
+<p>10. 【畫面】出現家計會標誌、二維碼及查詢熱線。　【旁白】香港家庭計劃指導會。　【字幕】香港家庭計劃指導會 FPAHK</p>
+<p>11. 【畫面】展示活動網址及相關政府機關標誌。　【字幕】fertility.famplan.org.hk | 查詢 2575 4477</p></div></div><div class='ccard surface-card  sel' data-cid='nb3164a422'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>方向 6</span></div><div class='ctitle'>「阿得阿家漫遊」跨世代家庭對話篇</div><div class='cbody'><p>Big idea：運用家計會官方插畫角色「阿得與阿家」穿梭真實家庭，以輕鬆跨世代對話傳播生育規劃。</p>
+<p>點解：對應 Debrief 第 3 點觸達 20-24 歲年輕受眾及長輩，靈活發揮家計會既有 IP 資產。</p>
+<p>Key message：為人父母是愛的傳承與成長，及早規劃讓跨世代家庭共享喜悅與圓滿。</p>
+<p>視覺裝置：2D 動畫角色（阿得與阿家）與真人實景互動（Mixed Media 半動畫半真人）。</p>
+<p>班底：插畫角色「阿得與阿家」＋ 20-39歲年輕夫婦與長輩（素人演員）。</p>
+<p>調子：活力親切、幽默傳承。</p>
+<p>片長：30 秒 · 11 格</p>
+<p>1. 【畫面】2D 動畫角色阿得與阿家彈出，手拿家計會標誌，活潑向觀眾打招呼。　【旁白】阿得同阿家，同大家見面！　【字幕】阿得與阿家</p>
+<p>2. 【畫面】阿得與阿家跳入真實家庭客廳，年輕夫婦正與長輩飲茶聊天。　【旁白】大家對生育仲有迷思？</p>
+<p>3. 【畫面】長輩笑著說：「最重要係你哋兩個開心共同承擔！」動畫阿家在旁點頭。　【旁白】育兒係共同責任，長輩亦係後盾。　【字幕】夫婦共同承擔</p>
+<p>4. 【畫面】阿得手持計算機，跳過「六百萬養大一個」的招牌，將其變為溫馨家庭預算表。　【旁白】善用資源理財，破除天價迷思。　【字幕】破除六百萬迷思</p>
+<p>5. 【畫面】動畫阿家指著 35 歲月曆，提醒年輕夫婦。　【旁白】35歲係黃金期，規劃更輕鬆！　【字幕】及早規劃黃金期</p>
+<p>6. 【畫面】畫面切至家計會服務中心，阿得阿家帶領夫婦進行孕前檢查。　【旁白】孕前做好檢查，畀寶寶好起步。　【字幕】孕前健康檢查</p>
+<p>7. 【畫面】真人夫婦抱著寶寶，長輩在旁邊合照，阿得阿家在空中撒花祝賀。　【旁白】為人父母，係喜悅嘅傳承。</p>
+<p>8. 【畫面】特寫跨世代三代同堂的燦爛笑臉。　【旁白】果斷決策，建立幸福家庭。</p>
+<p>9. 【畫面】動畫阿得阿家與真人全家一同揮手。　【旁白】及早規劃，幸福由你我開始！　【字幕】及早規劃 幸福建家</p>
+<p>10. 【畫面】轉至家計會品牌藍白背景，展示官方標誌與熱線。　【旁白】香港家庭計劃指導會。　【字幕】香港家庭計劃指導會 FPAHK</p>
+<p>11. 【畫面】展示活動網址、衛生署及政府新聞處標誌。　【字幕】fertility.famplan.org.hk | 查詢 2575 4477</p></div></div></div><div class='submit'><button class='btn' onclick='submitRound()'>✅ Submit 六強 (<span class=cnt>6</span>)</button></div></div>
+<div id='tvapi1_2' class='tabpanel' data-set='1'><div class='banner'>未有概念進入第二輪。返 VID 1 揀六強（submit 即自動生 BD）先。</div></div>
+<div id='tvapi1_3' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 2 揀三甲先。</div></div>
+<div id='tvapi1_4' class='tabpanel' data-set='1'><div class='banner'>🎬 VID 4 — 5 步生 storyboard ＋ 片（STEP 1 → 5）</div><div class='card'><div class='h3'>📄 STEP 1 — 故事版（你親手執 Master GSheet B6:C17，9-12 格）</div><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card step2'><div class='h3'>🎭 STEP 2 — 主角參考相（AI 自動搵 ISD 官方相 + curate；face-swap 用嚟貼真面）</div><button class='btn ghost mini' onclick="srcRefs(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FAMPLAN&concept=FINAL&stage=facerefs&target=main')">🔍 AI 搵／更新主角參考相</button><div class='hint'>仲未 source 主角相。撳上面掣，AI 自動由 ISD 官方相搵 + curate。</div></div><div class='stylepick card'><div class='h3'>🎨 STEP 3 — 揀風格（每行 0 或 1 個；唔剔 = 跟劇本）</div><div class='styrow'><span class='stylbl'>🏙️ 環境</span><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="realistic environment" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="2D comic-style environment" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="3D animated environment" onchange='styPick(this)'>3D動畫</label></div><div class='styrow'><span class='stylbl'>🧍 人物</span><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="photorealistic characters" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="2D comic-style characters" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="3D-modeled characters" onchange='styPick(this)'>3D建模</label></div><div class='styrow'><span class='stylbl'>🌗 光/時間</span><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="daytime lighting" onchange='styPick(this)'>日 Day</label><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="nighttime lighting" onchange='styPick(this)'>夜 Night</label></div><div class='styrow'><span class='stylbl'>🎨 色彩</span><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="vivid saturated color" onchange='styPick(this)'>鮮艷</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="muted desaturated tones" onchange='styPick(this)'>灰調</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="black and white" onchange='styPick(this)'>黑白</label></div><div class='styrow'><span class='stylbl'>😊 情緒</span><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="warm heartfelt mood" onchange='styPick(this)'>溫情</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="passionate uplifting mood" onchange='styPick(this)'>激昂</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="light humorous mood" onchange='styPick(this)'>幽默</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="solemn official tone" onchange='styPick(this)'>莊重官方</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="suspenseful mood" onchange='styPick(this)'>懸疑</label></div><div class='styrow'><span class='stylbl'>🎬 質感</span><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="cinematic look" onchange='styPick(this)'>電影感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="documentary realism" onchange='styPick(this)'>紀實</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="dynamic music-video energy" onchange='styPick(this)'>MV動感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="plain straightforward style" onchange='styPick(this)'>平實</label></div><div class='styanchor'>風格 anchor：<span id='styanchor'>（跟劇本）</span></div></div><div class='card genbox'><div class='h3'>🍌 STEP 4 — 生 BD（讀 B6:C17 ＋ face-swap 主角真面）</div><button class='btn big' title='讀你喺 Master GSheet B6:C17 執好嘅 script ＋ STEP 3 風格 ＋ face-swap 主角真面 → 生最終 BD（brd=FINAL，唔污染候選）' onclick="genFinalBD(this,'FAMPLAN','https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FAMPLAN&concept=FINAL&stage=gsheetbd&target=main')">由 B6:C17 生最終 BD</button></div><div class='card'><div class='h3'>🎬 STEP 5 — 生片（Higgsfield Kling/Seedance，開發中）</div><div class='hint'>BD 揀好 → 生片。Higgsfield CLI 整緊。</div></div></div>
+<div id='tvapi1_5' class='tabpanel' data-set='1'><div class='banner'>未有 FINAL。返 VID 3 揀 FINAL 2 先。</div></div>
+<div id='kv1_1' class='tabpanel' data-set='1'><div class='banner'>🔧 KV Ph 1：流程設計中，完成 VID 後再開。</div></div>
+<div id='kv1_2' class='tabpanel' data-set='1'><div class='banner'>🔧 KV Ph 2：流程設計中，完成 VID 後再開。</div></div>
+<div id='kv1_3' class='tabpanel' data-set='1'><div class='banner'>🔧 KV Ph 3：流程設計中，完成 VID 後再開。</div></div>
+<div id='rad1_1' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 1：流程設計中，完成 VID 後再開。</div></div>
+<div id='rad1_2' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 2：流程設計中，完成 VID 後再開。</div></div>
+<div id='rad1_3' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 3：流程設計中，完成 VID 後再開。</div></div>
+<div id='soc1_1' class='tabpanel' data-set='1'><div class='banner'>未有內容支柱。撳掣 → 諗 ≥3 條 content pillars，每條 direction + per-platform demo（FB／IG／LinkedIn…）。</div><div class='card'><button class='btn big' title='' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FAMPLAN&concept=PLAN&stage=gen_soc_pillars&target=main')">📱 生成內容支柱 Pillars</button></div></div>
+<div id='soc1_2' class='tabpanel' data-set='1'><div class='banner'>🔧 SOC Ph 2：Posts／FINAL 跟住 Pillars 出，設計緊。</div></div>
+<div id='soc1_3' class='tabpanel' data-set='1'><div class='banner'>🔧 SOC Ph 3：Posts／FINAL 跟住 Pillars 出，設計緊。</div></div>
+<div class=foot>Idea Lab · 09-18 19:26 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+</div>
+
+<script>
+var DL = new Date("2026-09-04").getTime();
+function cd() {
+  var e = document.getElementById('cd'); if (!e) return;
+  var x = DL - Date.now();
+  if (x < 0) { e.textContent = '已截標'; return; }
+  var s = Math.floor(x/1000), d = Math.floor(s/86400);
+  s -= d*86400; var h = Math.floor(s/3600); s -= h*3600;
+  var m = Math.floor(s/60); s -= m*60;
+  e.textContent = (d > 0 ? d + '日 ' : '')
+    + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0')
+    + ':' + String(s).padStart(2,'0');
+}
+cd(); setInterval(cd, 1000);
+
+var TABS   = document.querySelectorAll('.tab');
+var PANELS = document.querySelectorAll('.tabpanel');
+function showTab(id) {
+  if (!document.getElementById(id)) id = 'ph0';
+  TABS.forEach(function(t) { t.classList.toggle('active', t.dataset.tab === id); });
+  PANELS.forEach(function(p) { p.classList.toggle('active', p.id === id); });
+  history.replaceState(null, '', '#' + id);
+  upd();
+  if (/(vid|tvapi)\d+_2$/.test(id)) vid2AutoBD();   // 入 VID／TVAPI 2 即自動觸發六強生 BD + poll
+}
+TABS.forEach(function(t) { t.addEventListener('click', function() { showTab(t.dataset.tab); }); });
+showTab((location.hash.slice(1)) || 'tvapi1_1');
+
+// VID 2:六強 submit 後自動生 BD —— 對未有 BD(data-needbd=1)嘅概念逐個觸發 NBLM deck(GAS 去重,撳幾多次都唔重生)。
+// 未生晒就每 45s reload 一次睇新 BD(NBLM 連夜,一晚生得晒)。
+var _vid2timer;
+function vid2AutoBD() {
+  var panel = document.querySelector('.tabpanel.active'); if (!panel) return;
+  var pend = panel.querySelectorAll('[data-needbd="1"]');
+  pend.forEach(function(c) {
+    var brd = c.dataset.brd; if (!brd) return;
+    var k = 'bdstart_FAMPLAN_' + brd;
+    if (!localStorage.getItem(k)) localStorage.setItem(k, String(Date.now()));  // 開始時間 → 進度條
+    fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FAMPLAN&concept=" + encodeURIComponent(brd) + "&stage=deck&target=main" + setQ(),
+          {mode:'no-cors'}).catch(function(){});
+  });
+  tickProgress();
+  if (pend.length && !_vid2timer) {
+    _vid2timer = setInterval(function() { location.reload(); }, 90000);  // 靜靜每 90s 攞新 BD（冇 develop bar）
+  }
+}
+
+// VID 2 進度條：按實測平均 BD 時間（~10 分鐘）推移，封頂 99% stall（NBLM 唔報幾時好）。
+var BD_AVG_MS = 600000;   // 平均 606s（manifest 連續 gap 實測）
+function tickProgress() {
+  document.querySelectorAll('.pgbar').forEach(function(bar) {
+    var brd = bar.dataset.brd; if (!brd) return;
+    var k = 'bdstart_FAMPLAN_' + brd;
+    var s = +localStorage.getItem(k);
+    if (!s) { s = Date.now(); localStorage.setItem(k, String(s)); }
+    var pct = Math.min(99, (Date.now() - s) / BD_AVG_MS * 100);
+    var f = bar.querySelector('.pgfill'); if (f) f.style.width = pct.toFixed(0) + '%';
+    var t = bar.querySelector('.pgtxt');
+    if (t) t.textContent = pct >= 99 ? 'BD 生成中…就快好（99%）' : ('BD 生成中… ' + pct.toFixed(0) + '%（平均 ~10 分鐘）');
+  });
+}
+setInterval(tickProgress, 2000); tickProgress();
+// 已完成（卡有圖）→ 清走嗰個 brd 嘅開始時間，免下次重生即跳 99%
+document.querySelectorAll('.card[data-brd] img.sheet').forEach(function(im) {
+  var card = im.closest('.card[data-brd]');
+  if (card && card.dataset.brd) localStorage.removeItem('bdstart_FAMPLAN_' + card.dataset.brd);
+});
+
+// 零碎想法：localStorage array(可入多次),即時累積顯示,每條 POST 去 GAS 畀委員會消化
+var NK = 'notes_FAMPLAN';
+var notesEl = document.getElementById('notes');
+function loadNotes() {
+  try { var a = JSON.parse(localStorage.getItem(NK) || '[]'); return Array.isArray(a) ? a : []; }
+  catch (e) { return []; }
+}
+function saveNotes(a) { localStorage.setItem(NK, JSON.stringify(a)); }
+function fmtTs(ts) {
+  var d = new Date(ts);
+  function p(n) { return String(n).padStart(2, '0'); }
+  return (d.getMonth()+1) + '/' + d.getDate() + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+}
+function renderNotes() {
+  var box = document.getElementById('noteslist'); if (!box) return;
+  var a = loadNotes();
+  if (!a.length) { box.innerHTML = "<p class='hint' style='margin:4px 2px'>未有想法。</p>"; return; }
+  box.innerHTML = a.map(function(n, i) {
+    var txt = (n.text || '').replace(/</g, '&lt;');
+    return "<div class='notecard'><div class='noterow'>"
+      + "<span class='notets'>" + fmtTs(n.ts) + "</span>"
+      + "<button class='notedel' onclick='delNote(" + i + ")'>✕</button></div>"
+      + "<div class='notetxt'>" + txt + "</div></div>";
+  }).join('');
+}
+function submitNotes() {
+  if (!notesEl || !notesEl.value.trim()) { alert('未有想法'); return; }
+  var txt = notesEl.value.trim();
+  var a = loadNotes(); a.push({ ts: Date.now(), text: txt }); saveNotes(a);
+  notesEl.value = ''; renderNotes();
+  var url = "https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=FAMPLAN&text=" + encodeURIComponent(txt);
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('＋ 已加入（' + a.length + ' 條，VID 1 啟動時餵委員會）');
+}
+function delNote(i) {
+  var a = loadNotes(); if (i < 0 || i >= a.length) return;
+  if (!confirm('刪呢條想法?')) return;
+  a.splice(i, 1); saveNotes(a); renderNotes();
+}
+renderNotes();
+
+function tk(el) {
+  el.classList.toggle('on');
+  el.textContent = el.classList.contains('on') ? '✓' : '';
+  upd();
+}
+// carousel 卡：撳卡頭（唔係內文 scroll 區）toggle 揀選
+function tkCard(head) {
+  var card = head.closest('[data-cid]'); if (!card) return;
+  var ck = card.querySelector('.ck'); if (!ck) return;
+  tk(ck);
+  card.classList.toggle('sel', ck.classList.contains('on'));
+}
+function upd() {
+  var n = document.querySelectorAll('.tabpanel.active .ck.on').length;
+  document.querySelectorAll('.tabpanel.active .cnt').forEach(function(c) {
+    c.textContent = n;
+    c.parentElement.classList.toggle('cnt-warn', n > 6);
+  });
+}
+document.querySelectorAll('.card[data-cid]').forEach(function(card) {
+  var ck = card.querySelector('.ck');
+  if (!ck) return;
+  card.addEventListener('click', function(e) {
+    if (e.target.closest('.ck,.det,textarea,a,button')) return;
+    tk(ck);
+  });
+});
+
+function toast(msg) {
+  var t = document.createElement('div');
+  t.className = 'toast'; t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(function() { t.style.opacity = '0'; }, 6000);
+}
+function showTopProc(msg, stop) {
+  var o = document.getElementById('topproc');
+  if (!o) {
+    o = document.createElement('div'); o.id = 'topproc'; o.className = 'topproc';
+    document.body.insertBefore(o, document.body.firstChild);
+  }
+  if (stop) {
+    o.innerHTML = '<span id="tpmsg">' + msg + '</span>'
+      + ' <a href="#" onclick="location.reload();return false" style="margin-left:8px;font-weight:800;color:var(--ac)">🔄 再 check</a>'
+      + ' <a href="#" onclick="this.parentNode.remove();return false" style="margin-left:8px;color:#888">✕</a>';
+  } else {
+    o.innerHTML = '<span class="spin sm"></span><span id="tpmsg">' + msg + '</span>';
+  }
+}
+
+// ⛔⛔ 防 comment 冇咗(Raymond 2026-06-16 爆:手寫稿 BD comment 位打咗字,redeploy → reload 冧晒):
+//   **全部**輸入格(額外想法 / 6 塊手寫稿 BD comment / 鐵則 / 任何 textarea·text input)每次打字即存 localStorage,
+//   reload/redeploy 都還原返;tab 切返嚟 auto-refresh **有未存字就唔 reload**。每格按 element id 存。
+(function() {
+  var DP = 'draft_FAMPLAN_';
+  function fields() {
+    return [].slice.call(document.querySelectorAll('textarea, input[type=text]')).filter(function(e){ return e.id; });
+  }
+  function hasUnsaved() { return fields().some(function(e){ return (e.value||'').trim().length>0; }); }
+  // 載入時還原每格 draft
+  var restored = 0;
+  try { fields().forEach(function(e){ var v=localStorage.getItem(DP+e.id); if(v && !e.value){ e.value=v; restored++; } }); } catch(_) {}
+  if (restored) setTimeout(function(){ toast('↩︎ 幫你還原咗 '+restored+' 格未送出嘅文字'); }, 500);
+  // 每次打字即存(任何有 id 嘅 textarea / text input)
+  document.addEventListener('input', function(ev) {
+    var t = ev.target; if (!t || !t.id) return;
+    if (t.tagName==='TEXTAREA' || (t.tagName==='INPUT' && t.type==='text')) {
+      try { if ((t.value||'').trim()) localStorage.setItem(DP+t.id, t.value); else localStorage.removeItem(DP+t.id); } catch(_) {}
+    }
+  });
+  window._clearDraft = function(id) { try { localStorage.removeItem(DP+id); } catch(_) {} };
+  var loaded = Date.now();
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden && Date.now() - loaded > 45000 && !hasUnsaved())   // 有未存嘅字 → 唔 reload,唔好冧佢
+      location.href = location.pathname + '?t=' + Date.now() + location.hash;
+  });
+})();
+
+// BD 圖 click 放大（lightbox）—— event delegation，任何 .sheet 圖都得
+(function() {
+  var lb = document.createElement('div'); lb.className = 'lbx';
+  lb.innerHTML = '<span class="x">✕</span><img><div class="hint">撳任何位收返。放大後可用瀏覽器 pinch/scroll 睇每格。</div>';
+  document.body.appendChild(lb);
+  var lbimg = lb.querySelector('img');
+  lb.addEventListener('click', function() { lb.classList.remove('on'); });
+  document.addEventListener('click', function(e) {
+    var t = e.target;
+    if (t && t.classList && t.classList.contains('sheet') && t.src) {
+      lbimg.src = t.src; lb.classList.add('on');
+    }
+  });
+})();
+
+// active panel 嘅 set → GAS param（set 1 唔帶，backend 不變）
+function curSet() { var p = document.querySelector('.tabpanel.active'); return p ? (p.dataset.set || '1') : '1'; }
+function setQ()   { var s = curSet(); return (s && s !== '1') ? ('&set=' + s) : ''; }
+
+// 各 set 嘅 funnel phase（多-set 各 set 唔同）。getVidPhase() 隨 active 嘅 set 變。
+var VID_PHASES = {"1": 1};
+var PRIMARY_VID = 1;
+function getVidPhase() { var s = curSet(); return VID_PHASES[s] || PRIMARY_VID; }
+function pickedCids() {
+  return [].map.call(
+    document.querySelectorAll('.tabpanel.active [data-cid] .ck.on'),
+    function(k) { return k.closest('[data-cid]').dataset.cid; });
+}
+function submitAdvance(url) {
+  toast('✅ 已提交，十幾秒後自動刷新睇下一步（或撳右上 🔄）');
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { location.reload(); }, 13000);   // 單次刷新，冇 develop bar，冇無限 loop
+}
+function submitRound() {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個做六強？submit 後會自動後台生 BD（用 NBLM），落選自動歸檔。')) return;
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=FAMPLAN&round=r2&cids=" + c.join(',') + setQ());
+}
+function subStage(to) {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個 → ' + (to === 'r3' ? '三甲' : 'FINAL 2') + '？')) return;
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=FAMPLAN&round=" + to + "&cids=" + c.join(',') + setQ());
+}
+function postFunnel(url, msg) {
+  fetch(url, {mode:'no-cors'})
+    .then(function() { toast(msg); })
+    .catch(function() { toast('⚠️ 再試一次'); });
+}
+
+function genBD(btn, url) {   // VID 3 Nano per-card 用
+  var acts = btn.closest('.acts') || btn.parentElement;
+  if (acts) acts.innerHTML = "<span class='gening'><span class='spin sm'></span>生緊… ~8-9 分鐘</span>";
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+}
+function addRule(dept) {   // 政府 JOB 鐵則:加一條 → listener append gov_job_rules.json(全 JOB 累積)
+  var ta = document.getElementById('newrule');
+  var txt = (ta && ta.value || '').trim();
+  if (!txt) { if(ta) ta.focus(); return; }
+  var url = 'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=' + encodeURIComponent(dept) + '&concept=rule&stage=add_rule'
+          + '&engine=' + encodeURIComponent(txt) + '&target=main';
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  if (window._clearDraft) window._clearDraft('newrule');   // 送出咗 → 清 draft
+  var ol = document.getElementById('rulelist');
+  if (ol) { var li=document.createElement('li'); li.textContent=txt; ol.appendChild(li); }  // 即時顯示
+  if (ta) { ta.value=''; ta.placeholder='✅ 已加，下次生 BD 即跟'; }
+}
+// ⭐ Raymond 提供參考相窗口嘅上載 mechanic = dash_upload.upload_box(reuse 創意把關站,JS 已內嵌喺 widget,呢度唔再寫)
+function _vchecked() { return [].slice.call(document.querySelectorAll('.tabpanel.active .vchk:checked')); }
+function delAssets(dept) {   // 🗑 整張即刻刪(像真網頁,唔問;listener 後台存底 + 真刪)
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=delasset&stage=del_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){ var card=c.closest('.vacard'); if(card) card.remove(); });   // 即刻消失
+  toast('🗑 刪咗 '+ids.length+' 張');
+}
+function preferAssets(dept) {   // ⭐ 首選:即刻 ⭐ + 嗰啲相搬去最左(像真網頁);listener pref + 餵 NLM 優先
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=prefasset&stage=prefer_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){
+    var card=c.closest('.vacard'); if(!card) return;
+    card.classList.add('pref');
+    if(!card.querySelector('.vastar')){ var s=document.createElement('div'); s.className='vastar'; s.textContent='⭐ 首選'; card.appendChild(s); }
+    var row=card.parentNode; row.insertBefore(card, row.firstChild);   // 搬去最左
+    c.checked=false;
+  });
+  toast('⭐ 已設首選 '+ids.length+' 張（搬咗去最左 + 餵 NLM 優先）');
+}
+function showOvl(id) { var o=document.getElementById(id); if(o) o.classList.add('on'); }   // 🎧 錄音逐字 overlay(撳先出)
+function hideOvl(id) { var o=document.getElementById(id); if(o) o.classList.remove('on'); }
+document.addEventListener('click', function(e){   // 撳 overlay 背景(唔係 box)收返
+  if(e.target && e.target.classList && e.target.classList.contains('ovl')) e.target.classList.remove('on');
+});
+function researchAssets(dept) {   // 🔁 重搜:即刻喺相右下角顯示漏斗「重搜中」,後台搵新相,搵到自動換(reload 時)
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=researchasset&stage=research_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){
+    var card=c.closest('.vacard'); if(!card) return;
+    var th=card.querySelector('.vathumb');
+    if(th && !th.querySelector('.vafunnel')){ var f=document.createElement('div'); f.className='vafunnel';
+      f.innerHTML='<span class="spin sm" style="width:10px;height:10px;margin:0"></span> 重搜中'; th.appendChild(f); }
+    c.checked=false;
+  });
+  toast('🔁 重搜 '+ids.length+' 個，後台搵緊清晰啲嘅相，搵到自動換（~30-60s，會自動 refresh）');
+}
+function bdComment(dept, brd) {   // 手寫稿 BD:送 comment → listener AI 解意見 → 改 specific 格(留舊版)
+  var ta = document.getElementById('cm_' + brd);
+  var txt = (ta && ta.value || '').trim();
+  if (!txt) { if (ta) ta.focus(); return; }
+  var url = 'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=' + encodeURIComponent(dept)
+          + '&concept=' + encodeURIComponent(brd) + '&stage=bdcomment'
+          + '&engine=' + encodeURIComponent(txt) + '&target=main&cid=ACT_bdcomment';
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  if (window._clearDraft) window._clearDraft('cm_' + brd);   // 送出咗 → 清 draft
+  if (ta) { ta.disabled = true;
+    ta.insertAdjacentHTML('afterend', "<div class='cmlog'>✅ 已送出，AI 改緊嗰格，改完自動換圖（舊版會留喺下面）。</div>"); }
+}
+// STEP 3 風格 picker：每維互斥（但可 0 個）+ 夾成 style_anchor
+function styPick(cb) {
+  if (cb.checked) {
+    var sib = document.querySelectorAll(".styopt[data-dim='" + cb.getAttribute('data-dim') + "']");
+    for (var i = 0; i < sib.length; i++) { if (sib[i] !== cb) sib[i].checked = false; }
+  }
+  var el = document.getElementById('styanchor');
+  if (el) el.textContent = styleAnchor() || '（跟劇本）';
+}
+function styleAnchor() {
+  var dims = ['env', 'char', 'light', 'color', 'mood', 'feel'], picks = [];
+  for (var i = 0; i < dims.length; i++) {
+    var el = document.querySelector(".styopt[data-dim='" + dims[i] + "']:checked");
+    if (el) picks.push(el.value);
+  }
+  return picks.join(', ');
+}
+function srcRefs(btn, url) {   // STEP 2：AI 搵主角參考相
+  btn.textContent = '⏳ AI 搵相中…（~2-3 分鐘，完成 refresh 見）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('🔍 AI 自動由 ISD 官方相搵主角 + curate 中…');
+}
+function genFinalBD(btn, dept, baseUrl) {   // STEP 4：寫低 STEP 3 風格 → 生最終 BD
+  var anc = styleAnchor();
+  // STEP3 風格寫入 Master GSheet _VID_STYLE（gsheet_to_bd 讀返做 override；空 = 跟劇本）
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify({op:'set_style', dept:dept, style:anc})}).catch(function(){});
+  toast(anc ? ('🎨 已套用風格：' + anc) : '🎨 風格：跟劇本（冇限制）');
+  genBD(btn, baseUrl);
+}
+function pushGSheet(btn, url) {   // VID 4 寫入 Master GSheet B6:C17
+  btn.textContent = '⏳ 寫入緊…'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已寫入（開 GSheet polish）'; }, 2500);
+  toast('📝 已交，~1 分鐘寫入 Master GSheet B6:C17（前稿自動備份）');
+}
+function renderForms(btn, url) {   // 📋 標書:自動 render 真表頁入 Master Reply GSlide
+  btn.textContent = '⏳ render 緊…（~1-2 分鐘，完成會 WhatsApp）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('📋 已交，listener 會自動 render 真表頁入 Master Reply GSlide');
+}
+function fillForms(btn) {   // 📝 標書:自動填表 — GAS 直出（公司資料 vlookup 寫 Fill tab，唔靠部 Mac）
+  var jsTag = btn.nextElementSibling;  // <script class=filldata>
+  var data;
+  try { data = JSON.parse((jsTag && jsTag.textContent) || '{}'); } catch (e) { data = {}; }
+  if (!data.forms || !data.forms.length) { toast('⚠️ 冇表資料'); return; }
+  var reg='https://docs.google.com/spreadsheets/d/1yiDJ3H8VFK3-6kZQZEzwkiD8VaRgVOzCwxcFbAyP3XE/edit';
+  btn.textContent = '⏳ AI 填緊…（~30-60s）'; btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'fill_forms', folderName: data.folderName, forms: data.forms })
+  }).catch(function(){});
+  // 清楚講做緊乜 + 完咗點做(開 Registry copy 值)
+  setTimeout(function() {
+    btn.outerHTML = "<a class='btn' style='width:100%;text-align:center' target='_blank' href='"+reg
+      +"'>✅ 已填好 → 開 Master Form Registry copy 啲值</a>";
+  }, 30000);
+  toast('🤖 AI 填緊公司資料入 Master Form Registry 嘅 Fill tab（~30-60s）。完咗開 Registry copy 啲值入真表頁。');
+}
+function outScript(btn) {   // 📤 VID2:SCRIPT 接落 Master GSheet SCRIPT暫存 — 直接 GAS POST，唔經部 Mac
+  var jsTag = btn.nextElementSibling;  // <script class=bdj> board JSON
+  var board = [];
+  try { board = JSON.parse((jsTag && jsTag.textContent) || '[]'); } catch (e) {}
+  if (!board.length) { toast('⚠️ 冇 board 資料'); return; }
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'script_out', dept: 'FAMPLAN',
+      brd: btn.dataset.brd, concept: btn.dataset.concept, board: board })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已接落「SCRIPT暫存」'; btn.disabled = false; }, 1500);
+  toast('📤 接落 Master GSheet「SCRIPT暫存」(GAS,唔經部 Mac,疊唔覆寫)');
+}
+function clearScript(btn) {   // 🧹 清空 SCRIPT暫存 — GAS（唔經 Mac）
+  if (!confirm('清空 SCRIPT暫存 tab？')) return;
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'clear' })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已清空'; btn.disabled = false; }, 1500);
+  toast('🧹 已清空 SCRIPT暫存（GAS,唔經部 Mac）');
+}
+
+// submitGSlide/submitComments 已移除（dead code:前端零 call site + 冇 .frame-note input — 2026-06-13 audit）
+
+// 「develop 緊」bar 已移除（Raymond 2026-06-06）—— 改用 VID 2 tab 紅邊 + 各 concept 進度條。
+</script></body></html>
