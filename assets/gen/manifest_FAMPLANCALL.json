@@ -1,0 +1,48 @@
+{
+  "dept": "FAMPLANCALL",
+  "concepts": {
+    "HZ01": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260928-060108",
+            "sheet": "assets/gen/FAMPLANCALL_HZ01/v20260928-060108/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLANCALL_HZ01/v20260928-060108/frame_01.jpg"
+            ],
+            "n": 1,
+            "ts": "2026-09-28T06:01:09",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "b",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·3D電影動畫",
+            "gslide_pages": [
+              "assets/gen/FAMPLANCALL_HZ01/v20260928-060108/gslide_FAMPLANCALL_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLANCALL_HZ01/v20260928-060108/deck.pdf"
+          },
+          {
+            "v": "20260928-045744",
+            "sheet": "assets/gen/FAMPLANCALL_HZ01/v20260928-045744/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLANCALL_HZ01/v20260928-045744/frame_01.jpg"
+            ],
+            "n": 1,
+            "ts": "2026-09-28T04:57:44",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "a",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·3D電影動畫",
+            "gslide_pages": [
+              "assets/gen/FAMPLANCALL_HZ01/v20260928-045744/gslide_FAMPLANCALL_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLANCALL_HZ01/v20260928-045744/deck.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "updated": "2026-09-28T06:01:09"
+}

@@ -1,0 +1,30 @@
+{
+  "dept": "FAMPLANTRUCK",
+  "concepts": {
+    "HZ01": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260927-235940",
+            "sheet": "assets/gen/FAMPLANTRUCK_HZ01/v20260927-235940/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLANTRUCK_HZ01/v20260927-235940/frame_01.jpg"
+            ],
+            "n": 1,
+            "ts": "2026-09-27T23:59:40",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "a",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·實拍示意",
+            "gslide_pages": [
+              "assets/gen/FAMPLANTRUCK_HZ01/v20260927-235940/gslide_FAMPLANTRUCK_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLANTRUCK_HZ01/v20260927-235940/deck.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "updated": "2026-09-27T23:59:40"
+}

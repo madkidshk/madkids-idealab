@@ -1,0 +1,48 @@
+{
+  "dept": "FAMPLANKVC",
+  "concepts": {
+    "HZ01": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260927-214854",
+            "sheet": "assets/gen/FAMPLANKVC_HZ01/v20260927-214854/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLANKVC_HZ01/v20260927-214854/frame_01.jpg"
+            ],
+            "n": 1,
+            "ts": "2026-09-27T21:48:54",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "b",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·KV版面線稿",
+            "gslide_pages": [
+              "assets/gen/FAMPLANKVC_HZ01/v20260927-214854/gslide_FAMPLANKVC_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLANKVC_HZ01/v20260927-214854/deck.pdf"
+          },
+          {
+            "v": "20260927-212153",
+            "sheet": "assets/gen/FAMPLANKVC_HZ01/v20260927-212153/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLANKVC_HZ01/v20260927-212153/frame_01.jpg"
+            ],
+            "n": 1,
+            "ts": "2026-09-27T21:21:53",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "a",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·KV版面線稿",
+            "gslide_pages": [
+              "assets/gen/FAMPLANKVC_HZ01/v20260927-212153/gslide_FAMPLANKVC_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLANKVC_HZ01/v20260927-212153/deck.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "updated": "2026-09-27T21:48:54"
+}

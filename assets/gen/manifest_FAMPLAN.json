@@ -1,0 +1,1283 @@
+{
+  "dept": "FAMPLAN",
+  "concepts": {
+    "HZ01": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260928-080203",
+            "sheet": "assets/gen/FAMPLAN_HZ01/v20260928-080203/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-080203/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-080203/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-080203/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-080203/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-080203/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-080203/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-080203/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-080203/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-080203/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-080203/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T08:02:04",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "q",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·3D電影動畫＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-080203/gslide_FAMPLAN_HZ01_p1.png",
+              "assets/gen/FAMPLAN_HZ01/v20260928-080203/gslide_FAMPLAN_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ01/v20260928-080203/deck.pdf"
+          },
+          {
+            "v": "20260928-065032",
+            "sheet": "assets/gen/FAMPLAN_HZ01/v20260928-065032/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-065032/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-065032/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-065032/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-065032/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-065032/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-065032/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-065032/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-065032/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-065032/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-065032/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T06:50:32",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "p",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·3D電影動畫＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-065032/gslide_FAMPLAN_HZ01_p1.png",
+              "assets/gen/FAMPLAN_HZ01/v20260928-065032/gslide_FAMPLAN_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ01/v20260928-065032/deck.pdf"
+          },
+          {
+            "v": "20260928-061340",
+            "sheet": "assets/gen/FAMPLAN_HZ01/v20260928-061340/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-061340/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-061340/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-061340/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-061340/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-061340/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-061340/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-061340/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-061340/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-061340/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-061340/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T06:13:41",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "o",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·3D電影動畫＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-061340/gslide_FAMPLAN_HZ01_p1.png",
+              "assets/gen/FAMPLAN_HZ01/v20260928-061340/gslide_FAMPLAN_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ01/v20260928-061340/deck.pdf"
+          },
+          {
+            "v": "20260928-055247",
+            "sheet": "assets/gen/FAMPLAN_HZ01/v20260928-055247/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-055247/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-055247/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-055247/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-055247/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-055247/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-055247/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-055247/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-055247/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-055247/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-055247/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T05:52:48",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "n",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·3D電影動畫＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-055247/gslide_FAMPLAN_HZ01_p1.png",
+              "assets/gen/FAMPLAN_HZ01/v20260928-055247/gslide_FAMPLAN_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ01/v20260928-055247/deck.pdf"
+          },
+          {
+            "v": "20260928-053949",
+            "sheet": "assets/gen/FAMPLAN_HZ01/v20260928-053949/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-053949/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-053949/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-053949/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-053949/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-053949/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-053949/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-053949/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-053949/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-053949/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-053949/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T05:39:50",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "m",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·3D電影動畫＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-053949/gslide_FAMPLAN_HZ01_p1.png",
+              "assets/gen/FAMPLAN_HZ01/v20260928-053949/gslide_FAMPLAN_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ01/v20260928-053949/deck.pdf"
+          },
+          {
+            "v": "20260928-044857",
+            "sheet": "assets/gen/FAMPLAN_HZ01/v20260928-044857/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-044857/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-044857/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-044857/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-044857/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-044857/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-044857/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-044857/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-044857/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-044857/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-044857/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T04:48:57",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "l",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·3D電影動畫＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-044857/gslide_FAMPLAN_HZ01_p1.png",
+              "assets/gen/FAMPLAN_HZ01/v20260928-044857/gslide_FAMPLAN_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ01/v20260928-044857/deck.pdf"
+          },
+          {
+            "v": "20260928-024829",
+            "sheet": "assets/gen/FAMPLAN_HZ01/v20260928-024829/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-024829/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-024829/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-024829/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-024829/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-024829/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-024829/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-024829/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-024829/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-024829/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-024829/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T02:48:30",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "k",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·3D電影動畫＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-024829/gslide_FAMPLAN_HZ01_p1.png",
+              "assets/gen/FAMPLAN_HZ01/v20260928-024829/gslide_FAMPLAN_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ01/v20260928-024829/deck.pdf"
+          },
+          {
+            "v": "20260928-023511",
+            "sheet": "assets/gen/FAMPLAN_HZ01/v20260928-023511/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-023511/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-023511/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-023511/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-023511/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-023511/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-023511/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-023511/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-023511/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-023511/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-023511/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T02:35:12",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "j",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·3D電影動畫＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-023511/gslide_FAMPLAN_HZ01_p1.png",
+              "assets/gen/FAMPLAN_HZ01/v20260928-023511/gslide_FAMPLAN_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ01/v20260928-023511/deck.pdf"
+          },
+          {
+            "v": "20260928-022311",
+            "sheet": "assets/gen/FAMPLAN_HZ01/v20260928-022311/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-022311/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-022311/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-022311/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-022311/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-022311/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-022311/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-022311/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-022311/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-022311/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-022311/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T02:23:11",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "i",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·3D電影動畫＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-022311/gslide_FAMPLAN_HZ01_p1.png",
+              "assets/gen/FAMPLAN_HZ01/v20260928-022311/gslide_FAMPLAN_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ01/v20260928-022311/deck.pdf"
+          },
+          {
+            "v": "20260928-015704",
+            "sheet": "assets/gen/FAMPLAN_HZ01/v20260928-015704/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-015704/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-015704/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-015704/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-015704/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-015704/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-015704/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-015704/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-015704/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-015704/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260928-015704/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T01:57:05",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "h",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·3D電影動畫＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ01/v20260928-015704/gslide_FAMPLAN_HZ01_p1.png",
+              "assets/gen/FAMPLAN_HZ01/v20260928-015704/gslide_FAMPLAN_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ01/v20260928-015704/deck.pdf"
+          },
+          {
+            "v": "20260927-014309",
+            "sheet": "assets/gen/FAMPLAN_HZ01/v20260927-014309/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ01/v20260927-014309/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-014309/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-014309/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-014309/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-014309/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-014309/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-014309/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-014309/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-014309/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-014309/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-27T01:43:10",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "g",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·3D電影動畫＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ01/v20260927-014309/gslide_FAMPLAN_HZ01_p1.png",
+              "assets/gen/FAMPLAN_HZ01/v20260927-014309/gslide_FAMPLAN_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ01/v20260927-014309/deck.pdf"
+          },
+          {
+            "v": "20260927-004939",
+            "sheet": "assets/gen/FAMPLAN_HZ01/v20260927-004939/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ01/v20260927-004939/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-004939/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-004939/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-004939/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-004939/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-004939/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-004939/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-004939/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-004939/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-004939/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-27T00:49:40",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "f",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·3D電影動畫＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ01/v20260927-004939/gslide_FAMPLAN_HZ01_p1.png",
+              "assets/gen/FAMPLAN_HZ01/v20260927-004939/gslide_FAMPLAN_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ01/v20260927-004939/deck.pdf"
+          },
+          {
+            "v": "20260927-001409-swap",
+            "sheet": "assets/gen/FAMPLAN_HZ01/v20260927-001409-swap/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ01/v20260927-001409-swap/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-001409-swap/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-001409-swap/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-001409-swap/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-001409-swap/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-001409-swap/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-001409-swap/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-001409-swap/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-001409-swap/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260927-001409-swap/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-27T00:14:10",
+            "source": "swap",
+            "brd": "HZ01",
+            "label": "手寫稿·全風格·鉛筆線稿",
+            "vtok": "e",
+            "cid": "hand-HZ01",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ01/v20260927-001409-swap/gslide_FAMPLAN_HZ01_p1.png",
+              "assets/gen/FAMPLAN_HZ01/v20260927-001409-swap/gslide_FAMPLAN_HZ01_p2.png"
+            ]
+          },
+          {
+            "v": "20260926-232429-swap",
+            "sheet": "assets/gen/FAMPLAN_HZ01/v20260926-232429-swap/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ01/v20260926-232429-swap/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232429-swap/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232429-swap/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232429-swap/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232429-swap/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232429-swap/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232429-swap/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232429-swap/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232429-swap/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232429-swap/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-26T23:24:29",
+            "source": "swap",
+            "brd": "HZ01",
+            "label": "手寫稿·全風格·鉛筆線稿",
+            "vtok": "d",
+            "cid": "hand-HZ01",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ01/v20260926-232429-swap/gslide_FAMPLAN_HZ01_p1.png",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232429-swap/gslide_FAMPLAN_HZ01_p2.png"
+            ]
+          },
+          {
+            "v": "20260926-232023",
+            "sheet": "assets/gen/FAMPLAN_HZ01/v20260926-232023/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ01/v20260926-232023/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232023/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232023/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232023/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232023/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232023/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232023/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232023/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232023/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232023/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-26T23:20:24",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "c",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·鉛筆線稿",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ01/v20260926-232023/gslide_FAMPLAN_HZ01_p1.png",
+              "assets/gen/FAMPLAN_HZ01/v20260926-232023/gslide_FAMPLAN_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ01/v20260926-232023/deck.pdf"
+          },
+          {
+            "v": "20260926-214125",
+            "sheet": "assets/gen/FAMPLAN_HZ01/v20260926-214125/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ01/v20260926-214125/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-214125/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-214125/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-214125/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-214125/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-214125/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-214125/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-214125/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-214125/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-214125/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-26T21:41:26",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "b",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·鉛筆線稿",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ01/v20260926-214125/gslide_FAMPLAN_HZ01_p1.png",
+              "assets/gen/FAMPLAN_HZ01/v20260926-214125/gslide_FAMPLAN_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ01/v20260926-214125/deck.pdf"
+          },
+          {
+            "v": "20260926-212422",
+            "sheet": "assets/gen/FAMPLAN_HZ01/v20260926-212422/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ01/v20260926-212422/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-212422/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-212422/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-212422/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-212422/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-212422/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-212422/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-212422/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-212422/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-212422/frame_10.jpg",
+              "assets/gen/FAMPLAN_HZ01/v20260926-212422/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-26T21:24:23",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "a",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·線稿",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ01/v20260926-212422/gslide_FAMPLAN_HZ01_p1.png",
+              "assets/gen/FAMPLAN_HZ01/v20260926-212422/gslide_FAMPLAN_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ01/v20260926-212422/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ02": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260928-070707",
+            "sheet": "assets/gen/FAMPLAN_HZ02/v20260928-070707/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-070707/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-070707/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-070707/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-070707/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-070707/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-070707/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-070707/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-070707/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-070707/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-070707/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T07:07:08",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "n",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·3D黏土定格＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-070707/gslide_FAMPLAN_HZ02_p1.png",
+              "assets/gen/FAMPLAN_HZ02/v20260928-070707/gslide_FAMPLAN_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ02/v20260928-070707/deck.pdf"
+          },
+          {
+            "v": "20260928-064611",
+            "sheet": "assets/gen/FAMPLAN_HZ02/v20260928-064611/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-064611/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-064611/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-064611/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-064611/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-064611/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-064611/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-064611/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-064611/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-064611/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-064611/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T06:46:11",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "m",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·3D黏土定格＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-064611/gslide_FAMPLAN_HZ02_p1.png",
+              "assets/gen/FAMPLAN_HZ02/v20260928-064611/gslide_FAMPLAN_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ02/v20260928-064611/deck.pdf"
+          },
+          {
+            "v": "20260928-060958",
+            "sheet": "assets/gen/FAMPLAN_HZ02/v20260928-060958/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-060958/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-060958/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-060958/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-060958/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-060958/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-060958/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-060958/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-060958/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-060958/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-060958/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T06:09:59",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "l",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·3D黏土定格＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-060958/gslide_FAMPLAN_HZ02_p1.png",
+              "assets/gen/FAMPLAN_HZ02/v20260928-060958/gslide_FAMPLAN_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ02/v20260928-060958/deck.pdf"
+          },
+          {
+            "v": "20260928-055416",
+            "sheet": "assets/gen/FAMPLAN_HZ02/v20260928-055416/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-055416/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-055416/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-055416/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-055416/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-055416/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-055416/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-055416/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-055416/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-055416/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-055416/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T05:54:16",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "k",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·3D黏土定格＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-055416/gslide_FAMPLAN_HZ02_p1.png",
+              "assets/gen/FAMPLAN_HZ02/v20260928-055416/gslide_FAMPLAN_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ02/v20260928-055416/deck.pdf"
+          },
+          {
+            "v": "20260928-054000",
+            "sheet": "assets/gen/FAMPLAN_HZ02/v20260928-054000/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-054000/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-054000/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-054000/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-054000/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-054000/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-054000/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-054000/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-054000/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-054000/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-054000/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T05:40:01",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "j",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·3D黏土定格＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-054000/gslide_FAMPLAN_HZ02_p1.png",
+              "assets/gen/FAMPLAN_HZ02/v20260928-054000/gslide_FAMPLAN_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ02/v20260928-054000/deck.pdf"
+          },
+          {
+            "v": "20260928-052316",
+            "sheet": "assets/gen/FAMPLAN_HZ02/v20260928-052316/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-052316/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-052316/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-052316/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-052316/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-052316/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-052316/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-052316/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-052316/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-052316/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-052316/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T05:23:16",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "i",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·3D黏土定格＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-052316/gslide_FAMPLAN_HZ02_p1.png",
+              "assets/gen/FAMPLAN_HZ02/v20260928-052316/gslide_FAMPLAN_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ02/v20260928-052316/deck.pdf"
+          },
+          {
+            "v": "20260928-050424",
+            "sheet": "assets/gen/FAMPLAN_HZ02/v20260928-050424/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-050424/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-050424/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-050424/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-050424/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-050424/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-050424/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-050424/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-050424/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-050424/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-050424/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T05:04:25",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "h",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·3D黏土定格＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-050424/gslide_FAMPLAN_HZ02_p1.png",
+              "assets/gen/FAMPLAN_HZ02/v20260928-050424/gslide_FAMPLAN_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ02/v20260928-050424/deck.pdf"
+          },
+          {
+            "v": "20260928-044907",
+            "sheet": "assets/gen/FAMPLAN_HZ02/v20260928-044907/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-044907/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-044907/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-044907/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-044907/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-044907/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-044907/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-044907/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-044907/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-044907/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-044907/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T04:49:07",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "g",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·3D黏土定格＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-044907/gslide_FAMPLAN_HZ02_p1.png",
+              "assets/gen/FAMPLAN_HZ02/v20260928-044907/gslide_FAMPLAN_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ02/v20260928-044907/deck.pdf"
+          },
+          {
+            "v": "20260928-025316",
+            "sheet": "assets/gen/FAMPLAN_HZ02/v20260928-025316/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-025316/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-025316/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-025316/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-025316/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-025316/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-025316/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-025316/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-025316/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-025316/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-025316/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T02:53:16",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "f",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·3D黏土定格＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-025316/gslide_FAMPLAN_HZ02_p1.png",
+              "assets/gen/FAMPLAN_HZ02/v20260928-025316/gslide_FAMPLAN_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ02/v20260928-025316/deck.pdf"
+          },
+          {
+            "v": "20260928-023520",
+            "sheet": "assets/gen/FAMPLAN_HZ02/v20260928-023520/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-023520/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-023520/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-023520/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-023520/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-023520/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-023520/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-023520/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-023520/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-023520/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-023520/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T02:35:21",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "e",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·3D黏土定格＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-023520/gslide_FAMPLAN_HZ02_p1.png",
+              "assets/gen/FAMPLAN_HZ02/v20260928-023520/gslide_FAMPLAN_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ02/v20260928-023520/deck.pdf"
+          },
+          {
+            "v": "20260928-022318",
+            "sheet": "assets/gen/FAMPLAN_HZ02/v20260928-022318/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-022318/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-022318/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-022318/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-022318/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-022318/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-022318/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-022318/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-022318/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-022318/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-022318/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T02:23:19",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "d",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·3D黏土定格＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-022318/gslide_FAMPLAN_HZ02_p1.png",
+              "assets/gen/FAMPLAN_HZ02/v20260928-022318/gslide_FAMPLAN_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ02/v20260928-022318/deck.pdf"
+          },
+          {
+            "v": "20260928-020859",
+            "sheet": "assets/gen/FAMPLAN_HZ02/v20260928-020859/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-020859/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-020859/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-020859/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-020859/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-020859/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-020859/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-020859/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-020859/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-020859/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260928-020859/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T02:08:59",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "c",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·3D黏土定格＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ02/v20260928-020859/gslide_FAMPLAN_HZ02_p1.png",
+              "assets/gen/FAMPLAN_HZ02/v20260928-020859/gslide_FAMPLAN_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ02/v20260928-020859/deck.pdf"
+          },
+          {
+            "v": "20260927-014118",
+            "sheet": "assets/gen/FAMPLAN_HZ02/v20260927-014118/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ02/v20260927-014118/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260927-014118/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260927-014118/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260927-014118/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260927-014118/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260927-014118/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260927-014118/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260927-014118/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260927-014118/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260927-014118/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-27T01:41:19",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "b",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·3D黏土定格＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ02/v20260927-014118/gslide_FAMPLAN_HZ02_p1.png",
+              "assets/gen/FAMPLAN_HZ02/v20260927-014118/gslide_FAMPLAN_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ02/v20260927-014118/deck.pdf"
+          },
+          {
+            "v": "20260927-004933",
+            "sheet": "assets/gen/FAMPLAN_HZ02/v20260927-004933/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ02/v20260927-004933/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260927-004933/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260927-004933/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260927-004933/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260927-004933/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260927-004933/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260927-004933/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260927-004933/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260927-004933/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ02/v20260927-004933/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-27T00:49:34",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "a",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·3D黏土定格＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ02/v20260927-004933/gslide_FAMPLAN_HZ02_p1.png",
+              "assets/gen/FAMPLAN_HZ02/v20260927-004933/gslide_FAMPLAN_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ02/v20260927-004933/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ03": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260928-080418",
+            "sheet": "assets/gen/FAMPLAN_HZ03/v20260928-080418/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-080418/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-080418/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-080418/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-080418/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-080418/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-080418/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-080418/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-080418/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-080418/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-080418/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T08:04:19",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "vtok": "n",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·3D毛公仔＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-080418/gslide_FAMPLAN_HZ03_p1.png",
+              "assets/gen/FAMPLAN_HZ03/v20260928-080418/gslide_FAMPLAN_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ03/v20260928-080418/deck.pdf"
+          },
+          {
+            "v": "20260928-064935",
+            "sheet": "assets/gen/FAMPLAN_HZ03/v20260928-064935/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-064935/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-064935/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-064935/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-064935/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-064935/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-064935/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-064935/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-064935/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-064935/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-064935/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T06:49:36",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "vtok": "m",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·3D毛公仔＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-064935/gslide_FAMPLAN_HZ03_p1.png",
+              "assets/gen/FAMPLAN_HZ03/v20260928-064935/gslide_FAMPLAN_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ03/v20260928-064935/deck.pdf"
+          },
+          {
+            "v": "20260928-061803",
+            "sheet": "assets/gen/FAMPLAN_HZ03/v20260928-061803/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-061803/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-061803/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-061803/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-061803/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-061803/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-061803/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-061803/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-061803/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-061803/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-061803/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T06:18:04",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "vtok": "l",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·3D毛公仔＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-061803/gslide_FAMPLAN_HZ03_p1.png",
+              "assets/gen/FAMPLAN_HZ03/v20260928-061803/gslide_FAMPLAN_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ03/v20260928-061803/deck.pdf"
+          },
+          {
+            "v": "20260928-060054",
+            "sheet": "assets/gen/FAMPLAN_HZ03/v20260928-060054/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-060054/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-060054/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-060054/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-060054/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-060054/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-060054/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-060054/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-060054/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-060054/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-060054/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T06:00:55",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "vtok": "k",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·3D毛公仔＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-060054/gslide_FAMPLAN_HZ03_p1.png",
+              "assets/gen/FAMPLAN_HZ03/v20260928-060054/gslide_FAMPLAN_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ03/v20260928-060054/deck.pdf"
+          },
+          {
+            "v": "20260928-054249",
+            "sheet": "assets/gen/FAMPLAN_HZ03/v20260928-054249/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-054249/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-054249/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-054249/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-054249/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-054249/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-054249/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-054249/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-054249/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-054249/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-054249/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T05:42:50",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "vtok": "j",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·3D毛公仔＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-054249/gslide_FAMPLAN_HZ03_p1.png",
+              "assets/gen/FAMPLAN_HZ03/v20260928-054249/gslide_FAMPLAN_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ03/v20260928-054249/deck.pdf"
+          },
+          {
+            "v": "20260928-051910",
+            "sheet": "assets/gen/FAMPLAN_HZ03/v20260928-051910/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-051910/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-051910/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-051910/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-051910/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-051910/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-051910/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-051910/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-051910/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-051910/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-051910/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T05:19:11",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "vtok": "i",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·3D毛公仔＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-051910/gslide_FAMPLAN_HZ03_p1.png",
+              "assets/gen/FAMPLAN_HZ03/v20260928-051910/gslide_FAMPLAN_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ03/v20260928-051910/deck.pdf"
+          },
+          {
+            "v": "20260928-050302",
+            "sheet": "assets/gen/FAMPLAN_HZ03/v20260928-050302/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-050302/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-050302/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-050302/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-050302/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-050302/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-050302/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-050302/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-050302/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-050302/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-050302/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T05:03:02",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "vtok": "h",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·3D毛公仔＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-050302/gslide_FAMPLAN_HZ03_p1.png",
+              "assets/gen/FAMPLAN_HZ03/v20260928-050302/gslide_FAMPLAN_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ03/v20260928-050302/deck.pdf"
+          },
+          {
+            "v": "20260928-044915",
+            "sheet": "assets/gen/FAMPLAN_HZ03/v20260928-044915/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-044915/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-044915/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-044915/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-044915/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-044915/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-044915/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-044915/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-044915/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-044915/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-044915/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T04:49:16",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "vtok": "g",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·3D毛公仔＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-044915/gslide_FAMPLAN_HZ03_p1.png",
+              "assets/gen/FAMPLAN_HZ03/v20260928-044915/gslide_FAMPLAN_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ03/v20260928-044915/deck.pdf"
+          },
+          {
+            "v": "20260928-025015",
+            "sheet": "assets/gen/FAMPLAN_HZ03/v20260928-025015/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-025015/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-025015/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-025015/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-025015/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-025015/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-025015/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-025015/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-025015/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-025015/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-025015/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T02:50:16",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "vtok": "f",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·3D毛公仔＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-025015/gslide_FAMPLAN_HZ03_p1.png",
+              "assets/gen/FAMPLAN_HZ03/v20260928-025015/gslide_FAMPLAN_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ03/v20260928-025015/deck.pdf"
+          },
+          {
+            "v": "20260928-023528",
+            "sheet": "assets/gen/FAMPLAN_HZ03/v20260928-023528/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-023528/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-023528/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-023528/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-023528/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-023528/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-023528/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-023528/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-023528/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-023528/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-023528/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T02:35:28",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "vtok": "e",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·3D毛公仔＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-023528/gslide_FAMPLAN_HZ03_p1.png",
+              "assets/gen/FAMPLAN_HZ03/v20260928-023528/gslide_FAMPLAN_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ03/v20260928-023528/deck.pdf"
+          },
+          {
+            "v": "20260928-022328",
+            "sheet": "assets/gen/FAMPLAN_HZ03/v20260928-022328/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-022328/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-022328/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-022328/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-022328/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-022328/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-022328/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-022328/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-022328/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-022328/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-022328/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T02:23:29",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "vtok": "d",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·3D毛公仔＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-022328/gslide_FAMPLAN_HZ03_p1.png",
+              "assets/gen/FAMPLAN_HZ03/v20260928-022328/gslide_FAMPLAN_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ03/v20260928-022328/deck.pdf"
+          },
+          {
+            "v": "20260928-020738",
+            "sheet": "assets/gen/FAMPLAN_HZ03/v20260928-020738/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-020738/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-020738/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-020738/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-020738/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-020738/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-020738/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-020738/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-020738/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-020738/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260928-020738/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-28T02:07:39",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "vtok": "c",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·3D毛公仔＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ03/v20260928-020738/gslide_FAMPLAN_HZ03_p1.png",
+              "assets/gen/FAMPLAN_HZ03/v20260928-020738/gslide_FAMPLAN_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ03/v20260928-020738/deck.pdf"
+          },
+          {
+            "v": "20260927-014149",
+            "sheet": "assets/gen/FAMPLAN_HZ03/v20260927-014149/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ03/v20260927-014149/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260927-014149/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260927-014149/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260927-014149/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260927-014149/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260927-014149/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260927-014149/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260927-014149/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260927-014149/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260927-014149/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-27T01:41:50",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "vtok": "b",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·3D毛公仔＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ03/v20260927-014149/gslide_FAMPLAN_HZ03_p1.png",
+              "assets/gen/FAMPLAN_HZ03/v20260927-014149/gslide_FAMPLAN_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ03/v20260927-014149/deck.pdf"
+          },
+          {
+            "v": "20260927-005734",
+            "sheet": "assets/gen/FAMPLAN_HZ03/v20260927-005734/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLAN_HZ03/v20260927-005734/frame_01.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260927-005734/frame_02.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260927-005734/frame_03.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260927-005734/frame_04.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260927-005734/frame_05.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260927-005734/frame_06.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260927-005734/frame_07.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260927-005734/frame_08.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260927-005734/frame_09.jpg",
+              "assets/gen/FAMPLAN_HZ03/v20260927-005734/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-27T00:57:35",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "vtok": "a",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·3D毛公仔＋實拍",
+            "gslide_pages": [
+              "assets/gen/FAMPLAN_HZ03/v20260927-005734/gslide_FAMPLAN_HZ03_p1.png",
+              "assets/gen/FAMPLAN_HZ03/v20260927-005734/gslide_FAMPLAN_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLAN_HZ03/v20260927-005734/deck.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "updated": "2026-09-28T08:04:19"
+}

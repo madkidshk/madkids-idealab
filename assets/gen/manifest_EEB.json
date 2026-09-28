@@ -1,0 +1,1000 @@
+{
+  "dept": "EEB",
+  "concepts": {
+    "HZ04": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260924-214144",
+            "sheet": "assets/gen/EEB_HZ04/v20260924-214144/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ04/v20260924-214144/frame_01.jpg",
+              "assets/gen/EEB_HZ04/v20260924-214144/frame_02.jpg",
+              "assets/gen/EEB_HZ04/v20260924-214144/frame_03.jpg",
+              "assets/gen/EEB_HZ04/v20260924-214144/frame_04.jpg",
+              "assets/gen/EEB_HZ04/v20260924-214144/frame_05.jpg",
+              "assets/gen/EEB_HZ04/v20260924-214144/frame_06.jpg",
+              "assets/gen/EEB_HZ04/v20260924-214144/frame_07.jpg",
+              "assets/gen/EEB_HZ04/v20260924-214144/frame_08.jpg",
+              "assets/gen/EEB_HZ04/v20260924-214144/frame_09.jpg",
+              "assets/gen/EEB_HZ04/v20260924-214144/frame_10.jpg",
+              "assets/gen/EEB_HZ04/v20260924-214144/frame_11.jpg",
+              "assets/gen/EEB_HZ04/v20260924-214144/frame_12.jpg",
+              "assets/gen/EEB_HZ04/v20260924-214144/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-09-24T21:41:45",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ04",
+            "vtok": "d",
+            "cid": "hand-HZ04",
+            "label": "手寫稿·全風格·2D Kawaii 可愛",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ04/v20260924-214144/gslide_EEB_HZ04_p1.png",
+              "assets/gen/EEB_HZ04/v20260924-214144/gslide_EEB_HZ04_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ04/v20260924-214144/deck.pdf"
+          },
+          {
+            "v": "20260924-190705",
+            "sheet": "assets/gen/EEB_HZ04/v20260924-190705/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ04/v20260924-190705/frame_01.jpg",
+              "assets/gen/EEB_HZ04/v20260924-190705/frame_02.jpg",
+              "assets/gen/EEB_HZ04/v20260924-190705/frame_03.jpg",
+              "assets/gen/EEB_HZ04/v20260924-190705/frame_04.jpg",
+              "assets/gen/EEB_HZ04/v20260924-190705/frame_05.jpg",
+              "assets/gen/EEB_HZ04/v20260924-190705/frame_06.jpg",
+              "assets/gen/EEB_HZ04/v20260924-190705/frame_07.jpg",
+              "assets/gen/EEB_HZ04/v20260924-190705/frame_08.jpg",
+              "assets/gen/EEB_HZ04/v20260924-190705/frame_09.jpg",
+              "assets/gen/EEB_HZ04/v20260924-190705/frame_10.jpg",
+              "assets/gen/EEB_HZ04/v20260924-190705/frame_11.jpg",
+              "assets/gen/EEB_HZ04/v20260924-190705/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-09-24T19:07:06",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ04",
+            "vtok": "c",
+            "cid": "hand-HZ04",
+            "label": "手寫稿·全風格·2D Kawaii 可愛",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ04/v20260924-190705/gslide_EEB_HZ04_p1.png",
+              "assets/gen/EEB_HZ04/v20260924-190705/gslide_EEB_HZ04_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ04/v20260924-190705/deck.pdf"
+          },
+          {
+            "v": "20260924-184829",
+            "sheet": "assets/gen/EEB_HZ04/v20260924-184829/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ04/v20260924-184829/frame_01.jpg",
+              "assets/gen/EEB_HZ04/v20260924-184829/frame_02.jpg",
+              "assets/gen/EEB_HZ04/v20260924-184829/frame_03.jpg",
+              "assets/gen/EEB_HZ04/v20260924-184829/frame_04.jpg",
+              "assets/gen/EEB_HZ04/v20260924-184829/frame_05.jpg",
+              "assets/gen/EEB_HZ04/v20260924-184829/frame_06.jpg",
+              "assets/gen/EEB_HZ04/v20260924-184829/frame_07.jpg",
+              "assets/gen/EEB_HZ04/v20260924-184829/frame_08.jpg",
+              "assets/gen/EEB_HZ04/v20260924-184829/frame_09.jpg",
+              "assets/gen/EEB_HZ04/v20260924-184829/frame_10.jpg",
+              "assets/gen/EEB_HZ04/v20260924-184829/frame_11.jpg",
+              "assets/gen/EEB_HZ04/v20260924-184829/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-09-24T18:48:29",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ04",
+            "vtok": "b",
+            "cid": "hand-HZ04",
+            "label": "手寫稿·全風格·2D Kawaii 可愛",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ04/v20260924-184829/gslide_EEB_HZ04_p1.png",
+              "assets/gen/EEB_HZ04/v20260924-184829/gslide_EEB_HZ04_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ04/v20260924-184829/deck.pdf"
+          },
+          {
+            "v": "20260924-171029",
+            "sheet": "assets/gen/EEB_HZ04/v20260924-171029/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ04/v20260924-171029/frame_01.jpg",
+              "assets/gen/EEB_HZ04/v20260924-171029/frame_02.jpg",
+              "assets/gen/EEB_HZ04/v20260924-171029/frame_03.jpg",
+              "assets/gen/EEB_HZ04/v20260924-171029/frame_04.jpg",
+              "assets/gen/EEB_HZ04/v20260924-171029/frame_05.jpg",
+              "assets/gen/EEB_HZ04/v20260924-171029/frame_06.jpg",
+              "assets/gen/EEB_HZ04/v20260924-171029/frame_07.jpg",
+              "assets/gen/EEB_HZ04/v20260924-171029/frame_08.jpg",
+              "assets/gen/EEB_HZ04/v20260924-171029/frame_09.jpg",
+              "assets/gen/EEB_HZ04/v20260924-171029/frame_10.jpg",
+              "assets/gen/EEB_HZ04/v20260924-171029/frame_11.jpg",
+              "assets/gen/EEB_HZ04/v20260924-171029/frame_12.jpg",
+              "assets/gen/EEB_HZ04/v20260924-171029/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-09-24T17:10:29",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ04",
+            "vtok": "a",
+            "cid": "hand-HZ04",
+            "label": "手寫稿·全風格·2D Kawaii 可愛",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ04/v20260924-171029/gslide_EEB_HZ04_p1.png",
+              "assets/gen/EEB_HZ04/v20260924-171029/gslide_EEB_HZ04_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ04/v20260924-171029/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ02": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260924-214143",
+            "sheet": "assets/gen/EEB_HZ02/v20260924-214143/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ02/v20260924-214143/frame_01.jpg",
+              "assets/gen/EEB_HZ02/v20260924-214143/frame_02.jpg",
+              "assets/gen/EEB_HZ02/v20260924-214143/frame_03.jpg",
+              "assets/gen/EEB_HZ02/v20260924-214143/frame_04.jpg",
+              "assets/gen/EEB_HZ02/v20260924-214143/frame_05.jpg",
+              "assets/gen/EEB_HZ02/v20260924-214143/frame_06.jpg",
+              "assets/gen/EEB_HZ02/v20260924-214143/frame_07.jpg",
+              "assets/gen/EEB_HZ02/v20260924-214143/frame_08.jpg",
+              "assets/gen/EEB_HZ02/v20260924-214143/frame_09.jpg",
+              "assets/gen/EEB_HZ02/v20260924-214143/frame_10.jpg",
+              "assets/gen/EEB_HZ02/v20260924-214143/frame_11.jpg",
+              "assets/gen/EEB_HZ02/v20260924-214143/frame_12.jpg",
+              "assets/gen/EEB_HZ02/v20260924-214143/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-09-24T21:41:43",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "e",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·2D 新海誠風",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ02/v20260924-214143/gslide_EEB_HZ02_p1.png",
+              "assets/gen/EEB_HZ02/v20260924-214143/gslide_EEB_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ02/v20260924-214143/deck.pdf"
+          },
+          {
+            "v": "20260924-190559",
+            "sheet": "assets/gen/EEB_HZ02/v20260924-190559/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ02/v20260924-190559/frame_01.jpg",
+              "assets/gen/EEB_HZ02/v20260924-190559/frame_02.jpg",
+              "assets/gen/EEB_HZ02/v20260924-190559/frame_03.jpg",
+              "assets/gen/EEB_HZ02/v20260924-190559/frame_04.jpg",
+              "assets/gen/EEB_HZ02/v20260924-190559/frame_05.jpg",
+              "assets/gen/EEB_HZ02/v20260924-190559/frame_06.jpg",
+              "assets/gen/EEB_HZ02/v20260924-190559/frame_07.jpg",
+              "assets/gen/EEB_HZ02/v20260924-190559/frame_08.jpg",
+              "assets/gen/EEB_HZ02/v20260924-190559/frame_09.jpg",
+              "assets/gen/EEB_HZ02/v20260924-190559/frame_10.jpg",
+              "assets/gen/EEB_HZ02/v20260924-190559/frame_11.jpg",
+              "assets/gen/EEB_HZ02/v20260924-190559/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-09-24T19:06:00",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "d",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·2D 新海誠風",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ02/v20260924-190559/gslide_EEB_HZ02_p1.png",
+              "assets/gen/EEB_HZ02/v20260924-190559/gslide_EEB_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ02/v20260924-190559/deck.pdf"
+          },
+          {
+            "v": "20260924-184122",
+            "sheet": "assets/gen/EEB_HZ02/v20260924-184122/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ02/v20260924-184122/frame_01.jpg",
+              "assets/gen/EEB_HZ02/v20260924-184122/frame_02.jpg",
+              "assets/gen/EEB_HZ02/v20260924-184122/frame_03.jpg",
+              "assets/gen/EEB_HZ02/v20260924-184122/frame_04.jpg",
+              "assets/gen/EEB_HZ02/v20260924-184122/frame_05.jpg",
+              "assets/gen/EEB_HZ02/v20260924-184122/frame_06.jpg",
+              "assets/gen/EEB_HZ02/v20260924-184122/frame_07.jpg",
+              "assets/gen/EEB_HZ02/v20260924-184122/frame_08.jpg",
+              "assets/gen/EEB_HZ02/v20260924-184122/frame_09.jpg",
+              "assets/gen/EEB_HZ02/v20260924-184122/frame_10.jpg",
+              "assets/gen/EEB_HZ02/v20260924-184122/frame_11.jpg",
+              "assets/gen/EEB_HZ02/v20260924-184122/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-09-24T18:41:23",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "c",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·2D 新海誠風",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ02/v20260924-184122/gslide_EEB_HZ02_p1.png",
+              "assets/gen/EEB_HZ02/v20260924-184122/gslide_EEB_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ02/v20260924-184122/deck.pdf"
+          },
+          {
+            "v": "20260924-182934",
+            "sheet": "assets/gen/EEB_HZ02/v20260924-182934/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ02/v20260924-182934/frame_01.jpg",
+              "assets/gen/EEB_HZ02/v20260924-182934/frame_02.jpg",
+              "assets/gen/EEB_HZ02/v20260924-182934/frame_03.jpg",
+              "assets/gen/EEB_HZ02/v20260924-182934/frame_04.jpg",
+              "assets/gen/EEB_HZ02/v20260924-182934/frame_05.jpg",
+              "assets/gen/EEB_HZ02/v20260924-182934/frame_06.jpg",
+              "assets/gen/EEB_HZ02/v20260924-182934/frame_07.jpg",
+              "assets/gen/EEB_HZ02/v20260924-182934/frame_08.jpg",
+              "assets/gen/EEB_HZ02/v20260924-182934/frame_09.jpg",
+              "assets/gen/EEB_HZ02/v20260924-182934/frame_10.jpg",
+              "assets/gen/EEB_HZ02/v20260924-182934/frame_11.jpg",
+              "assets/gen/EEB_HZ02/v20260924-182934/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-09-24T18:29:35",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "b",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·2D 新海誠風",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ02/v20260924-182934/gslide_EEB_HZ02_p1.png",
+              "assets/gen/EEB_HZ02/v20260924-182934/gslide_EEB_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ02/v20260924-182934/deck.pdf"
+          },
+          {
+            "v": "20260924-171602",
+            "sheet": "assets/gen/EEB_HZ02/v20260924-171602/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ02/v20260924-171602/frame_01.jpg",
+              "assets/gen/EEB_HZ02/v20260924-171602/frame_02.jpg",
+              "assets/gen/EEB_HZ02/v20260924-171602/frame_03.jpg",
+              "assets/gen/EEB_HZ02/v20260924-171602/frame_04.jpg",
+              "assets/gen/EEB_HZ02/v20260924-171602/frame_05.jpg",
+              "assets/gen/EEB_HZ02/v20260924-171602/frame_06.jpg",
+              "assets/gen/EEB_HZ02/v20260924-171602/frame_07.jpg",
+              "assets/gen/EEB_HZ02/v20260924-171602/frame_08.jpg",
+              "assets/gen/EEB_HZ02/v20260924-171602/frame_09.jpg",
+              "assets/gen/EEB_HZ02/v20260924-171602/frame_10.jpg",
+              "assets/gen/EEB_HZ02/v20260924-171602/frame_11.jpg",
+              "assets/gen/EEB_HZ02/v20260924-171602/frame_12.jpg",
+              "assets/gen/EEB_HZ02/v20260924-171602/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-09-24T17:16:03",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ02",
+            "vtok": "a",
+            "cid": "hand-HZ02",
+            "label": "手寫稿·全風格·2D 新海誠風",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ02/v20260924-171602/gslide_EEB_HZ02_p1.png",
+              "assets/gen/EEB_HZ02/v20260924-171602/gslide_EEB_HZ02_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ02/v20260924-171602/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ03": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260924-214143",
+            "sheet": "assets/gen/EEB_HZ03/v20260924-214143/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ03/v20260924-214143/frame_01.jpg",
+              "assets/gen/EEB_HZ03/v20260924-214143/frame_02.jpg",
+              "assets/gen/EEB_HZ03/v20260924-214143/frame_03.jpg",
+              "assets/gen/EEB_HZ03/v20260924-214143/frame_04.jpg",
+              "assets/gen/EEB_HZ03/v20260924-214143/frame_05.jpg",
+              "assets/gen/EEB_HZ03/v20260924-214143/frame_06.jpg",
+              "assets/gen/EEB_HZ03/v20260924-214143/frame_07.jpg",
+              "assets/gen/EEB_HZ03/v20260924-214143/frame_08.jpg",
+              "assets/gen/EEB_HZ03/v20260924-214143/frame_09.jpg",
+              "assets/gen/EEB_HZ03/v20260924-214143/frame_10.jpg",
+              "assets/gen/EEB_HZ03/v20260924-214143/frame_11.jpg",
+              "assets/gen/EEB_HZ03/v20260924-214143/frame_12.jpg",
+              "assets/gen/EEB_HZ03/v20260924-214143/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-09-24T21:41:44",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "vtok": "d",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·2D 宮崎駿風",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ03/v20260924-214143/gslide_EEB_HZ03_p1.png",
+              "assets/gen/EEB_HZ03/v20260924-214143/gslide_EEB_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ03/v20260924-214143/deck.pdf"
+          },
+          {
+            "v": "20260924-191550",
+            "sheet": "assets/gen/EEB_HZ03/v20260924-191550/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ03/v20260924-191550/frame_01.jpg",
+              "assets/gen/EEB_HZ03/v20260924-191550/frame_02.jpg",
+              "assets/gen/EEB_HZ03/v20260924-191550/frame_03.jpg",
+              "assets/gen/EEB_HZ03/v20260924-191550/frame_04.jpg",
+              "assets/gen/EEB_HZ03/v20260924-191550/frame_05.jpg",
+              "assets/gen/EEB_HZ03/v20260924-191550/frame_06.jpg",
+              "assets/gen/EEB_HZ03/v20260924-191550/frame_07.jpg",
+              "assets/gen/EEB_HZ03/v20260924-191550/frame_08.jpg",
+              "assets/gen/EEB_HZ03/v20260924-191550/frame_09.jpg",
+              "assets/gen/EEB_HZ03/v20260924-191550/frame_10.jpg",
+              "assets/gen/EEB_HZ03/v20260924-191550/frame_11.jpg",
+              "assets/gen/EEB_HZ03/v20260924-191550/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-09-24T19:15:51",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "vtok": "c",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·2D 宮崎駿風",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ03/v20260924-191550/gslide_EEB_HZ03_p1.png",
+              "assets/gen/EEB_HZ03/v20260924-191550/gslide_EEB_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ03/v20260924-191550/deck.pdf"
+          },
+          {
+            "v": "20260924-185031",
+            "sheet": "assets/gen/EEB_HZ03/v20260924-185031/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ03/v20260924-185031/frame_01.jpg",
+              "assets/gen/EEB_HZ03/v20260924-185031/frame_02.jpg",
+              "assets/gen/EEB_HZ03/v20260924-185031/frame_03.jpg",
+              "assets/gen/EEB_HZ03/v20260924-185031/frame_04.jpg",
+              "assets/gen/EEB_HZ03/v20260924-185031/frame_05.jpg",
+              "assets/gen/EEB_HZ03/v20260924-185031/frame_06.jpg",
+              "assets/gen/EEB_HZ03/v20260924-185031/frame_07.jpg",
+              "assets/gen/EEB_HZ03/v20260924-185031/frame_08.jpg",
+              "assets/gen/EEB_HZ03/v20260924-185031/frame_09.jpg",
+              "assets/gen/EEB_HZ03/v20260924-185031/frame_10.jpg",
+              "assets/gen/EEB_HZ03/v20260924-185031/frame_11.jpg",
+              "assets/gen/EEB_HZ03/v20260924-185031/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-09-24T18:50:32",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "vtok": "b",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·2D 宮崎駿風",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ03/v20260924-185031/gslide_EEB_HZ03_p1.png",
+              "assets/gen/EEB_HZ03/v20260924-185031/gslide_EEB_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ03/v20260924-185031/deck.pdf"
+          },
+          {
+            "v": "20260924-172007",
+            "sheet": "assets/gen/EEB_HZ03/v20260924-172007/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ03/v20260924-172007/frame_01.jpg",
+              "assets/gen/EEB_HZ03/v20260924-172007/frame_02.jpg",
+              "assets/gen/EEB_HZ03/v20260924-172007/frame_03.jpg",
+              "assets/gen/EEB_HZ03/v20260924-172007/frame_04.jpg",
+              "assets/gen/EEB_HZ03/v20260924-172007/frame_05.jpg",
+              "assets/gen/EEB_HZ03/v20260924-172007/frame_06.jpg",
+              "assets/gen/EEB_HZ03/v20260924-172007/frame_07.jpg",
+              "assets/gen/EEB_HZ03/v20260924-172007/frame_08.jpg",
+              "assets/gen/EEB_HZ03/v20260924-172007/frame_09.jpg",
+              "assets/gen/EEB_HZ03/v20260924-172007/frame_10.jpg",
+              "assets/gen/EEB_HZ03/v20260924-172007/frame_11.jpg",
+              "assets/gen/EEB_HZ03/v20260924-172007/frame_12.jpg",
+              "assets/gen/EEB_HZ03/v20260924-172007/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-09-24T17:20:08",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ03",
+            "vtok": "a",
+            "cid": "hand-HZ03",
+            "label": "手寫稿·全風格·2D 宮崎駿風",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ03/v20260924-172007/gslide_EEB_HZ03_p1.png",
+              "assets/gen/EEB_HZ03/v20260924-172007/gslide_EEB_HZ03_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ03/v20260924-172007/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ05": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260924-214943-swap",
+            "sheet": "assets/gen/EEB_HZ05/v20260924-214943-swap/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ05/v20260924-214943-swap/frame_01.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214943-swap/frame_02.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214943-swap/frame_03.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214943-swap/frame_04.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214943-swap/frame_05.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214943-swap/frame_06.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214943-swap/frame_07.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214943-swap/frame_08.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214943-swap/frame_09.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214943-swap/frame_10.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214943-swap/frame_11.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214943-swap/frame_12.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214943-swap/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-09-24T21:49:44",
+            "source": "swap",
+            "brd": "HZ05",
+            "label": "手寫稿·全風格·2D Anime 動漫",
+            "vtok": "h",
+            "cid": "hand-HZ05",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ05/v20260924-214943-swap/gslide_EEB_HZ05_p1.png",
+              "assets/gen/EEB_HZ05/v20260924-214943-swap/gslide_EEB_HZ05_p2.png"
+            ]
+          },
+          {
+            "v": "20260924-214259",
+            "sheet": "assets/gen/EEB_HZ05/v20260924-214259/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ05/v20260924-214259/frame_01.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214259/frame_02.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214259/frame_03.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214259/frame_04.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214259/frame_05.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214259/frame_06.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214259/frame_07.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214259/frame_08.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214259/frame_09.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214259/frame_10.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214259/frame_11.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214259/frame_12.jpg",
+              "assets/gen/EEB_HZ05/v20260924-214259/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-09-24T21:43:00",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ05",
+            "vtok": "g",
+            "cid": "hand-HZ05",
+            "label": "手寫稿·全風格·2D Anime 動漫",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ05/v20260924-214259/gslide_EEB_HZ05_p1.png",
+              "assets/gen/EEB_HZ05/v20260924-214259/gslide_EEB_HZ05_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ05/v20260924-214259/deck.pdf"
+          },
+          {
+            "v": "20260924-213407-swap",
+            "sheet": "assets/gen/EEB_HZ05/v20260924-213407-swap/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ05/v20260924-213407-swap/frame_01.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213407-swap/frame_02.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213407-swap/frame_03.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213407-swap/frame_04.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213407-swap/frame_05.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213407-swap/frame_06.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213407-swap/frame_07.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213407-swap/frame_08.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213407-swap/frame_09.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213407-swap/frame_10.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213407-swap/frame_11.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213407-swap/frame_12.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213407-swap/frame_13.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213407-swap/frame_14.jpg"
+            ],
+            "n": 14,
+            "ts": "2026-09-24T21:34:08",
+            "source": "swap",
+            "brd": "HZ05",
+            "label": "手寫稿·全風格·2D Anime 動漫",
+            "vtok": "f",
+            "cid": "hand-HZ05",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ05/v20260924-213407-swap/gslide_EEB_HZ05_p1.png",
+              "assets/gen/EEB_HZ05/v20260924-213407-swap/gslide_EEB_HZ05_p2.png"
+            ]
+          },
+          {
+            "v": "20260924-213039-swap",
+            "sheet": "assets/gen/EEB_HZ05/v20260924-213039-swap/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ05/v20260924-213039-swap/frame_01.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213039-swap/frame_02.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213039-swap/frame_03.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213039-swap/frame_04.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213039-swap/frame_05.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213039-swap/frame_06.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213039-swap/frame_07.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213039-swap/frame_08.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213039-swap/frame_09.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213039-swap/frame_10.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213039-swap/frame_11.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213039-swap/frame_12.jpg",
+              "assets/gen/EEB_HZ05/v20260924-213039-swap/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-09-24T21:30:40",
+            "source": "swap",
+            "brd": "HZ05",
+            "label": "手寫稿·全風格·2D Anime 動漫",
+            "vtok": "e",
+            "cid": "hand-HZ05",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ05/v20260924-213039-swap/gslide_EEB_HZ05_p1.png",
+              "assets/gen/EEB_HZ05/v20260924-213039-swap/gslide_EEB_HZ05_p2.png"
+            ]
+          },
+          {
+            "v": "20260924-212623",
+            "sheet": "assets/gen/EEB_HZ05/v20260924-212623/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ05/v20260924-212623/frame_01.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212623/frame_02.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212623/frame_03.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212623/frame_04.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212623/frame_05.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212623/frame_06.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212623/frame_07.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212623/frame_08.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212623/frame_09.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212623/frame_10.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212623/frame_11.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212623/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-09-24T21:26:24",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ05",
+            "vtok": "d",
+            "cid": "hand-HZ05",
+            "label": "手寫稿·全風格·2D Anime 動漫",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ05/v20260924-212623/gslide_EEB_HZ05_p1.png",
+              "assets/gen/EEB_HZ05/v20260924-212623/gslide_EEB_HZ05_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ05/v20260924-212623/deck.pdf"
+          },
+          {
+            "v": "20260924-212453",
+            "sheet": "assets/gen/EEB_HZ05/v20260924-212453/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ05/v20260924-212453/frame_01.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212453/frame_02.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212453/frame_03.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212453/frame_04.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212453/frame_05.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212453/frame_06.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212453/frame_07.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212453/frame_08.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212453/frame_09.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212453/frame_10.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212453/frame_11.jpg",
+              "assets/gen/EEB_HZ05/v20260924-212453/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-09-24T21:24:54",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ05",
+            "vtok": "c",
+            "cid": "hand-HZ05",
+            "label": "手寫稿·全風格·2D Anime 動漫",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ05/v20260924-212453/gslide_EEB_HZ05_p1.png",
+              "assets/gen/EEB_HZ05/v20260924-212453/gslide_EEB_HZ05_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ05/v20260924-212453/deck.pdf"
+          },
+          {
+            "v": "20260924-185527",
+            "sheet": "assets/gen/EEB_HZ05/v20260924-185527/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ05/v20260924-185527/frame_01.jpg",
+              "assets/gen/EEB_HZ05/v20260924-185527/frame_02.jpg",
+              "assets/gen/EEB_HZ05/v20260924-185527/frame_03.jpg",
+              "assets/gen/EEB_HZ05/v20260924-185527/frame_04.jpg",
+              "assets/gen/EEB_HZ05/v20260924-185527/frame_05.jpg",
+              "assets/gen/EEB_HZ05/v20260924-185527/frame_06.jpg",
+              "assets/gen/EEB_HZ05/v20260924-185527/frame_07.jpg",
+              "assets/gen/EEB_HZ05/v20260924-185527/frame_08.jpg",
+              "assets/gen/EEB_HZ05/v20260924-185527/frame_09.jpg",
+              "assets/gen/EEB_HZ05/v20260924-185527/frame_10.jpg",
+              "assets/gen/EEB_HZ05/v20260924-185527/frame_11.jpg",
+              "assets/gen/EEB_HZ05/v20260924-185527/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-09-24T18:55:28",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ05",
+            "vtok": "b",
+            "cid": "hand-HZ05",
+            "label": "手寫稿·全風格·2D Anime 動漫",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ05/v20260924-185527/gslide_EEB_HZ05_p1.png",
+              "assets/gen/EEB_HZ05/v20260924-185527/gslide_EEB_HZ05_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ05/v20260924-185527/deck.pdf"
+          },
+          {
+            "v": "20260924-172818",
+            "sheet": "assets/gen/EEB_HZ05/v20260924-172818/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ05/v20260924-172818/frame_01.jpg",
+              "assets/gen/EEB_HZ05/v20260924-172818/frame_02.jpg",
+              "assets/gen/EEB_HZ05/v20260924-172818/frame_03.jpg",
+              "assets/gen/EEB_HZ05/v20260924-172818/frame_04.jpg",
+              "assets/gen/EEB_HZ05/v20260924-172818/frame_05.jpg",
+              "assets/gen/EEB_HZ05/v20260924-172818/frame_06.jpg",
+              "assets/gen/EEB_HZ05/v20260924-172818/frame_07.jpg",
+              "assets/gen/EEB_HZ05/v20260924-172818/frame_08.jpg",
+              "assets/gen/EEB_HZ05/v20260924-172818/frame_09.jpg",
+              "assets/gen/EEB_HZ05/v20260924-172818/frame_10.jpg",
+              "assets/gen/EEB_HZ05/v20260924-172818/frame_11.jpg",
+              "assets/gen/EEB_HZ05/v20260924-172818/frame_12.jpg",
+              "assets/gen/EEB_HZ05/v20260924-172818/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-09-24T17:28:19",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ05",
+            "vtok": "a",
+            "cid": "hand-HZ05",
+            "label": "手寫稿·全風格·2D Anime 動漫",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ05/v20260924-172818/gslide_EEB_HZ05_p1.png",
+              "assets/gen/EEB_HZ05/v20260924-172818/gslide_EEB_HZ05_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ05/v20260924-172818/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ06": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260924-214144",
+            "sheet": "assets/gen/EEB_HZ06/v20260924-214144/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ06/v20260924-214144/frame_01.jpg",
+              "assets/gen/EEB_HZ06/v20260924-214144/frame_02.jpg",
+              "assets/gen/EEB_HZ06/v20260924-214144/frame_03.jpg",
+              "assets/gen/EEB_HZ06/v20260924-214144/frame_04.jpg",
+              "assets/gen/EEB_HZ06/v20260924-214144/frame_05.jpg",
+              "assets/gen/EEB_HZ06/v20260924-214144/frame_06.jpg",
+              "assets/gen/EEB_HZ06/v20260924-214144/frame_07.jpg",
+              "assets/gen/EEB_HZ06/v20260924-214144/frame_08.jpg",
+              "assets/gen/EEB_HZ06/v20260924-214144/frame_09.jpg",
+              "assets/gen/EEB_HZ06/v20260924-214144/frame_10.jpg",
+              "assets/gen/EEB_HZ06/v20260924-214144/frame_11.jpg",
+              "assets/gen/EEB_HZ06/v20260924-214144/frame_12.jpg",
+              "assets/gen/EEB_HZ06/v20260924-214144/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-09-24T21:41:45",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ06",
+            "vtok": "c",
+            "cid": "hand-HZ06",
+            "label": "手寫稿·全風格·3D Animation",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ06/v20260924-214144/gslide_EEB_HZ06_p1.png",
+              "assets/gen/EEB_HZ06/v20260924-214144/gslide_EEB_HZ06_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ06/v20260924-214144/deck.pdf"
+          },
+          {
+            "v": "20260924-184938",
+            "sheet": "assets/gen/EEB_HZ06/v20260924-184938/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ06/v20260924-184938/frame_01.jpg",
+              "assets/gen/EEB_HZ06/v20260924-184938/frame_02.jpg",
+              "assets/gen/EEB_HZ06/v20260924-184938/frame_03.jpg",
+              "assets/gen/EEB_HZ06/v20260924-184938/frame_04.jpg",
+              "assets/gen/EEB_HZ06/v20260924-184938/frame_05.jpg",
+              "assets/gen/EEB_HZ06/v20260924-184938/frame_06.jpg",
+              "assets/gen/EEB_HZ06/v20260924-184938/frame_07.jpg",
+              "assets/gen/EEB_HZ06/v20260924-184938/frame_08.jpg",
+              "assets/gen/EEB_HZ06/v20260924-184938/frame_09.jpg",
+              "assets/gen/EEB_HZ06/v20260924-184938/frame_10.jpg",
+              "assets/gen/EEB_HZ06/v20260924-184938/frame_11.jpg",
+              "assets/gen/EEB_HZ06/v20260924-184938/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-09-24T18:49:39",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ06",
+            "vtok": "b",
+            "cid": "hand-HZ06",
+            "label": "手寫稿·全風格·3D Animation",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ06/v20260924-184938/gslide_EEB_HZ06_p1.png",
+              "assets/gen/EEB_HZ06/v20260924-184938/gslide_EEB_HZ06_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ06/v20260924-184938/deck.pdf"
+          },
+          {
+            "v": "20260924-173432",
+            "sheet": "assets/gen/EEB_HZ06/v20260924-173432/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ06/v20260924-173432/frame_01.jpg",
+              "assets/gen/EEB_HZ06/v20260924-173432/frame_02.jpg",
+              "assets/gen/EEB_HZ06/v20260924-173432/frame_03.jpg",
+              "assets/gen/EEB_HZ06/v20260924-173432/frame_04.jpg",
+              "assets/gen/EEB_HZ06/v20260924-173432/frame_05.jpg",
+              "assets/gen/EEB_HZ06/v20260924-173432/frame_06.jpg",
+              "assets/gen/EEB_HZ06/v20260924-173432/frame_07.jpg",
+              "assets/gen/EEB_HZ06/v20260924-173432/frame_08.jpg",
+              "assets/gen/EEB_HZ06/v20260924-173432/frame_09.jpg",
+              "assets/gen/EEB_HZ06/v20260924-173432/frame_10.jpg",
+              "assets/gen/EEB_HZ06/v20260924-173432/frame_11.jpg",
+              "assets/gen/EEB_HZ06/v20260924-173432/frame_12.jpg",
+              "assets/gen/EEB_HZ06/v20260924-173432/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-09-24T17:34:33",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ06",
+            "vtok": "a",
+            "cid": "hand-HZ06",
+            "label": "手寫稿·全風格·3D Animation",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ06/v20260924-173432/gslide_EEB_HZ06_p1.png",
+              "assets/gen/EEB_HZ06/v20260924-173432/gslide_EEB_HZ06_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ06/v20260924-173432/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ07": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260924-214145",
+            "sheet": "assets/gen/EEB_HZ07/v20260924-214145/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ07/v20260924-214145/frame_01.jpg",
+              "assets/gen/EEB_HZ07/v20260924-214145/frame_02.jpg",
+              "assets/gen/EEB_HZ07/v20260924-214145/frame_03.jpg",
+              "assets/gen/EEB_HZ07/v20260924-214145/frame_04.jpg",
+              "assets/gen/EEB_HZ07/v20260924-214145/frame_05.jpg",
+              "assets/gen/EEB_HZ07/v20260924-214145/frame_06.jpg",
+              "assets/gen/EEB_HZ07/v20260924-214145/frame_07.jpg",
+              "assets/gen/EEB_HZ07/v20260924-214145/frame_08.jpg",
+              "assets/gen/EEB_HZ07/v20260924-214145/frame_09.jpg",
+              "assets/gen/EEB_HZ07/v20260924-214145/frame_10.jpg",
+              "assets/gen/EEB_HZ07/v20260924-214145/frame_11.jpg",
+              "assets/gen/EEB_HZ07/v20260924-214145/frame_12.jpg",
+              "assets/gen/EEB_HZ07/v20260924-214145/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-09-24T21:41:46",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ07",
+            "vtok": "c",
+            "cid": "hand-HZ07",
+            "label": "手寫稿·全風格·3D Paper-craft 紙藝",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ07/v20260924-214145/gslide_EEB_HZ07_p1.png",
+              "assets/gen/EEB_HZ07/v20260924-214145/gslide_EEB_HZ07_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ07/v20260924-214145/deck.pdf"
+          },
+          {
+            "v": "20260924-185949",
+            "sheet": "assets/gen/EEB_HZ07/v20260924-185949/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ07/v20260924-185949/frame_01.jpg",
+              "assets/gen/EEB_HZ07/v20260924-185949/frame_02.jpg",
+              "assets/gen/EEB_HZ07/v20260924-185949/frame_03.jpg",
+              "assets/gen/EEB_HZ07/v20260924-185949/frame_04.jpg",
+              "assets/gen/EEB_HZ07/v20260924-185949/frame_05.jpg",
+              "assets/gen/EEB_HZ07/v20260924-185949/frame_06.jpg",
+              "assets/gen/EEB_HZ07/v20260924-185949/frame_07.jpg",
+              "assets/gen/EEB_HZ07/v20260924-185949/frame_08.jpg",
+              "assets/gen/EEB_HZ07/v20260924-185949/frame_09.jpg",
+              "assets/gen/EEB_HZ07/v20260924-185949/frame_10.jpg",
+              "assets/gen/EEB_HZ07/v20260924-185949/frame_11.jpg",
+              "assets/gen/EEB_HZ07/v20260924-185949/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-09-24T18:59:50",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ07",
+            "vtok": "b",
+            "cid": "hand-HZ07",
+            "label": "手寫稿·全風格·3D Paper-craft 紙藝",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ07/v20260924-185949/gslide_EEB_HZ07_p1.png",
+              "assets/gen/EEB_HZ07/v20260924-185949/gslide_EEB_HZ07_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ07/v20260924-185949/deck.pdf"
+          },
+          {
+            "v": "20260924-174021",
+            "sheet": "assets/gen/EEB_HZ07/v20260924-174021/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ07/v20260924-174021/frame_01.jpg",
+              "assets/gen/EEB_HZ07/v20260924-174021/frame_02.jpg",
+              "assets/gen/EEB_HZ07/v20260924-174021/frame_03.jpg",
+              "assets/gen/EEB_HZ07/v20260924-174021/frame_04.jpg",
+              "assets/gen/EEB_HZ07/v20260924-174021/frame_05.jpg",
+              "assets/gen/EEB_HZ07/v20260924-174021/frame_06.jpg",
+              "assets/gen/EEB_HZ07/v20260924-174021/frame_07.jpg",
+              "assets/gen/EEB_HZ07/v20260924-174021/frame_08.jpg",
+              "assets/gen/EEB_HZ07/v20260924-174021/frame_09.jpg",
+              "assets/gen/EEB_HZ07/v20260924-174021/frame_10.jpg",
+              "assets/gen/EEB_HZ07/v20260924-174021/frame_11.jpg",
+              "assets/gen/EEB_HZ07/v20260924-174021/frame_12.jpg",
+              "assets/gen/EEB_HZ07/v20260924-174021/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-09-24T17:40:22",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ07",
+            "vtok": "a",
+            "cid": "hand-HZ07",
+            "label": "手寫稿·全風格·3D Paper-craft 紙藝",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ07/v20260924-174021/gslide_EEB_HZ07_p1.png",
+              "assets/gen/EEB_HZ07/v20260924-174021/gslide_EEB_HZ07_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ07/v20260924-174021/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ08": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260924-214145",
+            "sheet": "assets/gen/EEB_HZ08/v20260924-214145/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ08/v20260924-214145/frame_01.jpg",
+              "assets/gen/EEB_HZ08/v20260924-214145/frame_02.jpg",
+              "assets/gen/EEB_HZ08/v20260924-214145/frame_03.jpg",
+              "assets/gen/EEB_HZ08/v20260924-214145/frame_04.jpg",
+              "assets/gen/EEB_HZ08/v20260924-214145/frame_05.jpg",
+              "assets/gen/EEB_HZ08/v20260924-214145/frame_06.jpg",
+              "assets/gen/EEB_HZ08/v20260924-214145/frame_07.jpg",
+              "assets/gen/EEB_HZ08/v20260924-214145/frame_08.jpg",
+              "assets/gen/EEB_HZ08/v20260924-214145/frame_09.jpg",
+              "assets/gen/EEB_HZ08/v20260924-214145/frame_10.jpg",
+              "assets/gen/EEB_HZ08/v20260924-214145/frame_11.jpg",
+              "assets/gen/EEB_HZ08/v20260924-214145/frame_12.jpg",
+              "assets/gen/EEB_HZ08/v20260924-214145/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-09-24T21:41:45",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ08",
+            "vtok": "c",
+            "cid": "hand-HZ08",
+            "label": "手寫稿·全風格·Sketch 分鏡草稿",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ08/v20260924-214145/gslide_EEB_HZ08_p1.png",
+              "assets/gen/EEB_HZ08/v20260924-214145/gslide_EEB_HZ08_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ08/v20260924-214145/deck.pdf"
+          },
+          {
+            "v": "20260924-190646",
+            "sheet": "assets/gen/EEB_HZ08/v20260924-190646/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ08/v20260924-190646/frame_01.jpg",
+              "assets/gen/EEB_HZ08/v20260924-190646/frame_02.jpg",
+              "assets/gen/EEB_HZ08/v20260924-190646/frame_03.jpg",
+              "assets/gen/EEB_HZ08/v20260924-190646/frame_04.jpg",
+              "assets/gen/EEB_HZ08/v20260924-190646/frame_05.jpg",
+              "assets/gen/EEB_HZ08/v20260924-190646/frame_06.jpg",
+              "assets/gen/EEB_HZ08/v20260924-190646/frame_07.jpg",
+              "assets/gen/EEB_HZ08/v20260924-190646/frame_08.jpg",
+              "assets/gen/EEB_HZ08/v20260924-190646/frame_09.jpg",
+              "assets/gen/EEB_HZ08/v20260924-190646/frame_10.jpg",
+              "assets/gen/EEB_HZ08/v20260924-190646/frame_11.jpg",
+              "assets/gen/EEB_HZ08/v20260924-190646/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-09-24T19:06:46",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ08",
+            "vtok": "b",
+            "cid": "hand-HZ08",
+            "label": "手寫稿·全風格·Sketch 分鏡草稿",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ08/v20260924-190646/gslide_EEB_HZ08_p1.png",
+              "assets/gen/EEB_HZ08/v20260924-190646/gslide_EEB_HZ08_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ08/v20260924-190646/deck.pdf"
+          },
+          {
+            "v": "20260924-174138",
+            "sheet": "assets/gen/EEB_HZ08/v20260924-174138/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ08/v20260924-174138/frame_01.jpg",
+              "assets/gen/EEB_HZ08/v20260924-174138/frame_02.jpg",
+              "assets/gen/EEB_HZ08/v20260924-174138/frame_03.jpg",
+              "assets/gen/EEB_HZ08/v20260924-174138/frame_04.jpg",
+              "assets/gen/EEB_HZ08/v20260924-174138/frame_05.jpg",
+              "assets/gen/EEB_HZ08/v20260924-174138/frame_06.jpg",
+              "assets/gen/EEB_HZ08/v20260924-174138/frame_07.jpg",
+              "assets/gen/EEB_HZ08/v20260924-174138/frame_08.jpg",
+              "assets/gen/EEB_HZ08/v20260924-174138/frame_09.jpg",
+              "assets/gen/EEB_HZ08/v20260924-174138/frame_10.jpg",
+              "assets/gen/EEB_HZ08/v20260924-174138/frame_11.jpg",
+              "assets/gen/EEB_HZ08/v20260924-174138/frame_12.jpg",
+              "assets/gen/EEB_HZ08/v20260924-174138/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-09-24T17:41:39",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ08",
+            "vtok": "a",
+            "cid": "hand-HZ08",
+            "label": "手寫稿·全風格·Sketch 分鏡草稿",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ08/v20260924-174138/gslide_EEB_HZ08_p1.png",
+              "assets/gen/EEB_HZ08/v20260924-174138/gslide_EEB_HZ08_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ08/v20260924-174138/deck.pdf"
+          }
+        ]
+      }
+    },
+    "HZ01": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260924-182920",
+            "sheet": "assets/gen/EEB_HZ01/v20260924-182920/board_sheet.png",
+            "frames": [
+              "assets/gen/EEB_HZ01/v20260924-182920/frame_01.jpg",
+              "assets/gen/EEB_HZ01/v20260924-182920/frame_02.jpg",
+              "assets/gen/EEB_HZ01/v20260924-182920/frame_03.jpg",
+              "assets/gen/EEB_HZ01/v20260924-182920/frame_04.jpg",
+              "assets/gen/EEB_HZ01/v20260924-182920/frame_05.jpg",
+              "assets/gen/EEB_HZ01/v20260924-182920/frame_06.jpg",
+              "assets/gen/EEB_HZ01/v20260924-182920/frame_07.jpg",
+              "assets/gen/EEB_HZ01/v20260924-182920/frame_08.jpg",
+              "assets/gen/EEB_HZ01/v20260924-182920/frame_09.jpg",
+              "assets/gen/EEB_HZ01/v20260924-182920/frame_10.jpg",
+              "assets/gen/EEB_HZ01/v20260924-182920/frame_11.jpg",
+              "assets/gen/EEB_HZ01/v20260924-182920/frame_12.jpg",
+              "assets/gen/EEB_HZ01/v20260924-182920/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-09-24T18:29:21",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "a",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·2D 扁平插畫",
+            "gslide_pages": [
+              "assets/gen/EEB_HZ01/v20260924-182920/gslide_EEB_HZ01_p1.png",
+              "assets/gen/EEB_HZ01/v20260924-182920/gslide_EEB_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/EEB_HZ01/v20260924-182920/deck.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "updated": "2026-09-24T21:43:00"
+}

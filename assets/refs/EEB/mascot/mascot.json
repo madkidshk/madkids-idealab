@@ -1,0 +1,15 @@
+{
+  "dept": "EEB",
+  "has": true,
+  "name": "鹽少、糖小姐、高鹽、高糖芬（四個鹽樽／糖樽吉祥物）",
+  "existing": true,
+  "desc": "客提供官方吉祥物（Mascot.ai）。四隻都係「樽頭公仔」：頭係透明玻璃樽，戴實驗室護目鏡，胸前有細顯示屏牌。鹽少＝健康版鹽樽（銀色鹽樽蓋、綠白太空衣、顯示屏「少鹽」、笑容豎拇指）；糖小姐＝健康版糖樽（軟木塞蓋、圓樽頭、橙白直間裙、腰封「少糖」、開心揮手）；高鹽＝不健康版鹽少（同款鹽樽但肥啲、紅白衣、「高鈉⚠」、愁眉捧面）；高糖芬＝不健康版糖小姐（軟木塞、肥圓、粉紅直間裙、「高糖⚠」、流汗愁容）。第1-3格出現高鹽、高糖芬（以前嘅佢哋）；第4格起變返健康版鹽少、糖小姐。每格必須照 mascot source 真設計畫，比例／樽蓋／護目鏡／配色唔准走樣。",
+  "source": "客提供 Mascot.ai（Drive 1-BFB7VZ6_ubaRDm4_o18dKaE8S9sW7KT）+ 造型相（1SV4wRoOIouyIMQNRwfajw5ipvyWMxqdt），Raymond 2026-09-24",
+  "files": [
+    "assets/refs/EEB/mascot/mascot_lineup.png",
+    "assets/refs/EEB/mascot/mascot1.png",
+    "assets/refs/EEB/mascot/mascot2.png",
+    "assets/refs/EEB/mascot/mascot3.png",
+    "assets/refs/EEB/mascot/mascot4.png"
+  ]
+}

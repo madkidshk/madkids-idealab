@@ -1,0 +1,563 @@
+{
+  "dept": "PAWLAUNCH",
+  "concepts": {
+    "HZ01": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260927-171808-swap",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260927-171808-swap/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260927-171808-swap/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260927-171808-swap/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260927-171808-swap/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260927-171808-swap/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260927-171808-swap/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260927-171808-swap/frame_06.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260927-171808-swap/frame_07.jpg"
+            ],
+            "n": 7,
+            "ts": "2026-09-27T17:18:09",
+            "source": "swap",
+            "brd": "HZ01",
+            "label": "手寫稿·全風格·KV 寫實擬人寵物",
+            "vtok": "w",
+            "cid": "hand-HZ01",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260927-171808-swap/gslide_PAWLAUNCH_HZ01_p1.png",
+              "assets/gen/PAWLAUNCH_HZ01/v20260927-171808-swap/gslide_PAWLAUNCH_HZ01_p2.png"
+            ]
+          },
+          {
+            "v": "20260927-132057-swap",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260927-132057-swap/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260927-132057-swap/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260927-132057-swap/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260927-132057-swap/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260927-132057-swap/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260927-132057-swap/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260927-132057-swap/frame_06.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260927-132057-swap/frame_07.jpg"
+            ],
+            "n": 7,
+            "ts": "2026-09-27T13:20:57",
+            "source": "swap",
+            "brd": "HZ01",
+            "label": "手寫稿·全風格·KV 寫實擬人寵物",
+            "vtok": "v",
+            "cid": "hand-HZ01",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260927-132057-swap/gslide_PAWLAUNCH_HZ01_p1.png",
+              "assets/gen/PAWLAUNCH_HZ01/v20260927-132057-swap/gslide_PAWLAUNCH_HZ01_p2.png"
+            ]
+          },
+          {
+            "v": "20260926-212017",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260926-212017/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-212017/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-212017/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-212017/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-212017/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-212017/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-212017/frame_06.jpg"
+            ],
+            "n": 6,
+            "ts": "2026-09-26T21:20:17",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "u",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·KV 寫實擬人寵物",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-212017/gslide_PAWLAUNCH_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260926-212017/deck.pdf"
+          },
+          {
+            "v": "20260926-202939",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260926-202939/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-202939/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-202939/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-202939/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-202939/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-202939/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-202939/frame_06.jpg"
+            ],
+            "n": 6,
+            "ts": "2026-09-26T20:29:40",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "t",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·KV 寫實擬人寵物",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-202939/gslide_PAWLAUNCH_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260926-202939/deck.pdf"
+          },
+          {
+            "v": "20260926-154240",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260926-154240/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-154240/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-154240/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-154240/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-154240/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-154240/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-154240/frame_06.jpg"
+            ],
+            "n": 6,
+            "ts": "2026-09-26T15:42:41",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "s",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·KV 寫實擬人寵物",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-154240/gslide_PAWLAUNCH_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260926-154240/deck.pdf"
+          },
+          {
+            "v": "20260926-072712",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260926-072712/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-072712/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-072712/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-072712/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-072712/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-072712/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-072712/frame_06.jpg"
+            ],
+            "n": 6,
+            "ts": "2026-09-26T07:27:12",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "r",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·KV 寫實擬人寵物",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-072712/gslide_PAWLAUNCH_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260926-072712/deck.pdf"
+          },
+          {
+            "v": "20260926-013408",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260926-013408/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-013408/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-013408/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-013408/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-013408/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-013408/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-013408/frame_06.jpg"
+            ],
+            "n": 6,
+            "ts": "2026-09-26T01:34:08",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "q",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·KV 寫實擬人寵物",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-013408/gslide_PAWLAUNCH_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260926-013408/deck.pdf"
+          },
+          {
+            "v": "20260926-010912",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260926-010912/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-010912/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-010912/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-010912/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-010912/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-010912/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-010912/frame_06.jpg"
+            ],
+            "n": 6,
+            "ts": "2026-09-26T01:09:12",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "p",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·黑白鉛筆線稿分鏡",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260926-010912/gslide_PAWLAUNCH_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260926-010912/deck.pdf"
+          },
+          {
+            "v": "20260925-230618",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260925-230618/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-230618/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-230618/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-230618/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-230618/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-230618/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-230618/frame_06.jpg"
+            ],
+            "n": 6,
+            "ts": "2026-09-25T23:06:18",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "o",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·黑白鉛筆線稿分鏡",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-230618/gslide_PAWLAUNCH_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260925-230618/deck.pdf"
+          },
+          {
+            "v": "20260925-214738",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260925-214738/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-214738/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-214738/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-214738/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-214738/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-214738/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-214738/frame_06.jpg"
+            ],
+            "n": 6,
+            "ts": "2026-09-25T21:47:38",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "n",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·黑白鉛筆線稿分鏡",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-214738/gslide_PAWLAUNCH_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260925-214738/deck.pdf"
+          },
+          {
+            "v": "20260925-214110",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260925-214110/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-214110/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-214110/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-214110/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-214110/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-214110/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-214110/frame_06.jpg"
+            ],
+            "n": 6,
+            "ts": "2026-09-25T21:41:10",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "m",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·黑白鉛筆線稿分鏡",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-214110/gslide_PAWLAUNCH_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260925-214110/deck.pdf"
+          },
+          {
+            "v": "20260925-202549",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260925-202549/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-202549/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-202549/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-202549/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-202549/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-202549/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-202549/frame_06.jpg"
+            ],
+            "n": 6,
+            "ts": "2026-09-25T20:25:49",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "l",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·黑白鉛筆線稿分鏡",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-202549/gslide_PAWLAUNCH_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260925-202549/deck.pdf"
+          },
+          {
+            "v": "20260925-184621",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260925-184621/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-184621/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-184621/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-184621/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-184621/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-184621/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-184621/frame_06.jpg"
+            ],
+            "n": 6,
+            "ts": "2026-09-25T18:46:22",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "k",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·KV 寫實擬人寵物",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-184621/gslide_PAWLAUNCH_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260925-184621/deck.pdf"
+          },
+          {
+            "v": "20260925-173543",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260925-173543/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-173543/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-173543/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-173543/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-173543/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-173543/frame_05.jpg"
+            ],
+            "n": 5,
+            "ts": "2026-09-25T17:35:43",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "j",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·KV 寫實擬人寵物",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-173543/gslide_PAWLAUNCH_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260925-173543/deck.pdf"
+          },
+          {
+            "v": "20260925-173021",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260925-173021/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-173021/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-173021/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-173021/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-173021/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-173021/frame_05.jpg"
+            ],
+            "n": 5,
+            "ts": "2026-09-25T17:30:22",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "i",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·KV 寫實擬人寵物",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-173021/gslide_PAWLAUNCH_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260925-173021/deck.pdf"
+          },
+          {
+            "v": "20260925-171818",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260925-171818/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-171818/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-171818/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-171818/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-171818/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-171818/frame_05.jpg"
+            ],
+            "n": 5,
+            "ts": "2026-09-25T17:18:19",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "h",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·KV 寫實擬人寵物",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-171818/gslide_PAWLAUNCH_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260925-171818/deck.pdf"
+          },
+          {
+            "v": "20260925-170708",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260925-170708/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-170708/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-170708/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-170708/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-170708/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-170708/frame_05.jpg"
+            ],
+            "n": 5,
+            "ts": "2026-09-25T17:07:08",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "g",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·KV 寫實擬人寵物",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-170708/gslide_PAWLAUNCH_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260925-170708/deck.pdf"
+          },
+          {
+            "v": "20260925-003003",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260925-003003/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-003003/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-003003/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-003003/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-003003/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-003003/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-003003/frame_06.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-003003/frame_07.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-003003/frame_08.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-003003/frame_09.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-003003/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-25T00:30:03",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "f",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·KV 寫實擬人寵物",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-003003/gslide_PAWLAUNCH_HZ01_p1.png",
+              "assets/gen/PAWLAUNCH_HZ01/v20260925-003003/gslide_PAWLAUNCH_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260925-003003/deck.pdf"
+          },
+          {
+            "v": "20260924-234903",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260924-234903/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-234903/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-234903/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-234903/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-234903/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-234903/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-234903/frame_06.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-234903/frame_07.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-234903/frame_08.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-234903/frame_09.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-234903/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-24T23:49:03",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "e",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·KV 寫實擬人寵物",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-234903/gslide_PAWLAUNCH_HZ01_p1.png",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-234903/gslide_PAWLAUNCH_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260924-234903/deck.pdf"
+          },
+          {
+            "v": "20260924-225240",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260924-225240/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-225240/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-225240/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-225240/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-225240/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-225240/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-225240/frame_06.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-225240/frame_07.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-225240/frame_08.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-225240/frame_09.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-225240/frame_10.jpg"
+            ],
+            "n": 10,
+            "ts": "2026-09-24T22:52:41",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "d",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·KV 寫實擬人寵物",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-225240/gslide_PAWLAUNCH_HZ01_p1.png",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-225240/gslide_PAWLAUNCH_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260924-225240/deck.pdf"
+          },
+          {
+            "v": "20260924-220516",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260924-220516/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-220516/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-220516/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-220516/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-220516/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-220516/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-220516/frame_06.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-220516/frame_07.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-220516/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-09-24T22:05:16",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "c",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·KV 寫實擬人寵物",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-220516/gslide_PAWLAUNCH_HZ01_p1.png",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-220516/gslide_PAWLAUNCH_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260924-220516/deck.pdf"
+          },
+          {
+            "v": "20260924-211631",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260924-211631/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-211631/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-211631/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-211631/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-211631/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-211631/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-211631/frame_06.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-211631/frame_07.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-211631/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-09-24T21:16:32",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "b",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·KV 寫實擬人寵物",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-211631/gslide_PAWLAUNCH_HZ01_p1.png",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-211631/gslide_PAWLAUNCH_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260924-211631/deck.pdf"
+          },
+          {
+            "v": "20260924-205307",
+            "sheet": "assets/gen/PAWLAUNCH_HZ01/v20260924-205307/board_sheet.png",
+            "frames": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-205307/frame_01.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-205307/frame_02.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-205307/frame_03.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-205307/frame_04.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-205307/frame_05.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-205307/frame_06.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-205307/frame_07.jpg",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-205307/frame_08.jpg"
+            ],
+            "n": 8,
+            "ts": "2026-09-24T20:53:07",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "a",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·KV 寫實擬人寵物",
+            "gslide_pages": [
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-205307/gslide_PAWLAUNCH_HZ01_p1.png",
+              "assets/gen/PAWLAUNCH_HZ01/v20260924-205307/gslide_PAWLAUNCH_HZ01_p2.png"
+            ],
+            "deck_repo": "assets/gen/PAWLAUNCH_HZ01/v20260924-205307/deck.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "updated": "2026-09-26T21:20:17"
+}

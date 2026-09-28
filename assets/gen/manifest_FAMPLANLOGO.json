@@ -1,0 +1,75 @@
+{
+  "dept": "FAMPLANLOGO",
+  "concepts": {
+    "HZ01": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260927-224937-swap",
+            "sheet": "assets/gen/FAMPLANLOGO_HZ01/v20260927-224937-swap/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLANLOGO_HZ01/v20260927-224937-swap/frame_01.jpg",
+              "assets/gen/FAMPLANLOGO_HZ01/v20260927-224937-swap/frame_02.jpg",
+              "assets/gen/FAMPLANLOGO_HZ01/v20260927-224937-swap/frame_03.jpg",
+              "assets/gen/FAMPLANLOGO_HZ01/v20260927-224937-swap/frame_04.jpg",
+              "assets/gen/FAMPLANLOGO_HZ01/v20260927-224937-swap/frame_05.jpg"
+            ],
+            "n": 5,
+            "ts": "2026-09-27T22:49:37",
+            "source": "swap",
+            "brd": "HZ01",
+            "label": "手寫稿·全風格·字款設計",
+            "vtok": "c",
+            "cid": "hand-HZ01",
+            "gslide_pages": [
+              "assets/gen/FAMPLANLOGO_HZ01/v20260927-224937-swap/gslide_FAMPLANLOGO_HZ01_p1.png"
+            ]
+          },
+          {
+            "v": "20260927-223617",
+            "sheet": "assets/gen/FAMPLANLOGO_HZ01/v20260927-223617/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLANLOGO_HZ01/v20260927-223617/frame_01.jpg",
+              "assets/gen/FAMPLANLOGO_HZ01/v20260927-223617/frame_02.jpg",
+              "assets/gen/FAMPLANLOGO_HZ01/v20260927-223617/frame_03.jpg",
+              "assets/gen/FAMPLANLOGO_HZ01/v20260927-223617/frame_04.jpg"
+            ],
+            "n": 4,
+            "ts": "2026-09-27T22:36:17",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "b",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·字款設計",
+            "gslide_pages": [
+              "assets/gen/FAMPLANLOGO_HZ01/v20260927-223617/gslide_FAMPLANLOGO_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLANLOGO_HZ01/v20260927-223617/deck.pdf"
+          },
+          {
+            "v": "20260927-215922",
+            "sheet": "assets/gen/FAMPLANLOGO_HZ01/v20260927-215922/board_sheet.png",
+            "frames": [
+              "assets/gen/FAMPLANLOGO_HZ01/v20260927-215922/frame_01.jpg",
+              "assets/gen/FAMPLANLOGO_HZ01/v20260927-215922/frame_02.jpg",
+              "assets/gen/FAMPLANLOGO_HZ01/v20260927-215922/frame_03.jpg",
+              "assets/gen/FAMPLANLOGO_HZ01/v20260927-215922/frame_04.jpg"
+            ],
+            "n": 4,
+            "ts": "2026-09-27T21:59:23",
+            "source": "gsheet_handscript_allstyles",
+            "brd": "HZ01",
+            "vtok": "a",
+            "cid": "hand-HZ01",
+            "label": "手寫稿·全風格·字款設計",
+            "gslide_pages": [
+              "assets/gen/FAMPLANLOGO_HZ01/v20260927-215922/gslide_FAMPLANLOGO_HZ01_p1.png"
+            ],
+            "deck_repo": "assets/gen/FAMPLANLOGO_HZ01/v20260927-215922/deck.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "updated": "2026-09-27T22:36:17"
+}
