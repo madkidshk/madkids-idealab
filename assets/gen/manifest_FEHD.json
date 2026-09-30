@@ -4447,9 +4447,349 @@
           }
         ]
       }
+    },
+    "P": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260930-023413",
+            "sheet": "assets/gen/FEHD_P/v20260930-023413/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_P/v20260930-023413/frame_01.jpg",
+              "assets/gen/FEHD_P/v20260930-023413/frame_02.jpg",
+              "assets/gen/FEHD_P/v20260930-023413/frame_03.jpg",
+              "assets/gen/FEHD_P/v20260930-023413/frame_04.jpg",
+              "assets/gen/FEHD_P/v20260930-023413/frame_05.jpg",
+              "assets/gen/FEHD_P/v20260930-023413/frame_06.jpg",
+              "assets/gen/FEHD_P/v20260930-023413/frame_07.jpg",
+              "assets/gen/FEHD_P/v20260930-023413/frame_08.jpg",
+              "assets/gen/FEHD_P/v20260930-023413/frame_09.jpg",
+              "assets/gen/FEHD_P/v20260930-023413/frame_10.jpg",
+              "assets/gen/FEHD_P/v20260930-023413/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T02:34:14",
+            "source": "nblm",
+            "brd": "P",
+            "vtok": "a",
+            "cid": "nbace51ad4",
+            "label": "[NB] 晴空承諾",
+            "gslide_pages": [
+              "assets/gen/FEHD_P/v20260930-023413/gslide_FEHD_P_p1.png",
+              "assets/gen/FEHD_P/v20260930-023413/gslide_FEHD_P_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_P/v20260930-023413/deck.pdf"
+          }
+        ]
+      }
+    },
+    "O": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260930-023504",
+            "sheet": "assets/gen/FEHD_O/v20260930-023504/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_O/v20260930-023504/frame_01.jpg",
+              "assets/gen/FEHD_O/v20260930-023504/frame_02.jpg",
+              "assets/gen/FEHD_O/v20260930-023504/frame_03.jpg",
+              "assets/gen/FEHD_O/v20260930-023504/frame_04.jpg",
+              "assets/gen/FEHD_O/v20260930-023504/frame_05.jpg",
+              "assets/gen/FEHD_O/v20260930-023504/frame_06.jpg",
+              "assets/gen/FEHD_O/v20260930-023504/frame_07.jpg",
+              "assets/gen/FEHD_O/v20260930-023504/frame_08.jpg",
+              "assets/gen/FEHD_O/v20260930-023504/frame_09.jpg",
+              "assets/gen/FEHD_O/v20260930-023504/frame_10.jpg",
+              "assets/gen/FEHD_O/v20260930-023504/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T02:35:05",
+            "source": "nblm",
+            "brd": "O",
+            "vtok": "a",
+            "cid": "nb7f698f0b",
+            "label": "[NB] 智潔地圖",
+            "gslide_pages": [
+              "assets/gen/FEHD_O/v20260930-023504/gslide_FEHD_O_p1.png",
+              "assets/gen/FEHD_O/v20260930-023504/gslide_FEHD_O_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_O/v20260930-023504/deck.pdf"
+          }
+        ]
+      }
+    },
+    "Q": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260930-023510",
+            "sheet": "assets/gen/FEHD_Q/v20260930-023510/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_Q/v20260930-023510/frame_01.jpg",
+              "assets/gen/FEHD_Q/v20260930-023510/frame_02.jpg",
+              "assets/gen/FEHD_Q/v20260930-023510/frame_03.jpg",
+              "assets/gen/FEHD_Q/v20260930-023510/frame_04.jpg",
+              "assets/gen/FEHD_Q/v20260930-023510/frame_05.jpg",
+              "assets/gen/FEHD_Q/v20260930-023510/frame_06.jpg",
+              "assets/gen/FEHD_Q/v20260930-023510/frame_07.jpg",
+              "assets/gen/FEHD_Q/v20260930-023510/frame_08.jpg",
+              "assets/gen/FEHD_Q/v20260930-023510/frame_09.jpg",
+              "assets/gen/FEHD_Q/v20260930-023510/frame_10.jpg",
+              "assets/gen/FEHD_Q/v20260930-023510/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T02:35:11",
+            "source": "nblm",
+            "brd": "Q",
+            "vtok": "a",
+            "cid": "nb82f86649",
+            "label": "[ChatGPT] 潔淨倒帶",
+            "gslide_pages": [
+              "assets/gen/FEHD_Q/v20260930-023510/gslide_FEHD_Q_p1.png",
+              "assets/gen/FEHD_Q/v20260930-023510/gslide_FEHD_Q_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_Q/v20260930-023510/deck.pdf"
+          }
+        ]
+      }
+    },
+    "L": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260930-024114",
+            "sheet": "assets/gen/FEHD_L/v20260930-024114/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_L/v20260930-024114/frame_01.jpg",
+              "assets/gen/FEHD_L/v20260930-024114/frame_02.jpg",
+              "assets/gen/FEHD_L/v20260930-024114/frame_03.jpg",
+              "assets/gen/FEHD_L/v20260930-024114/frame_04.jpg",
+              "assets/gen/FEHD_L/v20260930-024114/frame_05.jpg",
+              "assets/gen/FEHD_L/v20260930-024114/frame_06.jpg",
+              "assets/gen/FEHD_L/v20260930-024114/frame_07.jpg",
+              "assets/gen/FEHD_L/v20260930-024114/frame_08.jpg",
+              "assets/gen/FEHD_L/v20260930-024114/frame_09.jpg",
+              "assets/gen/FEHD_L/v20260930-024114/frame_10.jpg",
+              "assets/gen/FEHD_L/v20260930-024114/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T02:41:14",
+            "source": "nblm",
+            "brd": "L",
+            "vtok": "a",
+            "cid": "nbb963afde",
+            "label": "[NB] 綠洲尋蹤",
+            "gslide_pages": [
+              "assets/gen/FEHD_L/v20260930-024114/gslide_FEHD_L_p1.png",
+              "assets/gen/FEHD_L/v20260930-024114/gslide_FEHD_L_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_L/v20260930-024114/deck.pdf"
+          }
+        ]
+      }
+    },
+    "K": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260930-040350",
+            "sheet": "assets/gen/FEHD_K/v20260930-040350/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_K/v20260930-040350/frame_01.jpg",
+              "assets/gen/FEHD_K/v20260930-040350/frame_02.jpg",
+              "assets/gen/FEHD_K/v20260930-040350/frame_03.jpg",
+              "assets/gen/FEHD_K/v20260930-040350/frame_04.jpg",
+              "assets/gen/FEHD_K/v20260930-040350/frame_05.jpg",
+              "assets/gen/FEHD_K/v20260930-040350/frame_06.jpg",
+              "assets/gen/FEHD_K/v20260930-040350/frame_07.jpg",
+              "assets/gen/FEHD_K/v20260930-040350/frame_08.jpg",
+              "assets/gen/FEHD_K/v20260930-040350/frame_09.jpg",
+              "assets/gen/FEHD_K/v20260930-040350/frame_10.jpg",
+              "assets/gen/FEHD_K/v20260930-040350/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T04:03:50",
+            "source": "nblm",
+            "brd": "K",
+            "vtok": "c",
+            "cid": "nbbefc1763",
+            "label": "[NB] 晨光煥新",
+            "gslide_pages": [
+              "assets/gen/FEHD_K/v20260930-040350/gslide_FEHD_K_p1.png",
+              "assets/gen/FEHD_K/v20260930-040350/gslide_FEHD_K_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_K/v20260930-040350/deck.pdf"
+          },
+          {
+            "v": "20260930-032554",
+            "sheet": "assets/gen/FEHD_K/v20260930-032554/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_K/v20260930-032554/frame_01.jpg",
+              "assets/gen/FEHD_K/v20260930-032554/frame_02.jpg",
+              "assets/gen/FEHD_K/v20260930-032554/frame_03.jpg",
+              "assets/gen/FEHD_K/v20260930-032554/frame_04.jpg",
+              "assets/gen/FEHD_K/v20260930-032554/frame_05.jpg",
+              "assets/gen/FEHD_K/v20260930-032554/frame_06.jpg",
+              "assets/gen/FEHD_K/v20260930-032554/frame_07.jpg",
+              "assets/gen/FEHD_K/v20260930-032554/frame_08.jpg",
+              "assets/gen/FEHD_K/v20260930-032554/frame_09.jpg",
+              "assets/gen/FEHD_K/v20260930-032554/frame_10.jpg",
+              "assets/gen/FEHD_K/v20260930-032554/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T03:25:57",
+            "source": "nblm",
+            "brd": "K",
+            "vtok": "b",
+            "cid": "nbbefc1763",
+            "label": "[NB] 晨光煥新",
+            "gslide_pages": [
+              "assets/gen/FEHD_K/v20260930-032554/gslide_FEHD_K_p1.png",
+              "assets/gen/FEHD_K/v20260930-032554/gslide_FEHD_K_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_K/v20260930-032554/deck.pdf"
+          },
+          {
+            "v": "20260930-025517",
+            "sheet": "assets/gen/FEHD_K/v20260930-025517/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_K/v20260930-025517/frame_01.jpg",
+              "assets/gen/FEHD_K/v20260930-025517/frame_02.jpg",
+              "assets/gen/FEHD_K/v20260930-025517/frame_03.jpg",
+              "assets/gen/FEHD_K/v20260930-025517/frame_04.jpg",
+              "assets/gen/FEHD_K/v20260930-025517/frame_05.jpg",
+              "assets/gen/FEHD_K/v20260930-025517/frame_06.jpg",
+              "assets/gen/FEHD_K/v20260930-025517/frame_07.jpg",
+              "assets/gen/FEHD_K/v20260930-025517/frame_08.jpg",
+              "assets/gen/FEHD_K/v20260930-025517/frame_09.jpg",
+              "assets/gen/FEHD_K/v20260930-025517/frame_10.jpg",
+              "assets/gen/FEHD_K/v20260930-025517/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T02:55:18",
+            "source": "nblm",
+            "brd": "K",
+            "vtok": "a",
+            "cid": "nbbefc1763",
+            "label": "[NB] 晨光煥新",
+            "gslide_pages": [
+              "assets/gen/FEHD_K/v20260930-025517/gslide_FEHD_K_p1.png",
+              "assets/gen/FEHD_K/v20260930-025517/gslide_FEHD_K_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_K/v20260930-025517/deck.pdf"
+          }
+        ]
+      }
+    },
+    "R": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260930-030351",
+            "sheet": "assets/gen/FEHD_R/v20260930-030351/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_R/v20260930-030351/frame_01.jpg",
+              "assets/gen/FEHD_R/v20260930-030351/frame_02.jpg",
+              "assets/gen/FEHD_R/v20260930-030351/frame_03.jpg",
+              "assets/gen/FEHD_R/v20260930-030351/frame_04.jpg",
+              "assets/gen/FEHD_R/v20260930-030351/frame_05.jpg",
+              "assets/gen/FEHD_R/v20260930-030351/frame_06.jpg",
+              "assets/gen/FEHD_R/v20260930-030351/frame_07.jpg",
+              "assets/gen/FEHD_R/v20260930-030351/frame_08.jpg",
+              "assets/gen/FEHD_R/v20260930-030351/frame_09.jpg",
+              "assets/gen/FEHD_R/v20260930-030351/frame_10.jpg",
+              "assets/gen/FEHD_R/v20260930-030351/frame_11.jpg",
+              "assets/gen/FEHD_R/v20260930-030351/frame_12.jpg",
+              "assets/gen/FEHD_R/v20260930-030351/frame_13.jpg"
+            ],
+            "n": 13,
+            "ts": "2026-09-30T03:03:52",
+            "source": "nblm",
+            "brd": "R",
+            "vtok": "a",
+            "cid": "nb5b554370",
+            "label": "[Grok] 刮漬見影",
+            "gslide_pages": [
+              "assets/gen/FEHD_R/v20260930-030351/gslide_FEHD_R_p1.png",
+              "assets/gen/FEHD_R/v20260930-030351/gslide_FEHD_R_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_R/v20260930-030351/deck.pdf"
+          }
+        ]
+      }
+    },
+    "N": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260930-030535",
+            "sheet": "assets/gen/FEHD_N/v20260930-030535/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_N/v20260930-030535/frame_01.jpg",
+              "assets/gen/FEHD_N/v20260930-030535/frame_02.jpg",
+              "assets/gen/FEHD_N/v20260930-030535/frame_03.jpg",
+              "assets/gen/FEHD_N/v20260930-030535/frame_04.jpg",
+              "assets/gen/FEHD_N/v20260930-030535/frame_05.jpg",
+              "assets/gen/FEHD_N/v20260930-030535/frame_06.jpg",
+              "assets/gen/FEHD_N/v20260930-030535/frame_07.jpg",
+              "assets/gen/FEHD_N/v20260930-030535/frame_08.jpg",
+              "assets/gen/FEHD_N/v20260930-030535/frame_09.jpg",
+              "assets/gen/FEHD_N/v20260930-030535/frame_10.jpg",
+              "assets/gen/FEHD_N/v20260930-030535/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T03:05:36",
+            "source": "nblm",
+            "brd": "N",
+            "vtok": "a",
+            "cid": "nb999f89b6",
+            "label": "[NB] 城市交響",
+            "gslide_pages": [
+              "assets/gen/FEHD_N/v20260930-030535/gslide_FEHD_N_p1.png",
+              "assets/gen/FEHD_N/v20260930-030535/gslide_FEHD_N_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_N/v20260930-030535/deck.pdf"
+          }
+        ]
+      }
+    },
+    "M": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260930-031217",
+            "sheet": "assets/gen/FEHD_M/v20260930-031217/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_M/v20260930-031217/frame_01.jpg",
+              "assets/gen/FEHD_M/v20260930-031217/frame_02.jpg",
+              "assets/gen/FEHD_M/v20260930-031217/frame_03.jpg",
+              "assets/gen/FEHD_M/v20260930-031217/frame_04.jpg",
+              "assets/gen/FEHD_M/v20260930-031217/frame_05.jpg",
+              "assets/gen/FEHD_M/v20260930-031217/frame_06.jpg",
+              "assets/gen/FEHD_M/v20260930-031217/frame_07.jpg",
+              "assets/gen/FEHD_M/v20260930-031217/frame_08.jpg",
+              "assets/gen/FEHD_M/v20260930-031217/frame_09.jpg",
+              "assets/gen/FEHD_M/v20260930-031217/frame_10.jpg",
+              "assets/gen/FEHD_M/v20260930-031217/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T03:12:17",
+            "source": "nblm",
+            "brd": "M",
+            "vtok": "a",
+            "cid": "nb55175afc",
+            "label": "[NB] 街角對話",
+            "gslide_pages": [
+              "assets/gen/FEHD_M/v20260930-031217/gslide_FEHD_M_p1.png",
+              "assets/gen/FEHD_M/v20260930-031217/gslide_FEHD_M_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_M/v20260930-031217/deck.pdf"
+          }
+        ]
+      }
     }
   },
-  "updated": "2026-06-17T00:58:01",
+  "updated": "2026-09-30T04:03:50",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "2605_FEHD_Water Seepage APIs"
 }

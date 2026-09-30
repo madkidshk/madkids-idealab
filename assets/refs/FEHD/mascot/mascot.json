@@ -1,0 +1,10 @@
+{
+  "dept": "FEHD",
+  "has": true,
+  "name": "清潔龍阿德",
+  "existing": true,
+  "desc": "Raymond 2026-09-30 指定：清潔龍阿德（官方 3D 設計：綠色龍、橙角、牛仔吊帶褲、粉紅靴）。只喺分鏡畫面有阿德嘅方向先餵圖。",
+  "files": [
+    "assets/refs/FEHD/mascot/mascot1.png"
+  ]
+}
