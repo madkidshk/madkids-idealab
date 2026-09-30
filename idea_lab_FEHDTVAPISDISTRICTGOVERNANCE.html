@@ -1,0 +1,1570 @@
+<!DOCTYPE html><html lang=zh-HK><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>FEHDTVAPISDISTRICTGOVERNANCE · Idea Lab</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#6b7280;--line:#e6e8ec;
+      --ac:#4f46e5;--gold:#c79a2b;--red:#dc2626;--grn:#15a34a}
+*{box-sizing:border-box}
+.btn{background:#4f46e5;color:#fff;border:none;border-radius:9px;padding:8px 13px;font-size:12.5px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;box-sizing:border-box}
+.btn.ghost{background:#fff;color:#4f46e5;border:1.5px solid #dcdffb}
+.btn.grn{background:#15a34a}
+.btn.mini{padding:4px 9px;font-size:11px;min-height:44px}
+.btn:hover,.btn.ghost:hover{filter:brightness(.98)}
+details.soft{background:#fff;border:1px solid #e7e9ee;border-radius:10px;padding:4px 12px}
+details.soft>summary{cursor:pointer;font-size:12.5px;font-weight:700;color:#444;padding:8px 0;list-style:none}
+details.soft>summary::-webkit-details-marker{display:none}
+details.soft>summary::before{content:"▸ ";color:#9aa0ab}
+details.soft[open]>summary::before{content:"▾ "}
+.ovl{position:fixed;inset:0;z-index:120;background:rgba(15,18,28,.55);display:none;align-items:center;justify-content:center;padding:18px}
+.ovl.on{display:flex}
+.ovlbox{background:#fff;border-radius:14px;box-shadow:0 18px 60px rgba(0,0,0,.4)}
+.pill{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:#eef0f3;color:#555}
+.pill.ok{background:#e7f7ee;color:#15803d}
+.pill.warn{background:#fff4e5;color:#b45309}
+.pill.bad{background:#fdeaea;color:#dc2626}
+.pill.accent{background:#eef0fe;color:#4f46e5}
+.secthead{font-size:16px;font-weight:800;margin:24px 0 10px;border-left:4px solid #4f46e5;padding-left:9px;color:#1b1f27}
+.secthead.tight{margin-top:10px}
+.sectbadge{display:inline-block;margin-left:8px;font-size:11px;font-weight:800;border-radius:999px;padding:2px 8px;background:#eef0fe;color:#4f46e5}
+.carousel{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 12px;-webkit-overflow-scrolling:touch}
+.carousel::-webkit-scrollbar{height:6px}
+.carousel::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:6px}
+.carousel-card{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;background:#fff;border:1.5px solid #e7e9ee;border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+@media(min-width:700px) and (max-width:1099px){.carousel-card{flex:0 0 46%}}
+@media(min-width:1100px){.carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}.carousel-card{flex:0 0 calc(33.333% - 10px);max-width:none;scroll-snap-align:none}}
+.lbx{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;display:none;align-items:center;justify-content:center;padding:12px}
+.lbx.on{display:flex}
+.lbx img{max-width:98vw;max-height:94vh;border-radius:8px;cursor:zoom-out}
+.lbx .x{position:fixed;top:10px;right:16px;color:#fff;font-size:30px;font-weight:800;cursor:pointer}
+.lbx .hint{position:fixed;bottom:12px;left:0;right:0;text-align:center;color:#bbb;font-size:12px}
+.badge{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:#4f46e5;border-radius:7px;padding:2px 9px;letter-spacing:.02em}
+.score-badge{display:inline-block;background:#c79a2b;color:#fff;font-size:12px;font-weight:800;border-radius:20px;padding:2px 10px}
+.status-badge{display:inline-block;font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.status-badge.ok{background:#dcfce7;color:#15803d}
+.status-badge.warn{background:#fef3c7;color:#a16207}
+.status-badge.bad{background:#fee2e2;color:#b91c1c}
+.status-badge.mute{background:#eef0f3;color:#717784}
+.surface-card{background:#fff;border:1px solid #e7e9ee;border-radius:14px;box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+.surface-card.soft{background:#fafbfd}
+.surface-card.warn{background:#fff8f1;border-color:#fcd9b6}
+.surface-card.danger{border-color:#f3b4ae;box-shadow:0 2px 16px rgba(238,56,47,.08)}
+.surface-card.pad-sm{padding:9px 10px}
+.surface-card.pad-md{padding:15px 17px}
+.surface-card.pad-lg{padding:18px}
+.surface-card.selected{border-color:#4f46e5;box-shadow:0 0 0 2px rgba(79,70,229,.25),0 6px 18px rgba(79,70,229,.18)}
+body{margin:0;background:var(--bg);color:var(--ink);
+     font:15px/1.55 -apple-system,"PingFang HK",sans-serif}
+.wrap{max-width:430px;margin:0 auto;padding:0 13px 130px}
+h1{font-size:19px;font-weight:800;margin:0;line-height:1.25}
+h1 .dept{color:var(--ac)}
+.bdp{font-size:12px;font-weight:700;margin:3px 0 0;display:flex;gap:11px;flex-wrap:wrap}
+.fresh{font-size:11px;color:#7a8290;margin:6px 0 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.fresh .fr{background:#f1f3f6;border-radius:6px;padding:2px 7px;white-space:nowrap}
+.fresh .fr b{color:#4a5462;font-weight:700}
+.bdp .bb{color:#2563eb}.bdp .dd{color:#dc2626}.bdp .pp{color:#7c3aed}
+.tabbar{position:sticky;top:0;z-index:30;background:var(--bg);
+         border-bottom:2px solid var(--line);display:flex;gap:5px;
+         overflow-x:auto;padding:8px 0 7px;scrollbar-width:none}
+.tabbar::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;background:var(--card);border:1.5px solid var(--line);
+      border-radius:9px;padding:5px 12px;font-size:12px;font-weight:800;
+      color:var(--mut);cursor:pointer;transition:all .12s;white-space:nowrap}
+.tab:hover{border-color:var(--ac);color:var(--ac)}
+.tab.active{background:var(--ac);border-color:var(--ac);color:#fff}
+header{padding:12px 0 4px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap}
+.titlerow h1{margin:0;min-width:0}
+.hdrbtns{flex:none;display:flex;gap:7px;align-items:center}
+.homebtn,.refbtn{flex:none;white-space:nowrap;font-size:16px;line-height:1;text-decoration:none;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:5px 9px;color:#222;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.refbtn{cursor:pointer}
+.labbtn{flex:none;white-space:nowrap;font-size:13px;line-height:1;text-decoration:none;border-radius:9px;padding:7px 10px;font-weight:800;border:1px solid transparent;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.labbtn.mk{background:#fff5f5;color:#EE382F;border-color:#f3b4ae}
+.labbtn.mm{background:#fff7ed;color:#d97706;border-color:#fdba74}
+@media(max-width:480px){.homebtn,.refbtn{font-size:14px;padding:5px 8px}}
+@media(max-width:420px){.titlerow{flex-direction:column;align-items:stretch;gap:8px}.hdrbtns{flex-wrap:wrap;max-width:100%;width:100%;gap:6px}}
+.tabpanel{display:none;padding-top:10px}
+.tabpanel.active{display:block}
+.setlab{font-size:11px;font-weight:800;color:var(--ac);background:#eef0fe;
+         border:1px solid #dcdffb;border-radius:8px;padding:4px 10px;
+         display:inline-block;margin:0 0 8px}
+.banner{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;
+         padding:10px 12px;font-size:12.5px;font-weight:700;color:#92660c;margin:10px 0}
+.h2{font-size:14.5px;font-weight:800;letter-spacing:.01em;color:var(--ink);
+     margin:16px 2px 8px}
+.h3{font-size:13px;font-weight:700;color:#374151;margin:11px 0 5px}
+.stylepick{margin:10px 0}
+.styrow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:5px 0;padding:5px 0;border-bottom:1px solid var(--line)}
+.stylbl{min-width:84px;font-weight:600;font-size:13px}
+.styo{display:inline-flex;align-items:center;gap:4px;font-size:13px;padding:3px 10px;
+       border:1px solid var(--line);border-radius:14px;cursor:pointer;user-select:none;background:#fafafa}
+.styo input{margin:0}
+.styo:has(input:checked){background:#e6f7f1;border-color:#0a7;color:#066}
+.styanchor{margin-top:9px;font-size:12px;color:var(--mut)}
+#styanchor{color:#0a7;font-weight:600}
+.card{background:var(--card);border-color:var(--line);border-radius:13px;
+       padding:11px 12px;margin-bottom:8px}
+.hgrid{display:grid;grid-template-columns:1fr;gap:13px}
+@media(min-width:720px){.hgrid{grid-template-columns:1fr 1fr 1fr}}
+.hcard{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:10px;box-shadow:0 1px 2px rgba(20,24,40,.05)}
+.hcap{font-weight:800;font-size:13px;margin-bottom:7px}
+.sgrp{font-weight:800;font-size:12px;color:#475569;background:#eef1f6;border-radius:7px;padding:5px 10px;margin:11px 0 2px}
+.sgrp:first-child{margin-top:2px}
+.tlrow.todo{opacity:.55} .tlrow.todo .tllabel{color:#9aa0ab}
+.tlrow.na{opacity:.4} .tlrow.na .tllabel{color:#b6bbc4;text-decoration:line-through}
+.dsp{width:100%;border-collapse:collapse;font-size:12.5px}
+.dsp th{text-align:left;color:var(--mut);font-weight:700;padding:4px 7px;border-bottom:1px solid var(--line)}
+.dsp td{padding:4px 7px;border-bottom:1px solid #f3f4f6;vertical-align:top}
+.vacarou{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.vacard{flex:0 0 134px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px;font-size:11px}
+.vathumb{position:relative;height:90px;border-radius:7px;overflow:hidden;background:#f1f3f7;display:flex;align-items:center;justify-content:center}
+.vathumb img{width:100%;height:100%;object-fit:cover}
+.vacat{margin-top:5px;font-size:10px;color:#7b4fc0;font-weight:800}
+.vaname{font-weight:600;line-height:1.25;min-height:28px;color:#374151}
+.vasrc{font-size:10.5px} .vatick{display:block;font-size:11px;margin-bottom:4px;cursor:pointer;font-weight:700}
+.vaprovide{margin:12px 0 2px}
+.upbox .refelemin{display:block;width:100%;margin:0 0 8px;padding:6px 8px;border:1px solid var(--line);border-radius:7px;font-size:12px}
+/* ── 標書 tab restructure 2026-06-16 ── */
+/* 💡 提供窗口 */
+.h2sm{font-size:13px;margin:12px 2px 5px}
+.provide{padding:9px 10px}
+/* 加入想法 + upbox 送出 統一設計(都係 .btn 觀感) */
+.provide .upbox{margin:0;border-radius:9px;padding:9px}
+.provide .upbox .attsend{background:var(--ac);border-radius:9px;padding:0 14px;font-size:12.5px;font-weight:800}
+.provide .noteslist{margin-top:7px}
+/* 三梯隊標題:左色條 + 副標 */
+.tierh{border-left:4px solid var(--ac);padding-left:9px;margin:18px 2px 2px;font-size:14px}
+.tierhint{margin:2px 2px 7px 13px}
+/* ✍️ 邊個 model 寫(#5):mdl 真 / mdef 預設(灰) / mfb fallback(橙) */
+.mdl{flex:0 0 auto;font-size:10px;font-weight:800;color:#3730a3;background:#eef0fe;border:1px solid #dcdffb;
+      border-radius:6px;padding:1px 6px;white-space:nowrap;margin-left:auto}
+.mdl.mdef{color:#6b7280;background:#f1f3f6;border-color:#e3e6ea}
+.mdl.mfb{color:#9a5a00;background:#fff4e5;border-color:#fde6c0}
+.h3 .mdl{margin-left:6px;vertical-align:middle}
+/* 📋 標書內容 carousel 卡 — 字體/行寬完全跟返 VID1 .ccard(Raymond 2026-06-16:之前縮 12px 太難讀,
+   改返用 VID1 base .cbody 12.5px/1.62、.ctitle 14px。卡內 md 標題用 base .cbody h3/h4 12.5px,統一)。 */
+.brfcarou{margin-top:2px}
+.brfcard .chead{cursor:default}
+/* 🔄 重生緊 signal(手寫稿 BD) */
+.regbadge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;color:#fff;background:var(--ac);border-radius:8px;padding:4px 9px;margin:0 0 6px}
+/* 🔀 換格 + BD 英文字 */
+.bdletter{display:inline-block;min-width:18px;text-align:center;font-weight:800;color:#fff;background:var(--ac);border-radius:6px;padding:0 5px;margin-right:4px}
+.swrow{display:flex;align-items:center;gap:6px;margin-bottom:7px;flex-wrap:wrap}
+.swlbl{font-size:12px;color:var(--mut);white-space:nowrap}
+.swrow select{flex:1;min-width:90px;font-size:12.5px;padding:6px 7px;border:1px solid var(--line);border-radius:7px;background:#fff}
+/* 標書原文 link 喺 撮要 標題右邊 */
+.rawlink{flex:0 0 auto;margin-left:auto;font-size:10.5px;font-weight:800;color:var(--ac);background:#eef0fe;border:1px solid #dcdffb;border-radius:6px;padding:1px 6px;cursor:pointer;white-space:nowrap}
+/* 部門官方來源 search-result row(似 youtube search) */
+.srcrow{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid #f1f3f6}
+.srcrow:last-child{border-bottom:0}
+.srcthumb{flex:0 0 54px;height:40px;border-radius:5px;object-fit:cover;background:#f1f3f7}
+.srctit{font-size:11.5px;font-weight:700;line-height:1.3;color:var(--ac)}
+.srcsnip{font-size:10.5px;color:#6b7280;line-height:1.4;margin-top:1px}
+/* 🎧 Briefing 錄音逐字 overlay(撳先出,唔常設) */
+.ovlbox{max-width:560px;width:100%;max-height:82vh;display:flex;flex-direction:column}
+.ovlhd{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--line);font-weight:800;font-size:13px}
+.ovlhd .x{cursor:pointer;color:#888;font-size:16px;border:0;background:0}
+.ovlbody{overflow:auto;padding:12px 14px;font-size:11.5px;line-height:1.6;color:#333;white-space:pre-wrap}
+.ovllink{color:var(--ac);font-weight:700;cursor:pointer;text-decoration:underline}
+/* 📸 Visual 素材:⭐首選 badge + 三 action 掣(三格一樣大) + 重搜漏斗 */
+.vacard{position:relative;transition:order .2s}
+.vacard.pref{border-color:var(--gold);box-shadow:0 0 0 2px rgba(199,154,43,.22)}
+.vastar{position:absolute;top:5px;right:5px;font-size:9.5px;font-weight:800;color:#fff;background:var(--gold);border-radius:6px;padding:1px 5px}
+.vafunnel{position:absolute;bottom:4px;right:4px;font-size:9.5px;font-weight:800;color:#fff;background:rgba(79,70,229,.94);border-radius:6px;padding:2px 6px;display:inline-flex;align-items:center;gap:3px}
+.vaacts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.vaacts .btn{width:auto;text-align:center;margin:0;padding:0 4px;min-height:44px;display:flex;align-items:center;justify-content:center;white-space:nowrap;box-sizing:border-box}
+.vaacts .btn.ghost{width:auto;padding:0 4px;margin:0}
+@media(max-width:420px){.vaacts{gap:4px}}
+
+.upbox{background:#fff;border:1.5px dashed #bcd;border-radius:11px;padding:11px;margin:6px 0}
+.upbox.hov{background:#eef6ff;border-color:#6aa3e0}
+.upbox .attstage{min-height:0;margin-bottom:4px}
+.upbox .stchip{display:inline-block;background:#eef7f0;border:1px solid #bfe0cd;border-radius:20px;padding:3px 9px;font-size:11.5px;font-weight:700;color:#176b3a}
+.upbox .stchip .ststrip{border:0;background:0;cursor:pointer;color:#999;font-weight:700;margin-left:3px}
+.upbox .attrow1{display:flex;gap:6px}
+.upbox .atttext{flex:1;border:1px solid var(--line,#dde);border-radius:8px;padding:9px 11px;font-size:14px;line-height:1.5;min-height:84px;resize:vertical;font-family:inherit}
+.upbox .attsend{border:0;background:#0A7D3F;color:#fff;border-radius:8px;padding:0 14px;font-weight:700;cursor:pointer;white-space:nowrap;min-height:44px}
+.upbox .attbtns2{margin-top:6px;display:flex;gap:6px}
+.upbox .attpick{border:1px solid var(--line,#dde);background:#f7f9fc;border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer;font-weight:600;flex:1;min-height:44px;text-align:center}
+.upbox .attdrive{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line,#dde);background:#f7f9fc;border-radius:8px;padding:5px 10px;font-size:12px;font-weight:600;flex:1;min-height:44px;text-decoration:none;color:inherit}
+.upst{font-size:11.5px;color:#176b3a;margin-top:5px;min-height:0}
+@media(max-width:600px){.upbox .attrow1{flex-direction:column}.upbox .attsend{width:100%}}
+
+.bdcm{margin-top:7px}
+.bdcm textarea{width:100%;box-sizing:border-box;font:13px/1.45 inherit;border:1px solid var(--line);border-radius:8px;padding:6px 8px;resize:vertical}
+.bdcm .btn.mini{margin-top:5px}
+.gflags{margin:7px 0 4px;padding:7px 9px;background:#fffbec;border:1px solid #f0d96a;border-radius:8px;font-size:12px;color:#6b4d00}
+.gflag{padding:2px 0;line-height:1.5}
+.gflag+.gflag{border-top:1px solid #f5ebb0;margin-top:3px;padding-top:5px}
+.gfslide{font-weight:600;background:#f5e07c;border-radius:4px;padding:1px 5px;margin-right:4px}
+.cmlog{font-size:11px;color:#2e8b57;margin-top:5px}
+.card.big{padding:13px}
+.card.empty{color:var(--mut);font-size:13px;font-style:italic}
+.row{display:flex;align-items:center;gap:9px}
+.rank{font-size:11px;font-weight:800;color:var(--mut);width:18px}
+.src{font-size:11px;color:var(--mut);font-weight:700;background:#f1f5f9;
+      border-radius:6px;padding:1px 6px}
+.score{font-size:12px;font-weight:800;color:var(--gold);margin-left:auto}
+.nm{font-weight:800;font-size:13.5px;line-height:1.35}
+.csub{font-size:11px;color:var(--mut);font-weight:600;margin-top:2px}
+.crow{margin:5px 0 0}
+.cflag{font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.cflag.hi{background:#dcfce7;color:#15803d}
+.cflag.lo{background:#fef3c7;color:#a16207}
+.cflag.rl{background:#fee2e2;color:#b91c1c}
+.ck{width:22px;height:22px;border:2px solid var(--ac);border-radius:6px;
+     display:inline-grid;place-items:center;font-size:13px;color:#fff;
+     cursor:pointer;flex:0 0 auto;position:relative}
+.ck::before{content:"";position:absolute;inset:-11px}
+.ck.on{background:var(--ac)}
+.ck.done{background:var(--grn);border-color:var(--grn);cursor:default}
+.divider{display:flex;align-items:center;gap:8px;margin:12px 2px;
+          color:#aab0ba;font-size:11px;font-weight:700}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.cnt-warn{color:var(--red)!important}
+.lookback{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:11px;
+           padding:10px 12px;font-size:12px;color:#475569}
+.btn{background:var(--ac)}
+.btn.grn{background:var(--grn)}
+.btn.ghost{width:100%;text-align:center;padding:11px 13px;margin:2px 0 4px}
+.btn.mini{padding:4px 9px;font-size:11px;margin-left:8px}
+.submit{position:fixed;bottom:14px;right:calc(50% - 215px + 13px);z-index:20}
+@media(max-width:456px){.submit{right:14px}}
+/* ── Responsive 3 tier（Raymond 2026-06-06）：mobile(default) / tablet / desktop 用晒畫面 ── */
+/* Tablet:闊啲,carousel 一次 2 卡 */
+@media(min-width:700px) and (max-width:1099px){
+  .wrap{max-width:680px;padding:0 20px 130px}
+  .submit{right:calc(50% - 340px + 20px)}
+  .ccard{flex:0 0 46%;max-height:68vh}
+  .rest-row .ccard{flex:0 0 36%}
+  .briefcard{max-height:40vh}
+}
+/* Desktop:用晒畫面 —— carousel 變 grid(唔橫掃,鋪滿),六強 3 欄、其餘 4 欄 */
+@media(min-width:1100px){
+  .wrap{max-width:min(1280px,94vw);padding:0 28px 120px}
+  .submit{right:max(28px, calc(50vw - 640px + 28px))}
+  .carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}
+  .ccard{flex:0 0 calc(33.333% - 10px);max-width:none;max-height:43vh;scroll-snap-align:none}   /* Raymond 2026-06-16:桌面每格短 1/3(64→43vh),標書 tab 跟 VID1 */
+  .rest-row .ccard{flex:0 0 calc(25% - 11px)}
+}
+/* NB 方向：三欄稿表；一行兩個 idea（窄屏一個）— Raymond 2026-09-19 */
+.carousel.nbgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;overflow-x:visible}
+.carousel.nbgrid .ccard.nbcard{flex:none;max-width:none;max-height:none}
+@media(max-width:820px){.carousel.nbgrid{grid-template-columns:1fr}}
+.sbtab{width:100%;border-collapse:collapse;font-size:12.5px;line-height:1.55;margin-top:6px}
+.sbtab th,.sbtab td{border:1px solid #e5e7eb;padding:5px 7px;vertical-align:top;text-align:left}
+.sbtab th{background:#f3f4f6;font-weight:700;white-space:nowrap}
+.sbtab td.fn{width:34px;text-align:center;font-weight:700}
+.sbtab .sup{margin-top:4px;color:#b45309}
+.nbmeta{margin:2px 0;font-size:12.5px}
+.nbconcept{background:#fffbeb;border-left:3px solid #f59e0b;padding:8px 10px;margin:4px 0 8px;font-size:13px;line-height:1.7}
+.consb ul{margin:4px 0 0 18px}
+@media(min-width:1100px){
+  .briefcard{max-height:36vh}
+  .tabbar{flex-wrap:wrap}
+  .card.big .sheet{max-width:520px}
+}
+.submit .btn{box-shadow:0 6px 20px rgba(79,70,229,.4);padding:11px 18px;font-size:13.5px}
+.foot{font-size:11px;color:#9aa0aa;text-align:center;margin-top:22px}
+.notes-win{width:100%;min-height:90px;border:1.5px solid var(--ac);
+            border-radius:11px;padding:10px 12px;font:14px/1.6 inherit;
+            resize:vertical;background:#fafbff;margin-bottom:6px}
+.notes-act{text-align:right;margin-bottom:6px}
+.notes-act .btn{padding:6px 14px}
+.noteslist{margin-bottom:6px}
+.notecard{background:#fafbff;border:1px solid #e0e3f5;border-radius:10px;
+           padding:7px 10px;margin-bottom:6px}
+.noterow{display:flex;align-items:center;gap:8px}
+.notets{font-size:10.5px;font-weight:800;color:var(--ac)}
+.notedel{margin-left:auto;background:none;border:none;color:#b0b6c2;font-size:13px;
+          cursor:pointer;padding:0 2px}
+.notetxt{font-size:13px;color:var(--ink);line-height:1.5;margin-top:2px;white-space:pre-wrap}
+/* Brief 撮要緊湊卡（固定高度內部 scroll，似 VID 1 卡）*/
+.briefcard{max-height:46vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.briefcard h3,.briefcard h4{font-size:13px;margin:9px 0 3px}
+.suppinline{margin-top:10px;border-top:2px solid #fde68a;background:#fffbeb;
+             border-radius:9px;padding:8px 10px}
+.suppinline h3,.suppinline h4{color:#92660c;font-size:12.5px;margin:2px 0 5px}
+/* 補充日程簡單 list */
+.timeline{margin:2px 0}
+.tlrow{display:flex;gap:8px;padding:5px 2px;border-bottom:1px solid #f3f4f6;font-size:12.5px}
+.tlrow:last-child{border-bottom:none}
+.tldate{flex:0 0 auto;font-weight:800;color:var(--ink);min-width:96px}
+.tllabel{flex:1;color:#374151}
+.tlrow.hot{background:#fff7ed;border-radius:7px}
+.tlrow.hot .tldate{color:#c2410c}.tlrow.hot .tllabel{color:#9a3412;font-weight:700}
+/* Briefing 補充 treatment */
+summary.supp{display:flex;align-items:center;gap:8px}
+.suppbadge{font-size:10px;font-weight:800;color:#fff;background:#d97706;
+            border-radius:6px;padding:1px 7px;margin-left:7px;vertical-align:middle}
+.bd{margin:8px 0}
+.bdscroll{max-height:44vh;overflow-y:auto;border:1px solid var(--line);border-radius:10px;
+          padding:2px 12px;background:#fafbfc;-webkit-overflow-scrolling:touch}
+.genbox{text-align:center}
+.step2 .refsub{margin:8px 0}
+.refname{font-size:12.5px;font-weight:600;margin:6px 0 4px}
+.refname .refn{color:var(--mut);font-weight:400;font-size:11px}
+.refrow{display:flex;gap:6px;flex-wrap:wrap}
+.refthumb{width:74px;height:90px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.btn.big{font-size:14px;padding:12px 22px;box-shadow:0 4px 14px rgba(79,70,229,.3)}
+.scene{border-bottom:1px solid #f1f3f6;padding:7px 0;font-size:12.5px;line-height:1.5}
+.scene .sl{display:flex;gap:8px}
+.scene .sn{font-weight:800;color:var(--ac);flex:0 0 auto;min-width:17px}
+.scene .vis{flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
+.scene .vis.open{-webkit-line-clamp:unset;overflow:visible}
+.scene .vo,.vo{color:var(--mut);font-size:11.5px;margin:4px 0 0 25px;
+               background:#f8fafc;border-radius:7px;padding:4px 8px}
+.sheet{width:100%;border-radius:10px;border:1px solid var(--line);margin:8px 0;display:block;cursor:zoom-in}
+.preqs{display:flex;flex-direction:column;gap:7px;margin-top:4px}
+.prow{display:flex;align-items:center;gap:10px}
+.preqs .pl{flex:1;font-weight:700;font-size:14px;min-width:0}
+.preqs .pv{font-weight:800;font-size:13px;border-radius:8px;padding:3px 11px;white-space:nowrap}
+.preqs .pvon{background:#dcfce7;color:#15803d;border:1px solid #bbf7d0}
+.preqs .pvoff{background:#f1f3f5;color:#868e96;border:1px solid #e9ecef}
+.preqs .pp{font-size:11px;color:var(--ac);font-weight:700;cursor:help;min-width:34px;text-align:right}
+.pgbar{position:relative;height:30px;border-radius:9px;background:#eef0fe;border:1px solid #dcdffb;
+  overflow:hidden;margin:8px 0}
+.pgfill{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,#6366f1,#818cf8);
+  transition:width .6s ease}
+.pgtxt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:#1b1f27;z-index:1}
+/* VID 2 tab：紅色虛線繞邊行緊（marching ants），未出晒 BD 就一直行；出晒 = 無 busy class = 停 */
+@keyframes march{to{background-position:14px 0,-14px 100%,0 -14px,100% 14px}}
+.tab.busy{color:#dc2626;font-weight:800;border-color:transparent !important;
+  background-image:
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0);
+  background-repeat:repeat-x,repeat-x,repeat-y,repeat-y;
+  background-size:14px 2px,14px 2px,2px 14px,2px 14px;
+  background-position:0 0,0 100%,0 0,100% 0;
+  animation:march .5s linear infinite}
+.empty{font-size:12px;color:#9aa0aa;background:#f8fafc;border:1px dashed #cbd5e1;
+        border-radius:9px;padding:9px 11px;margin:8px 0}
+.note{width:100%;min-height:48px;border:1px solid var(--line);border-radius:9px;
+       padding:7px 9px;font:13px/1.5 inherit;resize:vertical;margin-top:6px}
+.frames{margin:8px 0}
+.frame-card{border-bottom:1px solid #f1f3f6;padding:8px 0}
+.frame-head{display:flex;gap:8px;font-size:12.5px}
+.fv{flex:1;color:var(--ink)}
+.acts{margin-top:8px}
+.soft{margin-bottom:8px}
+.soft summary{font-size:12.5px;font-weight:800;color:var(--ink);cursor:pointer;
+               background:#f8fafc;border:1px solid var(--line);border-radius:10px;
+               padding:9px 12px;list-style:none}
+.soft[open] summary{border-radius:10px 10px 0 0;margin-bottom:0}
+.soft .card{border-radius:0 0 10px 10px;border-top:none;margin-bottom:0}
+.hint{font-size:12px;color:var(--mut);margin:0 0 8px}
+.det{margin-top:8px}
+.det summary{font-size:12.5px;font-weight:800;color:var(--ac);cursor:pointer;
+              list-style:none;background:#eef0fe;border:1px solid #dcdffb;
+              border-radius:9px;padding:8px 11px;text-align:center}
+.det[open] summary{margin-bottom:7px}
+.det summary::-webkit-details-marker{display:none}
+.detbody{font-size:12.5px;color:#374151;white-space:pre-wrap;margin-top:7px;
+          line-height:1.6;max-height:360px;overflow:auto;background:#f8fafc;
+          border-radius:9px;padding:10px 12px}
+.tw{overflow-x:auto;margin:6px 0}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid var(--line);padding:5px 8px;text-align:left}
+th{background:#f8fafc;font-weight:700}
+.prev{font-size:12.5px;color:#4b5563;margin:6px 0 2px;line-height:1.5}
+/* ── VID 1 carousel：橫掃卡，卡內直 scroll ── */
+.carousel{margin:0 -2px}
+.ccard{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;
+        background:var(--card);border:1.5px solid var(--line);border-radius:14px;display:flex;
+        flex-direction:column;max-height:64vh;overflow:hidden;
+        box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+.ccard.sel{border-color:var(--ac);box-shadow:0 0 0 2px rgba(79,70,229,.25),
+            0 6px 18px rgba(79,70,229,.18)}
+.rest-row .ccard{flex:0 0 70%;max-height:52vh}
+.chead{display:flex;align-items:center;gap:8px;padding:10px 12px 7px;cursor:pointer;
+        border-bottom:1px solid #f1f3f6}
+.oscore{margin-left:auto;font-size:12px;font-weight:800;color:var(--gold)}
+.ctitle{font-weight:800;font-size:14px;line-height:1.35;padding:8px 12px 0}
+.ccard .csub{padding:2px 12px 0}
+.cbadges{padding:5px 12px 0}
+.cbody{flex:1;overflow-y:auto;padding:9px 12px 12px;font-size:12.5px;color:#374151;
+        line-height:1.62;-webkit-overflow-scrolling:touch}
+.cbody h3,.cbody h4,.cbody h5{font-size:12.5px;margin:9px 0 3px}
+.cbody p{margin:5px 0}
+.scores{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+.sline{font-size:11.5px;margin:6px 0 2px}
+.sline b{font-size:12px}
+.sline.muted{color:#9aa0aa;font-weight:600}
+.scrit{display:block;font-size:11px;color:var(--mut);margin-top:2px}
+.snote{font-size:11px;color:#6b7280;background:#f8fafc;border-radius:7px;
+        padding:5px 8px;margin:4px 0 2px;line-height:1.5}
+.toast{position:fixed;bottom:78px;left:50%;transform:translateX(-50%);
+        background:#1b1f27;color:#fff;padding:12px 18px;border-radius:12px;
+        font-size:13px;font-weight:700;z-index:90;max-width:90%;
+        box-shadow:0 8px 30px rgba(0,0,0,.3);transition:opacity .5s}
+.topproc{position:fixed;bottom:0;left:0;right:0;z-index:95;background:var(--ac);
+          color:#fff;font-size:13px;font-weight:800;padding:9px 14px;
+          display:flex;align-items:center;justify-content:center;gap:8px;
+          box-shadow:0 3px 14px rgba(79,70,229,.35)}
+.spin.sm{width:15px;height:15px;border:2.5px solid rgba(255,255,255,.4);
+          border-top-color:#fff;border-radius:50%;display:inline-block;
+          vertical-align:middle;margin-right:6px;animation:sp .9s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.gening{display:inline-flex;align-items:center;font-size:12px;font-weight:800;color:var(--ac);
+         background:#eef0fe;border:1px solid #dcdffb;border-radius:9px;padding:7px 11px}
+.gening .spin.sm{border-color:#c7cbf5;border-top-color:var(--ac)}
+/* ⬇️ 最後置:桌面卡長短 1/3(64→43vh)。2-class + 排最尾,壓得過 base .ccard 64vh —— Raymond 2026-06-16
+   (VID1 + 標書 tab 一齊短;手機保持 base 64vh 唔郁) */
+@media(min-width:1100px){.carousel .ccard{max-height:43vh}}
+</style></head><body><!-- generated-by: scripts/core/nlm-bridge/lab_ui_shell.py -->
+<div class=wrap>
+<header>
+  <div class=titlerow>
+    <h1><span class=dept>FEHDTVAPISDISTRICTGOVERNANCE</span> · Production of TV Announcements in the Public Interest (APIs) on FEHD topics under District Governance initiative</h1>
+    <span class=hdrbtns>
+      <a class=homebtn href="." title="總目錄">🏠</a>
+      <button class=refbtn onclick="location.href=location.pathname+'?t='+Date.now()+location.hash" title="重新載入">🔄</button>
+    </span>
+  </div>
+  <div class=bdp><span class='bb'>B) 11/9</span><span class='dd'>D) 6/10 00:00 · 仲有 <b id='cd'>—</b></span><span class='pp'>P) 12/10</span></div>
+  <div class=fresh>🕒 資料更新：<span class=fr><b>標書</b> 09-30 15:49</span> · <span class=fr><b>研究</b> 09-30 16:01</span> · <span class=fr><b>概念</b> 09-30 16:07</span> · <span class=fr><b>評分</b> —</span></div>
+</header>
+<div class='tabbar'><button class='tab' data-tab='ph0'>📋 標書</button><button class='tab' data-tab='debrief'>📨 DEBRIEF</button><button class='tab' data-tab='wi_all'>🧩 要做嘅項目</button><button class='tab' data-tab='handbd'>✍️ TVAPI FINAL</button><button class='tab' data-tab='theme1_1'>THEME</button><button class='tab' data-tab='tvapi1_1'>30-second TV API (Canton｜概念·六強</button><button class='tab' data-tab='tvapi1_2'>30-second TV API (Canton｜BD·三甲</button><button class='tab' data-tab='tvapi1_3'>30-second TV API (Canton｜FINAL 2</button><button class='tab' data-tab='tvapi1_4'>30-second TV API (Canton｜手執稿</button><button class='tab' data-tab='tvapi1_5'>30-second TV API (Canton｜入GSlide</button><button class='tab' data-tab='wi1'>📦 Optional Item: One-day (8-ho</button></div>
+<div id='ph0' class='tabpanel'><div class='h2 h2sm'>💡 額外想法 / 相片</div><div class='card provide'>
+<div class="upbox" id="ref_FEHDTVAPISDISTRICTGOVERNANCE_box">
+  
+  <div class="attstage" id="ref_FEHDTVAPISDISTRICTGOVERNANCE_stage"></div>
+  <div class="attrow1">
+    <textarea id="ref_FEHDTVAPISDISTRICTGOVERNANCE_link" class="atttext" rows="4" placeholder="💭 諗到嘅想法打喺度；想畀參考相就 ⌘V／drag／揀相入埋，喺格仔寫明呢張相係咩 → 一齊送出"></textarea>
+    <button id="ref_FEHDTVAPISDISTRICTGOVERNANCE_send" class="attsend">送出 ⏎</button></div>
+  <div class="attbtns2"><button id="ref_FEHDTVAPISDISTRICTGOVERNANCE_pick" class="attpick">📎 電腦揀檔</button></div>
+  <input type="file" id="ref_FEHDTVAPISDISTRICTGOVERNANCE_file" accept="image/*" style="display:none">
+  <div class="upst" id="ref_FEHDTVAPISDISTRICTGOVERNANCE_st"></div>
+</div>
+<script>(function(){
+var GAS="https://script.google.com/macros/s/AKfycbwVvkFb8kXQFrJZnABGxFcywfVllsM3XSVHlAGwH8CzrWIBGChjIK2PhW1k61r6NJWIpg/exec",TOK="mkv7q3z2link",FOLDER="";
+var st=document.getElementById("ref_FEHDTVAPISDISTRICTGOVERNANCE_st");
+function say(m){st.textContent=m;}
+// —— 把關站 proven mechanic（照搬）——
+function jsonp(q,cb){var n="upcb"+Math.random().toString(36).slice(2);
+  window[n]=function(o){try{cb(o);}finally{delete window[n];s.remove();}};
+  var s=document.createElement("script");s.src=GAS+"?"+q+"&token="+TOK+"&callback="+n;
+  s.onerror=function(){delete window[n];s.remove();cb({ok:false,err:"network"});};
+  document.body.appendChild(s);}
+function fidFromLink(v){var m=v.match(/\/d\/([a-zA-Z0-9_-]{20,})/)||v.match(/[?&]id=([a-zA-Z0-9_-]{20,})/);return m?m[1]:null;}
+var inp=document.getElementById("ref_FEHDTVAPISDISTRICTGOVERNANCE_link");
+var box=document.getElementById("ref_FEHDTVAPISDISTRICTGOVERNANCE_box"),stage=document.getElementById("ref_FEHDTVAPISDISTRICTGOVERNANCE_stage");
+var fi=document.getElementById("ref_FEHDTVAPISDISTRICTGOVERNANCE_file"),send=document.getElementById("ref_FEHDTVAPISDISTRICTGOVERNANCE_send");
+var _staged=null,_busy=false;
+function showStaged(f){_staged=f;var isImg=(f.type||"").indexOf("image/")===0;
+  stage.innerHTML="<span class='stchip'>"+(isImg?"🖼":"📎")+" "+f.name.replace(/</g,"&lt;")+" <button class='ststrip'>✕</button></span>";
+  stage.querySelector(".ststrip").onclick=function(){_staged=null;stage.innerHTML="";};}
+document.getElementById("ref_FEHDTVAPISDISTRICTGOVERNANCE_pick").onclick=function(){fi.click();};
+fi.onchange=function(){if(fi.files[0]){showStaged(fi.files[0]);fi.value="";}};
+["dragover","dragenter"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.add("hov");});});
+["dragleave","drop"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.remove("hov");});});
+box.addEventListener("drop",function(e){var f=e.dataTransfer&&e.dataTransfer.files[0];if(f)showStaged(f);});
+inp.addEventListener("paste",function(ev){var fs=(ev.clipboardData&&ev.clipboardData.files)||[];if(fs.length){ev.preventDefault();showStaged(fs[0]);}});
+// 收到 file id（檔上載完）或原 link → 交畀各站自己嘅 complete handler
+function done(val,isFile){ var ip=document.getElementById('ref_FEHDTVAPISDISTRICTGOVERNANCE_link');var desc=(ip&&ip.value||'').trim();if(window._clearDraft)window._clearDraft('ref_FEHDTVAPISDISTRICTGOVERNANCE_link');if(isFile){var el=desc||'參考相';fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHDTVAPISDISTRICTGOVERNANCE&concept='+encodeURIComponent(el)+'&stage=add_ref&engine='+encodeURIComponent(val)+'&target=main&cid=ACT_add_ref',{mode:'no-cors'}).catch(function(){});if(ip)ip.value='';say(desc?('✅ 已收參考相「'+el+'」（排最前＋嚴格比照）'):'✅ 收咗相；下次喺格仔寫埋係咩元素，AI 跟得準啲');}else if(/^https?:|drive\.google|docs\.google/.test(val)){fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHDTVAPISDISTRICTGOVERNANCE&concept='+encodeURIComponent('參考連結')+'&stage=add_ref&engine='+encodeURIComponent(val)+'&target=main&cid=ACT_add_ref',{mode:'no-cors'}).catch(function(){});say('✅ 已收參考連結（排最前＋嚴格比照）');}else{var a=loadNotes();a.push({ts:Date.now(),text:val});saveNotes(a);renderNotes();fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=FEHDTVAPISDISTRICTGOVERNANCE&text='+encodeURIComponent(val),{mode:'no-cors'}).catch(function(){});say('✅ 已加想法（'+a.length+'，累積餵委員會）');} }
+// 檔：initupload(folder)→browser 直 PUT 任何 size→CORS 讀唔到都 fallback→進度
+function up(f){_busy=true;send.disabled=true;say("開緊上載…（"+f.name+"）");
+  jsonp("action=initupload&origin="+encodeURIComponent(location.origin)+"&name="+encodeURIComponent(f.name)
+    +"&size="+f.size+"&mime="+encodeURIComponent(f.type||"image/jpeg")+"&folder="+encodeURIComponent(FOLDER),function(o){
+    if(!o.ok){_busy=false;send.disabled=false;say("⚠️ 開唔到上載："+(o.err||"")+"（可改貼 Drive 連結）");return;}
+    var x=new XMLHttpRequest();x.open("PUT",o.uri);
+    x.upload.onprogress=function(ev){if(ev.lengthComputable)say("⬆️ 上載中 "+Math.round(ev.loaded/ev.total*100)+"%（"+f.name+"）");};
+    x.onload=function(){_busy=false;send.disabled=false;
+      if(x.status>=300){say("⚠️ 上載 fail HTTP "+x.status);return;}
+      var fid="";try{fid=JSON.parse(x.responseText).id||"";}catch(_){}
+      if(!fid){say("⚠️ 上載咗但攞唔到 file id（可改貼 Drive 連結）");return;}
+      stage.innerHTML="";say("✅ 上載完成");done(fid,true);};
+    x.onerror=function(){_busy=false;send.disabled=false;say("⚠️ 上載出錯（network）。可改貼 Drive 連結");};
+    x.send(f);});}
+function submit(){if(_busy){say("處理緊…");return;}
+  var f=_staged;var v=inp.value.trim();
+  if(f){_staged=null;stage.innerHTML="";up(f);return;}
+  if(!v){say("⚠️ 未貼 link／未揀檔");return;}
+  inp.value="";done(v,false);}   // 貼 link → 直接交（後端 add_manual_ref 認 link/Drive id/URL）
+send.onclick=submit;
+inp.addEventListener("keydown",function(ev){if(ev.key==="Enter"&&!ev.shiftKey){ev.preventDefault();submit();}});
+})();</script>
+<div id='noteslist' class='noteslist'></div></div><details class='soft' open><summary>📸 Visual 素材（35 個：LOGO 2、視覺參考 27、宣傳片 6）</summary><p class='hint'>搵到嘅 LOGO／海報／單張／宣傳片／真實參考相，每個有原網址。<b>剔相後揀：⭐首選＝呢張參考優先過其他；🔁重搜＝搵過好啲（e.g. logo 污糟）；🗑刪除＝搵錯即清。</b></p><div class='vacarou'><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='LOGO_slot1.png'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/logos/slot1.png' loading=lazy></div><div class='vacat'>LOGO</div><div class='vaname'>食物環境衞生署</div><div><span class='vasrc' style='color:#bbb'>（無網址）</span></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='LOGO_slot2.png'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/logos/slot2.png' loading=lazy></div><div class='vacat'>LOGO</div><div class='vaname'>Food and Environme</div><div><span class='vasrc' style='color:#bbb'>（無網址）</span></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署職員制服_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署職員制服_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署職員制服</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/05-05-2012-2000.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署職員制服_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署職員制服_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署職員制服</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/31-10-2012-2115.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署職員制服_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署職員制服_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署職員制服</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/05-05-2012-2000.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署清潔工人制服_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署清潔工人制服_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署清潔工人制服</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/20230501_10300.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署清潔工人制服_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署清潔工人制服_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署清潔工人制服</div><div><a href='https://www.stheadline.com/breaking-news/3431820/%E9%A3%9F%E7%92%B04%E5%A4%96%E5%88%A4%E6%B8%85%E6%BD%94%E5%B7%A5%E7%96%91%E8%87%AA%E7%B7%A8%E8%87%AA%E5%B0%8E-%E8%87%AA%E8%B2%BC%E8%A1%97%E6%8B%9B%E5%86%8D%E6%B8%85%E7%90%86-%E7%BD%B2%E6%96%B9%E5%9A%B4%E8%82%85%E8%99%95%E7%90%86-%E8%BD%89%E4%BB%8B%E8%AD%A6%E6%96%B9%E8%B7%9F%E9%80%B2' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署垃圾車_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署垃圾車_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署垃圾車</div><div><a href='https://www.fehd.gov.hk/tc_chi/pleasant_environment/cleansing/clean1.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署垃圾車_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署垃圾車_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署垃圾車</div><div><a href='https://www.fehd.gov.hk/tc_chi/pleasant_environment/cleansing/clean1.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署洗街車_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署洗街車_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署洗街車</div><div><a href='https://www.dotdotnews.com/a/202212/13/AP63981f35e4b0adad9d704642.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署洗街車_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署洗街車_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署洗街車</div><div><a href='https://zh.wikipedia.org/zh-cn/File:%E6%96%B0%E9%A3%9F%E7%92%B0%E7%BD%B2%E6%B4%97%E8%A1%97%E8%BB%8A.jpg' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署洗街車_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署洗街車_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署洗街車</div><div><a href='https://www.dotdotnews.com/a/202212/13/AP63981f35e4b0adad9d704642.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署小販管理隊制服_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署小販管理隊制服_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署小販管理隊制服</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/05-05-2012-2000.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署小販管理隊制服_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署小販管理隊制服_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署小販管理隊制服</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/05-05-2012-2000.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署小販管理隊制服_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署小販管理隊制服_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署小販管理隊制服</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/31-10-2012-2115.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署街市檔位_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署街市檔位_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署街市檔位</div><div><a href='https://www.hk01.com/01%E8%A7%80%E9%BB%9E/773693/%E8%A1%97%E5%B8%82%E6%87%89%E8%A9%B2%E7%94%9F%E7%94%9F%E4%B8%8D%E6%81%AF' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署街市檔位_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署街市檔位_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署街市檔位</div><div><a href='http://paper.wenweipo.com/2020/12/17/HK2012170011.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署街市檔位_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署街市檔位_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署街市檔位</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/20210803_8825.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署熟食中心_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署熟食中心_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署熟食中心</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/20260728_12525.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署熟食中心_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署熟食中心_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署熟食中心</div><div><a href='https://www.info.gov.hk/gia/general/202607/28/P2026072800676.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署熟食中心_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署熟食中心_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署熟食中心</div><div><a href='https://www.instagram.com/p/DdTblj8lQz9/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署公廁內部_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署公廁內部_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署公廁內部</div><div><a href='https://www.tkww.hk/a/202507/19/AP687ae03be4b0e169b1368954.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署公廁內部_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署公廁內部_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署公廁內部</div><div><a href='https://www.hk01.com/18%E5%8D%80%E6%96%B0%E8%81%9E/906322/%E9%A3%9F%E7%92%B0%E7%BD%B2%E4%BA%94%E5%B9%B4%E5%86%8D%E7%BF%BB%E6%96%B0%E6%88%96%E5%84%AA%E5%8C%96490%E6%89%80%E5%85%AC%E5%BB%81-%E4%BD%BF%E7%94%A8%E7%8E%87%E9%AB%98%E8%80%85%E5%B0%87%E5%AE%89%E8%A3%9D%E6%99%BA%E8%83%BD%E7%B3%BB%E7%B5%B1' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署滅鼠行動_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署滅鼠行動_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署滅鼠行動</div><div><a href='https://www.eeb.gov.hk/food/cn/our_work/eh24.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署滅鼠行動_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署滅鼠行動_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署滅鼠行動</div><div><a href='https://www.info.gov.hk/gia/general/202212/28/P2022122800659.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署滅鼠行動_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署滅鼠行動_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署滅鼠行動</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/20250320_11531.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署滅蚊行動_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署滅蚊行動_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署滅蚊行動</div><div><a href='https://www.tkww.hk/a/202508/08/AP6895accae4b0f2e74393ebd8.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署滅蚊行動_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署滅蚊行動_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署滅蚊行動</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/20250726_11731.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_食環署滅蚊行動_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/grounding/el_食環署滅蚊行動_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>食環署滅蚊行動</div><div><a href='https://www.fehd.gov.hk/tc_chi/news/details/20160623_0698.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_70620486'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJVvYrXLajTs2W2nFgbS3AnRsAJLphCfouuk60baDIYEf4orZ8_OsTrQ&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>[政府宣傳片](1998)食肆衛生</div><div><a href='https://www.youtube.com/watch?v=xSc6oY_HVfU' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_43000615'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOc2uWsBA6qNmwFHS1DVlC9CAAvxdPaMcFHuaHWRFpCIiJwV7h2PBe7w&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>[政府宣傳片](2003)食物衛生</div><div><a href='https://www.youtube.com/watch?v=cnDnnu0R2uo' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_20674567'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrHC5TCRY81eceBV9lyA_nBEIA4wLTvhk-g6QpVIwMA6LZDknbfmkb0w&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>[政府宣傳片](1988)食物衛生</div><div><a href='https://www.youtube.com/watch?v=oq_6cPQ7Wr8' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_8907437'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2hoICbMWrW62qTvw9foAHG_M5i3pWmNZIvK7lE0gmUOnhkqhuUPlZJg&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>食物斷離捨惜食咪嘥嘢(政府電視宣傳短</div><div><a href='https://www.youtube.com/watch?v=cuwQXKjX8Vg' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_1703050'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWxPXVi2pmq0Ody8yERZnpcBNUuuFDmVfiKWaJF387plClmUYZyIB_3Q&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>食物安全中心介紹短片(廣東話)</div><div><a href='https://www.youtube.com/watch?v=ZjQke_-lk9A' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_57986049'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTopiLLaH7rkmkuxA-otw_i6lSHFhCfgjf8TB_b3IMPPbaLr5_8xBb0A&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>食物安全及環境衞生事務委員會政策簡報</div><div><a href='https://www.youtube.com/watch?v=O-npIO_hZNQ' target=_blank class='vasrc'>原網址 ↗</a></div></div></div><div class='acts vaacts' style='margin-top:8px'><button class='btn grn' onclick="preferAssets('FEHDTVAPISDISTRICTGOVERNANCE')">⭐ 設首選</button><button class='btn ghost vbtn' onclick="researchAssets('FEHDTVAPISDISTRICTGOVERNANCE')">🔁 重搜</button><button class='btn' style='background:var(--red)' onclick="delAssets('FEHDTVAPISDISTRICTGOVERNANCE')">🗑 刪除選取</button></div></details><div class='h2 tierh'>🎯 必定餵 AI（諗橋一定收）</div><p class='hint tierhint'>委員會／agency 諗橋一定收呢批做底，必跟。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📋 標書撮要</span><span class='rawlink' onclick="showOvl('raw_FEHDTVAPISDISTRICTGOVERNANCE')">📄 標書原文</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><h5>1. 背景同目的</h5>
+<p>- <strong>發起部門</strong>：食物環境衞生署（FEHD）[p. 34]。</p>
+<p>- <strong>項目名稱</strong>：Production of TV Announcements in the Public Interest (APIs) on FEHD topics under District Governance initiative（「地區治理」倡議下食環署主題之電視宣傳短片製作）[p. 1, p. 34]。</p>
+<p>- <strong>背景與目的</strong>：配合政府「地區治理」倡議，委聘服務提供者製作全新一套 30 秒電視宣傳短片（TV API），旨在推廣食環署的工作成果與服務範疇，展示部門「以人為本」的服務承諾，並傳達食環署將以專業態度及創新思維，持續提升服務質素，促進香港的可持續發展，藉此提升部門的專業及正面形象 [p. 34]。</p>
+<p>- <strong>預計播放時間</strong>：短片預計於 2026 年第四季（Q4）正式開播 [p. 34]。</p>
+<h5>2. 目標受眾</h5>
+<p>- <strong>主要受眾</strong>：香港廣大市民（The general public）[p. 34]。</p>
+<h5>3. 傳意目標／核心訊息</h5>
+<p>- <strong>總體核心主題</strong>：「智慧科技 潔淨城市」（Smart Tech for a Cleaner City）[p. 34]。</p>
+<p>- <strong>傳意策略</strong>：必須以最終成效（例如「行人路更潔淨、社區環境更舒適」）為切入點，然後才引入相關科技與設備，切忌採用過於硬邦邦、純科技展示的硬銷口吻 [p. 34]。</p>
+<p>- <strong>具體重點訊息與科技資產</strong> [p. 34–35]：</p>
+<p>  1. <strong>先進洗街設備</strong>：展示小型洗街車及配備的高壓熱水清洗設備、壓力洗地盤，強調能快速清除頑固污漬、簡化人手刷洗、省時省力並減少對行人干擾，將營運覆蓋地點由 1,800 個大幅擴展至 4,000 個以上。</p>
+<p>  2. <strong>自動化與前線支援</strong>：</p>
+<p>     - 自動清掃機器人（Autonomous street cleaning robots）。</p>
+<p>     - 工業級機械狗（Industrial grade robotic dogs）：用於搬運重型廢物及進行針對性噴霧滅蚊。</p>
+<p>     - 無人機（Drones）：於偏遠或難以到達的地點進行街道清潔巡查及辨識積水防蚊。</p>
+<h5>4. 影片／製作規格</h5>
+<p>- <strong>集數及長度</strong>：一套共 1 條 30 秒電視宣傳短片（TV API）[p. 34, p. 37]。</p>
+<p>- <strong>語言版本</strong>：包含廣東話（Cantonese）及英文（English）兩個版本 [p. 34, p. 37]。</p>
+<p>- <strong>字幕要求</strong>：廣東話版本配以繁體中文書面語字幕；英文版本配以英文字幕 [p. 36, p. 37]。</p>
+<p>- <strong>手語翻譯</strong>：廣東話及英文兩個版本均須包含獨立香港手語翻譯視窗（1/6 螢幕大小、橢圓形、淺灰或粉藍色無反射背景、置於右下角、手語員須穿深色/黑色衣服、與字幕保持同步）[p. 36]。</p>
+<p>- <strong>配音 (VO)</strong>：須安排專業廣東話及英文旁白配音員；英文版須盡量以英語流利演繹；畫面出現的網址、電話或電郵等關鍵資訊須配有相應 VO 旁白 [p. 36, p. 38]。</p>
+<p>- <strong>配樂</strong>：優先採用量身訂造（Tailor-made / Post-scored）配樂，承包商須負責清理所有版權及取得全球/各渠道播放授權 [p. 37]。</p>
+<p>- <strong>拍攝及交付格式</strong>：優先採用 HDCam、RED ONE 或同等高清規格拍攝；交付格式為 16:9 HD XDCAM HD422 50Mbps MXF 電子檔及 HDCAM 磁帶等 [p. 37, p. 53–55]。</p>
+<h5>5. 指定班底</h5>
+<p>- <strong>演出陣容／KOL／吉祥物</strong>：標書未有強制指定特定的導師、KOL 或吉祥物。若承包商建議使用明星/藝人演出，必須取得所有演出授權，並自費購買保額不少於港幣 1,000 萬元、將香港特區政府列為共同被保險人的公眾責任保險（保障須涵蓋藝人演出相關責任）[p. 25, p. 26]。</p>
+<p>- <strong>製作團隊</strong>：須提供全套專業製作團隊（Full production crew），負責香港室內及戶外外景拍攝的全套物流與運作 [p. 35]。</p>
+<p>- <strong>專業配音員及手語員</strong>：須安排專業粵/英配音員及認可香港手語翻譯員，手語員須於最終剪輯完成後親自核實手語翻譯準確度 [p. 36–37]。</p>
+<h5>6. 創意及策略重點／風格要求</h5>
+<p>- <strong>人機協作（Human-Machine Collaboration）</strong>：必須清晰傳達「科技是輔助前線員工安全及高效工作的工具，而非取代人類」；畫面須呈現前線員工與智慧設備和諧協作的場景 [p. 35]。</p>
+<p>- <strong>結果導向（Lead with the Outcome）</strong>：以市民生活體驗與社區潔淨成果開場，避免冰冷的設備規格展示 [p. 35]。</p>
+<p>- <strong>平實親切語氣（Plain Language &amp; Relatable Tone）</strong>：旁白及對白須使用生活化、易引起市民共鳴的日常用語，嚴禁使用艱深技術術語或冷冰冰的機械口吻 [p. 35]。</p>
+<p>- <strong>整合官方現有影片</strong>：須無縫剪輯並融入食環署提供的兩條現有官方影片片段（《地區治理:追查源頭滴水不漏》及《地區治理:街道整潔鼠患可滅》），進行調色、音效提升及格式調優，保持新舊片段視覺與聽覺的一致性 [p. 35–36]。</p>
+<p>- <strong>口號創作（Slogan Creation）</strong>：須創作原創、易記且涵蓋主題的中英文宣傳口號（Slogan），並取得食環署批准 [p. 36]。</p>
+<h5>8. 任何強制要求或紅線</h5>
+<p>- <strong>雙信封制遞交（Two-Envelope System）</strong>：價格資訊（Invitation to Quotation Form、Schedule 2）與技術建議書（Schedule 3、故事板草圖、中英文腳本草稿、Schedule 4 創新/ESG 建議、Annex 4 非串通投標確認書）必須分別獨立密封於平口袋內，各一式兩份（IN DUPLICATE）遞交；技術建議書信封內及表面嚴禁有任何價格顯示或公司身份標誌，否則不予受理 [p. 7–8, p. 40, p. 42]。</p>
+<p>- <strong>截標必交文件（Stage 1 完整性檢查）</strong>：簽署妥當之 Offer to be Bound、Schedule 2、Schedule 3、Schedule 4 及 Annex 4 必須於截標時間（2026-10-06 15:00）前交齊，欠缺任何一項即視為無效標書 [p. 42]。</p>
+<p>- <strong>手語及配音錯誤重拍條款</strong>：手語視窗規格（1/6大小、橢圓形、右下角等）須完全合規。若因手語翻譯出錯或配音發音不當引致公眾投訴或電視台拒播，承包商須承擔全部費用進行重配/重剪/重交，政府不作任何額外補償 [p. 36–37]。</p>
+<p>- <strong>版權與智慧財產權（IP Clearance）</strong>：所有交付物之全球及永久知識產權均歸政府所有。承包商須確保所有第三方資產（音樂、字體、肖像、素材等）已取得全球、永久、無限制的播放及使用授權；因侵權產生的法律責任由承包商全權承擔 [p. 27–29, p. 37]。</p>
+<p>- <strong>公眾責任保險（Insurance）</strong>：承包商須自費投保不少於港幣 1,000 萬元的公眾責任保險，香港特區政府須列為共同被保險人 [p. 25]。</p>
+<p>- <strong>性別主流化（Gender Mainstreaming）</strong>：所有提交之內容須確保無性別偏見或不平等 [p. 38]。</p><div id='raw_FEHDTVAPISDISTRICTGOVERNANCE' class='ovl'><div class='ovlbox'><div class='ovlhd'><span>📄 標書原文（逐字）</span><button class='x' onclick="hideOvl('raw_FEHDTVAPISDISTRICTGOVERNANCE')">✕</button></div><div class='ovlbody'><p class='hint'>fetch_source（pypdf）抽嘅標書逐字原文 —— 委員會／agency／debrief／5W1H 都餵呢份做 ground-truth。　·　<a href='https://drive.google.com/drive/folders/1P_gnBW8IZ5nMZ8thYULqI312er51_PsB' target='_blank' style='font-weight:700;color:var(--ac)'>📄 開原始檔 ↗</a></p><pre style='white-space:pre-wrap;font-size:11px;line-height:1.5;background:#fafbfc;border:1px solid var(--line);border-radius:8px;padding:9px;color:#333;margin:0'>===== Quotation Document.pdf(Specification 原件)=====
+[p34]
+Quotation Ref.: (11) in FEHD (PIED) 3-5/5/13 Pt. 25                                            34 
+ 
+SCHEDULE 1 
+SPECIFICATIONS OF THE SERVICES 
+ 
+1.  Background 
+The Food and Environmental Hygiene Department (&quot;FEHD&quot; or &quot;the Department&quot;) plans to 
+produce a new television Announcement in the Public Interest (API) covering FEHD-related 
+topics under the District Governance initiative.  This initiative aims to enhance the corporate 
+image of FEHD by highlighting the Department&#x27;s achievements and ongoing  efforts. 
+Specifically, the TV API will promote the Department&#x27;s work, enhance public understanding 
+of its scope of services, and demonstrate its commitment to a &quot;people -oriented&quot; approach. 
+Furthermore, the TV API will convey the message that FEHD will continue to elevate service 
+quality and contribute to the sustainable development of Hong Kong with professionalism 
+and an innovative mindset.  This TV API is scheduled for broadcast in the fourth quarter of 
+2026. 
+ 
+2.  Objectives 
+To develop a compelling storyboard and produce a professional -grade 30-second TV API 
+that showcases the achievements of FEHD across three key focus areas, as outlined in below.  
+ 
+3.  Target Audience 
+The general public  
+ 
+4.  Core Theme: &quot;Smart Tech for a Cleaner City&quot; 
+The overarching message must be framed as &quot;Smart Tech for a Cleaner City&quot;. The narrative 
+should lead with the ultimate outcome (i.e., &quot;Cleaner footpaths and more pleasant 
+neighbourhoods&quot;) before introducing the specific equipment. The content must avoid an  
+over-engineered, purely technological showcase tone. 
+ 
+5.  Key Messages: Deep-cleaning Footpaths and Elevating City Landscape 
+Showcase the Department’s vision of the wider use of technology to enhance service 
+efficiency, while highlighting the ultimate outcome: a cleaner, more pleasant living 
+environment for the public. Key elements to feature include: 
+ 
+(i) Advanced Street Washing Equipment 
+Feature FEHD’s mini street -washing vehicles equipped with high -pressure hot -
+water cleaners and pressure washer surface cleaners . Emphasise how these tools 
+quickly remove stubborn stains, streamline manual scrubbing work, save time and 
+energy, and reduce disturbances to pedestrians , and expand operational coverage 
+from 1,800 to over 4,000 locations. 
+(ii) Automation and Labour Support 
+Showcase innovative equipment deployed to increase working efficiency and 
+reduce the physical burden on frontline workers, including: 
+➢ Autonomous street cleaning robots; 
+➢ Industrial gra de r obotic dogs for heavy waste transportation and targeted 
+fogging operations for mosquito control; and 
+➢ Drones for conducting street cleanliness inspections and identifying stagnant 
+water or potential mosquito breeding places in remote or hard-to-reach areas.
+[p35]
+Quotation Ref.: (11) in FEHD (PIED) 3-5/5/13 Pt. 25                                            35 
+ 
+6.  Creative Direction and Narrative Guidelines 
+Bidders are required to develop a compelling 30-second storyboard that strictly adheres to 
+the following creative directives: 
+ 
+(a)  Highlight Human-Machine Collaboration 
+The API must clearly communicate that technology is a tool that empowers FEHD’s 
+dedicated frontline staff. It does not replace them; rather, it supports them to work more 
+safely and effectively. Visuals should depict staff and smart equipment working in 
+harmony. 
+ 
+(b)  Lead with the Outcome, Not the Equipment 
+Avoid an over-engineered, purely technological showcase. The narrative must lead with 
+the human experience and the outcome (a cleaner, more pleasant city) before revealing 
+the tools used to achieve it. 
+ 
+(c)  Use Plain Language and Relatable Tone 
+The script and voiceover (VO) must use simple, everyday language that resonates with 
+the general public. Bidders must avoid technical jargon, overly complex engineering 
+terms, or a cold, robotic tone. 
+ 
+7.  Launch Date 
+Station copies of the TV API shall be completed and delivered to broadcasting stations by 
+Monday, 7 December 2026, or as otherwise directed by FEHD.  
+ 
+8.  Scopes of Services 
+The Contractor is required to provide the following services, materials and professionals for 
+the production of the TV API: 
+(a) Creative and Copywriting 
+Provide creative and copywriting services, including the development of creative 
+concepts, scripts, storyboards, subtitles, and graphic or photographic materials.  While 
+all key message areas set out in Section 3 must be represented, the Service Provider 
+should prioritise creative visual storytelling to effectively showcase the various 
+technologies within the 30 -second timeframe.  The creative proposal must be the 
+Service Provider’s original idea and must not have been previously acquired or used by 
+any other party.  If a Service Provider’s creative proposal is accepted in this quotation 
+exercise, the awarded Contractor shall not re-sell the idea to any other party. 
+(b) Production Logistics 
+Arrangement of shooting place, full crew and equipment for location shooting both 
+outdoor and indoor in Hong Kong (including transportation). 
+(c) Post-Production 
+Provide off -line and on -line editing, audio recording, sound mixing, special sound 
+effects, and all other post-production services (including animations, if specified in the 
+storyboard). 
+(d) Editing and Integration of Existing Videos 
+Footage from the official videos provided by FEHD (hereinafter &quot;Existing Videos&quot;) may 
+be adapted and incorporated where applicable, including but not limited to colour 
+correction, audio enhancement, format conversion, and quality upscaling.  The 
+Contractor shall seamlessly integrate the edited Existing Videos into the TV API in
+[p36]
+Quotation Ref.: (11) in FEHD (PIED) 3-5/5/13 Pt. 25                                            36 
+ 
+accordance with the approved creative concept and storyboard, ensuring visual and 
+audio consistency with the newly produced footage . For reference, the links to the 
+Existing Videos are provided below:  
+• Existing Video 1: 地區治理：追查源頭 滴水不漏
+https://www.news.gov.hk/chi/2025/07/20250725/20250725_114932_045.html  
+• Existing Video 2: 地區治理：街道整潔 鼠患可滅 
+https://www.news.gov.hk/chi/2025/08/20250822/20250822_173010_239.html  
+(e) Additional Shooting Services 
+Conduct supplementary shooting services as required by the FEHD during the 
+production process, including but not limited to pickup shots, additional B-roll footage, 
+reshoots, and supplementary interviews.  All additional shooting shall be carried out 
+by the full crew using professional-grade equipment, and the resulting footage shall be 
+delivered in the same technical specifications as the main production.   Additional on-
+site filming shall be conducted where existing footage does not adequately cover the 
+required storyboard scenarios. 
+ 
+In the event that outdoor shooting is rendered impossible due to Tropical Cyclone 
+Warning Signal No. 8 or above, or Black Rainstorm Warning Signal, the Contractor 
+shall notify the Department immediately.  The Department may, at its discretion, grant 
+a make-up shooting day without additional cost to the Department, provided the final 
+delivery date (7 December 2026) is not delayed. 
+(f) Slogan Creation 
+Create an original, memorable slogan in both English and Chinese that encapsulates the 
+main theme of the TV API.  The slogan shall be subject to FEHD&#x27;s approval and must 
+not infringe any existing intellectual property rights. 
+(g) Voice-Over Talents (TV API) 
+Cantonese and English voice -over talents for the conversations/narrations for the TV 
+API.  The voice -overs/conversations/narrations in the English TV API should be 
+delivered in English as far as possible.  In the event that any language version of the 
+TV API recording is rejected for broadcast or deemed unsatisfactory by FEHD, ISD or 
+TV stations due to inaccurate or improper pronunciation, the Contractor is required to 
+arrange for professional voice-over talents to re-record the affected language version to 
+rectify the inaccuracy/deficiency, and deliver the approved version to TV stations for 
+replacement at no cost to FEHD. 
+(h) Subtitles and Sign Language 
+(i) Subtitles: Provide written Traditional Chinese ( 繁 體 中 文 書 面 語 ) for the 
+Cantonese version and English for the English version of the TV API. 
+(ii) Sign Language: Inclusion of sign language interpretation (手語翻譯 – 香港手語) 
+for the TV API in both the Cantonese and English versions.  The requirements 
+regarding the window showing the sign language interpretation on screen are listed 
+below: 
+ Shape &amp; Size: Oval -shaped-Size: One -sixth of the size of the screen for 
+showing full version of the signs. 
+ Background: Non-reflective plain backdrop, preferably in light grey or powder 
+blue colour. 
+ Position: Normally at lower right hand corner of the screen and in the same 
+position throughout the API. 
+ Attire: Sign language interpreters are advised to wear dark clothes, preferably
+[p37]
+Quotation Ref.: (11) in FEHD (PIED) 3-5/5/13 Pt. 25                                            37 
+ 
+black colour. 
+ Synchronisation: Presentation of the sign language should synchronise with the 
+subtitling as far as possible. 
+ Verification: The sign language interpreter is required to check the accuracy of 
+the sign language interpretation in the final cut of the TV API.  In the event of 
+any public complaints or broadcast errors arising from inaccurate sign language 
+interpretation, the Contractor shall bear all costs and responsibilities for 
+rectifying the issue, including re -editing and re -delivering the TV API to 
+broadcasting stations at no additional cost to the Government. 
+(i) Music and Copyright Clearance 
+The Contractor should be responsible for musical arrangement (tailor -made / post -
+scored music is preferred) of the API, clearance of all copyright issues and obtain 
+necessary licences at its own cost and expense for broadcasting anywhere within and 
+outside Hong Kong, any occasion and any usage using any media, including, but not 
+limited to, radio channels, TV, video walls, the Internet and multi-media advertisements 
+on public transports, and at seminars, exhibitions and other public functions/activities, 
+and for production of VCDs/DVDs/CD -ROMs and other publicity materials by the 
+Government for non-profit making purpose. 
+(j) Ownership of Copyright 
+Worldwide and perpetual copyright of the API, VCDs/DVDs/CD -ROMs and other 
+publicity materials produced shall belong to the Government. 
+(k) Delivery and Distribution 
+Delivery of the TV API to local TV stations, i.e. TVB, i -CABLE HOY TV, PCCW 
+Media (Now TV), HKTVE (Viu TV)  and RTHK TV under the instruction of the ISD.  
+The Contractor is also responsible for any station copy fees charged by the aforesaid TV 
+stations. 
+ 
+9.  Deliverables 
+ One (1) TV API in two language versions (Cantonese and English); 
+ Edited versions of the Existing Videos provided by FEHD, seamlessly integrated into 
+the TV API; 
+ Shooting format: HDCam, RED ONE or equivalent is preferred.  High -definition 
+Video (HDV) formats and still camera shooting may be considered depending on the 
+creative; 
+ Output: (1) File-based format:16:9 (HD) in XDCAM HD422 at 50Mbps in MXF; 
+    (2) Video-tape format: 16:9 (HD) in HD CAM; 
+ Duration: 30 seconds per language version; 
+ Languages: 
+➢ Cantonese (with written Traditional Chinese subtitles 繁體中文書面語 and sign 
+language window); and  
+➢ English (with English subtitles and sign language window); 
+ Background music: tailor-made / post-scored music is preferred; 
+ Soft and hard copies of the approved scripts (in both Chinese and English); 
+ Soft and hard copies of the storyboard, including draft scripts and visual descriptions 
+in both Chinese and English;</pre></div></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>⚠️ 製作要求</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><div class='h3' style='margin-bottom:6px'>🚨 標書特別紅線 / 強制要求</div><div class='timeline' style='margin-bottom:10px'><div class='tlrow'><span class='tllabel'>🚨 <b>其他</b>（p35）：須整合食環署提供的2條現有影片片段（滴水及街道整潔鼠患）；須自行創作中英文宣傳口號 (Slogan)；須包含原創/庫存配樂及粵英雙語旁白 (VO)</span></div></div><p class='hint'>每個概念必跟，違 = 廢稿。</p><div class='preqs'><div class='prow'><span class='pl'>🤟 手語</span><span class='pv pvon'>✅ 要</span><span class='pp' title='電視宣傳短片（廣東話及英文版）均須包含香港手語翻譯獨立視窗（1/6螢幕大小、橢圓形、淺灰/粉藍背景、右下角、手語員穿黑衣'>p36</span></div><div class='prow'><span class='pl'>♿ W3C影片</span><span class='pv pvon'>✅ 要</span><span class='pp' title='廣東話版配繁體中文書面語字幕；英文版配英文字幕'>p36</span></div><div class='prow'><span class='pl'>⭐ 明星/名人/官員</span><span class='pv pvoff'>無Preference</span><span class='pp' title='標書未強制要求使用明星/藝人，惟如使用，承包商須取得所有演出授權及購買包含演出藝人在內之1,000萬元公眾責任保險'>p25</span></div><div class='prow'><span class='pl'>🧸 Mascot</span><span class='pv pvoff'>無Preference</span><span class='pp'></span></div><div class='prow'><span class='pl'>🎬 動畫</span><span class='pv pvoff'>無Preference</span><span class='pp' title='如有需要可在後期製作包含動畫（if specified in the storyboard） / 標書未明確規定 3D '>p35</span></div></div><div class='h3' style='margin-top:11px'>⛔ 注意 / 紅線</div><div class='timeline'><div class='tlrow'><span class='tllabel'>[手語] <b>手語翻譯 (Sign Language)</b>：廣東話及英文版短片均須包含獨立手語翻譯視窗，大小為螢幕 1/6、橢圓形、淺灰色或粉藍色背景、置於右下角、手語員須穿黑色衣服並與字幕同步；若有錯漏承包商須承擔重拍</span></div><div class='tlrow'><span class='tllabel'>[無障礙] <b>無障礙字幕 (Subtitles)</b>：廣東話版本配繁體中文書面語字幕；英文版本配英文字幕</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>雙信封制遞交 (Two-Envelope System)</b>：價格資訊與技術建議書必須分別獨立密封於平口袋內，各一式兩份（in duplicate）遞交，信封表面不可有任何可識別公司身份之標誌</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>公眾責任保險 (Public Liability Insurance)</b>：承包商須自費投保保額不少於港幣 1,000 萬元之公眾責任保險，香港特區政府須列為共同被保險人，保障範圍須涵蓋演出明星/藝人等所有責任</span></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>⚡ 創意亮點</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ Gemini Flash＋Search</span></div><div class='cbody'><h4>⚡ 創意亮點 — FEHDTVAPISDISTRICTGOVERNANCE·Production of TV Announcements in the Public Interest (APIs) on FEHD topics under District Governance initiative（research 掘出嚟，可以做橋嘅真嘢）</h4>
+<p>1. 🏷️ <strong>清潔龍阿德與「人人有德」</strong></p>
+<p>   - 事實：食環署於2016年委任「清潔龍阿德」為清潔香港大使，造型為綠色清潔龍、橙色角、牛仔吊帶褲及粉紅膠靴，口頭禪為「做乜？一定得！」，2026年官方活動口號為「清潔香港 人人都『德』」。（出處：[hooks-research] FEHDTVAPISDISTRICTGOVERNANCE）</p>
+<p>   - 💡 可以點做橋：可以阿德的「德／得」雙關諧音及經典口頭禪「做乜？一定得！」做橋，貫穿智慧科技與全民清潔行動。</p>
+<p>2. 🏷️ <strong>小型洗街車與高壓熱水槍</strong></p>
+<p>   - 事實：食環署引入配備高壓熱水清洗設備及壓力洗地盤的小型洗街車，能快速深層去除路面頑固黑油污，並將潔淨覆蓋地點由1,800個大幅擴展至4,000個以上。（出處：Quotation Document.pdf (p. 34)）</p>
+<p>   - 💡 可以點做橋：可以「高壓熱水洗頑垢、覆蓋四千地點」的前後對比畫面做橋，突出清潔成果與覆蓋率躍升。</p>
+<p>3. 🏷️ <strong>工業級機械狗與自動清掃機器人</strong></p>
+<p>   - 事實：食環署部署四足工業級機械狗進行搬運重型廢物及針對性噴霧滅蚊，並以自動清掃機器人在狹窄行人路進行自動化清掃，極大地減輕前線員工體力負擔。（出處：Quotation Document.pdf (p. 34)）</p>
+<p>   - 💡 可以點做橋：可以「前線員工與機械狗／機器人神隊友並肩作戰」的人機協作故事做橋，打破科技取代人力的迷思。</p>
+<p>4. 🏷️ <strong>無人機空中巡查積水</strong></p>
+<p>   - 事實：食環署運用多旋翼無人機於偏遠或難以到達的地點（如老舊大廈天台、雨水渠或山邊斜坡）進行空中清潔巡查，精準辨識隱蔽積水及潛在蚊患滋生地。（出處：Quotation Document.pdf (p. 34)）</p>
+<p>   - 💡 可以點做橋：可以「上帝視角航拍死角積水、讓蚊患無所遁形」的高科技監測鏡頭做橋，突顯主動防禦思維。</p>
+<p>5. 🏷️ <strong>整合兩條地區治理官方影片</strong></p>
+<p>   - 事實：標書指定必須無縫整合食環署兩條現有官方短片《地區治理:追查源頭滴水不漏》（冷氣機滴水最高罰款 \$25,000）與《地區治理:街道整潔鼠患可滅》。（出處：Quotation Document.pdf (p. 36)）</p>
+<p>   - 💡 可以點做橋：可以將滴水追查與防鼠成果畫面作為「地區治理實效」的核心證據做橋，增強宣傳片權威感。</p>
+<p>6. 🇭🇰 <strong>「垃圾蟲」與「人見人憎」集體回憶</strong></p>
+<p>   - 事實：香港自 1970 年代起以「垃圾蟲」及「亂拋垃圾，人見人憎」作為清潔香港經典反派符號與阻嚇式口號，成為深植全港市民心中的集體回憶。（出處：[hooks-research] FEHDTVAPISDISTRICTGOVERNANCE）</p>
+<p>   - 💡 可以點做橋：可以由傳統「垃圾蟲／怒目雙眼」的懷舊印象，轉化為「今日智慧科技全方位護航」做橋，拉開年代反差感。</p>
+<p>7. 💡 <strong>「結果導向」開場原則</strong></p>
+<p>   - 事實：標書特別強調創作須「Lead with the Outcome, Not the Equipment」，必須先展示市民享受潔淨宜居社區的幸福感，切忌製作成冰冷的工程設備展示片。（出處：Quotation Document.pdf (p. 35)）</p>
+<p>   - 💡 可以點做橋：可以市民踏在乾淨無污路面上的第一身微觀視覺開場做橋，隨後才拉開鏡頭揭示背後默默工作的洗街車與前線人員。</p>
+<p>8. 🏷️ <strong>雙語字幕與獨立手語翻譯視窗</strong></p>
+<p>   - 事實：標書規定廣東話配繁體中文書面語字幕、英文配英文字幕，且雙語版本均須包含右下角 1/6 螢幕大小、橢圓形、淺灰/粉藍背景、手語員穿黑衣之香港手語翻譯視窗。（出處：Quotation Document.pdf (p. 36)）</p>
+<p>   - 💡 可以點做橋：可以無障礙包容性設計為品牌信任基石做橋，展現食環署「以人為本」顧及不同社群需求的服務承諾。</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📊 研究（深入＋Web 整合）</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ gemini-2.5-flash</span></div><div class='cbody'><p>好的，這是一份整合後的乾淨研究報告：</p>
+<p>---</p>
+<h4>食物環境衞生署宣傳片網上研究報告</h4>
+<h5>1. 議題背景</h5>
+<p>*   <strong>地區治理理念</strong>：香港政府近年積極推動「地區治理」理念，旨在提升地區服務效率、回應市民需求，並促進和諧社區。食環署作為重要一環，其工作範疇與市民日常生活息息相關，包括環境衞生、食物安全、防治蟲鼠等。</p>
+<p>*   <strong>政策脈絡</strong>：</p>
+<p>    *   政府在《2023年施政報告》中強調「以民為本」的施政理念，並提出多項措施改善環境衞生，例如加強清潔街道、打擊非法棄置垃圾等。</p>
+<p>    *   2023年5月，政府公布「完善地區治理建議方案」，旨在強化地區治理架構及重塑區議會，並於2023年7月獲立法會全票通過《2023年區議會(修訂)條例草案》，並於7月10日正式刊憲生效。</p>
+<p>    *   2此改革旨在強化行政主導，落實「愛國者治港」原則，並解決過往區議會「泛政治化」問題，確保區議會回歸其《基本法》所規定的諮詢和社區服務功能。</p>
+<p>    *   地區治理的重點在於聚焦市民最關心的議題，例如舊樓維修、樓宇管理、基層醫療、安老服務及社區環境衞生等，希望透過地區治理，將資源進一步下沉，讓政策「貼地」，市民「有感」。</p>
+<p>*   <strong>公眾關注度</strong>：近年來，香港市民對環境衞生和城市管理的要求不斷提高，特別是在疫情後，公眾對公共衞生的關注度顯著上升。</p>
+<p>*   <strong>科技應用</strong>：食環署近年積極引入創新科技，例如智能垃圾桶、機械人清潔車、無人機巡查、熱能探測攝像機結合人工智能追蹤鼠患等，以應對人手短缺及提升工作效率。這些科技應用是本次API宣傳的重點，並與宣傳片強調「智能科技潔淨城市」及「以人為本」的服務宗旨不謀而合。</p>
+<h5>2. 關鍵事實/數據/日期</h5>
+<p>*   <strong>地區治理架構</strong>：</p>
+<p>    *   2023年7月，政府成立「地區治理領導委員會」及「地區治理專組」。</p>
+<p>    *   2024年1月1日，第七屆區議會開始運作。</p>
+<p>    *   新區議會總議席為470個，包括179個委任議席、176個地區委員會界別議席、88個區議會地方選區議席（共44個選區，每區2席，雙議席單票制）及27個當然議席（新界鄉事委員會主席出任）。</p>
+<p>*   <strong>地區治理領導委員會工作進度 (截至2026年7月底)</strong>：</p>
+<p>    *   地區服務及關愛隊伍已探訪或接觸超過118,000戶長者、護老者及殘疾人士。</p>
+<p>    *   超過3,900戶家庭獲關愛隊轉介，接受安裝「平安鐘」系統資助。</p>
+<p>    *   2025-26學年，超過10,000名學生參與「校本課後託管服務計劃」，較上學年增加81間學校。</p>
+<p>    *   食環署利用熱能探測攝像機結合人工智能追蹤鼠患，1月至6月期間發出171份「潔淨通知書」。</p>
+<p>    *   食環署自5月起將自動街道清潔機械人試驗擴展至啟德新發展區。</p>
+<p>    *   房屋署完成9個屋邨外牆美化工程。</p>
+<p>    *   路政署重鋪80段路面，總長度超過26公里。</p>
+<p>*   <strong>鼠患情況</strong>：2024年捕獲約89,600隻活鼠，較2023年增加約40%。</p>
+<p>*   <strong>冷氣機滴水投訴</strong>：冷氣機滴水投訴近年有所增加，由2023年約31,000宗增至2024年約34,000宗。</p>
+<h5>3. 相關官員/單位</h5>
+<p>*   <strong>政務司司長 陳國基</strong>：主持「地區治理領導委員會」，負責制訂地區治理整體策略方針、具體政策和措施、工作優次和資源調撥。</p>
+<p>*   <strong>政務司副司長 卓永興</strong>：主持「地區治理專組」，負責指揮和統籌各政策局及部門的地區工作，並協調涉及跨部門或跨區的地區問題。</p>
+<p>*   <strong>民政及青年事務局局長 麥美娟</strong>：曾介紹《完善地區治理》方案的內容和推行工作。</p>
+<p>*   <strong>食物環境衞生署署長 吳文傑</strong>：曾出席「讓狗隻進入獲獲准食肆」簡介會及向食環署同事派發宣傳單張。</p>
+<p>*   <strong>環境及生態局局長 謝展寰</strong>：曾到深水埗區環境衞生辦事處向食環署同事派發宣傳單張。</p>
+<p>*   <strong>環境及生態局常任秘書長(食物) 楊碧筠</strong>：曾到深水埗區環境衞生辦事處向食環署同事派發宣傳單張。</p>
+<p>*   <strong>環境及生態局副局長 黃淑嫻</strong>：曾到深水埗區環境衞生辦事處向食環署同事派發宣傳單張。</p>
+<p>*   <strong>食物環境衞生署副署長（環境衞生） 姚繼卓</strong>：曾出席「讓狗隻進入獲准食肆」簡介會。</p>
+<p>*   <strong>食物環境衞生署助理署長（行動） 溫志信</strong>：曾分享處理冷氣機滴水問題的行動資訊。</p>
+<p>*   <strong>食物環境衞生署總監（法例檢討） 葉國祥</strong>：曾簡介「讓狗隻進入獲准食肆」。</p>
+<p>*   <strong>民政事務專員</strong>：擔任各區區議會主席，並作為政府地區代表，統籌「關愛隊」、區議會及地區三會。</p>
+<p>*   <strong>區議會資格審查委員會</strong>：由政務司司長擔任主席，確保所有區議員符合資格。</p>
+<h5>4. 受眾 Sentiment (來自近期宣傳掃描及競品觀察)</h5>
+<p>*   <strong>對政府宣傳的普遍觀感</strong>：公眾普遍認為政府宣傳片多為嚴肅、務實，強調政府的努力和成果，但較少著墨於科技應用帶來的「成果」和「效率提升」。</p>
+<p>*   <strong>對「清潔香港」運動的觀感</strong>：這類宣傳多以呼籲市民合作、共同保持環境清潔為主，語氣較為親民、教育性，有時會使用動畫或輕鬆幽默的手法，但較少提及政府在清潔工作上的科技投入和創新。</p>
+<p>*   <strong>對「智慧科技」宣傳的接受度</strong>：香港警務處「智慧警政」宣傳片顯示，公眾對展示科技如何提升執法效率和服務質素的宣傳有一定接受度，認為其專業、具前瞻性，強調科技帶來的便利和安全。</p>
+<p>*   <strong>對國際案例的偏好</strong>：</p>
+<p>    *   新加坡國家環境局 (NEA) 的宣傳片常將科技與「宜居城市」的概念結合，強調科技如何提升生活品質，並呈現乾淨、現代化的城市景象，輔以清晰的數據或案例，強調科技帶來的「成果」和「市民得益」。</p>
+<p>    *   日本清潔公司/地方政府的宣傳片有時會將清潔工作「擬人化」或「英雄化」，展現清潔人員的專業和辛勞，同時融入科技元素，情感連結較強，將「清潔」提升到「守護城市」的高度。</p>
+<p>    *   國際科技公司（如 iRobot）的廣告則強調「科技為人服務」的理念，將複雜的技術轉化為簡單易懂的「生活改善」。</p>
+<h5>5. 近期宣傳與競品掃描</h5>
+<h6>5.1 近期同類宣傳 (香港政府 + 相關機構)</h6>
+<p>*   <strong>「地區治理」系列宣傳片 (2023-2024年，香港政府新聞處)</strong>：</p>
+<p>    *   <strong>手法/語氣</strong>：採用紀錄片式手法，透過不同政府部門前線人員的真實工作場景，展現「地區治理」如何改善市民生活。語氣較為嚴肅、務實，強調政府的努力和成果。</p>
+<p>    *   <strong>例子</strong>：</p>
+<p>        *   「地區治理：追查源頭 滴水不漏」 (2025年7月25日，政府新聞處)：主要講述食環署與其他部門合作，追查蚊患源頭，強調跨部門協作的重要性。</p>
+<p>        *   「地區治理：街道整潔 鼠患可滅」 (2025年8月22日，政府新聞處)：聚焦食環署在滅鼠工作上的努力，展示前線人員的工作日常。</p>
+<p>*   <strong>「清潔香港」運動系列宣傳 (2022-2023年，環境保護署 / 食物環境衞生署)</strong>：</p>
+<p>    *   <strong>手法/語氣</strong>：多以呼籲市民合作、共同保持環境清潔為主。語氣較為親民、教育性，有時會使用動畫或輕鬆幽默的手法。</p>
+<p>    *   <strong>例子</strong>：</p>
+<p>        *   「清潔香港」宣傳短片 (2022年，環境保護署)：呼籲市民減少製造垃圾，並正確分類回收。</p>
+<p>        *   「保持香港清潔」系列海報及短片 (2023年，食物環境衞生署)：提醒市民不要隨地吐痰、亂拋垃圾等。</p>
+<p>*   <strong>香港警務處「智慧警政」宣傳片 (2023年，香港警務處)</strong>：</p>
+<p>    *   <strong>手法/語氣</strong>：著重展示警隊如何利用科技（如無人機、大數據分析、智能機械人）提升執法效率和服務質素。語氣專業、具前瞻性，強調科技帶來的便利和安全。</p>
+<h6>5.2 競品 / 同類創意做法 (本地 + 國際參考)</h6>
+<p>*   <strong>新加坡國家環境局 (NEA) 宣傳片 (近年)</strong>：</p>
+<p>    *   <strong>手法/語氣</strong>：常將科技與「宜居城市」的概念結合，強調科技如何提升生活品質。視覺上常呈現乾淨、現代化的城市景象，並輔以清晰的數據或案例。</p>
+<p>    *   <strong>例子</strong>：NEA關於智能垃圾收集系統的宣傳片，展示機械人如何高效處理垃圾，同時強調減少人手、提升效率。</p>
+<p>*   <strong>日本清潔公司 / 地方政府宣傳 (近年)</strong>：</p>
+<p>    *   <strong>手法/語氣</strong>：有時會將清潔工作「擬人化」或「英雄化」，展現清潔人員的專業和辛勞，同時融入科技元素。</p>
+<p>    *   <strong>例子</strong>：某日本清潔公司宣傳片，展示清潔人員操作高科技清潔設備，將城市打掃得一塵不染，並配以激昂的音樂。</p>
+<p>*   <strong>國際科技公司 (如 iRobot) 廣告 (近年)</strong>：</p>
+<p>    *   <strong>手法/語氣</strong>：聚焦於產品如何解決用戶痛點（如省時省力），並透過輕鬆、生活化的場景展示產品的便利性。</p>
+<p>    *   <strong>例子</strong>：iRobot Roomba 吸塵機械人廣告，展示機械人如何在家庭中自動清潔，讓用戶享受更舒適的生活。</p>
+<h6>5.3 需避開的濫用手法</h6>
+<p>*   單純展示政府官員巡視或發言。</p>
+<p>*   過於強調「前線人員辛勞」而忽略科技帶來的效率提升。</p>
+<p>*   將科技產品「硬照式」展示，缺乏故事性或情境。</p>
+<p>*   使用過於專業或技術性的術語，缺乏通俗易懂的解釋或視覺呈現。</p>
+<p>*   過於說教或命令式的語氣。</p>
+<p>*   過度使用「航拍」或「延時攝影」展現城市面貌，若與食環署的具體工作內容連結不強則顯得空泛。</p>
+<h5>6. 香港角色與差異化機會</h5>
+<h6>6.1 差異化空白 (機會)</h6>
+<p>*   <strong>受眾情緒空白</strong>：</p>
+<p>    *   <strong>「輕鬆幽默」或「溫馨感人」的角度</strong>：以輕鬆、幽默或帶有溫馨感的方式呈現食環署的科技應用，例如透過小朋友的視角看清潔機械人，或以家庭生活場景展示清潔成果。</p>
+<p>    *   <strong>「自豪感」或「未來感」</strong>：強調香港作為國際大都會，在環境衞生管理上亦走在前沿，利用科技提升城市形象，讓市民對香港的潔淨程度產生自豪感。</p>
+<p>*   <strong>訊息角度空白</strong>：</p>
+<p>    *   <strong>「科技如何讓城市更『聰明』」</strong>：延伸到科技如何讓城市管理更具智慧、更有效率，從而提升整體城市運作的「聰明度」。</p>
+<p>    *   <strong>「科技如何『解放』前線人員」</strong>：強調科技不是取代人，而是讓前線人員從繁重、危險的工作中解放出來，讓他們能更專注於需要人手判斷和處理的任務，提升工作尊嚴和效率。</p>
+<p>    *   <strong>「科技如何『預防』問題發生」</strong>：除了事後清潔，還可以強調無人機巡查等科技如何提前發現問題（如積水、鼠患），從源頭上預防環境問題的發生。</p>
+<p>*   <strong>視覺呈現空白</strong>：</p>
+<p>    *   <strong>「微觀細節」與「宏觀成果」的對比</strong>：透過特寫鏡</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🛡️ 官方正名 / 用字</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ Gemini Flash＋Search</span></div><div class='cbody'><p>好的，這是一份為廣告創作團隊準備的『官方用語對照表』，確保他們在製作食環署宣傳片時使用正確的官方名稱和術語。</p>
+<p>---</p>
+<h5>香港政府 FEHDTVAPISDISTRICTGOVERNANCE 部門宣傳片 — 官方用語對照表</h5>
+<h6>1. 部門 / 辦事處 中文正名 + 官方英文全名 (+ 官方網址)</h6>
+<p>*   <strong>食物環境衞生署</strong> (FEHD)</p>
+<p>    *   英文全名：Food and Environmental Hygiene Department</p>
+<p>    *   官方網址：[https://www.fehd.gov.hk/tc/index.html](https://www.fehd.gov.hk/tc/index.html)</p>
+<h6>2. 入面提到嘅計劃 / 政策 / 程序 嘅官方中英名稱</h6>
+<p>*   <strong>地區治理</strong></p>
+<p>    *   英文：District Governance initiative</p>
+<p>*   <strong>電視宣傳短片</strong> (API)</p>
+<p>    *   英文：TV Announcements in the Public Interest (APIs)</p>
+<p>*   <strong>以人為本</strong></p>
+<p>    *   英文：people-oriented approach</p>
+<p>*   <strong>性別主流化</strong></p>
+<p>    *   英文：Gender Mainstreaming</p>
+<p>*   <strong>雙信封制遞交</strong></p>
+<p>    *   英文：Two-Envelope System</p>
+<p>*   <strong>公眾責任保險</strong></p>
+<p>    *   英文：Public Liability Insurance</p>
+<p>*   <strong>知識產權</strong></p>
+<p>    *   英文：Intellectual Property Rights (IPR)</p>
+<h6>3. 專有名詞 / 技術詞 嘅官方或慣用中英對照</h6>
+<p>*   <strong>智慧科技 潔淨城市</strong> (總體核心主題)</p>
+<p>    *   英文：Smart Tech for a Cleaner City</p>
+<p>*   <strong>先進洗街設備</strong></p>
+<p>    *   英文：Advanced Street Washing Equipment</p>
+<p>*   <strong>小型洗街車</strong></p>
+<p>    *   英文：mini street-washing vehicles</p>
+<p>*   <strong>高壓熱水清洗設備</strong></p>
+<p>    *   英文：high-pressure hot-water cleaners</p>
+<p>*   <strong>壓力洗地盤</strong></p>
+<p>    *   英文：pressure washer surface cleaners</p>
+<p>*   <strong>自動化與前線支援</strong></p>
+<p>    *   英文：Automation and Labour Support</p>
+<p>*   <strong>自動清掃機器人</strong></p>
+<p>    *   英文：Autonomous street cleaning robots</p>
+<p>*   <strong>工業級機械狗</strong></p>
+<p>    *   英文：Industrial grade robotic dogs</p>
+<p>*   <strong>搬運重型廢物</strong></p>
+<p>    *   英文：heavy waste transportation</p>
+<p>*   <strong>針對性噴霧滅蚊</strong></p>
+<p>    *   英文：targeted fogging operations for mosquito control</p>
+<p>*   <strong>無人機</strong></p>
+<p>    *   英文：Drones</p>
+<p>*   <strong>街道清潔巡查</strong></p>
+<p>    *   英文：street cleanliness inspections</p>
+<p>*   <strong>辨識積水防蚊</strong></p>
+<p>    *   英文：identifying stagnant water or potential mosquito breeding places</p>
+<p>*   <strong>人機協作</strong></p>
+<p>    *   英文：Human-Machine Collaboration</p>
+<p>*   <strong>結果導向</strong></p>
+<p>    *   英文：Lead with the Outcome</p>
+<p>*   <strong>平實親切語氣</strong></p>
+<p>    *   英文：Plain Language &amp; Relatable Tone</p>
+<p>*   <strong>旁白</strong> (VO)</p>
+<p>    *   英文：Voiceover (VO)</p>
+<p>*   <strong>故事板</strong></p>
+<p>    *   英文：Storyboard</p>
+<p>*   <strong>腳本</strong></p>
+<p>    *   英文：Script</p>
+<p>*   <strong>初剪版</strong></p>
+<p>    *   英文：Rough cuts</p>
+<p>*   <strong>最終定剪版</strong></p>
+<p>    *   英文：Final cuts</p>
+<p>*   <strong>送交電視台副本</strong></p>
+<p>    *   英文：Station copies</p>
+<p>*   <strong>Cue sheet</strong></p>
+<p>    *   英文：Cue sheet</p>
+<p>*   <strong>低解像預覽檔/劇照</strong></p>
+<p>    *   英文：low-resolution preview files/stills</p>
+<p>*   <strong>招標簡介會</strong></p>
+<p>    *   英文：Tender Briefing Session</p>
+<p>*   <strong>截標時間</strong></p>
+<p>    *   英文：Quotation Closing Time</p>
+<p>*   <strong>創意建議書簡報</strong></p>
+<p>    *   英文：Creative Proposal Presentation</p>
+<p>*   <strong>批出合約</strong></p>
+<p>    *   英文：Award of Contract</p>
+<p>*   <strong>Kick-off meeting</strong></p>
+<p>    *   英文：Kick-off meeting</p>
+<p>*   <strong>拍攝前會議</strong></p>
+<p>    *   英文：Pre-production meeting</p>
+<p>*   <strong>版權</strong></p>
+<p>    *   英文：Copyright</p>
+<p>*   <strong>智慧財產權</strong></p>
+<p>    *   英文：Intellectual Property Rights (IPR)</p>
+<p>*   <strong>共同被保險人</strong></p>
+<p>    *   英文：co-insured</p>
+<p>*   <strong>宣傳口號</strong></p>
+<p>    *   英文：Slogan</p>
+<h6>4. 常見會錯譯 / 易混淆嘅地方，標明正確寫法</h6>
+<p>*   <strong>「地區治理」倡議</strong>：應使用 &quot;District Governance initiative&quot;，而非 &quot;District Governance&quot; 或其他變體。</p>
+<p>*   <strong>電視宣傳短片</strong>：官方縮寫為 &quot;API&quot;，英文全名為 &quot;Announcements in the Public Interest&quot;。</p>
+<p>*   <strong>以人為本</strong>：官方譯法為 &quot;people-oriented approach&quot;。</p>
+<p>*   <strong>智慧科技 潔淨城市</strong>：這是核心主題的官方中英文對照，必須完全一致。</p>
+<p>*   <strong>旁白</strong>：英文為 &quot;Voiceover&quot; 或簡寫 &quot;VO&quot;。</p>
+<p>*   <strong>手語翻譯視窗</strong>：應強調 &quot;Hong Kong Sign Language interpretation window&quot; 以區分不同手語。</p>
+<p>*   <strong>量身訂造配樂</strong>：官方或慣用說法為 &quot;Tailor-made&quot; 或 &quot;Post-scored&quot; 配樂。</p>
+<p>*   <strong>公眾責任保險</strong>：英文為 &quot;Public Liability Insurance&quot;，而非 &quot;General Liability Insurance&quot; 等。</p>
+<p>*   <strong>共同被保險人</strong>：英文為 &quot;co-insured&quot;。</p>
+<p>*   <strong>截標時間</strong>：英文為 &quot;Quotation Closing Time&quot;。</p>
+<p>*   <strong>初剪版</strong> 和 <strong>最終定剪版</strong>：英文分別為 &quot;Rough cuts&quot; 和 &quot;Final cuts&quot;。</p>
+<p>*   <strong>送交電視台副本</strong>：英文為 &quot;Station copies&quot;。</p>
+<p>---</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🔗 部門官方來源</span></div><div class='cbody'><p class='hint'>搵到嘅官方來源（網頁名 + 撮要，似 search 結果；撳入睇原文）：</p><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.fehd.gov.hk' target=_blank>🏛️ 食物環境衞生署 官網 ↗</a><div class='srcsnip'>https://www.fehd.gov.hk</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.youtube.com/channel/UCMpLk04Hbn2ATOWzCU_jWEQ/about' target=_blank>▶️ 部門 YouTube 頻道 ↗</a><div class='srcsnip'>官方宣傳片頻道</div></div></div><div class='srcrow'><img class='srcthumb' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJVvYrXLajTs2W2nFgbS3AnRsAJLphCfouuk60baDIYEf4orZ8_OsTrQ&amp;s' loading=lazy><div style='flex:1'><a class='srctit' href='https://www.youtube.com/watch?v=xSc6oY_HVfU' target=_blank>📺 [政府宣傳片](1998)食肆衛生 ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><img class='srcthumb' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOc2uWsBA6qNmwFHS1DVlC9CAAvxdPaMcFHuaHWRFpCIiJwV7h2PBe7w&amp;s' loading=lazy><div style='flex:1'><a class='srctit' href='https://www.youtube.com/watch?v=cnDnnu0R2uo' target=_blank>📺 [政府宣傳片](2003)食物衛生 ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><img class='srcthumb' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrHC5TCRY81eceBV9lyA_nBEIA4wLTvhk-g6QpVIwMA6LZDknbfmkb0w&amp;s' loading=lazy><div style='flex:1'><a class='srctit' href='https://www.youtube.com/watch?v=oq_6cPQ7Wr8' target=_blank>📺 [政府宣傳片](1988)食物衛生 ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><img class='srcthumb' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2hoICbMWrW62qTvw9foAHG_M5i3pWmNZIvK7lE0gmUOnhkqhuUPlZJg&amp;s' loading=lazy><div style='flex:1'><a class='srctit' href='https://www.youtube.com/watch?v=cuwQXKjX8Vg' target=_blank>📺 食物斷離捨惜食咪嘥嘢(政府電視宣傳短片) ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🏛️ 政府 JOB 鐵則</span></div><div class='cbody'><ol id='rulelist' style='margin:2px 0 8px;padding-left:18px;line-height:1.7'><li id='rule0'>除標書表明，人物一般使用華人面孔（東亞／香港華人），唔好生成西方／白人臉</li><li id='rule1'>衣著連戲：同一角色每一格都著返同一套衫（衫款／顏色／髮型／配件固定），除非故事明寫佢換咗衫</li><li id='rule2'>全 board 畫風完全一致：同一 render 風格／同一打燈／同一色調／同一線條筆觸，由頭到尾統一，似同一個畫師一次過畫</li><li id='rule3'>Storyboard 盡量唔好出現雨傘；若劇情一定要有雨傘，唔可以係黃色</li></ol><div class='bdcm'><textarea id='newrule' rows='2' placeholder='加一條鐵則：例「Storyboard 唔好有雨傘」'></textarea><button class='btn mini' onclick="addRule('FEHDTVAPISDISTRICTGOVERNANCE')">＋ 加鐵則（即時生效）</button></div></div></div></div><div class='h2 tierh'>🔧 Optional 餵 AI（於 Debriefing 階段隨機餵 AI）</div><p class='hint tierhint'>唔強制，諗橋時隨機抽嚟畀 agency 撞火花。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>💭 5W1H Provocation</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ Gemini 2.5 Pro·預設</span></div><div class='cbody'><h3>5W1H 創意 Provocation — FEHDTVAPISDISTRICTGOVERNANCE</h3>
+<h5>WHO — 對邊個講 + 佢而家點</h5>
+<p>- Q1 如果呢個 message 只可以打動「最唔關心、最 cynical」嗰個觀眾——要加咩一個 element（畫面／聲／人物／情境）先 3 秒內 hook 住佢、令佢唔 skip？</p>
+<p>→ 加入街角陳年黑油污被高壓熱水槍一沖即淨嘅微觀特寫與高保真水聲卡點，用最直接嘅視覺去污爽快感，第一時間吸引眼球同消解厭煩感。</p>
+<p>- Q2 呢班受眾平時食開咩視聽語言（平台／節奏／語氣）？要 adapt 邊種佢熟悉嘅風格，先入到腦而唔似「政府嘢」？</p>
+<p>→ adapt 社交媒體熱門嘅「深層清潔／ASMR 治癒短片」動態視覺與平實生活化廣東話口語旁白，以節奏明快嘅人機協作實景鏡頭切入，擺脫傳統宣傳片嘅硬銷公告感。</p>
+<h5>WHAT — 收窄到一個 + 證據</h5>
+<p>- Q3 成個 campaign 只准觀眾記住一個 element（一個畫面／一個 visual device／一句）——你揀咩？點解係佢？</p>
+<p>→ 揀「前線員工與工業級機械狗／小型洗街車並肩作戰」嘅人機協作特寫畫面；因為佢最能直觀呈現「科技係前線得力助手、提升潔淨效率」嘅核心訊息，打破「科技取代人力」嘅迷思。</p>
+<p>- Q4 客戶 key message 好抽象，要用咩具體 element（真場面／真數字／真人／真物）去「show 唔 tell」，令佢落地、唔流口號？</p>
+<p>→ 用「小型洗街車高壓熱水清洗路面黑垢」嘅前後實景對比，配合「潔淨地點由 1,800 個大幅擴展至 4,000+ 個」嘅動態圖像數據，以及前線清潔員專注操作設備嘅真實鏡頭去落地展現。</p>
+<h5>WHY — 點解信 + 情感</h5>
+<p>- Q5 觀眾點解要信／關佢事？要加咩證據 element 或情感共鳴 element，先由「事不關己」變「同我有關」？</p>
+<p>→ 加入市民（長者、親子、商戶）喺乾淨無污嘅行人路同後巷舒適散步、無後顧之憂嘅真實生活畫面，連結食環署追查冷氣機滴水與跨部門滅鼠嘅成果，將高新科技轉化為市民觸手可及嘅社區獲得感。</p>
+<h5>WHEN / WHERE — 出街情境</h5>
+<p>- Q6 呢條嘢實際喺邊度、咩狀態被睇到（電視 prime／車廂無聲／手機 scroll／戶外經過）？要 adapt 咩風格（有聲冇聲／首 3 秒／大字／節奏）先食到當下情境？</p>
+<p>→ 考慮到電視黃金時段、港鐵車廂無聲螢幕及手機社交平台，adapt 高對比度動態繁體中文 Super 蓋字、右下角 1/6 認可香港手語翻譯視窗，以及強烈嘅開場視覺衝擊與聲音節奏，確保無聲有聲皆能清晰傳達。</p>
+<p>- Q7 出街時間（事件前／中／後）decide 調子係「預告期待」定「總結成就」？要加咩 element 配合呢個時間感？</p>
+<p>→ 於 2026 年第四季（Q4）首播屬於「地區治理成效展示期」，調子應為「成果展現與前瞻承諾」；應加入全港 18 區煥然一新嘅晨光街景與無人機空中巡查鏡頭，營造全方位護航嘅大氣自信感。</p>
+<h5>HOW — 風格 + 差異化</h5>
+<p>- Q8 同類（同部門／同題材）政府片嘅「安全做法」係咩？要 adapt／升級邊種風格 element（質感／節奏／transition／配樂／美術流派），先做到「框內最高質」而唔悶？</p>
+<p>→ 安全做法係逐樣介紹裝備或公告式宣講；應升級為電影級電影調色實景紀錄片質感，結合專屬量身訂造（Tailor-made / Post-scored）音樂卡點與流暢嘅蒙太奇轉場，提升整體視覺品質。</p>
+<p>- Q9 要加咩一個 unexpected element（反差／新 visual device／新手法），先同部門過往 campaign 拉開距離、唔似翻炒，但又唔踩紅線？</p>
+<p>→ 加入官方吉祥物「清潔龍阿德」嘅經典口頭禪「做乜？一定得！」與 2026 官方口號「人人有德」諧音元素，或以高科技無人機／機械狗視角進行跨界對比，與過往單向宣講拉開距離。</p>
+<p>---</p>
+<p>*用法：agency／委員會落橋前先消化呢 9 條，順住 element＋風格方向諗，唔好離地。*</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📺 ISD 相類政府舊片</span></div><div class='cbody'><p>【呢條 brief 判定】目的:宣佈新法例/措施/勸喻/警示  題材:公共衞生</p>
+<p>【同目的(宣佈新法例/措施)ISD 慣性】主開頭 旁白場景(54%);格式率 旁白81% 熒幕蓋字100% 標誌結尾68% CTA81% 感嘆40% 三段式·0%;慣用結尾 查詢：2891 1001, www.elections.gov.hk, 網站二維碼, 房屋局標誌</p>
+<p>【對口 ISD 舊作借鏡(同 目的×題材,參考佢點寫,唔好照抄,要創新)】</p>
+<p>— 積水要提防　蚊患無處藏  [勸喻/警示 | 公共衞生]</p>
+<p>  ▶ https://www.youtube.com/watch?v=SPx1ZrIvWxM&amp;list=PL1188A9802575C33F</p>
+<p>  女旁白： / 防蚊小教室！ / 熒幕蓋字： / 防蚊小教室 / 食物環境衞生署標誌 / 女旁白： / 蚊子可以傳播很多疾病 / 熒幕蓋字： / 登革熱 / 基孔肯雅熱 / 女旁白： / 而積水，是蚊子滋生的地方 / 想避免，就要徹底清除家居積水 / 例如盆栽底碟 / 花瓶內的水，至少每星期換一次 / 花瓶內壁亦要洗刷 / 女旁白： / 容易積水的垃圾和雜物，要妥善棄置 / 去水位也要清理 / 女旁白： / 前往叢林或蚊患較嚴重的地區 / 應穿着淺色長袖衣物 / 以及使用驅蚊劑 / 熒幕蓋字： / 叢林／蚊患較嚴重地區 / 女旁白： / 積水要提防　蚊患無處藏 / 熒幕蓋字： / 預防登革熱和基孔肯雅熱 / 積水要提防　蚊患無處藏 / 食物環境衞生署標誌</p>
+<p>— 水果蔬菜 2+3　輕鬆融入每一餐  [其他 | 公共衞生]</p>
+<p>  ▶ https://www.youtube.com/watch?v=_iNDAroBSLc&amp;list=PL1188A9802575C33F</p>
+<p>  熒幕蓋字： 日日2+3 / 女旁白（唱）： 水果兩份 / 熒幕蓋字： 水果2份 /    「1份水果」約等於： /    2個小型水果 /    1個中型水果 /    半碗水果塊 / 女旁白（唱）： 蔬菜三份 / 熒幕蓋字： 蔬菜3份 /    「1份蔬菜」約等於： /    1碗未經烹調葉菜 /    半碗煮熟的蔬菜 /    ¾杯純蔬菜汁 /    *部分含澱粉質根莖類及醃製類蔬菜除外 / 女旁白（唱）： 天天來為健康加分 / 熒幕蓋字： 提供不同營養 /    維生素C /    鉀 /    葉酸 /    膳食纖維 / 女旁白（唱）： 多款多色 /     好吃有益 / 熒幕蓋字： 有助預防疾病 / 男旁白： 進食足夠蔬果 /    可以預防肥胖和減低患上慢性疾病的風險 / 熒幕蓋字： 心臟病 /    中風 /    肥胖 /    糖尿病 /    某些癌症（如大腸癌） / 女旁白（唱）： 早餐 / 熒幕蓋字： 早餐 / 女旁白（唱）： 午餐 / 熒幕蓋字： 午餐 / 女旁白（唱）： 還有晚餐 / 熒幕蓋字： 晚餐 / 星級有營食肆標誌 / 女旁白（唱）： </p>
+<p>— 2026年4月3日起二元優惠計劃由每程劃一$2調整為「兩蚊兩折」  [其他 | 長者家庭/公共衞生]</p>
+<p>  ▶ https://www.youtube.com/watch?v=-UAWGShCdCw&amp;list=PL1188A9802575C33F</p>
+<p>  熒幕蓋字 ： 兩蚊兩折 /     政府長者及合資格殘疾人士公共交通票價優惠計劃 /     運輸署網頁二維碼 / 馮素波（唱）： 兩元兩折　跟我學唱歌 / 馮素雲（唱）： 兩元兩折　我約了人逛街 / 馮素波（唱）： 低於或等於十元　只算兩元 / 熒幕蓋字 ： $2 / 馮素雲（唱）： 高於十元　兩折一樣興奮 / 熒幕蓋字 ： 兩折 / 馮素波旁白 ： 由2026 年4 月3日起 / 熒幕蓋字 ： 2026 年 4 月3日起 / 馮素波旁白 ： 二元優惠計劃由每程劃一兩元調整為「兩蚊兩折」 /     轉乘車程一樣適用 / 熒幕蓋字 ： 轉乘車程同樣適用 / 馮素波旁白 ： 受惠對象維持不變 / 熒幕蓋字 ： 60歲或以上香港居民 /     合資格殘疾人士 / 馮素波旁白 ： 詳情請瀏覽網頁或致電1823查詢 / 熒幕蓋字 ： 兩蚊兩折 /     運輸署網頁 /     www.td.gov.hk /     查詢電話：1823 / 馮素波、馮素雲（合唱） ： 兩元兩折　優惠相伴最開心 / 熒幕蓋字 ： 2026 </p>
+<p>— 地區康健中心為你的家庭健康導航  [其他 | 公共衞生]</p>
+<p>  ▶ https://www.youtube.com/watch?v=ZLmY_3aW89U&amp;list=PL1188A9802575C33F</p>
+<p>  旁白： 每個人都是自己健康的第一責任人 /   未來的健康 /   要依賴現在的你來守護！ / 熒幕蓋字： 子樂 /    未來的子樂 /    嘉怡 /    未來的嘉怡 / 旁白： 18區的地區康健中心 /   是你家庭健康和預防疾病的第一個接觸點 /   協助你選配家庭醫生 / 熒幕蓋字： 選配家庭醫生 / 旁白： 保持健康生活、接種疫苗 / 熒幕蓋字： 健康生活 / 熒幕蓋字： 接種疫苗 / 旁白： 建議慢性疾病及癌病篩查 / 熒幕蓋字： 慢性疾病及癌病篩查 / 年老男A： 多謝你 / 年老女B： 多謝你 / 年老男C： 多謝你選擇健康 /    我才擁有健康人生 / 熒幕蓋字： 宇軒 /    未來的宇軒 / 中年男A，中年女B和中年男C：立即到地區康健中心登記 / 熒幕蓋字： 地區康健中心 /    為你的家庭健康導航 /    基層醫療署標誌</p>
+<p>— 蚊叮傳播疾病多　防蚊措施要做妥  [其他 | 公共衞生]</p>
+<p>  ▶ https://www.youtube.com/watch?v=ZeLAdDYpPH8&amp;list=PL1188A9802575C33F</p>
+<p>  蚊： 我們蚊子可以傳播很多不同疾病 / 熒幕蓋字： 基孔肯雅熱 /    登革熱 / 蚊： 人感染後即使沒有病徵 /   但當他的血液帶有病原 /   我再叮咬他就可以傳染給其他人！ / 旁白： 所以，從受影響地區回來 / 熒幕蓋字： 從受影響地區返港 / 旁白： 要連續 14 天噴含避蚊胺成分的昆蟲驅避劑 / 熒幕蓋字： 塗上含避蚊胺成分昆蟲驅避劑 / 旁白： 如有不適記得求醫 / 熒幕蓋字： 如有不適應盡快求醫 / 旁白： 防蚊叮咬記得穿淺色、寬鬆長袖衣物 / 熒幕蓋字： 穿着淺色鬆身 長袖衣物 / 旁白： 再噴上昆蟲驅避劑 / 蚊： 哎呀！！！ / 旁白及熒幕蓋字： 蚊叮傳播疾病多　防蚊措施要做妥 / 熒幕蓋字： chp.gov.hk /    衞生防護中心標誌 /    衞生署標誌</p>
+<p>— 「情緒通」18111精神健康支援熱線  [公眾諮詢 | 公共衞生]</p>
+<p>  ▶ https://www.youtube.com/watch?v=SWnnTebEjiI&amp;list=PL1188A9802575C33F</p>
+<p>  陳奕迅： 每個人的情緒 /    總會有起落 /    可能來自學業 /    家庭 /    工作或健康 /    想不通時 /    不如找人談談？ /    只要你想說 /    我們都願意聽 /    然後找合適的人協助你 /    行出第一步 /    或者看到更多可能性 /    情緒通18111 / 熒幕蓋字： 情緒通18111精神健康支援熱線標誌 /    精神健康諮詢委員會標誌 /    政府資助計劃標誌</p></div></div></div><div class='h2 tierh'>📋 ADMIN（交標用 · 唔餵創意）</div><p class='hint tierhint'>交標 logistics：要交咩表格/文件、幾時截。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📑 要交表格 / 文件</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><div class='h3'>📝 要填嘅表格（4 張）</div><p class='hint'>真表頁自動 render 入對應<b>部門 Master Form GSlide</b>（開 GSlide 直接填）。🟦直 🟨橫。</p><div class='qconfirm' style='background:#fff4e5;color:#8a5a00'>⏳ pipeline 收到表會自動開 GSlide + render；此 dept 暫未配置，下次 run 自動補。</div><a class='btn ghost' target='_blank' href='https://docs.google.com/spreadsheets/d/1yiDJ3H8VFK3-6kZQZEzwkiD8VaRgVOzCwxcFbAyP3XE/edit'>📋 開 Master Form Registry（填表值喺度）</a><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/1nBf0Bdx17Jvo8owVWrvM-A_MlKxL98ttyMenXc-cewY/edit'>🎞️ 開 FEHDTVAPISDISTRICTGOVERNANCE Master Form GSlide（真表頁，直接填）</a><button class='btn' style='width:100%;margin-top:6px' onclick="fillForms(this)">🤖 AI 自動填公司資料入 Registry</button><script type='application/json' class='filldata'>{"folderName": "FEHD_TV APIs District Governance", "forms": [{"name": "Invitation to Quotation Form", "pages": "1", "text": ""}, {"name": "Schedule 2 - Price of Quotation", "pages": "39", "text": ""}, {"name": "Schedule 4 - Pro-innovation Proposals and ESG Proposals", "pages": "41", "text": ""}, {"name": "Annex 4 - Non-collusive Bidding Certificate", "pages": "56-57", "text": ""}]}</script><p class='hint'>撳上面掣 → AI 逐張表認要填咩欄（公司名/地址/BR…）→ 自動填入 <b>Master Form Registry</b> 嘅 <b>Fill_FEHD_TV APIs District Governance</b> tab → 你開 Registry copy 啲值入 GSlide 真表頁。⚠️ 價錢/簽名要自己填。（全程 GAS 做，唔使部 Mac 開機）</p><div class='h3'>② 交標時 — Forms / Schedules（4）</div><p class='hint'>Form GSlide 已 render 真表頁做 background → 人手填。</p><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/1nBf0Bdx17Jvo8owVWrvM-A_MlKxL98ttyMenXc-cewY/edit'>🎞️ 開 FEHDTVAPISDISTRICTGOVERNANCE Form GSlide</a><div class='qconfirm' style='background:#eef0fe;color:#3730a3'>貼入 panel 頁碼：<b>1,39,41,56-57</b></div><div class='timeline'><div class='tlrow'><span class='tldate'>🟨 p1</span><span class='tllabel'>Invitation to Quotation Form</span></div><div class='tlrow'><span class='tldate'>🟦 p39</span><span class='tllabel'>Schedule 2 - Price of Quotation</span></div><div class='tlrow'><span class='tldate'>🟦 p41</span><span class='tllabel'>Schedule 4 - Pro-innovation Proposals and ESG Proposals</span></div><div class='tlrow'><span class='tldate'>🟦 p56-57</span><span class='tllabel'>Annex 4 - Non-collusive Bidding Certificate</span></div></div><div class='h3' style='margin-top:11px'>📄 要交嘅文件（1 份 · 表格以外，標明出自邊份 DOC + 頁碼）</div><div class='timeline'><div class='tlrow'><span class='tllabel'><b>Technical Proposal (including draft storyboard, draft scripts in Chinese &amp; English, and completed Schedule 4)</b> <span class='hint'>（Quotation Document.pdf · p40）</span> — Must be enclosed in Technical Information Env</span></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📮 交標方法（地址 / 信封 / 份數）</span></div><div class='cbody'><p>- <strong>截標</strong>：2026-10-06 15:00</p>
+<p>- <strong>印幾多份</strong>：IN DUPLICATE</p>
+<p>- <strong>幾多信封</strong>：2 個</p>
+<p>- <strong>Soft copy（電子副本：CD/USB？）</strong>：標書無提及 → 只交紙本,不需 soft_copy</p>
+<p>- <strong>交去邊 — To</strong>：Chairman, Quotation Opening Team, Food and Environmental Hygiene Department</p>
+<p>- <strong>交去邊 — Address</strong>：Public Information and Education Division, Room 4419-4424, 44/F, Queensway Government Offices, 66 Queensway, Hong Kong</p>
+<p>- <strong>信封 label「Price Information Envelope」要寫</strong>：`Quotation Reference: (11) in FEHD (PIED) 3-5/5/13 Pt. 25 (Price Information)`（The price information (i.e. the &quot;Invitation to Quotation&quot; form itself and Schedule 2 including the breakdown of the pre-production, production and post-production costs of the TV API) in DUPLICATE）</p>
+<p>- <strong>信封 label「Technical Information Envelope」要寫</strong>：`Quotation Reference: (11) in FEHD (PIED) 3-5/5/13 Pt. 25 (Technical Information)`（The technical information as stated in Schedule 3 and all other remaining information and documents required by this quotation (without any indication on the price offered) in DUPLICATE）</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>💰 預算 / 費用（Budget / Fee Breakdown）</span></div><div class='cbody'><p>- <strong>預算（Budget）</strong>：無標明</p>
+<p>- <strong>費用明細要求（Fee Proposal Breakdown）</strong>：須提供預備、拍攝製作及後期製作費用明細（pre-production, production, and post-production costs breakdown）</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📅 日程</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ Gemini 2.5 Pro·預設</span></div><div class='cbody'><p>- 2026-09-08 Issue Invitation to Quotation to service providers</p>
+<p>- 2026-09-10 Deadline for submission of Reply Slips by service providers</p>
+<p>- 2026-09-11 Briefing session for interested service providers by FEHD and ISD</p>
+<p>- 2026-10-06 Deadline for submission of quotations (Quotation Closing Time)</p>
+<p>- 2026-10-12 Presentation of creative proposals to the selection panel by bidders</p>
+<p>- 2026-10-21 Award of contract to the successful bidder and kick-off meeting to review the proposed storyboard</p>
+<p>- 2026-11-02 Pre-production meeting</p>
+<p>- 2026-11-16 Presentation of rough cuts for review</p>
+<p>- 2026-11-25 Delivery of final cuts of the TV API</p>
+<p>- 2026-12-07 Delivery of station copies to TV stations</p></div></div></div></div>
+<div id='debrief' class='tabpanel'><div class='h2' style='margin-top:14px'>📨 共用 BRIEF（標書 tab 全份）</div><p class='hint'>8 間諗橋時都收到呢份 brief（製作要求 3D/mascot/明星、老闆方向…）做底，再各自加上面 dispatch 嘅角度/畫風/device。概念諗咗會 gatekeep 對返 brief 符合先生 BD。</p><div class='card briefcard'><h3>標書 TAB（你嘅 BRIEF — 全份，必跟）</h3>
+<h4>📋 標書撮要</h4>
+<h5>1. 背景同目的</h5>
+<p>- <strong>發起部門</strong>：食物環境衞生署（FEHD）[p. 34]。</p>
+<p>- <strong>項目名稱</strong>：Production of TV Announcements in the Public Interest (APIs) on FEHD topics under District Governance initiative（「地區治理」倡議下食環署主題之電視宣傳短片製作）[p. 1, p. 34]。</p>
+<p>- <strong>背景與目的</strong>：配合政府「地區治理」倡議，委聘服務提供者製作全新一套 30 秒電視宣傳短片（TV API），旨在推廣食環署的工作成果與服務範疇，展示部門「以人為本」的服務承諾，並傳達食環署將以專業態度及創新思維，持續提升服務質素，促進香港的可持續發展，藉此提升部門的專業及正面形象 [p. 34]。</p>
+<p>- <strong>預計播放時間</strong>：短片預計於 2026 年第四季（Q4）正式開播 [p. 34]。</p>
+<h5>2. 目標受眾</h5>
+<p>- <strong>主要受眾</strong>：香港廣大市民（The general public）[p. 34]。</p>
+<h5>3. 傳意目標／核心訊息</h5>
+<p>- <strong>總體核心主題</strong>：「智慧科技 潔淨城市」（Smart Tech for a Cleaner City）[p. 34]。</p>
+<p>- <strong>傳意策略</strong>：必須以最終成效（例如「行人路更潔淨、社區環境更舒適」）為切入點，然後才引入相關科技與設備，切忌採用過於硬邦邦、純科技展示的硬銷口吻 [p. 34]。</p>
+<p>- <strong>具體重點訊息與科技資產</strong> [p. 34–35]：</p>
+<p>  1. <strong>先進洗街設備</strong>：展示小型洗街車及配備的高壓熱水清洗設備、壓力洗地盤，強調能快速清除頑固污漬、簡化人手刷洗、省時省力並減少對行人干擾，將營運覆蓋地點由 1,800 個大幅擴展至 4,000 個以上。</p>
+<p>  2. <strong>自動化與前線支援</strong>：</p>
+<p>     - 自動清掃機器人（Autonomous street cleaning robots）。</p>
+<p>     - 工業級機械狗（Industrial grade robotic dogs）：用於搬運重型廢物及進行針對性噴霧滅蚊。</p>
+<p>     - 無人機（Drones）：於偏遠或難以到達的地點進行街道清潔巡查及辨識積水防蚊。</p>
+<h5>4. 影片／製作規格</h5>
+<p>- <strong>集數及長度</strong>：一套共 1 條 30 秒電視宣傳短片（TV API）[p. 34, p. 37]。</p>
+<p>- <strong>語言版本</strong>：包含廣東話（Cantonese）及英文（English）兩個版本 [p. 34, p. 37]。</p>
+<p>- <strong>字幕要求</strong>：廣東話版本配以繁體中文書面語字幕；英文版本配以英文字幕 [p. 36, p. 37]。</p>
+<p>- <strong>手語翻譯</strong>：廣東話及英文兩個版本均須包含獨立香港手語翻譯視窗（1/6 螢幕大小、橢圓形、淺灰或粉藍色無反射背景、置於右下角、手語員須穿深色/黑色衣服、與字幕保持同步）[p. 36]。</p>
+<p>- <strong>配音 (VO)</strong>：須安排專業廣東話及英文旁白配音員；英文版須盡量以英語流利演繹；畫面出現的網址、電話或電郵等關鍵資訊須配有相應 VO 旁白 [p. 36, p. 38]。</p>
+<p>- <strong>配樂</strong>：優先採用量身訂造（Tailor-made / Post-scored）配樂，承包商須負責清理所有版權及取得全球/各渠道播放授權 [p. 37]。</p>
+<p>- <strong>拍攝及交付格式</strong>：優先採用 HDCam、RED ONE 或同等高清規格拍攝；交付格式為 16:9 HD XDCAM HD422 50Mbps MXF 電子檔及 HDCAM 磁帶等 [p. 37, p. 53–55]。</p>
+<h5>5. 指定班底</h5>
+<p>- <strong>演出陣容／KOL／吉祥物</strong>：標書未有強制指定特定的導師、KOL 或吉祥物。若承包商建議使用明星/藝人演出，必須取得所有演出授權，並自費購買保額不少於港幣 1,000 萬元、將香港特區政府列為共同被保險人的公眾責任保險（保障須涵蓋藝人演出相關責任）[p. 25, p. 26]。</p>
+<p>- <strong>製作團隊</strong>：須提供全套專業製作團隊（Full production crew），負責香港室內及戶外外景拍攝的全套物流與運作 [p. 35]。</p>
+<p>- <strong>專業配音員及手語員</strong>：須安排專業粵/英配音員及認可香港手語翻譯員，手語員須於最終剪輯完成後親自核實手語翻譯準確度 [p. 36–37]。</p>
+<h5>6. 創意及策略重點／風格要求</h5>
+<p>- <strong>人機協作（Human-Machine Collaboration）</strong>：必須清晰傳達「科技是輔助前線員工安全及高效工作的工具，而非取代人類」；畫面須呈現前線員工與智慧設備和諧協作的場景 [p. 35]。</p>
+<p>- <strong>結果導向（Lead with the Outcome）</strong>：以市民生活體驗與社區潔淨成果開場，避免冰冷的設備規格展示 [p. 35]。</p>
+<p>- <strong>平實親切語氣（Plain Language &amp; Relatable Tone）</strong>：旁白及對白須使用生活化、易引起市民共鳴的日常用語，嚴禁使用艱深技術術語或冷冰冰的機械口吻 [p. 35]。</p>
+<p>- <strong>整合官方現有影片</strong>：須無縫剪輯並融入食環署提供的兩條現有官方影片片段（《地區治理:追查源頭滴水不漏》及《地區治理:街道整潔鼠患可滅》），進行調色、音效提升及格式調優，保持新舊片段視覺與聽覺的一致性 [p. 35–36]。</p>
+<p>- <strong>口號創作（Slogan Creation）</strong>：須創作原創、易記且涵蓋主題的中英文宣傳口號（Slogan），並取得食環署批准 [p. 36]。</p>
+<h5>7. 交付物同時間表</h5>
+<p>- <strong>主要交付物</strong> [p. 37–38, p. 51–52]：</p>
+<p>  1. 30秒 TV API 粵、英雙語版本成品（MXF 格式及 HDCAM 磁帶）。</p>
+<p>  2. 整合現有影片及補充拍攝（Supplementary shooting）之所有原素材與剪輯素材。</p>
+<p>  3. 經批准的中英文旁白腳本（Script）及故事板（Storyboard）軟硬複本。</p>
+<p>  4. 遞交各大電視台（TVB、HOY TV、Now TV / ViuTV、RTHK TV）、ISD 及 FEHD 之電視台副本、Cue sheet 及相關低解像預覽檔/劇照。</p>
+<p>- <strong>關鍵時間表（Tentative Schedule）</strong> [p. 8, p. 26–27]：</p>
+<p>  - <strong>2026-09-08</strong>：發出招標邀請。</p>
+<p>  - <strong>2026-09-10 12:00 p.m.</strong>：遞交簡介會出席回條（Reply Slip）截止。</p>
+<p>  - <strong>2026-09-11 15:30</strong>：招標簡介會（金鐘道政府合署 43 樓 4333 室）。</p>
+<p>  - <strong>2026-10-06 15:00</strong>：截標時間（Quotation Closing Time）。</p>
+<p>  - <strong>2026-10-12</strong>：向評審小組進行創意建議書簡報（須以廣東話進行）。</p>
+<p>  - <strong>2026-10-21</strong>：批出合約及舉行 Kick-off meeting 審查故事板。</p>
+<p>  - <strong>2026-11-02</strong>：拍攝前會議（Pre-production meeting）。</p>
+<p>  - <strong>2026-11-16</strong>：提交初剪版（Rough cuts）進行審核。</p>
+<p>  - <strong>2026-11-25</strong>：交付最終定剪版（Final cuts）。</p>
+<p>  - <strong>2026-12-07</strong>：送交電視台 Station copies。</p>
+<p>  - <strong>2026 年 Q4</strong>：預計電視首播。</p>
+<h5>8. 任何強制要求或紅線</h5>
+<p>- <strong>雙信封制遞交（Two-Envelope System）</strong>：價格資訊（Invitation to Quotation Form、Schedule 2）與技術建議書（Schedule 3、故事板草圖、中英文腳本草稿、Schedule 4 創新/ESG 建議、Annex 4 非串通投標確認書）必須分別獨立密封於平口袋內，各一式兩份（IN DUPLICATE）遞交；技術建議書信封內及表面嚴禁有任何價格顯示或公司身份標誌，否則不予受理 [p. 7–8, p. 40, p. 42]。</p>
+<p>- <strong>截標必交文件（Stage 1 完整性檢查）</strong>：簽署妥當之 Offer to be Bound、Schedule 2、Schedule 3、Schedule 4 及 Annex 4 必須於截標時間（2026-10-06 15:00）前交齊，欠缺任何一項即視為無效標書 [p. 42]。</p>
+<p>- <strong>手語及配音錯誤重拍條款</strong>：手語視窗規格（1/6大小、橢圓形、右下角等）須完全合規。若因手語翻譯出錯或配音發音不當引致公眾投訴或電視台拒播，承包商須承擔全部費用進行重配/重剪/重交，政府不作任何額外補償 [p. 36–37]。</p>
+<p>- <strong>版權與智慧財產權（IP Clearance）</strong>：所有交付物之全球及永久知識產權均歸政府所有。承包商須確保所有第三方資產（音樂、字體、肖像、素材等）已取得全球、永久、無限制的播放及使用授權；因侵權產生的法律責任由承包商全權承擔 [p. 27–29, p. 37]。</p>
+<p>- <strong>公眾責任保險（Insurance）</strong>：承包商須自費投保不少於港幣 1,000 萬元的公眾責任保險，香港特區政府須列為共同被保險人 [p. 25]。</p>
+<p>- <strong>性別主流化（Gender Mainstreaming）</strong>：所有提交之內容須確保無性別偏見或不平等 [p. 38]。</p>
+<h4>⚠️ 製作要求（標書硬性，每個概念必跟，違 = 廢稿）</h4>
+<p>- <strong>手語</strong>：要（標書原文:電視宣傳短片（廣東話及英文版）均須包含香港手語翻譯獨立視窗（1/6螢幕大小、橢圓形、淺灰/粉藍背景、，p36）</p>
+<p>- <strong>W3C影片</strong>：要（標書原文:廣東話版配繁體中文書面語字幕；英文版配英文字幕，p36）</p>
+<p>- <strong>明星/名人/官員</strong>：無Preference（標書原文:標書未強制要求使用明星/藝人，惟如使用，承包商須取得所有演出授權及購買包含演出藝人在內之1,000萬，p25）</p>
+<p>- <strong>Mascot</strong>：無Preference（標書原文:標書無強制規定使用吉祥物，p）</p>
+<p>- <strong>動畫</strong>：無Preference（標書原文:如有需要可在後期製作包含動畫（if specified in the storyboard） / 標，p35）</p>
+<h4>📑 要交文件（邊份 DOC + 頁碼）</h4>
+<p>- <strong>Technical Proposal (including draft storyboard, draft scripts in Chinese &amp; English, and completed Schedule 4)</strong>（Quotation Document.pdf · p40） — Must be enclosed in Technical Information Env</p>
+<p>- <strong>Price Proposal (Invitation to Quotation Form with OFFER TO BE BOUND signed, Schedule 2 Price of Quotation)</strong>（Invitation to Quotation Form.pdf · p1） — Must be enclosed in Price Information Envelop</p>
+<p>- <strong>Schedule 4 - Pro-innovation Proposals and ESG Proposals</strong>（Quotation Document.pdf · p41） — Must be completed and included in Technical P</p>
+<p>- <strong>Annex 4 - Non-collusive Bidding Certificate</strong>（Quotation Document.pdf · p56） — Must be completed, signed and submitted with </p>
+<h4>📮 交標方法（地址／信封／份數）</h4>
+<p>- <strong>截標</strong>：2026-10-06 15:00</p>
+<p>- <strong>印幾多份</strong>：IN DUPLICATE</p>
+<p>- <strong>幾多信封</strong>：2 個</p>
+<p>- <strong>Soft copy（電子副本：CD/USB？）</strong>：標書無提及 → 只交紙本,不需 soft_copy</p>
+<p>- <strong>交去邊 — To</strong>：Chairman, Quotation Opening Team, Food and Environmental Hygiene Department</p>
+<p>- <strong>交去邊 — Address</strong>：Public Information and Education Division, Room 4419-4424, 44/F, Queensway Government Offices, 66 Queensway, Hong Kong</p>
+<p>- <strong>信封 label「Price Information Envelope」要寫</strong>：`Quotation Reference: (11) in FEHD (PIED) 3-5/5/13 Pt. 25 (Price Information)`（The price information (i.e. the &quot;Invitation to Quotation&quot; form itself and Schedule 2 including the breakdown of the pre-production, production and post-production costs of the TV API) in DUPLICATE）</p>
+<p>- <strong>信封 label「Technical Information Envelope」要寫</strong>：`Quotation Reference: (11) in FEHD (PIED) 3-5/5/13 Pt. 25 (Technical Information)`（The technical information as stated in Schedule 3 and all other remaining information and documents required by this quotation (without any indication on the price offered) in DUPLICATE）</p>
+<h4>💰 預算 / 費用</h4>
+<p>- <strong>預算（Budget）</strong>：無標明</p>
+<p>- <strong>費用明細要求（Fee Proposal Breakdown）</strong>：須提供預備、拍攝製作及後期製作費用明細（pre-production, production, and post-production costs breakdown）</p>
+<h4>⛔ 注意事項 / 紅線</h4>
+<p>- [手語] 手語翻譯 (Sign Language)：廣東話及英文版短片均須包含獨立手語翻譯視窗，大小為螢幕 1/6、橢圓形、淺灰色或粉藍色背景、置於右下角、手語員須穿黑色衣</p>
+<p>- [無障礙] 無障礙字幕 (Subtitles)：廣東話版本配繁體中文書面語字幕；英文版本配英文字幕</p>
+<p>- [其他] 雙信封制遞交 (Two-Envelope System)：價格資訊與技術建議書必須分別獨立密封於平口袋內，各一式兩份（in duplicate）遞交，信封表面不可有任何可識別公司</p>
+<p>- [其他] 公眾責任保險 (Public Liability Insurance)：承包商須自費投保保額不少於港幣 1,000 萬元之公眾責任保險，香港特區政府須列為共同被保險人，保障範圍須涵蓋演出明星/</p>
+<h4>⚡ 創意亮點（research 掘出嘅真嘢）</h4>
+<h4>⚡ 創意亮點 — FEHDTVAPISDISTRICTGOVERNANCE·Production of TV Announcements in the Public Interest (APIs) on FEHD topics under District Governance initiative（research 掘出嚟，可以做橋嘅真嘢）</h4>
+<p>1. 🏷️ <strong>清潔龍阿德與「人人有德」</strong></p>
+<p>   - 事實：食環署於2016年委任「清潔龍阿德」為清潔香港大使，造型為綠色清潔龍、橙色角、牛仔吊帶褲及粉紅膠靴，口頭禪為「做乜？一定得！」，2026年官方活動口號為「清潔香港 人人都『德』」。（出處：[hooks-research] FEHDTVAPISDISTRICTGOVERNANCE）</p>
+<p>   - 💡 可以點做橋：可以阿德的「德／得」雙關諧音及經典口頭禪「做乜？一定得！」做橋，貫穿智慧科技與全民清潔行動。</p>
+<p>2. 🏷️ <strong>小型洗街車與高壓熱水槍</strong></p>
+<p>   - 事實：食環署引入配備高壓熱水清洗設備及壓力洗地盤的小型洗街車，能快速深層去除路面頑固黑油污，並將潔淨覆蓋地點由1,800個大幅擴展至4,000個以上。（出處：Quotation Document.pdf (p. 34)）</p>
+<p>   - 💡 可以點做橋：可以「高壓熱水洗頑垢、覆蓋四千地點」的前後對比畫面做橋，突出清潔成果與覆蓋率躍升。</p>
+<p>3. 🏷️ <strong>工業級機械狗與自動清掃機器人</strong></p>
+<p>   - 事實：食環署部署四足工業級機械狗進行搬運重型廢物及針對性噴霧滅蚊，並以自動清掃機器人在狹窄行人路進行自動化清掃，極大地減輕前線員工體力負擔。（出處：Quotation Document.pdf (p. 34)）</p>
+<p>   - 💡 可以點做橋：可以「前線員工與機械狗／機器人神隊友並肩作戰」的人機協作故事做橋，打破科技取代人力的迷思。</p>
+<p>4. 🏷️ <strong>無人機空中巡查積水</strong></p>
+<p>   - 事實：食環署運用多旋翼無人機於偏遠或難以到達的地點（如老舊大廈天台、雨水渠或山邊斜坡）進行空中清潔巡查，精準辨識隱蔽積水及潛在蚊患滋生地。（出處：Quotation Document.pdf (p. 34)）</p>
+<p>   - 💡 可以點做橋：可以「上帝視角航拍死角積水、讓蚊患無所遁形」的高科技監測鏡頭做橋，突顯主動防禦思維。</p>
+<p>5. 🏷️ <strong>整合兩條地區治理官方影片</strong></p>
+<p>   - 事實：標書指定必須無縫整合食環署兩條現有官方短片《地區治理:追查源頭滴水不漏》（冷氣機滴水最高罰款 \$25,000）與《地區治理:街道整潔鼠患可滅》。（出處：Quotation Document.pdf (p. 36)）</p>
+<p>   - 💡 可以點做橋：可以將滴水追查與防鼠成果畫面作為「地區治理實效」的核心證據做橋，增強宣傳片權威感。</p>
+<p>6. 🇭🇰 <strong>「垃圾蟲」與「人見人憎」集體回憶</strong></p>
+<p>   - 事實：香港自 1970 年代起以「垃圾蟲」及「亂拋垃圾，人見人憎」作為清潔香港經典反派符號與阻嚇式口號，成為深植全港市民心中的集體回憶。（出處：[hooks-research] FEHDTVAPISDISTRICTGOVERNANCE）</p>
+<p>   - 💡 可以點做橋：可以由傳統「垃圾蟲／怒目雙眼」的懷舊印象，轉化為「今日智慧科技全方位護航」做橋，拉開年代反差感。</p>
+<p>7. 💡 <strong>「結果導向」開場原則</strong></p>
+<p>   - 事實：標書特別強調創作須「Lead with the Outcome, Not the Equipment」，必須先展示市民享受潔淨宜居社區的幸福感，切忌製作成冰冷的工程設備展示片。（出處：Quotation Document.pdf (p. 35)）</p>
+<p>   - 💡 可以點做橋：可以市民踏在乾淨無污路面上的第一身微觀視覺開場做橋，隨後才拉開鏡頭揭示背後默默工作的洗街車與前線人員。</p>
+<p>8. 🏷️ <strong>雙語字幕與獨立手語翻譯視窗</strong></p>
+<p>   - 事實：標書規定廣東話配繁體中文書面語字幕、英文配英文字幕，且雙語版本均須包含右下角 1/6 螢幕大小、橢圓形、淺灰/粉藍背景、手語員穿黑衣之香港手語翻譯視窗。（出處：Quotation Document.pdf (p. 36)）</p>
+<p>   - 💡 可以點做橋：可以無障礙包容性設計為品牌信任基石做橋，展現食環署「以人為本」顧及不同社群需求的服務承諾。</p>
+<h4>📅 日程</h4>
+<p>- 2026-09-08 Issue Invitation to Quotation to service providers</p>
+<p>- 2026-09-10 Deadline for submission of Reply Slips by service providers</p>
+<p>- 2026-09-11 Briefing session for interested service providers by FEHD and ISD</p>
+<p>- 2026-10-06 Deadline for submission of quotations (Quotation Closing Time)</p>
+<p>- 2026-10-12 Presentation of creative proposals to the selection panel by bidders</p>
+<p>- 2026-10-21 Award of contract to the successful bidder and kick-off meeting to review the proposed storyboard</p>
+<p>- 2026-11-02 Pre-production meeting</p>
+<p>- 2026-11-16 Presentation of rough cuts for review</p>
+<p>- 2026-11-25 Delivery of final cuts of the TV API</p>
+<p>- 2026-12-07 Delivery of station copies to TV stations</p></div></div>
+<div id='wi_all' class='tabpanel'><div class='banner'>🧩 今次提案要做、要交嘅項目（NB 跟標書同簡介會列；TAB 跟呢張表）</div><table class='sbtab'><thead><tr><th>項目</th><th>提案要交乜</th><th>評分</th><th>出處</th></tr></thead><tbody><tr><td><b>30-second TV API (Cantonese </b></td><td><div class='hint'>廣東話／英文　16:9 (1920x1080)　TVB／i-CABLE HOY TV／PCCW Media (Now TV)／HKTVE (Viu TV)／RTHK TV／ISD／FEHD</div></td><td></td><td class='hint'>標書 deliverables（core）</td></tr><tr><td><b>Optional Item: One-day (8-ho</b></td><td><div class='hint'>廣東話／英文</div></td><td></td><td class='hint'>標書 deliverables（optional）</td></tr></tbody></table></div>
+<div id='handbd' class='tabpanel'><p class='hint'>喺 Master GSheet 開「TV API Script <b>1／2／3</b>」三個 tab 放唔同 TV API 稿，<b>撳邊個 SET 就生邊個</b>（全 NLM 風格各一，純畫面唔蓋字）。</p><div class='acts' style='margin-bottom:6px'><button class='btn' title='讀 Master GSheet「TV API Script 1」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHDTVAPISDISTRICTGOVERNANCE&concept=1&stage=handbd&engine=allstyles&target=main')">🎬 SET 1 → 生 BD</button><button class='btn' title='讀 Master GSheet「TV API Script 2」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHDTVAPISDISTRICTGOVERNANCE&concept=2&stage=handbd&engine=allstyles&target=main')">🎬 SET 2 → 生 BD</button><button class='btn' title='讀 Master GSheet「TV API Script 3」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHDTVAPISDISTRICTGOVERNANCE&concept=3&stage=handbd&engine=allstyles&target=main')">🎬 SET 3 → 生 BD</button><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card empty'>未生過手寫稿 BD —— 撳上面 SET 生成（或先喺 Master GSheet 放稿）。</div></div>
+<div id='theme1_1' class='tabpanel' data-set='1'><div class='banner'>🧭 北極星未定。撳掣 → 7 agency + 委員會就住成份標書諗一個大主題（big idea）+ 一個綜合口號。所有 MOD ladder 返呢度。</div><div class='card'><button class='btn big' title='' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHDTVAPISDISTRICTGOVERNANCE&concept=PLAN&stage=gen_theme&target=main')">🧭 生成大主題 + 綜合口號</button></div><div class='card'><button class='btn ghost' title='將呢個 dept 全部已生成嘅 MOD planning（主題／系列／SOC／MEDIA／KOL）出去 Master GSheet，每個 mod 一個 tab；你喺 GSheet 改完，自己貼返入真 deck（GSlide）。design 你話事。' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHDTVAPISDISTRICTGOVERNANCE&concept=all&stage=mod_gsheet&target=main')">📤 全部 MOD → Master GSheet（畀你改）</button></div></div>
+<div id='tvapi1_1' class='tabpanel' data-set='1'><div class='banner consb' style='border-left:4px solid #b91c1c'><b>⚠️ 呢批方向係未聽簡介會出嘅。</b>簡介會錄音入咗標書夾之後會按錄音重出（你未揀方向先會重出）。</div><div class='banner'>👉 NB 跟標書＋簡介會出咗呢幾個方向（冇評分、冇排名）。剔你要嘅，撳右下 Submit，先會生 BD 入 VID 2。</div><div class='banner consb'><b>⚠️ 呢單嘅製作限制（出橋已跟）：</b><ul><li>一套30秒電視宣傳短片（TV API），包含廣東話及英文兩個版本（Quotation Document.pdf, Schedule 1, Clause 1, 9）</li><li>畫面必須包含1/6螢幕大小、橢圓形、淺灰色/粉藍色背景、置於右下角之香港手語翻譯視窗，並與字幕同步（Quotation Document.pdf, Schedule 1, Clause 8(h)）</li><li>廣東話版本配繁體中文書面語字幕；英文版本配英文字幕（Quotation Document.pdf, Schedule 1, Clause 8(h)）</li><li>須整合食環署提供的兩條現有官方影片片段（《地區治理:追查源頭滴水不漏》及《地區治理:街道整潔鼠患可滅》），進行調色、音效提升及格式轉換（Quotation Document.pdf, Schedule 1, Clause 8(d)）</li><li>須進行補充拍攝（Supplementary shooting），與現有影片無縫整合（Quotation Document.pdf, Schedule 1, Clause 8(e)）</li><li>短片必須傳達『智慧科技 潔淨城市』核心主題，並以成效（潔淨環境）開場，強調人機協作而非取代前線員工（Quotation Document.pdf, Schedule 1, Clause 4, 6）</li></ul></div><div class='banner consb'><b>🎭 必用素材（名同樣以呢度為準）：</b><ul><li><b>清潔龍阿德 (Clean Dragon Ah Tak)</b>（食環署清潔香港大使，作為品牌靈魂角色推廣清潔訊息及人機協作概念）：綠色身體、頭頂有一對橙色小角、身穿藍色牛仔吊帶褲、腳踏粉紅色膠靴之官方3D吉祥物角色 <span class='hint'>〔Raymond 指示 &amp; 官方資料〕</span></li><li><b>小型洗街車及高壓熱水清洗設備</b>（快速清除頑固污漬，簡化人手刷洗，擴展潔淨覆蓋範圍至4,000個地點）：車身帶有食環署綠色標誌之小型潔淨車輛，配備高壓熱水槍及壓力洗地盤 <b style='color:#b91c1c'>⚠️ 未有圖 —— 請將圖放入標書 Drive 夾</b> <span class='hint'>〔Quotation Document.pdf (p. 34)〕</span></li><li><b>自動清掃機器人</b>（提升清掃效率，減輕前線員工體力負擔）：圓潤現代化造型之自動化街道清掃設備 <b style='color:#b91c1c'>⚠️ 未有圖 —— 請將圖放入標書 Drive 夾</b> <span class='hint'>〔Quotation Document.pdf (p. 34)〕</span></li><li><b>工業級機械狗</b>（協助重型廢物搬運及針對性噴霧滅蚊）：四足工業級機器人，背部配備噴霧裝置及重物載具 <b style='color:#b91c1c'>⚠️ 未有圖 —— 請將圖放入標書 Drive 夾</b> <span class='hint'>〔Quotation Document.pdf (p. 34)〕</span></li><li><b>無人機</b>（偏遠或難以到達地點之街道清潔巡查及辨識積水防蚊）：多旋翼高解析度無人飛行器 <b style='color:#b91c1c'>⚠️ 未有圖 —— 請將圖放入標書 Drive 夾</b> <span class='hint'>〔Quotation Document.pdf (p. 34)〕</span></li><li><b>現有官方影片：《地區治理:追查源頭滴水不漏》</b>（整合至新 TV API 內展示地區治理滴水成果）：食環署現有滲水/滴水治理宣傳影片片段 <b style='color:#b91c1c'>⚠️ 未有圖 —— 請將圖放入標書 Drive 夾</b> <span class='hint'>〔Quotation Document.pdf (p. 36)〕</span></li><li><b>現有官方影片：《地區治理:街道整潔鼠患可滅》</b>（整合至新 TV API 內展示地區治理防鼠成果）：食環署現有滅鼠/環境衞生宣傳影片片段 <b style='color:#b91c1c'>⚠️ 未有圖 —— 請將圖放入標書 Drive 夾</b> <span class='hint'>〔Quotation Document.pdf (p. 36)〕</span></li></ul></div><div class='banner consb'><b>🗣️ Raymond 指示（出橋已跟）：</b><p>- 2026-09-30：用食環署吉祥物「清潔龍阿德」（清潔香港大使；口頭禪「做乜？一定得！」；2026 官方活動口號「清潔香港 人人都『德』」）。<strong>唔同方向試唔同用法</strong>，6 個方向逐個照以下分配（次序照跟）：</p>
+<p>  1. 阿德<strong>只出聲做旁白，全片畫面唔出現</strong>（唔畫佢、唔出公仔、唔出剪影）。每句旁白寫「清潔龍阿德：……」。故事：「做乜？一定得！」問答結構——後巷滴水、鼠患、街道垃圾，阿德每樣問「做乜？」，前線員工＋設備處理好，阿德答「一定得！」。</p>
+<p>  2. 阿德<strong>只出聲做旁白，全片畫面唔出現</strong>，旁白寫「清潔龍阿德：……」。故事：阿德係唔信科技嘅街坊，把聲由懷疑逐樣試到佩服。</p>
+<p>  3. 阿德<strong>出鏡</strong>（照官方 3D 設計：綠色龍、橙角、牛仔吊帶褲、粉紅靴，合成入真人實景）。故事：2016→2026 升級——拎住舊掃把嘅阿德撞見機械狗、無人機。</p>
+<p>  4. 阿德<strong>出鏡</strong>。故事：阿德同工業級機械狗做拍檔出更，前線員工做指揮。</p>
+<p>  5. 阿德<strong>出鏡</strong>。故事：「人人都『德』」——阿德同街坊、前線一齊做，用德／得諧音做 slogan。</p>
+<p>  6. <strong>冇阿德</strong>（對照組）。故事：真人紀實，一位前線員工嘅一日。</p>
+<p>- 阿德出鏡嘅方向，對白寫「清潔龍阿德：……」；每格 `visual` 有佢就寫明「清潔龍阿德」。</p>
+<p>- 2026-09-30：唔用手語做 gimmick（手語窗照標書用認可真人手語翻譯員）。</p>
+<p>- 2026-09-30：每個方向都要有 slogan（8–16 字完整口號）同 call to action（呼籲句＋網址／熱線），尾版要出。</p>
+<p>- 2026-09-30：全部方向畫風＝寫實真人實景（阿德出鏡就用官方 3D 樣合成入實景）。</p>
+<p>- 2026-09-30：<strong>簡介會（2026-09-11）投影片重點</strong>（Raymond 現場影相，標書冇寫、必跟）：</p>
+<p>  - 主要訊息：①深層清潔行人路，提升城市景觀；②展示本署廣泛應用科技以提升服務效率嘅願景；③強調最終成果——為公眾打造更潔淨、更舒適嘅生活環境。</p>
+<p>  - 先進街道清洗設備：配備高壓熱水洗滌機同高速清洗盤嘅<strong>小型洗街車</strong>，強調高速清洗盤能快速清除行人路污垢、省時節能、靈活、減少滋擾行人；署方已把高速清洗盤清洗地點數目由 2025 年初約 1,800 個增至超過 4,000 個（重點關注人流密集、活動頻繁、容易弄污嘅地點，包括港鐵站出入口附近、主要道路及旅遊景點周邊嘅行人路）。</p>
+<p>  - 科技係為咗提升工作效率，亦係為咗加強對前線員工嘅安全保障，減低佢哋因工作勞損同受傷嘅機會；自動清掃機械人減輕清潔工人體力消耗；工業級機械狗用於運送重型廢物同進行針對性霧化滅蚊；無人機用於偏遠或難以抵達地區，進行高空潔淨度巡查、識別積水或蚊子滋生地。</p>
+<p>  - <strong>創意方向</strong>：①突出「人機協作」——明確傳達科技係輔助前線員工嘅工具，而非取代佢哋；畫面要展現人員與智能設備和諧合作。②以「成果」為先，而非「設備」——避免過度強調技術或純粹展示科技，敘事以人類體驗同最終成果（更潔淨、更宜居嘅城市）為先，再揭示所用工具。③語言淺白，語氣親切——對白及旁白使用簡單、日常嘅語言，引起普羅大眾共鳴；避免技術術語、複雜工程詞彙或冷酷、機械化語氣。</p></div><div class='h2'>🔻 NB 方向（一行兩個）</div><div class='carousel nbgrid'><div class='ccard surface-card nbcard  sel' data-cid='nbd069852b'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>方向 1</span></div><div class='ctitle'>方向一：阿德問答篇（旁白不現身）</div><div class='cbody'><div class='nbconcept'><b>創作概念</b><br>本方案以食環署清潔香港大使「清潔龍阿德」作為聲音導航，全片畫面不出現阿德實體。阿德以招牌口頭禪「做乜？一定得！」貫穿全片，採用幽默問答結構。面對後巷滴水、鼠患隱患及街道頑固油污，阿德語氣關切地問「做乜？」，隨後展示食環署前線人員運用小型洗街車、無人機及現有防滴水滅鼠成果輕鬆化解，阿德歡快回應「一定得！」，展現科技賦能前線的顯著成效。</div><p class='nbmeta'><b>Big idea：</b>做乜？一定得！阿德聲音導航智慧科技潔淨社區</p><p class='nbmeta'><b>點解：</b>利用阿德經典聲音與口頭禪建立強烈符號記憶，畫面聚焦實景人機協作。</p><p class='nbmeta'><b>Key message：</b>智慧科技 潔淨城市</p><p class='nbmeta'><b>視覺裝置：</b>問句與快節奏解決畫面交替，聲音引導畫面</p><p class='nbmeta'><b>班底：</b>食環署前線清潔員、茶餐廳老闆、全套智慧科技設備</p><p class='nbmeta'><b>調子：</b>活潑幽默、親切明快</p><p class='nbmeta'><b>製作方法：</b>寫實真人實景拍攝前線人員與科技設備作業，配音員演繹清潔龍阿德旁白，調色融合現有影片。</p><p class='nbmeta muted'>30 秒 · 10 格</p><table class='sbtab'><thead><tr><th>Frame</th><th>畫面／蓋字</th><th>旁白／對白</th></tr></thead><tbody><tr><td class='fn'>1</td><td>特寫舊大廈後巷牆角黑油污，茶餐廳老闆愁眉苦臉。鏡頭快速推近，光線陰暗呈痛點，完全符合抓人開場要求。<div class='sup'>蓋字：做乜？後巷黑油污？</div></td><td>清潔龍阿德：做乜？黑油污咁難搞？</td></tr><tr><td class='fn'>2</td><td>40歲食環署前線人員操作小型洗街車，高壓熱水槍噴出高溫水霧，瞬間清除黑垢。早晨日光照耀，中景跟拍。<div class='sup'>蓋字：小型洗街車　高壓熱水清洗</div></td><td>清潔龍阿德：洗街車高壓熱水，一定得！</td></tr><tr><td class='fn'>3</td><td>切至狹窄巷弄中景，自動清掃機器人靈活轉灣吸走微塵落葉，前線人員在旁記錄。早晨自然光柔和，路面煥發光澤。<div class='sup'>蓋字：自動清掃機器人</div></td><td>清潔龍阿德：做乜？狹巷落葉點清？</td></tr><tr><td class='fn'>4</td><td>銜接食環署現有官方影片《地區治理:追查源頭滴水不漏》精華畫面，專員用儀器定位滴水源頭。室內燈光清晰，定鏡中景。<div class='sup'>蓋字：追查源頭　滴水不漏</div></td><td>清潔龍阿德：機器人加追查滴水，一定得！</td></tr><tr><td class='fn'>5</td><td>銜接食環署現有官方影片《地區治理:街道整潔鼠患可滅》畫面，後巷擺放防鼠設施且環境乾淨。日光充沛，鏡頭慢搖。<div class='sup'>蓋字：街道整潔　鼠患可滅</div></td><td>清潔龍阿德：做乜？後巷鼠患點搞？</td></tr><tr><td class='fn'>6</td><td>高空俯瞰全景，無人機在舊樓天台上空懸停巡查，將積水影像傳回螢幕。晴空萬里，陽光透亮，展現科技防禦網。<div class='sup'>蓋字：無人機空中巡查</div></td><td>清潔龍阿德：無人機查積水，一定得！</td></tr><tr><td class='fn'>7</td><td>低角度跟拍工業級機械狗在公園斜坡穩步前行，噴出細密滅蚊水霧。前線隊員遙控隨行，樹影間陽光斑駁。<div class='sup'>蓋字：工業級機械狗　精準滅蚊</div></td><td>清潔龍阿德：做乜？草叢滅蚊咁難？</td></tr><tr><td class='fn'>8</td><td>前線人員與茶餐廳老闆在乾淨路面上相視笑著豎起大拇指，小型洗街車停於身後。金色夕陽光芒灑滿，畫面極具人情味。<div class='sup'>蓋字：人機協作　覆蓋超過4,000地點</div></td><td>清潔龍阿德：機械狗精準滅蚊，一定得！</td></tr><tr><td class='fn'>9</td><td>全景遠鏡頭，繁華整潔的香港街頭，市民在燦爛陽光下快步前行，社區環境煥然一新，展現宜居城市的蓬勃生機。<div class='sup'>蓋字：智慧科技潔淨城市 人人人德一定得</div></td><td>清潔龍阿德：智慧科技潔淨城市，人人人德一定得！</td></tr><tr><td class='fn'>10</td><td>畫面轉為藍底品牌畫面，清晰打出食物環境衞生署標誌、區徽、宣傳口號及查詢熱線網址。定鏡中景，光線勻稱明亮。<div class='sup'>蓋字：智慧科技 潔淨城市
+食物環境衞生署標誌
+www.fehd.gov.hk / 熱線：2868 0000</div></td><td>清潔龍阿德：查詢致電28680000或瀏覽官網。</td></tr></tbody></table></div></div><div class='ccard surface-card nbcard  sel' data-cid='nb36296499'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>方向 2</span></div><div class='ctitle'>方向二：懷疑街坊阿德篇（旁白不現身）</div><div class='cbody'><div class='nbconcept'><b>創作概念</b><br>本方案由清潔龍阿德以一位傳統老街坊的聲音角色的懷疑視角切入，全片畫面不出現阿德實體。阿德起初對新引進的「黑科技」半信半疑，質疑「機器真係比得上人工？」。隨著畫面展現小型洗街車高壓熱水瞬間化解油污、自動機器人清掃狹巷、機械狗與無人機主動滅蚊防滴水，阿德的態度由懷疑轉為驚嘆與佩服，最終心服口服誇讚「智慧科技真係靠得住！」。</div><p class='nbmeta'><b>Big idea：</b>由懷疑到佩服，阿德聲音帶出智慧科技的真功夫</p><p class='nbmeta'><b>點解：</b>代表大眾對新科技的疑慮，透過真實成效化解疑慮，增強說服力。</p><p class='nbmeta'><b>Key message：</b>智慧科技，值得信賴</p><p class='nbmeta'><b>視覺裝置：</b>質疑語氣與實景驚艷成效對比</p><p class='nbmeta'><b>班底：</b>食環署前線人員、街坊市民、全套智慧科技設備</p><p class='nbmeta'><b>調子：</b>戲劇化、幽默反轉、具說服力</p><p class='nbmeta'><b>製作方法：</b>寫實真人實景拍攝科技設備運作成效，配音員演繹阿德從懷疑到讚賞的語氣轉折。</p><p class='nbmeta muted'>30 秒 · 10 格</p><table class='sbtab'><thead><tr><th>Frame</th><th>畫面／蓋字</th><th>旁白／對白</th></tr></thead><tbody><tr><td class='fn'>1</td><td>特寫繁忙街角積聚黑油污的地面，鏡頭快速推近呈痛點，早晨日光照射。阿德聲音帶出懷疑，開場生動抓人。<div class='sup'>蓋字：科技新設備　真係行？</div></td><td>清潔龍阿德：新科技？機器洗得乾淨？</td></tr><tr><td class='fn'>2</td><td>中景鏡頭，前線人員操作小型洗街車噴出高壓熱水，黑垢瞬間溶解流走，地面露出乾淨顏色。自然日光下水霧升騰。<div class='sup'>蓋字：小型洗街車　高壓熱水清洗</div></td><td>清潔龍阿德：哇！高壓熱水一沖就淨？</td></tr><tr><td class='fn'>3</td><td>自動清掃機器人在行人路安靜自動行駛，精準吸走凹縫落葉與微塵。前線人員微笑巡視，早晨陽光柔和照耀。<div class='sup'>蓋字：自動清掃機器人</div></td><td>清潔龍阿德：連狹巷落葉都掃得乾淨！</td></tr><tr><td class='fn'>4</td><td>銜接食環署現有官方影片《地區治理:追查源頭滴水不漏》畫面，專員用熱儀器找出天花滲水管。室內燈光清晰，中景定鏡。<div class='sup'>蓋字：追查源頭　滴水不漏</div></td><td>清潔龍阿德：仲追查冷氣滴水！</td></tr><tr><td class='fn'>5</td><td>銜接食環署現有官方影片《地區治理:街道整潔鼠患可滅》畫面，後巷擺放高科技捕鼠盒，環境整潔。日光充沛，鏡頭慢搖。<div class='sup'>蓋字：街道整潔　鼠患可滅</div></td><td>清潔龍阿德：防鼠都搞得咁企理！</td></tr><tr><td class='fn'>6</td><td>高空俯瞰，無人機飛越舊樓天台掃描積水；切至地面，機械狗在公園草叢噴霧滅蚊。日光透亮，科技感十足。<div class='sup'>蓋字：無人機巡查　機械狗滅蚊</div></td><td>清潔龍阿德：無人機加機械狗滅蚊！</td></tr><tr><td class='fn'>7</td><td>特寫前線人員在暖陽下自信擦拭裝備，身旁小型洗街車煥發光彩，側光雕刻出專業堅毅的輪廓。<div class='sup'>蓋字：人機協作　前線神隊友</div></td><td>清潔龍阿德：科技做前線神隊友！</td></tr><tr><td class='fn'>8</td><td>闊景鏡頭，整潔街道上市民開心散步，街坊向前線人員豎起大拇指。金色夕陽灑滿，畫面充滿佩服與讚賞。<div class='sup'>蓋字：潔淨覆蓋超過4,000地點</div></td><td>清潔龍阿德：我服啦！覆蓋四千地點，讚！</td></tr><tr><td class='fn'>9</td><td>全景鏡頭，美麗整潔的香港城市景觀，陽光普照，市民享受舒適社區生活，展現智慧城市新風貌。<div class='sup'>蓋字：智慧科技靠得住 潔淨城市人人德</div></td><td>清潔龍阿德：智慧科技靠得住，潔淨城市人人德！</td></tr><tr><td class='fn'>10</td><td>藍底藍圖品牌畫面，清晰顯示食物環境衞生署標誌、區徽、網站及熱線。定鏡中景，光線勻稱明亮。<div class='sup'>蓋字：智慧科技 潔淨城市
+食物環境衞生署標誌
+www.fehd.gov.hk / 熱線：2868 0000</div></td><td>清潔龍阿德：查詢致電28680000或瀏覽官網。</td></tr></tbody></table></div></div><div class='ccard surface-card nbcard  sel' data-cid='nb17655e26'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>方向 3</span></div><div class='ctitle'>方向三：阿德十年時空穿越篇（阿德出鏡）</div><div class='cbody'><div class='nbconcept'><b>創作概念</b><br>本方案由清潔龍阿德親自出鏡（採用官方3D造型：綠色龍身體、橙角、牛仔吊帶褲、粉紅膠靴，合成入寫實真人實景）。故事講述阿德手持2016年舊竹掃把在街道清潔，突然遇上2026年的工業級機械狗與小型洗街車。阿德驚喜發現自己的潔淨裝備十年來大升級！在前線人員帶領下，阿德體驗無人機與自動機器人，感歎「10年間科技大翻新，潔淨香港更輕鬆！」。</div><p class='nbmeta'><b>Big idea：</b>2016竹掃把對比2026黑科技，阿德見證十年潔淨大升級</p><p class='nbmeta'><b>點解：</b>利用阿德2016誕生至今十周年的時空對比，突出科技進步與時代變遷。</p><p class='nbmeta'><b>Key message：</b>科技升級，潔淨傳承</p><p class='nbmeta'><b>視覺裝置：</b>舊竹掃把與現代高科技設備同框趣味對比</p><p class='nbmeta'><b>班底：</b>清潔龍阿德（3D合成）、食環署前線隊員、全套智慧科技設備</p><p class='nbmeta'><b>調子：</b>趣味驚喜、溫馨振奮</p><p class='nbmeta'><b>製作方法：</b>寫實真人實景拍攝，後製將官方3D清潔龍阿德模型無縫合成至實景中，與前線人員及設備互動。</p><p class='nbmeta muted'>30 秒 · 10 格</p><table class='sbtab'><thead><tr><th>Frame</th><th>畫面／蓋字</th><th>旁白／對白</th></tr></thead><tbody><tr><td class='fn'>1</td><td>特寫綠色身體、牛仔吊帶褲、粉紅膠靴的3D清潔龍阿德手持舊竹掃把在街道掃地，滿頭大汗。早晨陽光照射，畫面抓人生動。<div class='sup'>蓋字：2016 ➔ 2026 科技大升級</div></td><td>清潔龍阿德：以前拎竹掃把，好辛苦！</td></tr><tr><td class='fn'>2</td><td>工業級機械狗靈巧走過，小型洗街車噴出高壓熱水清洗路面。清潔龍阿德驚訝得目瞪口呆，竹掃把差點掉落。中景跟拍。<div class='sup'>蓋字：工業級機械狗　小型洗街車</div></td><td>清潔龍阿德：哇！洗街車係咩嚟㗎？</td></tr><tr><td class='fn'>3</td><td>40歲前線人員笑著招手，介紹自動清掃機器人。清潔龍阿德湊近好奇觀察機器人，晨光打在清潔龍阿德與前線人員身上。<div class='sup'>蓋字：自動清掃機器人</div></td><td>前線人員：阿德！呢啲係智慧新拍檔！</td></tr><tr><td class='fn'>4</td><td>銜接食環署現有官方影片《地區治理:追查源頭滴水不漏》畫面，專員用熱儀器找出滲水點。室內燈光清晰，中景定鏡。<div class='sup'>蓋字：追查源頭　滴水不漏</div></td><td>清潔龍阿德：仲精準追查冷氣滴水！</td></tr><tr><td class='fn'>5</td><td>銜接食環署現有官方影片《地區治理:街道整潔鼠患可滅》畫面，後巷防鼠設施完善整潔。日光充沛，鏡頭慢搖。<div class='sup'>蓋字：街道整潔　鼠患可滅</div></td><td>清潔龍阿德：跨部門行動消滅鼠患！</td></tr><tr><td class='fn'>6</td><td>特寫清潔龍阿德抬頭，無人機巡查積水；地面機械狗在樹叢噴霧滅蚊。日光照射，清潔龍阿德興奮歡呼。<div class='sup'>蓋字：無人機空中巡查積水</div></td><td>清潔龍阿德：無人機查積水，機械狗滅蚊！</td></tr><tr><td class='fn'>7</td><td>清潔龍阿德丟開舊竹掃把，跳上小型洗街車副駕駛座，與前線人員擊掌。側光打在清潔龍阿德膠靴上，氣氛歡快。<div class='sup'>蓋字：人機協作　省時省力</div></td><td>清潔龍阿德：人機協作，做嘢輕鬆好多！</td></tr><tr><td class='fn'>8</td><td>闊景鏡頭，清潔龍阿德與前線人員在乾淨街道上，向過路市民揮手。金色夕陽灑滿，市民紛紛拍照。<div class='sup'>蓋字：覆蓋超過4,000個地點</div></td><td>清潔龍阿德：覆蓋四千地點，社區更美！</td></tr><tr><td class='fn'>9</td><td>全景遠鏡頭，清潔龍阿德與前線人員站在美麗香港街道中央，清潔龍阿德擺出勝利姿態，陽光普照，極具感染力。<div class='sup'>蓋字：十年科技大翻新 智慧潔淨人人德</div></td><td>清潔龍阿德：十年科技大翻新，智慧潔淨人人德！</td></tr><tr><td class='fn'>10</td><td>藍底品牌尾版，顯示食物環境衞生署標誌、區徽及聯絡資料。清潔龍阿德在角落露出可愛頭像，定鏡中景，光線清晰。<div class='sup'>蓋字：智慧科技 潔淨城市
+食物環境衞生署標誌
+www.fehd.gov.hk / 熱線：2868 0000</div></td><td>清潔龍阿德：查詢致電28680000或瀏覽官網。</td></tr></tbody></table></div></div><div class='ccard surface-card nbcard  sel' data-cid='nbea91b73d'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>方向 4</span></div><div class='ctitle'>方向四：阿德與機械狗搭檔巡邏篇（阿德出鏡）</div><div class='cbody'><div class='nbconcept'><b>創作概念</b><br>本方案由清潔龍阿德親自出鏡（3D合成實景），與工業級機械狗組成「智潔特警搭檔」巡邏街道，前線工作人員則作為智慧指揮官。故事展現阿德與機械狗配合默契，機械狗負責搬運重物與斜坡噴霧滅蚊，阿德則配合小型洗街車高壓沖洗黑垢、操控無人機空中巡查。影片節奏動感，突顯科技設備如何成為前線與阿德的最佳夥伴。</div><p class='nbmeta'><b>Big idea：</b>阿德與機械狗組成智潔搭檔，科技巡邏全港無死角</p><p class='nbmeta'><b>點解：</b>將機械狗與阿德擬人化為「巡邏搭檔」，極具視覺衝擊力與童趣吸引力。</p><p class='nbmeta'><b>Key message：</b>最佳搭檔，高效護航</p><p class='nbmeta'><b>視覺裝置：</b>動態特務巡邏鏡頭與夥伴互動</p><p class='nbmeta'><b>班底：</b>清潔龍阿德（3D合成）、工業級機械狗、食環署前線人員</p><p class='nbmeta'><b>調子：</b>動感酷炫、歡樂冒險</p><p class='nbmeta'><b>製作方法：</b>寫實真人實景拍攝，將3D清潔龍阿德無縫合成入實景，與工業級機械狗及前線人員同框演出。</p><p class='nbmeta muted'>30 秒 · 10 格</p><table class='sbtab'><thead><tr><th>Frame</th><th>畫面／蓋字</th><th>旁白／對白</th></tr></thead><tbody><tr><td class='fn'>1</td><td>低角度酷炫特寫，工業級機械狗四足穩步邁前，身旁是身穿牛仔吊帶褲的3D清潔龍阿德戴著墨鏡登場。早晨陽光照射，氣氛抓人。<div class='sup'>蓋字：智潔搭檔　出動！</div></td><td>清潔龍阿德：阿德同機械狗出更！</td></tr><tr><td class='fn'>2</td><td>前線工作人員手持平板電腦發出指令，小型洗街車噴出高壓熱水清洗路面黑垢。清潔龍阿德在旁指揮，水霧升騰。中景跟拍。<div class='sup'>蓋字：小型洗街車　高壓熱水清洗</div></td><td>前線人員：收到！洗街車洗頑垢！</td></tr><tr><td class='fn'>3</td><td>自動清掃機器人在窄巷靈巧移動清掃雜物，清潔龍阿德與機械狗跟隨巡視並滿意點頭。早晨自然日光勻稱，路面乾淨亮麗。<div class='sup'>蓋字：自動清掃機器人</div></td><td>清潔龍阿德：自動機器人巷仔清得乾淨！</td></tr><tr><td class='fn'>4</td><td>銜接食環署現有官方影片《地區治理:追查源頭滴水不漏》畫面，專員用色水測試定位滴水。室內自然光，定鏡中景。<div class='sup'>蓋字：追查源頭　滴水不漏</div></td><td>清潔龍阿德：精準追查滴水不漏！</td></tr><tr><td class='fn'>5</td><td>銜接食環署現有官方影片《地區治理:街道整潔鼠患可滅》畫面，後巷擺放防鼠設施，環境井然有序。日光充沛，鏡頭慢搖。<div class='sup'>蓋字：街道整潔　鼠患可滅</div></td><td>清潔龍阿德：打擊鼠患，街道企理！</td></tr><tr><td class='fn'>6</td><td>特寫清潔龍阿德操作遙控器，無人機巡查天台積水；機械狗在草叢噴霧滅蚊。日光晴朗，展現強大科技防線。<div class='sup'>蓋字：無人機巡查　機械狗滅蚊</div></td><td>清潔龍阿德：無人機查積水，機械狗滅蚊！</td></tr><tr><td class='fn'>7</td><td>機械狗協助前線人員搬運重型廢物桶，清潔龍阿德在旁加油鼓掌。側光打在機械狗金屬車身上，科技感爆棚。<div class='sup'>蓋字：人機協作　減輕負擔</div></td><td>前線人員：機械狗幫手搬重物，真輕鬆！</td></tr><tr><td class='fn'>8</td><td>闊景鏡頭，清潔龍阿德、機械狗與前線人員在陽光整潔街道上，與市民歡快擊掌。金色夕陽灑滿，社區溫馨融洽。<div class='sup'>蓋字：覆蓋超過4,000個地點</div></td><td>清潔龍阿德：覆蓋四千地點，人機最有料！</td></tr><tr><td class='fn'>9</td><td>全景遠鏡頭，清潔龍阿德與機械狗站在美麗香港街景前擺出酷炫Pose，陽光透亮，展現智慧城市維護成果。<div class='sup'>蓋字：最佳搭檔齊出動 智慧潔淨人人德</div></td><td>清潔龍阿德：最佳搭檔齊出動，智慧潔淨人人德！</td></tr><tr><td class='fn'>10</td><td>藍底品牌畫面，顯示食物環境衞生署標誌、區徽及熱線網站。清潔龍阿德與機械狗致意，定鏡中景，光線明亮。<div class='sup'>蓋字：智慧科技 潔淨城市
+食物環境衞生署標誌
+www.fehd.gov.hk / 熱線：2868 0000</div></td><td>清潔龍阿德：查詢致電28680000或瀏覽官網。</td></tr></tbody></table></div></div><div class='ccard surface-card nbcard  sel' data-cid='nb54ebc056'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>方向 5</span></div><div class='ctitle'>方向五：人人有德全民參與篇（阿德出鏡）</div><div class='cbody'><div class='nbconcept'><b>創作概念</b><br>本方案由清潔龍阿德親自出鏡（3D合成實景），以2026年官方活動口號「清潔香港 人人人『德』」為核心主題。阿德穿梭於社區，與市民、商戶及食環署前線人員親切互動。阿德巧妙運用「德」與「得」的諧音，帶出小型洗街車、自動機器人、無人機等科技裝備如何協助前線，並呼籲每位市民保持環境衛生，實現「人人都『德』，社區一定『得』！」。</div><p class='nbmeta'><b>Big idea：</b>清潔香港人人人德，阿德聯同市民科技齊齊合力</p><p class='nbmeta'><b>點解：</b>深度結合2026官方活動口號「人人有德」，強化市民公德心與參與感。</p><p class='nbmeta'><b>Key message：</b>全民參與，人人人德</p><p class='nbmeta'><b>視覺裝置：</b>和諧熱鬧的社區群像與諧音標語文字互動</p><p class='nbmeta'><b>班底：</b>清潔龍阿德（3D合成）、市民家庭、食環署前線清潔員</p><p class='nbmeta'><b>調子：</b>熱情歡快、團結溫馨</p><p class='nbmeta'><b>製作方法：</b>寫實真人實景拍攝社區群像，3D清潔龍阿德合成入實景，與市民及前線人員歡樂互動。</p><p class='nbmeta muted'>30 秒 · 10 格</p><table class='sbtab'><thead><tr><th>Frame</th><th>畫面／蓋字</th><th>旁白／對白</th></tr></thead><tbody><tr><td class='fn'>1</td><td>3D清潔龍阿德身穿牛仔吊帶褲在繁華街頭熱情歡呼開場，身邊是歡笑的市民與乾淨的街道。早晨陽光燦爛，氣氛歡快抓人。<div class='sup'>蓋字：清潔香港　人人人「德」</div></td><td>清潔龍阿德：清潔香港，人人人『德』！</td></tr><tr><td class='fn'>2</td><td>中景鏡頭，食環署前線人員操控小型洗街車，高壓熱水噴槍洗淨街角污漬。清潔龍阿德在旁做洗車動作，自然日光照射。<div class='sup'>蓋字：小型洗街車　高壓熱水清洗</div></td><td>清潔龍阿德：洗街車高壓洗街，洗得！</td></tr><tr><td class='fn'>3</td><td>自動清掃機器人在行人路自動清掃落葉，小童圍觀，清潔龍阿德比讚。早晨陽光柔和，畫面溫馨融洽。<div class='sup'>蓋字：自動清掃機器人</div></td><td>清潔龍阿德：自動機器人維護環境，掃得！</td></tr><tr><td class='fn'>4</td><td>銜接食環署現有官方影片《地區治理:追查源頭滴水不漏》畫面，專員協助居民解決滲水問題。室內燈光溫暖，中景定鏡。<div class='sup'>蓋字：追查源頭　滴水不漏</div></td><td>清潔龍阿德：追查冷氣滴水，查得！</td></tr><tr><td class='fn'>5</td><td>銜接食環署現有官方影片《地區治理:街道整潔鼠患可滅》畫面，商戶保持後巷清潔防鼠。日光充沛，鏡頭慢搖。<div class='sup'>蓋字：街道整潔　鼠患可滅</div></td><td>清潔龍阿德：後巷整潔滅鼠，做得！</td></tr><tr><td class='fn'>6</td><td>無人機巡查積水，機械狗在公園樹叢噴霧滅蚊。清潔龍阿德與前線隊員仰望無人機，日光晴朗透亮。<div class='sup'>蓋字：無人機巡查　機械狗滅蚊</div></td><td>清潔龍阿德：無人機加機械狗，防得！</td></tr><tr><td class='fn'>7</td><td>特寫市民主動將垃圾放入有蓋垃圾桶，清潔龍阿德親切給市民貼「讚」貼紙。側光打在市民笑容上，氣氛感染力強。<div class='sup'>蓋字：公德心　靠大家</div></td><td>清潔龍阿德：市民主動唔亂拋垃圾，都『德』！</td></tr><tr><td class='fn'>8</td><td>闊景鏡頭，清潔龍阿德、前線人員與全街市民揮手歡呼，小型洗街車在背景噴彩帶感水霧。金色夕陽灑滿，熱鬧非凡。<div class='sup'>蓋字：覆蓋超過4,000個地點</div></td><td>清潔龍阿德：覆蓋四千地點，真係『德』！</td></tr><tr><td class='fn'>9</td><td>全景遠鏡頭，清潔龍阿德帶領市民與前線人員在整潔美麗的香港景致前大合照，陽光普照，突顯團結精神。<div class='sup'>蓋字：清潔香港人人德 智慧潔淨一定得</div></td><td>清潔龍阿德：清潔香港人人德，一定得！</td></tr><tr><td class='fn'>10</td><td>藍底品牌尾版，顯示食物環境衞生署標誌、區徽及查詢熱線網址。清潔龍阿德擺出勝利姿態，定鏡中景，光線明亮。<div class='sup'>蓋字：智慧科技 潔淨城市
+食物環境衞生署標誌
+www.fehd.gov.hk / 熱線：2868 0000</div></td><td>清潔龍阿德：查詢致電28680000或瀏覽官網。</td></tr></tbody></table></div></div><div class='ccard surface-card nbcard  sel' data-cid='nb3302b60a'><div class='chead' onclick='tkCard(this)'><span class='ck on'>✓</span><span class='badge'>方向 6</span></div><div class='ctitle'>方向六：前線紀實真情篇（無阿德對照組）</div><div class='cbody'><div class='nbconcept'><b>創作概念</b><br>本方案為純真人紀實對照組（完全不出現清潔龍阿德）。影片記錄一位真實食環署前線清潔隊長的一天。由清晨天未光準備出發開場，展現前線員工對社區潔淨的默默堅守。隨後呈現小型洗街車的高壓熱水如何成為他去污的好幫手，自動機器人與機械狗如何減輕體力負擔。影片真實感人，彰顯前線員工與科技設備默契協作，為市民打造美麗香港。</div><p class='nbmeta'><b>Big idea：</b>一位前線員工的一天，見證科技如何成為前線的最強後盾</p><p class='nbmeta'><b>點解：</b>純寫實紀實風格，展現前線辛勞與科技支援的真情實感，提供無吉祥物的極致對照。</p><p class='nbmeta'><b>Key message：</b>默默堅守，科技同行</p><p class='nbmeta'><b>視覺裝置：</b>紀錄片式紀實鏡頭與前線工作人員真情告白</p><p class='nbmeta'><b>班底：</b>45歲食環署前線清潔隊長、茶餐廳商戶、市民</p><p class='nbmeta'><b>調子：</b>真實感人、質樸堅毅、充滿敬意</p><p class='nbmeta'><b>製作方法：</b>純寫實真人實景紀錄片風格拍攝前線人員真實工作，無動畫角色，調色追求自然真實質感。</p><p class='nbmeta muted'>30 秒 · 10 格</p><table class='sbtab'><thead><tr><th>Frame</th><th>畫面／蓋字</th><th>旁白／對白</th></tr></thead><tbody><tr><td class='fn'>1</td><td>清晨5點晨光微熹，45歲食環署前線隊長穿上綠色制服，認真檢查小型洗街車設備。特寫隊長專注眼神，光線質感高，抓人效果強。<div class='sup'>蓋字：前線堅守　默默付出</div></td><td>前線隊長：清晨，我哋就開始打拼。</td></tr><tr><td class='fn'>2</td><td>隊長熟練操作小型洗街車噴槍，高壓熱水迅速清除後巷深層油污。中景跟拍，早晨日光下水霧瀰漫，展現高效去污。<div class='sup'>蓋字：小型洗街車　高壓熱水清洗</div></td><td>前線隊長：洗街車高壓熱水去污快！</td></tr><tr><td class='fn'>3</td><td>自動清掃機器人在前方自動吸走微塵落葉，隊長在旁監督巡視。自然日光照射，隊長露出一絲欣慰的微笑。<div class='sup'>蓋字：自動清掃機器人</div></td><td>旁白：自動機器人分擔清掃。</td></tr><tr><td class='fn'>4</td><td>銜接食環署現有官方影片《地區治理:追查源頭滴水不漏》畫面，專員認真紀錄天花滲水數據。室內自然光，定鏡中景。<div class='sup'>蓋字：追查源頭　滴水不漏</div></td><td>旁白：主動追查滴水源頭。</td></tr><tr><td class='fn'>5</td><td>銜接食環署現有官方影片《地區治理:街道整潔鼠患可滅》畫面，後巷環境清潔，防鼠措施完善。日光充沛，鏡頭慢搖。<div class='sup'>蓋字：街道整潔　鼠患可滅</div></td><td>旁白：落實地區治理滅鼠。</td></tr><tr><td class='fn'>6</td><td>隊長在公園邊操作遙控器，無人機巡查積水；身旁工業級機械狗在草叢噴霧滅蚊。日光透亮，展現科技協作。<div class='sup'>蓋字：無人機巡查　機械狗滅蚊</div></td><td>前線隊長：無人機機械狗幫手防蚊！</td></tr><tr><td class='fn'>7</td><td>特寫隊長擦去額頭汗水，看著乾淨如鏡的街道，眼中充滿職業自豪感。暖色陽光打在綠色制服上，畫面極具感染力。<div class='sup'>蓋字：人機協作　提升效能</div></td><td>前線隊長：科技做後盾，工作高效！</td></tr><tr><td class='fn'>8</td><td>商戶與市民路過，親切地對隊長說「辛苦晒！」，隊長微笑點頭致意。金色夕陽灑滿整潔街道，充滿和諧氛圍。<div class='sup'>蓋字：覆蓋超過4,000個地點</div></td><td>旁白：覆蓋四千地點，服務市民。</td></tr><tr><td class='fn'>9</td><td>闊景全景鏡頭，隊長與小型洗街車站在繁華美麗的香港街頭，市民有序穿梭，展現整潔宜居的都市風貌。<div class='sup'>蓋字：智慧科技潔淨城市 堅守承諾煥新香港</div></td><td>旁白：智慧科技潔淨城市，煥新香港！</td></tr><tr><td class='fn'>10</td><td>藍底品牌尾版，清晰顯示食物環境衞生署標誌、區徽及熱線網站。定鏡中景，光線勻稱明亮。<div class='sup'>蓋字：智慧科技 潔淨城市
+食物環境衞生署標誌
+www.fehd.gov.hk / 熱線：2868 0000</div></td><td>旁白：查詢致電28680000或瀏覽官網。</td></tr></tbody></table></div></div></div><div class='h2'>其餘概念（分數高 → 低）</div><div class='carousel rest-row'><div class='ccard surface-card nbcard rest ' data-cid='nb09b3f21e'><div class='chead' onclick='tkCard(this)'><span class='ck '></span><span class='badge'>方向 7</span></div><div class='ctitle'>城市開門</div><div class='cbody'><div class='nbconcept'><b>創作概念</b><br>清晨七點，城市像一間準備開門的店，由乾淨行人路、港鐵站出口和旅遊熱點開始，街坊只見環境清爽，鏡頭再揭示背後是前線員工指揮小型洗街車、自動清掃機器人、機械狗和無人機分工接力。清潔龍阿德不做主持，而以實景中的公益燈箱短暫亮相，像城市清潔隊的打氣標記，收結於市民安心出行。</div><p class='nbmeta'><b>Big idea：</b>用「城市開門前」的清晨接力，先見潔淨成果，再揭示人機協作。</p><p class='nbmeta'><b>點解：</b>對應簡介會要求以成果為先，突出深層清潔行人路、提升城市景觀，並強調科技輔助前線員工而非取代人手。</p><p class='nbmeta'><b>Key message：</b>食環署以智慧科技配合前線團隊，應用小型洗街車、自動清掃機器人、工業級機械狗及無人機，提升效率、保障前線安全，為市民打造更潔淨、更舒適的生活環境。</p><p class='nbmeta'><b>視覺裝置：</b>清晨倒數開城，一個接一個地點由清潔成果揭開背後工序。</p><p class='nbmeta'><b>班底：</b>前線員工、真實市民、清潔龍阿德以官方3D設計出現在街邊公益燈箱畫面，不與真人互動。</p><p class='nbmeta'><b>調子：</b>明快、清新、親切、寫實。</p><p class='nbmeta'><b>製作方法：</b>補拍清晨街道、市民及前線操作實景，配合食環署提供兩條官方影片片段、設備畫面、調色、音效及動態蓋字無縫剪接。</p><p class='nbmeta muted'>30 秒 · 11 格</p><table class='sbtab'><thead><tr><th>Frame</th><th>畫面／蓋字</th><th>旁白／對白</th></tr></thead><tbody><tr><td class='fn'>1</td><td>清晨微光下的中環港鐵站出口闊景，白領和學生踏上乾淨行人路，鏡頭低角度向前推，地面乾爽明亮，氣氛清新。</td><td>女街坊：咦，條路今朝好乾淨喎！</td></tr><tr><td class='fn'>2</td><td>鏡頭搖向旁邊後巷的乾爽牆身和渠口，中景切入食環署提供《追查源頭滴水不漏》片段，畫面經調色後銜接街道現場。<div class='sup'>蓋字：地區治理　追查源頭</div></td><td>旁白：乾淨，不是碰巧。</td></tr><tr><td class='fn'>3</td><td>旺角行人路中景，小型洗街車及高壓熱水清洗設備在前線員工指揮下慢速前進，鏡頭跟拍水霧帶走污漬，途人安全繞行。<div class='sup'>蓋字：深層清潔行人路</div></td><td>旁白：小型洗街車，幫手深層清潔。</td></tr><tr><td class='fn'>4</td><td>旅遊景點附近行人路特寫，高速清洗盤貼地旋轉，前線員工專注控制方向，晨光反射濕潤地面，鏡頭由特寫拉至闊景。<div class='sup'>蓋字：超過4,000個清洗地點</div></td><td>旁白：清洗地點，已增至超過四千個。</td></tr><tr><td class='fn'>5</td><td>街市外圍中景，自動清掃機器人沿路邊穩定清掃，前線員工在旁監察路面，鏡頭平移展示人流與設備有序共存。<div class='sup'>蓋字：提升效率　減輕體力負擔</div></td><td>旁白：機器人分擔粗重工序。</td></tr><tr><td class='fn'>6</td><td>斜坡旁的闊景，無人機由前線員工操控升起，鏡頭仰拍飛越隱蔽高位，再切入螢幕畫面標示積水位置，光線明亮。<div class='sup'>蓋字：巡查難到達位置</div></td><td>旁白：無人機巡查高位積水。</td></tr><tr><td class='fn'>7</td><td>後巷中景，工業級機械狗在前線員工指令下運送重型廢物，背部裝置穩定運作，鏡頭由機械腳步推向員工點頭微笑。<div class='sup'>蓋字：保障前線安全</div></td><td>旁白：機械狗協助搬運和滅蚊。</td></tr><tr><td class='fn'>8</td><td>公園旁垃圾站外闊景，畫面無縫接入食環署提供《街道整潔鼠患可滅》片段，前後以同一色調呈現乾淨牆角和封妥垃圾。<div class='sup'>蓋字：街道整潔　鼠患可滅</div></td><td>旁白：源頭治理，環境更安心。</td></tr><tr><td class='fn'>9</td><td>街邊公益燈箱中景，官方3D清潔龍阿德圖像穿藍色牛仔吊帶褲和粉紅膠靴微笑打氣，前方真實前線員工推車經過。<div class='sup'>蓋字：清潔香港 人人都「德」</div></td><td>清潔龍阿德：做乜？一齊做，一定得！</td></tr><tr><td class='fn'>10</td><td>乾淨海濱闊景，長者慢跑、家長推嬰兒車、學生過路，鏡頭緩慢拉高見街道開展一天，右下預留手語翻譯視窗位置。<div class='sup'>蓋字：智慧協作　潔淨每一日</div></td><td>旁白：智慧科技，配合前線，潔淨每一日。</td></tr><tr><td class='fn'>11</td><td>早上繁忙街道闊景，陽光灑在乾淨行人路和有序人流上，鏡頭定鏡讓市民自然走過，畫面只以蓋字收結。<div class='sup'>蓋字：智慧科技 潔淨城市
+詳情請瀏覽食環署網頁 www.fehd.gov.hk</div></td><td>旁白：詳情請瀏覽食環署網頁。</td></tr></tbody></table></div></div></div><div class='submit'><button class='btn' onclick='submitRound()'>✅ Submit 六強 (<span class=cnt>6</span>)</button></div></div>
+<div id='tvapi1_2' class='tabpanel' data-set='1'><div class='banner'>未有概念進入第二輪。返 VID 1 揀六強（submit 即自動生 BD）先。</div></div>
+<div id='tvapi1_3' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 2 揀三甲先。</div></div>
+<div id='tvapi1_4' class='tabpanel' data-set='1'><div class='banner'>🎬 VID 4 — 5 步生 storyboard ＋ 片（STEP 1 → 5）</div><div class='card'><div class='h3'>📄 STEP 1 — 故事版（你親手執 Master GSheet B6:C17，9-12 格）</div><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card step2'><div class='h3'>🎭 STEP 2 — 主角參考相（AI 自動搵 ISD 官方相 + curate；face-swap 用嚟貼真面）</div><button class='btn ghost mini' onclick="srcRefs(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHDTVAPISDISTRICTGOVERNANCE&concept=FINAL&stage=facerefs&target=main')">🔍 AI 搵／更新主角參考相</button><div class='hint'>仲未 source 主角相。撳上面掣，AI 自動由 ISD 官方相搵 + curate。</div></div><div class='stylepick card'><div class='h3'>🎨 STEP 3 — 揀風格（每行 0 或 1 個；唔剔 = 跟劇本）</div><div class='styrow'><span class='stylbl'>🏙️ 環境</span><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="realistic environment" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="2D comic-style environment" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="3D animated environment" onchange='styPick(this)'>3D動畫</label></div><div class='styrow'><span class='stylbl'>🧍 人物</span><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="photorealistic characters" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="2D comic-style characters" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="3D-modeled characters" onchange='styPick(this)'>3D建模</label></div><div class='styrow'><span class='stylbl'>🌗 光/時間</span><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="daytime lighting" onchange='styPick(this)'>日 Day</label><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="nighttime lighting" onchange='styPick(this)'>夜 Night</label></div><div class='styrow'><span class='stylbl'>🎨 色彩</span><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="vivid saturated color" onchange='styPick(this)'>鮮艷</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="muted desaturated tones" onchange='styPick(this)'>灰調</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="black and white" onchange='styPick(this)'>黑白</label></div><div class='styrow'><span class='stylbl'>😊 情緒</span><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="warm heartfelt mood" onchange='styPick(this)'>溫情</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="passionate uplifting mood" onchange='styPick(this)'>激昂</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="light humorous mood" onchange='styPick(this)'>幽默</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="solemn official tone" onchange='styPick(this)'>莊重官方</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="suspenseful mood" onchange='styPick(this)'>懸疑</label></div><div class='styrow'><span class='stylbl'>🎬 質感</span><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="cinematic look" onchange='styPick(this)'>電影感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="documentary realism" onchange='styPick(this)'>紀實</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="dynamic music-video energy" onchange='styPick(this)'>MV動感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="plain straightforward style" onchange='styPick(this)'>平實</label></div><div class='styanchor'>風格 anchor：<span id='styanchor'>（跟劇本）</span></div></div><div class='card genbox'><div class='h3'>🍌 STEP 4 — 生 BD（讀 B6:C17 ＋ face-swap 主角真面）</div><button class='btn big' title='讀你喺 Master GSheet B6:C17 執好嘅 script ＋ STEP 3 風格 ＋ face-swap 主角真面 → 生最終 BD（brd=FINAL，唔污染候選）' onclick="genFinalBD(this,'FEHDTVAPISDISTRICTGOVERNANCE','https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHDTVAPISDISTRICTGOVERNANCE&concept=FINAL&stage=gsheetbd&target=main')">由 B6:C17 生最終 BD</button></div><div class='card'><div class='h3'>🎬 STEP 5 — 生片（Higgsfield Kling/Seedance，開發中）</div><div class='hint'>BD 揀好 → 生片。Higgsfield CLI 整緊。</div></div></div>
+<div id='tvapi1_5' class='tabpanel' data-set='1'><div class='banner'>未有 FINAL。返 VID 3 揀 FINAL 2 先。</div></div>
+<div id='wi1' class='tabpanel'><div class='banner'>📦 Optional Item: One-day (8-ho</div><div class='card'><p><b>提案要交：</b></p><p><b>規格：</b>廣東話／英文</p><p class='hint'>出處：標書 deliverables（optional）</p><p class='hint'>呢項未有自動生成模組，暫時只列要求。</p></div></div>
+<div class=foot>Idea Lab · 09-30 16:07 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+</div>
+
+<script>
+var DL = new Date("2026-10-06").getTime();
+function cd() {
+  var e = document.getElementById('cd'); if (!e) return;
+  var x = DL - Date.now();
+  if (x < 0) { e.textContent = '已截標'; return; }
+  var s = Math.floor(x/1000), d = Math.floor(s/86400);
+  s -= d*86400; var h = Math.floor(s/3600); s -= h*3600;
+  var m = Math.floor(s/60); s -= m*60;
+  e.textContent = (d > 0 ? d + '日 ' : '')
+    + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0')
+    + ':' + String(s).padStart(2,'0');
+}
+cd(); setInterval(cd, 1000);
+
+var TABS   = document.querySelectorAll('.tab');
+var PANELS = document.querySelectorAll('.tabpanel');
+function showTab(id) {
+  if (!document.getElementById(id)) id = 'ph0';
+  TABS.forEach(function(t) { t.classList.toggle('active', t.dataset.tab === id); });
+  PANELS.forEach(function(p) { p.classList.toggle('active', p.id === id); });
+  history.replaceState(null, '', '#' + id);
+  upd();
+  if (/(vid|tvapi)\d+_2$/.test(id)) vid2AutoBD();   // 入 VID／TVAPI 2 即自動觸發六強生 BD + poll
+}
+TABS.forEach(function(t) { t.addEventListener('click', function() { showTab(t.dataset.tab); }); });
+showTab((location.hash.slice(1)) || 'tvapi1_1');
+
+// VID 2:六強 submit 後自動生 BD —— 對未有 BD(data-needbd=1)嘅概念逐個觸發 NBLM deck(GAS 去重,撳幾多次都唔重生)。
+// 未生晒就每 45s reload 一次睇新 BD(NBLM 連夜,一晚生得晒)。
+var _vid2timer;
+function vid2AutoBD() {
+  var panel = document.querySelector('.tabpanel.active'); if (!panel) return;
+  var pend = panel.querySelectorAll('[data-needbd="1"]');
+  pend.forEach(function(c) {
+    var brd = c.dataset.brd; if (!brd) return;
+    var k = 'bdstart_FEHDTVAPISDISTRICTGOVERNANCE_' + brd;
+    if (!localStorage.getItem(k)) localStorage.setItem(k, String(Date.now()));  // 開始時間 → 進度條
+    fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=FEHDTVAPISDISTRICTGOVERNANCE&concept=" + encodeURIComponent(brd) + "&stage=deck&target=main" + setQ(),
+          {mode:'no-cors'}).catch(function(){});
+  });
+  tickProgress();
+  if (pend.length && !_vid2timer) {
+    _vid2timer = setInterval(function() { location.reload(); }, 90000);  // 靜靜每 90s 攞新 BD（冇 develop bar）
+  }
+}
+
+// VID 2 進度條：按實測平均 BD 時間（~10 分鐘）推移，封頂 99% stall（NBLM 唔報幾時好）。
+var BD_AVG_MS = 600000;   // 平均 606s（manifest 連續 gap 實測）
+function tickProgress() {
+  document.querySelectorAll('.pgbar').forEach(function(bar) {
+    var brd = bar.dataset.brd; if (!brd) return;
+    var k = 'bdstart_FEHDTVAPISDISTRICTGOVERNANCE_' + brd;
+    var s = +localStorage.getItem(k);
+    if (!s) { s = Date.now(); localStorage.setItem(k, String(s)); }
+    var pct = Math.min(99, (Date.now() - s) / BD_AVG_MS * 100);
+    var f = bar.querySelector('.pgfill'); if (f) f.style.width = pct.toFixed(0) + '%';
+    var t = bar.querySelector('.pgtxt');
+    if (t) t.textContent = pct >= 99 ? 'BD 生成中…就快好（99%）' : ('BD 生成中… ' + pct.toFixed(0) + '%（平均 ~10 分鐘）');
+  });
+}
+setInterval(tickProgress, 2000); tickProgress();
+// 已完成（卡有圖）→ 清走嗰個 brd 嘅開始時間，免下次重生即跳 99%
+document.querySelectorAll('.card[data-brd] img.sheet').forEach(function(im) {
+  var card = im.closest('.card[data-brd]');
+  if (card && card.dataset.brd) localStorage.removeItem('bdstart_FEHDTVAPISDISTRICTGOVERNANCE_' + card.dataset.brd);
+});
+
+// 零碎想法：localStorage array(可入多次),即時累積顯示,每條 POST 去 GAS 畀委員會消化
+var NK = 'notes_FEHDTVAPISDISTRICTGOVERNANCE';
+var notesEl = document.getElementById('notes');
+function loadNotes() {
+  try { var a = JSON.parse(localStorage.getItem(NK) || '[]'); return Array.isArray(a) ? a : []; }
+  catch (e) { return []; }
+}
+function saveNotes(a) { localStorage.setItem(NK, JSON.stringify(a)); }
+function fmtTs(ts) {
+  var d = new Date(ts);
+  function p(n) { return String(n).padStart(2, '0'); }
+  return (d.getMonth()+1) + '/' + d.getDate() + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+}
+function renderNotes() {
+  var box = document.getElementById('noteslist'); if (!box) return;
+  var a = loadNotes();
+  if (!a.length) { box.innerHTML = "<p class='hint' style='margin:4px 2px'>未有想法。</p>"; return; }
+  box.innerHTML = a.map(function(n, i) {
+    var txt = (n.text || '').replace(/</g, '&lt;');
+    return "<div class='notecard'><div class='noterow'>"
+      + "<span class='notets'>" + fmtTs(n.ts) + "</span>"
+      + "<button class='notedel' onclick='delNote(" + i + ")'>✕</button></div>"
+      + "<div class='notetxt'>" + txt + "</div></div>";
+  }).join('');
+}
+function submitNotes() {
+  if (!notesEl || !notesEl.value.trim()) { alert('未有想法'); return; }
+  var txt = notesEl.value.trim();
+  var a = loadNotes(); a.push({ ts: Date.now(), text: txt }); saveNotes(a);
+  notesEl.value = ''; renderNotes();
+  var url = "https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=FEHDTVAPISDISTRICTGOVERNANCE&text=" + encodeURIComponent(txt);
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('＋ 已加入（' + a.length + ' 條，VID 1 啟動時餵委員會）');
+}
+function delNote(i) {
+  var a = loadNotes(); if (i < 0 || i >= a.length) return;
+  if (!confirm('刪呢條想法?')) return;
+  a.splice(i, 1); saveNotes(a); renderNotes();
+}
+renderNotes();
+
+function tk(el) {
+  el.classList.toggle('on');
+  el.textContent = el.classList.contains('on') ? '✓' : '';
+  upd();
+}
+// carousel 卡：撳卡頭（唔係內文 scroll 區）toggle 揀選
+function tkCard(head) {
+  var card = head.closest('[data-cid]'); if (!card) return;
+  var ck = card.querySelector('.ck'); if (!ck) return;
+  tk(ck);
+  card.classList.toggle('sel', ck.classList.contains('on'));
+}
+function upd() {
+  var n = document.querySelectorAll('.tabpanel.active .ck.on').length;
+  document.querySelectorAll('.tabpanel.active .cnt').forEach(function(c) {
+    c.textContent = n;
+    c.parentElement.classList.toggle('cnt-warn', n > 6);
+  });
+}
+document.querySelectorAll('.card[data-cid]').forEach(function(card) {
+  var ck = card.querySelector('.ck');
+  if (!ck) return;
+  card.addEventListener('click', function(e) {
+    if (e.target.closest('.ck,.det,textarea,a,button')) return;
+    tk(ck);
+  });
+});
+
+function toast(msg) {
+  var t = document.createElement('div');
+  t.className = 'toast'; t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(function() { t.style.opacity = '0'; }, 6000);
+}
+function showTopProc(msg, stop) {
+  var o = document.getElementById('topproc');
+  if (!o) {
+    o = document.createElement('div'); o.id = 'topproc'; o.className = 'topproc';
+    document.body.insertBefore(o, document.body.firstChild);
+  }
+  if (stop) {
+    o.innerHTML = '<span id="tpmsg">' + msg + '</span>'
+      + ' <a href="#" onclick="location.reload();return false" style="margin-left:8px;font-weight:800;color:var(--ac)">🔄 再 check</a>'
+      + ' <a href="#" onclick="this.parentNode.remove();return false" style="margin-left:8px;color:#888">✕</a>';
+  } else {
+    o.innerHTML = '<span class="spin sm"></span><span id="tpmsg">' + msg + '</span>';
+  }
+}
+
+// ⛔⛔ 防 comment 冇咗(Raymond 2026-06-16 爆:手寫稿 BD comment 位打咗字,redeploy → reload 冧晒):
+//   **全部**輸入格(額外想法 / 6 塊手寫稿 BD comment / 鐵則 / 任何 textarea·text input)每次打字即存 localStorage,
+//   reload/redeploy 都還原返;tab 切返嚟 auto-refresh **有未存字就唔 reload**。每格按 element id 存。
+(function() {
+  var DP = 'draft_FEHDTVAPISDISTRICTGOVERNANCE_';
+  function fields() {
+    return [].slice.call(document.querySelectorAll('textarea, input[type=text]')).filter(function(e){ return e.id; });
+  }
+  function hasUnsaved() { return fields().some(function(e){ return (e.value||'').trim().length>0; }); }
+  // 載入時還原每格 draft
+  var restored = 0;
+  try { fields().forEach(function(e){ var v=localStorage.getItem(DP+e.id); if(v && !e.value){ e.value=v; restored++; } }); } catch(_) {}
+  if (restored) setTimeout(function(){ toast('↩︎ 幫你還原咗 '+restored+' 格未送出嘅文字'); }, 500);
+  // 每次打字即存(任何有 id 嘅 textarea / text input)
+  document.addEventListener('input', function(ev) {
+    var t = ev.target; if (!t || !t.id) return;
+    if (t.tagName==='TEXTAREA' || (t.tagName==='INPUT' && t.type==='text')) {
+      try { if ((t.value||'').trim()) localStorage.setItem(DP+t.id, t.value); else localStorage.removeItem(DP+t.id); } catch(_) {}
+    }
+  });
+  window._clearDraft = function(id) { try { localStorage.removeItem(DP+id); } catch(_) {} };
+  var loaded = Date.now();
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden && Date.now() - loaded > 45000 && !hasUnsaved())   // 有未存嘅字 → 唔 reload,唔好冧佢
+      location.href = location.pathname + '?t=' + Date.now() + location.hash;
+  });
+})();
+
+// BD 圖 click 放大（lightbox）—— event delegation，任何 .sheet 圖都得
+(function() {
+  var lb = document.createElement('div'); lb.className = 'lbx';
+  lb.innerHTML = '<span class="x">✕</span><img><div class="hint">撳任何位收返。放大後可用瀏覽器 pinch/scroll 睇每格。</div>';
+  document.body.appendChild(lb);
+  var lbimg = lb.querySelector('img');
+  lb.addEventListener('click', function() { lb.classList.remove('on'); });
+  document.addEventListener('click', function(e) {
+    var t = e.target;
+    if (t && t.classList && t.classList.contains('sheet') && t.src) {
+      lbimg.src = t.src; lb.classList.add('on');
+    }
+  });
+})();
+
+// active panel 嘅 set → GAS param（set 1 唔帶，backend 不變）
+function curSet() { var p = document.querySelector('.tabpanel.active'); return p ? (p.dataset.set || '1') : '1'; }
+function setQ()   { var s = curSet(); return (s && s !== '1') ? ('&set=' + s) : ''; }
+
+// 各 set 嘅 funnel phase（多-set 各 set 唔同）。getVidPhase() 隨 active 嘅 set 變。
+var VID_PHASES = {"1": 1};
+var PRIMARY_VID = 1;
+function getVidPhase() { var s = curSet(); return VID_PHASES[s] || PRIMARY_VID; }
+function pickedCids() {
+  return [].map.call(
+    document.querySelectorAll('.tabpanel.active [data-cid] .ck.on'),
+    function(k) { return k.closest('[data-cid]').dataset.cid; });
+}
+function submitAdvance(url) {
+  toast('✅ 已提交，十幾秒後自動刷新睇下一步（或撳右上 🔄）');
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { location.reload(); }, 13000);   // 單次刷新，冇 develop bar，冇無限 loop
+}
+function submitRound() {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個做六強？submit 後會自動後台生 BD（用 NBLM），落選自動歸檔。')) return;
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=FEHDTVAPISDISTRICTGOVERNANCE&round=r2&cids=" + c.join(',') + setQ());
+}
+function subStage(to) {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個 → ' + (to === 'r3' ? '三甲' : 'FINAL 2') + '？')) return;
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=FEHDTVAPISDISTRICTGOVERNANCE&round=" + to + "&cids=" + c.join(',') + setQ());
+}
+function postFunnel(url, msg) {
+  fetch(url, {mode:'no-cors'})
+    .then(function() { toast(msg); })
+    .catch(function() { toast('⚠️ 再試一次'); });
+}
+
+function genBD(btn, url) {   // VID 3 Nano per-card 用
+  var acts = btn.closest('.acts') || btn.parentElement;
+  if (acts) acts.innerHTML = "<span class='gening'><span class='spin sm'></span>生緊… ~8-9 分鐘</span>";
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+}
+function addRule(dept) {   // 政府 JOB 鐵則:加一條 → listener append gov_job_rules.json(全 JOB 累積)
+  var ta = document.getElementById('newrule');
+  var txt = (ta && ta.value || '').trim();
+  if (!txt) { if(ta) ta.focus(); return; }
+  var url = 'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=' + encodeURIComponent(dept) + '&concept=rule&stage=add_rule'
+          + '&engine=' + encodeURIComponent(txt) + '&target=main';
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  if (window._clearDraft) window._clearDraft('newrule');   // 送出咗 → 清 draft
+  var ol = document.getElementById('rulelist');
+  if (ol) { var li=document.createElement('li'); li.textContent=txt; ol.appendChild(li); }  // 即時顯示
+  if (ta) { ta.value=''; ta.placeholder='✅ 已加，下次生 BD 即跟'; }
+}
+// ⭐ Raymond 提供參考相窗口嘅上載 mechanic = dash_upload.upload_box(reuse 創意把關站,JS 已內嵌喺 widget,呢度唔再寫)
+function _vchecked() { return [].slice.call(document.querySelectorAll('.tabpanel.active .vchk:checked')); }
+function delAssets(dept) {   // 🗑 整張即刻刪(像真網頁,唔問;listener 後台存底 + 真刪)
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=delasset&stage=del_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){ var card=c.closest('.vacard'); if(card) card.remove(); });   // 即刻消失
+  toast('🗑 刪咗 '+ids.length+' 張');
+}
+function preferAssets(dept) {   // ⭐ 首選:即刻 ⭐ + 嗰啲相搬去最左(像真網頁);listener pref + 餵 NLM 優先
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=prefasset&stage=prefer_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){
+    var card=c.closest('.vacard'); if(!card) return;
+    card.classList.add('pref');
+    if(!card.querySelector('.vastar')){ var s=document.createElement('div'); s.className='vastar'; s.textContent='⭐ 首選'; card.appendChild(s); }
+    var row=card.parentNode; row.insertBefore(card, row.firstChild);   // 搬去最左
+    c.checked=false;
+  });
+  toast('⭐ 已設首選 '+ids.length+' 張（搬咗去最左 + 餵 NLM 優先）');
+}
+function showOvl(id) { var o=document.getElementById(id); if(o) o.classList.add('on'); }   // 🎧 錄音逐字 overlay(撳先出)
+function hideOvl(id) { var o=document.getElementById(id); if(o) o.classList.remove('on'); }
+document.addEventListener('click', function(e){   // 撳 overlay 背景(唔係 box)收返
+  if(e.target && e.target.classList && e.target.classList.contains('ovl')) e.target.classList.remove('on');
+});
+function researchAssets(dept) {   // 🔁 重搜:即刻喺相右下角顯示漏斗「重搜中」,後台搵新相,搵到自動換(reload 時)
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=researchasset&stage=research_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){
+    var card=c.closest('.vacard'); if(!card) return;
+    var th=card.querySelector('.vathumb');
+    if(th && !th.querySelector('.vafunnel')){ var f=document.createElement('div'); f.className='vafunnel';
+      f.innerHTML='<span class="spin sm" style="width:10px;height:10px;margin:0"></span> 重搜中'; th.appendChild(f); }
+    c.checked=false;
+  });
+  toast('🔁 重搜 '+ids.length+' 個，後台搵緊清晰啲嘅相，搵到自動換（~30-60s，會自動 refresh）');
+}
+function bdComment(dept, brd) {   // 手寫稿 BD:送 comment → listener AI 解意見 → 改 specific 格(留舊版)
+  var ta = document.getElementById('cm_' + brd);
+  var txt = (ta && ta.value || '').trim();
+  if (!txt) { if (ta) ta.focus(); return; }
+  var url = 'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=' + encodeURIComponent(dept)
+          + '&concept=' + encodeURIComponent(brd) + '&stage=bdcomment'
+          + '&engine=' + encodeURIComponent(txt) + '&target=main&cid=ACT_bdcomment';
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  if (window._clearDraft) window._clearDraft('cm_' + brd);   // 送出咗 → 清 draft
+  if (ta) { ta.disabled = true;
+    ta.insertAdjacentHTML('afterend', "<div class='cmlog'>✅ 已送出，AI 改緊嗰格，改完自動換圖（舊版會留喺下面）。</div>"); }
+}
+// STEP 3 風格 picker：每維互斥（但可 0 個）+ 夾成 style_anchor
+function styPick(cb) {
+  if (cb.checked) {
+    var sib = document.querySelectorAll(".styopt[data-dim='" + cb.getAttribute('data-dim') + "']");
+    for (var i = 0; i < sib.length; i++) { if (sib[i] !== cb) sib[i].checked = false; }
+  }
+  var el = document.getElementById('styanchor');
+  if (el) el.textContent = styleAnchor() || '（跟劇本）';
+}
+function styleAnchor() {
+  var dims = ['env', 'char', 'light', 'color', 'mood', 'feel'], picks = [];
+  for (var i = 0; i < dims.length; i++) {
+    var el = document.querySelector(".styopt[data-dim='" + dims[i] + "']:checked");
+    if (el) picks.push(el.value);
+  }
+  return picks.join(', ');
+}
+function srcRefs(btn, url) {   // STEP 2：AI 搵主角參考相
+  btn.textContent = '⏳ AI 搵相中…（~2-3 分鐘，完成 refresh 見）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('🔍 AI 自動由 ISD 官方相搵主角 + curate 中…');
+}
+function genFinalBD(btn, dept, baseUrl) {   // STEP 4：寫低 STEP 3 風格 → 生最終 BD
+  var anc = styleAnchor();
+  // STEP3 風格寫入 Master GSheet _VID_STYLE（gsheet_to_bd 讀返做 override；空 = 跟劇本）
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify({op:'set_style', dept:dept, style:anc})}).catch(function(){});
+  toast(anc ? ('🎨 已套用風格：' + anc) : '🎨 風格：跟劇本（冇限制）');
+  genBD(btn, baseUrl);
+}
+function pushGSheet(btn, url) {   // VID 4 寫入 Master GSheet B6:C17
+  btn.textContent = '⏳ 寫入緊…'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已寫入（開 GSheet polish）'; }, 2500);
+  toast('📝 已交，~1 分鐘寫入 Master GSheet B6:C17（前稿自動備份）');
+}
+function renderForms(btn, url) {   // 📋 標書:自動 render 真表頁入 Master Reply GSlide
+  btn.textContent = '⏳ render 緊…（~1-2 分鐘，完成會 WhatsApp）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('📋 已交，listener 會自動 render 真表頁入 Master Reply GSlide');
+}
+function fillForms(btn) {   // 📝 標書:自動填表 — GAS 直出（公司資料 vlookup 寫 Fill tab，唔靠部 Mac）
+  var jsTag = btn.nextElementSibling;  // <script class=filldata>
+  var data;
+  try { data = JSON.parse((jsTag && jsTag.textContent) || '{}'); } catch (e) { data = {}; }
+  if (!data.forms || !data.forms.length) { toast('⚠️ 冇表資料'); return; }
+  var reg='https://docs.google.com/spreadsheets/d/1yiDJ3H8VFK3-6kZQZEzwkiD8VaRgVOzCwxcFbAyP3XE/edit';
+  btn.textContent = '⏳ AI 填緊…（~30-60s）'; btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'fill_forms', folderName: data.folderName, forms: data.forms })
+  }).catch(function(){});
+  // 清楚講做緊乜 + 完咗點做(開 Registry copy 值)
+  setTimeout(function() {
+    btn.outerHTML = "<a class='btn' style='width:100%;text-align:center' target='_blank' href='"+reg
+      +"'>✅ 已填好 → 開 Master Form Registry copy 啲值</a>";
+  }, 30000);
+  toast('🤖 AI 填緊公司資料入 Master Form Registry 嘅 Fill tab（~30-60s）。完咗開 Registry copy 啲值入真表頁。');
+}
+function outScript(btn) {   // 📤 VID2:SCRIPT 接落 Master GSheet SCRIPT暫存 — 直接 GAS POST，唔經部 Mac
+  var jsTag = btn.nextElementSibling;  // <script class=bdj> board JSON
+  var board = [];
+  try { board = JSON.parse((jsTag && jsTag.textContent) || '[]'); } catch (e) {}
+  if (!board.length) { toast('⚠️ 冇 board 資料'); return; }
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'script_out', dept: 'FEHDTVAPISDISTRICTGOVERNANCE',
+      brd: btn.dataset.brd, concept: btn.dataset.concept, board: board })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已接落「SCRIPT暫存」'; btn.disabled = false; }, 1500);
+  toast('📤 接落 Master GSheet「SCRIPT暫存」(GAS,唔經部 Mac,疊唔覆寫)');
+}
+function clearScript(btn) {   // 🧹 清空 SCRIPT暫存 — GAS（唔經 Mac）
+  if (!confirm('清空 SCRIPT暫存 tab？')) return;
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'clear' })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已清空'; btn.disabled = false; }, 1500);
+  toast('🧹 已清空 SCRIPT暫存（GAS,唔經部 Mac）');
+}
+
+// submitGSlide/submitComments 已移除（dead code:前端零 call site + 冇 .frame-note input — 2026-06-13 audit）
+
+// 「develop 緊」bar 已移除（Raymond 2026-06-06）—— 改用 VID 2 tab 紅邊 + 各 concept 進度條。
+</script></body></html>

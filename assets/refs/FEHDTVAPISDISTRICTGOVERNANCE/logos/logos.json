@@ -1,0 +1,39 @@
+{
+  "dept": "FEHDTVAPISDISTRICTGOVERNANCE",
+  "slots": [
+    {
+      "slot": 1,
+      "query": "食物環境衞生署 標誌",
+      "file": "assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/logos/slot1.png",
+      "title": "前警務處副處長袁旭健接任食環署署長- 港聞- 點新聞",
+      "w": 1453,
+      "h": 817,
+      "enabled": true,
+      "verified": true,
+      "verified_org": "食物環境衞生署 Food and Environmental Hygiene Department",
+      "source_domain": ""
+    },
+    {
+      "slot": 2,
+      "query": "Food and Environmental Hygiene Department logo",
+      "file": "assets/refs/FEHDTVAPISDISTRICTGOVERNANCE/logos/slot2.png",
+      "title": "Our Clients - Hong Kong Johnson Holdings Co., Ltd.",
+      "w": 500,
+      "h": 500,
+      "enabled": true,
+      "verified": true,
+      "verified_org": "食物環境衞生署 Food and Environmental Hygiene Department",
+      "source_domain": ""
+    },
+    {
+      "slot": 3,
+      "query": "地區治理倡議 標誌",
+      "file": "",
+      "title": "(核實唔到官方標誌,可即場打字重搵)",
+      "enabled": true,
+      "verified": false,
+      "verified_org": "",
+      "source_domain": ""
+    }
+  ]
+}

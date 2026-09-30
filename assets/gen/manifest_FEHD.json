@@ -4787,9 +4787,370 @@
           }
         ]
       }
+    },
+    "T": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260930-143505",
+            "sheet": "assets/gen/FEHD_T/v20260930-143505/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_T/v20260930-143505/frame_01.jpg",
+              "assets/gen/FEHD_T/v20260930-143505/frame_02.jpg",
+              "assets/gen/FEHD_T/v20260930-143505/frame_03.jpg",
+              "assets/gen/FEHD_T/v20260930-143505/frame_04.jpg",
+              "assets/gen/FEHD_T/v20260930-143505/frame_05.jpg",
+              "assets/gen/FEHD_T/v20260930-143505/frame_06.jpg",
+              "assets/gen/FEHD_T/v20260930-143505/frame_07.jpg",
+              "assets/gen/FEHD_T/v20260930-143505/frame_08.jpg",
+              "assets/gen/FEHD_T/v20260930-143505/frame_09.jpg",
+              "assets/gen/FEHD_T/v20260930-143505/frame_10.jpg",
+              "assets/gen/FEHD_T/v20260930-143505/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T14:35:06",
+            "source": "nblm",
+            "brd": "T",
+            "vtok": "b",
+            "cid": "nb0c8a461c",
+            "label": "[NB] 方向二：懷疑街坊阿德篇（旁白不現身）",
+            "gslide_pages": [
+              "assets/gen/FEHD_T/v20260930-143505/gslide_FEHD_T_p1.png",
+              "assets/gen/FEHD_T/v20260930-143505/gslide_FEHD_T_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_T/v20260930-143505/deck.pdf"
+          },
+          {
+            "v": "20260930-135549",
+            "sheet": "assets/gen/FEHD_T/v20260930-135549/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_T/v20260930-135549/frame_01.jpg",
+              "assets/gen/FEHD_T/v20260930-135549/frame_02.jpg",
+              "assets/gen/FEHD_T/v20260930-135549/frame_03.jpg",
+              "assets/gen/FEHD_T/v20260930-135549/frame_04.jpg",
+              "assets/gen/FEHD_T/v20260930-135549/frame_05.jpg",
+              "assets/gen/FEHD_T/v20260930-135549/frame_06.jpg",
+              "assets/gen/FEHD_T/v20260930-135549/frame_07.jpg",
+              "assets/gen/FEHD_T/v20260930-135549/frame_08.jpg",
+              "assets/gen/FEHD_T/v20260930-135549/frame_09.jpg",
+              "assets/gen/FEHD_T/v20260930-135549/frame_10.jpg",
+              "assets/gen/FEHD_T/v20260930-135549/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T13:55:50",
+            "source": "nblm",
+            "brd": "T",
+            "vtok": "a",
+            "cid": "nb0c8a461c",
+            "label": "[NB] 方向二：懷疑街坊阿德篇（旁白不現身）",
+            "gslide_pages": [
+              "assets/gen/FEHD_T/v20260930-135549/gslide_FEHD_T_p1.png",
+              "assets/gen/FEHD_T/v20260930-135549/gslide_FEHD_T_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_T/v20260930-135549/deck.pdf"
+          }
+        ]
+      }
+    },
+    "U": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260930-135618",
+            "sheet": "assets/gen/FEHD_U/v20260930-135618/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_U/v20260930-135618/frame_01.jpg",
+              "assets/gen/FEHD_U/v20260930-135618/frame_02.jpg",
+              "assets/gen/FEHD_U/v20260930-135618/frame_03.jpg",
+              "assets/gen/FEHD_U/v20260930-135618/frame_04.jpg",
+              "assets/gen/FEHD_U/v20260930-135618/frame_05.jpg",
+              "assets/gen/FEHD_U/v20260930-135618/frame_06.jpg",
+              "assets/gen/FEHD_U/v20260930-135618/frame_07.jpg",
+              "assets/gen/FEHD_U/v20260930-135618/frame_08.jpg",
+              "assets/gen/FEHD_U/v20260930-135618/frame_09.jpg",
+              "assets/gen/FEHD_U/v20260930-135618/frame_10.jpg",
+              "assets/gen/FEHD_U/v20260930-135618/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T13:56:19",
+            "source": "nblm",
+            "brd": "U",
+            "vtok": "a",
+            "cid": "nb795daac5",
+            "label": "[NB] 方向三：阿德十年時空穿越篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHD_U/v20260930-135618/gslide_FEHD_U_p1.png",
+              "assets/gen/FEHD_U/v20260930-135618/gslide_FEHD_U_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_U/v20260930-135618/deck.pdf"
+          }
+        ]
+      }
+    },
+    "V": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260930-144231",
+            "sheet": "assets/gen/FEHD_V/v20260930-144231/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_V/v20260930-144231/frame_01.jpg",
+              "assets/gen/FEHD_V/v20260930-144231/frame_02.jpg",
+              "assets/gen/FEHD_V/v20260930-144231/frame_03.jpg",
+              "assets/gen/FEHD_V/v20260930-144231/frame_04.jpg",
+              "assets/gen/FEHD_V/v20260930-144231/frame_05.jpg",
+              "assets/gen/FEHD_V/v20260930-144231/frame_06.jpg",
+              "assets/gen/FEHD_V/v20260930-144231/frame_07.jpg",
+              "assets/gen/FEHD_V/v20260930-144231/frame_08.jpg",
+              "assets/gen/FEHD_V/v20260930-144231/frame_09.jpg",
+              "assets/gen/FEHD_V/v20260930-144231/frame_10.jpg",
+              "assets/gen/FEHD_V/v20260930-144231/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T14:42:36",
+            "source": "nblm",
+            "brd": "V",
+            "vtok": "b",
+            "cid": "nb3c80b44c",
+            "label": "[NB] 方向四：阿德與機械狗搭檔巡邏篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHD_V/v20260930-144231/gslide_FEHD_V_p1.png",
+              "assets/gen/FEHD_V/v20260930-144231/gslide_FEHD_V_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_V/v20260930-144231/deck.pdf"
+          },
+          {
+            "v": "20260930-140159",
+            "sheet": "assets/gen/FEHD_V/v20260930-140159/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_V/v20260930-140159/frame_01.jpg",
+              "assets/gen/FEHD_V/v20260930-140159/frame_02.jpg",
+              "assets/gen/FEHD_V/v20260930-140159/frame_03.jpg",
+              "assets/gen/FEHD_V/v20260930-140159/frame_04.jpg",
+              "assets/gen/FEHD_V/v20260930-140159/frame_05.jpg",
+              "assets/gen/FEHD_V/v20260930-140159/frame_06.jpg",
+              "assets/gen/FEHD_V/v20260930-140159/frame_07.jpg",
+              "assets/gen/FEHD_V/v20260930-140159/frame_08.jpg",
+              "assets/gen/FEHD_V/v20260930-140159/frame_09.jpg",
+              "assets/gen/FEHD_V/v20260930-140159/frame_10.jpg",
+              "assets/gen/FEHD_V/v20260930-140159/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T14:01:59",
+            "source": "nblm",
+            "brd": "V",
+            "vtok": "a",
+            "cid": "nb3c80b44c",
+            "label": "[NB] 方向四：阿德與機械狗搭檔巡邏篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHD_V/v20260930-140159/gslide_FEHD_V_p1.png",
+              "assets/gen/FEHD_V/v20260930-140159/gslide_FEHD_V_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_V/v20260930-140159/deck.pdf"
+          }
+        ]
+      }
+    },
+    "W": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260930-145733",
+            "sheet": "assets/gen/FEHD_W/v20260930-145733/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_W/v20260930-145733/frame_01.jpg",
+              "assets/gen/FEHD_W/v20260930-145733/frame_02.jpg",
+              "assets/gen/FEHD_W/v20260930-145733/frame_03.jpg",
+              "assets/gen/FEHD_W/v20260930-145733/frame_04.jpg",
+              "assets/gen/FEHD_W/v20260930-145733/frame_05.jpg",
+              "assets/gen/FEHD_W/v20260930-145733/frame_06.jpg",
+              "assets/gen/FEHD_W/v20260930-145733/frame_07.jpg",
+              "assets/gen/FEHD_W/v20260930-145733/frame_08.jpg",
+              "assets/gen/FEHD_W/v20260930-145733/frame_09.jpg",
+              "assets/gen/FEHD_W/v20260930-145733/frame_10.jpg",
+              "assets/gen/FEHD_W/v20260930-145733/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T14:57:35",
+            "source": "nblm",
+            "brd": "W",
+            "vtok": "b",
+            "cid": "nb53df3c4c",
+            "label": "[ChatGPT] 清晨交更",
+            "gslide_pages": [
+              "assets/gen/FEHD_W/v20260930-145733/gslide_FEHD_W_p1.png",
+              "assets/gen/FEHD_W/v20260930-145733/gslide_FEHD_W_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_W/v20260930-145733/deck.pdf"
+          },
+          {
+            "v": "20260930-141805",
+            "sheet": "assets/gen/FEHD_W/v20260930-141805/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_W/v20260930-141805/frame_01.jpg",
+              "assets/gen/FEHD_W/v20260930-141805/frame_02.jpg",
+              "assets/gen/FEHD_W/v20260930-141805/frame_03.jpg",
+              "assets/gen/FEHD_W/v20260930-141805/frame_04.jpg",
+              "assets/gen/FEHD_W/v20260930-141805/frame_05.jpg",
+              "assets/gen/FEHD_W/v20260930-141805/frame_06.jpg",
+              "assets/gen/FEHD_W/v20260930-141805/frame_07.jpg",
+              "assets/gen/FEHD_W/v20260930-141805/frame_08.jpg",
+              "assets/gen/FEHD_W/v20260930-141805/frame_09.jpg",
+              "assets/gen/FEHD_W/v20260930-141805/frame_10.jpg",
+              "assets/gen/FEHD_W/v20260930-141805/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T14:18:07",
+            "source": "nblm",
+            "brd": "W",
+            "vtok": "a",
+            "cid": "nb53df3c4c",
+            "label": "[ChatGPT] 清晨交更",
+            "gslide_pages": [
+              "assets/gen/FEHD_W/v20260930-141805/gslide_FEHD_W_p1.png",
+              "assets/gen/FEHD_W/v20260930-141805/gslide_FEHD_W_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_W/v20260930-141805/deck.pdf"
+          }
+        ]
+      }
+    },
+    "S": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260930-141911",
+            "sheet": "assets/gen/FEHD_S/v20260930-141911/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_S/v20260930-141911/frame_01.jpg",
+              "assets/gen/FEHD_S/v20260930-141911/frame_02.jpg",
+              "assets/gen/FEHD_S/v20260930-141911/frame_03.jpg",
+              "assets/gen/FEHD_S/v20260930-141911/frame_04.jpg",
+              "assets/gen/FEHD_S/v20260930-141911/frame_05.jpg",
+              "assets/gen/FEHD_S/v20260930-141911/frame_06.jpg",
+              "assets/gen/FEHD_S/v20260930-141911/frame_07.jpg",
+              "assets/gen/FEHD_S/v20260930-141911/frame_08.jpg",
+              "assets/gen/FEHD_S/v20260930-141911/frame_09.jpg",
+              "assets/gen/FEHD_S/v20260930-141911/frame_10.jpg",
+              "assets/gen/FEHD_S/v20260930-141911/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T14:19:14",
+            "source": "nblm",
+            "brd": "S",
+            "vtok": "a",
+            "cid": "nb1e045213",
+            "label": "[NB] 方向一：阿德問答篇（旁白不現身）",
+            "gslide_pages": [
+              "assets/gen/FEHD_S/v20260930-141911/gslide_FEHD_S_p1.png",
+              "assets/gen/FEHD_S/v20260930-141911/gslide_FEHD_S_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_S/v20260930-141911/deck.pdf"
+          }
+        ]
+      }
+    },
+    "X": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260930-142430",
+            "sheet": "assets/gen/FEHD_X/v20260930-142430/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_X/v20260930-142430/frame_01.jpg",
+              "assets/gen/FEHD_X/v20260930-142430/frame_02.jpg",
+              "assets/gen/FEHD_X/v20260930-142430/frame_03.jpg",
+              "assets/gen/FEHD_X/v20260930-142430/frame_04.jpg",
+              "assets/gen/FEHD_X/v20260930-142430/frame_05.jpg",
+              "assets/gen/FEHD_X/v20260930-142430/frame_06.jpg",
+              "assets/gen/FEHD_X/v20260930-142430/frame_07.jpg",
+              "assets/gen/FEHD_X/v20260930-142430/frame_08.jpg",
+              "assets/gen/FEHD_X/v20260930-142430/frame_09.jpg",
+              "assets/gen/FEHD_X/v20260930-142430/frame_10.jpg",
+              "assets/gen/FEHD_X/v20260930-142430/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T14:24:31",
+            "source": "nblm",
+            "brd": "X",
+            "vtok": "a",
+            "cid": "nbcdde0a4b",
+            "label": "[NB] 方向五：人人有德全民參與篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHD_X/v20260930-142430/gslide_FEHD_X_p1.png",
+              "assets/gen/FEHD_X/v20260930-142430/gslide_FEHD_X_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_X/v20260930-142430/deck.pdf"
+          }
+        ]
+      }
+    },
+    "Y": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260930-145324",
+            "sheet": "assets/gen/FEHD_Y/v20260930-145324/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_Y/v20260930-145324/frame_01.jpg",
+              "assets/gen/FEHD_Y/v20260930-145324/frame_02.jpg",
+              "assets/gen/FEHD_Y/v20260930-145324/frame_03.jpg",
+              "assets/gen/FEHD_Y/v20260930-145324/frame_04.jpg",
+              "assets/gen/FEHD_Y/v20260930-145324/frame_05.jpg",
+              "assets/gen/FEHD_Y/v20260930-145324/frame_06.jpg",
+              "assets/gen/FEHD_Y/v20260930-145324/frame_07.jpg",
+              "assets/gen/FEHD_Y/v20260930-145324/frame_08.jpg",
+              "assets/gen/FEHD_Y/v20260930-145324/frame_09.jpg",
+              "assets/gen/FEHD_Y/v20260930-145324/frame_10.jpg",
+              "assets/gen/FEHD_Y/v20260930-145324/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T14:53:25",
+            "source": "nblm",
+            "brd": "Y",
+            "vtok": "b",
+            "cid": "nb1a27ef6a",
+            "label": "[NB] 方向六：前線紀實真情篇（無阿德對照組）",
+            "gslide_pages": [
+              "assets/gen/FEHD_Y/v20260930-145324/gslide_FEHD_Y_p1.png",
+              "assets/gen/FEHD_Y/v20260930-145324/gslide_FEHD_Y_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_Y/v20260930-145324/deck.pdf"
+          },
+          {
+            "v": "20260930-145117",
+            "sheet": "assets/gen/FEHD_Y/v20260930-145117/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHD_Y/v20260930-145117/frame_01.jpg",
+              "assets/gen/FEHD_Y/v20260930-145117/frame_02.jpg",
+              "assets/gen/FEHD_Y/v20260930-145117/frame_03.jpg",
+              "assets/gen/FEHD_Y/v20260930-145117/frame_04.jpg",
+              "assets/gen/FEHD_Y/v20260930-145117/frame_05.jpg",
+              "assets/gen/FEHD_Y/v20260930-145117/frame_06.jpg",
+              "assets/gen/FEHD_Y/v20260930-145117/frame_07.jpg",
+              "assets/gen/FEHD_Y/v20260930-145117/frame_08.jpg",
+              "assets/gen/FEHD_Y/v20260930-145117/frame_09.jpg",
+              "assets/gen/FEHD_Y/v20260930-145117/frame_10.jpg",
+              "assets/gen/FEHD_Y/v20260930-145117/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T14:51:18",
+            "source": "nblm",
+            "brd": "Y",
+            "vtok": "a",
+            "cid": "nb1a27ef6a",
+            "label": "[NB] 方向六：前線紀實真情篇（無阿德對照組）",
+            "gslide_pages": [
+              "assets/gen/FEHD_Y/v20260930-145117/gslide_FEHD_Y_p1.png",
+              "assets/gen/FEHD_Y/v20260930-145117/gslide_FEHD_Y_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHD_Y/v20260930-145117/deck.pdf"
+          }
+        ]
+      }
     }
   },
-  "updated": "2026-09-30T04:03:50",
+  "updated": "2026-09-30T14:57:35",
   "drive_canonical": "https://drive.google.com/drive/folders/1rjxKRHgAru7IZ_SOBnmTcj-uYDYHwbmr",
   "drive_canonical_name": "2605_FEHD_Water Seepage APIs"
 }
