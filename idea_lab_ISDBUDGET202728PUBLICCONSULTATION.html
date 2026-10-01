@@ -1,0 +1,1720 @@
+<!DOCTYPE html><html lang=zh-HK><head><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>ISDBUDGET202728PUBLICCONSULTATION · Idea Lab</title>
+<style>
+:root{--bg:#f4f5f7;--card:#fff;--ink:#1b1f27;--mut:#6b7280;--line:#e6e8ec;
+      --ac:#4f46e5;--gold:#c79a2b;--red:#dc2626;--grn:#15a34a}
+*{box-sizing:border-box}
+.btn{background:#4f46e5;color:#fff;border:none;border-radius:9px;padding:8px 13px;font-size:12.5px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;box-sizing:border-box}
+.btn.ghost{background:#fff;color:#4f46e5;border:1.5px solid #dcdffb}
+.btn.grn{background:#15a34a}
+.btn.mini{padding:4px 9px;font-size:11px;min-height:44px}
+.btn:hover,.btn.ghost:hover{filter:brightness(.98)}
+details.soft{background:#fff;border:1px solid #e7e9ee;border-radius:10px;padding:4px 12px}
+details.soft>summary{cursor:pointer;font-size:12.5px;font-weight:700;color:#444;padding:8px 0;list-style:none}
+details.soft>summary::-webkit-details-marker{display:none}
+details.soft>summary::before{content:"▸ ";color:#9aa0ab}
+details.soft[open]>summary::before{content:"▾ "}
+.ovl{position:fixed;inset:0;z-index:120;background:rgba(15,18,28,.55);display:none;align-items:center;justify-content:center;padding:18px}
+.ovl.on{display:flex}
+.ovlbox{background:#fff;border-radius:14px;box-shadow:0 18px 60px rgba(0,0,0,.4)}
+.pill{display:inline-block;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:999px;background:#eef0f3;color:#555}
+.pill.ok{background:#e7f7ee;color:#15803d}
+.pill.warn{background:#fff4e5;color:#b45309}
+.pill.bad{background:#fdeaea;color:#dc2626}
+.pill.accent{background:#eef0fe;color:#4f46e5}
+.secthead{font-size:16px;font-weight:800;margin:24px 0 10px;border-left:4px solid #4f46e5;padding-left:9px;color:#1b1f27}
+.secthead.tight{margin-top:10px}
+.sectbadge{display:inline-block;margin-left:8px;font-size:11px;font-weight:800;border-radius:999px;padding:2px 8px;background:#eef0fe;color:#4f46e5}
+.carousel{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 12px;-webkit-overflow-scrolling:touch}
+.carousel::-webkit-scrollbar{height:6px}
+.carousel::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:6px}
+.carousel-card{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;background:#fff;border:1.5px solid #e7e9ee;border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+@media(min-width:700px) and (max-width:1099px){.carousel-card{flex:0 0 46%}}
+@media(min-width:1100px){.carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}.carousel-card{flex:0 0 calc(33.333% - 10px);max-width:none;scroll-snap-align:none}}
+.lbx{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;display:none;align-items:center;justify-content:center;padding:12px}
+.lbx.on{display:flex}
+.lbx img{max-width:98vw;max-height:94vh;border-radius:8px;cursor:zoom-out}
+.lbx .x{position:fixed;top:10px;right:16px;color:#fff;font-size:30px;font-weight:800;cursor:pointer}
+.lbx .hint{position:fixed;bottom:12px;left:0;right:0;text-align:center;color:#bbb;font-size:12px}
+.badge{display:inline-block;font-size:11px;font-weight:800;color:#fff;background:#4f46e5;border-radius:7px;padding:2px 9px;letter-spacing:.02em}
+.score-badge{display:inline-block;background:#c79a2b;color:#fff;font-size:12px;font-weight:800;border-radius:20px;padding:2px 10px}
+.status-badge{display:inline-block;font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.status-badge.ok{background:#dcfce7;color:#15803d}
+.status-badge.warn{background:#fef3c7;color:#a16207}
+.status-badge.bad{background:#fee2e2;color:#b91c1c}
+.status-badge.mute{background:#eef0f3;color:#717784}
+.surface-card{background:#fff;border:1px solid #e7e9ee;border-radius:14px;box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+.surface-card.soft{background:#fafbfd}
+.surface-card.warn{background:#fff8f1;border-color:#fcd9b6}
+.surface-card.danger{border-color:#f3b4ae;box-shadow:0 2px 16px rgba(238,56,47,.08)}
+.surface-card.pad-sm{padding:9px 10px}
+.surface-card.pad-md{padding:15px 17px}
+.surface-card.pad-lg{padding:18px}
+.surface-card.selected{border-color:#4f46e5;box-shadow:0 0 0 2px rgba(79,70,229,.25),0 6px 18px rgba(79,70,229,.18)}
+body{margin:0;background:var(--bg);color:var(--ink);
+     font:15px/1.55 -apple-system,"PingFang HK",sans-serif}
+.wrap{max-width:430px;margin:0 auto;padding:0 13px 130px}
+h1{font-size:19px;font-weight:800;margin:0;line-height:1.25}
+h1 .dept{color:var(--ac)}
+.bdp{font-size:12px;font-weight:700;margin:3px 0 0;display:flex;gap:11px;flex-wrap:wrap}
+.fresh{font-size:11px;color:#7a8290;margin:6px 0 0;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.fresh .fr{background:#f1f3f6;border-radius:6px;padding:2px 7px;white-space:nowrap}
+.fresh .fr b{color:#4a5462;font-weight:700}
+.bdp .bb{color:#2563eb}.bdp .dd{color:#dc2626}.bdp .pp{color:#7c3aed}
+.tabbar{position:sticky;top:0;z-index:30;background:var(--bg);
+         border-bottom:2px solid var(--line);display:flex;gap:5px;
+         overflow-x:auto;padding:8px 0 7px;scrollbar-width:none}
+.tabbar::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;background:var(--card);border:1.5px solid var(--line);
+      border-radius:9px;padding:5px 12px;font-size:12px;font-weight:800;
+      color:var(--mut);cursor:pointer;transition:all .12s;white-space:nowrap}
+.tab:hover{border-color:var(--ac);color:var(--ac)}
+.tab.active{background:var(--ac);border-color:var(--ac);color:#fff}
+header{padding:12px 0 4px}
+.titlerow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap}
+.titlerow h1{margin:0;min-width:0}
+.hdrbtns{flex:none;display:flex;gap:7px;align-items:center}
+.homebtn,.refbtn{flex:none;white-space:nowrap;font-size:16px;line-height:1;text-decoration:none;background:#eef0fe;border:1px solid #dcdffb;border-radius:8px;padding:5px 9px;color:#222;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.refbtn{cursor:pointer}
+.labbtn{flex:none;white-space:nowrap;font-size:13px;line-height:1;text-decoration:none;border-radius:9px;padding:7px 10px;font-weight:800;border:1px solid transparent;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+.labbtn.mk{background:#fff5f5;color:#EE382F;border-color:#f3b4ae}
+.labbtn.mm{background:#fff7ed;color:#d97706;border-color:#fdba74}
+@media(max-width:480px){.homebtn,.refbtn{font-size:14px;padding:5px 8px}}
+@media(max-width:420px){.titlerow{flex-direction:column;align-items:stretch;gap:8px}.hdrbtns{flex-wrap:wrap;max-width:100%;width:100%;gap:6px}}
+.tabpanel{display:none;padding-top:10px}
+.tabpanel.active{display:block}
+.setlab{font-size:11px;font-weight:800;color:var(--ac);background:#eef0fe;
+         border:1px solid #dcdffb;border-radius:8px;padding:4px 10px;
+         display:inline-block;margin:0 0 8px}
+.banner{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;
+         padding:10px 12px;font-size:12.5px;font-weight:700;color:#92660c;margin:10px 0}
+.h2{font-size:14.5px;font-weight:800;letter-spacing:.01em;color:var(--ink);
+     margin:16px 2px 8px}
+.h3{font-size:13px;font-weight:700;color:#374151;margin:11px 0 5px}
+.stylepick{margin:10px 0}
+.styrow{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:5px 0;padding:5px 0;border-bottom:1px solid var(--line)}
+.stylbl{min-width:84px;font-weight:600;font-size:13px}
+.styo{display:inline-flex;align-items:center;gap:4px;font-size:13px;padding:3px 10px;
+       border:1px solid var(--line);border-radius:14px;cursor:pointer;user-select:none;background:#fafafa}
+.styo input{margin:0}
+.styo:has(input:checked){background:#e6f7f1;border-color:#0a7;color:#066}
+.styanchor{margin-top:9px;font-size:12px;color:var(--mut)}
+#styanchor{color:#0a7;font-weight:600}
+.card{background:var(--card);border-color:var(--line);border-radius:13px;
+       padding:11px 12px;margin-bottom:8px}
+.hgrid{display:grid;grid-template-columns:1fr;gap:13px}
+@media(min-width:720px){.hgrid{grid-template-columns:1fr 1fr 1fr}}
+.hcard{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:10px;box-shadow:0 1px 2px rgba(20,24,40,.05)}
+.hcap{font-weight:800;font-size:13px;margin-bottom:7px}
+.sgrp{font-weight:800;font-size:12px;color:#475569;background:#eef1f6;border-radius:7px;padding:5px 10px;margin:11px 0 2px}
+.sgrp:first-child{margin-top:2px}
+.tlrow.todo{opacity:.55} .tlrow.todo .tllabel{color:#9aa0ab}
+.tlrow.na{opacity:.4} .tlrow.na .tllabel{color:#b6bbc4;text-decoration:line-through}
+.dsp{width:100%;border-collapse:collapse;font-size:12.5px}
+.dsp th{text-align:left;color:var(--mut);font-weight:700;padding:4px 7px;border-bottom:1px solid var(--line)}
+.dsp td{padding:4px 7px;border-bottom:1px solid #f3f4f6;vertical-align:top}
+.vacarou{display:flex;gap:10px;overflow-x:auto;padding:6px 2px 10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.vacard{flex:0 0 134px;scroll-snap-align:start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px;font-size:11px}
+.vathumb{position:relative;height:90px;border-radius:7px;overflow:hidden;background:#f1f3f7;display:flex;align-items:center;justify-content:center}
+.vathumb img{width:100%;height:100%;object-fit:cover}
+.vacat{margin-top:5px;font-size:10px;color:#7b4fc0;font-weight:800}
+.vaname{font-weight:600;line-height:1.25;min-height:28px;color:#374151}
+.vasrc{font-size:10.5px} .vatick{display:block;font-size:11px;margin-bottom:4px;cursor:pointer;font-weight:700}
+.vaprovide{margin:12px 0 2px}
+.upbox .refelemin{display:block;width:100%;margin:0 0 8px;padding:6px 8px;border:1px solid var(--line);border-radius:7px;font-size:12px}
+/* ── 標書 tab restructure 2026-06-16 ── */
+/* 💡 提供窗口 */
+.h2sm{font-size:13px;margin:12px 2px 5px}
+.provide{padding:9px 10px}
+/* 加入想法 + upbox 送出 統一設計(都係 .btn 觀感) */
+.provide .upbox{margin:0;border-radius:9px;padding:9px}
+.provide .upbox .attsend{background:var(--ac);border-radius:9px;padding:0 14px;font-size:12.5px;font-weight:800}
+.provide .noteslist{margin-top:7px}
+/* 三梯隊標題:左色條 + 副標 */
+.tierh{border-left:4px solid var(--ac);padding-left:9px;margin:18px 2px 2px;font-size:14px}
+.tierhint{margin:2px 2px 7px 13px}
+/* ✍️ 邊個 model 寫(#5):mdl 真 / mdef 預設(灰) / mfb fallback(橙) */
+.mdl{flex:0 0 auto;font-size:10px;font-weight:800;color:#3730a3;background:#eef0fe;border:1px solid #dcdffb;
+      border-radius:6px;padding:1px 6px;white-space:nowrap;margin-left:auto}
+.mdl.mdef{color:#6b7280;background:#f1f3f6;border-color:#e3e6ea}
+.mdl.mfb{color:#9a5a00;background:#fff4e5;border-color:#fde6c0}
+.h3 .mdl{margin-left:6px;vertical-align:middle}
+/* 📋 標書內容 carousel 卡 — 字體/行寬完全跟返 VID1 .ccard(Raymond 2026-06-16:之前縮 12px 太難讀,
+   改返用 VID1 base .cbody 12.5px/1.62、.ctitle 14px。卡內 md 標題用 base .cbody h3/h4 12.5px,統一)。 */
+.brfcarou{margin-top:2px}
+.brfcard .chead{cursor:default}
+/* 🔄 重生緊 signal(手寫稿 BD) */
+.regbadge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;color:#fff;background:var(--ac);border-radius:8px;padding:4px 9px;margin:0 0 6px}
+/* 🔀 換格 + BD 英文字 */
+.bdletter{display:inline-block;min-width:18px;text-align:center;font-weight:800;color:#fff;background:var(--ac);border-radius:6px;padding:0 5px;margin-right:4px}
+.swrow{display:flex;align-items:center;gap:6px;margin-bottom:7px;flex-wrap:wrap}
+.swlbl{font-size:12px;color:var(--mut);white-space:nowrap}
+.swrow select{flex:1;min-width:90px;font-size:12.5px;padding:6px 7px;border:1px solid var(--line);border-radius:7px;background:#fff}
+/* 標書原文 link 喺 撮要 標題右邊 */
+.rawlink{flex:0 0 auto;margin-left:auto;font-size:10.5px;font-weight:800;color:var(--ac);background:#eef0fe;border:1px solid #dcdffb;border-radius:6px;padding:1px 6px;cursor:pointer;white-space:nowrap}
+/* 部門官方來源 search-result row(似 youtube search) */
+.srcrow{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid #f1f3f6}
+.srcrow:last-child{border-bottom:0}
+.srcthumb{flex:0 0 54px;height:40px;border-radius:5px;object-fit:cover;background:#f1f3f7}
+.srctit{font-size:11.5px;font-weight:700;line-height:1.3;color:var(--ac)}
+.srcsnip{font-size:10.5px;color:#6b7280;line-height:1.4;margin-top:1px}
+/* 🎧 Briefing 錄音逐字 overlay(撳先出,唔常設) */
+.ovlbox{max-width:560px;width:100%;max-height:82vh;display:flex;flex-direction:column}
+.ovlhd{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--line);font-weight:800;font-size:13px}
+.ovlhd .x{cursor:pointer;color:#888;font-size:16px;border:0;background:0}
+.ovlbody{overflow:auto;padding:12px 14px;font-size:11.5px;line-height:1.6;color:#333;white-space:pre-wrap}
+.ovllink{color:var(--ac);font-weight:700;cursor:pointer;text-decoration:underline}
+/* 📸 Visual 素材:⭐首選 badge + 三 action 掣(三格一樣大) + 重搜漏斗 */
+.vacard{position:relative;transition:order .2s}
+.vacard.pref{border-color:var(--gold);box-shadow:0 0 0 2px rgba(199,154,43,.22)}
+.vastar{position:absolute;top:5px;right:5px;font-size:9.5px;font-weight:800;color:#fff;background:var(--gold);border-radius:6px;padding:1px 5px}
+.vafunnel{position:absolute;bottom:4px;right:4px;font-size:9.5px;font-weight:800;color:#fff;background:rgba(79,70,229,.94);border-radius:6px;padding:2px 6px;display:inline-flex;align-items:center;gap:3px}
+.vaacts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.vaacts .btn{width:auto;text-align:center;margin:0;padding:0 4px;min-height:44px;display:flex;align-items:center;justify-content:center;white-space:nowrap;box-sizing:border-box}
+.vaacts .btn.ghost{width:auto;padding:0 4px;margin:0}
+@media(max-width:420px){.vaacts{gap:4px}}
+
+.upbox{background:#fff;border:1.5px dashed #bcd;border-radius:11px;padding:11px;margin:6px 0}
+.upbox.hov{background:#eef6ff;border-color:#6aa3e0}
+.upbox .attstage{min-height:0;margin-bottom:4px}
+.upbox .stchip{display:inline-block;background:#eef7f0;border:1px solid #bfe0cd;border-radius:20px;padding:3px 9px;font-size:11.5px;font-weight:700;color:#176b3a}
+.upbox .stchip .ststrip{border:0;background:0;cursor:pointer;color:#999;font-weight:700;margin-left:3px}
+.upbox .attrow1{display:flex;gap:6px}
+.upbox .atttext{flex:1;border:1px solid var(--line,#dde);border-radius:8px;padding:9px 11px;font-size:14px;line-height:1.5;min-height:84px;resize:vertical;font-family:inherit}
+.upbox .attsend{border:0;background:#0A7D3F;color:#fff;border-radius:8px;padding:0 14px;font-weight:700;cursor:pointer;white-space:nowrap;min-height:44px}
+.upbox .attbtns2{margin-top:6px;display:flex;gap:6px}
+.upbox .attpick{border:1px solid var(--line,#dde);background:#f7f9fc;border-radius:8px;padding:5px 10px;font-size:12px;cursor:pointer;font-weight:600;flex:1;min-height:44px;text-align:center}
+.upbox .attdrive{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line,#dde);background:#f7f9fc;border-radius:8px;padding:5px 10px;font-size:12px;font-weight:600;flex:1;min-height:44px;text-decoration:none;color:inherit}
+.upst{font-size:11.5px;color:#176b3a;margin-top:5px;min-height:0}
+@media(max-width:600px){.upbox .attrow1{flex-direction:column}.upbox .attsend{width:100%}}
+
+.bdcm{margin-top:7px}
+.bdcm textarea{width:100%;box-sizing:border-box;font:13px/1.45 inherit;border:1px solid var(--line);border-radius:8px;padding:6px 8px;resize:vertical}
+.bdcm .btn.mini{margin-top:5px}
+.gflags{margin:7px 0 4px;padding:7px 9px;background:#fffbec;border:1px solid #f0d96a;border-radius:8px;font-size:12px;color:#6b4d00}
+.gflag{padding:2px 0;line-height:1.5}
+.gflag+.gflag{border-top:1px solid #f5ebb0;margin-top:3px;padding-top:5px}
+.gfslide{font-weight:600;background:#f5e07c;border-radius:4px;padding:1px 5px;margin-right:4px}
+.cmlog{font-size:11px;color:#2e8b57;margin-top:5px}
+.card.big{padding:13px}
+.card.empty{color:var(--mut);font-size:13px;font-style:italic}
+.row{display:flex;align-items:center;gap:9px}
+.rank{font-size:11px;font-weight:800;color:var(--mut);width:18px}
+.src{font-size:11px;color:var(--mut);font-weight:700;background:#f1f5f9;
+      border-radius:6px;padding:1px 6px}
+.score{font-size:12px;font-weight:800;color:var(--gold);margin-left:auto}
+.nm{font-weight:800;font-size:13.5px;line-height:1.35}
+.csub{font-size:11px;color:var(--mut);font-weight:600;margin-top:2px}
+.crow{margin:5px 0 0}
+.cflag{font-size:10.5px;font-weight:800;border-radius:6px;padding:2px 7px}
+.cflag.hi{background:#dcfce7;color:#15803d}
+.cflag.lo{background:#fef3c7;color:#a16207}
+.cflag.rl{background:#fee2e2;color:#b91c1c}
+.ck{width:22px;height:22px;border:2px solid var(--ac);border-radius:6px;
+     display:inline-grid;place-items:center;font-size:13px;color:#fff;
+     cursor:pointer;flex:0 0 auto;position:relative}
+.ck::before{content:"";position:absolute;inset:-11px}
+.ck.on{background:var(--ac)}
+.ck.done{background:var(--grn);border-color:var(--grn);cursor:default}
+.divider{display:flex;align-items:center;gap:8px;margin:12px 2px;
+          color:#aab0ba;font-size:11px;font-weight:700}
+.divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.cnt-warn{color:var(--red)!important}
+.lookback{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:11px;
+           padding:10px 12px;font-size:12px;color:#475569}
+.btn{background:var(--ac)}
+.btn.grn{background:var(--grn)}
+.btn.ghost{width:100%;text-align:center;padding:11px 13px;margin:2px 0 4px}
+.btn.mini{padding:4px 9px;font-size:11px;margin-left:8px}
+.submit{position:fixed;bottom:14px;right:calc(50% - 215px + 13px);z-index:20}
+@media(max-width:456px){.submit{right:14px}}
+/* ── Responsive 3 tier（Raymond 2026-06-06）：mobile(default) / tablet / desktop 用晒畫面 ── */
+/* Tablet:闊啲,carousel 一次 2 卡 */
+@media(min-width:700px) and (max-width:1099px){
+  .wrap{max-width:680px;padding:0 20px 130px}
+  .submit{right:calc(50% - 340px + 20px)}
+  .ccard{flex:0 0 46%;max-height:68vh}
+  .rest-row .ccard{flex:0 0 36%}
+  .briefcard{max-height:40vh}
+}
+/* Desktop:用晒畫面 —— carousel 變 grid(唔橫掃,鋪滿),六強 3 欄、其餘 4 欄 */
+@media(min-width:1100px){
+  .wrap{max-width:min(1280px,94vw);padding:0 28px 120px}
+  .submit{right:max(28px, calc(50vw - 640px + 28px))}
+  .carousel{flex-wrap:wrap;overflow-x:visible;scroll-snap-type:none;gap:14px}
+  .ccard{flex:0 0 calc(33.333% - 10px);max-width:none;max-height:43vh;scroll-snap-align:none}   /* Raymond 2026-06-16:桌面每格短 1/3(64→43vh),標書 tab 跟 VID1 */
+  .rest-row .ccard{flex:0 0 calc(25% - 11px)}
+}
+/* NB 方向：三欄稿表；一行兩個 idea（窄屏一個）— Raymond 2026-09-19 */
+.carousel.nbgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;overflow-x:visible}
+.carousel.nbgrid .ccard.nbcard{flex:none;max-width:none;max-height:none}
+@media(max-width:820px){.carousel.nbgrid{grid-template-columns:1fr}}
+.sbtab{width:100%;border-collapse:collapse;font-size:12.5px;line-height:1.55;margin-top:6px}
+.sbtab th,.sbtab td{border:1px solid #e5e7eb;padding:5px 7px;vertical-align:top;text-align:left}
+.sbtab th{background:#f3f4f6;font-weight:700;white-space:nowrap}
+.sbtab td.fn{width:34px;text-align:center;font-weight:700}
+.sbtab .sup{margin-top:4px;color:#b45309}
+.nbmeta{margin:2px 0;font-size:12.5px}
+.nbconcept{background:#fffbeb;border-left:3px solid #f59e0b;padding:8px 10px;margin:4px 0 8px;font-size:13px;line-height:1.7}
+.consb ul{margin:4px 0 0 18px}
+@media(min-width:1100px){
+  .briefcard{max-height:36vh}
+  .tabbar{flex-wrap:wrap}
+  .card.big .sheet{max-width:520px}
+}
+.submit .btn{box-shadow:0 6px 20px rgba(79,70,229,.4);padding:11px 18px;font-size:13.5px}
+.foot{font-size:11px;color:#9aa0aa;text-align:center;margin-top:22px}
+.notes-win{width:100%;min-height:90px;border:1.5px solid var(--ac);
+            border-radius:11px;padding:10px 12px;font:14px/1.6 inherit;
+            resize:vertical;background:#fafbff;margin-bottom:6px}
+.notes-act{text-align:right;margin-bottom:6px}
+.notes-act .btn{padding:6px 14px}
+.noteslist{margin-bottom:6px}
+.notecard{background:#fafbff;border:1px solid #e0e3f5;border-radius:10px;
+           padding:7px 10px;margin-bottom:6px}
+.noterow{display:flex;align-items:center;gap:8px}
+.notets{font-size:10.5px;font-weight:800;color:var(--ac)}
+.notedel{margin-left:auto;background:none;border:none;color:#b0b6c2;font-size:13px;
+          cursor:pointer;padding:0 2px}
+.notetxt{font-size:13px;color:var(--ink);line-height:1.5;margin-top:2px;white-space:pre-wrap}
+/* Brief 撮要緊湊卡（固定高度內部 scroll，似 VID 1 卡）*/
+.briefcard{max-height:46vh;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.briefcard h3,.briefcard h4{font-size:13px;margin:9px 0 3px}
+.suppinline{margin-top:10px;border-top:2px solid #fde68a;background:#fffbeb;
+             border-radius:9px;padding:8px 10px}
+.suppinline h3,.suppinline h4{color:#92660c;font-size:12.5px;margin:2px 0 5px}
+/* 補充日程簡單 list */
+.timeline{margin:2px 0}
+.tlrow{display:flex;gap:8px;padding:5px 2px;border-bottom:1px solid #f3f4f6;font-size:12.5px}
+.tlrow:last-child{border-bottom:none}
+.tldate{flex:0 0 auto;font-weight:800;color:var(--ink);min-width:96px}
+.tllabel{flex:1;color:#374151}
+.tlrow.hot{background:#fff7ed;border-radius:7px}
+.tlrow.hot .tldate{color:#c2410c}.tlrow.hot .tllabel{color:#9a3412;font-weight:700}
+/* Briefing 補充 treatment */
+summary.supp{display:flex;align-items:center;gap:8px}
+.suppbadge{font-size:10px;font-weight:800;color:#fff;background:#d97706;
+            border-radius:6px;padding:1px 7px;margin-left:7px;vertical-align:middle}
+.bd{margin:8px 0}
+.bdscroll{max-height:44vh;overflow-y:auto;border:1px solid var(--line);border-radius:10px;
+          padding:2px 12px;background:#fafbfc;-webkit-overflow-scrolling:touch}
+.genbox{text-align:center}
+.step2 .refsub{margin:8px 0}
+.refname{font-size:12.5px;font-weight:600;margin:6px 0 4px}
+.refname .refn{color:var(--mut);font-weight:400;font-size:11px}
+.refrow{display:flex;gap:6px;flex-wrap:wrap}
+.refthumb{width:74px;height:90px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.btn.big{font-size:14px;padding:12px 22px;box-shadow:0 4px 14px rgba(79,70,229,.3)}
+.scene{border-bottom:1px solid #f1f3f6;padding:7px 0;font-size:12.5px;line-height:1.5}
+.scene .sl{display:flex;gap:8px}
+.scene .sn{font-weight:800;color:var(--ac);flex:0 0 auto;min-width:17px}
+.scene .vis{flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;cursor:pointer}
+.scene .vis.open{-webkit-line-clamp:unset;overflow:visible}
+.scene .vo,.vo{color:var(--mut);font-size:11.5px;margin:4px 0 0 25px;
+               background:#f8fafc;border-radius:7px;padding:4px 8px}
+.sheet{width:100%;border-radius:10px;border:1px solid var(--line);margin:8px 0;display:block;cursor:zoom-in}
+.preqs{display:flex;flex-direction:column;gap:7px;margin-top:4px}
+.prow{display:flex;align-items:center;gap:10px}
+.preqs .pl{flex:1;font-weight:700;font-size:14px;min-width:0}
+.preqs .pv{font-weight:800;font-size:13px;border-radius:8px;padding:3px 11px;white-space:nowrap}
+.preqs .pvon{background:#dcfce7;color:#15803d;border:1px solid #bbf7d0}
+.preqs .pvoff{background:#f1f3f5;color:#868e96;border:1px solid #e9ecef}
+.preqs .pp{font-size:11px;color:var(--ac);font-weight:700;cursor:help;min-width:34px;text-align:right}
+.pgbar{position:relative;height:30px;border-radius:9px;background:#eef0fe;border:1px solid #dcdffb;
+  overflow:hidden;margin:8px 0}
+.pgfill{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(90deg,#6366f1,#818cf8);
+  transition:width .6s ease}
+.pgtxt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:#1b1f27;z-index:1}
+/* VID 2 tab：紅色虛線繞邊行緊（marching ants），未出晒 BD 就一直行；出晒 = 無 busy class = 停 */
+@keyframes march{to{background-position:14px 0,-14px 100%,0 -14px,100% 14px}}
+.tab.busy{color:#dc2626;font-weight:800;border-color:transparent !important;
+  background-image:
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(90deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0),
+    linear-gradient(0deg,#dc2626 50%,transparent 0);
+  background-repeat:repeat-x,repeat-x,repeat-y,repeat-y;
+  background-size:14px 2px,14px 2px,2px 14px,2px 14px;
+  background-position:0 0,0 100%,0 0,100% 0;
+  animation:march .5s linear infinite}
+.empty{font-size:12px;color:#9aa0aa;background:#f8fafc;border:1px dashed #cbd5e1;
+        border-radius:9px;padding:9px 11px;margin:8px 0}
+.note{width:100%;min-height:48px;border:1px solid var(--line);border-radius:9px;
+       padding:7px 9px;font:13px/1.5 inherit;resize:vertical;margin-top:6px}
+.frames{margin:8px 0}
+.frame-card{border-bottom:1px solid #f1f3f6;padding:8px 0}
+.frame-head{display:flex;gap:8px;font-size:12.5px}
+.fv{flex:1;color:var(--ink)}
+.acts{margin-top:8px}
+.soft{margin-bottom:8px}
+.soft summary{font-size:12.5px;font-weight:800;color:var(--ink);cursor:pointer;
+               background:#f8fafc;border:1px solid var(--line);border-radius:10px;
+               padding:9px 12px;list-style:none}
+.soft[open] summary{border-radius:10px 10px 0 0;margin-bottom:0}
+.soft .card{border-radius:0 0 10px 10px;border-top:none;margin-bottom:0}
+.hint{font-size:12px;color:var(--mut);margin:0 0 8px}
+.det{margin-top:8px}
+.det summary{font-size:12.5px;font-weight:800;color:var(--ac);cursor:pointer;
+              list-style:none;background:#eef0fe;border:1px solid #dcdffb;
+              border-radius:9px;padding:8px 11px;text-align:center}
+.det[open] summary{margin-bottom:7px}
+.det summary::-webkit-details-marker{display:none}
+.detbody{font-size:12.5px;color:#374151;white-space:pre-wrap;margin-top:7px;
+          line-height:1.6;max-height:360px;overflow:auto;background:#f8fafc;
+          border-radius:9px;padding:10px 12px}
+.tw{overflow-x:auto;margin:6px 0}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{border:1px solid var(--line);padding:5px 8px;text-align:left}
+th{background:#f8fafc;font-weight:700}
+.prev{font-size:12.5px;color:#4b5563;margin:6px 0 2px;line-height:1.5}
+/* ── VID 1 carousel：橫掃卡，卡內直 scroll ── */
+.carousel{margin:0 -2px}
+.ccard{flex:0 0 88%;max-width:340px;scroll-snap-align:center;scroll-snap-stop:always;
+        background:var(--card);border:1.5px solid var(--line);border-radius:14px;display:flex;
+        flex-direction:column;max-height:64vh;overflow:hidden;
+        box-shadow:0 1px 2px rgba(20,24,40,.05),0 6px 18px rgba(20,24,40,.07)}
+.ccard.sel{border-color:var(--ac);box-shadow:0 0 0 2px rgba(79,70,229,.25),
+            0 6px 18px rgba(79,70,229,.18)}
+.rest-row .ccard{flex:0 0 70%;max-height:52vh}
+.chead{display:flex;align-items:center;gap:8px;padding:10px 12px 7px;cursor:pointer;
+        border-bottom:1px solid #f1f3f6}
+.oscore{margin-left:auto;font-size:12px;font-weight:800;color:var(--gold)}
+.ctitle{font-weight:800;font-size:14px;line-height:1.35;padding:8px 12px 0}
+.ccard .csub{padding:2px 12px 0}
+.cbadges{padding:5px 12px 0}
+.cbody{flex:1;overflow-y:auto;padding:9px 12px 12px;font-size:12.5px;color:#374151;
+        line-height:1.62;-webkit-overflow-scrolling:touch}
+.cbody h3,.cbody h4,.cbody h5{font-size:12.5px;margin:9px 0 3px}
+.cbody p{margin:5px 0}
+.scores{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+.sline{font-size:11.5px;margin:6px 0 2px}
+.sline b{font-size:12px}
+.sline.muted{color:#9aa0aa;font-weight:600}
+.scrit{display:block;font-size:11px;color:var(--mut);margin-top:2px}
+.snote{font-size:11px;color:#6b7280;background:#f8fafc;border-radius:7px;
+        padding:5px 8px;margin:4px 0 2px;line-height:1.5}
+.toast{position:fixed;bottom:78px;left:50%;transform:translateX(-50%);
+        background:#1b1f27;color:#fff;padding:12px 18px;border-radius:12px;
+        font-size:13px;font-weight:700;z-index:90;max-width:90%;
+        box-shadow:0 8px 30px rgba(0,0,0,.3);transition:opacity .5s}
+.topproc{position:fixed;bottom:0;left:0;right:0;z-index:95;background:var(--ac);
+          color:#fff;font-size:13px;font-weight:800;padding:9px 14px;
+          display:flex;align-items:center;justify-content:center;gap:8px;
+          box-shadow:0 3px 14px rgba(79,70,229,.35)}
+.spin.sm{width:15px;height:15px;border:2.5px solid rgba(255,255,255,.4);
+          border-top-color:#fff;border-radius:50%;display:inline-block;
+          vertical-align:middle;margin-right:6px;animation:sp .9s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.gening{display:inline-flex;align-items:center;font-size:12px;font-weight:800;color:var(--ac);
+         background:#eef0fe;border:1px solid #dcdffb;border-radius:9px;padding:7px 11px}
+.gening .spin.sm{border-color:#c7cbf5;border-top-color:var(--ac)}
+/* ⬇️ 最後置:桌面卡長短 1/3(64→43vh)。2-class + 排最尾,壓得過 base .ccard 64vh —— Raymond 2026-06-16
+   (VID1 + 標書 tab 一齊短;手機保持 base 64vh 唔郁) */
+@media(min-width:1100px){.carousel .ccard{max-height:43vh}}
+</style></head><body><!-- generated-by: scripts/core/nlm-bridge/lab_ui_shell.py -->
+<div class=wrap>
+<header>
+  <div class=titlerow>
+    <h1><span class=dept>ISDBUDGET202728PUBLICCONSULTATION</span> · Quotation for Production of TV and Radio Announcements in the Public Interest (APIs) for 2027-28 Budget Public Consultation</h1>
+    <span class=hdrbtns>
+      <a class=homebtn href="." title="總目錄">🏠</a>
+      <button class=refbtn onclick="location.href=location.pathname+'?t='+Date.now()+location.hash" title="重新載入">🔄</button>
+    </span>
+  </div>
+  <div class=bdp><span class='bb'>B) 6/10 10:00</span><span class='dd'>D) 20/10 12:00 · 仲有 <b id='cd'>—</b></span><span class='pp'>P) 23/10</span></div>
+  <div class=fresh>🕒 資料更新：<span class=fr><b>標書</b> 10-01 22:27</span> · <span class=fr><b>研究</b> 10-01 22:40</span> · <span class=fr><b>概念</b> 10-01 22:41</span> · <span class=fr><b>評分</b> —</span></div>
+</header>
+<div class='tabbar'><button class='tab' data-tab='ph0'>📋 標書</button><button class='tab' data-tab='debrief'>📨 DEBRIEF</button><button class='tab' data-tab='wi_all'>🧩 要做嘅項目</button><button class='tab' data-tab='handbd'>✍️ TVAPI FINAL</button><button class='tab' data-tab='theme1_1'>THEME</button><button class='tab' data-tab='tvapi1_1'>30-second TV API｜概念·六強</button><button class='tab' data-tab='tvapi1_2'>30-second TV API｜BD·三甲</button><button class='tab' data-tab='tvapi1_3'>30-second TV API｜FINAL 2</button><button class='tab' data-tab='tvapi1_4'>30-second TV API｜手執稿</button><button class='tab' data-tab='tvapi1_5'>30-second TV API｜入GSlide</button><button class='tab' data-tab='rad1_1'>30-second Radio API｜概念</button><button class='tab' data-tab='rad1_2'>30-second Radio API｜Script</button><button class='tab' data-tab='rad1_3'>30-second Radio API｜FINAL</button><button class='tab' data-tab='kv1_1'>Creative Key Visuals / V｜概念</button><button class='tab' data-tab='kv1_2'>Creative Key Visuals / V｜Layout</button><button class='tab' data-tab='kv1_3'>Creative Key Visuals / V｜FINAL</button></div>
+<div id='ph0' class='tabpanel'><div class='h2 h2sm'>💡 額外想法 / 相片</div><div class='card provide'>
+<div class="upbox" id="ref_ISDBUDGET202728PUBLICCONSULTATION_box">
+  
+  <div class="attstage" id="ref_ISDBUDGET202728PUBLICCONSULTATION_stage"></div>
+  <div class="attrow1">
+    <textarea id="ref_ISDBUDGET202728PUBLICCONSULTATION_link" class="atttext" rows="4" placeholder="💭 諗到嘅想法打喺度；想畀參考相就 ⌘V／drag／揀相入埋，喺格仔寫明呢張相係咩 → 一齊送出"></textarea>
+    <button id="ref_ISDBUDGET202728PUBLICCONSULTATION_send" class="attsend">送出 ⏎</button></div>
+  <div class="attbtns2"><button id="ref_ISDBUDGET202728PUBLICCONSULTATION_pick" class="attpick">📎 電腦揀檔</button></div>
+  <input type="file" id="ref_ISDBUDGET202728PUBLICCONSULTATION_file" accept="image/*" style="display:none">
+  <div class="upst" id="ref_ISDBUDGET202728PUBLICCONSULTATION_st"></div>
+</div>
+<script>(function(){
+var GAS="https://script.google.com/macros/s/AKfycbwVvkFb8kXQFrJZnABGxFcywfVllsM3XSVHlAGwH8CzrWIBGChjIK2PhW1k61r6NJWIpg/exec",TOK="mkv7q3z2link",FOLDER="";
+var st=document.getElementById("ref_ISDBUDGET202728PUBLICCONSULTATION_st");
+function say(m){st.textContent=m;}
+// —— 把關站 proven mechanic（照搬）——
+function jsonp(q,cb){var n="upcb"+Math.random().toString(36).slice(2);
+  window[n]=function(o){try{cb(o);}finally{delete window[n];s.remove();}};
+  var s=document.createElement("script");s.src=GAS+"?"+q+"&token="+TOK+"&callback="+n;
+  s.onerror=function(){delete window[n];s.remove();cb({ok:false,err:"network"});};
+  document.body.appendChild(s);}
+function fidFromLink(v){var m=v.match(/\/d\/([a-zA-Z0-9_-]{20,})/)||v.match(/[?&]id=([a-zA-Z0-9_-]{20,})/);return m?m[1]:null;}
+var inp=document.getElementById("ref_ISDBUDGET202728PUBLICCONSULTATION_link");
+var box=document.getElementById("ref_ISDBUDGET202728PUBLICCONSULTATION_box"),stage=document.getElementById("ref_ISDBUDGET202728PUBLICCONSULTATION_stage");
+var fi=document.getElementById("ref_ISDBUDGET202728PUBLICCONSULTATION_file"),send=document.getElementById("ref_ISDBUDGET202728PUBLICCONSULTATION_send");
+var _staged=null,_busy=false;
+function showStaged(f){_staged=f;var isImg=(f.type||"").indexOf("image/")===0;
+  stage.innerHTML="<span class='stchip'>"+(isImg?"🖼":"📎")+" "+f.name.replace(/</g,"&lt;")+" <button class='ststrip'>✕</button></span>";
+  stage.querySelector(".ststrip").onclick=function(){_staged=null;stage.innerHTML="";};}
+document.getElementById("ref_ISDBUDGET202728PUBLICCONSULTATION_pick").onclick=function(){fi.click();};
+fi.onchange=function(){if(fi.files[0]){showStaged(fi.files[0]);fi.value="";}};
+["dragover","dragenter"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.add("hov");});});
+["dragleave","drop"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();box.classList.remove("hov");});});
+box.addEventListener("drop",function(e){var f=e.dataTransfer&&e.dataTransfer.files[0];if(f)showStaged(f);});
+inp.addEventListener("paste",function(ev){var fs=(ev.clipboardData&&ev.clipboardData.files)||[];if(fs.length){ev.preventDefault();showStaged(fs[0]);}});
+// 收到 file id（檔上載完）或原 link → 交畀各站自己嘅 complete handler
+function done(val,isFile){ var ip=document.getElementById('ref_ISDBUDGET202728PUBLICCONSULTATION_link');var desc=(ip&&ip.value||'').trim();if(window._clearDraft)window._clearDraft('ref_ISDBUDGET202728PUBLICCONSULTATION_link');if(isFile){var el=desc||'參考相';fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ISDBUDGET202728PUBLICCONSULTATION&concept='+encodeURIComponent(el)+'&stage=add_ref&engine='+encodeURIComponent(val)+'&target=main&cid=ACT_add_ref',{mode:'no-cors'}).catch(function(){});if(ip)ip.value='';say(desc?('✅ 已收參考相「'+el+'」（排最前＋嚴格比照）'):'✅ 收咗相；下次喺格仔寫埋係咩元素，AI 跟得準啲');}else if(/^https?:|drive\.google|docs\.google/.test(val)){fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ISDBUDGET202728PUBLICCONSULTATION&concept='+encodeURIComponent('參考連結')+'&stage=add_ref&engine='+encodeURIComponent(val)+'&target=main&cid=ACT_add_ref',{mode:'no-cors'}).catch(function(){});say('✅ 已收參考連結（排最前＋嚴格比照）');}else{var a=loadNotes();a.push({ts:Date.now(),text:val});saveNotes(a);renderNotes();fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=ISDBUDGET202728PUBLICCONSULTATION&text='+encodeURIComponent(val),{mode:'no-cors'}).catch(function(){});say('✅ 已加想法（'+a.length+'，累積餵委員會）');} }
+// 檔：initupload(folder)→browser 直 PUT 任何 size→CORS 讀唔到都 fallback→進度
+function up(f){_busy=true;send.disabled=true;say("開緊上載…（"+f.name+"）");
+  jsonp("action=initupload&origin="+encodeURIComponent(location.origin)+"&name="+encodeURIComponent(f.name)
+    +"&size="+f.size+"&mime="+encodeURIComponent(f.type||"image/jpeg")+"&folder="+encodeURIComponent(FOLDER),function(o){
+    if(!o.ok){_busy=false;send.disabled=false;say("⚠️ 開唔到上載："+(o.err||"")+"（可改貼 Drive 連結）");return;}
+    var x=new XMLHttpRequest();x.open("PUT",o.uri);
+    x.upload.onprogress=function(ev){if(ev.lengthComputable)say("⬆️ 上載中 "+Math.round(ev.loaded/ev.total*100)+"%（"+f.name+"）");};
+    x.onload=function(){_busy=false;send.disabled=false;
+      if(x.status>=300){say("⚠️ 上載 fail HTTP "+x.status);return;}
+      var fid="";try{fid=JSON.parse(x.responseText).id||"";}catch(_){}
+      if(!fid){say("⚠️ 上載咗但攞唔到 file id（可改貼 Drive 連結）");return;}
+      stage.innerHTML="";say("✅ 上載完成");done(fid,true);};
+    x.onerror=function(){_busy=false;send.disabled=false;say("⚠️ 上載出錯（network）。可改貼 Drive 連結");};
+    x.send(f);});}
+function submit(){if(_busy){say("處理緊…");return;}
+  var f=_staged;var v=inp.value.trim();
+  if(f){_staged=null;stage.innerHTML="";up(f);return;}
+  if(!v){say("⚠️ 未貼 link／未揀檔");return;}
+  inp.value="";done(v,false);}   // 貼 link → 直接交（後端 add_manual_ref 認 link/Drive id/URL）
+send.onclick=submit;
+inp.addEventListener("keydown",function(ev){if(ev.key==="Enter"&&!ev.shiftKey){ev.preventDefault();submit();}});
+})();</script>
+<div id='noteslist' class='noteslist'></div></div><details class='soft' open><summary>📸 Visual 素材（43 個：LOGO 2、視覺參考 28、新聞配圖 8、宣傳片 5）</summary><p class='hint'>搵到嘅 LOGO／海報／單張／宣傳片／真實參考相，每個有原網址。<b>剔相後揀：⭐首選＝呢張參考優先過其他；🔁重搜＝搵過好啲（e.g. logo 污糟）；🗑刪除＝搵錯即清。</b></p><div class='vacarou'><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='LOGO_slot1.png'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/logos/slot1.png' loading=lazy></div><div class='vacat'>LOGO</div><div class='vaname'>財政司司長辦公室</div><div><span class='vasrc' style='color:#bbb'>（無網址）</span></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='LOGO_slot3.png'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/logos/slot3.png' loading=lazy></div><div class='vacat'>LOGO</div><div class='vaname'>政府新聞處</div><div><span class='vasrc' style='color:#bbb'>（無網址）</span></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_財政司司長辦公室_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_財政司司長辦公室_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>財政司司長辦公室</div><div><a href='https://www.info.gov.hk/gia/general/202509/29/P2025092900828.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_財政司司長辦公室_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_財政司司長辦公室_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>財政司司長辦公室</div><div><a href='https://www.fso.gov.hk/chi/role.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_財政司司長辦公室_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_財政司司長辦公室_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>財政司司長辦公室</div><div><a href='https://www.fso.gov.hk/chi/blog/blog20250302.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_政府新聞處記者會背景板_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_政府新聞處記者會背景板_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>政府新聞處記者會背景板</div><div><a href='https://www.hk01.com/%E6%94%BF%E6%83%85/676633/%E6%9E%97%E9%84%AD%E8%A8%98%E8%80%85%E6%9C%83%E8%83%8C%E6%99%AF%E6%89%93%E9%8C%AF%E5%9C%8B%E5%AE%B6%E5%90%8D-%E5%85%AC%E5%8B%99%E5%93%A1%E5%B0%8D%E5%9C%8B%E5%AE%B6%E6%A0%B9%E6%9C%AC%E8%AA%8D%E7%9F%A5%E5%BE%85%E6%94%B9%E5%96%84' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_政府新聞處記者會背景板_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_政府新聞處記者會背景板_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>政府新聞處記者會背景板</div><div><a href='https://ebook.hkcd.com.hk/MB/content/202401/19/content_3169110.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_政府新聞處記者會背景板_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_政府新聞處記者會背景板_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>政府新聞處記者會背景板</div><div><a href='https://pulsehknews.com/tse_20260504/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_市民在街頭接受訪問_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_市民在街頭接受訪問_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>市民在街頭接受訪問</div><div><a href='https://www.youtube.com/watch?v=lM-LtH98FvA' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_社區會堂諮詢會場景_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_社區會堂諮詢會場景_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>社區會堂諮詢會場景</div><div><a href='https://zh.mediaflowstudiohk.com/post/hongkong-community-hall-activities' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_社區會堂諮詢會場景_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_社區會堂諮詢會場景_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>社區會堂諮詢會場景</div><div><a href='https://www.had.gov.hk/tc/18_districts/my_map_09_highlights.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_社區會堂諮詢會場景_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_社區會堂諮詢會場景_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>社區會堂諮詢會場景</div><div><a href='https://www.paradise.com.hk/%E8%BF%BD%E6%80%9D%E6%9C%83' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_政府官方網站截圖_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_政府官方網站截圖_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>政府官方網站截圖</div><div><a href='https://global.hk01.com/%E7%A4%BE%E4%BC%9A%E6%96%B0%E9%97%BB/60367992/%E6%8E%88%E5%8B%8B-%E8%A1%8C%E6%94%BF%E7%BD%B2%E5%90%81%E7%95%99%E6%84%8F%E4%BC%AA%E5%86%92%E6%94%BF%E5%BA%9C%E6%8E%88%E5%8B%8B%E5%8F%8A%E5%98%89%E5%A5%96%E7%BD%91%E7%AB%99-%E4%BC%81%E5%9B%BE%E9%AA%97%E4%B8%AA%E4%BA%BA%E8%B5%84%E6%96%99' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_政府官方網站截圖_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_政府官方網站截圖_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>政府官方網站截圖</div><div><a href='https://www.digitalpolicy.gov.hk/tc/our_work/data_governance/common_data_platforms/govhk/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_政府官方網站截圖_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_政府官方網站截圖_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>政府官方網站截圖</div><div><a href='https://www.sohu.com/a/494471922_115479' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_財政預算案文件封面_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_財政預算案文件封面_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>財政預算案文件封面</div><div><a href='https://inews.hket.com/article/4087309/%E8%B2%A1%E6%94%BF%E9%A0%90%E7%AE%97%E6%A1%882026%EF%BD%9C%E9%99%B3%E8%8C%82%E6%B3%A2%EF%BC%9A%E7%B4%AB%E8%89%B2%E5%B0%81%E9%9D%A2%E5%AF%93%E6%84%8F%E9%A6%99%E6%B8%AF%E7%B6%93%E6%BF%9F%E5%8B%95%E5%8A%9B%E4%B8%8D%E6%96%B7%E5%A2%9E%E5%BC%B7' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_財政預算案文件封面_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_財政預算案文件封面_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>財政預算案文件封面</div><div><a href='https://www.fso.gov.hk/chi/blog/blog20240225.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_財政預算案文件封面_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_財政預算案文件封面_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>財政預算案文件封面</div><div><a href='https://news.hket.com/article/3904848/%E8%B2%A1%E6%94%BF%E9%A0%90%E7%AE%97%E6%A1%882025%EF%BD%9C%E9%A0%90%E7%AE%97%E6%A1%88%E4%BB%A5%E6%B9%96%E6%B0%B4%E8%97%8D%E7%82%BA%E5%B0%81%E9%9D%A2%E9%A1%8F%E8%89%B2%E3%80%80%E9%99%B3%E8%8C%82%E6%B3%A2%EF%BC%9A%E4%BB%A3%E8%A1%A8%E6%9C%AA%E4%BE%86%E7%99%BC%E5%B1%95%E5%A4%A7%E6%BD%AE%E4%B8%AD%E8%98%8A%E8%97%8F%E7%84%A1%E9%99%90%E6%A9%9F%E9%81%87' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_政府部門辦公室內部_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_政府部門辦公室內部_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>政府部門辦公室內部</div><div><a href='https://www.archsd.gov.hk/media/reports/past-sustainability-reports/report2019/tc/renovation_project_for_central_government_offices.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_政府部門辦公室內部_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_政府部門辦公室內部_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>政府部門辦公室內部</div><div><a href='https://www.gooood.cn/hksar-government-headquarters.htm' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_政府部門辦公室內部_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_政府部門辦公室內部_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>政府部門辦公室內部</div><div><a href='https://www.archsd.gov.hk/media/reports/past-sustainability-reports/report2019/tc/renovation_project_for_central_government_offices.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_立法會會議廳_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_立法會會議廳_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>立法會會議廳</div><div><a href='https://www.legco.gov.hk/tc/photogallery/slider.html?album=Photo&amp;category=328' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_立法會會議廳_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_立法會會議廳_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>立法會會議廳</div><div><a href='https://www.legco.gov.hk/tc/about-legco/facilities-of-the-complex.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_立法會會議廳_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_立法會會議廳_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>立法會會議廳</div><div><a href='https://www.legco.gov.hk/tc/about-legco/facilities-of-the-complex.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港市民日常生活場景_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_香港市民日常生活場景_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港市民日常生活場景</div><div><a href='https://journey.tw/meet-hongkong/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港市民日常生活場景_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_香港市民日常生活場景_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港市民日常生活場景</div><div><a href='https://www.instagram.com/p/CCYRiX1jQEM/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_香港市民日常生活場景_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_香港市民日常生活場景_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>香港市民日常生活場景</div><div><a href='https://www.instagram.com/reel/DWER1ZcEdfe/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_政府官員發言時的麥克風_0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_政府官員發言時的麥克風_0.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>政府官員發言時的麥克風</div><div><a href='https://news.ifeng.com/c/8kGGjHElwEq' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_政府官員發言時的麥克風_1.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_政府官員發言時的麥克風_1.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>政府官員發言時的麥克風</div><div><a href='https://www.hkbrand.org/sc/menu/192/event-record/22/1/details/422' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='EL_el_政府官員發言時的麥克風_2.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/el_政府官員發言時的麥克風_2.jpg' loading=lazy></div><div class='vacat'>視覺參考</div><div class='vaname'>政府官員發言時的麥克風</div><div><a href='https://www.tkww.hk/epaper/view/newsDetail/1941913432236363776.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_3944c7c8.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/news_3944c7c8.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>五年規劃公眾諮詢/聚焦六大民生議題提</div><div><a href='https://epaper.tkww.hk/a/202606/16/AP6a30607de4b04773b07057e1.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_45a31262.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/news_45a31262.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>香港政府新聞網- 財政預算案2月25</div><div><a href='https://www.news.gov.hk/chi/2026/01/20260111/20260111_113244_808.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_3bb28967.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/news_3bb28967.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>公共財政</div><div><a href='https://www.budget.gov.hk/2026/chi/pf.html' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_4ac379b0.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/news_4ac379b0.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>財政預算案2026懶人包丨寬減差餉/</div><div><a href='https://www.edigest.hk/%E6%94%BF%E5%BA%9C%E6%94%BF%E7%AD%96/%E9%A0%90%E7%AE%97%E6%A1%882026-%E8%B2%A1%E6%94%BF%E9%A0%90%E7%AE%97%E6%A1%882026%E6%87%B6%E4%BA%BA%E5%8C%85-%E9%99%B3%E8%8C%82%E6%B3%A2-%E6%B4%BE%E7%B3%96-%E4%B8%AD%E7%94%A2-%E7%A6%8F%E5%88%A9-ed01-1983181/' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_4012a7bc.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/news_4012a7bc.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>財政預算案．不斷更新｜財政司司長陳茂</div><div><a href='https://news.now.com/home/local/player?newsId=637825' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_de1c9196.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/news_de1c9196.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>財政預算案2026懶人包｜稅務寬減項</div><div><a href='https://news.hket.com/article/4079657/%E8%B2%A1%E6%94%BF%E9%A0%90%E7%AE%97%E6%A1%882026%E6%87%B6%E4%BA%BA%E5%8C%85%EF%BD%9C%E7%A8%85%E5%8B%99%E5%AF%AC%E6%B8%9B%E9%A0%85%E7%9B%AE%E6%8F%AD%E7%9B%85%E3%80%80%E8%96%AA%E4%BF%B8%E7%A8%85%E3%80%81%E5%88%A9%E5%BE%97%E7%A8%85%E3%80%81%E5%B7%AE%E9%A4%89%E9%83%BD%E6%9C%89%E5%AF%AC%E6%B8%9B' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_16b72de5.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/news_16b72de5.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>大棋盤︱財政「由虧轉盈」 公務員再凍</div><div><a href='https://www.stheadline.com/politics/3529665/%E5%A4%A7%E6%A3%8B%E7%9B%A4%E8%B2%A1%E6%94%BF%E7%94%B1%E8%99%A7%E8%BD%89%E7%9B%88-%E5%85%AC%E5%8B%99%E5%93%A1%E5%86%8D%E5%87%8D%E8%96%AA%E6%9C%89%E9%9B%A3%E5%BA%A6-%E5%B7%A5%E6%9C%83%E8%BF%91%E5%B9%B4%E9%80%9A%E5%9D%91%E6%B8%A0%E9%8F%9F%E6%B3%A5%E4%B9%9C%E9%83%BD%E8%A6%81%E5%81%9A' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='NEWS_news_986154d8.jpg'> 剔</label><div class='vathumb'><img src='assets/refs/ISDBUDGET202728PUBLICCONSULTATION/grounding/news_986154d8.jpg' loading=lazy></div><div class='vacat'>新聞配圖</div><div class='vaname'>財政預算案2026｜來年賣地表包括9</div><div><a href='https://www.hkej.com/instantnews/hongkong/article/4325442/%E8%B2%A1%E6%94%BF%E9%A0%90%E7%AE%97%E6%A1%882026%EF%BD%9C%E4%BE%86%E5%B9%B4%E8%B3%A3%E5%9C%B0%E8%A1%A8%E5%8C%85%E6%8B%AC9%E5%B9%85%E4%BD%8F%E5%AE%85%E7%94%A8%E5%9C%B0' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_46426120'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-8Wai_rDoTrpEKoRlWKnKdT3_V5L3szmLie7CwG6VE56vyDc0CQQp7Q&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>[政府宣傳片](2025)2026-</div><div><a href='https://www.youtube.com/watch?v=6LVKg5s7vdM' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_25290976'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRGpZ-OltdwyIOdXk_R8edWzHSS80ySyjGe48Qw8e8sw-EciQT2eXlmA&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>WATCH NOW: Hong Ko</div><div><a href='https://www.youtube.com/watch?v=rMCx8FmnEPY' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_84244195'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqxu0pV90RtHRIX_w9faplCBzLwHQ8RUz--eDxTWjqNyRa3_GrJ9nFdQ&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>2026-27 Budget Pub</div><div><a href='https://www.youtube.com/watch?v=TmFp482jLMI' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_92180491'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8HuEEkyfhcaHCIh_ff53GJkS1CdTrkGTtq56VcadnuLgvKovybeo_ng&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>2026-27 財政預算案公眾諮詢</div><div><a href='https://www.youtube.com/watch?v=p0dZBxSSzj8' target=_blank class='vasrc'>原網址 ↗</a></div></div><div class='vacard surface-card pad-sm'><label class='vatick'><input type='checkbox' class='vchk' value='VID_35916946'> 剔</label><div class='vathumb'><img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYnohH8x_FhJD-nK5XD3_PlpF-ugLB8mmCo4b4stiV_412jpyMS_5gRw&amp;s' loading=lazy></div><div class='vacat'>宣傳片</div><div class='vaname'>September 28, 2026</div><div><a href='https://www.youtube.com/watch?v=V10l1qzQUXo' target=_blank class='vasrc'>原網址 ↗</a></div></div></div><div class='acts vaacts' style='margin-top:8px'><button class='btn grn' onclick="preferAssets('ISDBUDGET202728PUBLICCONSULTATION')">⭐ 設首選</button><button class='btn ghost vbtn' onclick="researchAssets('ISDBUDGET202728PUBLICCONSULTATION')">🔁 重搜</button><button class='btn' style='background:var(--red)' onclick="delAssets('ISDBUDGET202728PUBLICCONSULTATION')">🗑 刪除選取</button></div></details><div class='h2 tierh'>🎯 必定餵 AI（諗橋一定收）</div><p class='hint tierhint'>委員會／agency 諗橋一定收呢批做底，必跟。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📋 標書撮要</span><span class='rawlink' onclick="showOvl('raw_ISDBUDGET202728PUBLICCONSULTATION')">📄 標書原文</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><h5>1. 背景同目的</h5>
+<p>* <strong>項目背景</strong>：財政司司長辦公室（FSO）在政府新聞處（ISD）的協助下，將推出主題為「2027-28 財政預算案公眾諮詢」的電視及電台宣傳短片（API）[Invitation Letter p. 1; Part VII p. 65]。</p>
+<p>* <strong>項目目的</strong>：提高廣大公眾對「2027-28 財政預算案公眾諮詢」正在進行的關注與認識，並邀請市民踴躍發表意見 [Part VII p. 65]。</p>
+<h5>2. 目標受眾</h5>
+<p>* <strong>目標受眾</strong>：香港廣大市民（The general public）[Invitation Letter p. 1; Part VII p. 65]。</p>
+<h5>3. 傳意目標／核心訊息</h5>
+<p>* <strong>核心訊息</strong>：介紹並邀請廣大市民就 2027-28 財政預算案積極發表意見 [Part VII p. 65]。</p>
+<h5>4. 影片／製作規格（集數、每集長度、語言、字幕、配音）</h5>
+<p>* <strong>電視宣傳短片（TV API）</strong>：</p>
+<p>  * <strong>集數／版本</strong>：1 個版本 [Part VII p. 65]。</p>
+<p>  * <strong>長度</strong>：每集 30 秒 [Part VII p. 65]。</p>
+<p>  * <strong>拍攝格式</strong>：首選 HDCAM、RED ONE 或同等高清格式；視乎創意，可考慮高清錄影（HDV）或靜態攝影 [Part VII p. 65; Annex I p. 71]。</p>
+<p>  * <strong>輸出格式</strong>：(1) 檔案格式：16:9 (HD) XDCAM HD422 @ 50Mbps MXF；(2) 錄影帶格式：16:9 (HD) HDCAM [Part VII p. 65-66; Annex I p. 71]。</p>
+<p>  * <strong>語言及字幕</strong>：廣東話（配繁體中文書面語字幕）及英文（配英文字幕）[Part VII p. 65-66; Annex I p. 71]。</p>
+<p>  * <strong>配音要求</strong>：須提供粵語及英語配音員進行對話／旁白 [Part VII p. 67]。若因發音不準被電視台退件並經公務員事務局法定語言事務部核實，承辦商須免費重新錄音及交付替代版本 [Part VII p. 67]。</p>
+<p>  * <strong>手語翻譯</strong>：須加入香港手語翻譯（粵語及英語版本）。手語譯員須由承辦商與 ISD 商定，並選自香港復康聯會的「香港手語譯員名單」[Part VII p. 66, p. 67-68]。手語視窗規格：橢圓形、佔螢幕 1/6、位於右下角、淺灰或粉藍色無反射背景、譯員須穿深色／黑色衣服，手語表達須盡量與字幕同步 [Part VII p. 67-68]。</p>
+<p>  * <strong>無障礙版本</strong>：須另外提供符合 W3C WCAG 2.1 Level AA 標準的高解析度 WMV 及 MPEG-4 格式版本用於網上發布 [Part VII p. 66; Annex I p. 72]。</p>
+<p>* <strong>電台宣傳短片（Radio API）</strong>：</p>
+<p>  * <strong>集數／版本</strong>：1 個版本 [Part VII p. 66]。</p>
+<p>  * <strong>長度</strong>：每集 30 秒 [Part VII p. 66]。</p>
+<p>  * <strong>語言</strong>：廣東話、英文（獨白形式 monologue-type）及普通話 [Part VII p. 66, p. 69]。</p>
+<p>  * <strong>配音及格式</strong>：普通話配音員宜在國家普通話水平測試中達到至少一級乙等 [Part VII p. 67, p. 69]。音訊檔案須提供 WAV（48kHz/16bit/2ch stereo）及 MP3 格式 [Annex II p. 76]。</p>
+<p>* <strong>宣傳主視覺（Visual Icon / Key Visuals）</strong>：</p>
+<p>  * <strong>格式</strong>：提供 AI, JPEG, PDF 及 HTML 格式軟複本 [Part VII p. 66]。</p>
+<p>  * <strong>視覺規格</strong>：採用結合照片與圖形的插畫，與 TV API 創意相互呼應（參考過往例子：2025-26 預算案的樹木與機器人、2026-27 預算案的相機與相框）[Part VII p. 65, p. 66]。</p>
+<h5>5. 指定班底（導師／KOL／吉祥物等，逐個講要求）</h5>
+<p>* <strong>手語譯員（Sign Language Interpreter）</strong>：須從香港復康聯會維護之「香港手語譯員名單」中選定；錄影時穿深色／黑色衣服；須於 TV API 最終剪輯（Final cut）階段檢查手語翻譯的準確性 [Part VII p. 66, p. 67-68]。</p>
+<p>* <strong>配音員（Voice-over Talents）</strong>：包含 TV API 廣東話及英文配音員，以及 Radio API 廣東話、英文及普通話配音員（普通話配音員宜達國家普通話水平測試一級乙等）[Part VII p. 67, p. 69]。</p>
+<p>* <strong>名人／明星（Celebrities / Talents，如有）</strong>：若創意包含名人／明星參演，承辦商須負責聯絡、辦理演藝權益清理（確保可於全球及所有媒體永久播放），並承擔其髮型、化妝、服裝、道具及交通費用；名人的選擇須獲得政府同意 [Part VII p. 68-69]。</p>
+<h5>6. 創意及策略重點／風格要求</h5>
+<p>* <strong>原創性要求</strong>：創意概念、劇本、標語、故事板及視覺素材須為原創，未曾被其他機構購買，獲委任後亦不可轉售 [Part VII p. 67]。</p>
+<p>* <strong>配樂</strong>：首選量身訂造／後配音樂（tailor-made / post-scored music），承辦商須自費完成全球及永久播映權清理 [Part VII p. 66, p. 68]。</p>
+<p>* <strong>主視覺（Visual Icon）風格</strong>：須採用具吸引力的插畫結合照片及圖形，風格須與 TV API 保持一致 [Part VII p. 65, p. 66]。</p>
+<p>* <strong>評分準則重點</strong>：技術評估佔總分 70%，評分標準包括：訊息準確與清晰度（30%）、訊息傳達創意（15%）、宣傳推廣衝擊力（15%）、記憶度（10%）、共鳴／說服力（10%），以及創新與 ESG 建議（20%，含直接相關的 Pro-innovation 建議 15% 及 ESG 建議 5%）[Annex III p. 78, p. 82]。</p>
+<h5>8. 任何強制要求或紅線</h5>
+<p>* <strong>預算上限紅線</strong>：本項目預算上限為<strong>港幣 550,000 元（HK\$550,000）</strong>，報價超過此金額者將不予考慮（Disqualified）[Invitation Letter p. 1; Part VII p. 69]。</p>
+<p>* <strong>雙信封與封套規範</strong>：技術建議書（Technical Proposal）與費用建議書（Fee Proposal）須分開於兩個獨立密封且無公司識別標記的信封內，各提交一式兩份（即共 4 個信封），於 2026 年 10 月 20 日中午 12:00 前送達指定地點 [Invitation Letter p. 1; Part III p. 11; Part IV p. 29]。信封表面嚴禁出現任何可辨識投標公司身分的字樣或標記 [Part III p. 11; Part IV p. 29]。</p>
+<p>* <strong>必要的交標文件</strong>：必須包含簽署好的 Offer to be Bound (Schedule D)、價格建議 (Schedule A)、TV API 故事板草稿（含中英文描述）及 Radio API 三語劇本草稿，否則標書不獲考慮 [Part IV p. 30; Annex III p. 78]。</p>
+<p>* <strong>全球及永久版權</strong>：所有產出物（包括 API 成品、故事板、劇本、設計、拍攝素材及剩餘剪輯）之全球及永久版權（Worldwide and perpetual copyright）均歸香港特別行政區政府所有 [Invitation Letter p. 1; Part VII p. 66, p. 68-69; Annex V p. 88]。</p>
+<p>* <strong>音樂版權清理</strong>：承辦商須自費辦理所有音樂版權許可（包括 CASH、IFPI、HKRIA 等），並於製作完成後提交填妥之「Information on Music Copyright Form」(Annex IV) 始可安排付款 [Part VII p. 68, p. 69; Annex IV p. 87; Annex V p. 88]。</p>
+<p>* <strong>保險保障</strong>：承辦商須投保不少於<strong>港幣 10,000,000 元（HK\$10,000,000）</strong>的保險，以保障製作團隊、器材、演員（含名人）及公眾安全 [Annex V p. 89]。</p>
+<p>* <strong>性別主流化（Gender Mainstreaming）</strong>：所有提交作品須進行審查，確保無性別偏見或不平等內容 [Annex V p. 89]。</p>
+<p>* <strong>誠信條款與防串通</strong>：必須提交 Non-collusive Quotation Certificate (Schedule E)，嚴禁圍標或串通；獲委任後須於合約生效兩週內提交員工誠信守則（Code of Conduct）[Part III p. 19; Part V p. 51; Schedule E p. 94-96]。</p>
+<p>💡 需唔需要我進一步幫你整理交標 Checklist 或者開工 Timeline 安排？</p><div id='raw_ISDBUDGET202728PUBLICCONSULTATION' class='ovl'><div class='ovlbox'><div class='ovlhd'><span>📄 標書原文（逐字）</span><button class='x' onclick="hideOvl('raw_ISDBUDGET202728PUBLICCONSULTATION')">✕</button></div><div class='ovlbody'><p class='hint'>fetch_source（pypdf）抽嘅標書逐字原文 —— 委員會／agency／debrief／5W1H 都餵呢份做 ground-truth。　·　<a href='https://drive.google.com/drive/folders/1ZSUV0OZzSl1Ke7lrxleWcMQUfiXbuY32' target='_blank' style='font-weight:700;color:var(--ac)'>📄 開原始檔 ↗</a></p><pre style='white-space:pre-wrap;font-size:11px;line-height:1.5;background:#fafbfc;border:1px solid var(--line);border-radius:8px;padding:9px;color:#333;margin:0'>===== Invitation letter_OCR.pdf(Specification 原件)=====
+[p1]
+b i e e The Government of the Hong Kong 
+香 港 特 别 行 政 区 Special Administrative Region 
+政 府 新 聞 處 Information Services Department 
+Video Production Team / Creative Sub-division, Room 216, 2/F., Harbour Building, 38 Pier Road, Central, HK 
+Tel: 2842 8787 Fax: 2697 7651 
+29 September 2026 
+Our Ref: ISD/Film/26011 
+Dear Sir / Madam, 
+TV and Radio APIs for 2027-28 Budget Public Consultation 
+The Financial Secretary’s Office (FSO), with support from the Information 
+Services Department (ISD), will launch a TV and a corresponding radio Announcement in 
+the Public Interest (API﹚ on the theme of ‘2027-28 Budget Public Consultation’ to invite 
+the general public to give their views on the upcoming Budget. | am writing to invite 
+you to participate in our selection exercise to appoint a service provider to undertake this 
+project. 
+Enclosed please find a project brief outlining the background, key messages, 
+target audience, and scope of work for the appointed service provider. 
+The estimated budget for the project is HK$550,000. Quotations exceeding 
+this amount will not be considered. Station copies of the APIs must be delivered by 
+10 December 2026, unless otherwise advised by the ISD. The Government will provide 
+necessary support and assistance for filming where required. 
+If you are interested in joining the pitch, please complete and return the 
+enclosed reply slip by 5:00 pm on 2 October 2026. 
+A briefing session for interested bidders will be conducted by the ISD via Zoom 
+at 10:00 am on 6 October 2026. The session, conducted in Cantonese, will cover our 
+expectations and requirements in detail. 
+Participating service providers will be required to submit both a technical 
+proposal and a fee proposal to the ISD. Depending on whether shortlisting is conducted, 
+shortlisted service providers (or all service providers if no shortlisting is done) will be 
+invited to present their creative ideas to a selection committee comprising 
+representatives from the FSO and the ISD. 
+[1]
+[p2]
+Key dates 
+s Submission of technical and fee proposals: By 12:00 noon on 20 October 2026 
+e  Presentation session: 23 October 2026 (Exact time and venue to be confirmed) 
+Submission Guidelines 
+e  Submit your technical proposal and fee proposal IN _DUPLICATE, in plain and 
+individually sealed envelopes (i.e., FOUR envelopes in total), addressed to: 
+Mr Ken MOK 
+Creative Sub-division, ISD 
+Room 1115, 11/F, North Point Government Office 
+333 Java Road, North Point, Hong Kong 
+e Include soft and hard copies of the storyboard (with draft scripts and visual 
+description) in both Chinese and English, and the radio script in Word format. 
+e  Clearly mark each envelope with: 
+“Quotation Ref. No. ISD/Film/26011: Quotation for Production of TV and 
+Radio APIs for 2027-28 Budget Public Consultation ﹣ Technical Proposal or 
+Fee Proposal (as appropriate)” 
+e Do not include any company-identifying marks on the envelope surface. 
+e  Provide a breakdown of service fees and production costs of the publicity items in 
+the quotation. 
+e Specify the proposed shooting format for the TV API. 
+e Late submissions will NOT be considered. 
+Creative ideas and presentations must be submitted free of charge to the Hong 
+Kong SAR Government. All submitted proposals will not be returned after the 
+presentation. 
+Assessment will be based on creativity, clarity, impact, recall, resonance, and 
+innovative suggestions (70%), as well as the proposed fees (30%). Global and perpetual 
+copyright of the produced APIs, including the selected storyboard, scripts and designs, 
+will belong to the Government. 
+The ISD is not obliged to accept the lowest quotation or any quotation, and 
+reserves the right to cancel the quotation exercise without providing reasons. 
+The contract is expected to be awarded on 30 October 2026, with production to 
+commence thereafter.
+
+===== Quotation document for Budget 2027-28 Public Consultation.pdf(Specification 原件)=====
+[p65]
+Ref no: ISD/Film/26011 
+ 
+65 
+ 
+PART VII – SERVICE SPECIFICATIONS 
+ 
+Purpose 
+ 
+1. This brief explains the background and objectives of the production of one set of TV API 
+and corresponding radio API  on the theme of “2027-28 Budget Public Consultation ” to 
+invite the general public to give their views on 2027 -28 Budget .  The scope of work 
+expected of the service provider is also explained.  In brief, service providers are invited 
+to: 
+ 
+• Create and produce a 30-second TV API;  
+• Create and produce a corresponding 30-second radio API; and 
+• Create and produce creative key visuals corresponding with the TV API, such as the tree 
+and robot in the 2025-26 Budget (https://www.budget.gov.hk/2025/eng/index.html), and the 
+camera and photo frame in the 2026 -27 Budget 
+(https://www.budget.gov.hk/2026/eng/index.html). 
+ 
+Target Audience 
+ 
+2. The general public  
+ 
+Objectives 
+ 
+3. The APIs are to enhance public awareness that the 2027-28 Budget public consultation is 
+in progress and all are welcome to express their views. 
+ 
+Key Messages 
+ 
+4. The APIs shall introduce the invitation to general public to express their views on 2 027-
+28 Budget. 
+ 
+Completion Date 
+ 
+5. The TV and radio APIs should be completed by 7 December 2026 (Monday)  and 
+delivered to TV and radio stations by 10 December 2026 (Thursday) or another date to 
+be specified by the ISD. 
+ 
+Deliverables 
+ 
+6. TV API 
+ 
+i. One version only. 
+ii. Shooting format: HDCAM, RED ONE or equivalent is preferred. High-definition 
+Video (HDV) formats and still camera shooting may be considered depending on 
+the creative. 
+iii. Output: (1) File-based format: 16:9 (HD) in XDCAM HD422 at 50Mbps in MXF 
+(2) Video-tape format: 16:9 (HD) in HD CAM 
+iv. Duration: 30 seconds each 
+v. Language: Cantonese (with written Traditional Chinese subtitles 繁體中文書面
+[p66]
+Ref no: ISD/Film/26011 
+ 
+66 
+ 
+語) and English (with English subtitles)  
+vi. Sign language interpretation is required to be added to the TV API in both language 
+versions. The sign language interpreter should be arranged by the contractor in 
+agreement with the ISD from the “List of Sign Language Interpreters in Hong 
+Kong” maintained by the Hong Kong Joint Council for People with Disabilities. 
+The list contains information on experienced sign language interpreters including 
+their professional qualification and work experience, and can be accessed at the 
+following website: https://bit.ly/3zmSx2Y; 
+vii. Background music: tailor-made / post-scored music is preferred;  
+viii. Provision of soft and hard copies of the storyboard (together with draft scripts and 
+description of visuals in both English and Chinese);  
+ix. Soft and hard copies of the scripts;  
+x. Soft and hard copies of the storyboard (together with draft scripts and description 
+of visuals in both Chinese and English)  
+xi. Twelve still pictures from the footage of the completed TV API in JPEG format for 
+each language version; 
+xii. Essential information in the visuals of the TV API, such as website address, 
+telephone number or e-mail address, is required to be accompanied by voice-over 
+script as appropriate;  
+xiii. One clean master copy (in HD CAM and MXF file format for each language 
+version of the TV API) containing all the footage shots, animation and editing 
+leftover produced in the performance of the production of the TV API to ISD. The 
+footage with talents’ synced sound narrations / conversations shall be stored 
+separately from animation, background music, voice-over, graphic, etc. (if 
+applicable); 
+xiv. Contractor shall provide another version for each language version of the TV API 
+which shall conform to the World Wide Web Consortium (W3C) Web Content 
+Accessibility Guidelines (WCAG) 2.1 Level AA standard (W3C version) for 
+posting on the Internet. For details, please visit the websites: 
+http://www.webforall.gov.hk and 
+http://www.w3.org/WAI/WCAG21/quickref/#media-equiv; and 
+xv. Copies required: Please refer to Annex I 
+ 
+7. Radio API 
+ 
+i. One version only 
+ii. Duration: 30 seconds 
+iii. Language: Cantonese, English and Putonghua 
+iv. Soft and hard copies of the scripts 
+v. Copies required: Please refer to Annex II 
+ 
+8. Visual Icon 
+ 
+i. The Contractor is required to provide soft copies of the finished artwork in AI, 
+JPEG, PDF and HTML formats 
+ii. Special requirements: 
+• The key visual shall use illustrations with photos and graphics that can attract 
+the public 
+• The Contractor is responsible for the clearance of copyright issues with relevant 
+persons/organisations for any photos or materials used and absorb the cost
+[p67]
+Ref no: ISD/Film/26011 
+ 
+67 
+ 
+incurred, if any 
+• The ownership, copyright and all other intellectual property rights of all 
+deliverables belong to ISD 
+ 
+Services Required 
+ 
+9. The Contractor is required to provide the following services, materials and 
+professionals for the production of the TV and radio APIs: 
+ 
+i. Creative and copywriting services/materials for providing the creative concept, 
+scripts, slogans, storyboards, subtitles and graphic and photographic 
+images/materials; The creative services/materials should be the contractor&#x27;s 
+original idea and must not have been purchased by other parties beforehand. 
+If the contractor’s creative services/materials are accepted in this quotation 
+exercise, the awarded contractor should not re-sell the idea to other parties. 
+ 
+ii. Full crew and equipment for location shooting both outdoor and indoor in Hong 
+Kong (including transportation  and all other costs. The contractor shall also be 
+responsible for applying all the permits required for shooting, if applicable, and 
+cover any costs incurred from the location filming); 
+ 
+iii. Aerial shooting when and if suitable; 
+ 
+iv. Off-line and on-line editing; 
+ 
+v. All footage and photography (inclusive those to be produced and adapted from 
+sources available) and artwork necessary for the production of the TV API; 
+ 
+vi. Cantonese and English voice-over talents for the conversations/narrations for the 
+TV API;  
+ 
+vii. Cantonese, English* and Putonghua** voice-over talents for the radio API; 
+ 
+viii. In the event that any language version of the recording of the TV or radio  API is 
+rejected for broadcast/found unsatisfactory (for example, by TV or radio stations) 
+due to inaccurate or improper pronunciation after the station copies have been 
+delivered and the inaccuracy/deficiency has been confirmed/vetted by the Official 
+Languages Division of  the Civil Service  Bureau, the  Contractor is required to 
+arrange another recording of the same language of the API to rectify the 
+inaccuracy/deficiency, and deliver the approved version to TV or radio stations for 
+replacement at no cost to the Government; 
+ 
+ix. Sign language interpretation: Inclusion of sign language interpretation (手語翻譯 
+– 香港手語) for the TV APIs in both the Cantonese and English versions. The 
+requirements regarding the window showing the sign language interpretation on 
+screen are listed below: 
+ 
+- Shape: Oval-shaped; 
+- Size: One-sixth of the size of the screen for showing full version of the 
+signs;
+[p68]
+Ref no: ISD/Film/26011 
+ 
+68 
+ 
+- Background: Non-reflective plain backdrop, preferably in light grey or 
+powder blue colour; 
+- Position: Normally at lower right-hand corner of the screen and in the same 
+position throughout the API; 
+- Sign language interpreters are advised to wear dark clothes, preferably 
+black colour; 
+- Presentation of the sign language should synchronise with the subtitling as far 
+as possible; 
+ 
+The sign language interpreter is required to check the accuracy of the sign 
+language interpretation in the final cut of the TV API. 
+ 
+x. The Contractor shall be responsible for musical arrangement of the APIs ( tailor- 
+made / post-scored music is preferred), clearance of all copyright issues and obtain 
+necessary licences at its own cost and expense for broadcasting anywhere within 
+and outside Hong Kong, any occasion and any usage using any media, including, 
+but not limited to, radio channels, TV, video walls, the Internet and multi -media 
+advertisements on public transport, and at seminars, exhibitions and other public 
+functions/activities, and for production of VCDs/DVDs/CD -ROMs and other 
+publicity materials by the Government for non-profit making purpose; 
+ 
+xi. Worldwide and perpetual copyright of the APIs, VCDs/DVDs/CD -ROMs and 
+other publicity materials produced shall belong to the Government; 
+ 
+xii. Audio recording and sound mixing; 
+ 
+xiii. All post-production services; 
+ 
+xiv. Subtitles in written Traditional Chinese subtitles  ( 繁 體 中 文 書 面 語) for the 
+Cantonese version and in English for the English version for the TV API; 
+ 
+xv. Delivery of the TV and radio APIs to local TV and radio stations, i.e. TVB, 
+iCABLE HOY TV, PCCW Media (Now TV), HKTVE (Viu TV), RTHK(TV), 
+RTHK(Radio), Metro Broadcast and Commercial Radio under  the instruction of 
+the ISD. The Contractor is also responsible for any station copy fees charged by 
+the aforesaid TV and radio stations; and 
+ 
+xvi. Delivery of the required clean master copies (in formats specified in Paragraph 7 
+above) for each language version of the TV  APIs containing all footage shots, 
+animation and editing leftover produced in the performance of the production of 
+the TV APIs. The footage with talents’ synced sound na rrations / conversations 
+shall be stored separately from animation, background music, voice -overs, 
+graphics, etc (if applicable). 
+ 
+xvii. Celebrity involvement 
+ 
+If a celebrity/celebrities will take part in the TV and/or radio API(s), the Contractor 
+should be responsible for lining up of celebrities and talents and clearance of 
+performers’ rights to enable the API(s) to be broadcast anywhere within and outside 
+Hong Kong, any occasion and any usage using any media, including, but not
+[p69]
+Ref no: ISD/Film/26011 
+ 
+69 
+ 
+limited to, radio channels, TV, video walls, the Internet and multi -media 
+advertisements on public transport, and at seminars, exhibitions and other public 
+functions/activities, and for production of VCDs/DVDs/CD -ROMs and other 
+publicity materials by the Government for non -profit making  purpose; handling 
+arrangements for filming and audio recording for celebrities and talents and 
+absorbing under this project the hair -styling, make-up, costume, equipment/props 
+and transportation/traveling fees incurred, the level of such fees should be 
+negotiated between the Contractor and the celebrities/talents.  The choice of the 
+celebrity/celebrities is subject to the agreement of the Government. 
+ 
+*  A monologue-type of API is required for the English radio API 
+**  Voice-over talents for Putonghua recording should preferably have attained at least 
+Grade 1B (一級乙等) in the Putonghua Shuiping Ceshi (國家語言文字工作委員會
+普通話水平測試) 
+ 
+Copyright 
+ 
+10. All designs, final outputs, final products and materials produced under this project will 
+be owned by the Government, which reserves the right to edit, extract or re -produce as 
+necessary. 
+ 
+Supervision 
+ 
+11. The Contractor will be supervised by the ISD. In the course of production, the Contractor 
+should cooperate with the ISD, and shall comply with all reasonable instructions of the 
+ISD. The ISD reserve the right to amend the storyboards, shooting boards, scripts, slogans, 
+subtitles, rough cuts and final cuts if necessary. 
+ 
+Budget and Payment 
+ 
+12. Our estimate for the cost inclusive of service fee for the production of the TV and Radio 
+APIs is not more than HK$550,000. Quotations above HK$550,000 will not be 
+considered. Please include in the quoted price all expenses incurred for the provision of the 
+above services. Payment will be made by the Government upon satisfactory completion 
+of the required Services and delivery of all deliverables and submission of the fully 
+completed “Information on Music Copyright F orm” (Annex IV) and receipt by 
+Government of the Contractor’s original invoice.
+[p70]
+Ref no: ISD/Film/26011 
+ 
+70 
+ 
+Tentative Work Schedule 
+ 
+13. The tentative work schedule/deadlines will be as follows: 
+ 
+Date  Task 
+29 September 2026 (Tue) 
+ 
+Issue invitation letters to agencies 
+2 October 2026 (Fri)  
+by 5:00 pm 
+Submission of Reply Slips by agencies 
+6 October 2026 (Wed) 
+10:00 am 
+Briefing session for interested agencies by ISD (via Zoom) 
+20 October 2026 (Tue) 
+by 12:00 noon 
+Submission of creative proposals and quotations 
+23 October 2026 (Fri) 
+ 
+Presentation of creative proposals to the Selection Panel 
+2 November 2026 (Mon)  
+ 
+Debriefing session with the successful bidder 
+6 November 2026 (Fri) 
+ 
+Pre-production meeting 
+1 December 2026 (Tue) 
+ 
+Completion of rough cut of TV API 
+7 December 2026 (Mon) 
+ 
+Completion of final cut of TV and radio APIs 
+10 December 2026 (Thu) 
+ 
+Delivery of station copies of TV and radio APIs 
+13 December 2026 (Sun) 
+ 
+Launch of APIs 
+ 
+* The Government has its own discretion to change the schedule at any time. 
+ 
+ 
+Information Services Department  
+September 2026</pre></div></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>⚠️ 製作要求</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><div class='h3' style='margin-bottom:6px'>🚨 標書特別紅線 / 強制要求</div><div class='timeline' style='margin-bottom:10px'><div class='tlrow'><span class='tllabel'>🚨 <b>其他</b>（p65）：TV API 拍攝格式優先採用 HDCAM、RED ONE 或同等格式；音樂優先採用量身訂造/後配音樂，並須負責全球及永久版權清理。</span></div></div><p class='hint'>每個概念必跟，違 = 廢稿。</p><div class='preqs'><div class='prow'><span class='pl'>🤟 手語</span><span class='pv pvon'>✅ 要</span><span class='pp' title='TV API 須包含香港手語翻譯（粵語及英語版本）。手語視窗為橢圓形，佔螢幕六分之一，設於右下角，背景為淺灰或粉藍，手語'>p67</span></div><div class='prow'><span class='pl'>♿ W3C影片</span><span class='pv pvon'>✅ 要</span><span class='pp' title='須提供符合 W3C 無障礙網頁內容指引 (WCAG) 2.1 AA 級標準之網上發布版本（高解析度 WMV 及 MPEG'>p66</span></div><div class='prow'><span class='pl'>⭐ 明星/名人/官員</span><span class='pv pvoff'>無Preference</span><span class='pp' title='如邀請名人/明星參與，承辦商須負責聯絡、辦理演藝權益授權，並承擔髮型、化妝、服裝及交通等費用，名人選擇須經政府同意。'>p68</span></div><div class='prow'><span class='pl'>🧸 Mascot</span><span class='pv pvoff'>無Preference</span><span class='pp'></span></div><div class='prow'><span class='pl'>🎬 動畫</span><span class='pv pvoff'>無Preference</span><span class='pp'></span></div></div><div class='h3' style='margin-top:11px'>⛔ 注意 / 紅線</div><div class='timeline'><div class='tlrow'><span class='tllabel'>[手語] <b>Sign Language Interpretation</b>：TV API 須包含香港手語翻譯（橢圓形視窗，佔螢幕六分之一，置於右下角，淺灰/粉藍背景，譯員穿深色衣服）。</span></div><div class='tlrow'><span class='tllabel'>[無障礙] <b>Web Accessibility Standard</b>：網上發布版本須符合 W3C WCAG 2.1 AA 級無障礙標準。</span></div><div class='tlrow'><span class='tllabel'>[明星] <b>Celebrity Line-up &amp; Rights Clearance</b>：如涉及名人/明星，承辦商須負責聯絡、演藝權益清理及承擔相關造型、交通費用。</span></div><div class='tlrow'><span class='tllabel'>[其他] <b>Global and Perpetual Copyright</b>：所有產出物（包括故事板、劇本、成品、素材及剩餘剪輯）之全球及永久版權均歸政府所有。</span></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>⚡ 創意亮點</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ Gemini Flash＋Search</span></div><div class='cbody'><h4>⚡ 創意亮點 — ISDBUDGET202728PUBLICCONSULTATION·Quotation for Production of TV and Radio Announcements in the Public Interest (APIs) for 2027-28 Budget Public Consultation（research 掘出嚟，可以做橋嘅真嘢）</h4>
+<p>1. 🏷️ <strong>歷屆視覺符號傳承（樹與機器人／相機與相框）</strong></p>
+<p>   - 事實：標書《Service Specifications》特別點名參考過往預算案諮詢 Key Visual，例如 2025-26 的「樹木與機器人」和 2026-27 的「相機與相框」，要求今屆創作對應 TV API 的生動宣傳主視覺（Visual Icon）。（出處：標書 Part VII Service Specifications Para 1 &amp; 8(ii)）</p>
+<p>   - 💡 可以點做橋：可以擬人化視覺符號為主角開場，將抽象的財政預算轉化為具親和力的奇幻圖像。</p>
+<p>2. 👤 <strong>核心靈魂人物：財政司司長親身對話</strong></p>
+<p>   - 事實：根據歷屆預算案諮詢 API 慣例，財政司司長陳茂波均親自出鏡或配音，向市民提出發展疑問並邀請發表意見。（出處：[hooks-research] 資產盤點 ③ 及歷屆 API 旁白稿）</p>
+<p>   - 💡 可以點做橋：可以財長第一身問句或走入社區的真實視角切入，打破官方宣導的距離感。</p>
+<p>3. 🇭🇰 <strong>民間經典預算案用語：「派糖」與「還富於民」</strong></p>
+<p>   - 事實：香港市民每年對財政預算案最直觀的討論焦點往往是「派糖」措施，而「還富於民」亦是深植人心之公共討論用語。（出處：[hooks-research] 資產盤點 ⑥ 民間文化梗）</p>
+<p>   - 💡 可以點做橋：可以生活化對話巧妙回應市民對「派糖」的關注，將話題引導至「同心建港、發表意見」。</p>
+<p>4. 💡 <strong>公共財政整固與提速發展雙重脈絡</strong></p>
+<p>   - 事實：特區政府正處於公共財政整固期（政府經常開支連續削減），同時需要推動經濟高質量發展與對接「十五五」規劃。（出處：[hooks-research] 背景研究 ① &amp; ②）</p>
+<p>   - 💡 可以點做橋：可以「如何善用每一分錢」或「點樣把餅做大」為貼地情境問句，引發全港市民共鳴。</p>
+<p>5. 🇭🇰 <strong>「財爺熱線」與全方位公眾諮詢渠道</strong></p>
+<p>   - 事實：預算案諮詢設有 budget.gov.hk、電郵及熱線等多重渠道，且財政司司長每年均有出席電台節目接聽聽眾電話的傳統。（出處：[hooks-research] 資產盤點 ④ &amp; ⑥、標書 Part VII）</p>
+<p>   - 💡 可以點做橋：可以 Phone-in 對話或二維碼互動畫面貫穿全片，強調「你講財爺聽」的雙向參與。</p>
+<p>6. 🏷️ <strong>無障礙包容：手語視窗與 WCAG 2.1 AA</strong></p>
+<p>   - 事實：標書強制要求 TV API 加入 1/6 橢圓形香港手語視窗，並另備符合 W3C WCAG 2.1 AA 級無障礙標準的網絡發布版本。（出處：標書 Part VII Para 6(vi), (xiv) &amp; Para 9(ix)）</p>
+<p>   - 💡 可以點做橋：可以無障礙手語姿態融入開場畫面，傳遞「廣納全港每一位市民聲音」的包容理念。</p>
+<p>7. 💡 <strong>評分關鍵：20% 創新與 ESG 建議</strong></p>
+<p>   - 事實：標書技術評估中明確撥出 20%（Pro-innovation 15% + ESG 5%）評分比重，鼓勵採用新科技或社會責任方案提升宣傳效力。（出處：標書 Annex III Marking Scheme Note 6）</p>
+<p>   - 💡 可以點做橋：可以在製作或傳播互動環節導入綠色拍攝與 AI 無障礙技術，直接搶佔技術分優勢。</p>
+<p>8. 🎯 <strong>Hidden Agenda（政府點解而家做）</strong></p>
+<p>   - 事實：這條宣傳片背後的隱藏議程，是政府希望在財政緊絀和削減開支的大背景下，透過「公眾諮詢」營造一種廣納民意的形象，以軟性方式為未來可能實施的緊縮政策和資源重新分配鋪路。同時，藉著與「五年規劃」的連結，強調政府對長遠民生議題（特別是房屋）的承諾，試圖回應市民對生活成本和福利的關注，以減輕社會對財政壓力的不安情緒，並爭取市民對政府施政的理解和支持。</p>
+<p>   - 💡 可以點做橋：可以將呢個深層目的織入概念，令片唔止講程序，更打中政府想傳達嘅 message。</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📊 研究（深入＋Web 整合）</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ gemini-2.5-flash</span></div><div class='cbody'><p>好的，這是一份整合後的乾淨研究報告，去除了重複資訊，保留了所有獨有事實，並按要求分段、使用點列、具體有數有名、保留出處，且無個人創作或評語。</p>
+<p>---</p>
+<h4>2027-28年度財政預算案公眾諮詢宣傳片（API）背景研究報告</h4>
+<h5>1. 議題背景</h5>
+<p>*   <strong>政府年度公眾參與節點</strong>：財政預算案諮詢已成為香港政府年度固定公眾參與節點，與施政報告諮詢並列，透過電視短片、電台廣播、網站、社交平台、電郵及電話等渠道持續收集意見。</p>
+<p>*   <strong>宣傳內容演變</strong>：近年財政預算案的宣傳內容已由單純「宣布措施」延伸至「邀請不同群體表達期望」，例如2025-26年度TV API旁白稿涵蓋青年、商界人士、小朋友及財政司司長，分別談及創新產品、產業多元化、綠色生活空間及資源運用。</p>
+<p>*   <strong>諮詢與政策宣傳界線模糊</strong>：近年宣傳素材不單講「歡迎提供意見」，亦會先展示政府期望處理的發展、民生或競爭力議題，再邀請市民回應，形成「政府方向＋市民意見」的組合訊息。</p>
+<p>*   <strong>應對複雜內外環境</strong>：財政司司長陳茂波曾指出，香港面對持續不明朗的外圍環境、複雜多變的環球政經局勢，以及本地經濟處於結構調整過程，政府需謹慎管理公共財政並推動經濟發展。</p>
+<p>*   <strong>配合國家「十五五」規劃</strong>：2027-28年度財政預算案諮詢將是國家「十五五」規劃（2026-2030年）的第二年。香港政府強調要主動對接國家發展戰略，鞏固和提升香港「八大中心」的發展，並抓緊粵港澳大灣區及共建「一帶一路」倡議的發展機遇。</p>
+<p>*   <strong>推動經濟轉型與高質量發展</strong>：政府致力於開拓新的經濟增長點、發展新市場，尤其持續加大力度推動創科發展，並以科技賦能，提升各行各業的生產力。</p>
+<p>*   <strong>公共財政整固期</strong>：經歷疫情期間公共開支急速增長，政府正處於公共財政整固期，目標是逐步恢復收支平衡，包括削減政府經常開支和適當開源。</p>
+<h5>2. 關鍵事實數據及日期</h5>
+<p>*   <strong>諮詢期</strong>：參考過往經驗，財政預算案的公眾諮詢通常會在前一年的12月中下旬展開。例如，2026-27年度財政預算案的公眾諮詢於2025年12月17日正式展開。</p>
+<p>*   <strong>預算案發表日期</strong>：財政預算案通常會在每年的2月底發表。例如，2026-27年度財政預算案於2026年2月25日發表。</p>
+<p>*   <strong>財政狀況（預計）</strong>：</p>
+<p>    *   2025-26年度：預計綜合盈餘為29億港元，財政儲備在2026年3月底預計為6,572億港元。</p>
+<p>    *   2026-27年度：預計綜合盈餘為221億港元。</p>
+<p>    *   2031年3月：預計財政儲備為7,337億港元。</p>
+<p>*   <strong>開支削減目標</strong>：在不影響綜援、公共福利金和法定開支的前提下，2026-27年度政府經常開支削減2%，2027-28年度再削減2%，相較2025-26年度，分別節省78億元及156億元。</p>
+<p>*   <strong>公務員職位削減</strong>：本屆政府任期內將累計削減約1萬個公務員職位。</p>
+<p>*   <strong>基本工程開支</strong>：2026-27年度基本工程預計開支約1,280億元，2027-28至2030-31年度將維持在相若水平。</p>
+<p>*   <strong>發債規模</strong>：2026-27至2030-31年度每年發行1,600至2,200億元債券，近半用於為近年發出的短期債務再融資。</p>
+<p>*   <strong>稅收增加</strong>：根據經合組織BEPS 2.0對大型跨國企業集團徵收全球最低稅和實施香港補足稅，預計自2027-28年度起每年為政府帶來約150億元稅收。</p>
+<p>*   <strong>印花稅調整</strong>：調整1億元以上的住宅物業交易印花稅，由4.25%調高至6.5%，追溯至2026年2月26日起生效。</p>
+<p>*   <strong>2025年施政報告諮詢</strong>：於2025年6月16日展開，由行政長官李家超主持相關宣傳，以「改革求變」、發展經濟及改善民生作為主要表達框架。</p>
+<h5>3. 相關官員及單位</h5>
+<p>*   <strong>財政司司長</strong>：陳茂波, 大紫荊勳賢, GBS, MH, JP。負責總覽財經、金融、經濟、貿易、發展、創新、科技、房屋、運輸物流的政策，並制定每年度的財政預算案。</p>
+<p>*   <strong>財政司副司長</strong>：黃偉綸, GBS, JP。</p>
+<p>*   <strong>財經事務及庫務局局長</strong>：許正宇, GBS, JP。</p>
+<p>*   <strong>財政預算案諮詢工作組/支援小組</strong>：負責統籌公眾諮詢事宜。市民可透過電郵 (budget@fstb.gov.hk)、電話 (2810 3768)、傳真 (2147 5770) 或郵寄 (香港添馬添美道2號政府總部24樓財政預算案諮詢工作組) 提交意見。</p>
+<p>*   <strong>政府新聞處</strong>：負責發布官方預算案及施政報告諮詢的TV API旁白稿及影片資料。</p>
+<h5>4. 受眾關注點及社會sentiment</h5>
+<p>*   <strong>公共財政穩健性</strong>：市民普遍關注政府的財政狀況，認為公共財政須以達致收支平衡為目標，並對政府的開源節流措施持觀望態度。</p>
+<p>*   <strong>經濟發展和就業機會</strong>：市民期望政府能全力拼經濟、謀發展，為香港增添新的發展動能，並創造更多優質的就業職位。</p>
+<p>*   <strong>民生改善和社會福利</strong>：儘管政府強調發展創科和金融，但社會對關愛惠民措施的期望仍然很高，特別是紓緩貧富懸殊、改善基層市民生活水平、優化退休保障和安老服務等。</p>
+<p>*   <strong>房屋問題</strong>：樓價過高、置業困難一直是市民關注的焦點。</p>
+<p>*   <strong>人工智能發展的影響</strong>：社會對人工智能快速發展可能對就業職位造成的削減存在憂慮，期望政府能有相關的應對措施。</p>
+<p>*   <strong>諮詢成效</strong>：公眾諮詢宣傳的核心KPI仍主要是「知道諮詢開始」及「知道如何提交」，創意宣傳與實際回饋結果之間缺少公開、即時及可見的連接。</p>
+<h5>5. 近期宣傳及競品掃描</h5>
+<p>*   <strong>2025-26年度財政預算案 TV API（2025）</strong></p>
+<p>    *   <strong>主辦／來源</strong>：財政司司長辦公室及政府新聞處；官方預算案網站提供TV API旁白稿及影片資料。</p>
+<p>    *   <strong>表達方式</strong>：由財政司司長提出宏觀問題，再由青年、商界人士及兒童等不同身份人物逐一說出期望。</p>
+<p>    *   <strong>訊息架構</strong>：先講發展及生活期望，再由財政司司長以「善用資源、攜手建設更好未來」收束，最後導向預算案諮詢網站。</p>
+<p>    *   <strong>語氣</strong>：正面、建設性、共同行動；較少呈現分歧、取捨或對公共財政的疑問。</p>
+<p>    *   <strong>視覺資產</strong>：以「樹及機械人」作為既有例子。</p>
+<p>*   <strong>2026-27年度財政預算案 TV API（2026）</strong></p>
+<p>    *   <strong>主辦／來源</strong>：官方預算案網站列出政府電視宣傳短片。</p>
+<p>    *   <strong>視覺資產</strong>：本次標書明確以「攝影機及相框」作為2026-27年度預算案的既有例子。</p>
+<p>    *   <strong>研究觀察</strong>：預算案年度宣傳已形成「每年一組可辨識主視覺／物件角色」的慣例，便於建立年度識別。</p>
+<p>*   <strong>2025年施政報告公眾諮詢 TV API（2025）</strong></p>
+<p>    *   <strong>主辦／來源</strong>：政府新聞處及相關政策辦公室；官方短片旁白稿及政府新聞稿均有發布。</p>
+<p>    *   <strong>表達方式</strong>：行政長官先提出改革方向，再由大學生、創科人員、社區人士及簡約公屋住戶等角色表達對發展、生活及居住環境的期望。</p>
+<p>    *   <strong>視覺及語氣</strong>：以真人角色及生活／職業身份串聯；訊息偏向「不同人有不同期望，但共同建設更好香港」。</p>
+<p>    *   <strong>研究觀察</strong>：與2025-26年度預算案TV API相比，兩者均採用「官員提問或定調—市民角色回應—政府邀請參與」的基本節奏，形成高度相似的公營諮詢敘事模式。</p>
+<p>*   <strong>2024年施政報告公眾諮詢（2024）</strong></p>
+<p>    *   <strong>主辦／來源</strong>：香港特區政府；官方諮詢網站顯示諮詢已於2024年完成，並配合網站及宣傳內容。</p>
+<p>    *   <strong>參與渠道</strong>：網站、Facebook、電郵、電話及傳真均被用作意見提交渠道。</p>
+<p>*   <strong>香港政府一般公眾諮詢資料庫（2024）</strong></p>
+<p>    *   <strong>涵蓋議題</strong>：包括《基本法》第二十三條立法、虛擬資產場外交易、穩定幣監管、版權與人工智能、住宅裝修噪音等不同政策諮詢。</p>
+<p>    *   <strong>研究觀察</strong>：政府近年面對的諮詢議題技術性及政治敏感度差異很大，但宣傳層面普遍需要把複雜政策轉化為一般市民可理解的「歡迎表達意見」訊息。</p>
+<p>    *   <strong>限制</strong>：現有公開搜尋結果未提供各項諮詢宣傳片的統一觀看數、觸及率或意見轉化率，不能直接判斷哪一種創意做法最有效。</p>
+<p>*   <strong>已濫用的宣傳手法（需避開）</strong>：</p>
+<p>    *   「官員開場、最後官員收口」：財政司司長或行政長官提出宏觀方向，市民角色輪流回應，最後由官員再邀請參與。</p>
+<p>    *   「一人代表一個群體」：大學生代表青年、商界人士代表經濟、兒童代表未來、住戶代表民生等，角色容易變成標籤化的受眾切片。</p>
+<p>    *   「快速剪接不同職業及年齡層」：透過數個人物各講一句願望，製造「全社會都有份」的感覺，訊息容易變成口號式願望清單。</p>
+<p>    *   「更好香港／更美好未來／攜手建設」式正面收束：這類詞語安全而普遍，但區辨度低，亦未必能回答市民「我提供意見有何實際作用」。</p>
+<p>    *   「抽象宏大字眼先行」：常見字眼包括發展、競爭力、改革、創新、民生、幸福及更好生活。</p>
+<h5>6. 香港角色</h5>
+<p>*   <strong>「八大中心」</strong>：香港政府強調要鞏固和提升香港「八大中心」的發展，以配合國家發展戰略。</p>
+<p>*   <strong>粵港澳大灣區及「一帶一路」</strong>：香港需抓緊粵港澳大灣區及共建「一帶一路」倡議的發展機遇。</p>
+<p>*   <strong>國際金融中心</strong>：作為國際金融中心，香港在應對全球經濟挑戰和推動經濟轉型中扮演重要角色。</p>
+<p>*   <strong>公共溝通語氣</strong>：公共預算／政策諮詢通常採取低門檻、正面、包容的公共溝通語氣，而非以商業廣告式的品牌競爭語氣呈現。</p>
+<p>---</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🛡️ 官方正名 / 用字</span><span class='mdl' title='真 run 記錄：呢段由呢個 model 寫'>✍️ Gemini Flash＋Search</span></div><div class='cbody'><p>好的，這是一份為廣告創作團隊準備的「官方用語對照表」，旨在確保他們在製作「2027-28 財政預算案公眾諮詢」宣傳片時，能使用正確的官方名稱和翻譯。</p>
+<p>---</p>
+<h5>官方用語對照表</h5>
+<h6>1. 部門 / 辦事處</h6>
+<p>*   <strong>財政司司長辦公室</strong> (Financial Secretary&#x27;s Office, FSO)</p>
+<p>    *   官方網址：[https://www.fso.gov.hk/](https://www.fso.gov.hk/)</p>
+<p>*   <strong>政府新聞處</strong> (Information Services Department, ISD)</p>
+<p>    *   官方網址：[https://www.isd.gov.hk/](https://www.isd.gov.hk/)</p>
+<p>*   <strong>公務員事務局法定語言事務部</strong> (Official Languages Division, Civil Service Bureau)</p>
+<p>    *   官方網址：[https://www.csb.gov.hk/tc_chi/ol/index.html](https://www.csb.gov.hk/tc_chi/ol/index.html)</p>
+<h6>2. 計劃 / 政策 / 程序</h6>
+<p>*   <strong>2027-28 財政預算案公眾諮詢</strong> (2027-28 Budget Public Consultation)</p>
+<p>*   <strong>財政預算案</strong> (Budget)</p>
+<p>*   <strong>電視宣傳短片</strong> (TV Announcement in the Public Interest, TV API)</p>
+<p>*   <strong>電台宣傳短片</strong> (Radio Announcement in the Public Interest, Radio API)</p>
+<p>*   <strong>香港手語譯員名單</strong> (Hong Kong Sign Language Interpreter List)</p>
+<p>    *   由<strong>香港復康聯會</strong> (Hong Kong Council of Social Service, HKCSS) 維護。</p>
+<p>    *   官方網址：[https://www.hkcss.org.hk/](https://www.hkcss.org.hk/)</p>
+<p>*   <strong>國家普通話水平測試</strong> (Putonghua Proficiency Test)</p>
+<p>*   <strong>性別主流化</strong> (Gender Mainstreaming)</p>
+<h6>3. 專有名詞 / 技術詞</h6>
+<p>*   <strong>宣傳短片</strong> (Announcement in the Public Interest, API)</p>
+<p>*   <strong>目標受眾</strong> (Target Audience / The general public)</p>
+<p>*   <strong>核心訊息</strong> (Key Messages)</p>
+<p>*   <strong>拍攝格式</strong> (Shooting format)</p>
+<p>    *   HDCAM</p>
+<p>    *   RED ONE</p>
+<p>    *   高清錄影 (High-definition Video, HDV)</p>
+<p>    *   靜態攝影 (Still camera shooting)</p>
+<p>*   <strong>輸出格式</strong> (Output format)</p>
+<p>    *   檔案格式 (File-based format)</p>
+<p>        *   XDCAM HD422 @ 50Mbps MXF</p>
+<p>    *   錄影帶格式 (Video-tape format)</p>
+<p>        *   HDCAM</p>
+<p>*   <strong>繁體中文書面語字幕</strong> (Traditional Chinese subtitles)</p>
+<p>*   <strong>手語翻譯</strong> (Sign language interpretation)</p>
+<p>*   <strong>手語譯員</strong> (Sign Language Interpreter)</p>
+<p>*   <strong>手語視窗</strong> (Sign language window)</p>
+<p>*   <strong>無障礙版本</strong> (Accessible version)</p>
+<p>    *   符合 W3C WCAG 2.1 Level AA 標準 (W3C WCAG 2.1 Level AA compliant)</p>
+<p>*   <strong>配音員</strong> (Voice-over Talents)</p>
+<p>*   <strong>獨白形式</strong> (Monologue-type)</p>
+<p>*   <strong>宣傳主視覺</strong> (Visual Icon / Key Visuals)</p>
+<p>*   <strong>演藝權益清理</strong> (Clearance of performing rights)</p>
+<p>*   <strong>全球及永久播放權</strong> (Worldwide and perpetual broadcast rights)</p>
+<p>*   <strong>原創性</strong> (Originality)</p>
+<p>*   <strong>配樂</strong> (Music score)</p>
+<p>    *   量身訂造 / 後配音樂 (Tailor-made / Post-scored music)</p>
+<p>*   <strong>版權許可</strong> (Copyright clearance)</p>
+<p>    *   CASH (Composers and Authors Society of Hong Kong Ltd.)</p>
+<p>    *   IFPI (International Federation of the Phonographic Industry)</p>
+<p>    *   HKRIA (Hong Kong Recording Industry Alliance Ltd.)</p>
+<p>*   <strong>技術評估</strong> (Technical assessment)</p>
+<p>*   <strong>訊息準確與清晰度</strong> (Accuracy and clarity of message)</p>
+<p>*   <strong>訊息傳達創意</strong> (Creativity in message delivery)</p>
+<p>*   <strong>宣傳推廣衝擊力</strong> (Impact of publicity)</p>
+<p>*   <strong>記憶度</strong> (Recall)</p>
+<p>*   <strong>共鳴 / 說服力</strong> (Resonance / Persuasiveness)</p>
+<p>*   <strong>創新與 ESG 建議</strong> (Innovation and ESG suggestions)</p>
+<p>    *   直接相關的 Pro-innovation 建議 (Directly relevant Pro-innovation suggestions)</p>
+<p>    *   ESG 建議 (ESG suggestions)</p>
+<p>*   <strong>交付物</strong> (Deliverables)</p>
+<p>*   <strong>初剪</strong> (Rough cut)</p>
+<p>*   <strong>最終剪輯</strong> (Final cut)</p>
+<p>*   <strong>站 copies</strong> (Station copies)</p>
+<p>*   <strong>劇照</strong> (Still photos)</p>
+<p>*   <strong>Cue sheet</strong></p>
+<p>*   <strong>故事板</strong> (Storyboard)</p>
+<p>*   <strong>劇本</strong> (Script)</p>
+<p>*   <strong>Clean Master Copies</strong></p>
+<p>*   <strong>同步人聲</strong> (Synchronized vocals)</p>
+<p>*   <strong>分軌儲存</strong> (Separate tracks)</p>
+<p>*   <strong>預算上限</strong> (Estimated budget / Budget ceiling)</p>
+<p>*   <strong>技術建議書</strong> (Technical Proposal)</p>
+<p>*   <strong>費用建議書</strong> (Fee Proposal)</p>
+<p>*   <strong>雙信封與封套規範</strong> (Two-envelope and sealed envelope requirement)</p>
+<p>*   <strong>公司識別標記</strong> (Company-identifying marks)</p>
+<p>*   <strong>投標公司</strong> (Bidding company / Service provider)</p>
+<p>*   <strong>Offer to be Bound</strong> (Schedule D)</p>
+<p>*   <strong>價格建議</strong> (Price Proposal / Schedule A)</p>
+<p>*   <strong>全球及永久版權</strong> (Worldwide and perpetual copyright)</p>
+<p>*   <strong>保險保障</strong> (Insurance coverage)</p>
+<p>*   <strong>誠信條款</strong> (Integrity clause)</p>
+<p>*   <strong>防串通</strong> (Anti-collusion)</p>
+<p>*   <strong>Non-collusive Quotation Certificate</strong> (Schedule E)</p>
+<p>*   <strong>圍標</strong> (Bid rigging / Collusion)</p>
+<p>*   <strong>員工誠信守則</strong> (Code of Conduct for staff)</p>
+<h6>4. 常見會錯譯 / 易混淆的地方</h6>
+<p>*   <strong>API</strong>：應使用「宣傳短片」或「政府宣傳短片」，而非直接翻譯為「應用程式介面」。</p>
+<p>*   <strong>公眾諮詢</strong>：應使用「Public Consultation」，而非「Public Opinion Survey」或「Public Feedback Collection」。</p>
+<p>*   <strong>財政預算案</strong>：應使用「Budget」，而非「Financial Plan」或「Fiscal Plan」。</p>
+<p>*   <strong>手語翻譯</strong>：應使用「Sign language interpretation」，而非「Sign language translation」。</p>
+<p>*   <strong>無障礙版本</strong>：應使用「Accessible version」，而非「Barrier-free version」。</p>
+<p>*   <strong>名人 / 明星</strong>：官方文件中使用「Celebrities / Talents」，避免使用「Stars」或「Idols」。</p>
+<p>*   <strong>版權清理</strong>：應使用「Copyright clearance」，而非「Copyright permission」。</p>
+<p>*   <strong>預算上限</strong>：官方文件中使用「Estimated budget」或「Budget ceiling」，避免使用「Maximum budget」。</p>
+<p>*   <strong>技術建議書</strong>：應使用「Technical Proposal」，而非「Technical Suggestion」。</p>
+<p>*   <strong>費用建議書</strong>：應使用「Fee Proposal」，而非「Cost Proposal」。</p>
+<p>---</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🔗 部門官方來源</span></div><div class='cbody'><p class='hint'>搵到嘅官方來源（網頁名 + 撮要，似 search 結果；撳入睇原文）：</p><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.fstb.gov.hk' target=_blank>🏛️ 財經事務及庫務局 官網 ↗</a><div class='srcsnip'>https://www.fstb.gov.hk</div></div></div><div class='srcrow'><img class='srcthumb' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-8Wai_rDoTrpEKoRlWKnKdT3_V5L3szmLie7CwG6VE56vyDc0CQQp7Q&amp;s' loading=lazy><div style='flex:1'><a class='srctit' href='https://www.youtube.com/watch?v=6LVKg5s7vdM' target=_blank>📺 [政府宣傳片](2025)2026-27 財政預算案公眾諮詢 ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><img class='srcthumb' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRGpZ-OltdwyIOdXk_R8edWzHSS80ySyjGe48Qw8e8sw-EciQT2eXlmA&amp;s' loading=lazy><div style='flex:1'><a class='srctit' href='https://www.youtube.com/watch?v=rMCx8FmnEPY' target=_blank>📺 WATCH NOW: Hong Kong Budget 2026-2027 and Plans ... ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><img class='srcthumb' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqxu0pV90RtHRIX_w9faplCBzLwHQ8RUz--eDxTWjqNyRa3_GrJ9nFdQ&amp;s' loading=lazy><div style='flex:1'><a class='srctit' href='https://www.youtube.com/watch?v=TmFp482jLMI' target=_blank>📺 2026-27 Budget Public Consultation ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><img class='srcthumb' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8HuEEkyfhcaHCIh_ff53GJkS1CdTrkGTtq56VcadnuLgvKovybeo_ng&amp;s' loading=lazy><div style='flex:1'><a class='srctit' href='https://www.youtube.com/watch?v=p0dZBxSSzj8' target=_blank>📺 2026-27 財政預算案公眾諮詢 ↗</a><div class='srcsnip'>YouTube 宣傳片</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://epaper.tkww.hk/a/202606/16/AP6a30607de4b04773b07057e1.html' target=_blank>📰 五年規劃公眾諮詢/聚焦六大民生議題提升市民福祉公營房屋增供應持續豐富置業階梯- 港聞 ↗</a><div class='srcsnip'>特區政府昨日就香港第一個五年規劃展開公眾諮詢，諮詢文件關於「民生及社會發展」部分，在六個民生議題提出政策討論方向（詳見表），當中在房屋方面，...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.news.gov.hk/chi/2026/01/20260111/20260111_113244_808.html' target=_blank>📰 香港政府新聞網- 財政預算案2月25日發表 ↗</a><div class='srcsnip'>財政司司長陳茂波表示，2026至27年度財政預算案下月25日發表。未來一個多月，政府會繼續進行公眾諮詢。他指出，香港須積極投資未來，隨着政府加大投入...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.budget.gov.hk/2026/chi/pf.html' target=_blank>📰 公共財政 ↗</a><div class='srcsnip'>削減政府經常開支：在不影響綜援、公共福利金、法定開支的前提下，2026-27年度減2%，2027-28年度再減2%，相較2025-26年度，分別節省78億元及156億元; 公務員職</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://www.edigest.hk/%E6%94%BF%E5%BA%9C%E6%94%BF%E7%AD%96/%E9%A0%90%E7%AE%97%E6%A1%882026-%E8%B2%A1%E6%94%BF%E9%A0%90%E7%AE%97%E6%A1%882026%E6%87%B6%E4%BA%BA%E5%8C%85-%E9%99%B3%E8%8C%82%E6%B3%A2-%E6%B4%BE%E7%B3%96-%E4%B8%AD%E7%94%A2-%E7%A6%8F%E5%88%A9-ed01-1983181/' target=_blank>📰 財政預算案2026懶人包丨寬減差餉/長者醫療券/還息不還本延長/公務員薪酬調整/子女免稅額/住宅印花稅/綜援生果金長生津 ↗</a><div class='srcsnip'>財政預算案2026懶人包重點整理│財政司司長陳茂波今日(2月25日)宣讀新一份《財政預算案》，指出為向市民和企業提供支持，並考慮到政府的財政狀況，...</div></div></div><div class='srcrow'><div style='flex:1'><a class='srctit' href='https://news.now.com/home/local/player?newsId=637825' target=_blank>📰 財政預算案．不斷更新｜財政司司長陳茂波宣讀新一份《財政預算案》 ↗</a><div class='srcsnip'>【Now新聞台】財政司司長陳茂波發表新一份《財政預算案》，有關內容更新如下：</div></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>🏛️ 政府 JOB 鐵則</span></div><div class='cbody'><ol id='rulelist' style='margin:2px 0 8px;padding-left:18px;line-height:1.7'><li id='rule0'>除標書表明，人物一般使用華人面孔（東亞／香港華人），唔好生成西方／白人臉</li><li id='rule1'>衣著連戲：同一角色每一格都著返同一套衫（衫款／顏色／髮型／配件固定），除非故事明寫佢換咗衫</li><li id='rule2'>全 board 畫風完全一致：同一 render 風格／同一打燈／同一色調／同一線條筆觸，由頭到尾統一，似同一個畫師一次過畫</li><li id='rule3'>Storyboard 盡量唔好出現雨傘；若劇情一定要有雨傘，唔可以係黃色</li></ol><div class='bdcm'><textarea id='newrule' rows='2' placeholder='加一條鐵則：例「Storyboard 唔好有雨傘」'></textarea><button class='btn mini' onclick="addRule('ISDBUDGET202728PUBLICCONSULTATION')">＋ 加鐵則（即時生效）</button></div></div></div></div><div class='h2 tierh'>🔧 Optional 餵 AI（於 Debriefing 階段隨機餵 AI）</div><p class='hint tierhint'>唔強制，諗橋時隨機抽嚟畀 agency 撞火花。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>💭 5W1H Provocation</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ Gemini 2.5 Pro·預設</span></div><div class='cbody'><h3>5W1H 創意 Provocation — ISDBUDGET202728PUBLICCONSULTATION</h3>
+<h5>WHO — 對邊個講 + 佢而家點</h5>
+<p>- Q1 如果呢個 message 只可以打動「最唔關心、最 cynical」嗰個觀眾——要加咩一個 element（畫面／聲／人物／情境）先 3 秒內 hook 住佢、令佢唔 skip？</p>
+<p>  → 加入全港市民日常最直觀撕開的「生活開支與稅務細目算盤」特寫畫面，配以「派糖定開源？」的街頭真實質疑聲音，第一時間觸發社會敏感神經。</p>
+<p>- Q2 呢班受眾平時食開咩視聽語言（平台／節奏／語氣）？要 adapt 邊種佢熟悉嘅風格，先入到腦而唔似「政府嘢」？</p>
+<p>  → adapt 快速跳剪的動態字效（Dynamic Kinetic Typography）與社交媒體直擊訪談風格（Street-interview Style），配合明快流行電子配樂，擺脫傳統宣導片的嚴肅腔調。</p>
+<h5>WHAT — 收窄到一個 + 證據</h5>
+<p>- Q3 成個 campaign 只准觀眾記住一個 element（一個畫面／一個 visual device／一句）——你揀咩？點解係佢？</p>
+<p>  → 揀選結合 2027-28 題材的「宣傳主視覺（Visual Icon）」（承接過往「樹木與機器人」、「相機與相框」之視覺符號脈絡），因為高辨識度的視覺符號能跨平台穿透 TV、網頁及戶外宣傳。</p>
+<p>- Q4 客戶 key message 好抽象，要用咩具體 element（真場面／真數字／真人／真物）去「show 唔 tell」，令佢落地、唔流口號？</p>
+<p>  → 加入「財政司司長陳茂波走入社區互動」真場面，結合「經常開支削減 2%」及「budget.gov.hk」字樣與二維碼，將宏觀財政整固轉化為具體可參與的諮詢渠道。</p>
+<h5>WHY — 點解信 + 情感</h5>
+<p>- Q5 觀眾點解要信／關佢事？要加咩證據 element 或情感共鳴 element，先由「事不關己」變「同我有關」？</p>
+<p>  → 加強全港不同階層市民（青年創業家、基層家庭、前線打工仔）在實際生活場景中的眼神對視與發聲切面，強調「每人一句意見直接影響資源分配」，建立「我有份決定未來」的共鳴。</p>
+<h5>WHEN / WHERE — 出街情境</h5>
+<p>- Q6 呢條嘢實際喺邊度、咩狀態被睇到（電視 prime／車廂無聲／手機 scroll／戶外經過）？要 adapt 咩風格（有聲冇聲／首 3 秒／大字／節奏）先食到當下情境？</p>
+<p>  → adapt 無聲自通的高對比大字 Super 畫面與 1/6 橢圓形手語視窗，確保於港鐵車廂、網頁無聲播放或社交平台快速滾動時，訊息依然清晰無阻。</p>
+<p>- Q7 出街時間（事件前／中／後）decide 調子係「預告期待」定「總結成就」？要加咩 element 配合呢個時間感？</p>
+<p>  → 出街時間為 12 月中旬諮詢開跑，調子屬於「預告期待」，須加入倒數計時動態視覺元素與「諮詢現正展開」的強烈 Call-to-Action 節奏。</p>
+<h5>HOW — 風格 + 差異化</h5>
+<p>- Q8 同類（同部門／同題材）政府片嘅「安全做法」係咩？要 adapt／升級邊種風格 element（質感／節奏／transition／配樂／美術流派），先做到「框內最高質」而唔悶？</p>
+<p>  → 安全做法係「財長口述＋市民講願望＋字卡」，應升級為電影級 Color Grading（電影色調質感）、無縫 Seamless Transitions 轉場，以及專屬 Tailor-made 原創配樂，提升整體畫面高級感。</p>
+<p>- Q9 要加咩一個 unexpected element（反差／新 visual device／新手法），先同部門過往 campaign 拉開距離、唔似翻抄，但又唔踩紅線？</p>
+<p>  → 加入多重圖層混合媒體（Mixed-media Photo &amp; Motion Graphic Collages），將實景拍攝與動態插畫視覺符號無縫交織，同時導入符合 20% 評分的 Pro-innovation/ESG 科技與無障礙元素。</p>
+<p>---</p>
+<p>*用法：agency／委員會落橋前先消化呢 9 條，順住 element＋風格方向諗，唔好離地。*</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📺 ISD 相類政府舊片</span></div><div class='cbody'><p>【呢條 brief 判定】目的:公眾諮詢/宣佈新法例/措施  題材:理財稅務</p>
+<p>【同目的(公眾諮詢)ISD 慣性】主開頭 (44%);格式率 旁白66% 熒幕蓋字100% 標誌結尾100% CTA77% 感嘆0% 三段式·0%;慣用結尾 網址：www.eac.hk, 電郵：eacenq@eac.hk, 精神健康諮詢委員會標誌, 政府資助計劃標誌</p>
+<p>【對口 ISD 舊作借鏡(同 目的×題材,參考佢點寫,唔好照抄,要創新)】</p>
+<p>— 2026-27 財政預算案公眾諮詢  [公眾諮詢 | 理財稅務]</p>
+<p>  ▶ https://www.youtube.com/watch?v=p0dZBxSSzj8&amp;list=PL1188A9802575C33F</p>
+<p>  財政司司長陳茂波：推動香港經濟更蓬勃發展 / 促進科技更好服務市民 / 我們希望多聽意見 / 和大家多談、多講 / 凝聚力量 / 攜手共建更有活力的香港 / 2026至27年度財政預算案公眾諮詢已經開始 / 請上budget.gov.hk發表意見 / 熒幕蓋字：2026－27年度 財政預算案 / budget.gov.hk / 香港特別行政區區徽</p>
+<p>— 2026-27 Budget  [形象/成就(propaganda) | 理財稅務]</p>
+<p>  ▶ https://www.youtube.com/watch?v=PNJILalqbCg&amp;list=PL1188A9802575C33F</p>
+<p>  旁白：特區政府新一份財政預算案經已發表 / 熒幕蓋字：2026-27年度財政預算案經已發表 / 旁白：我們積極推動香港 / 熒幕蓋字：AI+ / 旁白：以人工智能和金融賦能產業發展 / 熒幕蓋字：金融+ / 旁白：培育壯大新興產業 / 主動對接國家「十五五」規劃 / 熒幕蓋字：對接國家「十五五」規劃 / 旁白：促進經濟高質量發展 / 熒幕蓋字：多元發展 / 旁白：同時增加支援市民和企業 / 關愛惠民 / 熒幕蓋字：關愛惠民 / 旁白：讓我們抓緊機遇 / 熒幕蓋字：河套區 / 旁白：為市民創造更好的發展機會 / 熒幕蓋字：北部都會區 / 旁白：建設更舒適的生活空間 / 熒幕蓋字：香港特別行政區區徽 / 2026－27年度 財政預算案 / QR Code / 請瀏覽www.budget.gov.hk</p>
+<p>— 「智方便」，登記「加」倍方便，生活「加」倍輕鬆  [其他 | 理財稅務]</p>
+<p>  ▶ https://www.youtube.com/watch?v=nQIbHNR-n4Y&amp;list=PL1188A9802575C33F</p>
+<p>  熒幕蓋字： 湯怡 /    智方便+ / 湯怡： 已登記「智方便+」 /   處理家庭事務 / 熒幕蓋字： +倍簡單 / 湯怡： 加倍簡單 / 熒幕蓋字： 石修 / 石修： 用手提電話自行登記「智方便+」 / 熒幕蓋字： 手機NFC技術 /    智方便+ / 石修： 便立刻可處理強積金、消閒、醫療等多元化網上服務 / 熒幕蓋字： +倍方便 / 石修： 加倍方便 / 熒幕蓋字： 陳苡臻 / 陳苡臻： 此外，「智方便+」還涵蓋生活不同範疇 /    去這裏，去那裏 / 熒幕蓋字： 智方便+ /    +倍輕鬆 / 陳苡臻： 一樣加倍輕鬆 / 阿智： 現在更可透過「智方便」個人助理 /   查閱電子帳單及服務的申請進度 /   趕快登記吧 / 熒幕蓋字： iAM Smart+ 標誌 /    數字政策辦公室標誌</p>
+<p>— 「情緒通」18111精神健康支援熱線  [公眾諮詢 | 公共衞生]</p>
+<p>  ▶ https://www.youtube.com/watch?v=SWnnTebEjiI&amp;list=PL1188A9802575C33F</p>
+<p>  陳奕迅： 每個人的情緒 /    總會有起落 /    可能來自學業 /    家庭 /    工作或健康 /    想不通時 /    不如找人談談？ /    只要你想說 /    我們都願意聽 /    然後找合適的人協助你 /    行出第一步 /    或者看到更多可能性 /    情緒通18111 / 熒幕蓋字： 情緒通18111精神健康支援熱線標誌 /    精神健康諮詢委員會標誌 /    政府資助計劃標誌</p>
+<p>— 立法會選舉活動建議指引公眾諮詢  [公眾諮詢 | 選舉]</p>
+<p>  ▶ https://www.youtube.com/watch?v=JLSuDxKmdqY&amp;list=PL1188A9802575C33F</p>
+<p>  旁白：選舉管理委員會 / 熒幕蓋字：選舉管理委員會標誌 / 旁白：正就立法會選舉活動建議指引諮詢公眾 / 熒幕蓋字：立法會選舉活動建議指引 / 公眾諮詢 / 旁白：歡迎在8月1日或之前 / 以電郵、郵寄或傳真遞交意見書 / 熒幕蓋字：公眾諮詢期 / 7月3日 至8月1日 / 旁白：建議指引可於選管會網站 www.eac.hk 下載 / 熒幕蓋字：www.eac.hk / 旁白：或到選舉事務處及各區民政諮詢中心查閱 / 熒幕蓋字：選舉事務處 / 各區民政諮詢中心 / 旁白：查詢：2891 1001 / 熒幕蓋字：選舉管理委員會標誌 / 立法會選舉活動建議指引 / 公眾諮詢 / 查詢：2891 1001 / 網址：www.eac.hk / 傳真：2511 1682 / 電郵：eacenq＠eac.hk</p>
+<p>— 香港特別行政區經濟和社會發展第一個五年規劃（2026-2030）公眾諮詢  [公眾諮詢 | 其他]</p>
+<p>  ▶ https://www.youtube.com/watch?v=GypzsP5avOQ</p>
+<p>  行政長官:我正帶領特區政府編制首個香港五年規劃， / 五年規劃與你我息息相關。 /  / 女旁白：香港未來五年，應該是…… /  / 男旁白：進一步提升競爭力， / 鞏固和拓展優勢， / 把握國家發展機遇。 /  / 熒幕蓋字：「一帶一路」倡議 / 粵港澳大灣區 /  / 女旁白：經濟發展得更快， / 生活得更好。 /  / 政制及內地事務局局長：行政長官已經指示政制及內地事務局展開公眾諮詢 /  / 熒幕蓋字：政制及內地事務局局長 / 謝小華 /  / 熒幕蓋字：意見收集專站 / 網頁二維碼 / www.HK5YPlan.gov.hk / 6月15日- 8月14日 /  / 行政長官 :歡迎你提出意見， / 一起勾劃未來五年的藍圖。 /  / 熒幕蓋字：香港特別行政區區徽 / 香港特別行政區經濟和社會發展 / 第一個五年規劃 / （2026－2030） / 公眾諮詢 / 積極參與　共創未來</p></div></div></div><div class='h2 tierh'>📋 ADMIN（交標用 · 唔餵創意）</div><p class='hint tierhint'>交標 logistics：要交咩表格/文件、幾時截。</p><div class='carousel brfcarou'><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📑 要交表格 / 文件</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ NLM·預設</span></div><div class='cbody'><div class='h3'>📝 要填嘅表格（7 張）</div><p class='hint'>真表頁自動 render 入對應<b>部門 Master Form GSlide</b>（開 GSlide 直接填）。🟦直 🟨橫。</p><div class='qconfirm' style='background:#fff4e5;color:#8a5a00'>⏳ pipeline 收到表會自動開 GSlide + render；此 dept 暫未配置，下次 run 自動補。</div><a class='btn ghost' target='_blank' href='https://docs.google.com/spreadsheets/d/1yiDJ3H8VFK3-6kZQZEzwkiD8VaRgVOzCwxcFbAyP3XE/edit'>📋 開 Master Form Registry（填表值喺度）</a><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/1nBf0Bdx17Jvo8owVWrvM-A_MlKxL98ttyMenXc-cewY/edit'>🎞️ 開 ISDBUDGET202728PUBLICCONSULTATION Master Form GSlide（真表頁，直接填）</a><button class='btn' style='width:100%;margin-top:6px' onclick="fillForms(this)">🤖 AI 自動填公司資料入 Registry</button><script type='application/json' class='filldata'>{"folderName": "ISD_Budget202728PublicConsultation", "forms": [{"name": "Reply Slip", "pages": "1", "text": ""}, {"name": "SCHEDULE A Price Proposal", "pages": "90", "text": ""}, {"name": "SCHEDULE B Statement of Compliance", "pages": "91", "text": ""}, {"name": "SCHEDULE C Pro-innovation Proposals and ESG Proposals", "pages": "92", "text": ""}, {"name": "SCHEDULE D Offer to be Bound", "pages": "93", "text": ""}, {"name": "SCHEDULE E Non-collusive Quotation Certificate", "pages": "94-96", "text": ""}, {"name": "APPENDIX A CONTACT DETAILS", "pages": "28", "text": ""}]}</script><p class='hint'>撳上面掣 → AI 逐張表認要填咩欄（公司名/地址/BR…）→ 自動填入 <b>Master Form Registry</b> 嘅 <b>Fill_ISD_Budget202728PublicConsultation</b> tab → 你開 Registry copy 啲值入 GSlide 真表頁。⚠️ 價錢/簽名要自己填。（全程 GAS 做，唔使部 Mac 開機）</p><div class='h3'>① Briefing 前 — Reply Slip（1）</div><p class='hint'>確認出席 → Reply Slip 頁，貼頁碼 render。</p><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/17TNiyMzZMbleABFG2u-K0THdn_lXmo089i8xPDnzRHM/edit'>🎞️ 開 Reply Slip GSlide</a><div class='qconfirm' style='background:#eef0fe;color:#3730a3'>貼入 panel 頁碼：<b>1</b></div><div class='timeline'><div class='tlrow'><span class='tldate'>🟦 p1</span><span class='tllabel'>Reply Slip</span></div></div><div class='h3'>② 交標時 — Forms / Schedules（6）</div><p class='hint'>Form GSlide 已 render 真表頁做 background → 人手填。</p><a class='btn ghost' target='_blank' href='https://docs.google.com/presentation/d/1nBf0Bdx17Jvo8owVWrvM-A_MlKxL98ttyMenXc-cewY/edit'>🎞️ 開 ISDBUDGET202728PUBLICCONSULTATION Form GSlide</a><div class='qconfirm' style='background:#eef0fe;color:#3730a3'>貼入 panel 頁碼：<b>90,91,92,93,94-96,28</b></div><div class='timeline'><div class='tlrow'><span class='tldate'>🟦 p90</span><span class='tllabel'>SCHEDULE A Price Proposal</span></div><div class='tlrow'><span class='tldate'>🟦 p91</span><span class='tllabel'>SCHEDULE B Statement of Compliance</span></div><div class='tlrow'><span class='tldate'>🟦 p92</span><span class='tllabel'>SCHEDULE C Pro-innovation Proposals and ESG Proposals</span></div><div class='tlrow'><span class='tldate'>🟦 p93</span><span class='tllabel'>SCHEDULE D Offer to be Bound</span></div><div class='tlrow'><span class='tldate'>🟦 p94-96</span><span class='tllabel'>SCHEDULE E Non-collusive Quotation Certificate</span></div><div class='tlrow'><span class='tldate'>🟦 p28</span><span class='tllabel'>APPENDIX A CONTACT DETAILS</span></div></div><div class='h3' style='margin-top:11px'>📄 要交嘅文件（13 份 · 表格以外，標明出自邊份 DOC + 頁碼）</div><div class='timeline'><div class='tlrow'><span class='tllabel'><b>Technical Proposal Envelope</b> <span class='hint'>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30）</span> — Submitted in duplicate (2 copies) in a separa</span></div><div class='tlrow'><span class='tllabel'><b>Fee Proposal Envelope (Price Proposal - Schedule A)</b> <span class='hint'>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30）</span> — Submitted in duplicate (2 copies) in a separa</span></div><div class='tlrow'><span class='tllabel'><b>Price Breakdown Sheet</b> <span class='hint'>（Quotation document for Budget 2027-28 Public Consultation.pdf · p90）</span> — Breakdown of service fees and production cost</span></div><div class='tlrow'><span class='tllabel'><b>Draft Storyboard of TV API</b> <span class='hint'>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30）</span> — With descriptions of visuals and scripts in b</span></div><div class='tlrow'><span class='tllabel'><b>Draft Scripts of Radio API</b> <span class='hint'>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30）</span> — In Cantonese, Putonghua and English in Word f</span></div><div class='tlrow'><span class='tllabel'><b>Statement of Compliance (Schedule B)</b> <span class='hint'>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30）</span> — Duly completed Schedule B in Part VIII</span></div><div class='tlrow'><span class='tllabel'><b>Pro-innovative Proposals and ESG Proposals (Schedule C)</b> <span class='hint'>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30）</span> — Duly completed Schedule C in Part VIII</span></div><div class='tlrow'><span class='tllabel'><b>Offer to be Bound (Schedule D)</b> <span class='hint'>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30）</span> — Duly completed and signed Schedule D in Part </span></div><div class='tlrow'><span class='tllabel'><b>Non-collusive Quotation Certificate (Schedule E)</b> <span class='hint'>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30）</span> — Duly completed Schedule E in Part VIII</span></div><div class='tlrow'><span class='tllabel'><b>Contact Details (Appendix A)</b> <span class='hint'>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30）</span> — Duly completed Appendix A in Part III</span></div><div class='tlrow'><span class='tllabel'><b>Authorised Person Signatory Proof</b> <span class='hint'>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30）</span> — Document showing authorised person&#x27;s authorit</span></div><div class='tlrow'><span class='tllabel'><b>Business Registration Certificate (BR)</b> <span class='hint'>（Quotation document for Budget 2027-28 Public Consultation.pdf · p31）</span> — Copy of valid Business Registration Certifica</span></div><div class='tlrow'><span class='tllabel'><b>Certificate of Incorporation (CI) / Change of Name Certificate</b> <span class='hint'>（Quotation document for Budget 2027-28 Public Consultation.pdf · p31）</span> — Copy of Certificate of Incorporation or equiv</span></div></div></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📮 交標方法（地址 / 信封 / 份數）</span></div><div class='cbody'><p>- <strong>截標</strong>：2026-10-20 12:00</p>
+<p>- <strong>印幾多份</strong>：IN DUPLICATE (FOUR envelopes in total: 2 for Technical Proposal, 2 for Fee Proposal)</p>
+<p>- <strong>幾多信封</strong>：2 個</p>
+<p>- <strong>Soft copy（電子副本：CD/USB？）</strong>：Include soft and hard copies of the storyboard (with draft scripts and visual description) in both Chinese and English, and the radio script in Word format.</p>
+<p>- <strong>交去邊 — To</strong>：Mr Ken MOK</p>
+<p>- <strong>交去邊 — Address</strong>：Creative Sub-division, ISD, Room 1115, 11/F, North Point Government Offices, 333 Java Road, North Point, Hong Kong</p>
+<p>- <strong>信封 label「Technical Proposal」要寫</strong>：`Quotation Ref. No. ISD/Film/26011: Quotation for Production of TV and Radio APIs for 2027-28 Budget Public Consultation - Technical Proposal`（In plain and individually sealed envelope, in duplicate. Do not include any company-identifying marks on the envelope surface.）</p>
+<p>- <strong>信封 label「Fee Proposal」要寫</strong>：`Quotation Ref. No. ISD/Film/26011: Quotation for Production of TV and Radio APIs for 2027-28 Budget Public Consultation - Fee Proposal`（In plain and individually sealed envelope, in duplicate. ONLY include Price Proposal (Schedule A). Do not include any company-identifying marks on the envelope surface.）</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>💰 預算 / 費用（Budget / Fee Breakdown）</span></div><div class='cbody'><p>- <strong>預算（Budget）</strong>：HK\$550,000</p>
+<p>- <strong>費用明細要求（Fee Proposal Breakdown）</strong>：Provide a breakdown of service fees and production costs of the publicity items in the quotation.</p></div></div><div class='ccard surface-card brfcard'><div class='chead'><span class='ctitle' style='padding:0'>📅 日程</span><span class='mdl mdef' title='預設 model（呢段未經真 run 記錄，顯示 generator 設定嘅 model；下次跑 pipeline 會記返真正寫嗰個）'>✍️ Gemini 2.5 Pro·預設</span></div><div class='cbody'><p>- 2026-09-29 Issue invitation letters to agencies</p>
+<p>- 2026-10-02 Submission of Reply Slips by agencies</p>
+<p>- 2026-10-06 Briefing session for interested agencies by ISD (via Zoom)</p>
+<p>- 2026-10-20 Submission of creative proposals and quotations</p>
+<p>- 2026-10-23 Presentation of creative proposals to the Selection Panel</p>
+<p>- 2026-10-30 Contract expected to be awarded</p>
+<p>- 2026-11-02 Debriefing session with the successful bidder</p>
+<p>- 2026-11-06 Pre-production meeting</p>
+<p>- 2026-12-01 Completion of rough cut of TV API</p>
+<p>- 2026-12-07 Completion of final cut of TV and radio APIs</p>
+<p>- 2026-12-10 Delivery of station copies of TV and radio APIs</p>
+<p>- 2026-12-13 Launch of APIs</p></div></div></div></div>
+<div id='debrief' class='tabpanel'><div class='h2' style='margin-top:14px'>📨 共用 BRIEF（標書 tab 全份）</div><p class='hint'>8 間諗橋時都收到呢份 brief（製作要求 3D/mascot/明星、老闆方向…）做底，再各自加上面 dispatch 嘅角度/畫風/device。概念諗咗會 gatekeep 對返 brief 符合先生 BD。</p><div class='card briefcard'><h3>標書 TAB（你嘅 BRIEF — 全份，必跟）</h3>
+<h4>📋 標書撮要</h4>
+<h5>1. 背景同目的</h5>
+<p>* <strong>項目背景</strong>：財政司司長辦公室（FSO）在政府新聞處（ISD）的協助下，將推出主題為「2027-28 財政預算案公眾諮詢」的電視及電台宣傳短片（API）[Invitation Letter p. 1; Part VII p. 65]。</p>
+<p>* <strong>項目目的</strong>：提高廣大公眾對「2027-28 財政預算案公眾諮詢」正在進行的關注與認識，並邀請市民踴躍發表意見 [Part VII p. 65]。</p>
+<h5>2. 目標受眾</h5>
+<p>* <strong>目標受眾</strong>：香港廣大市民（The general public）[Invitation Letter p. 1; Part VII p. 65]。</p>
+<h5>3. 傳意目標／核心訊息</h5>
+<p>* <strong>核心訊息</strong>：介紹並邀請廣大市民就 2027-28 財政預算案積極發表意見 [Part VII p. 65]。</p>
+<h5>4. 影片／製作規格（集數、每集長度、語言、字幕、配音）</h5>
+<p>* <strong>電視宣傳短片（TV API）</strong>：</p>
+<p>  * <strong>集數／版本</strong>：1 個版本 [Part VII p. 65]。</p>
+<p>  * <strong>長度</strong>：每集 30 秒 [Part VII p. 65]。</p>
+<p>  * <strong>拍攝格式</strong>：首選 HDCAM、RED ONE 或同等高清格式；視乎創意，可考慮高清錄影（HDV）或靜態攝影 [Part VII p. 65; Annex I p. 71]。</p>
+<p>  * <strong>輸出格式</strong>：(1) 檔案格式：16:9 (HD) XDCAM HD422 @ 50Mbps MXF；(2) 錄影帶格式：16:9 (HD) HDCAM [Part VII p. 65-66; Annex I p. 71]。</p>
+<p>  * <strong>語言及字幕</strong>：廣東話（配繁體中文書面語字幕）及英文（配英文字幕）[Part VII p. 65-66; Annex I p. 71]。</p>
+<p>  * <strong>配音要求</strong>：須提供粵語及英語配音員進行對話／旁白 [Part VII p. 67]。若因發音不準被電視台退件並經公務員事務局法定語言事務部核實，承辦商須免費重新錄音及交付替代版本 [Part VII p. 67]。</p>
+<p>  * <strong>手語翻譯</strong>：須加入香港手語翻譯（粵語及英語版本）。手語譯員須由承辦商與 ISD 商定，並選自香港復康聯會的「香港手語譯員名單」[Part VII p. 66, p. 67-68]。手語視窗規格：橢圓形、佔螢幕 1/6、位於右下角、淺灰或粉藍色無反射背景、譯員須穿深色／黑色衣服，手語表達須盡量與字幕同步 [Part VII p. 67-68]。</p>
+<p>  * <strong>無障礙版本</strong>：須另外提供符合 W3C WCAG 2.1 Level AA 標準的高解析度 WMV 及 MPEG-4 格式版本用於網上發布 [Part VII p. 66; Annex I p. 72]。</p>
+<p>* <strong>電台宣傳短片（Radio API）</strong>：</p>
+<p>  * <strong>集數／版本</strong>：1 個版本 [Part VII p. 66]。</p>
+<p>  * <strong>長度</strong>：每集 30 秒 [Part VII p. 66]。</p>
+<p>  * <strong>語言</strong>：廣東話、英文（獨白形式 monologue-type）及普通話 [Part VII p. 66, p. 69]。</p>
+<p>  * <strong>配音及格式</strong>：普通話配音員宜在國家普通話水平測試中達到至少一級乙等 [Part VII p. 67, p. 69]。音訊檔案須提供 WAV（48kHz/16bit/2ch stereo）及 MP3 格式 [Annex II p. 76]。</p>
+<p>* <strong>宣傳主視覺（Visual Icon / Key Visuals）</strong>：</p>
+<p>  * <strong>格式</strong>：提供 AI, JPEG, PDF 及 HTML 格式軟複本 [Part VII p. 66]。</p>
+<p>  * <strong>視覺規格</strong>：採用結合照片與圖形的插畫，與 TV API 創意相互呼應（參考過往例子：2025-26 預算案的樹木與機器人、2026-27 預算案的相機與相框）[Part VII p. 65, p. 66]。</p>
+<h5>5. 指定班底（導師／KOL／吉祥物等，逐個講要求）</h5>
+<p>* <strong>手語譯員（Sign Language Interpreter）</strong>：須從香港復康聯會維護之「香港手語譯員名單」中選定；錄影時穿深色／黑色衣服；須於 TV API 最終剪輯（Final cut）階段檢查手語翻譯的準確性 [Part VII p. 66, p. 67-68]。</p>
+<p>* <strong>配音員（Voice-over Talents）</strong>：包含 TV API 廣東話及英文配音員，以及 Radio API 廣東話、英文及普通話配音員（普通話配音員宜達國家普通話水平測試一級乙等）[Part VII p. 67, p. 69]。</p>
+<p>* <strong>名人／明星（Celebrities / Talents，如有）</strong>：若創意包含名人／明星參演，承辦商須負責聯絡、辦理演藝權益清理（確保可於全球及所有媒體永久播放），並承擔其髮型、化妝、服裝、道具及交通費用；名人的選擇須獲得政府同意 [Part VII p. 68-69]。</p>
+<h5>6. 創意及策略重點／風格要求</h5>
+<p>* <strong>原創性要求</strong>：創意概念、劇本、標語、故事板及視覺素材須為原創，未曾被其他機構購買，獲委任後亦不可轉售 [Part VII p. 67]。</p>
+<p>* <strong>配樂</strong>：首選量身訂造／後配音樂（tailor-made / post-scored music），承辦商須自費完成全球及永久播映權清理 [Part VII p. 66, p. 68]。</p>
+<p>* <strong>主視覺（Visual Icon）風格</strong>：須採用具吸引力的插畫結合照片及圖形，風格須與 TV API 保持一致 [Part VII p. 65, p. 66]。</p>
+<p>* <strong>評分準則重點</strong>：技術評估佔總分 70%，評分標準包括：訊息準確與清晰度（30%）、訊息傳達創意（15%）、宣傳推廣衝擊力（15%）、記憶度（10%）、共鳴／說服力（10%），以及創新與 ESG 建議（20%，含直接相關的 Pro-innovation 建議 15% 及 ESG 建議 5%）[Annex III p. 78, p. 82]。</p>
+<h5>7. 交付物同時間表</h5>
+<p>* <strong>主要交付物</strong>：</p>
+<p>  1. 30 秒 TV API：雙語及手語版本、無障礙網頁版本、MXF 及 HDCAM Clean Master、12 張劇照 JPEG、電視台發布檔及 Cue sheet [Part VII p. 65-66; Annex I p. 71-72]。</p>
+<p>  2. 30 秒 Radio API：廣東話、英文及普通話 WAV 與 MP3 音訊檔及劇本 [Part VII p. 66; Annex II p. 76-77]。</p>
+<p>  3. 宣傳主視覺（Visual Icon）：AI, JPEG, PDF, HTML 格式軟複本 [Part VII p. 66]。</p>
+<p>  4. 故事板（含中英文視覺描述）與劇本之軟複本及硬複本 [Part VII p. 66]。</p>
+<p>  5. Clean Master Copies：包含所有拍攝素材、動畫及剩餘剪輯段落，同步人聲須與動畫／背景音樂分軌儲存 [Part VII p. 66, p. 68]。</p>
+<p>* <strong>關鍵時間表</strong> [Part VII p. 70]：</p>
+<p>  * <strong>2026年9月29日（二）</strong>：發出邀請信 [Part VII p. 70]。</p>
+<p>  * <strong>2026年10月2日（五）17:00 前</strong>：遞交簡介會回條（Reply Slip）[Invitation Letter p. 1; Part VII p. 70]。</p>
+<p>  * <strong>2026年10月6日（三）10:00</strong>：ISD 舉行 Zoom 簡介會 [Invitation Letter p. 1; Part VII p. 70]。</p>
+<p>  * <strong>2026年10月20日（二）12:00 前</strong>：截標（遞交技術及費用建議書）[Invitation Letter p. 1; Part III p. 11; Part VII p. 70]。</p>
+<p>  * <strong>2026年10月23日（五）</strong>：向選拔委員會進行 Presentation [Invitation Letter p. 1; Part VII p. 70]。</p>
+<p>  * <strong>2026年10月30日（五）</strong>：預計批出合約 [Invitation Letter p. 1]。</p>
+<p>  * <strong>2026年11月2日（一）</strong>：與獲委任承辦商進行 Debriefing session [Part VII p. 70]。</p>
+<p>  * <strong>2026年11月6日（五）</strong>：Pre-production meeting [Part VII p. 70]。</p>
+<p>  * <strong>2026年12月1日（二）</strong>：完成 TV API 初剪（Rough cut）[Part VII p. 70]。</p>
+<p>  * <strong>2026年12月7日（一）</strong>：完成 TV 及 Radio API 最終剪輯（Final cut）[Part VII p. 65, p. 70]。</p>
+<p>  * <strong>2026年12月10日（四）12:00 前</strong>：交付站 copies（Station copies）予各大電視台及電台 [Invitation Letter p. 1; Part VII p. 65, p. 70; Annex I p. 72]。</p>
+<p>  * <strong>2026年12月13日（日）</strong>：API 正式首播（Launch）[Part VII p. 70]。</p>
+<h5>8. 任何強制要求或紅線</h5>
+<p>* <strong>預算上限紅線</strong>：本項目預算上限為<strong>港幣 550,000 元（HK\$550,000）</strong>，報價超過此金額者將不予考慮（Disqualified）[Invitation Letter p. 1; Part VII p. 69]。</p>
+<p>* <strong>雙信封與封套規範</strong>：技術建議書（Technical Proposal）與費用建議書（Fee Proposal）須分開於兩個獨立密封且無公司識別標記的信封內，各提交一式兩份（即共 4 個信封），於 2026 年 10 月 20 日中午 12:00 前送達指定地點 [Invitation Letter p. 1; Part III p. 11; Part IV p. 29]。信封表面嚴禁出現任何可辨識投標公司身分的字樣或標記 [Part III p. 11; Part IV p. 29]。</p>
+<p>* <strong>必要的交標文件</strong>：必須包含簽署好的 Offer to be Bound (Schedule D)、價格建議 (Schedule A)、TV API 故事板草稿（含中英文描述）及 Radio API 三語劇本草稿，否則標書不獲考慮 [Part IV p. 30; Annex III p. 78]。</p>
+<p>* <strong>全球及永久版權</strong>：所有產出物（包括 API 成品、故事板、劇本、設計、拍攝素材及剩餘剪輯）之全球及永久版權（Worldwide and perpetual copyright）均歸香港特別行政區政府所有 [Invitation Letter p. 1; Part VII p. 66, p. 68-69; Annex V p. 88]。</p>
+<p>* <strong>音樂版權清理</strong>：承辦商須自費辦理所有音樂版權許可（包括 CASH、IFPI、HKRIA 等），並於製作完成後提交填妥之「Information on Music Copyright Form」(Annex IV) 始可安排付款 [Part VII p. 68, p. 69; Annex IV p. 87; Annex V p. 88]。</p>
+<p>* <strong>保險保障</strong>：承辦商須投保不少於<strong>港幣 10,000,000 元（HK\$10,000,000）</strong>的保險，以保障製作團隊、器材、演員（含名人）及公眾安全 [Annex V p. 89]。</p>
+<p>* <strong>性別主流化（Gender Mainstreaming）</strong>：所有提交作品須進行審查，確保無性別偏見或不平等內容 [Annex V p. 89]。</p>
+<p>* <strong>誠信條款與防串通</strong>：必須提交 Non-collusive Quotation Certificate (Schedule E)，嚴禁圍標或串通；獲委任後須於合約生效兩週內提交員工誠信守則（Code of Conduct）[Part III p. 19; Part V p. 51; Schedule E p. 94-96]。</p>
+<p>💡 需唔需要我進一步幫你整理交標 Checklist 或者開工 Timeline 安排？</p>
+<h4>⚠️ 製作要求（標書硬性，每個概念必跟，違 = 廢稿）</h4>
+<p>- <strong>手語</strong>：要（標書原文:TV API 須包含香港手語翻譯（粵語及英語版本）。手語視窗為橢圓形，佔螢幕六分之一，設於右下角，背，p67）</p>
+<p>- <strong>W3C影片</strong>：要（標書原文:須提供符合 W3C 無障礙網頁內容指引 (WCAG) 2.1 AA 級標準之網上發布版本（高解析度 ，p66）</p>
+<p>- <strong>明星/名人/官員</strong>：無Preference（標書原文:如邀請名人/明星參與，承辦商須負責聯絡、辦理演藝權益授權，並承擔髮型、化妝、服裝及交通等費用，名人選，p68）</p>
+<p>- <strong>Mascot</strong>：無Preference（標書原文:無標明，p）</p>
+<p>- <strong>動畫</strong>：無Preference（標書原文:無標明 / 無標明，p）</p>
+<h4>📑 要交文件（邊份 DOC + 頁碼）</h4>
+<p>- <strong>Technical Proposal Envelope</strong>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30） — Submitted in duplicate (2 copies) in a separa</p>
+<p>- <strong>Fee Proposal Envelope (Price Proposal - Schedule A)</strong>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30） — Submitted in duplicate (2 copies) in a separa</p>
+<p>- <strong>Price Breakdown Sheet</strong>（Quotation document for Budget 2027-28 Public Consultation.pdf · p90） — Breakdown of service fees and production cost</p>
+<p>- <strong>Draft Storyboard of TV API</strong>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30） — With descriptions of visuals and scripts in b</p>
+<p>- <strong>Draft Scripts of Radio API</strong>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30） — In Cantonese, Putonghua and English in Word f</p>
+<p>- <strong>Statement of Compliance (Schedule B)</strong>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30） — Duly completed Schedule B in Part VIII</p>
+<p>- <strong>Pro-innovative Proposals and ESG Proposals (Schedule C)</strong>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30） — Duly completed Schedule C in Part VIII</p>
+<p>- <strong>Offer to be Bound (Schedule D)</strong>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30） — Duly completed and signed Schedule D in Part </p>
+<p>- <strong>Non-collusive Quotation Certificate (Schedule E)</strong>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30） — Duly completed Schedule E in Part VIII</p>
+<p>- <strong>Contact Details (Appendix A)</strong>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30） — Duly completed Appendix A in Part III</p>
+<p>- <strong>Authorised Person Signatory Proof</strong>（Quotation document for Budget 2027-28 Public Consultation.pdf · p30） — Document showing authorised person&#x27;s authorit</p>
+<p>- <strong>Business Registration Certificate (BR)</strong>（Quotation document for Budget 2027-28 Public Consultation.pdf · p31） — Copy of valid Business Registration Certifica</p>
+<p>- <strong>Certificate of Incorporation (CI) / Change of Name Certificate</strong>（Quotation document for Budget 2027-28 Public Consultation.pdf · p31） — Copy of Certificate of Incorporation or equiv</p>
+<h4>📮 交標方法（地址／信封／份數）</h4>
+<p>- <strong>截標</strong>：2026-10-20 12:00</p>
+<p>- <strong>印幾多份</strong>：IN DUPLICATE (FOUR envelopes in total: 2 for Technical Proposal, 2 for Fee Proposal)</p>
+<p>- <strong>幾多信封</strong>：2 個</p>
+<p>- <strong>Soft copy（電子副本：CD/USB？）</strong>：Include soft and hard copies of the storyboard (with draft scripts and visual description) in both Chinese and English, and the radio script in Word format.</p>
+<p>- <strong>交去邊 — To</strong>：Mr Ken MOK</p>
+<p>- <strong>交去邊 — Address</strong>：Creative Sub-division, ISD, Room 1115, 11/F, North Point Government Offices, 333 Java Road, North Point, Hong Kong</p>
+<p>- <strong>信封 label「Technical Proposal」要寫</strong>：`Quotation Ref. No. ISD/Film/26011: Quotation for Production of TV and Radio APIs for 2027-28 Budget Public Consultation - Technical Proposal`（In plain and individually sealed envelope, in duplicate. Do not include any company-identifying marks on the envelope surface.）</p>
+<p>- <strong>信封 label「Fee Proposal」要寫</strong>：`Quotation Ref. No. ISD/Film/26011: Quotation for Production of TV and Radio APIs for 2027-28 Budget Public Consultation - Fee Proposal`（In plain and individually sealed envelope, in duplicate. ONLY include Price Proposal (Schedule A). Do not include any company-identifying marks on the envelope surface.）</p>
+<h4>💰 預算 / 費用</h4>
+<p>- <strong>預算（Budget）</strong>：HK\$550,000</p>
+<p>- <strong>費用明細要求（Fee Proposal Breakdown）</strong>：Provide a breakdown of service fees and production costs of the publicity items in the quotation.</p>
+<h4>⛔ 注意事項 / 紅線</h4>
+<p>- [手語] Sign Language Interpretation：TV API 須包含香港手語翻譯（橢圓形視窗，佔螢幕六分之一，置於右下角，淺灰/粉藍背景，譯員穿深色衣服）。</p>
+<p>- [無障礙] Web Accessibility Standard：網上發布版本須符合 W3C WCAG 2.1 AA 級無障礙標準。</p>
+<p>- [明星] Celebrity Line-up &amp; Rights Clearance：如涉及名人/明星，承辦商須負責聯絡、演藝權益清理及承擔相關造型、交通費用。</p>
+<p>- [其他] Global and Perpetual Copyright：所有產出物（包括故事板、劇本、成品、素材及剩餘剪輯）之全球及永久版權均歸政府所有。</p>
+<h4>⚡ 創意亮點（research 掘出嘅真嘢）</h4>
+<h4>⚡ 創意亮點 — ISDBUDGET202728PUBLICCONSULTATION·Quotation for Production of TV and Radio Announcements in the Public Interest (APIs) for 2027-28 Budget Public Consultation（research 掘出嚟，可以做橋嘅真嘢）</h4>
+<p>1. 🏷️ <strong>歷屆視覺符號傳承（樹與機器人／相機與相框）</strong></p>
+<p>   - 事實：標書《Service Specifications》特別點名參考過往預算案諮詢 Key Visual，例如 2025-26 的「樹木與機器人」和 2026-27 的「相機與相框」，要求今屆創作對應 TV API 的生動宣傳主視覺（Visual Icon）。（出處：標書 Part VII Service Specifications Para 1 &amp; 8(ii)）</p>
+<p>   - 💡 可以點做橋：可以擬人化視覺符號為主角開場，將抽象的財政預算轉化為具親和力的奇幻圖像。</p>
+<p>2. 👤 <strong>核心靈魂人物：財政司司長親身對話</strong></p>
+<p>   - 事實：根據歷屆預算案諮詢 API 慣例，財政司司長陳茂波均親自出鏡或配音，向市民提出發展疑問並邀請發表意見。（出處：[hooks-research] 資產盤點 ③ 及歷屆 API 旁白稿）</p>
+<p>   - 💡 可以點做橋：可以財長第一身問句或走入社區的真實視角切入，打破官方宣導的距離感。</p>
+<p>3. 🇭🇰 <strong>民間經典預算案用語：「派糖」與「還富於民」</strong></p>
+<p>   - 事實：香港市民每年對財政預算案最直觀的討論焦點往往是「派糖」措施，而「還富於民」亦是深植人心之公共討論用語。（出處：[hooks-research] 資產盤點 ⑥ 民間文化梗）</p>
+<p>   - 💡 可以點做橋：可以生活化對話巧妙回應市民對「派糖」的關注，將話題引導至「同心建港、發表意見」。</p>
+<p>4. 💡 <strong>公共財政整固與提速發展雙重脈絡</strong></p>
+<p>   - 事實：特區政府正處於公共財政整固期（政府經常開支連續削減），同時需要推動經濟高質量發展與對接「十五五」規劃。（出處：[hooks-research] 背景研究 ① &amp; ②）</p>
+<p>   - 💡 可以點做橋：可以「如何善用每一分錢」或「點樣把餅做大」為貼地情境問句，引發全港市民共鳴。</p>
+<p>5. 🇭🇰 <strong>「財爺熱線」與全方位公眾諮詢渠道</strong></p>
+<p>   - 事實：預算案諮詢設有 budget.gov.hk、電郵及熱線等多重渠道，且財政司司長每年均有出席電台節目接聽聽眾電話的傳統。（出處：[hooks-research] 資產盤點 ④ &amp; ⑥、標書 Part VII）</p>
+<p>   - 💡 可以點做橋：可以 Phone-in 對話或二維碼互動畫面貫穿全片，強調「你講財爺聽」的雙向參與。</p>
+<p>6. 🏷️ <strong>無障礙包容：手語視窗與 WCAG 2.1 AA</strong></p>
+<p>   - 事實：標書強制要求 TV API 加入 1/6 橢圓形香港手語視窗，並另備符合 W3C WCAG 2.1 AA 級無障礙標準的網絡發布版本。（出處：標書 Part VII Para 6(vi), (xiv) &amp; Para 9(ix)）</p>
+<p>   - 💡 可以點做橋：可以無障礙手語姿態融入開場畫面，傳遞「廣納全港每一位市民聲音」的包容理念。</p>
+<p>7. 💡 <strong>評分關鍵：20% 創新與 ESG 建議</strong></p>
+<p>   - 事實：標書技術評估中明確撥出 20%（Pro-innovation 15% + ESG 5%）評分比重，鼓勵採用新科技或社會責任方案提升宣傳效力。（出處：標書 Annex III Marking Scheme Note 6）</p>
+<p>   - 💡 可以點做橋：可以在製作或傳播互動環節導入綠色拍攝與 AI 無障礙技術，直接搶佔技術分優勢。</p>
+<h4>📅 日程</h4>
+<p>- 2026-09-29 Issue invitation letters to agencies</p>
+<p>- 2026-10-02 Submission of Reply Slips by agencies</p>
+<p>- 2026-10-06 Briefing session for interested agencies by ISD (via Zoom)</p>
+<p>- 2026-10-20 Submission of creative proposals and quotations</p>
+<p>- 2026-10-23 Presentation of creative proposals to the Selection Panel</p>
+<p>- 2026-10-30 Contract expected to be awarded</p>
+<p>- 2026-11-02 Debriefing session with the successful bidder</p>
+<p>- 2026-11-06 Pre-production meeting</p>
+<p>- 2026-12-01 Completion of rough cut of TV API</p>
+<p>- 2026-12-07 Completion of final cut of TV and radio APIs</p>
+<p>- 2026-12-10 Delivery of station copies of TV and radio APIs</p>
+<p>- 2026-12-13 Launch of APIs</p></div></div>
+<div id='wi_all' class='tabpanel'><div class='banner'>🧩 今次提案要做、要交嘅項目（NB 跟標書同簡介會列；TAB 跟呢張表）</div><table class='sbtab'><thead><tr><th>項目</th><th>提案要交乜</th><th>評分</th><th>出處</th></tr></thead><tbody><tr><td><b>30-second TV API</b></td><td><div class='hint'>廣東話／英文　16:9　TVB／i-CABLE HOY TV／PCCW Media (Now TV)／HKTVE (Viu TV)／RTHK TV／Internet</div></td><td></td><td class='hint'>標書 deliverables（core）</td></tr><tr><td><b>30-second Radio API</b></td><td><div class='hint'>廣東話／英文／普通話　RTHK／Commercial Radio／Metro Broadcast</div></td><td></td><td class='hint'>標書 deliverables（core）</td></tr><tr><td><b>Creative Key Visuals / Visua</b></td><td><div class='hint'>Internet／Publicity Materials</div></td><td></td><td class='hint'>標書 deliverables（core）</td></tr></tbody></table></div>
+<div id='handbd' class='tabpanel'><p class='hint'>喺 Master GSheet 開「TV API Script <b>1／2／3</b>」三個 tab 放唔同 TV API 稿，<b>撳邊個 SET 就生邊個</b>（全 NLM 風格各一，純畫面唔蓋字）。</p><div class='acts' style='margin-bottom:6px'><button class='btn' title='讀 Master GSheet「TV API Script 1」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ISDBUDGET202728PUBLICCONSULTATION&concept=1&stage=handbd&engine=allstyles&target=main')">🎬 SET 1 → 生 BD</button><button class='btn' title='讀 Master GSheet「TV API Script 2」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ISDBUDGET202728PUBLICCONSULTATION&concept=2&stage=handbd&engine=allstyles&target=main')">🎬 SET 2 → 生 BD</button><button class='btn' title='讀 Master GSheet「TV API Script 3」tab 手寫稿 → NLM 生全風格 BD' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ISDBUDGET202728PUBLICCONSULTATION&concept=3&stage=handbd&engine=allstyles&target=main')">🎬 SET 3 → 生 BD</button><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card empty'>未生過手寫稿 BD —— 撳上面 SET 生成（或先喺 Master GSheet 放稿）。</div></div>
+<div id='theme1_1' class='tabpanel' data-set='1'><div class='banner'>🧭 北極星未定。撳掣 → 7 agency + 委員會就住成份標書諗一個大主題（big idea）+ 一個綜合口號。所有 MOD ladder 返呢度。</div><div class='card'><button class='btn big' title='' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ISDBUDGET202728PUBLICCONSULTATION&concept=PLAN&stage=gen_theme&target=main')">🧭 生成大主題 + 綜合口號</button></div><div class='card'><button class='btn ghost' title='將呢個 dept 全部已生成嘅 MOD planning（主題／系列／SOC／MEDIA／KOL）出去 Master GSheet，每個 mod 一個 tab；你喺 GSheet 改完，自己貼返入真 deck（GSlide）。design 你話事。' onclick="genBD(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ISDBUDGET202728PUBLICCONSULTATION&concept=all&stage=mod_gsheet&target=main')">📤 全部 MOD → Master GSheet（畀你改）</button></div></div>
+<div id='tvapi1_1' class='tabpanel' data-set='1'><div class='banner'>委員會仲未跑，等 briefing gate 過咗先有概念。</div></div>
+<div id='tvapi1_2' class='tabpanel' data-set='1'><div class='banner'>未有概念進入第二輪。返 VID 1 揀六強（submit 即自動生 BD）先。</div></div>
+<div id='tvapi1_3' class='tabpanel' data-set='1'><div class='banner'>未有三甲。返 VID 2 揀三甲先。</div></div>
+<div id='tvapi1_4' class='tabpanel' data-set='1'><div class='banner'>🎬 VID 4 — 5 步生 storyboard ＋ 片（STEP 1 → 5）</div><div class='card'><div class='h3'>📄 STEP 1 — 故事版（你親手執 Master GSheet B6:C17，9-12 格）</div><a class='btn ghost mini' target='_blank' href='https://docs.google.com/spreadsheets/d/1x1MT8az-eq--8J2GmomXm5C39HbIw3V9VkpfZVbo0Kc/edit'>📊 開 Master GSheet 執稿</a></div><div class='card step2'><div class='h3'>🎭 STEP 2 — 主角參考相（AI 自動搵 ISD 官方相 + curate；face-swap 用嚟貼真面）</div><button class='btn ghost mini' onclick="srcRefs(this,'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ISDBUDGET202728PUBLICCONSULTATION&concept=FINAL&stage=facerefs&target=main')">🔍 AI 搵／更新主角參考相</button><div class='hint'>仲未 source 主角相。撳上面掣，AI 自動由 ISD 官方相搵 + curate。</div></div><div class='stylepick card'><div class='h3'>🎨 STEP 3 — 揀風格（每行 0 或 1 個；唔剔 = 跟劇本）</div><div class='styrow'><span class='stylbl'>🏙️ 環境</span><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="realistic environment" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="2D comic-style environment" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='env' value="3D animated environment" onchange='styPick(this)'>3D動畫</label></div><div class='styrow'><span class='stylbl'>🧍 人物</span><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="photorealistic characters" onchange='styPick(this)'>寫實</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="2D comic-style characters" onchange='styPick(this)'>2D漫畫</label><label class='styo'><input type=checkbox class='styopt' data-dim='char' value="3D-modeled characters" onchange='styPick(this)'>3D建模</label></div><div class='styrow'><span class='stylbl'>🌗 光/時間</span><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="daytime lighting" onchange='styPick(this)'>日 Day</label><label class='styo'><input type=checkbox class='styopt' data-dim='light' value="nighttime lighting" onchange='styPick(this)'>夜 Night</label></div><div class='styrow'><span class='stylbl'>🎨 色彩</span><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="vivid saturated color" onchange='styPick(this)'>鮮艷</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="muted desaturated tones" onchange='styPick(this)'>灰調</label><label class='styo'><input type=checkbox class='styopt' data-dim='color' value="black and white" onchange='styPick(this)'>黑白</label></div><div class='styrow'><span class='stylbl'>😊 情緒</span><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="warm heartfelt mood" onchange='styPick(this)'>溫情</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="passionate uplifting mood" onchange='styPick(this)'>激昂</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="light humorous mood" onchange='styPick(this)'>幽默</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="solemn official tone" onchange='styPick(this)'>莊重官方</label><label class='styo'><input type=checkbox class='styopt' data-dim='mood' value="suspenseful mood" onchange='styPick(this)'>懸疑</label></div><div class='styrow'><span class='stylbl'>🎬 質感</span><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="cinematic look" onchange='styPick(this)'>電影感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="documentary realism" onchange='styPick(this)'>紀實</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="dynamic music-video energy" onchange='styPick(this)'>MV動感</label><label class='styo'><input type=checkbox class='styopt' data-dim='feel' value="plain straightforward style" onchange='styPick(this)'>平實</label></div><div class='styanchor'>風格 anchor：<span id='styanchor'>（跟劇本）</span></div></div><div class='card genbox'><div class='h3'>🍌 STEP 4 — 生 BD（讀 B6:C17 ＋ face-swap 主角真面）</div><button class='btn big' title='讀你喺 Master GSheet B6:C17 執好嘅 script ＋ STEP 3 風格 ＋ face-swap 主角真面 → 生最終 BD（brd=FINAL，唔污染候選）' onclick="genFinalBD(this,'ISDBUDGET202728PUBLICCONSULTATION','https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ISDBUDGET202728PUBLICCONSULTATION&concept=FINAL&stage=gsheetbd&target=main')">由 B6:C17 生最終 BD</button></div><div class='card'><div class='h3'>🎬 STEP 5 — 生片（Higgsfield Kling/Seedance，開發中）</div><div class='hint'>BD 揀好 → 生片。Higgsfield CLI 整緊。</div></div></div>
+<div id='tvapi1_5' class='tabpanel' data-set='1'><div class='banner'>未有 FINAL。返 VID 3 揀 FINAL 2 先。</div></div>
+<div id='rad1_1' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 1：流程設計中，完成 VID 後再開。</div></div>
+<div id='rad1_2' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 2：流程設計中，完成 VID 後再開。</div></div>
+<div id='rad1_3' class='tabpanel' data-set='1'><div class='banner'>🔧 RAD Ph 3：流程設計中，完成 VID 後再開。</div></div>
+<div id='kv1_1' class='tabpanel' data-set='1'><div class='banner'>🔧 KV Ph 1：流程設計中，完成 VID 後再開。</div></div>
+<div id='kv1_2' class='tabpanel' data-set='1'><div class='banner'>🔧 KV Ph 2：流程設計中，完成 VID 後再開。</div></div>
+<div id='kv1_3' class='tabpanel' data-set='1'><div class='banner'>🔧 KV Ph 3：流程設計中，完成 VID 後再開。</div></div>
+<div class=foot>Idea Lab · 10-01 22:42 · ⚠️ AI 初步創意，出客前需 Raymond review</div>
+</div>
+
+<script>
+var DL = new Date("2026-10-20T12:00:00+08:00").getTime();
+function cd() {
+  var e = document.getElementById('cd'); if (!e) return;
+  var x = DL - Date.now();
+  if (x < 0) { e.textContent = '已截標'; return; }
+  var s = Math.floor(x/1000), d = Math.floor(s/86400);
+  s -= d*86400; var h = Math.floor(s/3600); s -= h*3600;
+  var m = Math.floor(s/60); s -= m*60;
+  e.textContent = (d > 0 ? d + '日 ' : '')
+    + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0')
+    + ':' + String(s).padStart(2,'0');
+}
+cd(); setInterval(cd, 1000);
+
+var TABS   = document.querySelectorAll('.tab');
+var PANELS = document.querySelectorAll('.tabpanel');
+function showTab(id) {
+  if (!document.getElementById(id)) id = 'ph0';
+  TABS.forEach(function(t) { t.classList.toggle('active', t.dataset.tab === id); });
+  PANELS.forEach(function(p) { p.classList.toggle('active', p.id === id); });
+  history.replaceState(null, '', '#' + id);
+  upd();
+  if (/(vid|tvapi)\d+_2$/.test(id)) vid2AutoBD();   // 入 VID／TVAPI 2 即自動觸發六強生 BD + poll
+}
+TABS.forEach(function(t) { t.addEventListener('click', function() { showTab(t.dataset.tab); }); });
+showTab((location.hash.slice(1)) || 'ph0');
+
+// VID 2:六強 submit 後自動生 BD —— 對未有 BD(data-needbd=1)嘅概念逐個觸發 NBLM deck(GAS 去重,撳幾多次都唔重生)。
+// 未生晒就每 45s reload 一次睇新 BD(NBLM 連夜,一晚生得晒)。
+var _vid2timer;
+function vid2AutoBD() {
+  var panel = document.querySelector('.tabpanel.active'); if (!panel) return;
+  var pend = panel.querySelectorAll('[data-needbd="1"]');
+  pend.forEach(function(c) {
+    var brd = c.dataset.brd; if (!brd) return;
+    var k = 'bdstart_ISDBUDGET202728PUBLICCONSULTATION_' + brd;
+    if (!localStorage.getItem(k)) localStorage.setItem(k, String(Date.now()));  // 開始時間 → 進度條
+    fetch("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=ISDBUDGET202728PUBLICCONSULTATION&concept=" + encodeURIComponent(brd) + "&stage=deck&target=main" + setQ(),
+          {mode:'no-cors'}).catch(function(){});
+  });
+  tickProgress();
+  if (pend.length && !_vid2timer) {
+    _vid2timer = setInterval(function() { location.reload(); }, 90000);  // 靜靜每 90s 攞新 BD（冇 develop bar）
+  }
+}
+
+// VID 2 進度條：按實測平均 BD 時間（~10 分鐘）推移，封頂 99% stall（NBLM 唔報幾時好）。
+var BD_AVG_MS = 600000;   // 平均 606s（manifest 連續 gap 實測）
+function tickProgress() {
+  document.querySelectorAll('.pgbar').forEach(function(bar) {
+    var brd = bar.dataset.brd; if (!brd) return;
+    var k = 'bdstart_ISDBUDGET202728PUBLICCONSULTATION_' + brd;
+    var s = +localStorage.getItem(k);
+    if (!s) { s = Date.now(); localStorage.setItem(k, String(s)); }
+    var pct = Math.min(99, (Date.now() - s) / BD_AVG_MS * 100);
+    var f = bar.querySelector('.pgfill'); if (f) f.style.width = pct.toFixed(0) + '%';
+    var t = bar.querySelector('.pgtxt');
+    if (t) t.textContent = pct >= 99 ? 'BD 生成中…就快好（99%）' : ('BD 生成中… ' + pct.toFixed(0) + '%（平均 ~10 分鐘）');
+  });
+}
+setInterval(tickProgress, 2000); tickProgress();
+// 已完成（卡有圖）→ 清走嗰個 brd 嘅開始時間，免下次重生即跳 99%
+document.querySelectorAll('.card[data-brd] img.sheet').forEach(function(im) {
+  var card = im.closest('.card[data-brd]');
+  if (card && card.dataset.brd) localStorage.removeItem('bdstart_ISDBUDGET202728PUBLICCONSULTATION_' + card.dataset.brd);
+});
+
+// 零碎想法：localStorage array(可入多次),即時累積顯示,每條 POST 去 GAS 畀委員會消化
+var NK = 'notes_ISDBUDGET202728PUBLICCONSULTATION';
+var notesEl = document.getElementById('notes');
+function loadNotes() {
+  try { var a = JSON.parse(localStorage.getItem(NK) || '[]'); return Array.isArray(a) ? a : []; }
+  catch (e) { return []; }
+}
+function saveNotes(a) { localStorage.setItem(NK, JSON.stringify(a)); }
+function fmtTs(ts) {
+  var d = new Date(ts);
+  function p(n) { return String(n).padStart(2, '0'); }
+  return (d.getMonth()+1) + '/' + d.getDate() + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+}
+function renderNotes() {
+  var box = document.getElementById('noteslist'); if (!box) return;
+  var a = loadNotes();
+  if (!a.length) { box.innerHTML = "<p class='hint' style='margin:4px 2px'>未有想法。</p>"; return; }
+  box.innerHTML = a.map(function(n, i) {
+    var txt = (n.text || '').replace(/</g, '&lt;');
+    return "<div class='notecard'><div class='noterow'>"
+      + "<span class='notets'>" + fmtTs(n.ts) + "</span>"
+      + "<button class='notedel' onclick='delNote(" + i + ")'>✕</button></div>"
+      + "<div class='notetxt'>" + txt + "</div></div>";
+  }).join('');
+}
+function submitNotes() {
+  if (!notesEl || !notesEl.value.trim()) { alert('未有想法'); return; }
+  var txt = notesEl.value.trim();
+  var a = loadNotes(); a.push({ ts: Date.now(), text: txt }); saveNotes(a);
+  notesEl.value = ''; renderNotes();
+  var url = "https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=note&dept=ISDBUDGET202728PUBLICCONSULTATION&text=" + encodeURIComponent(txt);
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('＋ 已加入（' + a.length + ' 條，VID 1 啟動時餵委員會）');
+}
+function delNote(i) {
+  var a = loadNotes(); if (i < 0 || i >= a.length) return;
+  if (!confirm('刪呢條想法?')) return;
+  a.splice(i, 1); saveNotes(a); renderNotes();
+}
+renderNotes();
+
+function tk(el) {
+  el.classList.toggle('on');
+  el.textContent = el.classList.contains('on') ? '✓' : '';
+  upd();
+}
+// carousel 卡：撳卡頭（唔係內文 scroll 區）toggle 揀選
+function tkCard(head) {
+  var card = head.closest('[data-cid]'); if (!card) return;
+  var ck = card.querySelector('.ck'); if (!ck) return;
+  tk(ck);
+  card.classList.toggle('sel', ck.classList.contains('on'));
+}
+function upd() {
+  var n = document.querySelectorAll('.tabpanel.active .ck.on').length;
+  document.querySelectorAll('.tabpanel.active .cnt').forEach(function(c) {
+    c.textContent = n;
+    c.parentElement.classList.toggle('cnt-warn', n > 6);
+  });
+}
+document.querySelectorAll('.card[data-cid]').forEach(function(card) {
+  var ck = card.querySelector('.ck');
+  if (!ck) return;
+  card.addEventListener('click', function(e) {
+    if (e.target.closest('.ck,.det,textarea,a,button')) return;
+    tk(ck);
+  });
+});
+
+function toast(msg) {
+  var t = document.createElement('div');
+  t.className = 'toast'; t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(function() { t.style.opacity = '0'; }, 6000);
+}
+function showTopProc(msg, stop) {
+  var o = document.getElementById('topproc');
+  if (!o) {
+    o = document.createElement('div'); o.id = 'topproc'; o.className = 'topproc';
+    document.body.insertBefore(o, document.body.firstChild);
+  }
+  if (stop) {
+    o.innerHTML = '<span id="tpmsg">' + msg + '</span>'
+      + ' <a href="#" onclick="location.reload();return false" style="margin-left:8px;font-weight:800;color:var(--ac)">🔄 再 check</a>'
+      + ' <a href="#" onclick="this.parentNode.remove();return false" style="margin-left:8px;color:#888">✕</a>';
+  } else {
+    o.innerHTML = '<span class="spin sm"></span><span id="tpmsg">' + msg + '</span>';
+  }
+}
+
+// ⛔⛔ 防 comment 冇咗(Raymond 2026-06-16 爆:手寫稿 BD comment 位打咗字,redeploy → reload 冧晒):
+//   **全部**輸入格(額外想法 / 6 塊手寫稿 BD comment / 鐵則 / 任何 textarea·text input)每次打字即存 localStorage,
+//   reload/redeploy 都還原返;tab 切返嚟 auto-refresh **有未存字就唔 reload**。每格按 element id 存。
+(function() {
+  var DP = 'draft_ISDBUDGET202728PUBLICCONSULTATION_';
+  function fields() {
+    return [].slice.call(document.querySelectorAll('textarea, input[type=text]')).filter(function(e){ return e.id; });
+  }
+  function hasUnsaved() { return fields().some(function(e){ return (e.value||'').trim().length>0; }); }
+  // 載入時還原每格 draft
+  var restored = 0;
+  try { fields().forEach(function(e){ var v=localStorage.getItem(DP+e.id); if(v && !e.value){ e.value=v; restored++; } }); } catch(_) {}
+  if (restored) setTimeout(function(){ toast('↩︎ 幫你還原咗 '+restored+' 格未送出嘅文字'); }, 500);
+  // 每次打字即存(任何有 id 嘅 textarea / text input)
+  document.addEventListener('input', function(ev) {
+    var t = ev.target; if (!t || !t.id) return;
+    if (t.tagName==='TEXTAREA' || (t.tagName==='INPUT' && t.type==='text')) {
+      try { if ((t.value||'').trim()) localStorage.setItem(DP+t.id, t.value); else localStorage.removeItem(DP+t.id); } catch(_) {}
+    }
+  });
+  window._clearDraft = function(id) { try { localStorage.removeItem(DP+id); } catch(_) {} };
+  var loaded = Date.now();
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden && Date.now() - loaded > 45000 && !hasUnsaved())   // 有未存嘅字 → 唔 reload,唔好冧佢
+      location.href = location.pathname + '?t=' + Date.now() + location.hash;
+  });
+})();
+
+// BD 圖 click 放大（lightbox）—— event delegation，任何 .sheet 圖都得
+(function() {
+  var lb = document.createElement('div'); lb.className = 'lbx';
+  lb.innerHTML = '<span class="x">✕</span><img><div class="hint">撳任何位收返。放大後可用瀏覽器 pinch/scroll 睇每格。</div>';
+  document.body.appendChild(lb);
+  var lbimg = lb.querySelector('img');
+  lb.addEventListener('click', function() { lb.classList.remove('on'); });
+  document.addEventListener('click', function(e) {
+    var t = e.target;
+    if (t && t.classList && t.classList.contains('sheet') && t.src) {
+      lbimg.src = t.src; lb.classList.add('on');
+    }
+  });
+})();
+
+// active panel 嘅 set → GAS param（set 1 唔帶，backend 不變）
+function curSet() { var p = document.querySelector('.tabpanel.active'); return p ? (p.dataset.set || '1') : '1'; }
+function setQ()   { var s = curSet(); return (s && s !== '1') ? ('&set=' + s) : ''; }
+
+// 各 set 嘅 funnel phase（多-set 各 set 唔同）。getVidPhase() 隨 active 嘅 set 變。
+var VID_PHASES = {"1": 1};
+var PRIMARY_VID = 1;
+function getVidPhase() { var s = curSet(); return VID_PHASES[s] || PRIMARY_VID; }
+function pickedCids() {
+  return [].map.call(
+    document.querySelectorAll('.tabpanel.active [data-cid] .ck.on'),
+    function(k) { return k.closest('[data-cid]').dataset.cid; });
+}
+function submitAdvance(url) {
+  toast('✅ 已提交，十幾秒後自動刷新睇下一步（或撳右上 🔄）');
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { location.reload(); }, 13000);   // 單次刷新，冇 develop bar，冇無限 loop
+}
+function submitRound() {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個做六強？submit 後會自動後台生 BD（用 NBLM），落選自動歸檔。')) return;
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=ISDBUDGET202728PUBLICCONSULTATION&round=r2&cids=" + c.join(',') + setQ());
+}
+function subStage(to) {
+  var c = pickedCids(); if (!c.length) { alert('未揀'); return; }
+  if (!confirm('提交 ' + c.length + ' 個 → ' + (to === 'r3' ? '三甲' : 'FINAL 2') + '？')) return;
+  submitAdvance("https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=submit_round&dept=ISDBUDGET202728PUBLICCONSULTATION&round=" + to + "&cids=" + c.join(',') + setQ());
+}
+function postFunnel(url, msg) {
+  fetch(url, {mode:'no-cors'})
+    .then(function() { toast(msg); })
+    .catch(function() { toast('⚠️ 再試一次'); });
+}
+
+function genBD(btn, url) {   // VID 3 Nano per-card 用
+  var acts = btn.closest('.acts') || btn.parentElement;
+  if (acts) acts.innerHTML = "<span class='gening'><span class='spin sm'></span>生緊… ~8-9 分鐘</span>";
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+}
+function addRule(dept) {   // 政府 JOB 鐵則:加一條 → listener append gov_job_rules.json(全 JOB 累積)
+  var ta = document.getElementById('newrule');
+  var txt = (ta && ta.value || '').trim();
+  if (!txt) { if(ta) ta.focus(); return; }
+  var url = 'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=' + encodeURIComponent(dept) + '&concept=rule&stage=add_rule'
+          + '&engine=' + encodeURIComponent(txt) + '&target=main';
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  if (window._clearDraft) window._clearDraft('newrule');   // 送出咗 → 清 draft
+  var ol = document.getElementById('rulelist');
+  if (ol) { var li=document.createElement('li'); li.textContent=txt; ol.appendChild(li); }  // 即時顯示
+  if (ta) { ta.value=''; ta.placeholder='✅ 已加，下次生 BD 即跟'; }
+}
+// ⭐ Raymond 提供參考相窗口嘅上載 mechanic = dash_upload.upload_box(reuse 創意把關站,JS 已內嵌喺 widget,呢度唔再寫)
+function _vchecked() { return [].slice.call(document.querySelectorAll('.tabpanel.active .vchk:checked')); }
+function delAssets(dept) {   // 🗑 整張即刻刪(像真網頁,唔問;listener 後台存底 + 真刪)
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=delasset&stage=del_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){ var card=c.closest('.vacard'); if(card) card.remove(); });   // 即刻消失
+  toast('🗑 刪咗 '+ids.length+' 張');
+}
+function preferAssets(dept) {   // ⭐ 首選:即刻 ⭐ + 嗰啲相搬去最左(像真網頁);listener pref + 餵 NLM 優先
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=prefasset&stage=prefer_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){
+    var card=c.closest('.vacard'); if(!card) return;
+    card.classList.add('pref');
+    if(!card.querySelector('.vastar')){ var s=document.createElement('div'); s.className='vastar'; s.textContent='⭐ 首選'; card.appendChild(s); }
+    var row=card.parentNode; row.insertBefore(card, row.firstChild);   // 搬去最左
+    c.checked=false;
+  });
+  toast('⭐ 已設首選 '+ids.length+' 張（搬咗去最左 + 餵 NLM 優先）');
+}
+function showOvl(id) { var o=document.getElementById(id); if(o) o.classList.add('on'); }   // 🎧 錄音逐字 overlay(撳先出)
+function hideOvl(id) { var o=document.getElementById(id); if(o) o.classList.remove('on'); }
+document.addEventListener('click', function(e){   // 撳 overlay 背景(唔係 box)收返
+  if(e.target && e.target.classList && e.target.classList.contains('ovl')) e.target.classList.remove('on');
+});
+function researchAssets(dept) {   // 🔁 重搜:即刻喺相右下角顯示漏斗「重搜中」,後台搵新相,搵到自動換(reload 時)
+  var cks=_vchecked(); if(!cks.length){ toast('未剔任何素材'); return; }
+  var ids=cks.map(function(c){return c.value});
+  fetch('https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept='+encodeURIComponent(dept)+'&concept=researchasset&stage=research_asset'
+        +'&engine='+encodeURIComponent(ids.join(','))+'&target=main',{mode:'no-cors'}).catch(function(){});
+  cks.forEach(function(c){
+    var card=c.closest('.vacard'); if(!card) return;
+    var th=card.querySelector('.vathumb');
+    if(th && !th.querySelector('.vafunnel')){ var f=document.createElement('div'); f.className='vafunnel';
+      f.innerHTML='<span class="spin sm" style="width:10px;height:10px;margin:0"></span> 重搜中'; th.appendChild(f); }
+    c.checked=false;
+  });
+  toast('🔁 重搜 '+ids.length+' 個，後台搵緊清晰啲嘅相，搵到自動換（~30-60s，會自動 refresh）');
+}
+function bdComment(dept, brd) {   // 手寫稿 BD:送 comment → listener AI 解意見 → 改 specific 格(留舊版)
+  var ta = document.getElementById('cm_' + brd);
+  var txt = (ta && ta.value || '').trim();
+  if (!txt) { if (ta) ta.focus(); return; }
+  var url = 'https://script.google.com/macros/s/AKfycbzLZ7pBlJ9hnSlJZs3lKl5rLGsRGx3xdoe8_vcZvfDEoJulMAybBQhGxVPlNL9d9p5p/exec?action=genReq&dept=' + encodeURIComponent(dept)
+          + '&concept=' + encodeURIComponent(brd) + '&stage=bdcomment'
+          + '&engine=' + encodeURIComponent(txt) + '&target=main&cid=ACT_bdcomment';
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  if (window._clearDraft) window._clearDraft('cm_' + brd);   // 送出咗 → 清 draft
+  if (ta) { ta.disabled = true;
+    ta.insertAdjacentHTML('afterend', "<div class='cmlog'>✅ 已送出，AI 改緊嗰格，改完自動換圖（舊版會留喺下面）。</div>"); }
+}
+// STEP 3 風格 picker：每維互斥（但可 0 個）+ 夾成 style_anchor
+function styPick(cb) {
+  if (cb.checked) {
+    var sib = document.querySelectorAll(".styopt[data-dim='" + cb.getAttribute('data-dim') + "']");
+    for (var i = 0; i < sib.length; i++) { if (sib[i] !== cb) sib[i].checked = false; }
+  }
+  var el = document.getElementById('styanchor');
+  if (el) el.textContent = styleAnchor() || '（跟劇本）';
+}
+function styleAnchor() {
+  var dims = ['env', 'char', 'light', 'color', 'mood', 'feel'], picks = [];
+  for (var i = 0; i < dims.length; i++) {
+    var el = document.querySelector(".styopt[data-dim='" + dims[i] + "']:checked");
+    if (el) picks.push(el.value);
+  }
+  return picks.join(', ');
+}
+function srcRefs(btn, url) {   // STEP 2：AI 搵主角參考相
+  btn.textContent = '⏳ AI 搵相中…（~2-3 分鐘，完成 refresh 見）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('🔍 AI 自動由 ISD 官方相搵主角 + curate 中…');
+}
+function genFinalBD(btn, dept, baseUrl) {   // STEP 4：寫低 STEP 3 風格 → 生最終 BD
+  var anc = styleAnchor();
+  // STEP3 風格寫入 Master GSheet _VID_STYLE（gsheet_to_bd 讀返做 override；空 = 跟劇本）
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify({op:'set_style', dept:dept, style:anc})}).catch(function(){});
+  toast(anc ? ('🎨 已套用風格：' + anc) : '🎨 風格：跟劇本（冇限制）');
+  genBD(btn, baseUrl);
+}
+function pushGSheet(btn, url) {   // VID 4 寫入 Master GSheet B6:C17
+  btn.textContent = '⏳ 寫入緊…'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已寫入（開 GSheet polish）'; }, 2500);
+  toast('📝 已交，~1 分鐘寫入 Master GSheet B6:C17（前稿自動備份）');
+}
+function renderForms(btn, url) {   // 📋 標書:自動 render 真表頁入 Master Reply GSlide
+  btn.textContent = '⏳ render 緊…（~1-2 分鐘，完成會 WhatsApp）'; btn.disabled = true;
+  fetch(url, {mode:'no-cors'}).catch(function(){});
+  toast('📋 已交，listener 會自動 render 真表頁入 Master Reply GSlide');
+}
+function fillForms(btn) {   // 📝 標書:自動填表 — GAS 直出（公司資料 vlookup 寫 Fill tab，唔靠部 Mac）
+  var jsTag = btn.nextElementSibling;  // <script class=filldata>
+  var data;
+  try { data = JSON.parse((jsTag && jsTag.textContent) || '{}'); } catch (e) { data = {}; }
+  if (!data.forms || !data.forms.length) { toast('⚠️ 冇表資料'); return; }
+  var reg='https://docs.google.com/spreadsheets/d/1yiDJ3H8VFK3-6kZQZEzwkiD8VaRgVOzCwxcFbAyP3XE/edit';
+  btn.textContent = '⏳ AI 填緊…（~30-60s）'; btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'fill_forms', folderName: data.folderName, forms: data.forms })
+  }).catch(function(){});
+  // 清楚講做緊乜 + 完咗點做(開 Registry copy 值)
+  setTimeout(function() {
+    btn.outerHTML = "<a class='btn' style='width:100%;text-align:center' target='_blank' href='"+reg
+      +"'>✅ 已填好 → 開 Master Form Registry copy 啲值</a>";
+  }, 30000);
+  toast('🤖 AI 填緊公司資料入 Master Form Registry 嘅 Fill tab（~30-60s）。完咗開 Registry copy 啲值入真表頁。');
+}
+function outScript(btn) {   // 📤 VID2:SCRIPT 接落 Master GSheet SCRIPT暫存 — 直接 GAS POST，唔經部 Mac
+  var jsTag = btn.nextElementSibling;  // <script class=bdj> board JSON
+  var board = [];
+  try { board = JSON.parse((jsTag && jsTag.textContent) || '[]'); } catch (e) {}
+  if (!board.length) { toast('⚠️ 冇 board 資料'); return; }
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'script_out', dept: 'ISDBUDGET202728PUBLICCONSULTATION',
+      brd: btn.dataset.brd, concept: btn.dataset.concept, board: board })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已接落「SCRIPT暫存」'; btn.disabled = false; }, 1500);
+  toast('📤 接落 Master GSheet「SCRIPT暫存」(GAS,唔經部 Mac,疊唔覆寫)');
+}
+function clearScript(btn) {   // 🧹 清空 SCRIPT暫存 — GAS（唔經 Mac）
+  if (!confirm('清空 SCRIPT暫存 tab？')) return;
+  btn.disabled = true;
+  fetch('https://script.google.com/macros/s/AKfycbwq5NEBUUSqjd1nKOdDMQkm_8DxqCrsH2tzByL46TfL7kNWyOXS2AvCcNmDAaQgdoY_jA/exec', {
+    method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ op: 'clear' })
+  }).catch(function(){});
+  setTimeout(function() { btn.textContent = '✅ 已清空'; btn.disabled = false; }, 1500);
+  toast('🧹 已清空 SCRIPT暫存（GAS,唔經部 Mac）');
+}
+
+// submitGSlide/submitComments 已移除（dead code:前端零 call site + 冇 .frame-note input — 2026-06-13 audit）
+
+// 「develop 緊」bar 已移除（Raymond 2026-06-06）—— 改用 VID 2 tab 紅邊 + 各 concept 進度條。
+</script></body></html>

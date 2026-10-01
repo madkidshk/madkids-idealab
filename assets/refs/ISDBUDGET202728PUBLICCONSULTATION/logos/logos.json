@@ -1,0 +1,39 @@
+{
+  "dept": "ISDBUDGET202728PUBLICCONSULTATION",
+  "slots": [
+    {
+      "slot": 1,
+      "query": "財政司司長辦公室 標誌",
+      "file": "assets/refs/ISDBUDGET202728PUBLICCONSULTATION/logos/slot1.png",
+      "title": "財政司司長- 聯絡我們",
+      "w": 1488,
+      "h": 464,
+      "enabled": true,
+      "verified": true,
+      "verified_org": "香港特別行政區政府 財政司司長 財政司副司長",
+      "source_domain": ""
+    },
+    {
+      "slot": 2,
+      "query": "Financial Secretary's Office logo",
+      "file": "",
+      "title": "(核實唔到官方標誌,可即場打字重搵)",
+      "enabled": true,
+      "verified": false,
+      "verified_org": "",
+      "source_domain": ""
+    },
+    {
+      "slot": 3,
+      "query": "政府新聞處 標誌",
+      "file": "assets/refs/ISDBUDGET202728PUBLICCONSULTATION/logos/slot3.png",
+      "title": "政府新聞處部分電郵及對外系統異常",
+      "w": 1082,
+      "h": 608,
+      "enabled": true,
+      "verified": true,
+      "verified_org": "政府新聞處 Information Services",
+      "source_domain": ""
+    }
+  ]
+}

@@ -1,0 +1,1009 @@
+{
+  "dept": "FEHDTVAPISDISTRICTGOVERNANCE",
+  "concepts": {
+    "A": {
+      "board": {
+        "versions": [
+          {
+            "v": "20261001-012441",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20261001-012441/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20261001-012441/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20261001-012441/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20261001-012441/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20261001-012441/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20261001-012441/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20261001-012441/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20261001-012441/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20261001-012441/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20261001-012441/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20261001-012441/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20261001-012441/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-10-01T01:24:46",
+            "source": "nblm",
+            "brd": "A",
+            "vtok": "d",
+            "cid": "nbd069852b",
+            "label": "[NB] 方向一：阿德問答篇（旁白不現身）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20261001-012441/gslide_FEHDTVAPISDISTRICTGOVERNANCE_A_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20261001-012441/gslide_FEHDTVAPISDISTRICTGOVERNANCE_A_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20261001-012441/deck.pdf"
+          },
+          {
+            "v": "20260930-174004",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-174004/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-174004/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-174004/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-174004/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-174004/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-174004/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-174004/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-174004/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-174004/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-174004/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-174004/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-174004/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T17:40:05",
+            "source": "nblm",
+            "brd": "A",
+            "vtok": "c",
+            "cid": "nbd069852b",
+            "label": "[NB] 方向一：阿德問答篇（旁白不現身）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-174004/gslide_FEHDTVAPISDISTRICTGOVERNANCE_A_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-174004/gslide_FEHDTVAPISDISTRICTGOVERNANCE_A_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-174004/deck.pdf"
+          },
+          {
+            "v": "20260930-173433",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-173433/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-173433/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-173433/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-173433/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-173433/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-173433/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-173433/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-173433/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-173433/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-173433/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-173433/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-173433/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T17:34:34",
+            "source": "nblm",
+            "brd": "A",
+            "vtok": "b",
+            "cid": "nbd069852b",
+            "label": "[NB] 方向一：阿德問答篇（旁白不現身）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-173433/gslide_FEHDTVAPISDISTRICTGOVERNANCE_A_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-173433/gslide_FEHDTVAPISDISTRICTGOVERNANCE_A_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-173433/deck.pdf"
+          },
+          {
+            "v": "20260930-165711",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-165711/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-165711/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-165711/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-165711/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-165711/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-165711/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-165711/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-165711/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-165711/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-165711/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-165711/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-165711/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T16:57:12",
+            "source": "nblm",
+            "brd": "A",
+            "vtok": "a",
+            "cid": "nbd069852b",
+            "label": "[NB] 方向一：阿德問答篇（旁白不現身）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-165711/gslide_FEHDTVAPISDISTRICTGOVERNANCE_A_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-165711/gslide_FEHDTVAPISDISTRICTGOVERNANCE_A_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_A/v20260930-165711/deck.pdf"
+          }
+        ]
+      }
+    },
+    "E": {
+      "board": {
+        "versions": [
+          {
+            "v": "20261001-015820",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-015820/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-015820/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-015820/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-015820/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-015820/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-015820/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-015820/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-015820/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-015820/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-015820/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-015820/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-015820/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-10-01T01:58:24",
+            "source": "nblm",
+            "brd": "E",
+            "vtok": "h",
+            "cid": "nb54ebc056",
+            "label": "[NB] 方向五：人人有德全民參與篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-015820/gslide_FEHDTVAPISDISTRICTGOVERNANCE_E_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-015820/gslide_FEHDTVAPISDISTRICTGOVERNANCE_E_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-015820/deck.pdf"
+          },
+          {
+            "v": "20261001-014452",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-014452/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-014452/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-014452/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-014452/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-014452/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-014452/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-014452/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-014452/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-014452/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-014452/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-014452/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-014452/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-10-01T01:44:53",
+            "source": "nblm",
+            "brd": "E",
+            "vtok": "g",
+            "cid": "nb54ebc056",
+            "label": "[NB] 方向五：人人有德全民參與篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-014452/gslide_FEHDTVAPISDISTRICTGOVERNANCE_E_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-014452/gslide_FEHDTVAPISDISTRICTGOVERNANCE_E_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-014452/deck.pdf"
+          },
+          {
+            "v": "20261001-013307",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-013307/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-013307/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-013307/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-013307/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-013307/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-013307/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-013307/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-013307/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-013307/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-013307/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-013307/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-013307/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-10-01T01:33:09",
+            "source": "nblm",
+            "brd": "E",
+            "vtok": "f",
+            "cid": "nb54ebc056",
+            "label": "[NB] 方向五：人人有德全民參與篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-013307/gslide_FEHDTVAPISDISTRICTGOVERNANCE_E_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-013307/gslide_FEHDTVAPISDISTRICTGOVERNANCE_E_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20261001-013307/deck.pdf"
+          },
+          {
+            "v": "20260930-205926",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-205926/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-205926/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-205926/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-205926/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-205926/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-205926/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-205926/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-205926/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-205926/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-205926/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-205926/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-205926/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T20:59:27",
+            "source": "nblm",
+            "brd": "E",
+            "vtok": "e",
+            "cid": "nb54ebc056",
+            "label": "[NB] 方向五：人人有德全民參與篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-205926/gslide_FEHDTVAPISDISTRICTGOVERNANCE_E_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-205926/gslide_FEHDTVAPISDISTRICTGOVERNANCE_E_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-205926/deck.pdf"
+          },
+          {
+            "v": "20260930-180933",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180933/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180933/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180933/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180933/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180933/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180933/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180933/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180933/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180933/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180933/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180933/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180933/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T18:09:34",
+            "source": "nblm",
+            "brd": "E",
+            "vtok": "d",
+            "cid": "nb54ebc056",
+            "label": "[NB] 方向五：人人有德全民參與篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180933/gslide_FEHDTVAPISDISTRICTGOVERNANCE_E_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180933/gslide_FEHDTVAPISDISTRICTGOVERNANCE_E_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180933/deck.pdf"
+          },
+          {
+            "v": "20260930-180647",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180647/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180647/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180647/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180647/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180647/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180647/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180647/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180647/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180647/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180647/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180647/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180647/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T18:06:48",
+            "source": "nblm",
+            "brd": "E",
+            "vtok": "c",
+            "cid": "nb54ebc056",
+            "label": "[NB] 方向五：人人有德全民參與篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180647/gslide_FEHDTVAPISDISTRICTGOVERNANCE_E_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180647/gslide_FEHDTVAPISDISTRICTGOVERNANCE_E_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-180647/deck.pdf"
+          },
+          {
+            "v": "20260930-173733",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-173733/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-173733/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-173733/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-173733/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-173733/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-173733/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-173733/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-173733/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-173733/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-173733/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-173733/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-173733/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T17:37:34",
+            "source": "nblm",
+            "brd": "E",
+            "vtok": "b",
+            "cid": "nb54ebc056",
+            "label": "[NB] 方向五：人人有德全民參與篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-173733/gslide_FEHDTVAPISDISTRICTGOVERNANCE_E_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-173733/gslide_FEHDTVAPISDISTRICTGOVERNANCE_E_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-173733/deck.pdf"
+          },
+          {
+            "v": "20260930-172504",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-172504/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-172504/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-172504/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-172504/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-172504/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-172504/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-172504/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-172504/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-172504/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-172504/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-172504/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-172504/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T17:25:06",
+            "source": "nblm",
+            "brd": "E",
+            "vtok": "a",
+            "cid": "nb54ebc056",
+            "label": "[NB] 方向五：人人有德全民參與篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-172504/gslide_FEHDTVAPISDISTRICTGOVERNANCE_E_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-172504/gslide_FEHDTVAPISDISTRICTGOVERNANCE_E_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_E/v20260930-172504/deck.pdf"
+          }
+        ]
+      }
+    },
+    "F": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260930-195539",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-195539/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-195539/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-195539/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-195539/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-195539/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-195539/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-195539/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-195539/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-195539/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-195539/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-195539/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-195539/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T19:55:45",
+            "source": "nblm",
+            "brd": "F",
+            "vtok": "d",
+            "cid": "nb3302b60a",
+            "label": "[NB] 方向六：前線紀實真情篇（無阿德對照組）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-195539/gslide_FEHDTVAPISDISTRICTGOVERNANCE_F_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-195539/gslide_FEHDTVAPISDISTRICTGOVERNANCE_F_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-195539/deck.pdf"
+          },
+          {
+            "v": "20260930-174633",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174633/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174633/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174633/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174633/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174633/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174633/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174633/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174633/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174633/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174633/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174633/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174633/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T17:46:34",
+            "source": "nblm",
+            "brd": "F",
+            "vtok": "c",
+            "cid": "nb3302b60a",
+            "label": "[NB] 方向六：前線紀實真情篇（無阿德對照組）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174633/gslide_FEHDTVAPISDISTRICTGOVERNANCE_F_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174633/gslide_FEHDTVAPISDISTRICTGOVERNANCE_F_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174633/deck.pdf"
+          },
+          {
+            "v": "20260930-174147",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174147/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174147/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174147/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174147/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174147/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174147/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174147/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174147/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174147/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174147/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174147/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174147/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T17:41:49",
+            "source": "nblm",
+            "brd": "F",
+            "vtok": "b",
+            "cid": "nb3302b60a",
+            "label": "[NB] 方向六：前線紀實真情篇（無阿德對照組）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174147/gslide_FEHDTVAPISDISTRICTGOVERNANCE_F_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174147/gslide_FEHDTVAPISDISTRICTGOVERNANCE_F_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174147/deck.pdf"
+          },
+          {
+            "v": "20260930-174032",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174032/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174032/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174032/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174032/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174032/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174032/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174032/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174032/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174032/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174032/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174032/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174032/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T17:40:34",
+            "source": "nblm",
+            "brd": "F",
+            "vtok": "a",
+            "cid": "nb3302b60a",
+            "label": "[NB] 方向六：前線紀實真情篇（無阿德對照組）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174032/gslide_FEHDTVAPISDISTRICTGOVERNANCE_F_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174032/gslide_FEHDTVAPISDISTRICTGOVERNANCE_F_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_F/v20260930-174032/deck.pdf"
+          }
+        ]
+      }
+    },
+    "D": {
+      "board": {
+        "versions": [
+          {
+            "v": "20261001-012551",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20261001-012551/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20261001-012551/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20261001-012551/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20261001-012551/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20261001-012551/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20261001-012551/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20261001-012551/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20261001-012551/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20261001-012551/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20261001-012551/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20261001-012551/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20261001-012551/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-10-01T01:25:52",
+            "source": "nblm",
+            "brd": "D",
+            "vtok": "d",
+            "cid": "nbea91b73d",
+            "label": "[NB] 方向四：阿德與機械狗搭檔巡邏篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20261001-012551/gslide_FEHDTVAPISDISTRICTGOVERNANCE_D_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20261001-012551/gslide_FEHDTVAPISDISTRICTGOVERNANCE_D_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20261001-012551/deck.pdf"
+          },
+          {
+            "v": "20260930-205837",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-205837/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-205837/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-205837/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-205837/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-205837/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-205837/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-205837/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-205837/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-205837/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-205837/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-205837/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-205837/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T20:58:38",
+            "source": "nblm",
+            "brd": "D",
+            "vtok": "c",
+            "cid": "nbea91b73d",
+            "label": "[NB] 方向四：阿德與機械狗搭檔巡邏篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-205837/gslide_FEHDTVAPISDISTRICTGOVERNANCE_D_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-205837/gslide_FEHDTVAPISDISTRICTGOVERNANCE_D_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-205837/deck.pdf"
+          },
+          {
+            "v": "20260930-180939",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-180939/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-180939/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-180939/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-180939/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-180939/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-180939/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-180939/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-180939/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-180939/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-180939/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-180939/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-180939/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T18:09:39",
+            "source": "nblm",
+            "brd": "D",
+            "vtok": "b",
+            "cid": "nbea91b73d",
+            "label": "[NB] 方向四：阿德與機械狗搭檔巡邏篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-180939/gslide_FEHDTVAPISDISTRICTGOVERNANCE_D_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-180939/gslide_FEHDTVAPISDISTRICTGOVERNANCE_D_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-180939/deck.pdf"
+          },
+          {
+            "v": "20260930-174050",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-174050/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-174050/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-174050/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-174050/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-174050/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-174050/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-174050/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-174050/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-174050/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-174050/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-174050/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-174050/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T17:40:51",
+            "source": "nblm",
+            "brd": "D",
+            "vtok": "a",
+            "cid": "nbea91b73d",
+            "label": "[NB] 方向四：阿德與機械狗搭檔巡邏篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-174050/gslide_FEHDTVAPISDISTRICTGOVERNANCE_D_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-174050/gslide_FEHDTVAPISDISTRICTGOVERNANCE_D_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_D/v20260930-174050/deck.pdf"
+          }
+        ]
+      }
+    },
+    "C": {
+      "board": {
+        "versions": [
+          {
+            "v": "20261001-015121",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-015121/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-015121/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-015121/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-015121/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-015121/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-015121/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-015121/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-015121/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-015121/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-015121/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-015121/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-015121/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-10-01T01:51:22",
+            "source": "nblm",
+            "brd": "C",
+            "vtok": "g",
+            "cid": "nb17655e26",
+            "label": "[NB] 方向三：阿德十年時空穿越篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-015121/gslide_FEHDTVAPISDISTRICTGOVERNANCE_C_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-015121/gslide_FEHDTVAPISDISTRICTGOVERNANCE_C_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-015121/deck.pdf"
+          },
+          {
+            "v": "20261001-013211",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-013211/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-013211/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-013211/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-013211/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-013211/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-013211/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-013211/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-013211/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-013211/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-013211/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-013211/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-013211/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-10-01T01:32:13",
+            "source": "nblm",
+            "brd": "C",
+            "vtok": "f",
+            "cid": "nb17655e26",
+            "label": "[NB] 方向三：阿德十年時空穿越篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-013211/gslide_FEHDTVAPISDISTRICTGOVERNANCE_C_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-013211/gslide_FEHDTVAPISDISTRICTGOVERNANCE_C_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20261001-013211/deck.pdf"
+          },
+          {
+            "v": "20260930-205720",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-205720/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-205720/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-205720/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-205720/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-205720/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-205720/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-205720/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-205720/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-205720/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-205720/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-205720/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-205720/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T20:57:22",
+            "source": "nblm",
+            "brd": "C",
+            "vtok": "e",
+            "cid": "nb17655e26",
+            "label": "[NB] 方向三：阿德十年時空穿越篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-205720/gslide_FEHDTVAPISDISTRICTGOVERNANCE_C_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-205720/gslide_FEHDTVAPISDISTRICTGOVERNANCE_C_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-205720/deck.pdf"
+          },
+          {
+            "v": "20260930-200550",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-200550/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-200550/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-200550/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-200550/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-200550/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-200550/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-200550/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-200550/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-200550/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-200550/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-200550/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-200550/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T20:05:50",
+            "source": "nblm",
+            "brd": "C",
+            "vtok": "d",
+            "cid": "nb17655e26",
+            "label": "[NB] 方向三：阿德十年時空穿越篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-200550/gslide_FEHDTVAPISDISTRICTGOVERNANCE_C_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-200550/gslide_FEHDTVAPISDISTRICTGOVERNANCE_C_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-200550/deck.pdf"
+          },
+          {
+            "v": "20260930-182548",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-182548/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-182548/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-182548/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-182548/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-182548/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-182548/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-182548/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-182548/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-182548/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-182548/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-182548/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-182548/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T18:25:49",
+            "source": "nblm",
+            "brd": "C",
+            "vtok": "c",
+            "cid": "nb17655e26",
+            "label": "[NB] 方向三：阿德十年時空穿越篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-182548/gslide_FEHDTVAPISDISTRICTGOVERNANCE_C_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-182548/gslide_FEHDTVAPISDISTRICTGOVERNANCE_C_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-182548/deck.pdf"
+          },
+          {
+            "v": "20260930-181254",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-181254/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-181254/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-181254/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-181254/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-181254/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-181254/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-181254/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-181254/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-181254/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-181254/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-181254/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-181254/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T18:12:54",
+            "source": "nblm",
+            "brd": "C",
+            "vtok": "b",
+            "cid": "nb17655e26",
+            "label": "[NB] 方向三：阿德十年時空穿越篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-181254/gslide_FEHDTVAPISDISTRICTGOVERNANCE_C_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-181254/gslide_FEHDTVAPISDISTRICTGOVERNANCE_C_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-181254/deck.pdf"
+          },
+          {
+            "v": "20260930-174341",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-174341/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-174341/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-174341/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-174341/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-174341/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-174341/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-174341/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-174341/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-174341/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-174341/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-174341/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-174341/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T17:43:43",
+            "source": "nblm",
+            "brd": "C",
+            "vtok": "a",
+            "cid": "nb17655e26",
+            "label": "[NB] 方向三：阿德十年時空穿越篇（阿德出鏡）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-174341/gslide_FEHDTVAPISDISTRICTGOVERNANCE_C_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-174341/gslide_FEHDTVAPISDISTRICTGOVERNANCE_C_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_C/v20260930-174341/deck.pdf"
+          }
+        ]
+      }
+    },
+    "G": {
+      "board": {
+        "versions": [
+          {
+            "v": "20261001-012429",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20261001-012429/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20261001-012429/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20261001-012429/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20261001-012429/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20261001-012429/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20261001-012429/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20261001-012429/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20261001-012429/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20261001-012429/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20261001-012429/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20261001-012429/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20261001-012429/frame_11.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20261001-012429/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-10-01T01:24:30",
+            "source": "nblm",
+            "brd": "G",
+            "vtok": "d",
+            "cid": "nb09b3f21e",
+            "label": "[ChatGPT] 城市開門",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20261001-012429/gslide_FEHDTVAPISDISTRICTGOVERNANCE_G_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20261001-012429/gslide_FEHDTVAPISDISTRICTGOVERNANCE_G_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20261001-012429/deck.pdf"
+          },
+          {
+            "v": "20260930-205829",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-205829/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-205829/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-205829/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-205829/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-205829/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-205829/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-205829/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-205829/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-205829/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-205829/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-205829/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-205829/frame_11.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-205829/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-09-30T20:58:30",
+            "source": "nblm",
+            "brd": "G",
+            "vtok": "c",
+            "cid": "nb09b3f21e",
+            "label": "[ChatGPT] 城市開門",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-205829/gslide_FEHDTVAPISDISTRICTGOVERNANCE_G_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-205829/gslide_FEHDTVAPISDISTRICTGOVERNANCE_G_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-205829/deck.pdf"
+          },
+          {
+            "v": "20260930-175542",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-175542/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-175542/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-175542/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-175542/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-175542/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-175542/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-175542/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-175542/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-175542/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-175542/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-175542/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-175542/frame_11.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-175542/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-09-30T17:55:43",
+            "source": "nblm",
+            "brd": "G",
+            "vtok": "b",
+            "cid": "nb09b3f21e",
+            "label": "[ChatGPT] 城市開門",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-175542/gslide_FEHDTVAPISDISTRICTGOVERNANCE_G_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-175542/gslide_FEHDTVAPISDISTRICTGOVERNANCE_G_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-175542/deck.pdf"
+          },
+          {
+            "v": "20260930-174401",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-174401/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-174401/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-174401/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-174401/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-174401/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-174401/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-174401/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-174401/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-174401/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-174401/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-174401/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-174401/frame_11.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-174401/frame_12.jpg"
+            ],
+            "n": 12,
+            "ts": "2026-09-30T17:44:04",
+            "source": "nblm",
+            "brd": "G",
+            "vtok": "a",
+            "cid": "nb09b3f21e",
+            "label": "[ChatGPT] 城市開門",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-174401/gslide_FEHDTVAPISDISTRICTGOVERNANCE_G_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-174401/gslide_FEHDTVAPISDISTRICTGOVERNANCE_G_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_G/v20260930-174401/deck.pdf"
+          }
+        ]
+      }
+    },
+    "B": {
+      "board": {
+        "versions": [
+          {
+            "v": "20260930-180802",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-180802/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-180802/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-180802/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-180802/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-180802/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-180802/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-180802/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-180802/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-180802/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-180802/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-180802/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-180802/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T18:08:04",
+            "source": "nblm",
+            "brd": "B",
+            "vtok": "b",
+            "cid": "nb36296499",
+            "label": "[NB] 方向二：懷疑街坊阿德篇（旁白不現身）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-180802/gslide_FEHDTVAPISDISTRICTGOVERNANCE_B_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-180802/gslide_FEHDTVAPISDISTRICTGOVERNANCE_B_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-180802/deck.pdf"
+          },
+          {
+            "v": "20260930-174600",
+            "sheet": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-174600/board_sheet.png",
+            "frames": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-174600/frame_01.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-174600/frame_02.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-174600/frame_03.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-174600/frame_04.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-174600/frame_05.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-174600/frame_06.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-174600/frame_07.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-174600/frame_08.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-174600/frame_09.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-174600/frame_10.jpg",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-174600/frame_11.jpg"
+            ],
+            "n": 11,
+            "ts": "2026-09-30T17:46:01",
+            "source": "nblm",
+            "brd": "B",
+            "vtok": "a",
+            "cid": "nb36296499",
+            "label": "[NB] 方向二：懷疑街坊阿德篇（旁白不現身）",
+            "gslide_pages": [
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-174600/gslide_FEHDTVAPISDISTRICTGOVERNANCE_B_p1.png",
+              "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-174600/gslide_FEHDTVAPISDISTRICTGOVERNANCE_B_p2.png"
+            ],
+            "deck_repo": "assets/gen/FEHDTVAPISDISTRICTGOVERNANCE_B/v20260930-174600/deck.pdf"
+          }
+        ]
+      }
+    }
+  },
+  "updated": "2026-10-01T01:58:24"
+}
